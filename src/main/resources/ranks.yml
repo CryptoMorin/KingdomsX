@@ -1,0 +1,68 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                        Ranks                        |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Allow kingdoms to make their own ranks?
+# If you disable custom ranks, kingdoms cannot modify their default rank settings.
+custom-ranks:
+  # This option requires /k reload to be reloaded.
+  enabled: true
+  limits:
+    # This cannot be lower than 2
+    ranks: 20
+    max-claims: 10
+
+    # Max length of the names.
+    # Color codes are also considered.
+    length:
+      node: 15
+      name: 20
+      symbol: 5
+      color: 5
+      material:
+        whitelist: false
+        list: []
+
+# Which blocks are considered to be in INTERACT permission?
+# All the other blocks that are interactable and are not specified in
+# this list will be considered in USE permission.
+interact-blocks:
+  - CONTAINS:CHEST
+
+# The priority is based on the order of this list.
+# The first element has the highest priority.
+# And the last element has the lowest priority.
+ranks:
+  king:
+    color: "&c"
+    symbol: "♚"
+    name: "King"
+    material: EMERALD_BLOCK
+    # -1 means unlimited
+    max-claims: -1
+    # King always have all the permissions.
+    permissions: []
+  general:
+    color: "&6"
+    symbol: "❇"
+    name: "General"
+    material: DIAMOND_BLOCK
+    max-claims: -1
+    permissions: [NEXUS, BUILD, HOME, INVADE, NEXUS_CHEST, NEXUS_BUILD, UNCLAIM, CLAIM, TURRETS, INVITE, KICK, LORE, BROADCAST,
+                  STRUCTURES, SET_HOME, ALLIANCE, TRUCE, ENEMY, MANAGE_RANKS, FLY, WITHDRAW, INTERACT, USE, OUTPOST, NATION, UPGRADE]
+  knight:
+    name: "Knight"
+    color: "&e"
+    symbol: "♜"
+    material: GOLD_BLOCK
+    max-claims: 10
+    permissions: [NEXUS, BUILD, HOME, INVADE, NEXUS_CHEST, NEXUS_BUILD, UNCLAIM, CLAIM, TURRETS, INVITE, WITHDRAW, FLY, INTERACT, USE]
+  member:
+    name: "Member"
+    color: "&2"
+    symbol: "♟"
+    material: IRON_BLOCK
+    max-claims: 0
+    permissions: [NEXUS, BUILD, HOME, INVADE, INTERACT, USE]

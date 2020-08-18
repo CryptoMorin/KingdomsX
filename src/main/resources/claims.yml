@@ -1,0 +1,223 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                       Claims                        |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+
+# If the claims should be connected next to each other.
+# High numbers will lag the server.
+# It's recommended to keep it under 3 if you're using this option.
+# Anything above this is just pointless and will lag the server. You should turn off this option.
+# Set to 0 to disable.
+connection-radius: 0
+
+# If the claims should have a distance between them.
+# For example if this is set to 1, you cannot claim a land if another kingdom claimed one of the 3x3 lands around that land.
+# High numbers will lag the server.
+# Set to 0 to disable.
+distance: 0
+
+# Worlds that claiming are disabled in.
+disabled-worlds: [world_nether, world_the_end]
+
+# Claims the current land once the player created a kingdom if possible.
+claim-on-create: true
+
+# How many claims should be free if the number of owned lands is lower
+# than this number?
+starter-free: 3
+
+# If the player needs to confirm claiming a land again when all the free lands have been used.
+# This is the time which the player needs to do the command again before it ends.
+# Set to 0 to disable.
+# This cooldown will also refresh if you're in the cooldown to avoid
+# annoying confirmations for claiming multiple lands.
+confirmation: 10s
+
+# /k claim fill
+fill:
+  # The maximum distance allowed to check for
+  # the shape borders to start filling.
+  max-distance: 3
+  # The maximum lands allowed to claim
+  # when filling the shape.
+  max-claims: 30
+
+# History for undoing claims.
+history:
+  # If you have the command disabled you should disable it here
+  # too to stop wasting memory.
+  enabled: true
+  # The limit of history to keep for land claims.
+  # Older claim history will be deleted automatically.
+  limit: 10
+
+# The equation used to calculate the maximum claims for kingdoms (%kingdoms_max_lands% placeholder).
+# All the placeholders and math functions such as log() and round() can be used as well.
+# Note that using %kingdoms_max_lands% here can cause a Stack Overflow error.
+# No player placeholders can be used here of course. Only kingdom and nation placeholders.
+# You can also use the "max_claims" placeholder for the upgrade level.
+max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + (max_claims * 2)"
+
+# You can only build in claims that the relation attribute allows building.
+build-in-claimed-only:
+  place: false
+  break: false
+
+# Show action bar when auto claim/unclaim is enabled.
+actionbar:
+  auto-claim: true
+  auto-unclaim: true
+  keep: true
+
+resource-points:
+  # The amount of resource points to give back to the player
+  # after unclaiming a land. Set to 0 to disable.
+  # Or you can set it to a negative value to take resource points instead.
+  refund-unclaim: 0
+
+  # The amount of resource points needed to claim a land.
+  claims: 50
+  auto-claims: 55
+
+# Activated beacons in a land will only affect players who their kingdom has the "ceasefire" attribute
+# with the kingdom that owns the land.
+beacon-protected-effects: true
+
+money:
+  # The amount of money to give back to the player
+  # after unclaiming a land. Set to 0 to disable.
+  # Or you can set it to a negative value to take resource points instead.
+  refund-unclaim: 0
+
+  # The amount of money needed to claim a land.
+  claims: 50
+  auto-claims: 55
+
+# Sends a confirmation message before unclaiming certain lands
+# that contain one of elements below.
+# Priority: Nexus -> Home -> Structures -> Turrets
+unclaim-confirmation:
+  turrets: false
+  structures: true
+  home: true
+  nexus: true
+
+# /k unclaimall
+unclaim-all:
+  announce: true
+  keep-nexus-land: true
+  cost: 0
+  confirm:
+    enabled: true
+    time: 15
+    gui: true
+
+indicator:
+  # Wilderness regions that are protected will not have indicators.
+  ignore-worldguard-regions: true
+
+  # Display these indicators for players that don't have a kingdom.
+  kingdomless-enabled: true
+
+  # Adds a block visualizer to separate chunks.
+  # It's similar to F3+G Chunk Border.
+  # Players can control their visualizers behaviour from /k visualize
+  visualizer:
+    # If visualizers should be enabled for players by default.
+    # They can disable it using /k visualize toggle
+    enabled: false
+
+    # Blocks will appear on the same y as the blocks the player is standing on.
+    # Otherwise blocks will be placed on the floor block.
+    center: false
+
+    # If the option above is set to false, then it'll check the blocks under the player
+    # until it hits the floor. The height check limit should be low to avoid lag.
+    # If no blocks are found within this range, then the indicator will display on the (y - x), where x is the option.
+    floor-check-height: 5
+
+    # If the blocks should visualize all the border blocks around the chunk.
+    # This will usually cause a lot of lag. Not recommended.
+    # The material used for these blocks is "two-block". You can change them below.
+    border: false
+
+    # Ignores enabled option.
+    # Should indicators be shown when a land is claimed or unclaimed?
+    on-claim: true
+
+    # The amount of time the indicator blocks should stay.
+    # In seconds.
+    stay: 3
+
+  # The land types to send the indicators and visualizers.
+  # corner-block: The 4 corner block used to indicate the chunk corners.
+  # two-blocks: The two blocks next to each corner blocks on sides.
+  # actionbar: The action bar message sent when entering this type of land.
+  # title: The title message to sent when entering this type of land.
+  #   -> title, subtitle, fade-in, stay, fade-out (all these 3 are in ticks)
+  # sound: Sound played when entering this type of land.
+  # send-messages-for-same-chunk-type: If titles, actionbars, visualizers and sound should
+  #   be used again if the player is entering the same type of land as their previous land.
+  #   For example, if you're going from an unclaimed land to another unclaimed land, and this option is set to
+  #   true in wilderness, the messages will show again.
+  # You can remove any of these options and they'll not be used. Or you can add any of them to any types you want.
+  # The placeholders with "kingdom" identifier instead of "kingdoms" are for placeholders related to the land's kingdom.
+  wilderness:
+    corner-block: SEA_LANTERN
+    two-block: QUARTZ_BLOCK
+    actionbar: "&8&l-=( &2&lUnoccupied Land &8&l)=-"
+  no-kingdom:
+    title:
+      title: "%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: IRON_BLOCK
+  self:
+    title:
+      title: "&2%kingdoms_name%"
+      subtitle: "%kingdoms_lore%"
+      fade-in: 10
+      stay: 40
+      fade-out: 10
+
+    corner-block: SEA_LANTERN
+    two-block: EMERALD_BLOCK
+  neutral:
+    title:
+      title: "%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: IRON_BLOCK
+  ally:
+    title:
+      title: "&6%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: DIAMOND_BLOCK
+  truce:
+    title:
+      title: "&e%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: GOLD_BLOCK
+  nation:
+    title:
+      title: "&9%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: BLUE_WOOL
+  enemy:
+    title:
+      title: "&c%kingdom_name%"
+      subtitle: "%kingdom_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: REDSTONE_BLOCK
+    # sound: AMBIENT_CAVE, 0.5

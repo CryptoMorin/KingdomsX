@@ -1,0 +1,117 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Relations                      |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# A kingdom can have these types of relation with another kingdom: Neutral, Enemy, Truce, Ally and Nation
+# Let's say nation A is allies with nation B.
+# If A who requested to be allies with nation B accepts or declines B relation terms, the relation attributes from B will be used.
+# For example if nation A wants to build in nation B land, and nation A has build attribute but nation B doesn't, it'll listen to nation Bs attributes.
+# Kingdom Allies, truces and enemies have more priority. If A has kingdom a and B has kingdom b, and a is allies with b,
+# then it'll listen to relation attributes of allies in b regardless of their nation's relation. If a and b are both in the
+# same nation their relation will always be "Nation" regardless of the kingdom's relation.
+
+# Relation request to a nation or a kingdom.
+request-expiration: 1 day
+
+# If kingdoms relations should be checked when
+# interacting with a kingdom that is not in the same nation.
+prioritize-kingdom-relations: true
+
+# Allow kingdoms to have separate relations with kingdoms that are in their nation?
+# If you use this, it'll destroy the whole purpose of nation relations.
+allow-relations-between-nation-kingdoms: false
+
+# This merely manages the data saved.
+# To disable it completely, remove it from the Nexus Settings GUI.
+custom-attributes: true
+
+# The PvP mode of the plugin. Needs a restart to be changed due to performance issues.
+# normal - Players can PvP anywhere based on their relation attributes.
+# claimed - Players can only PvP inside claimed lands based on their relation attributes.
+# unclaimed - Players can only PvP outside claimed lands based on their relation attributes.
+pvp: normal
+
+# auto-revoke: If a kingdom declares that they no longer wish to be in a relation
+# with the other kingdom, the other kingdom will automatically have this relation revoked as well.
+# ceasefire: Members of the two kingdoms cannot PvP each other.
+# donate: Kingdoms can donate resource points to each other clicking their nexus. Note that they'll still be able to use /k donate
+# build: Kingdoms can build in each others lands, however you can't touch any turrets or structures.
+# invade: If kingdoms can invade each other.
+# interact: Kingdoms can interact and open chests, enchantment tables and other containers.
+# use: Kingdoms can use buttons, open doors and use pressure plates.
+# manage: Kingdoms can remove and place turrets and structures in your land.
+# Note that the placed turrets/structures will be for the kingdom that owns that land.
+# limit: How many kingdoms can a single kingdom have this type of relation with? Set to 0 for unlimited.
+relations:
+  self:
+    color: "&2"
+    name: "Self"
+  neutral:
+    color: "&f"
+    name: "Neutral"
+    ceasefire: false
+    donate: false
+    build: false
+    use: false
+    interact: false
+    invade: true
+    turret-ceasefire: false
+    manage-turrets: false
+    manage-structures: false
+
+  truce:
+    color: "&e"
+    name: "Truce"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: false
+    limit: 0
+    interact: false
+    invade: false
+    turret-ceasefire: true
+    manage-turrets: false
+    manage-structures: false
+  ally:
+    color: "&a"
+    name: "Ally"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: false
+    limit: 0
+    invade: false
+    interact: true
+    turret-ceasefire: true
+    manage-turrets: true
+    manage-structures: true
+  nation:
+    color: "&9"
+    name: "Nation"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: true
+    limit: 0
+    invade: false
+    interact: true
+    turret-ceasefire: true
+    manage-turrets: true
+    manage-structures: true
+  enemy:
+    color: "&c"
+    name: "Enemy"
+    auto-revoke: false
+    ceasefire: false
+    donate: false
+    build: false
+    limit: 0
+    interact: false
+    invade: true
+    turret-ceasefire: false
+    manage-turrets: false
+    manage-structures: false
+    disabled-commands:
+      - "sethome"

@@ -1,0 +1,125 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                   Misc Upgrades                     |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# You'll still need to remove them from the GUI (guis -> structures -> nexus -> misc-upgrades)
+# if you don't want people to upgrade them.
+invasion-teleportation:
+  enabled: true
+  cost: "(lvl + 1) * 10"
+  max-level: 5
+anti-explosion:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 2
+anti-trample:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 2
+nexus-guards:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 4
+  levels:
+    1:
+      zombies:
+        amount: 2
+        type: ZOMBIE
+        name: "&cNexus Guard"
+        health: 50
+      skeletons:
+        amount: 1
+        type: SKELETON
+        name: "&6Nexus Guard"
+        health: 20
+    2:
+      zombies:
+        amount: 3
+        type: ZOMBIE
+        name: "&cNexus Guard"
+        health: 50
+      skeletons:
+        amount: 3
+        type: SKELETON
+        name: "&6Nexus Guard"
+        health: 20
+    3:
+      illusioners:
+        amount: 1
+        type: ILLUSIONER
+        name: "&cNexus Wizard"
+        health: 50
+      vindicators:
+        amount: 3
+        type: VINDICATOR
+        name: "&6Nexus Butler"
+        health: 20
+    4:
+      illusioners:
+        amount: 1
+        type: ILLUSIONER
+        name: "&cNexus Wizard"
+        health: 50
+      vindicators:
+        amount: 2
+        type: VINDICATOR
+        name: "&6Nexus Butler"
+        health: 20
+      vexes:
+        amount: 5
+        type: VEX
+        name: "&6Nexus Minions"
+        health: 20
+guards:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 1
+  levels:
+    1:
+      zombies:
+        amount: 3
+        type: ZOMBIE
+        name: "&cNexus Guard"
+        health: 50
+      skeletons:
+        amount: 1
+        type: SKELETON
+        name: "&6Nexus Guard"
+        health: 20
+    2:
+      zombies:
+        amount: 3
+        type: ZOMBIE
+        name: "&cNexus Guard"
+        health: 50
+      skeletons:
+        amount: 1
+        type: SKELETON
+        name: "&6Nexus Guard"
+        health: 20
+insanity:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 1
+glory:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 2
+chest-size:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  max-level: 5
+# This upgrade has no scaling. The level number is used in the
+# max-claims equation in claims.yml
+max-claims:
+  enabled: true
+  cost: "(lvl + 1) * 200"
+  max-level: 10
+max-members:
+  enabled: true
+  cost: "(lvl + 1) * 100"
+  # Each upgrade.
+  scaling: 'lvl * 5'
+  max-level: 10

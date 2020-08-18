@@ -1,0 +1,79 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                               Dynmap                              |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# After changing any settings, you either have to wait for the daily interval update
+# or do a manual render yourself using "/k admin dynmap fullrender" command which are both async.
+
+# Maker settings.
+# The land chunk square fill options.
+fill:
+  # 0.0 - 1.0
+  opacity: 0.2
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '01ce00'
+
+# The land chunk square stroke options.
+line:
+  # The size of the stroke.
+  weight: 5
+  # 0.0 - 1.0
+  opacity: 1
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '017800'
+
+# The settings for the marker when a land is under attack.
+invasion:
+  fill:
+    opacity: 0.2
+    color: '7a0305'
+
+  line:
+    weight: 2
+    opacity: 1
+    color: '7a0305'
+
+# Updates all the lands. Set to 0 to disable.
+# This performs a full async render for all the claimed lands.
+update-interval: 1hr
+
+# Description shown when hovering over the chunks.
+# All of the descriptions are based on HTML markup.
+description:
+  main: |-
+    <span style="color:green">Kingdom</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_name%</span><br>
+    <span style="color:green">Nation</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation%</span><br>
+    <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_might%</span><br>
+    <span style="color:green">King</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_king%</span><br>
+    <span style="color:green">Bank</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_bank%</span><br>
+    <span style="color:green">Resource Points</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_resource_points%</span><br>
+    <span style="color:green">Lands</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_lands%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_lands%</span><br>
+    <span style="color:green">Members</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_members%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_members%</span><br>
+    %members%<br>
+    <br>
+    <span style="color:green">Allies</span><span style="color:gray">:</span><br>
+    %allies%
+    <br>
+    <span style="color:green">Truces</span><span style="color:gray">:</span><br>
+    %truces%
+    <br>
+    <span style="color:green">Enemies</span><span style="color:gray">:</span><br>
+    %enemies%
+    <br>
+  members: '<span style="font-weight:italic;color:black">%kingdoms_rank_symbol% %kingdoms_rank_name% %player%</span><br>'
+  allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_name%</span><br>'
+  truces: '<span style="font-weight:italic;color:yellow">%kingdoms_name%</span><br>'
+  enemies: '<span style="font-weight:italic;color:red">%kingdoms_name%</span><br>'
+
+# If you changed an icon image, you have to restart the server.
+# Turrets do not use an icon as there are too many of them.
+icons:
+  national-nexus: 'National Nexus'
+  nexus: 'Nexus'
+  powercell: 'Powercell'
+  extractor: 'Extractor'
+  outpost: 'Outpost'
+  warppad: 'Warp Pad'
+  regulator: 'Regulator'

@@ -1,0 +1,902 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                                                                                    |#
+#|          ██   ██ ██ ███    ██  ██████  ██████   ██████  ███    ███ ███████        |#
+#|          ██  ██  ██ ████   ██ ██       ██   ██ ██    ██ ████  ████ ██            |#
+#|          █████   ██ ██ ██  ██ ██   ███ ██   ██ ██    ██ ██ ████ ██ ███████      |#
+#|          ██  ██  ██ ██  ██ ██ ██    ██ ██   ██ ██    ██ ██  ██  ██      ██       |#
+#|          ██   ██ ██ ██   ████  ██████  ██████   ██████  ██      ██ ███████        |#
+#|                                                                                    |#
+#|+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# All the configuration files will be automatically reloaded after
+# they're reloaded without using /k reload
+
+# There are other configuration files other than this file.
+# This is the main configuration relating to most basic features.
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|                                                             |#
+#|   SpigotMC: https://www.spigotmc.org/resources/77670/       |#
+#|   Wiki: https://www.github.com/CryptoMorin/KingdomsX/wiki   |#
+#|   Discord: https://www.discord.gg/cKsSwtt                   |#
+#|                                                             |#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                     Essentials                      |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Should the plugin use the prefix for every message?
+# You can still manually add prefixes to messages using the %prefix% placeholder
+prefix: false
+
+# For error profiling reasons.
+debug: false
+
+# Check for plugin updates from Spigot
+check-updates: true
+
+# The language file name.
+# Place your translated file in the plugin's folder.
+# The file's name should be the same as the option below without the .yml file extension.
+# Some of these language files are outdated.
+# GUIs also have their own language file which can be found in the "guis" folder.
+# Standard way of naming this is to follow IETF language tags.
+# from IETF (https://en.wikipedia.org/wiki/IETF_language_tag) use ISO-639-1 https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+# All the language files are made by the community, they're not guaranteed to be 100% accurate and complete.
+# Please refer to https://github.com/CryptoMorin/KingdomsX/wiki/Config#language-file if you want to translate the plugin.
+# If you translated the plugin you can contact me and I'll add it to the plugin.
+# Available Languages:
+# en (English), hu (Hungarian), ru (Russian)
+lang: en
+
+# Backups plugin's data.
+backups:
+  enabled:
+    enabled: true
+    data: true
+    configs: true
+  # If this is enabled then every time the server is restarted
+  # it'll take a backup without considering if there's already
+  # a backup taken for today (without overwriting the previous one.)
+  ignore-todays-backup: false
+  # Deletes backups automatically that are older than this amount of days.
+  # Set to 0 to disable.
+  delete-backups-older-than: 30
+
+# How the data should be stoed.
+# Available Databases: JSON, MongoDB
+database:
+  # Currently only JSON is available.
+  method: JSON
+
+  # The interval in seconds that the auto-saver should
+  # save data to the database. It's recommneded to keep
+  # it what it is, but if you have a larger server it'd be
+  # better to use a higher number.
+  # Supports time suffix, default is seconds.
+
+  # The cache expiration time is calculated by multiplying the auto-save interval by 2
+  # because if the cache expires faster than it can be saved, data will be lost.
+  auto-save-interval: 30mins
+
+  # Top kingdoms are always loaded on startup.
+  # All the kingdoms will be loaded on startup for once to do this.
+  # But player or land data will not be loaded. They'll be only loaded for
+  # top selected kingdoms.
+  # This option will be useless if "load-all-data-on-startup" is enabled.
+  load-top-kingdoms-on-startup: false
+
+  # If you're a big network you should
+  # turn this off unless you have a lot of RAM.
+  load-all-data-on-startup: true
+
+  # Table names for databases, also used as the folder name for local databases.
+  tables:
+    nations: Nations
+    kingdoms: Kingdoms
+    players: Players
+    lands: Lands
+
+# All the options under this section require a restart to be applied.
+command:
+  name: kingdoms
+  aliases: [kingdom, xkingdoms, kingdomsx, k]
+
+  # Commands that are not loaded to /kingdom command.
+  # You should disable commands if you don't need them 100%, this will
+  # also help saving some memory.
+  # Examples:
+  # disabled-commands:
+  #  - sethome
+  #  - unsethome
+  #  - nation setspawn
+  #  - nation unsetspawn
+  #  - admin nation disband
+  # Do not put the command prefix, e.g. don't use "/k broadcast" or "/kingdoms broadcast" only use "broadcast" with no slash.
+  # Note that some commands are not really subcommands, they're the feature of that command.
+  # Such as /k visualize [toggle/permanent] or /k sethome [center/centerAxis/centerView]
+  disabled: []
+
+# Worlds that this plugin is completely disabled in them
+# other than normal functioning stuff, like commands.
+# For disabling claims in certain worlds, refer to claims.yml
+disabled-worlds: []
+
+# Disable admin mode after admins leave the server.
+# This option is for security purposes.
+keep-admin-mode: false
+
+# /k help
+help:
+  # Amount of commands displayed in a single page.
+  commands: 5
+  # Limit the number of pages shown on the footer.
+  # This is the limit for both previous and next pages.
+  # For example if your current page is 7, it'll show:
+  # 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
+  footer-pages: 5
+
+guis:
+  # Close the GUI if the player is damaged.
+  close-on-damage: true
+
+  # Allow interacting with items within the
+  # player's inventory.
+  # This will prevent items from being placed
+  # in the GUI (if the GUI is doesn't allow item drag)
+  # but it'll allow players to arrange or throw away
+  # items in their own inventory.
+  # Note that some GUIs such as resource points converter
+  # Allow this by default.
+  allow-own-inventory-interact: true
+
+  # Default sound for clicking on options.
+  # You have to use "sound: default" for
+  # GUI options for this to work.
+  # Can be set to "none" for no sound.
+  default-click-sound: BLOCK_TRIPWIRE_CLICK_ON
+
+# Custom join and leave messages. One benefit is that the message shown to kingdom members are
+# different than those who are not in the same kingdom.
+# Permissions: kingdoms.silent.join and kingdoms.silent.leave
+join-leave-messages:
+  enabled: true
+  join:
+    kingdom: "&8[&2◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%displayname%"
+    others: "&6%displayname% &2has joined the server."
+  leave:
+    kingdom: "&8[&c◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%displayname%"
+    others: "&e%displayname% &chas left the server."
+
+# Default placeholders used when a player is not a kingdom or nation.
+# Requires /k reload to be reloaded.
+# You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
+default-placeholders:
+  name: ''
+  lore: ''
+  members: 0
+  territory: '&2Wilderness'
+
+# Kingdoms built-in chat system. Support hover messages as well.
+# Permissions: kingdoms.chat.colors
+chat:
+  # The channels section is only used for placeholders.
+  channels:
+    global:
+      name: "Global"
+      short: 'G'
+      color: '&f'
+    kingdom:
+      name: "Kingdom"
+      short: 'K'
+      color: '&2'
+    truce:
+      name: "Truce"
+      short: 'T'
+      color: '&e'
+    ally:
+      name: "Ally"
+      short: 'A'
+      color: '&a'
+    nation:
+      name: "Nation"
+      short: 'N'
+      color: '&9'
+
+  # The chat priority that kingdom handles. Not that changing this will not disable the chat. You need to use other options.
+  # This is used when you're using another plugin that manages chat spams and other restrictions. You might want to increase the priorty in these cases.
+  # This option requires a restart to work.
+  # LOWEST, LOW, NORMAL, HIGH, HIGHEST, MONITOR
+  priority: NORMAL
+  global-channel:
+    # Should the plugin format global chat as well?
+    format: true
+
+    # Parse the global chat formats as a placeholder replaced in the original format.
+    # The option above doesn't need to enabled for this to work.
+    # This placeholder is {kingdoms} which you can use in your chat plugin.
+    # Complex messages won't work if you use another plugin.
+    # Note that format needs to be true.
+    # If you parse these as placeholders, you might want to remove %message% from them.
+    parse-as-placeholder: false
+
+  # The channel to send private messages too. Set to ~ to disable.
+  # You can either use the channel ID or name (case-insensitive).
+  # You can also use "$console" which uses the console channel from DiscordSRV
+  # or "$main" that uses the main chat channel from DiscordSRV.
+  # A plugin needs a reload using /k reload after changing this option.
+  # Used for kingdom, allies, truces and nations channels.
+  discordsrv-private-channel: '$console'
+
+  # These formats support ranks too. To change the format for a specific rank just convert them into a config section
+  # just like the global format below. The keys are the rank name and the values are the formats.
+  # "default" refers to the default chat format if Vault wasn't found or there are no permission plugins.
+  formats:
+    # Used for global chnanel when a player doesn't have a kingdom.
+    global-no-kingdom: "COMPLEX:hover:{%displayname%;&2Message %player%;|/msg %player% } &7≫ &r%message%"
+    # Used for global chnanel when a player is in a kingdom.
+    # An example for global using complex messages.
+    # global: "COMPLEX:&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] hover:{%displayname%;&2Kingdom&8: &2%kingdoms_name%} &7≫ &r%message%"
+    global:
+      default: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &r%message%"
+      admin: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &6%message%"
+    kingdom: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &d%message%"
+    ally: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &2%message%"
+    truce: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
+    spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
+  # Used when a player is in a kingdom and nation.
+  nation-formats:
+    nation: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &9%message%"
+    global: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &r%message%"
+    kingdom: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &d%message%"
+    ally: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &2%message%"
+    truce: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
+    spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname%&7≫ &e%message%"
+
+# The format of the /k broadcast message.
+# The kingdom placeholders are referring to the person
+# who used the command.
+# You can use %displayname% instead of %player%
+broadcast:
+  format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message% \n"
+  # Sound to play to all the kingdom members.
+  # Set to none for no sound.
+  sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  # Cooldown for sending broadcast messages for each kingdom members.
+  # Set to 0 to disable.
+  # Supports time suffix. Default is milliseconds.
+  cooldown: 0
+
+  nation:
+    format: "\n&8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%\n\n"
+    # Sound to play to all the kingdom members.
+    # Set to none for no sound.
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    # Cooldown for sending broadcast messages for each kingdom members.
+    # Set to 0 to disable.
+    # Supports time suffix. Default is milliseconds.
+    cooldown: 0
+
+# Used in /k top
+top-kingdoms:
+  # Equation used for calculating a kingdoms might.
+  # A kingdoms might determines a kingdom's rank in /k top
+  # Higher might means higher rank.
+  might: "%kingdoms_resource_points% + %kingdoms_members%"
+
+  # Note that it's recommended to keep this under 30
+  # as it'll load every single kingdom data from this list.
+  amount: 10
+
+  rewards:
+    top: 10
+    resource-points: "%rank% * 1000"
+    bank: "%rank% * 100"
+
+# Used in /k nation top
+top-nations:
+  # Equation used for calculating a kingdoms might.
+  # A kingdoms might determines a kingdom's rank in /k top
+  # Higher might means higher rank.
+  might: "%kingdoms_nation_resource_points% + %kingdoms_nation_kingdoms%"
+
+  # Note that it's recommended to keep this under 30
+  # as it'll load every single kingdom data from this list.
+  amount: 10
+
+  rewards:
+    top: 10
+    resource-points: "%rank% * 1000"
+    bank: "%rank% * 100"
+
+# Default number of max members.
+# You can increase this by upgrading your max-members misc upgrade
+# in the Nexus Misc Upgrades section.
+max-members:
+  kingdoms: 10
+  nations: 30
+
+# The default shield duration for new kingdoms to get prepared.
+newbie-kingdom-protection: 5days
+
+# Settings for /k create and /k rename
+# Players who have admin mode enabled, will bypass all the following checks.
+kingdom-name:
+  # To allow renaming you need kingdoms.command.rename permission.
+  # Use 0 for no cooldown.
+  renaming-cooldown: 1day
+
+  # Maximum kingdom name length.
+  max-length: 16
+
+  # Minimum kingdom name length.
+  min-length: 3
+
+  # Allow numbers in kingdom names. This also works for number
+  # characters of other languages.
+  allow-numbers: true
+
+  # Allow kingdom name to have spaces? This can cause some issues in
+  # command tab comletions.
+  allow-spaces: false
+
+  # If you're using another language like Chinese or Japanese you might want to enable this.
+  allow-non-english: false
+
+  # allow-non-english needs to be enabled if you want to set this to true.
+  # This will only allow other langauge numbers and letters, not symbols.
+  allow-other-languages: false
+
+  # Allow kingdoms to have the same name?
+  allow-duplicate-names: false
+
+  # This option makes kingdom names case-sensitive. Which means if allow-duplicate-names is enabled, and this is disabled,
+  # A kingdom is named "MykiNgdoM" is the same as "mykingdom" so you can't make a kingdom with that name anymore.
+  # If you keep this disabled, it'll be useful for command tab completions as the input it receives will ignore the case.
+  # This option needs a restart in order to fetch old kingdom names.
+  case-sensitive: false
+
+  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+  # If the name matches the any RegEx below then it'll not be allowed.
+  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
+  blacklisted-regex: ["nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$"]
+  # A list of blacklisted names kingdom.
+  blacklisted-names: [black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch]
+
+# Settings for /k nation create and /k nation rename
+# Players who have admin mode enabled, will bypass all the following checks.
+nation-name:
+  # Use 0 for no cooldown.
+  renaming-cooldown: 1day
+
+  # Maximum nation name length.
+  max-length: 16
+
+  # Minimum kingdom name length.
+  min-length: 3
+
+  # Allow numbers in nation names. This also works for number
+  # characters of other languages.
+  allow-numbers: true
+
+  # Allow nation name to have spaces? This can cause some issues in
+  # command tab comletions.
+  allow-spaces: false
+
+  # If you're using another language like Chinese or Japanese you might want to enable this.
+  allow-non-english: false
+
+  # allow-non-english needs to be enabled if you want to set this to true.
+  # This will only allow other langauge numbers and letters, not symbols.
+  allow-other-languages: false
+
+  # Allow nations to have the same name?
+  allow-duplicate-names: false
+
+  # This option makes nation names case-sensitive. Which means if allow-duplicate-names is enabled, and this is disabled,
+  # A nation is named "MynAtIon" is the same as "mynation" so you can't make a nation with that name anymore.
+  # If you keep this disabled, it'll be useful for command tab completions as the input it receives will ignore the case.
+  # This option needs a restart in order to fetch old nation names.
+  case-sensitive: false
+
+  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+  # If the name matches the any RegEx below then it'll not be allowed.
+  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
+  blacklisted-regex: ["nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$"]
+  # A list of blacklisted names kingdom.
+  blacklisted-names: [black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, faggot, clit, bitch]
+
+# Cooldown before kingdoms can be a pacifist again after their last invasion.
+# Set to 0 to disable.
+pacifism-cooldown: 7days
+
+# /k fly
+kingdom-fly:
+  # If you disable this, it'll only ignore the checks. If you like to disable the
+  # command as well, refer to disabled-commands section.
+  enabled: true
+  # Disable flight after taking damage.
+  disable-on-damage: true
+  # If the players fly should be disabled if they're near
+  # their enemy. Enemies are players who their kingdoms relation
+  # doesn't have "Ceasefire" attribute.
+  # Set to 0 to disable.
+  # Note: Higher numbers mean more lag.
+  # Players who have admin mode enabled, will bypass this.
+  nearby-unfriendly-range: 30
+
+# Settings for /k lore
+# Players who have admin mode enabled, will bypass all the following checks.
+kingdom-lore:
+  title:
+    fade-in: 10
+    stay: 20
+    fade-out: 10
+
+  # Allow colors for lores.
+  allow-colors: true
+
+  # Cooldown for each renaming.
+  # Supports time suffix. Set to 0 to disable.
+  renaming-cooldown: 0
+
+  # Allow symbols
+  allow-non-english: true
+
+  # allow-non-english needs to be enabled if you want to set this to true.
+  # This will only allow other langauge numbers and letters, not symbols.
+  allow-other-languages: false
+
+  # Max length of the lore.
+  max-length: 30
+
+  # Keywords used to remove the kingdom's lore.
+  # Only the first keyword will be used in the tab completion.
+  remove-keywords: ["remove", "none", "delete", "unset", "off"]
+
+  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+  # If the name matches the any RegEx below then it'll not be allowed.
+  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
+  blacklisted-regex: ["nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$"]
+  # A list of blacklisted names in kingdom lore.
+  blacklisted-names: [black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch]
+
+reset-chat-state-on-leave: false
+
+# If the elements below should be announced to everyone in the server.
+# After changing this, you might want to consider using %kingdoms_name% in the
+# message of the element.
+# If set to false, it'll only announce it to the kingdom members.
+announcements:
+  # /k king
+  king: false
+  # /k rename
+  rename: false
+  # For /k disband please refer to "disband" section.
+
+# /k resourcepoints <deposit/withdraw/transfer>
+# /k bank <deposit/withdraw>
+economy:
+  # If the player needs to confirm before creating a kingdom/nation.
+  # This is the time which the player needs to do the command again before it ends.
+  # Set to 0 to disable.
+  create-confirmation: 10s
+
+  bank:
+    # Allow depositing money to kingdoms/nations bank.
+    deposit: true
+    # Allow withdrawing from kingdoms/nations bank.
+    withdraw: true
+
+    # The bank limit for the following elements.
+    # Will be considered for "/k bank deposit" and taxes.
+    limit:
+      kingdoms: 1000000
+      nations: 100000000
+
+  resource-points:
+    # Allow depositing resource points as money.
+    deposit: true
+    # Allow withdrawing resource points for money.
+    withdraw: true
+    # Allow transferring resource points from nation to kingdom and vice versa.
+    transfer: true
+    # Worth of each resource point.
+    worth: 0.5
+
+  # Basic costs. For claims refer to claims.yml
+  # These use the bank money, not resource points.
+  costs:
+    # How much does creating the following elements cost?
+    create:
+      kingdom: 0
+      nation: 0
+    # How much does renaming the following elements cost?
+    rename:
+      kingdom: 100
+      nation: 1000
+
+# Daily checks are for checking kingdom inactivities, handling taxes and top kingdom and nation rewards.
+# Small intervals will lag the server more.
+# This value will be converted to ticks automatically.
+# After changing this option, you need to restart the server.
+daily-checks-interval: 24hrs
+
+# If you disable taxes, you might want to remove the option in nexus settings GUI.
+tax:
+  kingdoms:
+    enabled: true
+    # You can technically evade taxes by unclaiming all your lands and kicking all your members.
+    # But no one is really going to do that unless they're really depressed.
+    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1)"
+    age: 1 days
+    members:
+      enabled: true
+      # The default equation used to collect taxes for each kingdom.
+      # Kingdoms can change their equation in their settings, and if
+      # they use an equation that gives an error, it'll reset back to this.
+      # All the math operations and functions and placeholders can be used.
+      # This equation is basically saying, "Take 15% of the player's current balance"
+      default-equation: "(%money% * 15) / 100"
+    max: "10000"
+  nations:
+    enabled: true
+    scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
+    age: 1 days
+    members:
+      enabled: true
+      # The default equation used to collect taxes for each kingdom.
+      # Kingdoms can change their equation in their settings, and if
+      # they use an equation that gives an error, it'll reset back to this.
+      # All the math operations and functions and placeholders can be used.
+      # This equation is basically saying, "Take 15% of the player's current balance"
+      default-equation: "(%money% * 15) / 100"
+    max: "10000"
+
+inactivity:
+  # If no members logged in for this amount of time the kingdom will be disbanded.
+  # Kings with the permission "kingdoms.inactivity.disband" will not have their kingdoms affected.
+  # Set to 0 to disable.
+  # Supports time suffix. Default is seconds.
+  kingdom:
+    disband: 30 days
+    announce: true
+
+  # If a member didn't join for this amount of time, kick them from the faction.
+  # Players with the permission "kingdoms.inactivity.kick" will not be kicked.
+  # Set to 0 to disable.
+  # Supports time suffix. Default is seconds.
+  member:
+    kick: 60 days
+    disband-kingdom-if-king: false
+    announce: true
+
+disband:
+  # Send a confirmation message as a second chance to rethink.
+  confirm: true
+  # Use a GUI to confirm
+  # Saved in guis/disband.yml
+  use-gui: true
+  # Expire the confirmation after this amount of seconds.
+  confirmation-expiration: 10
+  # Announce when a king disbands their kingdom.
+  announce: true
+  # Announce when a kingdom is disbanded due to inactivity.
+  announce-inactivity: true
+
+resource-points:
+  # How should the %kingdoms_last_donation_time/amount% be parsed?
+  # This will gather the amount of rp player has collected since his last
+  # "donation time" If the donation time reaches this duration, it'll update if the
+  # player tries to donate again.
+  last-donation-duration: 1 day
+
+  # Format: for each, give amount
+  # For each 5 items that are in NOT in the list, give 1 resource point.
+  # Resource points are not doubles/decimals (rational numbers) they're integers.
+  for-each: 5
+  give: 1
+  blacklist: true
+  list:
+    - STICK
+    - STRING
+  # Resource points given per item. (for-each is not used here)
+  custom:
+    IRON_INGOT: 30
+    GOLD_INGOT: 40
+    DIAMOND: 50
+    EMERALD: 60
+    LAPIS_LAZULI: 10
+    COAL: 2
+    REDSTONE: 1
+
+    EMERALD_BLOCK: 550
+    DIAMOND_BLOCK: 450
+    GOLD_BLOCK: 360
+    IRON_BLOCK: 270
+    LAPIS_BLOCK: 90
+    COAL_BLOCK: 18
+    REDSTONE_BLOCK: 9
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                        Nexus                        |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+nexus:
+  # Place the nexus on the current block when the kingdom is created if possible.
+  place-on-create: true
+
+  # You have to set your nexus in a claimed land.
+  claimed: true
+
+  # The amount of resourcepoints taken from the kingdom that owns the nexus and given to the kingdom who broke the nexus.
+  break:
+    creative: true
+    cost: 20
+
+  # Allow allies and truce to click on your nexus
+  # and donate resource points.
+  click-donation: true
+
+  # The block materiol used for nexus.
+  # Can be any 1.8-1.14 names.
+  block: BEACON
+
+  # Allow kingdom nexus to be removed by members.
+  # Note that the kingdom nexus will still be removed if invaded.
+  allow-removal: true
+
+  # The sound played when a nexus is placed. It's also used when you
+  # create a new kingdom or nation.
+  sound: UI_TOAST_CHALLENGE_COMPLETE
+
+  # Nation nexus must be set in one of the capital lands.
+  nation-capital: true
+
+  # If a player is sneaking and clicks on a nexus it'll
+  # not open it. This is useful when placing blocks.
+  disable-shift-click: true
+
+  # Keep an actionbar message saying that
+  # nexus place mode is enabled.
+  actionbar:
+    enabled: true
+    # The actionbar will stay until the player places the nexus.
+    keep: true
+
+  # Preview will always show the block based on
+  # the replace.right-click option below.
+  preview:
+    # Enable previews for nexus.
+    # This allows you to see where your nexus is going to be placed
+    # before placing it.
+    enabled: true
+    # How fast should the fake block blink?
+    # Every second is 20 ticks.
+    refresh-ticks: 10
+    # The amount of ticks the preview block
+    # is invisible until the next refresh.
+    # Note that this value should be always lower than refresh ticks.
+    flick-ticks: 3
+    # The block displayed when the targeted
+    # block is not in the player's land.
+    out-of-land-block: REDSTONE_BLOCK
+
+  place:
+    # Change this if you're using 1.8
+    # The sound played when a player places the nexus.
+    sound: UI_TOAST_CHALLENGE_COMPLETE, 0.5
+
+  # Should nexus be replaced with the block that the player
+  # clicked on or not? If not, the nexus will be placed
+  # on one free side of the selected block.
+  # This will not really work as expected if preview is on.
+  replace:
+    left-click: true
+    right-click: false
+
+    # Blocks that cannot be replaced with your nexus.
+    # Can be any 1.8-1.14 names.
+    # You can also use the format "CONTAINS:NAME" to check if the
+    # block's material name contains this name.
+    # E.g. "CONTAINS:CHEST" for "ENDERCHEST" and "TRAPPED_CHEST" is true
+    blocks:
+      # True if this is a list of blacklisted blocks or false if this is a list of
+      # whitelisted blocks.
+      blacklist: true
+      list:
+        - CONTAINS:CHEST
+        - CONTAINS:SHULKER_BOX
+        - CONTAINS:COMMAND_BLOCK
+        - CONTAINS:FURNACE
+        - CRAFTING_TABLE
+        - BEACON
+        - ANVIL
+        - BARRIER
+        - STRUCTURE_VOID
+        - STRUCTURE_BLOCK
+        - JIGSAW
+        - BEDROCK
+        - OBSIDIAN
+
+  # Disable place mode nexus when...
+  disable-place-mode:
+    on-damage: true
+    # If the player moves out of their own land.
+    # This doesn't refer to a single chunk but all the lands.
+    # Note that this will also control when you can do /k nexus
+    # You can't do it outside of your land if this is true.
+    out-of-land: true
+
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                     Invitations                     |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+invitations:
+  # Allows members to invite offline players.
+  allow-offline-invites: true
+
+  # Allow invitation from other kingdoms if the player is already in a kingdom.
+  # If the player accepts, then he'll be kicked from the previous kingdom and join the new one.
+  allow-from-other-kingdoms: false
+
+  # If a player is invited to multiple kingdoms then a GUI (invite.yml) will open
+  # with a list of kingdoms invitations. Otherwise the last invite will be automatically
+  # declined and replaced with the new invite.
+  allow-multiple-invites: true
+
+  # Automatically deny each invitation - in seconds. Set to 0 to disable (not recommended)
+  # This is for online invitations.
+  # The person who invited the player can change the expiration time if they have
+  # kingdoms.command.invite.change.online-expiration permission or this option is enabled.
+  expiration:
+    # Should the invite be expired if the invited player leaves the server.
+    # Only works if allow-offline-invites is false.
+    expire-on-leave: false
+    default-expire: 3 min
+    offline-expire: 3 days
+    # allow-change: false
+
+  # Announce who invited the player to the kingdom.
+  announce: true
+
+# For people who sincerely swear that they know what
+# the hell they're doing with this.
+# I am not responsible if you do something stupid with this.
+iSwearIKnowWhatTheFuckIAmDoingRightNow: 0x0002E39
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                 Mails - COMING SOON                 |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+mails:
+  enabled: true
+  # Max amount of mails a kingdom can have.
+  max: 10
+  # Delete the oldest mail when the max amount of mails is reached.
+  # If this option is set to false, then it'll send a message that max amount is reached instead.
+  delete-oldest-when-max: true
+  sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  # Notify kingdom members about new mails in the mailbox.
+  notifications-on-join: true
+  # Allows a person to send multiple mails without deleting
+  # the last mail.
+  allow-multiple-mails: true
+  # Mails will be automatically deleted after a specific amount of time.
+  # Set to 0 to disable. You can use time prefixes.
+  auto-expire: 0
+  # Allow opening the mailbox from the command? /k mail box
+  # Otherwise players can only see the mails from the nexus.
+  mail-box-command: false
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                        Home                         |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# For both nation spawn and kingdom home.
+home:
+  on-join:
+    # Teleport the player to kingdom's home instead of spawn when joining the server.
+    kingdom-home: true
+
+    # Teleport the player to nation's home instead of spawn when joining the server.
+    # If option above is enabled, it'll teleport the player to kingdom's home if the kingdom is not in a nation.
+    nation-spawn: true
+
+  respawn:
+    # Respawn the player at kingdom's home.
+    kingdom-home: false
+
+    # Respawn the player at nation's spawn.
+    # If option above is enabled, it'll respawn the player at kingdom's home if the kingdom is not in a nation.
+    nation-spawn: false
+
+  # Sets the kingdom's home after claiming the current land when the kingdoms is created if possible.
+  # This was previously false by default. But from experience, many new players don't know about /k sethome command.
+  set-on-create: true
+
+  # If the option above is false, then the kingdom's home will be automatically set at the player's
+  # location after the first claim.
+  set-on-first-claim: true
+
+  # Use the nexus location instead if the kingdom home is not set.
+  use-nexus-if-not-set: true
+
+  # Determines whether the kingdom's home can be set in an unclaimed
+  # land or it must be in a claimed land.
+  claimed: true
+
+  # Nation spawn must be set in one of the capital lands.
+  nation-spawn-capital: true
+
+  # Kingdoms home can only be set in the nexus land.
+  nexus-land: false
+
+  unset-if:
+    # Unset kingdom home of the land that has the home set in it is unclaimed.
+    unclaimed: true
+    # Unset kingdom home if the land that has the home set in it is invaded.
+    # Invaded lands are technically not "unclaimed"
+    invaded: false
+
+  # If safe home is enabled, it'll set the home in the
+  # center of the block without changing the rotation.
+  # This option basically forces /k sethome centerAxis
+  safe: false
+
+  # Used to prevent players from escaping PvP in seconds.
+  # Teleportation will be cancelled if the player gets damaged.
+  # Set to 0 to disable.
+  teleport-delay: 3
+
+  # If true, it'll send the message every one second with the new timer
+  # otherwise it'll only send the message once.
+  use-timer-message: true
+
+  # If the player should stand still without moving
+  # when teleporting to home, otherwise cancels the teleportation.
+  should-not-move: true
+  # If the player should not take damage when teleporting to home.
+  should-not-be-damaged: true
+
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Powerups                       |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Powerups should only work in your own land.
+powerup-own-land-only: true
+
+powerups:
+  damage-boost:
+    cost: "(lvl + 1) * 100"
+    scaling: "damage + ((lvl / 100) * damage)"
+    max-level: 70
+  damage-reduction:
+    cost: "(lvl + 1) * 100"
+    scaling: "damage + ((lvl / 100) * damage)"
+    max-level: 70
+  arrow-boost:
+    cost: "(lvl + 1) * 70"
+    scaling: "damage + ((lvl / 100) * damage)"
+    max-level: 70
+  regeneration-boost:
+    cost: "(lvl + 1) * 70"
+    scaling: "amount + ((lvl / 100) * amount)"
+    max-level: 100

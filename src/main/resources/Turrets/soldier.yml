@@ -1,0 +1,75 @@
+name: "&5Soldier"
+type: soldier
+cost: 300
+max-level: 3
+hologram:
+  1:
+    lines:
+      - "&8-=[ &5Soldier &8]=-"
+    height: 1
+placing:
+  whitelist: true
+  blocks:
+    - CONTAINS:FENCE
+    - CONTAINS:WALL
+range: 7 + lvl
+cooldown: (60 - (lvl * 2)) * 20
+max-ammo: lvl * 2000
+upgrade-cost: lvl * 80
+players-only: true
+soldiers:
+  1:
+    zombies:
+      amount: 2
+      type: ZOMBIE
+      name: "&cSoldier"
+      health: 50
+    skeletons:
+      amount: 1
+      type: SKELETON
+      name: "&cSoldier"
+      health: 20
+  2:
+    zombies:
+      amount: 3
+      type: ZOMBIE
+      name: "&cNexus Guard"
+      health: 50
+    skeletons:
+      amount: 3
+      type: SKELETON
+      name: "&cSoldier"
+      health: 20
+  3:
+    illusioners:
+      amount: 1
+      type: ILLUSIONER
+      name: "&cNexus Wizard"
+      health: 50
+    vindicators:
+      amount: 3
+      type: VINDICATOR
+      name: "&6Nexus Butler"
+      health: 20
+
+block:
+  1: PLAYER_HEAD
+skull:
+  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjRkMDg1YjkxYWZmYTA1MDQ3MzczN2M4MTFlODI0Yzc1OTk1NGZjNWJkYzhmYTc3MDk4ODFjYzg0MWM4YjFmNCJ9fX0="
+  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOGI1ZDYyNWY4OWM5MDgxZTcxZmU2NGQ3NjQ4MjRmYzk1ZjcxMDc4MzE5YTZiMjZhOGYyMTQ3OTM0ZjM4OWIwIn19fQ=="
+  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMWI3YjJlMzM3Y2ZkZTk3ZDE2NmVkMGY1MDRiNThhYmFkZmYyOWU2ZGM4ZWFjMmRmYTQwMTUyMmJhNjY4ZmI5MiJ9fX0="
+item:
+  1:
+    name: "&5Soldier Turret"
+    material: ZOMBIE_HEAD
+    flags: [HIDE_POTION_EFFECTS]
+    lore:
+      - "&6A similar turret as flame"
+      - "turret but really fast with multiple targets."
+      - ""
+      - "&9Attributes&8:"
+      - "&7⚫ &2Level&8: &6%level_roman%"
+      - "&7⚫ &2Ammo&8: &6%ammo%"
+      - "&7⚫ &2Range&8: &6%range%"
+      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+      - "&7⚫ &2Cooldown&8: &6%cooldown%"

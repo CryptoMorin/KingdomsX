@@ -1,0 +1,129 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Structures                     |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+disable-shift-click: true
+remove-unclaimed: false
+
+structures:
+  national-nexus:
+    hologram:
+      1:
+        lines:
+          - "&8-=( &9National Nexus &8)=-"
+        height: 1
+  nexus:
+    hologram:
+      1:
+        lines:
+          - "&8-=( &9Nexus &8)=-"
+        height: 1
+  powercell:
+    name: "&4Powercell"
+    hologram:
+      1:
+        lines:
+          - "&8-=( &4Powercell &8)=-"
+        height: 1
+    block:
+      1: REDSTONE_LAMP
+    cost: 1000
+    item:
+      1:
+        name: "&bPowercell"
+        material: MUSIC_DISC_BLOCKS
+        flags: [HIDE_POTION_EFFECTS]
+        lore:
+          - "&7Chunks next to a chunk"
+          - "with a power cell cannot be"
+          - "invaded without invading the"
+          - "power cell first."
+          - "&cDoes not work on other power cell lands."
+  extractor:
+    name: "&2Extractor"
+    hologram:
+      1:
+        lines:
+          - "&8-=( &2Extractor &8)=-"
+        height: 1
+    block:
+      1: EMERALD_BLOCK
+    cost: 2000
+    # instant: true
+    # non-instant-delay: 1 hour
+    capacity: 500
+    generator:
+      amount: 1
+      every: 10sec
+    item:
+      1:
+        name: "&5Extractor"
+        material: EMERALD_BLOCK
+        flags: [HIDE_POTION_EFFECTS]
+        lore:
+          - "&6Extractors will produce resource points."
+          - "&6You can collect the resource points at any time."
+  outpost:
+    name: "&eOutpost"
+    hologram:
+      1:
+        lines:
+          - "&8-=( &eOutpost &8)=-"
+        height: 1
+    block:
+      1: HAY_BLOCK
+    cost: 500
+    item:
+      1:
+        name: "&9Outpost"
+        material: HAY_BLOCK
+        flags: [HIDE_POTION_EFFECTS]
+        lore:
+          - "&7The Outpost allows direct access to your Nexus."
+          - "&7It enables you to access turrets, upgrades,"
+          - "and unlockable structures."
+          - "&7Outposts can produce exp bottles from"
+          - "resource points aswell."
+  warppad:
+    name: "&cWarp pad"
+    hologram:
+      1:
+        lines:
+          - "&8-=( &cWarpPad &8)=-"
+          - "SPACE: 0.2"
+          - "%name%"
+        height: 1.3
+    block:
+      1: END_PORTAL_FRAME
+    cost: 2000
+    item:
+      1:
+        name: "&cWarpPad"
+        material: END_PORTAL_FRAME
+        lore:
+          - "&6Warp pads can be used to teleport"
+          - "from a structure to another."
+          - "&2Name&8: &7%name%"
+  regulator:
+    name: "&3Regulator"
+    hologram:
+      1:
+        lines:
+          - "&8-=( &3Regulator &8)=-"
+        height: 1
+    block:
+      1: LECTERN
+    cost: 5000
+    item:
+      1:
+        name: "&3Regulator"
+        material: LECTERN
+        lore:
+          - "&6Manage player attributes such as building,"
+          - "turret ceasefire and etc..."
+          - "Change which player can interact with what block."
+          - "Disable mob or animal spawning and turrets."
+          - "Enable explosions."
+          - "Auto fill turrets ammo."

@@ -1,0 +1,50 @@
+name: "&0Inferno"
+type: inferno
+cost: 300
+max-level: 3
+hologram:
+  1:
+    lines:
+      - "&8-=[ &0Inferno &8]=-"
+    height: 1
+placing:
+  whitelist: true
+  blocks:
+    - CONTAINS:FENCE
+    - CONTAINS:WALL
+range: 7 + lvl
+cooldown: 1
+real-cooldown: 20 - lvl
+max-targets: 1
+max-ammo: lvl * 2000
+upgrade-cost: lvl * 80
+fire: 10000
+speed: 1 + (lvl * 0.8)
+
+damage: lvl * 3
+damage-modifier: lvl
+damage-modifier-phases: 3
+
+block:
+  1: PLAYER_HEAD
+skull:
+  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2JjYmJmOTRkNjAzNzQzYTFlNzE0NzAyNmUxYzEyNDBiZDk4ZmU4N2NjNGVmMDRkY2FiNTFhMzFjMzA5MTRmZCJ9fX0="
+  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViY2I4NjFlZTRlYzFjYjg3ZDU1NzUxOWU1MTM3NzYyZjcyNzYzZmM5ZmYzYjM3NTEyNjFjZTNkZmMyMmM1ZSJ9fX0="
+  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMzMDUyZTZiN2E4NzkyM2JkYjg4Zjk0MTg1ZTg0YjU2MmRjNWI4NTRiN2JiMDFjYzAxN2YyMmM1YThhNCJ9fX0="
+item:
+  1:
+    name: "&0Inferno Turret"
+    material: END_ROD
+    lore:
+      - "&6Turret that increases its damage"
+      - "over time when targetting a specific entity."
+      - ""
+      - "&9Attributes&8:"
+      - "&7⚫ &2Level&8: &6%level_roman%"
+      - "&7⚫ &2Ammo&8: &6%ammo%"
+      - "&7⚫ &2Range&8: &6%range%"
+      - "&7⚫ &2Max Targets&8: &6%max_targets%"
+      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+      - "&7⚫ &2Cooldown&8: &6%cooldown%"
+      - "&7⚫ &2Speed&8: &6%speed%"
+      - "&7⚫ &2Damage&8: &6%damage%"

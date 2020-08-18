@@ -1,0 +1,182 @@
+title: "&6&lНексус королевства ''&2&l%kingdoms_name%&6&l''"
+rows: 6
+sound: BLOCK_BEACON_ACTIVATE, 0.3
+
+# Ignore materialz element. They're not used for now.
+options:
+  settings:
+    name: "&7Настройки"
+    material: NETHER_STAR
+    lore:
+      - "&6Смена настроек королевства."
+    posx: 5
+    posy: 2
+  members:
+    name: "&2Члены"
+    material: PLAYER_HEAD
+    lore:
+      - "&6Управляйте членами своего королевства."
+      - "&6Повышайте или понижайте их."
+    posx: 5
+    posy: 3
+  masswar:
+    name: "&4Массовая война"
+    material: CLOCK
+    materialz:
+      CLOCK: '%kingdoms_masswar%'
+      RED_WOOL: '!%kingdoms_masswar%'
+    lore:
+      - "&6Во время массовой войны вторжения бесплатны."
+      - "Массовая война сейчас &e%status%"
+    posx: 6
+    posy: 3
+  nexus-chest:
+    name: "&eСундук Нексуса"
+    material: CHEST
+    lore:
+      - "&6Складывайте вещи в сундук Нексуса"
+      - "&6для всех."
+    posx: 7
+    posy: 3
+  turrets:
+    name: "&9Турели"
+    material: SPECTRAL_ARROW
+    lore:
+      - "&6Вы можете покупать турели"
+      - "за очки ресурсов, для размещения"
+      - "на ваших землях. Они защищают от"
+      - "мобов и захватчиков."
+    posx: 3
+    posy: 3
+  structures:
+    name: "&5Структуры"
+    material: REDSTONE_LAMP
+    lore:
+      - "&6Структуры могут делать разные вещи."
+      - "Вы можете размещать одну структуру в одном чанке."
+      - "Учтите, что Нексус является структурой."
+      - "Вы можете купить структуры за очки ресурсов."
+    posx: 4
+    posy: 3
+  misc-upgrades:
+    name: "&bОстальные улучшения"
+    material: ENCHANTING_TABLE
+    lore:
+      - "&6Остальные улучшения"
+      - "улучшающие ваше королевство"
+      - "в разных аспектах."
+    posx: 2
+    posy: 3
+  logs:
+    name: "&aЖурнал"
+    material: KNOWLEDGE_BOOK
+    sound: BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&c&lСкоро будет..."
+      - "&6Просмотр журнала королевства"
+      - "захватов, взятия, отдачи земель, и другой"
+      - "активности членов королевства."
+    posx: 8
+    posy: 3
+  resource-points:
+    name: "&eКонвертер очков ресурсов"
+    material: HAY_BLOCK
+    lore:
+      - "&6Конвертируйте свои блоки/предметы"
+      - "в очки ресурсов."
+      - "Ваше королевство имеет &e%kingdoms_resource_points% &6очков ресурсов."
+    posx: 4
+    posy: 5
+  damage-reduction:
+    name: "&3Поглощение урона"
+    material: DIAMOND_CHESTPLATE
+    flags: [HIDE_ATTRIBUTES]
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Каждое улучшение поглощает"
+      - "полученый урон на &e1%"
+      - ""
+      - "&6Уровень&8: &2%level%"
+      - "&6Стоимость&8: &2%cost%"
+    posx: 7
+    posy: 4
+  damage-boost:
+    name: "&3Усиление"
+    material: DIAMOND_SWORD
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    flags: [HIDE_ATTRIBUTES]
+    lore:
+      - "&6Каждое улучшение увеличивает"
+      - "Ваш урон на &e1%"
+      - ""
+      - "&6Уровень&8: &2%level%"
+      - "&6Стоимость&8: &2%cost%"
+    posx: 3
+    posy: 4
+  arrow-boost:
+    name: "&7Ускорение стрел"
+    material: BOW
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Каждое улучшение увеличивает"
+      - "урон от стрел на &e1%"
+      - ""
+      - "&6Уровень&8: &2%level%"
+      - "&6Стоимость&8: &2%cost%"
+    posx: 4
+    posy: 4
+  regeneration-boost:
+    name: "&dСкорость регенерации"
+    material: GOLDEN_APPLE
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Каждое улучшние увеличивает"
+      - "скорость регенерации на ваших землях на &e1%"
+      - ""
+      - "&6Уровень&8: &2%level%"
+      - "&6Стоимость&8: &2%cost%"
+    posx: 6
+    posy: 4
+  ranks:
+    name: "&5Ранги и разрешения"
+    material: BOOKSHELF
+    lore:
+      - "&6Редактируйте ранги и разрешения"
+      - "вашего королевства."
+    posx: 6
+    posy: 5
+  champion-upgrades:
+    name: "&2Улучшения чемпиона"
+    material: ZOMBIE_HEAD
+    lore:
+      - "&6Улучшайте вашего чемпиона"
+      - "для защиты от захватчиков."
+    posx: 5
+    posy: 5
+  mail-box:
+    name: "&eПочта"
+    material: PLAYER_HEAD
+    sound: BLOCK_NOTE_BLOCK_BASS
+    # https://minecraft-heads.com/custom-heads/decoration/18059-letter-box-gray
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk2YWYzNmVhYWVkOGE3ZGJkMjcyN2ZkNGNkN2FmYmM2YzBhZmI4Yzc2MDYyOTRjOWNiNDAxMTQxYWFjMzc5In19fQ=="
+    lore:
+      - "&c&lСкоро будет..."
+    posx: 5
+    posy: 4
+
+  red-glass:
+    name: ""
+    material: RED_STAINED_GLASS_PANE
+    slots: [1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53]

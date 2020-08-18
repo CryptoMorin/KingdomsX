@@ -1,0 +1,82 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                              Protection Signs                               |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Protect your containers using a sing.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Protection_Signs
+
+
+# Completely disable this system.
+enabled: true
+
+# If set to false, the protection data will remain and if someone wants
+# to access the chest they must break the sign or the chest.
+# This is useful when unclaiming by mistake.
+protect-unclaimed: false
+
+# Protect the chest and sign from these environmental actions.
+protections:
+  explosion: true
+  piston: true
+
+# Sound played when someone tries to break/access the chest or sign.
+denied-sound: BLOCK_NOTE_BLOCK_BASS
+
+# If you have a sign in your hand and you left-click,
+# you'll protect the chest automatically.
+quick-protect:
+  enabled: true
+  # Should be sneakign while left-clicking to place the sign?
+  sneak: true
+
+# Blocks that can be sign protected.
+blocks:
+  - CHEST
+  - TRAPPED_CHEST
+  - FURNACE
+  - BLAST_FURNACE
+  - ENCHANTING_TABLE
+  - BARREL
+  - HOPPER
+  - CONTAINS:SHULKER_BOX
+
+# Signs that can protect chests.
+# * means all.
+signs: ['*']
+
+# Group system helps you to allow multiple players to access
+# your chest.
+# protected-chest GUI will open when right-clicking the sign.
+groups:
+  enabled: true
+  # Limit of the group players.
+  limit: 10
+
+codes:
+  - "[protected]"
+  - "[protect]"
+  - "[private]"
+  - "private"
+
+lines:
+  - "&0[&6Protected&0]"
+  - "&2%player%"
+
+
+# https://github.com/CryptoMorin/KingdomsX/wiki/Protection_Signs#everyone
+everyone:
+  enabled: true
+  codes:
+    - "[everyone]"
+  lines:
+    - "&0[&9Everyone&0]"
+    - "&2%player%"
+  literally-everyone:
+    enabled: true
+    codes:
+      - "[everyone*]"
+    lines:
+      - "&0[&4Everyone&0]"
+      - "&2%player%"

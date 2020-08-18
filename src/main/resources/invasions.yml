@@ -1,0 +1,179 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Invasions                      |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+# https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Invasion
+
+# By default, your kingdom can only be invading one kingdom at a time.
+# 0 means no limit.
+simuntanous-invasions: 1
+
+# Required resource points to invade a kingdom.
+required-resource-points: 50
+
+# https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
+masswar:
+  during-masswar-only: false
+  # Set to 0 to disable.
+  interval: 12hrs
+  time: 1hr
+  required-resource-points: 0
+  bossbar:
+    enabled: true
+    title: "&4&lMasswar &8[&6%time%&8]"
+    color: RED
+    style: SEGMENTED_20
+  titles:
+    start:
+      title: "&4Masswar"
+      subtitle: "&eMasswar has started!"
+      fade-in: 20
+      stay: 60
+      fade-out: 20
+    end:
+      title: "&2Masswar"
+      subtitle: "&6Masswar has ended!"
+      fade-in: 20
+      stay: 60
+      fade-out: 20
+
+# Options for when a nexus land is invaded.
+on-nexus-loss:
+  disband: false
+  drop-nexus-chest-items: false
+  give-all-resource-points: true
+  lightning:
+    times: 3
+    # In ticks
+    interval: 10
+    amount: 3
+
+# /k tp
+teleportation:
+  # Used to prevent players from escaping PvP in seconds.
+  # Teleportation will be cancelled if the player gets damaged.
+  # Set to 0 to disable.
+  # This can also be upgraded as a misc upgrade.
+  teleport-delay: 5
+
+  # If true, it'll send the message every one second with the new timer
+  # otherwise it'll only send the message once.
+  use-timer-message: true
+
+  # If the player should stand still without moving
+  # when teleporting to home, otherwise cancels the teleportation.
+  should-not-move: true
+  # If the player should not take damage when teleporting to home.
+  should-not-be-damaged: true
+
+# Sound played when the champion spawns.
+sound: ENTITY_ENDER_DRAGON_GROWL, 10
+
+# The BossBar shown to nearby players for the chmapion.
+# Multiple champions will show multiple bossbars of course.
+bossbar:
+  enabled: true
+  title: "&2Champion Health &8[&6%health%&7/&6%max_health%&8]"
+  color: RED
+  style: SEGMENTED_20
+  range: 13
+
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introductions#nations
+nations:
+  # If a kingodm is in a nation, it'll use the capital's champion for invasions.
+  use-capital-champion: true
+  use-shield: true
+  nation-zone-radius: 2
+  capital-protection:
+    # The land radius around the capital kingdom's nexus to protect from
+    # invaders before the nation kingdoms nexus lands are invaded.
+    # Set to 0 to protect all the capital lands.
+    # Set to -1 to disable.
+    radius: 0
+    nexus-invasion-cooldown: 1 day
+
+  shields:
+    disabled: false
+    ignore-individual-shields: true
+
+# Remove home if it's set on the invaded land.
+remove-home: true
+
+# Countdown before the champion spawns.
+# In seconds.
+champion-countdown: 5
+
+# The cooldown for a kingdom when they fail to invade a kingdom
+# and they want to try again.
+fail-cooldown: 1min
+
+# The amount of time that the invader kingdom needs to wait before unclaiming
+# the land they invaded.
+# This only applies to /k unclaim, they can still do /k disband and /k unclaimall
+unclaim-cooldown: 0
+
+# Disallowed items during an invasion for the invader.
+items:
+  whitelist: false
+  # For ender pearls and other teleportation items, use the allow-teleportation option.
+  list: []
+
+# Disallows any teleportation. Whether it's from commands, plugins, portals and etc...
+# Note that the player still can't teleport to other worlds if this option is true. This is used to
+# prevent people from using end and nether portals, which can cause some issues due to the player world and the champion's world differing.
+allow-teleportation: false
+
+# Disallowed/allowed commands during invasions for the invader player.
+commands:
+  whitelist: false
+  list:
+    - tp
+    - tpa
+    - rtp
+    - randomtp
+    - randomteleport
+
+# /k surrender
+surrender:
+  # If the attacker can surrender. The champion will despawn.
+  attacker: true
+  # If the defender kingdom can surrender. The champion will despawn and the
+  # land that's being invaded will be for the invaders.
+  defender: true
+  # Return resource points of the invader surrendered?
+  return-resource-points: false
+
+# Time limit for defeating the champion. Set to 0 to disable.
+# If this time limit ends, the champion will despawn and invaders will lose.
+# Default time unit is minutes.
+time-limit:
+  default: 30mins
+  # For defeating the nexus champion.
+  nexus: 15mins
+
+  # Show the time limit progress with a bossbar.
+  bossbar:
+    enabled: true
+    title: "&2Champion Time Limit &8[&6%time%&8]"
+    color: GREEN
+    style: SEGMENTED_12
+
+# Minimium members needed to be online to start the invasion.
+# This supports AuthMe authentication system.
+online-members:
+  invader: 0
+  defender: 0
+
+player-deaths:
+  # What happens if this player is the invader.
+  attacker:
+    # If true, this will reset the champion's health.
+    # If false, the invasion will stop and the invader will lose.
+    reset-or-stop: false
+  # What happens if this member is part of the defending Kingdom.
+  defender:
+    # Only stop invasion if the defending kingdom members die the amount of times.
+    # The invaders will win by default.
+    # Set to 0 to disable.
+    counter: 0
