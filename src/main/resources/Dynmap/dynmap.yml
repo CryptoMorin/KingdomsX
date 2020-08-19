@@ -4,8 +4,30 @@
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
-# After changing any settings, you either have to wait for the daily interval update
-# or do a manual render yourself using "/k admin dynmap fullrender" command which are both async.
+# Dynmap: https://www.spigotmc.org/resources/274/
+# When the file is saved, the config will reload and do a full render for Dynmap using the new settings.
+# However, some options still require a restart to change.
+# You can also do various Dynmap actions using /k admin dynmap command.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-admin-dynmap-fullrenderremove
+
+# Priority of the marker visibility in the map.
+# Needs a restart to update.
+priority: 0
+
+# Boost marker resolutions?
+# Needs a restart to update.
+boost: true
+
+# If the kingdoms marker should be disabled by default.
+# Needs a restart to update.
+hide-by-default: false
+
+# The zoom level range which the markers are visible at.
+# -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
+# These values can give confusing results. You need to play around with them to get the right one.
+zoom:
+  max: -1
+  min: 3
 
 # Maker settings.
 # The land chunk square fill options.
@@ -41,35 +63,49 @@ update-interval: 1hr
 
 # Description shown when hovering over the chunks.
 # All of the descriptions are based on HTML markup.
+# https://www.w3schools.com/html/html_intro.asp
 description:
   main: |-
-    <span style="color:green">Kingdom</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_name%</span><br>
+    <img src="%kingdoms_flag%" alt="%kingdoms_name%" width="250" height="auto" style="border:5px solid black;display:block;margin-left:auto;margin-right:auto;"><br>
+    <h1><span style="color:green">%kingdoms_name%</span></h1><br>
+    <span style="color:gray">%kingdoms_lore%</span><br>
     <span style="color:green">Nation</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation%</span><br>
     <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_might%</span><br>
     <span style="color:green">King</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_king%</span><br>
     <span style="color:green">Bank</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_bank%</span><br>
+    <span style="color:green">Turrets</span><span style="color:gray">:</span> <span style="color:orange">%turrets%</span><br>
     <span style="color:green">Resource Points</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_resource_points%</span><br>
     <span style="color:green">Lands</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_lands%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_lands%</span><br>
     <span style="color:green">Members</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_members%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_members%</span><br>
+    <img src="%structure%.png" alt="Structure: "%structure%" width="20" height="20"><br>
     %members%<br>
     <br>
     <span style="color:green">Allies</span><span style="color:gray">:</span><br>
     %allies%
     <br>
-    <span style="color:green">Truces</span><span style="color:gray">:</span><br>
+    <span style="color:yellow">Truces</span><span style="color:gray">:</span><br>
     %truces%
     <br>
-    <span style="color:green">Enemies</span><span style="color:gray">:</span><br>
+    <span style="color:red">Enemies</span><span style="color:gray">:</span><br>
     %enemies%
     <br>
   members: '<span style="font-weight:italic;color:black">%kingdoms_rank_symbol% %kingdoms_rank_name% %player%</span><br>'
   allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_name%</span><br>'
   truces: '<span style="font-weight:italic;color:yellow">%kingdoms_name%</span><br>'
-  enemies: '<span style="font-weight:italic;color:red">%kingdoms_name%</span><br>'
+  enemies: '<span style="font-weight:italic;codlor:red">%kingdoms_name%</span><br>'
 
 # If you changed an icon image, you have to restart the server.
+# To disable an icon, simply remove the image from the folder.
+# To regenerate all the icons, delete all the icons from the folder.
 # Turrets do not use an icon as there are too many of them.
 icons:
+  # The zoom level range which the icons are visible at.
+  # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
+  # These values can give confusing results. You need to play around with them to get the right one.
+  zoom:
+    max: -1
+    min: 6
+
   national-nexus: 'National Nexus'
   nexus: 'Nexus'
   powercell: 'Powercell'
