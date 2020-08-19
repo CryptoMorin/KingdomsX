@@ -134,8 +134,11 @@ indicator:
     center: false
 
     # If the option above is set to false, then it'll check the blocks under the player
-    # until it hits the floor. The height check limit should be low to avoid lag.
-    # If no blocks are found within this range, then the indicator will display on the (y - x), where x is the option.
+    # until it hits the floor. The floor blood is determined by its type (whether it's passable) or not.
+    # This type check is not accurate for servers using 1.12 and below versions.
+    # The height check limit should be low to avoid lag.
+    # If no floor block was found within this range, then the indicator will display on (y - x),
+    # where x is the option and y is the player's y axis.
     floor-check-height: 5
 
     # If the blocks should visualize all the border blocks around the chunk.
