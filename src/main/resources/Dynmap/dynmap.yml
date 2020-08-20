@@ -10,6 +10,13 @@
 # You can also do various Dynmap actions using /k admin dynmap command.
 # https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-admin-dynmap-fullrenderremove
 
+# If the marker data should be persistent. If enabled, all the land markers and icons will stay even after
+# server restarts. This is useful when you server has a lot of claimed lands, or you want to avoid lag without
+# using the auto update interval option. The data will be internally stored in Dynmap.
+# Needs a restart to update.
+# Note that if you change it from true to false, the old data will still stay.
+persistent-data: false
+
 # Priority of the marker visibility in the map.
 # Needs a restart to update.
 priority: 0
@@ -29,7 +36,34 @@ zoom:
   max: -1
   min: 3
 
-# Maker settings.
+# The color range used for kingdom color settings which can be changed in nexus settings.
+color-range:
+  # While settings this option to false means it's a whitelist, it still functions the way
+  # you see https://nycdoe-cs4all.github.io/images/lessons/unit_1/3.2/circle.png this wheel.
+  # So you technically have to use a whitelist to block an angle range backwards.
+  blacklist: false
+  # This list uses hue angle since it's easier to block angles.
+  # The entry name is optional.
+  # https://en.wikipedia.org/wiki/Hue
+  colors:
+    # Each entry must have only 2 angles.
+    # The first angle must be the smaller one.
+    red: [30, 330]
+
+# The flag URL blacklist/whitelist which can be changed in nexus settings.
+flag-links:
+  blacklist: true
+  # If the URL contains one of these strings.
+  # It's possible to detect links wrongly, but it happens rarely.
+  contains: ['porn', 'sex', '.onion']
+  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+  # If the URL contains any RegEx below then it'll not be allowed.
+  regex: []
+
+# Default Maker settings.
+# If the kingdom already chose a color, it'll use that
+# for both fill and line colors. Other settings will stay the same.
+
 # The land chunk square fill options.
 fill:
   # 0.0 - 1.0
@@ -65,9 +99,13 @@ update-interval: 1hr
 # All of the descriptions are based on HTML markup.
 # https://www.w3schools.com/html/html_intro.asp
 description:
+  # Used in the description below if the kingdom has a flag set, otherwise nothing.
+  flag: '<img src="%kingdoms_flag%" alt="%kingdoms_name%" width="250" height="auto" style="border:5px solid black;display:block;margin-left:auto;margin-right:auto;"><br>'
+
+  # In order to change the default kingdom name color, refer to default placeholders in config.
   main: |-
-    <img src="%kingdoms_flag%" alt="%kingdoms_name%" width="250" height="auto" style="border:5px solid black;display:block;margin-left:auto;margin-right:auto;"><br>
-    <h1><span style="color:green">%kingdoms_name%</span></h1><br>
+    %flag%
+    <h1><span style="color:%kingdoms_color%">%kingdoms_name%</span></h1><br>
     <span style="color:gray">%kingdoms_lore%</span><br>
     <span style="color:green">Nation</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation%</span><br>
     <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_might%</span><br>

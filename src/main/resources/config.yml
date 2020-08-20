@@ -181,6 +181,8 @@ default-placeholders:
   lore: ''
   members: 0
   territory: '&2Wilderness'
+  # Green
+  color: '#00ff00'
 
 # Kingdoms built-in chat system. Support hover messages as well.
 # Permissions: kingdoms.chat.colors
@@ -282,6 +284,7 @@ broadcast:
     # Supports time suffix. Default is milliseconds.
     cooldown: 0
 
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
 top-kingdoms:
   # Equation used for calculating a kingdoms might.
@@ -294,10 +297,12 @@ top-kingdoms:
   amount: 10
 
   rewards:
+    # Set it to 0 to disable.
     top: 10
     resource-points: "%rank% * 1000"
     bank: "%rank% * 100"
 
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k nation top
 top-nations:
   # Equation used for calculating a kingdoms might.
@@ -310,6 +315,7 @@ top-nations:
   amount: 10
 
   rewards:
+    # Set it to 0 to disable.
     top: 10
     resource-points: "%rank% * 1000"
     bank: "%rank% * 100"
@@ -528,12 +534,15 @@ economy:
 daily-checks-interval: 24hrs
 
 # If you disable taxes, you might want to remove the option in nexus settings GUI.
+# Taxes are collected from kingdom and nation banks during the daily interval checks.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#taxes
 tax:
   kingdoms:
     enabled: true
     # You can technically evade taxes by unclaiming all your lands and kicking all your members.
     # But no one is really going to do that unless they're really depressed.
     scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1)"
+    # The amount of time new kingdoms are excluded from paying taxes.
     age: 1 days
     members:
       enabled: true
@@ -543,10 +552,10 @@ tax:
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 15% of the player's current balance"
       default-equation: "(%money% * 15) / 100"
-    max: "10000"
   nations:
     enabled: true
     scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
+    # The amount of time new nations are excluded from paying taxes.
     age: 1 days
     members:
       enabled: true
@@ -556,7 +565,6 @@ tax:
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 15% of the player's current balance"
       default-equation: "(%money% * 15) / 100"
-    max: "10000"
 
 inactivity:
   # If no members logged in for this amount of time the kingdom will be disbanded.
