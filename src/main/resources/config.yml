@@ -539,9 +539,18 @@ daily-checks-interval: 24hrs
 tax:
   kingdoms:
     enabled: true
+    # The equation used to evaluate %pacifism_factor% placeholder for the tax equation.
+    # This is used when a kingdom is pacifist.
+    # If the kingdom is not a pacifist, this will simply be equal to 0
+    pacifism-factor: '(%kingdoms_members% * 100) + (%kingdoms_lands% * 50) '
+
     # You can technically evade taxes by unclaiming all your lands and kicking all your members.
     # But no one is really going to do that unless they're really depressed.
-    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1)"
+    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1) + %pacifism_factor%"
+
+    # If players should be notified when their kingdom can't pay the taxes.
+    notifications: true
+
     # The amount of time new kingdoms are excluded from paying taxes.
     age: 1 days
     members:
@@ -566,6 +575,7 @@ tax:
       # This equation is basically saying, "Take 15% of the player's current balance"
       default-equation: "(%money% * 15) / 100"
 
+# Note that the times below must be greater than the tax "age" option.
 inactivity:
   # If no members logged in for this amount of time the kingdom will be disbanded.
   # Kings with the permission "kingdoms.inactivity.disband" will not have their kingdoms affected.

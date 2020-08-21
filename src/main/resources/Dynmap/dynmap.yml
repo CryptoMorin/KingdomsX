@@ -50,15 +50,30 @@ color-range:
     # The first angle must be the smaller one.
     red: [30, 330]
 
-# The flag URL blacklist/whitelist which can be changed in nexus settings.
-flag-links:
-  blacklist: true
-  # If the URL contains one of these strings.
-  # It's possible to detect links wrongly, but it happens rarely.
-  contains: ['porn', 'sex', '.onion']
-  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
-  # If the URL contains any RegEx below then it'll not be allowed.
-  regex: []
+# Kingdoms can change their flag URL for Dynmap via kingdoms settings.
+flag:
+  # Cooldown for changing the kingdom image.
+  # The option can be used to lag the server if used excessively since it passes multiple checks.
+  cooldown: 10sec
+
+  # The image's size limit. Resizing the image from the <img> HTML tag will not help.
+  # Set to 0 for no limit.
+  # Although most of the image services out there don't allow a certain link to be used for an image,
+  # players that have their own website can still set the URL that links to a small image then reupload
+  # a bigger image under the same link. That's up to you to handle.
+  # This option does not downlaod the image, so don't worry about your servers connection.
+  size-limit:
+    width: 500
+    height: 500
+
+  links:
+    blacklist: true
+    # If the URL contains one of these strings.
+    # It's possible to detect links wrongly, but it happens rarely.
+    contains: ['jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion']
+    # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+    # If the URL contains any RegEx below then it'll not be allowed.
+    regex: []
 
 # Default Maker settings.
 # If the kingdom already chose a color, it'll use that
