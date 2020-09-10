@@ -14,7 +14,9 @@ required-resource-points: 50
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
+  # You can only invade during masswar events.
   during-masswar-only: false
+
   # Set to 0 to disable.
   interval: 12hrs
   time: 1hr
@@ -83,7 +85,12 @@ bossbar:
 nations:
   # If a kingodm is in a nation, it'll use the capital's champion for invasions.
   use-capital-champion: true
+
+  # Force nation members (kingdoms) to use nation shields instead.
+  # If this is enabled and a nation doesn't have a shield, but the kingdom does,
+  # players will be still able to invade the kingdom.
   use-shield: true
+
   nation-zone-radius: 2
   capital-protection:
     # The land radius around the capital kingdom's nexus to protect from
