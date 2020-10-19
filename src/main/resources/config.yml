@@ -83,6 +83,8 @@ database:
   # because if the cache expires faster than it can be saved, data will be lost.
   auto-save-interval: 30mins
 
+  smart-save: false
+
   # Top kingdoms are always loaded on startup.
   # All the kingdoms will be loaded on startup for once to do this.
   # But player or land data will not be loaded. They'll be only loaded for
@@ -109,16 +111,20 @@ command:
   # Commands that are not loaded to /kingdom command.
   # You should disable commands if you don't need them 100%, this will
   # also help saving some memory.
-  # Examples:
+  # Example:
+  #
   # disabled-commands:
   #  - sethome
   #  - unsethome
   #  - nation setspawn
   #  - nation unsetspawn
   #  - admin nation disband
+  #
   # Do not put the command prefix, e.g. don't use "/k broadcast" or "/kingdoms broadcast" only use "broadcast" with no slash.
   # Note that some commands are not really subcommands, they're the feature of that command.
   # Such as /k visualize [toggle/permanent] or /k sethome [center/centerAxis/centerView]
+  # Disabling a group command, will not disable it's sub-commands. For example, disabling "/k nation"
+  # will not disable "/k nation create", "/k nation show" and etc...
   disabled: []
 
 # Worlds that this plugin is completely disabled in them
@@ -232,6 +238,14 @@ chat:
     # If you parse these as placeholders, you might want to remove %message% from them.
     parse-as-placeholder: false
 
+    # Since there is no relation between a player and the console, these are the values
+    # used to replace the non-existing relational placeholders.
+    relational-placeholders:
+      # %kingdoms_relation_color%
+      color: '&f'
+      # %kingdoms_relation_name%
+      name: ''
+
   # The channel to send private messages too. Set to ~ to disable.
   # You can either use the channel ID or name (case-insensitive).
   # You can also use "$console" which uses the console channel from DiscordSRV
@@ -306,8 +320,8 @@ top-kingdoms:
   rewards:
     # Set it to 0 to disable.
     top: 10
-    resource-points: "%rank% * 1000"
-    bank: "%rank% * 100"
+    resource-points: "10000 / %rank%"
+    bank: "1000 / %rank%"
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k nation top
@@ -324,8 +338,8 @@ top-nations:
   rewards:
     # Set it to 0 to disable.
     top: 10
-    resource-points: "%rank% * 1000"
-    bank: "%rank% * 100"
+    resource-points: "10000 / %rank%"
+    bank: "1000 / %rank%"
 
 # Default number of max members.
 # You can increase this by upgrading your max-members misc upgrade
@@ -359,10 +373,13 @@ kingdom-name:
   allow-spaces: false
 
   # If you're using another language like Chinese or Japanese you might want to enable this.
+  # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
   allow-non-english: false
 
   # allow-non-english needs to be enabled if you want to set this to true.
   # If set to false, This will only allow other langauge numbers and letters, not symbols.
+  # Note that you shouldn't allow colors for kingdom names. It causes a lot of issues. For example other plugins can't use the
+  # kingdom name from %kingdoms_name% placeholder if it's used somewhere that translates color codes (for example a command list)
   allow-symbols: false
 
   # Allow kingdoms to have the same name?
@@ -402,6 +419,7 @@ nation-name:
   allow-spaces: false
 
   # If you're using another language like Chinese or Japanese you might want to enable this.
+  # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
   allow-non-english: false
 
   # allow-non-english needs to be enabled if you want to set this to true.
@@ -458,12 +476,12 @@ kingdom-lore:
   # Supports time suffix. Set to 0 to disable.
   renaming-cooldown: 0
 
-  # Allow symbols
+  # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
   allow-non-english: true
 
   # allow-non-english needs to be enabled if you want to set this to true.
-  # This will only allow other langauge numbers and letters, not symbols.
-  allow-other-languages: false
+  # When set to false, this will only allow other langauge numbers and letters, not symbols.
+  allow-symbols: false
 
   # Max length of the lore.
   max-length: 30

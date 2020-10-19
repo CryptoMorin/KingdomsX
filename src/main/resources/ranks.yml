@@ -7,10 +7,12 @@
 # Allow kingdoms to make their own ranks?
 # If you disable custom ranks, kingdoms cannot modify their default rank settings.
 custom-ranks:
-  # This option requires /k reload to be reloaded.
+  # This option requires a restart to work.
+  # The only thing that this option is going to do is optimizing the amount of data being saved.
+  # Ranks have a lot of data and it helps the IO operation a lot of they're not saved.
   enabled: true
   limits:
-    # This cannot be lower than 2
+    # This cannot be lower than 2 or higher than 20 (unless you change the rank GUI design)
     ranks: 20
     max-claims: 10
 

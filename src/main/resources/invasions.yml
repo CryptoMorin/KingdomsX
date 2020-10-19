@@ -17,10 +17,13 @@ masswar:
   # You can only invade during masswar events.
   during-masswar-only: false
 
-  # Set to 0 to disable.
+  # Set to 0 to disable. These times will reset on server restart.
   interval: 12hrs
   time: 1hr
+
+  # Required resource points to invade during masswar events.
   required-resource-points: 0
+
   bossbar:
     enabled: true
     title: "&4&lMasswar &8[&6%time%&8]"
@@ -45,6 +48,8 @@ on-nexus-loss:
   disband: false
   drop-nexus-chest-items: false
   give-all-resource-points: true
+
+  # For cosmetic purposes only.
   lightning:
     times: 3
     # In ticks
@@ -57,6 +62,7 @@ teleportation:
   # Teleportation will be cancelled if the player gets damaged.
   # Set to 0 to disable.
   # This can also be upgraded as a misc upgrade.
+  # Note that this option is in seconds and doesn't support time suffixes like other config options.
   teleport-delay: 5
 
   # If true, it'll send the message every one second with the new timer
@@ -133,10 +139,26 @@ allow-teleportation: false
 
 # Disallowed/allowed commands during invasions for the invader player.
 commands:
+  # If the list below should act as a whitelist or blacklist.
   whitelist: false
+
+  # Command names ignore slash "/" and are case-insensitive.
+  # This checks of the sent commmand "starts with" with one of
+  # the elements in the list, so it supports arguments.
+  # You have to add all the aliases for that specific command or subcommand.
+  # Note that "pluginname:command" is also a valid command unless you blocked those entirely.
   list:
+    - k home
+    - k spawn
+    - kingdom home
+    - kingdom spawn
+    - kingdoms home
+    - kingdoms spawn
+    - k nation spawn
     - tp
     - tpa
+    - tpaccept
+    - tpahere
     - rtp
     - randomtp
     - randomteleport

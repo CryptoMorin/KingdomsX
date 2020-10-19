@@ -8,6 +8,8 @@
 # if you don't want people to upgrade them.
 invasion-teleportation:
   enabled: true
+  # This amount is reduced from invasions.yml -> teleportation -> teleport-delay
+  scaling: lvl
   cost: "(lvl + 1) * 10"
   max-level: 5
 anti-explosion:
@@ -109,12 +111,14 @@ glory:
   max-level: 2
 chest-size:
   enabled: true
+  scaling: lvl
   cost: "(lvl + 1) * 100"
   max-level: 5
 # This upgrade has no scaling. The level number is used in the
 # max-claims equation in claims.yml
 max-claims:
   enabled: true
+  scaling: lvl
   cost: "(lvl + 1) * 200"
   max-level: 10
 max-members:

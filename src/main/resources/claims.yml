@@ -6,14 +6,46 @@
 
 
 # If the claims should be connected next to each other.
+# This option is not affected by relation attributes.
+# For example, if you set it to 1, this is what happens.
+# + are the lands you can claim (assuming they're unclaimed)
+# - are the lands you cannot claim (assuming they're unclaimed)
+# * are the lands that you own.
+# - - - - - - -
+# - - + + + - -
+# - - + * + - -
+# - - + + + - -
+# - - - - - - -
+
+# Now an example with 2
+# - - - - - - -
+# - + + + + + -
+# - + + + + + -
+# - + + * + + -
+# - + + + + + -
+# - + + + + + -
+# - - - - - - -
+
 # High numbers will lag the server.
 # It's recommended to keep it under 3 if you're using this option.
 # Anything above this is just pointless and will lag the server. You should turn off this option.
 # Set to 0 to disable.
 connection-radius: 0
 
-# If the claims should have a distance between them.
-# For example if this is set to 1, you cannot claim a land if another kingdom claimed one of the 3x3 lands around that land.
+# If the claims from different kingdoms should have a distance between them.
+# These lands that cannot be claimed by any kingdom will not be affected at all. The only restriction is that they cannot be claimed
+# unless you invade the kingdom(s) next to them.
+# This option is not affected by relation attributes.
+# For example, if you set it to 1, this is what happens.
+# + are the lands you can claim (assuming they're unclaimed)
+# - are the lands you cannot claim (assuming they're unclaimed)
+# * are the lands owned by another kingdom.
+# + + + + + +
+# + - - - + +
+# + - * - + +
+# + - - - + +
+# + + + + + +
+
 # High numbers will lag the server.
 # Set to 0 to disable.
 distance: 0
@@ -55,7 +87,7 @@ history:
 
 # The equation used to calculate the maximum claims for kingdoms (%kingdoms_max_lands% placeholder).
 # All the placeholders and math functions such as log() and round() can be used as well.
-# Note that using %kingdoms_max_lands% here can cause a Stack Overflow error.
+# Note that using %kingdoms_max_lands% here can cause a Stack Overflow error which can crash your server.
 # No player placeholders can be used here of course. Only kingdom and nation placeholders.
 # You can also use the "max_claims" placeholder for the upgrade level.
 max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + (max_claims * 2)"
@@ -71,6 +103,10 @@ actionbar:
   auto-unclaim: true
   keep: true
 
+# Activated beacons in a land will only affect players who their kingdom has the "ceasefire" attribute
+# with the kingdom that owns the land.
+beacon-protected-effects: true
+
 resource-points:
   # The amount of resource points to give back to the player
   # after unclaiming a land. Set to 0 to disable.
@@ -80,10 +116,6 @@ resource-points:
   # The amount of resource points needed to claim a land.
   claims: 50
   auto-claims: 55
-
-# Activated beacons in a land will only affect players who their kingdom has the "ceasefire" attribute
-# with the kingdom that owns the land.
-beacon-protected-effects: true
 
 money:
   # The amount of money to give back to the player
