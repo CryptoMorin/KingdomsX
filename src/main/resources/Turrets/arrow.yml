@@ -5,8 +5,19 @@ name: "&7Arrow"
 type: arrow
 # Resource points cost when buying this turret from the nexus.
 cost: 100
+sell: 50
 # Maximum level this turret can be upgraded to.
 max-level: 3
+
+# The blacklited and whitelisted entity types for each turret level.
+# https://hub.spigotmc.org/javadocs/spigot/org/bukkit/entity/EntityType.html
+#entities:
+#  1:
+#    blacklist: false
+#    types: [WITHER, WITHER_SKELETON]
+#  2:
+#    blacklist: true
+#    types: [WITHER]
 
 # One of these messages will be chosen randomly.
 death-messages:
@@ -42,7 +53,7 @@ upgrade-cost: lvl * 50
 fire: 100
 particle: ~
 effects:
-  1: []
+  1: [ ]
 projectile:
   1: ARROW
 speed: 1 + (lvl * 0.5)
@@ -58,7 +69,7 @@ item:
   1:
     name: "&aArrow Turret"
     material: ARROW
-    flags: [HIDE_POTION_EFFECTS]
+    flags: [ HIDE_POTION_EFFECTS ]
     lore:
       - "&6A simple turret that shoots"
       - "arrows at mobs and enemies."

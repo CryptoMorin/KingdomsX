@@ -23,6 +23,11 @@ protections:
   explosion: true
   piston: true
 
+  # Disallow members of a protected container who can access it transfer its items using
+  # other containers (such as hoppers) that they own and is also protected.
+  # If set to true, only the container owner can do this.
+  disallow-container-transfers: false
+
 # Sound played when someone tries to break/access the chest or sign.
 denied-sound: BLOCK_NOTE_BLOCK_BASS
 
@@ -46,7 +51,7 @@ blocks:
 
 # Signs that can protect chests.
 # * means all.
-signs: ['*']
+signs: [ '*' ]
 
 # Group system helps you to allow multiple players to access
 # your chest.
@@ -65,7 +70,6 @@ codes:
 lines:
   - "&0[&6Protected&0]"
   - "&2%player%"
-
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Protection_Signs#everyone
 everyone:

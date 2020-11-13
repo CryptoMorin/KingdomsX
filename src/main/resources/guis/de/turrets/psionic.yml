@@ -1,0 +1,51 @@
+title: "&aGift Turret"
+type: HOPPER
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "&9Ammo&8: &2%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    lore:
+      - '&2Kaufe &6100 &2Ammo für &610 &2Ressourcenpunkte.'
+    slot: 0
+  upgrade:
+    upgrade:
+      condition: "%level% < %max_level%"
+      name: "&9Upgrade&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Range&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Max. Ammo&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Knockback&8: &6%knockback% &7➔ &6%next_knockback%"
+        - ""
+        - "&7⚫ &2Max. Level&8: &6III"
+        - "&7⚫ &2Kosten&8: &6%upgrade_cost%"
+    maxxed:
+      condition: "true"
+      name: "&9Level&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Range&8: &6%range%"
+        - "&7⚫ &2Max. Ammo&8: &6%max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
+        - "&7⚫ &2Max. Ziele&8: &6%max_targets%"
+        - "&7⚫ &2Knockback&8: &6%knockback%"
+    slot: 1
+  break:
+    name: "&cZerstören"
+    material: REDSTONE_BLOCK
+    sound: default
+    lore:
+      - "&6Zerstört den Turret."
+    slot: 3
+  close:
+    name: "&cSchließen"
+    material: BARRIER
+    sound: default
+    lore:
+      - "&6Schließt das GUI."
+    slot: 4

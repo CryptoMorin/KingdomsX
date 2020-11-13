@@ -8,20 +8,45 @@
 # if you don't want people to upgrade them.
 invasion-teleportation:
   enabled: true
+  name: 'Invasion Teleportation'
   # This amount is reduced from invasions.yml -> teleportation -> teleport-delay
   scaling: lvl
   cost: "(lvl + 1) * 10"
   max-level: 5
 anti-explosion:
   enabled: true
+  name: 'Anti-Explosion'
   cost: "(lvl + 1) * 100"
   max-level: 2
+
+  # It'll throw the blocks in the air!
+  fancy-explosions:
+    enabled: true
+
+    # The options below require a server restart to be applied
+    # due to performance issues.
+    height:
+      min: 0.2
+      max: 1.0
+    spread:
+      min: -1.0
+      max: 1.0
+
+  # Auto regenerate the blocks slowly.
+  auto-regenerate:
+    enabled: true
+    # The delay before starting the regeneration in seconds.
+    delay: 2
+    # The interval between each block regeneration in ticks.
+    interval: 1
 anti-trample:
   enabled: true
+  name: 'Anti-Trample'
   cost: "(lvl + 1) * 100"
   max-level: 2
 nexus-guards:
   enabled: true
+  name: 'Nexus Guards'
   cost: "(lvl + 1) * 100"
   max-level: 4
   levels:
@@ -76,6 +101,7 @@ nexus-guards:
         health: 20
 guards:
   enabled: true
+  name: 'Guards'
   cost: "(lvl + 1) * 100"
   max-level: 1
   levels:
@@ -103,14 +129,19 @@ guards:
         health: 20
 insanity:
   enabled: true
+  name: 'Insanity'
   cost: "(lvl + 1) * 100"
   max-level: 1
 glory:
   enabled: true
+  name: 'Glory'
   cost: "(lvl + 1) * 100"
+  # This is currently not used.
+  scaling: "xp * lvl"
   max-level: 2
 chest-size:
   enabled: true
+  name: 'Chest Size'
   scaling: lvl
   cost: "(lvl + 1) * 100"
   max-level: 5
@@ -118,11 +149,13 @@ chest-size:
 # max-claims equation in claims.yml
 max-claims:
   enabled: true
-  scaling: lvl
+  name: 'Max Claims'
+  scaling: 'lvl * 2'
   cost: "(lvl + 1) * 200"
   max-level: 10
 max-members:
   enabled: true
+  name: 'Max Members'
   cost: "(lvl + 1) * 100"
   # Each upgrade.
   scaling: 'lvl * 5'

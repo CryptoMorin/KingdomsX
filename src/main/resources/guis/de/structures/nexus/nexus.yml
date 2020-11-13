@@ -1,0 +1,183 @@
+title: "&2&l%kingdoms_name%'s &6&lNexus"
+rows: 6
+sound: BLOCK_BEACON_ACTIVATE, 0.3
+
+# Ignore materialz element. They're not used for now.
+options:
+  settings:
+    name: "&7Einstellungen"
+    material: NETHER_STAR
+    lore:
+      - "&6Ändere die Einstellungen des Königreiches."
+    posx: 5
+    posy: 2
+  members:
+    name: "&2Mitglieder"
+    material: PLAYER_HEAD
+    lore:
+      - "&6Manage deine Mitglieder."
+      - "&6Beförderde oder degradiere sie."
+    posx: 5
+    posy: 3
+  masswar:
+    name: "&4Massenkrieg"
+    material: CLOCK
+    materialz:
+      CLOCK: '%kingdoms_masswar%'
+      RED_WOOL: '!%kingdoms_masswar%'
+    lore:
+      - "&6Während eines Massenkrieges, sind Invasionen gratis."
+      - "Massenkrieg ist gerade &e%status%"
+    posx: 6
+    posy: 3
+  nexus-chest:
+    name: "&eNexus Truhe"
+    material: CHEST
+    lore:
+      - "&6Lege Items in diese Truhe, damit alle"
+      - "&6auf sie Zugriff haben."
+    posx: 7
+    posy: 3
+  turrets:
+    name: "&9Turrets"
+    material: SPECTRAL_ARROW
+    lore:
+      - "&6Du kannst Turrets mit Ressourcenpunkte"
+      - "kaufen, um sie auf deinem Land"
+      - "zu erbauen, damit sie dich vor Monstern"
+      - "und anderen Angreifern beschützen."
+    posx: 3
+    posy: 3
+  structures:
+    name: "&5Strukturen"
+    material: REDSTONE_LAMP
+    lore:
+      - "&6Strukturen koennen verschiedene Sachen,"
+      - "allerdings darf man nur eines pro Land haben."
+      - "Beachte, dass der Nexus bereits ein Struktur ist."
+      - "Du kannst Strukturen mit Ressourcenpunkte kaufen."
+    posx: 4
+    posy: 3
+  misc-upgrades:
+    name: "&bVerschiedene Upgrades"
+    material: ENCHANTING_TABLE
+    lore:
+      - "&6Extra Upgrades sind dafuer da,"
+      - "dein Königreich zu verbessern, aber"
+      - "in einem anderen Aspekt."
+    posx: 2
+    posy: 3
+  logs:
+    name: "&aProtokolle"
+    material: KNOWLEDGE_BOOK
+    sound: BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&c&lKOMMT DEMNÄCHST..."
+      - "&6Sieh dir Protokolle ueber Invasionen,"
+      - "Land Beanspruchung/Freigabe und"
+      - "weitere Aktivitaeten deiner Mitglieder."
+    posx: 8
+    posy: 3
+  resource-points:
+    name: "&eRessourcenpunkte-Umwandler"
+    material: HAY_BLOCK
+    lore:
+      - "&6Wandle Items in"
+      - "Ressourcenpunkte um."
+      - "Dein Koenigreich hat &e%kingdoms_fancy_resource_points% &6Ressourcenpunkte."
+      - "Tipp: &7/k sell &6geht auch (Item in Hand)!"
+    posx: 4
+    posy: 5
+  damage-reduction:
+    name: "&3Schadensreduzierung"
+    material: DIAMOND_CHESTPLATE
+    flags: [ HIDE_ATTRIBUTES ]
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Jedes Upgrade reduziert den enstandenen"
+      - "Schaden um &e1%"
+      - ""
+      - "&6Level&8: &2%level%"
+      - "&6Kosten&8: &2%cost%"
+    posx: 7
+    posy: 4
+  damage-boost:
+    name: "&3Schadensschub"
+    material: DIAMOND_SWORD
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    flags: [ HIDE_ATTRIBUTES ]
+    lore:
+      - "&6Jedes Upgrade verbessert den entstanden"
+      - "Schaden um &e1%"
+      - ""
+      - "&6Level&8: &2%level%"
+      - "&6Kosten&8: &2%cost%"
+    posx: 3
+    posy: 4
+  arrow-boost:
+    name: "&7Pfeilschub"
+    material: BOW
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Jedes Upgrade verbessert deinen Schaden"
+      - "durch Boegen um &e1%"
+      - ""
+      - "&6Level&8: &2%level%"
+      - "&6Kosten&8: &2%cost%"
+    posx: 4
+    posy: 4
+  regeneration-boost:
+    name: "&dRegenerations Boost"
+    material: GOLDEN_APPLE
+    sound:
+      '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
+      '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6Jedes Upgrade verbessert die"
+      - "Regenerationsrate um &e1% &6in deinem Land"
+      - ""
+      - "&6Level&8: &2%level%"
+      - "&6Kosten&8: &2%cost%"
+    posx: 6
+    posy: 4
+  ranks:
+    name: "&5Ränge & Berechtigungen"
+    material: BOOKSHELF
+    lore:
+      - "&6Modifiziere Ränge und Berechtigungen"
+      - "für dein Königreich."
+    posx: 6
+    posy: 5
+  champion-upgrades:
+    name: "&2Champion Upgrades"
+    material: ZOMBIE_HEAD
+    lore:
+      - "&6Upgrade deinen Champion für stärkere"
+      - "Verteidigung gegen Angreifer."
+    posx: 5
+    posy: 5
+  mail-box:
+    name: "&eMailBox"
+    material: PLAYER_HEAD
+    sound: BLOCK_NOTE_BLOCK_BASS
+    # https://minecraft-heads.com/custom-heads/decoration/18059-letter-box-gray
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk2YWYzNmVhYWVkOGE3ZGJkMjcyN2ZkNGNkN2FmYmM2YzBhZmI4Yzc2MDYyOTRjOWNiNDAxMTQxYWFjMzc5In19fQ=="
+    lore:
+      - "&c&lDEMNÄCHST..."
+    posx: 5
+    posy: 4
+
+  red-glass:
+    name: ""
+    material: RED_STAINED_GLASS_PANE
+    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]

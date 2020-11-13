@@ -4,7 +4,8 @@ description: ${project.description}
 author: Crypto Morin
 version: ${project.version}
 api-version: "1.13"
-softdepend: [Citizens, MyPet, PlaceholderAPI, MVdWPlaceholderAPI, WorldGuard, WorldEdit, Vault, AuthMe, DiscordSRV, LuckPerms, MythicMobs, Multiverse-Core, dynmap]
+softdepend: [ Citizens, MyPet, PlaceholderAPI, MVdWPlaceholderAPI, WorldGuard, WorldEdit, Vault, AuthMe, DiscordSRV, LuckPerms,
+              MythicMobs, Multiverse-Core, dynmap, Regionerator ]
 
 # Since plugin command name is custom, it's handled internally.
 
@@ -50,6 +51,14 @@ permissions:
   kingdoms.command.home:
     description: Teleport to kingdoms home.
     default: true
+
+  kingdoms.command.home.bypass.timer:
+    description: Instantly teleprot.
+    default: op
+
+  kingdoms.command.home.others:
+    description: Teleport to other kingdoms home.
+    default: op
 
   kingdoms.command.nation:
     default: true
@@ -218,6 +227,19 @@ permissions:
     default: true
 
   kingdoms.command.visualize.permanent:
+    default: true
+
+  kingdoms.command.visualize.details:
+    description: Show detailed description of the land.
+    default: op
+
+  kingdoms.command.admin.land:
+    default: op
+
+  kingdoms.command.admin.info:
+    default: op
+
+  kingdoms.command.tag:
     default: true
 
   kingdoms.command.invites:

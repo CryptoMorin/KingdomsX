@@ -51,7 +51,7 @@ connection-radius: 0
 distance: 0
 
 # Worlds that claiming are disabled in.
-disabled-worlds: [world_nether, world_the_end]
+disabled-worlds: [ world_nether, world_the_end ]
 
 # Claims the current land once the player created a kingdom if possible.
 claim-on-create: true
@@ -89,8 +89,8 @@ history:
 # All the placeholders and math functions such as log() and round() can be used as well.
 # Note that using %kingdoms_max_lands% here can cause a Stack Overflow error which can crash your server.
 # No player placeholders can be used here of course. Only kingdom and nation placeholders.
-# You can also use the "max_claims" placeholder for the upgrade level.
-max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + (max_claims * 2)"
+# You can also use the "max_claims" placeholder for the max-claims misc upgrade scaling which can be found in misc-upgrades.yml config.
+max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + max_claims"
 
 # You can only build in claims that the relation attribute allows building.
 build-in-claimed-only:

@@ -23,8 +23,9 @@ prioritize-kingdom-relations: true
 # If you use this, it'll destroy the whole purpose of nation relations.
 allow-relations-between-nation-kingdoms: false
 
-# This merely manages the data saved.
-# To disable it completely, remove it from the Nexus Settings GUI.
+# This merely manages the data saved, so it applies after a server restart.
+# To disable it completely, remove it from the Nexus Settings GUI. The players will keep their relation data until the server
+# is restarted if you keep the GUI.
 custom-attributes: true
 
 # The PvP mode of the plugin. Needs a restart to be changed due to performance issues.
@@ -32,6 +33,10 @@ custom-attributes: true
 # claimed - Players can only PvP inside claimed lands based on their relation attributes.
 # unclaimed - Players can only PvP outside claimed lands based on their relation attributes.
 pvp: normal
+
+# Only apply kingdom relations if both parties agree on that specific relation attribute. Meaning that
+# the attribute will only take effects if they both enabled that attribute for their relation in kingdom settings.
+agreements: true
 
 # auto-revoke: If a kingdom declares that they no longer wish to be in a relation
 # with the other kingdom, the other kingdom will automatically have this relation revoked as well.
@@ -55,6 +60,7 @@ relations:
     donate: false
     build: false
     use: false
+    fly: false
     interact: false
     invade: true
     turret-ceasefire: false
@@ -68,6 +74,7 @@ relations:
     ceasefire: true
     donate: true
     build: false
+    fly: true
     limit: 0
     interact: false
     invade: false
@@ -81,6 +88,7 @@ relations:
     ceasefire: true
     donate: true
     build: false
+    fly: true
     limit: 0
     invade: false
     interact: true
@@ -106,6 +114,7 @@ relations:
     auto-revoke: false
     ceasefire: false
     donate: false
+    fly: true
     build: false
     limit: 0
     interact: false

@@ -12,13 +12,45 @@ simuntanous-invasions: 1
 # Required resource points to invade a kingdom.
 required-resource-points: 50
 
+# Cooldown before kingdoms can be a pacifist again after their last invasion.
+# Set to 0 to disable.
+pacifism:
+  enabled: true
+  cooldown: 7days
+
+# You'll lose your kingdom shield if you invade and cannot invade at all if your nation has a shield active.
+cannot-invade-with-shield: true
+
+# https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+disabled-champion-damages:
+  - FALL
+
+# One of the following messages will be randomly announced when the champion dies.
+# Each one of the entries indicates a death cause. You can find a list of death causes here:
+# https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
+# Note: Some damage causes are disabled for champions. This depends on the mob type or
+# they're disabled from disabled-champion-damages option.
+champion-death-messages:
+  # Defaults are used when the death cause is not specified in this list.
+  defaults:
+    - "&e%kingdoms_name%'s &cchampion was brutally slashed."
+  projectile:
+    - "&e%kingdoms_name%'s &cchampion was shot to death by %player%"
+  void:
+    - "&e%kingdoms_name%'s &cchampion somehow managed to fall into the void!"
+  entity-attack:
+    - "&e%kingdoms_name%'s &cchampion was slayed by %player%"
+
+
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
-  # You can only invade during masswar events.
+  # You can only invade during MassWar events.
   during-masswar-only: false
 
   # Set to 0 to disable. These times will reset on server restart.
+  # The interval between each MassWar. This interval starts right after an automatic MassWar has ended.
   interval: 12hrs
+  # The duration of the MassWar.
   time: 1hr
 
   # Required resource points to invade during masswar events.
@@ -42,6 +74,9 @@ masswar:
       fade-in: 20
       stay: 60
       fade-out: 20
+
+# Disallow kingdoms to move their kingdom nexus when their nexus land is being invaded.
+disallow-nexus-move: true
 
 # Options for when a nexus land is invaded.
 on-nexus-loss:
@@ -74,9 +109,6 @@ teleportation:
   should-not-move: true
   # If the player should not take damage when teleporting to home.
   should-not-be-damaged: true
-
-# Sound played when the champion spawns.
-sound: ENTITY_ENDER_DRAGON_GROWL, 10
 
 # The BossBar shown to nearby players for the chmapion.
 # Multiple champions will show multiple bossbars of course.
@@ -113,9 +145,22 @@ nations:
 # Remove home if it's set on the invaded land.
 remove-home: true
 
-# Countdown before the champion spawns.
-# In seconds.
-champion-countdown: 5
+spawning:
+  # Countdown before the champion spawns in seconds.
+  countdown: 5
+
+  # Sound played when the champion spawns.
+  sound: ENTITY_ENDER_DRAGON_GROWL, 10
+
+  # The sound played for each countdown.
+  # To disable this, set the option entry to ~
+  countdown-sound:
+    0: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 2.0
+    1: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.8
+    2: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.6
+    3: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.4
+    4: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.2
+    5: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.0
 
 # The cooldown for a kingdom when they fail to invade a kingdom
 # and they want to try again.
@@ -130,15 +175,22 @@ unclaim-cooldown: 0
 items:
   whitelist: false
   # For ender pearls and other teleportation items, use the allow-teleportation option.
-  list: []
+  list: [ ]
 
 # Disallows any teleportation. Whether it's from commands, plugins, portals and etc...
 # Note that the player still can't teleport to other worlds if this option is true. This is used to
 # prevent people from using end and nether portals, which can cause some issues due to the player world and the champion's world differing.
 allow-teleportation: false
 
+# Commands to perform when invasion begins.
+commands-upon-invasion: [ ]
+
 # Disallowed/allowed commands during invasions for the invader player.
 commands:
+  # This option can detect main command aliases and block them all as a part of the list below.
+  # Note that subcommands cannot be detected as they're registered on the plugin, not on the server.
+  smart-command: true
+
   # If the list below should act as a whitelist or blacklist.
   whitelist: false
 
@@ -195,14 +247,10 @@ online-members:
   defender: 0
 
 player-deaths:
-  # What happens if this player is the invader.
-  attacker:
-    # If true, this will reset the champion's health.
-    # If false, the invasion will stop and the invader will lose.
-    reset-or-stop: false
   # What happens if this member is part of the defending Kingdom.
   defender:
     # Only stop invasion if the defending kingdom members die the amount of times.
     # The invaders will win by default.
+    # This is not recommended as members in the defending kingdom can betray.
     # Set to 0 to disable.
     counter: 0
