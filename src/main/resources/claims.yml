@@ -53,8 +53,12 @@ distance: 0
 # Worlds that claiming are disabled in.
 disabled-worlds: [ world_nether, world_the_end ]
 
-# Claims the current land once the player created a kingdom if possible.
-claim-on-create: true
+# Claims the lands around the player once the player created a kingdom if possible.
+# Set to 0 to only claim the land that the player is standing in.
+# Any number above 0 will determine the square radius of the claimed lands from the player's location.
+# Set to -1 to disable.
+# This process will not continue if the central chunk (the player's location) cannot be claimed.
+claim-on-create: 2
 
 # How many claims should be free if the number of owned lands is lower
 # than this number?
@@ -68,13 +72,15 @@ starter-free: 3
 confirmation: 10s
 
 # /k claim fill
+# https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-claim-autofillx-y
 fill:
   # The maximum distance allowed to check for
   # the shape borders to start filling.
-  max-distance: 3
+  max-distance: 5
+
   # The maximum lands allowed to claim
   # when filling the shape.
-  max-claims: 30
+  max-claims: 50
 
 # History for undoing claims.
 history:

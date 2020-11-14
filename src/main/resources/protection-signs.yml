@@ -46,20 +46,37 @@ blocks:
   - BLAST_FURNACE
   - ENCHANTING_TABLE
   - BARREL
+  - BEACON
+  - BREWING_STAND
+  - CHEST
+  - COMPOSTER
+  - GRINDSTONE
+  - LECTERN
+  - LOOM
+  - SMOKER
+  - STONECUTTER
   - HOPPER
+  - DROPPER
+  - DISPENSER
   - CONTAINS:SHULKER_BOX
+  - CONTAINS:DOOR
 
 # Signs that can protect chests.
-# * means all.
-signs: [ '*' ]
+# Keep this empty to allow all types of signs.
+signs: [ ]
 
-# Group system helps you to allow multiple players to access
-# your chest.
 # protected-chest GUI will open when right-clicking the sign.
-groups:
-  enabled: true
-  # Limit of the group players.
-  limit: 10
+gui: true
+
+# The amount of players and kingdoms that the protection sign can allow/disallow.
+limits:
+  players: 30
+  kingdoms: 10
+
+# Should sign codes be case-sensitive when checked?
+# Note if you set this to false, you should also use lowercase
+# characters in your codes list.
+case-sensitive-codes: false
 
 codes:
   - "[protected]"
@@ -72,17 +89,19 @@ lines:
   - "&2%player%"
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Protection_Signs#everyone
-everyone:
+everyone-in-kingdom:
   enabled: true
   codes:
     - "[everyone]"
   lines:
     - "&0[&9Everyone&0]"
     - "&2%player%"
-  literally-everyone:
-    enabled: true
-    codes:
-      - "[everyone*]"
-    lines:
-      - "&0[&4Everyone&0]"
-      - "&2%player%"
+
+# Everyone, even outside of your kingdom. Allies or enemies doesn't matter.
+everyone:
+  enabled: true
+  codes:
+    - "[everyone*]"
+  lines:
+    - "&0[&4Everyone&0]"
+    - "&2%player%"

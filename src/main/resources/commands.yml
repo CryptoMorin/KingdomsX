@@ -8,7 +8,7 @@ command:
 # Properties
 # name: The main command name which is shown for auto completes.
 # aliases: A list of aliases for this command.
-# disabled: If this command should be completely disabled or not.
+# disabled: If this command should be completely disabled or not. Disabling command groups will disable all its subcommands.
 # If any of these properties are not defined, the defaults will be used. Which are:
 # name: The default hardcoded name used to identify this command (the entries below)
 # aliases: No aliases.
@@ -16,30 +16,327 @@ command:
 # Do not use spaces or colors for command names or aliases.
 
 help:
-  name: 'help'
+  name: help
   aliases: [ '?', 'h' ]
-  disabled: false
-updates:
-  name: 'updates'
-  aliases: [ 'update' ]
+king:
+  name: king
+  aliases: [ setking, leader, owner, ownership ]
+nexus:
+  name: nexus
+  aliases: [ setnexus, nexusset, placenexus, nexusplace ]
+sethome:
+  name: sethome
+  aliases: [ homeset ]
 about:
-  name: 'about'
-lore:
-  name: 'lore'
-  aliases: [ 'desc', 'description' ]
+  name: about
+  aliases: [ ]
+chat:
+  name: chat
+  aliases: [ channel, chan, c ]
+resourcepoints:
+  name: resourcepoints
+  aliases: [ rp, resourcepoint ]
+bank:
+  name: bank
+  aliases: [ money, $ ]
+decline:
+  name: decline
+  aliases: [ deny, denied, reject ]
+visualize:
+  name: visualize
+  aliases: [ visualizer, visual ]
+join:
+  name: join
+  aliases: [ ]
+donate:
+  name: donate
+  aliases: [ give, giverp, rpgive ]
+teleport:
+  name: teleport
+  aliases: [ tp, teleportation ]
+revoke:
+  name: revoke
+  aliases: [ neutral ]
+pvp:
+  name: pvp
+  aliases: [ ]
+accept:
+  name: accept
+  aliases: [ acceptinvite, acceptinv, acceptinvitation ]
+leave:
+  name: leave
+  aliases: [ left ]
+tradable:
+  name: tradable
+  aliases: [ worth ]
+ally:
+  name: ally
+  aliases: [ alliance, allies ]
+broadcast:
+  name: broadcast
+  aliases: [ bc ]
+fly:
+  name: fly
+  aliases: [ flight ]
+enemy:
+  name: enemy
+  aliases: [ enemies ]
+promote:
+  name: promote
+  aliases: [ ]
+top:
+  name: top
+  aliases: [ ]
+disband:
+  name: disband
+  aliases: [ delete ]
+map:
+  name: map
+  aliases: [ ]
+invade:
+  name: invade
+  aliases: [ invasion ]
+sell:
+  name: sell
+  aliases: [ s ]
+kick:
+  name: kick
+  aliases: [ ]
+rename:
+  name: rename
+  aliases: [ ]
+invite:
+  name: invite
+  aliases: [ inv ]
+create:
+  name: create
+  aliases: [ new ]
+claim:
+  name: claim
+  aliases: [ ]
 tag:
-  name: 'tag'
+  name: tag
+  aliases: [ ]
+show:
+  name: show
+  aliases: [ info, who ]
+surrender:
+  name: surrender
+  aliases: [ forfeit, ff ]
+lore:
+  name: lore
+  aliases: [ desc, description ]
+truce:
+  name: truce
+  aliases: [ ]
+unclaimall:
+  name: unclaimall
+  aliases: [ allunclaim ]
+updates:
+  name: updates
+  aliases: [ update ]
+unclaim:
+  name: unclaim
+  aliases: [ ]
+undo:
+  name: undo
+  aliases: [ ]
+reload:
+  name: reload
+  aliases: [ ]
+unsethome:
+  name: unsethome
+  aliases: [ homeunset ]
+home:
+  name: home
+  aliases: [ spawn ]
+demote:
+  name: demote
+  aliases: [ ]
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                       Outpost                       |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+outpost:
+  name: outpost
+  aliases: [ outposts ]
+
+  commands:
+    create:
+      name: create
+      aliases: [ new ]
+    join:
+      name: join
+      aliases: [ participate ]
+    stop:
+      name: stop
+      aliases: [ ]
+    teleport:
+      name: teleport
+      aliases: [ tp ]
+    start:
+      name: start
+      aliases: [ ]
+    remove:
+      name: remove
+      aliases: [ delete ]
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                        Nation                       |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
 nation:
-  name: 'nation'
-  aliases: [ 'community', 'civilization', 'civil' ]
+  name: nation
+  aliases: [ community, civilization, civil ]
+
+  commands:
+    broadcast:
+      name: broadcast
+      aliases: [ bc ]
+    nexus:
+      name: nexus
+      aliases: [ setnexus, nexusset, placenexus, nexusplace ]
+    setspawn:
+      name: setspawn
+      aliases: [ homeset, sethome, spawnset ]
+    unsetspawn:
+      name: unsetspawn
+      aliases: [ spawnunset, unsethome, homeunset ]
+    capital:
+      name: capital
+      aliases: [ king ]
+    show:
+      name: show
+      aliases: [ info, who ]
+    disband:
+      name: disband
+      aliases: [ delete ]
+    accept:
+      name: accept
+      aliases: [ acceptinvite, acceptinv, acceptinvitation ]
+    promote:
+      name: promote
+      aliases: [ ]
+    bank:
+      name: bank
+      aliases: [ money, $ ]
+    top:
+      name: top
+      aliases: [ ]
+    leave:
+      name: leave
+      aliases: [ left ]
+    decline:
+      name: decline
+      aliases: [ deny, denied, reject ]
+    create:
+      name: create
+      aliases: [ new ]
+    join:
+      name: join
+      aliases: [ ]
+    spawn:
+      name: spawn
+      aliases: [ home ]
+    invite:
+      name: invite
+      aliases: [ inv ]
+    demote:
+      name: demote
+      aliases: [ ]
+    kick:
+      name: kick
+      aliases: [ ]
+    rename:
+      name: rename
+      aliases: [ ]
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                        Admin                        |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
 admin:
-  name: 'admin'
-  aliases: [ 'administrator', 'administration' ]
+  name: admin
+  aliases: [ administrator, administration ]
 
-  player:
-    name: 'player'
-    aliases: [ 'info' ]
-
-  sound:
-    name: 'sound'
-    aliases: [ 'testsound', 'soundtest' ]
+  commands:
+    test:
+      name: test
+      aliases: [ msg ]
+    shield:
+      name: shield
+      aliases: [ s ]
+    nexus:
+      name: nexus
+      aliases: [ ]
+    dynmap:
+      name: dynmap
+      aliases: [ ]
+    nation:
+      name: nation
+      aliases: [ nations, n ]
+      commands:
+        disband:
+          name: disband
+          aliases: [ delete ]
+    sound:
+      name: sound
+      aliases: [ testsound, soundtest ]
+    hologram:
+      name: hologram
+      aliases: [ ]
+    toggle:
+      name: toggle
+      aliases: [ admin, bypass ]
+    disband:
+      name: disband
+      aliases: [ delete ]
+    unclaim:
+      name: unclaim
+      aliases: [ ]
+    resourcepoints:
+      name: resourcepoints
+      aliases: [ rp, resourcepoint ]
+    bank:
+      name: bank
+      aliases: [ ]
+    claim:
+      name: claim
+      aliases: [ ]
+    rank:
+      name: rank
+      aliases: [ ]
+    land:
+      name: land
+      aliases: [ tpland ]
+    join:
+      name: join
+      aliases: [ ]
+    maxLandModifier:
+      name: maxLandModifier
+      aliases: [ mlm ]
+    player:
+      name: player
+      aliases: [ info ]
+    masswar:
+      name: masswar
+      aliases: [ ]
+    evaluate:
+      name: evaluate
+      aliases: [ eval ]
+    kick:
+      name: kick
+      aliases: [ ]
+    dailycheck:
+      name: dailycheck
+      aliases: [ ]
+    spy:
+      name: spy
+      aliases: [ ]
