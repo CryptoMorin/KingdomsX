@@ -39,8 +39,27 @@ prefix: false
 # For error profiling reasons.
 debug: false
 
-# Check for plugin updates from Spigot
-check-updates: true
+updates:
+  # Check for plugin updates from Spigot when server starts
+  # and when players with kingdoms.updates permission join the server.
+  # This will not report anything to players if no new versions are found.
+  # This will also cache the results from when the server started.
+  # If you set this to false, you can still check for updates using /k updates command.
+  check: true
+
+  # Should the plugin automatically download updates
+  # to the specified path?
+  download: true
+
+  # The starting directory is the plugin's folder.
+  # Any folders that are not found in the specified path will be created.
+  # Placeholders that can be used are %version% and %latest_version%
+  # Now you might be asking, why would you need to use the current version?
+  # Because the plugin JAR name format is "name-version" and this name must be
+  # the same as the plugin name in the "plugins" folder.
+  # So if you want your server to automatically update the plugin for you after download it,
+  # you have to use the current version. The only bad thing is, you'll confuse the versions of course.
+  path: '../update/Kingdoms-%latest_version%.jar'
 
 # The language file name.
 # Place your translated file in the plugin's folder.
@@ -136,7 +155,13 @@ help:
   # 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
   footer-pages: 5
 
+# The sound used for most of the actions that prevents or prohibits
+# a player from doing that certain action.
+error-sound: BLOCK_NOTE_BLOCK_BASS
+
 guis:
+  creative-sound: BLOCK_NOTE_BLOCK_BASS
+
   # Close the GUI if the player is damaged.
   close-on-damage: true
 
@@ -180,109 +205,6 @@ default-placeholders:
   territory: '&2Wilderness'
   # Green
   color: '#00ff00'
-
-# Kingdoms built-in chat system. Support hover messages as well.
-# Permissions: kingdoms.chat.colors
-chat:
-  # The channels section is only used for placeholders.
-  channels:
-    global:
-      name: "Global"
-      short: 'G'
-      color: '&f'
-    kingdom:
-      name: "Kingdom"
-      short: 'K'
-      color: '&2'
-    truce:
-      name: "Truce"
-      short: 'T'
-      color: '&e'
-    ally:
-      name: "Ally"
-      short: 'A'
-      color: '&a'
-    nation:
-      name: "Nation"
-      short: 'N'
-      color: '&9'
-
-  # The chat priority that kingdom handles. Not that changing this will not disable the chat. You need to use other options.
-  # This is used when you're using another plugin that manages chat spams and other restrictions. You might want to increase the priorty in these cases.
-  # This option requires a restart to work.
-  # In Bukkit logic, lower priorities mean executed before the higher priorities.
-  # So for example, if a plugin like Essentials or LiteBans use NORMAL priority to format chat or mute players,
-  # you'd have to choose "HIGH" priority so the plugin can know chat has been cancelled by these plugins.
-  # Normally you shouldn't and wouldn't need to use the MONITOR priority, but if a plugin higher priorities for
-  # any reason (which they shouldn't) you can use it.
-  # We will use the HIGHEST priority here just in case.
-  # LOWEST, LOW, NORMAL, HIGH, HIGHEST, MONITOR
-  priority: HIGHEST
-
-  # Only players from a specific radius will see messages from channels.
-  ranged-channels:
-    # The channels that are affected by this option.
-    # GLOBAL, NATION, KINGDOM, TRUCE, ALLY
-    channels: [ ]
-
-    # Set to 0 to only hide the messages for players in other worlds.
-    # Set to -1 to completely disable.
-    radius: 0
-
-  global-channel:
-    # Should the plugin format global chat as well?
-    format: true
-
-    # Parse the global chat formats as a placeholder replaced in the original format.
-    # The option above doesn't need to enabled for this to work.
-    # This placeholder is {kingdoms} which you can use in your chat plugin.
-    # Complex messages won't work if you use another plugin.
-    # Note that format needs to be true.
-    # If you parse these as placeholders, you might want to remove %message% from them.
-    parse-as-placeholder: false
-
-    # Since there is no relation between a player and the console, these are the values
-    # used to replace the non-existing relational placeholders.
-    relational-placeholders:
-      # %kingdoms_relation_color%
-      color: '&f'
-      # %kingdoms_relation_name%
-      name: ''
-
-  # The channel to send private messages too. Set to ~ to disable.
-  # You can either use the channel ID or name (case-insensitive).
-  # You can also use "$console" which uses the console channel from DiscordSRV
-  # or "$main" that uses the main chat channel from DiscordSRV.
-  # A plugin needs a reload using /k reload after changing this option.
-  # Used for kingdom, allies, truces and nations channels.
-  discordsrv-private-channel: '$console'
-
-  # These formats support ranks too. To change the format for a specific rank just convert them into a config section
-  # just like the global format below. The keys are the rank name and the values are the formats.
-  # "default" refers to the default chat format if Vault wasn't found or there are no permission plugins.
-  formats:
-    # Used for global chnanel when a player doesn't have a kingdom.
-    global-no-kingdom: "COMPLEX:hover:{%displayname%;&2Message %player%;|/msg %player% } &7≫ &r%message%"
-
-    # Used for global chnanel when a player is in a kingdom.
-    # An example for global using complex messages.
-    # global: "COMPLEX:&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] hover:{%displayname%;&2Kingdom&8: &2%kingdoms_name%} &7≫ &r%message%"
-    # The only chat format that supports relational placeholders is the global one.
-    global:
-      default: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &r%message%"
-      admin: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &6%message%"
-    kingdom: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &d%message%"
-    ally: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &2%message%"
-    truce: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-    spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-  # Used when a player is in a kingdom and nation.
-  nation-formats:
-    nation: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &9%message%"
-    global: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &r%message%"
-    kingdom: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &d%message%"
-    ally: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &2%message%"
-    truce: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-    spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname%&7≫ &e%message%"
 
 # The format of the /k broadcast message.
 # The kingdom placeholders are referring to the person
@@ -353,9 +275,6 @@ top-nations:
 max-members:
   kingdoms: 10
   nations: 30
-
-# The default shield duration for new kingdoms to get prepared.
-newbie-kingdom-protection: 5days
 
 # Settings for /k create and /k rename
 # Players who have admin mode enabled, will bypass all the following checks.
@@ -554,8 +473,6 @@ kingdom-lore:
   # A list of blacklisted names in kingdom lore.
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
 
-reset-chat-state-on-leave: false
-
 # Remind people that never had a kingdom before to join one.
 # The message entry for this option is "no-kingdom-reminder"
 no-kingdom-reminder: false
@@ -697,6 +614,17 @@ inactivity:
     disband-kingdom-if-king: false
     announce: true
 
+# When a kingdom or a nation is created.
+creation:
+  kingdoms:
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    # The default shield duration for new kingdoms to get prepared.
+    newbie-protection: 5days
+  nations:
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    # The default shield duration for new kingdoms to get prepared.
+    newbie-protection: 0
+
 disband:
   # Send a confirmation message as a second chance to rethink.
   confirm: true
@@ -786,10 +714,6 @@ nexus:
   # - The nexus land gets invaded.
   allow-removal: true
 
-  # The sound played when a nexus is placed. It's also used when you
-  # create a new kingdom or nation.
-  sound: UI_TOAST_CHALLENGE_COMPLETE
-
   # Nation nexus must be set in one of the capital lands.
   nation-capital: true
 
@@ -821,11 +745,6 @@ nexus:
     # The block displayed when the targeted
     # block is not in the player's land.
     out-of-land-block: REDSTONE_BLOCK
-
-  place:
-    # Change this if you're using 1.8
-    # The sound played when a player places the nexus.
-    sound: UI_TOAST_CHALLENGE_COMPLETE, 0.5
 
   # Should nexus be replaced with the block that the player
   # clicked on or not? If not, the nexus will be placed

@@ -13,6 +13,20 @@ placing:
   blocks:
     - CONTAINS:FENCE
     - CONTAINS:WALL
+particles:
+  1:
+    place:
+      particle: FLAME
+      count: 100
+      offset: 0.5, 0.5, 0.5
+    break:
+      particle: FLAME
+      count: 100
+      offset: 0.5, 0.5, 0.5
+sounds:
+  1:
+    place: ITEM_FLINTANDSTEEL_USE
+    break: BLOCK_FIRE_EXTINGUISH
 range: 7 + lvl
 cooldown: 8 - lvl
 max-targets: min(2, 1 + (lvl + 1))

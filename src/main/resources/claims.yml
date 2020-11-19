@@ -58,7 +58,7 @@ disabled-worlds: [ world_nether, world_the_end ]
 # Any number above 0 will determine the square radius of the claimed lands from the player's location.
 # Set to -1 to disable.
 # This process will not continue if the central chunk (the player's location) cannot be claimed.
-claim-on-create: 1
+claim-on-create: 0
 
 # How many claims should be free if the number of owned lands is lower
 # than this number?
@@ -159,6 +159,35 @@ indicator:
   # Display these indicators for players that don't have a kingdom.
   kingdomless-enabled: true
 
+  default:
+    name: 'Default'
+
+    # Either 'blocks' or one of the particle entry names (not the name defined in them, the config entry name).
+    # E.g. the defaults are 'blocks', 'horizontal' and 'vertical'
+    method: blocks
+
+  particles:
+    horizontal:
+      name: 'Horizontal'
+      particle: REDSTONE
+      count: 10
+      height: 10
+      delay: 10
+      duration: 10
+      rates:
+        vertical: 5
+        horizontal: 40
+    vertical:
+      name: 'Vertical'
+      particle: REDSTONE
+      count: 10
+      height: 5
+      delay: 10
+      duration: 10
+      rates:
+        vertical: 30
+        horizontal: 6
+
   # Adds a block visualizer to separate chunks.
   # It's similar to F3+G Chunk Border.
   # Players can control their visualizers behaviour from /k visualize
@@ -166,6 +195,8 @@ indicator:
     # If visualizers should be enabled for players by default.
     # They can disable it using /k visualize toggle
     enabled: false
+
+    name: 'Blocks'
 
     # Blocks will appear on the same y as the blocks the player is standing on.
     # Otherwise blocks will be placed on the floor block.
@@ -209,14 +240,31 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: QUARTZ_BLOCK
     actionbar: "&8&l-=( &2&lUnoccupied Land &8&l)=-"
+    particles:
+      horizontal:
+        color: 0, 0, 0
+      vertical:
+        color: 0, 0, 0
   no-kingdom:
     title:
       title: "%kingdom_name%"
       subtitle: "%kingdom_lore%"
 
+    particles:
+      horizontal:
+        color: 255, 255, 255
+      vertical:
+        color: 255, 255, 255
+
     corner-block: SEA_LANTERN
     two-block: IRON_BLOCK
   self:
+    particles:
+      horizontal:
+        color: 0, 255, 0
+      vertical:
+        color: 0, 255, 0
+
     title:
       title: "&2%kingdoms_name%"
       subtitle: "%kingdoms_lore%"
@@ -227,6 +275,11 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: EMERALD_BLOCK
   neutral:
+    particles:
+      horizontal:
+        color: 255, 255, 255
+      vertical:
+        color: 255, 255, 255
     title:
       title: "%kingdom_name%"
       subtitle: "%kingdom_lore%"
@@ -234,6 +287,11 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: IRON_BLOCK
   ally:
+    particles:
+      horizontal:
+        color: 100, 255, 0
+      vertical:
+        color: 100, 255, 0
     title:
       title: "&6%kingdom_name%"
       subtitle: "%kingdom_lore%"
@@ -241,6 +299,11 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: DIAMOND_BLOCK
   truce:
+    particles:
+      horizontal:
+        color: 255, 255, 0
+      vertical:
+        color: 255, 255, 0
     title:
       title: "&e%kingdom_name%"
       subtitle: "%kingdom_lore%"
@@ -248,6 +311,11 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: GOLD_BLOCK
   nation:
+    particles:
+      horizontal:
+        color: 0, 0, 255
+      vertical:
+        color: 0, 0, 255
     title:
       title: "&9%kingdom_name%"
       subtitle: "%kingdom_lore%"
@@ -255,6 +323,11 @@ indicator:
     corner-block: SEA_LANTERN
     two-block: BLUE_WOOL
   enemy:
+    particles:
+      horizontal:
+        color: 255, 0, 0
+      vertical:
+        color: 255, 0, 0
     title:
       title: "&c%kingdom_name%"
       subtitle: "%kingdom_lore%"

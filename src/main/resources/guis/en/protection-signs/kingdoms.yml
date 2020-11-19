@@ -3,41 +3,54 @@ rows: 6
 sound: BLOCK_CHEST_OPEN
 
 options:
-  add:
-    name: "&2Add Player"
+  include:
+    name: "&2Include Player"
     material: GREEN_WOOL
     lore:
-      - "&6Add someone so they"
-      - "access the chest."
+      - "&6Add a kingdom so their members"
+      - "can access this block."
+      - ""
       - "They'll not be able to change"
       - "the group or break the block."
     posx: 1
     posy: 1
-  remove-all:
-    name: "&4Remove All"
+  exclude:
+    name: "&cExclude Player"
     material: RED_WOOL
     lore:
-      - "&6Remove all the players"
-      - "from accessing this block."
+      - "&6Add a kingdom to exclude their members"
+      - "from accessing the block."
+      - ""
+      - "Players in your kingdom with permission"
+      - "to override protections can still access"
+      - "the block or break it."
+    posx: 2
+    posy: 1
+  clear:
+    name: "&4Clear"
+    material: WRITABLE_BOOK
+    lore:
+      - "&6Remove all the kingdoms"
+      - "from this list."
+    posx: 8
+    posy: 1
+  back:
+    name: "&4Back"
+    material: BARRIER
+    sound: default
     posx: 9
     posy: 1
-  owner:
-    name: "&2%player%"
-    material: PLAYER_HEAD
-    posx: 5
-    posy: 1
   members:
-    name: "&6%name%"
-    material: PLAYER_HEAD
+    included:
+      condition: '%included%'
+      name: "&6%name% &8- &2Included"
+      material: PLAYER_HEAD
+    else:
+      name: "&6%name% &8- &cExcluded"
+      material: PLAYER_HEAD
+    sound: default
     slots: [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]
-  back:
-    name: "&2Back"
-    material: BARRIER
-    lore:
-      - "&6Exit the menu."
-    posx: 5
-    posy: 6
   black-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [ 2, 3, 4, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
