@@ -1,9 +1,8 @@
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|                       Claims                        |#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                                   Claims                                    |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
 # If the claims should be connected next to each other.
 # This option is not affected by relation attributes.
@@ -152,6 +151,14 @@ unclaim-all:
     time: 15
     gui: true
 
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                         Indicators & Visualizers                            |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+
 indicator:
   # Wilderness regions that are protected will not have indicators.
   ignore-worldguard-regions: true
@@ -159,7 +166,9 @@ indicator:
   # Display these indicators for players that don't have a kingdom.
   kingdomless-enabled: true
 
+  # The default settings for land indicators (visualizers)
   default:
+    # The name of the default option used for /k visual markers
     name: 'Default'
 
     # Either 'blocks' or one of the particle entry names (not the name defined in them, the config entry name).
@@ -175,8 +184,8 @@ indicator:
       delay: 10
       duration: 10
       rates:
-        vertical: 5
-        horizontal: 40
+        vertical: 4
+        horizontal: 30
     vertical:
       name: 'Vertical'
       particle: REDSTONE
@@ -186,7 +195,7 @@ indicator:
       duration: 10
       rates:
         vertical: 30
-        horizontal: 6
+        horizontal: 4
 
   # Adds a block visualizer to separate chunks.
   # It's similar to F3+G Chunk Border.
@@ -196,6 +205,7 @@ indicator:
     # They can disable it using /k visualize toggle
     enabled: false
 
+    # The name for the markers type /k visual markers
     name: 'Blocks'
 
     # Blocks will appear on the same y as the blocks the player is standing on.
