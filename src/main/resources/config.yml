@@ -49,15 +49,21 @@ updates:
 
   # Should the plugin automatically download updates
   # to the specified path?
-  download: true
+  # This is not recommended for servers in production
+  # if you set the option below to automatically replace the
+  # JAR for you, as some builds contain massive changes
+  # which can lead to some unexpected behaviours.
+  download: false
 
   # The starting directory is the plugin's folder.
   # Any folders that are not found in the specified path will be created.
   # Placeholders that can be used are %version% and %latest_version%
   # Now you might be asking, why would you need to use the current version?
-  # Because the plugin JAR name format is "name-version" and this name must be
+  # The "update" folder in "plugins" folder (the folder name can be changed in bukkit.yml) is used to
+  # automatically replace any JARs in that folder with the JARs in "plugins" folder that have the same name.
+  # Now, because the plugin JAR name format is "name-version", this name must be
   # the same as the plugin name in the "plugins" folder.
-  # So if you want your server to automatically update the plugin for you after download it,
+  # So if you want your server to automatically update the plugin for you after downloading it,
   # you have to use the current version. The only bad thing is, you'll confuse the versions of course.
   path: '../update/Kingdoms-%latest_version%.jar'
 
@@ -557,6 +563,7 @@ tax:
     - 3hrs
     - 1hr
     - 30mins
+
   kingdoms:
     enabled: true
     # The equation used to evaluate %pacifism_factor% placeholder for the tax equation.

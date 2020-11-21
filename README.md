@@ -11,7 +11,7 @@ Kingdoms is heavily optimized and easy to use.
 ### Links:
 - [SpigotMC](https://www.spigotmc.org/resources/77670/): The official and the only page of KingdomsX plugin.
 - [Discord](https://discord.gg/cKsSwtt): Official Kingdoms Discord server. Ask questions, suggest features and report bugs.
-- [Wiki](https://github.com/CryptoMorin/KingdomsX/Wiki): Learn how Kingdoms works.
+- [Wiki](https://github.com/CryptoMorin/KingdomsX/wiki): Learn how Kingdoms works.
 
 ### Contributing
 Currently the plugin is not open source and no I won't be selling the source code to anyone.\
