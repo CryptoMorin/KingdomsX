@@ -4,10 +4,13 @@
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
-# These options require a server restart to be applied.
+# The options for the base command.
 command:
+  # These two options require a server restart to be applied.
   name: kingdoms
   aliases: [ kingdom, xkingdoms, kingdomsx, k ]
+
+  # The sounds don't need a restart nor a plugin reload to be applied.
   sounds:
     unknown-command: BLOCK_NOTE_BLOCK_BASS
     insufficient-permission: BLOCK_NOTE_BLOCK_BASS
@@ -17,10 +20,11 @@ command:
 # aliases: A list of aliases for this command.
 # disabled: If this command should be completely disabled or not. Disabling command groups will disable all its subcommands.
 
-# If any of these properties are not defined, the defaults will be used. Which are:
-# name: The default hardcoded name used to identify this command (the entries below)
+# If any of these properties are not defined, the defaults will be used which are:
+# name: The default hardcoded name used to identify this command which is the same as the command's config section entry name.
 # aliases: No aliases.
 # disabled: false
+
 # Do not use spaces or colors for command names or aliases.
 # These options can only be updated with "/k reload commands" command.
 

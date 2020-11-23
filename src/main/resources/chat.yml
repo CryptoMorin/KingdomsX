@@ -41,6 +41,13 @@ channels:
 # LOWEST, LOW, NORMAL, HIGH, HIGHEST, MONITOR
 priority: HIGHEST
 
+# Should kingdoms plugin completely cancel the chat event?
+# This is useful customize some plugins such as DiscordSRV, but
+# it can also break other plugins like the ones that mute players.
+# In these cases, you usually have to set the priority to MONITOR
+# (even tho it's not recommended) and it might work.
+cancel: true
+
 # Reset the player's chat channel back to global when they leave.
 reset-channel-on-leave: false
 
@@ -65,6 +72,11 @@ tagging:
 
   # The sound to play for the user who was tagged.
   sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+  formats:
+    tagger: '&2&l%tag%'
+    tagged: '&6&l%tag%'
+    others: '&l%tag%'
 
   actionbar:
     message: "&6%name% &2tagged you"

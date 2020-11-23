@@ -81,12 +81,15 @@ updates:
 # en (English), hu (Hungarian), ru (Russian), es (Spanish), de (German)
 lang: en
 
-# Backups plugin's data.
+# Backups plugin's data. Most of the options require a restart to be changed.
 backups:
   enabled:
     enabled: true
     data: true
     configs: true
+
+  # The path starts in Kingdoms plugin folder.
+  folder: 'Backups'
 
   # If this is enabled then every time the server is restarted
   # it'll take a backup without considering if there's already
@@ -579,9 +582,11 @@ tax:
     notifications: true
 
     # The amount of time new kingdoms are excluded from paying taxes.
-    age: 1 days
+    age: 3 days
+
     members:
       enabled: true
+
       # The default equation used to collect taxes for each kingdom.
       # Kingdoms can change their equation in their settings, and if
       # they use an equation that gives an error, it'll reset back to this.
@@ -591,10 +596,17 @@ tax:
   nations:
     enabled: true
     scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
+
     # The amount of time new nations are excluded from paying taxes.
-    age: 1 days
+    age: 3 days
+
     members:
       enabled: true
+
+      # The amount of time kingdoms are excluded from paying nation taxes
+      # from when they join the nation.
+      age: 1 day
+
       # The default equation used to collect taxes for each kingdom.
       # Kingdoms can change their equation in their settings, and if
       # they use an equation that gives an error, it'll reset back to this.
