@@ -337,6 +337,8 @@ kingdom-name:
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
   # If the name matches the any RegEx below then it'll not be allowed.
   # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
+  # To only allow a certain language, use "[^A-z]" where A is the first alphabet in that language and z is the last (lowercase if available)
+  # alphabet in that language. The "[^A-z]" expression itself indicates that only English alphabets are allowed.
   blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
   # A list of blacklisted names kingdom.
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
@@ -568,14 +570,14 @@ tax:
 
   kingdoms:
     enabled: true
-    # The equation used to evaluate %pacifism_factor% placeholder for the tax equation.
+    # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
     # This is used when a kingdom is pacifist.
     # If the kingdom is not a pacifist, this will simply be equal to 0
     pacifism-factor: '(%kingdoms_members% * 100) + (%kingdoms_lands% * 50) '
 
     # You can technically evade taxes by unclaiming all your lands and kicking all your members.
     # But no one is really going to do that unless they're really depressed.
-    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1) + %pacifism_factor%"
+    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1) + pacifism_factor"
 
     # If players should be notified when their kingdom can't pay the taxes.
     notifications: true
@@ -585,6 +587,8 @@ tax:
 
     members:
       enabled: true
+
+      age: 3 days
 
       # The default equation used to collect taxes for each kingdom.
       # Kingdoms can change their equation in their settings, and if
@@ -601,10 +605,6 @@ tax:
 
     members:
       enabled: true
-
-      # The amount of time kingdoms are excluded from paying nation taxes
-      # from when they join the nation.
-      age: 1 day
 
       # The default equation used to collect taxes for each kingdom.
       # Kingdoms can change their equation in their settings, and if
