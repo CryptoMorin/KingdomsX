@@ -47,8 +47,8 @@ updates:
   # If you set this to false, you can still check for updates using /k updates command.
   check: true
 
-  # Should the plugin automatically download updates
-  # to the specified path?
+  # Should the plugin automatically download updates to the specified path?
+  # Please also read the path option if you want to change this option.
   # This is not recommended for servers in production
   # if you set the option below to automatically replace the
   # JAR for you, as some builds contain massive changes
@@ -229,7 +229,7 @@ broadcast:
   cooldown: 0
 
   nation:
-    format: "\n&8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%\n\n"
+    format: "\n&8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%\n\n"
     # Sound to play to all the kingdom members.
     # Set to none for no sound.
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
@@ -573,7 +573,7 @@ tax:
     # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
     # This is used when a kingdom is pacifist.
     # If the kingdom is not a pacifist, this will simply be equal to 0
-    pacifism-factor: '(%kingdoms_members% * 100) + (%kingdoms_lands% * 50) '
+    pacifism-factor: "(%kingdoms_members% * 100) + (%kingdoms_lands% * 50)"
 
     # You can technically evade taxes by unclaiming all your lands and kicking all your members.
     # But no one is really going to do that unless they're really depressed.
@@ -954,28 +954,32 @@ home:
 powerup-own-land-only: true
 
 # Enabled and Scaling options require /k reload to change.
+# Note: If you decrease the max-level kingdoms who already
+# upgraded their level beyond the new value will keep it and it
+# won't affect them. Unfortunately, you can't fix this unless you
+# manually edit their data file.
 powerups:
   damage-boost:
     enabled: true
     name: 'Damage Boost'
     cost: "(lvl + 1) * 100"
-    scaling: "(lvl / 100) * damage"
+    scaling: "percentOf(lvl, damage)"
     max-level: 70
   damage-reduction:
     enabled: true
     name: 'Damage Reduction'
     cost: "(lvl + 1) * 100"
-    scaling: "(lvl / 100) * damage"
+    scaling: "percentOf(lvl, damage)"
     max-level: 70
   arrow-boost:
     enabled: true
     name: 'Arrow Boost'
     cost: "(lvl + 1) * 70"
-    scaling: "(lvl / 100) * damage"
+    scaling: "percentOf(lvl, damage)"
     max-level: 70
   regeneration-boost:
     enabled: true
     name: 'Regeneration Boost'
     cost: "(lvl + 1) * 70"
-    scaling: "(lvl / 100) * amount"
+    scaling: "percentOf(lvl, amount)"
     max-level: 100
