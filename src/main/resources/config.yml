@@ -555,7 +555,7 @@ economy:
 # Daily checks are for checking kingdom inactivities, handling taxes and top kingdom and nation rewards.
 # Small intervals will lag the server more.
 # This value will be converted to ticks automatically.
-# After changing this option, you need to restart the server. Or use /k admin dailycheck
+# After changing this option, you need to restart the server or use /k admin dailycheck
 daily-checks-interval: 24hrs
 
 # If you disable taxes, you might want to remove the option in nexus settings GUI.
@@ -569,7 +569,7 @@ tax:
     - 30mins
 
   kingdoms:
-    enabled: true
+    enabled: false
     # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
     # This is used when a kingdom is pacifist.
     # If the kingdom is not a pacifist, this will simply be equal to 0
@@ -586,7 +586,7 @@ tax:
     age: 3 days
 
     members:
-      enabled: true
+      enabled: false
 
       age: 3 days
 
@@ -597,14 +597,14 @@ tax:
       # This equation is basically saying, "Take 5% of the player's current balance"
       default-equation: "(money * 5) / 100"
   nations:
-    enabled: true
+    enabled: false
     scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
 
     # The amount of time new nations are excluded from paying taxes.
     age: 3 days
 
     members:
-      enabled: true
+      enabled: false
 
       # The default equation used to collect taxes for each kingdom.
       # Kingdoms can change their equation in their settings, and if
@@ -844,32 +844,6 @@ invitations:
 # the hell they're doing with this.
 # I am not responsible if you do something stupid with this.
 iSwearIKnowWhatTheFuckIAmDoingRightNow: 0x0002E39
-
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|                 Mails - COMING SOON                 |#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-
-mails:
-  enabled: true
-  # Max amount of mails a kingdom can have.
-  max: 10
-  # Delete the oldest mail when the max amount of mails is reached.
-  # If this option is set to false, then it'll send a message that max amount is reached instead.
-  delete-oldest-when-max: true
-  sound: ENTITY_EXPERIENCE_ORB_PICKUP
-  # Notify kingdom members about new mails in the mailbox.
-  notifications-on-join: true
-  # Allows a person to send multiple mails without deleting
-  # the last mail.
-  allow-multiple-mails: true
-  # Mails will be automatically deleted after a specific amount of time.
-  # Set to 0 to disable. You can use time prefixes.
-  auto-expire: 0
-  # Allow opening the mailbox from the command? /k mail box
-  # Otherwise players can only see the mails from the nexus.
-  mail-box-command: false
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
