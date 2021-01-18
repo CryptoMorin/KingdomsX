@@ -26,47 +26,47 @@ break-in-claimed-only: '&cDu kannst nur in deinem beanspruchten Land bauen!'
 comamnd:
   admin:
     disband:
-      description: '&6Disbands a kingdom.'
-      success: '&6%kingdom% &2has been disbanded.'
-      usage: /k admin disband <kingdom> [silent]
+      description: '&6Löscht ein Königreich.'
+      success: '&6%kingdom% &2wurde gelöscht.'
+      usage: '/k admin disband <Königreich> [silent]'
     hologram:
-      description: '&6Remove bugged holograms around you.'
+      description: '&6Entfernt verbuggte Hologramme um dich herum.'
     home:
-      description: '&6Teleport to a kingdom''s home.'
-      teleporting: '&2Teleporting to &6%kingdom%''s &2home...'
-      usage: /k admin home <kingdom>
+      description: '&6Teleport dich zu einem Königreich-Zuhause.'
+      teleporting: '&2Teleport zu &6%kingdom%''s&2-Zuhause...'
+      usage: '/k admin home <Königreich>'
     kick:
-      description: '&6Kick a player out of a kingdom.'
-      kicked: '&cKicked &e%kicked% &cfrom &e%kingdom%'
-      usage: /k admin disband <player>
+      description: '&6Wirft einen Spieler aus einem Königreich.'
+      kicked: '&e%kicked% &cwurde aus &e%kingdom% &crausgeworfen'
+      usage: '/k admin disband <Spieler>'
     nation:
       disband:
-        description: '&6Disbands a nation.'
-        success: '&6%nation% &2nation has been disbanded.'
-        usage: /k admin disband <nation> [silent]
+        description: '&6Löscht eine Nation.'
+        success: '&6%nation% &2wurde gelöscht.'
+        usage: '/k admin disband <Nation> [silent]'
     land:
-      description: '&6Teleport to a land at the given coordinates.'
-      usage: '&4Usage&8: &e/k admin land [world] <x> <z>'
-      teleported: '&2You''ve been teleported to land at&8: &6%world%&7, &6%chunk_x%&7,
-        &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8)'
-      invalid-world: '&cCannot find world&8: &e%world%'
-      invalid-coordinates: '&cThe entered coordinates are invalid&8: &e%x%&7, &e%z%'
+      description: '&6Teleportiert dich zu dem Land von bestimmten Koordianten.'
+      usage: '&4Benutzung&8: &e/k admin land [Welt] <x> <z>'
+      teleported: '&2Du wurdest zu &6%world%&7, &6%chunk_x%&7,
+        &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8) &2teleportiert.'
+      invalid-world: '&cUngültige Welt&8: &e%world%'
+      invalid-coordinates: '&cUngültige Koordinaten8: &e%x%&7, &e%z%'
     player:
-      description: '&6Display a player''s information.'
-      usage: '&4Usage&8: &e/k admin player <player>'
-      not-found: '&cThe specified player was not found.'
+      description: '&6Zeigt SPieler Informationen.'
+      usage: '&4Benutzung&8: &e/k admin player <Spieler>'
+      not-found: '&cDer Spieler konnte nicht gefunden werden.'
       info: |-
         COMPLEX:&7| &2Name&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Kingdom&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
-        &7| &2Rank&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        &7| &2National Rank&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
-        &7| &2Using Markers&8: %visualizer%
-        &7| &2Invites&8: &6%invites%
-        &7| &2Joined Kingdom At&8: &6%kingdoms_joined%
-        &7| &2Auto Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
-        &7| &2Map Size&8: &6%map_width% &8- &6%map_height%
-        &7| &2Total Donations&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
+        &7| &2Königreich&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Rang&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2Nationaler Rang&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2Benutzt Marker&8: %visualizer%
+        &7| &2Einladungen&8: &6%invites%
+        &7| &2Beigetreten am&8: &6%kingdoms_joined%
+        &7| &2Auto-Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
+        &7| &2Map-Größe&8: &6%map_width% &8- &6%map_height%
+        &7| &2Spenden Insgesammt&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
         &7| &2Claims &7(&6%kingdoms_claims%&7)&8: %claims%
         &7| &2Compressed Data&8: &6%compressed%
 command:
@@ -78,7 +78,7 @@ command:
     already-in-kingdom: '&2Du bist bereits in einem Königreich.'
     description: '&6Akzeptiert eine Einladung.'
     expired: '&cDeine Einladung an &e%kingdom% &cist bereits abgelaufen.'
-    joined: '&6%player% &2ist dem Königreich ebigetreten.'
+    joined: '&6%player% &2ist dem Königreich beigetreten.'
     max-members: '&cDieses Königreich ist bereit mit &e%kingdoms_members% &cMitgliedern
       überfüllt.'
     multiple-invites: '&cDu hast mehrere Einladungen, bitte gebe einen genauen Namen
@@ -89,130 +89,125 @@ command:
     notify: '&6%name% &2hat deine Einladung angenommen.'
   admin:
     bank:
-      added: '&2Your new kingdoms bank&8: &6%kingdoms_fancy_bank%'
-      description: '&6Add or take money from a kingdom bank.'
-      done: '&6%kingdom%''s &2new bank&8: &6%kingdoms_fancy_bank%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
-      invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      usage: /k admin bank <kingdom> [set/add/remove] <amount>
+      added: '&2Königreichs Schatzkammer&8: &6%kingdoms_fancy_bank%'
+      description: '&6Enfternt/Fügt Geld zu der Königreich-Bank (hinzu).'
+      done: '&6%kingdom%''s &2neuer Königreich-Bank-Stand&8: &6%kingdoms_fancy_bank%'
+      invalid-action: '&cUngültiger Paramter: &e%action%&c! Benutze&8: &eadd/remove/set'
+      invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
+      usage: '/k admin bank <Königreich> [set/add/remove] <Anzahl>'
     claim:
-      already-claimed: '&cThis land is already claimed by &e%kingdoms_name%'
-      description: '&6Forcibly claim the land you are currently standing in for a
-        kingdom.'
-      success: '&2Claimed &6%x%&7, &6%z% &2as kingdom land.'
-      usage: /k admin claim <kingdom>
+      already-claimed: '&cDieses Land wurde bereits von &e%kingdoms_name% &cbeansprucht!'
+      description: '&6Forcibly claim the land you are currently standing in for a kingdom.'
+      success: '&2Das Land &6%x%&7, &6%z% &2wurde beansprucht.'
+      usage: '/k admin claim <Königreich>'
     daily-checks:
-      description: '&6Manually begin the daily checks cycle.'
-      run: '&6Running daily checks...'
-    description: '&6Shows the available admin commands.'
+      description: '&6Maueller beginnt des Daily-Checks.'
+      run: '&6Daily-Checks werden ausgeführt...'
+    description: '&6Zeigt die verfügbaren Admin Befehle.'
     disband:
-      announce: '&e%kingdom% &6has been disbanded.'
+      announce: '&e%kingdom% &6wurde gelöscht.'
     dynmap:
-      description: '&6Perform different actions for Dynmap.'
-      dynmap-not-available: '&cCould not find Dynmap.'
-      removed: '&2A total of &6%lands% &2has been removed.'
-      rendered: '&2Rendered a total of &6%lands% &2lands.'
+      description: '&6Führt verschiedene Aktionen für Dynmap aus.'
+      dynmap-not-available: '&cDynmap konnte nicht gefunden werden.'
+      removed: '&2&6%lands% &2Länderein wurden entfernt.'
+      rendered: '&2Rendering &6%lands% &2Länderein.'
       rendering: '&2Rendering...'
-      usage: '&cUsage&8: &e/k admin dynmap <fullrender/update/remove>'
+      usage: '&cBenutzung&8: &e/k admin dynmap <fullrender/update/remove>'
     evaluate:
-      description: '&6Evaluates an expression with placeholders and math functions.'
+      description: '&6Evaluiert einen Ausdruck mit Placeholdern und Mathe-Funktionen.'
       evaluated: |-
-        &2Translated Expression&8: &6%translated%
-        &2Evaluated Expression&8: &6%result%
+        &2Übersetzter Ausdruck&8: &6%translated%
+        &2Evaluierter Ausdruck&8: &6%result%
       failed: |-
-        &cTranslated Expression&8: &6%translated%
+        &cÜbersetzter Ausdruck&8: &6%translated%
         &cError&8: &e%result%
-      usage: '&cUsage&8: &e/k admin evaluate <expression>'
+      usage: '&cBenutzung&8: &e/k admin evaluate <Ausdruck>'
     find-duplicate:
-      description: '&6Check every single kingdom one by one to see if a player is
-        in two kingdoms.'
-      found: '&2Player &6%name% &8(&7%uuid%&8) &2is in the following kingdoms&8:'
+      description: '&6Schaut, ob ein Spieler in mehren Königreichen ist.'
+      found: '&2Spieler &6%name% &8(&7%uuid%&8) &2ist in the folgenden Königreichen8:'
       kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
-      not-found: '&cPlayer &e%name% &8(&7%uuid%&8) &cis not in any kingdoms.'
-      usage: '&cUsage&8: &e/k admin fd <player>'
+      not-found: '&cSpieler &e%name% &8(&7%uuid%&8) &cist in keinem Königreich!'
+      usage: '&cBenutzung&8: &e/k admin fd <Spieler>'
     hologram:
-      removed: '&2Removed a total of &6%removed% &2hologram(s).'
-      usage: '&cUsage&8: &e/k admin hologram <radius>'
+      removed: '&6%removed% &2Hologramm(e) wurden entfernt.'
+      usage: '&cBenutzung&8: &e/k admin hologram <Radius>'
     home:
-      not-set: '&e%kingdom% &cdoesn''t have a home set.'
+      not-set: '&e%kingdom% &chat kein Königreich-Zuhause.'
     join:
-      already-in-kingdom: '&6%player% &2is already a member of &6%kingdom%'
-      description: '&6Make a user join another kingdom.'
+      already-in-kingdom: '&6%player% &2ist bereits ein Mitglied von &6%kingdom%'
+      description: '&6Fügt einen Spieler zu einem Königreich hinzu.'
       in-kingdom: |-
-        COMPLEX:&6%player% &2is already in a kingdom named &6%kingdoms_name%
-        &2If you'd like to continue do&8: hover:{&6/k admin join %player% %kingdom% confirm;&2Click to confirm;/k admin join %player% %kingdom% confirm}
-      invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      success: '&6%player% &2is now a member of &6%kingdom%'
-      usage: '&cUsage&8: &e/k admin join <player> <kingdom>'
+        COMPLEX:&6%player% &2ist bereits in &6%kingdoms_name%
+        &2Wenn du fortfahren möchtest, mache&8: hover:{&6/k admin join %player% %kingdom% confirm;&2Bestätigen;/k admin join %player% %kingdom% confirm}
+      invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
+      success: '&6%player% &2ist nun ein Mitglied von &6%kingdom%'
+      usage: '&cBenutzung&8: &e/k admin join <Spieler> <Königreich>'
     kick:
-      not-in-kingdom: '&cThat player is not in a kingdom.'
-    kick-king: '&cThe player you''re trying to a kick is the kingdom king. You need
-      to either disband the kingdom, or set a new king.'
+      not-in-kingdom: '&cDieser Spieler ist in keinem Königreich!'
+    kick-king: '&cDer Spieler ist ein König und deshalb musst du entweder das Königreich löschen oder jemanden anderem zum König ernennen.'
     masswar:
-      description: '&6Manually start or end masswar.'
-      not-running: '&cMasswar is not running.'
-      running: '&cMasswar is already running.'
+      description: '&6Manueller Start eines Massenskrieges.'
+      not-running: '&cMassenkrieg ist nicht am laufen.'
+      running: '&cMassenkrieg läuft bereits!'
       usage: '&4Usage&8: &c/k admin masswar <start/end>'
     max-land-modifier:
-      description: '&6Change the max lands modifier of a kingdom.'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
-      invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      success: '&2Successfully changed max lands modifier for &6%kingdom% to &2%amount%'
-      usage: /k admin maxLandModifier <kingdom> [set/add/remove] <amount>
+      description: '&6Ändert die max. Landanzahl eines Königreiches.'
+      invalid-action: '&cUngültiger Parameter: &e%action%&c! Benutze&8: &eadd/remove/set'
+      invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
+      success: '&2Die max. Landanzahl von &6%kingdom% &2wurde erfolgreich zu &6%amount% &2geändert!'
+      usage: '/k admin maxLandModifier <Königreich> [set/add/remove] <Anzahl>'
     nation:
-      description: '&6Shows the available nation admin commands.'
+      description: '&6Zeigt verfügbare Admin Befehle für Nationen.'
       disband:
-        announce: '&e%nation% &6nation has been disbanded.'
+        announce: '&e%nation% &Nation wurde gelöscht!'
     nexus:
-      description: '&6Open a kingdoms nexus.'
-      tp: '&2Teleporting to &6%kingdom%''s &2nexus...'
-      tp-not-set: '&e%kingdom% &cdoesn''t have their nexus set.'
-      usage: /k admin nexus <kingdom>
+      description: '&6Öffnet den Nexus des Königreiches.'
+      tp: '&2Teleport zu dem Nexus von &6%kingdom%''s &2...'
+      tp-not-set: '&e%kingdom% &chat noch nicht ihren Nexus gesetzt.'
+      usage: '/k admin nexus <Königreich>'
     rank:
-      description: '&6Change a players kingdom rank.'
-      no-kingdom: '&cThe specified player is not in a kingdom.'
-      not-found: '&cRank not found.'
-      success: '&2Changed &6%name%''s &2rank from &6%previous_rank% &2to &6%rank%'
-      usage: /k admin rank <player> <rank>
+      description: '&6Ändert den Königreich-Rang eines Spielers.'
+      no-kingdom: '&cDer Spieler ist in keinem Königreich.'
+      not-found: '&cRang wurde nicht gefunden.'
+      success: '&2Der Rang von &6%name% &2wurde von &6%previous_rank% &2zu &6%rank% &2geändert.'
+      usage: '/k admin rank <Spieler> <Rang>'
     resourcepoints:
-      added: '&2Your new kingdoms resource points&8: &6%rp%'
-      description: '&6Add or take resourcepoints from a kingdom.'
-      done: '&6%kingdom%''s &2new resource points&8: &6%rp%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
-      invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      usage: /k admin resourcepoints <kingdom> [set/add/remove] <amount>
-      player-no-kingdom: '&cThe specified player doesn''t have a kingdom.'
+      added: '&2Dein neuer Ressourcenpunkte-Stand&8: &6%rp%'
+      description: '&6Füge/Enfterne Ressourcenpunkte von einem KÖnigreich.'
+      done: '&6%kingdom%''s &2neue Ressourcenpunkt&8: &6%rp%'
+      invalid-action: '&cUngültiger Parameter: &e%action%&c! Benutze&8: &eadd/remove/set'
+      invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
+      usage: '/k admin resourcepoints <Königreich> [set/add/remove] <Anzahl>'
     shield:
-      description: '&6Change the shield duration for a kingdom.'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
-      invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      invalid-time: '&cInvalid time unit&8: &e%time%'
-      success: '&2Successfully changed shield duration for &6%kingdom% &2to&8: &6%amount%'
-      usage: /k admin shield <kingdom> [set/add/remove] <time>
+      description: '&6Ändert die Haltbarkeit eines Schutzschildes.'
+      invalid-action: '&cUngültiger Parameter: &e%action%&c! Benutze&8: &eadd/remove/set'
+      invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
+      invalid-time: '&cUngültige Zeiteinheit&8: &e%time%'
+      success: '&2Die Schild-Haltbarkeit von &6%kingdom% &2wurde erfolgreich zu &6%amount% &2geändert.'
+      usage: '/k admin shield <Königreich> [set/add/remove] <time>'
     spy:
-      description: '&6Spy on kingdoms chat.'
-      'off': '&6Chat spy mode&8: &cOFF'
-      'on': '&6Chat spy mode&8: &2ON'
+      description: '&6Überwacht Chats von Königreichen.'
+      'off': '&6Chat-Überwachung&8: &cAUS'
+      'on': '&6Chat-Überwachung&8: &2AN'
     test:
-      description: '&6Test a string with hex color codes, complex messages, line breaks
-        and placeholders.'
-      usage: '&cUsage&8: &e/k admin test <message>'
+      description: '&6Tested einen String mit Hex Farben Codes, Complexe Nachrichten, Linen-Brefcher und Placeholders.'
+      usage: '&cBenutzung&8: &e/k admin test <Nachricht>'
     testsound:
-      description: '&6Test a sound string that you''re going to use in config.'
-      playing: '&2Playing now...'
-      usage: /k admin testsound <sound> [volume] [pitch]
+      description: '&6Tested einen Sound, welchen du in der Config nutzen möchtest.'
+      playing: '&2Spielt nun...'
+      usage: '/k admin testsound <sound> [volume] [pitch]'
     toggle:
-      description: '&6Toggle admin mode for yourself.'
-      'off': '&6Admin mode is now&8: &cOFF'
-      'on': '&6Admin mode is now&8: &2ON'
+      description: '&6Aktiviert/Deaktiviert Admin-Mode für dich selbst.'
+      'off': '&6Admin-Modus ist nun&8: &cAUS'
+      'on': '&6Admin-Modus ist nun&8: &2AN'
     unclaim:
-      description: '&6Unclaim any lands.'
-      not-claimed: '&cThis land is not claimed.'
-      success: '&2Unclaimed land at &6%x%&7, &6%z% &2from &6%kingdom%'
+      description: '&6Entfernung von allen Länderein.'
+      not-claimed: '&cDieses Land ist nicht beansprucht!'
+      success: '&2Land-Löschung bei &6%x%&7, &6%z% &2von &6%kingdom%'
     player:
-      found: '&2Player &6%name% &8(&7%uuid%&8) &2is in the following kingdoms&8:'
+      found: '&cDer Spieler &6%name% &8(&7%uuid%&8) &cist in folgenden Königreichen&8:'
       kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
-      no-duplicates: '&cThis player''s kingdom is not duplicated.'
+      no-duplicates: '&aDer Spieler ist nicht in mehreren Königreichen.'
   ally:
     allies: '&2Du bist nun mit &6%kingdom% &2verbündet.'
     already: '&cDu bist bereits mit &e%kingdom% &cverbündet.'
@@ -237,7 +232,7 @@ command:
     not-enough:
       kingdom-money: '&cDein Königreich hat nicht &e%amount%&c$.'
       money: '&cDu hast nicht &e%amount%&c$.'
-    service-unavailable: '&cBank services are currently unavailable.'
+    service-unavailable: '&cBank-Service ist momentan nicht erreichbar.'
     unknown-transaction: '&cUnbekannte Tranaktionen &e%transaction%'
     usage: /Kingdoms bank <deposit/withdraw> <Anzahl>
     withdraw:
@@ -246,8 +241,8 @@ command:
         &2Du hast &6%amount%&2$ aus der Schatzkammer deines Königreiches genommen.
         Dein neues Guthaben&8: &6%balance%
         &2Schatzkammer&8: &6%kingdoms_fancy_bank%
-    negative: '&cYou can''t transit negative values...'
-    zero: '&cYou can''t transit nothing.'
+    negative: '&cDu kannst keine negativen Werte übergeben...'
+    zero: '&cDu kannst nicht nichts transferieren.'
   broadcast:
     cooldown: '&cDu musst &e%time% &cwarten.'
     description: '&6Broadcastet eine Nachricht an alle Mitglieder deines Königreiches.'
@@ -301,8 +296,8 @@ command:
     occupied-land: '&cDieses Land ist in besitz eines anderen Königreich! Erobere
       es mit &e/k invade!'
     success: '&2Beanspruchung von &6%x%&7, &6%z% &2als königliches Gebiet.'
-    nation-zone: '&cThis land is a part of &e%nation%''s &cnation zone and cannot
-      be claimed.'
+    nation-zone: '&cDieses Land ist Teil der &e%nation%''s &cNation und kann nicht
+      beansprucht werden.'
   create:
     already-in-kingdom: '&cDu bist bereits in einem Königreich. Verlasse dein Königreich,
       wenn du ein neues erstellen möchtest.'
@@ -317,10 +312,10 @@ command:
       und Nummern.'
     name-length: '&cDer Name darf nicht größer als &e%max% &coder kleiner als &e%min%
       &csein!'
-    name-numbers: '&cKingdom names cannot contain numbers.'
+    name-numbers: '&cKönigreich-Namen dürfen keine Nummern enthalten.'
     success: '&2Du hast &6%kingdom%&2 gegründet!'
     usage: /Kingdoms create <Name>
-    announce: '&6%player% &2has founded &6%kingdom% &2kingdom!'
+    announce: '&6%player% &2hat das Königreich &6%kingdom% &2gegründet!'
   decline:
     all: '&2Du hast &6%invites% &2Einladungen abgelehnt.'
     declined: '&cDu hast &6%inviter%''s &cEinladung &e%kingdom% &cbeizutreten, abgelehnt.'
@@ -366,12 +361,12 @@ command:
     self: '&cDu kannst dich nicht selbst zum Feind erklären...'
     usage: /k enemy <Königreich>
   fly:
-    description: '&6Enable flight in your own land.'
-    disabled: '&6Flight Mode&8: &4OFF'
-    enabled: '&6Flight Mode&8: &2ON'
-    not-allowed: '&cYou can''t fly in territory of &e%kingdom%'
-    own-enemy-nearby: '&cYou can''t fly, there are enemies nearby.'
-    unclaimed: '&cYou can only fly in claimed lands that allow flying.'
+    description: '&6Aktiviert Flug-Modus in deinem Land.'
+    disabled: '&6Flug-Modus&8: &4AUS'
+    enabled: '&6Flug-Modus&8: &2AN'
+    not-allowed: '&cDu kannst nicht über das Gebiet von &e%kingdom% &cfliegen.'
+    own-enemy-nearby: '&cDu kannst hier aufgrund von Feinden nich fliegen.'
+    unclaimed: '&cDu kannst nur auf Länderein, die Fliegen erlaugeb, fliegen.'
   help:
     commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
     description: '&6Zeigt alle Königreich-Befehle an'
@@ -385,7 +380,7 @@ command:
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
     header: '&8&m---------------=(&c&l Königreiche &6%page%&7/&6%max_pages% &8&m)=---------------'
     usage: /Kingdoms help <Seite>
-    no-more-pages: '&cThere are no more pages to load.'
+    no-more-pages: '&cEs gibt keine weiteren Seiten.'
   home:
     already-teleporting: '&cDu wirst bereits teleportiert...'
     cancelled: '&cTeleportation wurde abgebrochen!'
@@ -432,19 +427,19 @@ command:
       Königreiche angreifen.'
     shield:
       defender:
-        kingdom: '&cThis kingdom is protected by a shield for&8: &e%shield%'
-        nation: '&cThis nation is protected by a shield for&8: &e%shield%'
+        kingdom: '&cDieses Königreich ist für &e%shield% &cdurch ein Schild geschützt!'
+        nation: '&cDieses Nation ist für &e%shield% &cdurch ein Schild geschützt!'
       invader:
         kingdom: |-
-          &cYour kingdom has a shield active for&8: &e%shield% &cYour shield will be deactivated if you invade.
-          To continue do the command again.
+          &cDein Königreich hat für &e%shield% &cein Schild. Dein Schild wird deaktiviert, wenn du Länderein angreifst.
+          Wiederhole den Befehl, um fortzufahren.
         nation: |-
-          &cYour nation has a shield active for&8: &e%shield% &cYour shield will be deactivated if you invade.
-          To continue do the command again.
-        kingdom-disabled: '&cYour kingdom''s shield has been deactivated which lasted
-          for&8: &e%shield% &cdue to &e%invader% &cinvading &e%kingdom%'
-        nation-disabled: '&cYour nation''s shield has been deactivated which lasted
-          for&8: &e%shield% &cdue to &e%invader% &cinvading &e%kingdom%'
+          &cDein Nation hat für &e%shield% &cein Schild. Dein Schild wird deaktiviert, wenn du Länderein angreifst.
+          Wiederhole den Befehl, um fortzufahren.
+        kingdom-disabled: '&cDein Königreichs-Schild wurde deaktiviert, obwohl es für
+          &e%shield% &cgehalten hätte, weil &e%invader% &e%kingdom% &cangegriffen hat.'
+        nation-disabled: '&cDein Nations-Schild wurde deaktiviert, obwohl es für
+          &e%shield% &cgehalten hätte, weil &e%invader% &e%kingdom% &cangegriffen hat.'
     simuntanous: '&cDein Königreich kann nur %amount% Länder gleichzeitig angreifern.'
   invite:
     already-in-kingdom: '&cDieses Königreich ist beirets in einem Königreich.'
@@ -476,7 +471,7 @@ command:
     announce: '&e%kicked% &cwurde aus dem Königreich von &e%kicker% &crausgeworfen.'
     cant-kick: '&e%kicked% &ckann nicht rausgeworfen werden.'
     description: '&6Wirft ein Mitglied aus deinem Königreich raus.'
-    not-in-kingdom: '&cDer SPieler ist nicht in deinem Königreich.'
+    not-in-kingdom: '&cDer Spieler ist nicht in deinem Königreich.'
     person: '&cDu wurdest aus &e%kingdom% &cvon &e%kicker% &crausgeworfen!'
     self: '&cDu kannst dich nicht selbst rauswerfen...'
     usage: /k kick <Spieler> [silent]
@@ -505,18 +500,18 @@ command:
     removed: '&2Die Beschreibung wurde entfernt.'
     usage: /k lore <Beschreibung>
   mail:
-    box-description: '&6Open your current kingdom mailbox.'
-    clear: '&2Cleared a total of &6%mails% &2mails.'
-    clear-description: '&6Clear all the kingdom mails.'
-    description: '&6Manage Mails in deinem Königreich.'
-    send: '&6%player% &2sent a new mail&8: &6%message%'
-    send-description: '&6Leave a mail for your kingdom.'
+    box-description: '&6Öffnet die Mailbox des Königreiches.'
+    clear: '&2&6%mails% &2Mails wurden entfernt.'
+    clear-description: '&6Alle Mails des Könichreichs wurden entfernt.'
+    description: '&6Manage die Mails in deinem Königreich.'
+    send: '&6%player% &2hat eine neue Mail geschicht&8: &6%message%'
+    send-description: '&6Sende eine Mail für dein Königreiche.'
     send-max: |-
-      &4You can't send more than &6%mails% &2mails.
-      Either clear your mails using &6/k mails clear &2or remove one from your mailbox.
-    send-usage: /k mail send <Nachricht>
-    set-as-read: '&2All the &6%mails% &2mails has been set as read.'
-    set-as-read-description: '&6Set all your current mails as read.'
+      &4Du kannst nicht mehr als &6%mails% &2Mails.
+      Entweder enferne deine Mails mit &6/k mails clear &2oder entferne eine von deiner Mailbox.
+    send-usage: '/k mail send <Nachricht>'
+    set-as-read: '&2Alle &6%mails% &2Mails wurden als gelesen markiert.'
+    set-as-read-description: '&6Setzt deine Mails als gelesen.'
   map:
     auto:
       disabled: '&2Auto-Map wurde &cdeaktiviert'
@@ -530,7 +525,7 @@ command:
     max-width: '&cDie maximale Weite beträgt &e%limit%'
     size:
       reset: '&2Die größe der Karte wurde zurückgesetzt.'
-    usage: /k map [auto/height] [width]
+    usage: /k map [auto/Höhe] [Breite]
   nation:
     accept:
       accepted: '&2Du hast &6%inviter%''s &2Einladung zu seiner Nation &e%nation%
@@ -557,7 +552,7 @@ command:
       not-enough:
         money: '&cDu hast keine &e%amount%&c$.'
         nation-money: '&cDeine Nation besitzt keine &e%amount%&c$.'
-      service-unavailable: '&cBank services are currently unavailable.'
+      service-unavailable: '&cBank-Service ist momentan nicht erreichbar.'
       unknown-transaction: '&cUnbekannte Transaktion &e%transaction%'
       usage: /k nation bank <deposit/withdraw> <Anzahl>
       withdraw:
@@ -566,8 +561,8 @@ command:
           &2Du hast &6%amount%&2$ von deiner Nation abgehoben.
           &2Dein neues Guthaben&8: &6%balance%
           &2Schatzkammer der Nation&8: &6%kingdoms_fancy_nation_bank%
-      negative: '&cYou can''t transit negative values...'
-      zero: '&cYou can''t transit nothing.'
+      negative: '&cDu kannst keine negativen Werte transferieren...'
+      zero: '&cDu kannst nicht nichts transferieren.'
     broadcast-cooldown: '&cDu musst &e%time% &cwarten, bevor du einen weiteren Rundruf
       starten möchtest.'
     broadcast-description: '&6Broadcaste eine Nachricht an alle Mitglieder der Nation.'
@@ -661,8 +656,8 @@ command:
       &coder du musst das Kapitol mit &e/k nation capital &cwechseln.
     leave-description: '&6Dein Königreich wird die Nation verlassen.'
     nexus:
-      actionbar-activated: '&6Nexus Mode&8: &2Aktiviert'
-      actionbar-deactivated: '&6Nexus Mode&8: &cDeaktiviert'
+      actionbar-activated: '&6Nexus-Modus&8: &2Aktiviert'
+      actionbar-deactivated: '&6Nexus-Modus&8: &cDeaktiviert'
       already-there: '&cDer Nexus ist bereits hier. Was versuchst du...?'
       another-structure: '&cAuf diesem Land ist bereits eine andere Struktur!'
       cannot-replace: '&cDiesen Block kannst du nicht durch deinen Nexus ersetzen!'
@@ -705,7 +700,7 @@ command:
       description: '&6Setzt den Spawn deiner Nation.'
       nexus-land: '&cDu kannst das Königreich-Zuhause nur in dem Land des Nexus setzten!'
       not-claimed: '&cDu bist nicht auf dem Gebiet deiner Nation!'
-      others-land: '&cDu musst im Capitol sein!'
+      others-land: '&cDu musst im Kapitol sein!'
       set: '&aNations-Spawn&8: &6%x%&7, &6%y%&7, &6%z%'
     show:
       allies: |
@@ -747,7 +742,7 @@ command:
 
         &7| &2Königreiche&8:
         %kingdoms%
-      others-permission: '&cYou don''t have permission to see others info.'
+      others-permission: '&cDU hast keine Berechtigung, um Informationen von anderen zu sehen.'
       relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
       truces: |
         COMPLEX:&7| &2Waffenstillstände&8:
@@ -805,13 +800,13 @@ command:
       invasion: '&cYou don''t remove your nexus while the land is being invaded.'
     setting-nation: '&cDu bist dabei den Ort für den Nexus der Nation festzulegen.'
     success: '&aDer Nexus wurde erfolgreich bei &6%x%&7, &6%y%&7, &6%z% &agesetzt!'
-    invasion: '&cYou can''t move your nexus while the land is being invaded.'
+    invasion: '&cDu kannst deinen Nexus nicht bewegen, während dein Land erobert wird.'
   outpost:
     center:
-      changed: '&2Changed the center location for &6%outpost% &2outpost.'
-      description: '&6Changes the outpost center location.'
-      outpost-not-found: '&cCould not find &e%outpost% &coutpost.'
-      usage: '&4Usage&8: &e/k outpost center <name>'
+      changed: '&2Der Ort der Mitte des &6%outpost% &2Outpostes wurde verändert.'
+      description: '&6Ändert den Ort eines Outpostes.'
+      outpost-not-found: '&cDer Outpost &e%outpost% &ckonnte nicht gefunden werden.'
+      usage: '&4Usage&8: &e/k outpost center <Name>'
     create:
       created: '&2Created an outpost named &6%outpost% &2in &6%region% &2region.'
       description: '&6Creates a new outpost from WorldGuard region.'
@@ -881,25 +876,25 @@ command:
     usage: /k promote <Speiler>
   pvp:
     description: '&6Aktiviert das freundliche Feuer des Königreichs.'
-    'off': '&6PvP Modus&8: &cAUS'
-    'on': '&6PvP Modus&8: &2AN'
+    'off': '&6PvP-Modus&8: &cAUS'
+    'on': '&6PvP-Modus&8: &2AN'
   redo:
-    already-claimed: '&6The last land that was unclaimed is already claimed by someone
-      else.'
-    already-unclaimed: '&6The last land that was claimed is already unclaimed by someone
-      else.'
-    claimed: '&2You''ve unclaimed your claimed land at &6%x%&7, &6%z%'
-    description: '&6Redo a claim/unclaim.'
-    no-history: '&cYou don''t have any land history left.'
-    unclaimed: '&2You''ve claimed your unclaimed land at &6%x%&7, &6%z%'
+    already-claimed: '&6Der letzte freigegebene Chunk, wurde bereits von jemanden anderen
+      beansprucht.'
+    already-unclaimed: '&6Der letzte benaspruchte Chunk, wurde bereits von jemanden anderen
+      freigegegeben.'
+    claimed: '&2Du hast das Land bei &6%x%&7, &6%z% &2freigegeben.'
+    description: '&6Macht eine Beanspruchung/Freigabe rückgängig.'
+    no-history: '&cDu hast keine Land-History.'
+    unclaimed: '&2Du hast das Land bei &6%x%&7, &6%z% &cbeansprucht.'
   relations:
     description: '&6Zeigt alle aktuellen Beziehungs-Anfragen an.'
     no-requests: '&6Dein Königreich hat keine Anfragen.'
   reload:
-    description: '&6Reloads the plugin.'
-    success: '&2Successfully reloaded the plugin.'
-    usage: /k reload [config]
-    commands: '&2All the commands have been reloaded.'
+    description: '&6Reloadet das Plugin.'
+    success: '&2Das Plugin wurde erfolgreich reloaded.'
+    usage: /k reload [Config]
+    commands: '&2Alle Befehle wurden reloaded.'
   rename:
     cooldown: '&cDu musst &e%cooldown% Sekunden &cwarten.'
     cost: '&cDein Königreich benötigt &e%cost%&c$!'
@@ -914,7 +909,7 @@ command:
     usage: /Kingdoms rename <Name>
   resourcepoints:
     cannot:
-      convert: '&cDu benötigst mindestens &e$%least% &8(&cWwer&8: &e%worth%&8) &cfür
+      convert: '&cDu benötigst mindestens &e$%least% &8(&cWert&8: &e%worth%&8) &cfür
         einen Ressourcenpunkt.'
     deposit:
       disabled: '&cDu kannst keine Ressourcenpunkte abheben.'
@@ -945,8 +940,8 @@ command:
       success: |-
         &2Du hast erfolgreich &6%amount% &2Ressourcenpunkte in dein Königreich für &6%translated% &2eingezahlt.
         Dein neues Guthaben&8: &6%balance%
-    negative: '&cYou can''t transit negative resource points...'
-    zero: '&cYou can''t transit nothing.'
+    negative: '&cDu kannst keine negativen Werte transferieren...'
+    zero: '&cDu kannst nicht nichts transferieren.'
   revoke:
     description: '&6Beendet eine Beziehung mit einem Königreich.'
     kingdom-not-found: '&e%kingdom% &ckonnte nicht gefundfen werden.'
@@ -1087,8 +1082,8 @@ command:
     disconnection: '&cThe land you''re trying to unclaim will disconnect the land
       at&8: &e%x%&7, &e%z%'
     cannot-remove-nexus: |-
-      COMPLEX:&cCannot unclaim a land with nexus in it.
-      Please relocate your nexus usinghover:{&e/k nexus;&4Click to Enable;/k nexus} &ccommand.
+      COMPLEX:&cEIn Land mit einem Nexus, kann nicht freigegeben werden
+      Bitte bewege deinen NExus an einen an deren Ort, mit hover:{&e/k nexus;&4Klicke, um zu aktivieren;/k nexus} &c.
   unclaimall:
     announce: '&6%player% &2hat &6%lands% &2Länderein freigegeben!'
     confirm: |-
@@ -1112,7 +1107,7 @@ command:
     description: '&6Entfernt dein Königreich-Zuhause.'
     not-set: '&cDas Zuhause des Königreiches wurde nicht festgelegt.'
     success: '&aDas Königreich-Zuhause wurde entfernt&8: &6%x%&7, &6%y%&7, &6%z%'
-  updates-description: '&6Checks if there are any updates available for Kingdoms.'
+  updates-description: '&6Checkt, ob irgendwelche Updates für das Plugin vorhanden sind.'
   visualize:
     description: '&6Aktiviert Grenzen oder deaktiviert sie.'
     display: '&2Zeigt Grenzen...'
@@ -1122,95 +1117,92 @@ command:
     toggle:
       disabled: '&2Grenzen sind &cAUS'
       enabled: '&2Grenzen sind &6AN'
-      description: '&6Toggle land indicators (visualizers or markers)'
+      description: '&Aktiviert/Deaktiviert Land-Indikatoren (Visualizers oder Marker)'
     usage: /k visualize [permanent|toggle]
     admin-display: |-
       COMPLEX:&7| &2Location&8: &6%x%&7, &6%z%
-      &7| &2Kingdom&8: &6%kingdom%
-      &7| &2Structure&8: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Teleport;/tp %sx% %sy% %sz%}
+      &7| &2Königreich&8: &6%kingdom%
+      &7| &2Struktur&8: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Teleport;/tp %sx% %sy% %sz%}
       &7| &2Turrets&8:
       %turrets%
-      &7| &2Protection Signs&8:
+      &7| &2Schutz-Schilder&8:
       %protection-signs%
     markers:
-      description: '&6Change your land markers type.'
+      description: '&6Ändert den Typen des Land-Indikatores.'
       usage: '&4Usage&8: &e/k visualize markers <type>'
-      already-using: '&cYou''re already using &e%markers% &cmarkers type.'
-      changed: '&2Your land markers have been changed to &6%markers%'
-      invalid: '&cCannot find the specified land markers&8: &e%markers%'
+      already-using: '&cDu benutzt bereits den &e%markers% &cTyp.'
+      changed: '&2Deine Land-Indikatoren wurden zu &6%markers% 62geändert.'
+      invalid: '&cDer Typ &e%markers% &ckonnte nicht gefunden werden.'
     permanent:
-      description: '&6Toggle if the land indicator should be permanent.'
-      enabled: '&2Permanent indicators has been turned &6ON.'
-      disabled: '&2Permanent indicators has been turned &cOFF'
+      description: '&6Aktiviert/Deaktiviert, ob der Indikator permanent sein soll.'
+      enabled: '&2Permanente-Indikaturen wurden &6aktiviert&2.'
+      disabled: '&2Permanente-Indikaturen wurden &cdeaktiviert&2.'
   tag:
-    desciption: '&6Change your kingdom''s tag.'
-    name-length: '&cKingdom tag length cannot be greater than &e%max% &cor less than
-      &e%min%'
-    name-english: '&cKingdom tag must be in English and only contain numbers and alphabets.'
-    name-has-symbols: '&cKingdom tag cannot contain symbols. Only numbers and alphabets.'
-    name-numbers: '&cKingdom tag cannot contain numbers.'
-    usage: '&4Usage&8: &e/k tag <name>'
-    no-kingdom: '&cYou don''t have a kingdom.'
-    changed: '&2Your kingdom''s tag was changed from &6%tag% &2to%kingdoms_tag% &2by
-      &6%player%'
-    cost: '&cYour kingdom needs &e%cost% &cmoney to change your kingdom''s tag.'
+    desciption: '&6Verändert deinen Königreichs-Tag'
+    name-length: '&cDer Königreich-Tag kann nicht größer als &e%max% &cund nicht kleiner
+      &cals &e%min% &csein!'
+    name-english: '&cBitte benutze nur deutsche Buchtsaben!'
+    name-has-symbols: '&cBitte verwende keine Symobole, osndern nur Buchstaben!'
+    name-numbers: '&cBitte verwende keine Nummern.'
+    usage: '&4Benutzung&8: &e/k tag <Name>'
+    no-kingdom: '&cDu besitzt kein Königreich.'
+    changed: '&2Dein Königreich-Tag wurde von &6%tag% &2zu %kingdoms_tag% &2von
+      &6%player% 62geändert!'
+    cost: '&cDein Königreich benötigt &e%cost%$&, um den Königreich-Tag zu ändern.'
 commands-usage: '&4Benutzung&8: &e%cmd%'
 disabled-world: '&cKönigreiche sind in &6%world% &cdeaktiviert.'
 extractor:
   not-enough-resource-points: '&cDu hast nicht genügend Ressourcenpunkte.'
 fly:
-  damage: '&cYou took damage and your flight has been disabled.'
-  enemies-nearby: '&cThere are enemies nearby. Your flight has been disabled.'
-  out-of-land: '&cYou can only use kingdoms fly in your own land. Your flight has
-    been disabled.'
+  damage: '&cWeil du verletzt wurdest, wurde der Flug-Modus deaktiviert.'
+  enemies-nearby: '&cWeil in deiner Nähre Gegner sind, wurde der Flug-Modus deaktiviert.'
+  out-of-land: '&cWeil du nicht in deinem Königreich bist, wurde der Flug-Modus deaktiviert.'
   warnings:
     unfriendly-nearby:
-      safe: '&2You are now safe from unfriendly players.'
-      warn: '&cYour flight is about to be disabled in &e%counter% &cseconds due to
-        being close to an enemy! Go back immediately.'
+      safe: '&2Du bist nun in Sicherheit, vor gegnerischen Spielern.'
+      warn: '&cDein Flug-Modus wird in &e%counter% &cSekunden aufgrund
+        von Gegnern deaktiviert! Gehe schnell zurück!'
     out-of-land:
-      safe: '&2You are now safe in this land.'
-      warn: '&cYour flight is about to be disabled in &e%counter% &cseconds due to
-        being in a land that you cannot fly in! Go back immediately'
+      safe: '&2Du bist nun in diesem Land in Sicherheit.'
+      warn: '&cDein Flug-Modus wird in &e%counter% &cSekunden aufgrund
+        eines anderen Landes deaktiviert! Gehe schnell zurück!'
 inactivity-announce:
   kingdom: '&e%kingdom% &6wurde wegen Inaktivität entfernt!'
   player: '&e%player% &cwurde wegen Inaktivität rausgeworfen!'
 insufficient-permission: '&cDafür hast du keine Berechtigung!'
 invasion:
   blocked:
-    command: '&cYou can''t use this command during an invasion.'
-    item: '&cYou can''t use this item during an invasion.'
-    teleportation: '&cYou can''t teleport during an invasion.'
-    world-change: '&cYou can''t go to another world during an invasion.'
+    command: '&cWährend Eroberungen kannst du keine Befehle benutzen.'
+    item: '&cDieses Item kannst du ährend einer rroberung nicht benutzen.'
+    teleportation: '&cWährend einer Eroberuing, kannst du dich nicht teleportieren.'
+    world-change: '&cWährend einer Eroberuing, kannst du in keine andere Welt gehen.'
   end:
     defenders:
-      attacker-surrendered: '&6%invader% &csurrendered while invading your kingdom.'
-      death-counter-limit: '&6%invader%''s &2kingdom members died too many times while
-        invading your kingdom.'
-      defender-surrendered: '&cYour kingdom surrendered while being invaded by &e%invader%'
-      died: '&6%invader% &2died out while invading your kingdom.'
-      logout: '&6%invader% &2logged out while invading your kingdom.'
-      success: '&e%invader% &chas successfully invaded your kingdom.'
-      times-up: '&6%invader% &2could not make it in time invading &e%kingdom%'
-      unclaimed: '&cYour kingdom land that was being invaded by &e%invader% &cwas
-        unclaimed.'
-      defender-death-counter: '&6%invader%''s &2kingdom members died too many times
-        while invading your kingdom.'
+      attacker-surrendered: '&6%invader% &chat aufgegeben!'
+      death-counter-limit: '&6%invader%''s &2Königreich Mitglieder sind zu oft gestorben!'
+      defender-surrendered: '&cDein Königreich hat währen dem Angriff durch &e%invader% &caufgegeben!'
+      died: '&6%invader% &2ist während der Eroberung gestorben.'
+      logout: '&6%invader% &2hat sich während der Eroberung ausgeloggt.'
+      success: '&e%invader% &chat erfolgreich dein Königreich eingenommen.'
+      times-up: '&6%invader% &2hat es nicht geschafft &e%kingdom% &2in der Zeit zu erobern!'
+      unclaimed: '&cDein Königreich Land, welches durch &e%invader% &cangregriffen wurde, wurde
+        freigegeben.'
+      defender-death-counter: '&6%invader%''s &2Königreich Mitglieder sind zu oft gestorben!'
     invaders:
-      attacker-surrendered: '&e%invader% &csurrendered while invading &e%kingdom%'
-      death-counter-limit: '&e%invader%''s &ckingdom members died too many times while
-        invading &e%kingdom%'
-      defender-surrendered: '&6%kingdom% &2surrendered while being invaded by &6%invader%'
-      died: '&e%invader% &cdied out while invading &e%kingdom%'
-      logout: '&e%invader% &clogged out while invading &e%kingdom%'
-      success: '&6%invader% &2has successfully invaded &e%kingdom%'
-      times-up: '&e%invader% &ccould not make it in time invading &e%kingdom%'
-      unclaimed: '&6%kingdom% &2unclaimed the land &6%invader% &2was invading.'
-      defender-death-counter: '&e%invader%''s &ckingdom members died too many times
-        while invading &e%kingdom%'
+      attacker-surrendered: '&e%invader% &chat wärend des Angriffes gegen &e%kingdom% &caufgegeben!'
+      death-counter-limit: '&e%invader%''s &cKönigreich Mitglieder sind zu oft während der Eroberung
+        gegen &e%kingdom% &cgestorben'
+      defender-surrendered: '&6%kingdom% &2hat während der Eroberung durch &6%invader% &2aufgegeben.'
+      died: '&e%invader% &cstarb während der Eroberung gegen &e%kingdom%'
+      logout: '&e%invader% &chat sich während der Eroberung gegen &e%kingdom% &causgeloggt.'
+      success: '&6%invader% &2hat erfolgreich &e%kingdom% &2erobert.'
+      times-up: '&e%invader% &chat es nicht geschafft &e%kingdom% &cin der Zeit zu erobern!'
+      unclaimed: '&6%kingdom% &hat das Land, welches &6%invader% &2angegriffen hat, freigegeben.'
+      defender-death-counter: '&e%invader%''s &cKönigreich Mitglieder sind während der Eroberung
+        durch &e%kingdom% &cgestorben.'
 kingdom-name-blacklisted: '&cDer Name beinhaltet ungültige (böse) Wörter.'
-mails-join-notifications: '&2You have &6%mails% &2new mails. Open your mailbox to
-  read them.'
+mails-join-notifications: '&2Du hast &6%mails% &2neue Mails. Öffne deien Mailbox,
+  um sie zu olesen.'
 masswar:
   started: |2
 
@@ -1241,7 +1233,7 @@ nexus:
     cannot-delete-member: '&cDer Mitglieder-Rang konnte nicht gelöscht werden.'
     cannot-delete-rank: '&cDu kannst diesen Rang incht löschen. Dein Könichreich benötigt
       mindestens 2 Ränge.'
-    enter-value: COMPLEX:&6Bitte gebe einen Wert in den Chat ein. Oder gehe über hover:{&cCancel;&cCancel;cancel}
+    enter-value: COMPLEX:&6Bitte gebe einen Wert in den Chat ein. Oder gehe über hover:{&cAbbrechen;&cAbbrechen;cancel}
       &6um den Vorgang abzuberechen.
     invalid:
       material: '&cDu kannst das Material &e%material% &cnicht nutzen!'
@@ -1261,8 +1253,8 @@ nexus:
     node:
       already-exists: '&cEs gibt keinen Rang mit dieser Notiz.'
     unknown-material: '&cUnbekanntes Material&8: &e%material%'
-    other: '&cYou can''t change rank settings of other kingdoms.'
-    copy: '&2Successfully coped &6%copy_node% &2rank to &6%rank_node%'
+    other: '&cDu kannst nicht die Rang-EInstellungen eiens anderen Königreiches ändern.'
+    copy: '&2Du hast erfolgreich &6%copy_node% &2Rang zu &6%rank_node% &ckopiert.'
   resourcepoints: '&6Eine Summe von &e%amount% &6Ressourcenpunkte wurde hinzugefügt.'
   settings:
     color:
@@ -1312,15 +1304,15 @@ nexus:
   turret-resourcepoints: '&cDu benötigst &e%cost% &cRessourcenpunkte, um diesen Turret
     zu kaufen.'
   nation: '&cDein Königreich ist in keiner Nation.'
-  resource-points: '&6A total of &e%amount% &6resource points has been added.'
+  resource-points: '&6&e%amount% &6Ressourcenpunkte wurden hinzugefügt.'
   chest:
-    others: '&cYou can''t open nexus chest of other kingdoms.'
+    others: '&cDu kannst nicht die Nexus-Truhe eines anderen Könichreiches öffnen.'
   misc-upgrades:
-    others: '&cYou can''t change misc upgrades of other kingdoms.'
+    others: '&cDu kannst keine Verschiedene-Upgrades eines anderen Königreiches verändern.'
   members:
-    others: '&cYou can''t manage members of other kingdoms.'
-    next-page-not-available: '&cNo more pages. Max pages&8: &e%pages%'
-    previous-page-not-available: '&cNo more previous pages.'
+    others: '&cDu kannst nicht die Mitglieder eines anderen Könichreiches managen.'
+    next-page-not-available: '&cKeine weiteren Seiten! Max. Seiten&8: &e%pages%'
+    previous-page-not-available: '&cKeine vorheige Seite verfügbar.'
 no-kingdom:
   default: '&cDu hast kein Königreich.'
   structures-use: '&cDu musst in einem Königreich sein, um Strukturen nutzen zu können.'
@@ -1363,7 +1355,7 @@ permissions:
   donate: '&cDu kannst die Ressourcenpunkte nicht verwalten.'
   edit-ranks: '&cDu kannst die Ränge & Berechtigungen nicht verändern!'
   enemy: '&cDu kannst niemanden zum Feind ernennen.'
-  fly: '&cYou can''t use kingdoms fly'
+  fly: '&cDu kannst keinen Königreich-Flug-Modus benutzen.'
   home: '&cDu kannst dein Königreich-Zuhause nicht nutzen!'
   invade: '&cDu kannst keine Königreiche erobern.'
   invite: '&cDu kannst niemanden in dein Königreich einladen.'
@@ -1384,7 +1376,7 @@ permissions:
   unclaim: '&cDu kannst dieses Land nicht freigeben!'
   upgrade: '&cDu kannst nichts verbessern.'
   withdraw: '&cDu kansnt kein Geld aus der Schatzkammer nehmen.'
-  set-home: '&cYou can''t set kingdom''s home.'
+  set-home: '&cDu kannst kein Königreich-Zuhause setzen.'
   exclude-tax: ~Unused message entry
   protection-signs: ~Unused message entry
   truce: '&cYou can''t /k truce other kingdoms.'
@@ -1392,7 +1384,7 @@ permissions-interact: '&cDu kansnt in dem königlichen Gebiet nicht interagieren
 permissions-use: '&cDu darfst in dem königlichen Gebiet nichts benutzen.'
 place-in-claimed-only: '&cDu kannst nur in deinem beanspruchten Land bauen!'
 players-only: '&cNur Spieler können dieses Befehl nutzen.'
-prefix: '&6[&lE&empires&6] &2'
+prefix: '&6[&eKönigreiche&6] &2'
 protected-signs:
   add-name: '&2Bitte gebe den Namen des Spielers ein...'
   add-owner: '&cDu bist der Besitzer des Objektes...'
@@ -1413,41 +1405,41 @@ protected-signs:
   removed: '&c%name% wurde entfernt.'
   unclaimed: '&cDu kannst nur Blöcke in deinem Gebiet schützen!'
   unprotected: '&cDieser Block ist nicht länger geschützt!'
-  cant-protect-double-chest: '&cThis chest cannot be protected as the other side is
-    in an unclaimed land.'
+  cant-protect-double-chest: '&cDiese Truhe kann nicht geschützt werden, da die andere Seite auf
+    keinem beanspruchtem Land steht!'
   protection-type:
-    already-using: '&cThis block is already using this protection method.'
-    changed: '&2Successfully changed the block protection method to &e%protection%&c.'
+    already-using: '&cDieser Block wird bereits durch den selben Typ geschützt.'
+    changed: '&2Der Schutz-Yp wurde erfolgreich zu &e%protection%&c geändert.'
   players:
-    cleared: '&2Removed all the members.'
-    removed: '&2Removed &6%name% &2from the group.'
-    limit: '&cYou can''t add more than &e%limit% &cmember to the group.'
+    cleared: '&2Allte Mitglieder wurden entfernt.'
+    removed: '&6%name% &2wurde aus der Gruppe entfernt.'
+    limit: '&cDa kannst nicht mehr als &e%limit% &cMitglieder zu der Gruppe hinzufügen.'
     include:
-      included: '&2Added &6%name% &2to the group.'
-      is-already-in-group: '&3%name% &cis already in the group.'
-      owner: '&cYou''re the owner of the block...'
-      name: '&2Enter the name of the player you wish to add.'
+      included: '&6%name% &2wurde zu der Gruppe hinzugefügt.'
+      is-already-in-group: '&3%name% &cist bereits in der Gruppe.'
+      owner: '&cDu bist der Besitzer des Blockes...'
+      name: '&2Bitte gebe den Namen eines Spielers an, welchen du hinzufügen möchtest.'
     exclude:
-      excluded: '&2Excluded &6%name% &2from the group.'
-      is-already-in-group: '&e%name% &cis already excluded from the group.'
-      owner: '&cYou''re the owner of the block...'
-      name: '&2Enter the name of the player you wish to exclude.'
+      excluded: '&6%name% &2wurde aus der Gruppe ausgeschlossen.'
+      is-already-in-group: '&e%name% &cist bereits ais der Gruppe ausgeschlossen.'
+      owner: '&cDu bist der Besitzer des Blockes...'
+      name: '&2Bitte gebe den Namen eines Spielers an, welchen du ausschließen möchtest.'
   kingdoms:
-    cleared: '&2Removed all the kingdoms.'
-    removed: '&2Removed &6%name% &2kingdom from the group.'
-    limit: '&cYou can''t add more than &e%limit% &ckingdoms to the group.'
+    cleared: '&2Alle Königreiche wurden entfernt.'
+    removed: '&2Das Königreich &6%name% &2wurde ausder Gruppe entfernt.'
+    limit: '&cDu kannst nicht mehr als &e%limit% &cKönigreiche zu der hinzufügen.'
     include:
-      included: '&2Added &6%name% &2kingdom to the group.'
-      is-already-in-group: '&3%name% &ckingdom is already in the group.'
-      owner: '&cTo include your kingdom, simply change the protection type.'
-      name: '&2Enter the name of the kingdom you wish to add.'
-      not-found: '&cThe specified kingdom was not found.'
+      included: '&2Das Königreich &6%name% &2wurde zu der Gruppe hinzugefügt.'
+      is-already-in-group: '&2Das Königreich &3%name% &cist bereits Tei lder Gruppe.'
+      owner: '&cUm dein Königreich mit einzuschließen, ändere einfach den Schutz-Typ.'
+      name: '&2gebe ein Königreich an, welches du hinzufügen möchtest.'
+      not-found: '&cDas Königreich konnte nicht gefunden werden.'
     exclude:
-      excluded: '&2Excluded &6%name% &2kingdom from the group.'
-      is-already-in-group: '&e%name% &ckingdom is already excluded from the group.'
-      owner: '&cTo exlude your kingdom, simply change the protection type.'
-      name: '&2Enter the name of the kingdom you wish to exclude.'
-      not-found: '&cThe specified kingdom was not found.'
+      excluded: '&2Das Königrecih &6%name% &2wurde aus der Gruppe ausgeschlossen.'
+      is-already-in-group: '&2Das Königreich &e%name% &cist bereits aus der Gruppe ausgeschlossen worden.'
+      owner: '&cUm ein Königreich auszuschließen, ändere einfach den Schutz-Typ.'
+      name: '&2Bitte gebe ein Königreich an, welches du auschließen möchtest.'
+      not-found: '&cDas Königreich koonnte nicht gefunden werden.'
 regulator:
   attributes:
     add: '&2Bitte gebe einen Namen an.'
@@ -1459,8 +1451,8 @@ regulator:
     add-self: '&cDu kannst dich nicht selbst hinzufügen.'
     added: '&6%add% &2Wurde zu den Attributen hinzugefügt.'
     already-added: '&e%add% &cwurde bereits hinzugefügt.'
-relations-disabled-commands: '&cYou can''t use that command in this territory.'
-structure-cant-break: '&cYou can''t break this structure'
+relations-disabled-commands: '&cDu kannst diesen Befehl nicht in diesem Gebiet benutzen.'
+structure-cant-break: '&cDiese Struktur kannst du nicht zerstören!'
 tax:
   kick: '&cDu konntest die Steuern nicht bezahlen, weswegen du aus dem Königreich
     verbannt wurdest!'
@@ -1477,30 +1469,29 @@ tax:
     paid-nation: |-
       &2Eine Summe von &6%tax%$ &cwurden für deine Nation bezahlt.
       Schatzkammer&8: &6$%kingdoms_bank%
-    age: '&5Your kingdom did not pay the taxes as it''s new.'
-    disbanded-announce: '&e%kingdom% &ckingdom has been disbanded due to not being
-      able to pay the taxes&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
-    kicked-announce: '&e%kingdom% &ckingdom has been kicked out of &e%nation% &cnation
-      due to not being able to pay the taxes&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+    age: '&5Dein Königreich musste die Steuern nicht bezahlen, da es neu ist.'
+    disbanded-announce: '&cDas Königreich &e%kingdom% &cwurde gelöscht, da es nicht in der Lage war
+      die Steuern zu bezahlen&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+    kicked-announce: '&cDas Königreich &e%kingdom% &cwurde aus der Nation  &e%nation% &cgekickt, da
+      es nich in der Lage war die Steuern zu bezahlen&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
   member-paid: '&6$%tax% &2wurden dir genommen, um die Steuern zu bezahlen.'
   nation:
-    disbanded: '&cDein Königrecih wurde aus der Nation verbannt, da es die Sterun
+    disbanded: '&cDein Königreich wurde aus der Nation verbannt, da es die Sterun
       nicht bezahlen konnte.'
-    paid: '&cDein Königrecih wurde aus der Nation verbannt, da es die Sterun nicht
+    paid: '&cDein Königreich wurde aus der Nation verbannt, da es die Sterun nicht
       bezahlen konnte.'
-    age: '&5Your nation did not pay the taxes as it''s new.'
-    disbanded-announce: '&e%nation% &cnation has been disbanded due to not being able
-      to pay the taxes&8: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
+    age: '&5Deine Nation musste die Steuern nicht bezahlen, da es neu ist.'
+    disbanded-announce: '&cDie Nation &e%nation% &cwurde gelsöcht, da es die Steuern nicht bezahlen konnte&8: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
   notifications: |-
     &8[&4WARNUNG&8] &cDein Königreich hat nicht genügend Geld &7(&e%kingdoms_fancy_bank%&7) &cin der Bank, um die nächste Zahlung zu begleichen&8: &e%tax%
     &cWenn die eingesammlten Steuern von deinen Mitgliedern nicht reichen, wird dein Königreich gelöscht.
   paid: '&e%tax% &cwurden dir für die Steuern deines Königreiches abgenommen.'
   reminder: |2
 
-    &4&l&nAttention&8&l: &c&lTaxes will be collected in&8: &e%time%
-  total: '&2Your kingdom has gained a total of &6$%tax% &2from collecting taxes.'
-  excluded-permission: '&2You did not pay kingdom taxes because you were excluded.'
-  excluded-new: '&2You did not pay kingdom taxes because you were new.'
+    &4&l&nAttention&8&l: &c&lSteuern werden eingesammelt in&8: &e%time%
+  total: '&2Dein Königreich hat &6$%tax%$ &2durch die Einsammelung voin Steuern erhalten.'
+  excluded-permission: '&2Du musstest keine Steuern bezahlen, da du davon ausgeschlossen wurdest.'
+  excluded-new: '&2Du musstest keine Steuern zahlen, da du neu bist.'
 turret:
   ammo:
     max-ammo: '&cMax Ammo wurde erreicht.'
@@ -1531,7 +1522,7 @@ upgrades:
   misc-enabled: '&2Aktivierung von &6%upgrade% &2Verschiedenes Upgrade.'
   misc-max: '&cDu hast bereits &e%upgrade% &czum maximalen Level verbessert.'
   misc-not-enough-resourcepoints: '&cDu benötigst &e%cost% &cum &e%upgrade% &czu verbessern'
-  misc-not-upgraded: '&cCannot disable an upgrade that''s not upgraded.'
+  misc-not-upgraded: '&cEin Upgrade kann nicht deaktiviert werden, wenn es noch garnicht verbessert wurde.'
   misc-upgrade: '&6Du hast &2%upgrade% &6zu Level &2%level% &6verbessert.'
   powerup-max: '&cDu hast bereits &e%powerup% &czum maximalen Level verbessert.'
   powerup-not-enough-resourcepoints: '&cDu benötigst &e%cost% Ressourcenpunkte, um
@@ -1541,45 +1532,45 @@ warppad-enter-name: '&2Bitte gebe einen neuen Namen für das Warp Pad ein.'
 warppad-name-set: '&2Warp Pad Name wurde zu &6%name% &2geändert.'
 top-rewards:
   kingdom: |-
-    &2Your kingdom has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
-    &2New Kingdom Balance&8: &6$%kingdoms_fancy_bank%
-    &2New Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+    &2Dein Königreich wurde mit &6$%money%$ &2und &6%rp% &2Ressourcenpunkte belohnt, weil es Rang &5%rank% &2ist.
+    &2Guthaben&8: &6$%kingdoms_fancy_bank%
+    &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
   nation: |-
-    &2Your nation has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
-    &2New Nation Balance&8: &6$%kingdoms_fancy_nation_bank%
-    &2New Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+    &2Dein Nation wurde mit &6$%money%$ &2und &6%rp% &2Ressourcenpunkte belohnt, weil es Rang &5%rank% &2ist.
+    &2NeGuthaben&8: &6$%kingdoms_fancy_nation_bank%
+    &2Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
 champion-type:
-  changed: '&2Your kingdom''s champion has been changed from &6%old_champion% &2to
-    &6%new_champion%'
-  already-in-use: '&cYour kingdom is already using &e%champion% &cchampion.'
-no-kingdom-reminder: '&cReminder&8: &eYou haven''t joined a kingdom yet.'
-nexus-resource-points-enter-value: COMPLEX:&6Please enter the amount of resource points
-  or type hover:{&cCancel;&cCancel;cancel} &6to cancel.
+  changed: '&2Der Champion deines Königreiches wurde von &6%old_champion% &2zu
+    &6%new_champion% &2geändert.'
+  already-in-use: '&cDein Königreich benutzt bereits den &e%champion% &cChampion.'
+no-kingdom-reminder: '&cErinnerer&8: &eDu bist noch keinem Königreich beigetreten.'
+nexus-resource-points-enter-value: COMPLEX:&6Bitte gebe die ANzahl der Ressourcenpunkte an
+  oder gehe auf hover:{&cAbbrechen;&cAbbrechen;cancel} &6,um abbzubrechen.
 'no':
-  nation: '&cYour kingdom is not in a nation.'
-kingdom-tag-blacklisted: '&cYour kingdom''s tag contains inappropriate words.'
-death-penalty: '&e%name% &chas died and &e%penalty% &cresource points has been taken
-  from your kingdom.'
+  nation: '&cDein Königreich ist in keiner Nation.'
+kingdom-tag-blacklisted: '&cDein Königreich-Tag beinhaltet illegale Wörter!'
+death-penalty: '&e%name% &cist gestoreben und &e%penalty% &cRessourcenpunkte wurden als
+  Strafe dem Königreich abgezogen!'
 kingdom-item:
-  inventory: '&cCannot use kingdom item in this inventory.'
+  inventory: '&cDas Königreich-Item konnte  in diesem Inventar nicht genutzt werden.'
 auto-claim:
-  disabled-world: '&cClaiming is disabled in &6%world%'
-  in-region: '&cYou cannot claim lands in protected regions.'
+  disabled-world: '&cIn der Welt &6%world% kann man kein Land beanspruchen.'
+  in-region: '&cIn dieser Region kannst du kein Land beanspruchen.'
   actionbar:
-    enabled: '&2Auto-claim&8: &6Enabled'
-    disabled: '&2Auto-claim&8: &cDisabled'
-  success: '&2Claimed &6%x%&7, &6%z% &2as kingdom land.'
-  max-claims: '&cYou cannot claim more than &e%max% &clands!'
-  kingdom-max-lands: '&cYour kingdom cannot claim more than &e%max% &clands!'
-  already-owned: '&cYour kingdom already owns this land!'
-  occupied-land: '&cThis land is occupied by another kingdom! Invade it with &e/k
+    enabled: '&2Auto-Claim&8: &6Aktiviert'
+    disabled: '&2Auto-Claim&8: &cDeaktiviert'
+  success: '&2Das Land &6%x%&7, &6%z% &2wurde für dein Königreich beanspriucht.'
+  max-claims: '&cDu kannst nicht mehr als &e%max% &cLänderein beanspruchen!'
+  kingdom-max-lands: '&cDein Königreich kann nicht mehr als &e%max% &cLänderein beanspruchen!'
+  already-owned: '&cDein Königreich besitzt dieses Land bereits!'
+  occupied-land: '&cDieses Land gehört einem anderen Königreich! Erobere es mit &e/k
     invade!'
-  need-rp: '&cYou need &e%cost% &cresource points to claim land!'
-  need-money: '&cYou need &e%cost% &cmoney to claim land!'
-  not-connected: '&cYour land must be connected to your other kingdom lands.'
-  not-distanced: '&cAnother kingdom claimed the lands around the land you''re trying
-    to claim.'
-  nation-zone: '&cThis land is a part of &e%nation%''s &cnation zone and cannot be
-    claimed.'
-portal-protection: '&cYour portal teleportation was cancelled because this portal
-  leads to an unfriendly kingdom.'
+  need-rp: '&cDu benötigst &e%cost% &cRessourcenpunkte, um dieses Land zu beanspruchen!'
+  need-money: '&cDu benötigst &e%cost%$&c, um dieses Land zu beanspruchen!'
+  not-connected: '&cDeinLand muss mit dem restlichen Land deines Königreiches verbunden sein.'
+  not-distanced: '&cEin anderes Königreich hat das Land um das Land, welches du versuchst zu
+    beanspruchen bereits beansprucht!'
+  nation-zone: '&cDieses Land ist Teil des Gebietes der Nation &e%nation% &cund kann so
+    nicht beansprucht werden.'
+portal-protection: '&cDeine Protal-Teleportation wurde abgebrochen, da dies
+  zu einem feindlichen Königreichen führen könnte!'
