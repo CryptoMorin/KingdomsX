@@ -358,10 +358,10 @@ auto:
       invade!'
     need-rp: '&cPotrzebujesz &e%cost% &cpunktów zasobów, aby zająć ten teren!'
 inactivity-announce:
-  player: '&e%player% &czostał kicknięty za brak aktywności'
-  kingdom: '&e%kingdom% &6zostałeś wygnany za brak aktywności'
+  player: '&e%player% &czostał wyrzucony za brak aktywności'
+  kingdom: '&e%kingdom% &6zostałeś wyrzucony za brak aktywności'
 command:
-  updates-description: '&6Sprawdza czy jest dostępy update pluginu'
+  updates-description: '&6Sprawdza czy jest dostępna aktualizacja pluginu'
   help:
     description: '&6Wyświetla wszystkie komendy'
     usage: '&4Użycie&8: &e/k help [strona]'
@@ -381,38 +381,36 @@ command:
     commands: '&2Wszystkie komendy zostały zresetowane!'
   create:
     desciption: '&6Tworzy królestwo'
-    name-length: '&cDługość nazwy królestwa nie może przekraczać &e%max% &c i nie może być mniejsza od
-      &e%min%'
-    name-english: '&cNazwa królestwa może zawierać tylko litery od a-z oraz liczby od 0-9.'
+    name-length: '&cNazwa królestwa nie może być dłuższa niż &e%max% &cznaków i nie może być krótsza od
+      &e%min% &cznaków.'
+    name-english: '&cNazwa królestwa może zawierać litery od a-z oraz liczby od 0-9.'
     name-has-symbols: '&cNazwa królestwa nie może zawierać symboli!'
     name-numbers: '&cNazwa królestwa nie może zawierać liczb.'
     name-already-in-use: '&cKrólestwo o tej nazwie już istnieje'
     usage: /Kingdoms create <nazwa>
     already-in-kingdom: '&cNależysz do królestwa. Opuść je aby założyć własne!'
     success: '&2Utworzyłeś &6%kingdom%&2! Niech los ci sprzyja!'
-    announce: '&6%player% &2utworzył królestwo &6%kingdom% '
-    cost: '&cPotrzebujesz &e%cost% &cpieniędzy do utworzenia królestwa!'
+    announce: '&6%player% &2założył królestwo &6%kingdom% '
+    cost: '&cPotrzebujesz &e%cost% &cpieniędzy żeby założyć królestwo!'
     confirmation: |-
-      &cMusisz zapłacić &e%cost% &caby utworzyć królestwo.
+      &cMusisz zapłacić &e%cost% &caby założyć królestwo.
       Jesteś pewny?Powtórz komendę aby potwierdzić!
   tag:
     desciption: '&6Zmień tag twojego królestwa.'
-    name-length: '&cDługość tagu królestwa nie może przekraczać &e%max% &c, ani być mniejsza od
-      &e%min%'
-    name-english: '&cTag królestwa może zawierać tylko litery od a-z oraz liczby od 0-9.'
+    name-length: '&cTag królestwa nie może być dłuższy niż &e%max% &cznaków i nie może być krótszy niż &e%min% &cznaków.'
+    name-english: '&cTag królestwa może zawierać litery od a-z oraz liczby od 0-9.'
     name-has-symbols: '&cTag królestwa nie może zawierać symboli!'
     name-numbers: '&cTag królestwa nie może zawierać liczb.'
     usage: '&4Użycie&8: &e/k tag <Nazwa>'
-    no-kingdom: '&cNie należysz do żadnego królestwa!'
+    no-kingdom: '&cNie jesteś członkiem żadnego królestwa!'
     changed: '&2Tag królestwa został zmieniony z &6%tag% &2na%kingdoms_tag% &2przez
       &6%player%'
     cost: '&cTwoje królestwo potrzebuje &e%cost% &cpieniędzy, żeby zmienić tag królestwa.'
   nation:
     create:
       desciption: '&6Tworzy nację!'
-      name-length: '&cDługość nazwy nacji nie może przekraczać &e%max% &c ani być mniejsza od
-       &e%min%'
-      name-english: '&cNazwa nacji może zawierać tylko litery od a-z oraz liczby od 0-9.'
+      name-length: '&cNazwa nacji nie może być dłuższa niż &e%max% &ci nie może być krótsza niż &e%min% &cznaków.'
+      name-english: '&cNazwa nacji może zawierać litery od a-z oraz liczby od 0-9.'
       name-has-symbols: '&cNazwa nacji nie może zawierać symboli!'
       name-numbers: '&cNazwa nacji nie może zawierać liczb.'
       name-already-in-use: '&cNazwa nacji jest już zajęta!'
@@ -420,12 +418,12 @@ command:
       already-in-nation: COMPLEX:&cJesteś w nacji! Opuść nację używając hover:{&e/k nation leave;&cOpuść;/k nation leave} &cby utworzyć nową.
       success: '&2Założyłeś &6%nation%'
       announce: '&6%player% &2założył nową nację: &6%nation%'
-      cost: '&cPotrzebujesz &e%cost% &cpieniędzy, aby utworzyć królestwo!'
+      cost: '&cPotrzebujesz &e%cost% &cpieniędzy, aby założyć nacje!'
     rename:
       desciption: '&6Zmienia nazwę królestwa!'
       no-kingdom: '&cNie znaleziono królestwa, którego nazwę chcesz zmienić!'
       king-only: '&cTylko król może zmienić nazwę!'
-      name-english: '&cNazwa nacji może zawierać tylko litery od a-z oraz liczby od 0-9.'
+      name-english: '&cNazwa nacji może zawierać litery od a-z oraz liczby od 0-9.'
       name-numbers: '&Nazwa nacji nie może zawierać symboli!.'
       name-already-in-use: '&cNazwa jest zajęta!'
       cooldown: '&cMusisz poczekać &e%cooldown% sekund &cprzed zmianą nazwy!'
@@ -438,7 +436,7 @@ command:
       service-unavailable: '&cUsługi bankowe są chwilowo niedostępne!'
       unknown-transaction: '&cNieznana tranzakcja &e%transaction%'
       not-enough:
-        nation-money: '&cBank nacji nie posiada &e%amount% &cpieniędzy.'
+        nation-money: '&cBank nacji nie posiada wystarczających środków, w banku masz tylko &e%amount% &cpieniędzy.'
         money: '&cNie posiadasz &e%amount% &cpieniędzy.'
       deposit:
         success: |-
