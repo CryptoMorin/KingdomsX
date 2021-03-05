@@ -120,8 +120,9 @@ database:
   # save the server some IO operation which improves the performance.
   smart-save: true
 
+  # DO NOT CHANGE - because you mostly have no idea how it can break things even after you read below.
   # If you're a big network you should turn this off unless you have a lot of RAM.
-  # If you disable this, daily check interval (which includes taxes and top kingdom rewards) and /k top will not work.
+  # If you disable this, daily check interval (which includes taxes, top kingdom rewards and ...) and /k top will not work.
   # Other functions that require a kingdom name will also not work.
   load-all-data-on-startup: true
 
@@ -855,11 +856,11 @@ iSwearIKnowWhatTheFuckIAmDoingRightNow: 0x0002E39
 home:
   on-join:
     # Teleport the player to kingdom's home instead of spawn when joining the server.
-    kingdom-home: true
+    kingdom-home: false
 
     # Teleport the player to nation's home instead of spawn when joining the server.
     # If option above is enabled, it'll teleport the player to kingdom's home if the kingdom is not in a nation.
-    nation-spawn: true
+    nation-spawn: false
 
   respawn:
     # Respawn the player at kingdom's home.

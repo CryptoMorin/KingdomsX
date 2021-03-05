@@ -46,6 +46,7 @@ priority: HIGHEST
 # it can also break other plugins like the ones that mute players.
 # In these cases, you usually have to set the priority to MONITOR
 # (even tho it's not recommended) and it might work.
+# Does not work for global channel if parse-as-placeholder option is enabled.
 cancel: true
 
 # Reset the player's chat channel back to global when they leave.
@@ -73,6 +74,7 @@ tagging:
   # The sound to play for the user who was tagged.
   sound: ENTITY_EXPERIENCE_ORB_PICKUP
 
+  # The way tags are displayed for different players.
   formats:
     tagger: '&2&l%tag%'
     tagged: '&6&l%tag%'

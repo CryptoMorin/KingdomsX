@@ -51,9 +51,9 @@ tax:
       &2Nemzetnek befizetett adók összege &6$%tax%.
        Királyság új egyenlege: &6$%kingdoms_fancy_bank%
       &2Nemzet új egyenlege: &6$%kingdoms_fancy_nation_bank%
-    kicked: '&e%kingdom% &ckirályság nem tudta fizetni az adókat ezért kirúgásra került:
-      &e%kingdoms_fancy_bank% &8< $%tax%'
-    disbanded: '&cA kir��lyságod feloszlott mivel nem tudta fizetni az adókat: &e$%tax%'
+    kicked: '&e%kingdom% &ckirályság nem tudta fizetni az adókat ezért kirúgásra került.'
+    # &e%kingdoms_fancy_bank% &8< $%tax%'
+    disbanded: '&cA királyságod feloszlott mivel nem tudta fizetni az adókat: &e$%tax%'
     disbanded-announce: '&e%kingdom% &ckirályság nem tudta fizetni az adókat ezért
       feloszlott: &e%kingdoms_fancy_bank% &8< &e$%tax%'
     kicked-announce: '&e%kingdom% &ckirúgásra került a(z) &e%nation% &cnemzetből mivel
@@ -68,7 +68,7 @@ tax:
       adókat: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
   notifications: |-
     &8[&4FIGYELEM&8] &cA királyságodnak nincs elég pénze &7(&e%kingdoms_fancy_bank%&7) &cbefizetendő adó: &e%tax%
-    &cAmennyiben nem tudsz elég pénzt beszedni az alattvalkóktól, a királyságod feloszlik.
+    &cAmennyiben nem tudsz elég pénzt beszedni az alattvalóktól, a királyságod feloszlik.
   kick-announce: '&e%player% &ckirúgásra került, mivel nem tudta fizzetni az adókat:
     &e%tax%'
   member-paid: '&6$%tax% &2adó befizetésre került.'
@@ -115,7 +115,7 @@ protected-signs:
   double-chest-protected: '&2Dupla láda levédédve.'
   protection-type:
     already-using: '&cEz a blokk már védett ezzel a metódussal.'
-    changed: '&2Sikeresen megváltoztattad a levédés metódusát &e%protection%&c.'
+    changed: '&2Sikeresen megv��ltoztattad a levédés metódusát &e%protection%&c.'
   players:
     cleared: '&2Minden tag törölve.'
     removed: '&6%name% &2törölve lett a csoportból.'
@@ -162,7 +162,7 @@ upgrades:
     &e%level%. &7szintre!'
   powerup-max: '&cextra elérte a maximum szintet! &e%powerup% &cextra elérte a maximum
     szintet!'
-  powerup-not-enough-resourcepoints: '&cSzükséged van további &e%cost% &cNP-re a(z)
+  powerup-not-enough-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a(z)
     &e%powerup% &cextra fejlesztéséhez.'
   champion-upgrade: '&7Sikeresen feljebb fejlesztetted a(z) &e%upgrade% &7bajnok extrát
     a &e%level%. &7szintre.'
@@ -176,7 +176,7 @@ upgrades:
   misc-cannot-be-disabled: '&cEz nem kapcsolható ki.'
   misc-disabled: '&e%upgrade% &ckikapcsolva.'
   misc-max: '&cA(z) &e%upgrade% &cextra elérte a maximum szintet!'
-  misc-not-enough-resourcepoints: '&cSzükséged van további &e%cost% &cNP-re a(z) &e%upgrade%
+  misc-not-enough-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a(z) &e%upgrade%
     &cextra fejlesztéséhez.'
 champion-type:
   changed: '&2A királyságod bajnoka megváltozott &6%old_champion% &2 --> &6%new_champion%'
@@ -227,9 +227,9 @@ nexus:
   turret-inventory-full: '&cAz eszköztárad televan!'
   structure-purchased: '&7Sikeresen megvetted a(z) &e%structure% &6struktúrát &e%cost%
     &7NP-ért.'
-  structure-resourcepoints: '&cSzükséged van további &e%cost% &cNP-re a struktúra
+  structure-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a struktúra
     megvásárlásához.'
-  turret-resourcepoints: '&cSzükséged van további &e%cost% &cNP-re az ágyú megvásárlásához.'
+  turret-resourcepoints: '&cSzükséged van &e%cost% &cNP-re az ágyú megvásárlásához.'
   turret-purchased: '&7Sikeresen megvetted a(z) &e%turret% &7ágyút &e%cost% &7áron!'
   resourcepoints: '&7Összesen &e%amount% &7NP-t szereztetek.'
   rank-editor:
@@ -265,8 +265,8 @@ nexus:
     next-page-not-available: '&cNo more pages. Max pages&8: &e%pages%'
     previous-page-not-available: '&cNo more previous pages.'
   settings:
-    tax-enter-value: COMPLEX:&6Kérlek írd be az új értéket. Or type hover:{&cMégsem;&cMégsem;cancel}
-      &6to cancel.
+    tax-enter-value: COMPLEX:&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
+      &6a megszakításhoz.
     flag:
       enter-value: |-
         COMPLEX:&6Írd be az új zászló URL-t. Vagy írd be hover:{&ccancel;&cMégsem;cancel} &6, hogy megszakítsd a folyamatot.
@@ -303,7 +303,7 @@ nexus:
     shield-not-enough-resource-points: '&cNincs elég Nexus pontod.'
     shield-activated: '&2A pajzs aktiválva &6%kingdoms_shield_time_left% hátralévő
       idő'
-  resource-points: '&6A total of &e%amount% &6resource points has been added.'
+  resource-points: '&e%amount% &6Nexus pont hozzá lett adva a királyság egyenlegéhez.'
 nexus-resource-points-enter-value: COMPLEX:&6Kérlek írd be a Nexus pontok mennyiségét
   vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.
 extractor:
@@ -429,7 +429,7 @@ command:
       &cEz a foglalás &e$%cost%&c-ba kerül. Biztosan szeretnéd folytatni?
       &cAmennyiben igen, írd be újra a parancsot.
   tag:
-    desciption: '&6Királyság c��mkéjének megváltoztattása.'
+    desciption: '&6Királyság címkéjének megváltoztattása.'
     name-length: '&cA címke nem lehet hosszabb mint &e%max% &ckaraktet, vagy kevesebb
       mint &e%min%'
     name-english: '&cA címke csak betűket és számokat tartalmazhat.'
@@ -585,8 +585,8 @@ command:
         Írd be újra a &e/k nation disband &4parancsot a megerősítéshez.
       announce: '&e%player% &6feloszlatta a(z) &e%kingdoms_nation% '
     invite:
-      description: '&6Sends an invitation to a kingdom to join the nation.'
-      usage: '&4Használat: &e/k nation invite <királyság> [expiration]'
+      description: '&6Nemzeti meghívó küldése egy királyságnak.'
+      usage: '&4Használat: &e/k nation invite <királyság> [lejárat]'
       invited: |-
         COMPLEX:&6%player% &2meghívott téged a(z) &6%nation% &2nemzetbe.
             hover:{&2Elfogadás /k nation accept;&2Elfogadás;/k nation accept}
@@ -657,7 +657,7 @@ command:
       &cFőkirályságként nem hagyhatod el a nemzetet.
       Nemzet feloszlatása &e/k nation disband
       &cFőkirályság áthelyezése &e/k nation capital
-    leave-announce: '&e%kingdoms_name% &ckir��lyság elhagyta a nemzetet!'
+    leave-announce: '&e%kingdoms_name% &ckirályság elhagyta a nemzetet!'
     broadcast-description: '&6Üzenet a nemzet minden tagjának.'
     broadcast-usage: /k nation broadcast <üzenet>
     broadcast-cooldown: '&cVárnod kell &e%time% &caz újabb közvetítésig.'
@@ -757,7 +757,7 @@ command:
         Új egyenleged: &6%balance%
         &2Királyság új egyenlege: &6%kingdoms_fancy_bank%
   show:
-    description: '&6Infromációk a királyságórl.'
+    description: '&6Infromációk a királyságról.'
     usage: '/k show [játékos | királyság | #JÁTÉKOS | #KIRÁLYSÁG] <játékos | királyság>'
     others-permission: '&cEhhez nincs jogod.'
     message-admin: |
@@ -885,11 +885,11 @@ command:
     not-set-others: '&e%kingdom% &ckirályság otthona nem lett beállítva.'
     kingdom-not-found: '&e%kingdom% &cnem található.'
     not-public: '&e%kingdom% &ckirályság otthona nem publikus.'
-    success: '&2Sikeres tteleportálás!'
+    success: '&2Sikeres teleportálás!'
   nexus:
     description: '&6Nexus pont beállítása.'
     help: |-
-      COMPLEX:&2Kattint jobb gombbal arra a blokkra ameliykre le szeretnéd tenni a Nexus-t.
+      COMPLEX:&2Kattints jobb gombbal arra a blokkra amelyikre le szeretnéd tenni a Nexus-t.
       Kikapcsoláshoz hover:{&6/k nexus;&cKikapcsolás;/k nexus} &2vagy írd be újra a parancsot.
     actionbar-activated: '&6Nexus Mód: &2Aktív'
     actionbar-deactivated: '&6Nexus Mód: &cInaktív'
@@ -937,7 +937,7 @@ command:
     max-members: '&cA királyságod már megtelt &e%kingdoms_members% &ctaggal.'
     self: '&cNem hívhatod meg önmagadat.'
     expired: '&c&e%inviter%-tól/től &ckapott meghívásod lejárt!'
-    expired-notify: '&cA(z) &e%invited%nak/nek &cküldött meghívás lejárt!'
+    expired-notify: '&cA(z) &e%invited%nak/nek &cküldött meghívás lej��rt!'
   accept:
     description: '&6Meghívás elfogadása.'
     already-in-kingdom: '&2Már tagja vagy egy királyságnak.'
@@ -966,7 +966,7 @@ command:
     expired: '&cA(z) &e%kingdom% &ckirályságtól kapott meghívásod lejárt.'
     no-longer-exists: '&cEz a királyság már nem létezik.'
     all: '&2Elutasítottál &6%invites% &2meghívást.'
-    multiple-invites: '&cTöbb meghívásod is van, ezért kérlek írd be a királys��g nevét is.
+    multiple-invites: '&cTöbb meghívásod is van, ezért kérlek írd be a királyság nevét is.
       Minden meghívás elutasításához írj egy &e*-ot'
   invites:
     description: '&6Meghívások megtekintése.'
@@ -1235,7 +1235,7 @@ command:
     item: '&2%material%&7: &9%worth%'
   sell:
     description: '&6Tárgyak eladása Nexus pontért.'
-    invalid: '&cA kezdeben tartott tárgy nem királyság rágy. (torony vagy struktúra)'
+    invalid: '&cA kezdeben tartott tárgy nem királyság tárgy. (torony vagy struktúra)'
     item: '&2Eladtál &6x%amount% %item% &6%price% &2Nexus pontért.'
   admin:
     description: '&6Admin parancsok megjelenítése.'
@@ -1335,7 +1335,7 @@ command:
       not-in-kingdom: '&cEz a játékos nem tagja egy királyságnak sem.'
     kick-king: '&cEz a játékos a királyság királya. Nevezz ki egy új királyt vagy oszlasd fel a királyságot'
     hologram:
-      usage: '&cHasználat: &e/k admin hologram <rádiusz>'
+      usage: '&cHaszn��lat: &e/k admin hologram <rádiusz>'
       removed: '&2Törlésre került &6%removed% &2hologram.'
     unclaim:
       description: '&6Terület feloldása.'
@@ -1350,7 +1350,7 @@ command:
     shield:
       description: '&6Pajzs beállítása.'
       usage: /k admin shield <királyság> [set(beállít)/add(hozzáad)/remove(törlés)] <idő>
-      success: '&2Pajzs ideje sikeresen bódosítva Királyság: &6%kingdom% &2Érték:: &6%amount%'
+      success: '&2Pajzs ideje sikeresen módosítva Királyság: &6%kingdom% &2Érték:: &6%amount%'
       invalid-action: '&cHibás művelet &e%action%&c! Hasznáható értékek: &eadd/remove/set'
       invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
       invalid-time: '&cHibás időérték: &e%time%'
