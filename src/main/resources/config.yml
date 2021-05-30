@@ -628,6 +628,8 @@ inactivity:
   # Players with the permission "kingdoms.inactivity.kick" will not be kicked.
   # Set to 0 to disable.
   # Supports time suffix. Default is seconds.
+  # Note: It wouldn't make sense for this "kick" time option to be less than the kingdom's time option.
+  # Because all the members would've been kicked before the kingdom is disbanded due to inactivity anyway.
   member:
     kick: 60 days
     disband-kingdom-if-king: false
