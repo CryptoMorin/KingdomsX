@@ -1,6 +1,22 @@
 # By Nnyakov and LiraBorsh :D
 # Если Вы нашли какие то ошибки перевода, сообщите сюда > https://discord.gg/sCKrrjj (Официальный канал плагина в дискорде)
 # Или сюда > http://vk.com/nnyakov (Старница локализатора)
+info: |2-
+  
+   _  ___                 _                     
+  | |/ (_)_ __   __ _  __| | ___  _ __ ___  ___ 
+  | ' /| | '_ \ / _` |/ _` |/ _ \| '_ ` _ \/ __|
+  | . \| | | | | (_| | (_| | (_) | | | | | \__ \
+  |_|\_\_|_| |_|\__, |\__,_|\___/|_| |_| |_|___/
+                |___/                           
+                 
+  >
+  > This is a community-made translation file, which may be outdated!
+  > Messages are not guaranteed to be 100% accurate and complete, and some
+  > might be broken due to usage of outdated placeholders.
+  > If you are a native Russian speaker and would like to contribute to
+  > updating this file, it would be very much appreciated!
+  >
 prefix: '&6[&lK&eingdoms&6] &2'
 permissions:
   claim: '&cВы не можете захватить землю.'
@@ -239,8 +255,8 @@ command:
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
     grouped-commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
       %cmd%}
-    footer: COMPLEX:hover:{&6←;&6Предыдущая страница;/k help %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k help %next_page%}
-    footer-page: COMPLEX:hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k help %number%}
+    footer: COMPLEX:hover:{&6←;&6Предыдущая страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k %command% %next_page%}
+    footer-page: COMPLEX:hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k %command% %number%}
     footer-current-page: COMPLEX:hover:{&8[&2&l%number%&8];&2Текущая страница}
     header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
     commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
@@ -395,7 +411,7 @@ command:
       description: '&6Посылает приглашение в королевство присоединиться к государству.'
       usage: /k nation invite <королевство> [истечение]
       invited: |-
-        COMPLEX:&6%player% &2пригласил вас присоединиться к государству ''&6%nation%&2''.
+        COMPLEX:&6%inviter% &2пригласил вас присоединиться к государству ''&6%nation%&2''.
             hover:{&2Примите приглашение с помощью /k nation accept;&2Принять;/k nation accept}
             hover:{&cОтклоните приглашение с помощью /k nation decline;&cОтклонить;/k nation decline}
       announce: '&6%inviter% &2пригласил королевство ''&6%kingdom%&2'' в государство.'
@@ -703,7 +719,7 @@ command:
     description: '&6О плагине Kingdoms.'
   invite:
     invited: |-
-      COMPLEX:&6%player% &2пригласил вас присоединиться в королевство ''&6%kingdom%&2''.
+      COMPLEX:&6%inviter% &2пригласил вас присоединиться в королевство ''&6%kingdom%&2''.
           hover:{&2Принять > /k accept;&2Принять;/k accept}
           hover:{&cОтклонить > /k decline;&cОтклонить;/k decline}
     usage: /k invite <игрок> <королевство>
