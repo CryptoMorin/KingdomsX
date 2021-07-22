@@ -1,0 +1,72 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Powerups                       |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+
+# Note: If you decrease the max-level kingdoms who already
+# upgraded their level beyond the new value will keep it and it
+# won't affect them. Unfortunately, you can't fix this unless you
+# manually edit their data file.
+# own-land-only: Powerups should only work in your own kingdom lands.
+powerups:
+  damage-boost:
+    enabled: true
+    name: 'Damage Boost'
+    cost: "(lvl + 1) * 100"
+    scaling: "percentOf(lvl, damage)"
+    max-level: 70
+    own-land-only: true
+  damage-reduction:
+    enabled: true
+    name: 'Damage Reduction'
+    cost: "(lvl + 1) * 100"
+    scaling: "percentOf(lvl, damage)"
+    max-level: 70
+    own-land-only: true
+  arrow-boost:
+    enabled: true
+    name: 'Arrow Boost'
+    cost: "(lvl + 1) * 70"
+    scaling: "percentOf(lvl, damage)"
+    max-level: 70
+    own-land-only: true
+  regeneration-boost:
+    enabled: true
+    name: 'Regeneration Boost'
+    cost: "(lvl + 1) * 70"
+    scaling: "percentOf(lvl, amount)"
+    max-level: 100
+    own-land-only: true
+
+
+
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                         Power                       |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Factions-like power system. This feature is still experimental and may not function properly.
+# In order to change the max claims of a kingdom, you need to change the max-claims option in claims.yml
+power:
+  enabled: false
+  player:
+    max: 10.0
+    min: -10.0
+    initial: 0.0
+
+    regeneration:
+      every: '5 min'
+      charge: 1
+
+    loss:
+      death: 4.0
+      offline:
+        every: '1 day'
+        lose: 0.5
+        min: 2.0
+  faction:
+    max: 500

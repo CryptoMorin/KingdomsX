@@ -7,9 +7,13 @@
 disable-shift-click: true
 remove-unclaimed: false
 
+# Should structures go directly to the player's inventory who broke the structure.
+to-inventory-on-break: false
+
 structures:
   national-nexus:
     name: "&3National Nexus"
+    type: national-nexus
     particles:
       1:
         place:
@@ -31,6 +35,7 @@ structures:
         height: 1
   nexus:
     name: "&bNexus"
+    type: nexus
     particles:
       1:
         place:
@@ -52,6 +57,8 @@ structures:
         height: 1
   powercell:
     name: "&4Powercell"
+    type: powercell
+    default-name: 'Powercell'
     particles:
       1:
         place:
@@ -90,6 +97,8 @@ structures:
           - "&cDoes not work on other power cell lands."
   extractor:
     name: "&2Extractor"
+    type: extractor
+    default-name: 'Extractor'
     particles:
       1:
         place:
@@ -121,14 +130,16 @@ structures:
       every: 10sec
     item:
       1:
-        name: "&5Extractor"
+        name: "&5Extractorss"
         material: EMERALD_BLOCK
-        flags: [ HIDE_POTION_EFFECTS ]
+        #        flags: [ HIDE_POTION_EFFECTS ]
         lore:
           - "&6Extractors will produce resource points."
           - "&6You can collect the resource points at any time."
   outpost:
     name: "&eOutpost"
+    default-name: 'Outpost'
+    type: outpost
     particles:
       1:
         place:
@@ -165,8 +176,9 @@ structures:
           - "resource points aswell."
   warppad:
     name: "&cWarp pad"
-    # The default name of the customizable Warp Pad name.
+    type: warppad
     default-name: 'Warp Pad'
+    teleport-delay: 3
     particles:
       1:
         place:
@@ -203,6 +215,8 @@ structures:
           - "&2Name&8: &7%name%"
   regulator:
     name: "&3Regulator"
+    default-name: 'Regulator'
+    type: regulator
     particles:
       1:
         place:
@@ -237,3 +251,72 @@ structures:
           - "Disable mob or animal spawning and turrets."
           - "Enable explosions."
           - "Auto fill turrets ammo."
+
+
+  siege-cannon:
+    name: "&fSiege Cannon"
+    type: siege-cannon
+    default-name: 'Siege Cannon'
+    shield-damage: 10min
+    projectile:
+      yield: 2
+    # Only the material and the amount is customizable.
+    invalid-ammo-message: ""
+    actionbar:
+      fire: '&2Fire'
+      not-loaded: '&cCannon not loaded'
+    ammo:
+      type: IRON_BLOCK
+    allow-damaging:
+      turrets: true
+
+      # Excluding powercells and nexus.
+      # Cannons can break other cannons.
+      structures: true
+
+      blocks: true
+
+      protected-blocks: false
+    particles:
+      1:
+        shoot:
+          particle: FLAME
+          count: 50
+          offset: 1, 1, 1
+        hit:
+          particle: FLAME
+          count: 50
+          offset: 1, 1, 1
+        place:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        sit: ITEM_ARMOR_EQUIP_IRON
+        standup: ITEM_ARMOR_EQUIP_GOLD
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+        shoot: ENTITY_DRAGON_FIREBALL_EXPLODE
+        load: ITEM_BOTTLE_FILL_DRAGONBREATH
+        hit: ~ # The explosion sound is enough.
+    hologram:
+      1:
+        lines:
+          - "&8-=( &3Siege Cannon &8)=-"
+        height: 1
+    block:
+      1: DISPENSER
+    cost: 5000
+    sell: 4000
+    item:
+      1:
+        name: "&3Siege Cannon"
+        material: DISPENSER
+        lore:
+          - "&6A cannon used to break kingdoms"
+          - "shields."

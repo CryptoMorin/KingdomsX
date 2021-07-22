@@ -43,21 +43,75 @@ cardinal-directions:
 # hover: The lore shown when you hover on the element icon.
 # action: Hover actions. You can read about it here: https://github.com/CryptoMorin/KingdomsX/wiki/Config#actions
 elements:
+  protected:
+    icon: "&4▩"
+    hover: [ "&7Protected region" ]
   you:
     icon: "&2◆"
-    hover:
-      - "&6You&8: &2%X%&7, &2%Z%"
+    hover: [ "&6You&8: &2%X%&7, &2%Z%" ]
   wilderness:
     icon: "&7▩"
     action: "/k claim %X% %Z%"
+    hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to claim." ]
+  clipboard:
+    added:
+      icon: "&5▩"
+      action: "/k claim clipboard remove %X% %Z%"
+      hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to remove from the clipboard." ]
+    failed:
+      icon: "&c▩"
+      action: "/k claim clipboard remove %X% %Z%"
+      hover:
+        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "&7Failed to claim this land."
+        - "It's not necessary to remove it"
+        - "from the clipboard."
+    wilderness:
+      icon: "&7▩"
+      action: "/k claim clipboard add %X% %Z%"
+      hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to add to the clipboard." ]
+
+  invasion:
+    icon: "&4▩"
     hover:
       - "&6Location&8: &2%X%&7, &2%Z%"
+      - "&cOngoing invasion in &e%kingdom_name%'s &cland."
+
+  nation-zone:
+    self:
+      icon: "&2◧"
+      hover:
+        - "&a%kingdoms_nation%'s Nation Zone"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    ally:
+      icon: "&6◧"
+      hover:
+        - "&6%kingdoms_nation%'s Nation Zone"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    truce:
+      icon: "&e◧"
+      hover:
+        - "&e%kingdoms_nation%'s Nation Zone"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    neutral:
+      icon: "&f◧"
+      hover:
+        - "&f%kingdoms_nation%'s Nation Zone"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    enemy:
+      icon: "&c◧"
+      hover:
+        - "&c%kingdoms_nation%'s Nation Zone"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+
   land:
     self:
       icon: "&2▩"
+      action: "/k unclaim %X% %Z%"
       hover:
         - "&a%kingdom_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+        - "&7Click to unclaim."
     ally:
       icon: "&6▩"
       hover:
@@ -299,4 +353,35 @@ elements:
       icon: "&9▦"
       hover:
         - "&9%kingdom_name%'s Regulator"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+  siege-cannon:
+    self:
+      icon: "&2▦"
+      hover:
+        - "&a%kingdom_name%'s Siege Cannon"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    ally:
+      icon: "&6▦"
+      hover:
+        - "&6%kingdom_name%'s Siege Cannon"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    truce:
+      icon: "&e▦"
+      hover:
+        - "&e%kingdom_name%'s Siege Cannon"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    neutral:
+      icon: "&f▦"
+      hover:
+        - "&f%kingdom_name%'s Siege Cannon"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    enemy:
+      icon: "&c▦"
+      hover:
+        - "&c%kingdom_name%'s Siege Cannon"
+        - "&6Location&8: &2%X%&7, &2%Z%"
+    nation:
+      icon: "&9▦"
+      hover:
+        - "&9%kingdom_name%'s Siege Cannon"
         - "&6Location&8: &2%X%&7, &2%Z%"

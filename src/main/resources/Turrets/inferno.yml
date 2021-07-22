@@ -28,16 +28,20 @@ sounds:
     place: ENTITY_ELDER_GUARDIAN_AMBIENT
     break: ENTITY_ELDER_GUARDIAN_DEATH
 range: 7 + lvl
-cooldown: 1
-real-cooldown: 20 - lvl
+cooldown: 15 - lvl
 max-targets: 1
 max-ammo: lvl * 2000
 upgrade-cost: lvl * 80
 fire: 10000
-speed: 1 + (lvl * 0.8)
 
+# The initial turret's damage.
 damage: lvl * 3
+# Every time the turret goes thru a new phase, its damage is increased by the modifier below.
 damage-modifier: lvl / 3
+# Inferno turrets go thru a new "phase" once they activate (shoot their target) for the followed amount of steps specified below.
+# This phase resets if the inferno turrets loses its target or switches to another target.
+# But Inferno turrets don't switch to another target if they're still in range, they will focus
+# on that target until they're dead.
 damage-modifier-phases: 3
 
 block:

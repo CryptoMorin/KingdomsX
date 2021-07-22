@@ -19,44 +19,142 @@ command:
 # name: The main command name which is shown for auto completes.
 # aliases: A list of aliases for this command.
 # disabled: If this command should be completely disabled or not. Disabling command groups will disable all its subcommands.
+# cooldown: The cooldown of the command whether the result was successful or not. Refer to the wiki to see time value formats.
+#           Note that these cooldowns do not persist between server restarts.
+# diasbled-worlds: A list of world names that this command is disabled in.
 
 # If any of these properties are not defined, the defaults will be used which are:
 # name: The default hardcoded name used to identify this command which is the same as the command's config section entry name.
-# aliases: No aliases.
+# aliases: []
 # disabled: false
+# cooldown: 0
+# disabled-worlds: []
 
 # Do not use spaces or colors for command names or aliases.
 # These options can only be updated with a server restart or "/k reload commands" command.
 
+# The order of these commands determine the order that the commands are shown in /k help
+# This first command intentionally contains all the possible options.
 help:
   name: help
-  aliases: [ '?', 'h' ]
-king:
-  name: king
-  aliases: [ setking, leader, owner, ownership ]
+  aliases: [ '?', 'h', '--help' ]
+  disabled: false
+  cooldown: 0
+  disabled-worlds: [ world_nether ]
+create:
+  name: create
+  aliases: [ new ]
+lore:
+  name: lore
+  aliases: [ desc, description, motd ]
+rename:
+  name: rename
+  aliases: [ ]
+tag:
+  name: tag
+  aliases: [ ]
+show:
+  name: show
+  aliases: [ info, who ]
+home:
+  name: home
+  aliases: [ spawn ]
+unsethome:
+  name: unsethome
+  aliases: [ homeunset ]
 nexus:
-  name: nexus
   aliases: [ setnexus, nexusset, placenexus, nexusplace ]
+king:
+  aliases: [ setking, leader, owner, ownership ]
 sethome:
-  name: sethome
   aliases: [ homeset ]
-about:
-  name: about
-  aliases: [ version, ver, v ]
 chat:
-  name: chat
   aliases: [ channel, chan, c ]
-resourcepoints:
-  name: resourcepoints
-  aliases: [ rp, resourcepoint ]
 bank:
-  name: bank
   aliases: [ money, $ ]
+top:
+  name: top
+  aliases: [ ]
+disband:
+  name: disband
+  aliases: [ delete ]
+
+### Kingdom Member Management ###
+invite:
+  name: invite
+  aliases: [ inv ]
+accept:
+  name: accept
+  aliases: [ acceptinvite, acceptinv, acceptinvitation ]
 decline:
-  name: decline
   aliases: [ deny, denied, reject ]
+join:
+  name: join
+  aliases: [ ]
+leave:
+  name: leave
+  aliases: [ left ]
+kick:
+  name: kick
+  aliases: [ ]
+promote:
+  name: promote
+  aliases: [ ]
+demote:
+  name: demote
+  aliases: [ ]
+
+### Claims ###
+claim:
+  name: claim
+  aliases: [ ]
+  commands:
+    auto:
+      aliases: [ a ]
+    square:
+      aliases: [ sqr ]
+      cooldown: 20 sec
+    fill:
+      aliases: [ ]
+      cooldown: 10 sec
+    line:
+      aliases: [ ]
+    corner:
+      aliases: [ corners ]
+      cooldown: 5 sec
+    clipboard:
+      name: clipboard
+      aliases: [ clip ]
+unclaim:
+  name: unclaim
+  aliases: [ ]
+unclaimall:
+  name: unclaimall
+  aliases: [ allunclaim ]
+undo:
+  name: undo
+  aliases: [ ]
+
+inventory:
+  aliases: [ invsee ]
+vault:
+  aliases: [ storage ]
+
+book:
+  aliases: [ rules, rule, handbook, notes, note ]
+
+  commands:
+    edit: ~
+    open: ~
+    rename: ~
+    preview:
+      aliases: [ view ]
+    remove:
+      aliases: [ delete, del ]
+    discard:
+      aliases: [ cancel ]
+
 visualize:
-  name: visualize
   aliases: [ visualizer, visual, v ]
 
   commands:
@@ -69,114 +167,82 @@ visualize:
     markers:
       name: markers
       aliases: [ type ]
-join:
-  name: join
-  aliases: [ ]
-donate:
-  name: donate
-  aliases: [ give, giverp, rpgive ]
-teleport:
-  name: teleport
-  aliases: [ tp, teleportation ]
-revoke:
-  name: revoke
-  aliases: [ neutral ]
+    all:
+      aliases: [ a ]
 pvp:
   name: pvp
   aliases: [ ]
-accept:
-  name: accept
-  aliases: [ acceptinvite, acceptinv, acceptinvitation ]
-leave:
-  name: leave
-  aliases: [ left ]
-tradable:
-  name: tradable
-  aliases: [ worth, tradeable ]
-ally:
-  name: ally
-  aliases: [ alliance, allies ]
 broadcast:
   name: broadcast
   aliases: [ bc ]
 fly:
   name: fly
   aliases: [ flight ]
+sneak:
+  aliases: [ silent, stealth ]
+
+### Resource Points ###
+item:
+  aliases: [ customitem, items ]
+  commands:
+    give:
+      aliases: [ g ]
+    inject:
+      aliases: [ embed, setworth, worth ]
+donate:
+  name: donate
+  aliases: [ give, giverp, rpgive ]
+resourcepoints:
+  aliases: [ rp, resourcepoint ]
+extractor:
+  aliases: [ extractors, extract ]
+tradable:
+  name: tradable
+  aliases: [ worth, tradeable ]
+sell:
+  name: sell
+  aliases: [ s ]
+
+### Relations ###
+ally:
+  name: ally
+  aliases: [ alliance, allies ]
 enemy:
   name: enemy
   aliases: [ enemies ]
-promote:
-  name: promote
+truce:
+  name: truce
   aliases: [ ]
-top:
-  name: top
-  aliases: [ ]
-disband:
-  name: disband
-  aliases: [ delete ]
+revoke:
+  name: revoke
+  aliases: [ neutral ]
+
 map:
   name: map
   aliases: [ ]
 invade:
   name: invade
   aliases: [ invasion ]
-sell:
-  name: sell
-  aliases: [ s ]
-kick:
-  name: kick
-  aliases: [ ]
-rename:
-  name: rename
-  aliases: [ ]
-invite:
-  name: invite
-  aliases: [ inv ]
-create:
-  name: create
-  aliases: [ new ]
-claim:
-  name: claim
-  aliases: [ ]
-tag:
-  name: tag
-  aliases: [ ]
-show:
-  name: show
-  aliases: [ info, who ]
+teleport:
+  name: teleport
+  aliases: [ tp, teleportation ]
 surrender:
   name: surrender
   aliases: [ forfeit, ff ]
-lore:
-  name: lore
-  aliases: [ desc, description, motd ]
-truce:
-  name: truce
+
+### Others ###
+about:
+  aliases: [ version, ver, v, '-v', '--version' ]
+gui:
   aliases: [ ]
-unclaimall:
-  name: unclaimall
-  aliases: [ allunclaim ]
 updates:
   name: updates
   aliases: [ update ]
-unclaim:
-  name: unclaim
-  aliases: [ ]
-undo:
-  name: undo
-  aliases: [ ]
 reload:
   name: reload
   aliases: [ ]
-unsethome:
-  name: unsethome
-  aliases: [ homeunset ]
-home:
-  name: home
-  aliases: [ spawn ]
-demote:
-  name: demote
-  aliases: [ ]
+
+
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -291,6 +357,12 @@ admin:
   aliases: [ administrator, administration ]
 
   commands:
+    home:
+      aliases: [ h ]
+    pacifism:
+      aliases: [ pacifist ]
+    rename:
+      aliases: [ name ]
     test:
       name: test
       aliases: [ msg ]
@@ -364,3 +436,5 @@ admin:
     spy:
       name: spy
       aliases: [ ]
+    execute:
+      aliases: [ exec ]

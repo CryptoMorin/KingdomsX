@@ -81,6 +81,28 @@ fill:
   # when filling the shape.
   max-claims: 50
 
+# /k claim square <radius>
+# 5 = 5 * 5 = 25 chunks around the player.
+square-max-radius: 5
+
+# /k claim line <distance>
+# The distance in chunks, not blocks.
+line-max-distance: 10
+
+# Max claims per a /k claim corner.
+corner-max-claims: 20
+
+# /k claim <x> <z>
+# This is chunk distance, not block distance.
+# Note that this will affect interactive claims from /k map
+coordinates-claim-max-distance: 30
+
+# The radius that players aren't allowd to claim lands in that are protected by WorldGuard.
+# Note that this feature is still experimental and only works for single claims (not bulk claims like clipboards)
+# High numbers might cause lag spikes.
+# The number specified here is based on lands, not blocks.
+protected-region-radius: 3
+
 # History for undoing claims.
 history:
   # If you have the command disabled you should disable it here
@@ -100,8 +122,35 @@ max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms
 # You can only build in claims that the relation attribute allows building.
 # This function can be disabled for specific worlds in config.yml "disabled-worlds" option.
 build-in-claimed-only:
+  # These two options are required to be set to true for any of these options
+  # below to work.
   place: false
   break: false
+
+  # This option can significantly affect server's performance.
+  # The radius that players are allowed to build if there are nearby claims
+  # that belong to their kingdom.
+  # Set to 0 to disable.
+  unclaimed-build-radius: 0
+
+  # If players should be charged for building instead of
+  # completely disabling building.
+  charges:
+    enabled: false
+
+    # true:  If the player should be charged when building within the "unclaimed-build-radius" this will competely disable building for outside the radius tho.
+    # false: If the player should be charged when building outside of the "unclaimed-build-radius" this will allow building inside the radius without charges.
+    # if "unclaimed-build-radius" is disabled, this will charge players in any unclaimed land.
+    in-range: true
+
+    # Note that resource points comes from the player's kingdom,
+    # but the money is taken directly from the player's balance.
+    placing:
+      resource-points: 0
+      money: 0
+    breaking:
+      resource-points: 0
+      money: 0
 
 # Show action bar when auto claim/unclaim is enabled.
 actionbar:
@@ -113,6 +162,11 @@ actionbar:
 # with the kingdom that owns the land.
 beacon-protected-effects: true
 
+# Throwing these potions at a player who has
+# ceasefire attribute with you, is disallowed.
+potion-protected-effects: [ POISON, WEAKNESS, SLOW, BLINDNESS, HARM, WITHER ]
+
+# They support equations.
 resource-points:
   # The amount of resource points to give back to the player
   # after unclaiming a land. Set to 0 to disable.

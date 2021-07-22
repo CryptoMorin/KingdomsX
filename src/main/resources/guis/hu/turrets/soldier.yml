@@ -1,0 +1,46 @@
+title: "&4&lIDÉZŐ &fágyú"
+type: HOPPER
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "&eTöltény: &f%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    lore:
+      - '&aVegyél 100 töltényt, 10 nexuszpontért.'
+    slot: 0
+  upgrade:
+    upgrade:
+      condition: "%level% < %max_level%"
+      name: "&eFejlesztés: &f%level_roman% &8➛ &a%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &eTávolság: &f%range% &7➔ &a%next_range%"
+        - "&7⚫ &eMaximális töltény: &f%max_ammo% &7➔ &a%next_max_ammo%"
+        - "&7⚫ &eIdőzítő: &f%cooldown% &7➔ &a%next_cooldown%"
+        - ""
+        - "&7⚫ &eMaximális szint: &fIII"
+        - "&7⚫ &eÁr: &f%upgrade_cost%"
+    maxxed:
+      condition: "true"
+      name: "&eSzint: &f%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &eTávolság: &f%range%"
+        - "&7⚫ &eMaximális töltény: &f%max_ammo%"
+        - "&7⚫ &eIdőzítő: &f%cooldown%"
+    slot: 1
+  break:
+    name: "&cKiütés"
+    material: REDSTONE_BLOCK
+    sound: default
+    lore:
+      - "&6Kiüti ezt az ágyút."
+    slot: 3
+  close:
+    name: "&cBezárás"
+    material: BARRIER
+    sound: default
+    slot: 4

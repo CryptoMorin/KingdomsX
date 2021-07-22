@@ -83,6 +83,11 @@ lang: en
 
 # Backups plugin's data. Most of the options require a restart to be changed.
 backups:
+  # By default backups are taken every day. Specifically every time when the server
+  # starts it checks if backups are taken for that day and waits another 24 hours.
+  # It supports time suffixes.
+  interval: 24hrs
+
   enabled:
     enabled: true
     data: true
@@ -224,20 +229,12 @@ broadcast:
   # Sound to play to all the kingdom members.
   # Set to none for no sound.
   sound: ENTITY_EXPERIENCE_ORB_PICKUP
-  # Cooldown for sending broadcast messages for each kingdom members.
-  # Set to 0 to disable.
-  # Supports time suffix. Default is milliseconds.
-  cooldown: 0
 
   nation:
     format: "\n&8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%\n\n"
     # Sound to play to all the kingdom members.
     # Set to none for no sound.
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
-    # Cooldown for sending broadcast messages for each kingdom members.
-    # Set to 0 to disable.
-    # Supports time suffix. Default is milliseconds.
-    cooldown: 0
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
@@ -503,8 +500,13 @@ announcements:
     kingdom: false
     # /k nation create
     nation: false
+    # For /k disband please refer to "disband" section.
 
-  # For /k disband please refer to "disband" section.
+outpost-events:
+  # If kingdom members participating in the event die,
+  # their kingdom will lose rp.
+  # Set to 0 to disable.
+  death-resource-points-penalty: 100
 
 # /k resourcepoints <deposit/withdraw/transfer>
 # /k bank <deposit/withdraw>
@@ -554,20 +556,39 @@ economy:
       kingdom: 100
 
 # Daily checks are for checking kingdom inactivities, handling taxes and top kingdom and nation rewards.
-# Small intervals will lag the server more.
-# This value will be converted to ticks automatically.
-# After changing this option, you need to restart the server or use /k admin dailycheck
-daily-checks-interval: 24hrs
+# After changing any of the options below, you need to restart the server for changes to apply.
+daily-checks:
+  # The time that daily checks are performed everyday. It uses the 24-hours format and optionally supports seconds.
+  # If the server is started after this time, the daily checks will not be performed for that day, and it'll
+  # simply wait until the next day.
+  time: '12:00'
+
+  # The time zone ID.
+  # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  # You should copy paste one of the names under the "TZ database name" column.
+  # By default this is "local". A special keyword that will automatically use your server's timezone.
+  # To get the current UTC time just Google "UTC time"
+  # This is purely for convenience, otherwise you could adjust the time option above
+  # with a correct offset to get the time you want, but this also considers holidays and all the other exceptions.
+  # This is also used for other things such as backups.
+  timezone: 'local'
 
 # If you disable taxes, you might want to remove the option in nexus settings GUI.
 # Taxes are collected from kingdom and nation banks during the daily interval checks.
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#taxes
 tax:
-  # The countdowns to notify players before taxes are collected.
+  # The countdowns to notify players before daily checks are performed.
+  # NOTE: This will only be used if either kingdoms or nations taxes are enabled.
+  # The order of this list should be in descending order.
   countdowns:
     - 3hrs
     - 1hr
     - 30mins
+    - 10mins
+    - 1min
+    - 30sec
+    - 15sec
+    - 5sec
 
   kingdoms:
     enabled: false
@@ -586,6 +607,9 @@ tax:
     # The amount of time new kingdoms are excluded from paying taxes.
     age: 3 days
 
+    # Disband the kingdom if it cannot pay taxes.
+    disband-if-cant-pay: true
+
     members:
       enabled: false
 
@@ -597,12 +621,18 @@ tax:
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 5% of the player's current balance"
       default-equation: "(money * 5) / 100"
+
+      # Kick kingdom members if they cannot pay taxes.
+      kick-if-cant-pay: true
   nations:
     enabled: false
     scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
 
     # The amount of time new nations are excluded from paying taxes.
     age: 3 days
+
+    # Disband the nation if it cannot pay taxes.
+    disband-if-cant-pay: true
 
     members:
       enabled: false
@@ -613,6 +643,9 @@ tax:
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 15% of the player's current balance"
       default-equation: "(money * 15) / 100"
+
+      # Kick nation kingdoms if they cannot pay taxes.
+      kick-if-cant-pay: true
 
 # Note that the times below must be greater than the tax "age" option.
 inactivity:
@@ -659,44 +692,6 @@ disband:
   # Announce when a kingdom is disbanded due to inactivity.
   announce-inactivity: true
 
-resource-points:
-  # How should the %kingdoms_last_donation_time/amount% be parsed?
-  # This will gather the amount of rp player has collected since his last
-  # "donation time" If the donation time reaches this duration, it'll update if the
-  # player tries to donate again.
-  last-donation-duration: 1 day
-
-  # Kingdom resource points lost when a member dies in any way.
-  # If the kingdom cannot afford this, simply nothing will happen.
-  death-penalty: 10
-
-  # Format: for each, give amount
-  # For each 5 items that are in NOT in the list, give 1 resource point.
-  # Resource points are not doubles/decimals (rational numbers) they're integers.
-  for-each: 5
-  give: 1
-  blacklist: true
-  list:
-    - STICK
-    - STRING
-  # Resource points given per item. (for-each is not used here)
-  custom:
-    IRON_INGOT: 30
-    GOLD_INGOT: 40
-    DIAMOND: 50
-    EMERALD: 60
-    LAPIS_LAZULI: 10
-    COAL: 2
-    REDSTONE: 1
-
-    EMERALD_BLOCK: 550
-    DIAMOND_BLOCK: 450
-    GOLD_BLOCK: 360
-    IRON_BLOCK: 270
-    LAPIS_BLOCK: 90
-    COAL_BLOCK: 18
-    REDSTONE_BLOCK: 9
-
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|                        Nexus                        |#
@@ -711,7 +706,9 @@ nexus:
   claimed: true
 
   # The amount of resourcepoints taken from the kingdom that owns the nexus and given to the kingdom who broke the nexus.
+  # Nothing will happen if they don't have any resource points.
   break:
+    # If this is acceptable in creative mode too.
     creative: true
     cost: 20
 
@@ -920,43 +917,14 @@ home:
   # If the player should not take damage when teleporting to home.
   should-not-be-damaged: true
 
+book:
+  # The limit of chapters per kingdom.
+  # If you increase this, you must change the default GUI as well
+  # to support more slots.
+  # Changing this will also not affect existing chapters of any kingdom.
+  limit: 5
 
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|                      Powerups                       |#
-#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
-
-# Powerups should only work in your own land.
-powerup-own-land-only: true
-
-# Enabled and Scaling options require /k reload to change.
-# Note: If you decrease the max-level kingdoms who already
-# upgraded their level beyond the new value will keep it and it
-# won't affect them. Unfortunately, you can't fix this unless you
-# manually edit their data file.
-powerups:
-  damage-boost:
-    enabled: true
-    name: 'Damage Boost'
-    cost: "(lvl + 1) * 100"
-    scaling: "percentOf(lvl, damage)"
-    max-level: 70
-  damage-reduction:
-    enabled: true
-    name: 'Damage Reduction'
-    cost: "(lvl + 1) * 100"
-    scaling: "percentOf(lvl, damage)"
-    max-level: 70
-  arrow-boost:
-    enabled: true
-    name: 'Arrow Boost'
-    cost: "(lvl + 1) * 70"
-    scaling: "percentOf(lvl, damage)"
-    max-level: 70
-  regeneration-boost:
-    enabled: true
-    name: 'Regeneration Boost'
-    cost: "(lvl + 1) * 70"
-    scaling: "percentOf(lvl, amount)"
-    max-level: 100
+  # The maximum length of chapter titles.
+  # This is specifically 15 because the max length of
+  # book titles in Minecraft is 15
+  title-max-length: 15

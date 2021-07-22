@@ -5,7 +5,9 @@ author: Crypto Morin
 version: ${project.version}
 api-version: "1.13"
 softdepend: [ Citizens, MyPet, PlaceholderAPI, MVdWPlaceholderAPI, WorldGuard, WorldEdit, Vault, AuthMe, DiscordSRV, LuckPerms,
-              MythicMobs, Multiverse-Core, dynmap, Regionerator ]
+              MythicMobs, Multiverse-Core, dynmap, Regionerator,
+  # Vanish:
+              Essentials, CMI ]
 
 # Since plugin command name is custom, it's handled internally.
 
@@ -48,7 +50,37 @@ permissions:
   kingdoms.command.top:
     default: true
 
+  kingdoms.command.vault:
+    default: op
+
+  kingdoms.command.vault.others:
+    default: op
+
+  kingdoms.command.inventory.others:
+    default: op
+
+  kingdoms.command.inventory:
+    default: op
+
+  kingdoms.command.inventory.take:
+    default: op
+
+  kingdoms.command.pvp.others:
+    default: op
+
+  kingdoms.command.seak.others:
+    default: op
+
+  kingdoms.command.seak:
+    default: op
+
   kingdoms.structures.build.place:
+    default: op
+
+  kingdoms.commands.bypass.cooldown.<command>:
+    default: op
+
+  kingdoms.commands.bypass.disabled-worlds.<command>:
     default: op
 
   kingdoms.structures.build.break:
@@ -93,7 +125,22 @@ permissions:
   kingdoms.command.admin:
     default: op
 
+  kingdoms.command.glow:
+    default: op
+
   kingdoms.command.admin.dynmap:
+    default: op
+
+  kingdoms.command.admin.execute:
+    default: op
+
+  kingdoms.command.admin.execute.console:
+    default: false
+
+  kingdoms.command.extractor.others:
+    default: op
+
+  kingdoms.command.extractor:
     default: op
 
   kingdoms.command.nation.nexus:
@@ -214,10 +261,16 @@ permissions:
   kingdoms.command.claim.auto:
     default: true
 
+  kingdoms.command.claim.auto.others:
+    default: op
+
   kingdoms.command.claim.chunk:
     default: true
 
   kingdoms.command.claim.full:
+    default: true
+
+  kingdoms.command.claim.square:
     default: true
 
   kingdoms.command.nexus:
@@ -237,6 +290,36 @@ permissions:
 
   kingdoms.command.invite:
     default: true
+
+  kingdoms.command.admin.create:
+    default: op
+
+  kingdoms.command.admin.rename:
+    default: op
+
+  kingdoms.command.book:
+    default: true
+
+  kingdoms.command.book.edit:
+    default: true
+
+  kingdoms.command.book.preview:
+    default: true
+
+  kingdoms.command.book.discard:
+    default: true
+
+  kingdoms.command.book.remove:
+    default: true
+
+  kingdoms.command.book.open:
+    default: true
+
+  kingdoms.command.admin.pacifism:
+    default: op
+
+  kingdoms.command.admin.home:
+    default: op
 
   kingdoms.chat.colors:
     default: op
@@ -263,6 +346,9 @@ permissions:
     default: op
 
   kingdoms.command.visualize:
+    default: true
+
+  kingdoms.command.visualize.all:
     default: true
 
   kingdoms.command.visualize.permanent:
@@ -335,10 +421,13 @@ permissions:
   kingdoms.command.map.auto:
     default: true
 
-  kingdoms.command.disband:
+  kingdoms.command.map.size:
     default: true
 
   kingdoms.command.map.reset:
+    default: true
+
+  kingdoms.command.disband:
     default: true
 
   kingdoms.command.king:

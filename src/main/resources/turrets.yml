@@ -15,3 +15,23 @@ enabled: true
 limit: 5
 disable-shift-click: true
 remove-unclaimed: false
+
+# Allow players in kingdoms to place turrets in unclaimed lands?
+# They still need to be in a kingdom to use the turrets.
+allow-unclaimed: false
+
+# Should turrets go directly to the player's inventory who broke the turret.
+to-inventory-on-break: false
+
+# Seconds before turrets can shoot players after they've been teleported.
+# Set to 0 to disable
+teleportation-invulnerability: 5
+
+# NOTE: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
+# By changing this option you're changing how often turrets perform checks and ativate.
+# By default it is 1 ticks. Meaning every 1 second, 20 checks are performed.
+# If you change it to 2 ticks for instance, all the "time" based turret options will be affected.
+# Meaning if the turret's cooldown was "10" ticks now it's "10 * 2 = 20" ticks.
+# Every single number of this option matters up to 100 ticks for performance. After 100 ticks the performance is just not noticable anymore.
+# Requires a restart to update.
+update-ticks: 1
