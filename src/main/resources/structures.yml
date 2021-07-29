@@ -130,7 +130,7 @@ structures:
       every: 10sec
     item:
       1:
-        name: "&5Extractorss"
+        name: "&2Extractors"
         material: EMERALD_BLOCK
         #        flags: [ HIDE_POTION_EFFECTS ]
         lore:
@@ -254,39 +254,46 @@ structures:
 
 
   siege-cannon:
-    name: "&fSiege Cannon"
+    name: "&5Siege Cannon"
     type: siege-cannon
-    default-name: 'Siege Cannon'
+    default-name: 'Cannon'
     shield-damage: 10min
     projectile:
       yield: 2
     # Only the material and the amount is customizable.
     invalid-ammo-message: ""
+    # Cooldown in seconds.
+    cooldown: 10
     actionbar:
       fire: '&2Fire'
+      cooldown: '&cCooldown&8: &e%cooldown%'
       not-loaded: '&cCannon not loaded'
     ammo:
       type: IRON_BLOCK
-    allow-damaging:
+    allow-damaging: # These options accept both lists and 'true' for all types
+      # Note that turret and structure types are case-sensitive.
+
       turrets: true
 
-      # Excluding powercells and nexus.
-      # Cannons can break other cannons.
-      structures: true
+      structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
 
+      # Materials
+      # Note that the materials that fireballs cannot destroy
+      # in general are excluded automatically.
       blocks: true
 
+      # This option doesn't support lists.
       protected-blocks: false
     particles:
       1:
         shoot:
           particle: FLAME
-          count: 50
-          offset: 1, 1, 1
+          count: 30
+          offset: 0.5
         hit:
           particle: FLAME
           count: 50
-          offset: 1, 1, 1
+          offset: 2
         place:
           particle: ENCHANTMENT_TABLE
           count: 70
@@ -303,11 +310,13 @@ structures:
         break: BLOCK_BEACON_DEACTIVATE
         shoot: ENTITY_DRAGON_FIREBALL_EXPLODE
         load: ITEM_BOTTLE_FILL_DRAGONBREATH
+        empty: ENTITY_ITEM_BREAK
+        cooldown: BLOCK_NOTE_BLOCK_BASS
         hit: ~ # The explosion sound is enough.
     hologram:
       1:
         lines:
-          - "&8-=( &3Siege Cannon &8)=-"
+          - "&8-=( &5Siege Cannon &8)=-"
         height: 1
     block:
       1: DISPENSER
@@ -315,7 +324,7 @@ structures:
     sell: 4000
     item:
       1:
-        name: "&3Siege Cannon"
+        name: "&5Siege Cannon"
         material: DISPENSER
         lore:
           - "&6A cannon used to break kingdoms"

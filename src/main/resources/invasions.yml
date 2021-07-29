@@ -10,7 +10,9 @@
 simuntanous-invasions: 1
 
 # Required resource points to invade a kingdom.
-required-resource-points: 50
+costs:
+  resource-points: 50
+  money: 0
 
 pacifism:
   # If pacifism system should work at all. Kingdoms that have this option
@@ -54,6 +56,9 @@ champion-death-messages:
   entity-attack:
     - "&e%kingdoms_name%'s &cchampion was slayed by %player%"
 
+# Allow block explosion during invasions only on the invading land?
+# This will not break turrets, structures or protected chests.
+allow-explosion: true
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
@@ -80,7 +85,9 @@ masswar:
   time: 1hr
 
   # Required resource points to invade during masswar events.
-  required-resource-points: 0
+  costs:
+    resource-points: 0
+    money: 0
 
   bossbar:
     enabled: true
@@ -174,6 +181,11 @@ nations:
 remove-home: true
 
 spawning:
+  # Should the champion spawn where the player did "/k invade"
+  # If set to false, the champion will spawn near the player wherever they
+  # currently are after the countdown ends.
+  initial-location: true
+
   # Countdown before the champion spawns in seconds.
   countdown: 5
 
@@ -261,7 +273,9 @@ surrender:
   # land that's being invaded will be for the invaders.
   defender: true
   # Return resource points of the invader surrendered?
-  return-resource-points: false
+  refund:
+    resource-points: false
+    money: false
 
 # Time limit for defeating the champion. Set to 0 to disable.
 # If this time limit ends, the champion will despawn and invaders will lose.
