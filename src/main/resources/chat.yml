@@ -135,6 +135,7 @@ discordsrv-private-channel: '$console'
 # These formats support ranks too. To change the format for a specific rank just convert them into a config section
 # just like the global format below. The keys are the rank name and the values are the formats.
 # "default" refers to the default chat format if Vault wasn't found or there are no permission plugins.
+# If you only want to change the message color, you should use rank suffixes instead.
 formats:
   # Used for global chnanel when a player doesn't have a kingdom.
   global-no-kingdom: "COMPLEX:hover:{%displayname%;&2Message %player%;|/msg %player% } &7≫ &r%message%"
@@ -144,6 +145,8 @@ formats:
   # global: "COMPLEX:&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] hover:{%displayname%;&2Kingdom&8: &2%kingdoms_name%} &7≫ &r%message%"
   # The only chat format that supports relational placeholders is the global one.
   global:
+    # "COMPLEX:&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &r{%displayname% & -1}%message%"
+    # The format above takes the suffix color of the player's display name for the message.
     default: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &r%message%"
     admin: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &6%message%"
   kingdom: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &d%message%"

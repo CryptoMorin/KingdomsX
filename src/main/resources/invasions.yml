@@ -144,13 +144,24 @@ teleportation:
   should-not-be-damaged: true
 
 # The BossBar shown to nearby players for the chmapion.
+# This bossbar is also used for attackers during plunder invasions.
 # Multiple champions will show multiple bossbars of course.
 bossbar:
   enabled: true
-  title: "&2Champion Health &8[&6%health%&7/&6%max_health%&8]"
-  color: RED
-  style: SEGMENTED_20
+
+  # Should the bossbar be displayed only for nearby players around the champion
+  # or set to 0 for all the online members of the defender and attacker kingdoms.
   range: 13
+
+  # For champion invasions if set to true, this will keep increasing the progress bar, and the champion is dead once the bar is full,
+  # otherwise if set to false, the champion is dead once the progress bar is empty.
+  # Same for plunder invasions, but for your opponent's lives.
+  reverse-progress: true
+
+  title: "&2Champion Health &8[&6%health%&7/&6%max_health%&8]"
+  color: GREEN
+  style: SEGMENTED_20
+  flags: [ PLAY_BOSS_MUSIC ]
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introductions#nations
 nations:
@@ -180,27 +191,23 @@ nations:
 # Remove home if it's set on the invaded land.
 remove-home: true
 
-spawning:
-  # Should the champion spawn where the player did "/k invade"
-  # If set to false, the champion will spawn near the player wherever they
-  # currently are after the countdown ends.
-  initial-location: true
+# Should the champion spawn where the player did "/k invade"
+# If set to false, the champion will spawn near the player wherever they
+# currently are after the countdown ends.
+initial-location: true
 
-  # Countdown before the champion spawns in seconds.
-  countdown: 5
+# Countdown before the champion spawns in seconds.
+countdown: 5
 
-  # Sound played when the champion spawns.
-  sound: ENTITY_ENDER_DRAGON_GROWL, 10
-
-  # The sound played for each countdown.
-  # To disable this, set the option entry to ~
-  countdown-sound:
-    0: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 2.0
-    1: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.8
-    2: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.6
-    3: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.4
-    4: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.2
-    5: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.0
+# The sound played for each countdown.
+# To disable this, set the option entry to ~
+countdown-sound:
+  0: ENTITY_ENDER_DRAGON_GROWL, 10
+  1: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 2.0
+  2: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.75
+  3: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.5
+  4: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.25
+  5: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.0
 
 # The cooldown for a kingdom when they fail to invade a kingdom
 # and they want to try again.
@@ -221,6 +228,11 @@ items:
 # Note that the player still can't teleport to other worlds if this option is true. This is used to
 # prevent people from using end and nether portals, which can cause some issues due to the player world and the champion's world differing.
 allow-teleportation: false
+
+# Allow the invader to use elytra during invasions.
+# It's possible to use this to escape without the drag event.
+# But this is also useful for other invasion systems.
+allow-elytra: false
 
 # Commands to perform when invasion begins.
 commands-upon-invasion: [ ]
@@ -286,11 +298,15 @@ time-limit:
   nexus: 15mins
 
   # Show the time limit progress with a bossbar.
+  # Read the previous bossbar for more info.
+  # The "range" of this bossbar is always the same as the previous one.
   bossbar:
     enabled: true
-    title: "&2Champion Time Limit &8[&6%time%&8]"
-    color: GREEN
-    style: SEGMENTED_12
+
+    # Special placeholders are the same as the previous bossbar.
+    title: "&5⌛ &8[&d%time%&8] &5⌛"
+    color: PURPLE
+    style: SOLID
 
 # Minimium members needed to be online to start the invasion.
 # This supports AuthMe authentication system.
@@ -298,11 +314,61 @@ online-members:
   invader: 0
   defender: 0
 
+# Only stop invasion if the defending kingdom members die the amount of times.
+# The invaders will win by default.
+# This is not recommended as members in the defending kingdom can betray.
+# For plunders, This number is the amount of kills a kingdom has to get in order to win the battle.
+# Set to 0 to disable.
 player-deaths:
-  # What happens if this member is part of the defending Kingdom.
-  defender:
-    # Only stop invasion if the defending kingdom members die the amount of times.
-    # The invaders will win by default.
-    # This is not recommended as members in the defending kingdom can betray.
-    # Set to 0 to disable.
-    counter: 0
+  defender: 0
+  attacker: 0 # This option has no effect for the standard invasion method.
+
+  # Should the defender keep these when they die?
+  # This works for both attackers and defenders for plunders.
+  keep:
+    inventory: false
+    xp: false
+
+plunder:
+  enabled: false
+
+  particles:
+    enabled: true
+    states:
+      capturing:
+        particle: REDSTONE
+        count: 5
+        color: 255, 0, 0
+        size: 2
+      protected:
+        particle: REDSTONE
+        count: 0
+        offset: 0, 5, 0
+        color: 0, 0, 255
+        extra: 2
+        size: 2
+
+  # This is only for attackers.
+  capture-progress:
+    increment: 0.1 # This happens every tick
+    goal: 100 # after this, attackers win
+
+    bossbar:
+      # Which boss bar should the capture progress use to show the progress since it doesn't have its own bossbar?
+      # none: None of the bossbars if you want to use the placeholders instead.
+      # timer: The time limit bossbar.
+      # normal: Use the progress on the normal bossbar of defender and attackers
+      use: normal
+
+      # This color is applied to whichever bossbar the above option points to.
+      state-colors:
+        capturing: RED
+        protected: BLUE
+
+  # The enabled and range option are the same as the main bossbar option.
+  # The attacker's bossbar is the default bossbar used for champions.
+  # That means during plunder invasions attackers and invaders have different bossbars.
+  defender-bossbar:
+    title: "&c⚔ %attacker-lives-left% &8| &2%defender-lives-left% 🛡 &7∫ &6%capture-progress%&8/&6%capture-progress-goal%"
+    color: RED
+    style: SEGMENTED_20
