@@ -35,6 +35,11 @@ shields:
   # Cooldown before buying shields again after the last invasion whether it failed or not.
   last-invasion-cooldown: 1day
 
+champions:
+  # Players with ceasefire attribute with the kingdom that the
+  # champion belongs to, can't damage the champion.
+  disable-friendly-damage: true
+
 # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
 disabled-champion-damages:
   - FALL
@@ -58,7 +63,7 @@ champion-death-messages:
 
 # Allow block explosion during invasions only on the invading land?
 # This will not break turrets, structures or protected chests.
-allow-explosion: true
+allow-explosion: false
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
@@ -76,7 +81,7 @@ masswar:
     pacifists: false
 
     # Allow invading shielded kingdoms during Mass Wars.
-    shields: false
+    shields: true
 
   # Set to 0 to disable. These times will reset on server restart.
   # The interval between each MassWar. This interval starts right after an automatic MassWar has ended.

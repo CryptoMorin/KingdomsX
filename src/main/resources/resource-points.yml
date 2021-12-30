@@ -40,7 +40,8 @@ custom:
 
 # Advanced settings to detect custom items worth.
 # name: The full name of the item with colors.
-# lore: The full lore of the item with colors.
+# lore: The full line of the item with colors.
+#       Notice that using plain text for this option compares it to each *line* not the whole lore.
 # These two options above must be an exact match, otherwise you can use
 # the special keyword "CONTAINS:" or "REGEX:" at the beginning.
 # CONTAINS: Checks if the given text is present in the field and it is case-sensitive.
@@ -54,21 +55,23 @@ custom:
 # custom-model: The 1.14 custom model data of the item.
 
 # enchants: A list of enchantments that the item should have.
-# Optionally you can leave the list empty to indicate that the item needs to be enchanted with anything.
+# Additional enchantments on the item that are not in this list are ignored.
 
 # nbt: This checks if the item has some kind of NBT data with the specified value.
 # You shouldn't bother with this option if you don't know what NBT datas your custom item plugins use.
 # Most of them don't use them at all.
 # This also has performance penalties, so use them sparingly.
 advanced:
-  crystal:
-    name: "&2Crystal"
-    material: DIAMOND
+  special-gravel:
+    name: "CONTAINS:Dorito"
+    material: DIRT
+    resource-points: 1
   cor-lapis:
+    # Notice lore is used instead of name
     lore: "CONTAINS:cor lapis"
     material: GOLD_BLOCK
-    enchants: [ ]
-      # advanced-nbt-stuff:
+    resource-points: 1000
+    # advanced-nbt-stuff:
     # material: NETHER_STAR
     # nbt:
     # The built-in "ResourcePoints" kingdoms NBT Allows developers to add custom worht

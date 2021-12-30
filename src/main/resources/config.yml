@@ -151,12 +151,12 @@ keep-admin-mode: false
 # Each of these entries are used only if the time units above the specified time unit is 0.
 time-formatter:
   # For example this entry is only used if the time is less than 60 seconds (1 minute)
-  seconds: '00:00:ssa'
-  minutes: '00:mma:ss'
-  hours: 'hha:mm:ss'
-  days: 'dda day(s), hh:mm:ss'
-  weeks: 'wwwwa week(s), dd day(s), hh:mm:ss'
-  months: 'MMA month(s), wwww week(s), dd day(s), hh:mm:ss'
+  seconds: '00:00:ssaf'
+  minutes: '00:mmaf:ssf'
+  hours: 'hhaf:mmf:ssf'
+  days: 'dda day(s), hhaf:mmaf:ssaf'
+  weeks: 'wwwwa week(s), dd day(s), hhaf:mmaf:ssaf'
+  months: 'MMA month(s), wwww week(s), dd day(s), hhaf:mmaf:ssaf'
 
 # /k help
 help:
@@ -287,6 +287,7 @@ max-members:
 kingdom-name:
   # To allow renaming you need kingdoms.command.rename permission.
   # Use 0 for no cooldown.
+  # This cooldown does no persist between server restarts.
   renaming-cooldown: 1day
 
   # Maximum kingdom name length.
@@ -337,9 +338,9 @@ kingdom-name:
   # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
   # To only allow a certain language, use "[^A-z]" where A is the first alphabet in that language and z is the last (lowercase if available)
   # alphabet in that language. The "[^A-z]" expression itself indicates that only English alphabets are allowed.
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
+  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?" ]
   # A list of blacklisted names kingdom.
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-names: [ cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
 
 # Settings for /k tag
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
@@ -355,13 +356,14 @@ tags:
   allow-non-english: false
   allow-symbols: false
 
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?" ]
+  blacklisted-names: [ cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
 
 # Settings for /k nation create and /k nation rename
 # Players who have admin mode enabled, will bypass all the following checks.
 nation-name:
   # Use 0 for no cooldown.
+  # This cooldown does no persist between server restarts.
   renaming-cooldown: 1day
 
   # Maximum nation name length.
@@ -461,6 +463,7 @@ kingdom-lore:
 
   # Cooldown for each renaming.
   # Supports time suffix. Set to 0 to disable.
+  # This cooldown does no persist between server restarts.
   renaming-cooldown: 0
 
   # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
