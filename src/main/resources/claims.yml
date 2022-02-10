@@ -271,6 +271,8 @@ indicator:
     # where x is the option and y is the player's y axis.
     # Setting to 0: Blocks will appear on the same y as the blocks the player is standing on.
     # Otherwise blocks will be placed on the floor block.
+    # Note this must also be lower than the servers max view distance (16 by default but that is the chunk number)
+    # as higher values are useless. There is a hard limit of 160 blocks.
     floor-check-height: 5
 
     # If the blocks should visualize all the border blocks around the chunk.

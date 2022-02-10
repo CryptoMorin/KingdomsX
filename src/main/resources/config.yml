@@ -126,7 +126,7 @@ database:
   smart-save: true
 
   # DO NOT CHANGE - because you mostly have no idea how it can break things even after you read below.
-  # If you're a big network you should turn this off unless you have a lot of RAM.
+  # If you're a big network you should turn this off unless you have a lot of RAM as this option will cause all data to NOT expire.
   # If you disable this, daily check interval (which includes taxes, top kingdom rewards and ...) and /k top will not work.
   # Other functions that require a kingdom name will also not work.
   load-all-data-on-startup: true
@@ -154,9 +154,9 @@ time-formatter:
   seconds: '00:00:ssaf'
   minutes: '00:mmaf:ssf'
   hours: 'hhaf:mmf:ssf'
-  days: 'dda day(s), hhaf:mmaf:ssaf'
-  weeks: 'wwwwa week(s), dd day(s), hhaf:mmaf:ssaf'
-  months: 'MMA month(s), wwww week(s), dd day(s), hhaf:mmaf:ssaf'
+  days: 'dda day(s), hhf:mmf:ssf'
+  weeks: 'wwwwa week(s), dd day(s), hhf:mmf:ssf'
+  months: 'MMA month(s), wwww week(s), dd day(s), hhf:mmf:ssf'
 
 # /k help
 help:
@@ -705,6 +705,7 @@ disband:
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
+# Refer to structures.yml for more options.
 nexus:
   # Place the nexus on the current block when the kingdom is created if possible.
   place-on-create: true
@@ -722,10 +723,6 @@ nexus:
   # Allow allies and truce to click on your nexus
   # and donate resource points.
   click-donation: true
-
-  # The block materiol used for nexus.
-  # Can be any 1.8-1.14 names.
-  block: BEACON
 
   # Allow kingdom nexus to be removed by members.
   # You cannot remove your nexus by:
