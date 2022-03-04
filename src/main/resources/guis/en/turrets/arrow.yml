@@ -8,8 +8,11 @@ options:
     material: ARROW
     ammo: 100
     cost: 10
+    # Set to 0 to disable.
+    fill-cost: 'neededAmmo / 4'
     lore:
-      - '&2Buy &6100 &2ammo for &610 &2resource points.'
+      - '&2Buy &6%ammo% &2ammo for &6%cost% &2resource points.'
+      - '&2Fill ammo by &6shift clicking &2for &6%fill-cost% &2resource points.'
     slot: 0
   upgrade:
     upgrade:
@@ -27,7 +30,6 @@ options:
         - "&7⚫ &2Max Level&8: &6III"
         - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      condition: "true"
       name: "&9Level&8: &6%level_roman%"
       material: NETHER_STAR
       lore:

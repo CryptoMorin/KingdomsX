@@ -245,8 +245,8 @@ nexus:
   turret-purchased: '&7Sikeresen megvetted a(z) &e%turret% &7ágyút &e%cost% &7áron!'
   resourcepoints: '&7Összesen &e%amount% &7NP-t szereztetek.'
   rank-editor:
-    enter-value: COMPLEX:&6Írd be az új értéket vagy írd be hover:{&ccancel;&cMégsem;cancel}
-      &6ahhoz, hogy megszakítsd a folyamatot.
+    enter-value: @&6Írd be az új értéket vagy írd be hover:{&ccancel;&cMégsem;cancel}
+                   &6ahhoz, hogy megszakítsd a folyamatot.
     max: '&cNem hozhatsz több rangot létre mint &e%limit%'
     other: '&cNem szerkesztheted más királyságok rangjait.'
     cannot-delete-rank: '&cNem törölheted ezt a rangot, mert nincs elég rang a királyságodban.'
@@ -277,11 +277,11 @@ nexus:
     next-page-not-available: '&cNo more pages. Max pages&8: &e%pages%'
     previous-page-not-available: '&cNo more previous pages.'
   settings:
-    tax-enter-value: COMPLEX:&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
-      &6a megszakításhoz.
+    tax-enter-value: @&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
+                       &6a megszakításhoz.
     flag:
       enter-value: |-
-        COMPLEX:&6Írd be az új zászló URL-t. Vagy írd be hover:{&ccancel;&cMégsem;cancel} &6, hogy megszakítsd a folyamatot.
+        @&6Írd be az új zászló URL-t. Vagy írd be hover:{&ccancel;&cMégsem;cancel} &6, hogy megszakítsd a folyamatot.
         Click hover:{&2here;&2Open Flag URL;url:%kingdoms_flag%} &6to open your current flag URL.
       wrong-url: '&cÉrvénytelen URL: &e%flag%'
       contains: '&cA zászló URL nem elfogadható mivel fekete listás szavakat tartalmaz:
@@ -298,7 +298,7 @@ nexus:
       set: '&2A királyság zászlaja megváltozott: &6%flag%'
     color:
       enter-value: |-
-        COMPLEX:&6Kérlek írd be az új értéket. Vagy írd be hover:{&ccancel;&cMégseml;cancel} &6a megszakítása.
+        @&6Kérlek írd be az új értéket. Vagy írd be hover:{&ccancel;&cMégseml;cancel} &6a megszakítása.
         Hex színkódok:{&2itt;&2Megnyitás;url:https://htmlcolorcodes.com/}
       wrong-hex: '&cHibás Hex szín: &e%color%'
       wrong-rgb: '&cHibás RGB szín8: &e%color%'
@@ -316,8 +316,8 @@ nexus:
     shield-activated: '&2A pajzs aktiválva &6%kingdoms_shield_time_left% hátralévő
       idő'
   resource-points: '&e%amount% &6Nexus pont hozzá lett adva a királyság egyenlegéhez.'
-nexus-resource-points-enter-value: COMPLEX:&6Kérlek írd be a Nexus pontok mennyiségét
-  vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.
+nexus-resource-points-enter-value: @&6Kérlek írd be a Nexus pontok mennyiségét
+                                     vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.
 extractor:
   not-enough-resource-points: '&cNincs elég Nexus pontod.'
 warppad-enter-name: '&2Kérlek írd be a Teleport pad-ed nevét.'
@@ -408,15 +408,15 @@ command:
     description: '&6Parancsok megjelenítése'
     usage: '&4Használat: &e/k help [oldal]'
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+    grouped-commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
       %cmd%}
-    footer: COMPLEX:hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
+    footer: @hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
       oldal;/k %command% %next_page%}
-    footer-page: COMPLEX:hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}
-    footer-current-page: COMPLEX:hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}
+    footer-page: @hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}
+    footer-current-page: @hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}
     header: NOPREFIX|&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------
     no-more-pages: '&cNem található több oldal.'
-    commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
+    commands: @hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
   reload:
     description: '&6Plugin újratöltése.'
     usage: /k reload [config]
@@ -463,9 +463,9 @@ command:
       name-numbers: '&cNnemzet neve nem tartalmazhat számokat.'
       name-already-in-use: '&cEz a név már foglalt.'
       usage: '&4Használat: &e/k nation create <név>'
-      already-in-nation: COMPLEX:&cMár tagja vagy egy nemzetnek. Hagyd el a jelenlegit
-        using hover:{&e/k nation leave;&cLeave;/k nation leave} &chogy újat hozhass
-        létre.
+      already-in-nation: @&cMár tagja vagy egy nemzetnek. Hagyd el a jelenlegit
+                           using hover:{&e/k nation leave;&cLeave;/k nation leave} &chogy újat hozhass
+                           létre.
       success: '&2Megalapítottad a(z) &6%nation% &2nemzetet!'
       announce: '&6%player% &2megalapította a(z) &6%nation% &2nemzetet!'
       cost: '&cSzükséged van &e$%cost% &ca nemzet létrehozásához.'
@@ -507,7 +507,7 @@ command:
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
       others-permission: '&cEhhez nincs jogod.'
       message-admin: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
         &7| &2Főváros: &6%kingdoms_nation_capital%
         &7| &2Spawn: &6%kingdoms_nation_spawn%
@@ -521,7 +521,7 @@ command:
         &7| &2Királyságok:
         %kingdoms%
       message: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
         &7| &2Király: &6%king_status%
         &7| &2Nemzet: &6%kingdoms_nation%
@@ -535,19 +535,19 @@ command:
         &7| &2Királyságok:
         %kingdoms%
       allies: |
-        COMPLEX:&7| &2Szövetségesek:
+        @&7| &2Szövetségesek:
         &e%allies%
       truces: |
-        COMPLEX:&7| &2Fegyverszünet:
+        @&7| &2Fegyverszünet:
         %truces%
       enemies: |-
-        COMPLEX:&7| &2Ellenségek:
+        @&7| &2Ellenségek:
         &e%enemies%
       kingdoms: |-
-        COMPLEX:hover:{&6%kingdoms_name%;&2Tagok: &6%kingdoms_members%
+        @hover:{&6%kingdoms_name%;&2Tagok: &6%kingdoms_members%
         &2Király: &6%kingdoms_king%
         &2Területek: &6%kingdoms_lands%}
-      relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
     not:
       in-nation: '&cA megadott királyság vagy játékos nem tagja egy nemzetnek sem.'
     setspawn:
@@ -571,7 +571,7 @@ command:
     nexus:
       description: '&6Nexus elhelyezése.'
       help: |-
-        COMPLEX:&2Jobb kattolj arra a blokkra ahova elakarod helyezni a Nexust.
+        @&2Jobb kattolj arra a blokkra ahova elakarod helyezni a Nexust.
         Kiszeretnél lépni a Nexus módból hover:{&6/k nation nexus;&cKikapcsolás;/k nation nexus} &2írd be újra .
       actionbar-activated: '&6Nexus Mód: &2Aktiválva'
       actionbar-deactivated: '&6Nexus Mód: &cKikapcsolva'
@@ -600,7 +600,7 @@ command:
       description: '&6Nemzeti meghívó küldése egy királyságnak.'
       usage: '&4Használat: &e/k nation invite <királyság> [lejárat]'
       invited: |-
-        COMPLEX:&6%inviter% &2meghívott téged a(z) &6%nation% &2nemzetbe.
+        @&6%inviter% &2meghívott téged a(z) &6%nation% &2nemzetbe.
             hover:{&2Elfogadás /k nation accept;&2Elfogadás;/k nation accept}
             hover:{&cElutasítás /k nation decline;&cElutasítás;/k nation decline}
       announce: '&6%inviter% &2meghívott téged a(z) &6%kingdom% &2nemzetbe.'
@@ -647,12 +647,12 @@ command:
       description: '&6TOP Nemzetek.'
       loading: '&6Adatok betöltése...'
       header: '&8----------------------------------'
-      footer: 'COMPLEX:     &8[hover:{&6←;&6Előző oldal;/k nation top %previous_page%}&8]
+      footer: '@     &8[hover:{&6←;&6Előző oldal;/k nation top %previous_page%}&8]
         &8[hover:{&6→;&6Következő oldal;/k nation top %next_page%}&8]'
       no-more-pages: '&cNincs több oldal.'
       negative: '&cNem található negatív oldal.'
       entry: |-
-        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Tagok: &6%kingdoms_nation_kingdoms%
+        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Tagok: &6%kingdoms_nation_kingdoms%
         &7♦ &2Nexus Pontok: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -773,7 +773,7 @@ command:
     usage: '/k show [játékos | királyság | #JÁTÉKOS | #KIRÁLYSÁG] <játékos | királyság>'
     others-permission: '&cEhhez nincs jogod.'
     message-admin: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2Király: &6%king_status%
       &7| &2Otthon: &6%kingdoms_home%
@@ -787,7 +787,7 @@ command:
       &7| &2Tagok: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2Király: &6%king_status%
       &7| &2Nation: &6%kingdoms_nation%
@@ -799,21 +799,21 @@ command:
       &7| &2Tagok:
       %members%
     allies: |
-      COMPLEX:&7| &2Szövetségesek:
+      @&7| &2Szövetségesek:
       &e%allies%
     truces: |
-      COMPLEX:&7| &2Fegyverszünet:
+      @&7| &2Fegyverszünet:
       %truces%
     enemies: |-
-      COMPLEX:&7| &2Ellenségek:
+      @&7| &2Ellenségek:
       &e%enemies%
     online-prefix: |-
-      COMPLEX:hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Csatlakozás dátuma: &6%kingdoms_joined%
+      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Csatlakozás dátuma: &6%kingdoms_joined%
       &2Adományok: &6%kingdoms_total_donations%
       &2Utolsó adomány: &6%kingdoms_last_donation_time%
       &2Rang: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
   claim:
     description: '&6jelenlegi terület elfoglalása.'
     disabled-world: '&cEbben a világban nem foglalhatsz területet &6%world%'
@@ -857,7 +857,7 @@ command:
     not-claimed: '&cEz a terület nincs lefoglalva.'
     cooldown: '&cA következő feloldásig hátralévő idő &e%time%'
     cannot-remove-nexus: |-
-      COMPLEX:&cEzen a területen van a Nexus.
+      @&cEzen a területen van a Nexus.
       Kérlek először helyezd át a usinghover:{&e/k nexus;&7Bekapcsolás;/k nexus} &cparanccsal.
     occupied-land: '&cEz a terület egy másik királyság tulajdona! Az ostromhoz írd be &e/k
       invade!'
@@ -901,7 +901,7 @@ command:
   nexus:
     description: '&6Nexus pont beállítása.'
     help: |-
-      COMPLEX:&2Kattints jobb gombbal arra a blokkra amelyikre le szeretnéd tenni a Nexus-t.
+      @&2Kattints jobb gombbal arra a blokkra amelyikre le szeretnéd tenni a Nexus-t.
       Kikapcsoláshoz hover:{&6/k nexus;&cKikapcsolás;/k nexus} &2vagy írd be újra a parancsot.
     actionbar-activated: '&6Nexus Mód: &2Aktív'
     actionbar-deactivated: '&6Nexus Mód: &cInaktív'
@@ -937,7 +937,7 @@ command:
     description: '&6A pluginról.'
   invite:
     invited: |-
-      COMPLEX:&6%inviter% &2meghívott ebbe a(z) &6%kingdom% &2királyságba.
+      @&6%inviter% &2meghívott ebbe a(z) &6%kingdom% &2királyságba.
           hover:{&2Elfogadás with /k accept;&2Elfogadás;/k accept}
           hover:{&cElutasítás with /k decline;&cElutasítás;/k decline}
     usage: '&4Használat: &e/k invite <játékos> <királyság>'
@@ -997,7 +997,7 @@ command:
     countdown: '&2Érkezik a bajnok... &6%sec%'
     announcement: '&6%invader% &2megkezdte a(z) &6%kingdom% &2királyság ostromát itt: &6%location%'
     announcement-defender: |-
-      COMPLEX:&e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: %location%.
+      @&e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: %location%.
       &cÍrd be hover:{&e/k tp;&eTeleportálás;/k tp} &ca teleportáláshoz.
     announcement-nation: '&e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: &e%location%'
     own-land: '&cNem támadhatod meg a saját királyságodat.'
@@ -1040,12 +1040,12 @@ command:
     description: '&6TOP királyságok.'
     loading: '&6Adatok betöltése...'
     header: '&8----------------------------------'
-    footer: 'COMPLEX:     &8[hover:{&6←;&6Előző oldal;/k top %previous_page%}&8]
+    footer: '@     &8[hover:{&6←;&6Előző oldal;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Következő oldal;/k top %next_page%}&8]'
     no-more-pages: '&cNem tölthető be több oldal.'
     negative: '&cNincsenek negatív oldalak.'
     entry: |-
-      COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Tagok: &6%kingdoms_members%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Tagok: &6%kingdoms_members%
       &7♦ &2Területek: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2Nexus pontok: &6%kingdoms_fancy_resource_points%
       &7♦ &2Bank: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
@@ -1144,8 +1144,8 @@ command:
     already: '&cEzzel a királysággal már szövetségesek vagytok &e%kingdom%'
     already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
     self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: COMPLEX:&6%kingdom% &2királyság szeretne a szövetségesed lenni. Elfogadás hover:{&6/k
-      ally %kingdom%;&2Elfogadás;/k ally %kingdom%}
+    receiver: @&6%kingdom% &2királyság szeretne a szövetségesed lenni. Elfogadás hover:{&6/k
+                ally %kingdom%;&2Elfogadás;/k ally %kingdom%}
     allies: '&2A szövetség megköttetett ezzel a királysággal: &6%kingdom%'
     another-request: '&e%kingdom% &ckirályság küldött neked egy %relation% &ckérelmet.'
   enemy:
@@ -1163,8 +1163,8 @@ command:
     already: '&cEzzel a királysággal már fegyverszünetben vagytok &e%kingdom%'
     already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
     self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: COMPLEX:&6%kingdom% &2szeretne fegyverszünetet kötni veled. Elfogadás hover:{&6/k
-      truce %kingdom%;&2Elfogadás;/k truce %kingdom%}
+    receiver: @&6%kingdom% &2szeretne fegyverszünetet kötni veled. Elfogadás hover:{&6/k
+                truce %kingdom%;&2Elfogadás;/k truce %kingdom%}
     truces: '&2Mostantól fegyverszünet van ezzel a királysággal &6%kingdom%'
     another-request: '&e%kingdom% &cküldött neked egy %relation% &ckérelmet.'
   revoke:
@@ -1179,7 +1179,7 @@ command:
     description: '&6Csevegő csatorna váltása.'
     usage: /k chat <csatorna>
     already-in-channel: '&cMár ezen a csatornán vagy &6%channel%'
-    unknown-channel: 'COMPLEX:&cIsmeretlen csatorna! Kérlek válassz ezek közül: &fhover:{Global;Global;/k
+    unknown-channel: '@&cIsmeretlen csatorna! Kérlek válassz ezek közül: &fhover:{Global;Global;/k
       c g}&7, &2hover:{&2Királyság;&2Királyság;/k c k}&7, &ahover:{&aSzövetséges;&aSzövetséges;/k c
       a}&7, &ehover:{&eFegyverszünet;&eFegyverszünet;/k c t} &7vagy &ehover:{&9Nemzet;&9Nemzet;/k c
       n}'
@@ -1216,7 +1216,7 @@ command:
       &7| &2Helyzet: &6%x%&7, &6%z%
       &7| &2Királyság: &6%kingdom%
     admin-display: |-
-      COMPLEX:&7| &2Helyzet: &6%x%&7, &6%z%
+      @&7| &2Helyzet: &6%x%&7, &6%z%
       &7| &2Királyság: &6%kingdom%
       &7| &2Struktúra: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Teleport;/tp %sx% %sy% %sz%}
       &7| &2Ágyúk:
@@ -1331,7 +1331,7 @@ command:
       usage: '&cHasználat: &e/k admin join <játékos> <királyság>'
       invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
       in-kingdom: |-
-        COMPLEX:&6%player% &2már tagja egy királyságnak &6%kingdoms_name%
+        @&6%player% &2már tagja egy királyságnak &6%kingdoms_name%
         &2Ha ennek ellenére is folytatni akarod írd ne: hover:{&6/k admin join %player% %kingdom% confirm;&2Megerősítés;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player% &2már a(z) &6%kingdom% királyság tagja'
       success: '&6%player% &2mostantól a(z) &6%kingdom% királyság tagja'
@@ -1400,7 +1400,7 @@ command:
       permission: '&cCsak egy &eWITHDRAW &cjoggal rendelkező játkos csatlakozhat a bázis eseményekhez.'
       not-enough-resource-points: '&cA királyságodnak szüksége van &e%cost% &cNexus pontra a csatlakozáshoz.'
       not-enough-money: '&cA királyságodnak szükgése van &e$%cost% &ca csatlakozáshoz.'
-      joined: 'COMPLEX:&2A királyságod csatlakozott ehhez az eseményhez: &6%outpost%&2. Teleportálj az arénába hover:{&6/k outpost teleport;&2Teleportálás;/k outpost teleport}'
+      joined: '@&2A királyságod csatlakozott ehhez az eseményhez: &6%outpost%&2. Teleportálj az arénába hover:{&6/k outpost teleport;&2Teleportálás;/k outpost teleport}'
       announcement: '&6%kingdom% &2királyság csatlakozott az eseményhez!'
       win: |-
         &2A királyságod megnyerte az eseményt!
@@ -1485,7 +1485,7 @@ comamnd:
       usage: '&4Használate: &e/k admin player <játékos>'
       not-found: '&cA megadott játékos nem található.'
       info: |-
-        COMPLEX:&7| &2Név: &6%player% &8(hover:{&5%id%;&2Másolás;|%id%}&8)
+        @&7| &2Név: &6%player% &8(hover:{&5%id%;&2Másolás;|%id%}&8)
         &7| &2Admin: %admin% &7| &2Spy: %spy%
         &7| &2Királyság: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Másolás;|%kingdom_id%}&8)
         &7| &2Rang: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%

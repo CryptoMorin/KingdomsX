@@ -18,7 +18,25 @@ options:
       - "&6Collect all the generated"
       - "resource points."
       - "Last collected by&8: &2%name%"
-    slot: 2
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "%level% < %max_level%"
+      name: "&9Upgrade&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Every&8: &6%every% &7➔ &6%next-every%"
+        - "&7⚫ &2Resource Points&8: &6%resource-points% &7➔ &6%next-resource-points%"
+        - ""
+        - "&7⚫ &2Max Level&8: &6%max-level-roman%"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Level&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Every&8: &6%every%"
+        - "&7⚫ &2Resource Points&8: &6%resource-points%"
   close:
     name: "&2Close"
     material: BARRIER

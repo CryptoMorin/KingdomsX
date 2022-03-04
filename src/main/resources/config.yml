@@ -138,14 +138,37 @@ database:
     players: Players
     lands: Lands
 
-# Worlds that this plugin is completely disabled in them
-# other than normal functioning stuff, like commands.
+# Worlds that this plugin is disabled in.
+# This is more about performance. Most components of the plugin
+# will stay active such as chat, commands and permissions.
 # For disabling claims in certain worlds, refer to claims.yml
 disabled-worlds: [ ]
 
 # Disable admin mode after admins leave the server.
 # This option is for security purposes.
 keep-admin-mode: false
+
+# Disables integration service for one of the following plugins.
+# Requires a restart to take effect.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Installation#compatibility
+integrations:
+  placeholderapi: true
+  mvdwplaceholderapi: true
+
+  bluemap: true
+  dynmap: true
+
+  luckperms: true
+  vault: true
+
+  mythic-mobs: true
+  auth-me: true
+  discordsrv: true
+  my-pet: true
+  regionerator: true
+  world-guard: true
+  essentials: true
+  cmi: true
 
 # The universal time formatter for the plugin.
 # Each of these entries are used only if the time units above the specified time unit is 0.
@@ -207,18 +230,27 @@ join-leave-messages:
     kingdom: "&8[&c◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%displayname%"
     others: "&e%displayname% &chas left the server."
 
-# Default placeholders used when a player is not a kingdom or nation.
-# Requires /k reload to be reloaded.
-# You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
-# There are also default default placeholders for when placeholders here are not defined.
-# All the text placeholders default to an empty text and all the number placeholders default to 0
-default-placeholders:
-  name: ''
-  lore: ''
-  members: 0
-  territory: '&2Wilderness'
-  # Green
-  color: '#00ff00'
+placeholders:
+  formats:
+    brackets:
+      normal: '[%]'
+      default: ''
+    parens:
+      normal: "(%)"
+      default: ''
+
+  # Default placeholders used when a player is not a kingdom or nation.
+  # Requires /k reload to be reloaded.
+  # You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
+  # There are also default default placeholders for when placeholders here are not defined.
+  # All the text placeholders default to an empty text and all the number placeholders default to 0
+  defaults:
+    name: ''
+    lore: ''
+    members: 0
+    territory: '&2Wilderness'
+    # Green
+    color: '#00ff00'
 
 # The format of the /k broadcast message.
 # The kingdom placeholders are referring to the person
@@ -243,6 +275,9 @@ top-kingdoms:
   # A kingdoms might determines a kingdom's rank in /k top
   # Higher might means higher rank.
   might: "%kingdoms_resource_points% + %kingdoms_members%"
+
+  # Updates top leaderboard
+  update-interval: 30min
 
   # Note that it's recommended to keep this under 30
   # as it'll load every single kingdom data from this list.
@@ -345,6 +380,11 @@ kingdom-name:
 # Settings for /k tag
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
 tags:
+  # Plugin will attempt to automatically make a tag for this kingdom based on its name.
+  # For example "TheGreatPheonix" will be tagged as "TGP"
+  # and "Apothicas" will be tagged as "Apoth"
+  attempt-automatic-setting: true
+
   renaming-cooldown: 1day
 
   max-length: 16
@@ -356,8 +396,7 @@ tags:
   allow-non-english: false
   allow-symbols: false
 
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?" ]
-  blacklisted-names: [ cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Settings for /k nation create and /k nation rename
 # Players who have admin mode enabled, will bypass all the following checks.
@@ -410,9 +449,7 @@ nation-name:
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
   # If the name matches the any RegEx below then it'll not be allowed.
   # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
-  # A list of blacklisted names kingdom.
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, faggot, clit, bitch ]
+  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Should kingdom homes be public by default?
 default-public-homes: false
@@ -435,10 +472,41 @@ kingdom-fly:
   # Requires a restart to update.
   nearby-unfriendly-range: 30
 
+  charges:
+    # Requires a restart to take effect.
+    enabled: true
+
+    # Amount of seconds these charges are performed.
+    every-seconds: 1
+
+    # Player money if an economy is available
+    players:
+      # Set to ~ to disable
+      amount:
+        default: 1
+      activation-cost:
+        default: 100
+
+      pay-kingdom:
+        enabled: true
+        # false = kingdoms bank money
+        resource-points: true
+
+    kingdoms:
+      # Per player, set to ~ to disable.
+      amount:
+        default: 1
+      activation-cost:
+        default: 100
+      resource-points: true
+
   # In seconds. Set to 0 to disable. If the player avoids the flight disable cause, the warning will end and the player will keep their flight.
   warnings:
     # Warn the player before disabling their fly if they go in a land that they cannot fly in.
     land: 3
+
+    # We can give them more time. After all there's an activation cost for a reason.
+    charges: 10
 
     # Warn the player before disabling their fly if they're near unfriendly players.n
     unfriendly-nearby: 5
@@ -480,9 +548,7 @@ kingdom-lore:
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
   # If the name matches the any RegEx below then it'll not be allowed.
   # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
-  # A list of blacklisted names in kingdom lore.
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Remind people that never had a kingdom before to join one.
 # The message entry for this option is "no-kingdom-reminder"
@@ -511,6 +577,9 @@ outpost-events:
   # Set to 0 to disable.
   death-resource-points-penalty: 100
 
+  scoreboard:
+    title: "&8-=[ &2Outpost Event &8]=-"
+
 # /k resourcepoints <deposit/withdraw/transfer>
 # /k bank <deposit/withdraw>
 economy:
@@ -521,9 +590,14 @@ economy:
 
   bank:
     # Allow depositing money to kingdoms/nations bank.
-    deposit: true
+    deposit:
+      enabled: true
+      min: 1
+
     # Allow withdrawing from kingdoms/nations bank.
-    withdraw: true
+    withdraw:
+      enabled: true
+      min: 1
 
     # The bank limit for the following elements.
     # Will be considered for "/k bank deposit" and taxes.
@@ -566,6 +640,17 @@ daily-checks:
   # simply wait until the next day.
   time: '12:00'
 
+  # Amount of days between each check.
+  interval: 1
+
+  elections:
+    interval: 7
+    vote-percentage: 50
+    duration: 24hrs
+    disallow:
+      joins: true
+      kicks: true
+
   # The time zone ID.
   # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   # You should copy paste one of the names under the "TZ database name" column.
@@ -576,10 +661,6 @@ daily-checks:
   # This is also used for other things such as backups.
   timezone: 'local'
 
-# If you disable taxes, you might want to remove the option in nexus settings GUI.
-# Taxes are collected from kingdom and nation banks during the daily interval checks.
-# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#taxes
-tax:
   # The countdowns to notify players before daily checks are performed.
   # NOTE: This will only be used if either kingdoms or nations taxes are enabled.
   # The order of this list should be in descending order.
@@ -593,6 +674,10 @@ tax:
     - 15sec
     - 5sec
 
+# If you disable taxes, you might want to remove the option in nexus settings GUI.
+# Taxes are collected from kingdom and nation banks during the daily interval checks.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#taxes
+tax:
   kingdoms:
     enabled: false
     # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
@@ -609,6 +694,8 @@ tax:
 
     # The amount of time new kingdoms are excluded from paying taxes.
     age: 3 days
+
+    use-resource-points: false
 
     # Disband the kingdom if it cannot pay taxes.
     disband-if-cant-pay: true
@@ -637,6 +724,8 @@ tax:
     # Disband the nation if it cannot pay taxes.
     disband-if-cant-pay: true
 
+    use-resource-points: false
+
     members:
       enabled: false
 
@@ -646,6 +735,8 @@ tax:
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 15% of the player's current balance"
       default-equation: "(money * 15) / 100"
+
+      use-resource-points: false
 
       # Kick nation kingdoms if they cannot pay taxes.
       kick-if-cant-pay: true
@@ -675,8 +766,13 @@ inactivity:
 creation:
   kingdoms:
     sound: UI_TOAST_CHALLENGE_COMPLETE
+
+    # Show the pacifist/aggressor GUI?
+    show-kingdom-type-gui: true
+
     # The default shield duration for new kingdoms to get prepared.
     newbie-protection: 5days
+
     # Commands executed when the kingdom is created. You can use all the placeholders.
     commands: [ ]
   nations:

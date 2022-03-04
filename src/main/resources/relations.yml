@@ -33,7 +33,8 @@ custom-attributes: true
 # claimed - Players can only PvP inside of claimed lands based on their relation attributes.
 # unclaimed - Players can only PvP outside of claimed lands based on their relation attributes.
 # masswar - Players can only pvp anywhere during masswars.
-# Note that when using the last two options, if one player is a claimed land and the other is in an unclaimed land, they cannot PvP.
+# Note: When using the last two options, if one player is a claimed land and the other is in an unclaimed land, they cannot PvP.
+# Note: If one of the players is invading any land this option acts like "normal"
 pvp: normal
 
 # Only apply kingdom relations if both parties agree on that specific relation attribute. Meaning that
@@ -45,6 +46,12 @@ pvp: normal
 # kingdom, but that kingdom will be able to attack your members. That doesn't sound like something you'd want in most cases.
 agreements: true
 
+# Forces survival mode when players enter another land
+# unless they have CEASEFIRE and TURRET_CEASEFIRE attributes with that kingdom
+# or have the kingdoms.land.bypass.creative permission.
+# Note that this does not disable their fly for their safety.
+force-survival-mode: true
+
 # auto-revoke: If a kingdom declares that they no longer wish to be in a relation
 # with the other kingdom, the other kingdom will automatically have this relation revoked as well.
 # ceasefire: Members of the two kingdoms cannot PvP each other.
@@ -53,13 +60,16 @@ agreements: true
 # invade: If kingdoms can invade each other.
 # interact: Kingdoms can interact and open chests, enchantment tables and other containers.
 # use: Kingdoms can use buttons, open doors and use pressure plates.
+# home: Allow players to teleport to home of these kingdoms using /k home <kingdom>
 # manage: Kingdoms can remove and place turrets and structures in your land.
 # Note that the placed turrets/structures will be for the kingdom that owns that land.
 # limit: How many kingdoms can a single kingdom have this type of relation with? Set to 0 for unlimited.
+# effects: List of potion effects activated when in these lands.
 relations:
   self:
     color: "&2"
     name: ""
+
   neutral:
     color: "&f"
     name: "Neutral"
@@ -68,11 +78,13 @@ relations:
     build: false
     use: false
     fly: false
+    home: false
     interact: false
     invade: true
     turret-ceasefire: false
     manage-turrets: false
     manage-structures: false
+    effects: [ ]
 
   truce:
     color: "&e"
@@ -82,12 +94,15 @@ relations:
     donate: true
     build: false
     fly: true
+    home: false
     limit: 10
     interact: false
     invade: false
     turret-ceasefire: true
     manage-turrets: false
     manage-structures: false
+    effects: [ ]
+
   ally:
     color: "&a"
     name: "Ally"
@@ -96,12 +111,15 @@ relations:
     donate: true
     build: false
     fly: true
+    home: true
     limit: 10
     invade: false
     interact: true
     turret-ceasefire: true
     manage-turrets: true
     manage-structures: true
+    effects: [ ]
+
   nation:
     color: "&9"
     name: "Nation"
@@ -109,11 +127,14 @@ relations:
     ceasefire: true
     donate: true
     build: true
+    home: true
     invade: false
     interact: true
     turret-ceasefire: true
     manage-turrets: true
     manage-structures: true
+    effects: [ ]
+
   enemy:
     color: "&c"
     name: "Enemy"
@@ -122,11 +143,13 @@ relations:
     donate: false
     fly: true
     build: false
+    home: false
     limit: 10
     interact: false
     invade: true
     turret-ceasefire: false
     manage-turrets: false
     manage-structures: false
+    effects: [ ]
     disabled-commands:
       - "sethome"

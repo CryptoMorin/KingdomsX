@@ -117,7 +117,10 @@ history:
 # Note that using %kingdoms_max_lands% here can cause a Stack Overflow error which can crash your server.
 # No player placeholders can be used here of course. Only kingdom and nation placeholders.
 # You can also use the "max_claims" placeholder for the max-claims misc upgrade scaling which can be found in misc-upgrades.yml config.
-max-claims: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + max_claims"
+max-claims:
+  # Worlds can have different limits, "default" is used for any world name that is not specified here.
+  #nether_world: "..."
+  default: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + max_claims"
 
 # You can only build in claims that the relation attribute allows building.
 # This function can be disabled for specific worlds in config.yml "disabled-worlds" option.

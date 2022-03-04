@@ -1,0 +1,72 @@
+title: "&8-=[ &5Tipo de Proteccion &8]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  protected:
+    enabled:
+      condition: '%enabled%'
+      name: "&2%protection%"
+      lore: |-
+        &7Este bloque estará protegido.
+        De todos los jugadores a menos que sean
+        agregados manualmente para acceder al bloque.
+      material: OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&4%protection%"
+      material: OAK_SIGN
+      lore: |-
+        &7Este bloque estará protegido.
+        De todos los jugadores a menos que sean
+        agregados manualmente para acceder al bloque.
+    slot: 1
+    sound: default
+  everyone-in-kingdom:
+    enabled:
+      condition: '%enabled%'
+      name: "&2%protection%"
+      lore: |-
+        &7Este bloque estará protegido.
+        De todos los jugadores que no son
+        de tu reino, a menos que sean
+        agregados manualmente para acceder al bloque.
+      material: SPRUCE_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: SPRUCE_SIGN
+      lore: |-
+        &7Este bloque estará protegido.
+        De todos los jugadores que no son
+        de tu reino, a menos que sean
+        agregados manualmente para acceder al bloque.
+    slot: 2
+    sound: default
+  everyone:
+    enabled:
+      condition: '%enabled%'
+      name: "&2%protection%"
+      lore: |-
+        &7A este bloque puede acceder cualquier
+        jugador, esté fuera o dentro de tu reino
+        a menos que se agreguen manualmente para no
+        tener acceso a este bloque.
+      material: DARK_OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: DARK_OAK_SIGN
+      lore: |-
+        &7A este bloque puede acceder cualquier
+        jugador, esté fuera o dentro de tu
+        reino a menos, que se agreguen manualmente
+        para no tener acceso a este bloque.
+    slot: 3
+    sound: default

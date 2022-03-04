@@ -143,8 +143,8 @@ nexus:
   turret-purchased: '&6Has comprado &2%turret% &6por &2%cost%'
   resourcepoints: '&6Un total de &e%amount% &6RP han sido añadidos.'
   rank-editor:
-    enter-value: COMPLEX:&6Por favor, escribe un nuevo valor en el chat. O escribe:{&cCancel;&cCancel;cancel}
-      &6para cancelar.
+    enter-value: @&6Por favor, escribe un nuevo valor en el chat. O escribe:{&cCancel;&cCancel;cancel}
+                   &6para cancelar.
     cannot-delete-rank: '&cNo puedes eliminar este rango. Tu reino debe de tener al
       menos dos rangos.'
     cannot-delete-king: '&cNo puedes eliminar el rango de Rey.'
@@ -166,8 +166,8 @@ nexus:
         Alfanuméricos.'
     max-claims-limit: '&cNo puedes proteger más de territorios &e%limit%'
     max: '&cYou can''t create more than &e%limit% &cranks for your kingdom.'
-  settings-tax-enter-value: COMPLEX:&6Por favor, escribe un nuevo valor en el chat.
-    O escribe hover:{&cCancel;&cCancel;cancel} &6para cancelar.
+  settings-tax-enter-value: @&6Por favor, escribe un nuevo valor en el chat.
+                              O escribe hover:{&cCancel;&cCancel;cancel} &6para cancelar.
   settings-tax-set: |-
     &2La ecuación de los impuestos ha sido cambiada, ahora es&8: &6%tax%
     &2Probado en tí&8: &6%test%
@@ -259,14 +259,14 @@ command:
     description: '&6Muestra todos los comandos'
     usage: /Kingdoms help <página>
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+    grouped-commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
       %cmd%}
-    footer: COMPLEX:hover:{&6←;&6Previous Page;/k %command% %previous_page%} %pages%hover:{&6→;&6Next
+    footer: @hover:{&6←;&6Previous Page;/k %command% %previous_page%} %pages%hover:{&6→;&6Next
       Page;/k %command% %next_page%}
-    footer-page: COMPLEX:hover:{&8[&2%number%&8];&6Go to page &2%number%;/k %command% %number%}
-    footer-current-page: COMPLEX:hover:{&8[&2&l%number%&8];&2Current Page}
+    footer-page: @hover:{&8[&2%number%&8];&6Go to page &2%number%;/k %command% %number%}
+    footer-current-page: @hover:{&8[&2&l%number%&8];&2Current Page}
     header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
-    commands: COMPLEX:hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
   reload:
     description: '&6Recarga el plugin.'
     usage: /k reload [configuración]
@@ -294,8 +294,8 @@ command:
       name-numbers: '&cEl nombre de la nación no puede contener números.'
       name-already-in-use: '&cOtra nación está utilizando este nombre.'
       usage: /Kingdoms nation create <nombre>
-      already-in-nation: COMPLEX:&cYa estás en una nación. Abandona tu nación usando:{&e/k
-        nation leave;&cLeave;/k nation leave} para hacer uno nuevo.
+      already-in-nation: @&cYa estás en una nación. Abandona tu nación usando:{&e/k
+                           nation leave;&cLeave;/k nation leave} para hacer uno nuevo.
       success: ¡&2Has fundado la nación &6%nation%!
       cost: '&cNecesitas &e%cost% &cpara crear un reino.'
       name-has-symbols: '&cNation name cannot contain symbols. Only numbers and alphabets.'
@@ -338,7 +338,7 @@ command:
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
       others-permission: '&cNo tienes permiso para ver la información de otros jugadores.'
       message-admin: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
         &7| &2Capital&8: &6%kingdoms_nation_capital%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -349,7 +349,7 @@ command:
         &7| &2Members&8:
         %kingdoms%
       message: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
         &7| &2Rey&8: &6%king_status%
         &7| &2Nación&8: &6%kingdoms_nation%
@@ -360,19 +360,19 @@ command:
         &7| &2Members&8:
         %kingdoms%
       allies: |
-        COMPLEX:&7| &2Aliados&8:
+        @&7| &2Aliados&8:
         &e%allies%
       truces: |
-        COMPLEX:&7| &2Treguas&8:
+        @&7| &2Treguas&8:
         %truces%
       enemies: |-
-        COMPLEX:&7| &2Enemigos&8:
+        @&7| &2Enemigos&8:
         &e%enemies%
       kingdoms: |-
-        COMPLEX:hover:{&6%kingdoms_name%;&2Miembros&8: &6%kingdoms_members%
+        @hover:{&6%kingdoms_name%;&2Miembros&8: &6%kingdoms_members%
         &2Rey&8: &6%kingdoms_king%
         &2Territorios&8: &6%kingdoms_lands%}
-      relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
     not:
       in-nation: '&cEl jugador/reino especificado no está.'
     setspawn:
@@ -398,7 +398,7 @@ command:
     nexus:
       description: '&6Establece el punto de tu nexus.'
       help: |-
-        COMPLEX:&2Click Derecho en un bloque para convertirlo en tu nuevo nexus.
+        @&2Click Derecho en un bloque para convertirlo en tu nuevo nexus.
         Para deshabilitar el modo nexo, Escribe de nuevo:{&6/k nation nexus;&cDisable;/k nation nexus}.
       actionbar-activated: '&6Modo Nexo&8: &2Activado'
       actionbar-deactivated: '&6Nexo Mode&8: &cDesactivado'
@@ -428,7 +428,7 @@ command:
       description: '&6Envía una invitación al reino para unirse a la nación.'
       usage: /k nation invite <Reino> [expiración]
       invited: |-
-        COMPLEX:&6%inviter% &2Te ha invitado a unirte a la nación &6%nation% &2.
+        @&6%inviter% &2Te ha invitado a unirte a la nación &6%nation% &2.
             hover:{&2Acepta con /k nation accept;&2Acepta;/k nation accept}
             hover:{&cRechaza con /k nation decline;&cRechaza;/k nation decline}
       announce: '&6%inviter% &2te ha invitado a &6%kingdom% &2la nación.'
@@ -475,16 +475,16 @@ command:
       description: '&6Muestra las mejores naciones.'
       loading: '&6Cargando datos...'
       header: '&8----------------------------------'
-      footer: 'COMPLEX:     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8]
+      footer: '@     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8]
         &8[hover:{&6→;&6Next Page;/k top %next_page%}&8]'
       no-more-pages: '&cNo more pages to load.'
       negative: '&cCannot show negative pages.'
       entry: |-
-        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
+        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     top-entry: |-
-      COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
       &7♦ &2RP&8: &6%kingdoms_fancy_nation_resource_points%
       &7♦ &2Banco&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -599,7 +599,7 @@ command:
     usage: '/Kingdoms show [jugador | reino | #PLAYER | #KINGDOM] <jugador | reino>'
     others-permission: '&cYou don''t have permission to see others info.'
     message-admin: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_home%
@@ -613,7 +613,7 @@ command:
       &7| &2Miembros&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
       &7| &2Nación&8: &6%kingdoms_nation%
@@ -624,21 +624,21 @@ command:
       &7| &2Members&8:
       %members%
     allies: |
-      COMPLEX:&7| &2Aliados&8:
+      @&7| &2Aliados&8:
       &e%allies%
     truces: |
-      COMPLEX:&7| &2Treguas&8:
+      @&7| &2Treguas&8:
       %truces%
     enemies: |-
-      COMPLEX:&7| &2Enemigos&8:
+      @&7| &2Enemigos&8:
       &e%enemies%
     online-prefix: |-
-      COMPLEX:hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Joined&8: &6%kingdoms_joined%
+      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Joined&8: &6%kingdoms_joined%
       &2Donaciones&8: &6%kingdoms_total_donations%
       &2Última donación&8: &6%kingdoms_last_donation_time%
       &2Rango&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
   claim:
     description: '&6Reclama el terreno sobre el que estás (Utiliza F3+G).'
     disabled-world: '&cNo se puede reclamar en este mundo.'
@@ -722,7 +722,7 @@ command:
   nexus:
     description: '&6Establece el punto del nexo.'
     help: |-
-      COMPLEX:&2Click derecho en un bloque para convertirlo en tu nuevo nexo.
+      @&2Click derecho en un bloque para convertirlo en tu nuevo nexo.
       Para deshabilitar el modo nexo, utiliza:{&6/k nexus;&cDisable;/k nexus} &2de nuevo.
     actionbar-activated: '&6Modo Nexo&8: &2Activado'
     actionbar-deactivated: '&6Modo Nexo&8: &cDesactivado'
@@ -759,7 +759,7 @@ command:
     description: '&6Sobre el plugin Kingdoms.'
   invite:
     invited: |-
-      COMPLEX:&6%inviter% &2te ha invitado a unirte al reino &6%kingdom%&2.
+      @&6%inviter% &2te ha invitado a unirte al reino &6%kingdom%&2.
           hover:{&2Acepta con /k accept;&2Acepta;/k accept}
           hover:{&cRechaza con /k decline;&cRechaza;/k decline}
     usage: /k invite <player> <reino>
@@ -821,7 +821,7 @@ command:
     countdown: '&2Campeón apareciendo en... &6%sec% segundos'
     announcement: '&6%player% &2ha empezado a invadir al reino &6%kingdom% &2en &6%location%'
     announcement-defender: |-
-      COMPLEX:&e%invader% &cde &e%kingdom% &cha empezado a invadir en %location%.
+      @&e%invader% &cde &e%kingdom% &cha empezado a invadir en %location%.
       &cPara ir a defender usa:{&e/k tp;&eTeleport;/k tp} &cpara teletransportar a la posición del invasor. (Usa con precaución)
       announcement-nation: '&e%invader% &cdel reino &e%kingdom% &cha empezado a invadir
       en &e%location%'
@@ -858,11 +858,11 @@ command:
     loading: '&6Cargando Datos...'
     header: '&8----------------------------------'
     entry: |-
-      COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
       &7♦ &2Territorios&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2RP&8: &6%kingdoms_fancy_resource_points%
       &7♦ &2Banco&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
-    footer: 'COMPLEX:     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8]
+    footer: '@     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Next Page;/k top %next_page%}&8]'
     no-more-pages: '&cNo more pages to load.'
     negative: '&cCannot show negative pages.'
@@ -967,8 +967,8 @@ command:
     already: '&cYa eres aliado del reino &e%kingdom%'
     already-requested: '&cYa se ha enviado una solicitud de alianza a &e%kingdom%'
     self: '&cNo puedes aliarte con tu propio reino. ¿Qué intentas hacer?'
-    receiver: COMPLEX:&6%kingdom% &2desea aliarte con tu reino. Acepta con:{&6/k ally
-      %kingdom%;&2Acepta;/k ally %kingdom%}
+    receiver: @&6%kingdom% &2desea aliarte con tu reino. Acepta con:{&6/k ally
+                %kingdom%;&2Acepta;/k ally %kingdom%}
     allies: '&2Ahora estás aliado con el reino &5%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
   enemy:
@@ -986,8 +986,8 @@ command:
     already: '&cYa estás en una tregua con &e%kingdom%'
     already-requested: '&cYa le has mandado una solicitud a &e%kingdom%'
     self: '&cNo puedes hacer una tregua con tu propio reino.'
-    receiver: COMPLEX:&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala
-      tregua con:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}
+    receiver: @&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala
+                tregua con:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}
     truces: '&2Has pactado una tregua con &6%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
   revoke:
@@ -1002,7 +1002,7 @@ command:
     description: '&6Cambia los canales de texto del reino.'
     usage: /k chat <channel>
     already-in-channel: '&cEstás hablando por el chat &6%channel%'
-    unknown-channel: 'COMPLEX:&c¡Canal desconocido! Por favor escoge entre&8: &fhover:{Global;Global;/k
+    unknown-channel: '@&c¡Canal desconocido! Por favor escoge entre&8: &fhover:{Global;Global;/k
       c g}&7, &2hover:{&2Kingdom;&2Kingdom;/k c k}&7, &a{&aAlly;&aAlly;/k c a}&7,
       &ehover:{&eTruce;&eTruce;/k c t} &7o:{&9Nation;&9Nation;/k c n}'
     changed: '&2Ahora estás hablando en el canal %kingdoms_chat_channel_color%%kingdoms_chat_channel%'

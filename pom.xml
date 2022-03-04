@@ -6,7 +6,7 @@
 
     <groupId>com.github.cryptomorin</groupId>
     <artifactId>kingdoms</artifactId>
-    <version>1.11.12</version>
+    <version>1.12.4</version>
     <packaging>jar</packaging>
 
     <name>Kingdoms</name>
@@ -62,8 +62,6 @@
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-
-        <kotlin.version>1.6.0</kotlin.version>
     </properties>
 
     <repositories>
@@ -105,6 +103,10 @@
             <id>essentials-snapshots</id>
             <url>https://repo.essentialsx.net/snapshots/</url>
         </repository>
+        <repository>
+            <id>dynmap</id>
+            <url>https://repo.mikeprimm.com/</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -117,7 +119,7 @@
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
-            <version>8.5.0.1</version>
+            <version>8.6.2</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -160,16 +162,21 @@
         </dependency>
 
         <dependency>
+            <!-- This doesn't work. Install locally. -->
             <groupId>us.dynmap</groupId>
             <artifactId>DynmapCoreAPI</artifactId>
             <version>3.1</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
+        </dependency>
+
+        <!-- https://github.com/BlueMap-Minecraft/BlueMapAPI/wiki -->
+        <!-- https://jitpack.io/#BlueMap-Minecraft/BlueMapAPI -->
+        <!-- https://github.com/TechnicJelle/BlueMapOfflinePlayerMarkers/blob/main/src/main/java/net/mctechnic/bluemapofflineplayermarkers/main.java -->
+        <dependency>
+            <groupId>com.github.BlueMap-Minecraft</groupId>
+            <artifactId>BlueMapAPI</artifactId>
+            <version>v1.7.0</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -207,8 +214,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
-<!--            <version>1.18-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.18.1-R0.1-SNAPSHOT</version>-->
             <version>1.17.1-R0.1-SNAPSHOT</version>
+<!--            <version>1.16.5-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.14.4-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.15.2-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.13.2-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
+<!--            <version>1.8.8-R0.1-SNAPSHOT</version>-->
 <!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
             <scope>provided</scope>
             <exclusions>
@@ -314,7 +327,7 @@
         <dependency>
             <groupId>org.cmi</groupId>
             <artifactId>CMI-API</artifactId>
-            <version>8.7.8.2</version>
+            <version>9.0.0</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -477,38 +490,38 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <configuration>
-                    <skip>true</skip>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
-                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
-                            </sourceDirs>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <goals> <goal>test-compile</goal> </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>
-                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
-                            </sourceDirs>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.jetbrains.kotlin</groupId>-->
+<!--                <artifactId>kotlin-maven-plugin</artifactId>-->
+<!--                <version>${kotlin.version}</version>-->
+<!--                <configuration>-->
+<!--                    <skip>true</skip>-->
+<!--                </configuration>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <id>compile</id>-->
+<!--                        <goals>-->
+<!--                            <goal>compile</goal>-->
+<!--                        </goals>-->
+<!--                        <configuration>-->
+<!--                            <sourceDirs>-->
+<!--                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>-->
+<!--                                <sourceDir>${project.basedir}/src/main/java</sourceDir>-->
+<!--                            </sourceDirs>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                    <execution>-->
+<!--                        <id>test-compile</id>-->
+<!--                        <goals> <goal>test-compile</goal> </goals>-->
+<!--                        <configuration>-->
+<!--                            <sourceDirs>-->
+<!--                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>-->
+<!--                                <sourceDir>${project.basedir}/src/test/java</sourceDir>-->
+<!--                            </sourceDirs>-->
+<!--                        </configuration>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--            </plugin>-->
         </plugins>
 
         <resources>

@@ -6,7 +6,6 @@ options:
   node:
     name: "&2Node&8: &2%rank_node%"
     material: EMERALD
-    sound: default
     lore:
       - "&6Node is the basically the rank's name but"
       - "without colors or any special characters."
@@ -17,7 +16,6 @@ options:
   name:
     name: "&5Name&8: &2%rank_name%"
     material: DIAMOND
-    sound: default
     lore:
       - "&6The name of this rank."
       - "Can contain any character but must be"
@@ -28,7 +26,6 @@ options:
   material:
     name: "&eMaterial&8: &2%rank_material%"
     material: GOLD_INGOT
-    sound: default
     lore:
       - "&6The material used to display"
       - "this rank in the ranks GUI."
@@ -39,7 +36,6 @@ options:
   symbol:
     name: "&dSymbol&8: &2%rank_symbol%"
     material: IRON_INGOT
-    sound: default
     lore:
       - "&6Symbol for this rank."
       - "It can only be 5 characters."
@@ -49,7 +45,6 @@ options:
   color:
     name: "%rank_color%Color"
     material: COAL
-    sound: default
     lore:
       - "&6The chat color for this rank."
       - "It can only be 5 characters."
@@ -58,7 +53,6 @@ options:
   priority:
     name: "&aPriority&8: &2%rank_priority%"
     material: PAPER
-    sound: default
     lore:
       - "&6The priority for this rank"
       - "Note that lower numbers means higher priority."
@@ -68,7 +62,6 @@ options:
   max-claims:
     name: "&7Max Claims&8: &2%rank_max_claims%"
     material: BOOK
-    sound: default
     lore:
       - "&6Set the permissions of this"
       - "rank."
@@ -77,7 +70,6 @@ options:
   delete:
     name: "&4Delete"
     material: BARRIER
-    sound: default
     lore:
       - "&6Delete this rank."
       - "All the players with this"
@@ -90,7 +82,6 @@ options:
   copy:
     name: "&1Copy Rank"
     material: WRITABLE_BOOK
-    sound: default
     lore:
       - "&6Copy properties of another rank"
       - "to this rank."
@@ -98,202 +89,350 @@ options:
     posy: 2
 
   alliance:
-    name: "&2Alliance"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Alliance"
+      material: GREEN_WOOL
+    else:
+      name: "&2Alliance"
+      material: RED_WOOL
     posx: 1
     posy: 3
   broadcast:
-    name: "&2Broadcast"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Broadcast"
+      material: GREEN_WOOL
+    else:
+      name: "&2Broadcast"
+      material: RED_WOOL
     posx: 2
     posy: 3
   build:
-    name: "&2Build"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Build"
+      material: DIAMOND_PICKAXE
+      glow: true
+    else:
+      name: "&2Build"
+      material: DIAMOND_PICKAXE
     posx: 3
     posy: 3
   claim:
-    name: "&2Claim"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Claim"
+      material: GREEN_WOOL
+    else:
+      name: "&2Claim"
+      material: RED_WOOL
     posx: 4
     posy: 3
   edit-ranks:
-    name: "&2Edit Ranks"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Edit Ranks"
+      material: GREEN_WOOL
+    else:
+      name: "&2Edit Ranks"
+      material: RED_WOOL
     posx: 5
     posy: 3
   enemy:
-    name: "&2Enemy"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Enemy"
+      material: GREEN_WOOL
+    else:
+      name: "&2Enemy"
+      material: RED_WOOL
     posx: 6
     posy: 3
   home:
-    name: "&2Home"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Home"
+      material: GREEN_WOOL
+    else:
+      name: "&2Home"
+      material: RED_WOOL
     posx: 7
     posy: 3
   invade:
-    name: "&2Invade"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Invade"
+      material: DIAMOND_SWORD
+      glow: true
+    else:
+      name: "&2Invade"
+      material: DIAMOND_SWORD
     posx: 8
     posy: 3
   invite:
-    name: "&2Invite"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Invite"
+      material: GREEN_WOOL
+    else:
+      name: "&2Invite"
+      material: RED_WOOL
     posx: 9
     posy: 3
 
   # 4
   kick:
-    name: "&2Kick"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Kick"
+      material: GREEN_WOOL
+    else:
+      name: "&2Kick"
+      material: RED_WOOL
     posx: 1
     posy: 4
   lore:
-    name: "&2Lore"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Lore"
+      material: PAPER
+      glow: true
+    else:
+      name: "&2Lore"
+      material: PAPER
     posx: 2
     posy: 4
   nexus:
-    name: "&2Nexus"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Nexus"
+      material: BEACON
+      glow: true
+    else:
+      name: "&2Nexus"
+      material: BEACON
     posx: 3
     posy: 4
   nexus-build:
-    name: "&2Nexus Build"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Nexus Build"
+      material: BEACON
+      glow: true
+    else:
+      name: "&2Nexus Build"
+      material: BEACON
     posx: 4
     posy: 4
   nexus-chest:
-    name: "&2Nexus Chest"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Nexus Chest"
+      material: CHEST
+      glow: true
+    else:
+      name: "&2Nexus Chest"
+      material: CHEST
     posx: 5
     posy: 4
   outpost:
-    name: "&2Outpost"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Outpost"
+      material: HAY_BLOCK
+      glow: true
+    else:
+      name: "&2Outpost"
+      material: HAY_BLOCK
     posx: 6
     posy: 4
   protection-signs:
-    name: "&2Protected Chests"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Protected Chests"
+      material: OAK_SIGN
+      glow: true
+    else:
+      name: "&2Protected Chests"
+      material: OAK_SIGN
     posx: 7
     posy: 4
   set-home:
-    name: "&2Set Home"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Set Home"
+      material: GREEN_WOOL
+    else:
+      name: "&2Set Home"
+      material: RED_WOOL
     posx: 8
     posy: 4
   structures:
-    name: "&2Structures"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Structures"
+      material: REDSTONE_LAMP
+      glow: true
+    else:
+      name: "&2Structures"
+      material: REDSTONE_LAMP
     posx: 9
     posy: 4
 
   # 5
   use:
-    name: "&2Use"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Use"
+      material: GREEN_WOOL
+    else:
+      name: "&2Use"
+      material: RED_WOOL
     posx: 1
     posy: 5
   interact:
-    name: "&2Interact"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Interact"
+      material: OAK_DOOR
+      glow: true
+    else:
+      name: "&2Interact"
+      material: OAK_DOOR
     posx: 2
     posy: 5
   upgrade:
-    name: "&2Upgrade"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Upgrade"
+      material: GREEN_WOOL
+    else:
+      name: "&2Upgrade"
+      material: RED_WOOL
     posx: 3
     posy: 5
   truce:
-    name: "&2Truce"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&eTruce"
+      material: YELLOW_WOOL
+      glow: true
+    else:
+      name: "&eTruce"
+      material: YELLOW_WOOL
     posx: 4
     posy: 5
   turrets:
-    name: "&2Turrets"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Turrets"
+      material: ARROW
+      glow: true
+    else:
+      name: "&2Turrets"
+      material: ARROW
     posx: 5
     posy: 5
   unclaim:
-    name: "&2Unclaim"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Unclaim"
+      material: GREEN_WOOL
+    else:
+      name: "&2Unclaim"
+      material: RED_WOOL
     posx: 6
     posy: 5
   manage-ranks:
-    name: "&2Manage Ranks"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Manage Ranks"
+      material: GREEN_WOOL
+    else:
+      name: "&2Manage Ranks"
+      material: RED_WOOL
     posx: 7
     posy: 5
   withdraw:
-    name: "&2Withdraw"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Withdraw"
+      material: GREEN_WOOL
+    else:
+      name: "&2Withdraw"
+      material: RED_WOOL
     posx: 8
     posy: 5
   fly:
-    name: "&2Fly"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Fly"
+      material: ELYTRA
+      glow: true
+    else:
+      name: "&2Fly"
+      material: ELYTRA
     posx: 9
     posy: 5
 
   # 6
   nation:
-    name: "&2Nation"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Nation"
+      material: BLUE_WOOL
+      glow: true
+    else:
+      name: "&2Nation"
+      material: BLUE_WOOL
     posx: 1
     posy: 6
   exclude-tax:
-    name: "&2Exclude Tax"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Exclude Tax"
+      material: GREEN_WOOL
+    else:
+      name: "&2Exclude Tax"
+      material: RED_WOOL
     posx: 2
     posy: 6
   relation-attributes:
-    name: "&2Relation Attributes"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      name: "&2Relation Attributes"
+      material: GREEN_WOOL
+    else:
+      name: "&2Relation Attributes"
+      material: RED_WOOL
     posx: 3
     posy: 6
   settings:
     name: "&2Settings"
-    material: GREEN_WOOL
-    sound: default
+    enabled:
+      condition: '%enabled%'
+      material: GREEN_WOOL
+    else:
+      material: RED_WOOL
     posx: 4
+    posy: 6
+  build-owned:
+    name: "&2Build Owned"
+    material: DIAMOND_PICKAXE
+    lore:
+      - "&7The difference between"
+
+    enabled:
+      condition: '%enabled%'
+      glow: true
+
+    posx: 5
     posy: 6
 
   back:
     name: "&2Back"
     material: PLAYER_HEAD
-    sound: default
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
       - "&6Go back to ranks menu."
