@@ -143,8 +143,7 @@ nexus:
   turret-purchased: '&6Has comprado &2%turret% &6por &2%cost%'
   resourcepoints: '&6Un total de &e%amount% &6RP han sido añadidos.'
   rank-editor:
-    enter-value: @&6Por favor, escribe un nuevo valor en el chat. O escribe:{&cCancel;&cCancel;cancel}
-                   &6para cancelar.
+    enter-value: '@&6Por favor, escribe un nuevo valor en el chat. O escribe:{&cCancel;&cCancel;cancel} &6para cancelar.'
     cannot-delete-rank: '&cNo puedes eliminar este rango. Tu reino debe de tener al
       menos dos rangos.'
     cannot-delete-king: '&cNo puedes eliminar el rango de Rey.'
@@ -166,8 +165,8 @@ nexus:
         Alfanuméricos.'
     max-claims-limit: '&cNo puedes proteger más de territorios &e%limit%'
     max: '&cYou can''t create more than &e%limit% &cranks for your kingdom.'
-  settings-tax-enter-value: @&6Por favor, escribe un nuevo valor en el chat.
-                              O escribe hover:{&cCancel;&cCancel;cancel} &6para cancelar.
+  settings-tax-enter-value: '@&6Por favor, escribe un nuevo valor en el chat.
+                              O escribe hover:{&cCancel;&cCancel;cancel} &6para cancelar.'
   settings-tax-set: |-
     &2La ecuación de los impuestos ha sido cambiada, ahora es&8: &6%tax%
     &2Probado en tí&8: &6%test%
@@ -259,14 +258,12 @@ command:
     description: '&6Muestra todos los comandos'
     usage: /Kingdoms help <página>
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
-      %cmd%}
-    footer: @hover:{&6←;&6Previous Page;/k %command% %previous_page%} %pages%hover:{&6→;&6Next
-      Page;/k %command% %next_page%}
-    footer-page: @hover:{&8[&2%number%&8];&6Go to page &2%number%;/k %command% %number%}
-    footer-current-page: @hover:{&8[&2&l%number%&8];&2Current Page}
+    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
+    footer: '@hover:{&6←;&6Previous Page;/k %command% %previous_page%} %pages%hover:{&6→;&6Next Page;/k %command% %next_page%}'
+    footer-page: '@hover:{&8[&2%number%&8];&6Go to page &2%number%;/k %command% %number%}'
+    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Current Page}'
     header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
-    commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
   reload:
     description: '&6Recarga el plugin.'
     usage: /k reload [configuración]
@@ -294,8 +291,8 @@ command:
       name-numbers: '&cEl nombre de la nación no puede contener números.'
       name-already-in-use: '&cOtra nación está utilizando este nombre.'
       usage: /Kingdoms nation create <nombre>
-      already-in-nation: @&cYa estás en una nación. Abandona tu nación usando:{&e/k
-                           nation leave;&cLeave;/k nation leave} para hacer uno nuevo.
+      already-in-nation: '@&cYa estás en una nación. Abandona tu nación usando:{&e/k
+                           nation leave;&cLeave;/k nation leave} para hacer uno nuevo.'
       success: ¡&2Has fundado la nación &6%nation%!
       cost: '&cNecesitas &e%cost% &cpara crear un reino.'
       name-has-symbols: '&cNation name cannot contain symbols. Only numbers and alphabets.'
@@ -372,7 +369,7 @@ command:
         @hover:{&6%kingdoms_name%;&2Miembros&8: &6%kingdoms_members%
         &2Rey&8: &6%kingdoms_king%
         &2Territorios&8: &6%kingdoms_lands%}
-      relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
     not:
       in-nation: '&cEl jugador/reino especificado no está.'
     setspawn:
@@ -638,7 +635,7 @@ command:
       &2Última donación&8: &6%kingdoms_last_donation_time%
       &2Rango&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
   claim:
     description: '&6Reclama el terreno sobre el que estás (Utiliza F3+G).'
     disabled-world: '&cNo se puede reclamar en este mundo.'
@@ -967,8 +964,7 @@ command:
     already: '&cYa eres aliado del reino &e%kingdom%'
     already-requested: '&cYa se ha enviado una solicitud de alianza a &e%kingdom%'
     self: '&cNo puedes aliarte con tu propio reino. ¿Qué intentas hacer?'
-    receiver: @&6%kingdom% &2desea aliarte con tu reino. Acepta con:{&6/k ally
-                %kingdom%;&2Acepta;/k ally %kingdom%}
+    receiver: '@&6%kingdom% &2desea aliarte con tu reino. Acepta con:{&6/k ally%kingdom%;&2Acepta;/k ally %kingdom%}'
     allies: '&2Ahora estás aliado con el reino &5%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
   enemy:
@@ -986,8 +982,7 @@ command:
     already: '&cYa estás en una tregua con &e%kingdom%'
     already-requested: '&cYa le has mandado una solicitud a &e%kingdom%'
     self: '&cNo puedes hacer una tregua con tu propio reino.'
-    receiver: @&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala
-                tregua con:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}
+    receiver: '@&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala tregua con:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}'
     truces: '&2Has pactado una tregua con &6%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
   revoke:

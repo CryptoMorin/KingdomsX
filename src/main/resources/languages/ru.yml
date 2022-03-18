@@ -140,8 +140,8 @@ nexus:
   turret-purchased: '&6Вы купили &2%turret% &6за &2%cost%'
   resourcepoints: '&e%amount% &6очков ресурсов было добавлено.'
   rank-editor:
-    enter-value: @&6Введите новое число в чат. Или:{&cCancel;&cОтмена;cancel}
-                   &6что бы отменить.
+    enter-value: '@&6Введите новое число в чат. Или:{&cCancel;&cОтмена;cancel}
+                   &6что бы отменить.'
     max: '&cВы не можете создать более &e%limit% &cрангов для королевства.'
     cannot-delete-rank: '&cВы не можете удалить этот ранг. Ваше королевство должно иметь минимум 2 ранга.'
     cannot-delete-king: '&cНевозможно удалить ранг ''Король''.'
@@ -160,7 +160,7 @@ nexus:
       priority: '&cНеверный приоритет. Приоритет должен быть меньше &e%kingdoms_ranks% &cи больше 0'
       node: '&cНик ранга содержит спец. символы. Только буквы и цифры.'
     max-claims-limit: '&cКоличество захыватываний земель должно быть не больше чем &e%limit%'
-  settings-tax-enter-value: @&6Введите новое число в чат. Или:{&cCancel;&cОтмена;Cancel} &6что бы отменить.
+  settings-tax-enter-value: '@&6Введите новое число в чат. Или:{&cCancel;&cОтмена;Cancel} &6что бы отменить.'
   settings-tax-set: |-
     &2Налог Вашего королевства установлен на&8: &6%tax%
     &2Налог проверен на вас&8: &6%test%
@@ -250,13 +250,13 @@ command:
     description: '&6Отображение всех команд'
     usage: /Kingdoms help <страница>
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
-      %cmd%}
-    footer: @hover:{&6←;&6Предыдущая страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k %command% %next_page%}
-    footer-page: @hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k %command% %number%}
-    footer-current-page: @hover:{&8[&2&l%number%&8];&2Текущая страница}
+    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+      %cmd%}'
+    footer: '@hover:{&6←;&6Предыдущая страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k %command% %next_page%}'
+    footer-page: '@hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k %command% %number%}'
+    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Текущая страница}'
     header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
-    commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
   reload:
     description: '&6Перезагрузка плагина.'
     usage: /k reload [config]
@@ -279,7 +279,7 @@ command:
       name-numbers: '&cНазвание государства не может содержать цифры.'
       name-already-in-use: '&cДругое государство с таким же названием уже существует.'
       usage: /Kingdoms nation create <название>
-      already-in-nation: @&cВы уже в государстве. Покиньте его используя hover:{&e/k nation leave;&cПокинуть;/k nation leave}, что бы создать новое.
+      already-in-nation: '@&cВы уже в государстве. Покиньте его используя hover:{&e/k nation leave;&cПокинуть;/k nation leave}, что бы создать новое.'
       success: '&2Вы основали государство ''&6%nation%&2''!'
       cost: '&cВам нужно &e%cost% &cмонет, что бы создать новое государство.'
     rename:
@@ -355,7 +355,7 @@ command:
         @hover:{&6%kingdoms_name%;&2Участники&8: &6%kingdoms_members%
         &2Король&8: &6%kingdoms_king%
         &2Земли&8: &6%kingdoms_lands%}
-      relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
     not:
       in-nation: '&cУказанное королевство/игрок не входит в государство.'
     setspawn:
@@ -607,7 +607,7 @@ command:
       &2Последнее пожертвование&8: &6%kingdoms_last_donation_time%
       &2Ранг&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
   claim:
     description: '&6Захватить землю, на которой вы сейчас находитесь.'
     disabled-world: '&cЗахват отключен в &6%world%'
@@ -907,8 +907,8 @@ command:
     already: '&cВы уже союзники с королевством ''&e%kingdom%&c'''
     already-requested: '&cВы уже отправили запрос королевству ''&6%kingdom%&c'''
     self: '&cВы не можете сделать свое собственное королевство союзником.'
-    receiver: @&6%kingdom% &2хочет быть союзниками с вами. примите с помощью hover:{&6/k
-                ally %kingdom%;&2Accept;/k ally %kingdom%}
+    receiver: '@&6%kingdom% &2хочет быть союзниками с вами. примите с помощью hover:{&6/k
+                ally %kingdom%;&2Accept;/k ally %kingdom%}'
     allies: '&2Теперь вы союзники с королевством ''&6%kingdom%&c'''
   enemy:
     description: '&6Сделайте королевство своим врагом.'
@@ -925,8 +925,8 @@ command:
     already: '&cВы уже перемирие с &e%kingdom%'
     already-requested: '&cВы уже отправили запрос &e%kingdom%'
     self: '&cВы не можете сделать свое собственное королевство перемирием.'
-    receiver: @&6%kingdom% &2wishes to be truce with you. Accept with hover:{&6/k
-                truce %kingdom%;&2Accept;/k truce %kingdom%}
+    receiver: '@&6%kingdom% &2wishes to be truce with you. Accept with hover:{&6/k
+                truce %kingdom%;&2Accept;/k truce %kingdom%}'
     truces: '&2Вы нахолитесь в перемирии    &6%kingdom%'
   revoke:
     description: '&6Отмените отношения с королевством.'

@@ -245,8 +245,8 @@ nexus:
   turret-purchased: '&7Sikeresen megvetted a(z) &e%turret% &7ágyút &e%cost% &7áron!'
   resourcepoints: '&7Összesen &e%amount% &7NP-t szereztetek.'
   rank-editor:
-    enter-value: @&6Írd be az új értéket vagy írd be hover:{&ccancel;&cMégsem;cancel}
-                   &6ahhoz, hogy megszakítsd a folyamatot.
+    enter-value: '@&6Írd be az új értéket vagy írd be hover:{&ccancel;&cMégsem;cancel}
+                   &6ahhoz, hogy megszakítsd a folyamatot.'
     max: '&cNem hozhatsz több rangot létre mint &e%limit%'
     other: '&cNem szerkesztheted más királyságok rangjait.'
     cannot-delete-rank: '&cNem törölheted ezt a rangot, mert nincs elég rang a királyságodban.'
@@ -277,8 +277,8 @@ nexus:
     next-page-not-available: '&cNo more pages. Max pages&8: &e%pages%'
     previous-page-not-available: '&cNo more previous pages.'
   settings:
-    tax-enter-value: @&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
-                       &6a megszakításhoz.
+    tax-enter-value: '@&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
+                       &6a megszakításhoz.'
     flag:
       enter-value: |-
         @&6Írd be az új zászló URL-t. Vagy írd be hover:{&ccancel;&cMégsem;cancel} &6, hogy megszakítsd a folyamatot.
@@ -316,8 +316,8 @@ nexus:
     shield-activated: '&2A pajzs aktiválva &6%kingdoms_shield_time_left% hátralévő
       idő'
   resource-points: '&e%amount% &6Nexus pont hozzá lett adva a királyság egyenlegéhez.'
-nexus-resource-points-enter-value: @&6Kérlek írd be a Nexus pontok mennyiségét
-                                     vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.
+nexus-resource-points-enter-value: '@&6Kérlek írd be a Nexus pontok mennyiségét
+                                     vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.'
 extractor:
   not-enough-resource-points: '&cNincs elég Nexus pontod.'
 warppad-enter-name: '&2Kérlek írd be a Teleport pad-ed nevét.'
@@ -408,15 +408,15 @@ command:
     description: '&6Parancsok megjelenítése'
     usage: '&4Használat: &e/k help [oldal]'
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: @hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
-      %cmd%}
-    footer: @hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
-      oldal;/k %command% %next_page%}
-    footer-page: @hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}
-    footer-current-page: @hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}
-    header: NOPREFIX|&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------
+    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+      %cmd%}'
+    footer: '@hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
+      oldal;/k %command% %next_page%}'
+    footer-page: '@hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}'
+    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}'
+    header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
     no-more-pages: '&cNem található több oldal.'
-    commands: @hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
+    commands: '@hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
   reload:
     description: '&6Plugin újratöltése.'
     usage: /k reload [config]
@@ -463,9 +463,9 @@ command:
       name-numbers: '&cNnemzet neve nem tartalmazhat számokat.'
       name-already-in-use: '&cEz a név már foglalt.'
       usage: '&4Használat: &e/k nation create <név>'
-      already-in-nation: @&cMár tagja vagy egy nemzetnek. Hagyd el a jelenlegit
+      already-in-nation: '@&cMár tagja vagy egy nemzetnek. Hagyd el a jelenlegit
                            using hover:{&e/k nation leave;&cLeave;/k nation leave} &chogy újat hozhass
-                           létre.
+                           létre.'
       success: '&2Megalapítottad a(z) &6%nation% &2nemzetet!'
       announce: '&6%player% &2megalapította a(z) &6%nation% &2nemzetet!'
       cost: '&cSzükséged van &e$%cost% &ca nemzet létrehozásához.'
@@ -547,7 +547,7 @@ command:
         @hover:{&6%kingdoms_name%;&2Tagok: &6%kingdoms_members%
         &2Király: &6%kingdoms_king%
         &2Területek: &6%kingdoms_lands%}
-      relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
     not:
       in-nation: '&cA megadott királyság vagy játékos nem tagja egy nemzetnek sem.'
     setspawn:
@@ -813,7 +813,7 @@ command:
       &2Utolsó adomány: &6%kingdoms_last_donation_time%
       &2Rang: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: @&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
   claim:
     description: '&6jelenlegi terület elfoglalása.'
     disabled-world: '&cEbben a világban nem foglalhatsz területet &6%world%'
@@ -1144,8 +1144,8 @@ command:
     already: '&cEzzel a királysággal már szövetségesek vagytok &e%kingdom%'
     already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
     self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: @&6%kingdom% &2királyság szeretne a szövetségesed lenni. Elfogadás hover:{&6/k
-                ally %kingdom%;&2Elfogadás;/k ally %kingdom%}
+    receiver: '@&6%kingdom% &2királyság szeretne a szövetségesed lenni. Elfogadás hover:{&6/k
+                ally %kingdom%;&2Elfogadás;/k ally %kingdom%}'
     allies: '&2A szövetség megköttetett ezzel a királysággal: &6%kingdom%'
     another-request: '&e%kingdom% &ckirályság küldött neked egy %relation% &ckérelmet.'
   enemy:
@@ -1163,8 +1163,8 @@ command:
     already: '&cEzzel a királysággal már fegyverszünetben vagytok &e%kingdom%'
     already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
     self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: @&6%kingdom% &2szeretne fegyverszünetet kötni veled. Elfogadás hover:{&6/k
-                truce %kingdom%;&2Elfogadás;/k truce %kingdom%}
+    receiver: '@&6%kingdom% &2szeretne fegyverszünetet kötni veled. Elfogadás hover:{&6/k
+                truce %kingdom%;&2Elfogadás;/k truce %kingdom%}'
     truces: '&2Mostantól fegyverszünet van ezzel a királysággal &6%kingdom%'
     another-request: '&e%kingdom% &cküldött neked egy %relation% &ckérelmet.'
   revoke:

@@ -6,7 +6,7 @@
 
     <groupId>com.github.cryptomorin</groupId>
     <artifactId>kingdoms</artifactId>
-    <version>1.12.4</version>
+    <version>1.12.6.1</version>
     <packaging>jar</packaging>
 
     <name>Kingdoms</name>
@@ -110,16 +110,31 @@
     </repositories>
 
     <dependencies>
-<!--        <dependency>-->
-<!--            <groupId>org.jetbrains.kotlin</groupId>-->
-<!--            <artifactId>kotlin-stdlib</artifactId>-->
-<!--            <version>${kotlin.version}</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.jetbrains.kotlin</groupId>-->
+        <!--            <artifactId>kotlin-stdlib</artifactId>-->
+        <!--            <version>${kotlin.version}</version>-->
+        <!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>1.18.2-R0.1-SNAPSHOT</version>
+            <!--            <version>1.17.1-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.16.5-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.14.4-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.15.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.13.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.8.8-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
+            <scope>provided</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.github.cryptomorin</groupId>
             <artifactId>XSeries</artifactId>
-            <version>8.6.2</version>
+            <version>8.7.0</version>
             <exclusions>
                 <exclusion>
                     <groupId>*</groupId>
@@ -140,13 +155,6 @@
                 </exclusion>
             </exclusions>
         </dependency>
-
-        <!--        <dependency>-->
-        <!--            <groupId>me.lucko</groupId>-->
-        <!--            <artifactId>commodore</artifactId>-->
-        <!--            <version>1.9</version>-->
-        <!--            <scope>compile</scope>-->
-        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.sk89q.worldguard</groupId>
@@ -202,27 +210,6 @@
             <groupId>net.luckperms</groupId>
             <artifactId>api</artifactId>
             <version>5.1</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>*</groupId>
-                    <artifactId>*</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot</artifactId>
-<!--            <version>1.18.1-R0.1-SNAPSHOT</version>-->
-            <version>1.17.1-R0.1-SNAPSHOT</version>
-<!--            <version>1.16.5-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.14.4-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.15.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.13.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.8.8-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -490,38 +477,38 @@
                 </executions>
             </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>org.jetbrains.kotlin</groupId>-->
-<!--                <artifactId>kotlin-maven-plugin</artifactId>-->
-<!--                <version>${kotlin.version}</version>-->
-<!--                <configuration>-->
-<!--                    <skip>true</skip>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>compile</id>-->
-<!--                        <goals>-->
-<!--                            <goal>compile</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <sourceDirs>-->
-<!--                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>-->
-<!--                                <sourceDir>${project.basedir}/src/main/java</sourceDir>-->
-<!--                            </sourceDirs>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                    <execution>-->
-<!--                        <id>test-compile</id>-->
-<!--                        <goals> <goal>test-compile</goal> </goals>-->
-<!--                        <configuration>-->
-<!--                            <sourceDirs>-->
-<!--                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>-->
-<!--                                <sourceDir>${project.basedir}/src/test/java</sourceDir>-->
-<!--                            </sourceDirs>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>org.jetbrains.kotlin</groupId>-->
+            <!--                <artifactId>kotlin-maven-plugin</artifactId>-->
+            <!--                <version>${kotlin.version}</version>-->
+            <!--                <configuration>-->
+            <!--                    <skip>true</skip>-->
+            <!--                </configuration>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <id>compile</id>-->
+            <!--                        <goals>-->
+            <!--                            <goal>compile</goal>-->
+            <!--                        </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <sourceDirs>-->
+            <!--                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>-->
+            <!--                                <sourceDir>${project.basedir}/src/main/java</sourceDir>-->
+            <!--                            </sourceDirs>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                    <execution>-->
+            <!--                        <id>test-compile</id>-->
+            <!--                        <goals> <goal>test-compile</goal> </goals>-->
+            <!--                        <configuration>-->
+            <!--                            <sourceDirs>-->
+            <!--                                <sourceDir>${project.basedir}/src/test/kotlin</sourceDir>-->
+            <!--                                <sourceDir>${project.basedir}/src/test/java</sourceDir>-->
+            <!--                            </sourceDirs>-->
+            <!--                        </configuration>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
 
         <resources>
