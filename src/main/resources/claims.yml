@@ -120,7 +120,7 @@ history:
 max-claims:
   # Worlds can have different limits, "default" is used for any world name that is not specified here.
   #nether_world: "..."
-  default: "((%kingdoms_members% + %kingdoms_nation_kingdoms%) * 5) + %kingdoms_max_lands_modifier% + max_claims"
+  default: "((kingdoms_members + kingdoms_nation_kingdoms) * 5) + kingdoms_max_lands_modifier + max_claims"
 
 # You can only build in claims that the relation attribute allows building.
 # This function can be disabled for specific worlds in config.yml "disabled-worlds" option.
@@ -315,8 +315,8 @@ indicator:
         color: 0, 0, 0
   no-kingdom:
     title:
-      title: "%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     particles:
       horizontal:
@@ -349,8 +349,8 @@ indicator:
       vertical:
         color: 255, 255, 255
     title:
-      title: "%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: IRON_BLOCK
@@ -361,8 +361,8 @@ indicator:
       vertical:
         color: 100, 255, 0
     title:
-      title: "&6%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "&6%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: DIAMOND_BLOCK
@@ -373,8 +373,8 @@ indicator:
       vertical:
         color: 255, 255, 0
     title:
-      title: "&e%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "&e%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: GOLD_BLOCK
@@ -385,8 +385,8 @@ indicator:
       vertical:
         color: 0, 0, 255
     title:
-      title: "&9%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "&9%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: BLUE_WOOL
@@ -397,8 +397,8 @@ indicator:
       vertical:
         color: 255, 0, 0
     title:
-      title: "&c%kingdom_name%"
-      subtitle: "%kingdom_lore%"
+      title: "&c%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: REDSTONE_BLOCK

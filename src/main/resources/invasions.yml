@@ -7,7 +7,7 @@
 
 # By default, your kingdom can only invade one kingdom at a time.
 # 0 means no limit.
-simuntanous-invasions: 1
+simultaneous-invasions: 1
 
 # Whether doing /k invade invades multiple lands or just one that the player
 # is currently standing in.
@@ -34,7 +34,7 @@ adjoining-protection:
   radius: 0
 
   # E.g. if the radius is set to 1 and this is set to 1
-  # If a land has 8 claims around it, it'll still protect this
+  # If a land has 7 claims around it, it'll still protect this
   # land since it only has 1 missing surrounding claims.
   # Be careful with this value as you can technically make a kingdom completely immune to invasions.
   marginal-error-limit: 0
@@ -44,6 +44,8 @@ adjoining-protection:
 # take certain resources from the invaded land.
 # For the resources takne refer to "bonus" mode.
 ransack-mode:
+  # Only disables it by default, empty the list below if you want to
+  # disable it completely.
   enabled: false
 
   # Ransack mode needs to disabled by default or this command
@@ -55,8 +57,8 @@ ransack-mode:
 # For nexus land resources there's a separate section.
 # Refer to "on-nexus-loss"
 bonus:
-  resource-points: "%kingdoms_resource_points% / 2"
-  bank: "%kingdoms_bank% / 2"
+  resource-points: "kingdoms_resource_points / 2"
+  bank: "kingdoms_bank / 2"
 
 # Options for when a nexus land is invaded.
 on-nexus-loss:
@@ -314,6 +316,7 @@ allow:
 
   # Allow building during invasions.
   # This only applies to the land that was invaded.
+  # This does not allow interactions (such as opening chests)
   building: false
 
   # Disallow kingdoms to move their kingdom nexus when their nexus land is being invaded.

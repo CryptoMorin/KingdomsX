@@ -1,0 +1,1884 @@
+prefix: '&6[&l王国&e(Kingdoms)&6] &2'
+permissions:
+  claim: '&c你不能占领土地。'
+  unclaim: '&c你不能放弃土地。'
+  home: '&c你不能使用王国的家。'
+  set-home: '&c你不能设置王国的家。'
+  lore: '&c你不能改变王国的介绍。'
+  nation: '&c你不能管理联邦。'
+  build: '&c你不能在王国的土地里建造。'
+  build-owned: '&c你不能在王国的土地里建造。'
+  nexus-build: '&c你不能在王国核心所在的土地里建造。'
+  nexus: '&c你不能改变王国的核心。'
+  broadcast: '&c你不能广播消息。'
+  alliance: '&c你不能改变王国盟友。'
+  exclude-tax: '&c你不能免除他人赋税。'
+  protection-signs: '&c你不能编辑外交关系。'
+  edit-ranks: '&c你不能编辑成员阶层&权限。'
+  relation-attributes: '&c你不能编辑外交关系。'
+  manage-ranks: '&c你不能改变成员阶层。'
+  upgrade: '&c你不能升级。'
+  enemy: '&c你不能向其他王国宣战。'
+  truce: '&c你不能与其他王国停战。'
+  fly: '&c你不能在王国中飞行。'
+  settings: '&c你不能编辑王国设置。'
+  donate: '&c你不能管理王国中的资源点。'
+  invade: '&c你不能入侵其他王国。'
+  invite: '&c你不能邀请邀请其他玩家至王国。'
+  kick: '&c你不能踢出成员。'
+  nexus-chest: '&c你不能使用核心箱子。'
+  outpost: '&c你不能使用前哨。'
+  protected-chests: '&c你不能使用被保护的箱子。'
+  structures: '&c你不能使用结构。'
+  turrets: '&c你不能使用炮塔。'
+  withdraw: '&c你不能从你的王国中取出资源点。'
+permissions-interact: '&c你不允许与王国中的土地交互。'
+permissions-use: '&c你不允许在王国中的土地上使用它。'
+tax:
+  kick: '&c你的金钱不足以你王国的赋税,所以你被踢出了。'
+  reminder: |2
+
+    &4&l&n注意&8: &c&l赋税将会在&8: &e%time%后被收取
+  total: '&2你的王国总计收取了&6$%tax%&2的赋税。'
+  paid: '&e$%tax%&c的资源点已被当做王国赋税从仓库中取出。'
+  excluded-permission: '&2你并未缴税因为你被免除了赋税。'
+  excluded-new: '&2&2你并未缴税因为你是新人。'
+  kingdom:
+    age: '&5你的王国并未缴税因为它刚刚成立。'
+    paid: |-
+      &2总共&6$%tax%&2的税被收取。
+      新王国银行账户&8:&6$%kingdom_fancy_bank%
+    paid-nation: |
+      &2总共有&6$%tax%&2的税款被收取到了你的联邦。
+      新的王国银行账户&8:&6$%kingdoms_fancy_bank%
+      &2新的联邦银行账户&8:&6$%kingdoms_fancy_nation_bank%
+    kicked: '&e%kingdom%&c王国已因为未缴纳联邦税款而被踢出&8:&e%kingdoms_fancy_bank%&8<$%tax%。'
+    disbanded: '&c你的王国因为无法缴税而被解散了&8:&e$%tax%。'
+    disbanded-announce: '&e%kingdom%&c王国因为无法缴税而被解散了。'
+    kicked-announce: '&e%kingdom%&c王国因为未缴税已被从&e%联邦%&c中踢出'
+  nation:
+    age: '&5你的联邦被免除税款，因为它刚成立。'
+    paid: |-
+      &2总共有&6$%tax%&2的联邦赋税被征收。
+      新的联邦银行账户&8:&6$%kingdoms_fancy_nation_bank%
+    disbanded: '&c你的联邦因为未缴纳税款而被解散了&8:&e$%tax%。'
+    disbanded-announce: '&e%联邦%&c联邦因为未缴纳税款而被解散了&8:&e%kingdoms_fancy_nation_bank%&8<&e$%tax%。'
+  notifications: '&8[&4WARNING&8]&c你的王国账户没有足够的金钱&7(&e%kingdoms_fancy_bank%&7)&c给下一次收款缴税&8:&e%tax%&c如果你的王国成员纳税不够，你的王国将被解散。'
+  kick-announce: '&e%player%&c因为无法缴税而从王国中被踢出&8:&e%tax%。'
+  member-paid: 你缴纳了&6$%tax%&2作为王国税款。
+in-claim-only:
+  placing:
+    general: '&c你只能在你占领的土地上建筑。'
+    radius: '&c你只能在你占领的土地上或&6%radius%&c半径区块的范围内建筑。'
+    charges: '&c你需要&e$%money%&c的金钱且你的王国需要&e%rp%&c资源点以在未占领的土地上建筑。'
+  breaking:
+    charges: '&c你需要&e$%money%&c的金钱且你的王国需要&e%rp%&c资源点以在未占领的土地上破坏。'
+    radius: '&c你只能在你占领的土地上或&6%radius%&c半径区块的范围内破坏。'
+    general: '&c你只能在你占领的土地上破坏。'
+  structures-limit: '&c你一块土地上只能有一个结构。'
+  structures-block-occupied: '&c这里不能放置结构。一个&e%material%&c方块被放置在这里。'
+  turrets-block-occupied: '&c不能在这里放置炮塔。一个&e%material%&c方块被放置在这里。'
+siege-cannon:
+  ready-fire: '&2攻城炮准备好开火了！。'
+  sit: '&2你现在坐在炮上。你可以自己装弹，或者让别人装弹以发射。'
+  occupied: '&2已经有人坐在炮上了。'
+  already-loaded: '&c攻城炮已经装载完毕了。'
+  hit:
+    unclaimed-land: '&c不能向未占领的土地开炮。'
+    no-shield: '&2不能向&6%kingdoms_name%&2王国开火。他们没有护盾。'
+    pacifist: '&c已经向&e%kingdoms_name%&c王国开火,但是他们是和平主义王国。'
+    destroyed-shield: '&2已经向&6%kingdoms_name%&2王国开火。他们的护盾已被摧毁。'
+    damaged-shield: '&2已经向&6%kingdoms_name%&2王国开火。他们的护盾还剩下&8:&6%kingdoms_shield_time_left%。'
+    damaged-shield-notify: '&e%attacker-kingdom% &ckingdom has hit your land at &e%attacked-chunk%&c.
+      Remaining shield&8: &6%kingdoms_shield_time_left%。'
+  not-ammo: '&c攻城炮只能用火球作为弹药。'
+  masswar-only: '&c你只能在混战期间使用攻城炮。'
+  friendly:
+    fire: '&c炮弹击中了一个友方王国&e%kingdom%&c的土地。(你有病吧？？？？)'
+other-kingdoms:
+  place: '&c你不能在其他王国的土地上建造。'
+  break: '&c你不能在其他王国的土地上破坏。'
+  kill: '&c你不能在其他王国的土地上杀死&e%entity%&c。'
+  interact: '&c你不能在其他王国的土地上交互。'
+  use: '&c你不能在其他王国的土地上使用它。'
+  structure:
+    place: '&c你不能在其他王国的土地上放置结构。'
+    interact: '&c你不能在其他王国的土地上交互结构。'
+    break: '&c你不能在其他王国的土地上破坏结构。'
+    can-take: '&c既然这块土地没有王国占领，你可以取走这个结构。'
+  nexus:
+    break: '&2你通过破坏核心得到了&6%rp%&2(你的良心不会痛吗！)。'
+  turret:
+    can-take: '&c既然这块土地没有王国占领，你可以取走这个炮塔。'
+    place: '&c你不能在其他王国的土地上放置炮塔。'
+    interact: '&c你不能在其他王国的土地上交互炮塔。'
+    break: '&c你不能在其他王国的土地上破坏炮塔。'
+nation:
+  zone-place: '&c你不能在&e%联邦%&c的土地内放置方块。'
+  zone-break: '&c你不能在&e%联邦%&c的土地内破坏方块。'
+  zone-interact: '&c你不能在&e%联邦%&c的土地内交互。'
+turrets:
+  limit: '&c你只能在每块土地放置&e%limit%&c个炮塔。'
+  already-placed: '&c已经有一个炮塔被放置在这里了。'
+  cant-place: '&c这个炮塔不能被放置在这个方块上。请把炮塔放在&e栅栏&c或&e墙方块上。'
+  disabled-world: '&c你不能在禁用炮塔的世界放置炮塔。'
+  block-occupied: '&c你不能在这里放置炮塔。一个&e%material%&c方块已经被放置在这里了。'
+protected-signs:
+  cant-modify: '&c你不能编辑这个被保护的方块。'
+  already-protected: '&6这个方块已经被保护了。'
+  broke: '&6你破坏了一个被保护的方块。'
+  unprotected: '&c这个方块不在被被保护。'
+  cant-break: '&c只有被保护方块的主人才能破坏它。'
+  protected: '&c这个方块是被保护的。'
+  invalid-sign: '&c你不能用这个告示牌保护方块。'
+  invalid-block: '&c你不能保护这个方块。'
+  not-attached: '&c这个告示牌必须放在一个方块上才能起保护作用。'
+  unclaimed: '&c你不能在被放弃的土地上使用保护告示牌。'
+  kingdom-items: '&c你不能使用保护告示牌保护如炮塔和结构的王国物品。'
+  other-kingdoms: '&c你不能在其他王国的土地上使用保护告示牌。'
+  cant-protect-double-chest: '&c这个大箱子不能被保护，因为它的另一端在一块无主之地上。'
+  password:
+    invalid: '&c密码无效。请再试。'
+    cant-move: '&c你在输入密码的时候不允许移动。'
+    error-429: '&c失败次数过多。'
+    in-cooldown: '&c这个容器需要密码使用，但你失败了太多次了。你可以在&8:&e%cooldown%之后再试'
+    required: '&c这个容器需要密码使用。输入密码或者输入:{&ecancel;&eCancel;cancel}&c来取消。'
+    ask: '@&6请输入密码或输入:{&cCancel;&cCancel;cancel} &6来取消或输入:{&cremove;&cRemove;remove}
+      &6移除密码'
+    container-only: '&c你只能在如&e箱子,漏斗,熔炉&c等容器上使用密码。'
+    length: '&c密码最短不小于&e%min%&c，最长不超过&e%max%&c密码长度&8:&e%length%。'
+    removed: '&2容器的密码被移除了。'
+    set: '&2成功更改了容器密码。'
+  double-chest-protected: '&2保护大箱子。'
+  protection-type:
+    already-using: '&c本方块已经采用了这种保护方式。'
+    changed: '&2成功地把保护方式改变为&e%protection%&c。'
+  players:
+    cleared: '&2移除了所有成员。'
+    removed: '&2把&6%name%&2移出组。'
+    limit: '&c你最多把&e%limit%&c人加到组里。'
+    include:
+      included: '&2把&6%name%&2移入组。'
+      is-already-in-group: '&3%name%&c已经在组里了。'
+      owner: '&c你是这个方块的主人……'
+      name: '&2输入你要移入的玩家名。'
+    exclude:
+      excluded: '&2把&6%name%&2移出组。'
+      is-already-in-group: '&e%name%&c已经被移出组了。'
+      owner: '&c你是这个方块的主人……'
+      name: '&2输入你要移出的玩家名。'
+  kingdoms:
+    cleared: '&2已移除所有王国。'
+    removed: '&2把&6%name%&2王国移出组。'
+    disbanded: '&c带有UUID&e%id% &c的王国既然已经消失了，它已被从告示牌中移除。'
+    limit: '&c你最多把&e%limit%&c个王国移入组。'
+    include:
+      included: '&2把&6%name%&2王国移入组。'
+      is-already-in-group: '&3%name%&c王国已经在组里了。'
+      owner: '&c要移入你的王国，只需要改变保护类型。'
+      name: '&2输入你要移入的王国名。'
+      not-found: '&c这个王国不存在。'
+    exclude:
+      excluded: '&2把&6%name%&2王国移出组。'
+      is-already-in-group: '&e%name%&c王国已经被移出组了。'
+      owner: '&c要移出你的王国，只需要改变保护类型。'
+      name: '&2输入你要移出的王国名。'
+      not-found: '&c这个王国不存在。'
+top-rewards:
+  kingdom: |-
+    &2你的王国被奖励了&6$%money%&2的金钱和&6%rp%&2资源点作为第&8:&5%rank%的奖励
+    &2新的王国银行账户&8:&6$%kingdoms_fancy_bank%
+    &2新的王国资源点&8:&6%kingdoms_fancy_resource_points%
+  nation: |-
+    &2你的联邦被奖励了&6$%money%&2的金钱和&6%rp%&2资源点作为第&8:&5%rank%的奖励
+    &2新的联邦银行账户&8:&6$%kingdoms_fancy_nation_bank%
+    &新的联邦资源点&8:&6%kingdoms_fancy_nation_resource_points%
+upgrades:
+  powerup-upgrade: '&2你把&6%powerup%&2升级到了&6%level%。'
+  powerup-max: '&c你已经把&e%powerup%&c升到最高级%level%级了。'
+  powerup-not-enough-resourcepoints: '&c你需要&e%cost%&c资源点才能升级&e%powerup%。'
+  champion-upgrade: '&2你把&6%upgrade%&2升级到了&6%level%。'
+  champion-max: '&c你已经把&e%upgrade%&c升到最高级%level%了'
+  champion-not-enough-resourcepoints: '&c你需要&e%cost%&c资源点才能升级&e%upgrade%。'
+  misc-upgrade: '&2&2你把&6%upgrade%&2升级到了&6%level%级。'
+  misc-enabled: '&2已允许升级杂项&6%upgrade%&2。'
+  misc-not-upgraded: '&c不能禁用一个未被升级的杂项。'
+  misc-cannot-be-disabled: '&c这个杂项升级不能被禁用。'
+  misc-disabled: '&c已禁用升级杂项&e%upgrade%&c。'
+  misc-max: '&c你已经把&e%upgrade%&c升到最高级%level%了。'
+  misc-not-enough-resourcepoints: '&c你需要&e%cost%&c资源点才能升级&e%upgrade%。'
+champion-type:
+  changed: '&2你王国的斗士已从&6%old_champion%&2变为&6%new_champion%。'
+  already-in-use: '&c你的王国已经在使用&e%champion%&c斗士。'
+fly:
+  enemies-nearby: '&c附近有敌人，你的飞行暂被禁用。'
+  out-of-land: '&c你只能在自己王国的土地上飞，你的飞行暂被禁用。'
+  damage: '&c你受到了伤害，你的飞行暂被禁用。'
+  warnings:
+    unfriendly-nearby:
+      safe: '&2你附近暂没有非友方玩家。'
+      warn: '&c你的飞行将在&e%counter%&c秒后因为附近有敌方玩家而被禁用！立即撤退！。'
+    out-of-land:
+      safe: '&2你在这片土地上是安全的。'
+      warn: '&c你的飞行将在&e%counter%&c秒后因为你处于一片禁止飞行的土地！立即撤退！。'
+    charges: '&c你的飞行将在&e%counter%&c秒后因为你无法支付飞行所需的金钱而禁用。'
+  charges-cant-afford: '&c你需要每&e%interval%&c秒支付&e$%money%&c金钱以飞行。'
+  charges:
+    cant-afford-kingdom: '&c你的王国需要每&e%interval%&c秒支付&e$%amount%金钱&c才能支持你飞行。'
+  out:
+    of-land: '&c你只能在自己王国的土地上飞行。你的飞行已被禁用。'
+no-kingdom-reminder: '&c提醒&8:&e你还没有加入王国，输入/k join 来加入。'
+regulator:
+  attributes:
+    add-self: '&c你不能给你自己添加特征。'
+    already-added: '&e%add%&c已经被添加特征了。'
+    add: '&2请输入要添加特征的玩家名。'
+    added: '&2已把&6%add%&2添加到特征。'
+  interactions:
+    add-self: '&c你不能给你自己添加特权。'
+    already-added: '&e%add%&c已经被添加特权了。'
+    add: '&2请输入要添加特权的玩家名。'
+    added: '&2已把&6%add%&2添加到特权。'
+nexus:
+  pacifism:
+    enable: '&6你的王国现在是&2和平主义了。'
+    disable: '&6你r王国不再是&c和平主义了。'
+    cooldown: '&c你的王国处于时长为&8:&e%cooldown%的和平主义冷却期中。'
+    permanent: '&c你的王国处于时长为&8:&e%cooldown%的和平主义冷却期中。'
+  home:
+    public: '&6你王国的家现在是&2公共&6的了。'
+    not-public: '&6你王国的家不再是&c公共&6的了。'
+  cant-be-removed: 你不能移除你王国的核心。
+  shield:
+    enable: '&2已启用王国护盾。'
+    disable: '&c已禁用王国护盾。'
+  invites:
+    enable: '&6你的王国现在需要邀请才能加入。'
+    king-only: '&c只有国王能改变王国设置。'
+    disable: '&6你的王国现在不需要邀请就能加入了。'
+  structure-inventory-full: '&c你的背包满了!'
+  turret-inventory-full: '&c你的背包满了!'
+  structure-purchased: '&6你购买了&2%structure%&6，花费了&2%cost%。'
+  structure-resourcepoints: '&c你需要&e%cost%&c资源点才能购买此结构。'
+  turret-resourcepoints: '&c你需要&e%cost%&c才能购买此炮塔。'
+  turret-purchased: '&6你购买了&2%turret%&6，花费了&2%cost%。'
+  resource-points: '&6总共添加了&e%amount%&6资源点。'
+  rank-editor:
+    enter-value: '&6请输入新的值或者输入:{&cCancel;&cCancel;cancel}&6来取消。'
+    max: '&c你的王国最多有&e%limit%&c个阶层。'
+    other: '&c你不能改变其他王国的阶层设置。'
+    cannot-delete-rank: '&c你不能删除这个阶层。你的王国至少要有两个成员阶层。'
+    cannot-delete-king: '&c不能删除国王阶层。'
+    cannot-delete-member: '&c不能删除成员这个阶层。'
+    copy: '&2成功把&6%copy_node%&2阶层的数据复制到了&6%rank_node%上。'
+    length:
+      node: '&c节点长度不能大于&e%limit%。'
+      name: '&c名字长度不能大于&e%limit%。'
+      color: '&c颜色长度不能大于&e%limit%。'
+      symbol: '&c符号长度不能大于&e%limit%。'
+    node:
+      already-exists: '&c已经有一个其他阶层有这个节点了。'
+    unknown-material: '&c无此物质&8:&e%material%。'
+    invalid:
+      material: '&c你不能使用这种物质&e%material%。'
+      max-claims: '&c最大土地占领数量必须为数字且大于&e0'
+      priority: '&c无效的优先级。优先级必须低于&e%kingdoms_ranks%&c且大于&e0'
+      node: '&c阶层节点不能含有特殊字符。只能包含字母或数字。'
+    max-claims-limit: '&c最大土地占领数量必须小于&e%limit%。'
+  chest:
+    others: '&c你不能打开其他王国的核心箱子。'
+  misc-upgrades:
+    others: '&c你不能改变其他王国的杂项升级。'
+  members:
+    others: '&c你不能管理其他王国的成员。'
+  settings:
+    tax-enter-value: '&6请在聊天中输入新的税率。或者输入:{&cCancel;&cCancel;cancel}&6来取消。'
+    flag:
+      enter-value: :&6请在聊天中输入新的旗帜URL。或者输入:{&cCancel;&cCancel;cancel}&6来取消。
+      current: 点击这里:{&2here;&2OpenFlagURL;@%kingdoms_flag%}&6以打开你现在的旗帜URL。
+      wrong-url: '&c无效的旗帜URL&8:&e%flag%。'
+      contains: '&c旗帜URL不能被使用，因为它含有违禁词&8:&e%flag%。'
+      regex: '&cFlag旗帜URL不能被使用&8:&e%flag%。'
+      checking-size: '&2正在检查图片大小……'
+      cooldown: '&c你距离下次改变旗帜URL还有&e%cooldown%&c秒的冷却。'
+      size-limit:
+        fail: '&cURL不是图片，或者无法打开&8:&e%flag%。'
+        height: '&c图片高度超过了最大允许高度&e%limit%&c，最大允许高度为&8:&e%height%。'
+        width: '&c图片宽度超过了最大允许宽度&e%limit%&c，最大允许宽度为&8:&e%width%。'
+      set: '&2你的王国旗帜图片被更改为了&8:&6%flag%。'
+    color:
+      enter-value: |-
+        &6请在聊天中输入新的十六进制颜色代码，或者输入:{&cCancel;&cCancel;cancel}&6来取消。
+        你可以点击这里:{&2here;&2ClicktoOpen;@https://htmlcolorcodes。com/}来获得十六进制颜色代码。
+      wrong-hex: '&c错误的十六进制颜色&8:&e%color%。'
+      wrong-rgb: '&c错误的RGB颜色&8:&e%color%。'
+      range-blacklisted: '&c你选择的颜色不在Minecraft支持的颜色范围内。'
+      set: '&2你王国的颜色被改为了&8:&6%color%。'
+    tax-set: |-
+      &2税率已被设为&8:&6%tax%
+      &2在你身上试验了赋税&8:&6%test%
+    tax-illegal-variable: '&c错误的变量被使用在位于税率的索引&e%index%&c中:&e%tax%。'
+    tax-invalid: |-
+      &c不能在你身上试验&e%tax%&c的税率，因为&8:&e%reason%
+      &c请输入有效的税率。
+    shield-not-enough-resource-points: '&c你没有足够的资源点购买护盾。'
+    shield-cooldown: '&c你还需要等待&e%time%&c才能购买护盾。'
+    shield-activated: '&2护盾剩余时间&6%kingdoms_shield_time_left%。'
+nexus-resource-points-enter-value: '&6请输入资源点的数量或输入:{&cCancel;&cCancel;cancel}&6来取消。'
+extractor:
+  not-enough-resource-points: '&c你没有足够的资源点。'
+warppad:
+  moved: '&c你移动了，传送已被取消。'
+  teleporting: '&2将在&6%countdown%秒后传送&2……不要移动。'
+  success: '&2传送成功！'
+  low-fuel: |-
+    &c你需要&e%fuel-cost%燃料&c才能传送。这个传送板只有&e%fuel%燃料了。
+    &c你可以通过向它扔&e煤炭&c的方式注满燃料。
+  fuel-fill: '&2传送板燃料&8:&6%fuel%。'
+outpost:
+  not-enough-resource-points: '&c你没有足够的资源点。'
+  purchased: '&2你购买了&6%amount%x %name% &2，共花费&6%cost% &2资源点。'
+turret:
+  ammo:
+    not-enough-resource-points: '&c你没有足够的资源点.'
+    purchased: '&2为炮塔购买了弹药。'
+    max-ammo: '&c已达到炮塔弹药上限。'
+  upgrade:
+    max-level: '&c这个炮塔已经满级了。'
+  upgrade-not-enough-resource-points: '&c你没有足够的资源点升级。'
+  upgrade-upgraded: '&2将炮塔升级为&6%level%级。'
+disabled-world: '&c王国在&6%world%世界中被禁用了。'
+not-found:
+  kingdom: '&c这个王国不存在。'
+  nation: '&c这个联邦不存在。'
+  player: '&c这个玩家不存在。'
+  player-no-kingdom: '&c这个玩家没有王国。'
+  player-or-kingdom: '&c这个玩家或王国不存在。'
+masswar:
+  started: |2
+
+    &4&l混战&4已经开始了! &e一小时内入侵是免费的!
+  stopped: '&6混战结束了！'
+players:
+  online: '&2在线'
+  offline: '&4离线'
+power:
+  death: '&c你死亡了，失去了&e%lost% &c势力。'
+kingdom-guards-spawning: '&e%kingdom%&c王国守卫正在你附近生成……'
+no-kingdom:
+  default: '&c你没有王国。'
+  target: '&c这个玩家没有王国。'
+  structures-use: '&c你需要加入王国才能使用结构。'
+  turrets-use: '&c你需要加入王国才能使用炮塔。'
+no-nation: '&c你的王国不在联邦中。'
+unclaimed:
+  place-structures: '&c你不能在未占领的土地上放置结构。'
+  place-turrets: '&c你不能在未占领的土地上放置炮塔。'
+not:
+  number: '&e%arg% &c不是一个数字。'
+  boolean: '&e%arg% &c不是一个有效选项。请选择''&2true&c''或''&4false&c'''
+invalid:
+  amount: '&c无效的数量&8: &e%amount%。'
+commands:
+  insufficient-permission: '&c你没有使用该命令的权限。'
+  cooldown: '&c这个指令距离冷却结束还有&8: &e%cooldown%。'
+  disabled-world: '&c这个指令不能在这个世界使用。'
+  tags:
+    players: '#玩家'
+    kingdoms: '#王国'
+    nations: '#联邦'
+  players-only: '&c只有玩家才能执行该指令。'
+  unknown-command: '&c未知的指令!'
+kingdom:
+  name-blacklisted: '&c你的王国名称中含有违禁词。'
+  tag-blacklisted: '&c你的王国标签中含有违禁词。'
+mails-join-notifications: '&2你有&6%mails% &2个新邮件。打开你的邮箱以查看他们。'
+death-penalty: '&e%name% &c死亡了，导致&e%penalty%&c资源点从你的王国中被扣除。'
+kingdom-item:
+  inventory: '&c不能在这个背包中使用王国物品。'
+  craft: '&c不能使用王国物品来合成。'
+auto-claim:
+  disabled-world: '&c在&6%world%世界中禁止占领土地。'
+  in-region: '&c你不能在受保护的地区占领土地。'
+  actionbar:
+    enabled: '&2自动占领&8: &6已启用'
+    disabled: '&2自动占领&8: &c已禁用'
+  success: '&2占领了&6%x%&7, &6%z% &2作为王国土地。'
+  max-claims: '&c你不能占领超过&e%max%&c块土地!'
+  kingdom-max-lands: '&c你的王国不能拥有超过&e%max%&c块土地!'
+  already-owned: '&c这块土地已经被你的王国占领了!'
+  occupied-land: '&c这块土地为其他王国所有！如果要入侵请输入/k invade'
+  need-rp: '&c你需要&e%cost%&c资源点才能占领土地!'
+  need-money: '&c你需要&e%cost%&c金钱才能占领土地!'
+  not-connected: '&c你的土地必须与你王国的其他土地相连接。'
+  not-distanced: '&c另一个王国占领了与这块土地相邻的土地！'
+  nation-zone: '&c这块土地是&e%nation%联邦地区的一部分&c，不能被占领。'
+auto:
+  unclaim:
+    enabled: '&2自动占领&6已启用'
+    disabled: '&2自动占领&c已禁用'
+    actionbar:
+      enabled: '&2自动占领&8: &6已启用'
+      disabled: '&2自动占领&8: &c已禁用'
+    success: '&2占领了&6%x%&7,&6%z%&2作为王国土地。'
+    occupied-land: '&c这块土地为其他王国所有！如果要入侵请输入/k invade'
+    need-rp: '&c你需要&e%cost%&c资源点才能占领土地!'
+inactivity-announce:
+  player: '&e%player%&c因为不活跃而被踢出了。'
+  kingdom: '&e%kingdom%&6因为不活跃而被解散了。'
+command:
+  updates-description: '&6检查王国是否有可用的更新。'
+  help:
+    description: '&6显示全部指令。'
+    usage: '&4Usage&8: &e/k %command% &9[页数]'
+    grouped-header: '&8&m---------------=(&c&l %group% &8)=---------------'
+    negative-pages: '&c没有负数页。'
+    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
+    footer: '@hover:{&6←;&6上一页;/k %command% %previous_page%} %pages%hover:{&6→;&6下一页;/k
+      %command% %next_page%}'
+    footer-page: '@hover:{&8[&2%number%&8];&6点击查看&2%number%;/k %command% %number%}'
+    footer-current-page: '@hover:{&8[&2&l%number%&8];&2当前页}'
+    header: '&8&m---------------=(&c&l 王国(DenNotFound汉化) &6%page%&7/&6%max_pages%
+      &8&m)=---------------'
+    no-more-pages: '&c没有更多页了。'
+    commands: '@hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
+  reload:
+    description: '&6重新加载插件。'
+    usage: '&4Usage&8: &e/k reload &9[config]'
+    success: '&2成功重新加载了插件。'
+    commands: '&2所有指令均重新加载了。'
+  create:
+    description: '&6创建一个王国。'
+    name-length: '&c王国名字不能长于&e%max%&c且不能短于&e%min%。'
+    name-english: '&c王国名字必须是英文的且只能包含字母和数字。'
+    name-has-symbols: '&c王国名字中不能含有标点符号。名字只能包含字母和数字。'
+    name-numbers: '&c王国名字中不能包含数字。'
+    name-already-in-use: '&c你的王国名字已经被其他王国使用了！'
+    usage: '&4Usage&8: &e/k create &2<name>'
+    already-in-kingdom: '&c你已经在一个王国里了。离开现有的王国以创建新的一个。'
+    success: '&2你创建了王国&6%kingdom%&2!'
+    pacifist: '&2你的王国是一个&6和平主义&2王国。(加油，猥琐发育！)'
+    aggressor: '&2你的王国是一个&c侵略主义&2王国。(努力吧！)'
+    announce: '&6%player%&2创建了王国&6%kingdom%&2!'
+    cost: '&c你需要&e%cost%&c金钱才能创建王国！'
+    confirmation: |-
+      &c你需要&e%cost%&c金钱才能创建王国。
+      你确定要继续吗?再次输入指令以继续。
+  tag:
+    description: '&6改变你王国的标签。'
+    name-length: '&c你王国标签字符数不能大于&e%max%&c且不能小于&e%min%。'
+    name-english: '&c王国标签必须是英文的且只能包含字母和数字。'
+    name-has-symbols: '&c王国标签中不能含有标点符号。名字只能包含字母和数字。'
+    name-numbers: '&c王国标签中不能包含数字。'
+    usage: '&4Usage&8: &e/k tag <name>'
+    no-kingdom: '&c你没有王国!'
+    cooldown: '&c你需要等待&e%cooldown%&c之后才能改变王国标签。'
+    changed: '&2你的王国标签从&6%tag%&2被改为了%kingdoms_tag%&2，更改者为&6%player%。'
+    set: '&2你的王国标签被设为了&6%kingdoms_tag%&2设定者&6%player%。'
+    cost: '&c你的王国需要&e%cost%&c金钱才能更改你王国的标签。'
+  nation:
+    create:
+      description: '&6创建一个联邦。'
+      name-length: '&c联邦名字长度不能大于&e%max%&c且不能小于&e%min%。'
+      name-english: '&c联邦名字必须是英文的且只能包含字母和数字。'
+      name-has-symbols: '&c联邦名字中不能含有标点符号。名字只能包含字母和数字。'
+      name-numbers: '&c联邦名字中不能包含数字。'
+      name-already-in-use: '&c你的联邦名字已经被其他联邦使用了！'
+      usage: '&4Usage&8: &e/k nation create <name>'
+      already-in-nation: '@&c你已经在一个联邦里了。输入{&e/k nation leave;&cLeave;/k nation leave}
+        &c之后再创建一个新的'
+      success: '&2你创建了联邦&6%nation%&2!'
+      announce: '&6%player% &2创建了联邦&6%nation%&2!'
+      cost: '&c你需要&e%cost%&c金钱才能创建联邦！'
+    rename:
+      description: '&6重命名你的联邦，'
+      no-kingdom: '&c你不在一个联邦里，无法重命名。'
+      king-only: '&c只有联邦都城的国王能重命名联邦！'
+      name-english: '&c联邦名字必须是英文的且只能包含字母和数字。'
+      name-numbers: '&c联邦名字中不能包含数字。'
+      name-already-in-use: '&c你的联邦名字已经被其他联邦使用了！'
+      cooldown: '&c你还需要等待&e%cooldown%&c才能重命名联邦。'
+      usage: '&4Usage&8: &e/k nation rename &5<name>'
+      success: '&2联邦名字被改为了&8:&6%name%。'
+      cost: '&c你需要&e%cost% &c金钱才能重命名联邦。'
+    bank:
+      description: '&6调度你银行账户里的钱。'
+      usage: '&4Usage&8: &e/k nation bank &2<deposit/withdraw> <amount>'
+      unknown-transaction: '&c未知的交易&e%transaction%。'
+      not-enough:
+        nation-money: '&c你的联邦没有&e%amount%&c金钱。'
+        money: '&c你没有&e%amount%&c金钱。'
+      deposit:
+        success: |-
+          &2你把&6%amount%&2金钱存入了你的联邦银行。
+          你的新账户为:&6%balance%
+          &2你联邦的新账户为&8: &6%kingdoms_fancy_nation_bank%
+        disabled: '&c你不能存入钱。'
+      withdraw:
+        disabled: '&c你不能支出钱。'
+        success: |-
+          &2你把&6%amount%&2金钱从你的联邦银行中支出。
+          你的新账户为:&6%balance%
+          &2你联邦的新账户为&8: &6%kingdoms_fancy_nation_bank%
+      negative: '&c你不能调度大小为负数的金钱。'
+      zero: '&c你不能调度大小为零的金钱。'
+    show:
+      description: '&6展示一个王国的信息。'
+      usage: '&4Usage&8: &e/k show &9[player | nation | #PLAYER | #NATION] &2<player
+        | nation>'
+      others-permission: '&c你没有权限查看他人的信息。'
+      message-admin: |
+        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+
+        &7| &2都城&8: &6%kingdoms_nation_capital%
+        &7| &2出生点&8: &6%kingdoms_nation_spawn%
+        &7| &2核心&8: &6%kingdoms_nation_nexus%
+        &7| &2创建日期&8: &6%kingdoms_nation_since%
+        &7| &2势力&8: &6%kingdoms_nation_might%
+        &7| &2护盾&8: &6%kingdoms_nation_shield_time_left%
+        &7| &2银行&8: &6$%kingdoms_fancy_nation_bank% &8| &2Tax&8: &6$%kingdoms_fancy_nation_tax% &8- &6$%kingdoms_fancy_server_nation_tax%
+        &7| &2资源点&8: &6%kingdoms_nation_resource_points%
+
+        &7| &2王国&8:
+        %kingdoms%
+      message: |
+        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+        &7| &2国王&8: &6%king_status%
+        &7| &2联邦&8: &6%kingdoms_nation%
+        &7| &2创建日期&8: &6%kingdoms_nation_since%
+        &7| &2势力&8: &6%kingdoms_might%
+        &7| &2护盾&8: &6%kingdoms_nation_shield_time_left%
+        &7| &2银行&8: &6%kingdoms_fancy_nation_bank%
+        &7| &2土地&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+        &7| &2资源点&8: &6%kingdoms_resource_points%
+
+        &7| &2王国&8:
+        %kingdoms%
+      allies: |
+        @&7| &2盟友&8:
+        &e%allies%
+      truces: |
+        @&7| &2停战&8:
+        %truces%
+      enemies: |-
+        @&7| &2敌人&8:
+        &e%enemies%
+      kingdoms: |-
+        @hover:{&6%kingdoms_name%;&2成员&8: &6%kingdoms_members%
+        &2国王&8: &6%kingdoms_king%
+        &2土地&8: &6%kingdoms_lands%}
+      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%。'
+    not:
+      in-nation: '&c这个王国/玩家不在一个联邦里。'
+    setspawn:
+      description: '&6把你的联邦出生点设置到此地。'
+      not-claimed: '&c你只能把联邦出生点设置在联邦占有的土地上。'
+      others-land: '&c你只能把联邦出生点设置在联邦首都的土地上。'
+      nexus-land: '&c你只能把联邦出生点设置在联邦核心所在的土地上。!'
+      set: '&a把联邦出生点设置为&8: &6%x%&7, &6%x%&7, &6%z%。'
+    unsetspawn:
+      description: '&6移除你联邦的出生点。'
+      not-set: '&c你的联邦还未设置出生点。'
+      success: '&a位于&8: &6%x%&7, &6%y%&7, &6%z% 的联邦出生点已被移除。'
+    spawn:
+      description: '&6传送到联邦出生点'
+      already-teleporting: '&c已在传送到联邦出生点……'
+      cancelled: '&c联邦出生点传送已被取消！!'
+      changed: '&c联邦出生点位置被更改了，传送已被取消。'
+      teleporting: '&2将在&6%countdown%&2秒后进行传送……不要移动。'
+      not-set: '&c你的联邦没有设置出生点！'
+      success: '&2已传送！'
+    nexus:
+      description: '&6设置你联邦核心的位置。'
+      help: |-
+        右键一个方块以把它变为联邦核心。
+        再次输入:{&6/k nation nexus;&cDisable;/k nation nexus}&2以取消。
+      actionbar-activated: '&6核心模式&8: &2已激活'
+      actionbar-deactivated: '&6核心模式&8: &c已取消'
+      disabled: '&c核心模式已被禁用。'
+      open-nexus-permission: '&c你没有权限远程打开核心。'
+      setting-kingdom: '&c你已经在设置你联邦核心的位置了。'
+      not-claimed: '&c你只能在自己联邦土地上防止核心！'
+      another-structure: '&c这片联邦土地已经有一个结构了！'
+      disabled-on-damage: '&c你受伤了，核心模式已禁用。'
+      disabled-on-land-change: '&c你离开了你的联邦土地，核心模式已禁用。'
+      cannot-replace: '&c你不能用核心替换那个方块!'
+      success: '&a成功地在&6%x%&7, &6%y%&7, &6%z%放置联邦核心。'
+      already-there: '&c那就是你的核心啊，你要干什么？？？'
+    nexus-outside-of-land: '&c你需要在自己联邦的土地上才能放置核心。'
+    disband:
+      description: '&c解散你的联邦并踢出全部成员国。'
+      king-only: '&c只有联邦首都的国王才能解散联邦。'
+      success: '&4你的联邦被解散了！'
+      confirmation: |-
+        &4你的联邦要被解散了。
+        所有成员国都会被踢出。
+        你确定要继续吗?
+        再次输入&e/k nation disband &4来确认.
+      announce: '&e%player%&6解散了他们的联邦&e%kingdoms_nation%!'
+    invite:
+      description: '&6邀请一个王国加入联邦。'
+      usage: '&4Usage&8: &e/k nation invite &2<kingdom> &9[expiration]'
+      invited: |-
+        @&6%inviter%&2邀请你的王国加入&6%nation%&2联邦。
+          hover:{&2输入/k nation accept;&2Accept;/k nation accept以接受}
+          hover:{&c输入/k nation decline;&cDecline;/k nation decline以拒绝}
+      announce: '&6%inviter%&2邀请了&6%kingdom%&2王国加入联邦。'
+      already-joined: '&e%kingdom%&c王国已经在你的联邦里了。'
+      already-in-kingdom: '&c这个王国已经在其他联邦里了。'
+      already-nation-invited: '&c这个王国已经被&e%inviter%邀请至&c本联邦。'
+      max-members: '&c你的联邦已经有&e%kingdoms_nation_members%&c个成员国了，已经满员了！'
+      self: '&c你不能把自己的王国邀请至联邦。'
+      expired: '&e%inviter%&c向你王国发送的联邦邀请过期了！!'
+      kingdom-not-found: '&e%kingdom%&c王国不存在。'
+      expired-notify: '&c你向&e%invited%&c联邦发出的邀请过期了!'
+    accept:
+      description: '&6接受加入联邦的邀请。'
+      accepted: '&2你接受了来自&6%inviter%&2的邀请，加入了&e%nation%&2联邦。'
+      joined: '&6%kingdom%&2王国加入了联邦。'
+      notify: '&6%kingdom%&2王国接受了你的邀请。'
+      no-invites: '&c你没有收到任何一个联邦邀请！'
+      not-invited: '&c你没有被&e%nation%&c邀请加入。'
+      expired: '&c你收到的加入&e%nation%&c联邦的申请过期了！'
+      max-members: '&c这个联邦已经有&e%kingdoms_nation_members%&c个成员，已经满员了！'
+      no-longer-exists: '&c这个联邦不复存在了。'
+      multiple-invites: '&c你收到了多个邀请。请输入你要接受邀请的联邦名。'
+    join:
+      description: '&6加入一个无需邀请即可加入的联邦。'
+      usage: '&4Usage&8: &e/k nation join &2<nation>'
+      joined: '&6%kingdom%&2王国加入了联邦。'
+      already-in-nation: '&c你的王国已经在一个联邦里了。'
+      nation-not-found: '&e%nation%&c联邦不存在。'
+      requires-invite: '&c你需要被邀请才能加入&e%nation%&c联邦。'
+    decline:
+      description: '&6拒绝加入联邦的邀请。'
+      declined: 你拒绝了来自&6%inviter%&c的加入&e%nation%&c联邦的邀请。
+      notify: '&e%name%&c拒绝了你的邀请。'
+      no-invites: '&c你没有收到任何一个联邦邀请！'
+      not-invited: '&c你的王国被&e%nation%&c联邦邀请加入。'
+      expired: '&c你收到的加入&e%nation%&c联邦的申请过期了！'
+      no-longer-exists: '&c这个联邦不复存在了。'
+      all: '&2总共拒绝了来自&6%invites%&2个联邦的邀请。'
+      multiple-invites: '&c你收到了多个邀请。请输入你要拒绝邀请的联邦名，或输入&e/k nation decline * &c以拒绝全部邀请。'
+    top:
+      description: '&6展示联邦排行榜。'
+      loading: '&6加载数据中……'
+      header: '&8----------------------------------'
+      footer: '@     &8[hover:{&6←;&6上一页;/k nation top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k
+        nation top %next_page%}&8]'
+      no-more-pages: '&c没有更多页了。'
+      negative: '&c没有负数页。'
+      entry: |-
+        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2成员&8: &6%kingdoms_nation_kingdoms%
+        &7♦ &2资源点&8: &6%kingdoms_fancy_nation_resource_points%
+        &7♦ &2银行&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+    kick:
+      description: '&6把一个王国从你的联邦中踢出。'
+      person: '&e%kicker%&c把你的王国从&e%nation%&c联邦中踢出。'
+      usage: '&4Usage&8: &e/k nation kick &2<kingdom> &9[silent]'
+      announce: '&e%kicker%把&e%kingdom%&c王国从联邦中踢出。'
+      self: '&c你不能踢出你自己的王国……'
+      not-in-kingdom: '&c这个王国不在你的联邦里。'
+      cant-kick: '&c无法踢出&e%kingdom%&c。'
+    leave-description: '&6你的王国将会离开联邦。'
+    leave-capital: |-
+      &c你的王国是联邦的都城，不能离开联邦。
+      你有两种选择：输入/k nation disband以解散联邦，
+      &c或输入&e/k nation capital 以更改都城。
+    leave-announce: '&e%kingdoms_name%&c王国离开了联邦!'
+    broadcast-description: '&6向所有联邦成员广播一条消息。'
+    broadcast-usage: '&4Usage&8: &e/k nation broadcast &2<message>'
+    capital:
+      description: '&6设置你联邦的新都城。'
+      only-king: '&6只有联邦都城的国王能更改联邦都城。'
+      set: '&6%kingdoms_nation_capital%&2现在是联邦的新都城了。'
+      not-in-nation: '&e%kingdom% &c不在你的联邦中。'
+      usage: '&4Usage&8: &e/k nation capital &2<kingdom>'
+    ally:
+      description: '&6向一个联邦发送一个结盟申请。'
+      usage: '&4Usage&8: &e/k nation ally &2<nation>'
+      sender: '&2已向&6%nation%联邦发送一个结盟申请。'
+      limit: '&c你最多只能与&e%max%&c个联邦结盟。'
+      already: '&c你已经是&e%nation%联邦的盟友了。'
+      already-requested: '&c你已经向&e%nation%联邦发送一个结盟申请了。'
+      self: '&c你不能申请与自己的联邦结盟。'
+      receiver: '@&6%nation%&2联邦希望与你结盟。输入{&6/k nation ally %nation%;&2Accept;/k nation
+        ally %nation%}&2以接受申请。'
+      success: |-
+        &2你的联邦与&6%nation%联邦成功结盟了。
+        &2你的王国已自动与对方联邦的每个成员国结盟。
+      another-request: '&e%nation%&c联邦向你发送了一个%relation%&c关系申请。'
+    truce:
+      description: '&6向一个联邦发送一个停战申请。'
+      usage: '&4Usage&8: &e/k nation truce &2<nation>'
+      sender: '&2已向&6%nation%联邦发送一个停战申请。'
+      limit: '&c你最多只能与&e%max%&c个联邦停战'
+      already: '&c你已经与&e%nation%联邦停战了。'
+      already-requested: '&c你已经向&e%nation%联邦发送一个停战申请了。'
+      self: '&c你不能申请与自己的联邦停战。'
+      receiver: '@&6%nation%&2联邦希望与你结盟。输入:{&6/k nation truce %nation%;&2Accept;/k
+        nation truce %nation%}&2以接受申请。'
+      success: |-
+        &2你的联邦与&6%nation%联邦成功停战了。
+        &2你的王国已自动与对方联邦的每个成员国停战。
+      another-request: '&e%nation%&c联邦向你发送了一个%relation%&c关系申请。'
+    enemy:
+      description: '&6向一个联邦宣战。'
+      usage: '&4Usage&8: &e/k nation nation &2<nation>'
+      limit: '&c你最多只能向&e%max%&c个联邦宣战。'
+      already: '&c你已经向&e%nation%联邦宣战了。'
+      self: '&c你不能向自己的联邦宣战。'
+      success: |-
+        &2你的联邦已向&6%nation%宣战！
+        &2你的王国已自动向对方联邦的每个成员国宣战。
+    revoke:
+      description: '&6取消和一个联邦的关系。'
+      usage: '&4Usage&8: &e/k nation revoke &2<nation>'
+      sender: |
+        &c你的联邦取消了与&e%nation%&c的关系。你的王国已与对方联邦的每个成员国自动解除关系。
+      no-relation: '&c你与&e%nation%联邦没有任何关系。'
+      self: '&c你不能和你自己的联邦有任何外交关系……'
+      receiver: |-
+        &e%nation%&c联邦取消了与你联邦的关系。
+        &c你的王国已与对方联邦的每个成员国自动解除关系。
+    promote:
+      description: '&6晋升一位联邦成员。'
+      promoted: '&6%player%把&6%promoted%&2在联邦中晋升为了&9%rank%。'
+      not-in-kingdom: '&e%promoted%&c不在联邦中。'
+      cant-promote: '&c你不能晋升&e%promoted%。'
+      king: '&c要想把晋升为国王请输入&e/k king'
+      usage: '&4Usage&8: &e/k nation promote &2<player>'
+    demote:
+      description: '&6降职一位联邦成员。'
+      demoted: '&e%player%把&e%demoted%&c在联邦中降职为了&9%rank%。'
+      not-in-kingdom: '&e%demoted%&c不在你的联邦中。'
+      cant-demote: '&c你不能降职&e%demoted%。'
+      member: '&c这个玩家是成员阶层。'
+      usage: '&4Usage&8: &e/k nation demote &2<player>'
+    description: '&6展示可用的联邦指令。'
+  rename:
+    description: '&6重命名你的王国。'
+    no-kingdom: '&c你没有王国，无法重命名。'
+    king-only: '&c只有国王能重命名王国。'
+    name-english: '&c王国名字必须是英文的且只能包含字母和数字。'
+    name-numbers: '&c王国名字中不能包含数字。'
+    name-already-in-use: '&c你的王国名字已经被其他王国使用了！'
+    cooldown: '&c你还需要等待&e%cooldown%&c才能重命名王国。'
+    usage: '&4Usage&8: &e/k rename <name>'
+    success: '&6%player%&2把王国名改为了&8: &6%name%。'
+    cost: '&c你的王国需要&e%cost%&c金钱才能重命名你的王国。'
+  pvp:
+    description: '&6启用友方pvp'
+    others-permission: '&c你没有权限设置他人的pvp模式。'
+    'on': '&6pvp模式8: &2已启用'
+    'off': '&6pvp模式&8: &c已禁用'
+  glow:
+    description: '&6轻松地找到你的王国成员。'
+    enabled: '&6发光模式&8: &2已启用'
+    disabled: '&6Glow mode&8: &c已禁用'
+  resourcepoints:
+    description: '&6一系列管理资源点的指令。'
+    converter:
+      description: '&6远程打开核心中的资源点转换器。'
+    deposit:
+      description: '&6用你的金钱换取资源点。'
+      usage: '&4Usage&8: &e/k rp deposit &2<resource points>'
+      success: |-
+        &2你成功花费了&6$%worth%&2金钱换取了&6%rp%资源点。
+        &2你的新银行账户&8: &6$%balance%
+    withdraw:
+      description: '&6用王国资源点换取金钱。'
+      usage: '&4Usage&8: &e/k rp withdraw &2<resource points>'
+      min: '&c你一次性至少要取出&e%min%资源点&c。'
+      success: |-
+        &2你成功地用&6%rp%&2资源点换取了&6$%worth%金钱。
+        &2你的新银行账户&8: &6$%balance%
+        &2你的王国资源点&8: &6%kingdoms_fancy_resource_points%
+    transfer:
+      description: '&6从你的王国/联邦中支出/存入资源点。'
+      usage: '&4Usage&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
+      success:
+        kingdom: |-
+          &2你成功地把&6%amount%&2资源点从你的联邦转入了你的王国。
+          联邦资源点&8: &6%kingdoms_fancy_nation_resource_points%
+          &2王国资源点&8: &6%kingdoms_fancy_resource_points%
+        nation: |-
+          &2你成功地把&6%amount%&2资源点从你的王国转入了你的联邦。
+          联邦资源点&8: &6%kingdoms_fancy_nation_resource_points%
+          &2王国资源点&8: &6%kingdoms_fancy_resource_points%
+    not-enough:
+      resource-points: '&c你的王国没有&e%rp%&c资源点。'
+      money: '&e%rp%资源点&c需要&e$%worth%&c金钱, 但你只有&e$%balance%。'
+    negative: '&c你不能调度大小为负数的资源点'
+    zero: '&c你不能调度大小为零的资源点'
+  bank:
+    description: '&6存入或支出王国银行里的资源点。'
+    usage: '&4Usage&8: &e/k bank &2<deposit/withdraw> <amount>'
+    unknown-transaction: '&c未知的交易&e%transaction%。'
+    negative: '&c你不能调度大小为负数的金钱。'
+    zero: '&c你不能调度大小为零的金钱。'
+    not-enough:
+      kingdom-money: '&c你的王国银行没有&e%amount%&c金钱。'
+      money: '&c你没有&e%amount%&c金钱。'
+    deposit:
+      limit: 你的王国银行已满。最大账户为&e%limit%。
+      success: |-
+        &2你向你王国账户中存入了&6%amount%&2金钱。
+        你的新账户为&8: &6%balance%
+        &2王国银行账户&8: &6%kingdoms_fancy_bank%
+      disabled: '&c你不能存入钱。'
+      min: '&c你至少要存入&e$%min%。'
+    withdraw:
+      min: '&c你至少要取出&e$%min%。'
+      disabled: '&c你不能取出钱。'
+      success: |-
+        &2你从你王国账户中取出了&6%amount%&2金钱。
+        你的新账户为&8: &6%balance%
+        &2王国银行账户&8: &6%kingdoms_fancy_bank%
+  show:
+    description: '&6展示一个王国的信息。'
+    usage: '&4Usage: &e/k show &9[player | kingdom | #PLAYER] &2<player | kingdom>'
+    others-permission: '&c你没有权限查看他人的信息。'
+    message-admin: |
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+      &7| &2国王&8: &6%king_status%
+      &7| &2家&8: &6%kingdoms_home%
+      &7| &2核心&8: &6%kingdoms_nexus%
+      &7| &2联邦&8: &6%kingdoms_nation%
+      &7| &2势力&8: &6%kingdoms_fancy_might%
+      &7| &2银行&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2土地&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2资源点&8: &6%kingdoms_fancy_resource_points%
+      &7| &2护盾&8: &6%kingdoms_shield_time_left%
+      &7| &2创建日期&8: &6%kingdoms_since%
+      &7| &2成员&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%%members%
+    message: |
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+      &7| &2国王&8: &6%king_status%
+      &7| &2联邦&8: &6%kingdoms_nation%
+      &7| &2势力&8: &6%kingdoms_might%
+      &7| &2创建日期&8: &6%kingdoms_since%
+      &7| &2护盾&8: &6%kingdoms_shield_time_left%
+      &7| &2土地&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2银行&8: &6$%kingdoms_fancy_bank%
+      &7| &2资源点&8: &6%kingdoms_fancy_resource_points%
+
+      &7| &2成员&8:
+      %members%
+    message-console: |
+      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+      &7| &2国王&8: &6%king_status%
+      &7| &2家&8: &6%kingdoms_home%
+      &7| &2核心&8: &6%kingdoms_nexus%
+      &7| &2联邦&8: &6%kingdoms_nation%
+      &7| &2势力&8: &6%kingdoms_fancy_might%
+      &7| &2银行&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2土地&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2资源点&8: &6%kingdoms_fancy_resource_points%
+      &7| &2护盾&8: &6%kingdoms_shield_time_left%
+      &7| &2创建日期&8: &6%kingdoms_since%
+      &7| &2成员&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%%members%
+    allies: |
+      @&7| &2盟友&8:
+      &e%allies%
+    truces: |
+      @&7| &2停战&8:
+      %truces%
+    enemies: |-
+      @&7| &2敌人&8:
+      &e%enemies%
+    online-prefix: |-
+      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2加入了&8: &6%kingdoms_joined%
+      &2捐献&8: &6%kingdoms_total_donations%
+      &2上次捐献&8: &6%kingdoms_last_donation_time%
+      &2阶层&8: &6%kingdoms_rank_name%}
+    offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%。'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%。'
+  claim:
+    description: '&6占领你脚下的土地。'
+    chunk:
+      usage: '&4Usage&8: &e/k claim [x] <z>'
+      permission: '&c你没有权限通过区块坐标占领土地。'
+      max-distance: '&c你在尝试占领一块过远的土地&8: &e%distance%&7> &e%max%。'
+    disabled-world: '&c在&6%world%世界中禁止占领土地。'
+    in-region: '&c你不能在保护地区占领土地。'
+    near-region: '&c你不能在保护地区附近占领土地。'
+    not-connected: '&c你占领的土地必须与你的王国土地相连接。'
+    not-distanced: '&c另一个王国占领了与这块土地相邻的土地。'
+    nation-zone: '&c这块土地属于&e%nation%联邦，它无法被占领。'
+    success: '&2占领了&6%x%&7, &6%z% &2作为王国土地。'
+    fill:
+      in-claimed-land: '&c无法填充土地，因为你脚下的土地已被占领。'
+      failed: '&c占领&8: &e%x%&7, &e%z%时失败。'
+      max-fails: '&c失败次数过多，已取消填充土地。'
+      max-claims: '&c你不能占领&e%lands%&c块土地。'
+      description: '&2占领由已占领的土地围成的图形。'
+      done: '@&2输入:{&6/k claim confirm;&2Execute;/k claim confirm}&2以占领土地'
+    exceeded-max: '&c你不能占领超过&e%max%&c块土地!'
+    already-owned: '&c这块土地已经被你的王国占领了!'
+    occupied-land: '&c这块土地为其他王国所有！如果要入侵请输入/k invade!'
+    cant-overclaim: '&c你不能占领超过土地上限数量的土地！'
+    max-claims-player: '&c你只能占领&e%limit%&c块土地。'
+    max-claims: '&c你的王国只能占领&6%limit%&c块土地。'
+    square:
+      description: '&2占领一块特定半径的正方形土地。'
+      usage: '&4Usage&8: &e/k claim square &2<radius>'
+      radius:
+        invalid: '&c这个正方形半径无效&8: &e%radius%。'
+        disallowed: '&c这个正方形半径必须大于&e2&c且小于&e%max%。&c当前半径&8: &e%radius%。'
+      done: '@&2输入 hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2以占领土地。'
+    auto:
+      permission: '&c你没有权限设置他人的自动占领土地。'
+      description: '&2随着你走路自动占领土地。'
+      usage: '&4Usage&8: &e/k claim auto &2<player>'
+      claim:
+        'on': '&6自动占领&a已启用&6.。土地会随着你走路而被占领。'
+        'off': '&6自动占领&c已禁用&6。'
+    need-rp: '&c你需要&e%cost%&c资源点才能占领土地!'
+    confirmation: |-
+      &c你的王国需要支付&e%rp%&c资源点和&e%money%&c金钱以占领土地。
+      你确定要继续吗?那就再输入一遍指令。(我是不会告诉你/k claim confirm就可以的！)
+    need-money: '&c你的王国需要&e%cost%&c金钱才能占领土地！输入&e/k bank deposit&c向你的王国银行账户中存钱！'
+    line:
+      description: '&2向一个方向占领一行土地。'
+      usage: '&4Usage&8: &e/k claim line <distance>'
+      invalid-direction: '&c无效的方向&8:&e%direction%。'
+      max-distance: '&c最大距离为&e%max%。'
+      min-distance: '&c最小距离&e%min%。'
+      done: '@&2输入:{&6/k claim confirm;&2Execute;/k claim confirm}&2以占领土地。'
+    clipboard:
+      description: '&6在确认前编辑你的占领选择'
+      usage: '&4Usage&8: &e/k claim clipboard [add/remove | clear] <x> <z>'
+      different-world: '&c你的版图属于&8:&e%world%&c世界。'
+      unknown-action: '&c无效的版图操作&8:&e%action%。'
+      empty: '&c你的版图上什么也没有。'
+      added: '&2把&6%x%&7, &6%z% &2添加到版图上。'
+      already-added: '&e%x%&7, &e%z% &c已经在版图上了。'
+      removed: '&2把&6%x%&7, &6%z% &2从版图上移除。'
+      not-foumd: '&e%x%&7, &e%z% &c不在版图上。'
+      cleared: '&2你成功清空了你的版图。'
+      cost: '&2占领这些土地会花费&6%rp%资源点&2和&6$%money%金钱。'
+    confirm:
+      description: '&6确认占领你版图上的全部土地。'
+      empty: '&c你的版图上什么也没有。'
+      fail: '&c由于某些改动，不能占领&e%x%&7, &e%z% &c作为土地。'
+      success: '&2成功占领了全部土地。'
+    corner:
+      description: '&6选取两个角坐标，占领一个矩形。'
+      usage: '&4Usage&8: &e/k claim corner &9[pos1 &7| &9pos2]'
+      max-claims: '&c使用本命令最多能占领&e%max%&c土地。目前占领&8:&e%claims%。'
+      set:
+        pos1: '&2第一个角被设为&8: &6%chunkx%&7,&6%chunkz%。'
+        pos2: '&2第二个角被设为&8: &6%chunkx%&7,&6%chunkz%。'
+  shield:
+    description: '&6禁用你的护盾。'
+    no-shield: '&c你的王国目前没有盾。'
+    confirm: |-
+      @&c如果你禁用你的盾，你得买一个新的。
+      剩余护盾时间&8:&e%kingdoms_shield_time_left%
+      &c若要继续，输入:{&e/k shield confirm;/k shield confirm;/k shield confirm}&c以确定。
+    deactivated: '&e%executor%&c禁用了还有&e%kingdoms_shield_time_left%&c的王国护盾。'
+  unclaim:
+    description: '&6放弃你脚下的土地。'
+    success: '&2放弃了位于&6%x%&7, &6%z%的土地。'
+    disconnection: '&c你要放弃的土地会把&8: &e%x%&7, &e%z%从王国分离出去。'
+    not-claimed: '&c这块土地本来也不是你王国的(这边建议您去看看脑子呢~)。'
+    cooldown: '&c你可以在&e%time%之后放弃土地。。'
+    cannot-remove-nexus: |-
+      @&c你不能放弃核心所在的土地。
+      请输入:{&e/k nexus;&4Click to Enable;/k nexus}&c移动核心后再放弃该土地。
+    occupied-land: '&c这块土地已经被另一个王国占领了！输入/k invade以入侵！'
+    confirmation:
+      turrets: '&c这片土地上有炮塔。若仍要放弃请输入&e/k unclaim confirm'
+      structures: '&c这片土地上有结构。若仍要放弃请输入&e/k unclaim confirm'
+      home: '&c王国的家在这片土地上。若仍要放弃请输入&e/k unclaim confirm'
+  unclaimall:
+    description: '&6放弃你王国的全部土地。'
+    success: '&2总共放弃了&6%lands%&2块土地!'
+    not-enough-resourcepoints: '&c你需要&e%rp%&c资源点才能全部放弃土地。'
+    confirm: |-
+      &c你将要全部放弃&e&l%lands%&c块土地。
+      你所有的炮塔和结构都会被放弃，你的箱子也不再被保护。
+      如果仍要放弃请再次输入指令。
+    announce: '&6%player%&2放弃了全部&6%lands%块&2土地!'
+  sethome:
+    description: '&6把你王国的家设置到当前位置。'
+    not-claimed: '&c你只能在已占领的土地上设置家。'
+    others-land: '&c你只能在自己的土地上设置家!'
+    nexus-land: '&c你只能在你核心所在的土地上设置家!'
+    set: '&a把王国的家设为&8: &6%x%&7, &6%z%。'
+  unsethome:
+    description: '&6移除你王国的家。'
+    not-set: '&c你的王国没有设置家。'
+    success: '&a位于&8: &6%x%&7, &6%y%&7, &6%z%的&a王国的家被移除了。。'
+  home:
+    description: '&6传送到你王国的家。'
+    changed: '&c王国家的位置被改动了，传送已取消。'
+    teleporting: '&2将在&6%countdown%秒后传送&2……不要移动。'
+    not-set: '&c你的王国还没有设置家呢!'
+    not-set-others: '&e%kingdom%&c王国没有设置家。'
+    permission: '&c你没有权限传送到其他王国的家。'
+    not-public: '&e%kingdom%&c王国的家不是公共的。'
+    cant-use-public-home: '&c你没有权限使用&e%kingdom%&c王国的家，即使它是公共的。'
+    being-invaded: '&c你不能传送至&e%kingdom%&c的家，因为它正在被入侵。'
+    success: '&2传送成功!'
+  nexus:
+    description: '&6设定你王国核心的位置。'
+    open:
+      description: '&6远程打开你的王国核心。'
+    remove:
+      description: '&6远程移除你的王国核心。'
+      permission: '&c你没有权限移除核心。'
+      invasion: '&c你不能在土地被侵略时移除核心。'
+      not-placed: '&c你的王国核心没有被放置。'
+      removed: '&c成功移除了你的王国核心。'
+    help: |-
+      @&2右键一个方块把它变为你的王国核心。
+      再次输入:{&6/k nexus;&cDisable;/k nexus}&2以禁用核心模式。
+    actionbar-activated: '&6核心模式&8:&2已激活'
+    actionbar-deactivated: '&6核心模式&8:&c已禁用'
+    disabled: '&c核心模式已禁用。'
+    setting-nation: '&c你已经在设置你联邦核心的位置了。'
+    outside-of-land: '&c你只能在自己的土地上放置核心。'
+    invasion: '&c你不能在土地被侵略时移除核心。'
+    not-claimed: '&c你只能在自己的土地上放置核心！'
+    another-structure: '&c这片土地上已经有另一个联邦核心了!'
+    disabled-on-damage: '&c你受到了伤害，核心模式已被禁用。'
+    disabled-on-land-change: '&c你离开了你王国的土地，核心模式已被禁用。'
+    already-there: '&c那就是你的核心啊，你要干什么？？？'
+    cannot-replace: '&c你不能把那个方块替换为核心!'
+    success: '&a成功地把你的核心设置在&6%x%&7, &6%y%&7, &6%z%。'
+  disband:
+    description: '&c解散你的王国并踢出全部成员。'
+    king-only: '&c只有国王能解散王国。'
+    success: '&4你的王国被解散了!'
+    confirmation: |-
+      &4你将要解散你的王国了。
+      所有成员将会被踢出且全部土地都会被放弃。
+      你确定要继续吗?
+      再次输入&e/k disband &4以确定。
+    announce: '&e%player%&6解散了他们的王国&e%kingdoms_name%。'
+  about:
+    description: '&6关于王国插件的一些信息。'
+  book:
+    description: '&6你王国的一小本手册。'
+    chapter-not-found: '&c找不到章节&8:&e%chapter%。'
+    permission: '&c你没有权限编辑书。'
+    rename:
+      description: '&6重命名你王国手册中的章节。'
+      usage: '&4Usage&8: &e/k book rename &2<chapter> <name>'
+      same: '&c这章已经是这个名字了！'
+      duplicate: '&c这个章节与另一个章节重名了。'
+      renamed: '&2成功把章节名从&6%old_chapter%&2改为&6%new_chapter%。'
+    open:
+      description: '&6阅读你王国的手册。'
+      usage: '&4Usage&8: &e/k book open &9[chapter]'
+    preview:
+      description: '&6预览你在编辑的这一章。'
+      nothing-to-preview: '&c你没有可预览的，正在编辑的章节。'
+      previewing: '&2你正在预览&8:&6%chapter%章节的内容。'
+    discard:
+      description: '&6撤销对章节的全部改动。'
+      nothing-to-discard: '&c你没在编辑章节，无法撤销改动。'
+      discarded: '&2撤销了全部对&6%chapter%&2章节的改动。'
+    remove:
+      description: '&6把章节从你王国的手册中删除。'
+      usage: '&4Usage&8: &e/k book remove &2<chapter>'
+      deleted: '&2成功删除了章节&8:&6%chapter%。'
+    edit:
+      description: '&6编辑你王国的手册。'
+      usage: '&4Usage&8: &e/k book edit &2<chapter>'
+      already-editing: '&c你已经在编辑章节&e%chapter%&c了。'
+      cant-move: '&c你不能移动手册编辑器。'
+      changed: '&2已更改'
+      no-empty-slot: '&c你的背包中没有空槽位。'
+      create: '@&2这章不存在。正在创建这一章……输入{&6/k book cancel;/k book cancel;/k book cancel}&2以取消。'
+      create-limit: '&c你的王国不能有超过&e%limit%&c个章节。'
+      create-max-length: '&c这章不存在且不能创建这一章。章节名至少要有&e%max%&c个字符。'
+      modify: |-
+        &2你正在编辑章节&8:&6%chapter%
+        &2输入:{&6/k book discard;/k book discard;/k book discard}&2以撤销改动。
+  admin:
+    item-description: '&6与资源点有关的命令。'
+    item:
+      needs-kingdom: '&c王国物品需要目标玩家有一个王国才能建造它们。'
+      resourcepoints:
+        description: '&6给一个在配置中有资源点的物品。'
+        usage: '&4Usage&8: &e/k item give &2<name> &9[amount] [player]'
+        unknown-item: '&c未知的指定物品名&8:&e%item%。'
+        invalid-amount: '&c无效的数量&8:&e%amount%。'
+        done: '&2成功地把&6%amount%个%item%&2给予了&6%target%，总价值&6%rp%&2资源点。'
+      inject:
+        description: '&6永久给一个物品注入资源点。'
+        usage: '&4Usage&8: &e/k item inject &2<resource points>'
+        no-item: '&c你手中没有物品，无法注入资源点。'
+        done: '&2成功把&6%rp%资源点注入了&6%item%&2中。'
+      turret:
+        description: '&6直接得到一个炮塔物品。'
+        usage: '&4Usage&8: &e/k item turret &2<style> &9[amount] [player]'
+        unknown-style: |-
+          &c未知的炮塔风格&8:&e%style%
+          &c可用的风格&8:&e%styles%
+        done: '&2成功地把&6%amount%个%item%&2给予了&6%target%。'
+      structure:
+        description: '&6直接得到一个结构物品。'
+        usage: '&4Usage&8: &e/k item structure &2<style> &9[amount] [player]'
+        unknown-style: |-
+          &c未知的结构风格&8:&e%style%
+          &c可用的风格&8:&e%styles%
+        done: '&2成功地把&6%amount%个%item%&2给予了&6%target%。'
+    gui-description: '&6打开一个容器并自动把里面的物品解析为界面配置。'
+    gui-opened: '&2解析容器中……请等待……'
+    gui-enabled: '&2界面模式&9已启用&2。打开一个容器以解析内容物。'
+    gui-disabled: '&2界面模式&c已禁用&2。'
+    gui-done: '&2已完成。已把配置保存到了插件文件夹里一个叫&6%file%&2的文件里。'
+    description: '&6展示可用的op指令。'
+    nation:
+      description: '&6展示可用的联邦op指令。'
+      disband:
+        description: '&6解散一个联邦。'
+        usage: '&4Usage&8: &e/k admin disband &2<nation> &9[silent]'
+        success: '&6%nation%&2联邦被解散了。'
+        announce: '&e%nation%&6联邦被解散了。'
+    debug:
+      description: '&6调试'
+    sound:
+      description: '&6测试你要在配置文件里使用的声音。'
+      usage: '&4Usage&8: &e/k admin testsound &2<sound> &9[volume] [pitch]'
+      playing: '&2正在播放……'
+    test:
+      description: '&6测试一个有16进制颜色代码，复杂消息，换行符和占位符的字符串。'
+      usage: '&cUsage&8: &e/k admin test <message>'
+    execute:
+      description: '&6为一个王国中的全部成员执行一个指令。'
+      usage: '&4Usage&8: &e/k admin execute &2<kingdom> <executor> &9[filter] &9[/]&2<command>'
+      console-executor-permission: '&c你没有权限作为控制台执行指令。'
+      unknown:
+        executor: |-
+          &c未知的执行者&8:&e%executor%   
+          &c可用的执行者&8:&eself&7,&econsole&7,&emembers
+        filter: |-
+          &c未知的过滤器&8:&e%filter%
+          &c可用的过滤器&8:&eonline&7,&eoffline
+        command: '&c未知的指令&8:&e%command%。'
+      members-offline: '&c不能使用离线过滤器执行指令。离线玩家不能执行指令。'
+      members-no-filter: |-
+        &c不能不使用过滤器执行指令。
+        一些王国成员可能处于离线状态，使用&e在线&c过滤器参数来修复它。
+      executed: '正在为为&6%kingdom%&2王国的成员执行来自插件&6%plugin%&2的指令&6%command%……'
+    evaluate:
+      description: '&6用占位符和函数量化一个值。'
+      usage: '&cUsage&8: &e/k admin evaluate <expression>'
+      failed: |-
+        &c翻译后的表达式&8:&6%translated%
+        &c错误&8:&e%result%
+      evaluated: |-
+        @&2翻译后的表达式&8:hover:{&6%translated%;&6%object-code%
+
+        &2这是什么?
+        &7这是数学编译器可以从你的表达式中理解的最终表示。
+        你可以看到任何错误，如运算符优先级和子表达式的分组方式。
+        你可能不会看到seme操作，因为它们已经被优化了。}
+        &2Evaluated Expression&8: &6%result%
+    claim:
+      description: '&6为一个王国强制占领你脚下的土地。'
+      usage: '&4Usage&8: &e/k admin claim &2<kingdom>'
+      success: '&2将&6%x%&7, &6%z% &2占领为王国土地。'
+      already-claimed: '&c这块土地已经被&e%kingdoms_name%&c占领了。'
+    rank:
+      description: '&6改变一个玩家在王国中的阶层'
+      usage: '&4Usage&8: &e/k admin rank &2<player> <rank>'
+      not-found: '&c没有此阶层。'
+      no-kingdom: '&c这个玩家没有王国。'
+      same-rank: '&c这个玩家已经有这个阶层了。'
+      success: '&2把&6%name%的&2阶层从&6%previous_rank%&2更改为了&6%rank%。'
+      success-king: '&6%kingdom%&2王国的新国王是&8:&6%name%。'
+    turret:
+      description: '&6移除，改变，或升级特定的炮塔。'
+      usage: '&4Usage&8: &e/k admin turret &2<change | remove> <style> &9[replacement
+        style]'
+      unknown-style: |-
+        &c未知的炮塔风格&8:&e%style%
+        &c查看你的&eTurrets &c文件夹查看全部炮塔风格名称。
+      success: '&2总共处理了&6%amount%&2个炮塔。'
+    nexus:
+      description: '&6打开一个王国的核心。'
+      usage: '&4Usage&8: &e/k admin nexus &2<kingdom>'
+      tp-not-set: '&e%kingdom%&c王国还未设置核心。'
+      tp: '&2传送到&6%kingdom%王国的&2核心……'
+    toggle:
+      description: '&6为你自己切换op模式。'
+      'on': '&6op模式目前&8:&2已启用'
+      'off': '&6op模式目前&8:&c已禁用'
+    spy:
+      description: '&6监听王国聊天。'
+      'on': '&6监听聊天模式&8:&2已启用'
+      'off': '&6监听聊天模式&8:&c已禁用'
+    dynmap:
+      description: '&6为Dynmap执行不同操作。'
+      rendering: '&2绘制中……'
+      usage: '&cUsage&8: &e/k admin dynmap <fullrender/update/remove>'
+      dynmap-not-available: '&c未找到Dynmap。'
+      rendered: '&2总共绘制了&6%lands%&2块土地。'
+      removed: '&2总共移除了&6%lands%&2块土地。'
+    masswar:
+      description: '&6人工开始或结束混战。'
+      usage: '&4Usage&8: &c/k admin masswar <start/end>'
+      running: '&c混战已经开始了。'
+      not-running: '&c混战还未开始。'
+    dailychecks:
+      description: '&6人工开始每天检查循环。'
+      usage: '&4Usage&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      info: |-
+        &2下次循环&8:&6%next%
+        &2准确时间&8:&6%daily_checks%
+        &2当前时间&8:&6%time%
+        &2状态&8:%state%
+      run: '&2执行日常检查……今天的日常检查&6不会&2被跳过。'
+      skip: '&2跳过日常检查间隔。'
+      skipped: '&c明天的日常检查已经被跳过了。'
+      resume: '&2恢复日常检查……'
+      resumed: '&c日常检查未被跳过。'
+    resourcepoints:
+      description: '&6给一个王国增加或减少资源点。'
+      usage: '&4Usage&8: &e/k admin resourcepoints &2<kingdom> &9[set | add | remove]
+        &2<amount>'
+      player-no-kingdom: '&c这个玩家没有王国。'
+      done: '&6%kingdom%&2王国的新资源点数为&8:&6%rp%。'
+      added: '&2你王国的新资源点数为&8:&6%rp%。'
+      invalid-action: '&c无效的行动&e%action%&c!可用的行动&8:&eadd/remove/set'
+      invalid-kingdom: '&c找不到王国&e%kingdom%。'
+    bank:
+      description: '&6存入或取出一个王国账户里的钱'
+      usage: '&4Usage&8: &e/k admin bank &2<kingdom> &9[set | add | remove] &2<amount>'
+      done: '&6%kingdom%&2的新银行账户为&8:&6%kingdoms_fancy_bank%。'
+      added: '&2你王国的新银行账户为&8:&6%kingdoms_fancy_bank%。'
+      invalid-action: '&c无效的行动&e%action%&c!可用的行动&8:&eadd/remove/set'
+      invalid-kingdom: '&c找不到王国&e%kingdom%。'
+    command:
+      description: '&c获取与一个指令有关的全部信息。'
+      usage: '&4Usage&8: &e/k admin command &2<command>'
+      bad-start: '&c你不需要输入/或/k，只需输入后面的指令即可。'
+      not-found: '&c找不到指令&8:&e%command%。'
+      info: |
+        @&8------------=( &2%main-name% &8)=------------
+        &7| &2显示名称&8: &9%command-displayname%
+        &7| &2同效果指令&8: &9%aliases%
+        &7| &2母指令&8:&9%parent%
+        &7| &2描述&8:&9%description%
+        &7| &2用法&8:&9%usage%
+        &7| &2权限&8:&9hover:{%permission%;&2点击复制;|%permission%}
+        &7| &2权限组&8:&9%permission-scope%
+        &7| &2冷却&8:&9%cooldown%
+        &7| &2禁用的世界&8:&9%disabled-worlds%
+    join:
+      description: '&6让玩家加入另一个王国'
+      usage: '&cUsage&8: &e/k admin join &2<player> <kingdom>'
+      invalid-kingdom: '&c找不到王国&e%kingdom%。'
+      in-kingdom: |-
+        @&6%player%&2已经在&6%kingdoms_name%&2王国里了。
+        &2如果你要继续，&8: hover:{&6/k admin join %player% %kingdom% confirm;&2点击此处以确定。;/k admin join %player% %kingdom% confirm}
+      already-in-kingdom: '&6%player%&2已经在&6%kingdom%&2王国里了。'
+      success: '&6%player%&2现在是&6%kingdom%的一员了。'
+    home:
+      description: '&6传送到另一个王国的家。'
+      usage: '&cUsage&8: &e/k admin home <kingdom>'
+      homeless: '&3%kingdom%&c王国还未设置家。'
+      teleported: '&2你传送至了&6%kingdom%&2王国的家。'
+    create:
+      description: '&6为一个玩家创建王国。'
+      usage: '&cUsage&8: &e/k admin create &2<player &8| &2super> <name>'
+      already-exists: '&c已经有一个叫&8:&e%kingdom%&c的王国了。'
+      created: '&2成功为&6%player%&2创建了&6%kingdom%&2王国。'
+    permanent:
+      description: '&c为一个王国开启永久模式。'
+      usage: '&cUsage&8: &e/k admin permanent &2<kingdom>'
+      'on': '&2永久模式&6已启用&2。'
+      'off': '&2永久模式&已禁用&2.'
+    rename:
+      description: '&6重命名一个王国。'
+      usage: '&cUsage&8: &e/k admin rename <kingdom> <name>'
+      already-exists: '&c已经有一个叫&8:&e%kingdom%&c的王国了。'
+      renamed: '&2成功地把&6%kingdom%&2王国的名字改为&6%name%。'
+    disband:
+      description: '&6解散一个王国。'
+      usage: '&cUsage&8: &e/k admin disband <kingdom> [silent]'
+      success: '&6%kingdom%&2被解散了。'
+      announce: '&e%kingdom% &6被解散了。'
+    pacifism:
+      description: '&6启用或禁用一个王国的和平主义模式。'
+      usage: '&cUsage&8: &e/k admin pacifism &2<kingdom> &8[&2true &7| &4false&8]'
+      enabled: '&2%kingdom%&6王国的和平主义模式&8:&2已启用。'
+      disabled: '&2%kingdom%&6王国的和平主义模式&8:&2已禁用。'
+    land:
+      description: '&6利用区块坐标传送到一块土地。'
+      usage: '&4Usage&8: &e/k admin land [world] <x> <z>'
+      teleported: '&2你被传送到了位于&8: &6%world%&7, &6%chunk_x%&7,
+        &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8)&2的土地。'
+      invalid-world: '&c找不到世界&8:&e%world%。'
+      invalid-coordinates: '&c无效的坐标&8:&e%x%&7, &e%z%。'
+    player:
+      description: '&6展示一个玩家的信息。'
+      usage: '&4Usage&8: &e/k admin player &2<player>'
+      info: |-
+        @&7| &2名字&8:&6%player% &8(hover:{&5%id%;&2点击复制;|%id%}&8)
+        &7| &2管理&8:%admin% &7| &2间谍&8: %spy%
+        &7| &2王国&8:&6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2阶层&8:%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2联邦阶层&8:%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2使用的标记&8:%visualizer%
+        &7| &2邀请&8:&6%invites%
+        &7| &2加入王国时间&8:&6%kingdoms_joined%
+        &7| &2自动占领&8:%auto_claim% &7| &2Auto Map&8: %auto_map%
+        &7| &2地图大小&8:&6%map_width% &8- &6%map_height%
+        &7| &2总捐献&8:&6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
+        &7| &2占领土地数&7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2压缩数据&8:&6%compressed%
+      found: '&2玩家&6%name% &8(&7%uuid%&8) &2在以下王国中&8:'
+      kingdom: '&8-&2%kingdoms_name%&8(&6%uuid%&8)'
+      no-duplicates: '&c这个玩家的王国并不重复。'
+    kick:
+      description: '&6把玩家从一个王国里踢出。'
+      usage: '&4Usage&8: &e/k admin kick &2<player>'
+      kicked: '&c把&e%kicked%&c从&e%kingdom%&e王国中踢出。'
+      kicked-king: '&c把&e%kicked%&c从&e%kingdom%&e王国中踢出，&c新的国王是&8:&e%king%。'
+      kicked-disbanded: '&e%kingdom%&c王国已解散，因为&e%kicked%&c是它的最后一名成员。'
+      not-in-kingdom: '&c这个玩家不在王国中。'
+    kick-king: '&c你要踢出的玩家是国王。解散王国或选定新的国王。'
+    hologram:
+      description: '&6移除你周围故障的全息信息。'
+      usage: '&cUsage&8: &e/k admin hologram <radius>'
+      removed: '&2总共移除了&6%removed%&2个全息图像。'
+    entity:
+      description: '&6找到玩家附近全部实体。'
+    unclaim:
+      description: '&6放弃任意土地。'
+      success: '&2放弃了位于&6%x%&7, &6%z% &2的，属于&6%kingdom%&2王国的土地。'
+      not-claimed: '&c这块土地本就无人占领。'
+    maxlandmodifier:
+      description: '&6改变一个王国的土地占领上限。'
+      usage: '&4Usage&8: &e/k admin maxLandModifier &2<kingdom> &9[set | add | remove]
+        &9<amount>'
+      success: '&2成功地把&6%kingdom%&2王国的土地占领上限改为&6%amount%&2。'
+      invalid-action: '&c无效的行动&e%action%&c!可用的行动&8:&eadd/remove/set'
+      invalid-kingdom: '&c找不到王国&e%kingdom%。'
+    shield:
+      description: '&6改变一个王国的护盾剩余时间。'
+      usage: '&4Usage&8: &e/k admin shield &2<kingdom> &9[set | add | remove] &2<time>'
+      success: '&2成功地把&6%kingdom%&2王国的护盾时长设为了&8:&6%amount%。'
+      invalid-action: '&c无效的行动&e%action%&c!可用的行动&8:&eadd/remove/set'
+      invalid-kingdom: '&c找不到王国&e%kingdom%。'
+      invalid-time: '&c无效的时间单位&8:&e%time%。'
+  sneak:
+    description: '&6你与其他王国的关系不会使飞行失效。'
+    others-permission: '&c你没有权限把他人设为潜行模式。'
+    enabled: '&6潜行模式&8:&2已启用'
+    disabled: '&6潜行模式&8:&c已禁用'
+  inventory:
+    description: '&6查看你王国另一个成员的物品栏。'
+    usage: '&4Usage&8: &e/k invsee &9[player]'
+    not-in-kingdom: '&e%target% &c不在你的王国中。'
+    permission: '&c你没有使用该指令的权限。'
+  vault:
+    description: '&6远程打开你的王国箱子。'
+    others-permission: '&c你不能打开其他王国的箱子。'
+  invite:
+    invited: |-
+      @&6%inviter%&2邀请你加入&6%kingdom%&2王国。
+          hover:{&2输入/k accept;&2Accept;/k accept以接受}
+          hover:{&c输入/k decline;&cDecline;/k decline以拒绝}
+    usage: '&4Usage&8: &e/k invite &2<player> <kingdom>'
+    announce: '&6%inviter%&2邀请了&6%invited%&2加入王国。'
+    already-joined: '&e%invited%&c已经在你的王国里了。'
+    description: '&6给一位玩家发送一份加入王国的邀请。'
+    already-in-kingdom: '&c这个玩家已经在一个王国里了。'
+    already-invited: '&c这个玩家已经被&e%inviter%&c邀请到你的王国里了。'
+    max-members: '&c你的王国已经满员了。最大人数&8:&e%kingdoms_members%&c。'
+    self: '&c你不能邀请你自己。'
+    expired: '&&e%inviter%&c给你发送的王国邀请过期了!'
+    expired-notify: '&c你发送给&e%invited%&c的邀请过期了!'
+  accept:
+    description: '&6接受邀请加入一个王国。'
+    already-in-kingdom: '&2你已经在一个王国里了。输入/k leave以跳槽。'
+    accepted: '&2你接受了&6%inviter%&2的邀请，加入了&e%kingdom%&2王国。'
+    joined: '&6%player%&2加入了王国'
+    notify: '&6%name%&2接受了你的邀请。'
+    no-invites: '&c你没有收到任何一个邀请。'
+    not-invited: '&c你没有被邀请加入&e%kingdom%&c王国。'
+    expired: '&e%kingdom%&c王国向你发送的邀请已经过期了。'
+    max-members: '&c这个王国已经满员了。最大人数&8:&e%kingdoms_members%&c。'
+    no-longer-exists: '&c这个王国不复存在了。'
+    multiple-invites: '&c你收到了多个邀请。请输入你要接受邀请的王国名。'
+  join:
+    description: '&6加入一个无需邀请即可加入的王国。'
+    usage: '&4Usage&8: &e/k join &2<kingdom>'
+    joined: '&6%player%&2加入了王国。'
+    already-in-kingdom: '&c你已经在一个王国里了，输入/k leave以跳槽。'
+    max-members: '&c这个王国已经满员了。'
+    elections: '&c你不能在国王选举期间加入王国。'
+    kingdom-not-found: '&c没有找到王国&e%kingdom%&c。'
+    requires-invite: '&c你需要被邀请才能加入&e%kingdom%&c王国。'
+  decline:
+    description: '&6拒绝加入王国的邀请。'
+    declined: '&c你拒绝了来自&6%inviter%&c的加入&e%kingdom%&c王国的邀请。'
+    notify: '&e%name%&c拒绝了你的邀请。'
+    no-invites: '&c你没有收到任何一个邀请。'
+    not-invited: '&c你没有被&e%kingdom%&c邀请加入。'
+    expired: '&e%kingdom%&c王国向你发送的邀请已经过期了。'
+    no-longer-exists: '&c这个王国不复存在了。'
+    all: '&2总共拒绝了来自&6%invites%&2个王国的邀请。'
+    multiple-invites: '&c你收到了多个邀请。请输入你要拒绝邀请的王国名，或输入&e/k nation decline * &c以拒绝全部邀请。'
+  invites:
+    description: '&6查看你目前收到的邀请。'
+    no-invites: '&c你没有收到任何一个邀请。'
+  teleport:
+    description: '&6传送到你王国正在被入侵的地点。'
+    not-invading: '&c你的王国目前没有受到入侵。'
+    already-teleporting: '&c已经在传送到家……'
+    teleporting: '&2将在&6%countdown%&2秒后进行传送……不要移动。'
+    teleported: '&2你被传送到了敌方开始入侵的地点。'
+    cancelled: '&c传送已被取消!'
+  gui:
+    description: '&6直接使用界面名字打开界面。'
+    usage: '&4Usage&8: &e/k gui &2<name>'
+    not-found: '&c未知的界面&8:&e%gui%。'
+  invade:
+    description: '&6入侵你脚下敌人的土地。'
+    invading: '&2你正在入侵&6%kingdom%&2。斗士将在&65秒&2后生成！'
+    invading-defender-notify: '&e%invader%&c正在入侵你的王国。'
+    countdown-defneder: '&e%invader%&c将在&e%sec%&c秒后入侵！'
+    countdown-attacker: '&2斗士将在&6%sec%&2秒后生成！'
+    announcement: '&6%invader%&2正在入侵&6%kingdom%&2王国位于坐标&6%location%的土地！'
+    announcement-defender: |-
+      @&c来自&e%kingdom%&c王国的入侵者&e%invader%&c正在入侵你的王国位于%location%的土地！
+      &c输入 hover:{&e/k tp;&eTeleport;/k tp}&c以传送至入侵地点保卫你的土地！
+    announcement-nation: '&c来自&e%kingdom%&c的入侵者&e%invader%&c正在入侵你们联邦的成员国位于&e%location%&c的土地！'
+    own-land: '&c你不能入侵你自己的土地。'
+    not-claimed: '&c这块土地本就无人占领。'
+    already-being-invaded: '&c这块土地正在被入侵。'
+    masswar-only: '&c你只能在混战期间入侵。'
+    already-invading: '&c你已经在入侵另一块土地了。'
+    self-pacifist: '&c你的王国奉行和平主义。你不能入侵其他王国。'
+    cooldown:
+      failed: '&c你的王国入侵&e%kingdom%&c失败了。入侵冷却&8:&e%cooldown%&c。'
+      successful: '&c你的王国成功入侵了&e%kingdom%&c的土地！入侵冷却&8:&e%cooldown%&c。'
+    min:
+      defenders-needed: '&c至少要有&e%defenders%&c防御者在线。'
+      invaders-needed: '&c至少要有&e%invaders%&c入侵者在线。'
+    adjoining:
+      protectioin: |-
+        &c这块土地被土地相连系统保护。
+        你只能入侵王国最外侧的土地。
+    shield:
+      defender:
+        kingdom: '&c这个王国被时长为&8:&e%shield%&c的护盾保护着。'
+        nation: '&c这个联邦被时长为&8:&e%shield%&c的护盾保护着。'
+      invader:
+        kingdom: |-
+          &c你的王国还有时长为&8:&e%shield%&c的护盾，如果你采取进攻，护盾将会被取消。
+          再次输入指令以继续。
+        nation: |-
+          &c你的联邦还有时长为&8:&e%shield%&c的护盾，如果你采取进攻，护盾将会被取消。
+          再次输入指令以继续。
+        kingdom-disabled: '&c时长为&e%shield%&c的王国护盾因为&e%invader%&c侵略&e%kingdom%而取消了。'
+        nation-disabled: '&c时长为&e%shield%&c的联邦护盾因为&e%invader%&c侵略&e%kingdom%而取消了。'
+    creative: '&c你只能在生存模式下入侵。'
+    max-misc-upgrade: |-
+      &c你王国达到了杂项升级允许的最大入侵数。
+      你可以升级该杂项，或等待它刷新。
+    simultaneous: '&c你的王国一次性最多能入侵%amount%&c块土地。'
+    costs: '&c你的王国需要&e%rp%&c资源点&c和&e$%money%&c才能入侵。'
+    pacifist: '&c对方是和平主义王国，你无法入侵。'
+    ceasefire: '&c你不能入侵这个王国，因为你们的关系为&e%relation%&c。'
+    nation-capital: |-
+      &c你在入侵联邦都城的核心之前必须先入侵对方全部其他成员国的核心土地。
+      很明显，还有一些漏网之鱼&8:
+      %kingdoms%
+    powercell: '&c这片土地周围有一个有能源电池的土地，你必须先入侵能源电池所在土地。'
+  top:
+    description: '&6展示王国的排名。'
+    loading: '&6加载数据中……'
+    header: '&8----------------------------------'
+    footer: '@     &8[hover:{&6←;&6上一页;/k top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k top %next_page%}&8]'
+    no-more-pages: '&c没有更多页了。'
+    negative: '&c没有负数页。'
+    entry: |-
+      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2成员&8: &6%kingdoms_members%
+      &7♦ &2土地&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
+      &7♦ &2资源点&8: &6%kingdoms_fancy_resource_points%
+      &7♦ &2银行&8: &6$%kingdoms_fancy_bank%;/k show %kingdoms_name%} &7- &6%kingdoms_fancy_might%
+  map:
+    description: '&6展示你附近王国和结构的地图。'
+    usage: '&4Usage&8: &e/k map &9[auto &8| &9height] [width]'
+    kingdom-player-only: '&c只有拥有王国的玩家才能使用地图。'
+    invalid-height: '&c无效的高度&e%height%&c。正在使用默认高度。'
+    invalid-width: '&c无效的宽度&e%width%&c。正在使用默认宽度。'
+    max-height: '&c高度不能超过&e%limit%&c。'
+    max-width: '&c宽度不能超过&e%limit%&c。'
+    auto:
+      permission: '&c你没有权限使用自动地图。'
+      enabled: '&2自动地图模式&6已启用'
+      disabled: '&2自动地图模式&c已禁用'
+    size:
+      permission: '&c你没有权限改变地图尺寸。'
+      changed: '&2你的地图尺寸由&7(&6高度&8:&9%kingdoms_map_height%&7|&6宽度&8:&9%kingdoms_map_width%&7)&2变为&7(&6高度&8:&9%new_height%&7|&6宽度&8:&9%new_width%&7)'
+      reset: '&2你的地图尺寸已重置。'
+  fly:
+    description: '&6启用在你王国土地上的飞行。'
+    usage: '&4Usage&8: &e/k fly &9[player]'
+    others-permission: '&c你没有权限设置他人的飞行状态。'
+    enabled: '&6飞行模式&8:&2已启用'
+    disabled: '&6飞行模式&8:&4已禁用'
+    not-allowed: '&c你不能在&e%kingdom%&c王国的领空中飞行。'
+    unclaimed: '&c你只能在已占领且允许飞行的土地上飞行。'
+    own-enemy-nearby: '&c附近有敌人，你不能飞行。'
+    cant-afford: '&c你需要&e$%money%&c金钱才能开启飞行。'
+    cant-afford-kingdom: '&c你的王国需要&e$%amount%&c金钱才能开启飞行。'
+  kick:
+    person: '&c你被&e%kicker%&c踢出了&e%kingdom%王国。'
+    description: '&6从你的王国踢出一位成员。'
+    usage: '&4Usage&8: &e/k kick &2<player> &9[silent]'
+    announce: '&e%kicked%&c被&e%kicker%&c踢出王国。'
+    self: '&c你不能踢出你自己。(你好像有那个大病！！！)'
+    not-in-kingdom: '&c这个玩家不在你的王国中。'
+    elections: '&c你不能在国王选举期间踢出国王。'
+    cant-kick: '&c无法踢出&e%kicked%。'
+  surrender:
+    invader: '&6%invader%&2投降了！&6%kingdom%&2的斗士离开了。'
+    disabled:
+      invader: '&c你不能投降。'
+      defender: '&c你不能投降。'
+    defender-surrendered: '&6%kingdoms_name%&2的成员&6%player%&2投降了!这片土地的新主人是&8:&6%kingdom%王国。'
+    defender-permission: '&c你没有权限投降。'
+    no-invasion: '&c你没有入侵其他王国，也没有被入侵，你投降干什么？？？'
+    description: |-
+      &6如果你是入侵者，你可以投降使斗士消失。
+      如果你是防御者，你可以投降使入侵者占领土地。
+  leave:
+    success: '&2你离开了王国&6%kingdom%。'
+    description: '&6离开你的王国。'
+    king: |-
+      &c你不能作为国王离开王国。
+      你可以输入&e/k disband &c以解散王国，
+      或输入&e/k king &c选定新的国王。
+    announce: '&e%left%&c离开了王国!'
+  undo:
+    description: '&6撤销一次占领/放弃土地的操作。'
+    already-unclaimed: '&6你上一个占领的土地已经被人放弃了。'
+    already-claimed: '&6你上一个放弃的土地已经被人占领了。'
+    claimed: '&2你放弃了位于&6%x%&7, &6%z%&2的土地。'
+    unclaimed: '&2你占领了位于&6%x%&7, &6%z%&2的土地。'
+    no-history: '&c你没有任何土地操作历史。'
+  redo:
+    description: '&6重做一次占领/放弃土地。'
+    already-unclaimed: '&6你上一个占领的土地已经被人放弃了。'
+    already-claimed: '&6你上一个放弃的土地已经被人占领了。'
+    claimed: '&2你放弃了位于&6%x%&7, &6%z%&2的土地。'
+    unclaimed: '&2你占领了位于&6%x%&7, &6%z%&2的土地。'
+    no-history: '&c你没有任何土地操作历史。'
+  lore:
+    description: '&6设置你王国的介绍。'
+    usage: '&4Usage&8: &e/k lore &2<lore>'
+    blacklisted: '&c你的王国介绍含有违禁词。'
+    name-length: '&c你的王国介绍不能长于&e%limit%。'
+    name-english: '&c王国介绍必须是英文的且只能包含字母和数字。'
+    name-has-symbols: '&c王国介绍中不能含有标点符号。名字只能包含字母和数字。'
+    removed: '&2移除了王国介绍。'
+  extractor:
+    description: '&6采集你王国提取器中全部资源点。'
+    collected: '&2从你王国中的&6%extractors%个提取器中共收集&6%rp%资源点。'
+    collected-others: '&2从&6%kingdom%王国中的&6%extractors%个提取器中共收集&6%rp%资源点。'
+    collect-others-permission: '&c你不能从其他王国的提取器中采集资源点。'
+  election:
+    description: '&6一个能让王国成员选举新国王的系统。'
+    no-ongoing-election: '&c目前没有正在举行的选举，下次选举时间&8:&e%next-election%。'
+    vote:
+      description: '&6给候选人投票。'
+      voted: '&2你把票投给了&6%player%。'
+      already-voted: '&c你已经为&e%player%&c投票了。'
+      voted-again: '&2你把票从&6%previous-candidate%&2转投给了&6%player%&2。(所以爱会消失的对吗)'
+    statement:
+      description: '&6设置你的竞选宣言。'
+      usage: '&4Usage&8: &e/k election statement &2<statement>'
+      set: '&2你的新竞选宣言被设置为了&8:&r%statement%&2。'
+  mail:
+    description: '&6管理你的王国邮件。'
+    box-description: '&6打开你的王国邮箱。'
+    send-description: '&6为你的王国留一封邮件。'
+    send: '&6%player%&2发送了一封新邮件&8:&6%message%。'
+    send-usage: '&4Usage&8: &e/k mail send &2<message>'
+    send-max: |-
+      &4你最多能发送&6%mails%&2封邮件。
+      你可以输入&6/k mails clear &2以清空邮件或从你的邮箱中删除一个。
+    clear-description: '&6清空全部王国邮件。'
+    clear: '&2总共清除了&6%mails%&2封邮件。'
+    set-as-read-description: '&6把全部邮件标为已读。'
+    set-as-read: '&2总共把&6%mails%&2封邮件标为已读。'
+  relations:
+    description: '&6展示全部目前的关系申请。'
+    no-requests: '&6你的王国没有收到任何申请。'
+  ally:
+    description: '&6给一个王国发送结盟邀请。'
+    usage: '&4Usage&8: &e/k ally &2<kingdom>'
+    sender: '&2给&6%kingdom%&2发送了一份结盟邀请。'
+    kingdom-not-found: '&c没有找到王国&e%kingdom%&c。'
+    limit: '&c你最多只能与&e%max%&c个王国结盟。'
+    already: '&c你已经和&e%kingdom%&c是盟友了。'
+    already-requested: '&c你已经给&e%kingdom%&c发送了一份结盟申请了。'
+    self: '&c你不能和自己的王国结盟。'
+    receiver: '@&6%kingdom%&2王国希望与你结盟。输入 hover:{&6/k ally %kingdom%;&2Accept;/k ally %kingdom%&2以接受。}'
+    allies: '&2你现在与&6%kingdom%&2王国是盟友了。'
+    another-request: '&e%kingdom%&c王国给你发送了一个%relation%&c关系申请。'
+  enemy:
+    description: '&6向一个王国宣战。'
+    usage: '&4Usage&8: &e/k enemy &2<kingdom>'
+    limit: '&c你最多只能向&e%max%&c个王国宣战。'
+    kingdom-not-found: '&c没有找到王国&e%kingdom%&c。'
+    already: '&c你已经向&e%kingdom%&c王国宣战了。'
+    self: '&c你不能向自己的王国宣战……(晃晃脑袋吧，听听大海的声音~)'
+    enemies: '&c你现在与&e%kingdom%&c处于敌对状态了。'
+  truce:
+    description: '&6向一个王国申请停战。'
+    usage: '&4Usage&8: &e/k truce &2<kingdom>'
+    limit: '&c你最多只能与&e%max%&c个王国停战。'
+    sender: '&2你向&6%kingdom%&c王国申请停战了。'
+    kingdom-not-found: '&c没有找到王国&e%kingdom%&c。'
+    already: '&c你已经与&e%kingdom%&c王国停战了。'
+    already-requested: '&c你已经向&e%kingdom%&c王国发送停战申请了。'
+    self: '&c你不能与自己的王国停战……'
+    receiver: '@&6%kingdom%&2王国希望与你停战。输入 hover:{&6/k truce %kingdom%;&2Accept;/k truce %kingdom%&2以接受。}'
+    truces: '&2你现在与&6%kingdom%&2王国停战了。'
+    another-request: '&e%kingdom%&c王国给你发送了一个%relation%&c关系申请。'
+  revoke:
+    description: '&6撤销与一个王国的关系。'
+    usage: '&4Usage&8: &e/k revoke &2<kingdom>'
+    sender: '&c你撤销了与&e%kingdom%&c王国的关系。'
+    kingdom-not-found: '&c没有找到王国&e%kingdom%&c。'
+    no-relation: '&c你与&e%kingdom%&c王国没有关系可撤销。'
+    self: '&c你没有可与自己王国撤销的关系……'
+    receiver: '&e%kingdom%&c撤销了与你的关系。'
+  chat:
+    description: '&6切换王国聊天频道。'
+    usage: '&4Usage&8: &e/k chat &2<channel> &9[message]'
+    already-in-channel: '&c你已经在&6%channel%&c频道聊天了。'
+    unknown-channel: '@&c未知的频道！请从&8:&fhover:{全球;全球;/k c g }&7, &2hover:{&2王国;&2王国;/k c k}&7, &ahover:{&a盟友;&a盟友;/k c a}&7, &ehover:{&e停战;&e停战;/k c t} &7和 &ehover:{&9联邦;&9联邦;/k c n中选择！}'
+    changed: '&2你目前的聊天频道为&8:&2%kingdoms_chat_channel_color%%kingdoms_chat_channel%。'
+    direct:
+      message-missing: '&c你需要给&e%kingdom%&c王国直接发送一份消息。'
+      message-self: '&c你不能给自己的王国发消息……'
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]&7->&8[&9%receiver-kingdom%&8]%displayname%&7≫&6%message%'
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]%displayname%&7≫&6%message%。'
+  broadcast:
+    description: '&6给所有王国成员广播一条消息。'
+    usage: '&4Usage&8: &e/k broadcast &2<message>'
+    cooldown: '&c你需要等&e%time%&c之后才能再次广播消息。'
+  king:
+    description: '&6设置你王国的新国王。'
+    only-king: '&6只有国王才能设置新的国王。'
+    set: '&6%king%&2现在是新的国王了!高呼三声万岁！'
+    not-in-kingdom: '&e%king%&c不在你的王国中。'
+    self: '&c你已经是王国的国王了。'
+    usage: '&4Usage&8: &e/k king &2<player>'
+  promote:
+    description: '&6晋升一位联邦成员。'
+    promoted: '&6%promoted%&2被&6%player%晋升为了&9%rank%。'
+    not-in-kingdom: '&e%promoted%&c不在你的王国中。'
+    cant-promote: '&c你不能晋升&e%promoted%。'
+    king: '&e%promoted%&c已经是一人之下万人之上了。要想晋升他为国王请输入&e/k king。'
+    usage: '&4Usage&8: &e/k promote &2<player>'
+  demote:
+    description: '&6降职一位联邦成员。'
+    demoted: '&e%demoted%&c被&e%player%降职为了&9%rank%。'
+    not-in-kingdom: '&e%demoted%&c不在你的王国中。'
+    cant-demote: '&c你不能降职&e%demoted%。'
+    cant-demote-king: '&c你不能降职国王&e%demoted%。'
+    member: '&c这个玩家已经是成员阶层了。'
+    usage: '&4Usage&8: &e/k demote &2<player>'
+  visualize:
+    description: '&6设置永久的指示器或禁用它们。'
+    usage: '&4Usage&8: &e/k visualize [permanent|toggle]'
+    display: |-
+      &7| &2位置&8:&6%x%&7,&6%z%
+      &7| &2王国&8:&6%kingdom%
+    admin-display: "@&7|&2位置&8:&6%x%&7,&6%z%\n&7|&2王国&8:&6%kingdom%\n\ &7|&2结构&8:\n&6%structures%\n&7|&2炮塔&8:\n%turrets%\n&7|&2保护告示牌&8:\n%protection-signs%"
+    toggle:
+      description: '&6切换土地指示器(显示器或标记)'
+      enabled: '&2显示器&6已启用'
+      disabled: '&2显示器&c已禁用'
+    all:
+      description: '&6为你王国占领的土地启用显示器。'
+      showing: '&2显示中……'
+    markers:
+      description: '&6更改你土地标记方式。'
+      usage: '&4Usage&8: &e/k visualize markers <type>'
+      already-using: '&c你已经在使用&e%markers%&c标记方式了。'
+      changed: '&2你的土地标记方式被更改为了&6%markers%&2。'
+      invalid: '&c找不到土地标记&8:&e%markers%&c。'
+    permanent:
+      description: '&6切换土地指示器是否为永久。'
+      enabled: '&2永久指示器&6已启用&2。'
+      disabled: '&2永久指示器&c已禁用&2。'
+  tradable:
+    description: '&6展示物品价值多少资源点。'
+    message: |-
+      &2你手中物品的价格&8:&6%amount%*%worth%=%total%
+
+      &6Special Items&8:
+      %list%
+    not-special: '&c非可出售物品。'
+    item: '&2%material%&7:&9%worth%。'
+  sell:
+    description: '&6出售物品换取资源点。'
+    invalid: '&c你手中的物品不是王国物品(即炮塔或结构)。'
+    item: '&2你出售了&6%amount%&2个%item%&2，获得了&6%price%&2资源点。'
+  outpost:
+    description: '&6显示可用的前哨指令。'
+    create:
+      description: '&6从一个创世神地区中创建一个前哨。'
+      usage: '&4Usage&8: &e/k outpost create <name> <region>'
+      region-not-found: '&c找不到名为&e%region%&c的创世神地区。'
+      name-already-taken: '&c已经有一个名为&e%outpost%&c的前哨了。'
+      created: '&2在&6%region%&2地区中创建了一个名为&6%outpost%&2的前哨。'
+    setspawn:
+      description: '&6改变前哨生成位置。'
+      usage: '&4Usage&8: &e/k outpost spawn <name>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      changed: '&2为前哨&6%outpost%&2更改了生成位置。'
+    center:
+      description: '&6改变前哨的中心位置。'
+      usage: '&4Usage&8: &e/k outpost center <name>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      changed: '&2为前哨&6%outpost%&2更改了中心位置。'
+    remove:
+      description: '&6移除一个前哨。'
+      usage: '&4Usage&8: &e/k outpost remove <name>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      outpost-is-running: '&e%outpost%&c的前哨竞赛正在进行，你现在不能移除它。'
+      removed: '&2移除了前哨&6%outpost%&2。'
+    join:
+      description: '&6加入一个正在举行的前哨竞赛。'
+      usage: '&4Usage&8: &e/k outpost join <outpost>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      event-not-started: '&e%outpost%&c前哨目前没有举行竞赛。'
+      event-full: '&e%outpost%&c的前哨竞赛已经满员了。'
+      min-online-members: '&c你的王国需要至少&e%min%&c个在线成员才能加入&e%outpost%&c的前哨竞赛。'
+      permission: '&c只有拥有&eWITHDRAW&c权限的人才能加入前哨竞赛。'
+      not-enough-resource-points: '&c你的王国需要&e%cost%&c资源点才能加入此竞赛。'
+      not-enough-money: '&c你的王国需要&e$%amount%&c金钱才能加入此竞赛。'
+      joined: '@&2你的王国加入了&6%outpost%&2的前哨竞赛。输入 hover:{&6/k outpost teleport;&2Teleport;/k outpost teleport 传送至竞技场。}'
+      announcement: '&6%kingdom%&2王国加入了竞赛!'
+      already: '&c你的王国已经加入竞赛了'
+      win: |-
+        &2你的王国赢得了竞赛！!
+        &6%resource-points%+&2资源点
+        &6%money%+&2金钱
+      lost: '&c你的王国输掉了竞赛!'
+    start:
+      description: '&6用已存在的前哨举办一场前哨竞赛。'
+      usage: '&4Usage&8: &e/k outpost start <outpost> <time> <startIn>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      already-started: '&e%outpost%&c的前哨竞赛已经开始了。'
+      invalid-start-time: '&c无效的开始时间&8:&e%time%。'
+      invalid-time: '&c无效的持续时间&8:&e%time%。'
+      scheduled: "\n\n&6%outpost%&2的前哨竞赛将在&6%start%&2后开始\n\n"
+      started: "\n\n&6%outpost%&2的前哨竞赛开始了！\n\n"
+    stop:
+      description: '&6停止一个前哨竞赛。'
+      usage: '&4Usage&8: &e/k outpost stop <outpost>'
+      outpost-not-found: '&c找不到前哨&e%outpost%&c。'
+      not-started: '&e%outpost%&c的前哨竞赛未开始。'
+      stopped: "\n\n&e%outpost%&c的前哨竞赛被停止了！\n\n"
+    teleport:
+      description: '&6传送到前哨区域。'
+      not-in-event: '&c你的王国没有加入任何前哨竞赛。'
+      teleported: '&2传送至前哨区域。'
+  donate:
+    description: '&6给一个王国捐献资源点。'
+    usage: '&4Usage&8: &e/k donate <kingdom> <amount>'
+    invalid-kingdom: '&c找不到王国&e%kingdom%&c。'
+    dont-have: '&c你没有&e%rp%&c资源点。'
+    done: '&2你给&6%kingdom%&2王国捐献了&6%rp%&2资源点。'
+    donated: '&6%kingdom%&2王国给你捐献了&6%rp%&2资源点。'
+    invalid: '&c你不能捐献&e%rp%&c资源点……'
+relations-disabled-commands: '&c你不能在这个地方使用该指令。'
+invasion:
+  blocked:
+    command: '&c你不能在入侵期间使用该指令。'
+    elytra: '&c你不能在入侵期间使用鞘翅。'
+    world-change: '&c你不能在入侵期间去另一个世界。'
+    teleportation: '&c你不能在入侵期间传送。'
+    item: '&c你不能在入侵期间使用该物品。'
+  end:
+    attackers:
+      success: '&6%invader%&2成功地入侵了&e%kingdom%。'
+      logout: '&e%invader%&c在入侵&e%kingdom%&c的时候离线了。'
+      died: '&e%invader%&c在入侵&e%kingdom%&c的时候死亡了。'
+      times-up: '&e%invader%&c没能在规定时间内入侵&e%kingdom%。'
+      unclaimed: '&6%kingdom%&2放弃了&6%invader%&2正在入侵的土地。'
+      attacker-no-longer-in-kingdom: '&e%invader%&c退出了王国，入侵取消了。'
+      attacker-surrendered: '&e%invader%&c在入侵&e%kingdom%&c时投降了。'
+      defender-surrendered: '&6%kingdom%&2在受到&6%invader%&2投降了。'
+      attacker-death-limit: '&c你的王国在入侵&e%kingdom%&c时过多成员死亡。'
+      defender-death-limit: '&6%kingdom%&2在入侵你王国的时候你的王国有过多成员死亡。'
+    defenders:
+      success: '&e%invader%&c成功地入侵了你的王国。'
+      logout: '&6%invader%&2在入侵你王国时离线了。'
+      died: '&6%invader%&2在入侵你王国时死亡了。'
+      times-up: '&e%invader%&c没能在规定时间内入侵&e%kingdom%。'
+      attacker-no-longer-in-kingdom: '&e%invader%&c退出了王国，入侵取消了。'
+      unclaimed: '&c被&e%invader%&c入侵的土地被放弃了。'
+      attacker-surrendered: '&6%invader%&c在入侵你王国的时候投降了。'
+      defender-surrendered: '&c你的王国在被&e%invader%&c入侵时投降了。'
+      defender-death-limit: '&c你的王国在被入侵期间有过多成员死亡。'
+      attacker-death-limit: '&6%kingdom%&2在入侵你王国的时候你的王国有过多成员死亡。'
+  home:
+    moved: '&c你的王国由于被入侵，家移至了&e%new-home%&c。'
+elections:
+  default-statement: |-
+    &2点击为这位候选人投票。
+  results: '&6%new-king%&2以&6%votes%&2票当选。'
+  begin: '@&2选举开始了。输入 &6hover:{/k
+    election vote;&2点击以投票;/k election vote 为你最喜欢的候选人投票！}'
+  join-notify: '@&2一场选举正在进行。输入 &6hover:{/k election vote;&2点击以投票;/k election vote 为你最喜欢的候选人投票！}'
+  not-enough-data: '&c没有新国王被选举，因为王国不足50%的人投了票。'
+outpost-events:
+  death: '&c你死亡了，导致你的王国被扣除&e%rp%资源点。'
+structures:
+  limit: '&c你在一片土地上总共最多有&e%limit%&c个结构。'
+  specific-limit: '&c你在一片土地上最多有&e%limit%&c个%style%&c类结构……'
+  block-occupied: '&c无法在这里防止方块。一个&e%material%&c方块已经被放置在这里了。'
+  enter-name: '&2请输入你结构的新名称。'
+  name-set: '&2将结构的名称改为&8:&6%name%。'
+  disabled-world: '&c你不能在禁用的世界放置结构。'
+  upgrade:
+    max-level: '&c这个结构已经满级了。'
+  upgrade-not-enough-resource-points: '&c你需要&e%cost%&c资源点才能升级。'
+  upgrade-upgraded: '&2将结构升级至&6%level%&2级。'
+locations:
+  normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%。'
+  chunk: '&6%world%&8, &6%x%&8, &6%z%。'
+placeholders:
+  top-not-found: '&c没有王国占据第一&8: &e%position%。'
+lands:
+  build-own-only: '&c你只能在自己占领的土地上建造。'
+  portal-protection: '&c你的传送门传送被取消了，因为传送门的那面是一个敌方王国。'
+  gamemode-protection: '&c因为你进入了一块别国土地，你的游戏模式已被改变。'
+  gamemode-protection-activated: '&c你不能在这块土地上使用创造模式。'
+  nation-zone:
+    place: '&c你不能在&e%nation%&c联邦的区域内放置方块。'
+    break: '&c你不能在&e%nation%&c联邦的区域内破坏方块。'
+    interact: '&c你不能在&e%nation%&c联邦的区域内交互。'
+guis:
+  creative: '&c你不能在创造模式下打开此界面。'
+  open-inventory-during-input: '&c你不能在用户输入期间打开物品栏。'
+  command-during-input: '&c你不能在用户输入期间执行命令。'
+  pages:
+    next-page-not-available: '&c已到最后一页了。最大页数&8:&e%pages%&c页。'
+    previous-page-not-available: '&c已到第一页了。'
+teleports:
+  moved: '&c你移动了，传送已被取消。'
+  already-teleporting: '&c你已经在传送了。'

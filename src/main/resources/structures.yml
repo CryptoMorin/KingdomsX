@@ -42,7 +42,7 @@ structures:
         lines:
           - "&8-=( &9National Nexus &8)=-"
         height: 1
-  # Refer to conifg.yml for more nexus options.
+  # Refer to config.yml for more nexus options.
   nexus:
     name: "&bNexus"
     type: nexus
@@ -118,7 +118,11 @@ structures:
     default-name: 'Extractor'
     max-level: 3
     upgrade-cost: lvl * 1000
-    limit: 5
+
+    limits:
+      per-land: 5
+      total: 50
+
     particles:
       1:
         place:
@@ -172,7 +176,11 @@ structures:
     name: "&eOutpost"
     default-name: 'Outpost'
     type: outpost
-    limit: -1
+
+    limits:
+      per-land: 1
+      total: 10
+
     particles:
       1:
         place:
@@ -221,7 +229,11 @@ structures:
     fuel:
       material: COAL
       fill-amount-per-item: 30
-    limit: 3
+
+    limits:
+      per-land: 3
+      total: 30
+
     particles:
       1:
         place:
@@ -308,7 +320,7 @@ structures:
       1: 5mins
       2: 7mins
       3: 10mins
-    limit: -1
+
     upgrade-cost: lvl * 4000
     max-level: 3
 

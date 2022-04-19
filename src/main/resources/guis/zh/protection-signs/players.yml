@@ -1,0 +1,56 @@
+title: "&8-=[&5保护 &8]=-"
+rows: 6
+sound: BLOCK_CHEST_OPEN
+
+options:
+  include:
+    name: "&2添加玩家"
+    material: GREEN_WOOL
+    lore:
+      - "&6添加某个玩家"
+      - "使其能编辑这个方块。"
+      - ""
+      - "他们将不能编辑权限组"
+      - "或破坏方块。"
+    posx: 1
+    posy: 1
+  exclude:
+    name: "&c移除玩家"
+    material: RED_WOOL
+    lore:
+      - "&6添加某个玩家"
+      - "阻止他们编辑方块。"
+      - ""
+      - "你王国中有越过"
+      - "保护权限的仍能编辑方块"
+      - "或者破坏它。"
+    posx: 2
+    posy: 1
+  clear:
+    name: "&4清除"
+    material: WRITABLE_BOOK
+    lore:
+      - "&6把所有玩家"
+      - "移出此列表。"
+    posx: 8
+    posy: 1
+  back:
+    name: "&4返回"
+    material: BARRIER
+    sound: default
+    posx: 9
+    posy: 1
+  members:
+    included:
+      condition: included
+      name: "&6%name% &8- &2Included &8- %online%"
+      material: PLAYER_HEAD
+    else:
+      name: "&6%name% &8- &cExcluded &8- %online%"
+      material: PLAYER_HEAD
+    sound: default
+    slots: [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]
+  black-glass:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 2, 3, 4, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]

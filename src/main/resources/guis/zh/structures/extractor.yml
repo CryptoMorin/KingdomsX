@@ -1,0 +1,45 @@
+title: "&2提取器"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+
+options:
+  break:
+    name: "&4破坏"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6破坏此结构。"
+    slot: 0
+  collect:
+    name: "&2收集&8: &9%time%&7-&9%amount%"
+    material: GREEN_WOOL
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&6收集所有生成的资源点。"
+      - "上次被&8:&2%extractor-last-collector%&6收集。"
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "level < max_level"
+      name: "&9收集&8:&6%level_roman%&7➛&6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2每次生成资源点时间&8:&6%every%&7➔&6%next-every%"
+        - "&7⚫ &2一次生成资源点数量&8:&6%resource-points%&7➔&6%next-resource-points%"
+        - ""
+        - "&7⚫ &2满级&8:&6%max-level-roman%"
+        - "&7⚫ &2价格&8:&6%upgrade_cost%"
+    maxxed:
+      name: "&9等级&8:&6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2每次生成资源点时间&8:&6%every%"
+        - "&7⚫ &2一次生成资源点数量&8:&6%resource-points%"
+  close:
+    name: "&2关闭"
+    material: BARRIER
+    sound: default
+    lore:
+      - "&6关闭此界面。"
+    slot: 4

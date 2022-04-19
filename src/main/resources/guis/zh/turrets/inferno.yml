@@ -1,0 +1,55 @@
+title: "&0激光炮塔"
+type: HOPPER
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "&9弹药&8:&2%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    fill-cost: 'neededAmmo / 8'
+    lore:
+      - '&2花费&6%cost%&2资源点购买&6%ammo-buy-amount%&2弹药。'
+      - '&2按住&6shift&2点击以花费&6%fill-cost%&2资源点填满弹药。'
+    slot: 0
+  upgrade:
+    upgrade:
+      condition: level < max_level
+      name: "&9升级&8:&6%level_roman%&7➛&6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2攻击距离&8:&6%range%&7➔&6%next_range%"
+        - "&7⚫ &2弹药量&8:&6%max_ammo%&7➔&6%next_max_ammo%"
+        - "&7⚫ &2冷却时间&8:&6%cooldown%&7➔&6%next_cooldown%"
+        - "&7⚫ &2最多目标数&8:&6%max_targets%&7➔&6%next_max_targets%"
+        - "&7⚫ &2攻击速度&8:&6%speed%&7➔&6%next_speed%"
+        - "&7⚫ &2伤害&8:&6%damage%&7➔&6%next_damage%"
+        - ""
+        - "&7⚫ &2满级&8:&6III"
+        - "&7⚫ &2价格&8:&6%upgrade_cost%"
+    maxxed:
+      name: "&9等级&8:&6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2攻击距离&8:&6%range%"
+        - "&7⚫ &2弹药量&8:&6%max_ammo%"
+        - "&7⚫ &2冷却时间&8:&6%cooldown%"
+        - "&7⚫ &2最多目标数&8:&6%max_targets%"
+        - "&7⚫ &2攻击速度&8:&6%speed%"
+        - "&7⚫ &2伤害&8:&6%damage%"
+    slot: 1
+  break:
+    name: "&c破坏"
+    material: REDSTONE_BLOCK
+    sound: default
+    lore:
+      - "&4破坏此炮塔。"
+    slot: 3
+  close:
+    name: "&c关闭"
+    material: BARRIER
+    sound: default
+    lore:
+      - "&6关闭此界面。"
+    slot: 4

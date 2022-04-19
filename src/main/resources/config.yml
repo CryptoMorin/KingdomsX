@@ -67,6 +67,9 @@ updates:
   # you have to use the current version. The only bad thing is, you'll confuse the versions of course.
   path: '../update/Kingdoms-%latest_version%.jar'
 
+  # Auto update configs.
+  configs: true
+
 # The language file name.
 # Place your translated file in the plugin's folder.
 # The file's name should be the same as the option below without the .yml file extension.
@@ -78,7 +81,7 @@ updates:
 # Please refer to https://github.com/CryptoMorin/KingdomsX/wiki/Config#language-file if you want to translate the plugin.
 # If you translated the plugin you can contact me and I'll add it to the plugin.
 # Available Languages:
-# en (English), hu (Hungarian), ru (Russian), es (Spanish), de (German), pl (Polish)
+# en (English), hu (Hungarian), ru (Russian), es (Spanish), de (German), pl (Polish), zh (Simplified Chinese)
 lang: en
 
 # Backups plugin's data. Most of the options require a restart to be changed.
@@ -221,14 +224,8 @@ guis:
 # Custom join and leave messages. One benefit is that the message shown to kingdom members are
 # different than those who are not in the same kingdom.
 # Permissions: kingdoms.silent.join and kingdoms.silent.leave
-join-leave-messages:
-  enabled: true
-  join:
-    kingdom: "&8[&2◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%displayname%"
-    others: "&6%displayname% &2has joined the server."
-  leave:
-    kingdom: "&8[&c◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%displayname%"
-    others: "&e%displayname% &chas left the server."
+# Check the "join-leave-messages" section of your language file.
+join-leave-messages: true
 
 placeholders:
   formats:
@@ -239,6 +236,15 @@ placeholders:
       normal: "(%)"
       default: ''
 
+  # Variables are internal kingdoms placeholders that help you
+  # to reuse a certain text multiple times without rewriting it.
+  # The format is %var_<name>% e.g. %var_enabled% and %var_disabled%
+  # You can use these pretty much everywhere. They also support colorization
+  # and placeholders too.
+  variables:
+    enabled: '&8[&aEnabled&8]'
+    disabled: '&8[&cDisabled&8]'
+
   # Default placeholders used when a player is not a kingdom or nation.
   # Requires /k reload to be reloaded.
   # You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
@@ -247,6 +253,7 @@ placeholders:
   defaults:
     name: ''
     lore: ''
+    nation: '&cNo Nation'
     members: 0
     territory: '&2Wilderness'
     # Green
@@ -255,15 +262,13 @@ placeholders:
 # The format of the /k broadcast message.
 # The kingdom placeholders are referring to the person
 # who used the command.
-# You can use %displayname% instead of %player%
+# For the actual message take a look at your language file.
 broadcast:
-  format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message% \n"
   # Sound to play to all the kingdom members.
   # Set to none for no sound.
   sound: ENTITY_EXPERIENCE_ORB_PICKUP
 
   nation:
-    format: "\n&8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%\n\n"
     # Sound to play to all the kingdom members.
     # Set to none for no sound.
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
@@ -274,7 +279,7 @@ top-kingdoms:
   # Equation used for calculating a kingdoms might.
   # A kingdoms might determines a kingdom's rank in /k top
   # Higher might means higher rank.
-  might: "%kingdoms_resource_points% + %kingdoms_members%"
+  might: "kingdoms_resource_points + kingdoms_members"
 
   # Updates top leaderboard
   update-interval: 30min
@@ -289,8 +294,8 @@ top-kingdoms:
   rewards:
     # Set it to 0 to disable.
     top: 10
-    resource-points: "10000 / %rank%"
-    bank: "1000 / %rank%"
+    resource-points: "10000 / rank"
+    bank: "1000 / rank"
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k nation top
@@ -298,7 +303,7 @@ top-nations:
   # Equation used for calculating a kingdoms might.
   # A kingdoms might determines a kingdom's rank in /k top
   # Higher might means higher rank.
-  might: "%kingdoms_nation_resource_points% + %kingdoms_nation_kingdoms%"
+  might: "kingdoms_nation_resource_points + kingdoms_nation_kingdoms"
 
   # Note that it's recommended to keep this under 30
   # as it'll load every single kingdom data from this list.
@@ -307,8 +312,8 @@ top-nations:
   rewards:
     # Set it to 0 to disable.
     top: 10
-    resource-points: "10000 / %rank%"
-    bank: "1000 / %rank%"
+    resource-points: "10000 / rank"
+    bank: "1000 / rank"
 
 # Default number of max members.
 # You can increase this by upgrading your max-members misc upgrade
@@ -683,11 +688,11 @@ tax:
     # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
     # This is used when a kingdom is pacifist.
     # If the kingdom is not a pacifist, this will simply be equal to 0
-    pacifism-factor: "(%kingdoms_members% * 100) + (%kingdoms_lands% * 50)"
+    pacifism-factor: "(kingdoms_members * 100) + (kingdoms_lands * 50)"
 
     # You can technically evade taxes by unclaiming all your lands and kicking all your members.
     # But no one is really going to do that unless they're really depressed.
-    scaling: "5 * (%kingdoms_members% + 1) * (%kingdoms_lands% + 1) + pacifism_factor"
+    scaling: "5 * (kingdoms_members + 1) * (kingdoms_lands + 1) + pacifism_factor"
 
     # If players should be notified when their kingdom can't pay the taxes.
     notifications: true
@@ -716,7 +721,7 @@ tax:
       kick-if-cant-pay: true
   nations:
     enabled: false
-    scaling: "%kingdoms_nation_kingdoms% * %kingdoms_nation_kingdoms%"
+    scaling: "kingdoms_nation_kingdoms * kingdoms_nation_kingdoms"
 
     # The amount of time new nations are excluded from paying taxes.
     age: 3 days
