@@ -3,42 +3,24 @@ rows: 6
 sound: BLOCK_ANVIL_USE
 
 options:
+  previous-page:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    name: '&2Previous Page'
   nexus:
     name: "&2Nexus"
-    material: BEACON
     lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 0 ]
+    material: BEACON
+    posx: 2
+    posy: 1
   national-nexus:
     name: "&9National Nexus"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
     material: BEACON
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 1 ]
-  powercell:
-    name: "&cPowercell&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: REDSTONE_LAMP
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 17 ]
-  extractor:
-    name: "&2Extractor&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: EMERALD_BLOCK
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 18, 19, 20, 21 22, 23, 24, 25, 26 ]
-  warppad:
-    name: "&c%structure-name%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: END_PORTAL_FRAME
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
-  regulator:
-    name: "&3Regulator&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: LECTERN
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 36, 37, 38, 39, 40, 41, 42, 43, 44 ]
-  outpost:
-    name: "&eOutpost&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: HAY_BLOCK
-    lore: "&2Fuel Cost&8: &6%fuel-cost%"
-    slots: [ 45, 46, 47, 48, 49, 50, 51 ]
-
+    posx: 3
+    posy: 1
   rename:
     name: "&2Rename"
     lore:
@@ -46,7 +28,7 @@ options:
       - "&2Name&8: &7%structure-custom-name%"
       - "&2Fuel&8: &7%fuel%"
     material: PAPER
-    posx: 7
+    posx: 6
     posy: 1
   break:
     name: "&4Break"
@@ -54,13 +36,70 @@ options:
     sound: ENTITY_ITEM_BREAK
     lore:
       - "&6Breaks the structure."
-    posx: 8
+    posx: 7
     posy: 1
   close:
     name: "&2Close"
     material: BARRIER
-    sound: default
     lore:
       - "&6Close the GUI."
+    posx: 8
+    posy: 1
+  next-page:
     posx: 9
     posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    name: '&2Next Page'
+
+
+  orange-stained-glass-pane:
+    posx: 1
+    posy: 2
+    material: ORANGE_STAINED_GLASS_PANE
+    name: '&cPowercells&8:'
+  powercell:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+    material: REDSTONE_LAMP
+    name: "&cPowercell&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  lime-stained-glass-pane:
+    posx: 1
+    posy: 3
+    material: LIME_STAINED_GLASS_PANE
+    name: '&aExtractors&8:'
+  extractor:
+    slots: [ 19,20,21,22,23,24,25,26 ]
+    material: EMERALD_BLOCK
+    name: "&2Extractor&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  green-stained-glass-pane:
+    posx: 1
+    posy: 4
+    material: GREEN_STAINED_GLASS_PANE
+    name: '&2Warp Pads&8:'
+  warppad:
+    slots: [ 28,29,30,31,32,33,34,35 ]
+    material: END_PORTAL_FRAME
+    name: "&c%structure-name%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  yellow-stained-glass-pane:
+    posx: 1
+    posy: 5
+    material: YELLOW_STAINED_GLASS_PANE
+    name: '&eOutposts&8:'
+  outpost:
+    name: "&eOutpost&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+    slots: [ 37,38,39,40,41,42,43,44 ]
+    material: HAY_BLOCK
+  brown-stained-glass-pane:
+    posx: 1
+    posy: 6
+    material: BROWN_STAINED_GLASS_PANE
+    name: '&7Regulators&8:'
+  regulator:
+    name: "&3Regulator&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+    slots: [ 46,47,48,49,50,51,52,53 ]
+    material: LECTERN
