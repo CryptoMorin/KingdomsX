@@ -72,7 +72,7 @@ comamnd:
       usage: '&4Benutzung&8: &e/k admin player <Spieler>'
       not-found: '&cDer Spieler konnte nicht gefunden werden.'
       info: |-
-        @&7| &2Name&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
+        &7| &2Name&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
         &7| &2Königreich&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
         &7| &2Rang&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
@@ -142,7 +142,7 @@ command:
     dynmap:
       description: '&6Führt verschiedene Aktionen für Dynmap aus.'
       dynmap-not-available: '&cDynmap konnte nicht gefunden werden.'
-      removed: '&2&6%lands% &2Länderein wurden entfernt.'
+      removed: '&6%lands% &2Länderein wurden entfernt.'
       rendered: '&2Rendering &6%lands% &2Länderein.'
       rendering: '&2Rendering...'
       usage: '&cBenutzung&8: &e/k admin dynmap <fullrender/update/remove>'
@@ -174,7 +174,7 @@ command:
       already-in-kingdom: '&6%player% &2ist bereits ein Mitglied von &6%kingdom%'
       description: '&6Fügt einen Spieler zu einem Königreich hinzu.'
       in-kingdom: |-
-        @&6%player% &2ist bereits in &6%kingdoms_name%
+        &6%player% &2ist bereits in &6%kingdoms_name%
         &2Wenn du fortfahren möchtest, mache&8: hover:{&6/k admin join %player% %kingdom% confirm;&2Bestätigen;/k admin join %player% %kingdom% confirm}
       invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
       success: '&6%player% &2ist nun ein Mitglied von &6%kingdom%'
@@ -290,7 +290,7 @@ command:
     another-request: '&e%kingdom% &chat dir eine %relation% &cAnfrage geschickt..'
     description: '&6Sendet eine Allianz-Anfrage an ein Königreich.'
     kingdom-not-found: '&e%kingdom% &cwurde nicht gefundne.'
-    receiver: '@&6%kingdom% &2wünscht sich mit dir verbündet zu sein. Akzeptiere
+    receiver: '&6%kingdom% &2wünscht sich mit dir verbündet zu sein. Akzeptiere
                 mit hover:{&6/k ally %kingdom%;&2Akzeptierung;/k ally %kingdom%}'
     self: '&cDu kannst dich nicht mit deinem eigenen Königreich verbündet.'
     sender: '&2Eine Allianz-Anfrage an &6%kingdom% &2wurde verschickt.'
@@ -327,7 +327,7 @@ command:
     already-in-channel: '&cDu schreibst bereits in &6%channel%'
     changed: '&2Du schreibst nun in %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
     description: '&6Wechselt Königreich-Chat-Channels.'
-    unknown-channel: '@&cUnbekannter Channel! Bitte wähle&8: &fhover:{Global;Global;/k
+    unknown-channel: '&cUnbekannter Channel! Bitte wähle&8: &fhover:{Global;Global;/k
       c g}&7, &2hover:{&2Königreich;&2Königreich;/k c k}&7, &ahover:{&aVerbündete;&aVerbündete;/k
       c a}&7, &ehover:{&eWaffenstillstand;&eWaffenstillstand;/k c t} &7or &ehover:{&9Nation;&9Nation;/k
       c n}'
@@ -366,7 +366,7 @@ command:
       permission: '&cFür den Füllungs-Befehl hast du keine Berechtigung!'
       success: '&2Beanspruchung von&8: &6%x%&7, &6%z%'
       description: '&2Claim all the lands inside a shape marked by claims.'
-      done: '@&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
+      done: '&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
               claim the lands.'
     in-region: '&cIn geschützten Regionen, kannst du kein Land beanspruchen.'
     max-claims: '&cDein Königreich kann nur &6%limit% &cLänderein beanspruchen.'
@@ -391,7 +391,7 @@ command:
         invalid: '&cThe specified square radius is invalid&8: &e%radius%'
         disallowed: '&cThe specified square radius is must be at least &e2 &cand less
           than &e%max% &cgot&8: &e%radius%'
-      done: '@&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
+      done: '&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
               claim the lands.'
     line:
       description: '&2Claim a straight line in a direction.'
@@ -399,7 +399,7 @@ command:
       invalid-direction: '&cInvalid direction&8: &e%direction%'
       max-distance: '&cMaximum claiming distance is &e%max%'
       min-distance: '&cMinimum claiming distance is &e%min%'
-      done: '@&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
+      done: '&2Do hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to
               claim the lands.'
     clipboard:
       description: '&6Modify your claim selection before confirming.'
@@ -502,14 +502,14 @@ command:
     usage: '&4Usage&8: &e/k fly &9[player]'
     others-permission: '&cYou don''t have permission to set others fly state.'
   help:
-    commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
+    commands: 'hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
     description: '&6Zeigt alle Königreich-Befehle an'
-    footer: '@hover:{&6←;&6Vorherige Seite;/k help %previous_page%} %pages%hover:{&6→;&6Next
+    footer: 'hover:{&6←;&6Vorherige Seite;/k help %previous_page%} %pages%hover:{&6→;&6Next
       Page;/k help %next_page%}'
-    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Aktuelle Seite}'
-    footer-page: '@hover:{&8[&2%number%&8];&6Gehe zu Seite &2%number%;/k help
+    footer-current-page: 'hover:{&8[&2&l%number%&8];&2Aktuelle Seite}'
+    footer-page: 'hover:{&8[&2%number%&8];&6Gehe zu Seite &2%number%;/k help
       %number%}'
-    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+    grouped-commands: 'hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
       %cmd%}'
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
     header: '&8&m---------------=(&c&l Königreiche &6%page%&7/&6%max_pages% &8&m)=---------------'
@@ -532,7 +532,7 @@ command:
     already-invading: '&cDu greifst bereits ein anderes Land an.'
     announcement: '&6%invader% &2greift &6%kingdom% &2bei &6%location% &2an.'
     announcement-defender: |-
-      @&e%invader% &cvon &e%kingdom% &chat eine Eroberung bei %location% &cgestartet!
+      &e%invader% &cvon &e%kingdom% &chat eine Eroberung bei %location% &cgestartet!
       &cMache hover:{&e/k tp;&eTeleport;/k tp}&c, um dich zu der Eroberung zu teleportieren.
     announcement-nation: '&e%invader% &cvon &e%kingdom% &chat eine Eroberung bei &e%location%
       &cgestartet!'
@@ -587,7 +587,7 @@ command:
     expired: '&cDeine EInladung von &e%inviter% &cist abgelaufen!'
     expired-notify: '&cDeine Einladung an &e%invited% &cist abgelaufen!'
     invited: |-
-      @&6%player% &2hat dich eingeladen &6%kingdom%&2 beizutreten.
+      &6%player% &2hat dich eingeladen &6%kingdom%&2 beizutreten.
           hover:{&2Akzeptiere mit /k accept;&2Akzeptierung;/k accept}
           hover:{&cLehne ab mit /k decline;&cAblehnung;/k decline}
     max-members: '&cDein Königreich ist bereits mit &e%kingdoms_members% &cMitgliedern
@@ -639,7 +639,7 @@ command:
     usage: /k lore <Beschreibung>
   mail:
     box-description: '&6Öffnet die Mailbox des Königreiches.'
-    clear: '&2&6%mails% &2Mails wurden entfernt.'
+    clear: '&6%mails% &2Mails wurden entfernt.'
     clear-description: '&6Alle Mails des Könichreichs wurden entfernt.'
     description: '&6Manage die Mails in deinem Königreich.'
     send: '&6%player% &2hat eine neue Mail geschicht&8: &6%message%'
@@ -716,7 +716,7 @@ command:
       set: '&6%kingdoms_nation% &2ist nun das neue Kapitol der Nation.'
       usage: /k nation capital <Königreich>
     create:
-      already-in-nation: '@&cDu bist bereits in einer Nationn. Verlasse deine
+      already-in-nation: '&cDu bist bereits in einer Nationn. Verlasse deine
                            Nation durch hover:{&e/k nation leave;&cVerlassen;/k nation leave}&c, wenn
                            du eine neue gründen möchtest.'
       cost: '&cDu benötigst &e%cost% &c$.'
@@ -767,7 +767,7 @@ command:
       expired: '&cDie Einladung von &e%inviter% &czu seiner Nation ist abgelaufen!'
       expired-notify: '&cDeine Einladung an &e%invited%&c´s Nation ist abgelaufen!'
       invited: |-
-        @&6%player% &2hat dich eingeladen, der Nation &6%nation% &2beizutreten.
+        &6%player% &2hat dich eingeladen, der Nation &6%nation% &2beizutreten.
             hover:{&2Akzeptiere mit /k nation accept;&2Akzeptierung;/k nation accept}
             hover:{&cLehne ab mit /k nation decline;&cAblehnung;/k nation decline}
       kingdom-not-found: '&e%kingdom% &cwurde nicht gefunden.'
@@ -809,7 +809,7 @@ command:
       disabled-on-land-change: '&cDu hast dich aus deinem königlichen Gebiet entfernt,
         daher wurde der Nexus-Modus deaktiviert.'
       help: |-
-        @&2Rechtsklicke auf einen Block, um ihn in den Nexus zu verwandeln.
+        &2Rechtsklicke auf einen Block, um ihn in den Nexus zu verwandeln.
         Um diesen Modus zu beenden, gehe mache hover:{&6/k nation nexus;&cDeaktivierung;/k nation nexus}&2.
       not-claimed: '&cDu kannst den Nexus nur auf deinem eigenen Land setzen!'
       open-nexus-permission: '&cDu hast dafür keine Berechtigung.'
@@ -846,18 +846,18 @@ command:
       set: '&aNations-Spawn&8: &6%x%&7, &6%y%&7, &6%z%'
     show:
       allies: |
-        @&7| &2Verbündete&8:
+        &7| &2Verbündete&8:
         &e%allies%
       description: '&6Zeigt Informationen über deine Nation.'
       enemies: |-
-        @&7| &2Feinde&8:
+        &7| &2Feinde&8:
         &e%enemies%
       kingdoms: |-
-        @hover:{&6%kingdoms_name%;&2Mitglieder&8: &6%kingdoms_members%
+        hover:{&6%kingdoms_name%;&2Mitglieder&8: &6%kingdoms_members%
         &2König&8: &6%kingdoms_king%
         &2Land&8: &6%kingdoms_lands%}
       message: |
-        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
         &7| &2König&8: &6%king_status%
         &7| &2Nation&8: &6%kingdoms_nation%
@@ -871,7 +871,7 @@ command:
         &7| &2Königreiche&8:
         %kingdoms%
       message-admin: |
-        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
         &7| &2Kapital&8: &6%capital%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -886,9 +886,9 @@ command:
         %kingdoms%
       others-permission: '&cDU hast keine Berechtigung, um Informationen von anderen
         zu sehen.'
-      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
       truces: |
-        @&7| &2Waffenstillstände&8:
+        &7| &2Waffenstillstände&8:
         %truces%
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
     spawn:
@@ -902,12 +902,12 @@ command:
     top:
       description: '&6Zeigt die besten Nationen an.'
       entry: |-
-        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Mitglieder&8: &6%kingdoms_nation_kingdoms%
+        &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Mitglieder&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%
 
         &7(klicke für mehr Infos);/k nation show %kingdoms_nation%} &7- &6%kingdoms_fancy_nation_might%
-      footer: '@     &8[hover:{&6←;&6Vorherige Seite;/k nation top %previous_page%}&8]
+      footer: '     &8[hover:{&6←;&6Vorherige Seite;/k nation top %previous_page%}&8]
         &8[hover:{&6→;&6Nächste Seite;/k nation top %next_page%}&8]'
       header: '&8----------------------------------'
       loading: '&6Lädt...'
@@ -929,7 +929,7 @@ command:
     disabled-on-land-change: '&cDa du das Gebit des Königreiches verlassen hast, wurde
       der Nexus-Modus abgebrochen.'
     help: |-
-      @&2Rechtsklicke, um einen Block in den Nexus zu verwandeln.
+      &2Rechtsklicke, um einen Block in den Nexus zu verwandeln.
       Um diesen Modus zu verlassen, mache hover:{&6/k nexus;&cDeaktivierung;/k nexus}&2.
     not-claimed: '&cDu musst dich in deinem eigenen Land befinden, um den Nexus zu
       setzen.'
@@ -966,7 +966,7 @@ command:
       event-full: '&e%outpost% &coutpost event is already full.'
       event-not-started: '&cThere are currently no events running for &e%outpost%
         &coutpost.'
-      joined: '@&2Your kingdom has joined &6%outpost% &2outpost event. Teleport
+      joined: '&2Your kingdom has joined &6%outpost% &2outpost event. Teleport
                 to the arena using hover:{&6/k outpost teleport;&2Teleport;/k outpost teleport}'
       lost: '&cYour kingdom has lost the event!'
       min-online-members: '&cYour kingdom needs at least &e%min% &conline members
@@ -1122,14 +1122,14 @@ command:
     set: '&aZuhause des Königreiches wurde gesetzt&8: &6%x%&7, &6%x%&7, &6%z%'
   show:
     allies: |
-      @&7| &2Verbündete&8:
+      &7| &2Verbündete&8:
       &e%allies%
     description: '&6Zeigt informationen über ein Königreich.'
     enemies: |-
-      @&7| &2Feinde&8:
+      &7| &2Feinde&8:
       &e%enemies%
     message: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2König&8: &6%king_status%
       &7| &2Nation&8: &6%kingdoms_nation%
@@ -1142,7 +1142,7 @@ command:
       &7| &2Mitglieder&8:
       %members%
     message-admin: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2König&8: &6%king_status%
       &7| &2Zuhause&8: &6%kingdoms_home%
@@ -1158,18 +1158,18 @@ command:
       %members%
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
     online-prefix: |-
-      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Beigetreten&8: &6%kingdoms_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Beigetreten&8: &6%kingdoms_joined%
       &2Spenden&8: &6%kingdoms_total_donations%
       &2Letzte Spenden&8: &6%kingdoms_last_donation_time%
       &2Rang&8: &6%kingdoms_rank_name%}
     others-permission: '&cDafür hast du keine Berechtigung.'
-    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
     truces: |
-      @&7| &2Waffenstillstände&8:
+      &7| &2Waffenstillstände&8:
       %truces%
     usage: '/k show [player | kingdom | #PLAYER | #KINGDOM] <player | kingdom>'
     message-console: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_home%
@@ -1206,13 +1206,13 @@ command:
   top:
     description: '&6Zeigt die besten Königreiche an.'
     entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Mitglieder&8: &6%kingdoms_members%
+      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Mitglieder&8: &6%kingdoms_members%
       &7♦ &2Läderein&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
       &7♦ &2Schatzkammer&8: &6$%kingdoms_fancy_bank%
 
       &7(klicke für mehr Infos);/k show %kingdoms_name%} &7- &6%kingdoms_fancy_might%
-    footer: '@     &8[hover:{&6←;&6Vorherige Seite;/k top %previous_page%}&8]
+    footer: '     &8[hover:{&6←;&6Vorherige Seite;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Nächste Seite;/k top %next_page%}&8]'
     header: '&8----------------------------------'
     loading: '&6Lädt...'
@@ -1233,7 +1233,7 @@ command:
     another-request: '&e%kingdom% &chat dir eine %relation% &cAnfrage geschickt.'
     description: '&6Sendet eine Waffenstillstands-Anfrage.'
     kingdom-not-found: '&e%kingdom% &ckingdom not found.'
-    receiver: '@&6%kingdom% &2wünscht einen Waffenstillstand. Akzeptiere mit
+    receiver: '&6%kingdom% &2wünscht einen Waffenstillstand. Akzeptiere mit
                 hover:{&6/k truce %kingdom%;&2Akzeptierung;/k truce %kingdom%}'
     self: '&cDu kannst dir selbst keien Anfrage schicken.'
     sender: '&2Eine Waffenstillstands-Anfrage wurde an &6%kingdom% &2gesendet.'
@@ -1259,7 +1259,7 @@ command:
     disconnection: '&cThe land you''re trying to unclaim will disconnect the land
       at&8: &e%x%&7, &e%z%'
     cannot-remove-nexus: |-
-      @&cEIn Land mit einem Nexus, kann nicht freigegeben werden
+      &cEIn Land mit einem Nexus, kann nicht freigegeben werden
       Bitte bewege deinen NExus an einen an deren Ort, mit hover:{&e/k nexus;&4Klicke, um zu aktivieren;/k nexus} &c.
   unclaimall:
     announce: '&6%player% &2hat &6%lands% &2Länderein freigegeben!'
@@ -1298,7 +1298,7 @@ command:
       description: '&Aktiviert/Deaktiviert Land-Indikatoren (Visualizers oder Marker)'
     usage: /k visualize [permanent|toggle]
     admin-display: |-
-      @&7| &2Location&8: &6%x%&7, &6%z%
+      &7| &2Location&8: &6%x%&7, &6%z%
       &7| &2Königreich&8: &6%kingdom%
       &7| &2Struktur&8: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Teleport;/tp %sx% %sy% %sz%}
       &7| &2Turrets&8:
@@ -1341,7 +1341,7 @@ command:
     description: '&6Deactivate your shield.'
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |-
-      @&cIf you disable your shield, you have to buy a new one.
+      &cIf you disable your shield, you have to buy a new one.
       Kingdom's shield time left&8: &e%kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
     deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had
@@ -1539,7 +1539,7 @@ nexus:
     cannot-delete-member: '&cDer Mitglieder-Rang konnte nicht gelöscht werden.'
     cannot-delete-rank: '&cDu kannst diesen Rang incht löschen. Dein Könichreich benötigt
       mindestens 2 Ränge.'
-    enter-value: '@&6Bitte gebe einen Wert in den Chat ein. Oder gehe über hover:{&cAbbrechen;&cAbbrechen;cancel}
+    enter-value: '&6Bitte gebe einen Wert in den Chat ein. Oder gehe über hover:{&cAbbrechen;&cAbbrechen;cancel}
                    &6um den Vorgang abzuberechen.'
     invalid:
       material: '&cDu kannst das Material &e%material% &cnicht nutzen!'
@@ -1565,8 +1565,8 @@ nexus:
   settings:
     color:
       enter-value: |-
-        @&6Bitte gebe eine neute hex-Color in den Chat ein, oder tippe hover:{&cCancel;&cCancel;cancel}&6, um abzubrechen.
-        Du kannst die Hex-Colors hover:{&2hier;&2Klicke, um zu öffnen;@https://htmlcolorcodes.com/} &6bekommen.
+        &6Bitte gebe eine neute hex-Color in den Chat ein, oder tippe hover:{&cCancel;&cCancel;cancel}&6, um abzubrechen.
+        Du kannst die Hex-Colors hover:{&2hier;&2Klicke, um zu öffnen;https://htmlcolorcodes.com/} &6bekommen.
       range-blacklisted: '&cDie Farbe ist leider ungültig!'
       set: '&2Die Farbe deines Königreich wurde zu &6%color% &2geändert.'
       wrong-hex: '&cUngültige Hex Color&8: &e%color%'
@@ -1577,8 +1577,8 @@ nexus:
         Wort enthält&8: &e%flag%'
       cooldown: '&cDu musst &e%cooldown% &cwarten, bevor du deine Flagge ändern kannst.'
       enter-value: |-
-        @&6Bitte gebe eine neue Flaggen URL in den Chat ein. Oder tippe hover:{&cCancel;&cCancel;cancel}&6, um abzubrechen.
-        Klicke auf:{&2here;&2Open Flag URL;@%kingdoms_flag%}&6, um die aktuelle Flaggen URL zu öffnen.
+        &6Bitte gebe eine neue Flaggen URL in den Chat ein. Oder tippe hover:{&cCancel;&cCancel;cancel}&6, um abzubrechen.
+        Klicke auf:{&2here;&2Open Flag URL;%kingdoms_flag%}&6, um die aktuelle Flaggen URL zu öffnen.
       regex: '&cFlaggen URL kann nicht akzeptiert werden&8: &e%flag%'
       set: '&2Die Flagge wurde geändert zu&8: &6%flag%'
       size-limit:
@@ -1586,11 +1586,11 @@ nexus:
         height: '&cDas Bild ist größer als &e%limit%&c. Höhe&8: &e%height%'
         width: '&cDas Bild ist breiter als &e%limit%&c. Breite&8: &e%width%'
       wrong-url: '&cUngültige URL für die Flagge&8: &e%flag%'
-      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_flag%} &6to open
+      current: Click hover:{&2here;&2Open Flag URL;%kingdoms_flag%} &6to open
         your current flag URL.
     shield-activated: '&2Schild wurde aktiviert für &6%kingdoms_shield_time_left%'
     shield-not-enough-resource-points: '&cDu hast nicht genügend Ressourcenpunkte.'
-    tax-enter-value: '@&6Bitte gebe einen neuen Wert in den Chat ein, oder tippe
+    tax-enter-value: '&6Bitte gebe einen neuen Wert in den Chat ein, oder tippe
                        hover:{&cCancel;&cCancel;cancel} &6, um abzubrechen.'
     tax-illegal-variable: '&cIllegale Placeholder wurden im Index &e%index% &cin der
       Gleichung verwendet&8: &e%tax%'
@@ -1613,7 +1613,7 @@ nexus:
   turret-resourcepoints: '&cDu benötigst &e%cost% &cRessourcenpunkte, um diesen Turret
     zu kaufen.'
   nation: '&cDein Königreich ist in keiner Nation.'
-  resource-points: '&6&e%amount% &6Ressourcenpunkte wurden hinzugefügt.'
+  resource-points: '&e%amount% &6Ressourcenpunkte wurden hinzugefügt.'
   chest:
     others: '&cDu kannst nicht die Nexus-Truhe eines anderen Könichreiches öffnen.'
   misc-upgrades:
@@ -1764,9 +1764,9 @@ protected-signs:
     in-cooldown: |-
       &cThis container requires a password to access, however you had too many failed attempts.
       You can try again in&8: &e%cooldown%
-    required: '@&cThis container requires a password to be opened. Enter the
+    required: '&cThis container requires a password to be opened. Enter the
                 password or type hover:{&ecancel;&eCancel;cancel} &cto cancel the action.'
-    ask: '@&6Please enter the password or type hover:{&cCancel;&cCancel;cancel}
+    ask: '&6Please enter the password or type hover:{&cCancel;&cCancel;cancel}
            &6to cancel and hover:{&cremove;&cRemove;remove} &6to remove the password.'
     container-only: '&cYou can only set password on containers such as &echests, hoppers,
       furnaces and etc.'
@@ -1883,7 +1883,7 @@ champion-type:
     &2geändert.'
   already-in-use: '&cDein Königreich benutzt bereits den &e%champion% &cChampion.'
 no-kingdom-reminder: '&cErinnerer&8: &eDu bist noch keinem Königreich beigetreten.'
-nexus-resource-points-enter-value: '@&6Bitte gebe die ANzahl der Ressourcenpunkte
+nexus-resource-points-enter-value: '&6Bitte gebe die ANzahl der Ressourcenpunkte
                                      an oder gehe auf hover:{&cAbbrechen;&cAbbrechen;cancel} &6,um abbzubrechen.'
 'no':
   nation: '&cDein Königreich ist in keiner Nation.'

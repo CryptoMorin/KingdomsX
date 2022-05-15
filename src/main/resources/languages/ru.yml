@@ -140,7 +140,7 @@ nexus:
   turret-purchased: '&6Вы купили &2%turret% &6за &2%cost%'
   resourcepoints: '&e%amount% &6очков ресурсов было добавлено.'
   rank-editor:
-    enter-value: '@&6Введите новое число в чат. Или:{&cCancel;&cОтмена;cancel}
+    enter-value: '&6Введите новое число в чат. Или:{&cCancel;&cОтмена;cancel}
                    &6что бы отменить.'
     max: '&cВы не можете создать более &e%limit% &cрангов для королевства.'
     cannot-delete-rank: '&cВы не можете удалить этот ранг. Ваше королевство должно иметь минимум 2 ранга.'
@@ -160,7 +160,7 @@ nexus:
       priority: '&cНеверный приоритет. Приоритет должен быть меньше &e%kingdoms_ranks% &cи больше 0'
       node: '&cНик ранга содержит спец. символы. Только буквы и цифры.'
     max-claims-limit: '&cКоличество захыватываний земель должно быть не больше чем &e%limit%'
-  settings-tax-enter-value: '@&6Введите новое число в чат. Или:{&cCancel;&cОтмена;Cancel} &6что бы отменить.'
+  settings-tax-enter-value: '&6Введите новое число в чат. Или:{&cCancel;&cОтмена;Cancel} &6что бы отменить.'
   settings-tax-set: |-
     &2Налог Вашего королевства установлен на&8: &6%tax%
     &2Налог проверен на вас&8: &6%test%
@@ -250,13 +250,13 @@ command:
     description: '&6Отображение всех команд'
     usage: /Kingdoms help <страница>
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
+    grouped-commands: 'hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
       %cmd%}'
-    footer: '@hover:{&6←;&6Предыдущая страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k %command% %next_page%}'
-    footer-page: '@hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k %command% %number%}'
-    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Текущая страница}'
+    footer: 'hover:{&6←;&6Предыдущая страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следующая страница;/k %command% %next_page%}'
+    footer-page: 'hover:{&8[&2%number%&8];&6Перейти на &2%number% страницу;/k %command% %number%}'
+    footer-current-page: 'hover:{&8[&2&l%number%&8];&2Текущая страница}'
     header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
-    commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
+    commands: 'hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
   reload:
     description: '&6Перезагрузка плагина.'
     usage: /k reload [config]
@@ -279,7 +279,7 @@ command:
       name-numbers: '&cНазвание государства не может содержать цифры.'
       name-already-in-use: '&cДругое государство с таким же названием уже существует.'
       usage: /Kingdoms nation create <название>
-      already-in-nation: '@&cВы уже в государстве. Покиньте его используя hover:{&e/k nation leave;&cПокинуть;/k nation leave}, что бы создать новое.'
+      already-in-nation: '&cВы уже в государстве. Покиньте его используя hover:{&e/k nation leave;&cПокинуть;/k nation leave}, что бы создать новое.'
       success: '&2Вы основали государство ''&6%nation%&2''!'
       cost: '&cВам нужно &e%cost% &cмонет, что бы создать новое государство.'
     rename:
@@ -319,7 +319,7 @@ command:
       usage: '/Kingdoms show [Игрок | Государство | #PLAYER | #NATION] <игрок | Государство>'
       others-permission: '&cУ вас нет разрешения на просмотр информации других игроков.'
       message-admin: |
-        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
         &7| &a❃&2Столица&8: &6%kingdoms_nation_capital%
         &7| &a✭&2Спавн&8: &6%kingdoms_nation_spawn%
@@ -331,7 +331,7 @@ command:
         &7| &2Участники&8:
         %kingdoms%
       message: |
-        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
         &7| &a♕&2Король&8: &6%king_status%
         &7| &a❃&2Государство&8: &6%kingdoms_nation%
@@ -343,19 +343,19 @@ command:
         &7| &Участники&8:
         %kingdoms%
       allies: |
-        @&7| &a❤&2Союзники&8:
+        &7| &a❤&2Союзники&8:
         &e%allies%
       truces: |
-        @&7| &a❀&2Перемирия&8:
+        &7| &a❀&2Перемирия&8:
         %truces%
       enemies: |-
-        @&7| &a✘&2Враги&8:
+        &7| &a✘&2Враги&8:
         &e%enemies%
       kingdoms: |-
-        @hover:{&6%kingdoms_name%;&2Участники&8: &6%kingdoms_members%
+        hover:{&6%kingdoms_name%;&2Участники&8: &6%kingdoms_members%
         &2Король&8: &6%kingdoms_king%
         &2Земли&8: &6%kingdoms_lands%}
-      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
     not:
       in-nation: '&cУказанное королевство/игрок не входит в государство.'
     setspawn:
@@ -379,7 +379,7 @@ command:
     nexus:
       description: '&6Установите точку Нексуса вашего государства.'
       help: |-
-        @&2Щелкните правой кнопкой мыши на блоке, чтобы превратить его в ваш новый Нексус.
+        &2Щелкните правой кнопкой мыши на блоке, чтобы превратить его в ваш новый Нексус.
         Чтобы отключить режим, нажмите hover:{&6/k nation nexus;&cОтключить;/k nation nexus} &2опять.
       actionbar-activated: '&6Режим Нексуса&8: &2✔'
       actionbar-deactivated: '&6Режим Нексуса&8: &c✘'
@@ -408,7 +408,7 @@ command:
       description: '&6Посылает приглашение в королевство присоединиться к государству.'
       usage: /k nation invite <королевство> [истечение]
       invited: |-
-        @&6%inviter% &2пригласил вас присоединиться к государству ''&6%nation%&2''.
+        &6%inviter% &2пригласил вас присоединиться к государству ''&6%nation%&2''.
             hover:{&2Примите приглашение с помощью /k nation accept;&2Принять;/k nation accept}
             hover:{&cОтклоните приглашение с помощью /k nation decline;&cОтклонить;/k nation decline}
       announce: '&6%inviter% &2пригласил королевство ''&6%kingdom%&2'' в государство.'
@@ -452,12 +452,12 @@ command:
       description: '&6Показывает рейтинг государства.'
       loading: '&6Загрузка данных...'
       header: '&8----------------------------------'
-      footer: '@     &8[hover:{&6←;&6Предыдущая страница;/k top %previous_page%}&8]
+      footer: '     &8[hover:{&6←;&6Предыдущая страница;/k top %previous_page%}&8]
         &8[hover:{&6→;&6Следующая страница;/k top %next_page%}&8]'
       no-more-pages: '&cНет больше страниц для загрузки.'
       negative: '&cНевозможно показать отрицательные страницы.'
       entry: |-
-        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Участники&8: &6%kingdoms_nation_kingdoms%
+        &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Участники&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Очков ресурсов&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Казна&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -569,7 +569,7 @@ command:
     usage: '/Kingdoms show [игрок | королевство | #PLAYER | #KINGDOM] <игрок | королевство>'
     others-permission: '&cУ вас нет разрешения видеть информацию других.'
     message-admin: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &a♕&2Король&8: &6%king_status%
       &7| &a✉&2Дом&8: &6%kingdoms_home%
@@ -582,7 +582,7 @@ command:
       &7| &a✦&2Участники&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
       &7| &2Король&8: &6%king_status%
       &7| &2Государство&8: &6%kingdoms_nation%
@@ -593,21 +593,21 @@ command:
       &7| &2Участники&8:
       %members%
     allies: |
-      @&7| &2Союзники&8:
+      &7| &2Союзники&8:
       &e%allies%
     truces: |
-      @&7| &2Перемирия&8:
+      &7| &2Перемирия&8:
       %truces%
     enemies: |-
-      @&7| &2Враги&8:
+      &7| &2Враги&8:
       &e%enemies%
     online-prefix: |-
-      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Присоединился&8: &6%kingdoms_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Присоединился&8: &6%kingdoms_joined%
       &2Пожертвований&8: &6%kingdoms_total_donations%
       &2Последнее пожертвование&8: &6%kingdoms_last_donation_time%
       &2Ранг&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
   claim:
     description: '&6Захватить землю, на которой вы сейчас находитесь.'
     disabled-world: '&cЗахват отключен в &6%world%'
@@ -685,7 +685,7 @@ command:
   nexus:
     description: '&6Установите точку Нексуса.'
     help: |-
-      @&2Щелкните правой кнопкой мыши на блоке, чтобы превратить его в ваш новый Нексус.
+      &2Щелкните правой кнопкой мыши на блоке, чтобы превратить его в ваш новый Нексус.
       Чтобы отключить режим, нажмите hover:{&6/k nation nexus;&cОтключить;/k nation nexus} &2опять..
     actionbar-activated: '&6Режим Нексуса&8: &2✔'
     actionbar-deactivated: '&6Режим Нексуса&8: &c✘'
@@ -716,7 +716,7 @@ command:
     description: '&6О плагине Kingdoms.'
   invite:
     invited: |-
-      @&6%inviter% &2пригласил вас присоединиться в королевство ''&6%kingdom%&2''.
+      &6%inviter% &2пригласил вас присоединиться в королевство ''&6%kingdom%&2''.
           hover:{&2Принять > /k accept;&2Принять;/k accept}
           hover:{&cОтклонить > /k decline;&cОтклонить;/k decline}
     usage: /k invite <игрок> <королевство>
@@ -773,7 +773,7 @@ command:
     countdown: '&2Чемпион появится через &6%sec% секунд...'
     announcement: '&6%invader% &2начал вторжение в королевство &6%kingdom% &2на &6%location%'
     announcement-defender: |-
-      @&e%invader% &cиз королевства &e%kingdom% &cначал вторжение в ваши земли на %location%.
+      &e%invader% &cиз королевства &e%kingdom% &cначал вторжение в ваши земли на %location%.
       &chover:{&e/k tp;&eТелепортируйтесь;/k tp} &cв зону захвата.
     announcement-nation: '&e%invader% &cиз королевства &e%kingdom% &cначал вторжение на &e%location%'
     own-land: '&cВы не можете вторгаться в свое собственное королевство.'
@@ -803,12 +803,12 @@ command:
     description: '&6Показывает топ рейтинга королевств.'
     loading: '&6Загрузка данных...'
     header: '&8----------------------------------'
-    footer: '@     &8[hover:{&6←;&6Предыдущая страница;/k top %previous_page%}&8]
+    footer: '     &8[hover:{&6←;&6Предыдущая страница;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Следующая страница;/k top %next_page%}&8]'
     no-more-pages: '&cНет больше страниц для загрузки.'
     negative: '&cНе удается показать отрицательные страницы.'
     entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Участники&8: &6%kingdoms_members%
+      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Участники&8: &6%kingdoms_members%
       &7♦ &a❖&2Земли&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &a✔&2Очки ресурсов&8: &6%kingdoms_fancy_resource_points%
       &7♦ &a۩&2Казна&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
@@ -907,7 +907,7 @@ command:
     already: '&cВы уже союзники с королевством ''&e%kingdom%&c'''
     already-requested: '&cВы уже отправили запрос королевству ''&6%kingdom%&c'''
     self: '&cВы не можете сделать свое собственное королевство союзником.'
-    receiver: '@&6%kingdom% &2хочет быть союзниками с вами. примите с помощью hover:{&6/k
+    receiver: '&6%kingdom% &2хочет быть союзниками с вами. примите с помощью hover:{&6/k
                 ally %kingdom%;&2Accept;/k ally %kingdom%}'
     allies: '&2Теперь вы союзники с королевством ''&6%kingdom%&c'''
   enemy:
@@ -925,7 +925,7 @@ command:
     already: '&cВы уже перемирие с &e%kingdom%'
     already-requested: '&cВы уже отправили запрос &e%kingdom%'
     self: '&cВы не можете сделать свое собственное королевство перемирием.'
-    receiver: '@&6%kingdom% &2wishes to be truce with you. Accept with hover:{&6/k
+    receiver: '&6%kingdom% &2wishes to be truce with you. Accept with hover:{&6/k
                 truce %kingdom%;&2Accept;/k truce %kingdom%}'
     truces: '&2Вы нахолитесь в перемирии    &6%kingdom%'
   revoke:
@@ -940,7 +940,7 @@ command:
     description: '&6Переключить каналы чата королевства.'
     usage: /k chat <канал>
     already-in-channel: '&cВы уже общаетесь в &6%channel%'
-    unknown-channel: '@&cНеизвестный канал! Выберите&8: &fhover:{Global;Глобальный;/k
+    unknown-channel: '&cНеизвестный канал! Выберите&8: &fhover:{Global;Глобальный;/k
       c g}&7, &2hover:{&2Kingdom;&2Королевство;/k c k}&7, &ahover:{&aAlly;&aСоюзники;/k c
       a}&7, &ehover:{&eTruce;&eПеремирия;/k c t} &7или &ehover:{&9Nation;&9Государство;/k c
       n}'
