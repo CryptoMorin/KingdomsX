@@ -1,0 +1,49 @@
+title: "&3Осадная пушка"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+interactable: [ 2 ] # The ammo slot
+
+options:
+  sit:
+    name: "&2Сесть"
+    lore:
+      - "&7Сесть за пушку"
+      - "чтобы начать стрелять"
+    material: BRICK_STAIRS
+    slot: 0
+  ammo:
+    name: "&4-------->"
+    material: RED_STAINED_GLASS_PANE
+    lore:
+      - "&7Вот сюда положить"
+      - "заряд в виде &cогненного заряда"
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Прокачка&8: &6%level_roman% &b➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&8⚫ &7Урон ЩИТу&8: &6%shield-damage% &b➔ &6%next-shield-damage%"
+        - "&8⚫ &7Кулдаун&8: &6%cooldown% &b➔ &6%next-cooldown%"
+        - "&8⚫ &7Урон&8: &6%damage% &b➔ &6%next-damage%"
+        - "&8⚫ &7Отбрасывание&8: &6%knockback% &b➔ &6%next-knockback%"
+        - ""
+        - "&8⚫ &7Макс.уровень&8: &6%max-level-roman%"
+        - "&8⚫ &7Стоимость&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Уровень&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&8⚫ &7Урон ЩИТу&8: &6%shield-damage%"
+        - "&8⚫ &7Кулдаун&8: &6%cooldown%"
+        - "&8⚫ &7Урон&8: &6%damage%"
+        - "&8⚫ &7Отбрасывание&8: &6%knockback%"
+  break:
+    name: "&4Сломать"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6Сломать эту структуру"
+    slot: 4

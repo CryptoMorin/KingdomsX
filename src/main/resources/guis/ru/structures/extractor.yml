@@ -1,27 +1,46 @@
-title: "&2Экстрактор"
+title: "&8Экстрактор"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
 
 options:
   break:
-    name: "&4Сломать"
+    name: "&cСломать"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Ломает структуру."
+      - "&7Сломать структуру"
     slot: 0
   collect:
-    name: "&2Сгенерировано&8: &9%time% &7- &9%amount%"
+    name: "&7Собрать&8: &b%time% &8- &e%amount% очков ресурсов"
     material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    refresh: true
     lore:
-      - "&6Соберите все сгенерированные"
-      - "очки ресурсов."
-      - "Последний сбор&8: &2%extractor-last-collector%"
-    slot: 2
+      - "&7Собрать все созданные"
+      - "очки ресурсов"
+      - "&aПоследний раз сбор&8: &d%extractor-last-collector%"
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "&7Обновление&8: &b%level_roman% уровень &8➛ &b%next_level_roman% уровень"
+      material: NETHER_STAR
+      lore:
+        - "&8⚫ &7Каждые&8: &c%every% &8➔ &a%next-every%"
+        - "&8⚫ &7Очки ресурсов&8: &e%resource-points% &7➔ &6%next-resource-points%"
+        - ""
+        - "&8⚫ &7Макс.уровень&8: &a%max-level-roman%"
+        - "&8⚫ &7Стоимость&8: &e%upgrade_cost% очков ресурсов"
+    maxxed:
+      name: "&7Уровень&8: &b%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&8⚫ &7Каждые&8: &b%every%"
+        - "&8⚫ &7Очки ресурсов&8: &e%resource-points%"
   close:
-    name: "&2Закрыть"
+    name: "&cЗакрыть"
     material: BARRIER
     lore:
-      - "&6Закрыть интерфейс."
+      - ""
     slot: 4

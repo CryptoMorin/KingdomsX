@@ -10,9 +10,6 @@
 # You can also do various Dynmap actions using /k admin dynmap command.
 # https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-admin-dynmap-fullrenderremove
 
-# If Dynmap support should be enabled at all. Requires a restart to apply.
-enabled: true
-
 # If the marker data should be persistent. If enabled, all the land markers and icons will stay even after
 # server restarts. This is useful when you server has a lot of claimed lands, or you want to avoid lag without
 # using the auto update interval option. The data will be internally stored in Dynmap.
@@ -127,7 +124,7 @@ description:
   flag: '<img src="%kingdoms_flag%" alt="%kingdoms_name%" width="250" height="auto" style="border:5px solid black;display:block;margin-left:auto;margin-right:auto;"><br>'
 
   # In order to change the default kingdom name color, refer to default placeholders in config.
-  main: |-
+  main: |
     %flag%
     <h1><span style="color:%kingdoms_color%">%kingdoms_name%</span></h1><br>
     <span style="color:gray">%kingdoms_lore%</span><br>
@@ -149,16 +146,17 @@ description:
     <span style="color:red">Enemies</span><span style="color:gray">:</span><br>
     %enemies%
     <br>
-  members: '<span style="font-weight:italic;color:black">%kingdoms_rank_symbol% %kingdoms_rank_name% %player%</span><br>'
-  allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_name%</span><br>'
-  truces: '<span style="font-weight:italic;color:yellow">%kingdoms_name%</span><br>'
-  enemies: '<span style="font-weight:italic;codlor:red">%kingdoms_name%</span><br>'
+  members: '<span style="font-weight:italic;color:black">%kingdoms_rank_symbol% %kingdoms_rank_name% %player%</span> '
+  allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_name%</span> '
+  truces: '<span style="font-weight:italic;color:yellow">%kingdoms_name%</span> '
+  enemies: '<span style="font-weight:italic;codlor:red">%kingdoms_name%</span> '
 
 # If you changed an icon image, you have to restart the server.
-# To disable an icon, simply remove the image from the folder.
-# To regenerate all the icons, delete all the icons from the folder.
 # Turrets do not use an icon as there are too many of them.
 icons:
+  # To disable a certain icon, set the label to ~ below.
+  enabled: true
+
   # The zoom level range which the icons are visible at.
   # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
   # These values can give confusing results. You need to play around with them to get the right one.
@@ -166,6 +164,8 @@ icons:
     max: -1
     min: 6
 
+  # The label shown when clicking the icon.
+  # Set to ~ to disable certain icons.
   home: 'Home'
   national-spawn: 'National Spawn'
   national-nexus: 'National Nexus'

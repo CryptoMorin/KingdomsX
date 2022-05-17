@@ -1,241 +1,569 @@
 title: "%rank_color%%rank_symbol% %rank_name%"
-rows: 5
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   node:
-    name: "&2Ник&8: &2%rank_node%"
+    name: "&6Узел&8: &d%rank_node%"
     material: EMERALD
     lore:
-      - "&6Ник обычно использует название ранга, но"
-      - "без цветовых кодов или особых символов."
-      - "Это используется, когда вы используете команду повышения/понижения."
-      - "Не может содержать цифры и максимально 15 символов."
+      - "&8− &7Узел это в основном название ранга, "
+      - "но без цветов или каких-либо специальных символов."
+      - "Это используется, когда вы используете "
+      - "команду повысить/понизить в должности."
+      - "Не может содержать цифр и должно"
+      - "содержать не более 15 символов."
     posx: 1
     posy: 1
   name:
-    name: "&5Название&8: &2%rank_name%"
-    material: DIAMOND
+    name: "&3Название&8: &5%rank_name%"
+    material: IRON_INGOT
     lore:
-      - "&6Название этого ранга."
-      - "Может содержать любой символ, но не более"
-      - "20 символов."
-      - "Также может содержать цветовые коды."
+      - "&8− &7Это название ранга"
+      - "Может содержать любой символ"
+      - "но не более 20 символов."
+      - "Он также может содержать цветовые коды."
     posx: 2
     posy: 1
   material:
-    name: "&eБлок/Предмет&8: &2%rank_material%"
+    name: "&eМатериал&8: &2%rank_material%"
     material: GOLD_INGOT
     lore:
-      - "&6Этот блок/предмет будет использован"
-      - "для отображения этого ранга в интерфейсе."
-      - "Вы должны использовать последние имена блоков/предметов"
-      - "даже если сервер работает на старых версиях."
+      - "&8− &7Предмет, который будет"
+      - "показываться в меню рангов"
+      - "Вы должны использовать "
+      - "последние названия предметов"
+      - "даже если сервер работает "
+      - "на старых версиях."
     posx: 3
     posy: 1
   symbol:
     name: "&dСимвол&8: &2%rank_symbol%"
     material: IRON_INGOT
     lore:
-      - "&6Символ для этого ранга."
-      - "Может содержать только 5 символов."
-      - "Поддерживает цветовые коды."
+      - "&8− &7Символ ранга"
+      - "Это может быть только 5 символов."
+      - "Также поддерживает цвета."
     posx: 4
     posy: 1
   color:
     name: "%rank_color%Цвет"
     material: COAL
     lore:
-      - "&6Цвет чата для этого ранга."
-      - "Может содержать только 5 символов."
+      - "&8− &7Цвет ранга"
+      - "то может быть только 5 символов."
     posx: 5
     posy: 1
   priority:
     name: "&aПриоритет&8: &2%rank_priority%"
     material: PAPER
     lore:
-      - "&6Приоритет для этого ранга"
-      - "Учтите, что чем ниже число тем выше приоритет."
-      - "Вы не можете изменить приоритет ранга ''король''."
+      - "&8− &7Приоритет ранга"
+      - "Обратите внимание, что"
+      - "меньшие числа означают"
+      - "более высокий приоритет."
+      - "Вы не можете изменить"
+      - "приоритет ранга короля"
     posx: 6
     posy: 1
   max-claims:
-    name: "&7Количество взятия земель&8: &2%rank_max_claims%"
+    name: "&7Максимальные территории&8: &2%rank_max_claims%"
     material: BOOK
     lore:
-      - "&6Установить разрешения для"
-      - "этого ранга."
+      - "&8− &7Установите сколько чанков"
+      - "может взять этот ранг"
     posx: 7
     posy: 1
   delete:
     name: "&4Удалить"
     material: BARRIER
     lore:
-      - "&6Удаляет этот ранг."
+      - "&8− &7Удалить этот ранг"
+      - "Все игроки с этим рангом "
+      - "будут понижены до самого низкого ранга"
+      - "если вы снова не создадите "
+      - "другой ранг с тем же узлом"
+      - "в течение случайного времени."
     posx: 8
     posy: 1
+  copy:
+    name: "&9Копировать ранг"
+    material: WRITABLE_BOOK
+    lore:
+      - "&8− &7Скопируйте свойства другого"
+      - "ранга в этот ранг."
+    posx: 5
+    posy: 2
 
   alliance:
-    name: "&2Управление союзами"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Союзники"
+      lore:
+        - "&b/k ally"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &7Союзники"
+      material: RED_WOOL
+      lore:
+        - "&b/k ally"
     posx: 1
-    posy: 2
+    posy: 3
   broadcast:
-    name: "&2Вещание"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Объявление"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k broadcast"
+    else:
+      name: "%var_disabled% &7Объявление"
+      material: RED_WOOL
+      lore:
+        - "&b/k broadcast"
     posx: 2
-    posy: 2
+    posy: 3
   build:
-    name: "&2Строительство"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Строительство"
+      material: IRON_PICKAXE
+      glow: true
+      lore:
+        - "&bВозможность строить в"
+        - "  &bкоролевстве"
+    else:
+      name: "%var_disabled% &7Строительство"
+      material: IRON_PICKAXE
+      lore:
+        - "&bВозможность строить в"
+        - "  &bкоролевстве"
     posx: 3
-    posy: 2
+    posy: 3
   claim:
-    name: "&2Взятие земель"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Взятие территорий"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k claim"
+    else:
+      name: "%var_disabled% &7Взятие территорий"
+      material: RED_WOOL
+      lore:
+        - "&b/k claim"
     posx: 4
-    posy: 2
+    posy: 3
   edit-ranks:
-    name: "&2Редактор рангов"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Редактирование рангов"
+      material: GREEN_WOOL
+      lore:
+        - "&bИзменение рангов"
+    else:
+      name: "%var_disabled% &7Редактирование рангов"
+      material: RED_WOOL
+      lore:
+        - "&bИзменение рангов"
     posx: 5
-    posy: 2
+    posy: 3
   enemy:
-    name: "&2Враждовать"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Враги"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k enemy"
+    else:
+      name: "%var_disabled% &7Враги"
+      material: RED_WOOL
+      lore:
+        - "&b/k enemy"
     posx: 6
-    posy: 2
+    posy: 3
   home:
-    name: "&2Дом"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Дом"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k home"
+    else:
+      name: "%var_disabled% &7Дом"
+      material: RED_WOOL
+      lore:
+        - "&b/k home"
     posx: 7
-    posy: 2
+    posy: 3
   invade:
-    name: "&2Вторжение"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Вторжение"
+      material: IRON_SWORD
+      glow: true
+      lore:
+        - "&b/k invade"
+    else:
+      name: "%var_disabled% &7Вторжение"
+      material: IRON_SWORD
+      lore:
+        - "&b/k invade"
     posx: 8
-    posy: 2
+    posy: 3
   invite:
-    name: "&2Приглашения"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Приглашения"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k invide"
+    else:
+      name: "%var_disabled% &7Приглашения"
+      material: RED_WOOL
+      lore:
+        - "&b/k invide"
     posx: 9
-    posy: 2
+    posy: 3
+
+  # 4
   kick:
-    name: "&2Выгонять"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Кик"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k kick"
+    else:
+      name: "%var_disabled% &7Кик"
+      material: RED_WOOL
+      lore:
+        - "&b/k kick"
     posx: 1
-    posy: 3
+    posy: 4
   lore:
-    name: "&2История"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Описание"
+      material: PAPER
+      glow: true
+      lore:
+        - "&b/k lore"
+    else:
+      name: "&7Описание"
+      material: PAPER
+      lore:
+        - "&b/k lore"
     posx: 2
-    posy: 3
+    posy: 4
   nexus:
-    name: "&2Нексус"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Нексус"
+      material: BEACON
+      glow: true
+      lore:
+        - "&bВзаимодействие с нексусом"
+    else:
+      name: "%var_disabled% &7Нексус"
+      material: BEACON
+      lore:
+        - "&bВзаимодействие с нексусом"
     posx: 3
-    posy: 3
+    posy: 4
   nexus-build:
-    name: "&2Постройки Нексуса"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Строительство нексуса"
+      material: BEACON
+      glow: true
+      lore:
+        - "&b/k nexus"
+    else:
+      name: "%var_disabled% &7Строительство нексуса"
+      material: BEACON
+      lore:
+        - "&b/k nexus"
     posx: 4
-    posy: 3
+    posy: 4
   nexus-chest:
-    name: "&2Сундук Нексуса"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Сундук нексуса"
+      material: CHEST
+      glow: true
+      lore:
+        - "&bВзаимодействие с сундуком"
+        - "  &bв нексусе"
+    else:
+      name: "%var_disabled% &7Сундук нексуса"
+      material: CHEST
+      lore:
+        - "&bВзаимодействие с сундуком"
+        - "  &bв нексусе"
     posx: 5
-    posy: 3
+    posy: 4
   outpost:
-    name: "&2Аванпост"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Аванпост"
+      material: HAY_BLOCK
+      glow: true
+      lore:
+        - "&bВзаимодействие с аванпостом"
+    else:
+      name: "%var_disabled% &7Аванпост"
+      material: HAY_BLOCK
+      lore:
+        - "&bВзаимодействие с аванпостом"
     posx: 6
-    posy: 3
-  protected-chests:
-    name: "&2Защищённые сундуки"
-    material: GREEN_WOOL
+    posy: 4
+  protection-signs:
+    enabled:
+      condition: enabled
+      name: "&7Защищенные сундуки"
+      material: OAK_SIGN
+      glow: true
+      lore:
+        - "&bВзаимодействие с защищёнными сундуками"
+    else:
+      name: "%var_disabled% &7Защищенные сундуки"
+      material: OAK_SIGN
+      lore:
+        - "&bВзаимодействие с защищёнными сундуками"
     posx: 7
-    posy: 3
+    posy: 4
   set-home:
-    name: "&2Установка дома"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Установка дома королевства"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k sethome"
+    else:
+      name: "%var_disabled% &7Установка дома королевства"
+      material: RED_WOOL
+      lore:
+        - "&b/k sethome"
     posx: 8
-    posy: 3
+    posy: 4
   structures:
-    name: "&2Структуры"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Структуры"
+      material: REDSTONE_LAMP
+      glow: true
+      lore:
+        - "&bВзаимодействие со структурами"
+    else:
+      name: "%var_disabled% &7Структуры"
+      material: REDSTONE_LAMP
+      lore:
+        - "&bВзаимодействие со структурами"
     posx: 9
-    posy: 3
+    posy: 4
+
+  # 5
   use:
-    name: "&2Использование"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Использование"
+      material: GREEN_WOOL
+      lore:
+        - "&bИспользование блоков"
+    else:
+      name: "%var_disabled% &7Использование"
+      material: RED_WOOL
+      lore:
+        - "&bИспользование блоков"
     posx: 1
-    posy: 4
+    posy: 5
   interact:
-    name: "&2Взаимодействие"
-    material: GREEN_WOOL
+    material: OAK_DOOR
+    
+    enabled:
+      condition: enabled
+      name: "%var_enabled% &7Взаимодействовать"
+      glow: true
+      lore:
+        - "&bВзаимодействие с блоками"
+    else:
+      name: "%var_disabled% &7Взаимодействовать"
+      lore:
+        - "&bВзаимодействие с блоками"
+
     posx: 2
-    posy: 4
+    posy: 5
   upgrade:
-    name: "&2Улучшения"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Обновлять"
+      material: GREEN_WOOL
+      lore:
+        - "&bВозможность тратить очки ресурсов"
+    else:
+      name: "%var_disabled% &7Обновлять"
+      material: RED_WOOL
+      lore:
+        - "&bВозможность тратить очки ресурсов"
     posx: 3
-    posy: 4
+    posy: 5
   truce:
-    name: "&2Перемирие"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Перемирие"
+      material: YELLOW_WOOL
+      glow: true
+      lore:
+        - "&b/k truce"
+    else:
+      name: "%var_disabled% &7Перемирие"
+      material: YELLOW_WOOL
+      lore:
+        - "&b/k truce"
     posx: 4
-    posy: 4
+    posy: 5
   turrets:
-    name: "&2Турели"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Turrets"
+      material: ARROW
+      glow: true
+    else:
+      name: "%var_disabled% &2Turrets"
+      material: ARROW
     posx: 5
-    posy: 4
+    posy: 5
   unclaim:
-    name: "&2Отдача"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Расприват. территорий"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k unclaim"
+    else:
+      name: "%var_disabled% &7Расприват. территорий"
+      material: RED_WOOL
+      lore:
+        - "&b/k unclaim"
     posx: 6
-    posy: 4
+    posy: 5
   manage-ranks:
-    name: "&2Управление рангами"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Менеджер рангов"
+      material: GREEN_WOOL
+      lore:
+        - "&bДоступ к менеджеру рангов"
+    else:
+      name: "%var_disabled% &7Менеджер рангов"
+      material: RED_WOOL
+      lore:
+        - "&bДоступ к менеджеру рангов"
     posx: 7
-    posy: 4
+    posy: 5
   withdraw:
-    name: "&2Вывод"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&7Снимать со счёта"
+      material: GREEN_WOOL
+      lore:
+        - "&b/k bank withdraw"
+    else:
+      name: "%var_disabled% &7Снимать со счёта"
+      material: RED_WOOL
+      lore:
+        - "&b/k bank withdraw"
     posx: 8
-    posy: 4
+    posy: 5
   fly:
-    name: "&2Полёт"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Fly"
+      material: ELYTRA
+      glow: true
+    else:
+      name: "%var_disabled% &2Fly"
+      material: ELYTRA
     posx: 9
-    posy: 4
-  nation:
-    name: "&2Государство"
-    material: GREEN_WOOL
-    posx: 1
-    posy: 5
-  exclude-tax:
-    name: "&2Без налога"
-    material: GREEN_WOOL
-    posx: 2
-    posy: 5
-  relation-attributes:
-    name: "&2Атрибуты отношений"
-    material: GREEN_WOOL
-    posx: 3
-    posy: 5
-  settings:
-    name: "&2Настройки"
-    material: GREEN_WOOL
-    posx: 4
     posy: 5
 
+  # 6
+  nation:
+    enabled:
+      condition: enabled
+      name: "&7Нация"
+      material: BLUE_WOOL
+      glow: true
+      lore:
+        - "&b/k nation"
+    else:
+      name: "%var_disabled% &7Нация"
+      material: BLUE_WOOL
+      lore:
+        - "&b/k nation"
+    posx: 1
+    posy: 6
+  exclude-tax:
+    enabled:
+      condition: enabled
+      name: "&7Исключить налог"
+      material: GREEN_WOOL
+      lore:
+        - "&bВыключает налог для ранга"
+    else:
+      name: "%var_disabled% &7Исключить налог"
+      material: RED_WOOL
+      lore:
+        - "&bВыключает налог для ранга"
+    posx: 2
+    posy: 6
+  relation-attributes:
+    enabled:
+      condition: enabled
+      name: "&7Атрибуты отношений"
+      material: GREEN_WOOL
+      lore:
+        - "&bДоступ к атрибутам отношений"
+    else:
+      name: "%var_disabled% &7Атрибуты отношений"
+      material: RED_WOOL
+      lore:
+        - "&bДоступ к атрибутам отношений"
+    posx: 3
+    posy: 6
+  settings:
+    name: "&7Настройки королевства"
+    enabled:
+      condition: enabled
+      name: "&7Настройки королевства"
+      material: GREEN_WOOL
+      lore:
+        - "&bДоступ к настройкам"
+    else:
+      name: "%var_disabled% &7Настройки королевства"
+      material: RED_WOOL
+      lore:
+        - "&bДоступ к настройкам"
+    posx: 4
+    posy: 6
+  build-owned:
+    name: "&7Построить в собственности"
+    material: IRON_PICKAXE
+    lore:
+      - "&bЭта настройка позволяет &3СТРОИТЬ"
+      - "&bтолько там, где игрок писал /k claim"
+    enabled:
+      condition: enabled
+      glow: true
+    posx: 5
+    posy: 6
+
   back:
-    name: "&2Вернуться"
+    name: "&cНазад"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6Вернуться в меню рангов."
+      - ""
     posx: 9
     posy: 1

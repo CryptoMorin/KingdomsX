@@ -4,155 +4,185 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
 
 options:
   glory:
-    name: "&3&lDICSŐSÉG"
+    name: "&3Dicsőség"
     material: NETHER_STAR
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - ''
-      - "&e1. szint: &fMobok megölése esetén x2 több XP-t kapsz."
-      - "&e2. szint: &fMobok megölése esetén x4 több XP-t kapsz."
+      - "&21. szint&8: &6A területeden a nem játékosok megölése"
+      - "           &62x annyi tapasztalatot ér."
+      - "&22. szint&8: &6A területeden a játékosok megölése"
+      - "           &64x annyi tapasztalatot ér."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 3
     posy: 1
   anti-trample:
-    name: "&a&lFARM VÉDELEM"
+    name: "&aLetaposásvédelem"
     material: WHEAT_SEEDS
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
+      - "&21. szint&8: &6A megművelt talajt a"
+      - "a játékosok nem tudják kitaposni."
+      - ''
+      - "&22.szint&8: &6Továbbiakban a területeden"
+      - "kivűl levő dugattyúk nem fognak működni."
       - ""
-      - "&e1. szint: &fA növenyeket nem tudják kitaposni a játékosok."
-      - "&e2. szint: &fA királyságodon kívüli dugyattyúk nem fognak működni."
-      - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 4
     posy: 1
   nexus-guards:
-    name: "&4&lNEXUS ŐRZŐK"
+    name: "&4Nexus Őrzők"
     material: DIAMOND_AXE
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "Őrök idéződnek meg véletlenszerúen, ha egy"
-      - "ellenséges játékos lép a királyságodba."
+      - "&6Amikor valaki belép a Nexusod"
+      - "területére, akkor a normál őrzőknél"
+      - "erősebbek jelennek meg."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
+    posx: 5
+    posy: 1
+  guards:
+    name: "&eŐrök"
+    material: IRON_AXE
+    sounds:
+      max-level: BLOCK_NOTE_BLOCK_BASS
+      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
+      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&6Az Őrök véletlenszerűen jelennek"
+      - "meg, hogy megvédjék a királyságot"
+      - "a nem szövetséges belépőktől."
+      - ""
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 6
     posy: 1
   insanity:
-    name: "&c&lŐRÜLET"
+    name: "&cŐrület"
     material: REDSTONE
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "Az Erőtérre idéződő őrzők"
-      - "Erő I-et kapnak 10 másodpercre."
+      - "&6Védők és a Nexus őrzők jelennek"
+      - "meg az erőtér területén akik Erő I"
+      - "hatás alatt lesznek 10 másodpercre."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 7
     posy: 1
 
   invasion-teleportation:
-    name: "&6&lINVÁZIÓS TELEPORT"
+    name: "&3Inváziós teleport"
     material: ENDER_PEARL
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "Csökkenti a &e/k tp &fteleportáció idejét"
-      - "minden fejlesztés után.."
+      - "&2Minden fejlesztés után csökkent a &e/k tp"
+      - "&2teleportáció késleltetési ideje."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 3
     posy: 2
+  invasions:
+    name: "&3Inváziók"
+    material: DIAMOND_SWORD
+    sounds:
+      max-level: BLOCK_NOTE_BLOCK_BASS
+      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
+      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&2Királyságod &6%invasion-limit% &2alkalommal ostromolhat"
+      - "&2Elhasznált ostromok&8: &6%invasions%"
+      - "&2Visszatöltési idő frissítése&8: &6%invasion-refresh-cooldown%"
+      - ""
+      - "&2Cost&8: &6%cost%"
+      - "&2Level&8: &6%level%"
+    posx: 2
+    posy: 2
   anti-explosion:
-    name: "&5&lROBBANÁS VÉDELEM"
+    name: "&5Robbanásvédelem"
     material: GUNPOWDER
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "&e1. szint: &fAmennyiben egy Creeper"
-      - "felrobban a királyságod területén"
-      - "az nem fog rombolni és sebezni."
+      - "&21. szint&8: &7A királyságod területén"
+      - "a creeper-ök nem tudnak rombolni."
       - ""
-      - "&e2. szint: &fA TNT-k nem fognak robbani."
-      - "De sebzik a közelben lévő ellenségeket."
+      - "&22. szint&8: &7A királyságod területén"
+      - "a TNT-ék nem tudnak rombolni."
       - ""
-      - "&e3. szint: &fMegvédi a királyságod állatait"
-      - "a robbanásoktól."
+      - "&23. szint&8: &7Megvédi a királyságod"
+      - "területén levő tagokat, állatokat és a"
+      - "csapdába esett szörnyeket a robbanásoktól."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 4
     posy: 2
   max-claims:
-    name: "&e&lMAX FOGLALÁSOK"
+    name: "&3Max foglalások"
     material: MAP
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "&fMegnöveli a maximum fogalások számát"
-      - "&62-vel &fminden fejlesztés után."
+      - "&6Minden fejlesztés &22&6-vel növeli"
+      - "az elfoglalható területek számát."
       - ""
-      - "&eJelenlegi maximum: &f%kingdoms_max_lands%"
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
-    posx: 5
+      - "&2Aktuális max terület&8: &6%kingdoms_max_lands%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
+    posx: 8
     posy: 2
   max-members:
-    name: "&d&lMAX TAGOK"
+    name: "&3Max játékosok"
     material: PLAYER_HEAD
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
+      - "&6Minden fejlesztés 3-al emeli a helyet."
       - ""
-      - "&fMinden fejlesztés 2 új helyet jelent."
-      - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 6
     posy: 2
   chest-size:
-    name: "&4&lNEXUS LÁDA MÉRET"
+    name: "&3Nexus láda mérete"
     material: ENDER_CHEST
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&f"
-      - "Megnöveli a Nexus láda"
-      - "méretét."
+      - "&6Megnöveli a Nexus láda"
+      - "maximális méretét."
       - ""
-      - "&eÁr: &f%cost%"
-      - "&eSzint: &f%level%"
+      - "&2Költség&8: &6%cost%"
+      - "&2Szint&8: &6%level%"
     posx: 7
     posy: 2
 
@@ -161,7 +191,7 @@ options:
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6Vissza a nexus menübe."
+      - "&6Vissza a Nexus menübe."
     posx: 5
     posy: 3
   cyan-glass:

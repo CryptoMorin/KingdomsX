@@ -1,0 +1,49 @@
+title: "&3Ostromágyú"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+interactable: [ 2 ] # The ammo slot
+
+options:
+  sit:
+    name: "&2Beül"
+    lore:
+      - "&7Beülés az ágyúba a"
+      - "lővés megkezdéséhez."
+    material: BRICK_STAIRS
+    slot: 0
+  ammo:
+    name: "&4-------->"
+    material: RED_STAINED_GLASS_PANE
+    lore:
+      - "&2Tegyél tűzgolyót ebbe a"
+      - "nyilásba az ágyú felöltéséhez."
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Fejlesztés&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Pajzs károsítás&8: &6%shield-damage% &7➔ &6%next-shield-damage%"
+        - "&7⚫ &2Töltési idő&8: &6%cooldown% &7➔ &6%next-cooldown%"
+        - "&7⚫ &2Károsítás&8: &6%damage% &7➔ &6%next-damage%"
+        - "&7⚫ &2Hátralökés&8: &6%knockback% &7➔ &6%next-knockback%"
+        - ""
+        - "&7⚫ &2Max szint&8: &6%max-level-roman%"
+        - "&7⚫ &2Költség&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Szint&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Pajzs károsítás&8: &6%shield-damage%"
+        - "&7⚫ &2Töltési id&8: &6%cooldown%"
+        - "&7⚫ &2Károsítás&8: &6%damage%"
+        - "&7⚫ &2Hátralökés&8: &6%knockback%"
+  break:
+    name: "&4Kiütés"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6A struktúra kiütése."
+    slot: 4

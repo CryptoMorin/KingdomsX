@@ -1,0 +1,82 @@
+disable-shift-click: bool
+remove-unclaimed: bool
+to-inventory-on-break: bool
+total-limit-per-land: int
+
+structures:
+  (required): [ nexus, national-nexus ]
+  (values):
+    name: str
+    type: str #TODO Structure(type)
+    particles:
+      1:
+        place:
+          particle: str
+          count: int
+          offset: str
+        break:
+          particle: str
+          count: int
+          offset: str
+    sounds:
+      1:
+        place: str
+        break: str
+    block:
+      (keys): int
+      (required): [ '1' ]
+    hologram:
+      (keys): int
+      (required): [ '1' ]
+      (values):
+        lines: list
+        height: decimal
+
+  extractor:
+    generator:
+      (required): [ '1' ]
+      (keys): int
+      (values):
+        amount: int
+        every: str
+
+  warppad:
+    teleport-delay: int
+    teleport-fuel-cost: str
+    other-world-distance-factor: int
+    fuel:
+      material: Material
+      fill-amount-per-item: int
+
+  regulator:
+    auto-fill-cost: Math
+
+  siege-cannon:
+    shield-damage:
+      1: Period
+      2: Period
+      3: Period
+    
+    upgrade-cost: Math
+    
+    explosion-radius:
+      1: int
+      2: int
+      3: int
+    
+    invalid-ammo-message: str
+    damage: Math
+    knockback: Math
+    
+    cooldown:
+      1: int
+      2: int
+      3: int
+    
+    actionbar:
+      sit: str
+      fire: str
+      cooldown: str
+      not-loaded: str
+    ammo:
+      material: Material

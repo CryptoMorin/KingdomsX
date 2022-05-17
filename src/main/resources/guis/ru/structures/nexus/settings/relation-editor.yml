@@ -1,156 +1,161 @@
-title: "&8-=( &7Редактор отношений &8)=-"
+title: "&9Редактор отношений"
 rows: 1
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
-  fly:
-    enabled:
-      condition: enabled
-      name: "&2Полёт&8: &2Включён"
-      material: ELYTRA
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Позволяет королевству"
-        - "летать на Ваших землях."
-    else:
-      name: "&2Полёт&8: &cВыключен"
-      material: ELYTRA
-      lore:
-        - "&7Позволяет королевству"
-        - "летать на Ваших землях."
-    posx: 1
-    posy: 1
+  #  fly:
+  #   Включено:
+  #     condition: "enabled"
+  #     name: "&2Fly&8: &2Включено"
+  #     material: ELYTRA
+  #     flags: [ HIDE_ENCHANTS ]
+  #     enchants:
+  #       DURABILITY: 1
+  #     lore:
+  #       - "&7Allow kingdom flight in"
+  #       - "your land."
+  #   else:
+  #     name: "&2Fly&8: &cВыключено"
+  #     material: ELYTRA
+  #     lore:
+  #       - "&7Allow kingdom flight in"
+  #       - "your land."
+  #   posx: 1
+  #   posy: 1
   build:
-    enabled:
-      condition: enabled
+    Включено:
+      condition: "enabled"
       name: "&2Строительство&8: &2Включено"
-      material: DIAMOND_PICKAXE
+      material: IRON_PICKAXE
       flags: [ HIDE_ENCHANTS ]
       enchants:
         DURABILITY: 1
       lore:
-        - "&7Позволяет строить на Ваших землях."
+        - "&7Разрешает строить на вашей территории"
     else:
       name: "&2Строительство&8: &cВыключено"
       material: DIAMOND_PICKAXE
       lore:
-        - "&7Позволяет строить на Ваших землях."
-    posx: 2
+        - "&7Разрешает строить на вашей территории"
+    posx: 3
     posy: 1
   ceasefire:
-    enabled:
-      condition: enabled
+    Включено:
+      condition: "enabled"
       name: "&2Прекращение огня&8: &2Включено"
-      material: DIAMOND_SWORD
+      material: IRON_SWORD
       flags: [ HIDE_ENCHANTS ]
       enchants:
         DURABILITY: 1
       lore:
-        - "&7Отключение дружеского огня."
+        - "&7Отключить дружественный огонь."
     else:
       name: "&2Прекращение огня&8: &cВыключено"
-      material: DIAMOND_SWORD
+      material: IRON_SWORD
       lore:
-        - "&7Отключение дружеского огня."
-    posx: 3
+        - "&7Отключить дружественный огонь"
+    posx: 4
     posy: 1
   interact:
-    enabled:
-      condition: enabled
+    Включено:
+      condition: "enabled"
       name: "&2Взаимодействие&8: &2Включено"
       material: CAULDRON
       flags: [ HIDE_ENCHANTS ]
       enchants:
         DURABILITY: 1
       lore:
-        - "&7Разрешить взаимодействие для открытия сундуков."
+        - "&7Разрешить блокировать взаимодействие"
+        - "для открытия контейнеров"
     else:
       name: "&2Взаимодействие&8: &cВыключено"
       material: CAULDRON
       lore:
-        - "&7Разрешить взаимодействие для открытия сундуков."
-    posx: 4
-    posy: 1
-  use:
-    enabled:
-      condition: enabled
-      name: "&2Исользование&8: &2Включено"
-      material: LEVER
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Позволяет использовать блоки."
-        - "Такие как, двери, рычаги, кнопки."
-    else:
-      name: "&2Исользование&8: &cВыключено"
-      material: LEVER
-      lore:
-        - "&7Позволяет использовать блоки."
-        - "Такие как, двери, рычаги, кнопки."
+        - "&7Разрешить блокировать взаимодействие"
+        - "для открытия контейнеров"
     posx: 5
     posy: 1
-  turret-ceasefire:
-    enabled:
-      condition: enabled
-      name: "&2Прекращение огня турелей&8: &2Включено"
-      material: SPECTRAL_ARROW
+  use:
+    Включено:
+      condition: "enabled"
+      name: "&2Использование&8: &2Включено"
+      material: LEVER
       flags: [ HIDE_ENCHANTS ]
       enchants:
         DURABILITY: 1
       lore:
-        - "&7Отключение дружеского огня для турелей."
+        - "&7Разрешить использование блоков"
+        - "Такие как двери, уровни и кнопки"
     else:
-      name: "&2Прекращение огня турелей&8: &cВыключено"
-      material: SPECTRAL_ARROW
+      name: "&2Использование&8: &cВыключено"
+      material: LEVER
       lore:
-        - "&7Отключение дружеского огня для турелей."
+        - "&7Разрешить использование блоков"
+        - "Такие как двери, уровни и кнопки"
     posx: 6
     posy: 1
-  manage-turrets:
-    enabled:
-      condition: enabled
-      name: "&2Управление турелями&8: &2Включено"
-      material: ARROW
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Позволяет размещать, ломать и"
-        - "взаимодействовать с турелями."
-    else:
-      name: "&2Управление турелями&8: &cВыключено"
-      material: ARROW
-      lore:
-        - "&7Позволяет размещать, ломать и"
-        - "взаимодействовать с турелями."
-    posx: 7
-    posy: 1
+  #  turret-ceasefire:
+  #    Включено:
+  #      condition: "enabled"
+  #      name: "&2Turret Ceasefire&8: &2Включено"
+  #      material: SPECTRAL_ARROW
+  #      flags: [ HIDE_ENCHANTS ]
+  #      enchants:
+  #        DURABILITY: 1
+  #      lore:
+  #        - "&7Disable friendly fire for turrets."
+  #    else:
+  #      name: "&2Turret Ceasefire&8: &cВыключено"
+  #      material: SPECTRAL_ARROW
+  #      lore:
+  #        - "&7Disable friendly fire for turrets."
+  #    posx: 8
+  #    posy: 1
+  #  manage-turrets:
+  #    Включено:
+  #      condition: "enabled"
+  #      name: "&2Manage Turrets&8: &2Включено"
+  #      material: ARROW
+  #      flags: [ HIDE_ENCHANTS ]
+  #      enchants:
+  #        DURABILITY: 1
+  #      lore:
+  #        - "&7Allow breaking, placing and"
+  #        - "interacting with turrets."
+  #    else:
+  #      name: "&2Manage Turrets&8: &cВыключено"
+  #      material: ARROW
+  #      lore:
+  #        - "&7Allow breaking, placing and"
+  #        - "interacting with turrets."
+  #    posx: 9
+  #    posy: 1
   manage-structures:
-    enabled:
-      condition: enabled
-      name: "&2Управление структурами&8: &2Включено"
+    Включено:
+      condition: "enabled"
+      name: "&2Работа со структурами&8: &2Включено"
       material: REDSTONE_LAMP
       flags: [ HIDE_ENCHANTS ]
       enchants:
         DURABILITY: 1
       lore:
-        - "&7Позволяет ломать, размещать и взаимодействовать со структурами."
+        - "&7Разрешить ломать, размещать"
+        - "и взаимодействовать со структурами."
     else:
-      name: "&2Управление структурами&8: &cВыключено"
+      name: "&2Работа со структурами&8: &cВыключено"
       material: REDSTONE_LAMP
       lore:
-        - "&7Позволяет ломать, размещать и взаимодействовать со структурами."
-    posx: 8
+        - "&7Разрешить ломать, размещать"
+        - "и взаимодействовать со структурами."
+    posx: 7
     posy: 1
 
   back:
-    name: "&2Вернуться"
+    name: "&cНазад"
     material: PLAYER_HEAD
+    sound: default
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6Вернуться в меню Нексуса."
+      - ""
     posx: 9
     posy: 1

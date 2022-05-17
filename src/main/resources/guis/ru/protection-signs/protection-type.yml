@@ -1,0 +1,69 @@
+title: "&8-=[ &5Тип защиты &8]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  protected:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore:
+        - "&7Этот блок будет защищен от всех игроков,"
+        - "&7если только они не будут добавлены"
+        - "&7вручную для доступа к блоку."
+      material: OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&4%protection%"
+      material: OAK_SIGN
+      lore:
+        - "&7Этот блок будет защищен от всех игроков,"
+        - "&7если только они не будут добавлены"
+        - "&7вручную для доступа к блоку."
+    slot: 1
+  everyone-in-kingdom:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore:
+        - "&7Этот блок будет защищен от всех игроков,"
+        - "&7которые не находятся в вашем королевстве,"
+        - "&7если только они не будут добавлены"
+        - "&7вручную для доступа к блоку."
+      material: SPRUCE_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: SPRUCE_SIGN
+      lore:
+        - "&7Этот блок будет защищен от всех игроков,"
+        - "&7которые не находятся в вашем королевстве,"
+        - "&7если только они не будут добавлены"
+        - "&7вручную для доступа к блоку."
+    slot: 2
+  everyone:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore:
+        - "&7К этому блоку могут получить доступ все,"
+        - "&7кто находится за пределами или внутри вашего"
+        - "&7королевства, если они не добавлены вручную,"
+        - "&7чтобы не иметь доступа к этому блоку."
+      material: DARK_OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: DARK_OAK_SIGN
+      lore:
+        - "&7К этому блоку могут получить доступ все,"
+        - "&7кто находится за пределами или внутри"
+        - "&7вашего королевства, если они не добавлены"
+        - "&7вручную, чтобы не иметь доступа к этому блоку."
+    slot: 3

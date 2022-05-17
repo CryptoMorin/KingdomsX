@@ -1,0 +1,131 @@
+connection-radius: int
+distance: int
+disabled-worlds:
+  (type): list
+  (elements): str
+claim-on-create: int
+starter-free: int
+confirmation: str
+fill:
+  max-distance: int
+  max-claims: int
+
+square-max-radius: int
+line-max-distance: int
+corner-max-claims: int
+coordinates-claim-max-distance: int
+protected-region-radius: int
+history:
+  enabled: bool
+  limit: int
+
+max-claims:
+  default: str
+
+build-in-claimed-only:
+  place: bool
+  break: bool
+  
+  unclaimed-build-radius: int
+  
+  charges:
+    enabled: bool
+    in-range: bool
+    
+    placing:
+      resource-points: int
+      money: int
+    breaking:
+      resource-points: int
+      money: int
+
+actionbar:
+  auto-claim: bool
+  auto-unclaim: bool
+  keep: bool
+
+beacon-protected-effects: bool
+potion-protected-effects:
+  (type): set
+  (elements): Potion
+
+resource-points:
+  refund-unclaim: int
+  claims: int
+  auto-claims: int
+
+money:
+  refund-unclaim: int
+  claims: int
+  auto-claims: int
+
+unclaim-confirmation:
+  turrets: bool
+  structures: bool
+  home: bool
+  nexus: bool
+
+unclaim-all:
+  announce: bool
+  keep-nexus-land: bool
+  cost: int
+  confirm:
+    enabled: bool
+    time: int
+    gui: bool
+
+indicator:
+  ignore-worldguard-regions: bool
+  kingdomless-enabled: bool
+  
+  default:
+    name: str
+    method: str
+  
+  particles:
+    horizontal:
+      name: str
+      particle: str
+      count: int
+      height: int
+      delay: int
+      duration: int
+      rates:
+        vertical: int
+        horizontal: int
+    vertical:
+      name: str
+      particle: str
+      count: int
+      height: int
+      delay: int
+      duration: int
+      rates:
+        vertical: int
+        horizontal: int
+  
+  visualizer:
+    enabled: bool
+    name: str
+    floor-check-height: int
+    border: bool
+    on-claim: bool
+    stay: int
+  
+  (values):
+    particles:
+      horizontal:
+        color: str
+      vertical:
+        color: str
+
+    title:
+      title: str
+      subtitle: str
+      fade-in: int
+      stay: int
+      fade-out: int
+    
+    actionbar: str
+    corner-block: Material
+    two-block: Material

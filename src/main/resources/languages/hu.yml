@@ -1,24 +1,13 @@
-#   _  ___                 _                     
-#  | |/ (_)_ __   __ _  __| | ___  _ __ ___  ___ 
-#  | ' /| | '_ \ / _` |/ _` |/ _ \| '_ ` _ \/ __|
-#  | . \| | | | | (_| | (_| | (_) | | | | | \__ \
-#  |_|\_\_|_| |_|\__, |\__,_|\___/|_| |_| |_|___/
-#                |___/                           
-#                 
-#  This is a community-made translation file, which may be outdated!
-#  Messages are not guaranteed to be 100% accurate and complete, and some
-#  might be broken due to usage of outdated placeholders.
-#  If you are a native Hungarian speaker and would like to contribute to
-#  updating this file, it would be very much appreciated!
 prefix: '&7[&6Kingdoms&7] &2'
 permissions:
-  claim: '&cNem tudsz elfoglalni területet.'
-  unclaim: '&cNem tudsz elhagyni területet.'
+  claim: '&cNem tudsz lefoglalni területet.'
+  unclaim: '&cNem tudsz felszabadítani területet.'
   home: '&cNem használhatod a királyságod otthonát.'
   set-home: '&cNem állíthatod be a királyságod otthonát.'
   lore: '&cNem változtathatod meg a királyságod leírását.'
   nation: '&cNem kezelheted a nemzetet.'
-  build: '&cA királyságod területén nem építhetsz.'
+  build: '&cNem építhetsz a királyságod területén.'
+  build-owned: '&cNem építhetsz a királyságod területén.'
   nexus-build: '&cNem építhetsz a nexusod területén.'
   nexus: '&cNem változtathatod meg a királyságod nexus helyét.'
   broadcast: '&cNem üzenhetsz a királyságod alattvalóinak.'
@@ -26,70 +15,141 @@ permissions:
   exclude-tax: ~Nem használt üzenet
   protection-signs: ~Nem használt üzenet
   edit-ranks: '&cNem szerkesztheted a rangokat és jogokat.'
+  relation-attributes: '&cNem szerkesztheted a kapcsolati tulajdonságokat.'
   manage-ranks: '&cNem szerkesztheted a rangokat.'
   upgrade: '&cNem fejleszthetsz.'
   enemy: '&cNem üzenhetsz háborút más királyságoknak.'
   truce: '&cNem használhatod ezt a parancsot /k truce.'
-  fly: '&cNem használhatod a királyság repülés módot'
+  fly: '&cNem használhatod a királyság repülés módját'
   settings: '&cNincs jogod szerkeszteni a beállításokat.'
   donate: '&cNem kezelheted a Nexus pontokat.'
   invade: '&cNem támadhatsz meg más királyságokat.'
-  invite: '&cNem hívhatsz meg embereket.'
+  invite: '&cNem hívhatsz meg más játékosokat a királyságba.'
   kick: '&cNem rúghatsz ki tagokat.'
   nexus-chest: '&cNem használhatod a Nexus ládát.'
-  outpost: '&cNem használhatod az előőrsöt.'
-  protected-chests: '&cNem férsz hozzá a levédett ládához.'
-  structures: '&cNem használhatod a struktúrákat.'
-  turrets: '&cNem használhatod a tornyokat.'
-  withdraw: '&cNincs jogod pénzt kivenni.'
-  relation-attributes: '&cEzt nem szerkesztheted.'
-permissions-interact: '&cNem engedélyezett számodra az interakció.'
-permissions-use: '&cNem engedélyezett számodra  ennek a használata.'
+  outpost: '&cNem használhatod az előőrsöket.'
+  protected-chests: '&cNem férsz hozzá a levédettt ládához.'
+  structures: '&cNem használhatsz struktúrákat.'
+  turrets: '&cNem használhatsz tornyokat.'
+  withdraw: '&cNincs jogod pénzt kivenni a királyságodból.'
+permissions-interact: '&cA királyság területén nem engedélyezett számodra az interakció'
+permissions-use: '&cNem engedélyezett számodra ennek a használata a királyság területén.'
 tax:
-  kick: '&cNem tudtad fizetni a királyság adóit, ezért kirúgásra kerültél.'
+  kick: '&cNem tudtad fizetni a királyság adóit ezért kirúgásra kerültél.'
   reminder: |2
 
-    &4&l&nAttention&8&l: &c&lAz adók hamarosan begyűjtésre kerülnek. Hátralévő idő: &e%time%
+    &4&l&nFigyelem&8&l: &c&lAz adók hamarosan begyűjtésre kerülnek. Hátralévő idő: &e%time%
   total: '&2A királyságod összesen &6$%tax% &2adót gyűjtött be.'
   paid: '&e$%tax% &cadó levonásra került.'
   excluded-permission: '&2Neked nem kellett adót fizetned.'
-  excluded-new: '&2Neked még nem kellett adót fizetned, mivel új vagy.'
+  excluded-new: '&2Neked még nem kellett adót fizetned mivel új vagy.'
   kingdom:
-    age: '&5A királyságodnak még nem kell adót fizetnie, mivel még új.'
+    age: '&5A királyságodnak még nem kell adót fizetnie mivel még új.'
     paid: |-
       &2Királyságnak befizetett adók összege: &6$%tax%.
       Királyság új egyenlege: &6$%kingdoms_fancy_bank%
     paid-nation: |
       &2Nemzetnek befizetett adók összege &6$%tax%.
-       Királyság új egyenlege: &6$%kingdoms_fancy_bank%
+      Királyság új egyenlege: &6$%kingdoms_fancy_bank%
       &2Nemzet új egyenlege: &6$%kingdoms_fancy_nation_bank%
-    kicked: '&e%kingdom% &ckirályság nem tudta fizetni az adókat ezért kirúgásra került.'
-    # &e%kingdoms_fancy_bank% &8< $%tax%'
+    kicked: '&e%kingdom% &ckirályság kirúgásra került a nemzetből mert nem tudta fizetni
+      az adókat, ugyanis&8: &e%kingdoms_fancy_bank% &8< $%tax%'
     disbanded: '&cA királyságod feloszlott mivel nem tudta fizetni az adókat: &e$%tax%'
     disbanded-announce: '&e%kingdom% &ckirályság nem tudta fizetni az adókat ezért
-      feloszlott: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+      feloszlott, ugyanis&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
     kicked-announce: '&e%kingdom% &ckirúgásra került a(z) &e%nation% &cnemzetből mivel
       nem tudta fizetni az adókat: &e%kingdoms_fancy_bank% &8< &e$%tax%'
   nation:
-    age: '&5A nemzetednek még nem kell adót fizetnie, mivel még új.'
+    age: '&5A nemzetednek még nem kell adót fizetnie mivel még új.'
     paid: |-
-      &2A total of &6$%tax% &2nation tax has been paid.
+      &2Összesen &6$%tax% &2nemzeti adó lett befizetve.
       Nemzet új egyenlege: &6$%kingdoms_fancy_nation_bank%
-    disbanded: '&cA nemzeted feloszlott, mivel nem tudta fizetni az adókat: &e$%tax%'
+    disbanded: '&cA nemzeted feloszlott mivel nem tudta fizetni az adókat: &e$%tax%'
     disbanded-announce: '&e%nation% &cnemzet feloszlott mivel nem tudta fizetni az
       adókat: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
   notifications: |-
     &8[&4FIGYELEM&8] &cA királyságodnak nincs elég pénze &7(&e%kingdoms_fancy_bank%&7) &cbefizetendő adó: &e%tax%
-    &cAmennyiben nem tudsz elég pénzt beszedni az alattvalóktól, a királyságod feloszlik.
-  kick-announce: '&e%player% &ckirúgásra került, mivel nem tudta fizzetni az adókat:
+    &cA királyságod feloszlik amennyiben nem tudsz elég pénzt beszedni az alattvalóktól.
+  kick-announce: '&e%player% &ckirúgásra került mivel nem tudta fizetni az adókat:
     &e%tax%'
   member-paid: '&6$%tax% &2adó befizetésre került.'
-place-in-claimed-only: '&cCsak a lefoglalt területen tudsz építkezni.'
-break-in-claimed-only: '&cCsak a lefoglalt területen tudsz rombolni.'
-only-one-structure-per-land: '&cEgy területen csak egy struktúrát helyezhetsz el.'
+in-claim-only:
+  placing:
+    general: '&cCsak lefoglalt területen lehet építeni.'
+    radius: '&cCsak lefoglalt területen lehet építeni vagy attól &6%radius% &cchunk-nyi
+      körzetben.'
+    charges: '&cSzükséged van &e$%money% &cpénzre, továbbá a királyságodnak &e%rp%
+      &cNexus pontra, hogy a lefoglalt területen kivűl blokkokat lehessen letenni.'
+  breaking:
+    charges: '&cSzükséged van &e$%money% &cpénzre, továbbá a királyságodnsak &e%rp%
+      &cNexus pontra, hogy a lefoglalt területen kívű blokkokat lehessen kiütni.'
+    radius: '&cCsak lefoglalt területen lehet építeni vagy attól &6%radius% &cchunk-nyi
+      körzetben.'
+    general: '&cCsak lefoglalt területen lehet építeni.'
+structures:
+  limit: '&cLefoglalt területenként csak &e%limit% &cstruktúrát lehet lehelyezni.'
+  specific-limit: '&cLefoglalt területenként csak &e%limit% %style% &ctípusú struktúra
+    lehet.'
+  specific-total-limit: '&cEzen a területen csak &e%limit% %style% &ctípusú struktúra
+    lehet.'
+  block-occupied: '&cNem tudsz struktúrát lerakni ide. Egy &e%material% &cblokk már
+    le lett helyezve.'
+  enter-name: '&2Írd be a struktúra új nevét.'
+  name-set: '&2A struktúra új neve&8: &6%name%'
+  disabled-world: '&cNem tudsz struktúrát lehelyezni egy tiltott világban.'
+  upgrade:
+    max-level: '&cEz a struktúra már fel lett fejlesztve a maximális szintre.'
+  upgrade-not-enough-resource-points: '&cKellene &e%cost% &cNexus pont a fejlesztéshez.'
+  upgrade-upgraded: '&2A struktúra új szintje: &6%level%'
+turrets:
+  block-occupied: '&cNem lehet tornyot letenni. Egy &e%material% &cblokk már le lett
+    helyezve ide.'
+  limit: '&cEzen a területen csak &e%limit% &cágyút helyezhetsz le.'
+  already-placed: '&cEzen a helyen már van egy torony.'
+  cant-place: '&cErre a blokkra nem rakhatsz tornyot. Kérlek helyezd el egy &ekerítésen
+    &cvagy egy &ekőfalon.'
+  disabled-world: '&cNem tudsz tornyot lehelyezni egy tiltott világban.'
+locations:
+  normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%'
+  chunk: '&6%world%&8, &6%x%&8, &6%z%'
+placeholders:
+  top-not-found: '&cNincs kiráéyság a felső pozícióban&8: &e%position%'
+siege-cannon:
+  ready-fire: '&2Az ágyú tüzelésre kész.'
+  sit: '&2Az ágyúban vagy. Tölteni magadnak is tudod, de ezt más is megteheti.'
+  occupied: '&cValaki már ül az ágyúban.'
+  masswar-only: '&cHáború alatt csak ostromágyúk használhatóak.'
+  already-loaded: '&cAz ágyú már töltött.'
+  not-ammo: '&cAz ágyúk csak tűzgolyóval tölthetőek.'
+  hit:
+    unclaimed-land: '&cAz ágyú eltalált egy nem elfoglalt területet.'
+    no-shield: '&2Az ágyú eltalálta a(z) &6%kingdoms_name% &2királyságot aminek nem
+      volt pajzsa.'
+    pacifist: '&cAz ágyú eltalálta a(z) &e%kingdoms_name% &ckirályságot, de az egy
+      békés királyság.'
+    destroyed-shield: '&2Az ágyú eltalálta a(z) &6%kingdoms_name% &2királyságot aminek
+      a pajzsa megsemmisült.'
+    damaged-shield: '&2CAz ágyú eltalálta a(z) &6%kingdoms_name% &2királyságot. Hátralévő
+      pajzs&8: &6%kingdoms_shield_time_left%'
+    damaged-shield-notify: '&e%attacker-kingdom% &ckirályság eltalálta a &e%attacked-chunk%&c
+      chunk-on található területedet. Hátralévő pajzs&8: &6%kingdoms_shield_time_left%'
+  friendly:
+    fire: '&cAz ágyú eltalált egy baráti területet (nincs ostrom tulajdonság) ami
+      a &e%kingdom% &2királysághoz tartozik.'
+lands:
+  build-own-only: '&cCsak lefoglalt területre lehet építeni.'
+  portal-protection: '&cA portálod teleportációja törlésre került mert ez a portál
+    egy barátságtalan királyság területére vezet.'
+  gamemode-protection: '&cA játékmód megváltozott amikor idegen területre léptél.'
+  gamemode-protection-activated: '&cNem használhatsz kreatív módot ezen a területen.'
+  nation-zone:
+    place: '&cNem lehet lerakni blokkokat a(z) &e%nation% &2nemtet zónájában.'
+    break: '&cNem lehet kiütni blokkokat a(z) &e%nation% &2nemtet zónájában.'
+    interact: '&cAz interakció nem engedélyezett a(z) &e%nation% &2nemzet zónájában.'
 other-kingdoms:
   place: '&cNem építkezhetsz más királyság területén.'
   break: '&cNem rombolhatsz más királyság területén.'
+  kill: '&cNem gyilkolhatsz &e%entity% &cmás királyság területén.'
   interact: '&cAz interakció nem engedélyezett más királyság területén.'
   use: '&cEzt nem használhatod más királyság területén.'
   structure:
@@ -100,19 +160,17 @@ other-kingdoms:
   nexus:
     break: '&2Zsákmányoltál &6%rp% &2NP-t a Nexus elpusztításával.'
   turret:
-    can-take: '&cEz a torony elvihető, mivel egy királyság sem birtokolja ezt a területet.'
+    can-take: '&cEz a torony elvihető mivel egy királyság sem birtokolja ezt a területet.'
     place: '&cNem helyezhetsz el ágyút más királyság területén.'
     interact: '&cNem nyithatod meg más királyság tornyát.'
     break: '&cNem szedhetsz fel ágyút más királyság területéről.'
-nation:
-  zone-place: '&cNem helyezhetsz el blokkokat a(z) &e%nation% nemzet területén'
-  zone-break: '&cNem üthetsz ki blokkokat a(z) &e%nation% nemzet területén'
-  zone-interact: '&cNem léphetsz interakcióba ezzel a(z) &e%nation% nemzet területén'
-turrets:
-  limit: '&cEzen a területen csak &e%limit% &cágyút helyezhetsz le!'
-  already-placed: '&cEzen a helyen már van egy torony.'
-  cant-place: '&cErre a blokkra nem rakhatsz tornyot. Kérlek helyezd el egy &ekerítésen
-    &cvagy egy &ekőfalon'
+guis:
+  creative: '&cNem nyithatod meg ezt a GUI-t kreatív módban.'
+  open-inventory-during-input: '&cNem nyithatsz leltárt felhasználói bevitel közben.'
+  command-during-input: '&cNem hajthatsz végre parancsokat felhasználói bevitel közben.'
+  pages:
+    next-page-not-available: '&cNincs több oldal. Max oldal&8: &e%pages%'
+    previous-page-not-available: '&cNincs több előző oldal.'
 protected-signs:
   cant-modify: '&cCsak a blokk tulajdonosa változtathatja meg a beállításokat.'
   already-protected: '&6Ez a blokk már védett.'
@@ -123,20 +181,43 @@ protected-signs:
   invalid-sign: '&cEzzel a táblával nem védheted le a ládádat.'
   invalid-block: '&cEzt a blokkot nem védheted le.'
   not-attached: '&cA táblát egy blokkra kell raknod a levédéshez.'
-  unclaimed: '&cNem használhatsz levédési táblákat szabad területeken.'
-  double-chest-protected: '&2Dupla láda levédédve.'
+  unclaimed: '&cNem használhatsz levédési táblákat el nem foglalt területeken.'
+  kingdom-items: Nem használhatsz védelmi táblákat a királyság tárgyain mint például
+    tornyokon vagy struktúrákon.
+  other-kingdoms: '&cNem használhatsz védelmi táblákat más királyság területén.'
+  cant-protect-double-chest: '&cA láda nem levédhető, mivel a fele kilóg a területedről.'
+  password:
+    invalid: '&cÉrvénytelen jelszó. Próbáld újra.'
+    cant-move: '&cNem mozoghatsz a jelszó megadása közben.'
+    error-429: '&cTúl sok sikertelen próbálkozás.'
+    in-cooldown: |-
+      &cJelszó szükséges a tárolóhoz való hozzáféréshez, viszont túl sok sikertelen próbálkozás volt.
+      Ennyi idő múlva próbáld újra&8: &e%cooldown%
+    required: '&cJelszó szükséges a tároló megnyitásához. Gépeld be a jelszót vagy
+      használd a hover:{&ecancel;&eMégsem;cancel} &cparancsot a művelet megszakításához.'
+    ask: '&6Gépeld be a jelszót vagy használd a hover:{&ccancel;&cMégsem;cancel}
+      &6parancsot a megszakításhoz és a hover:{&cremove;&cEltávolít;remove} &6parancsot
+      a jelszó törléséhez.'
+    container-only: '&cCsak konténerekre lehet jelszót beállítani mint például a &eláda,
+      tölcsér, kemence, stb.'
+    length: '&cA jelszó hosszának &e%min% &cés &e%max% &ckarakter között kell lennie.
+      &cMegadott&8: &e%length%'
+    removed: '&2A konténer jelszava törlésre került.'
+    not-set: '&cEhhez a védett blokkhoz nincs jelszó beállítva.'
+    set: '&2A konténer jelszava megváltozott.'
+  double-chest-protected: '&2Dupla láda levédve.'
   protection-type:
     already-using: '&cEz a blokk már védett ezzel a metódussal.'
-    changed: '&2Sikeresen megv��ltoztattad a levédés metódusát &e%protection%&c.'
+    changed: '&2Megváltozott a levédés metódusa a következőre: &e%protection%&c.'
   players:
     cleared: '&2Minden tag törölve.'
     removed: '&6%name% &2törölve lett a csoportból.'
-    limit: '&cNem adhatsz hozzá több mint &e%limit% &cembert a csoporthoz.'
+    limit: '&cNem adhatsz hozzá több mint &e%limit% &ctagot a csoporthoz.'
     include:
       included: '&6%name% &2hozzáadva a csoporthoz.'
       is-already-in-group: '&3%name% &cmár tagja a csoportnak.'
       owner: '&cTe vagy a blokk tulajdonosa.'
-      name: '&2Írd be a hozzáadandó ember nevét.'
+      name: '&2Írd be a hozzáadandó játékos nevét.'
     exclude:
       excluded: '&6%name% &2hozzáadva a kivételes csoporthoz.'
       is-already-in-group: '&e%name% &cmár tagja a csoportnak.'
@@ -145,88 +226,100 @@ protected-signs:
   kingdoms:
     cleared: '&2Minden királyság törölve.'
     removed: '&6%name% &2királyság törölve lett a csoportból.'
+    disbanded: '&cA &e%id% UUID-val rendelkező királyság automatikusan eltávolításra
+      került erről a tábláról mert már nem léteznek.'
     limit: '&cNem adhatsz hozzá több mint &e%limit% &ckirályságot a csoporthoz.'
     include:
       included: '&6%name% &2királyság hozzáadva a csoporthoz.'
-      is-already-in-group: '&3%name% &ckingdom is already in the group.'
+      is-already-in-group: '&3%name% &ckirályság már tagja a csoportnak.'
       owner: '&cA királyság felvételéhez egyszerűen változtasd meg a védelem típusát.'
       name: '&2Írd be a királyság nevét.'
       not-found: '&cEz a királyság nem található.'
     exclude:
-      excluded: '&6%name% &2királysághozzáadva a kivételes csoporthoz.'
-      is-already-in-group: '&e%name% &ckirályság már tagja a csoportnak.'
-      owner: '&cA királyság kivételesítéséhez egyszerűen változtasd meg a védelem
-        típusát'
-      name: '&2Írd be a kivételes királyság nevét.'
+      excluded: '&6%name% &2királyság kizárásra került a csoportból.'
+      is-already-in-group: '&e%name% &ckirályság már kizárásra került a csoportból.'
+      owner: '&cA királyság kizárásához egyszerűen változtasd meg a védelem típusát'
+      name: '&2Gépeld be a királyság nevét amit ki szeretnél zárni.'
       not-found: '&cEz a királyság nem található.'
-  cant-protect-double-chest: '&cA láda nem levédhető, mivel a fele kilóg a területedről.'
 top-rewards:
   kingdom: |-
-    &2A királyságod jutalmat kapott: &6$%money% &2 és &6%rp% &2Nexus pont. Királyság helyezése: &5%rank%
-    &2A királyság új egyenlege: &6$%kingdoms_fancy_bank%
-    &2Nexus pontok: &6%kingdoms_fancy_resource_points%
+    &2Királyságod jutalmat kapott: &6$%money% &2pénzt és &6%rp% &2Nexus pontot. Királyság helyezése: &5%rank%
+    &2Királyság új egyenlege: &6$%kingdoms_fancy_bank%
+    &2Királyság Nexus pontjai: &6%kingdoms_fancy_resource_points%
   nation: |-
-    &2A nemzeted jutalmat kapott: &6$%money% &2 és &6%rp% &2Nexus pont. Nemzet helyezsése: &5%rank%
-    &2A nemzet új egyenlege: &6$%kingdoms_fancy_nation_bank%
-    &2Nemzet pontok: &6%kingdoms_fancy_nation_resource_points%
+    &2Nemzeted jutalmat kapott: &6$%money% &2pénzt és &6%rp% &2Nexus pontot. Nemzet helyezsése: &5%rank%
+    &2Nemzet új egyenlege: &6$%kingdoms_fancy_nation_bank%
+    &2Nemzet Nexus pontjai: &6%kingdoms_fancy_nation_resource_points%
+join-leave-messages:
+  join:
+    kingdom: §8[§2◆§8]§8[%kingdoms_rank_color%%kingdoms_rank_symbol%§8] §2%displayname%
+    others: '&6%displayname% &2csatlakozott a szerverhez.'
+  leave:
+    kingdom: §8[§c◆§8]§8[%kingdoms_rank_color%%kingdoms_rank_symbol%§8] §c%displayname%
+    others: '&e%displayname% &celhagyta a szervert'
 upgrades:
-  powerup-upgrade: '&7Sikeresen feljebb fejlesztetted a(z) &e%powerup% &7extrát a
-    &e%level%. &7szintre!'
-  powerup-max: '&cextra elérte a maximum szintet! &e%powerup% &cextra elérte a maximum
-    szintet!'
-  powerup-not-enough-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a(z)
-    &e%powerup% &cextra fejlesztéséhez.'
-  champion-upgrade: '&7Sikeresen feljebb fejlesztetted a(z) &e%upgrade% &7bajnok extrát
-    a &e%level%. &7szintre.'
-  champion-max: '&cA(z) &e%upgrade% &cbajnok extra elérte a maximum szintet!'
-  champion-not-enough-resourcepoints: '&cNincs elég NP-d a(z) &e%upgrade% &cfejlesztés
-    bvégrehajtásához.'
-  misc-upgrade: '&7Sikeresen feljebb fejlesztetted a(z) &e%upgrade% &7extrát a &e%level%.
-    &7szintre.'
-  misc-enabled: '&6%upgrade% &2bekapcsolva.'
+  powerup-upgrade: '&2Ez (angol neve: &e%powerup%&2) fel lett fejlesztve a(z) &e%level%&7. szintre!'
+  powerup-max: '&cEz (angol neve: &e%powerup%&c) már elérte a maximális szintet!'
+  powerup-not-enough-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a(z) &e%powerup%
+    &cextra fejlesztéséhez.'
+  champion-upgrade: '&2Ez (angol neve: &e%upgrade%&2) fel lett fejlesztve a(z) &e%level%&2. szintre!'
+  champion-max: '&cEz (angol neve: &e%upgrade%&c) már elérte a maximum szintet!'
+  champion-not-enough-resourcepoints: '&cNincs elég NP-od a(z) &e%upgrade% &cfejlesztés
+    végrehajtásához.'
+  misc-upgrade: '&2Ezt (angol neve: &e%upgrade%&2) fel lett fejlesztve a(z) &6%level%&2. szintre.'
+  misc-enabled: '&6%upgrade% &2fejlesztése bekapcsolva.'
   misc-not-upgraded: '&cEz még nem lett kifejlesztve.'
   misc-cannot-be-disabled: '&cEz nem kapcsolható ki.'
   misc-disabled: '&e%upgrade% &ckikapcsolva.'
-  misc-max: '&cA(z) &e%upgrade% &cextra elérte a maximum szintet!'
+  misc-max: '&cEz (angol neve: &e%upgrade%&c) már elérte a maximum szintet!'
   misc-not-enough-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a(z) &e%upgrade%
     &cextra fejlesztéséhez.'
 champion-type:
-  changed: '&2A királyságod bajnoka megváltozott &6%old_champion% &2 --> &6%new_champion%'
-  already-in-use: '&cA királyságod már ezt a bajnokot használja &e%champion%'
+  changed: '&2A királyságod bajnoka megváltozott: &6%old_champion% &2 --> &6%new_champion%'
+  already-in-use: '&cA királyságod már ezt a bajnokot használja: &e%champion%'
 fly:
   enemies-nearby: '&cEllenségek vannak a közelben ezért a repülés kikapcsolásra került.'
-  out-of-land: '&cA repülés csak a királyság területén használható.'
+  charges-cant-afford: '&cMinden &e%interval% &cmásodperc repülés &e$%money% &cpénzbe
+    kerül.'
+  charges:
+    cant-afford-kingdom: '&cA királyságnak minden &e%interval% másodperc repüléshez
+      &e$%amount% összeggel kell rendelkeznie.'
+  out:
+    of-land: '&cA királyság repülését csak az elfoglalt területeken tudod használni.
+      A repülés kikapcsolásra került.'
   damage: '&cSebződtél ezért kikapcsoltuk a repülést.'
   warnings:
+    charges: '&cA repülés &e%counter% &cmásodperc múlva ki lesz kapcsolva mert nem
+      tudod fizetni a költségeit.'
     unfriendly-nearby:
       safe: '&2Most már biztonságban vagy az ellenséges játékosoktól.'
-      warn: '&cA repülésed kikapcsolásra kerül &e%counter% &cmásodperc múlva mivel
-        túl közel vagy egy ellenséghez.'
+      warn: '&cA repülés &e%counter% &cmásodperc múlva kikapcsolásra kerül mivel túl
+        közel vagy egy ellenséghez.'
     out-of-land:
-      safe: '&2Ezen a területen biztonsában vagy'
-      warn: '&cA repülésed kikapcsolásra kerül &e%counter% &cmásodperc múlva mivel
-        elhagytad a királyságod területét.'
+      safe: '&2Ezen a területen biztonságban vagy'
+      warn: '&cA repülés &e%counter% &cmásodperc múlva kikapcsolásra kerül mivel elhagytad
+        a királyságod területét. Fordulj vissza!'
 no-kingdom-reminder: '&cEmlékeztető: &eMég nem vagy egy királyság tagja sem.'
-structure-cant-break: '&cEzt a struktúrát nem ütheted ki'
 regulator:
   attributes:
     add-self: '&cNem adhatod hozzá önmagadat.'
     already-added: '&e%add% &cmár hozzá van adva.'
     add: '&2Kérlek addj meg egy játékosnevet.'
-    added: '&6%add% &2hozzá adva.'
+    added: '&6%add% &2hozzáadva.'
   interactions:
     add-self: '&cNem adhatod hozzá önmagadat.'
     already-added: '&e%add% &cmár hozzá van adva.'
     add: '&2Kérlek addj meg egy játékosnevet.'
-    added: '&6%add% &2hozzá adva.'
+    added: '&6%add% &2hozzáadva.'
 nexus:
   pacifism:
-    enable: '&6A királyságod mostantól pacifista uralkodási módot folytat!'
+    enable: '&6A királyságod mostantól békés uralkodási módot folytat!'
     disable: '&6A királyságod mostantól támadó uralkodási módot folytat!'
-    cooldown: '&cA királyságod nem lehetz pacifista. Hátralévő idő: &e%cooldown%'
+    cooldown: '&cA királyságod nem lehet békés még ennyi ideig: &e%cooldown%'
+    permanent: '&cA királyságod nem lehet békés még ennyi ideig: &e%cooldown%'
   home:
-    public: '&6A királyságod otthona mostantól &2publikus.'
-    not-public: '&6A királyságod mostantól &cnem publikus.'
+    public: '&6A királyságod otthona mostantól &2nyilvános.'
+    not-public: '&6A királyságod mostantól &cnem nyilvános.'
   cant-be-removed: Nem törölheted a Nexusodat.
   shield:
     enable: '&2Királyság pajzsa bekapcsolva.'
@@ -235,54 +328,52 @@ nexus:
     enable: '&6A csatlakozáshoz mostantól meghívó kell.'
     king-only: '&cCsak a király tudja szerkeszteni a beállításokat.'
     disable: '&6A csatlakozáshoz mostantól nem szükséges meghívó.'
-  structure-inventory-full: '&cAz eszköztárad televan!'
-  turret-inventory-full: '&cAz eszköztárad televan!'
-  structure-purchased: '&7Sikeresen megvetted a(z) &e%structure% &6struktúrát &e%cost%
-    &7NP-ért.'
-  structure-resourcepoints: '&cSzükséged van &e%cost% &cNP-re a struktúra
-    megvásárlásához.'
-  turret-resourcepoints: '&cSzükséged van &e%cost% &cNP-re az ágyú megvásárlásához.'
+  structure-inventory-full: '&cAz eszköztárad tele van!'
+  turret-inventory-full: '&cAz eszköztárad tele van!'
+  structure-purchased: '&6Megvetted a(z) &e%structure% &6struktúrát &2%cost% &6pontért.'
+  structure-resourcepoints: '&cSzükséged van &e%cost% &cpontra a struktúra megvásárlásához.'
+  turret-resourcepoints: '&cSzükséged van &e%cost% &cpontra az ágyú megvásárlásához.'
   turret-purchased: '&7Sikeresen megvetted a(z) &e%turret% &7ágyút &e%cost% &7áron!'
-  resourcepoints: '&7Összesen &e%amount% &7NP-t szereztetek.'
+  resource-points: '&e%amount% &6Nexus pont hozzá lett adva a királyság egyenlegéhez.'
   rank-editor:
-    enter-value: '@&6Írd be az új értéket vagy írd be hover:{&ccancel;&cMégsem;cancel}
-                   &6ahhoz, hogy megszakítsd a folyamatot.'
+    enter-value: '&6Írd be az új értéket vagy használd a hover:{&ccancel;&cMégsem;cancel}
+      &6parancsot, hogy megszakítsd a folyamatot.'
     max: '&cNem hozhatsz több rangot létre mint &e%limit%'
     other: '&cNem szerkesztheted más királyságok rangjait.'
     cannot-delete-rank: '&cNem törölheted ezt a rangot, mert nincs elég rang a királyságodban.'
     cannot-delete-king: '&cA király rangot nem törölheted.'
     cannot-delete-member: '&cAz alattvaló rangot nem törölheted.'
-    copy: '&2Sikeresen másoltad &6%copy_node% &2ide &6%rank_node%'
+    copy: '&2Sikeresen átmásoltad a &6%copy_node% &2ide: &6%rank_node%'
     length:
       node: '&cAz érték hosszúsága nem lehet több mint &e%limit%'
       name: '&cA név hosszúsága nem lehet több mint &e%limit%'
       color: '&cA szín hosszúsága nem lehet több mint &e%limit%'
-      symbol: '&cA szímbólum hosszúsága nem lehet hosszabb mint &e%limit%'
+      symbol: '&cA szimbólum hosszúsága nem lehet hosszabb mint &e%limit%'
     node:
       already-exists: '&cMár van egy rang ezzel az értékkel.'
     unknown-material: '&cNincs ilyen anyag: &e%material%'
     invalid:
       material: '&cNem használhatod ezt az anyagot: &e%material%'
-      max-claims: '&cA maximum begyűjthető területnek számnak kell lennie'
-      priority: '&cHelytelen priorítás. A priorításnak kissebnek kell lennie mint
-        1 &e%kingdoms_ranks% &cés nagyobbnak mint 0'
+      max-claims: '&cA maximum elfoglalható területnek 0-nál nagyobb számnak kell
+        lennie.'
+      priority: '&cHelytelen prioritás. A prioritásnak kissebnek kell lennie mint
+        a &e%kingdoms_ranks% &cés nagyobbnak mint 0'
       node: '&cA rang értéke csak számokat és betűket tartalmazhat.'
-    max-claims-limit: '&cA maximum begyűjthető terület &e%limit% &clehet.'
+    max-claims-limit: '&cA maximum elfoglalható terület &e%limit% &clehet.'
   chest:
     others: '&cNem nyithatod ki más királyságok Nexus ládáját.'
   misc-upgrades:
     others: '&cNem szerkesztheted más királyságok fejlesztéseit.'
   members:
-    others: '&cNem kezelhelheted más királyságok tagjait.'
-    next-page-not-available: '&cNo more pages. Max pages&8: &e%pages%'
-    previous-page-not-available: '&cNo more previous pages.'
+    others: '&cNem kezelheted más királyságok tagjait.'
   settings:
-    tax-enter-value: '@&6Kérlek írd be az új értéket. Vagy írd be hover:{&cCancel;&ccancel;cancel}
-                       &6a megszakításhoz.'
+    tax-enter-value: '&6Kérlek írd be az új értéket. Vagy használd a hover:{&ccancel;&cMégsem;cancel}
+      &6parancsot a megszakításhoz.'
     flag:
-      enter-value: |-
-        @&6Írd be az új zászló URL-t. Vagy írd be hover:{&ccancel;&cMégsem;cancel} &6, hogy megszakítsd a folyamatot.
-        Click hover:{&2here;&2Open Flag URL;@%kingdoms_flag%} &6to open your current flag URL.
+      enter-value: '&6Gépeld be az új zászló URL-jét. Vagy használd a hover:{&ccancel;&cMégsem;cancel}
+        &6parancsot a megszakításhoz.'
+      current: Klikk hover:{&2erre;&2Zászló URL-jének megnyitása;@%kingdoms_flag%}
+        &6a parancsra a zászló aktuális URL-jének a megnyitásához.
       wrong-url: '&cÉrvénytelen URL: &e%flag%'
       contains: '&cA zászló URL nem elfogadható mivel fekete listás szavakat tartalmaz:
         &e%flag%'
@@ -290,16 +381,15 @@ nexus:
       checking-size: '&2Méret  ellenőrzése...'
       cooldown: '&cA következtető zászlóváltoztatásig hátralévő idő &e%cooldown%.'
       size-limit:
-        fail: '&cA megadott URL vagy nem kép, nem elérhető: &e%flag%'
-        height: '&cA kép meghaladja a maximum képmagasságot &e%limit% &cmagasság limit:
-          &e%height%'
-        width: '&cA megadott kép meghaladja a maxiumum képszélességet &e%limit% &cszélesség
-          limit: &e%width%'
+        fail: '&cA megadott URL vagy nem kép, vagy nem elérhető: &e%flag%'
+        height: '&cA kép meghaladja a maximum &e%limit% &cmagasság limit: &e%height%'
+        width: '&cA megadott kép meghaladja a maxium &e%limit% &cszélesség limit:
+          &e%width%'
       set: '&2A királyság zászlaja megváltozott: &6%flag%'
     color:
       enter-value: |-
-        @&6Kérlek írd be az új értéket. Vagy írd be hover:{&ccancel;&cMégseml;cancel} &6a megszakítása.
-        Hex színkódok:{&2itt;&2Megnyitás;@https://htmlcolorcodes.com/}
+        &6Kérlek írd be az új értéket vagy használd a hover:{&ccancel;&cMégseml;cancel} &6parancsot a megszakításhoz.
+        klikk hover:{&2ide;&2Megnyitás;@https://htmlcolorcodes.com/} &6a zászló URL-jének megnyitásához
       wrong-hex: '&cHibás Hex szín: &e%color%'
       wrong-rgb: '&cHibás RGB szín8: &e%color%'
       range-blacklisted: '&cA megadott szín nem elérhető.'
@@ -307,33 +397,40 @@ nexus:
     tax-set: |-
       &2Adó éréke megváltozott: &6%tax%
       &2Rajtad tesztelt adó: &6%test%
-    tax-illegal-variable: '&cHibás placeholder ezen a ponton &e%index% &cebben az egyenletben:
-      &e%tax%'
+    tax-illegal-variable: '&cIllegális helyettesítőt használtál a &e%index% &cindexnél
+      ebben az egyenletben: &e%tax%'
     tax-invalid: |-
       &e%tax% &cadó nem tesztelhető rajtad: &e%reason%
       &cKérlek írj be egy helyes egyenletet.
     shield-not-enough-resource-points: '&cNincs elég Nexus pontod.'
-    shield-activated: '&2A pajzs aktiválva &6%kingdoms_shield_time_left% hátralévő
-      idő'
-  resource-points: '&e%amount% &6Nexus pont hozzá lett adva a királyság egyenlegéhez.'
-nexus-resource-points-enter-value: '@&6Kérlek írd be a Nexus pontok mennyiségét
-                                     vagy írd be hover:{&cMégsem;&cMégsem;mégsem} &6a megszakításhoz.'
+    shield-cooldown: '&cVárnod kell &e%time% mielőtt újra pajzsot vehetsz.'
+    shield-activated: '&2Pajzs aktiválva &6%kingdoms_shield_time_left% ideig'
+nexus-resource-points-enter-value: '&6Kérlek írd be a Nexus pontok mennyiségét vagy
+  használd a hover:{&ccancel;&cMégsem;cancel} &6parancsot a megszakításhoz.'
 extractor:
   not-enough-resource-points: '&cNincs elég Nexus pontod.'
-warppad-enter-name: '&2Kérlek írd be a Teleport pad-ed nevét.'
-warppad-name-set: '&2Teleport pad neve beállítva erre: &6%name%'
+teleports:
+  moved: '&cA teleportálás megszakadt mert mozogtál.'
+  already-teleporting: '&cMár teleportálsz.'
+warppad:
+  teleporting: '&2Teleportálás &6%countdown% másodperc &2múlva... Ne mozogj!'
+  low-fuel: "&cA teleportáláshoz &e%fuel-cost% üzemanyagra &cvan szükség, míg 
+    ebben csak &e%fuel% &cvan. \nAz újratöltéséhez dobjál a teleportpadba &eszenet."
+  fuel-fill: '&2Teleportpad üzemanyag&8: &6%fuel%'
+  no-safe-location: '&cNincsenek biztonságos területek a Teleportpad körül a teleportáláshoz.'
+  success: '&2Teleportálás!'
 outpost:
   not-enough-resource-points: '&cNincs elég Nexus pontod.'
-  purchased: '&2Vásároltál &6%amount%x %name% &2&6%cost% &2Nexus pontért.'
+  purchased: '&2Vásároltál &6%amount% &2tárgyat (angol neve: &6%name%&2) &6%cost% &2Nexus pontért.'
 turret:
   ammo:
     not-enough-resource-points: '&cNincs elég Nexus pontod.'
-    purchased: '&2Sikereses vásárlás.'
+    purchased: '&2Sikeres vásárlás.'
     max-ammo: '&cElérted a maximum töltet számát.'
   upgrade:
-    max-level: '&cEz a torony már elérte a maximum fejlesztést.'
+    max-level: '&cEz a torony már a max szintre van fejlesztve.'
   upgrade-not-enough-resource-points: '&cNincs elég Nexus pontod a fejlesztéshez.'
-  upgrade-upgraded: '&2Sikeresen fejlesztve új szint: &6%level%'
+  upgrade-upgraded: '&2Felfejlesztve az új szintre: &6%level%'
 disabled-world: '&cA királyságok ebben a világban ki van kapcsolva: &6%world%'
 not-found:
   kingdom: '&cA megadott királyság nem található.'
@@ -345,35 +442,51 @@ masswar:
   started: |2
 
     &4&lA Háború &4elindult! &eMinden ostrom ingyenes 1 órán keresztül!
-  stopped: '&6A Háború végetért!'
+  stopped: '&6A Háború véget ért!'
+players:
+  online: '&2Online'
+  offline: '&4Offline'
+power:
+  death: '&cMeghaltál és elvesztettél &e%lost% &cerőt.'
+kingdom-guards-spawning: '&e%kingdom% &ckirályság őrzője megjelent a közeledben...'
 no-kingdom:
   default: '&cNeked nincs királyságod.'
-  structures-use: '&cElőször csatlakoznod kell egy királysághoz, hogy struktúrákat
-    használhass.'
-  turrets-use: '&cElőször csatlakoznod kell egy királysághoz, hogy tornyokat használhass.'
-'no':
-  nation: '&cA királyságod nem tagja egy nemzetnek sem.'
+  target: '&cA megadott játékosnak nincs királysága.'
+  structures-use: '&cCsatlakoznod kell egy királysághoz, hogy struktúrákat használhass.'
+  turrets-use: '&cCsatlakoznod kell egy királysághoz, hogy tornyokat használhass.'
+no-nation: '&cA királyságod nincs nemzetben.'
 unclaimed:
   place-structures: '&cNem helyezhetsz el struktúrákat el nem foglalt területre.'
   place-turrets: '&cNem helyezhetsz el tornyokat el nem foglalt területre.'
-players-only: '&cEzt a parancsot csak játékosok használhatják.'
-not-number: '&e%arg% &cnem egy szám.'
-insufficient-permission: '&cEhhez nincs jogod.'
-kingdom-name-blacklisted: '&cA királyságod neve tiltottszavakat tartalmaz.'
-kingdom-tag-blacklisted: '&cA királyságod címkéje tiltott szavakat tartalmaz.'
-commands-usage: '&4Használat: &e%cmd%'
-unknown:
-  command: '&cIsmeretlen parancs!'
-negative-pages: '&cNem található rejtett oldal.'
+not:
+  number: '&e%arg% &cnem szám.'
+  boolean: '&e%arg% &cnem érvényes opció. Használd ezt ''&2true&c'' vagy ezt ''&4false&c'''
+invalid:
+  amount: '&cÉrvénytelen összeg&8: &e%amount%'
+commands:
+  insufficient-permission: '&cNincs engedélyed annak a végrehajtására.'
+  cooldown: '&cEzt a parancsot nem használhatod ennyi ideig&8: &e%cooldown%'
+  disabled-world: '&cEz a parancs nem használható ebben a világban.'
+  tags:
+    players: '#JÁTÉKOS'
+    kingdoms: '#KIRÁLYSÁG'
+    nations: '#NEMZET'
+  players-only: '&cEzt a parancsot csak játékos használhatja.'
+  unknown-command: '&cIsmeretlen parancs!'
+kingdom:
+  name-blacklisted: '&cA királyságod neve tiltott szót tartalmaz.'
+  tag-blacklisted: '&cA királyságod címkéje tiltott szót tartalmaz.'
 mails-join-notifications: '&6%mails% &2új leveled érkezett. Nyisd meg a postaládádat,
   hogy elolvashasd.'
 death-penalty: '&e%name% &cmeghalt, ezért a királyságod &e%penalty% &cNexus pontott
   vesztett.'
 kingdom-item:
-  inventory: '&cEbben az eszköztárban nem használhatod ezt a tárgyat.'
+  inventory: '&cNem használhatod a királyság tárgyait ebben az eszköztárban.'
+  craft: '&cA királyság tárgyaiból nem lehet barkácsolni.'
+  shoot: '&cNem lőheted ki a királyság tárgyait íjból.'
 auto-claim:
   disabled-world: '&cA foglalás ki van kapcsolva ebben a világban: &6%world%'
-  in-region: '&cNem foglalhatsz el levédett területeket.'
+  in-region: '&cNem foglalhatsz el levédettt területeket.'
   actionbar:
     enabled: '&2Automatikus foglalás: &6Bekapcsolva'
     disabled: '&2Automatikus foglalás: &cKikapcsolva'
@@ -403,91 +516,94 @@ inactivity-announce:
   player: '&e%player% &ckirúgásra került inaktivitás miatt.'
   kingdom: '&e%kingdom% &6feloszlott inaktivitás miatt.'
 command:
-  updates-description: '&6Frissítések keresése.'
+  updates-description: '&6Frissítések keresése a Kigdoms-hoz.'
   help:
-    description: '&6Parancsok megjelenítése'
+    description: '&6Összes parancs megjelenítése'
     usage: '&4Használat: &e/k help [oldal]'
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
-    grouped-commands: '@hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k
-      %cmd%}'
-    footer: '@hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
-      oldal;/k %command% %next_page%}'
-    footer-page: '@hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}'
-    footer-current-page: '@hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}'
-    header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
+    negative-pages: '&cNincsenek rejtett oldalak.'
+    grouped-commands: hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    footer: hover:{&6←;&6Előző oldal;/k %command% %previous_page%} %pages%hover:{&6→;&6Következő
+      oldal;/k %command% %next_page%}
+    footer-page: hover:{&8[&2%number%&8];&6Lapozás &2%number%;/k %command% %number%}
+    footer-current-page: hover:{&8[&2&l%number%&8];&2Jelenlegi oldal}
+    header: '&8&m---------------=(&c&l Királyságok &6%page%&7/&6%max_pages% &8&m)=---------------'
     no-more-pages: '&cNem található több oldal.'
-    commands: '@hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
+    commands: hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
   reload:
     description: '&6Plugin újratöltése.'
-    usage: /k reload [config]
+    usage: '&4Használat&8: &e/k reload &9[konfig]'
     success: '&2Sikeresen újratöltve.'
     commands: '&2Minden parancs újratöltve.'
   create:
-    desciption: '&6Királyság létrehozása.'
+    description: '&6Királyság létrehozása.'
     name-length: '&cA királyság neve nem lehet hosszabb mint &e%max% &ckarakter vagy
       kevesebb mint &e%min%'
-    name-english: '&cA királyság neve csak betűket és számokat tartalmazhat.'
-    name-has-symbols: '&cA királyság neve nem tartalmazhat szimbólumokat. Csak betűk
-      és számok.'
+    name-english: '&cA királyság neve csak az angol ABC szerinti betűket és számokat
+      tartalmazhat.'
+    name-has-symbols: '&cA királyság nevében nem lehet szimbólum, csak betűk és számok.'
     name-numbers: '&cA királyság neve nem tartalmazhat számokat.'
     name-already-in-use: '&cEz a név már foglalt.'
-    usage: /Kingdoms create <név>
-    already-in-kingdom: '&cTe már tagja vagy egy királyságnak. Először hagyd el a
-      jelenlegit, hogy létrehozhass egy újat.'
+    usage: '&4Használat&8: &e/k create &2<név>'
+    already-in-kingdom: '&cTe már tagja vagy egy királyságnak. Hagyd el a jelenlegit,
+      hogy létrehozhass egy újat.'
     success: '&2Sikersen megalapítottad a(z) &6%kingdom% &2királyságot!'
+    pacifist: '&2A királyságod &6békés &2királyság.'
+    aggressor: '&2A királyságod &ctámadó &2királyság.'
     announce: '&6%player% &2létrehozta a(z) &6%kingdom% &2királyságot!'
     cost: '&cSzükséged van &e$%cost% &chogy létrehozhasd a királyságot.'
     confirmation: |-
       &cEz a foglalás &e$%cost%&c-ba kerül. Biztosan szeretnéd folytatni?
       &cAmennyiben igen, írd be újra a parancsot.
   tag:
-    desciption: '&6Királyság címkéjének megváltoztattása.'
+    description: '&6Királyság címkéjének megváltoztatása.'
     name-length: '&cA címke nem lehet hosszabb mint &e%max% &ckaraktet, vagy kevesebb
       mint &e%min%'
-    name-english: '&cA címke csak betűket és számokat tartalmazhat.'
-    name-has-symbols: '&cA címke nem tartalmazhat szimbólumokat. Csak betűket és számokat
+    name-english: '&cA királyság neve csak az angol ABC szerinti betűket és számokat
       tartalmazhat.'
+    name-has-symbols: '&cA címke nevében nem lehet szimbólum, csak betűk és számok.'
     name-numbers: '&cA címke nem tartalmazhat számokat.'
-    usage: '&4Használat: &e/k tag <név>'
+    usage: '&4Használat: &e/k tag &2<név>'
     no-kingdom: '&cJelenleg nincs királyságod.'
-    changed: '&2A királyság címkéje megváltozott &2to%kingdoms_tag% &6%player% &2által'
-    cost: '&cA királyságnak szüksége van &e$%cost% &ca címke megváltozatásához.'
+    changed: '&6%player% &2megváltoztatta királyság címkéjét erről &6%tag% erre &2to%kingdoms_tag%'
+    set: '&6%player% &2beállította a királyságodnak a következő címkét: &6%kingdoms_tag%'
+    cost: '&cA királyságnak szüksége van &e$%cost% &ca címke megváltoztatásához.'
+    cooldown: '&cYou need to wait &e%cooldown% &cbefore renaming your kingdom''s tag.'
   nation:
     create:
-      desciption: '&6Nemzet létrehozása.'
+      description: '&6Nemzet létrehozása.'
       name-length: '&cA nemzet neve nem lehet hosszabb mint &e%max% &ckarakter vagy
         kevesebb mint &e%min%'
-      name-english: '&cA név csak betűket és számokat tartalmazhat.'
-      name-has-symbols: '&cA név nem tartalmazhat szimbólumokat. Csak betűket és számokat
+      name-english: '&cA királyság neve csak az angol ABC szerinti betűket és számokat
         tartalmazhat.'
-      name-numbers: '&cNnemzet neve nem tartalmazhat számokat.'
+      name-has-symbols: '&cA névben nem lehet szimbólum, csak betűk és szám.'
+      name-numbers: '&cNemzet neve nem tartalmazhat számokat.'
       name-already-in-use: '&cEz a név már foglalt.'
-      usage: '&4Használat: &e/k nation create <név>'
-      already-in-nation: '@&cMár tagja vagy egy nemzetnek. Hagyd el a jelenlegit
-                           using hover:{&e/k nation leave;&cLeave;/k nation leave} &chogy újat hozhass
-                           létre.'
+      usage: '&4Használat: &e/k nation create &2<név>'
+      already-in-nation: '&cMár tagja vagy egy nemzetnek. Lépj ki a hover:{&e/k nation
+        leave;&cKilépés;/k nation leave} &cparanccsal, hogy újat hozhass létre.'
       success: '&2Megalapítottad a(z) &6%nation% &2nemzetet!'
       announce: '&6%player% &2megalapította a(z) &6%nation% &2nemzetet!'
       cost: '&cSzükséged van &e$%cost% &ca nemzet létrehozásához.'
     rename:
-      desciption: '&6Királyság átnevezése.'
-      no-kingdom: '&cJelenleg nem vagy tagja egy királyságnak sem.'
-      king-only: '&cCsak a király tudja átnevezni a királyságot.'
-      name-english: '&cA nemzet neve csak betűket és számokat tartalmazhat.'
+      description: '&6Királyság átnevezése.'
+      king-only: '&cCsak a nemzet királya tudja átnevezni a nemzetet.'
+      name-english: '&cA királyság neve csak az angol ABC szerinti betűket és számokat
+        tartalmazhat.'
       name-numbers: '&A nemzet neve nem tartalmazhat számokat.'
       name-already-in-use: '&cEz a név már foglalt.'
       cooldown: '&cVárnod kell &e%cooldown% másodpercet &caz újabb átnevezésig.'
-      usage: /Kingdoms rename <név>
-      success: '&2A nemzet neve megváltozott: &6%name%'
+      usage: '&4Használat&8: &e/k nation rename &5<név>'
+      success: '&2A nemzet neve megváltozott a következőre: &6%name%'
       cost: '&cSzükséged van &e$%cost% &ca nemzet átnevezéséhez.'
     bank:
       description: '&6Utalás a nemzet bankjából.'
-      usage: /k nation bank <deposit (betétel)/withdraw (kivétel)> <összeg>
-      service-unavailable: '&cA bankok jelenleg nem elérhetőek.'
+      usage: '&4Használat&8: /k nation bank <deposit (betétel)/withdraw (kivétel)>
+        &2<összeg>'
       unknown-transaction: '&cIsmeretlen tranzakció &e%transaction%'
       not-enough:
-        nation-money: '&cA nemzetednek nincs elegendő pénze &e%amount%'
-        money: '&cNincs elég pénzed &e%amount%'
+        nation-money: '&cA nemzeted bankjában nincs ekkora összeg: &e%amount%'
+        money: '&cNincs ennyi &e%amount% &cpénzed!'
       deposit:
         success: |-
           &2Betettél &6$%amount% &2a nemzeted bankjába.
@@ -504,13 +620,14 @@ command:
       zero: '&cAz értéknek nagyobbnak kell lennie mint 0.'
     show:
       description: '&6Információk a nemzetről.'
-      usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
-      others-permission: '&cEhhez nincs jogod.'
+      usage: '&4Használat&8: &e/k show &9[játékos | nemzet | #JÁTÉKOS | #NEMZET] &2<játékos
+        | nemzet>'
+      others-permission: '&cNincs jogod további információkhoz.'
       message-admin: |
-        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
         &7| &2Főváros: &6%kingdoms_nation_capital%
-        &7| &2Spawn: &6%kingdoms_nation_spawn%
+        &7| &2Teremtőhely: &6%kingdoms_nation_spawn%
         &7| &2Nexus: &6%kingdoms_nation_nexus%
         &7| &2Létrehozás: &6%kingdoms_nation_since%
         &7| &2Erő: &6%kingdoms_nation_might%
@@ -521,7 +638,7 @@ command:
         &7| &2Királyságok:
         %kingdoms%
       message: |
-        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
         &7| &2Király: &6%king_status%
         &7| &2Nemzet: &6%kingdoms_nation%
@@ -535,44 +652,45 @@ command:
         &7| &2Királyságok:
         %kingdoms%
       allies: |
-        @&7| &2Szövetségesek:
+        &7| &2Szövetségesek:
         &e%allies%
       truces: |
-        @&7| &2Fegyverszünet:
+        &7| &2Tűzszünet:
         %truces%
       enemies: |-
-        @&7| &2Ellenségek:
+        &7| &2Ellenségek:
         &e%enemies%
       kingdoms: |-
-        @hover:{&6%kingdoms_name%;&2Tagok: &6%kingdoms_members%
+        hover:{&6%kingdoms_name%;&2Tagok: &6%kingdoms_members%
         &2Király: &6%kingdoms_king%
         &2Területek: &6%kingdoms_lands%}
-      relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
     not:
-      in-nation: '&cA megadott királyság vagy játékos nem tagja egy nemzetnek sem.'
+      in-nation: '&cNincs ilyen nemzet és a megadott játékos/királyság sem egy nemzetben
+        találhatóak.'
     setspawn:
-      description: '&6Nemzet spawn-jának elhelyezése.'
-      not-claimed: '&cCsak birtokolt területre állítható be a spawn.'
-      others-land: '&cCsak a főországba állítható be a spawn.'
-      nexus-land: '&cCsak a Nexus területére tehető a spawn!'
-      set: '&aSpawn beállítva: &6%x%&7, &6%x%&7, &6%z%'
+      description: '&6Nemzet teremtőhelyének elhelyezése az aktuális pozícióra.'
+      not-claimed: '&cCsak lefoglalt területre állítható be a nemzet teremtőhelye.'
+      others-land: '&cCsak a főországba állítható be a nemzet teremtőhelye.'
+      nexus-land: '&cA királyság otthona csak a nexus területén lehet!'
+      set: '&aNemzet teremtőhelye beállítva: &6%x%&7, &6%x%&7, &6%z%'
     unsetspawn:
-      description: '&6Nemzet spawn törlése.'
-      not-set: '&cA nemzetnek nincs beállítva spawn.'
-      success: '&aA nemzet spawn-ja törölve lett innen: &6%x%&7, &6%y%&7, &6%z%'
+      description: '&6Nemzet teremtőhelyének törlése.'
+      not-set: '&cA nemzetnek nincs beállítva teremtőhely.'
+      success: '&aA nemzet teremtőhelye törölve lett innen: &6%x%&7, &6%y%&7, &6%z%'
     spawn:
-      description: '&6Teleportáció...'
-      already-teleporting: '&cA teleportálás már folyamatban van...'
-      cancelled: '&cA teleportáció megszakadt!'
-      changed: '&cA spawn megváltoztatva.'
-      teleporting: '&2Teleportálás &6%countdown% másodperc múlva&2... Ne mozogj.'
-      not-set: '&cNincs beállítva spawn!'
+      description: '&6Teleportálás a nemzet teremtőhelyére...'
+      already-teleporting: '&cMár elteleportáltál a nemzeted teremtőhelyére...'
+      cancelled: '&cA teremtőhely teleportációja megszakadt!'
+      changed: '&cA teremtőhely megváltozott. Teleportálás megszakadt.'
+      teleporting: '&2Teleportálás &6%countdown% másodperc &2múlva... Ne mozogj.'
+      not-set: '&cNincs beállítva a nemzetnek teremtőhely!'
       success: '&2Teleportálva!'
     nexus:
       description: '&6Nexus elhelyezése.'
       help: |-
-        @&2Jobb kattolj arra a blokkra ahova elakarod helyezni a Nexust.
-        Kiszeretnél lépni a Nexus módból hover:{&6/k nation nexus;&cKikapcsolás;/k nation nexus} &2írd be újra .
+        &2Jobb klikk arra a blokkra ahová le szeretnéd rakni a Nexus-t.
+        A Nexus mód letíltásához írd be újra a hover:{&6/k nation nexus;&cLetíltás;/k nation nexus} &2parancsot.
       actionbar-activated: '&6Nexus Mód: &2Aktiválva'
       actionbar-deactivated: '&6Nexus Mód: &cKikapcsolva'
       disabled: '&cNexus mód kikapcsolva.'
@@ -581,35 +699,35 @@ command:
       not-claimed: '&cA Nexus csak a saját területedre helyezhető el!'
       another-structure: '&cEzen a területen már van egy struktúra.'
       disabled-on-damage: '&cMegsebződtél ezért kiléptettünk a Nexus módból.'
-      disabled-on-land-change: '&cKiléptél a területedről.'
+      disabled-on-land-change: '&cKiléptél a királyságod területedről és a nexus mód
+        kikapcsolásra került.'
       already-there: '&cA Nexusod már ezen a helyen van.'
       cannot-replace: '&cNem cserélheted ki ezt a blokkot a Nexusoddal!'
       success: '&aSikeresen elhelyezve itt: &6%x%&7, &6%y%&7, &6%z%'
     nexus-outside-of-land: '&cA Nexust csak a területeden helyezheted el.'
     disband:
-      description: '&cNemzet feloszlatása, és az összes királyság kirúgása.'
-      king-only: '&cCsak a főkirályság oszlathatja fel a nemzetet.'
+      description: '&cNemzet feloszlatása és az összes királyság kirúgása.'
+      king-only: '&cCsak a nemzet királya oszlathatja fel a nemzetet.'
       success: '&4A nemzeted feloszlott!'
       confirmation: |-
         &4Felfogod oszlatni a nemzetedet.
         Az összes királyság kirúgásra fog kerülni.
         Biztosan folytatod?
         Írd be újra a &e/k nation disband &4parancsot a megerősítéshez.
-      announce: '&e%player% &6feloszlatta a(z) &e%kingdoms_nation% '
+      announce: '&e%player% &6feloszlatta a(z) &e%kingdoms_nation% nemzetet.'
     invite:
       description: '&6Nemzeti meghívó küldése egy királyságnak.'
-      usage: '&4Használat: &e/k nation invite <királyság> [lejárat]'
+      usage: '&4Használat: &e/k nation invite &2<királyság> &9[lejárat]'
       invited: |-
-        @&6%inviter% &2meghívott téged a(z) &6%nation% &2nemzetbe.
-            hover:{&2Elfogadás /k nation accept;&2Elfogadás;/k nation accept}
-            hover:{&cElutasítás /k nation decline;&cElutasítás;/k nation decline}
-      announce: '&6%inviter% &2meghívott téged a(z) &6%kingdom% &2nemzetbe.'
+        &6%inviter% &2meghívott téged a(z) &6%nation% &2nemzetbe.
+            hover:{&2Az elfogadáshoz írd be: /k nation accept;&2Elfogadás;/k nation accept}
+            hover:{&cAz elutasításhoz írd be: /k nation decline;&cElutasítás;/k nation decline}
+      announce: '&6%inviter% &2meghívta a(z) &6%kingdom% &2a nemzetbe.'
       already-joined: '&e%kingdom% &ckirályság már tagja a nemzetednek.'
       already-in-kingdom: '&cEz a királyság már tagja a nemzetednek.'
-      already-nation-invited: '&cEz a királyság már meg lett hívva &e%inviter% &cáltal.'
-      max-members: '&cA királyságod megtelt. Jelenleg &e%kingdoms_nation_kingdoms%
-        &ctag.'
-      self: '&cNem hívhatod meg a saját királyságodat.'
+      already-nation-invited: '&cEzt a királyságot &e%inviter% már meghívta egy nemzetbe.'
+      max-members: '&cA királyságod megtelt. Tagszám: &e%kingdoms_nation_kingdoms%'
+      self: '&cNem hívhatod meg a saját királyságodat a nemzetbe.'
       expired: '&e%inviter%&c meghívása lejárt !'
       kingdom-not-found: '&e%kingdom% &cnem található.'
       expired-notify: '&cA(z) &e%invited% &cküldött meghívásod lejárt!'
@@ -619,48 +737,48 @@ command:
       joined: '&6%kingdom% &2csatlakozott egy nemzethez.'
       notify: '&6%kingdom% &2elfogadta a meghívásodat.'
       no-invites: '&cJelenleg nincs egy meghívásod sem.'
-      not-invited: '&cNem vagy meghívva ebbe a nemzetbe &e%nation%'
-      expired: '&cA nemzetbe szóló meghívásod lejárt &e%nation%'
-      max-members: '&cEz a nemzet megtelt &e%kingdoms_nation_kingdoms% &ctaggal.'
+      not-invited: '&cNem vagy meghívva ebbe a nemzetbe: &e%nation%'
+      expired: '&ca(z) &e%nation% nemzetbe szóló meghívásod lejárt.'
+      max-members: '&cEz a nemzet megtelt: Tagszám: &e%kingdoms_nation_kingdoms% &ctaggal.'
+      # KA Üres  sor
       no-longer-exists: '&cEz a nemzet már nem létezik.'
-      multiple-invites: '&cJelenleg több meghívásod is van, kérlek írd be a nemzet
-        nevét is a csatlakozáshoz.'
+      multiple-invites: '&cJelenleg több meghívásod is van, írd be annak a nemzet
+        nevét is ahova csatlakozni szeretnél.'
     join:
       description: '&6Csatlakozás egy olyan nemzethez amelyhez nem kell meghívás.'
-      usage: '&4Használat: &e/k nation join <nemzet>'
+      usage: '&4Használat: &e/k nation join &2<nemzet>'
       joined: '&6%kingdom% &2csatlakozott a nemzethez.'
       already-in-nation: '&cA királyságod már tagja egy nemzetnek.'
-      nation-not-found: '&e%nation% &cnem található nemzet.'
-      requires-invite: '&cA csatlakozáshoz meghívó kell ebbe a nemzetbe &e%nation%'
+      requires-invite: '&cA csatlakozáshoz meghívó kell ebbe a nemzetbe: &e%nation%'
     decline:
       description: '&6Nemzet meghívásának elutasítása.'
       declined: '&cElutasítottad &6%inviter% &cmeghívását a(z) &e%nation% &cnemzetbe.'
       notify: '&e%name% &celutasította a meghívást.'
       no-invites: '&cNincsen egy meghívásod sem.'
       not-invited: '&cA királyságod nem kapott meghívást a(z) &e%nation% &cnemzettől.'
-      expired: '&cA királyságod meghívója már lejárt ebbe a nemzetbe &e%nation%'
+      expired: '&cA királyságod &e%nation% &cnemzettől kapott meghívója lejárt.'
       no-longer-exists: '&cEz a nemzet már nem létezik.'
-      all: '&2Elutasítottál &6%invites% &2nemzet meghívást.'
-      multiple-invites: '&cTöbb meghívásod is van, kérlek határozd meg a nemzet nevét
-        is.'
+      all: '&2Elutasítottál &6%invites% &2nemzet meghívástát.'
+      multiple-invites: '&cTöbb meghívásod is van, határozd meg annak a nemzet nevét
+        amelyik meghívását el szeretnéd utasítani. Vagy használd a &e* &cjelet az
+        összes elutasításához.'
     top:
       description: '&6TOP Nemzetek.'
       loading: '&6Adatok betöltése...'
       header: '&8----------------------------------'
-      footer: '@     &8[hover:{&6←;&6Előző oldal;/k nation top %previous_page%}&8]
+      footer: '     &8[hover:{&6←;&6Előző oldal;/k nation top %previous_page%}&8]
         &8[hover:{&6→;&6Következő oldal;/k nation top %next_page%}&8]'
       no-more-pages: '&cNincs több oldal.'
-      negative: '&cNem található negatív oldal.'
+      negative: '&cNincs negatív oldal.'
       entry: |-
-        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Tagok: &6%kingdoms_nation_kingdoms%
+        &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Tagok: &6%kingdoms_nation_kingdoms%
         &7♦ &2Nexus Pontok: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
       description: '&6Királyság kirúgása a Nemzetből.'
-      person: '&cA királyságod ki lett rúgva a(z) &e%nation% &cnemzetből  &e%kicker%
-        &cáltal'
-      usage: /k nation kick <királyság> [silent]
-      announce: '&e%kingdom% &cki lett rúgva a nemzetből &e%kicker% &cáltal'
+      person: '&e%kicker% &ckirúgta a királyságodat a(z) &e%nation% &cnemzetből'
+      usage: '&4Használat&8:/k nation kick &2<királyság> &9[silent(csendes)]'
+      announce: '&e%kicker% kirúgta &e%kingdom% &ckirályságot a nemzetből.'
       self: '&cNem rúghatod ki a saját királyságodat...'
       not-in-kingdom: '&cA megadott királyság nincs benne ebben a nemzetben.'
       cant-kick: '&cNem rúghatod ki ezt a királyságot &e%kingdom%&c.'
@@ -671,84 +789,146 @@ command:
       &cFőkirályság áthelyezése &e/k nation capital
     leave-announce: '&e%kingdoms_name% &ckirályság elhagyta a nemzetet!'
     broadcast-description: '&6Üzenet a nemzet minden tagjának.'
-    broadcast-usage: /k nation broadcast <üzenet>
-    broadcast-cooldown: '&cVárnod kell &e%time% &caz újabb közvetítésig.'
+    broadcast-usage: '&4Használat&8: &e/k nation broadcast &2<üzenet>'
+    broadcast-format: |2+
+
+      &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
+    
+    
+    
     capital:
       description: '&6Nemzet központjának beállítása.'
       only-king: '&6Csak a Főkirályság királya tudja ezt beállítani.'
       set: '&6%kingdoms_nation_capital% &2a nemzet központja.'
       not-in-nation: '&e%kingdom% &cnem a te nemzeted.'
-      usage: /k nation capital <királyság>
+      usage: '&4Használat: &e/k nation capital &2<királyság>'
+    ally:
+      description: '&6Szövetségre felkérés küldése egy nemzetnek.'
+      usage: '&4Használat&8: &e/k nation ally &2<nemzet>'
+      sender: '&2Szövetségre felkérés küldése a(z) &6%nation% &2nemzetnek'
+      limit: '&cNem lehet &e%max% &cdarabnál több szövetséges nemzeted.'
+      already: '&cMár a szövetségese vagy a(z) &e%nation% &cnemzetnek.'
+      already-requested: '&cMár küldtél szövetségre való felkérést a(z) &e%nation%
+        &cnemzetnek'
+      self: '&cNem teheted szövetségessé a saját nemzetedet.'
+      receiver: '&6%nation% &2nemzet a szövetségesed kíván lenni. Elfogadni a hover:{&6/k
+        nation ally %nation%;&2Elfogad;/k nation ally %nation%} &6paranccsal lehet.'
+      success: |-
+        &2Szövetséget kötöttél &6%nation% &2nemzettel
+        &2A királyságod automatikusan szövetségese lett a nemzet összes királyságának.
+      another-request: '&e%nation% &cnemzet %relation% &cüzenetet küldött.'
+    truce:
+      description: '&6Tűzszüneti kérés küldése egy nemzetnek.'
+      usage: '&4Használat&8: &e/k nation truce &2<nemzet>'
+      sender: '&2Tűzszüneti kérés küldése &6%nation% &2nemzetnek.'
+      limit: '&cNem lehet &e%max% &cnemzetnél többel tűzszünetet kötni.'
+      already: '&cMár tűzszünetet kötöttél a(z) &e%nation% &cnemzettel'
+      already-requested: '&cMár küldtél a(z) &e%nation% &cnemzetnek tűzszüneti kérést.'
+      self: '&cNem küldhetsz a saját nemzetednek tűzszüneti kérést.'
+      receiver: '&6%nation% &2nemzet tűzszünetet szeretne kötni veled. Elfogadni a
+        hover:{&6/k nation truce %nation%;&2Elfogadás;/k nation truce %nation%} &6paranccsal
+        lehet.'
+      success: |-
+        &2A nemzeted tűzszünetet kötött a(z) &6%nation% &2nemzettel.
+        &2A királyságod automatikusan tűzszünetet kötött a nemzet összes királyságával.
+      another-request: '&e%nation% &cnemzet %relation% &cüzenetet küldött.'
+    enemy:
+      description: '&6A nemzet ellensége.'
+      usage: '&4Hsasználat&8: &e/k nation nation &2<nemzet>'
+      limit: '&cNem lehet &e%max% &cnemzetnél több ellenséged.'
+      already: '&cMár az ellenséged a(Z) &e%nation% nemzet.'
+      self: '&cNem lehetsz a saját nemzeted ellensége.'
+      success: |-
+        &2A nemzeted ellensége lett a(z) &6%nation% nemzet.
+        &2A királyságod automatikusan ellensége lett a nemzet összes királyságának.
+    revoke:
+      description: '&6Egy nemzettel való viszony visszavonása.'
+      usage: '&4Használat&8: &e/k nation revoke &2<nation>'
+      sender: |
+        &cA nemzeted visszavonta viszonyát a(z) &e%nation% &cnemzettel. &cViszonyod a nemzetben levő királyságokkal automatikusan visszavonásra került.
+      no-relation: '&cSemmilyen viszonyod nincs a(z) &e%nation% &cnemzettel.'
+      self: '&cSaját nemzeteddel nem tudsz semmilyen viszonyt visszavonni...'
+      receiver: |-
+        &e%nation% &cvisszavonta a viszonyát a nemzeteddel.
+        &cViszonyod a nemzetben levő királyságokkal automatikusan visszavonásra került.
     promote:
-      description: '&6Tag felfokozása a nemzetben.'
-      promoted: '&6%promoted% &2fel lett fokozva a nemzetben &9%rank% &6%player% &2által'
+      description: '&6Tag előléptetése a nemzetben.'
+      promoted: '&6%player% &2előléptete &9%rank% rangúvá a &6%promoted% &2nevű tagot
+        a nemzetben.'
       not-in-kingdom: '&e%promoted% &cnem a te nemzeted.'
-      cant-promote: '&cNem tudod felokozni őt &e%promoted%'
-      king: '&cKinevezés királlyá &e/k king'
-      usage: '&4Használat: &e/k nation promote <játékos>'
+      cant-promote: '&cNem tudod előléptetni: &e%promoted%'
+      king: '&cKinevezés királlyá: &e/k king'
+      usage: '&4Használat: &e/k nation promote &2<játékos>'
     demote:
       description: '&6Tag lefokozása a nemzetben.'
-      demoted: '&e%demoted% &cle lett fokozva a nemzetben &9%rank% &c&e%player% &cáltal.'
+      demoted: '&e%player% &cmegfosztotta &9%rank% &crangjától &e%demoted% &cnevű
+        tagot a nemzetben.'
       not-in-kingdom: '&e%demoted% &cnem a te királyságod.'
-      cant-demote: '&cNem fokozhatod le őt &e%demoted%'
-      member: '&cEnnek a játékosnak már a legalacsonyabb rangja van.'
-      usage: '&4Használat: &e/k nation demote <játékos>'
-    description: '&6Nemzet parancsok.'
+      cant-demote: '&cNem fokozhatod le: &e%demoted%'
+      member: '&cEz a játékos már rendelkezik tag ranggal.'
+      usage: '&4Használat: &e/k nation demote &2<játékos>'
+    description: '&6Nemzet parancsainak megjelenítése.'
   rename:
-    desciption: '&6Királyság átnevezése.'
-    no-kingdom: '&cNincs királyságod amit átnevezhetnél.'
+    description: '&6Királyság átnevezése.'
     king-only: '&cCsak a király tudja átnevezni a királyságot.'
-    name-english: '&cA királyság neve csak betűket és számokat tartalmazhat.'
+    name-english: '&cA királyság neve csak az angol ABC szerinti betűket és számokat
+      tartalmazhat.'
     name-numbers: '&cA királyság neve nem tartalmazhat számokat.'
     name-already-in-use: '&cEz a név már fogalt.'
     cooldown: '&cVárnod kell &e%cooldown% másodpercet &cmielőtt átneveznéd.'
-    usage: '&4Használat: &e/k rename <név>'
-    success: '&6%player% &2megváltoztatta a királyság nevét: &6%name%'
-    cost: '&cA királyság bankjában szükséges &e$%cost% &caz átnevezéshez.'
+    usage: '&4Használat: &e/k rename &2<név>'
+    success: '&6%player% &2megváltoztatta a királyság nevét a következőre: &6%name%'
+    cost: '&cAz átnevezéshez a királyság bankjában &e$%cost% &cpénznek kell lennie.'
   pvp:
     description: '&6Királyságon belüli harc kezelése.'
+    others-permission: '&cNincs jogosultságod a mások pvp módjának beállításához.'
     'on': '&6PvP Mód: &2BEKAPCSOLVA'
     'off': '&6PvP Mód: &cKIKAPCSOLVA'
+  glow:
+    description: '&6A királyság tagjainak gyorskeresése.'
+    enabled: '&6Gyorskeresés&8: &2BEKAPCSOLVA'
+    disabled: '&6Gyorskeresés&8: &cKIKAPCSOLVA'
   resourcepoints:
-    description: '&6Nexus pont be/ki vétel.'
-    usage: '&cHasználat: &e/Kingdoms rp <deposit(betétel)/withdraw(kivétel)/transfer(átutalás)>
-      [királyság/nemzet] <összeg>'
-    service-unavailable: '&cA bankok jelenleg nem elérhetőek.'
-    unknown-transaction: '&cIsmerelen tranzakció &e%transaction%'
-    not-enough-resource-points: '&cA királyságnak erre nincs kerete &e%amount% &cNexus
-      pont.'
-    not:
-      enough-money: '&cNincs elegendő pénzed &e%amount%'
-    cannot:
-      convert: '&cLegalább ebben az értékben kell betenned &e$%least% &8(&cÉrték:
-        &e%worth%&8) &cegy Nexus pontért.'
+    description: '&6Nexus pontok kezelésének parancsai.'
+    converter:
+      description: '&6Nexus pontok konvertálásának távoli kezelője.'
     deposit:
+      description: '&6Pénz Nexus pontokká alakítása.'
+      usage: '&4Használat&8: &e/k rp deposit &2<Nexus Pont>'
       success: |-
-        &2Sikeresen betettél &6$%translated% &2értékben Nexus pontokat &6%amount%
+        &2Befizettél &6%rp% Nexus pontot &2a királyságodba &6$%worth% &2összeg értékben.
         &2Új egyenleged: &6%balance%
-      disabled: '&cNem thetetsz be Nexus pontokat.'
     withdraw:
-      disabled: '&cNem vehetsz ki Nexus pontokat.'
+      description: '&6A királyság Nexus pontjainak pénzé alakítása'
+      usage: '&4Használat&8: &e/k rp withdraw &2<Nexus pontok>'
+      min: '&cLegalább &e%min% Nexus ponttal &ckell felvenned.'
       success: |-
-        &2Sikeresen kivettél &6%amount% &2Nexus pontot &6$%translated%-ért
-        &2Új egyenleged: &6%balance%
+        &2Kivettél &6%rp% &2Nexus pontot a királyáságodból &6$%worth% összeg értékben
+        &2Új mérleged: &6%balance%
+        &2Királyságod Nexus pontjai:&8: &6%kingdoms_fancy_resource_points%
     transfer:
-      disabled: '&cTe nem alakíthasz át Nexus pontokat.'
+      description: '&6Nexus pontok áthelyezése királyságodból/nemzetedből vagy királyságodba/nemzetedbe.'
+      usage: '&4Használat&8: &e/k rp transfer &2<királyság | nemzet> &9<Nexus pont>'
       success:
         kingdom: |-
-          &2You've successfully transfered &6%amount% &2resource points from your nation to kingdom.
-          Nemzet Nexus pontok: &6%kingdoms_fancy_nation_resource_points%
-          &2Nexus pontok: &6%kingdoms_fancy_resource_points%
-        nation: |-
-          &2You've successfully transfered &6%amount% &2resource points from your kingdom to your nation.
-          Nemzet Nexus pontok: &6%kingdoms_fancy_nation_resource_points%
-          &2Nexus pontok: &6%kingdoms_fancy_resource_points%
+          &2Áthelyeztél &6%amount% &2Nexus pontot a nemzetedből a királyságodba.
+          Nemzet Nexus pontjai: &6%kingdoms_fancy_nation_resource_points%
+          &2Királyság Nexus pontjai: &6%kingdoms_fancy_resource_points%
+        nation: "&2Áthelyeztél &6%amount% &2Nexus pontot a királyságodból a nemzetedbe.\n\
+          Nemzet Nexus pontjai: &6%kingdoms_fancy_nation_resource_points%\n&2Kirá\
+          lyság Nexus pontjai: &6%kingdoms_fancy_resource_points%   "
+    not-enough:
+      resource-points: '&cA királyságodnak nincs &e%rp% &cNexus pontja.'
+      money: '&e%rp% Nexus pontra &clenne szükség a &e$%worth%&c összeghez, de az
+        egyenleged: &e$%balance%'
     negative: '&cNem adhatsz meg negatív értéket...'
     zero: '&cAz érték nem lehet nulla.'
+    transfer-kingdom-description: '&6Áthelyeztél Nexus pontokat a nemzetedből a királyságodba.'
+    transfer-nation-description: '&6Áthelyeztél Nexus pontokat a királyságodból a
+      nemzetedbe.'
   bank:
     description: '&6Királyság bankjából be/ki vétel.'
-    usage: /Kingdoms bank <deposit(betétel)/withdraw(kivétel)> <összeg>
-    service-unavailable: '&cA Bank jelenleg nem üzemel.'
+    usage: '&4Használat&8: /k bank &2<deposit(betétel)/withdraw(kivétel)> &2<összeg>'
     unknown-transaction: '&cIsmeretlen tranzakció &e%transaction%'
     negative: '&cAz érték nem lehet negatív...'
     zero: '&cAz érték nem lehet nulla.'
@@ -762,537 +942,429 @@ command:
         Új egyenleged: &6%balance%
         &2Királyság új egyenlege: &6%kingdoms_fancy_bank%
       disabled: '&cTe nem tehetsz be pénzt.'
+      min: '&cLegalább ennyi kell befizetned: &e$%min%'
     withdraw:
+      min: '&cLegalább ennyit kell kivenned: &e$%min%'
       disabled: '&cTe nem vehetsz ki pénzt.'
       success: |-
         &2Kivettél &6$%amount% &2a királyság bankjából.
         Új egyenleged: &6%balance%
         &2Királyság új egyenlege: &6%kingdoms_fancy_bank%
   show:
-    description: '&6Infromációk a királyságról.'
-    usage: '/k show [játékos | királyság | #JÁTÉKOS | #KIRÁLYSÁG] <játékos | királyság>'
+    description: '&6Információk a királyságról.'
+    usage: '&4Használat&8: /k show [játékos | királyság | #JÁTÉKOS | #KIRÁLYSÁG] &2<játékos
+      | királyság>'
     others-permission: '&cEhhez nincs jogod.'
     message-admin: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
-      &7| &2Király: &6%king_status%
-      &7| &2Otthon: &6%kingdoms_home%
-      &7| &2Nexus: &6%kingdoms_nexus%
-      &7| &2Nemzet: &6%kingdoms_nation%
-      &7| &2Bank: &6$%kingdoms_fancy_bank% &8| &2Tax: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
-      &7| &2Területek: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
-      &7| &2Nexus pontok: &6%kingdoms_fancy_resource_points%
-      &7| &2Pajzs: &6%kingdoms_shield_time_left%
-      &7| &2Alapítva: &6%kingdoms_since%
-      &7| &2Tagok: &6%kingdoms_members%&7/&6%kingdoms_max_members%
+      &7| &2Király&8: &6%king_status%
+      &7| &2Otthon&8: &6%kingdoms_home%
+      &7| &2Nexus&8: &6%kingdoms_nexus%
+      &7| &2Nemzet&8: &6%kingdoms_nation%
+      &7| &2Hatalom&8: &6%kingdoms_fancy_might%
+      &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Területek&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2Nexus pontok&8: &6%kingdoms_fancy_resource_points%
+      &7| &2Pajzs&8: &6%kingdoms_shield_time_left%
+      &7| &2Alapítva&8: &6%kingdoms_since%
+      &7| &2Tagok&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
 
-      &7| &2Király: &6%king_status%
-      &7| &2Nation: &6%kingdoms_nation%
-      &7| &2Alapítva: &6%kingdoms_since%
-      &7| &2Pajzs: &6%kingdoms_shield_time_left%
-      &7| &2Területek: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
-      &7| &2Nexus pontok: &6%kingdoms_resource_points%
+      &7| &2Király&8: &6%king_status%
+      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Hatalom&8: &6%kingdoms_might%
+      &7| &2Alapítva&8: &6%kingdoms_since%
+      &7| &2Pajzs&8: &6%kingdoms_shield_time_left%
+      &7| &2Területek&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2Bank&8: &6$%kingdoms_fancy_bank%
+      &7| &2Nexus pontok&8: &6%kingdoms_resource_points%
 
       &7| &2Tagok:
       %members%
     allies: |
-      @&7| &2Szövetségesek:
+      &7| &2Szövetségesek:
       &e%allies%
     truces: |
-      @&7| &2Fegyverszünet:
+      &7| &2Tűzszünet:
       %truces%
     enemies: |-
-      @&7| &2Ellenségek:
+      &7| &2Ellenségek:
       &e%enemies%
     online-prefix: |-
-      @hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Csatlakozás dátuma: &6%kingdoms_joined%
-      &2Adományok: &6%kingdoms_total_donations%
-      &2Utolsó adomány: &6%kingdoms_last_donation_time%
-      &2Rang: &6%kingdoms_rank_name%}
-    offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: '@&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&2Csatlakozás dátuma: &6%kingdoms_joined%
+      &2Adományok&8: &6%kingdoms_total_donations%
+      &2Utolsó adomány&8: &6%kingdoms_last_donation_time%
+      &2Rang&8: &6%kingdoms_rank_name%}
+    offline-prefix: |-
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&2Csatlakozás dátuma&8: &6%kingdoms_joined%
+      &2Adományok&8: &6%kingdoms_total_donations%
+      &2Utolső adomány&8: &6%kingdoms_last_donation_time%
+      &2Rang&8: &6%kingdoms_rank_name%}
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
   claim:
-    description: '&6jelenlegi terület elfoglalása.'
-    disabled-world: '&cEbben a világban nem foglalhatsz területet &6%world%'
-    in-region: '&cLevédett területen nem foglalhatsz.'
-    not-connected: '&cA területednek csatlakoznia a már lefoglaltakhoz.'
+    description: '&6Jelenlegi terület elfoglalása.'
+    chunk:
+      usage: '&4Használat&8: &e/k claim [x] <z>'
+      permission: '&cEhhez nincs jogod.'
+      max-distance: '&cTúl messze van a terület amit el szeretnél foglalni&8: &e%distance%
+        &7> &e%max%'
+    disabled-world: '&cEbben a világban nem foglalhatsz területet: &6%world%'
+    in-region: '&clevédettt területeken nem foglalhatsz.'
+    near-region: '&cNem foglalhatsz a levédett területek közelében.'
+    not-connected: '&cA területnek csatlakoznia kell a királyságod területeihez.'
     not-distanced: '&cA lefoglalandó területet ellenséges földek veszik körbe'
-    nation-zone: '&cEz a terület már a(z) &e%nation% nemzet tulajdona.'
-    success: '&2Terület elfoglalva.'
+    nation-zone: '&cEz a terület már a(z) &e%nation% &cnemzet tulajdona ezért nem
+      foglalható.'
+    success: '&2Terület (&6%x%&7, &6%z%&2) elfoglalva.'
     fill:
       in-claimed-land: '&cEz a terület már el lett foglalva.'
       failed: '&cSikertelen foglalás: &e%x%&7, &e%z%'
       max-fails: '&cA folyamat megállt, mivel túl sok sikertelen próbálkozás volt.'
       max-claims: '&cNem foglalhatsz el &e%lands% &cterületet.'
-      success: '&2Sikeres foglalás'
-      permission: '&cEhhez nincs jogod.'
+      description: '&2Az összes terület elfoglalása egy megjelölt formán belül.'
+      done: '&A területek elfoglalásának megerősítéshez használd a
+        hover:{&6/k claim confirm;&2Megerősítés;/k claim confirm} &2parancsot.'
     exceeded-max: '&cNem foglalhatsz el több területet mint &e%max%!'
     already-owned: '&cA királyságod már uralja ezt a területet!'
-    occupied-land: '&cEz a terület már egy másik királyság tulajdona! Az ostromhoz írd be &e/k
-      invade!'
-    max-claims-player: '&cTe nem foglalhatsz többet mint &e%limit% &cterület.'
+    occupied-land: '&cEz a terület már egy másik királyság tulajdona! Az ostromhoz
+      írd be &e/k invade!'
+    cant-overclaim: '&cTöbbet nem tudsz foglalni ebből a királyságból.'
+    max-claims-player: '&cNem foglalhatsz több mint &e%limit% &cterületet.'
     max-claims: '&cA királyságod nem foglalhat többet mint &6%limit% &cterület.'
-    chunk:
-      invalid: '&cPlease specify the Z location for the chunk.'
-      permission: '&cEhhez nincs jogod.'
-      invalid-axis: '&cHibás Z érték: &e%z%'
+    square:
+      description: '&2Területek elfoglalása körülötted levő rádiuszon belül.'
+      usage: '&4Használat&8: &e/k claim square &2<rádiusz>'
+      radius:
+        invalid: '&cA megadott rádiusz érvénytelen&8: &e%radius%'
+        disallowed: '&cA rádiusznak &e%min% &cés &e%max% &cnagyság között kell lennie.
+          Megadott&8: &e%radius%'
+      done: '&2A területek elfoglalásának megerősítéshez használd a
+        hover:{&6/k claim confirm;&2Megerősítés;/k claim confirm} &2parancsot.'
     auto:
-      permission: '&cEhhez nincs jogod.'
+      permission: '&cNincs engedélyed mások automatikus foglalásának beállításához.'
+      description: '&2Séta közbeni automatikus foglalás.'
+      usage: '&4Használat&8: &e/k claim auto &2<játékos>'
       claim:
-        'on': '&6Automatikus foglalás &aBE&6. A területek elfoglalásra kerülnek ahogy sétálsz.'
-        'off': '&6Automatikus &cKI&6.'
-    need-rp: '&cSzükséged van &e%cost% &cNexus pontra az elfoglaláshoz!'
+        'on': '&6Automatikus foglalás &aBE&6. A területek elfoglalásra kerülnek ahogy
+          sétálsz.'
+        'off': '&6Automatikus foglalás &cKI&6.'
+    need-rp: '&cSzükséged van &e%cost% &cNexus pontra a foglaláshoz!'
     confirmation: |-
-      &cA királyságodnak ki kell fizetni &e%rp% &cNexus pontot és &e$%money%
+      &cA királyságodnak ki kell fizetni &e%rp% &cNexus pontot és &e$%money% &cpénzt.
       Biztosan folytatod? Írd be újra a parancsot.
-    need-money: '&cSzükséged van &e$%cost% &ca foglaláshoz! Tegyél be
-      pénzt a királyság bankjába &e/k bank deposit'
+    need-money: '&cSzükséged van &e$%cost% &ca foglaláshoz! Tegyél be pénzt a királyság
+      bankjába &e/k bank deposit'
+    line:
+      description: '&2Foglalás egy egyenes irányában.'
+      usage: '&4Használat&8: &e/k claim line &2<távolság>'
+      invalid-direction: '&cÉrvénytelen irány&8: &e%direction%'
+      max-distance: '&cMaximum foglalható távolság: &e%max%'
+      min-distance: '&cMinimum foglalható távolság: &e%min%'
+      done: '&2A területek elfoglalásának megerősítéshez használd a
+        hover:{&6/k claim confirm;&2Végrehajtás;/k claim confirm} &2parancsot.'
+    clipboard:
+      description: '&6A területfoglalásod módosítása a megerősítés előtt.'
+      usage: '&4Használat&8: &e/k claim clipboard &2[add(hozzáad)/remove(eltávolít)
+        | clear(töröl)] &9<x> <z>'
+      different-world: '&cA vágólapod ezé a világé:&8: &e%world%'
+      unknown-action: '&cIsmeretlen vágólap művelet&8: &e%action%'
+      empty: '&cNincs semmi a vágólapodon.'
+      added: '&2Hozzáadtad a &6%x%&7, &6%z% &2koordinátákat a vágólaphoz.'
+      already-added: '&e%x%&7, &e%z% &ckoordináta már a vágólapon van.'
+      removed: '&2Eltávolítottad &6%x%&7, &6%z% &2koordinátákat a vágólapról.'
+      not-foumd: '&e%x%&7, &e%z% &ckoordináta nincs a vágólapon.'
+      cleared: '&2A vágólapod törlődött.'
+      cost: '&2A területek elfoglaláshoz szükség lesz &6%rp% Nexus pontra &2és &6$%money%
+        pénzre.'
+    confirm:
+      description: '&6Megerősítés és elfoglalása a vágólapodon levő összes területnek.'
+      empty: '&cNincs semmi a vágólapodon.'
+      fail: '&cA legutóbbi változás miatt nem foglalható a &e%x%&7, &e%z%&c.'
+      success: '&2Sikeresen lefoglaltad az összes területet.'
+    corner:
+      description: '&6Két sarokpozíció megadásával téglalap alapú terület foglalható.'
+      usage: '&4Használat&8: &e/k claim corner &9[pos1 &7| &9pos2]'
+      max-claims: '&cA paranccsal legfeljebb &e%max% &cterületet lehet lefoglalni.
+        &cAktuális foglalás:&8: &e%claims%'
+      set:
+        pos1: '&2Beállításra került az első sarokpozíció a chunk-ban: &6%chunkx%&7,
+          &6%chunkz%'
+        pos2: '&2Beállításra került a második sarokpozíció a chunk-ban: &6%chunkx%&7,
+          &6%chunkz%'
+  shield:
+    description: '&6Pajzsod hatástalanítása.'
+    no-shield: '&cA királyságodnak nincs aktív pajzsa.'
+    confirm: |-
+      &cHa kikapcsolod a királyság pajzsát akkor újat kell venned.
+      A királyság pajzsából a hátralevő idő&8: &e%kingdoms_shield_time_left%
+      &cMegerősítéshez és a folytatáshoz használd a hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cparancsot.
+    deactivated: '&e%executor% kikapcsolta a királyság pajzsát amiből még hátravolt:
+      &e%kingdoms_shield_time_left%'
   unclaim:
     description: '&6Terület feloldása.'
     success: '&2Terület feloldva'
-    disconnection: '&cAmennyiben ezt a területet feloldod a következő terület leválasztódik: &e%x%&7, &e%z%'
+    disconnection: '&cAmennyiben ezt a területet feloldod a következő terület leválasztódik:
+      &e%x%&7, &e%z%'
     not-claimed: '&cEz a terület nincs lefoglalva.'
     cooldown: '&cA következő feloldásig hátralévő idő &e%time%'
     cannot-remove-nexus: |-
-      @&cEzen a területen van a Nexus.
-      Kérlek először helyezd át a usinghover:{&e/k nexus;&7Bekapcsolás;/k nexus} &cparanccsal.
-    occupied-land: '&cEz a terület egy másik királyság tulajdona! Az ostromhoz írd be &e/k
-      invade!'
+      &cEzen a területen van a Nexus.
+      Kérlek először helyezd át a hover:{&e/k nexus;&7Áthelyezés;/k nexus} &cparanccsal.
+    occupied-land: '&cEz a terület egy másik királyság tulajdona! Az ostromhoz írd
+      be &e/k invade!'
     confirmation:
-      turrets: '&cEz a terület tornyokat tartalmaz. Amennyiben így is felakarod oldani ezt
-        a területet írd be újra &e/k unclaim confirm'
-      structures: '&cEz a terület struktúrákat tartalmaz. Amennyiben így is felakarod oldani ezt
-        a területet írd be újra &e/k unclaim confirm'
-      home: '&cEzen a területen van a királyság otthona. Amennyiben így is felakarod oldani ezt
-        a területet írd be újra &e/k unclaim confirm'
+      turrets: '&cEz a terület tornyokat tartalmaz. Amennyiben így is felakarod oldani
+        ezt a területet írd be újra &e/k unclaim confirm'
+      structures: '&cEz a terület struktúrákat tartalmaz. Amennyiben így is felakarod
+        oldani ezt a területet írd be újra &e/k unclaim confirm'
+      home: '&cEzen a területen van a királyság otthona. Amennyiben így is felakarod
+        oldani ezt a területet írd be újra &e/k unclaim confirm'
   unclaimall:
     description: '&6A királyság minden területének feloszlatása.'
     success: '&6%lands% &2feloldva!'
-    not-enough-resourcepoints: '&cSzükséged van &e%rp% &cNexus pontra, hogy feloldhass minden területet.'
+    not-enough-resourcepoints: '&cSzükséged van &e%rp% &cNexus pontra, hogy feloldhass
+      minden területet.'
     confirm: |-
-      &cFel fogsz oldalni &e&l%lands%&c területet.
-      Minden torony, struktúra és védtt blokk levédése megszűnik.
+      &cFel fogsz oldalni &e%lands% &cterületet.
+      Minden torony, struktúra és védett blokk levédése megszűnik.
       Írd be újra amennyiben szeretnéd folytatni.
     announce: '&6%player% &2feloldott &6%lands% &2területet!'
   sethome:
     description: '&6Királyság otthonának beállítása a jelenlegi pozíciódra.'
     not-claimed: '&cAz otthont, csak elfoglalt területre teheted.'
-    others-land: '&cAz otthont, csak elfoglalt területre teheted!'
-    nexus-land: '&cAz otthont csak a Nexus területére teheted!'
-    set: '&aOtthon beállítva: &6%x%&7, &6%z%'
+    others-land: '&cA királyság otthona csak elfoglalt területen lehet!'
+    nexus-land: '&cA királyság otthona csak saját területen lehet!'
+    set: '&aA királyság otthona beállítva: &6%x%&7, &6%z%'
   unsethome:
-    description: '&6Otthon törlése.'
+    description: '&6A királyság otthonának törlése.'
     not-set: '&cA királyságod otthona nem lett beállítva.'
-    success: '&aOtthon törölve innen: &6%x%&7, &6%y%&7, &6%z%'
+    success: '&aA királyság otthona innen törölve lett: &6%x%&7, &6%y%&7, &6%z%'
   home:
     description: '&6Teleportálás a királyság otthonába.'
-    already-teleporting: '&cA teleportálás már folyamatban van...'
-    cancelled: '&cA teleportlálás megszakadt!'
     changed: '&cAz otthon helyzete megváltozott. A teleportáció megszakadt.'
-    teleporting: '&2Teleportálás &6%countdown% másodperc&2... Ne mozdulj!'
+    teleporting: '&2Teleportálás &6%countdown% másodperc &2múlva... Ne mozdulj!'
     not-set: '&cA királyságodnak jelenleg nincs beállítva otthon!'
     not-set-others: '&e%kingdom% &ckirályság otthona nem lett beállítva.'
-    kingdom-not-found: '&e%kingdom% &cnem található.'
-    not-public: '&e%kingdom% &ckirályság otthona nem publikus.'
+    permission: '&cNincs jogosultságod teleportálni más királyság otthonába.'
+    not-public: '&e%kingdom% &ckirályság otthona nem nyilvános.'
+    cant-use-public-home: '&cNem használhatod a &e%kingdom% &ckirályság nyilvános
+      otthonát.'
+    being-invaded: '&cNem teleportálhatsz &e%kingdom% &ckirályság otthonába mert ostrom
+      alatt áll.'
     success: '&2Sikeres teleportálás!'
   nexus:
     description: '&6Nexus pont beállítása.'
-    help: |-
-      @&2Kattints jobb gombbal arra a blokkra amelyikre le szeretnéd tenni a Nexus-t.
-      Kikapcsoláshoz hover:{&6/k nexus;&cKikapcsolás;/k nexus} &2vagy írd be újra a parancsot.
-    actionbar-activated: '&6Nexus Mód: &2Aktív'
-    actionbar-deactivated: '&6Nexus Mód: &cInaktív'
-    disabled: '&cNexus mód kikapcsolva.'
-    setting-nation: '&cA beállítás már folyamatban van.'
-    open-permission: '&cNem nyithatod meg a Nexus-t távolról.'
+    open:
+      description: '&6Nexus távoli megnyitása.'
     remove:
-      permission: '&cEhhez nincs jogod.'
+      description: '&6Nexus távoli eltávolítása.'
+      permission: '&cA nexus eltávolítására nincs jogod.'
       invasion: '&cTámadás alatt nem tudod áthelyezni a Nexusodat.'
       not-placed: '&cA Nexus jelenleg nincs elhelyezve.'
       removed: '&cNexus sikeresen törölve.'
-    outside-of-land: '&cJelenleg nem tartózkodsz a területeden, így nem tudod lerakni a Nexus-t.'
+    help: |-
+      &2Kattints jobb gombbal arra a blokkra amelyikre le szeretnéd tenni a Nexus-t.
+      Kikapcsoláshoz használd a hover:{&6/k nexus;&cÁthelyezés;/k nexus} &2parancsot.
+    actionbar-activated: '&6Nexus Mód: &2Aktív'
+    actionbar-deactivated: '&6Nexus Mód: &cInaktív'
+    disabled: '&cNexus mód kikapcsolva.'
+    disabled-world: '&cNexus nem állítható be tiltott világban.'
+    setting-nation: '&cMár beállítottad a nemzetnek a Nexus területét.'
+    outside-of-land: '&cSaját területen kell lenned a Nexus lerakásához.'
     invasion: '&cTámadás alatt nem tudod áthelyezni a Nexusodat.'
-    not-claimed: '&cA Nexus-t csak lefoglalt területre tudod tenni!'
-    another-structure: '&cEzen a területen már van egy struktúra.'
+    not-claimed: '&cA Nexus-t csak saját területre tudod tenni!'
+    another-structure: '&cEzen a területen már van egy másik nemzetnek nexus strukturája.'
     disabled-on-damage: '&cMegsebződtél ezért kikapcsolódott a Nexus mód.'
-    disabled-on-land-change: '&cElhagytad a területedet ezért kikapcsolódott a Nexus mód.'
-    already-there: '&cA Nexus már ezene a helyen van.'
-    cannot-replace: '&cEz a blokk nem kicserélhető a Nexusoddal!'
-    success: '&aNexus sikeresen elhelyezve &6%x%&7, &6%y%&7, &6%z%'
+    disabled-on-land-change: '&cElhagytad a királyság területét ezért kikapcsolódott
+      a Nexus mód.'
+    already-there: '&cA nexus már ezen a helyen van. Mit próbálsz meg csinálsz?'
+    cannot-replace: '&cEz a blokk nem kicserélhető a nexus struktúrával!'
+    success: '&aNexus sikeresen elhelyezve: &6%x%&7, &6%y%&7, &6%z%'
   disband:
     description: '&cKirályság feloszlatása.'
     king-only: '&cCsak a király tudja feloszlatni a királyságot.'
     success: '&4A királyságod feloszlott!'
     confirmation: |-
-      &4Felfogod oszlatni a királyságodat.
+      &4A királyságodat készülsz feloszlatni.
       Minden játékos ki lesz rúgva és minden
-      terület fel fog veszni.
+      terület fel fog szabadulni.
       Biztosan folytatod?
-      Írd be újra &e/k disband &4, hogy megerősítsd a műveletet.
+      Megerősítéshez írd be a &e/k disband &4parancsot.
     announce: '&e%player% &6feloszlatta a(z) &e%kingdoms_name% &6királyságot'
   about:
     description: '&6A pluginról.'
-  invite:
-    invited: |-
-      @&6%inviter% &2meghívott ebbe a(z) &6%kingdom% &2királyságba.
-          hover:{&2Elfogadás with /k accept;&2Elfogadás;/k accept}
-          hover:{&cElutasítás with /k decline;&cElutasítás;/k decline}
-    usage: '&4Használat: &e/k invite <játékos> <királyság>'
-    announce: '&6%inviter% &2meghívta &6%invited% &2a királyságba.'
-    already-joined: '&e%invited% &cmár a királyságod tagja.'
-    description: '&6Meghívás küldése a megadott játékosnak.'
-    already-in-kingdom: '&cEz a játékos már tagja egy királyságnak.'
-    already-invited: '&cEzt a játékost már meghívta &e%inviter%'
-    max-members: '&cA királyságod már megtelt &e%kingdoms_members% &ctaggal.'
-    self: '&cNem hívhatod meg önmagadat.'
-    expired: '&c&e%inviter%-tól/től &ckapott meghívásod lejárt!'
-    expired-notify: '&cA(z) &e%invited%nak/nek &cküldött meghívás lej��rt!'
-  accept:
-    description: '&6Meghívás elfogadása.'
-    already-in-kingdom: '&2Már tagja vagy egy királyságnak.'
-    accepted: '&2Elfogadtad &6%inviter% &2meghívását a(z) &e%kingdom% &2királyságba'
-    joined: '&6%player% &2csatlakozott a királyságba.'
-    notify: '&6%name% &2elfogadta a meghívásodat.'
-    no-invites: '&cJelenleg nincs egy meghívásod sem.'
-    not-invited: '&cEz a királyság nem hívott meg &e%kingdom%'
-    expired: '&cEbbe a királyságba szóló meghívásod már lejárt &e%kingdom%'
-    max-members: '&cEz a királyság már megtelt &e%kingdoms_members%'
-    no-longer-exists: '&cEz a királyság már nem létezik.'
-    multiple-invites: '&cJelenleg több meghívásod is van ezért kérlek add meg a királyság nevét is.'
-  join:
-    description: '&6Csatlakozás egy olyan királysághoz, amelyhez nem szükséges meghívó.'
-    usage: '&4Használat: &e/k join <királyság>'
-    joined: '&6%player% &2csatlakozott a királysághoz.'
-    already-in-kingdom: '&cMár tagja vagy egy királyságnak.'
-    kingdom-not-found: '&e%kingdom% &ckirályság nem található.'
-    requires-invite: '&cAhhoz, hogy csatlakozz ebbe a királyságba, meghívás szükséges &e%kingdom%'
-  decline:
-    description: '&6Meghívás elutasítása.'
-    declined: '&cElutasítottad &6%inviter% meghívását ebbe a királysába &e%kingdom%'
-    notify: '&e%name% &celutasította a meghívásodat.'
-    no-invites: '&cJelenleg nincs egy meghívásod sem,.'
-    not-invited: '&cEttől a királyságtól nem kaptál meghívást &e%kingdom%'
-    expired: '&cA(z) &e%kingdom% &ckirályságtól kapott meghívásod lejárt.'
-    no-longer-exists: '&cEz a királyság már nem létezik.'
-    all: '&2Elutasítottál &6%invites% &2meghívást.'
-    multiple-invites: '&cTöbb meghívásod is van, ezért kérlek írd be a királyság nevét is.
-      Minden meghívás elutasításához írj egy &e*-ot'
-  invites:
-    description: '&6Meghívások megtekintése.'
-    no-invites: '&cJelenleg nincs egy meghívásod sem.'
-  teleport:
-    description: '&6Teleportálás a királyság ostrom alatt lévő részére.'
-    not-invading: '&cJelenleg egy terület sincs támadás alatt.'
-    already-teleporting: '&cA teleportálás már folyamatban van...'
-    teleporting: '&2Teleportálás &6%countdown% másodperc múlva&2... Ne mozdulj!'
-    teleported: '&2Sikeres teleportálás!'
-    cancelled: '&cA teleportáció megszakadt!'
-  invade:
-    description: '&6Állj egy ellenséges területre és támadd meg.'
-    invading: '&6%kingdom%&2 ostromlása. A bajnok érkezik &65
-      másodperc múlva'
-    countdown: '&2Érkezik a bajnok... &6%sec%'
-    announcement: '&6%invader% &2megkezdte a(z) &6%kingdom% &2királyság ostromát itt: &6%location%'
-    announcement-defender: |-
-      @&e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: %location%.
-      &cÍrd be hover:{&e/k tp;&eTeleportálás;/k tp} &ca teleportáláshoz.
-    announcement-nation: '&e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: &e%location%'
-    own-land: '&cNem támadhatod meg a saját királyságodat.'
-    not-claimed: '&cEz a terület nincs elfoglalva.'
-    already-being-invaded: '&cEz a terület már ostrom alatt áll.'
-    masswar-only: '&cCsak Háború alatt ostromolhatsz.'
-    already-invading: '&cEgy másik terület már ostrom alatt áll.'
-    self-pacifist: '&cA királyságod pacifista. Ebben az állapotban nem támadhatsz meg más királyságokat.'
-    cooldown: '&cElbukott a(z) &e%kingdom% &ckirályság ostroma alatt, várnod kell &e%cooldown%
-      &caz újabb ostromhoz.'
-    min:
-      defenders-needed: '&cLegalább &e%defenders% &cvédőnek elérhetőnek kell lennie az ostromhoz.'
-      invaders-needed: '&cLegalább &e%invaders% &costromlónak elérhetőnek kell lennie.'
-    shield:
-      defender:
-        kingdom: '&cEz a királyság védelme alatt van: &e%shield%'
-        nation: '&cEz a nemzet védelem alatt van: &e%shield%'
-      invader:
-        kingdom: |-
-          &cA királyságodnak jelenleg pajzsa van: &e%shield% &cA pajzs deaktiválódni fog amennyiben ostromolni fogsz.
-          Írd be újra a parancsot a folytatáshoz.
-        nation: |-
-          &cA nemzetednek jelenleg pajzsa van: &e%shield% &cA pajzs deaktiválódni fog amennyiben ostromolni fogsz.
-          Írd be újra a parancsot a folytatáshoz.
-        kingdom-disabled: '&cA királyságod pajzsa deaktiválódott, ami eddig tartott volna:
-          for: &e%shield% &e%invader% &cmegtámadta ezt a királyságot: &e%kingdom%'
-        nation-disabled: '&cA nemzeted pajzsa deaktiválódott, ami eddig tartott volna:
-          for: &e%shield% &e%invader% &cmegtámadta ezt a királyságot: &e%kingdom%'
-    creative: '&cCsak túlélő módban ostromolhatsz.'
-    simultaneous: '&cA királyságod csak %amount% területet támadhat egyidejűleg.'
-    resource-points: '&cSzükséged van &e%cost% &caz ostromhoz.'
-    pacifist: '&cAz ostromolni kívánt terület pacifista, ezért nem támadható.'
-    ceasefire: '&cEzt a királyságot nem támadhatod meg mivel &e%relation% kapcsolatban álltok.'
-    nation-capital: |-
-      &cNem támadhatod meg a Nemzet főkirályságát, csak miután elfoglatad a többi királyság Nexus-át.
-      A következő királyságokat kell előbb elfoglalnod:
-      %kingdoms%
-    powercell: '&cEgy erőtér van a közelben, először annak a területét kell elfoglalnod.'
-  top:
-    description: '&6TOP királyságok.'
-    loading: '&6Adatok betöltése...'
-    header: '&8----------------------------------'
-    footer: '@     &8[hover:{&6←;&6Előző oldal;/k top %previous_page%}&8]
-      &8[hover:{&6→;&6Következő oldal;/k top %next_page%}&8]'
-    no-more-pages: '&cNem tölthető be több oldal.'
-    negative: '&cNincsenek negatív oldalak.'
-    entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Tagok: &6%kingdoms_members%
-      &7♦ &2Területek: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
-      &7♦ &2Nexus pontok: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Bank: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
-  map:
-    description: '&6Térkép megjelenítése.'
-    usage: '&4Használat: &e/k map [auto/magasság] [szélesség]'
-    kingdom-player-only: '&cCsak királysággal rendelkező emberek használhatják a térképet.'
-    invalid-height: '&cÉrvénytelen magasság &e%height% &cAlapértelmezett érték használata.'
-    invalid-width: '&cÉrvénytelen szélesség &e%width% &cAlapértelmezett érték használata.'
-    max-height: '&cA maximum magasság &e%limit%'
-    max-width: '&cA maximum szélesség &e%limit%'
-    auto:
-      permission: '&cEhhez nincs jogod.'
-      enabled: '&2Auto térkép &6BEKAPCSOLVA'
-      disabled: '&2Auto térkép &cKIKAPCSOLVA'
-    size:
-      reset: '&2A térékp mérete visszaállítva.'
-  fly:
-    description: '&6Repülés engedélyezése a királyság területén.'
-    enabled: '&6Repülés: &2BEKAPCSOLVA'
-    disabled: '&6Repülés: &4KIKAPCSOLVA'
-    not-allowed: '&cNem repülhetsz a(z) &e%kingdom% királyság területén'
-    unclaimed: '&cCsak lefoglalt területen repülhetsz.'
-    own-enemy-nearby: '&cNem repülhetsz mivel ellenségek vannak a közelben.'
-  kick:
-    person: '&cKi lettél rúgva a(z) &e%kingdom% &ckirályságból &e%kicker% &cáltal'
-    description: '&6Játékos kirúgása a királyságból.'
-    usage: '&4Használat: &e/k kick <játékos> [silent]'
-    announce: '&e%kicked% &cki lett úrgva a királyságból &e%kicker% által'
-    self: '&cNem rúghatod ki önmagad...'
-    not-in-kingdom: '&cA megadott játékos nem tagja a királyságodnak.'
-    cant-kick: '&cŐt nem rúghatod ki &e%kicked%'
-  surrender:
-    invader: '&6%invader% &2feladta! &6%kingdom% &2királyság bajnoka visszatért.'
-    disabled:
-      invader: '&cNem adhatod fel.'
-      defender: '&cNem adhatod fel.'
-    defender-surrendered: '&6%player% &2feladta a(z) &6%kingdoms_name% &2királyság védelmét!
-      A terület mostantól a(z) &6%kingdom% &2királyságé'
-    defender-permission: '&cEhhez nincs jogod.'
-    no-invasion: '&cJelenleg a királyságod nem áll ostrom alatt.'
-    description: |-
-      &6Amennyiben támadóként adod fel, a bajnok visszatér a helyére.
-      Amennyiben védőként adod fel, a támadók megkapják a területedet.
-  leave:
-    success: '&2Elhagytad a(z) &6%kingdom% királyságot'
-    description: '&6Királyság elhagyása.'
-    king: |-
-      &cKirályként nem hagyhatod el a királysáot.
-      Használd a &e/k disband parancsot, vagy
-      &cnevezz ki valakit királynak &e/k king
-    announce: '&e%left% &celhagyta a királyságot!'
-  undo:
-    description: '&6foglalás/feloldás visszavonása.'
-    already-unclaimed: '&6A legutoljára foglalt területet valki már feloldotta.'
-    already-claimed: '&6A legutoljára feloldott területet valaki már újra lefolgalta.'
-    claimed: '&2Feloldottad az itt található területet &6%x%&7, &6%z%'
-    unclaimed: '&2Elfoglaltad az itt talákható területet &6%x%&7, &6%z%'
-    no-history: '&cJelenleg nincs semmi visszavonható.'
-  redo:
-    description: '&6foglalás/feloldás újra.'
-    already-unclaimed: '&6A legutoljára foglalt területet valki már feloldotta.'
-    already-claimed: '&6A legutoljára feloldott területet valaki már újra lefolgalta.'
-    claimed: '&2Feloldottad az itt található területet &6%x%&7, &6%z%'
-    unclaimed: '&2Elfoglaltad az itt talákható területet &6%x%&7, &6%z%'
-    no-history: '&cJelenleg nincs semmi visszavonható.'
-  lore:
-    description: '&6Királyság leírásának beállítása.'
-    usage: /k lore <leírás>
-    blacklisted: '&cA királyságod leírása nem engedélyezett szavakat tartalmaz.'
-    name-length: '&cA királyság leírása nem lehet hosszabb mint &e%limit%'
-    name-english: '&cA királyság leírása csak angol betűket és számokat tartalmazhat.'
-    name-has-symbols: '&cA királyság neve nem tartalmazhat szimbólumokat. Csak számokat és az ABC betűit.'
-    removed: '&2Királyság leírása törölve.'
-  mail:
-    description: '&6Levelek kezelése.'
-    box-description: '&6Postaláda megnyitása.'
-    send-description: '&6Hagyj egy levelet a királyságágodnak.'
-    send: '&6%player% &2küldött egy új üzenetet: &6%message%'
-    send-usage: /k mail send <üzenet>
-    send-max: |-
-      &4Nem küldhetsz több levelet mint &6%mails%
-      Vagy töröld az összeset a  &6/k mails clear &2paranccsal.
-    clear-description: '&6Összes levél törlése.'
-    clear: '&2Törölve &6%mails% &2levél.'
-    set-as-read-description: '&6Jelenlegi levek megjelölése olvasottként.'
-    set-as-read: '&6%mails% &2levél megjelölve olvasottként.'
-  relations:
-    description: '&6Megjeleníti az összes aktuális kapcsolati kérelmet.'
-    no-requests: '&6A királyságodnak jelenleg nincs egy kérelme sem.'
-  ally:
-    description: '&6Szövetséges felkérés küldése egy királyságnak.'
-    usage: /k ally <királyság>
-    sender: '&2Kérelem elküldve ennek a királyságnak &6%kingdom%'
-    kingdom-not-found: '&e%kingdom% &cnem található.'
-    already: '&cEzzel a királysággal már szövetségesek vagytok &e%kingdom%'
-    already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
-    self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: '@&6%kingdom% &2királyság szeretne a szövetségesed lenni. Elfogadás hover:{&6/k
-                ally %kingdom%;&2Elfogadás;/k ally %kingdom%}'
-    allies: '&2A szövetség megköttetett ezzel a királysággal: &6%kingdom%'
-    another-request: '&e%kingdom% &ckirályság küldött neked egy %relation% &ckérelmet.'
-  enemy:
-    description: '&6Királyság ellenséggé tétele.'
-    usage: '&4Használat: &e/k enemy <királyság>'
-    kingdom-not-found: '&e%kingdom% &cnem található.'
-    already: '&cEzzel a királysággal már ellesnéges viszonyban vagy &e%kingdom%'
-    self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    enemies: '&cMostantól ellenségek vagytok ezzel a királysággal &e%kingdom%'
-  truce:
-    description: '&6Fegyverszünet kérelem küldése egy királyságnak.'
-    usage: /k truce <királyság>
-    sender: '&2Fegyverszüneti kérelem elküldve ennek a királyságnak &6%kingdom%'
-    kingdom-not-found: '&e%kingdom% &cnem található.'
-    already: '&cEzzel a királysággal már fegyverszünetben vagytok &e%kingdom%'
-    already-requested: '&cEnnek a királyságnak már küldtél kérelmet &e%kingdom%'
-    self: '&cNem küldhetsz kérelmet a saját királyságodnak.'
-    receiver: '@&6%kingdom% &2szeretne fegyverszünetet kötni veled. Elfogadás hover:{&6/k
-                truce %kingdom%;&2Elfogadás;/k truce %kingdom%}'
-    truces: '&2Mostantól fegyverszünet van ezzel a királysággal &6%kingdom%'
-    another-request: '&e%kingdom% &cküldött neked egy %relation% &ckérelmet.'
-  revoke:
-    description: '&6Kapcsolat megszakítása egy királysággal.'
-    usage: /k revoke <királyság>
-    sender: '&cMegszakítottad a(z) &e%kingdom% királysággal való kapcsolatot'
-    kingdom-not-found: '&e%kingdom% &cnem található.'
-    no-relation: '&cNem állsz semmilyen kapcsolatban ezzel a királysággal &e%kingdom%'
-    self: '&cNem lehet semmilyen kapcsolatod a saját királyságoddal...'
-    receiver: '&e%kingdom% &cmegszakította a kapcsolatát a királyságoddal.'
-  chat:
-    description: '&6Csevegő csatorna váltása.'
-    usage: /k chat <csatorna>
-    already-in-channel: '&cMár ezen a csatornán vagy &6%channel%'
-    unknown-channel: '@&cIsmeretlen csatorna! Kérlek válassz ezek közül: &fhover:{Global;Global;/k
-      c g}&7, &2hover:{&2Királyság;&2Királyság;/k c k}&7, &ahover:{&aSzövetséges;&aSzövetséges;/k c
-      a}&7, &ehover:{&eFegyverszünet;&eFegyverszünet;/k c t} &7vagy &ehover:{&9Nemzet;&9Nemzet;/k c
-      n}'
-    changed: '&2Mostantól ezen a csatornán fogsz csevegni %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
-  broadcast:
-    description: '&6Üzenet a királyság minden tagjának.'
-    usage: /k broadcast <üzenet>
-    cooldown: '&cVárnod kell &e%time% &cmielőtt újra üzenhetnél.'
-  king:
-    description: '&6Új király kinevezése.'
-    only-king: '&6Csak a király nevezheti ki az új királyt.'
-    set: '&6%king% &2lett az új király!'
-    not-in-kingdom: '&e%king% &cnem tagja a királyságodnak.'
-    self: '&cNem nevezheted ki önmagad.'
-    usage: /k king <játékos>
-  promote:
-    description: '&6Tag felfokozása.'
-    promoted: '&6%promoted% &2fel lett fokozva ebbe a rangba &9%rank% &6%player% &2által'
-    not-in-kingdom: '&e%promoted% &cnem tagja a királyságodnak.'
-    cant-promote: '&cNem fokozhatod fel őt &e%promoted%'
-    king: '&cAmennyiben királlyá szeretnéd kinevezni &e/k king'
-    usage: '&4Használat: &e/k promote <játékos>'
-  demote:
-    description: '&6Tag lefokozása.'
-    demoted: '&e%demoted% &cle lett fokozva &9%rank% &e%player% &cáltal'
-    not-in-kingdom: '&e%demoted% &cnem tagja a királyságodnak.'
-    cant-demote: '&cNem fokozhatod le őt &e%demoted%'
-    member: '&cEz a játékos már a legalacsonyabb rangon van.'
-    usage: '&4Használat: &e/k demote <játékos>'
-  visualize:
-    description: '&6Terület kereteinek megjelenítése/elrejtése.'
-    usage: /k visualize [permanent|toggle]
-    display: |-
-      &7| &2Helyzet: &6%x%&7, &6%z%
-      &7| &2Királyság: &6%kingdom%
-    admin-display: |-
-      @&7| &2Helyzet: &6%x%&7, &6%z%
-      &7| &2Királyság: &6%kingdom%
-      &7| &2Struktúra: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Teleport;/tp %sx% %sy% %sz%}
-      &7| &2Ágyúk:
-      %turrets%
-      &7| &2Levédő táblák:
-      %protection-signs%
-    toggle:
-      description: '&6Keretek megjelenítése'
-      enabled: '&2Megjelenítés &6BEKAPCSOLVA'
-      disabled: '&2Megjelenítés &cKIKAPCSOLVA'
-    markers:
-      description: '&6Típus váltása.'
-      usage: '&4Használat: &e/k visualize markers <típus>'
-      already-using: '&cJelenleg is ezt használod &e%markers%'
-      changed: '&2Típus megváltoztatva &6%markers%'
-      invalid: '&cNem található típus: &e%markers%'
-    permanent:
-      description: '&6Álladó megjelenítés.'
-      enabled: '&2Állandó megjelenítés &6BEKAPCSOLVA.'
-      disabled: '&2Állandó megjelenítés &cKIKAPCSOLVA'
-  tradable:
-    description: '&6Kezdeben tartott királyság tárgy értéke Nexus pontban. (torony vagy struktúra)'
-    message: |-
-      &2A kezedben tartott tárgy értéke: &6%amount% * %worth% = %total%
-
-      &6Speciális Tárgyak:
-      %list%
-    item: '&2%material%&7: &9%worth%'
-  sell:
-    description: '&6Tárgyak eladása Nexus pontért.'
-    invalid: '&cA kezdeben tartott tárgy nem királyság tárgy. (torony vagy struktúra)'
-    item: '&2Eladtál &6x%amount% %item% &6%price% &2Nexus pontért.'
+  book:
+    description: '&6Egy kis kézikönyv a királysághoz.'
+    chapter-not-found: '&cNem található ilyen fejezet&8: &e%chapter%'
+    permission: '&cNincs engedélyed módosítani a királyságod könyvét.'
+    rename:
+      description: '&6Egy fejezet átnevezése a királyságod kézikönyvében.'
+      usage: '&4Használat&8: &e/k book rename &2<fejezet> <név>'
+      same: '&cEnnek a fejezetnek már ez a neve.'
+      duplicate: '&cMár van egy ilyen nevű fejezet: &e%chapter%'
+      renamed: '&2Átnevezted a &6%old_chapter% &2fejezetet a következőre: &6%new_chapter%'
+    open:
+      description: '&6Királyságod kézikönyvének olvasása.'
+      usage: '&4Használat8: &e/k book open &9[fejezet]'
+    preview:
+      description: '&6A szerkesztett fejezetek formázot verziójának előnézete.'
+      nothing-to-preview: '&cAz előnézethez még nem szerkesztettél fejezeteket.'
+      previewing: '&2Most ennek a fejezetnek formázott előnézetében vagy&8: &6%chapter%'
+    discard:
+      description: '&6A fejezet összes módosításának elvetése.'
+      nothing-to-discard: '&cNincs szerkesztett fejezet a változtatások elvetéséhez.'
+      discarded: '&2A &6%chapter% &2fejezet összes változtatása elvetésre került.'
+    remove:
+      description: '&6Egy fejezet törlése a királyság kézikönyvéből.'
+      usage: '&4Használat&8: &e/k book remove &2<fejezet>'
+      deleted: '&2A következő fejezet eltávolításra került&8: &6%chapter%'
+    edit:
+      description: '&6A királyság kézikönyvének szerkesztése.'
+      usage: '&4Használat&8: &e/k book edit &2<fejezet>'
+      already-editing: '&cMár szerkeszted a következő fejezetet: &e%chapter%'
+      cant-move: '&cA kézikönyvszerkesztő nem mozgatható!'
+      changed: '&2Megváltozott'
+      no-empty-slot: '&cNincs szabad helyed az eszköztáradba.'
+      create: '&2A fejezet nem létezik. Hozz létre egy új fejezetet... A megszakításhoz
+        használd a hover:{&6/kbook cancel;&6Megszakítás;/k book cancel} &2parancsot'
+      create-limit: '&cKirályságodnak nem lehet több fejezete mint &e%limit%'
+      create-max-length: '&cAz a fejezet nem létezik. Nem tudsz új fejezetet készíteni.
+        A fejezet neve legfeljebb &e%max% &ckarakter hosszú lehet.'
+      modify: |-
+        &2A következő fejezet kerül módosításra&8: &6%chapter%
+        &2A módosítások elvetéséhez használd a hover:{&6/k book discard;Elvetés;/k book discard} &2parancsot.
   admin:
-    description: '&6Admin parancsok megjelenítése.'
+    item-description: '&6Egyéni Nexus pontok elemeihez kapcsolódó parancsok.'
+    item:
+      needs-kingdom: '&cA királyság elemei megkövetelik a célpont játékos királyságát
+        abból a célból, hogy megépíthetőek legyenek a tárgyak.'
+      resourcepoints:
+        description: '&6Egyéni elem meghatározása a konfigban ami tartalmaz Nexus
+          pontot.'
+        usage: '&4Használat&8: &e/k item give &2<név> &9[mennyiség] [játékos]'
+        unknown-item: '&cIsmeretlen egyéni elem neve&8: &e%item%'
+        invalid-amount: '&cÉrvénytelen összeg&8: &e%amount%'
+        done: '&6%target% &2kapott &6%amount% %item% &2nevű tárgyat &6%rp% &2Nexus
+          pont értékben.'
+      inject:
+        description: '&6Végleges Nexus pontok injektálása egy tárgyba.'
+        usage: '&4Használat&8: &e/k item inject &2<Nexus pont>'
+        no-item: '&cNem tartasz olyan tárgyat amibe Nexus pontot lehetne injektálni.'
+        done: '&6%rp% Nexus pontot &2injektáltál a következő tárgyba: &6%item%'
+      turret:
+        description: '&6Torony közvetlen kiutalása.'
+        usage: '&4Használat&8: &e/k item turret &2<típus> &9[mennyiség] [játékos]'
+        unknown-style: |-
+          &cIsmeretlen toronytípus&8: &e%style%
+          &cElérhető tíousok&8: &e%styles%
+        done: '&6%target% &2kapott &6%amount% %item% &2nevű tornyot.'
+      structure:
+        description: '&6Struktúra közvetlen kiutalása.'
+        usage: '&4Használat&8: &e/k item structure &2<típus> &9[mennyiség] [játékos]'
+        unknown-style: |-
+          &cIsmeretlen stuktúra típus&8: &e%style%
+          &cElérhető típusok&8: &e%styles%
+        done: '&6%target% &2kapott &6%amount% %item% &2nevű struktúrát.'
+    gui-description: '&6Nyiss meg egy konténert a GUI konfiguráción belüli küzdelemek
+      automatikus elemzéséhez.'
+    gui-opened: '&2Konténer elemzése... Kérem várjon!'
+    gui-enabled: '&2GUI mód: &9BEKAPCSOLVA &2Nyiss meg egy konténert a tartalom elemzéséhez.'
+    gui-disabled: '&2GUI mód: &cKIKAPCSOLVA'
+    gui-done: '&2Kész! A konfig mentésre került a plugin könyvtárában &6%file% fájlnévvel.'
+    description: '&6Az elérhető Admin parancsok megjelenítése.'
     nation:
-      description: '&6Admin parancsok megjelenítés.'
+      description: '&6A nemzet admin parancsainak megjelenítés.'
       disband:
+        description: '&6Nemzet feloszlatása.'
+        usage: /k admin disband <nemzet> [silent(csendes)]
+        success: '&ˇ2A(z) &6%nation% &2nemzet feloszlott.'
         announce: '&e%nation% &6nemzet feloszlott.'
-    testsound:
-      description: '&6A konfigurációban használatos hang tesztelése.'
-      usage: /k admin testsound <hang> [hangerő] [hangmagasság]
+    debug:
+      description: '&6Debug'
+    sound:
+      description: '&6Hangsor tesztelése a konfigurációban való használathoz.'
+      usage: '&4Használat&8: &e/k admin testsound &2<hang> &9[hangerő] [hangmagasság]'
       playing: '&2Lejátszás...'
     test:
-      description: '&6Szöveg tesztelése hex színkódokkal, összetett üzenetek tesztelése, sortörések és placeholderek tesztelése.'
-      usage: '&cHasználat: &e/k admin test <message>'
+      description: '&6Szöveg tesztelése hex színkódokkal, összetett üzenetek tesztelése,
+        sortörések és placeholderek tesztelése.'
+      usage: '&cHasználat: &e/k admin test &2<üzenet>'
+    execute:
+      description: '&6Parancsvégrehajtás egy királyság összes tagján.'
+      usage: '&4Használat&8: &e/k admin execute &2<királyság> <végrehajtó> &9[filter]
+        &9[/]&2<parancs>'
+      console-executor-permission: '&cNincs engedélyed a parancs végrehajtásához mint
+        console!'
+      unknown:
+        executor: |-
+          &cIsmeretlen végrehajtó&8: &e%executor%
+          &cElérhető végrehajtók&8: &eself&7, &econsole&7, &emembers
+        filter: |-
+          &cIsmeretlen filter&8: &e%filter%
+          &cElérhető filterek&8: &eonline&7, &eoffline
+        command: '&cIsmeretlen parancs&8: &e%command%'
+      members-offline: '&cNem végrehajtható a királyság tagjaival (&emembers&c) offline
+        filterrel. Nem bejelentkezet (&eoffline&c) játéksok nem hajthatnak végre parancsokat.'
+      members-no-filter: |-
+        &cNem végrehajtható filter nélkül a királyság tagjaival (&emembers&c).
+        Néhányan a királyság tagai közül nincsenek bejelentkezve. Használd az &eonline &cfiltert!
+      executed: '&6%command% &2parancs feldolgozása a &6%plugin% &2pluginban a &6%kingdom%
+        &2királyság tagjain.'
     evaluate:
-      description: '&6Képletek kiszámolása akár placeholderekkel együtt.'
-      usage: '&cHasználat: &e/k admin evaluate <képlet>'
+      description: '&6Kifejezések kiértékelése helyettesítőkkel és matematikai függvényekkel.'
+      usage: '&cHasználat: &e/k admin evaluate &2<kifejezés>'
       failed: |-
-        &cKiszámolandó képlet: &6%translated%
+        &cLefordított kifejezés&8:&6%translated%
         &cHiba: &e%result%
       evaluated: |-
-        &2Kiszámolandó képlet: &6%translated%
-        &2Eredmény: &6%result%
+        &2Lefordított kifejezés&8: hover:{&6%translated%;&6%object-code%
+
+        &2Mi ez?
+        &7Ez a végső reprezentáció, hogy a matematikai fordító
+        képes-e megérteni a kifejezésedet.
+        Megnézheted a hibákat, úgymint a műveleti sorrend és ahogy a
+        részkifejezések csoportosítva vannak.
+        A Kioptimalizált műveletek nem látszódnak.}
+        &2Kiértékelt kifejezés8: &6%result%
     claim:
-      description: '&6Alattad lévő terület lefoglalása egy királyság részére.'
-      usage: /k admin claim <királyság>
+      description: '&6Alattad lévő terület kényszerű lefoglalása egy királyság részére.'
+      usage: '&4Használat&8: &e/k admin claim &2<királyság>'
       success: '&2Sikeresen lefoglaltad ezt a területet &6%x%&7, &6%z%'
-      already-claimed: '&cEz a terület már el lett foglalva a(z) &e%kingdoms_name% királyság által'
+      already-claimed: '&cEzt a területet már lefoglalta a(z) &e%kingdoms_name% királyság.'
     rank:
       description: '&6Játékos rangjának beállítása.'
-      usage: /k admin rank <játékos> <rang>
-      not-found: '&cEz a rang nem található.'
+      usage: '&4Használat&8: &e/k admin rank &2<játékos> &9<rang>'
+      not-found: '&cA rang nem található.'
       no-kingdom: '&cA megadott játékos nem tagja egy királyságnak sem.'
-      success: '&2Sikeresen megváltoztattad &6%name% &2rangját erről: &6%previous_rank% &2erre: &6%rank%'
+      same-rank: '&cEnnek a játékosnak már ez a rangja.'
+      success: '&2Megváltoztattad &6%name% &2rangját: &6%previous_rank% --> &6%rank%'
+      success-king: '&6%kingdom% &2királyság új királya&8: &6%name%'
+    turret:
+      description: '&6Bizonyos tornyoknak az eltávolítása vagy cseréje/fejlesztése.'
+      usage: '&4Használat&8: &e/k admin turret &2<change(csere) | remove(eltávolítás)>
+        <típus> &9[helyettesítő típus]'
+      unknown-style: |-
+        &cIsmeretlen torony típus&8: &e%style%
+        &cNézd meg a Torony mappában az összes torony típusának a nevét.
+      success: '&2Összesen &6%amount% &2torony lett feldolgozva.'
     nexus:
       description: '&6Királyság Nexus-ának megnyitása.'
-      usage: /k admin nexus <királyság>
-      tp-not-set: '&e%kingdom% &ckirályságának nincs letéve Nexus.'
+      usage: '&4Használat&8: &e/k admin nexus &2<királyság>'
+      tp-not-set: '&e%kingdom% &ckirályságának nincs Nexus beállítva.'
       tp: '&2Teleportálás a(z) &6%kingdom% &2királyság Nexus-ához...'
     toggle:
       description: '&6Admin mód bekapcsolása.'
       'on': '&6Admin mód: &2BEKAPCSOLVA'
       'off': '&6Admin mód: &cKIKAPCSOLVA'
+    toggles:
+      description: '&6Admin móddal rendelkező játékosok listája.'
+      header: '&2Admin móddal rendelkező játékosok&8:'
+      entry: '&8- &6%displayname%'
     spy:
-      description: '&6Kémkedés Be/Ki kapcsolása.'
+      description: '&6KKémkedés a királyságok csevegésében.'
       'on': '&6Kémkedés: &2BEKAPCSOLVA'
       'off': '&6Kémkedés: &cKIKAPCSOLVA'
     dynmap:
@@ -1304,212 +1376,695 @@ command:
       removed: '&6%lands% &2terület törlésre került.'
     masswar:
       description: '&6Háború manuális indítása/leállítása.'
-      usage: '&4Használat: &c/k admin masswar <start/end>'
+      usage: '&4Használat: &c/k admin masswar &2<start/end>'
       running: '&cA háború már folyamatban van.'
       not-running: '&cJelenleg nem fut háború.'
-    daily-checks:
-      description: '&6Napi ellenőrzés manuális indítása.'
-      run: '&6Napi ellenőrzés futtatása...'
+    dailychecks:
+      description: '&6MNapi ellenőrzési ciklus manuális elindítása.'
+      usage: '&4Használat&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      info: |-
+        &2Következő cíklusig&8: &6%next%
+        &2Pontosan ekkor&8: &6%daily_checks%
+        &2Aktuális idő&8: &6%time%
+        &2Állapot&8: %state%
+      run: '&2Napi ellenőrzés futása... A mai napi ellenőrzés &6nem &2lett elhalasztva.'
+      skip: '&2A következő napi ellenőrzési időszak elhalasztása.'
+      skipped: '&cA következő napi ellenőrzés már el lett halasztva.'
+      resume: '&2A napi ellenőrzés visszaállítása...'
+      resumed: '&cA napi ellenőrzés nem lett elhalasztva.'
     resourcepoints:
-      description: '&6Nexus pontok kezelése.'
-      usage: '&4Használat: &e/k admin resourcepoints <királyság> [set(beállít)/add(hozzáad)/remove(törlés)]
+      description: '&4Hozzáadás vagy elvétel egy királyság Nexus pontjaiból.'
+      usage: '&4Használat: &e/k admin resourcepoints &2<királyság> [set(beállít)/add(hozzáad)/remove(eltávolít)]
         <összeg>'
-      player-no-kingdom: '&cEnnek a játékosnak nincs királysága.'
-      done: '&6%kingdom% &2királyság új egyenlege: &6%rp%'
-      added: '&2Királyság új egyenlege: &6%rp%'
-      invalid-action: '&cHibás művelet &e%action%&c! Hasznáható értékek: &eadd/remove/set'
-      invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
+      player-no-kingdom: '&cA megadott játékosnak nincs királysága.'
+      done: '&6%kingdom% &2királyság új Nexus egyenlege: &6%rp%'
+      added: '&2Királyságod új Nexus egyenlege: &6%rp%'
+      invalid-action: '&cÉrvénytelen akció &e%action%&c! Használd ezeket&8: &eadd/remove/set'
     bank:
-      description: '&6Királyság bankjának kezelése.'
-      usage: /k admin bank <királyság> [set(beállít)/add(hozzáad)/remove(törlés)] <összeg>
-      done: '&6%kingdom% &2királyság új egynlege: &6%kingdoms_fancy_bank%'
-      added: '&2Új bank egyenleg: &6%kingdoms_fancy_bank%'
-      invalid-action: '&cHibás művelet &e%action%&c! Hasznáható értékek: &eadd/remove/set'
-      invalid-kingdom: '&cEz a király nem található &e%kingdom%'
+      description: '&6Hozzáadás vagy elvétel egy királyság bankjából.'
+      usage: '&4Használat&8: /k admin bank &2<királyság> &9[set(beállít) /add(hozzáad)
+        /remove(eltávolít)] &2<összeg>'
+      done: '&6%kingdom% &2királyság új banki egyenlege&8: &6%kingdoms_fancy_bank%'
+      added: '&2Királyságod új banki egyenlege&8: &6%kingdoms_fancy_bank%'
+      invalid-action: '&cÉrvénytelen akció &e%action%&c! Használd ezeket&8: &eadd/remove/set'
+    commands:
+      description: '&6Egy fájlba parancslista írása jogosultságokkal.'
+      done: '&2A parancs információi kiírásra kerültek: &6%output%. &2Ellenőrizd a
+        Királyság plugin mappájában.'
+    command:
+      description: '&Egy parancsról az összes információ megjelenítése.'
+      usage: '&4Használat&8: &e/k admin command &2<parancs>'
+      bad-start: '&cNem kell használni / jelet vagy /k a parancsinformációkhoz.'
+      not-found: '&cNem található ilyen parancs&8: &e%command%'
+      info: |
+        &8------------=( &2%main-name% &8)=------------
+        &7| &2A parancs neve&8: &9%command-displayname%
+        &7| &2Aliasok&8: &9%aliases%
+        &7| &2Szülő8: &9%parent%
+        &7| &2Leírás&8: &9%description%
+        &7| &2Használat&8: &9%usage%
+        &7| &2Jogosultság&8: &9hover:{%permission%;&2Klikk a másoláshoz;|%permission%}
+        &7| &2Alapértelmezett jogosultságszint hatálya&8: &9%permission-scope%
+        &7| &2Hátralevő idő&8: &9%cooldown%
+        &7| &2Tiltott világok&8: &9%disabled-worlds%
     join:
-      description: '&6Felhasználó csatlakoztatása egy királysághoz.'
-      usage: '&cHasználat: &e/k admin join <játékos> <királyság>'
-      invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
+      description: '&6Felhasználó csatlakoztatása egy másik királysághoz.'
+      usage: '&cHasználat: &e/k admin join &2<játékos> <királyság>'
+      invalid-kingdom: '&e%kingdom% &ckirályság nem található!'
       in-kingdom: |-
-        @&6%player% &2már tagja egy királyságnak &6%kingdoms_name%
-        &2Ha ennek ellenére is folytatni akarod írd ne: hover:{&6/k admin join %player% %kingdom% confirm;&2Megerősítés;/k admin join %player% %kingdom% confirm}
+        &6%player% &2már tagja &6%kingdoms_name% &2királyságnak
+        &2Folytatáshoz használd a hover:{&6/k admin join %player% %kingdom% confirm;&2Megerősítés;/k admin join %player% %kingdom% confirm} &2parancsot
       already-in-kingdom: '&6%player% &2már a(z) &6%kingdom% királyság tagja'
       success: '&6%player% &2mostantól a(z) &6%kingdom% királyság tagja'
+    home:
+      description: '&6Teleportálás egy másik királyság otthonába.'
+      usage: '&cHasználat&8: &e/k admin home <királyság>'
+      homeless: '&3%kingdom% &ckirályságnak nincs beállítva otthon.'
+      teleported: '&2Teleportáltál a(z) &6%kingdom% &2királyság otthonába.'
+    create:
+      description: '&6Királyság létrehozása egy másik játékosnak.'
+      usage: '&cHasználat&8: &e/k admin create &2<játékos &8| &2szuper> <királyság
+        neve>'
+      already-exists: '&cMár van ilyen nevű királyság&8: &e%kingdom%'
+      created: '&6%player% &2számára létrehoztad a(z) &6%kingdom% &2nevű királyságot.'
+    permanent:
+      description: '&cÁllandó mód engedélyezése egy királysághoz.'
+      usage: '&cHasználat&8: &e/k admin permanent &2<királyság>'
+      'on': '&2Állandó mód &6BEKAPCSOLVA.'
+      'off': '&2Állandó mód &cKIKAPCSOLVA.'
+    rename:
+      description: '&6Királyság átnevezése.'
+      usage: '&cHasználat&8: &e/k admin rename <királyság> <név>'
+      already-exists: '&cMár létezik egy ilyen nevű királyság&8: &e%kingdom%'
+      renamed: '&2Sikeresen átnevezted a királyságot: &6%kingdom% &2--> &6%name%'
     disband:
-      announce: '&e%kingdom% &6feloszlott.'
+      description: '&6Királyság feloszlatása.'
+      usage: '&cHasználat&8: &e/k admin disband <királyság> [silent(csendes)]'
+      success: '&6%kingdom% &2királyság feloszlott.'
+      announce: '&e%kingdom% &6királyság feloszlott.'
+    pacifism:
+      description: '&6Megváltoztatja egy királyság békés állapotát.'
+      usage: '&cHasználat&8: &e/k admin pacifism &2<királyság> &8[&2true(igaz) &7|
+        &4false(hamis)&8]'
+      enabled: '&6Békésre állítva a &2%kingdom% &8királyság: &2BEKAPCSOLVA'
+      disabled: '&6Békésre állítva a &2%kingdom% &8királyság: &cKIKAPCSOLVA'
+    land:
+      description: '&6Teleport egy megadott koordinátán levő földre.'
+      usage: '&4Használat&8: &e/k admin land [világ] <x> <z>'
+      teleported: '&2Teleportáltál a következő földre&8: &6%world%&7, &6%chunk_x%&7,
+        &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8)'
+      invalid-world: '&cNem található a következő világ&8: &e%world%'
+      invalid-coordinates: '&cA megadott koordináta nem található&8: &e%x%&7, &e%z%'
     player:
-      found: '&6%name% &8(&7%uuid%&8) &2ebben a királyságban van:'
+      description: '&6Játékos információk megjelenítése.'
+      usage: '&4Használat&8: &e/k admin player &2<játékos>'
+      info: |-
+        &7| &2Név&8: &6%player% &8(hover:{&5%id%;&2Másolás;|%id%}&8)
+        &7| &2Admin&8: %admin% &7| &2Kém&8: %spy%
+        &7| &2Királyság&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Másolás;|%kingdom_id%}&8)
+        &7| &2Rang&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2Nemzeti rang&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Csevegő csatorna&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2Jelzők használata&8: %visualizer%
+        &7| &2Meghívás&8: &6%invites%
+        &7| &2Csatlakozott a királysághoz&8: &6%kingdoms_joined%
+        &7| &2Automatikus foglalás&8: %auto_claim% &7| &2Automatikus térkép&8: %auto_map%
+        &7| &2Térképméret8: &6%map_width% &8- &6%map_height%
+        &7| &2Összes támogatás&8: &6%kingdoms_total_donations% &7| &2Utolsó támogatás&8: &6%kingdoms_last_donation_time%
+        &7| &2Foglalások &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Tömörített adatok&8: &6%compressed%
+      found: '&6%name% &8(&7%uuid%&8) &2játékos a következő királyságban van:'
       kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
       no-duplicates: '&cEnnek a játékosnak a királysága nem duplikált.'
-    home:
-      not-set: '&e%kingdom% &ckirályságnak nincs beállítva otthon.'
     kick:
+      description: '&6Játékos kirúgása egy királyságból.'
+      usage: '&4Használat&8: &e/k admin kick &2<játékos>'
+      kicked: '&e%kicked% &ckirugásra került a &e%kingdom% &ckirályságból.'
+      kicked-king: '&e%kicked% kirúgásra került a &e%kingdom% &ckirályságból. Mostantól
+        az új király (meghalt a király, éljen az új király)&8: &e%king%'
+      kicked-disbanded: '&e%kingdom% &ckirályság feloszlott mert a kirúgott &e%kicked%
+        &cvolt az egyetlen tagja a királyságnak.'
       not-in-kingdom: '&cEz a játékos nem tagja egy királyságnak sem.'
-    kick-king: '&cEz a játékos a királyság királya. Nevezz ki egy új királyt vagy oszlasd fel a királyságot'
+    kick-king: '&cAz a játékos akit megpróbálsz kirúgni az a királyság királya. Oszlasd
+      fel a királyságot vagy nevezzél ki egy új királyt.'
     hologram:
-      usage: '&cHaszn��lat: &e/k admin hologram <rádiusz>'
+      description: '&6A környék hibás hologramjainak eltávolítása.'
+      usage: '&cHasználat&8: &e/k admin hologram <rádiusz>'
       removed: '&2Törlésre került &6%removed% &2hologram.'
+    entity:
+      description: '&6A játékos körüli összes entitás megkeresése.'
     unclaim:
       description: '&6Terület feloldása.'
-      success: '&2Sikeresen feloldottad ezen a helyen található területet &6%x%&7, &6%z% &2Ehhez a királysághoz tartozott: &6%kingdom%'
+      success: '&2Feloldottad a &6%x%&7, &6%z% &2területet ami a(z) &6%kingdom% &2királyságé
+        volt.'
       not-claimed: '&cEz a terület nincs lefoglalva.'
-    max-land-modifier:
-      description: '&6Maximum foglalható területek módosítása.'
-      usage: /k admin maxLandModifier <királyság> [set(beállít)/add(hozzáad)/remove(törlés)] <darabszám>
-      success: '&2Maximum területek sikeresen módosítva. Királyság: &6%kingdom% &2Érték: &6%amount%'
-      invalid-action: '&cHibás művelet &e%action%&c! Hasznáható értékek: &eadd/remove/set'
-      invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
+    maxlandmodifier:
+      description: '&6Egy királyság maximális földmódosítójának megváltoztatása.'
+      usage: '&4Használat&8: &e/k admin maxLandModifier &2<királyság> &9[set(beállít)
+        | add(hozzáad) | remove(eltávolít)] &9<amount>'
+      success: '&2Megváltozott a(z) &6%kingdom% &2királyság maximum földfoglalása
+        a következőre: &6%amount%'
+      invalid-action: '&cÉrvénytelen akció &e%action%&c! Használd ezeket&8: &eadd/remove/set'
+      invalid-kingdom: '&e%kingdom% &ckirályság nem található!'
     shield:
-      description: '&6Pajzs beállítása.'
-      usage: /k admin shield <királyság> [set(beállít)/add(hozzáad)/remove(törlés)] <idő>
-      success: '&2Pajzs ideje sikeresen módosítva Királyság: &6%kingdom% &2Érték:: &6%amount%'
-      invalid-action: '&cHibás művelet &e%action%&c! Hasznáható értékek: &eadd/remove/set'
-      invalid-kingdom: '&cEz a királyság nem található &e%kingdom%'
-      invalid-time: '&cHibás időérték: &e%time%'
+      description: '&6Egy királyság pajzsának hatóidejének megváltoztatása.'
+      usage: '&2Használat&8: &e/k admin shield &2<királyság> &9[set(beállít) |add(hozzáad)
+        |remove(eltávolít)] &2<idő>'
+      success: '&6%kingdom% királyság pajzsának hatóideje a következőre módosult:
+        &6%amount%'
+      invalid-action: '&cÉrvénytelen akció &e%action%&c! Használd ezeket&8: &eadd/remove/set'
+      invalid-kingdom: '&e%kingdom% &ckirályság nem található!'
+      invalid-time: '&cÉrvénytelen időmértékegység: &e%time%'
+  sneak:
+    description: '&6A királyságod viszonya egy másik játékossal nem fogja letiltani a repülését.'
+    others-permission: '&cNincs engedélyed másnak a lopakodó módjának a beállítására.'
+    enabled: '&6Lopakodó mód&8: &2BEKAPCSOLVA'
+    disabled: '&6Lopakodó mód&8: &cKIKAPCSOLVA'
+  inventory:
+    description: '&6Másik tag eszköztárának megtekintése a királyságodban.'
+    usage: '&4Használat&8: &e/k invsee &9[játékos]'
+    not-in-kingdom: '&e%target% &cnem tagja a királyságodnak.'
+    permission: '&cNincs engedélyed használni azt a parancsot a királyságodban.'
+  vault:
+    description: '&6A királyság ládájának távoli megnyitása.'
+    others-permission: '&Nincs hozzáférésed más királyság ládájához.'
+  invite:
+    invited: |-
+      &6%inviter% &2meghívott ebbe a(z) &6%kingdom% &2királyságba.
+          hover:{&2Elfogadáshoz írd be: /k accept;&2Elfogadás;/k accept}
+          hover:{&cElutasításhoz írd be: /k decline;&cElutasítás;/k decline}
+    usage: '&4Használat: &e/k invite <játékos> <királyság>'
+    announce: '&6%inviter% &2meghívta &6%invited% &2a királyságba.'
+    already-joined: '&e%invited% &cmár a királyságod tagja.'
+    description: '&6Meghívás küldése a megadott játékosnak.'
+    already-in-kingdom: '&cEz a játékos már tagja egy királyságnak.'
+    already-invited: '&e%inviter% &cmár meghívta ezt a játékost a királyságba.'
+    max-members: '&cA királyságod már megtelt &e%kingdoms_members% &ctaggal.'
+    self: '&cNem hívhatod meg önmagadat.'
+    expired: '&e%inviter% &cmeghívása lejárt!'
+    expired-notify: '&cA(z) &e%invited%nak/nek &cküldött meghívás lej��rt!'
+  accept:
+    description: '&6Meghívás elfogadása.'
+    already-in-kingdom: '&2Már tagja vagy egy királyságnak.'
+    accepted: '&2Elfogadtad &6%inviter% &2meghívását a(z) &e%kingdom% &2királyságba'
+    joined: '&6%player% &2csatlakozott a királyságba.'
+    notify: '&6%name% &2elfogadta a meghívásodat.'
+    no-invites: '&cJelenleg nincs egy meghívásod sem.'
+    not-invited: '&e%kingdom% &ckirályság nem hívott meg.'
+    expired: '&cEbbe a királyságba szóló meghívásod már lejárt: &e%kingdom%'
+    max-members: '&cEz a királyság már megtelt &e%kingdoms_members%'
+    no-longer-exists: '&cEz a királyság már nem létezik.'
+    multiple-invites: '&cJelenleg több meghívásod is van ezért kérlek add meg a királyság
+      nevét is.'
+  join:
+    description: '&6Csatlakozás egy olyan királysághoz, amelyhez nem szükséges meghívó.'
+    usage: '&4Használat: &e/k join &2<királyság>'
+    joined: '&6%player% &2csatlakozott a királysághoz.'
+    already-in-kingdom: '&cMár tagja vagy egy királyságnak.'
+    max-members: '&cEz a királyság megtelt.'
+    elections: '&cA választások alatt nem tudsz csatlakozni a királysághoz.'
+    requires-invite: '&e%kingdom% &ckirálysághoz való csatlakozáshoz meghívás szükséges.'
+  decline:
+    description: '&6Meghívás elutasítása.'
+    declined: '&cElutasítottad &6%inviter% meghívását a(z) &e%kingdom% &ckirályságba.'
+    notify: '&e%name% &celutasította a meghívásodat.'
+    no-invites: '&cJelenleg nincs egy meghívásod sem,.'
+    not-invited: '&e%kingdom% &ckirályságtól nem kaptál meghívást.'
+    expired: '&cA(z) &e%kingdom% &ckirályságtól kapott meghívásod lejárt.'
+    no-longer-exists: '&cEz a királyság már nem létezik.'
+    all: '&2Elutasítottál &6%invites% &2meghívást.'
+    multiple-invites: '&cTöbb meghívásod is van, határozd meg annak a királyságnak
+      nevét amelyik meghívását el szeretnéd utasítani. Vagy használd a &e* &cjelet
+      az összes elutasításához.'
+  invites:
+    description: '&6Meghívások megtekintése.'
+    no-invites: '&cJelenleg nincs egy meghívásod sem.'
+  teleport:
+    description: '&6Teleportálás a királyság ostrom alatt lévő részére.'
+    not-invading: '&cJelenleg egy terület sincs támadás alatt.'
+    already-teleporting: '&cMár hazateleportáltál...'
+    teleporting: '&2Teleportálás &6%countdown% másodperc múlva&2... Ne mozdulj!'
+    teleported: '&2Elteleportáltál oda ahol az ostrom elkezdődött!'
+    cancelled: '&cA teleportáció megszakadt!'
+  gui:
+    description: '&6GUI közvetlen megnyitása a felület nevével.'
+    usage: '&4Használat&8: &e/k gui &2<név>'
+    not-found: '&cIsmeretlen GUI felület&8: &e%gui%'
+  invade:
+    description: '&6Állj egy ellenséges területre és ostromold meg.'
+    invading: '&6%kingdom% &2ostromlása. A bajnok érkezik &65 másodperc múlva'
+    invading-defender-notify: '&e%invader% &costromolni kezdte a királyságodat.'
+    countdown-defneder: '&e%invader% &e%sec% &cmásodperc múlva elkezdi az ostromot.'
+    countdown-attacker: '&2Bajnok érkezése... &6%sec% másodperc'
+    announcement: '&6%invader% &2megkezdte a(z) &6%kingdom% &2királyság ostromát itt:
+      &6%location%'
+    announcement-defender: |-
+      &e%invader% &ca(z) &e%kingdom% &ckirályságból megtámadta ezt a területet: %location%.
+      &cHasználd a hover:{&e/k tp;&eTeleportálás;/k tp} &cparancsot az ostromlott területre való teleportáláshoz.
+    announcement-nation: '&e%invader% &ca(z) &e%kingdom% &ckirályságból megkezdte
+      a következő terület ostromát: &e%location%'
+    own-land: '&cNem támadhatod meg a saját királyságodat.'
+    not-claimed: '&cEz a terület nincs elfoglalva.'
+    already-being-invaded: '&cEz a terület már ostrom alatt áll.'
+    masswar-only: '&cCsak Háború alatt ostromolhatsz.'
+    already-invading: '&cEgy másik terület már ostrom alatt áll.'
+    self-pacifist: '&cA királyságod békés. Nem támadhatsz meg más királyságokat.'
+    cooldown:
+      failed: '&cKirályságodnak nem sikerült a(z) &e%kingdom% &ckirályság elleni ostrom.
+        Várnod kell &e%cooldown% &cidőt mielőtt újra ostromolnál.'
+      successful: '&cKirályságod sikeresen megostromolta a(z) &e%kingdom% &ckirályságot.
+        Várnod kell &e%cooldown% &cidőt mielőtt újra ostromolnál.'
+    min:
+      defenders-needed: '&cLegalább &e%defenders% &cvédőnek be kell lennie jelentkezve.'
+      invaders-needed: '&cLegalább &e%invaders% &costromlónak be kell lennie jelentkezve.'
+    adjoining:
+      protectioin: |-
+        &cEz a terület a szomszédos védelmi rendszer alatt áll.
+        Az ostromhoz keresd meg a királyság határát és ostromolj onnan.
+    shield:
+      defender:
+        kingdom: '&cEzt a királyságot pajzs védi&8: &e%shield%'
+        nation: '&cEzt a nemzetet pajzs védi&8: &e%shield%'
+      invader:
+        kingdom: |-
+          &cA királyságodnak aktív pajzsa van: &e%shield% &cA pajzsod meg fog szűnni ha ostromba kezdesz.
+          Írd be újra a parancsot a folytatáshoz.
+        nation: |-
+          &cA nemzetednek aktív pajzsa van: &e%shield% &cA pajzsod meg fog szűnni ha ostromba kezdesz.
+          Írd be újra a parancsot a folytatáshoz.
+        kingdom-disabled: '&cA királyságod pajzsa megszűnt, ami eddig tartott volna:
+          &e%shield%&c, mert &e%invader% &cmegostromolta a(z) &e%kingdom% &ckirályságot.'
+        nation-disabled: '&cA nemzeted pajzsa megszűnt, ami eddig tartott volna: &e%shield%&c,
+          mert &e%invader% &cmegostromolta a(z) &e%kingdom% &ckirályságot.'
+    creative: '&cCsak túlélő módban ostromolhatsz.'
+    max-misc-upgrade: |-
+      &cKirályságod elérte az egyéb beállításoknál levő maximális invázió limitjét.
+      Frissisd az egyéb beállításokat vagy vár meg a frissülését.
+    simultaneous: '&cA királyságod csak %amount% területet ostromolhat egyidejűleg.'
+    costs: '&cAz ostromhoz &e%rp% &cNexus pontra és &e$%money% &cpénzre lesz szükség.'
+    pacifist: '&cAz ostromolni kívánt terület pacifista, ezért nem támadható.'
+    ceasefire: '&cEzt a királyságot nem támadhatod meg mivel &e%relation% kapcsolatban
+      álltok.'
+    nation-capital: |-
+      &cNem támadhatod meg a Nemzet főkirályságát, csak miután elfoglaltad a többi királyság Nexus-át.
+      A következő királyságokat kell előbb elfoglalnod:
+      %kingdoms%
+    powercell: '&cEgy erőtér van a közelben, először annak a területét kell elfoglalnod.'
+  top:
+    description: '&6TOP királyságok.'
+    loading: '&6Adatok betöltése...'
+    header: '&8----------------------------------'
+    footer: '     &8[hover:{&6←;&6Előző oldal;/k top %previous_page%}&8] &8[hover:{&6→;&6Következő
+      oldal;/k top %next_page%}&8]'
+    no-more-pages: '&cNem tölthető be több oldal.'
+    negative: '&cNincsenek negatív oldalak.'
+    entry: |-
+      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Tagok: &6%kingdoms_members%
+      &7♦ &2Területek: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
+      &7♦ &2Nexus pontok: &6%kingdoms_fancy_resource_points%
+      &7♦ &2Bank: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
+  map:
+    settings-description: '&6A &e/k map &6(térkép) beállításainak módosítása.'
+    description: '&6Térkép megjelenítése.'
+    usage: '&4Használat: &e/k map [auto/magasság] [szélesség]'
+    kingdom-player-only: '&cCsak királysággal rendelkező játékosok használhatják a
+      térképet.'
+    invalid-height: '&cÉrvénytelen magasság &e%height% &cAlapértelmezett érték használata.'
+    invalid-width: '&cÉrvénytelen szélesség &e%width% &cAlapértelmezett érték használata.'
+    max-height: '&cAz elfogadott maximum magasság: &e%limit%'
+    max-width: '&cAz elfogadott maximum szélesség: &e%limit%'
+    auto:
+      permission: '&cNincs jogod használni az automatikus térképet.'
+      enabled: '&2automatikus térkép &6BEKAPCSOLVA'
+      disabled: '&2automatikus térkép &cKIKAPCSOLVA'
+    size:
+      permission: '&cNincs jogod a térkép méretének megváltoztatásához.'
+      changed: '&2A térképed mérete megváltozott erről &7(&6Magasság&8: &9%kingdoms_map_height%
+        &7| &6Szélesség&8: &9%kingdoms_map_width%&7) &2erre &7(&6Magasság&8: &9%new_height%
+        &7| &6Szélesség&8: &9%new_width%&7)'
+      reset: '&2A térékép mérete visszaállítva.'
+  fly:
+    description: '&6Repülés engedélyezése a királyság területén.'
+    usage: '&4Használat&8: &e/k fly &9[játékos]'
+    others-permission: '&cNincs engedélyed mások repülésének beállítására.'
+    enabled: '&6Repülés: &2BEKAPCSOLVA'
+    disabled: '&6Repülés: &4KIKAPCSOLVA'
+    not-allowed: '&cNem repülhetsz a(z) &e%kingdom% királyság területén'
+    unclaimed: '&cCsak lefoglalt területen repülhetsz.'
+    own-enemy-nearby: '&cNem repülhetsz mivel ellenségek vannak a közelben.'
+    cant-afford: '&e$%money% &cpénzre van szükséged a repülés aktiváláshoz.'
+    cant-afford-kingdom: '&e$%amount% &cpénzre van szüksége a királyságodnak a repülés
+      aktiválásához.'
+  kick:
+    person: '&e%kicker% &ckirúgott a(z) &e%kingdom% &ckirályságból.'
+    description: '&6Tag kirúgása a királyságból.'
+    usage: '&4Használat: &e/k kick &2<játékos> &9[silent(csendes)]'
+    announce: '&e%kicker% &ckirúgta a következő tagot a királyságból: &e%kicked%'
+    self: '&cNem rúghatod magadat...'
+    not-in-kingdom: '&cA megadott játékos nem tagja a királyságodnak.'
+    elections: '&cNem rúghatsz ki játékosokat a választások alatt.'
+    cant-kick: '&cŐt nem rúghatod ki &e%kicked%'
+  surrender:
+    invader: '&6%invader% &2megadta magát! &6%kingdom% &2királyság bajnoka eltűnik.'
+    disabled:
+      invader: '&cNem adhatod fel.'
+      defender: '&cNem adhatod fel.'
+    defender-surrendered: '&6%player% &2a(z) &6%kingdoms_name% &2királyságból megadta
+      magát! A terület mostantól a(z) &6%kingdom% &2királyságé.'
+    defender-permission: '&cNincs jogosultságod a megadáshoz.'
+    no-invasion: '&cJelenleg a királyságod nem áll ostrom alatt.'
+    description: |-
+      &6Ha te vagy a támadó, megadhatod magad, de akkor a bajnok eltűnik.
+      Ha védőként adod meg magad, a támadók nyernek és megkapják a területedet.
+  leave:
+    success: '&2Elhagytad a(z) &6%kingdom% királyságot'
+    description: '&6Királyság elhagyása.'
+    king: |-
+      &cKirályként nem hagyhatod el a királyságot.
+      Feloszlathatod a királyságot a &e/k disband &cparanccsal vagy
+      a &e/k king &cparanccsal kinevezhetsz valakit királynak.
+    announce: '&e%left% &celhagyta a királyságot!'
+  undo:
+    description: '&6Foglalás/Feloldás visszavonása.'
+    already-unclaimed: '&6A legutoljára foglalt területet valaki feloldotta.'
+    already-claimed: '&6A legutoljára feloldott területet valaki újra lefoglalta.'
+    claimed: '&2Feloldottad az itt található területet &6%x%&7, &6%z%'
+    unclaimed: '&2Lefoglaltad az itt található területet &6%x%&7, &6%z%'
+    no-history: '&cNincs visszavonható parancs.'
+  redo:
+    description: '&6Foglalás/Feloldás újra.'
+    already-unclaimed: '&6A legutoljára foglalt területet valaki már feloldotta.'
+    already-claimed: '&6A legutoljára feloldott területet valaki már újra lefoglalta.'
+    claimed: '&2Feloldottad az itt található területet: &6%x%&7, &6%z%'
+    unclaimed: '&2Elfoglaltad az itt található területet: &6%x%&7, &6%z%'
+    no-history: '&cNincs újra végrehajtható parancs.'
+  lore:
+    description: '&6Királyság leírásának beállítása.'
+    usage: '&4Használat&8: &e/k lore &2<leírás>'
+    blacklisted: '&cA királyságod leírása nem engedélyezett szavakat tartalmaz.'
+    name-length: '&cA királyság leírása nem lehet hosszabb mint &e%limit% &ckarakter.'
+    name-english: '&cA királyság leírása csak angol betűket és számokat tartalmazhat.'
+    name-has-symbols: '&cA királyság neve nem tartalmazhat szimbólumokat. Csak számokat
+      és az ABC betűit.'
+    removed: '&2Királyság leírása törölve.'
+  extractor:
+    description: '&6Az összes Nexus pont begyűjtése a királyság összes fúrójától.'
+    collected: '&2Begyűjtve &6%rp% Nexus pont &2a királyságod &6%extractors% darab
+      fúrójától.'
+    collected-others: '&2Begyűjtve &6%rp% Nexus pont &6%extractors% db fútótól &2a
+      &6%kingdom% &2királyságnak.'
+    collect-others-permission: '&cNem gyűjthetsz más királyságok fúróitól..'
+  election:
+    description: '&6Választási rendszer a királyság új királyának megválasztásához.'
+    no-ongoing-election: '&cJelenleg nincs folyamatban levő választás. Következő választás&8:
+      &e%next-election%'
+    vote:
+      description: '&6Jelöltre szavazás.'
+      voted: '&2A következő jelöltre szavaztál: &6%player%'
+      already-voted: '&cMár szavaztál a következő jelöltre: &e%player%'
+      voted-again: '&2A következő jelöltre szavaztál: &6%player% &2Előző jelölted:
+        &6%previous-candidate%'
+    statement:
+      description: '&6Választási jelöltként nyilatkozat beállítása.'
+      usage: '&4Használat&8: &e/k election statement &2<nyilatkozat>'
+      set: '&2A nyilatkozatod beállításra került&8: &r%statement%'
+  mail:
+    description: '&6A királyságod leveleinek kezelése.'
+    box-description: '&6A királyságod postaládájának megnyitása.'
+    send-description: '&6Levélküldés a királyságodnak.'
+    send: '&6%player% &2új levelet küldött: &6%message%'
+    send-usage: '&4Használat&8: &e/k mail send &2<üzenet>'
+    send-max: |-
+      &4Nem küldhetsz &6%mails% &2levélnél többet.
+      Töröld az összes leveledet a &6/k mails clear &2paranccsal vagy törölj egyet a postafiokodból.
+    clear-description: '&6A királyság összes levelének törlése.'
+    clear: '&2Törölve &6%mails% &2levél.'
+    set-as-read-description: '&6Az összes levél megjelölése olvasottként.'
+    set-as-read: '&2Összesen &6%mails% &2levél lett megjelölve olvasottként.'
+  relations:
+    description: '&6Megjeleníti az összes aktuális kapcsolati kérelmet.'
+    no-requests: '&6A királyságodnak jelenleg nincs egy kérelme sem.'
+  ally:
+    description: '&6Szövetségre felkérés küldése egy királyságnak.'
+    usage: '&4Használat&8: &e/k ally &2<királyság>'
+    sender: '&2Szövetségre felkérés küldése a(z) &6%kingdom% &2királyságnak.'
+    limit: '&cNem lehet &e%max% &cdarabnál több szövetséges királyságod.'
+    already: '&cMár a szövetségese vagy a(z) &e%kingdom% &ckirályságnak'
+    already-requested: '&cMár küldtél szövetségre való felkérést a(z) &e%kingdom%
+      &ckirályságnak.'
+    self: '&cNem teheted szövetségessé a saját nemzetedet.'
+    receiver: '&6%kingdom% &2királyság a szövetségesed kíván lenni. Elfogadni a a
+      hover:{&6/k ally %kingdom%;&2Elfogadás;/k ally %kingdom%} &2paranccsal lehet.'
+    allies: '&2Szövetséget kötöttél ezzel a királysággal: &6%kingdom%'
+    another-request: '&e%kingdom% &ckirályság küldött neked egy %relation% &ckérelmet.'
+  enemy:
+    description: '&6Királyság ellenséggé tétele.'
+    usage: '&4Használat&8: &e/k enemy &2<királyság>'
+    limit: '&cNem lehet &e%max% &cdarabnál több ellenséges királyság.'
+    kingdom-not-found: '&e%kingdom% &cnem található.'
+    already: '&cEzzel a királysággal már ellenséges a viszonyod: &e%kingdom%'
+    self: '&cNem lehetsz az ellensége a saját királyságodnak...'
+    enemies: '&cMostantól ellenségek vagytok ezzel a királysággal: &e%kingdom%'
+  truce:
+    description: '&6Tűzszüneti kérelem küldése egy királyságnak.'
+    usage: '&4Használat&8: &e/k truce &2<királyság>'
+    limit: '&cNem lehet &e%max% &ckirályságnál többel tűzszünetet kötni.'
+    sender: '&2Fegyverszüneti kérelem elküldve ennek a királyságnak &6%kingdom%'
+    already: '&cMár tűzszünetet kötöttél a(z) &e%kingdom% &ckirálysággal.'
+    already-requested: '&cMár küldtél a(z) &e%kingdom% &ckirályságnak tűzszüneti kérést.'
+    self: '&cNem küldhetsz a saját királyságodnak tűzszüneti kérést.'
+    receiver: '&6%kingdom% &2szeretne tűzszünetet kötni veled. Elfogadni a hover:{&6/k
+      truce %kingdom%;&2Elfogadás;/k truce %kingdom%} &2paranccsal lehet.'
+    truces: '&2Ttűzszünetet kötöttél a következő királysággal: &6%kingdom%'
+    another-request: '&e%kingdom% &cküldött neked egy %relation% &ckérelmet.'
+  revoke:
+    description: '&6Egy királysággal való viszony visszavonása.'
+    usage: '&4Használat&8: &e/k revoke &2<királyság>'
+    sender: '&cA királyságod visszavonta viszonyát a(z) &e%kingdom% királysággal.'
+    no-relation: '&cSemmilyen viszonyod nincs a(z) &e%kingdom% &ckirálysággal.'
+    self: '&cSaját királyságoddal nem tudsz semmilyen viszonyt visszavonni......'
+    receiver: '&e%kingdom% &cvisszavonta a viszonyát a királyságoddal.'
+  chat:
+    description: '&6Csevegő csatorna váltása.'
+    usage: '&4Használat&8: &e/k chat &2<csatorna>'
+    already-in-channel: '&cMár ezen a csatornán vagy: &6%channel%'
+    unknown-channel: '&cIsmeretlen csatorna! Kérlek válasz ezek közül: &fhover:{Globális;Globális;/k
+      c g}&7, &2hover:{&2Királyság;&2Királyság;/k c k}&7, &ahover:{&aSzövetséges;&aSzövetséges;/k
+      a}&7, &ehover:{&eTűzszünet;&eTűzszünet;/k c t} &7vagy &ehover:{&9Nemzet;&9Nemzet;/k
+      n}'
+    changed: '&2Mostantól ezen a csatornán fogsz csevegni: %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
+    direct:
+      message-missing: '&cKözvetlenül kell üzenetet küldeni a(z) &e%kingdom% &ckkirályságnak.'
+      message-self: '&cNem küldhetsz közvetlen üzenetet a saját királyságodnak.'
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+        &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+        %displayname% &7≫ &6%message%'
+  broadcast:
+    description: '&6Üzenet a királyság minden tagjának.'
+    usage: '&4Használat&8: &e/k broadcast &2<üzenet>'
+    cooldown: '&cVárnod kell &e%time% &cmielőtt újra üzenhetnél.'
+    format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol%\
+      \ %kingdoms_rank_name% &c%player%&8] &6%message% \n"
+  king:
+    description: '&6Új király kinevezése.'
+    only-king: '&6Csak a király nevezheti ki az új királyt.'
+    set: '&6%king% &2lett az új király!'
+    not-in-kingdom: '&e%king% &cnem tagja a királyságodnak.'
+    self: '&cMár a királyság királya vagy!'
+    usage: '&4Használat&8: &e/k king &2<játékos>'
+  promote:
+    description: '&6Tag előléptetése a királyságban.'
+    promoted: '&6%player% &2előléptete &9%rank% rangúvá a &6%promoted% &2nevű tagot
+      a királyságban.'
+    not-in-kingdom: '&e%promoted% &cnem tagja a királyságodnak.'
+    cant-promote: '&cNem léptetheted elő: &e%promoted%'
+    king: '&e%promoted% &cmár a legmagasabb ranggal rendelkezik a királyságban. Királlyá
+      való előléptetéshez használd a &e/k king &cparancsot.'
+    usage: '&4Használat&8: &e/k promote &2<játékos>'
+  demote:
+    description: '&6Tag lefokozása a királyságodban.'
+    demoted: '&e%player% &cmegfosztotta &9%rank% &crangjától &e%demoted% &cnevű tagot
+      a királyságban.'
+    not-in-kingdom: '&e%demoted% &cnem tagja a királyságodnak.'
+    cant-demote: '&cNem fokozhatod le: &e%demoted%'
+    cant-demote-king: '&cNem fokozhatod le a &e%demoted% &cnevű királyt.'
+    member: '&cEz a játékos már rendelkezik tag ranggal.'
+    usage: '&4Használat: &e/k demote &2<játékos>'
+  visualize:
+    description: '&6Terület kereteinek megjelenítése/elrejtése.'
+    usage: '&4Használat&8: &e/k visualize &2[permanent|toggle]'
+    display: |-
+      &7| &2Helyzet: &6%x%&7, &6%z%
+      &7| &2Királyság: &6%kingdom%
+    admin-display: "&7| &2Helyzet&8: &6%x%&7, &6%z%\n&7| &2Királyság&8: &6%kingdom%\n\
+      &7| &2Stuktúrák&8: \n&6%structures%\n&7| &2Tornyok&8:\n%turrets%\n&7| &2Védelmező\
+      \ Táblák&8:\n%protection-signs%"
+    toggle:
+      description: '&6Területjelzők váltása (vizuálisok vagy jelzők)'
+      enabled: '&2Jelzők &6BEKAPCSOLVA'
+      disabled: '&2Jelzők &cKIKAPCSOLVA'
+    all:
+      description: '&6A a vizuális jelzők megjelenítése a királyság összes elfoglalt
+        chunk-ján.'
+      showing: '&2Vizuálisan...'
+    markers:
+      description: '&6Területjelző típusának váltása..'
+      usage: '&4Használat: &e/k visualize markers &2<típus>'
+      already-using: '&cJelenleg is ezt a típusú jelzőt használod: &e%markers%'
+      changed: '&2Területed jelzőtípusa a következőre változott: &6%markers%'
+      invalid: '&cNem található a megadott területjelző típus: &e%markers%'
+    permanent:
+      description: '&6Kapcsoló ha a területjelzőnek állandónak kell lennie.'
+      enabled: '&2Állandó jelzők &6BEKAPCSOLVA.'
+      disabled: '&2Állandó jelzők &cKIKAPCSOLVA'
+  tradable:
+    description: '&6Egy tárgy Nexus pont szerinti értékének megjelenítése.'
+    message: |-
+      &2A kezedben tartott tárgy értéke: &6%amount% * %worth% = %total%
+
+      &6Speciális tárgyak:
+      %list%
+    not-special: '&cnem speciális'
+    item: '&2%material%&7: &9%worth%'
+  sell:
+    description: '&6Tárgyak eladása Nexus pontért.'
+    invalid: '&cA kezdeben tartott tárgy nem a királyságból való. (torony vagy struktúra)'
+    item: '&2Eladtál &6x%amount% %item% &6%price% &2Nexus pontért.'
   outpost:
-    description: '&6Elérhető parancsok.'
+    description: '&6Az elérhető előőrs parancsainak megjelenítése.'
     create:
-      description: '&6Új bázis létrehozása WorldGuard területből.'
-      usage: '&4Használat: &e/k outpost create <név> <régió>'
-      region-not-found: '&cNem talákható ilyen WorldGuard régió: &e%region%'
-      name-already-taken: '&cMár létezik bázis ilyen néven: &e%outpost%'
-      created: '&2Bázis létrehozva ezen a néven: &6%outpost% &2ezen a területen: &6%region%.'
-    spawn:
-      description: '&6Bázis spawn elhelyezése.'
-      usage: '&4Használat: &e/k outpost spawn <név>'
-      outpost-not-found: '&cNem található bázis ilyen néven: &e%outpost%'
-      changed: '&2Spawn beállítva ennek a bázisnak: &6%outpost%'
+      description: '&6Új élőőrs létrehozása WorldGuard területből.'
+      usage: '&4Használat: &e/k outpost create &2<név> &9<régió>'
+      region-not-found: '&cNem talákható ilyen WorldGuard terület: &e%region%'
+      name-already-taken: '&cMár van egy &e%outpost% &cnevű előőrs.'
+      created: '&2Előőrds létrehozva &6%outpost% &2névvel a &6%region% &2területen.'
+    setspawn:
+      description: '&6Az előőrs teremtőhelyének a módosítása.'
+      usage: '&4Használat&8: &e/k outpost spawn &2<név>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      changed: '&2Megváltozott a teremtőhelye a(z) &6%outpost% &2nevű előőrsnek.'
     center:
-      description: '&6Bázis közepének beállítása.'
-      usage: '&4Használat: &e/k outpost center <név>'
-      outpost-not-found: '&cNem található bázis ilyen néven: &e%outpost%'
-      changed: '&6%outpost% &2bázis közepe beállíva'
+      description: '&6Az előőrs központi helyének módosítása.'
+      usage: '&4Használat: &e/k outpost center &2<név>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      changed: '&6%outpost% &2előőrs központi helye megváltoztatva.'
     remove:
-      description: '&6Bázis törlése.'
-      usage: '&4Használat: &e/k outpost remove <név>'
-      outpost-not-found: '&cNem található bázis ilyen néven: &e%outpost%'
-      outpost-is-running: '&e%outpost% &cbáziosn jelenleg fut egy esemény. Ez idő alatt nem tudod törölni.'
-      removed: '&6%outpost% &2törölve.'
+      description: '&6Előőrs törlése.'
+      usage: '&4Használat: &e/k outpost remove &2<név>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      outpost-is-running: '&e%outpost% &celőőrsön egy esemény indult el. Jelenleg
+        nem lehet törölni.'
+      removed: '&6%outpost% &2nevű előőrs törölve.'
     join:
-      description: '&6Csatlakozás a Bázis eseményhez.'
-      usage: '&4Használat: &e/k outpost join <bázis>'
-      outpost-not-found: '&cNem található bázis ilyen néven: &e%outpost%'
-      event-not-started: '&cJelenleg nem fut egy esemény sem ezen a bázison: &e%outpost%'
-      event-full: '&e%outpost% &cbázis esemény már tele van.'
-      min-online-members: '&cA királyságodnak szüksége van legalább &e%min% &celérhető emberre ahhoz, hogy csatlakozzon a(z) &e%outpost% &cbázis eseményhez.'
-      permission: '&cCsak egy &eWITHDRAW &cjoggal rendelkező játkos csatlakozhat a bázis eseményekhez.'
-      not-enough-resource-points: '&cA királyságodnak szüksége van &e%cost% &cNexus pontra a csatlakozáshoz.'
-      not-enough-money: '&cA királyságodnak szükgése van &e$%cost% &ca csatlakozáshoz.'
-      joined: '@&2A királyságod csatlakozott ehhez az eseményhez: &6%outpost%&2. Teleportálj az arénába hover:{&6/k outpost teleport;&2Teleportálás;/k outpost teleport}'
+      description: '&6Csatlakozás az előőrs eseményhez.'
+      usage: '&4Használat: &e/k outpost join <előőrs>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      event-not-started: '&cNem futnak események a(z) &e%outpost% nevű előőrsön.'
+      event-full: '&e%outpost% &cnevű előőrs eseményei már tele vannak.'
+      min-online-members: '&cA királyságodnak szüksége van legalább &e%min% &cbejelentkezett
+        tagra ahhoz, hogy csatlakozzon a(z) &e%outpost% &cnevű előőrs eseményéhez.'
+      permission: '&cCsak egy &eWITHDRAW &cjoggal rendelkező tag csatlakozhat a előőrs
+        eseményekhez.'
+      not-enough-resource-points: '&cA királyságodnak szüksége van &e%cost% &cNexus
+        pontra az eseményhez való csatlakozáshoz.'
+      not-enough-money: '&cA királyságodnak szüksége van &e$%cost% &cpénzre a csatlakozáshoz.'
+      joined: '&2A királyságod csatlakozott ehhez az eseményhez: &6%outpost%&2. Teleportálj
+        az arénába a hover:{&6/k outpost teleport;&2Teleportálás;/k outpost teleport}
+        &2paranccsal.'
       announcement: '&6%kingdom% &2királyság csatlakozott az eseményhez!'
+      already: '&cA királyságod már csatlakozott ehhez az eseményhez.'
       win: |-
         &2A királyságod megnyerte az eseményt!
         &6%resource-points%+ &2Nexus pont
-        &6$%money%
+        &6$%money% &2pénz
       lost: '&cA királyságod elvesztette az eseményt!'
     start:
-      description: '&6Bázis esemény indítása egy már létező bázison.'
-      usage: '&4Használat: &e/k outpost start <bázis> <idő> <indulási idő>'
-      outpost-not-found: '&cNem található bázis &e%outpost%'
-      already-started: '&e%outpost% &cbázis eseméyn már folyamatban van.'
-      invalid-start-time: '&cÉrvénytelen indulási idő: &e%time%'
-      invalid-time: '&cÉrvénytelen idő: &e%time%'
-      scheduled: "\n\n&6%outpost% &2bázis esemény &6%start% másodperc múlva indul \n\n"
-      started: "\n\n&6%outpost% &2bázis esemény elindult! \n\n"
+      description: '&6Előőrs esemény indítása egy már létező előőrsön.'
+      usage: '&4Használat: &e/k outpost start <előőrs> <idő> <indulási idő>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      already-started: '&e%outpost% &cnevű előőrsön az esemény már elindult.'
+      invalid-start-time: '&cÉrvénytelen az esemény indulási ideje: &e%time%'
+      invalid-time: '&cÉrvénytelen az esemény ideje: &e%time%'
+      scheduled: "\n\n&6%outpost% &2nevű előőrs eseménye &6%start% másodperc múlva\
+        \ indul. \n\n"
+      started: "\n\n&6%outpost% &2nevű előőrsön az esemény elindult! \n\n"
     stop:
-      description: '&6Folyamatban lévő esemény leállítása.'
-      usage: '&4Használat: &e/k outpost stop <bázis>'
-      outpost-not-found: '&cNem található bázis &e%outpost%'
-      not-started: '&e%outpost% &bázis esemény nem aktív.'
-      stopped: "\n\n&e%outpost% &cbázis event végetért! \n\n"
+      description: '&6Egy előőrs eseményének a leállítása.'
+      usage: '&4Használat: &e/k outpost stop &2<előőrs>'
+      outpost-not-found: '&cNem található &e%outpost% &cnevű előőrs.'
+      not-started: '&e%outpost% &nevű előőrsön nem fut esemény.'
+      stopped: "\n\n&e%outpost% &cnevű előőrs eseménye véget ért! \n\n"
     teleport:
-      description: '&6Teleportálás a bázis területére.'
-      not-in-event: '&cA királyságod még nem csatlakozott az eseményhez.'
-      teleported: '&2Sikeres teleportálás.'
+      description: '&6Teleportálás az előőrs területére.'
+      not-in-event: '&cA királyságod még nem csatlakozott semmilyen előőrs eseményéhez.'
+      teleported: '&2Teleportálás egy előőrs területére.'
   donate:
-    description: '&6Nexus pont adományozása.'
-    usage: '&4Használat: &e/k donate <királyság> <összeg>'
-    invalid-kingdom: '&cNem található királyság &e%kingdom%'
-    dont-have: '&cJelenleg nincs ennyi Nexus pontod &e%rp%'
-    done: '&2Sikeresen adományoztál &6%rp% &2Nexus pontot ennek a királyságnak: &6%kingdom%'
-    donated: '&6%kingdom% &2admoányozott &6%rp% &2Nexus pontot a királyságodnak.'
-    invalid: '&cTe nem utalhatsz &e%rp% &cNexus pontot...'
+    description: '&6Nexus pont adományozása egy királyságnak.'
+    usage: '&4Használat: &e/k donate &2<királyság> &9<összeg>'
+    dont-have: '&cNincs &e%rp% &cNexus pontod.'
+    done: '&6%rp% &2Nexus pontot adományoztál a(z) &6%kingdom% &2királyságnak.'
+    donated: '&6%kingdom% &2királyság &6%rp% &2Nexus pontot adományozott neked.'
+    invalid: '&cNem adományozhatsz &e%rp% &cNexus pontot...'
 relations-disabled-commands: '&cEzen a területen nem használhatod ezt a parancsot.'
 invasion:
   blocked:
-    command: '&cEzt a parancsot nem használhatod ostrom alatt.'
+    command: '&cEzt a parancsot nem használhatod az ostrom alatt.'
+    elytra: '&cNem használható a szárny (elytra) az ostrom alatt.'
     world-change: '&cNem mehetsz egy másik világba ostrom alatt.'
     teleportation: '&cNem teleportálhatsz ostrom alatt.'
     item: '&cEzt a tárgyat nem használhatod ostrom alatt.'
   end:
-    invaders:
-      success: '&6%invader% &2sikeres ostromot hajtott végre a(z) &e%kingdom% &2királyság ellen.'
-      logout: '&e%invader% &ckilépett a(z) &e%kingdom% királyság &costroma alatt.'
-      died: '&e%invader% &cmeghalt a(z) &e%kingdom% királyság ostroma alatt.'
-      times-up: '&e%invader% &cnem tudta időben befejezni az ostromot a(z) &e%kingdom% &ckirályság ellen.'
-      unclaimed: '&6%kingdom% &2feloldotta a(z) &6%invader% &2királyság által ostromolt területet.'
-      attacker-surrendered: '&e%invader% &cfeladta a(z) &e%kingdom% &ckirályság ostromát.'
-      defender-surrendered: '&6%kingdom% &2feladta a harcot a(z) &6%invader% királyság ellen'
-      defender-death-counter: '&e%invader% &ckirályság tagja túl sokszor haltak meg a(z) &e%kingdom% &ckirályság ostroma alatt.'
+    attackers:
+      success: '&6%invader% &2sikeresen megostromolta a(z) &e%kingdom% &2királyságot.'
+      logout: '&e%invader% &ckijelentkezett a(z) &e%kingdom% királyság ostroma közben.'
+      died: '&e%invader% &cmeghalt miközben ostromolta a(z) &e%kingdom% &ckirályságot.'
+      times-up: '&e%invader% &cnem tudta időben megszállni a(z) &e%kingdom% &ckirályságot.'
+      unclaimed: '&6%kingdom% &2nem foglalta el a(z) &6%invader% &2által megszállt
+        területet.'
+      attacker-no-longer-in-kingdom: '&e%invader% &cnem folytatja az ostromot mert
+        már nincs a királyságban.'
+      attacker-surrendered: '&e%invader% &cmegadta magát a(z) &e%kingdom% &ckirályság
+        ostroma közben.'
+      defender-surrendered: '&6%kingdom% &2királyság megadta magát miközben &6%invader%
+        &2ostromolta.'
+      attacker-death-limit: '&cKirályságod tagjai túl sokszor haltak meg a(z) &e%kingdom%
+        &ckirályság ostroma közben.'
+      defender-death-limit: '&6%kingdom% &2királyság tagjai túl sokszor haltak meg
+        miközben ostromoltad őket.'
     defenders:
-      success: '&cA(z) &e%invader% &ckirályság sikeres ostromot hajtott végre a királyságod
-        ellen.'
-      logout: '&2A(z) &6%invader% &2királyság kilépett az ostrom alatt.'
-      died: '&2A(z) &6%invader% &2királyság tagjai meghaltak az ostrom alatt.'
-      times-up: '&2A(z) &6%invader% &2királyság ideje lerjárt a(z) &e%kingdom% &2királyság
-        ostromára'
-      unclaimed: '&cYour kingdom land that was being invaded by &e%invader% &cwas
-        unclaimed.'
-      attacker-surrendered: '&6%invader% &cfeladta a királyságod ostromát.'
-      defender-surrendered: '&cA királyságod feladta a harcot a(z) &e%invader% királyság
-        ellen'
-      defender-death-counter: '&6%invader% &2kitályság tagjai túl sokszor haltak meg
-        az ostrom alatt.'
-portal-protection: '&cA teleportációd megszakadt mivel a portál egy ellenséges területre
-  vezet.'
-comamnd:
-  admin:
-    disband:
-      description: '&6Királyság feloszlatása'
-      usage: /k admin disband <királyság> [silent]
-      success: '&6%kingdom% &2fel lett oszlatva.'
-    land:
-      description: '&6Teleportáció a megadott koordinátákra.'
-      usage: '&4Használat: &e/k admin land [világ] <x> <z>'
-      teleported: '&2Teleportálás: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7,
-        &5%y%&7, &5%z%&8)'
-      invalid-world: '&cNem található világ: &e%world%'
-      invalid-coordinates: '&cHibás koordináták: &e%x%&7, &e%z%'
-    player:
-      description: '&6Információk megjelenítése a játékosról.'
-      usage: '&4Használate: &e/k admin player <játékos>'
-      not-found: '&cA megadott játékos nem található.'
-      info: |-
-        @&7| &2Név: &6%player% &8(hover:{&5%id%;&2Másolás;|%id%}&8)
-        &7| &2Admin: %admin% &7| &2Spy: %spy%
-        &7| &2Királyság: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Másolás;|%kingdom_id%}&8)
-        &7| &2Rang: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        &7| &2Nemzeti Rang: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Csevegő csatorna: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
-        &7| &2Jelzők használata: %visualizer%
-        &7| &2Meghívások: &6%invites%
-        &7| &2Csatlakoás a királysághoz: &6%kingdoms_joined%
-        &7| &2Automatiuks foglalás: %auto_claim% &7| &2Automatikus Térkép: %auto_map%
-        &7| &2Térkép mérete: &6%map_width% &8- &6%map_height%
-        &7| &2Összes adomány: &6%kingdoms_total_donations% &7| &2Utolsó adomány: &6%kingdoms_last_donation_time%
-        &7| &2Foglalások &7(&6%kingdoms_claims%&7): %claims%
-        &7| &2Tömörített adat: &6%compressed%
-    nation:
-      disband:
-        description: '&6Nemzet feloszlatása.'
-        usage: /k admin disband <nemzet> [silent]
-        success: '&ˇ2A(z) &6%nation% &2nemzet feloszlott.'
-    home:
-      description: '&6Teleportálás egy királyság otthonához'
-      usage: /k admin home <királyság>
-      teleporting: '&2Teleportlálás a(z) &6%kingdom% királyság otthonához'
-    kick:
-      description: '&6Játékos kirúgása a királyságból.'
-      usage: /k admin disband <játékos>
-      kicked: '&e%kicked% &cki lett rúgva ebből a királyságból &e%kingdom%'
-    hologram:
-      description: '&6Hibás hologramok törölve a közeledben.'
+      success: '&e%invader% &csikeres ostromot hajtott végre a királyságod ellen.'
+      logout: '&6%invader% &2kijelentkezett a királyságod ostroma közben.'
+      died: '&2%invader% &2meghalt a királyságod ostroma közben.'
+      times-up: '&e%invader% &cnem tudta időben megszállni a(z) &e%kingdom% &ckirályságot.'
+      attacker-no-longer-in-kingdom: '&e%invader% &cnem folytatja az ostromot mert
+        már nincs a királyságban.'
+      unclaimed: '&cA királyságod területét amit &e%invader% &cmegszállt, nem igényelték.'
+      attacker-surrendered: '&6%invader% &cmegadta magát a királyságod ostroma közben.'
+      defender-surrendered: '&e%invader% &costroma közben a királyságod megadta magát.'
+      defender-death-limit: '&cOstrom alatt a királyságod tagjai túl sokszor haltak
+        meg.'
+      attacker-death-limit: '&6%kingdom% &2királyság tagjai túl sokszor haltak meg
+        a királyságod ostroma alatt.'
+  home:
+    moved: '&cA királyságod otthona át lett helyezve a &e%new-home% &cterületre az
+      előző ostrom következményeként.'
+elections:
+  default-statement: |-
+    &2Klikk a szavazáshoz
+    erre a jelőltre.
+  results: '&6%candidate% &2jelőltet választották meg királynak &6%votes% &2szavazattal.'
+  begin: '&2A választások elkezdőtek. Szavaz a támogatott jelöltedre a &6hover:{/k
+    election vote;&2Klikk a szavazáshoz;/k election vote} &2parancs használatával.'
+  join-notify: '&2A választás folyamatban van.  Szavaz a támogatott jelöltedre a &6hover:{/k
+    election vote;&2Klikk a szavazáshoz;/k election vote} &2parancs használatával.'
+  not-enough-data: '&cNem lett új király megválasztva, mert a királyságodból kevesebb
+    mint &e50%&c-ék szavazott.'
+outpost-events:
+  death: '&cMeghaltál és a királyságod elvesztett &e%rp% Nexus pontot'
+tags:
+  tagged:
+    message: hover:{&6&l@%tag%;&2Felcímkéztek}
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
+  others: hover:{&l@%tag%;&9Címke}
+  offline: hover:{&e@%tag%;&cOffline}
+  unknown-player: hover:{&c@%tag%;&4Ismeretlen játékos}

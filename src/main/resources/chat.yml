@@ -4,25 +4,6 @@
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
-# Colors that can be used in the format of "{#name}"
-# E.g. "Hello {#Teal}player"
-# They support the "r, g, b", "3 digit hex" and "6 digit hex" formats
-# and the normal & color codes.
-# These colors are case-insensitive.
-colors:
-  p: '&2' # primary
-  s: '&6' # secondary
-  e: '&c' # error
-  es: '&6' # error secondary
-  sep: '&8' # separator
-
-  LightSalmon: '255, 160, 122'
-  Maroon: '128, 0, 0'
-  Olive: '128, 128, 0'
-  Teal: '008080'
-  Fuchsia: 'F0F'
-  Navy: '000080'
-
 # Kingdoms built-in chat system. Support hover messages as well.
 # Permissions: kingdoms.chat.colors
 # The channels section is only used for placeholders.
@@ -101,24 +82,9 @@ ranged-channels:
 
 # Tagging users like in Discord with a sound.
 # Players need kingdoms.chat.tag permission.
+# For tag formats refer to the language file "tags" section.
 tagging:
   enabled: true
-
-  # The sound to play for the user who was tagged.
-  sound: ENTITY_EXPERIENCE_ORB_PICKUP
-
-  # The way tags are displayed for different players.
-  formats:
-    tagger: '&2&l%tag%'
-    tagged: '&6&l%tag%'
-    others: '&l%tag%'
-
-  actionbar:
-    message: "&6%name% &2tagged you"
-
-    # The amount of time in seconds which the hologram
-    # stays for the player.
-    stay: 3
 
   # The prefix used for tagging someone.
   # E.g. "Hello @Hex_26, how are you?"
@@ -147,10 +113,14 @@ global-channel:
 
 # The channel to send private messages too. Set to ~ to disable.
 # You can either use the channel ID or name (case-insensitive).
-# You can also use "$console" which uses the console channel from DiscordSRV
-# or "$main" that uses the main chat channel from DiscordSRV.
-# A plugin needs a reload using /k reload after changing this option.
+# There are two special values. "$console" which uses the console channel from DiscordSRV
+# and "$main" that uses the main chat channel from DiscordSRV.
+# You need to /k reload after changing this option.
 # Used for kingdom, allies, truces and nations channels.
+# Using any channel here requires you to enter that channel's information
+# in DiscordSRV's config.yml "Channels" option. This is msot likely already defined for your
+# normal chat channel, but if you wish to see private messages as webhook messages in your console,
+# or any other channel, you'd need to add the channel in the config as well.
 discordsrv:
   global-channel: '$main'
   private-channel: '$console'

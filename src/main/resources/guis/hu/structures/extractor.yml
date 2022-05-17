@@ -1,26 +1,46 @@
-title: "&aFúró"
+title: "&2Fúró"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
 
 options:
   break:
-    name: "&cKiütés"
+    name: "&4Kiütés"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
       - "&6Kiüti a struktúrát."
     slot: 0
   collect:
-    name: "&aMegszerezve: &e%time% &7- &6%amount%"
+    name: "&2Begyűjt&8: &9%time% &7- &9%amount%"
     material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    refresh: true
     lore:
-      - "&6Szedd be az összes,"
-      - "generált pontot."
-      - ""
-      - "&eUtóljára beszedte: &f%name%"
-    slot: 2
+      - "&6Beszedi az összes"
+      - "generált Nexus pontot."
+      - "Utoljára beszedve&8: &2%extractor-last-collector%"
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "&9Fejlesztés&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Minden&8: &6%every% &7➔ &6%next-every%"
+        - "&7⚫ &2Nexus pont&8: &6%resource-points% &7➔ &6%next-resource-points%"
+        - ""
+        - "&7⚫ &2Maximális szint&8: &6%max-level-roman%"
+        - "&7⚫ &2Költség&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Szint&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Minden&8: &6%every%"
+        - "&7⚫ &2Nexus pont&8: &6%resource-points%"
   close:
-    name: "&2Bezárás"
+    name: "&2Bezár"
     material: BARRIER
+    lore:
+      - "&6GUI bezárása."
     slot: 4

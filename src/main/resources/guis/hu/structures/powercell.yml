@@ -1,15 +1,33 @@
-title: "&4Erőtér"
+title: "&cErőtér"
 type: HOPPER
 sound: BLOCK_REDSTONE_TORCH_BURNOUT
 
 options:
   break:
-    name: "&cKiütés"
+    name: "&4Kiütés"
     material: REDSTONE_BLOCK
     lore:
-      - "&6Kiüti a struktúrát."
+      - "&6Struktúra kiütése"
     slot: 0
+  upgrade:
+    slot: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Fejlesztés&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Hatótáv&8: &61 &7➔ &62"
+        - ""
+        - "&7⚫ &2Max szint&8: &6%max-level-roman%"
+        - "&7⚫ &2Költség&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Szint&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Hatótáv&8: &62"
   close:
-    name: "&2Bezárás"
+    name: "&2Bezár"
     material: BARRIER
+    lore:
+      - "&6GUI bezárása."
     slot: 4

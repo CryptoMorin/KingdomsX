@@ -6,14 +6,17 @@ sound: BLOCK_CONDUIT_ACTIVATE
 # remove the disc's name from the lore...
 options:
   powercell:
-    name: "&4Силовая клетка"
+    name: "&4Силовая ячейка"
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "&6Все земли, окруженные землей силовой клетки"
-      - "(9x9) не могут быть захвачены, пока земля"
-      - "силовой клетки не будет захвачена первой."
+      - "&8− &7Все земли, окруженные силовой ячейкой"
+      - "(9x9) не могут быть захвачены до "
+      - "тех пор, пока сначала"
+      - "не будут захвачены земли самой ячейки"
+      - ""
+      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
     posx: 3
     posy: 2
   extractor:
@@ -22,9 +25,11 @@ options:
     sound: BLOCK_ANVIL_LAND
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "&6Экстракторы производят очки ресурсов."
-      - "&6Вы можете собрать очки ресурсов в"
-      - "любое время."
+      - "&8− &7Экстракторы будут производить очки ресурсов."
+      - "&8− &7Вы можете собирать очки ресурсов "
+      - "в любое время."
+      - ""
+      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
     posx: 4
     posy: 2
   outpost:
@@ -33,18 +38,22 @@ options:
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "&6Вы можете получить разные предметы"
-      - "в аванпостах, используя очки ресурсов."
+      - "&8− &7Вы можете получить бутылки опыта с"
+      - "аванпостов, используя очки ресурсов"
+      - ""
+      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
     posx: 5
     posy: 2
   warppad:
-    name: "&cТелепортационная плита"
+    name: "&cТочка телепортации"
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "&6Телепортационные плиты могут быть использованы"
-      - "для телепортации к структурам."
+      - "&8− &7Можно использовать для телепортации"
+      - "из одной структуры в другую."
+      - ""
+      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
     posx: 6
     posy: 2
   regulator:
@@ -53,22 +62,35 @@ options:
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "&6Управление разрешениями игроков"
-      - "Управление игроками которые могут взаимодействовать"
-      - "с этим блоков."
-      - "Выключение турелей и появление мобов."
-      - "Включение взрывов."
-      - "Авто заполнение боезапаса турелей."
+      - "&8− &7Управляйте правами игрока, "
+      - "такими как строить/ломать, "
+      - "ВКЛ/ВЫКЛ огонь и т.д..."
+      - "Измените, какой игрок может "
+      - "взаимодействовать с каким блоком."
+      - "Отключите появление мобов или животных"
+      - ""
+      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
     posx: 7
     posy: 2
+  siege-cannon:
+    name: "&3Осадная пушка"
+    material: MUSIC_DISC_STRAD
+    sound: ENTITY_VILLAGER_AMBIENT
+    flags: [ HIDE_POTION_EFFECTS ]
+    lore:
+      - "&8− &7Пушкой можно уничтожать"
+      - "ЩИТы королевств"
+      - "&7Стоимость&8: &e%cost% оч.ресурсов"
+    posx: 5
+    posy: 1
 
   back:
-    name: "&Вернуться"
+    name: "&2Назад"
     material: PLAYER_HEAD
     # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6Вернуться в меню Нексуса."
+      - "&6"
     posx: 5
     posy: 3
   cyan-glass:

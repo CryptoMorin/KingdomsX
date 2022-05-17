@@ -243,10 +243,35 @@ placeholders:
   # to reuse a certain text multiple times without rewriting it.
   # The format is %var_<name>% e.g. %var_enabled% and %var_disabled%
   # You can use these pretty much everywhere. They also support colorization
-  # and placeholders too.
+  # and placeholders too. They're case-insensitive.
+  # These are technically known as "macros"
   variables:
-    enabled: '&8[&aEnabled&8]'
-    disabled: '&8[&cDisabled&8]'
+    green: '&2'
+    white: '&f'
+    black: '&0'
+    gray: '&7'
+    pink: '&d'
+    purple: '&5'
+    orange: '&6'
+    gold: '&6'
+    blue: '&9'
+    red: '&c'
+
+    p: '&2' # primary
+    s: '&6' # secondary
+    e: '&c' # error
+    es: '&6' # error secondary
+    sep: '&8' # separator
+
+    LightSalmon: 'F97'
+    Maroon: '900'
+    Olive: '990'
+    Teal: '008080'
+    Fuchsia: 'F0F'
+    Navy: '000080'
+
+    enabled: '&8[&aEnabled&8]&2'
+    disabled: '&8[&cDisabled&8]&4'
 
   # Default placeholders used when a player is not a kingdom or nation.
   # Requires /k reload to be reloaded.
@@ -261,20 +286,6 @@ placeholders:
     territory: '&2Wilderness'
     # Green
     color: '#00ff00'
-
-# The format of the /k broadcast message.
-# The kingdom placeholders are referring to the person
-# who used the command.
-# For the actual message take a look at your language file.
-broadcast:
-  # Sound to play to all the kingdom members.
-  # Set to none for no sound.
-  sound: ENTITY_EXPERIENCE_ORB_PICKUP
-
-  nation:
-    # Sound to play to all the kingdom members.
-    # Set to none for no sound.
-    sound: ENTITY_EXPERIENCE_ORB_PICKUP
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
@@ -773,20 +784,18 @@ inactivity:
 # When a kingdom or a nation is created.
 creation:
   kingdoms:
-    sound: UI_TOAST_CHALLENGE_COMPLETE
-
     # Show the pacifist/aggressor GUI?
     show-kingdom-type-gui: true
 
     # The default shield duration for new kingdoms to get prepared.
-    newbie-protection: 5days
+    newbie-protection: 5 days
 
     # Commands executed when the kingdom is created. You can use all the placeholders.
     commands: [ ]
   nations:
-    sound: UI_TOAST_CHALLENGE_COMPLETE
     # The default shield duration for new kingdoms to get prepared.
     newbie-protection: 0
+
     # Commands executed when the nation is created. You can use all the placeholders.
     commands: [ ]
 

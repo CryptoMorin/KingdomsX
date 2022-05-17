@@ -10,11 +10,6 @@ command:
   name: kingdoms
   aliases: [ kingdom, xkingdoms, kingdomsx, k ]
 
-  # The sounds don't need a restart nor a plugin reload to be applied.
-  sounds:
-    unknown-command: BLOCK_NOTE_BLOCK_BASS
-    insufficient-permission: BLOCK_NOTE_BLOCK_BASS
-
 # Properties
 # name: The main command name which is shown for auto completes.
 # aliases: A list of aliases for this command.
@@ -178,7 +173,7 @@ pvp:
   aliases: [ ]
 broadcast:
   name: broadcast
-  aliases: [ bc ]
+  aliases: [ bc, announce ]
 fly:
   name: fly
   aliases: [ flight ]
@@ -230,6 +225,11 @@ revoke:
 map:
   name: map
   aliases: [ ]
+
+  commands:
+    settings:
+      name: settings
+      aliases: [ options ]
 invade:
   name: invade
   aliases: [ invasion ]
@@ -293,7 +293,7 @@ nation:
   commands:
     broadcast:
       name: broadcast
-      aliases: [ bc ]
+      aliases: [ bc, announce ]
     nexus:
       name: nexus
       aliases: [ setnexus, nexusset, placenexus, nexusplace ]

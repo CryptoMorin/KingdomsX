@@ -1,4 +1,4 @@
-title: "&cСиловая клетка"
+title: "&cСиловая ячейка"
 type: HOPPER
 sound: BLOCK_REDSTONE_TORCH_BURNOUT
 
@@ -7,11 +7,27 @@ options:
     name: "&4Сломать"
     material: REDSTONE_BLOCK
     lore:
-      - "&6Ломает структуру."
+      - "&7Сломать структуру"
     slot: 0
+  upgrade:
+    slot: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Обновить&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&8⚫ &7Диапазон&8: &61 &7➔ &62"
+        - ""
+        - "&8⚫ &7Макс.уровень&8: &b%max-level-roman%"
+        - "&8⚫ &7Стоимость&8: &e%upgrade_cost%"
+    maxxed:
+      name: "&bУровень&8: &b%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &7Диапазон&8: &62"
   close:
-    name: "&2Закрыть"
+    name: "&cЗакрыть"
     material: BARRIER
     lore:
-      - "&6Закрыть интерфейс."
+      - ""
     slot: 4

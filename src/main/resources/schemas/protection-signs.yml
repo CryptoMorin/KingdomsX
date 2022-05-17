@@ -1,0 +1,54 @@
+enabled: bool
+protect-unclaimed: bool
+protections:
+  explosion: bool
+  piston: bool
+  container-transfers:
+    enabled: bool
+    disallow-all: bool
+    disallow-cross-origin-container-transfers: bool
+
+denied-sound: Sound
+
+passwords:
+  length:
+    min: int
+    max: int
+  
+  max-attempts: int
+  max-attempts-cooldown: Period
+  remove-keyword: str
+  cookies: str
+
+quick-protect:
+  enabled: bool
+  sneak: bool
+
+blocks:
+  (type): list
+  (elements): MaterialMatcher
+signs:
+  (type): set
+  (elements): Material
+gui: bool
+
+limits:
+  players: int
+  kingdoms: int
+
+case-sensitive-codes: bool
+displayname: str
+codes: list
+lines: list
+
+everyone-in-kingdom:
+  enabled: bool
+  displayname: str
+  codes: list
+  lines: list
+
+everyone:
+  enabled: bool
+  displayname: str
+  codes: list
+  lines: list

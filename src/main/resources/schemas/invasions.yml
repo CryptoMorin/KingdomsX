@@ -1,0 +1,269 @@
+simultaneous-invasions: int
+
+multi-chunk-invasion:
+  radius: int
+
+adjoining-protection:
+  radius: int
+  marginal-error-limit: int
+
+ransack-mode:
+  enabled: bool
+  cmd-names:
+    (type): list
+    (elements): str
+
+bonus:
+  resource-points: Math
+  bank: Math
+
+on-nexus-loss:
+  disband: bool
+  drop-nexus-chest-items: bool
+  give-all-resource-points: bool
+
+  lightning:
+    times: int
+    interval: int
+    amount: int
+
+costs:
+  resource-points: int
+  money: int
+
+pacifism:
+  enabled: bool
+  default: bool
+  disable-pvp: bool
+  cooldown: Period
+
+shields:
+  disallow-invasions: bool
+  last-invasion-cooldown: Period
+  disable-pvp: bool
+
+champions:
+  disable-friendly-damage: bool
+  disabled-damages:
+    (type): list
+    (elements): str
+
+  death-messages:
+    defaults:
+      (type): list
+      (elements): str
+    projectile:
+      (type): list
+      (elements): str
+    void:
+      (type): list
+      (elements): str
+    entity-attack:
+      (type): list
+      (elements): str
+
+masswar:
+  during-masswar-only: bool
+  disable-misc-upgrades: bool
+  disable-turrets: bool
+  allow-siege-cannons: bool
+  allow-invading:
+    pacifists: bool
+    shields: bool
+
+  interval: Period
+  time: str
+
+  costs:
+    resource-points: int
+    money: int
+
+  bossbar:
+    enabled: bool
+    title: str
+    color: str
+    style: str
+  titles:
+    start:
+      title: str
+      subtitle: str
+      fade-in: int
+      stay: int
+      fade-out: int
+    end:
+      title: str
+      subtitle: str
+      fade-in: int
+      stay: int
+      fade-out: int
+
+teleportation:
+  teleport-delay: int
+  use-timer-message: bool
+  should-not-move: bool
+  should-not-be-damaged: bool
+
+bossbar:
+  enabled: bool
+  range: int
+  reverse-progress: bool
+
+  title: str
+  color: str
+  style: str
+  flags:
+    (type): list
+    (elements): str
+
+nations:
+  use-capital-champion: bool
+  use-shield: bool
+
+  nation-zone-radius: int
+  capital-protection:
+    radius: int
+    nexus-invasion-cooldown: str
+
+  shields:
+    disabled: bool
+    ignore-individual-shields: bool
+
+home:
+  remove: bool
+  move: bool
+  disallow-public-teleportation: bool
+
+initial-location: bool
+
+countdown:
+  seconds: int
+  show-to-defender: bool
+
+  sound:
+    (keys): int
+
+    0: str
+    1: str
+    2: str
+    3: str
+    4: str
+    5: str
+
+cooldowns:
+  failed: str
+  successful: int
+
+unclaim-cooldown: int
+
+items:
+  whitelist: bool
+  list:
+    (type): list
+    (elements): str
+
+allow:
+  teleportation: bool
+  elytra: bool
+  explosion: bool
+  building: bool
+  moving-nexus: bool
+
+commands:
+  execute:
+    before:
+      (type): list
+      (elements): str
+    after-successful:
+      (type): list
+      (elements): str
+    after-fail:
+      (type): list
+      (elements): str
+
+  smart-command: bool
+
+  invader:
+    whitelist: bool
+    kingdom-wide: bool
+
+    list:
+      (type): list
+      (elements): str
+
+  defender:
+    whitelist: bool
+    list:
+      (type): list
+      (elements): str
+
+surrender:
+  attacker: bool
+  defender: bool
+  refund:
+    resource-points: bool
+    money: bool
+
+time-limit:
+  default: str
+  nexus: str
+
+  bossbar:
+    enabled: bool
+
+    title: str
+    color: str
+    style: str
+
+online-members:
+  invader: int
+  defender: int
+
+player-deaths:
+  defender: int
+  attacker: int
+
+  keep:
+    enabled: bool
+    inventory: bool
+    xp: bool
+
+plunder:
+  enabled: bool
+  keep-champion: bool
+  
+  participants:
+    nation: bool
+    allies: bool
+    truces: bool
+  
+  particles:
+    enabled: bool
+    states:
+      capturing:
+        particle: str
+        count: int
+        color: str
+        size: int
+      protected:
+        particle: str
+        count: int
+        offset: str
+        color: str
+        extra: int
+        size: int
+  
+  capture-progress:
+    increment: decimal
+    goal: int
+    
+    bossbar:
+      use: str
+      
+      state-colors:
+        capturing: str
+        protected: str
+  
+  defender-bossbar:
+    title: str
+    color: str
+    style: str

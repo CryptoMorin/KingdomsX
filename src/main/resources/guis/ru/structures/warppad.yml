@@ -1,57 +1,105 @@
-title: "&eТелепортационная плита"
+title: "&eТочка телепортации"
 rows: 6
 sound: BLOCK_ANVIL_USE
 
 options:
+  previous-page:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    name: '&7Предыдущая страница'
   nexus:
-    name: "&2Нексус"
+    name: "&aНексус"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
     material: BEACON
-    slots: [ 0 ]
+    posx: 2
+    posy: 1
   national-nexus:
-    name: "&9Нексус государства"
+    name: "&9Нексус нации"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
     material: BEACON
-    slots: [ 1 ]
-  powercell:
-    name: "&cСиловая клетка&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: REDSTONE_LAMP
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 17 ]
-  extractor:
-    name: "&2Экстрактор&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: EMERALD_BLOCK
-    slots: [ 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
-  warppad:
-    name: "&c%warppad%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: END_PORTAL_FRAME
-    slots: [ 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
-  regulator:
-    name: "&3Регулятор&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: LECTERN
-    slots: [ 36, 37, 38, 39, 40, 41, 42, 43, 44 ]
-  outpost:
-    name: "&eАванпост&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: HAY_BLOCK
-    slots: [ 45, 46, 47, 48, 49, 50, 51 ]
-
+    posx: 3
+    posy: 1
   rename:
-    name: "&2Переименовать"
+    name: "&9Переименовать"
     lore:
-      - "&7Переименовать эту телепортационную плиту."
-      - "&2Имя&8: &7%name%"
+      - "&7Сменить название этой точки."
+      - "&7Название&8: &b%structure-custom-name%"
+      - "&7Топливо&8: &9%fuel%"
     material: PAPER
-    posx: 7
+    posx: 6
     posy: 1
   break:
     name: "&4Сломать"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Ломает структуру."
-    posx: 8
+      - ""
+    posx: 7
     posy: 1
   close:
-    name: "&2Закрыть"
+    name: "&cЗакрыть"
     material: BARRIER
     lore:
-      - "&6Закрыть интерфейс."
+      - ""
+    posx: 8
+    posy: 1
+  next-page:
     posx: 9
     posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    name: '&2Следующая страница'
+
+
+  orange-stained-glass-pane:
+    posx: 1
+    posy: 2
+    material: ORANGE_STAINED_GLASS_PANE
+    name: '&cСиловые ячейки&8:'
+  powercell:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 17 ]
+    material: REDSTONE_LAMP
+    name: "&cСиловая ячейка&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
+  lime-stained-glass-pane:
+    posx: 1
+    posy: 3
+    material: LIME_STAINED_GLASS_PANE
+    name: '&6Экстракторы&8:'
+  extractor:
+    slots: [ 19,20,21,22,23,24,25,26 ]
+    material: EMERALD_BLOCK
+    name: "&6Экстрактор&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
+  green-stained-glass-pane:
+    posx: 1
+    posy: 4
+    material: GREEN_STAINED_GLASS_PANE
+    name: '&2Точки телепортации&8:'
+  warppad:
+    slots: [ 28,29,30,31,32,33,34,35 ]
+    material: END_PORTAL_FRAME
+    name: "&c%structure-name%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
+  yellow-stained-glass-pane:
+    posx: 1
+    posy: 5
+    material: YELLOW_STAINED_GLASS_PANE
+    name: '&eАванпосты&8:'
+  outpost:
+    name: "&eАванпост&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
+    slots: [ 37,38,39,40,41,42,43,44 ]
+    material: HAY_BLOCK
+  brown-stained-glass-pane:
+    posx: 1
+    posy: 6
+    material: BROWN_STAINED_GLASS_PANE
+    name: '&7Регуляторы&8:'
+  regulator:
+    name: "&3Регулятор&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&7Стоимость телепорта&8: &e%fuel-cost%"
+    slots: [ 46,47,48,49,50,51,52,53 ]
+    material: LECTERN

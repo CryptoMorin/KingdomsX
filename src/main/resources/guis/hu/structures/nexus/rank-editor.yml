@@ -4,243 +4,443 @@ sound: ITEM_BOOK_PAGE_TURN
 
 options:
   node:
-    name: "&2Hivatkazás&8: &2%rank_node%"
+    name: "&2Csomópont&8: &2%rank_node%"
     material: EMERALD
     lore:
-      - "&6A hivatkozás valójában a rangok neveit jelzi"
-      - "Szimbólumok és színek nélkül."
-      - "Ez a felfokzások/lefokozásokkor alkalazandóak."
-      - "Maximum 15 katakterből állhat."
+      - "&6A csomópont alapvetően a rangnak a neve, de nem"
+      - "tartalmazhat színeket vagy speciális karaktereket."
+      - "Ezt akkor használod amikor kinevezel/lefokozol valakit."
+      - "Nem tartalmazhat számokat és csak 15 karakter lehet."
     posx: 1
     posy: 1
   name:
     name: "&5Név&8: &2%rank_name%"
     material: DIAMOND
     lore:
-      - "&6A rang neve."
-      - "Bármilyen karaktert tartalmazhat"
-      - "Színeket is beleértve."
-      - "Maximum 20 karakterből állhat."
+      - "&6Ez a rangnak a neve."
+      - "Bármilyen 20 karakternél nem"
+      - "hosszabb név lehet és"
+      - "tartalmazhat színkódokat is."
     posx: 2
     posy: 1
   material:
-    name: "&eIkon&8: &2%rank_material%"
+    name: "&eNyersanyag&8: &2%rank_material%"
     material: GOLD_INGOT
     lore:
-      - "&6Az a tárgy ami megjelenik a menüben."
+      - "&6A rangok GUI felületen való"
+      - "megjelenítéséhez használt nyersanyag."
+      - "Mindig a legújabb neveket kell használni,"
+      - "akkor is ha a szerveren régebbi verzió fut."
     posx: 3
     posy: 1
   symbol:
     name: "&dSzimbólum&8: &2%rank_symbol%"
     material: IRON_INGOT
     lore:
-      - "&6Szimbólum a rangnak."
-      - "Színeket is tartalmazhat."
-      - "Maximum 5 karakterből állhat."
+      - "&6A rang szimbóluma."
+      - "Csak 5 karakter lehet, de"
+      - "támogatottak a színek is."
     posx: 4
     posy: 1
   color:
     name: "%rank_color%Szín"
     material: COAL
     lore:
-      - "&6A csevegésben megjelenő szín."
-      - "Maximum 5 karakterből állhat."
+      - "&6A rang színe a csevegésben."
+      - "Legfeljebb 5 karakter lehet."
     posx: 5
     posy: 1
   priority:
-    name: "&aPriorítás&8: &2%rank_priority%"
+    name: "&aPioritás&8: &2%rank_priority%"
     material: PAPER
     lore:
-      - "&6A rang priorítása"
-      - "A kisebb számok nagyobb prioritást jelentenek."
-      - "A király rang priorítását nem lehet változtatni"
+      - "&6A rangnak a pioritása. Az alacsonyabb"
+      - "számok jelentik a magasabb pioritást."
+      - "A király rangjának a pioritása nem"
+      - "változtatható meg."
     posx: 6
     posy: 1
   max-claims:
-    name: "&7Max Foglalások&8: &2%rank_max_claims%"
+    name: "&7Max foglalás&8: &2%rank_max_claims%"
     material: BOOK
     lore:
-      - "&6Jogok beállítása"
+      - "&6Ennek a rangnak az engedélyeinek"
+      - "a beállítása."
     posx: 7
     posy: 1
   delete:
     name: "&4Törlés"
     material: BARRIER
     lore:
-      - "&6Rang törlése."
-      - "Ebben a rangban lévő emberek"
-      - "Alattvaló rangot fognak kapni."
+      - "&6Rangnak a törlése."
+      - "Az összes játékos akinek ez volt"
+      - "a rangja taggá lesz lefokozva,"
+      - "hacsak nem hozol létre egy új"
+      - "rangot ezen a csomóponton"
+      - "véletlenszerű időn belül."
     posx: 8
     posy: 1
   copy:
     name: "&1Rang másolása"
     material: WRITABLE_BOOK
     lore:
-      - "&6Rang tulajdonságainak"
-      - "másolása"
+      - "&6A tulajdonságok átmásolása egy"
+      - "másik rangból ebbe a rangba."
     posx: 5
     posy: 2
 
   alliance:
-    name: "&2Szövetség"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Szövetség"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Szövetség"
+      material: RED_WOOL
     posx: 1
     posy: 3
   broadcast:
-    name: "&2Üzenet közvetítés"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Közvetítés"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Közvetítés"
+      material: RED_WOOL
     posx: 2
     posy: 3
   build:
-    name: "&2Építés"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Építés"
+      material: DIAMOND_PICKAXE
+      glow: true
+    else:
+      name: "%var_disabled% &2Építés"
+      material: DIAMOND_PICKAXE
     posx: 3
     posy: 3
   claim:
-    name: "&2Foglalás"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Foglalás"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Foglalás"
+      material: RED_WOOL
     posx: 4
     posy: 3
   edit-ranks:
-    name: "&2Rangok szerkesztése"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Rang szerkesztése"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Rang szerkesztése"
+      material: RED_WOOL
     posx: 5
     posy: 3
   enemy:
-    name: "&2Ellenség"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Ellenség"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Ellenség"
+      material: RED_WOOL
     posx: 6
     posy: 3
   home:
-    name: "&2Hazateleportálás"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Otthon"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Otthon"
+      material: RED_WOOL
     posx: 7
     posy: 3
   invade:
-    name: "&2Ostrom"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Ostrom"
+      material: DIAMOND_SWORD
+      glow: true
+    else:
+      name: "%var_disabled% &2Ostrom"
+      material: DIAMOND_SWORD
     posx: 8
     posy: 3
   invite:
-    name: "&2Meghívás"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Meghívás"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Meghívás"
+      material: RED_WOOL
     posx: 9
     posy: 3
 
   # 4
   kick:
-    name: "&2Kirúgás"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Kirúgás"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Kirúgás"
+      material: RED_WOOL
     posx: 1
     posy: 4
   lore:
-    name: "&2Leírás"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Leírás"
+      material: PAPER
+      glow: true
+    else:
+      name: "&2Leírás"
+      material: PAPER
     posx: 2
     posy: 4
   nexus:
-    name: "&2Nexus"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Nexus"
+      material: BEACON
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus"
+      material: BEACON
     posx: 3
     posy: 4
   nexus-build:
-    name: "&2Nexus Építés"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Nexus építés"
+      material: BEACON
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus építés"
+      material: BEACON
     posx: 4
     posy: 4
   nexus-chest:
-    name: "&2Nexus Láda"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Nexus láda"
+      material: CHEST
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus láda"
+      material: CHEST
     posx: 5
     posy: 4
   outpost:
-    name: "&2Bázis"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Előőrs"
+      material: HAY_BLOCK
+      glow: true
+    else:
+      name: "%var_disabled% &2Előőrs"
+      material: HAY_BLOCK
     posx: 6
     posy: 4
   protection-signs:
-    name: "&2Levédett ládák"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Védett láda"
+      material: OAK_SIGN
+      glow: true
+    else:
+      name: "%var_disabled% &2Védett láda"
+      material: OAK_SIGN
     posx: 7
     posy: 4
   set-home:
-    name: "&2Otthon beállítása"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Otthon beállítása"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Otthon beállítása"
+      material: RED_WOOL
     posx: 8
     posy: 4
   structures:
-    name: "&2Struktúrák"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Struktúrák"
+      material: REDSTONE_LAMP
+      glow: true
+    else:
+      name: "%var_disabled% &2Struktúrák"
+      material: REDSTONE_LAMP
     posx: 9
     posy: 4
 
   # 5
   use:
-    name: "&2Használat"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Használat"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Használat"
+      material: RED_WOOL
     posx: 1
     posy: 5
   interact:
-    name: "&2Interakció"
-    material: GREEN_WOOL
+    material: OAK_DOOR
+
+    enabled:
+      condition: enabled
+      name: "%var_enabled% &2Interakció"
+      glow: true
+    else:
+      name: "%var_disabled% &2Interakció"
+
     posx: 2
     posy: 5
   upgrade:
-    name: "&2Fejlesztés"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Fejlesztés"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Fejlesztés"
+      material: RED_WOOL
     posx: 3
     posy: 5
   truce:
-    name: "&2Fegyverszünet"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&eTűzszünet"
+      material: YELLOW_WOOL
+      glow: true
+    else:
+      name: "%var_disabled% &eTűzszünet"
+      material: YELLOW_WOOL
     posx: 4
     posy: 5
   turrets:
-    name: "&2Ágyúk"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Tornyok"
+      material: ARROW
+      glow: true
+    else:
+      name: "%var_disabled% &2Tornyok"
+      material: ARROW
     posx: 5
     posy: 5
   unclaim:
-    name: "&2Terület feloldása"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Terület Feloldása"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Terület Feloldása"
+      material: RED_WOOL
     posx: 6
     posy: 5
   manage-ranks:
-    name: "&2Rangok kezelése"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Rangok kezelése"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Rangok kezelése"
+      material: RED_WOOL
     posx: 7
     posy: 5
   withdraw:
-    name: "&2Kivétel"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Kivétel"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Kivétel"
+      material: RED_WOOL
     posx: 8
     posy: 5
   fly:
-    name: "&2Repülés"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Repülés"
+      material: ELYTRA
+      glow: true
+    else:
+      name: "%var_disabled% &2Repülés"
+      material: ELYTRA
     posx: 9
     posy: 5
 
   # 6
   nation:
-    name: "&2Nemzet"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Nemzet"
+      material: BLUE_WOOL
+      glow: true
+    else:
+      name: "%var_disabled% &2Nemzet"
+      material: BLUE_WOOL
     posx: 1
     posy: 6
   exclude-tax:
-    name: "&2Adó nélküli"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Adózásból kizárás"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Adózásból kizárás"
+      material: RED_WOOL
     posx: 2
     posy: 6
   relation-attributes:
-    name: "&2Kapcsolati beállítások"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      name: "&2Kapcsolati jelzők"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Kapcsolati jelzők"
+      material: RED_WOOL
     posx: 3
     posy: 6
   settings:
     name: "&2Beállítások"
-    material: GREEN_WOOL
+    enabled:
+      condition: enabled
+      material: GREEN_WOOL
+    else:
+      material: RED_WOOL
     posx: 4
+    posy: 6
+  build-owned:
+    name: "&2Építés sajáton"
+    material: DIAMOND_PICKAXE
+    lore:
+      - "&7Az &2ÉPÍTÉS &7és az &2ÉPÍTÉS_SAJÁTON &7között"
+      - "a különbség, hogy az &2ÉPÍTÉS &7engedélyezi"
+      - "bárhol az építést a királyságodban"
+      - "(kivéve a Nexus területet, oda"
+      - "&2NEXUS_ÉPÍTÉS &7engedélye szükséges), míg"
+      - "az &2ÉPÍTÉS_SAJÁTON &7csak, olyan területen,"
+      - "amit saját magad foglaltál el. Például"
+      - "ha valahol kiadod a &6/k claim &7parancsot,"
+      - "akkor más játékosok az &2ÉPÍTÉS_MAGADNAK"
+      - "&7engedéllyel nem építhetnek oda, csak"
+      - "Te vagy azok akiknek van &2ÉPÍTÉS"
+      - "&7engedélyük."
+
+    enabled:
+      condition: enabled
+      glow: true
+
+    posx: 5
     posy: 6
 
   back:
@@ -248,6 +448,6 @@ options:
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6Vissza a rang menübe."
+      - "&6Vissza a Nexus menübe."
     posx: 9
     posy: 1

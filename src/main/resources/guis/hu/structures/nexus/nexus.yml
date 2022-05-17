@@ -1,20 +1,21 @@
-title: "&2%kingdoms_name% &cNexus"
+title: "&2&l%kingdoms_name% &6&lNexusa"
 rows: 6
 sound: BLOCK_BEACON_ACTIVATE, 0.3
 
 options:
   settings:
-    name: "&7&lBeállítások"
+    name: "&7Beállítások"
     material: NETHER_STAR
+    lore:
+      - "&6A királyság beállításainak megváltoztatása."
     posx: 5
     posy: 2
   members:
-    name: "&2&lTagok"
+    name: "&2Tagok"
     material: PLAYER_HEAD
     lore:
-      - "&f"
-      - "&fA királyság tagjainak kezelése,"
-      - "felfokozás, lefokozás."
+      - "&6A királyság tagjainak kezelése."
+      - "&6Kinevezésük vagy lefokozásuk."
     posx: 5
     posy: 3
   masswar:
@@ -23,181 +24,155 @@ options:
       name: "&4Háború"
       material: CLOCK
       lore:
-        - "&f"
-        - "&fA háború alatt az ostromok ingyenesek."
-        - ""
-        - "Háború állapota: &aAktív"
+        - "&6A háború alatt az ostromok ingyenesek."
+        - "Jelenleg háburú &2van."
     else:
       name: "&4Háború"
       material: RED_WOOL
       lore:
-        - "&f"
-        - "&fA háború alatt az ostromok ingyenesek."
-        - ""
-        - "Háború állapota: &cInaktív"
+        - "&6A háború alatt az ostromok ingyenesek."
+        - "Jelenleg &cnincs &6háború."
     posx: 6
     posy: 3
   nexus-chest:
-    name: "&e&lNexus Láda"
+    name: "&eNexus láda"
     material: CHEST
     lore:
-      - ""
-      - "&fItt tudsz tárolni bármilyen tárgyat"
-      - "a Nexus-on belül."
+      - "&6Tárgyak belehelyezése a királyságod"
+      - "&6ládájába, amiket mindenki használhat."
     posx: 7
     posy: 3
   turrets:
-    name: "&5&lÁgyúk"
+    name: "&9Tornyok"
     material: SPECTRAL_ARROW
     lore:
-      - ""
-      - "&fVásárolj ágyúkat Nexus pontokból."
-      - "Az ágyúk megvédik a területedet"
-      - "a szörnyektől és az ellenséges"
-      - "játékosoktól."
+      - "&6Tornyokat vásárolhatsz Nexus"
+      - "pontokért amiket el tudsz helyezni"
+      - "a területeden. Ezek megvédenek a "
+      - "szörnyektől és az ostromlóktól."
     posx: 3
     posy: 3
   structures:
-    name: "&b&lStruktúrák"
+    name: "&5Struktúrák"
     material: REDSTONE_LAMP
     lore:
-      - ""
-      - "&fA Struktúrák különleges tulajdonságokkal"
-      - "rendelkező tárgyak, Egy területre csak 1"
-      - "Struktúra helyezhető el."
-      - ""
-      - "&fMegjegyzés: &eA Nexus is egy struktúra"
+      - "&6A struktúrák különböző dolgokat tudnak."
+      - "Területeenként csak egy struktúra lehet."
+      - "Megjegyzés, hogy a Nexus is egy struktúra."
+      - "A struktúrák Nexus pontokért vehetőek."
     posx: 4
     posy: 3
   misc-upgrades:
-    name: "&6&lFejlesztések"
+    name: "&bEgyéb fejlesztések"
     material: ENCHANTING_TABLE
     lore:
-      - ""
-      - "&fNexuson belüli fejlesztések."
+      - "&6Különböző szempontok szerinti"
+      - "egyéb vegyes fejlesztések a"
+      - "királyságod tökéletesítéséhez."
     posx: 2
     posy: 3
   logs:
-    name: "&a&lNapló"
+    name: "&aNapló"
     material: KNOWLEDGE_BOOK
     sound: BLOCK_NOTE_BLOCK_BASS
     lore:
-      - ""
-      - "&cHamarosan."
-      - ""
-      - "&fEgy napló mely tartalmazza a"
-      - "legutóbbi foglalásokat, ostromokat,"
-      - "és egyéb játékos aktívitásokat."
+      - "&c&lHAMAROSAN..."
+      - "&6Királyság naplójának megtekintése"
+      - "az ostromok, foglalások, visszaadások,"
+      - "és az egyéb tagi aktivitások nyomkövetéséhez."
     posx: 8
     posy: 3
   resource-points:
-    name: "&e&lNexus Pont átalakító"
+    name: "&eNexus pont átalakító"
     material: HAY_BLOCK
     lore:
-      - "&f"
-      - "Alakíts át nyersanyagokat"
-      - "Nexus ponttokká"
-      - ""
-      - "Jelenlegi pontok: &6%kingdoms_fancy_resource_points%"
+      - "&6Tárgyaid átalakítása"
+      - "Nexus pontokká."
+      - "Királyságodnak &e%kingdoms_fancy_resource_points% &6Nexus pontja van."
     posx: 4
     posy: 5
   damage-reduction:
-    name: "&3&lSebzéscsökkentés"
+    name: "&3Sebzéscsökkentés"
     material: DIAMOND_CHESTPLATE
     flags: [ HIDE_ATTRIBUTES ]
     sound:
       '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
       '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
     lore:
-      - "&f"
-      - "Minden egyes fejlesztéssel"
-      - "a királyság területén az"
-      - "elszenvedett sebzés csökken &e1%-kal"
+      - "&6Minden fejlesztés &e1% &6ponttal"
+      - "csökkenti az elszenvedett sebzést."
       - ""
-      - "&6Jelenlegi állapot:"
-      - "&eSzint: &f%level%"
-      - "&eÁr: &f%cost%"
+      - "&6Szint&8: &2%level%"
+      - "&6Költség&8: &2%cost%"
     posx: 7
     posy: 4
   damage-boost:
-    name: "&3&lSebzés Erősítés"
+    name: "&3Sebzés erősítése"
     material: DIAMOND_SWORD
     sound:
       '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
       '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
     flags: [ HIDE_ATTRIBUTES ]
     lore:
-      - "&f"
-      - "Minden egyes fejlesztéssel"
-      - "a királyság területén a"
-      - "kiosztott sebzés nő &e1%-kal"
+      - "&6Minden fejlesztés megnöveli"
+      - "a sebzésedet &e1% &6ponttal."
       - ""
-      - "&6Jelenlegi állapot:"
-      - "&eSzint: &f%level%"
-      - "&eÁr: &f%cost%"
+      - "&6Szint&8: &2%level%"
+      - "&6Költség&8: &2%cost%"
     posx: 3
     posy: 4
   arrow-boost:
-    name: "&7&lNyíl Erősítés"
+    name: "&7Nyilvessző erősítése"
     material: BOW
     sound:
       '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
       '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
     lore:
-      - "&f"
-      - "Minden egyes fejlesztéssel"
-      - "a királyság területén a nyíllal"
-      - "kiosztott sebzés nő &e1%-kal"
+      - "&6Minden fejlesztés megnöveli"
+      - "az íj sebzését &e1% &6ponttal."
       - ""
-      - "&6Jelenlegi állapot:"
-      - "&eSzint: &f%level%"
-      - "&eÁr: &f%cost%"
+      - "&6Szint&8: &2%level%"
+      - "&6Költség&8: &2%cost%"
     posx: 4
     posy: 4
   regeneration-boost:
-    name: "&d&lRegeneráció"
+    name: "&dRegeneráció erősítése"
     material: GOLDEN_APPLE
     sound:
       '%kingdoms_resource_points% >= %cost%': BLOCK_ANVIL_USE
       '%kingdoms_resource_points% < %cost% || %level% >= %max-level%': BLOCK_NOTE_BLOCK_BASS
     lore:
+      - "&6Minden fejlesztés &e1%&6-al növeli a"
+      - "területeden a regeneráció mértékét."
       - ""
-      - "&fMinden egyes fejlesztéssel"
-      - "a királyság területén a"
-      - "regenerálódás mértéke nő &e1%-kal"
-      - ""
-      - "&6Jelenlegi állapot:"
-      - "&eSzint: &f%level%"
-      - "&eÁr: &f%cost%"
+      - "&6Level&8: &2%level%"
+      - "&6Cost&8: &2%cost%"
     posx: 6
     posy: 4
   ranks:
-    name: "&5&lRangok & Jogok"
+    name: "&5Rangok és jogosultságok"
     material: BOOKSHELF
     lore:
-      - ""
-      - "&fRangok és jogok szerkesztése"
+      - "&6A rangok és jogosultságok"
+      - "módosítása a királyságodban."
     posx: 6
     posy: 5
   champion-upgrades:
-    name: "&2&lBajnok Fejlesztések"
+    name: "&2Bajnonk fejlesztései"
     material: ZOMBIE_HEAD
     lore:
-      - ""
-      - "&fFejleszd a bajnokodat, hogy"
-      - "erősebb védelmet nyújthasson"
-      - "az ostromlók ellen."
+      - "&6A Bajnok fejlesztése, hogy erősebb"
+      - "védelmet adjon az ostromlókkal szemben."
     posx: 5
     posy: 5
   mail-box:
-    name: "&e&lPostaláda"
+    name: "&ePostaláda"
     material: PLAYER_HEAD
     sound: BLOCK_NOTE_BLOCK_BASS
     # https://minecraft-heads.com/custom-heads/decoration/18059-letter-box-gray
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk2YWYzNmVhYWVkOGE3ZGJkMjcyN2ZkNGNkN2FmYmM2YzBhZmI4Yzc2MDYyOTRjOWNiNDAxMTQxYWFjMzc5In19fQ=="
     lore:
-      - ""
-      - "&cHamarosan."
+      - "&c&lHAMAROSAN..."
     posx: 5
     posy: 4
 
