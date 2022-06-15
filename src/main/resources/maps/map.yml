@@ -37,26 +37,10 @@ hide-by-default: false
 # The zoom level range which the markers are visible at.
 # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
 # These values can give confusing results. You need to play around with them to get the right one.
+# These current don't work for Bluemap and they're hardcoded since their value range differ from Dynmap significantly.
 zoom:
-  max: -1
+  max: 1
   min: 3
-
-# The color range used for kingdom color settings which can be changed in nexus settings.
-color-range:
-  enabled: true
-
-  # While settings this option to false means it's a whitelist, it still functions the way
-  # you see https://nycdoe-cs4all.github.io/images/lessons/unit_1/3.2/circle.png this wheel.
-  # So you technically have to use a whitelist to block an angle range backwards.
-  blacklist: false
-
-  # This list uses hue angle since it's easier to block angles.
-  # The entry name is optional.
-  # https://en.wikipedia.org/wiki/Hue
-  colors:
-    # Each entry must have only 2 angles.
-    # The first angle must be the smaller one.
-    red: [ 30, 330 ]
 
 # Kingdoms can change their flag URL for Dynmap via kingdoms settings.
 flag:
@@ -86,6 +70,8 @@ flag:
 # Default Maker settings.
 # If the kingdom already chose a color, it'll use that
 # for both fill and line colors. Other settings will stay the same.
+
+# For the color setting in your nexus, refer to config.yml instead.
 
 # The land chunk square fill options.
 # Hex code follows RGBA format.
@@ -160,6 +146,7 @@ icons:
   # The zoom level range which the icons are visible at.
   # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
   # These values can give confusing results. You need to play around with them to get the right one.
+  # NOTE: Change these values if you're using BlueMap. Something like 10-300
   zoom:
     max: -1
     min: 6

@@ -23,11 +23,6 @@ prioritize-kingdom-relations: true
 # If you use this, it'll destroy the whole purpose of nation relations.
 allow-relations-between-nation-kingdoms: false
 
-# This merely manages the data saved, so it applies after a server restart.
-# To disable it completely, remove it from the Nexus Settings GUI. The players will keep their relation data until the server
-# is restarted if you keep the GUI.
-custom-attributes: true
-
 # The PvP mode of the plugin. Needs a restart to be changed due to performance issues.
 # normal - Players can PvP anywhere based on their relation attributes.
 # claimed - Players can only PvP inside of claimed lands based on their relation attributes.
@@ -65,6 +60,10 @@ force-survival-mode: true
 #         Note that the placed turrets/structures will be for the kingdom that owns that land.
 # limit: How many kingdoms can a single kingdom have this type of relation with? Set to 0 for unlimited.
 # effects: List of potion effects activated when in these lands.
+# customizable: This merely manages the data saved, so it applies after a server restart.
+#               To disable it completely, remove it from the Nexus Settings GUI. The players will
+#               keep their relation data until the server is restarted if you keep the GUI.
+#               Note that NOT specifiying this option defaults to true
 relations:
   self:
     color: "&2"
@@ -84,6 +83,7 @@ relations:
     turret-ceasefire: false
     manage-turrets: false
     manage-structures: false
+    customizable: true
     effects: [ ]
 
   truce:
@@ -100,6 +100,7 @@ relations:
     invade: false
     turret-ceasefire: true
     manage-turrets: false
+    customizable: true
     manage-structures: false
     effects: [ ]
 
@@ -117,6 +118,7 @@ relations:
     interact: true
     turret-ceasefire: true
     manage-turrets: true
+    customizable: true
     manage-structures: true
     effects: [ ]
 
@@ -130,9 +132,11 @@ relations:
     home: true
     invade: false
     interact: true
+    use: true
     turret-ceasefire: true
     manage-turrets: true
     manage-structures: true
+    customizable: false # because all nation members are supposed to follow the same rules.
     effects: [ ]
 
   enemy:
@@ -151,5 +155,6 @@ relations:
     manage-turrets: false
     manage-structures: false
     effects: [ ]
+    customizable: true
     disabled-commands:
       - "sethome"

@@ -231,6 +231,12 @@ guis:
 join-leave-messages: true
 
 placeholders:
+  # https://github.com/CryptoMorin/KingdomsX/wiki/Placeholders#placeholder-formats
+  # You cannot use another placeholder in these options "%" has a special meaning
+  # the translated placeholder. The "normal" option is used when the default value
+  # is not needed to be used (depending on the situation) or "default" otherwise.
+  # You can also use "%" for default options to retrieve their default values from
+  # the option below.
   formats:
     brackets:
       normal: '[%]'
@@ -238,6 +244,8 @@ placeholders:
     parens:
       normal: "(%)"
       default: ''
+    # This means both normal and default options use the same format.
+    hex: '{#%}'
 
   # Variables are internal kingdoms placeholders that help you
   # to reuse a certain text multiple times without rewriting it.
@@ -285,7 +293,7 @@ placeholders:
     members: 0
     territory: '&2Wilderness'
     # Green
-    color: '#00ff00'
+    color: '00ff00'
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
@@ -1045,3 +1053,22 @@ book:
   # This is specifically 15 because the max length of
   # book titles in Minecraft is 15
   title-max-length: 15
+
+
+# The color range used for kingdom color settings which can be changed in nexus settings.
+color-range:
+  enabled: true
+
+  # While settings this option to false means it's a whitelist, it still functions the way
+  # you see https://nycdoe-cs4all.github.io/images/lessons/unit_1/3.2/circle.png this wheel.
+  # So you technically have to use a whitelist to block an angle range backwards.
+  blacklist: false
+
+  # This list uses hue angle since it's easier to block angles.
+  # The entry name can be anything.
+  # https://en.wikipedia.org/wiki/Hue
+  # If the hue of the chosen colors is between the two angles specified below.
+  colors:
+    # Each entry must have only 2 angles.
+    # The first angle must be the smaller one.
+    red: [ 30, 330 ]
