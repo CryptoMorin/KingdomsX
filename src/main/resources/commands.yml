@@ -6,7 +6,10 @@
 
 # The options for the base command.
 command:
-  # These two options require a server restart to be applied.
+  # These two options require a server restart to update.
+
+  # You should usually choose the most obvious yet concise name for
+  # the main name, some plugins might use it.
   name: kingdoms
   aliases: [ kingdom, xkingdoms, kingdomsx, k ]
 
@@ -27,7 +30,6 @@ command:
 # disabled-worlds: []
 
 # Do not use spaces or colors for command names or aliases.
-# These options can only be updated with a server restart or "/k reload commands" command.
 
 # You cannot move the position of command arguments or change their group/parent
 # However you can add shortcut commands for them like "/nexus" for "/k nexus" thru the commands.yml
@@ -37,7 +39,7 @@ command:
 # This first command intentionally contains all the possible options.
 help:
   name: help
-  aliases: [ '?', 'h', '--help' ]
+  aliases: [ '?', 'h', '--help', '/?', '-h' ]
   disabled: false
   cooldown: 0
   disabled-worlds: [ world_nether ]
@@ -244,7 +246,7 @@ surrender:
 
 ### Others ###
 about:
-  aliases: [ version, ver, v, '-v', '--version' ]
+  aliases: [ version, ver, '-v', '--version' ]
 gui:
   aliases: [ ]
 updates:

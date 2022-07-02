@@ -367,11 +367,13 @@ kingdom-name:
 
   # Allow kingdom name to have spaces
   # --- THIS IS NOT RECOMMENDED ---
-  # This can cause some issues in command tab comletions and arguments. There isn't really a proper fix for that.
+  # This can cause issues with command tab completions and arguments. There isn't really a proper fix for that.
   # Even if the command system was rewritten to support quotes, Minecraft command inputs can't
-  # handle multiple spaces. The only way to fix it would be to set a specific character to represent a space like "_" which ruins
+  # handle multiple spaces, so you'll be only able to put a single space between each word.
+  # The only way to fix it would be to set a specific character to represent a space like "_" which ruins
   # the purpose and causes conflicts. Or more rare unicode characters (The ones that Minecraft support)
-  # something like  ♀ or characters like that. Which still defeats the purpose.
+  # something like ♀ or characters like that. Which still defeats the purpose.
+  # With that being said, you pretty much can't use commands properly for kingdoms with spaces in their names.
   allow-spaces: false
 
   # If you're using another language like Chinese or Japanese you might want to enable this.
@@ -397,12 +399,10 @@ kingdom-name:
 
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
   # If the name matches the any RegEx below then it'll not be allowed.
-  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
   # To only allow a certain language, use "[^A-z]" where A is the first alphabet in that language and z is the last (lowercase if available)
   # alphabet in that language. The "[^A-z]" expression itself indicates that only English alphabets are allowed.
-  blacklisted-regex: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?" ]
-  # A list of blacklisted names kingdom.
-  blacklisted-names: [ cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-names: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?",
+                       cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
 
 # Settings for /k tag
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
@@ -427,55 +427,18 @@ tags:
 
 # Settings for /k nation create and /k nation rename
 # Players who have admin mode enabled, will bypass all the following checks.
+# For each item's description, refer to the previous "kingdom-name" section with the same options.
 nation-name:
-  # Use 0 for no cooldown.
-  # This cooldown does no persist between server restarts.
   renaming-cooldown: 1day
-
-  # Maximum nation name length.
   max-length: 16
-
-  # Minimum kingdom name length.
   min-length: 3
-
-  # Ignore colors when comparing the nation's name length.
   ignore-colors: true
-
-  # Allow numbers in nation names. This also works for number
-  # characters of other languages.
   allow-numbers: true
-
-  # Allow nation name to have spaces?
-  # --- THIS IS NOT RECOMMENDED ---
-  # This can cause some issues in command tab comletions and arguments. There isn't really a proper fix for that.
-  # Even if the command system was rewritten to support quotes, Minecraft command inputs can't
-  # handle multiple spaces. The only way to fix it would be to set a specific character to represent a space like "_" which ruins
-  # the purpose and causes conflicts. Or more rare unicode characters (The ones that Minecraft support)
-  # something like  ♀ or characters like that. Which still defeats the purpose.
   allow-spaces: false
-
-  # If you're using another language like Chinese or Japanese you might want to enable this.
-  # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
   allow-non-english: false
-
-  # allow-non-english needs to be enabled if you want to set this to true.
-  # If set to false, This will only allow other langauge numbers and letters, not symbols.
-  # NOT RECOMMENDED as it'll make it harder to use commands that need a nation name.
   allow-symbols: false
-
-  # Allow nations to have the same name?
-  # Requires a restart to work correctly.
   allow-duplicate-names: false
-
-  # This option makes nation names case-sensitive. Which means if allow-duplicate-names is enabled, and this is disabled,
-  # A nation is named "MynAtIon" is the same as "mynation" so you can't make a nation with that name anymore.
-  # If you keep this disabled, it'll be useful for command tab completions as the input it receives will ignore the case.
-  # This option needs a restart in order to fetch old nation names.
   case-sensitive: false
-
-  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
-  # If the name matches the any RegEx below then it'll not be allowed.
-  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Should kingdom homes be public by default?
@@ -514,11 +477,14 @@ kingdom-fly:
       activation-cost:
         default: 100
 
+      # Whether this amount is paid to the kingdom or to the server.
+      # This is great if you want to charge your members more than the required amount.
       pay-kingdom:
         enabled: true
         # false = kingdoms bank money
         resource-points: true
 
+    # If the kingdom should also pay for additional charges.
     kingdoms:
       # Per player, set to ~ to disable.
       amount:
@@ -574,7 +540,6 @@ kingdom-lore:
 
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
   # If the name matches the any RegEx below then it'll not be allowed.
-  # It's recommended to use the blacklisted-names instead of this one if possible for performance reasons.
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Remind people that never had a kingdom before to join one.

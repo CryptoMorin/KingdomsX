@@ -1,6 +1,6 @@
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
-#|                               Dynmap                              |#
+#|                              Web Map                              |#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
@@ -35,12 +35,18 @@ boost: true
 hide-by-default: false
 
 # The zoom level range which the markers are visible at.
-# -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
+# set to -1 for no max/min limit.
 # These values can give confusing results. You need to play around with them to get the right one.
 # These current don't work for Bluemap and they're hardcoded since their value range differ from Dynmap significantly.
+# These zoom levels don't work for icons, keep scrolling down.
 zoom:
-  max: 1
+  # The minimum zooming required to see the borders. If someone zooms out "too much" from the map they won't be able to see the borders.
+  # This is really useful because land borders can be really annoying when you want to have a general view of a big portion of the map.
   min: 3
+
+  # The maximum zooming possible. So this value prevents players from seeing the borders when they zoom in "too much"
+  # 6 is pretty much the base value for maximum zoom on Dynmap interface itself, at least for me.
+  max: 6
 
 # Kingdoms can change their flag URL for Dynmap via kingdoms settings.
 flag:
@@ -147,6 +153,7 @@ icons:
   # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
   # These values can give confusing results. You need to play around with them to get the right one.
   # NOTE: Change these values if you're using BlueMap. Something like 10-300
+  # Read the previous "zoom" option documentation for more info.
   zoom:
     max: -1
     min: 6
