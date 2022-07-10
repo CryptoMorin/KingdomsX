@@ -68,10 +68,15 @@ updates:
   path: '../update/Kingdoms-%latest_version%.jar'
 
   # Automatically updates configs.
-  # READ BEFORE ENABLING:
-  # https://github.com/CryptoMorin/KingdomsX/wiki/Features#auto-config-updater
+  # READ BEFORE ENABLING: https://github.com/CryptoMorin/KingdomsX/wiki/Features#auto-config-updater
   # THIS IS AN EXPERIMENTAL FEATURE. ENABLE WITH CARE. ANYTHING CAN GO WRONG SILENTLY WITH THIS, MAKE SURE YOU HAVE BACKUPS ENABLED.
   configs: false
+
+  # Automatically reload configs which is more efficient than /k reload.
+  # The only reason you might not want this is because this feature might not work properly for your environment setup.
+  # For more information read: https://github.com/CryptoMorin/KingdomsX/wiki/Installation#reloading
+  # Requires a restart to work.
+  automatic-config-reloads: true
 
 # The language file name.
 # Place your translated file in the plugin's folder.
@@ -1033,6 +1038,8 @@ color-range:
   # The entry name can be anything.
   # https://en.wikipedia.org/wiki/Hue
   # If the hue of the chosen colors is between the two angles specified below.
+  # The saturation is restricted to above 40% and brightness to above 20% and cannot be changed.
+  # Anything below that range will be allowed.
   colors:
     # Each entry must have only 2 angles.
     # The first angle must be the smaller one.
