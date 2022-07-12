@@ -36,7 +36,7 @@ permissions-interact: '&c你不允许与王国中的土地交互。'
 permissions-use: '&c你不允许在王国中的土地上使用它。'
 tax:
   kick: '&c你的金钱不足以向王国上缴税款,所以你被踢出了。'
-  reminder: |2
+  reminder: |
 
     &4&l&n注意&8: &c&l赋税将会在&8: &e%time%后被收取！
   total: '&2你的王国总计收取了&6$%tax%&2的赋税。'
@@ -45,7 +45,7 @@ tax:
   excluded-new: '&2你并未缴税因为你是新人。'
   kingdom:
     age: '&5你的王国并未缴税因为它刚刚成立。'
-    paid: |-
+    paid: |
       &2总共&6$%tax%&2的税被收取。
       新王国银行账户&8:&6$%kingdom_fancy_bank%
     paid-nation: |
@@ -58,7 +58,7 @@ tax:
     kicked-announce: '&e%kingdom%&c王国因为未缴税已被从&e%nation%&c中踢出'
   nation:
     age: '&5你的文明被免除税款，因为它刚成立。'
-    paid: |-
+    paid: |
       &2总共有&6$%tax%&2的文明赋税被征收。
       新的文明银行账户&8:&6$%kingdoms_fancy_nation_bank%
     disbanded: '&c你的文明因为未缴纳&8:&e$%tax%&c的税款而被解散了。'
@@ -89,8 +89,8 @@ siege-cannon:
     pacifist: '&c已经向&e%kingdoms_name%&c王国开火,但是他们是和平主义王国。'
     destroyed-shield: '&2已经向&6%kingdoms_name%&2王国开火。他们的护盾已被摧毁。'
     damaged-shield: '&2已经向&6%kingdoms_name%&2王国开火。他们的护盾还剩下&8:&6%kingdoms_shield_time_left%。'
-    damaged-shield-notify: '&e%attacker-kingdom%&c王国的攻城炮击中了你王国位于&e%attacked-chunk%&c的土地。
-      Remaining shield&8: &6%kingdoms_shield_time_left%。'
+    damaged-shield-notify: '&e%attacker-kingdom%&c王国的攻城炮击中了你王国位于&e%attacked-chunk%&c的土地。 Remaining shield&8:
+      &6%kingdoms_shield_time_left%。'
   not-ammo: '&c攻城炮只能用火球作为弹药。'
   masswar-only: '&c你只能在大战期间使用攻城炮。'
   friendly:
@@ -133,7 +133,7 @@ protected-signs:
   invalid-sign: '&c你不能用这个告示牌保护方块。'
   invalid-block: '&c你不能保护这个方块。'
   not-attached: '&c这个告示牌必须放在一个方块上才能保护。'
-  unclaimed: '&c你不能在被放弃的土地上使用保护告示牌。'
+  unclaimed: '&c你不能在无主之地上使用保护告示牌。'
   kingdom-items: '&c你不能使用保护告示牌保护如炮塔和建筑的王国物品。'
   other-kingdoms: '&c你不能在其他王国的土地上使用保护告示牌。'
   cant-protect-double-chest: '&c这个大箱子不能被保护，因为它的另一端在一块无主之地上。'
@@ -143,12 +143,12 @@ protected-signs:
     error-429: '&c失败次数过多。'
     in-cooldown: '&c这个容器需要密码使用，但你失败了太多次了。你可以在&8:&e%cooldown%之后再试'
     required: '&c这个容器需要密码使用。输入密码或者输入 hover:{&ecancel;&eCancel;cancel}&c来取消。'
-    ask: '&6请输入密码或输入 hover:{&cCancel;&cCancel;cancel} &6来取消或输入 hover:{&cremove;&cRemove;remove}
-      &6以移除密码'
+    ask: '&6请输入密码或输入 hover:{&cCancel;&cCancel;cancel} &6来取消或输入 hover:{&cremove;&cRemove;remove} &6以移除密码'
     container-only: '&c你只能在如&e箱子,漏斗,熔炉&c等容器上使用密码。'
     length: '&c密码最短不小于&e%min%&c，最长不超过&e%max%&c密码长度&8:&e%length%。'
-    removed: '&2容器的密码被移除了。'
+    removed: '&2容器密码被移除了。'
     set: '&2成功更改了容器密码。'
+    not-set: '&c这个容器没有密码。'
   double-chest-protected: '&2保护大箱子。'
   protection-type:
     already-using: '&c本方块已经采用了这种保护方式。'
@@ -185,11 +185,11 @@ protected-signs:
       name: '&2输入你要移出的王国名。'
       not-found: '&c这个王国不存在。'
 top-rewards:
-  kingdom: |-
+  kingdom: |
     &2你的王国收到了&6$%money%&2的金钱和&6%rp%&2资源点作为第&8:&5%rank%&2的奖励。
     &2新的王国银行账户&8:&6$%kingdoms_fancy_bank%&2。
     &2新的王国资源点&8:&6%kingdoms_fancy_resource_points%&2。
-  nation: |-
+  nation: |
     &2你的文明收到了&6$%money%&2的金钱和&6%rp%&2资源点作为第&8:&5%rank%&2的奖励.
     &2新的文明银行账户&8:&6$%kingdoms_fancy_nation_bank%&2。
     &新的文明资源点&8:&6%kingdoms_fancy_nation_resource_points%&2。
@@ -306,19 +306,21 @@ nexus:
         height: '&c图片高度超过了最大允许高度&e%limit%&c，最大允许高度为&8:&e%height%。'
         width: '&c图片宽度超过了最大允许宽度&e%limit%&c，最大允许宽度为&8:&e%width%。'
       set: '&2你的王国旗帜图片被更改为了&8:&6%flag%。'
+      validate: '&2确认照片中……'
+      removed: '&2你王国的旗帜照片被移除了。'
     color:
-      enter-value: |-
+      enter-value: |
         &6请在聊天中输入新的十六进制颜色代码，或者输入 hover:{&cCancel;&cCancel;cancel}&6来取消。
         你可以点击 hover:{&2这里;&2点击打开;url:https://htmlcolorcodes.com/}来获得十六进制颜色代码。
       wrong-hex: '&c错误的十六进制颜色&8:&e%color%。'
       wrong-rgb: '&c错误的RGB颜色&8:&e%color%。'
       range-blacklisted: '&c你选择的颜色不在Minecraft支持的颜色范围内。'
       set: '&2你王国的颜色被改为了&8:&6%color%。'
-    tax-set: |-
+    tax-set: |
       &2税率已被设为&8:&6%tax%
       &2在你身上试验了赋税&8:&6%test%
     tax-illegal-variable: '&c错误的变量被使用在位于税率的索引&e%index%&c中:&e%tax%。'
-    tax-invalid: |-
+    tax-invalid: |
       &c不能在你身上试验&e%tax%&c的税率，因为&8:&e%reason%
       &c请输入有效的税率。
     shield-not-enough-resource-points: '&c你没有足够的资源点购买护盾。'
@@ -331,7 +333,7 @@ warppad:
   moved: '&c你移动了，传送已被取消。'
   teleporting: '&2将在&6%countdown%秒后传送&2……不要移动。'
   success: '&2传送成功！'
-  low-fuel: |-
+  low-fuel: |
     &c你需要&e%fuel-cost%燃料&c才能传送。这个传送板只有&e%fuel%燃料了。
     &c你可以通过向它扔&e煤炭&c的方式注满燃料。
   fuel-fill: '&2传送板燃料&8:&6%fuel%。'
@@ -356,7 +358,7 @@ not-found:
   player-no-kingdom: '&c这个玩家没有王国。'
   player-or-kingdom: '&c这个玩家或王国不存在。'
 masswar:
-  started: |2
+  started: |
 
     &4&l大战&4已经开始了! &e一小时内入侵是免费的!
   stopped: '&6大战结束了！'
@@ -435,15 +437,13 @@ command:
     usage: '&4用法&8: &e/k %command% &9[页数]'
     grouped-header: '&8&m---------------=(&c&l %group% &8)=---------------'
     negative-pages: '&c没有负数页。'
-    grouped-commands: 'hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}'
-    footer: 'hover:{&6←;&6上一页;/k %command% %previous_page%} %pages%hover:{&6→;&6下一页;/k
-      %command% %next_page%}'
-    footer-page: 'hover:{&8[&2%number%&8];&6点击查看&2%number%;/k %command% %number%}'
-    footer-current-page: 'hover:{&8[&2&l%number%&8];&2当前页}'
-    header: '&8&m---------------=(&c&l 王国(DenNotFound汉化) &6%page%&7/&6%max_pages%
-      &8&m)=---------------'
+    grouped-commands: hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    footer: hover:{&6←;&6上一页;/k %command% %previous_page%} %pages%hover:{&6→;&6下一页;/k %command% %next_page%}
+    footer-page: hover:{&8[&2%number%&8];&6点击查看&2%number%;/k %command% %number%}
+    footer-current-page: hover:{&8[&2&l%number%&8];&2当前页}
+    header: '&8&m---------------=(&c&l 王国(DenNotFound汉化) &6%page%&7/&6%max_pages% &8&m)=---------------'
     no-more-pages: '&c没有更多页了。'
-    commands: 'hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
+    commands: hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
   reload:
     description: '&6重新加载插件。'
     usage: '&4用法&8: &e/k reload &9[config]'
@@ -463,7 +463,7 @@ command:
     aggressor: '&2你的王国是一个&c侵略主义&2王国。(努力吧！)'
     announce: '&6%player%&2创建了王国&6%kingdom%&2!'
     cost: '&c你需要&e%cost%&c金钱才能创建王国！'
-    confirmation: |-
+    confirmation: |
       &c你需要&e%cost%&c金钱才能创建王国。
       你确定要继续吗?再次输入指令以继续。
   tag:
@@ -487,8 +487,7 @@ command:
       name-numbers: '&c文明名字中不能包含数字。'
       name-already-in-use: '&c你的文明名字已经被其他文明使用了！'
       usage: '&4用法&8: &e/k nation create <name>'
-      already-in-nation: '&c你已经在一个文明里了。输入 hover:{&e/k nation leave;&cLeave;/k nation
-        leave} &c之后再创建一个新的'
+      already-in-nation: '&c你已经在一个文明里了。输入 hover:{&e/k nation leave;&cLeave;/k nation leave} &c之后再创建一个新的'
       success: '&2你创建了文明&6%nation%&2!'
       announce: '&6%player% &2创建了文明&6%nation%&2!'
       cost: '&c你需要&e%cost%&c金钱才能创建文明！'
@@ -511,14 +510,14 @@ command:
         nation-money: '&c你的文明没有&e%amount%&c金钱。'
         money: '&c你没有&e%amount%&c金钱。'
       deposit:
-        success: |-
+        success: |
           &2你把&6%amount%&2金钱存入了你的文明银行。
           你的新账户为:&6%balance%
           &2你文明的新账户为&8: &6%kingdoms_fancy_nation_bank%
         disabled: '&c你不能存入钱。'
       withdraw:
         disabled: '&c你不能支出钱。'
-        success: |-
+        success: |
           &2你把&6%amount%&2金钱从你的文明银行中支出。
           你的新账户为:&6%balance%
           &2你文明的新账户为&8: &6%kingdoms_fancy_nation_bank%
@@ -562,10 +561,10 @@ command:
       truces: |
         &7| &2停战&8:
         %truces%
-      enemies: |-
+      enemies: |
         &7| &2敌人&8:
         &e%enemies%
-      kingdoms: |-
+      kingdoms: |
         hover:{&6%kingdoms_name%;&成员&8: &6%kingdoms_members%
         &2国王&8: &6%kingdoms_king%
         &2土地&8: &6%kingdoms_lands%}
@@ -592,7 +591,7 @@ command:
       success: '&2已传送！'
     nexus:
       description: '&6设置你文明核心的位置。'
-      help: |-
+      help: |
         右键一个方块以把它变为文明核心。
         再次输入 hover:{&6/k nation nexus;&cDisable;/k nation nexus}&2以取消。
       actionbar-activated: '&6核心模式&8: &2已激活'
@@ -612,7 +611,7 @@ command:
       description: '&c解散你的文明并踢出全部成员国。'
       king-only: '&c只有文明首都的国王才能解散文明。'
       success: '&4你的文明被解散了！'
-      confirmation: |-
+      confirmation: |
         &4你的文明要被解散了。
         所有成员国都会被踢出。
         你确定要继续吗?
@@ -621,10 +620,10 @@ command:
     invite:
       description: '&6邀请一个王国加入文明。'
       usage: '&4用法&8: &e/k nation invite &2<kingdom> &9[expiration]'
-      invited: |-
+      invited: |
         &6%inviter%&2邀请你的王国加入&6%nation%&2文明。
-            {&2输入/k nation accept;&2Accept;/k nation accept以接受。}
-            {&c输入/k nation decline;&cDecline;/k nation decline以拒绝。}
+            {hover: &2输入/k nation accept;&2Accept;/k nation accept以接受。}
+            {hover: &c输入/k nation decline;&cDecline;/k nation decline以拒绝。}
       announce: '&6%inviter%&2邀请了&6%kingdom%&2王国加入文明。'
       already-joined: '&e%kingdom%&c王国已经在你的文明里了。'
       already-in-kingdom: '&c这个王国已经在其他文明里了。'
@@ -666,11 +665,11 @@ command:
       description: '&6展示文明排行榜。'
       loading: '&6加载数据中……'
       header: '&8----------------------------------'
-      footer: '     &8[hover:{&6←;&6上一页;/k nation top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k
-        nation top %next_page%}&8]'
+      footer: '     &8[hover:{&6←;&6上一页;/k nation top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k nation
+        top %next_page%}&8]'
       no-more-pages: '&c没有更多页了。'
       negative: '&c没有负数页。'
-      entry: |-
+      entry: |
         &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2成员&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2资源点&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2银行&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
@@ -683,7 +682,7 @@ command:
       not-in-kingdom: '&c这个王国不在你的文明里。'
       cant-kick: '&c无法踢出&e%kingdom%&c。'
     leave-description: '&6你的王国将会离开文明。'
-    leave-capital: |-
+    leave-capital: |
       &c你的王国是文明的都城，不能离开文明。
       你有两种选择：输入/k nation disband以解散文明，
       &c或输入&e/k nation capital 以更改都城。
@@ -704,9 +703,8 @@ command:
       already: '&c你已经是&e%nation%文明的盟友了。'
       already-requested: '&c你已经向&e%nation%文明发送一个结盟申请了。'
       self: '&c你不能申请与自己的文明结盟。'
-      receiver: '&6%nation%&2文明希望与你结盟。输入 hover:{&6/k nation ally %nation%;&2Accept;/k
-        nation ally %nation%}&2以接受申请。'
-      success: |-
+      receiver: '&6%nation%&2文明希望与你结盟。输入 hover:{&6/k nation ally %nation%;&2Accept;/k nation ally %nation%}&2以接受申请。'
+      success: |
         &2你的文明与&6%nation%文明成功结盟了。
         &2你的王国已自动与对方文明的每个成员国结盟。
       another-request: '&e%nation%&c文明向你发送了一个%relation%&c关系申请。'
@@ -718,9 +716,8 @@ command:
       already: '&c你已经与&e%nation%文明停战了。'
       already-requested: '&c你已经向&e%nation%文明发送一个停战申请了。'
       self: '&c你不能申请与自己的文明停战。'
-      receiver: '&6%nation%&2文明希望与你结盟。输入 hover:{&6/k nation truce %nation%;&2Accept;/k
-        nation truce %nation%}&2以接受申请。'
-      success: |-
+      receiver: '&6%nation%&2文明希望与你结盟。输入 hover:{&6/k nation truce %nation%;&2Accept;/k nation truce %nation%}&2以接受申请。'
+      success: |
         &2你的文明与&6%nation%文明成功停战了。
         &2你的王国已自动与对方文明的每个成员国停战。
       another-request: '&e%nation%&c文明向你发送了一个%relation%&c关系申请。'
@@ -730,7 +727,7 @@ command:
       limit: '&c你最多只能向&e%max%&c个文明宣战。'
       already: '&c你已经向&e%nation%文明宣战了。'
       self: '&c你不能向自己的文明宣战。'
-      success: |-
+      success: |
         &2你的文明已向&6%nation%宣战！
         &2你的王国已自动向对方文明的每个成员国宣战。
     revoke:
@@ -740,7 +737,7 @@ command:
         &c你的文明取消了与&e%nation%&c的关系。你的王国已与对方文明的每个成员国自动解除关系。
       no-relation: '&c你与&e%nation%文明没有任何关系。'
       self: '&c你不能和你自己的文明有任何外交关系……'
-      receiver: |-
+      receiver: |
         &e%nation%&c文明取消了与你文明的关系。
         &c你的王国已与对方文明的每个成员国自动解除关系。
     promote:
@@ -758,10 +755,14 @@ command:
       member: '&c这个玩家是成员阶层。'
       usage: '&4用法&8: &e/k nation demote &2<player>'
     description: '&6展示可用的文明指令。'
-    broadcast-format: |2+
+    broadcast-format: |
 
       &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
-
+    spawn-not-set-others: '&e%nation% &cnation''s home is not set.'
+    spawn-permission: '&cYou don''t have permission to teleport to other nations'' homes.'
+    spawn-not-public: '&e%nation% &cnation''s home is not public.'
+    spawn-cant-use-public-home: '&cYou can''t use &e%nation% &cNation''s public home.'
+    spawn-being-invaded: '&cYou can''t teleport to &e%nation%''s &chome as it''s being invaded.'
   rename:
     description: '&6重命名你的王国。'
     no-kingdom: '&c你没有王国，无法重命名。'
@@ -789,14 +790,14 @@ command:
     deposit:
       description: '&6用你的金钱换取资源点。'
       usage: '&4用法&8: &e/k rp deposit &2<resource points>'
-      success: |-
+      success: |
         &2你成功花费了&6$%worth%&2金钱换取了&6%rp%资源点。
         &2你的新银行账户&8: &6$%balance%
     withdraw:
       description: '&6用王国资源点换取金钱。'
       usage: '&4用法&8: &e/k rp withdraw &2<resource points>'
       min: '&c你一次性至少要取出&e%min%资源点&c。'
-      success: |-
+      success: |
         &2你成功地用&6%rp%&2资源点换取了&6$%worth%金钱。
         &2你的新银行账户&8: &6$%balance%
         &2你的王国资源点&8: &6%kingdoms_fancy_resource_points%
@@ -804,11 +805,11 @@ command:
       description: '&6从你的王国/文明中支出/存入资源点。'
       usage: '&4用法&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
       success:
-        kingdom: |-
+        kingdom: |
           &2你成功地把&6%amount%&2资源点从你的文明转入了你的王国。
           文明资源点&8: &6%kingdoms_fancy_nation_resource_points%
           &2王国资源点&8: &6%kingdoms_fancy_resource_points%
-        nation: |-
+        nation: |
           &2你成功地把&6%amount%&2资源点从你的王国转入了你的文明。
           文明资源点&8: &6%kingdoms_fancy_nation_resource_points%
           &2王国资源点&8: &6%kingdoms_fancy_resource_points%
@@ -830,7 +831,7 @@ command:
       money: '&c你没有&e%amount%&c金钱。'
     deposit:
       limit: 你的王国银行已满。最大账户为&e%limit%。
-      success: |-
+      success: |
         &2你向你王国账户中存入了&6%amount%&2金钱。
         你的新账户为&8: &6%balance%
         &2王国银行账户&8: &6%kingdoms_fancy_bank%
@@ -839,7 +840,7 @@ command:
     withdraw:
       min: '&c你至少要取出&e$%min%。'
       disabled: '&c你不能取出钱。'
-      success: |-
+      success: |
         &2你从你王国账户中取出了&6%amount%&2金钱。
         你的新账户为&8: &6%balance%
         &2王国银行账户&8: &6%kingdoms_fancy_bank%
@@ -896,10 +897,10 @@ command:
     truces: |
       &7| &2停战&8:
       %truces%
-    enemies: |-
+    enemies: |
       &7| &2敌人&8:
       &e%enemies%
-    online-prefix: |-
+    online-prefix: |
       hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&2加入了&8: &6%kingdoms_joined%
       &2捐献&8: &6%kingdoms_total_donations%
       &2上次捐献&8: &6%kingdoms_last_donation_time%
@@ -912,7 +913,7 @@ command:
       usage: '&4用法&8: &e/k claim [x] <z>'
       permission: '&c你没有权限通过区块坐标占领土地。'
       max-distance: '&c你在尝试占领一块过远的土地&8: &e%distance%&7> &e%max%。'
-    disabled-world: '&c在&6%world%世界中禁止占领土地。'
+    disabled-world: '&c在&6%world%&c世界中禁止占领土地。'
     in-region: '&c你不能在保护地区占领土地。'
     near-region: '&c你不能在保护地区附近占领土地。'
     not-connected: '&c你占领的土地必须与你的王国土地相连接。'
@@ -947,9 +948,9 @@ command:
         'on': '&6自动占领&a已启用&6.。土地会随着你走路而被占领。'
         'off': '&6自动占领&c已禁用&6。'
     need-rp: '&c你需要&e%cost%&c资源点才能占领土地!'
-    confirmation: |-
+    confirmation: |
       &c你的王国需要支付&e%rp%&c资源点和&e%money%&c金钱以占领土地。
-      你确定要继续吗?那就再输入一遍指令。(我是不会告诉你/k claim confirm就可以的！)
+      你确定要继续吗?那就再输入一遍指令。
     need-money: '&c你的王国需要&e%cost%&c金钱才能占领土地！输入&e/k bank deposit&c向你的王国银行账户中存钱！'
     line:
       description: '&2向一个方向占领一行土地。'
@@ -985,7 +986,7 @@ command:
   shield:
     description: '&6禁用你的护盾。'
     no-shield: '&c你的王国目前没有盾。'
-    confirm: |-
+    confirm: |
       &c如果你禁用你的盾，你得买一个新的。
       剩余护盾时间&8:&e%kingdoms_shield_time_left%
       &c若要继续，输入 hover:{&e/k shield confirm;/k shield confirm;/k shield confirm}&c以确定。
@@ -996,9 +997,9 @@ command:
     disconnection: '&c你要放弃的土地会把&8: &e%x%&7, &e%z%从王国分离出去。'
     not-claimed: '&c这块土地本来也不是你王国的(这边建议您去看看脑子呢~)。'
     cooldown: '&c你可以在&e%time%之后放弃土地。。'
-    cannot-remove-nexus: |-
+    cannot-remove-nexus: |
       &c你不能放弃核心所在的土地。
-      请输入 hover:{&e/k nexus;&4Click to Enable;/k nexus}&c移动核心后再放弃该土地。
+      请输入 hover:{&e/k nexus;&4点击启用;/k nexus}&c移动核心后再放弃该土地。
     occupied-land: '&c这块土地已经被另一个王国占领了！输入/k invade以入侵！'
     confirmation:
       turrets: '&c这片土地上有炮塔。若仍要放弃请输入&e/k unclaim confirm'
@@ -1008,7 +1009,7 @@ command:
     description: '&6放弃你王国的全部土地。'
     success: '&2总共放弃了&6%lands%&2块土地!'
     not-enough-resourcepoints: '&c你需要&e%rp%&c资源点才能全部放弃土地。'
-    confirm: |-
+    confirm: |
       &c你将要全部放弃&e&l%lands%&c块土地。
       你所有的炮塔和建筑都会被放弃，你的箱子也不再被保护。
       如果仍要放弃请再次输入指令。
@@ -1044,7 +1045,7 @@ command:
       invasion: '&c你不能在土地被侵略时移除核心。'
       not-placed: '&c你的王国核心没有被放置。'
       removed: '&c成功移除了你的王国核心。'
-    help: |-
+    help: |
       &2右键一个方块把它变为你的王国核心。
       再次输入 hover:{&6/k nexus;&cDisable;/k nexus}&2以禁用核心模式。
     actionbar-activated: '&6核心模式&8:&2已激活'
@@ -1065,7 +1066,7 @@ command:
     description: '&c解散你的王国并踢出全部成员。'
     king-only: '&c只有国王能解散王国。'
     success: '&4你的王国被解散了!'
-    confirmation: |-
+    confirmation: |
       &4你将要解散你的王国了。
       所有成员将会被踢出且全部土地都会被放弃。
       你确定要继续吗?
@@ -1105,11 +1106,10 @@ command:
       cant-move: '&c你不能移动手册编辑器。'
       changed: '&2已更改'
       no-empty-slot: '&c你的背包中没有空槽位。'
-      create: '&2这章不存在。正在创建这一章……输入 hover:{&6/k book cancel;/k book cancel;/k book
-        cancel}&2以取消。'
+      create: '&2这章不存在。正在创建这一章……输入 hover:{&6/k book cancel;/k book cancel;/k book cancel}&2以取消。'
       create-limit: '&c你的王国不能有超过&e%limit%&c个章节。'
       create-max-length: '&c这章不存在且不能创建这一章。章节名至少要有&e%max%&c个字符。'
-      modify: |-
+      modify: |
         &2你正在编辑章节&8:&6%chapter%
         &2输入 hover:{&6/k book discard;/k book discard;/k book discard}&2以撤销改动。
   admin:
@@ -1130,14 +1130,14 @@ command:
       turret:
         description: '&6直接得到一个炮塔物品。'
         usage: '&4用法&8: &e/k item turret &2<style> &9[amount] [player]'
-        unknown-style: |-
+        unknown-style: |
           &c未知的炮塔风格&8:&e%style%
           &c可用的风格&8:&e%styles%
         done: '&2成功地把&6%amount%个%item%&2给予了&6%target%。'
       structure:
         description: '&6直接得到一个建筑物品。'
         usage: '&4用法&8: &e/k item structure &2<style> &9[amount] [player]'
-        unknown-style: |-
+        unknown-style: |
           &c未知的建筑风格&8:&e%style%
           &c可用的风格&8:&e%styles%
         done: '&2成功地把&6%amount%个%item%&2给予了&6%target%。'
@@ -1169,22 +1169,22 @@ command:
       console-executor-permission: '&c你没有权限作为控制台执行指令。'
       unknown:
         executor: "&c未知的执行者&8:&e%executor%   \n&c可用的执行者&8:&eself&7,&econsole&7,&emembers"
-        filter: |-
+        filter: |
           &c未知的过滤器&8:&e%filter%
           &c可用的过滤器&8:&eonline&7,&eoffline
         command: '&c未知的指令&8:&e%command%。'
       members-offline: '&c不能使用离线过滤器执行指令。离线玩家不能执行指令。'
-      members-no-filter: |-
+      members-no-filter: |
         &c不能不使用过滤器执行指令。
         一些王国成员可能处于离线状态，使用&e在线&c过滤器参数来修复它。
       executed: 正在为为&6%kingdom%&2王国的成员执行来自插件&6%plugin%&2的指令&6%command%……
     evaluate:
       description: '&6用占位符和函数计算一个值。'
       usage: '&cUsage&8: &e/k admin evaluate <表达式>'
-      failed: |-
+      failed: |
         &c翻译后的表达式&8:&6%translated%
         &c错误&8:&e%result%
-      evaluated: |-
+      evaluated: |
         &2翻译后的表达式&8: hover:{&6%translated%;&6%object-code%
 
         &2这是什么?
@@ -1205,10 +1205,11 @@ command:
       same-rank: '&c这个玩家已经有这个阶层了。'
       success: '&2把&6%name%的&2阶层从&6%previous_rank%&2更改为了&6%rank%。'
       success-king: '&6%kingdom%&2王国的新国王是&8:&6%name%。'
+      cant-demote-king: '&e%player% &cis the king of &e%kingdom_name% &cyou need to set the king first.'
     turret:
       description: '&6移除，改变，或升级特定的炮塔。'
       usage: '&4用法&8: &e/k admin turret &2<change | remove> <风格> &9[新风格]'
-      unknown-style: |-
+      unknown-style: |
         &c未知的炮塔风格&8:&e%style%
         &c查看你的&e炮塔&c文件夹查看全部炮塔风格名称。
       success: '&2总共处理了&6%amount%&2个炮塔。'
@@ -1240,7 +1241,7 @@ command:
     dailychecks:
       description: '&6人工开始每天检查循环。'
       usage: '&4用法&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
-      info: |-
+      info: |
         &2下次循环&8:&6%next%
         &2准确时间&8:&6%daily_checks%
         &2当前时间&8:&6%time%
@@ -1285,7 +1286,7 @@ command:
       description: '&6让玩家加入另一个王国'
       usage: '&cUsage&8: &e/k admin join &2<player> <kingdom>'
       invalid-kingdom: '&c找不到王国&e%kingdom%。'
-      in-kingdom: |-
+      in-kingdom: |
         &6%player%&2已经在&6%kingdoms_name%&2王国里了。
         &2如果你要继续，&8: hover:{&6/k admin join %player% %kingdom% confirm;&2点击此处以确定。;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player%&2已经在&6%kingdom%&2王国里了。'
@@ -1323,14 +1324,13 @@ command:
     land:
       description: '&6利用区块坐标传送到一块土地。'
       usage: '&4用法&8: &e/k admin land [world] <x> <z>'
-      teleported: '&2你被传送到了位于&8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7,
-        &5%y%&7, &5%z%&8)&2的土地。'
+      teleported: '&2你被传送到了位于&8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8)&2的土地。'
       invalid-world: '&c找不到世界&8:&e%world%。'
       invalid-coordinates: '&c无效的坐标&8:&e%x%&7, &e%z%。'
     player:
       description: '&6展示一个玩家的信息。'
       usage: '&4用法&8: &e/k admin player &2<player>'
-      info: |-
+      info: |
         &7| &2名字&8:&6%player% &8(hover:{&5%id%;&2点击复制;|%id%}&8)
         &7| &2管理&8:%admin% &7| &2间谍&8: %spy%
         &7| &2王国&8:&6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
@@ -1399,7 +1399,7 @@ command:
     description: '&6远程打开你的王国箱子。'
     others-permission: '&c你不能打开其他王国的箱子。'
   invite:
-    invited: |-
+    invited: |
       &6%inviter%&2邀请你加入&6%kingdom%&2王国。
           hover:{&2输入/k accept;&2Accept;/k accept以接受}
           hover:{&c输入/k decline;&cDecline;/k decline以拒绝}
@@ -1465,7 +1465,7 @@ command:
     countdown-defneder: '&e%invader%&c将在&e%sec%&c秒后入侵！'
     countdown-attacker: '&2斗士将在&6%sec%&2秒后生成！'
     announcement: '&6%invader%&2正在入侵&6%kingdom%&2王国位于坐标&6%location%的土地！'
-    announcement-defender: |-
+    announcement-defender: |
       &c来自&e%kingdom%&c王国的入侵者&e%invader%&c正在入侵你的王国位于%location%的土地！
       &c输入 hover:{&e/k tp;&eTeleport;/k tp}&c以传送至入侵地点保卫你的土地！
     announcement-nation: '&c来自&e%kingdom%&c的入侵者&e%invader%&c正在入侵你们文明的成员国位于&e%location%&c的土地！'
@@ -1482,7 +1482,7 @@ command:
       defenders-needed: '&c至少要有&e%defenders%&c防御者在线。'
       invaders-needed: '&c至少要有&e%invaders%&c入侵者在线。'
     adjoining:
-      protectioin: |-
+      protectioin: |
         &c这块土地被土地相连系统保护。
         你只能入侵王国最外侧的土地。
     shield:
@@ -1490,23 +1490,23 @@ command:
         kingdom: '&c这个王国被时长为&8:&e%shield%&c的护盾保护着。'
         nation: '&c这个文明被时长为&8:&e%shield%&c的护盾保护着。'
       invader:
-        kingdom: |-
+        kingdom: |
           &c你的王国还有时长为&8:&e%shield%&c的护盾，如果你采取进攻，护盾将会被取消。
           再次输入指令以继续。
-        nation: |-
+        nation: |
           &c你的文明还有时长为&8:&e%shield%&c的护盾，如果你采取进攻，护盾将会被取消。
           再次输入指令以继续。
         kingdom-disabled: '&c时长为&e%shield%&c的王国护盾因为&e%invader%&c侵略&e%kingdom%而取消了。'
         nation-disabled: '&c时长为&e%shield%&c的文明护盾因为&e%invader%&c侵略&e%kingdom%而取消了。'
     creative: '&c你只能在生存模式下入侵。'
-    max-misc-upgrade: |-
+    max-misc-upgrade: |
       &c你王国达到了杂项升级允许的最大入侵数。
       你可以升级该杂项，或等待它刷新。
     simuntanous: '&c你的王国一次性最多能入侵%amount%&c块土地。'
     costs: '&c你的王国需要&e%rp%&c资源点&c和&e$%money%&c才能入侵。'
     pacifist: '&c对方是和平主义王国，你无法入侵。'
     ceasefire: '&c你不能入侵这个王国，因为你们的关系为&e%relation%&c。'
-    nation-capital: |-
+    nation-capital: |
       &c你在入侵文明都城的核心之前必须先入侵对方全部其他成员国的核心土地。
       很明显，还有一些漏网之鱼&8:
       %kingdoms%
@@ -1516,11 +1516,10 @@ command:
     description: '&6展示王国的排名。'
     loading: '&6加载数据中……'
     header: '&8----------------------------------'
-    footer: '     &8[hover:{&6←;&6上一页;/k top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k
-      top %next_page%}&8]'
+    footer: '     &8[hover:{&6←;&6上一页;/k top %previous_page%}&8] &8[hover:{&6→;&6下一页;/k top %next_page%}&8]'
     no-more-pages: '&c没有更多页了。'
     negative: '&c没有负数页。'
-    entry: |-
+    entry: |
       &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2成员&8: &6%kingdoms_members%
       &7♦ &2土地&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2资源点&8: &6%kingdoms_fancy_resource_points%
@@ -1570,13 +1569,13 @@ command:
     defender-surrendered: '&6%kingdoms_name%&2的成员&6%player%&2投降了!这片土地的新主人是&8:&6%kingdom%王国。'
     defender-permission: '&c你没有权限投降。'
     no-invasion: '&c你没有入侵其他王国，也没有被入侵，你投降干什么？？？'
-    description: |-
+    description: |
       &6如果你是入侵者，你可以投降使斗士消失。
       如果你是防御者，你可以投降使入侵者占领土地。
   leave:
     success: '&2你离开了王国&6%kingdom%。'
     description: '&6离开你的王国。'
-    king: |-
+    king: |
       &c你不能作为国王离开王国。
       你可以输入&e/k disband &c以解散王国，
       或输入&e/k king &c选定新的国王。
@@ -1626,7 +1625,7 @@ command:
     send-description: '&6为你的王国留一封邮件。'
     send: '&6%player%&2发送了一封新邮件&8:&6%message%。'
     send-usage: '&4用法&8: &e/k mail send &2<message>'
-    send-max: |-
+    send-max: |
       &4你最多能发送&6%mails%&2封邮件。
       你可以输入&6/k mails clear &2以清空邮件或从你的邮箱中删除一个。
     clear-description: '&6清空全部王国邮件。'
@@ -1645,8 +1644,7 @@ command:
     already: '&c你已经和&e%kingdom%&c是盟友了。'
     already-requested: '&c你已经给&e%kingdom%&c发送了一份结盟申请了。'
     self: '&c你不能和自己的王国结盟。'
-    receiver: '&6%kingdom%&2王国希望与你结盟。输入 hover:{&6/k ally %kingdom%;&2Accept;/k ally
-      %kingdom%&2以接受。}'
+    receiver: '&6%kingdom%&2王国希望与你结盟。输入 hover:{&6/k ally %kingdom%;&2Accept;/k ally %kingdom%&2以接受。}'
     allies: '&2你现在与&6%kingdom%&2王国是盟友了。'
     another-request: '&e%kingdom%&c王国给你发送了一个%relation%&c关系申请。'
   enemy:
@@ -1666,8 +1664,7 @@ command:
     already: '&c你已经与&e%kingdom%&c王国停战了。'
     already-requested: '&c你已经向&e%kingdom%&c王国发送停战申请了。'
     self: '&c你不能与自己的王国停战……'
-    receiver: '&6%kingdom%&2王国希望与你停战。输入 hover:{&6/k truce %kingdom%;&2Accept;/k truce
-      %kingdom%&2以接受。}'
+    receiver: '&6%kingdom%&2王国希望与你停战。输入 hover:{&6/k truce %kingdom%;&2Accept;/k truce %kingdom%&2以接受。}'
     truces: '&2你现在与&6%kingdom%&2王国停战了。'
     another-request: '&e%kingdom%&c王国给你发送了一个%relation%&c关系申请。'
   revoke:
@@ -1682,9 +1679,8 @@ command:
     description: '&6切换王国聊天频道。'
     usage: '&4用法&8: &e/k chat &2<channel> &9[message]'
     already-in-channel: '&c你已经在&6%channel%&c频道聊天了。'
-    unknown-channel: '&c未知的频道！请从&8:&fhover:{全球;全球;/k c g }&7, &2hover:{&2王国;&2王国;/k
-      c k}&7, &ahover:{&a盟友;&a盟友;/k c a}&7, &ehover:{&e停战;&e停战;/k c t} &7和 &ehover:{&9文明;&9文明;/k
-      c n中选择！}'
+    unknown-channel: '&c未知的频道！请从&8:&fhover:{全球;全球;/k c g }&7, &2hover:{&2王国;&2王国;/k c k}&7, &ahover:{&a盟友;&a盟友;/k
+      c a}&7, &ehover:{&e停战;&e停战;/k c t} &7和 &ehover:{&9文明;&9文明;/k c n中选择！}'
     changed: '&2你目前的聊天频道为&8:&2%kingdoms_chat_channel_color%%kingdoms_chat_channel%。'
     direct:
       message-missing: '&c你需要给&e%kingdom%&c王国直接发送一份消息。'
@@ -1695,8 +1691,8 @@ command:
     description: '&6给所有王国成员广播一条消息。'
     usage: '&4用法&8: &e/k broadcast &2<message>'
     cooldown: '&c你需要等&e%time%&c之后才能再次广播消息。'
-    format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol%\
-      \ %kingdoms_rank_name% &c%player%&8] &6%message% \n"
+    format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name%\
+      \ &c%player%&8] &6%message% \n"
   king:
     description: '&6设置你王国的新国王。'
     only-king: '&6只有国王才能设置新的国王。'
@@ -1722,10 +1718,10 @@ command:
   visualize:
     description: '&6设置永久的指示器或禁用它们。'
     usage: '&4用法&8: &e/k visualize [permanent|toggle]'
-    display: |-
+    display: |
       &7| &2位置&8:&6%x%&7,&6%z%
       &7| &2王国&8:&6%kingdom%
-    admin-display: |-
+    admin-display: |
       &7|&2位置&8:&6%x%&7,&6%z%
       &7|&2王国&8:&6%kingdom%
        &7|&2建筑&8:
@@ -1753,7 +1749,7 @@ command:
       disabled: '&2永久指示器&c已禁用&2。'
   tradable:
     description: '&6展示物品价值多少资源点。'
-    message: |-
+    message: |
       &2你手中物品的价格&8:&6%amount%*%worth%=%total%
 
       &6Special Items&8:
@@ -1798,11 +1794,11 @@ command:
       permission: '&c只有拥有&eWITHDRAW&c权限的人才能加入前哨锦标赛。'
       not-enough-resource-points: '&c你的王国需要&e%cost%&c资源点才能加入此锦标赛。'
       not-enough-money: '&c你的王国需要&e$%amount%&c金钱才能加入此锦标赛。'
-      joined: '&2你的王国加入了&6%outpost%&2的前哨锦标赛。输入 hover:{&6/k outpost teleport;&2Teleport;/k
-        outpost teleport 传送至竞技场。}'
+      joined: '&2你的王国加入了&6%outpost%&2的前哨锦标赛。输入 hover:{&6/k outpost teleport;&2Teleport;/k outpost teleport
+        传送至竞技场。}'
       announcement: '&6%kingdom%&2王国加入了锦标赛!'
       already: '&c你的王国已经加入锦标赛了'
-      win: |-
+      win: |
         &2你的王国赢得了锦标赛！!
         &6%resource-points%+&2资源点
         &6%money%+&2金钱
@@ -1814,29 +1810,26 @@ command:
       already-started: '&e%outpost%&c的前哨锦标赛已经开始了。'
       invalid-start-time: '&c无效的开始时间&8:&e%time%。'
       invalid-time: '&c无效的持续时间&8:&e%time%。'
-      scheduled: |2+
+      scheduled: |
 
 
         &6%outpost%&2的前哨锦标赛将在&6%start%&2后开始
-      
-      
-      started: |2+
+
+      started: |
 
 
         &6%outpost%&2的前哨锦标赛开始了！
-    
-    
+
     stop:
       description: '&6停止一个前哨锦标赛。'
       usage: '&4用法&8: &e/k outpost stop <outpost>'
       outpost-not-found: '&c找不到前哨&e%outpost%&c。'
       not-started: '&e%outpost%&c的前哨锦标赛未开始。'
-      stopped: |2+
+      stopped: |
 
 
         &e%outpost%&c的前哨锦标赛被停止了！
-    
-    
+
     teleport:
       description: '&6传送到前哨区域。'
       not-in-event: '&c你的王国没有加入任何前哨锦标赛。'
@@ -1886,8 +1879,7 @@ elections:
   default-statement: '&2点击为这位候选人投票。'
   results: '&6%new-king%&2以&6%votes%&2票当选。'
   begin: '&2选举开始了。输入 &6hover:{/k election vote;&2点击以投票;/k election vote 为你最喜欢的候选人投票！}'
-  join-notify: '&2一场选举正在进行。输入 &6hover:{/k election vote;&2点击以投票;/k election vote
-    为你最喜欢的候选人投票！}'
+  join-notify: '&2一场选举正在进行。输入 &6hover:{/k election vote;&2点击以投票;/k election vote 为你最喜欢的候选人投票！}'
   not-enough-data: '&c没有新国王被选举，因为王国不足50%的人投了票。'
 outpost-events:
   death: '&c你死亡了，导致你的王国被扣除&e%rp%资源点。'
@@ -1934,3 +1926,10 @@ join-leave-messages:
   leave:
     kingdom: §8[§c◆§8]§8[%kingdoms_rank_color%%kingdoms_rank_symbol%§8] §c%displayname%
     others: '&e%displayname% &c离开了服务器。'
+tags:
+  tagged:
+    message: hover:{&6&l@%tag%;&2有人提到了你}
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
+  others: hover:{&l@%tag%;&9提及}
+  offline: hover:{&e@%tag%;&c离线}
+  unknown-player: hover:{&c@%tag%;&4玩家不存在}
