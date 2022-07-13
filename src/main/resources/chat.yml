@@ -114,7 +114,8 @@ global-channel:
 # The channel to send private messages too. Set to ~ to disable.
 # You can either use the channel ID or name (case-insensitive).
 # There are two special values. "$console" which uses the console channel from DiscordSRV
-# and "$main" that uses the main chat channel from DiscordSRV.
+# and "$main" that uses the main chat channel from DiscordSRV. Note that the dollar signs are
+# only for these two keywords, when using the channel name or ID you DO NOT need to use them.
 # You need to /k reload after changing this option.
 # Used for kingdom, allies, truces and nations channels.
 # Using any channel here requires you to enter that channel's information
@@ -125,7 +126,7 @@ discordsrv:
   global-channel: '$main'
   private-channel: '$console'
   announcements:
-    invasion:
+    invasion: # This message is sent as soon as the invasion start countdown ends.
       channel: '$main'
       message: ':crossed_swords: **%player%** from **%kingdoms_name%** is now invading **%defender%**'
 
