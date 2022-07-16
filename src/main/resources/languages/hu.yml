@@ -159,6 +159,7 @@ guis:
   pages:
     next-page-not-available: '&cNincs több oldal. Max oldal&8: &e%pages%'
     previous-page-not-available: '&cNincs több előző oldal.'
+  cant-open-during-invasion: '&cNem nyithatod meg ezt a GUI-t amíg támadás alatt áll a királyságod.'
 protected-signs:
   cant-modify: '&cCsak a blokk tulajdonosa változtathatja meg a beállításokat.'
   already-protected: '&6Ez a blokk már védett.'
@@ -249,7 +250,7 @@ upgrades:
   champion-upgrade: '&2Ez (angol neve: &e%upgrade%&2) fel lett fejlesztve a(z) &e%level%&2. szintre!'
   champion-max: '&cEz (angol neve: &e%upgrade%&c) már elérte a maximum szintet!'
   champion-not-enough-resourcepoints: '&cNincs elég NP-od a(z) &e%upgrade% &cfejlesztés végrehajtásához.'
-  misc-upgrade: '&2Ezt (angol neve: &e%upgrade%&2) fel lett fejlesztve a(z) &6%level%&2. szintre.'
+  misc-upgrade: '&2Ez (angol neve: &e%upgrade%&2) fel lett fejlesztve a(z) &6%level%&2. szintre.'
   misc-enabled: '&6%upgrade% &2fejlesztése bekapcsolva.'
   misc-not-upgraded: '&cEz még nem lett kifejlesztve.'
   misc-cannot-be-disabled: '&cEz nem kapcsolható ki.'
@@ -283,12 +284,12 @@ regulator:
   attributes:
     add-self: '&cNem adhatod hozzá önmagadat.'
     already-added: '&e%add% &cmár hozzá van adva.'
-    add: '&2Kérlek addj meg egy játékosnevet.'
+    add: '&2Kérlek adj meg egy játékosnevet.'
     added: '&6%add% &2hozzáadva.'
   interactions:
     add-self: '&cNem adhatod hozzá önmagadat.'
     already-added: '&e%add% &cmár hozzá van adva.'
-    add: '&2Kérlek addj meg egy játékosnevet.'
+    add: '&2Kérlek adj meg egy játékosnevet.'
     added: '&6%add% &2hozzáadva.'
 nexus:
   pacifism:
@@ -442,7 +443,7 @@ not:
 invalid:
   amount: '&cÉrvénytelen összeg&8: &e%amount%'
 commands:
-  insufficient-permission: '&cNincs engedélyed annak a végrehajtására.'
+  insufficient-permission: '&cNincs engedélyed ennek a végrehajtására.'
   cooldown: '&cEzt a parancsot nem használhatod ennyi ideig&8: &e%cooldown%'
   disabled-world: '&cEz a parancs nem használható ebben a világban.'
   tags:
@@ -755,8 +756,6 @@ command:
     broadcast-format: |
 
       &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
-
-
     capital:
       description: '&6Nemzet központjának beállítása.'
       only-king: '&6Csak a Főkirályság királya tudja ezt beállítani.'
@@ -1304,7 +1303,7 @@ command:
       header: '&2Admin móddal rendelkező játékosok&8:'
       entry: '&8- &6%displayname%'
     spy:
-      description: '&6KKémkedés a királyságok csevegésében.'
+      description: '&6Kémkedés a királyságok csevegésében.'
       'on': '&6Kémkedés: &2BEKAPCSOLVA'
       'off': '&6Kémkedés: &cKIKAPCSOLVA'
     dynmap:
@@ -1320,7 +1319,7 @@ command:
       running: '&cA háború már folyamatban van.'
       not-running: '&cJelenleg nem fut háború.'
     dailychecks:
-      description: '&6MNapi ellenőrzési ciklus manuális elindítása.'
+      description: '&6Napi ellenőrzési ciklus manuális elindítása.'
       usage: '&4Használat&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
       info: |
         &2Következő cíklusig&8: &6%next%
@@ -1351,7 +1350,7 @@ command:
       description: '&6Egy fájlba parancslista írása jogosultságokkal.'
       done: '&2A parancs információi kiírásra kerültek: &6%output%. &2Ellenőrizd a Királyság plugin mappájában.'
     command:
-      description: '&Egy parancsról az összes információ megjelenítése.'
+      description: '&cEgy parancsról az összes információ megjelenítése.'
       usage: '&4Használat&8: &e/k admin command &2<parancs>'
       bad-start: '&cNem kell használni / jelet vagy /k a parancsinformációkhoz.'
       not-found: '&cNem található ilyen parancs&8: &e%command%'
@@ -1359,7 +1358,7 @@ command:
         &8------------=( &2%main-name% &8)=------------
         &7| &2A parancs neve&8: &9%command-displayname%
         &7| &2Aliasok&8: &9%aliases%
-        &7| &2Szülő8: &9%parent%
+        &7| &2Szülő&8: &9%parent%
         &7| &2Leírás&8: &9%description%
         &7| &2Használat&8: &9%usage%
         &7| &2Jogosultság&8: &9hover:{%permission%;&2Klikk a másoláshoz;|%permission%}
@@ -1385,6 +1384,8 @@ command:
       usage: '&cHasználat&8: &e/k admin create &2<játékos &8| &2szuper> <királyság neve>'
       already-exists: '&cMár van ilyen nevű királyság&8: &e%kingdom%'
       created: '&6%player% &2számára létrehoztad a(z) &6%kingdom% &2nevű királyságot.'
+      super-creating: '&2Szuperkirályság létrehozása...'
+      any-no-player-found: '&cNem található királyság nélküli játékos.'
     permanent:
       description: '&cÁllandó mód engedélyezése egy királysághoz.'
       usage: '&cHasználat&8: &e/k admin permanent &2<királyság>'
@@ -1677,6 +1678,7 @@ command:
     claimed: '&2Feloldottad az itt található területet &6%x%&7, &6%z%'
     unclaimed: '&2Lefoglaltad az itt található területet &6%x%&7, &6%z%'
     no-history: '&cNincs visszavonható parancs.'
+    claimed-not-owned: '&cEzt a területet (&6%x%&7, &6%z% &c) egy másik játékos már elfodlalta. &6%x%&7, &6%z%'
   redo:
     description: '&6Foglalás/Feloldás újra.'
     already-unclaimed: '&6A legutoljára foglalt területet valaki már feloldotta.'
@@ -1849,7 +1851,7 @@ command:
   outpost:
     description: '&6Az elérhető előőrs parancsainak megjelenítése.'
     create:
-      description: '&6Új élőőrs létrehozása WorldGuard területből.'
+      description: '&6Új előőrs létrehozása WorldGuard területből.'
       usage: '&4Használat: &e/k outpost create &2<név> &9<régió>'
       region-not-found: '&cNem talákható ilyen WorldGuard terület: &e%region%'
       name-already-taken: '&cMár van egy &e%outpost% &cnevű előőrs.'

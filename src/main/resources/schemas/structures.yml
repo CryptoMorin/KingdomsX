@@ -9,7 +9,8 @@ structures:
     name: str
     type: str #TODO Structure(type)
     particles:
-      1:
+      (keys): int
+      (values):
         place:
           particle: str
           count: int
@@ -19,15 +20,17 @@ structures:
           count: int
           offset: str
     sounds:
-      1:
+      (keys): int
+      (values):
         place: str
         break: str
-    block:
-      (keys): int
-      (required): [ '1' ]
+        # Needs unions to be fully implemented because a scalar option implies a material for all levels.
+    #    block:
+    #      (keys): int
+    #      (required): [ '1' ]
+    #      (values): Material
     hologram:
       (keys): int
-      (required): [ '1' ]
       (values):
         lines: list
         height: decimal
@@ -53,25 +56,22 @@ structures:
 
   siege-cannon:
     shield-damage:
-      1: Period
-      2: Period
-      3: Period
+      (keys): int
+      (values): Period
     
     upgrade-cost: Math
     
     explosion-radius:
-      1: int
-      2: int
-      3: int
+      (keys): int
+      (values): int
     
     invalid-ammo-message: str
     damage: Math
     knockback: Math
     
     cooldown:
-      1: int
-      2: int
-      3: int
+      (keys): int
+      (values): int
     
     actionbar:
       sit: str
