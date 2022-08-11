@@ -1,0 +1,54 @@
+title: "&8-=[ &5Koruma &8]=-"
+rows: 6
+sound: BLOCK_CHEST_OPEN
+
+options:
+  include:
+    name: "&2Krallığı dahil et"
+    material: GREEN_WOOL
+    lore:
+      - "&6Üyelerinin bu bloğa erişebilmesi"
+      - "için bir krallık ekleyin."
+      - ""
+      - " Grubu değiştiremez veya"
+      - "bloğu kıramazlar."
+    posx: 1
+    posy: 1
+  exclude:
+    name: "&cKrallığı Hariç Tut"
+    material: RED_WOOL
+    lore:
+      - "&6Üyelerinin bloğa erişmesini engellemek"
+      - "için bir krallık ekleyin."
+      - ""
+      - "Krallığınızdaki korumaları geçersiz kılma"
+      - "iznine sahip oyuncular yine de bloğa "
+      - "erişebilir veya onu kırabilir."
+    posx: 2
+    posy: 1
+  clear:
+    name: "&4Temizle"
+    material: WRITABLE_BOOK
+    lore:
+      - "&6Tüm krallıkları bu "
+      - "listeden çıkarın."
+    posx: 8
+    posy: 1
+  back:
+    name: "&4Geri Dön"
+    material: BARRIER
+    posx: 9
+    posy: 1
+  members:
+    included:
+      condition: included
+      name: "&6%name% &8- &2Dahil"
+      material: PLAYER_HEAD
+    else:
+      name: "&6%name% &8- &cHariç"
+      material: PLAYER_HEAD
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25,  28, 29, 30, 31, 32, 33, 34,  37, 38, 39, 40, 41, 42, 43 ]
+  black-glass:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 2, 3, 4, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]

@@ -1,0 +1,448 @@
+title: "%rank_color%%rank_symbol% %rank_name%"
+rows: 6
+sound: ITEM_BOOK_PAGE_TURN
+
+options:
+  node:
+    name: "&2Node&8: &2%rank_node%"
+    material: EMERALD
+    lore:
+      - "&6Node, temel olarak rütbenin adıdır,"
+      - "ancak renkler veya herhangi bir özel"
+      - "karakter içermez. Bu, terfi/demote komutunu kullandığınızda"
+      - "kullanılır. Sayı içeremez ve maksimum 15 karakter olmalıdır."
+    posx: 1
+    posy: 1
+  name:
+    name: "&5İsim&8: &2%rank_name%"
+    material: DIAMOND
+    lore:
+      - "&6Bu rütbenin adı. "
+      - "Herhangi bir karakter içerebilir ancak en "
+      - "fazla 20 karakter olmalıdır."
+      - "Ayrıca renk kodları içerebilir."
+    posx: 2
+    posy: 1
+  material:
+    name: "&eMateryal&8: &2%rank_material%"
+    material: GOLD_INGOT
+    lore:
+      - "&6Sıralama GUI'sinde bu sıralamayı görüntülemek"
+      - "için kullanılan malzeme. Sunucu eski sürümlerde "
+      - "çalışıyor olsa bile en son"
+      - "malzeme adlarını kullanmalısınız."
+    posx: 3
+    posy: 1
+  symbol:
+    name: "&dSembol&8: &2%rank_symbol%"
+    material: IRON_INGOT
+    lore:
+      - "&6Bu rütbe için sembol."
+      - "Sadece 5 karakter olabilir."
+      - "Ayrıca renkleri destekler."
+    posx: 4
+    posy: 1
+  color:
+    name: "%rank_color% Renk'i"
+    material: COAL
+    lore:
+      - "&6Bu rütbe için sohbet rengi."
+      - "Sadece 5 karakter olabilir."
+    posx: 5
+    posy: 1
+  priority:
+    name: "&aÖncelik&8: &2%rank_priority%"
+    material: PAPER
+    lore:
+      - "&6Bu sıralamanın önceliği Daha düşük"
+      - "sayıların daha yüksek öncelik anlamına"
+      - "geldiğini unutmayın. Kral rütbesinin önceliğini değiştiremezsiniz."
+    posx: 6
+    posy: 1
+  max-claims:
+    name: "&7Maksimum Claim&8: &2%rank_max_claims%"
+    material: BOOK
+    lore:
+      - "&6Bu rütbenin izinlerini"
+      - "ayarlayın."
+    posx: 7
+    posy: 1
+  delete:
+    name: "&4Sil"
+    material: BARRIER
+    lore:
+      - "&6Bu rütbeyi silin. Rastgele bir süre "
+      - "içinde aynı düğüme(node) sahip"
+      - "başka bir rütbe oluşturmazsanız,"
+      - "bu rütbeye sahip tüm "
+      - "oyuncular üyeliğe "
+      - "düşürülecektir."
+    posx: 8
+    posy: 1
+  copy:
+    name: "&1Rütbeyi Kopyala"
+    material: WRITABLE_BOOK
+    lore:
+      - "&6Başka bir rütbenin özelliklerini"
+      - "bu rütbeye kopyalayın."
+    posx: 5
+    posy: 2
+
+  alliance:
+    enabled:
+      condition: enabled
+      name: "&2İttifak"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Alliance"
+      material: RED_WOOL
+    posx: 1
+    posy: 3
+  broadcast:
+    enabled:
+      condition: enabled
+      name: "&2Duyuru"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Broadcast"
+      material: RED_WOOL
+    posx: 2
+    posy: 3
+  build:
+    enabled:
+      condition: enabled
+      name: "&2Build"
+      material: DIAMOND_PICKAXE
+      glow: true
+    else:
+      name: "%var_disabled% &2Build"
+      material: DIAMOND_PICKAXE
+    posx: 3
+    posy: 3
+  claim:
+    enabled:
+      condition: enabled
+      name: "&2Claim"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Claim"
+      material: RED_WOOL
+    posx: 4
+    posy: 3
+  edit-ranks:
+    enabled:
+      condition: enabled
+      name: "&2Rütbeleri Düzenle"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Rütbeleri Düzenle"
+      material: RED_WOOL
+    posx: 5
+    posy: 3
+  enemy:
+    enabled:
+      condition: enabled
+      name: "&2Düşman"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Düşman"
+      material: RED_WOOL
+    posx: 6
+    posy: 3
+  home:
+    enabled:
+      condition: enabled
+      name: "&2Ev(Home)"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Ev(Home)"
+      material: RED_WOOL
+    posx: 7
+    posy: 3
+  invade:
+    enabled:
+      condition: enabled
+      name: "&2İstila"
+      material: DIAMOND_SWORD
+      glow: true
+    else:
+      name: "%var_disabled% &2İstila"
+      material: DIAMOND_SWORD
+    posx: 8
+    posy: 3
+  invite:
+    enabled:
+      condition: enabled
+      name: "&2Davet"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Davet"
+      material: RED_WOOL
+    posx: 9
+    posy: 3
+
+  # 4
+  kick:
+    enabled:
+      condition: enabled
+      name: "&2Atmak(Kick)"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Atmak(Kick)"
+      material: RED_WOOL
+    posx: 1
+    posy: 4
+  lore:
+    enabled:
+      condition: enabled
+      name: "&2Bilgi"
+      material: PAPER
+      glow: true
+    else:
+      name: "&2Bilgi"
+      material: PAPER
+    posx: 2
+    posy: 4
+  nexus:
+    enabled:
+      condition: enabled
+      name: "&2Nexus"
+      material: BEACON
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus"
+      material: BEACON
+    posx: 3
+    posy: 4
+  nexus-build:
+    enabled:
+      condition: enabled
+      name: "&2Nexus Build"
+      material: BEACON
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus Build"
+      material: BEACON
+    posx: 4
+    posy: 4
+  nexus-chest:
+    enabled:
+      condition: enabled
+      name: "&2Nexus Sandığı"
+      material: CHEST
+      glow: true
+    else:
+      name: "%var_disabled% &2Nexus Sandığı"
+      material: CHEST
+    posx: 5
+    posy: 4
+  outpost:
+    enabled:
+      condition: enabled
+      name: "&2Karakol(Outpost)"
+      material: HAY_BLOCK
+      glow: true
+    else:
+      name: "%var_disabled% &2Karakol(Outpost)"
+      material: HAY_BLOCK
+    posx: 6
+    posy: 4
+  protection-signs:
+    enabled:
+      condition: enabled
+      name: "&2Korumalı Sandıklar"
+      material: OAK_SIGN
+      glow: true
+    else:
+      name: "%var_disabled% &2Korumalı Sandıklar"
+      material: OAK_SIGN
+    posx: 7
+    posy: 4
+  set-home:
+    enabled:
+      condition: enabled
+      name: "&2Ev Ayarla(Set Home)"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Ev Ayarla(Set Home)"
+      material: RED_WOOL
+    posx: 8
+    posy: 4
+  structures:
+    enabled:
+      condition: enabled
+      name: "&2Yapılar"
+      material: REDSTONE_LAMP
+      glow: true
+    else:
+      name: "%var_disabled% &2Yapılar"
+      material: REDSTONE_LAMP
+    posx: 9
+    posy: 4
+
+  # 5
+  use:
+    enabled:
+      condition: enabled
+      name: "&2Kullan"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Kullan"
+      material: RED_WOOL
+    posx: 1
+    posy: 5
+  interact:
+    material: OAK_DOOR
+
+    enabled:
+      condition: enabled
+      name: "%var_enabled% &2Etkileşim"
+      glow: true
+    else:
+      name: "%var_disabled% &2Etkileşim"
+
+    posx: 2
+    posy: 5
+  upgrade:
+    enabled:
+      condition: enabled
+      name: "&2Yükseltme"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Yükseltme"
+      material: RED_WOOL
+    posx: 3
+    posy: 5
+  truce:
+    enabled:
+      condition: enabled
+      name: "&eAteşkes"
+      material: YELLOW_WOOL
+      glow: true
+    else:
+      name: "%var_disabled% &eAteşkes"
+      material: YELLOW_WOOL
+    posx: 4
+    posy: 5
+  turrets:
+    enabled:
+      condition: enabled
+      name: "&2Taretler"
+      material: ARROW
+      glow: true
+    else:
+      name: "%var_disabled% &2Taretler"
+      material: ARROW
+    posx: 5
+    posy: 5
+  unclaim:
+    enabled:
+      condition: enabled
+      name: "&2Claim'den Vazgeç"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Claim'den Vazgeç"
+      material: RED_WOOL
+    posx: 6
+    posy: 5
+  manage-ranks:
+    enabled:
+      condition: enabled
+      name: "&2Rütbeleri Yönet"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Rütbeleri Yönet"
+      material: RED_WOOL
+    posx: 7
+    posy: 5
+  withdraw:
+    enabled:
+      condition: enabled
+      name: "&2Çekmek(Withdraw)"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Çekmek(Withdraw)"
+      material: RED_WOOL
+    posx: 8
+    posy: 5
+  fly:
+    enabled:
+      condition: enabled
+      name: "&2Uçuş Modu"
+      material: ELYTRA
+      glow: true
+    else:
+      name: "%var_disabled% &2Uçuş Modu"
+      material: ELYTRA
+    posx: 9
+    posy: 5
+
+  # 6
+  nation:
+    enabled:
+      condition: enabled
+      name: "&2Ulus"
+      material: BLUE_WOOL
+      glow: true
+    else:
+      name: "%var_disabled% &2Uulus"
+      material: BLUE_WOOL
+    posx: 1
+    posy: 6
+  exclude-tax:
+    enabled:
+      condition: enabled
+      name: "&2Vergiyi Hariç Tut"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2Vergiyi Hariç Tut"
+      material: RED_WOOL
+    posx: 2
+    posy: 6
+  relation-attributes:
+    enabled:
+      condition: enabled
+      name: "&2İlişki Nitelikleri"
+      material: GREEN_WOOL
+    else:
+      name: "%var_disabled% &2İlişki Nitelikleri"
+      material: RED_WOOL
+    posx: 3
+    posy: 6
+  settings:
+    name: "&2Ayarlar"
+    enabled:
+      condition: enabled
+      material: GREEN_WOOL
+    else:
+      material: RED_WOOL
+    posx: 4
+    posy: 6
+  build-owned:
+    name: "&2Sahip Olunan Yapı"
+    material: DIAMOND_PICKAXE
+    lore:
+      - "&2BUILD &7ve &2BUILD_OWNED &7arasındaki fark,"
+      - "&2BUILD'ın &7krallığınızın herhangi bir yerinde"
+      - "inşa etmenize izin vermesidir &2NEXUS_BUILD'ye &7ihtiyaç "
+      - "duyan nexus arazisi hariç, ancak &2BUILD_OWNED &7yalnızca"
+      - "kendi talep ettiğiniz arazilerde inşa etmenize "
+      - "izin verir. Örneğin, başka bir yerde &2/k claim &7yaparsanız"
+      - "&2BUILD_OWNED &7ile orada inşaat yapamazsınız,"
+      - "ancak siz veya &2BUILD &7iznine sahip kişiler yapabilir."
+
+    enabled:
+      condition: enabled
+      glow: true
+
+    posx: 5
+    posy: 6
+
+  back:
+    name: "&2Geri Dön"
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    lore:
+      - "&6Rütbe menüsüne geri dönün."
+    posx: 9
+    posy: 1

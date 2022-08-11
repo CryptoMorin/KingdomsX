@@ -1,0 +1,33 @@
+title: "&cGüç Hücresi(Powercell)"
+type: HOPPER
+sound: BLOCK_REDSTONE_TORCH_BURNOUT
+
+options:
+  break:
+    name: "&4Kırmak"
+    material: REDSTONE_BLOCK
+    lore:
+      - "&6Yapıyı bozar."
+    slot: 0
+  upgrade:
+    slot: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Yükseltme&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Menzil&8: &61 &7➔ &62"
+        - ""
+        - "&7⚫ &2En Üst Seviye&8: &6%max-level-roman%"
+        - "&7⚫ &2Maliyet&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Seviye&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Menzil&8: &62"
+  close:
+    name: "&2Kapat"
+    material: BARRIER
+    lore:
+      - "&6GUI'yi kapatın."
+    slot: 4

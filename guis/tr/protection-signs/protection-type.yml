@@ -1,0 +1,69 @@
+title: "&8-=[ &5Koruma Türü &8]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  protected:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7Bu blok, bloğa erişmek için
+        manuel olarak eklenmedikçe
+        tüm oyunculardan korunacaktır.
+      material: OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&4%protection%"
+      material: OAK_SIGN
+      lore: |-
+        &7Bu blok, bloğa erişmek için 
+        manuel olarak eklenmedikçe 
+        tüm oyunculardan korunacaktır.
+    slot: 1
+  everyone-in-kingdom:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7Bu blok, bloğa erişmek için 
+        manuel olarak eklenmedikçe 
+        krallığınızda olmayan tüm 
+        oyunculardan korunacaktır.
+      material: SPRUCE_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: SPRUCE_SIGN
+      lore: |-
+        &7Bu blok, bloğa erişmek için 
+        manuel olarak eklenmedikçe 
+        krallığınızda olmayan tüm 
+        oyunculardan korunacaktır.
+    slot: 2
+  everyone:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7Bu bloğa erişimi olmaması için 
+        manuel olarak eklenmedikçe, 
+        krallığınızın dışındaki veya
+        içindeki herkes bu bloğa erişebilir.
+      material: DARK_OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: DARK_OAK_SIGN
+      lore: |-
+        &7Bu bloğa erişimi olmaması için 
+        manuel olarak eklenmedikçe,
+        krallığınızın dışındaki veya 
+        içindeki herkes bu bloğa erişebilir.
+    slot: 3

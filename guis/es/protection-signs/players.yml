@@ -1,0 +1,54 @@
+title: "&8-=[ &5Proteccion &8]=-"
+rows: 6
+sound: BLOCK_CHEST_OPEN
+
+options:
+  include:
+    name: "&2Includir Jugador"
+    material: GREEN_WOOL
+    lore:
+      - "&6Añade a alguien para que"
+      - "tenga acceso a este bloque."
+      - ""
+      - "Ellos no podran cambiar el grupo"
+      - "o romper el bloque."
+    posx: 1
+    posy: 1
+  exclude:
+    name: "&cExcluir Jugador"
+    material: RED_WOOL
+    lore:
+      - "&Añade a alguien como excluido"
+      - "de tener acceso al bloque."
+      - ""
+      - "Jugadoras en tu reino con permiso"
+      - "para anular las protecciones aún puede acceder"
+      - "al bloque o romperlo."
+    posx: 2
+    posy: 1
+  clear:
+    name: "&4Limpiar"
+    material: WRITABLE_BOOK
+    lore:
+      - "&6Eliminar todos los jugadores"
+      - "de esta lista."
+    posx: 8
+    posy: 1
+  back:
+    name: "&cVolver"
+    material: BARRIER
+    posx: 9
+    posy: 1
+  members:
+    included:
+      condition: included
+      name: "&6%name% &8- &2Incluido &8- %online%"
+      material: PLAYER_HEAD
+    else:
+      name: "&6%name% &8- &cExcluido &8- %online%"
+      material: PLAYER_HEAD
+    slots: [ 11, 12, 13, 14, 15, 16, 19, 20 ]
+  black-glass:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 2, 3, 4, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
