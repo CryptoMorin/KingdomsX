@@ -1,0 +1,418 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                                   Claims                                    |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Completely disables the protection system except for when placing turrets and structures.
+# This can be useful if you want to customize the behavior using an addon.
+disable-protection-system: false
+
+# If the claims should be connected next to each other.
+# This option is not affected by relation attributes.
+# For example, if you set it to 1, this is what happens.
+# + are the lands you can claim (assuming they're unclaimed)
+# - are the lands you cannot claim (assuming they're unclaimed)
+# * are the lands that you own.
+# - - - - - - -
+# - - + + + - -
+# - - + * + - -
+# - - + + + - -
+# - - - - - - -
+
+# Now an example with 2
+# - - - - - - -
+# - + + + + + -
+# - + + + + + -
+# - + + * + + -
+# - + + + + + -
+# - + + + + + -
+# - - - - - - -
+
+# High numbers will lag the server.
+# It's recommended to keep it under 3 if you're using this option.
+# Anything above this is just pointless and will lag the server. You should turn off this option.
+# Set to 0 to disable.
+connection-radius: 0
+
+# If the claims from different kingdoms should have a distance between them.
+# These lands that cannot be claimed by any kingdom will not be affected at all. The only restriction is that they cannot be claimed
+# unless you invade the kingdom(s) next to them.
+# This option is not affected by relation attributes.
+# For example, if you set it to 1, this is what happens.
+# + are the lands you can claim (assuming they're unclaimed)
+# - are the lands you cannot claim (assuming they're unclaimed)
+# * are the lands owned by another kingdom.
+# + + + + + +
+# + - - - + +
+# + - * - + +
+# + - - - + +
+# + + + + + +
+
+# High numbers will lag the server.
+# Set to 0 to disable.
+distance: 0
+
+# Worlds that claiming are disabled in.
+disabled-worlds: [ world_nether, world_the_end ]
+
+# Biomes that players can/cant claim in. This will not work reliably since it only checks a few blocks in the chunk.
+# You can get a list of biomes here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/Biome.html
+biomes:
+  world_nether:
+    whitelist: false
+    biomes: [ CRIMSON_FOREST ]
+    #world_the_end:
+    #...
+
+# Claims the lands around the player once the player created a kingdom if possible.
+# Set to 0 to only claim the land that the player is standing in.
+# Any number above 0 will determine the square radius of the claimed lands from the player's location.
+# Set to -1 to disable.
+# This process will not continue if the central chunk (the player's location) cannot be claimed.
+claim-on-create: 0
+
+# How many claims should be free if the number of owned lands is lower
+# than this number?
+starter-free: 3
+
+# If the player needs to confirm claiming a land again when all the free lands have been used.
+# This is the time which the player needs to do the command again before it ends.
+# Set to 0 to disable.
+# This cooldown will also refresh if you're in the cooldown to avoid
+# annoying confirmations for claiming multiple lands.
+confirmation: 10s
+
+# /k claim fill
+# https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-claim-autofillx-y
+fill:
+  # The maximum distance allowed to check for
+  # the shape borders to start filling.
+  max-distance: 5
+
+  # The maximum lands allowed to claim
+  # when filling the shape.
+  max-claims: 50
+
+# /k claim square <radius>
+# 5 = 5 * 5 = 25 chunks around the player.
+square-max-radius: 5
+
+# /k claim line <distance>
+# The distance in chunks, not blocks.
+line-max-distance: 10
+
+# Max claims per a /k claim corner.
+corner-max-claims: 20
+
+# /k claim <x> <z>
+# This is chunk distance, not block distance.
+# Note that this will affect interactive claims from /k map
+coordinates-claim-max-distance: 30
+
+# The radius that players aren't allowd to claim lands in that are protected by WorldGuard.
+# Note that this feature is still experimental and only works for single claims (not bulk claims like clipboards)
+# High numbers might cause lag spikes.
+# The number specified here is based on lands, not blocks.
+protected-region-radius: 3
+
+# History for undoing claims.
+history:
+  # If you have the command disabled you should disable it here
+  # too to stop wasting memory.
+  enabled: true
+  # The limit of history to keep for land claims.
+  # Older claim history will be deleted automatically.
+  limit: 10
+
+# The equation used to calculate the maximum claims for kingdoms (%kingdoms_max_lands% placeholder).
+# All the placeholders and math functions such as log() and round() can be used as well.
+# Note that using %kingdoms_max_lands% here can cause a Stack Overflow error which can crash your server.
+# No player placeholders can be used here of course. Only kingdom and nation placeholders.
+# You can also use the "max_claims" placeholder for the max-claims misc upgrade scaling which can be found in misc-upgrades.yml config.
+max-claims:
+  # Worlds can have different limits, "default" is used for any world name that is not specified here.
+  #nether_world: "..."
+  default: "((kingdoms_members + kingdoms_nation_kingdoms) * 5) + kingdoms_max_lands_modifier + max_claims"
+
+# You can only build in claims that the relation attribute allows building.
+# This function can be disabled for specific worlds in config.yml "disabled-worlds" option.
+build-in-claimed-only:
+  # These two options are required to be set to true for any of these options
+  # below to work.
+  place: false
+  break: false
+
+  # This option can significantly affect server's performance.
+  # The radius that players are allowed to build if there are nearby claims
+  # that belong to their kingdom.
+  # Set to 0 to disable.
+  unclaimed-build-radius: 0
+
+  # If players should be charged for building instead of
+  # completely disabling building.
+  charges:
+    enabled: false
+
+    # true:  If the player should be charged when building within the "unclaimed-build-radius" this will competely disable building for outside the radius tho.
+    # false: If the player should be charged when building outside of the "unclaimed-build-radius" this will allow building inside the radius without charges.
+    # if "unclaimed-build-radius" is disabled, this will charge players in any unclaimed land.
+    in-range: true
+
+    # Note that resource points comes from the player's kingdom,
+    # but the money is taken directly from the player's balance.
+    placing:
+      resource-points: 0
+      money: 0
+    breaking:
+      resource-points: 0
+      money: 0
+
+# Show action bar when auto claim/unclaim is enabled.
+actionbar:
+  auto-claim: true
+  auto-unclaim: true
+  keep: true
+
+# Activated beacons in a land will only affect players who their kingdom has the "ceasefire" attribute
+# with the kingdom that owns the land.
+beacon-protected-effects: true
+
+# Throwing these potions at a player who has
+# ceasefire attribute with you, is disallowed.
+potion-protected-effects: [ POISON, WEAKNESS, SLOW, BLINDNESS, HARM, WITHER ]
+
+# They support equations.
+resource-points:
+  # The amount of resource points to give back to the player
+  # after unclaiming a land. Set to 0 to disable.
+  # Or you can set it to a negative value to take resource points instead.
+  refund-unclaim: 0
+  refund-auto-unclaim: 0
+
+  # The amount of resource points needed to claim a land.
+  claims: 50
+  auto-claims: 55
+
+money:
+  # The amount of money to give back to the player
+  # after unclaiming a land. Set to 0 to disable.
+  # Or you can set it to a negative value to take resource points instead.
+  refund-unclaim: 0
+  refund-auto-unclaim: 0
+
+  # The amount of money needed to claim a land.
+  claims: 50
+  auto-claims: 55
+
+# Sends a confirmation message before unclaiming certain lands
+# that contain one of elements below.
+# Priority: Nexus -> Home -> Structures -> Turrets
+unclaim-confirmation:
+  turrets: false
+  structures: true
+  home: true
+  nexus: true
+
+# /k unclaimall
+unclaim-all:
+  announce: true
+  keep-nexus-land: true
+  cost: 0
+  confirm:
+    enabled: true
+    time: 15
+    gui: true
+
+
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                         Indicators & Visualizers                            |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+indicator:
+  # Wilderness regions that are protected will not have indicators.
+  ignore-worldguard-regions: true
+
+  # Display these indicators for players that don't have a kingdom.
+  kingdomless-enabled: true
+
+  # The default settings for land indicators (visualizers)
+  default:
+    # The name of the default option used for /k visual markers
+    name: 'Default'
+
+    # Either 'blocks' or one of the particle entry names (not the name defined in them, the config entry name).
+    # E.g. the defaults are 'blocks', 'horizontal' and 'vertical'
+    method: blocks
+
+  particles:
+    horizontal:
+      name: 'Horizontal'
+      particle: REDSTONE
+      count: 10
+      height: 10
+      delay: 10
+      duration: 10
+      rates:
+        vertical: 4
+        horizontal: 30
+    vertical:
+      name: 'Vertical'
+      particle: REDSTONE
+      count: 10
+      height: 5
+      delay: 10
+      duration: 10
+      rates:
+        vertical: 30
+        horizontal: 4
+
+  # Adds a block visualizer to separate chunks.
+  # It's similar to F3+G Chunk Border.
+  # Players can control their visualizers behaviour from /k visualize
+  visualizer:
+    # If visualizers should be enabled for players by default.
+    # They can disable it using /k visualize toggle
+    enabled: false
+
+    # The name for the markers type /k visual markers
+    name: 'Blocks'
+
+    # If the option above is set to false, then it'll check the blocks under the player
+    # until it hits the floor. The floor blood is determined by its type (whether it's passable) or not.
+    # This type check is not accurate for servers using 1.12 and below versions.
+    # The height check limit should be low to avoid lag.
+    # If no floor block was found within this range, then the indicator will display on (y - x),
+    # where x is the option and y is the player's y axis.
+    # Setting to 0: Blocks will appear on the same y as the blocks the player is standing on.
+    # Otherwise blocks will be placed on the floor block.
+    # Note this must also be lower than the servers max view distance (16 by default but that is the chunk number)
+    # as higher values are useless. There is a hard limit of 160 blocks.
+    floor-check-height: 5
+
+    # If the blocks should visualize all the border blocks around the chunk.
+    # This will usually cause a lot of lag. Not recommended.
+    # The material used for these blocks is "two-block". You can change them below.
+    border: false
+
+    # Ignores enabled option.
+    # Should indicators be shown when a land is claimed or unclaimed?
+    on-claim: true
+
+    # The amount of time the indicator blocks should stay.
+    # In seconds.
+    stay: 3
+
+  # The land types to send the indicators and visualizers.
+  # corner-block: The 4 corner block used to indicate the chunk corners.
+  # two-blocks: The two blocks next to each corner blocks on sides.
+  # actionbar: The action bar message sent when entering this type of land.
+  # title: The title message to sent when entering this type of land.
+  #   -> title, subtitle, fade-in, stay, fade-out (all these 3 are in ticks)
+  # sound: Sound played when entering this type of land.
+  # send-messages-for-same-chunk-type: If titles, actionbars, visualizers and sound should
+  #   be used again if the player is entering the same type of land as their previous land.
+  #   For example, if you're going from an unclaimed land to another unclaimed land, and this option is set to
+  #   true in wilderness, the messages will show again.
+  # You can remove any of these options and they'll not be used. Or you can add any of them to any types you want.
+  # The placeholders with "kingdom" identifier instead of "kingdoms" are for placeholders related to the land's kingdom.
+  wilderness:
+    corner-block: SEA_LANTERN
+    two-block: QUARTZ_BLOCK
+    actionbar: "&8&l-=( &2&lUnoccupied Land &8&l)=-"
+    particles:
+      horizontal:
+        color: 0, 0, 0
+      vertical:
+        color: 0, 0, 0
+  no-kingdom:
+    title:
+      title: "%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    particles:
+      horizontal:
+        color: 255, 255, 255
+      vertical:
+        color: 255, 255, 255
+
+    corner-block: SEA_LANTERN
+    two-block: IRON_BLOCK
+  self:
+    particles:
+      horizontal:
+        color: 0, 255, 0
+      vertical:
+        color: 0, 255, 0
+
+    title:
+      title: "&2%kingdoms_name%"
+      subtitle: "%kingdoms_lore%"
+      fade-in: 10
+      stay: 40
+      fade-out: 10
+
+    corner-block: SEA_LANTERN
+    two-block: EMERALD_BLOCK
+  neutral:
+    particles:
+      horizontal:
+        color: 255, 255, 255
+      vertical:
+        color: 255, 255, 255
+    title:
+      title: "%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: IRON_BLOCK
+  ally:
+    particles:
+      horizontal:
+        color: 100, 255, 0
+      vertical:
+        color: 100, 255, 0
+    title:
+      title: "&6%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: DIAMOND_BLOCK
+  truce:
+    particles:
+      horizontal:
+        color: 255, 255, 0
+      vertical:
+        color: 255, 255, 0
+    title:
+      title: "&e%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: GOLD_BLOCK
+  nation:
+    particles:
+      horizontal:
+        color: 0, 0, 255
+      vertical:
+        color: 0, 0, 255
+    title:
+      title: "&9%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: BLUE_WOOL
+  enemy:
+    particles:
+      horizontal:
+        color: 255, 0, 0
+      vertical:
+        color: 255, 0, 0
+    title:
+      title: "&c%kingdoms_other_name%"
+      subtitle: "%kingdoms_other_lore%"
+
+    corner-block: SEA_LANTERN
+    two-block: REDSTONE_BLOCK

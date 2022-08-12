@@ -1,0 +1,171 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                              Web Map                              |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Dynmap: https://www.spigotmc.org/resources/274/
+# When the file is saved, the config will reload and do a full render for Dynmap using the new settings.
+# However, some options still require a restart to change.
+# You can also do various Dynmap actions using /k admin dynmap command.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-admin-dynmap-fullrenderremove
+
+# If the marker data should be persistent. If enabled, all the land markers and icons will stay even after
+# server restarts. This is useful when you server has a lot of claimed lands, or you want to avoid lag without
+# using the auto update interval option. The data will be internally stored in Dynmap.
+# Needs a restart to update.
+# Note that if you change it from true to false, the old data will still stay.
+# It's not recommended to use this, as it may no longer work with future updates.
+persistent-data: false
+
+# Updates all the lands. Set to 0 to disable.
+# This performs a full async render for all the claimed lands.
+update-interval: 30mins
+
+# Priority of the marker visibility in the map.
+# Needs a restart to update.
+priority: 0
+
+# Boost marker resolutions?
+# Needs a restart to update.
+boost: true
+
+# If the kingdoms marker should be disabled by default.
+# Needs a restart to update.
+hide-by-default: false
+
+# The zoom level range which the markers are visible at.
+# set to -1 for no max/min limit.
+# These values can give confusing results. You need to play around with them to get the right one.
+# These current don't work for Bluemap and they're hardcoded since their value range differ from Dynmap significantly.
+# These zoom levels don't work for icons, keep scrolling down.
+zoom:
+  # The minimum zooming required to see the borders. If someone zooms out "too much" from the map they won't be able to see the borders.
+  # This is really useful because land borders can be really annoying when you want to have a general view of a big portion of the map.
+  min: 3
+
+  # The maximum zooming possible. So this value prevents players from seeing the borders when they zoom in "too much"
+  # 6 is pretty much the base value for maximum zoom on Dynmap interface itself, at least for me.
+  max: 6
+
+# Kingdoms can change their flag URL for Dynmap via kingdoms settings.
+flag:
+  # Cooldown for changing the kingdom image.
+  # The option can be used to lag the server if used excessively since it passes multiple checks.
+  cooldown: 10sec
+
+  # The image's size limit. Resizing the image from the <img> HTML tag will not help.
+  # Set to 0 for no limit.
+  # Although most of the image services out there don't allow a certain link to be used for an image,
+  # players that have their own website can still set the URL that links to a small image then reupload
+  # a bigger image under the same link. That's up to you to handle.
+  # This option does not downlaod the image, so don't worry about your servers connection.
+  size-limit:
+    width: 1000
+    height: 1000
+
+  links:
+    blacklist: true
+    # If the URL contains one of these strings.
+    # It's possible to detect links wrongly, but it happens rarely.
+    contains: [ 'jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion' ]
+    # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+    # If the URL contains any RegEx below then it'll not be allowed.
+    regex: [ ]
+
+# Default Maker settings.
+# If the kingdom already chose a color, it'll use that
+# for both fill and line colors. Other settings will stay the same.
+
+# For the color setting in your nexus, refer to config.yml instead.
+
+# The land chunk square fill options.
+# Hex code follows RGBA format.
+fill:
+  # The opacity is used for both this color and the custom
+  # color that kingdoms set from their nexus.
+  # 0 - 255
+  opacity: 100
+
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '01ce00'
+
+# The land chunk square stroke options.
+line:
+  # The size of the stroke.
+  weight: 5
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '017800'
+
+# The settings for the marker when a land is under attack.
+invasion:
+  fill:
+    opacity: 200
+    color: '7a0305'
+
+  line:
+    weight: 6
+    opacity: 1
+    color: '7a0305'
+
+# Description shown when hovering over the chunks.
+# All of the descriptions are based on HTML markup.
+# https://www.w3schools.com/html/html_intro.asp
+description:
+  # Used in the description below if the kingdom has a flag set, otherwise nothing.
+  flag: '<img src="%kingdoms_flag%" alt="%kingdoms_name%" width="250" height="auto" style="border:5px solid black;display:block;margin-left:auto;margin-right:auto;"><br>'
+
+  # In order to change the default kingdom name color, refer to default placeholders in config.
+  main: |
+    %flag%
+    <h1><span style="color:%kingdoms_color%">%kingdoms_name%</span></h1><br>
+    <span style="color:gray">%kingdoms_lore%</span><br>
+    <span style="color:green">Nation</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation%</span><br>
+    <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_might%</span><br>
+    <span style="color:green">King</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_king%</span><br>
+    <span style="color:green">Bank</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_bank%</span><br>
+    <span style="color:green">Resource Points</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_fancy_resource_points%</span><br>
+    <span style="color:green">Lands</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_lands%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_lands%</span><br>
+    <span style="color:green">Members</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_members%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_members%</span><br>
+    %members%<br>
+    <br>
+    <span style="color:green">Allies</span><span style="color:gray">:</span><br>
+    %allies%
+    <br>
+    <span style="color:yellow">Truces</span><span style="color:gray">:</span><br>
+    %truces%
+    <br>
+    <span style="color:red">Enemies</span><span style="color:gray">:</span><br>
+    %enemies%
+    <br>
+  members: '<span style="font-weight:italic;color:black">%kingdoms_rank_symbol% %kingdoms_rank_name% %player%</span> '
+  allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_name%</span> '
+  truces: '<span style="font-weight:italic;color:yellow">%kingdoms_name%</span> '
+  enemies: '<span style="font-weight:italic;codlor:red">%kingdoms_name%</span> '
+
+# If you changed an icon image, you have to restart the server.
+# Turrets do not use an icon as there are too many of them.
+icons:
+  # To disable a certain icon, set the label to ~ below.
+  enabled: true
+
+  # The zoom level range which the icons are visible at.
+  # -1 for no max/min and 0 for highest/lowest level of zoom marker is shown.
+  # These values can give confusing results. You need to play around with them to get the right one.
+  # NOTE: Change these values if you're using BlueMap. Something like 10-300
+  # Read the previous "zoom" option documentation for more info.
+  zoom:
+    max: -1
+    min: 6
+
+  # The label shown when clicking the icon.
+  # Set to ~ to disable certain icons.
+  home: 'Home'
+  national-spawn: 'National Spawn'
+  national-nexus: 'National Nexus'
+  nexus: 'Nexus'
+  powercell: 'Powercell'
+  extractor: 'Extractor'
+  outpost: 'Outpost'
+  warppad: 'Warp Pad'
+  regulator: 'Regulator'

@@ -1,0 +1,44 @@
+name: "&7Explosive Mine"
+type: pressure_mine
+cost: 200
+sell: 100
+max-level: 3
+placing:
+  whitelist: false
+  blocks: [ ]
+upgrade-cost: lvl * 50
+effects: ~
+# https://minecraft.gamepedia.com/Explosion#Typical_damage_radius
+# https://minecraft.gamepedia.com/Damage#Explosions
+damage: 0
+# From Level, Power, From Level Fire
+explosion:
+  level: 2
+  fire: 3
+  power: lvl * 0.5
+particles:
+  1:
+    place:
+      particle: CLOUD
+      count: 70
+      offset: 0.5, 0.5, 0.5
+    break:
+      particle: CLOUD
+      count: 70
+      offset: 0.5, 0.5, 0.5
+sounds:
+  1:
+    place: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+    break: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF
+block:
+  1: HEAVY_WEIGHTED_PRESSURE_PLATE
+item:
+  1:
+    name: "&7Explosive Mine"
+    material: HEAVY_WEIGHTED_PRESSURE_PLATE
+    lore:
+      - "&6Explodes when an enemy steps"
+      - "on the plate."
+      - ""
+      - "&9Attributes&8:"
+      - "&7⚫ &2Damage&8: &6TNT"

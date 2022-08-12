@@ -1,0 +1,38 @@
+last-donation-duration: Period
+
+death-penalty:
+  amount: int
+  disabled-worlds:
+    (type): list
+    (elements): str
+
+for-each: int
+give: int
+
+general-filters:
+  # TODO union bool and null
+  with-lore: any
+  enchanted: any
+  material:
+    blacklist: bool
+    list:
+      (type): list
+      (elements): MaterialMatcher
+
+custom:
+  (keys): Material
+
+advanced:
+  (values):
+    name: str
+    material: Material
+    resource-points: int
+
+custom-items:
+  (values):
+    name: str
+    material: Material
+    resource-points: int
+    lore:
+      (type): list
+      (elements): str

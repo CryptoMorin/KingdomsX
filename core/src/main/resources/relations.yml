@@ -1,0 +1,167 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Relations                      |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# A kingdom can have these types of relation with another kingdom: Neutral, Enemy, Truce, Ally and Nation
+# Let's say nation A is allies with nation B.
+# If A who requested to be allies with nation B accepts or declines B relation terms, the relation attributes from B will be used.
+# For example if nation A wants to build in nation B land, and nation A has build attribute but nation B doesn't, it'll listen to nation Bs attributes.
+# Kingdom Allies, truces and enemies have more priority. If A has kingdom a and B has kingdom b, and a is allies with b,
+# then it'll listen to relation attributes of allies in b regardless of their nation's relation. If a and b are both in the
+# same nation their relation will always be "Nation" regardless of the kingdom's relation.
+
+# Relation request to a nation or a kingdom.
+request-expiration: 1 day
+
+# If kingdoms relations should be checked when
+# interacting with a kingdom that is not in the same nation.
+prioritize-kingdom-relations: true
+
+# Allow kingdoms to have separate relations with kingdoms that are in their nation?
+# If you use this, it'll destroy the whole purpose of nation relations.
+allow-relations-between-nation-kingdoms: false
+
+# The PvP mode of the plugin. Needs a restart to be changed due to performance issues.
+# disabled - The plugin doesn't do anything.
+# normal - Players can PvP anywhere based on their relation attributes.
+# claimed - Players can only PvP inside of claimed lands based on their relation attributes.
+# unclaimed - Players can only PvP outside of claimed lands based on their relation attributes.
+# masswar - Players can only pvp anywhere during masswars.
+# territory - Players can pvp if both of them are not in their own or allies kingdom lands.
+#    that means player X is only protected if he is in his own claimed land (or an ally). Not when he's in an unclaimed land or a neutral, truce or enemy land.
+#    "Allies" in this context refers to any relation with ceasefire attribute.
+# relational - Allows you to configure the PvP mode of relations individually.
+# Note: When using the claimed/unclaimed options, if one player is a claimed land and the other is in an unclaimed land, they cannot PvP.
+# Note: If one of the players is invading any land this option acts like "normal"
+pvp: normal
+
+# Only apply kingdom relations if both parties agree on that specific relation attribute. Meaning that
+# the attribute will only take effects if they both enabled that attribute for their relation in kingdom settings.
+# Requires a server restart to be applied.
+# If set to false, only the receiving end's relation attributes will be taken into account.
+# What that means is, if you're trying to attack a player from a kingdom with their ceasefire attribute set to false
+# but your kingdom has the ceasefire attribute for the relation set to true, your members will not be able to attack the
+# kingdom, but that kingdom will be able to attack your members. That doesn't sound like something you'd want in most cases.
+agreements: true
+
+# Forces survival mode when players enter another land
+# unless they have CEASEFIRE and TURRET_CEASEFIRE attributes with that kingdom
+# or have the kingdoms.land.bypass.creative permission.
+# Note that this does not disable their fly for their safety.
+force-survival-mode: true
+
+# auto-revoke: If a kingdom declares that they no longer wish to be in a relation with the
+#              other kingdom, the other kingdom will automatically have this relation revoked as well.
+# ceasefire: Members of the two kingdoms cannot PvP each other.
+# donate: Kingdoms can donate resource points to each other clicking their nexus. Note that they'll still be able to use /k donate
+# build: Kingdoms can build in each others lands, however you can't touch any turrets or structures.
+# invade: If kingdoms can invade each other.
+# interact: Kingdoms can interact and open chests, enchantment tables and other containers.
+# use: Kingdoms can use buttons, open doors and use pressure plates.
+# home: Allow players to teleport to home of these kingdoms using /k home <kingdom>
+# manage: Kingdoms can remove and place turrets and structures in your land.
+#         Note that the placed turrets/structures will be for the kingdom that owns that land.
+# limit: How many kingdoms can a single kingdom have this type of relation with? Set to 0 for unlimited.
+# effects: List of potion effects activated when in these lands.
+# customizable: This merely manages the data saved, so it applies after a server restart.
+#               To disable it completely, remove it from the Nexus Settings GUI. The players will
+#               keep their relation data until the server is restarted if you keep the GUI.
+#               Note that NOT specifiying this option defaults to true
+# pvp: Only works if the main PvP mode option is set to "relational", this accepts all the same options
+#      as the main PvP mode. This also requires a restart.
+relations:
+  self:
+    color: "&2"
+    name: ""
+
+  neutral:
+    color: "&f"
+    name: "Neutral"
+    ceasefire: false
+    donate: false
+    build: false
+    use: false
+    fly: false
+    home: false
+    interact: false
+    invade: true
+    turret-ceasefire: false
+    manage-turrets: false
+    manage-structures: false
+    customizable: true
+    effects: [ ]
+
+  truce:
+    color: "&e"
+    name: "Truce"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: false
+    fly: true
+    home: false
+    limit: 10
+    interact: false
+    invade: false
+    turret-ceasefire: true
+    manage-turrets: false
+    customizable: true
+    manage-structures: false
+    effects: [ ]
+
+  ally:
+    color: "&a"
+    name: "Ally"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: false
+    fly: true
+    home: true
+    limit: 10
+    invade: false
+    interact: true
+    turret-ceasefire: true
+    manage-turrets: true
+    customizable: true
+    manage-structures: true
+    effects: [ ]
+
+  nation:
+    color: "&9"
+    name: "Nation"
+    auto-revoke: false
+    ceasefire: true
+    donate: true
+    build: true
+    home: true
+    invade: false
+    interact: true
+    use: true
+    turret-ceasefire: true
+    manage-turrets: true
+    manage-structures: true
+    customizable: false # because all nation members are supposed to follow the same rules.
+    effects: [ ]
+
+  enemy:
+    color: "&c"
+    name: "Enemy"
+    auto-revoke: false
+    ceasefire: false
+    donate: false
+    fly: true
+    build: false
+    home: false
+    limit: 10
+    interact: false
+    invade: true
+    turret-ceasefire: false
+    manage-turrets: false
+    manage-structures: false
+    effects: [ ]
+    customizable: true
+    disabled-commands:
+      - "sethome"

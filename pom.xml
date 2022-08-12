@@ -117,14 +117,14 @@
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot</artifactId>
             <version>1.19-R0.1-SNAPSHOT</version>
-<!--            <version>1.18.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.17.1-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.16.5-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.15.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.14.4-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.13.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
-<!--            <version>1.8.8-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.18.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.17.1-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.16.5-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.15.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.14.4-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.13.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.12.2-R0.1-SNAPSHOT</version>-->
+            <!--            <version>1.8.8-R0.1-SNAPSHOT</version>-->
             <scope>provided</scope>
         </dependency>
 
@@ -179,9 +179,9 @@
             <groupId>com.sk89q.worldguard</groupId>
             <artifactId>worldguard-bukkit</artifactId>
             <version>7.1.0-SNAPSHOT</version>
-<!--            <groupId>com.sk89q</groupId>-->
-<!--            <artifactId>worldguard</artifactId>-->
-<!--            <version>6.1.1-SNAPSHOT</version>-->
+            <!--            <groupId>com.sk89q</groupId>-->
+            <!--            <artifactId>worldguard</artifactId>-->
+            <!--            <version>6.1.1-SNAPSHOT</version>-->
             <scope>provided</scope>
             <exclusions>
                 <exclusion>
@@ -280,12 +280,12 @@
             </exclusions>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.mojang</groupId>-->
-<!--            <artifactId>brigadier</artifactId>-->
-<!--            <version>1.0.18</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.mojang</groupId>-->
+        <!--            <artifactId>brigadier</artifactId>-->
+        <!--            <version>1.0.18</version>-->
+        <!--            <scope>provided</scope>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>com.github.MilkBowl</groupId>
@@ -445,13 +445,13 @@
                 <version>3.3.0</version>
                 <configuration>
                     <finalName>${finalOutputJarName}</finalName>
-<!--                    <minimizeJar>true</minimizeJar>-->
+                    <!--                    <minimizeJar>true</minimizeJar>-->
                     <relocations>
                         <!-- Brigadier -->
-<!--                        <relocation>-->
-<!--                            <pattern>com.mojang.brigadier</pattern>-->
-<!--                            <shadedPattern>org.kingdoms.commands.brigadier.mojang</shadedPattern>-->
-<!--                        </relocation>-->
+                        <!--                        <relocation>-->
+                        <!--                            <pattern>com.mojang.brigadier</pattern>-->
+                        <!--                            <shadedPattern>org.kingdoms.commands.brigadier.mojang</shadedPattern>-->
+                        <!--                        </relocation>-->
 
                         <!-- YAML -->
                         <relocation>
@@ -499,7 +499,7 @@
                             <excludes>
                                 <exclude>META-INF/</exclude>
 
-<!--                                <exclude>kotlin/jvm/**</exclude>-->
+                                <!--                                <exclude>kotlin/jvm/**</exclude>-->
                                 <exclude>com/cryptomorin/xseries/NMSExtras*</exclude>
                                 <exclude>com/cryptomorin/xseries/NoteBlockMusic*</exclude>
                             </excludes>
@@ -541,60 +541,62 @@
                     </execution>
                 </executions>
             </plugin>
-<!--https://kotlinlang.org/docs/maven.html#compile-kotlin-and-java-sources-->
-                        <plugin>
-                            <groupId>org.jetbrains.kotlin</groupId>
-                            <artifactId>kotlin-maven-plugin</artifactId>
-                            <version>${kotlin.version}</version>
-                            <configuration>
-                                <skip>true</skip>
-                            </configuration>
-                            <executions>
-                                <execution>
-                                    <id>compile</id>
-                                    <phase>process-sources</phase>
-                                    <goals>
-                                        <goal>compile</goal>
-                                    </goals>
-                                    <configuration>
-                                        <sourceDirs>
-                                            <sourceDir>${project.basedir}/src/main/java</sourceDir>
-                                        </sourceDirs>
-                                    </configuration>
-                                </execution>
-                                <execution>
-                                    <id>test-compile</id>
-                                    <goals> <goal>test-compile</goal> </goals>
-                                    <configuration>
-                                        <sourceDirs>
-                                            <sourceDir>${project.basedir}/src/test/java</sourceDir>
-                                        </sourceDirs>
-                                    </configuration>
-                                </execution>
-                            </executions>
-                        </plugin>
+            <!--https://kotlinlang.org/docs/maven.html#compile-kotlin-and-java-sources-->
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/test/java</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-<!--            <plugin>-->
-<!--                <groupId>com.github.wvengen</groupId>-->
-<!--                <artifactId>proguard-maven-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals><goal>proguard</goal></goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <obfuscate>false</obfuscate>-->
-<!--                    <injar>${project.build.finalName}.jar</injar>-->
-<!--                    <outjar>${project.build.finalName}-small.jar</outjar>-->
-<!--                    <outputDirectory>${project.build.directory}</outputDirectory>-->
-<!--                    <proguardInclude>${basedir}/proguard.conf</proguardInclude>-->
-<!--                    <libs>-->
-<!--                        <lib>${java.home}/jmods/</lib>-->
-<!--                        <lib>${java.home}/lib/</lib>-->
-<!--                    </libs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+            <!--            <plugin>-->
+            <!--                <groupId>com.github.wvengen</groupId>-->
+            <!--                <artifactId>proguard-maven-plugin</artifactId>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <goals><goal>proguard</goal></goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <obfuscate>false</obfuscate>-->
+            <!--                    <injar>${project.build.finalName}.jar</injar>-->
+            <!--                    <outjar>${project.build.finalName}-small.jar</outjar>-->
+            <!--                    <outputDirectory>${project.build.directory}</outputDirectory>-->
+            <!--                    <proguardInclude>${basedir}/proguard.conf</proguardInclude>-->
+            <!--                    <libs>-->
+            <!--                        <lib>${java.home}/jmods/</lib>-->
+            <!--                        <lib>${java.home}/lib/</lib>-->
+            <!--                    </libs>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
         </plugins>
 
         <resources>

@@ -1,0 +1,69 @@
+name: "&0Inferno"
+type: inferno
+cost: 300
+sell: 150
+max-level: 3
+hologram:
+  1:
+    lines:
+      - "&8-=[ &0Inferno &8]=-"
+    height: 1
+placing:
+  whitelist: true
+  blocks:
+    - CONTAINS:FENCE
+    - CONTAINS:WALL
+particles:
+  1:
+    place:
+      particle: LAVA
+      count: 100
+      offset: 0.5, 0.5, 0.5
+    break:
+      particle: LAVA
+      count: 100
+      offset: 0.5, 0.5, 0.5
+sounds:
+  1:
+    place: ENTITY_ELDER_GUARDIAN_AMBIENT
+    break: ENTITY_ELDER_GUARDIAN_DEATH
+range: 7 + lvl
+cooldown: 15 - lvl
+max-targets: 1
+max-ammo: lvl * 2000
+upgrade-cost: lvl * 80
+fire: 10000
+
+# The initial turret's damage.
+damage: lvl * 3
+# Every time the turret goes thru a new phase, its damage is increased by the modifier below.
+damage-modifier: lvl / 3
+# Inferno turrets go thru a new "phase" once they activate (shoot their target) for the followed amount of steps specified below.
+# This phase resets if the inferno turrets loses its target or switches to another target.
+# But Inferno turrets don't switch to another target if they're still in range, they will focus
+# on that target until they're dead.
+damage-modifier-phases: 3
+
+block:
+  1: PLAYER_HEAD
+skull:
+  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvM2JjYmJmOTRkNjAzNzQzYTFlNzE0NzAyNmUxYzEyNDBiZDk4ZmU4N2NjNGVmMDRkY2FiNTFhMzFjMzA5MTRmZCJ9fX0="
+  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmViY2I4NjFlZTRlYzFjYjg3ZDU1NzUxOWU1MTM3NzYyZjcyNzYzZmM5ZmYzYjM3NTEyNjFjZTNkZmMyMmM1ZSJ9fX0="
+  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMzMDUyZTZiN2E4NzkyM2JkYjg4Zjk0MTg1ZTg0YjU2MmRjNWI4NTRiN2JiMDFjYzAxN2YyMmM1YThhNCJ9fX0="
+item:
+  1:
+    name: "&0Inferno Turret"
+    material: END_ROD
+    lore:
+      - "&6Turret that increases its damage"
+      - "over time when targetting a specific entity."
+      - ""
+      - "&9Attributes&8:"
+      - "&7⚫ &2Level&8: &6%level_roman%"
+      - "&7⚫ &2Ammo&8: &6%ammo%"
+      - "&7⚫ &2Range&8: &6%range%"
+      - "&7⚫ &2Max Targets&8: &6%max_targets%"
+      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+      - "&7⚫ &2Cooldown&8: &6%cooldown%"
+      - "&7⚫ &2Speed&8: &6%speed%"
+      - "&7⚫ &2Damage&8: &6%damage%"

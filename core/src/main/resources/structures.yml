@@ -1,0 +1,467 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                      Structures                     |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+disable-shift-click: true
+remove-unclaimed: false
+
+# Should structures go directly to the player's inventory who broke the structure.
+to-inventory-on-break: false
+
+# The total amount of structures a single land can have.
+# This is different than individual structure limits.
+# Set to 0 to disable
+total-limit-per-land: 10
+
+# Note that some structures such as powercells, regulators and nexus are limited to 1
+# structure per land by default as having more of them doesn't make sense.
+# Set the limit option to 0 or -1 or just delete it entirely to disable the limit.
+structures:
+  national-nexus:
+    name: "&3National Nexus"
+    type: national-nexus
+    default-name: "National Nexus"
+    particles:
+      1:
+        place:
+          particle: DRAGON_BREATH
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: DRAGON_BREATH
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break:
+    block: BEACON
+    hologram:
+      1:
+        lines:
+          - "&8-=( &9National Nexus &8)=-"
+        height: 1
+  # Refer to config.yml for more nexus options.
+  nexus:
+    name: "&bNexus"
+    type: nexus
+    default-name: "Nexus"
+    particles:
+      1:
+        place:
+          particle: DRAGON_BREATH
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: DRAGON_BREATH
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+    block: BEACON
+    hologram:
+      1:
+        lines:
+          - "&8-=( &9Nexus &8)=-"
+        height: 1
+  powercell:
+    name: "&4Powercell"
+    type: powercell
+    default-name: 'Powercell'
+    max-level: 2
+    upgrade-cost: 10000
+
+    particles:
+      1:
+        place:
+          particle: REDSTONE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+          color: 255, 0, 0
+        break:
+          particle: REDSTONE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+          color: 255, 0, 0
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+    hologram:
+      1:
+        lines:
+          - "&8-=( &4Powercell &8)=-"
+        height: 1
+    block:
+      1: REDSTONE_LAMP
+      2: TARGET
+
+    cost: 1000
+    sell: 500
+    item:
+      1:
+        name: "&bPowercell"
+        material: MUSIC_DISC_BLOCKS
+        flags: [ HIDE_POTION_EFFECTS ]
+        lore:
+          - "&7Chunks next to a chunk"
+          - "with a power cell cannot be"
+          - "invaded without invading the"
+          - "power cell first."
+          - "&cDoes not work on other power cell lands."
+          - "&7⚫ &2Level&8: &6%level_roman%"
+  extractor:
+    name: "&2Extractor"
+    type: extractor
+    default-name: 'Extractor'
+    max-level: 3
+    upgrade-cost: lvl * 1000
+
+    limits:
+      per-land: 5
+      total: 50
+
+    particles:
+      1:
+        place:
+          particle: CRIT
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: CRIT
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+    hologram:
+      1:
+        lines:
+          - "&8-=( &2Extractor &8)=-"
+        height: 1
+    block:
+      1: GOLD_BLOCK
+      2: DIAMOND_BLOCK
+      3: EMERALD_BLOCK
+    cost: 2000
+    sell: 1000
+
+    capacity: 500
+
+    fuel:
+      enabled: true
+      capacity: level * 1000
+      variants:
+        first:
+          material: COAL
+          fill-amount-per-item: 5
+        second:
+          material: CHARCOAL
+          fill-amount-per-item: 10
+        third:
+          material: BLAZE_ROD
+          fill-amount-per-item: 100
+    generator:
+      1:
+        amount: 1
+        fuel: 0.5
+        every: 25sec
+      2:
+        amount: 1
+        fuel: 0.5
+        every: 20sec
+      3:
+        amount: 1
+        fuel: 0.5
+        every: 10sec
+    item:
+      1:
+        name: "&2Extractors"
+        material: MUSIC_DISC_CAT
+        lore:
+          - "&6Extractors will produce resource points."
+          - "&6You can collect the resource points"
+          - "at any time."
+          - ""
+          - "&7⚫ &2Fuel&8: &6%fuel%"
+          - "&7⚫ &2Every&8: &6%every%"
+          - "&7⚫ &2Resource Points&8: &6%resource-points%"
+  outpost:
+    name: "&eOutpost"
+    default-name: 'Outpost'
+    type: outpost
+
+    limits:
+      per-land: 1
+      total: 10
+
+    particles:
+      1:
+        place:
+          particle: SPELL
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: SPELL
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+    hologram:
+      1:
+        lines:
+          - "&8-=( &eOutpost &8)=-"
+        height: 1
+    block:
+      1: HAY_BLOCK
+    cost: 500
+    sell: 250
+    item:
+      1:
+        name: "&9Outpost"
+        material: HAY_BLOCK
+        flags: [ HIDE_POTION_EFFECTS ]
+        lore:
+          - "&7The Outpost allows direct access to your Nexus."
+          - "&7It enables you to access turrets, upgrades,"
+          - "and unlockable structures."
+          - "&7Outposts can produce exp bottles from"
+          - "resource points aswell."
+  warppad:
+    name: "&cWarp pad"
+    type: warppad
+    default-name: 'Warp Pad'
+    # The countdown for the teleportation.
+    teleport-delay: 3
+    # "distance" is the block distance between the warppad and the target location.
+    teleport-fuel-cost: 'distance / 2'
+    # If the target location is in another world entirely,
+    # this amount will be used for "distance" instead.
+    other-world-distance-factor: 300
+
+    fuel:
+      enabled: true
+      capacity: level * 1000
+      variants:
+        first:
+          material: COAL
+          fill-amount-per-item: 5
+        second:
+          material: CHARCOAL
+          fill-amount-per-item: 10
+        third:
+          material: BLAZE_ROD
+          fill-amount-per-item: 100
+
+    limits:
+      per-land: 3
+      total: 30
+
+    particles:
+      1:
+        place:
+          particle: CLOUD
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: CLOUD
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+        teleport-sound: BLOCK_PORTAL_TRAVEL
+        fuel-fill: BLOCK_FIRE_EXTINGUISH
+    hologram:
+      1:
+        lines:
+          - "&8-=( &cWarpPad &8)=-"
+          - "SPACE: 0.2"
+          - "%structure-custom-name%"
+        height: 1.3
+    block:
+      1: END_PORTAL_FRAME
+    cost: 2000
+    sell: 1000
+    item:
+      1:
+        name: "&cWarpPad"
+        material: END_PORTAL_FRAME
+        lore:
+          - "&6Warp pads can be used to teleport"
+          - "from a structure to another."
+          - "&7⚫ &2Name&8: &6%structure-custom-name%"
+          - "&7⚫ &2Fuel&8: &6%fuel%"
+  regulator:
+    name: "&3Regulator"
+    default-name: 'Regulator'
+    type: regulator
+    # Regulators only refill if ammo reached 0
+    # so this cost is for a full refill.
+    auto-fill-cost: "maxAmmo / 3"
+
+    particles:
+      1:
+        place:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+    hologram:
+      1:
+        lines:
+          - "&8-=( &3Regulator &8)=-"
+        height: 1
+    block:
+      1: LECTERN
+    cost: 5000
+    sell: 4000
+    item:
+      1:
+        name: "&3Regulator"
+        material: LECTERN
+        lore:
+          - "&6Manage player attributes such as building,"
+          - "turret ceasefire and etc..."
+          - "Change which player can interact with what block."
+          - "Disable mob or animal spawning and turrets."
+          - "Enable explosions."
+          - "Auto fill turrets ammo."
+  siege-cannon:
+    name: "&5Siege Cannon"
+    type: siege-cannon
+    default-name: 'Cannon'
+    shield-damage:
+      1: 5mins
+      2: 7mins
+      3: 10mins
+
+    upgrade-cost: lvl * 4000
+    max-level: 3
+
+    tube-textures:
+      1: [ "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIyYWJkNjY5MzlmNGNiNzI1N2E4OGNmNTJmYmM2ZmRjZWVjMTQzM2VjMmE2ZWYxNmQ2MmUzNGY2MjM4NzgxIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIyYWJkNjY5MzlmNGNiNzI1N2E4OGNmNTJmYmM2ZmRjZWVjMTQzM2VjMmE2ZWYxNmQ2MmUzNGY2MjM4NzgxIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYzYThjMTY4MWRkMjgzN2UyYjIyMzMxMGNjM2NjNjY1NWVlZDQ0NzRiYjZhNjNiZjJkZjViODc0MjlkZWJlMSJ9fX0=" ]
+      2: [ "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Y5NzdlNjkxNjRlY2RkZGJkMWY5MzUzNjUzYjY5MDM1YWQyNTE3YjA4MjJjYTZiZTQwY2ZiYjdhYTIyMjdlNCJ9fX0=", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Y5NzdlNjkxNjRlY2RkZGJkMWY5MzUzNjUzYjY5MDM1YWQyNTE3YjA4MjJjYTZiZTQwY2ZiYjdhYTIyMjdlNCJ9fX0=", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmQ4MDAwZDU0MTk4NjBmZjNkZTUzYmE1NTliOWVjZTc5ZmIxYjY0OGUwOTlmMDIzYmE0ODA4NGNkY2VmOGIwYyJ9fX0=" ]
+      3: [ "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGRmZTVhOTYzODY5NDE1MzQwZDJjZWMwZjgyZDA4ZGY3M2RjYjE2ODQyODQ4N2I1MTRhYThkNGVjMTlmZTJjIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGRmZTVhOTYzODY5NDE1MzQwZDJjZWMwZjgyZDA4ZGY3M2RjYjE2ODQyODQ4N2I1MTRhYThkNGVjMTlmZTJjIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjM5YzYxNDA4ODgxNDdmNWRjYTIzNjI0NTA4NWExNDRhYTU0NDEzZWZmMTNlMmE1N2ExZDMzYTgzMDUwOGFmOCJ9fX0=" ]
+
+    explosion-radius:
+      1: 3
+      2: 4
+      3: 5
+
+    # If empty doesn't send a msg.
+    invalid-ammo-message: ""
+    # Damage to players
+    damage: "lvl * 5"
+    knockback: "lvl / 2"
+
+    # Cooldown in seconds before the cannon can shoot again (can be reloaded during cooldown)
+    # Note that this cooldown doesn't persist between restarts.
+    cooldown:
+      1: 20
+      2: 15
+      3: 10
+
+    actionbar:
+      sit: "&2Siege Cannon &6%level_roman% &8- &2Press &6SHIFT &2to leave"
+      fire: '&2Fire'
+      cooldown: '&cCooldown&8: &e%cooldown%'
+      not-loaded: '&cCannon not loaded'
+
+    # Below values are added to the main value.
+    projectiles:
+      low-tier:
+        shield-damage: 2min
+        explosion-radius: 1
+        damage: 1
+        knockback: 1
+        item:
+          material: IRON_BLOCK
+      mid-tier:
+        shield-damage: 3min
+        explosion-radius: 1
+        damage: 2
+        knockback: 2
+        item:
+          material: GOLD_BLOCK
+      high-tier:
+        shield-damage: 5min
+        explosion-radius: 2
+        damage: 3
+        knockback: 3
+        item:
+          material: FIRE_CHARGE
+
+    # "others" is the a blacklist of all other ordinary block types. You can also set this option
+    # to "*" to disable all normal block damages.
+    allow-damaging:
+      1:
+        others: [ BEDROCK, BARRIER, COMMAND_BLOCK, END_PORTAL_FRAME, STRUCTURE_BLOCK, STRUCTURE_VOID, OBSIDIAN ]
+      2:
+        # Note that turret and structure types are case-sensitive.
+        structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
+        others: [ BEDROCK, BARRIER, COMMAND_BLOCK, END_PORTAL_FRAME, STRUCTURE_BLOCK, STRUCTURE_VOID ]
+      3:
+        # "structures" and "turrets" accept both lists and 'true' for all types
+        turrets: true
+        protected-blocks: false
+    particles:
+      1:
+        shoot:
+          particle: FLAME
+          count: 30
+          offset: 0.5
+        hit:
+          particle: FLAME
+          count: 50
+          offset: 2
+        place:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+        break:
+          particle: ENCHANTMENT_TABLE
+          count: 70
+          offset: 0.5, 0.5, 0.5
+    sounds:
+      1:
+        sit: ITEM_ARMOR_EQUIP_IRON
+        standup: ITEM_ARMOR_EQUIP_GOLD
+        place: BLOCK_BEACON_ACTIVATE
+        break: BLOCK_BEACON_DEACTIVATE
+        shoot: ENTITY_DRAGON_FIREBALL_EXPLODE
+        load: ITEM_BOTTLE_FILL_DRAGONBREATH
+        empty: ENTITY_ITEM_BREAK
+        cooldown: BLOCK_NOTE_BLOCK_BASS
+        hit: ~ # The explosion sound is enough.
+    hologram:
+      1:
+        lines:
+          - "&8-=( &5Siege Cannon &8)=-"
+        height: 1
+    block:
+      1: DISPENSER
+    cost: 5000
+    sell: 4000
+    item:
+      1:
+        name: "&5Siege Cannon"
+        material: DISPENSER
+        lore:
+          - "&6A cannon used to break kingdoms"
+          - "shields."

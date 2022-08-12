@@ -1,0 +1,446 @@
+prefix: bool
+debug: bool
+updates:
+  check: bool
+  download: bool
+  path: str
+  configs: bool
+
+lang: str
+
+backups:
+  interval: str
+  enabled:
+    enabled: bool
+    data: bool
+    configs: bool
+  
+  folder: str
+  ignore-todays-backup: bool
+  delete-backups-older-than: int
+
+database:
+  method: str
+  data-folder: str
+  auto-save-interval: str
+  smart-save: bool
+  load-all-data-on-startup: bool
+  
+  tables:
+    nations: str
+    kingdoms: str
+    players: str
+    lands: str
+    mails: str
+
+disabled-worlds:
+  (type): list
+  (elements): str
+
+keep-admin-mode: bool
+
+integrations:
+  (values): bool
+
+placeholders:
+  variables:
+    (values): str
+
+  defaults:
+    (values): any
+
+time-formatter:
+  (values): str
+
+help:
+  commands: int
+  footer-pages: int
+
+error-sound: Sound
+
+guis:
+  creative-sound: Sound
+  close-on-damage: bool
+  allow-own-inventory-interact: bool
+  default-click-sound: Sound
+
+join-leave-messages: bool
+
+top-kingdoms:
+  might: Math
+  update-interval: Period
+  amount: int
+  show-pacifists: bool
+  
+  rewards:
+    top: int
+    resource-points: Math
+    bank: Math
+
+top-nations:
+  might: Math
+  amount: int
+  
+  rewards:
+    top: int
+    resource-points: Math
+    bank: Math
+
+max-members:
+  kingdoms: Math
+  nations: Math
+
+kingdom-name:
+  renaming-cooldown: str
+  max-length: int
+  min-length: int
+  ignore-colors: bool
+  allow-numbers: bool
+  allow-spaces: bool
+  allow-non-english: bool
+  allow-symbols: bool
+  allow-duplicate-names: bool
+  case-sensitive: bool
+  
+  blacklisted-regex:
+    (type): list
+    (elements): str
+  blacklisted-names:
+    (type): list
+    (elements): str
+
+tags:
+  attempt-automatic-setting: bool
+  renaming-cooldown: Period
+  
+  max-length: int
+  min-length: int
+  ignore-colors: bool
+  
+  allow-numbers: bool
+  allow-spaces: bool
+  allow-non-english: bool
+  allow-symbols: bool
+  
+  blacklisted-names:
+    (type): list
+    (elements): str
+
+nation-name:
+  renaming-cooldown: str
+  
+  max-length: int
+  
+  min-length: int
+  
+  ignore-colors: bool
+  
+  allow-numbers: bool
+  
+  allow-spaces: bool
+  
+  allow-non-english: bool
+  
+  allow-symbols: bool
+  
+  allow-duplicate-names: bool
+  
+  case-sensitive: bool
+  
+  blacklisted-names:
+    (type): list
+    (elements): str
+
+default-public-homes: bool
+
+kingdom-fly:
+  enabled: bool
+  disable-on-damage: bool
+  nearby-unfriendly-range: int
+  
+  charges:
+    enabled: bool
+    every-seconds: int
+    
+    players:
+      amount:
+        default: int
+      activation-cost:
+        default: int
+      
+      pay-kingdom:
+        enabled: bool
+        resource-points: bool
+    
+    kingdoms:
+      amount:
+        default: int
+      activation-cost:
+        default: int
+      resource-points: bool
+  
+  warnings:
+    land: int
+    
+    charges: int
+    
+    unfriendly-nearby: int
+
+kingdom-lore:
+  title:
+    fade-in: int
+    stay: int
+    fade-out: int
+  
+  allow-colors: bool
+  
+  max-length: int
+  
+  ignore-colors: bool
+  
+  renaming-cooldown: int
+  
+  allow-non-english: bool
+  
+  allow-symbols: bool
+  
+  remove-keywords:
+    (type): list
+    (elements): str
+  
+  blacklisted-names:
+    (type): list
+    (elements): str
+
+no-kingdom-reminder: bool
+
+announcements:
+  king: bool
+  rename: bool
+  
+  create:
+    kingdom: bool
+    nation: bool
+
+outpost-events:
+  death-resource-points-penalty: int
+  
+  scoreboard:
+    title: str
+
+economy:
+  create-confirmation: str
+  
+  bank:
+    deposit:
+      enabled: bool
+      min: int
+    
+    withdraw:
+      enabled: bool
+      min: int
+    
+    limit:
+      kingdoms: int
+      nations: int
+  
+  resource-points:
+    worth: decimal
+    
+    min-withdraw: int
+  
+  costs:
+    create:
+      kingdom: int
+      nation: int
+    
+    rename:
+      kingdom: int
+      nation: int
+    
+    tag:
+      kingdom: int
+
+daily-checks:
+  time: str
+  interval: int
+  
+  elections:
+    interval: int
+    vote-percentage: int
+    duration: Period
+    disallow:
+      joins: bool
+      kicks: bool
+  
+  timezone: str
+  
+  countdowns:
+    (type): list
+    (elements): str
+
+tax:
+  kingdoms:
+    enabled: bool
+    pacifism-factor: str
+    scaling: Math
+    notifications: bool
+    age: Period
+    
+    use-resource-points: bool
+    disband-if-cant-pay: bool
+    
+    members:
+      enabled: bool
+      
+      age: Period
+      default-equation: Math
+      kick-if-cant-pay: bool
+  nations:
+    enabled: bool
+    scaling: Math
+    
+    age: Period
+    
+    disband-if-cant-pay: bool
+    
+    use-resource-points: bool
+    
+    members:
+      enabled: bool
+      default-equation: Math
+      use-resource-points: bool
+      kick-if-cant-pay: bool
+
+inactivity:
+  kingdom:
+    disband: Period
+    announce: bool
+  
+  member:
+    kick: Period
+    disband-kingdom-if-king: bool
+    announce: bool
+
+creation:
+  kingdoms:
+    show-kingdom-type-gui: bool
+    newbie-protection: Period
+    
+    commands:
+      (type): list
+      (elements): str
+  nations:
+    newbie-protection: Period
+    commands:
+      (type): list
+      (elements): str
+
+disband:
+  confirm: bool
+  use-gui: bool
+  confirmation-expiration: int
+  announce: bool
+  announce-inactivity: bool
+
+nexus:
+  place-on-create: bool
+  claimed: bool
+  
+  break:
+    item:
+      material: Material
+    creative: bool
+    cost: int
+  
+  click-donation: bool
+  allow-removal: bool
+  nation-capital: bool
+  disable-shift-click: bool
+  
+  actionbar:
+    enabled: bool
+    keep: bool
+  
+  preview:
+    enabled: bool
+    refresh-ticks: int
+    flick-ticks: int
+    out-of-land-block: str
+  
+  replace:
+    left-click: bool
+    right-click: bool
+    
+    blocks:
+      blacklist: bool
+      list:
+        (type): list
+        (elements): str
+  
+  disable-place-mode:
+    on-damage: bool
+    out-of-land: bool
+
+invitations:
+  allow-offline-invites: bool
+  allow-from-other-kingdoms: bool
+  allow-multiple-invites: bool
+  
+  expiration:
+    expire-on-leave: bool
+    default-expire: str
+    offline-expire: str
+  
+  announce: bool
+
+home:
+  on-join:
+    kingdom-home: bool
+    nation-spawn: bool
+  
+  respawn:
+    kingdom-home: bool
+    nation-spawn: bool
+  
+  set-on-create: bool
+  set-on-first-claim: bool
+  use-nexus-if-not-set: bool
+  claimed: bool
+  nation-spawn-capital: bool
+  nexus-land: bool
+  
+  unset-if:
+    unclaimed: bool
+    invaded: bool
+  
+  safe: bool
+  teleport-delay: int
+  use-timer-message: bool
+  should-not-move: bool
+  should-not-be-damaged: bool
+
+book:
+  limit: int
+  title-max-length: int
+
+color-range:
+  enabled: bool
+  blacklist: bool
+
+tpa:
+  allow-from-other-kingdoms: bool
+  default-timer: Period
+  teleport:
+    prepare-seconds: int
+    timer-seconds: int
+
+mails:
+  envelope:
+    resource-points: Math
+    money: Math
+  subject:
+    limit: int
+    ignore-colors: bool
+  summary:
+    limit: int
