@@ -1,0 +1,2107 @@
+prefix: '&6[&lK&eingdoms&6] &2'
+permissions:
+  claim: '&cNemuzes zabrat uzemi'
+  unclaim: '&cNemuzes odebrat uzemi'
+  unclaim-owned: '&cMuzes odemknout pouze to uzemi ktere jsi si ty zabral nikoli co vlastni nekdo jiny &e%claimer%'
+  home: '&cNemuzes pouzit home od statu'
+  instant-teleport: '&cNemuzes se okamzite teleportovat na tve spoluhrace'
+  read-mails: '&cNemas opravneni cist maily tveho statu'
+  view-logs: '&cNemas opravneni cist protokol' 
+  manage-mails: '&cNemas opravneni posilat zpravy'
+  set-home: '&cNemuzes nastavit home od statu'
+  lore: '&cNelze zmenit jmeno statu nebo lore'
+  nation: '&cNemuzes ridit narod'
+  build: '&cNemuzes stavet v tvem statu'
+  build-owned: '&cNemuzes stavet v tvem statu'
+  nexus-build: '&cNemuzes stavet na pude nexusu'
+  nexus: '&cNemuzes zmenit kralovsky nexus'
+  broadcast: '&cNemuzes vysilat zpravy'
+  alliance: '&cNemuzes zmenit statni alianci'
+  exclude-tax: ~Unused message entry
+  protection-signs: ~Unused message entry
+  edit-ranks: '&cNemuzes upravovat ranky a povoleni'
+  relation-attributes: '&cNemuzes zmenit atributy'
+  manage-ranks: '&cNemuzes zmenit ranky'
+  upgrade: '&cNemuzes vylepsovat'
+  enemy: '&cNemuzes pouzit /k enemy other kingdoms'
+  truce: '&cNemuzes pouzit /k truce other kingdoms'
+  fly: '&cNemuzes pouzit fly'
+  settings: '&cNemuzes menit nastaveni statu'
+  donate: '&cNemuzes spravovat resource pointy statu'
+  invade: '&cNemuzes napadnout ostatni statu'
+  invite: '&cNemuzes pozvat hrace do tohoto statu'
+  kick: '&cNemuzes vyhodit clena'
+  nexus-chest: '&cNemuzes pouzit nexus bednu'
+  outpost: '&cNemuzes pouzit outpost'
+  protected-chests: '&cNemas pristup ke chranene bedne'
+  structures: '&cNemuzes pouzivat structures'
+  turrets: '&cNemuzes pouzivat turrety'
+  withdraw: '&cNemuzes si vybirat z tveho statu'
+permissions-interact: '&cNemas opravneni ovlivnovat tenhle stat'
+permissions-use: '&cNemas opravneni pouzivani veci v tomhle statu'
+tags:
+  tagged:
+    message: hover:{&6&l@%tag%;&2You have been tagged}
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
+  others: hover:{&l@%tag%;&9Tag}
+  offline: hover:{&e@%tag%;&cOffline}
+  unknown-player: hover:{&c@%tag%;&4Unknown Player}
+tax:
+  kick: '&cNemel jsi dostatek zlataku pro placeni dani v tomhle statu proto jsi byl vyhozen'
+  reminder: |
+
+    &4&l&nAttention&8: &c&lTaxes will be collected in&8: &e%time%
+  total: '&2Tvuj stat ziskal dohromady &6$%tax% &2z dani'
+  paid: '&e$%tax% &cbylo ubrano z tveho uctu, kvuli statni dani'
+  excluded-permission: '&cNeplatil jsi statni daně, proto jsi byl vyloučen'
+  excluded-new: '&2Neplatil jsi dane protoze jsi ve statu novy'
+  kingdom:
+    age: '&2Tvuj stat neplatil dane protoze je novy'
+    paid: |
+      &2A total of &6$%tax% &2kingdom tax has been paid.
+      New Kingdom Bank Balance&8: &6$%kingdoms_fancy_bank%
+    paid-nation: |
+      &2A total of &6$%tax% &2kingdom tax has been paid to your nation.
+      New Kingdom Bank Balance&8: &6$%kingdoms_fancy_bank%
+      &2New Nation Bank Balance&8: &6$%kingdoms_fancy_nation_bank%
+    kicked: '&e%kingdom% &cstat byl vyhozen z narodu protoze neplatil dane&8:&e%kingdoms_fancy_bank% &8< $%tax%'
+    disbanded: '&cVas stat byl rozpusten protoze nebyl schopen platit dane&8: &e$%tax%'
+    disbanded-announce: '&e%kingdom% &cVas stat byl rozpusten, protoze nebyl schopen platit dane&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+    kicked-announce: '&e%kingdom% &cStat byl vyhozen z &e%nation% &cnation protoze neplatil dane&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+  nation:
+    age: '&2Tvuj narod neplatil dane protoze je novy'
+    paid: |
+      &2A total of &6$%tax% &2nation tax has been paid.
+      New Nation Bank Balance&8: &6$%kingdoms_fancy_nation_bank%
+    disbanded: '&cTvuj narod byl rozpusten protoze nebyl schopen platit dane&8: &e$%tax%'
+    disbanded-announce: '&e%nation% &cTvuj narod byl rozpusten protoze nebyl schopen platit dane&8: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
+  notifications: |
+    &8[&4WARNING&8] &cstat nema dostatek zlataku &7(&e%kingdoms_fancy_bank%&7) &cv bance pro zaplaceni pristich dani&8: &e%tax%
+    &cIf the collected taxes from the members are not enough, your kingdom will be disbanded.
+  kick-announce: '&e%player% &cbyl vyhozen protoze nebyl schopny platit dane&8: &e%tax%'
+  member-paid: '&6$%tax% &cbylo ubrano z tveho uctu kvuli dani'
+in-claim-only:
+  placing:
+    general: '&cMuzes stavet pouze v tvem zabranem uzemi'
+    radius: '&cMuzes stavet pouze v tvem zabranem uzemi nebo v rozmezi &6%radius% &cchunku tveho uzemi'
+    charges: '&cPotrebujes &e$%money% &czlataku a tvuj stat potrebuje &e%rp% &cresource pointu pro polozeni bloku mimo zabrane uzemi'
+  breaking:
+    charges: '&cPotrebujes &e$%money% &czlataku a tvuj stat potrebuje &e%rp% &cresource pointu pro zniceni bloku mimo  zabrane uzemi'
+    radius: '&cMuzes stavet pouze v tvem uzemi nebo v rozmezi &6%radius% &cchunku od tveho uzemi'
+    general: '&cMuzes stavet pouze v tvem zabranem uzemi'
+structures:
+  limit: '&cMuzes mit pouze &e%limit% struktur na uzemi'
+  specific-limit: '&cMuzes mit pouze &e%limit% %style% &cstruktur na uzemi'
+  specific-total-limit: '&cMuzes mit pouze &e%limit% %style% &cstruktur'
+  block-occupied: '&cNemuzes to polozit zde &e%material% &czde uz je blok polozen'
+  enter-name: '&2Zadej nove jmeno struktury'
+  name-set: '&2Nazev struktury nastaven na&8: &6%name%'
+  disabled-world: '&cNemuzes polozit strukturu v zakazanem uzemi'
+  upgrade:
+    max-level: '&cStruktura je jiz na max. levlu'
+  upgrade-not-enough-resource-points: '&cPotrebujes &e%cost% &cresource pointu pro upgrade'
+  upgrade-upgraded: '&2Struktura vylepsena na level &6%level%'
+turrets:
+  block-occupied: '&cZde nemuzes polozit turretu &e%material% &czde je jiz blok polozen'
+  limit: '&cMuzes polozit pouze &e%limit% &cturret na uzemi'
+  already-placed: '&cZde je jiz turreta polozena'
+  cant-place: '&cTahle turreta zde nemuze byt polozena poloz turretu na &efence &cnebo &ewall block'
+  disabled-world: '&cNemuzes polozit turretu v zakazanem uzemi
+  not-manual: '&cTahle turreta neni v manualnim modu aktivuj ji nejdrive
+  manual-operating: '&2Manual mode&8: &2Zamir na nepritele mezitim co drzis item a &9levym tlacitkem mysi klikni'
+locations:
+  normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%'
+  chunk: '&6%world%&8, &6%x%&8, &6%z%'
+placeholders:
+  top-not-found: '&cZadny stat v top pozici &8: &e%position%'
+siege-cannon:
+  ready-fire: '&2Kanon je připraven strilet'
+  sit: '&2Jsi v kanonu bud si to nabij sam nebo to nech na nekom jinem'
+  occupied: '&cZde jiz sedi nekdo jiny'
+  masswar-only: '&cMuzes pouzit pouze siege kanon behem masswars'
+  already-loaded: '&cKanon je jiz nabity'
+  not-ammo: '&cKanon muze byt nabit pouze naboji urcene v GUI'
+  hit:
+    unclaimed-land: '&cKanon zasahl nezabrane uzemi'
+    no-shield: '&2Kanon zasahl &6%kingdoms_name% &2 a nemaji stit'
+    pacifist: '&cKanon zasahl &e%kingdoms_name% &c but they''re a pacifist kingdom'
+    destroyed-shield: '&2Kanon zasahl stat &6%kingdoms_name% A jejich stit byl znicen'
+    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_name% &2zbyvajici stit&8: &6%kingdoms_shield_time_left%'
+    damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%kingdoms_shield_time_left%'
+  friendly:
+    fire: '&cKanon zasahl pratelske uzemi ktere patri &e%kingdom%'
+lands:
+  build-own-only: '&cMuzes stavet pouze v mistech ktere ti patri'
+  portal-protection: '&cTvoje teleportace k portalu byla ukoncena protoze portal jiz patri jinemu statu'
+  gamemode-protection: '&cTvůj herní mod byl zmenen protoze jsi vstoupil do ciziho uzemi'
+  gamemode-protection-activated: '&cNemuzes pouzit creativ na tomhle uzemi'
+  nation-zone:
+    place: '&cNemuzes stavet bloky na uzemi narodu &e%nation%'
+    break: '&cNemuzes nicit bloky na uzemi narodu &e%nation%'
+    interact: '&cV zone narodu &e%nation% &cnemuzes nic ovlivnovat'
+other-kingdoms:
+  place: '&cNemuzes stavet v cizim state'
+  break: '&cNemuzes stavet v cizim state'
+  kill: '&cNemuzes zabit &e%entity% &cv cizim state'
+  interact: '&cV cizim state nemuzes nic ovlivnovat'
+  use: '&cTohle nemuzes pouzivat v cizim state'
+  structure:
+    place: '&cTohle nemuzes polozit v cizim state'
+    interact: '&cTohle nemuzes otevirat v cizim state'
+    break: '&cTohle nemuzes nicit v cizim state'
+    can-take: '&cTuhle strukturu si muzes vzit, jelikoz ji zadny stat nevlastni'
+  nexus:
+    break: '&2Obrzel jsi &6%rp% &2za zniceni nexusu'
+    break-wrong-item: '&cResource pointy za zničeni nexusu muzes ziskat pouze pri pouziti &ediamond hoe&c'
+  turret:
+    can-take: '&cTuto turretu si muzes vzit, jelikoz ji zadny stat nevlastni'
+    place: '&cNemuzes pokladat turrety v cizich statech
+    interact: '&cNemuzes otevrit turretu ciziho statu'
+    break: '&cNemuzes nicit turretu v cizim state'
+guis:
+  creative: '&cNemuzes otevrit GUI v creative modu'
+  open-inventory-during-input: '&cNemuzes otevrit inventar pri teto akci, napis hover:{&ecancel;&eCancel;cancel} &cpro ukonceni akce '
+  command-during-input: '&cNemuzes pouzivat jine prikazy pri teto akci, napis hover:{&ecancel;&eCancel;cancel} &cpro ukonceni teto akce'
+  cant-open-during-invasion: '&cNemuzes otevrit GUI behem oblehani tveho statu'
+  pages:
+    next-page-not-available: '&cUz neni vice stranek Max&8: &e%pages% &8stranek'
+    previous-page-not-available: '&cZadne dalsi predchozi stranky'
+protected-signs:
+  cant-modify: '&cNemuzes menit nastaveni tohoto bloku'
+  already-protected: '&6Tenhle blok je jiz chranen'
+  broke: '&6Znicil jsi chraneny blok'
+  unprotected: '&cTento blok jiz neni chraneni'
+  cant-break: '&cPouze majitel chraneneho bloku ho muze znicit'
+  protected: '&cTento blok je chranen'
+  invalid-sign: '&cYou can''t protect using this sign'
+  invalid-block: '&cNemuzes ochranit tento blok'
+  not-attached: '&cCedule musi byt na bloku aby byl chranen'
+  unclaimed: '&cNemuzes pouzit chranici ceduli v nezabranem uzemi'
+  kingdom-items: '&cChranici ceduli nemuzes pouzit na turrety a struktury'
+  other-kingdoms: '&cChranici ceduli nemuzes pouzit v cizim state'
+  cant-protect-double-chest: '&cBedna nemuze byt chranena protoze se cast ni nachazi v nezabranem uzemi'
+  password:
+    invalid: '&cSpatne heslo, zkus to znovu'
+    cant-move: '&cNemas povoleni se hybat, dokud nezadas heslo'
+    error-429: '&cPrilis spatnych pokusu'
+    in-cooldown: |
+      &cThis container requires a password to access, however you had too many failed attempts.
+      You can try again in&8: &e%cooldown%
+    required: '&cTenhle kontejner potřebuje heslo aby mohl byt otevren zadej heslo nebo napis  hover:{&ecancel;&eCancel;cancel} &c pro ukonceni akce'
+    ask: '&6Zadej heslo nebo napis: hover:{&cCancel;&cCancel;cancel} &6pro ukonceni nebo hover:{&cremove;&cRemove;remove} &6pro vymazani hesla'
+    container-only: '&cHeslo muzes nastavit pouze pro &echests, hoppers, furnaces'
+    length: '&cHeslo musi byt delsi nez &e%min% &ca mene nez &e%max% &8: &e%length%'
+    removed: '&2Heslo bylo smazano'
+    not-set: '&cHeslo neni nastaveno'
+    set: '&2Heslo bylo uspesne zmeneno'
+  double-chest-protected: '&2Double chest je chranena'
+  protection-type:
+    already-using: '&cTenhle blok jiz pouziva tenhle typ ochrany'
+    changed: '&2Metoda ochrany uspesne zmenena &e%protection%&c'
+  players:
+    cleared: '&2Všichni clenove smazani'
+    removed: '&6%name% &2byl vymazan ze skupiny'
+    limit: '&cNemuzes pridat vice jak &e%limit% &cclenu do skupiny'
+    include:
+      included: '&6%name% &2Pridan/a do skupiny'
+      is-already-in-group: '&3%name% &cJe jiz ve skupine'
+      owner: '&cJsi vlastnikem bloku'
+      name: '&2Pridej jmeno hrace ktereho chces pridat'
+    exclude:
+      excluded: '&6%name% &2Byl/a vymazan/a ze skupiny'
+      is-already-in-group: '&e%name% &cJe jiz vyloucen/a ze skupiny'
+      owner: '&cJsi vlastikem bloku'
+      name: '&2Zadej jmeno hrace ktereho chces vyloucit'
+  kingdoms:
+    cleared: '&2Vsechny staty vymazany'
+    removed: '&2Stat &6%name% &2byl vymazan ze skupiny'
+    disbanded: '&cStat s UUID &e%id% &cbyl automaticky vymazan protoze jiz neexistuje'
+    limit: '&cNemuzes pridat vice jak &e%limit% &cstatu do skupiny'
+    include:
+      included: '&2stat &6%name% &2byl pridan do skupiny'
+      is-already-in-group: '&3%name% &cje jiz ve skupine'
+      owner: '&cChcete li zapocitat tento stat musite zmenit typ ochrany'
+      name: '&2Zadejte jmeno statu ktere chcete pridat'
+    exclude:
+      excluded: '&2Stat &6%name% &2byl vyloucen ze skupiny'
+      is-already-in-group: '&cStat &e%name% &je jiz vyloucen ze skupiny'
+      owner: '&cPro vylouceni skupiny zmente jiny typ protekce'
+      name: '&2Zadej jmeno statu ktere chces vyloucit'
+top-rewards:
+  kingdom: |
+    &2Your kingdom has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
+    &2New Kingdom Balance&8: &6$%kingdoms_fancy_bank%
+    &2New Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+  nation: |
+    &2Your nation has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
+    &2New Nation Balance&8: &6$%kingdoms_fancy_nation_bank%
+    &2New Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+join-leave-messages:
+  join:
+    kingdom:
+      message: '&8[&2◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%displayname%'
+      sound: BLOCK_NOTE_BELL, 1.0, 1.0
+    others: '&6%displayname% &2se pripojil'
+  leave:
+    kingdom:
+      message: '&8[&c◆&8]&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%displayname%'
+      sound: BLOCK_NOTE_FLUTE, 1.0, 1.0
+    others: '&e%displayname% &cse odpojil ze serveru'
+join:
+  invites: '&2Mas &6%invites% &2pozvani, zkontrolujes je prikazem: &6hover:{/k invites;&9Click to open;/k invites}'
+  unread-mails: '&2Mas &6%unread-mails% &2neprectenych zprav'
+  language:
+    not-supported: |
+      &cThe detected language for your client was &e%detected-lang% &cwhich is probably not supported by the plugin.
+      You can change your language later using hover:{&e/k language;&9Click to run;|/k language} &ccommand.
+    supported: |
+      &2Your detected language is &6%detected-lang% &8(&6%kingdoms_lang%&8)
+      &8[&9&l!&8] &2If you believe this was a mistake, you can change it with hover:{&6/k language;&9Click to run;|/k language} &2command.
+upgrades:
+  powerup-upgrade: '&6%powerup% &2vylepsen na level &6%level%'
+  powerup-max: ' &e%powerup% &cjsi vylepsil jiz na max level'
+  powerup-not-enough-resourcepoints: '&cPotrebujes &e%cost% &cresource pointu pro vylepseni &e%powerup%'
+  champion-upgrade: '&6%upgrade% &2jsi vylepsil na level &6%level%'
+  champion-max: '&e%upgrade% &cjsi jiz vylepsil na max level'
+  champion-not-enough-resourcepoints: '&cNemas dostatek resource pointu pro vylepseni &e%upgrade%'
+  misc-upgrade: '&2Vylepsil jsi &6%upgrade% &2na level &6%level%'
+  misc-enabled: '&2Povoleny &6%upgrade% &2ruzne vylepseni'
+  misc-not-upgraded: '&cNemuzes zakazat upgrade ktery neni vylepseny'
+  misc-cannot-be-disabled: '&cTenhle upgrade nemuze byt zakazan'
+  misc-disabled: '&cZakazene &e%upgrade% &cruzne vylepseni'
+  misc-max: '&cJiz jsi vylepsil &e%upgrade% &cna max. level'
+  misc-not-enough-resourcepoints: '&cPotrebujes &e%cost% &cresource pointu pro vylepseni &e%upgrade%'
+champion-type:
+  changed: '&2Tvuj champion byl zmenen z &6%old_champion% &2na &6%new_champion%'
+  already-in-use: '&cTvuj stat jiz pouziva &e%champion% &csampiona'
+fly:
+  enemies-nearby: '&cV okoli jsou nepratele proto bylo letani zakazano'
+  charges-cant-afford: '&cPotrebujes &e$%money% &cpro kazdych &e%interval% sekund &cco litas'
+  charges:
+    cant-afford-kingdom: '&cTvuj stat potrebuje &e$%amount% &cza kazdych &e%interval% sekund &cco letas'
+  out:
+    of-land: '&cMuzes letat pouze na svem uzemi, proto bylo letani vypnuto'
+  damage: '&cObdrzel jsi damage proto bylo letani vypnuto'
+  warnings:
+    charges: '&cLetani bude vypnuto za &e%counter% &csekund protoze nejsi schopny platit'
+    unfriendly-nearby:
+      safe: '&2Jsi chranen od nepratelskych hracu'
+      warn: '&cTve letani bude vypnuto za &e%counter% &csekund protoze jsi blizko nepratel, bez rychle pryc'
+    out-of-land:
+      safe: '&2Zde jsi nyni chranen'
+      warn: '&cTve letani bude vypnuto za &e%counter% &csekund protoze jsi na uzemi ktere ti nepatri, bez zpet'
+no-kingdom-reminder: '&cReminder&8: &eStale jsi se nepripojil do statu'
+regulator:
+  attributes:
+    add-self: '&cSam sebe nemuzes pridat'
+    already-added: '&e%add% &cje jiz pridan'
+    add: '&2Pridej jmeno hrace'
+    added: '&2Pridano &6%add% &2k atributum'
+  interactions:
+    add-self: '&cNemuzes pridat sam sebe'
+    already-added: '&e%add% &je jiz pridan'
+    add: '&2Zadej jmeno hrace'
+    added: '&2Pridano &6%add% &2k atributum'
+nexus:
+  pacifism:
+    enable: '&6 &2pacifist'
+    disable: '&6Your kingdom is no longer a &cpacifist'
+    cooldown: '&cYour kingdom can''t be pacifist for&8: &e%cooldown%'
+    permanent: '&cYour kingdom can''t be pacifist for&8: &e%cooldown%'
+  home:
+    public: '&6Tvuj stat je nyni &2verejny'
+    not-public: '&6Tvuj stat jiz neni &cverejny'
+  cant-be-removed: You can't remove your kingdom's nexus.
+  shield:
+    enable: '&2Aktivuj stit pro tvuj stat'
+    disable: '&cStit pro tvuj stat byl zrusen'
+  invites:
+    enable: '&6Vas stat vyzaduje pozvanku, aby mohl byt pridan'
+    king-only: '&cPouze hlava statu muze menit nastaveni statu'
+    disable: '&6Tvuj stat jiz nevyzaduje pozvanku pro pripojeni'
+  structure-inventory-full: '&cTvuj inventar je plny'
+  turret-inventory-full: '&cTvuj inventar je plny'
+  structure-purchased: '&6Zakoupil jsi &2%structure% &6za &2%cost%'
+  structure-resourcepoints: '&cPotrebujes &e%cost% &cresource pointu pro zakoupeni teto struktury'
+  turret-resourcepoints: '&cPotrebujes &e%cost% &cresource pointu pro zakoupeni teto turrety'
+  turret-purchased: '&6Zakoupil jsi &2%turret% &6za &2%cost%'
+  resource-points: '&6Bylo pridano &e%amount% &6resource pointu'
+  rank-editor:
+    enter-value: '&6Zadej novou hodnotu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
+    max: '&cnemuzes udelat vice jak &e%limit% &cranku pro stat'
+    other: '&cNemuzes menit nastaveni jineho statu'
+    cannot-delete-rank: '&cNemuzes vymazat tento rank tveho statu, musi mit alespon 2 ranky'
+    cannot-delete-king: '&cNemuzes smazat rank hlave statu'
+    cannot-delete-member: '&cnemuzes smazat rank clena'
+    copy: '&2Uspesne jste zvladli &6%copy_node% &2rank na &6%rank_node%'
+    length:
+      node: '&cDelka uzle nemuze byt vetsi nez &e%limit%'
+      name: '&cDelka jmena nemuze byt vetsi nez &e%limit%'
+      color: '&cDelka barvy nemuze byt vetsi nez &e%limit%'
+      symbol: '&cDelka symbolu nemuze byt vetsi nez &e%limit%'
+    node:
+      already-exists: '&cJiz existuje jiny rank'
+    unknown-material: '&cPrilis malo materialu&8: &e%material%'
+    invalid:
+      material: '&cTenhle material &e%material% &cnemuzes pouzit'
+      max-claims: '&cMaximalni pocet naroku musi byt cislo a musi byt vetsi nez 0'
+      priority: '&cNeplatna priorita musi byt nizsi nez &e%kingdoms_ranks% &ca vetsi nez &e0'
+      node: '&cRank node nesmi obsahovat specialni znaky pouze pismena a cisla'
+    max-claims-limit: '&cMaximalni zabrani nesmi byt vetsi nez &e%limit%'
+    color:
+      has-none-colors: '&cZadany text musi obsahovat pouze barevne kody. Nejsou povoleny ani mezery.'
+  chest:
+    others: '&cNemuzes otevrit bednu od nexusu'
+  misc-upgrades:
+    others: '&cNemuzes menit upgrady od statu'
+  members:
+    others: '&cNemuzes nastavovat cleny od jineho statu'
+  settings:
+    tax-enter-value: '&6Zadejte jinou hodnotu do chatu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
+    flag:
+      enter-value: '&6Zadej novou URL na vlajku do chatu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
+      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_flag%} &6to open your current flag URL.
+      wrong-url: '&cSpatna URl pro vlajku&8: &e%flag%'
+      contains: '&cURL vlajky nemuze byt prijata, protoze obsahuje nepovolene slovo&8: &e%flag%'
+      regex: '&cURL od vlajky nemuze byt prijato&8: &e%flag%'
+      validate: '&2Potvrzuji obrazek...'
+      cooldown: '&cMusite pockat &e%cooldown% &cpro zmeneni vlajky'
+      size-limit:
+        fail: '&cZadana adresa URL bud neni obrazek nebo je nepristupna&8: &e%flag%'
+        height: '&cZadany obrazek prekracuje maximum &e%limit% &cheight limit&8: &e%height%'
+        width: '&cZadany obrazek prekracuje maximum &e%limit% &cwidth limit&8: &e%width%'
+      set: '&2Obrazek vasi statni vlajky byl zmenen na&8: &6%flag%'
+      removed: '&2Obrazek vasi vlajky byl smazan'
+    color:
+      enter-value: |
+        &6Please enter the new hex color code in chat. Or type hover:{&cCancel;&cCancel;cancel} &6to cancel.
+        You can get the hex code for colors from hover:{&2here;&2Click to Open;@https://htmlcolorcodes.com/}
+      wrong-hex: '&cNeplatna hex barva&8: &e%color%'
+      wrong-rgb: '&cNeplatna RGB barva&8: &e%color%'
+      range-blacklisted: '&cBarva kterou jsi zvolil neni na vyber'
+      set: '&2Barva vaseho statu byla zmenena na&8: &6%color%'
+    tax-set: |
+      &2Tax equation has been set to&8: &6%tax%
+      &2Tested tax on you&8: &6%test%
+    tax-illegal-variable: '&cNeplatny zastupny symbol u indexu &e%index% &cv rovnici&8: &e%tax%'
+    tax-invalid: |
+      &cCould not test &e%tax% &ctax equation on you&8: &e%reason%
+      &cPlease enter a valid equation.
+    shield-not-enough-resource-points: '&cNemas dostatek resource pointu'
+    shield-cooldown: '&cMusis pockat &e%time% &cnez zakoupis stit znovu'
+    shield-activated: '&2Stit aktivovan na dobu &6%kingdoms_shield_time_left%'
+nexus-resource-points-enter-value: '&6Zadej hodnotu resource pointu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
+extractor:
+  not-enough-resource-points: '&cNemas dostatek resource pointu'
+teleports:
+  moved: '&cTeleportace byla zrusena protoze jsi se hnul'
+  already-teleporting: '&cUz se teleportujes'
+  timer:
+    actionbar: '&2Teleportace za&8: &9%timer%'
+  teleported:
+    actionbar: '&9Teleportovano'
+warppad:
+  teleporting: '&2Teleportovani za &6%countdown% sekund&2... nehybej se'
+  low-fuel: |
+    &cYou need &e%fuel-cost% fuel &cto teleport, this Warp Pad only has &e%fuel%
+    &cYou can refill the warppad by throwing &ecoals &cat it.
+  no-safe-location: '&cNeni zde bezpecno pro teleportaci'
+  success: '&2Teleportovan!'
+structure:
+  fuel:
+    fill: '&2Structure Fuel&8: &6%old-fuel% &7+ &6%added-fuel% &7= &6%fuel%'
+    full: '&cJe dosaženo maximálního množství paliva&8: &e%fuel%'
+outpost:
+  not-enough-resource-points: '&cNemas dostatek resource pointu'
+  purchased: '&2Pouzil jsi &6%amount%x %name% &2pro &6%cost% &2resource pointu'
+turret:
+  ammo:
+    not-enough-resource-points: '&cNemas dostatek resource pointu'
+    purchased: '&2Zakoupil/a jsi naboje pro turretu'
+    max-ammo: '&cMaximalni pocet naboju dosazen'
+  upgrade:
+    max-level: '&cTahle turreta je jiz na max levelu'
+  upgrade-not-enough-resource-points: '&cNemas dostatek resource pointu pro vylepseni'
+  upgrade-upgraded: '&2Turreta vylepsena na level &6%level%'
+disabled-world: '&cStaty jsou zakazany  &6%world%'
+not-found:
+  kingdom: '&cStat &e''%kingdom%'' &cnebylo nalezeno'
+  nation: '&cNarod nebyl nalezen'
+  player: '&cHrac nebyl nalezen'
+  player-no-kingdom: '&cTenhle hrac nema stat'
+  player-or-kingdom: '&cHrac nebo stat nebyli nalezeni'
+masswar:
+  started: |
+
+    &4&lMassWar&4 has started! &eInvasions are free for 1 hour!
+  stopped: '&6Masswar skoncil!'
+players:
+  online: '&2Online'
+  offline: '&4Offline'
+power:
+  death: '&cZemrel jsi a ztratil jsi &e%lost% &cpower'
+kingdom-guards-spawning: '&e%kingdom% &cOchranka statu se spawnula kolem tebe'
+no-kingdom:
+  default: '&cNemas stat'
+  target: '&cTento hrac nema stat'
+  structures-use: '&cPotrebujes byt ve state pro pouziti struktur'
+  turrets-use: '&cPotrebujes byt v state pro pouziti turret'
+no-nation: '&cTvuj stat neni v zadnem narodu'
+unclaimed:
+  place-structures: '&cNemuzes polozit struktury v nezabranem uzemi'
+  place-turrets: '&cNemuzes polozit turrety v nezabranem uzemi'
+not:
+  number: '&e%arg% &cNeni cislo'
+  boolean: '&e%arg% &cneni platna moznost. Prosim bud pouzijte ''&2true&c'' nebo ''&4false&c'''
+invalid:
+  amount: '&cNeplatna castka&8: &e%amount%'
+commands:
+  insufficient-permission: '&cNemas opravneni to udelat'
+  cooldown: '&cTenhle prikaz neni mozne pouzit po dobu&8: &e%cooldown%'
+  disabled-world: '&cTenhle prikaz nemuze byt pouzit v zakazanem svete'
+  tags:
+    players: '#PLAYER'
+    kingdoms: '#KINGDOM'
+    nations: '#NATION'
+  players-only: '&cPouze hraci mohou pouzit tenhle prikaz'
+  unknown-command: '&cNeznamy prikaz'
+kingdom:
+  name-blacklisted: '&cNazev vaseho statu obsahuje nevhodna slova'
+  tag-blacklisted: '&cTag vaseho statu obsahuje nevhodna slova'
+death-penalty: '&e%name% &cZemrel/a, &e%penalty% &cresource pointu bylo odebrano z vaseho statu'
+mails:
+  header-format:
+    sent: |
+      &2Subject&8: &6%subject%
+      &2From&8: &6%from%
+      &2Sender&8: &6%sender%
+      &2To&8: &6%to%
+      &2CC&8: &6%cc%
+      &2At&8: &6%sent-date%
+          %sent-time%
+
+                hover:{&8[&2Reply&8];&8Click to reply;/k mail reply %id%}
+      &7.......................................................
+    received: |
+      &2Subject&8: &6%subject%
+      &2From&8: &6%from%
+      &2Sender&8: &6%sender%
+      &2To&8: &6%to%
+      &2CC&8: &6%cc%
+      &2At&8: &6%sent-date%
+          %sent-time%
+
+                hover:{&8[&2Reply&8];&8Click to reply;/k mail reply %id%}
+      &7.......................................................
+  reply-subject-formatter: '&8[&2RE&8] &f%subject%'
+  notifications:
+    join: '&2Mas &6%mails% &2novych zprav otevri zpravy.'
+    receivers: |
+      &9%player% &2from &9%kingdoms_name% &2kingdom has sent you a mail&8:
+      hover:{&f%subject%;&9Click to read;/k mail open %id%}
+  primary-none: '&cNone'
+  cc:
+    each: '&2%cc%'
+    none: '&cNone'
+    separator: '&7, '
+    removed: '&cRemoved CC recipient&8: &e%recipient%'
+    max: '&cYou can''t send more than %limit% carbon copies'
+    enter: '&2Zadej nazev statu, kteremu chcete poslat kopii, nebo zadej hover:{&ccancel;&eCancel;cancel} &2pro ukonceni'
+  to-enter: '&2Zadej jmeno statu kteremu chces poslat mail nebo napis hover:{&ccancel;&eCancel;cancel} &2pro ukonceni'
+  to-yourself: '&cNemuzes poslat zpravu vlastnimu statu'
+  already-recipient: '&cZadany stat je jiz prijemcem'
+  subject:
+    empty: '&cNone'
+    enter: '&2Zadej predmet zpravy nebo napis hover:{&ccancel;&eCancel;cancel} &2pro ukonceni'
+    limit: '&cPredmet zpravy muze byt pouze &e%limit% &cpismen dlouhy'
+    changed: '&2Predmet zpravy byl zmenen&8: &6%subject%'
+  content:
+    empty: '&cNone'
+  cleared-properties: '&2Vymazany vsechny vlastnosti posty'
+  envelope:
+    no-free-slot: '&Nemas zadne volne sloty v inventari pro obalku'
+    not-enough-resources: '&cTvuj stat potrebuje &e%rp% resources pointu &cand &e$%money% &cpro postu'
+    give: '&2Pravym tlacitkem mysi klikni mezitim co se plizis pro editaci specialnich znaku'
+  send:
+    missing-subject: '&cTva zprava nema predmet'
+    missing-primary-recipient: '&cVase posta neni hlavnim prijemcem'
+    missing-content: '&cObsah vasi posty je prazdny'
+    total-cooldown: '&cVas stat muze poslat dalsi postu za&8: &e%cooldown%'
+    per-group-cooldown: '&cVas stat muze poslat zpravu statu &e%kingdom% &cza&8: &e%cooldown%'
+  not:
+    an-envelope: '&cThe item is not an envelope.'
+kingdom-item:
+  inventory: '&cV tomhle inventari nemuzes pouzit statni itemy'
+  craft: '&cK vyrobe nelze pouzit statni predmety'
+  shoot: '&cNelze zasahnout statni veci lukem'
+auto:
+  claim:
+    disabled-world: '&cZabirani bude zruseno za &6%world%'
+    actionbar:
+      enabled:
+        actionbar: '&2Auto-claim&8: &6Je povolen'
+      disabled:
+        actionbar: '&2Auto-claim&8: &cZakazan'
+    success: '&2Uzemi &6%x%&7, &6%z% &2bylo zabrano'
+    nation-zone: '&cTohle uzemi &e%nation%''s &cje soucasti narodu a nemuze byt zabrano'
+  unclaim:
+    actionbar:
+      enabled:
+        actionbar: '&2Auto-unclaim&8: &6Aktivovan'
+      disabled:
+        actionbar: '&2Auto-unclaim&8: &cVypnuto'
+    success: '&2Nezabrana kralovska puda &6%x%&7, &6%z%'
+inactivity-announce:
+  player: '&e%player% &cbyl vyhozen z duvodu neaktivity'
+  kingdom: '&e%kingdom% &6byl rozpusten z duvodu necinnosti'
+command:
+  updates-description: '&6Zkontroluj zda zde nejsou updaty pro stat'
+  help:
+    description: '&6DZobrazi vschny prikazy'
+    usage: '&Pouzitim&8: &e/k %command% &9[page]'
+    grouped-header: '&8&m---------------=(&c&l %group% &8)=---------------'
+    negative-pages: '&cNejsou zde skryte stranky'
+    grouped-commands: hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
+    footer: hover:{&6←;&6Previous Page;/k %command% %previous_page%} %pages%hover:{&6→;&6Next Page;/k %command% %next_page%}
+    footer-page: hover:{&8[&2%number%&8];&6Go to page &2%number%;/k %command% %number%}
+    footer-current-page: hover:{&8[&2&l%number%&8];&2Current Page}
+    header: '&8&m---------------=(&c&l Kingdoms &6%page%&7/&6%max_pages% &8&m)=---------------'
+    no-more-pages: '&cJiz zde neni vice stranek'
+    commands: hover:{&8/&2k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
+  reload:
+    description: '&6Znovu nacte plugin'
+    usage: '&4Pouzitim&8: &e/k reload &9[config]'
+    success: '&2Plugin byl uspesne znovu nacten'
+    commands: '&2Vsechny prikazy byli znovu nacteny'
+  create:
+    description: '&6Vytvareni statu'
+    name-length: '&cJmeno statu nemuze byt delsi nez &e%max% &cnebo kratsi nez &e%min%'
+    name-english: '&cJmeno statu musi byt v anglictine a obsahovat pouze cisla a pismena abecedy'
+    name-has-symbols: '&cJmeno nemuze obsahovat symboly pouze pismena a cisla'
+    name-numbers: '&cJmeno statu nemuze obsahovat cisla'
+    name-already-in-use: '&cTenhle nazev ma jiz jiny stat'
+    usage: '&4Pouzitim&8: &e/k create &2<name>'
+    already-in-kingdom: '&cJiz jsi ve statu, pro vytvoreni noveho musis tento stat opustit'
+    success:
+      message: '&2Nasel jsi &6%kingdom%&2!'
+      sound: UI_TOAST_CHALLENGE_COMPLETE, 1.0, 1.0
+    pacifist: '&2Your kingdom is a &6pacifist &2kingdom'
+    aggressor: '&2Your kingdom is an &caggressor &2kingdom'
+    announce: '&6%player% &2nasel &6%kingdom%'
+    cost: '&cTvuj stat potrevuje &e%cost% &czlataku pro vytvoreni statu'
+    confirmation: |
+      &cMusis zaplatit &e%cost% &czlataku na vytvoreni statu
+      Jsi si jisty/a ze chces pokracovat? Zadej kommand znovu
+  tag:
+    description: '&6Zmen tag statu'
+    name-length: '&cTag statu nemuze byt delsi nez &e%max% &cnebo mensi nez &e%min%'
+    name-english: '&cTag statu musi byt v anglictine a obsahovat pouze pismena a cisla'
+    name-has-symbols: '&cTag statu nemuze obsahovat symboly pouze cisla a pismena'
+    name-numbers: '&cTag kralvostvi nemuze obsahovat cisla'
+    usage: '&4Pouzitim&8: &e/k tag <name>'
+    cooldown: '&cMusis pockat &e%cooldown% &cnez znovu prejmenujes tag statu'
+    changed: '&2Tag statu byl zmenen z &6%tag% &2na &2to%kingdoms_tag% &2hracem &6%player%'
+    set: '&2Tag statu byl nastaven na &6%kingdoms_tag% &2hracem &6%player%'
+    cost: '&cTvuj stat potrebuje &e%cost% &czlataku pro zmeneni tagu statu'
+  nation:
+    create:
+      description: '&6Vytvorit narod'
+      name-length: '&cJmeno narodu nemuze byt delsi nez &e%max% &cnebo mensi nez &e%min%'
+      name-english: '&cJmeno naroda musi byt pouze v anglictine a obsahovat jen pismena a cislice'
+      name-has-symbols: '&cJmeno naroda nemuze obsahovat symboly pouze cisla a pismena'
+      name-numbers: '&cJmeno naroda nemuze obsahovat pouze cisla'
+      name-already-in-use: '&cTento nazev pouziva jiz jiny narod'
+      usage: '&4Pouzitim&8: &e/k nation create <name>'
+      already-in-nation: '&cJiz jsi v jednom narodu. Narod opustis pomoci hover:{&e/k nation leave;&cLeave;/k nation leave}'
+      success:
+        message: '&2Nasel jsi &6%nation% &2nation!'
+        sound: UI_TOAST_CHALLENGE_COMPLETE, 1.0, 1.0
+      announce: '&6%player% &2nasel &6%nation% &2narod'
+      cost: '&cPotrebujes &e%cost% &czlataku pro vytvoreni statu'
+    rename:
+      description: '&6Prejmenovat narod'
+      king-only: '&cPouze hlava narodu muze zmenit nazev'
+      name-english: '&cJmeno naroda musi byt pouze v anglictine a musi obsahovat jen pismena nebo cisla'
+      name-numbers: '&cJmeno naroda nemuze obsahovat pouze cisla'
+      name-already-in-use: '&cJiz jiny narod pouziva tento nazev'
+      cooldown: '&cMusis pockat &e%cooldown% &cnez znovu zmenis nazev'
+      usage: '&4Pouzitim&8: &e/k nation rename &5<name>'
+      success: '&2Jmeno naroda bylo zmeneno na&8: &6%name%'
+      cost: '&cTvuj narod potrebuje &e%cost% &cpenez pro prejmenovani'
+    bank:
+      description: '&6Presunete zlataky naroda pomoci'
+      usage: '&4Pouzitim&8: &e/k nation bank &2<deposit/withdraw> <amount>'
+      unknown-transaction: '&cNeznama transakce &e%transaction%'
+      not-enough:
+        nation-money: '&cBanka vaseho naroda nema &e%amount% &czlataku'
+        money: '&cNemas &e%amount% &czlataku'
+      deposit:
+        success: |
+          &2Vlozil jsi &6%amount% &2zlataky do banky naroda.
+          Vas novy zustatek&8: &6%balance%
+          &2Banka vaseho naroda&8: &6%kingdoms_fancy_nation_bank%
+        disabled: '&cNemuzes vlozit zlataky'
+      withdraw:
+        disabled: '&cNemuzes vybrat zlataky'
+        success: |
+          &2Vybral/a jsi &6%amount% &2zlataku z banky naroda.
+          &2Vas novy zustatek&8: &6%balance%
+          &2Banka vaseho naroda&8: &6%kingdoms_fancy_nation_bank%
+      negative: '&c Nemuzes presunout negativni castky...'
+      zero: '&cNemuzes presunout nic'
+    show:
+      description: '&6Zobrazuje informace o narode'
+      usage: '&4Pouzitim&8: &e/k show &9[player | nation | #PLAYER | #NATION] &2<player | nation>'
+      others-permission: '&cNemas pravo videt dalsi informace'
+      message-admin: |
+        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+
+        &7| &2Capital&8: &6%kingdoms_nation_capital%
+        &7| &2Spawn&8: &6%kingdoms_nation_spawn%
+        &7| &2Nexus&8: &6%kingdoms_nation_nexus%
+        &7| &2Since&8: &6%kingdoms_nation_since%
+        &7| &2Might&8: &6%kingdoms_nation_might%
+        &7| &2Shield&8: &6%kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6$%kingdoms_fancy_nation_bank% &8| &2Tax&8: &6$%kingdoms_fancy_nation_tax% &8- &6$%kingdoms_fancy_server_nation_tax%
+        &7| &2Resource Points&8: &6%kingdoms_nation_resource_points%
+
+        &7| &2Kingdoms&8:
+        %kingdoms%
+      message: |
+        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+        &7| &2King&8: &6%king_status%
+        &7| &2Nation&8: &6%kingdoms_nation%
+        &7| &2Since&8: &6%kingdoms_nation_since%
+        &7| &2Might&8: &6%kingdoms_might%
+        &7| &2Shield&8: &6%kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6%kingdoms_fancy_nation_bank%
+        &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+        &7| &2Resource Points&8: &6%kingdoms_resource_points%
+
+        &7| &2Kingdoms&8:
+        %kingdoms%
+      allies: |
+        &7| &2Allies&8:
+        &e%allies%
+      truces: |
+        &7| &2Truces&8:
+        %truces%
+      enemies: |
+        &7| &2Enemies&8:
+        &e%enemies%
+      kingdoms: |
+        hover:{&6%kingdoms_name%;&2Members&8: &6%kingdoms_members%
+        &2King&8: &6%kingdoms_king%
+        &2Lands&8: &6%kingdoms_lands%}
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    not:
+      in-nation: '&cNebyl nalezen zadny narod s timto jmenem a zadany stat nebo hrac take neni v narode'
+    setspawn:
+      description: '&6Nastaveni spawnu vaseho naroda na vasi aktualni polohu'
+      not-claimed: '&cSpawn naroda muzes nastavit pouze na zabranem uzemi'
+      others-land: '&cSpawn naroda muzes nastavit pouze v hlavnim meste'
+      nexus-land: '&cHome od statu muzes nastavit pouze v uzemi nexusu'
+      set: '&aNastavte spawn naroda na&8: &6%x%&7, &6%x%&7, &6%z%'
+    unsetspawn:
+      description: '&6Odstraneni spawnu naroda'
+      not-set: '&cSpawn naroda neni nastaven'
+      success: '&aSpawn naroda byl uspesne odstranen&8: &6%x%&7, &6%y%&7, &6%z%'
+    spawn:
+      description: '&6Teleportace na spawn vaseho naroda'
+      already-teleporting: '&cTeleportace na spawn vaseho naroda...'
+      cancelled: '&cTeleport na spawn byl zrusen'
+      changed: '&cLokace spawnu byla zmenena proto byla teleportace zrusena'
+      teleporting: '&2Teleportace za &6%countdown% sekund&2... nehybej se!'
+      not-set: '&cTvuj narod nema nastaveny spawn!'
+      success: '&2Teleportovan/a!'
+    spawn-not-set-others: '&e%nation% &cHome naroda neni nastaven'
+    spawn-permission: '&cNemas povoleni se teleportovat na cizi spawn naroda'
+    spawn-not-public: '&e%nation% &cHome naroda neni verejny'
+    spawn-cant-use-public-home: '&cNemuzes pouzit verejny domov od naroda&e%nation% '
+    spawn-being-invaded: '&cNemuzes se teleportovat na &e%nation%''s &cprotoze probiha invaze'
+    nexus:
+      description: '&6Nastaveni bodu nexusu od naroda'
+      help: |
+        &2Kliknutim pravym tlacitkem na blok z nej udelate svuj novy nexus.
+        Chcete-li deaktivovat rezim nexusu, zadej hover:{&6/k nation nexus;&cDisable;/k nation nexus} &2znovu.
+      actionbar-activated: '&6Nexus Mode&8: &2Aktivovan'
+      actionbar-deactivated: '&6Nexus Mode&8: &cDeaktivovan'
+      disabled: '&cNexus mode byl vypnut.'
+      open-nexus-permission: '&cNemas opravneni otevrit nexus na dalku'
+      setting-kingdom: '&cJiz nastavujete polohu nexusu'
+      not-claimed: '&cNexus naroda lze nastavit pouze na vasem uzemi!'
+      another-structure: '&cV tomhle uzemi se jiz nachazi struktura jineho naroda'
+      disabled-on-damage: '&cByl jsi uhozen tudiz byl nexus mode vypnut'
+      disabled-on-land-change: '&cOdešel jsi z tveho uzemi nexus mode je vypnut'
+      already-there: '&cTo je tvuj nexus co se to snazis udelat...?'
+      cannot-replace: '&cTento blok nemuzete nahradit svym nexusem!'
+      success: '&aNexus uspesne polozen na pozici &6%x%&7, &6%y%&7, &6%z%'
+    nexus-outside-of-land: '&cMusis byt na svem uzemi aby jsi mohl polozit nexus'
+    disband:
+      description: '&cRozpusti se tvuj narod a vsechna statu budou rozpustena'
+      king-only: '&cPouze hlava naroda muze rozpustit narod'
+      success: '&4Tvuj narod byl rozpusten!'
+      confirmation: |
+        &4Chystate se rozpustit svuj narod.
+        Vsichni clenove vaseho naroda budou vyhozeni.
+        Jste si jisti, ze chcete pokracovat?
+        Zadej &e/k nation disband &4znovu k potvzeni.
+      announce: '&6Hrac &e%player% &6Rozpustil narod &e%kingdoms_nation%'
+    invite:
+      description: '&6Pozvat stat do naroda'
+      usage: '&4Pouzitim&8: &e/k nation invite &2<kingdom> &9[expiration]'
+      invited: |
+        &6%inviter% &2vas pozval do &6%nation% &2statu.
+            hover:{&2Accept with /k nation accept;&2Accept;/k nation accept}
+            hover:{&cDecline with /k nation decline;&cDecline;/k nation decline}
+      announce: '&6%inviter% &2pozval &6%kingdom% &2do naroda'
+      already-joined: '&e%kingdom% &cTenhle stat je jiz ve tvem narodu'
+      already-in-kingdom: '&cTenhle stat je jiz ve tvem narodu'
+      already-nation-invited: '&cTenhle stat je jiz pozvan hracem &e%inviter%'
+      max-members: '&cTvuj stat je jiz plne &e%kingdoms_nation_kingdoms% &cclen'
+      self: '&cNemuzes pozvat vlastni stat do naroda'
+      expired: '&cTva pozvanka od &e%inviter% &cvyprsela!'
+      kingdom-not-found: '&e%kingdom% &cstat nenalezeno'
+      expired-notify: '&cTva pozvanka pro &e%invited% &cvyprsela!'
+    accept:
+      description: '&6Prijmi pozvanku pro pripojeni do naroda'
+      accepted: '&2Prijal jsi &6%inviter%''s &2pozvanku k pripojeni ke &e%nation% &2statu'
+      joined: '&6%kingdom% &2se pripojilo do naroda'
+      notify: '&6%kingdom% &2Prijali tvou pozvanku'
+      no-invites: '&cNemas zadnou pozvanku do naroda'
+      not-invited: '&cNejsi pozvany do naroda &e%nation% '
+      expired: '&cPozvanka do naroda &e%nation% &cjiz vyprsela!'
+      max-members: '&cTenhle narod je jiz plny &e%kingdoms_nation_kingdoms% '
+      no-longer-exists: '&cTenhle narod jiz neexistuje'
+      multiple-invites: '&cMas vice pozvanek do narodu prosim specifikuj jmeno naroda do ktereho se chces pripojit'
+    join:
+      description: '&6Pripoj se k narodu ktery nevyzaduje pozvani ke vstupu'
+      usage: '&4Pouzitim&8: &e/k nation join &2<nation>'
+      joined: '&6%kingdom% &2se pripojil do statu'
+      already-in-nation: '&cTvuj stat je jiz v narodu'
+      requires-invite: '&cMusis byt pozvan k pripojeni do narodu &e%nation% '
+    decline:
+      description: '&6Odmitnout pozvanku k pripojeni'
+      declined: '&cOdmitl jsi pozvanku od &6%inviter%''s &ck pripojeni do naroda &e%nation%'
+      notify: '&e%name% &czamitl tvou pozvanku'
+      no-invites: '&cNemas zadne pozvanky do naroda'
+      not-invited: '&cTvuj stat neni pozvanej k narodu &e%nation% '
+      expired: '&cTve pozvani k narodu &e%nation% & jiz vyprselo'
+      no-longer-exists: '&cTento narod jiz neexistuje'
+      all: '&2Celkem zamitnuto &6%invites% &2pozvanek k narodu'
+      multiple-invites: '&cMas prilis pozvanek prosim specifikuj jmeno naroda ktere chces odmitnout nebo &e* &czamitni vsechny'
+    top:
+      description: '&6Zobrazi top narody'
+      loading: '&6Nacitani dat...'
+      header: '&8----------------------------------'
+      footer: '     &8[hover:{&6←;&6Previous Page;/k nation top %previous_page%}&8] &8[hover:{&6→;&6Next Page;/k nation top %next_page%}&8]'
+      no-more-pages: '&cJiz neni vice stranek k nacteni'
+      negative: '&cNelze zobrazit negativni strany'
+      entry: |
+        &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
+        &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+        &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+    kick:
+      description: '&6Vyhodit stat z tveho naroda'
+      person: '&cVas stat byl vyhozen z naroda &e%nation% &chracem &e%kicker%'
+      usage: '&4Pouzitim&8: &e/k nation kick &2<kingdom> &9[silent]'
+      announce: '&cStat &e%kingdom% &cbyl vyhozen z naroda hracem &e%kicker%'
+      self: '&cNemuzes vyhodit vlastni stat'
+      not-in-kingdom: '&cTenhle stat neni v tvem narodu'
+      cant-kick: '&cNelze vyhodit &e%kingdom%&c'
+    leave-description: '&6Tvuj stat opustil narod'
+    leave-capital: |
+      &cYou can't leave your nation as the capital.
+      Either disband the nation using &e/k nation disband
+      &cOr change your nation's capital using &e/k nation capital
+    leave-announce: '&cStat &e%kingdoms_name% &cOpustil narod'
+    broadcast-description: '&6Vyslat zpravu vsem clenum naroda'
+    broadcast-usage: '&4Pouzij&8: &e/k nation broadcast &2<message>'
+    broadcast-format:
+      message: |
+
+        &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
+
+      sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
+    capital:
+      description: '&6Nastavi tvuj narod jako hlavni'
+      only-king: '&6Pouze hlava statu muze zmenit hlavni stat'
+      set: '&6%kingdoms_nation_capital% &2je hlavnim statem naroda'
+      not-in-nation: '&e%kingdom% &cneni v tvem narodu'
+      usage: '&4Pouzij&8: &e/k nation capital &2<kingdom>'
+    ally:
+      description: '&6Poslat zadost o spojenectvi narodu'
+      usage: '&4Pouzij&8: &e/k nation ally &2<nation>'
+      sender: '&2Poslat zadost o spojenectvi narodu &6%nation%'
+      limit: '&cNemuzes se pratelit s vice jak &e%max% &cnarody'
+      already: '&cJiz jsi spojencem s &e%nation%'
+      already-requested: '&cJiz jsi poslal zadost narodu &e%nation%'
+      self: '&cNemuzes svuj narod udělat spojeneckym'
+      receiver: '&2Narod &6%nation% &2si preje byt tvym spojencem prijmes pomoci prikazu hover:{&6/k nation ally %nation%;&2Accept;/k nation ally %nation%}'
+      success: |
+        &2Your nation has allied &6%nation%
+        &2Your kingdom has automatically allied every kingdom in that nation.
+      another-request: '&cNarod &e%nation% &cti poslal %relation% &czadost o pratelstvi'
+    truce:
+      description: '&6Poslat zadost o primeri'
+      usage: '&4Pouzij&8: &e/k nation truce &2<nation>'
+      sender: '&2Poslat zadost o primeri narodu &6%nation%'
+      limit: '&cNemuzes mit primeri s vice jak &e%max% &cnarody'
+      already: '&cJiz mas primeri s narodem &e%nation%'
+      already-requested: '&cJiz jsi poslal zadost narodu &e%nation%'
+      self: '&cNemuzes si vytvorit primeri s vlastnim narodem'
+      receiver: '&2Narod &6%nation% &2si preje byt v primeri prijmi pomoci hover:{&6/k nation truce %nation%;&2Accept;/k nation truce %nation%}'
+      success: |
+        &2Your nation has truced &6%nation%
+        &2Your kingdom has automatically truced every kingdom in that nation.
+      another-request: '&cNarod &e%nation% &cti poslal %relation% &czadost o pratelstvi'
+    enemy:
+      description: '&6Znepratelit narod'
+      usage: '&4Pouzij&8: &e/k nation nation &2<nation>'
+      limit: '&cNemuzes si znepratelit vice jak &e%max% &cnarodu'
+      already: '&cJiz jsi nepritelem naroda &e%nation%'
+      self: '&cNemuzes byt nepritelem sveho naroda'
+      success: |
+        &2Your nation has enemy'd &6%nation%
+        &2Your kingdom has automatically enemy'd every kingdom in that nation.
+    revoke:
+      description: '&6Zrusit pratelstvi s narodem'
+      usage: '&4Pouzij&8: &e/k nation revoke &2<nation>'
+      sender: |
+        &cYour nation has revoked relations with &e%nation% &cAll your relations with any of the kingdoms in that nation has been automatically revoked.
+      no-relation: '&cNemas pratelstvi s narodem &e%nation%'
+      self: '&cNemuzes mit zadne pratelstvi s tvym narodem...'
+      receiver: |
+        &e%nation% &chas revoked their relation with your nation.
+        &cAll your relations with any of the kingdoms in that nation has been automatically revoked.
+    promote:
+      description: '&6Povysit clena v narodu'
+      promoted: '&6%promoted% &2Byl povysen na &9%rank% &2hracem &6%player% &6v narodu'
+      not-in-kingdom: '&e%promoted% &cneni v tvem narodu'
+      cant-promote: '&cNemuzes povysit &e%promoted%'
+      king: '&cChcete li povysit hrace na hlavu statu &e/k king'
+      usage: '&4Pouzij&8: &e/k nation promote &2<player>'
+    demote:
+      description: '&6Snizit uroven clena v narodu'
+      demoted: '&e%demoted% &csnizena hodnost na &9%rank% &chracem &e%player%'
+      not-in-kingdom: '&e%demoted% &cneni ve vasem narodu'
+      cant-demote: '&cNemuzes snizit hodnost hraci &e%demoted%'
+      member: '&cTento hrac ma hodnost clena'
+      usage: '&4Pouzij&8: &e/k nation demote &2<player>'
+    description: '&6Zobrazit prikazy pro narod'
+  rename:
+    description: '&6Prejmenovat stat'
+    king-only: '&cPouze hlava statu muze zmenit jmeno statu'
+    name-english: '&cJmeno statu musi byt v anglictine a muze obsahovat pouze jen cisla a  pismena'
+    name-numbers: '&cJmeno statu nemuze obsahovat cislice'
+    name-already-in-use: '&cJiz jiny stat pouziva toto jmeno'
+    cooldown: '&cMusis pockat &e%cooldown% sekund &cnez to budes chtit prejmenovat'
+    usage: '&4Pouzij&8: &e/k rename <name>'
+    success: '&6%player% &2Zmenil jmeno statu na &8: &6%name%'
+    cost: '&cBanka statu potrebuje &e%cost% &czlataku pro prejmenovani'
+  pvp:
+    description: '&6Povolit friendly fire ve state'
+    others-permission: '&cNemas povoleni nastavit jine moznosti PVP'
+    on: '&6PvP Mode&8: &2ON'
+    off: '&6PvP Mode&8: &cOFF'
+  language:
+    description: '&6Nastavit jazyk pluginu'
+    usage: '&4Napis&8: &e/k bank &9[language]'
+    info: |
+      &8⚫ &2Kingdoms chosen language&8: &9%kingdoms_lang%
+      &8⚫ &2Detected Client Language&8: &9%client-locale%
+      &8⚫ &2List of supported languages&8: %langs%
+    supported-entry: '&6%lang% &8(&6%internal-name%&8)'
+    unknown-language: '&cNeznamy jazyk&8: &e%chosen% &7(&6The plugin probably doesn''t support it&7)'
+    set: '&2Updated language&8: &9%old-lang% &7➡ &9%kingdoms_lang%'
+    not-english-warn: '&8[&4&l!&8] &cYou might see untranslated messages while using non-English translations. This is normal, but note that you might not be able to access some features in GUIs if they''re outdated'
+  tpa:
+    description: '&6Teleportovat se instante na hrace nebo poslat zadost o teleportaci'
+    usage: '&4Pouzij&8: &e/k tpa &2<player>'
+    already-teleporting: '&cJiz se teleportujes na jineho hrace...'
+    not-friendly: '&cYou can only send tp requests to players who have both &eceasefire &cand &eturret ceasefire &crelation attributes with your kingdom.'
+    yourself: '&2Uspesne teleportovano'
+    pending-request: '&cJiz jsi poslal zadost o teleportaci na hrace &e%previous-request-player%'
+    instant-teleporter: '&2Teleportoval jsi se na hrace &6%target%'
+    target-notification: '&6%teleporter% &2se na tebe teleportoval'
+    no-requests: '&cNemas zadne teleportacni pozvani'
+    player-didnt-request: '&cNemas zadne teleportacni pozvani'
+    multiple-requests: '&cMas vice zadosti na teleportaci, prosim specifikuj jmeno hrace'
+  tpaaccept:
+    description: '&6Prijmout zadost o teleportaci hrace'
+    already-teleporting: '&e%teleporter% &cse teleportuje jinam, zkus to znovu'
+    already-teleporting-notification: '&e%target% &cchtel prijmout zadost o teleportaci, ale jiz se teleportujes jinam'
+    usage: '&4Pouzij&8: &e/k tpaaccept &9[player]'
+    requester-offline: '&e%requester% &cje offline'
+    target-about-to-teleport: '&6%teleporter% &cse chysta teleportovat'
+    teleporter-about-to: '&6%target% &2prijal tvou zadost, stuj v klidu!'
+    target-failed-to-teleport: '&e%teleporter% &cse nepodarilo teleportovat'
+    teleporter-failed-to-teleport: '&cchyba teleportace'
+    teleported-notification: '&e%teleporter% &cse teleportoval'
+  tpareject:
+    description: '&6Zamitnout zadost o teleportaci'
+    usage: '&4Pouzij&8: &e/k tpareject &9[player]'
+    rejected: '&cZadost o teleportaci zrusena &e%teleporter%'
+    rejected-notification: '&e%target% &cOdmitl tvou zadost o teleportaci'
+  glow:
+    description: '&6Snadno najit cleny statu'
+    enabled: '&6Glow mode&8: &2Enabled'
+    disabled: '&6Glow mode&8: &cDisabled'
+  resourcepoints:
+    description: '&6Sada prikazu pro nastavovani resource pointu'
+    converter:
+      description: '&6Vzdalene otevrit prevod zdrojovych bodu nexusu'
+    deposit:
+      description: '&6Ziskat resource pointy pomoci zlataku'
+      usage: '&4Pouzij&8: &e/k rp deposit &2<resource points>'
+      success: |
+        &2You've successfully deposited &6%rp% resource points &2into your kingdom for &6$%worth%
+        &2Your new balance&8: &6$%balance%
+    withdraw:
+      description: '&6Ziskej zlataki pomoci odebrani zdrojovych bodu ze statu'
+      usage: '&4Pouzij&8: &e/k rp withdraw &2<resource points>'
+      min: '&cMusis vybrat minimalne &e%min% &cresource pointu'
+      success: |
+        &2You've successfully withdrawn &6%rp% &2resource points from your kingdom for &6$%worth%
+        &2Your new balance&8: &6$%balance%
+        &2Your kingdom's resource points&8: &6%kingdoms_fancy_resource_points%
+    transfer:
+      description: '&6Prenest zdrojove body/do statu/narodu'
+      usage: '&4Usage&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
+      success:
+        kingdom: |
+          &2You've successfully transfered &6%amount% &2resource points from your nation to kingdom.
+          Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+          &2Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+        nation: |
+          &2You've successfully transfered &6%amount% &2resource points from your kingdom to your nation.
+          Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+          &2Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+    not-enough:
+      resource-points: '&cTvuj stat nema &e%rp% &cresource pointu'
+      money: '&e%rp% resource points &cneeds &e$%worth%&c, but you only have &e$%balance%'
+    negative: '&cNemuzes prevest negativni castku resource pointu...'
+    zero: '&cNemuzes prevest nic'
+    transfer-kingdom-description: '&6Preneste zdrojove body ze sveho naroda do sveho statu'
+    transfer-nation-description: '&6Preneste zdrojove body ze sveho statu do sveho naroda'
+  bank:
+    description: '&6Vlozit nebo vybrat zlataky ze statni kasy'
+    usage: '&9Pouzij: &e/k bank &2<deposit/withdraw> <amount>'
+    unknown-transaction: '&cNeznama transakce &e%transaction%'
+    negative: '&cNemuzes prevest negativni castky...'
+    zero: '&cNemuzes prevest nic'
+    not-enough:
+      kingdom-money: '&cStatni kasa nema &e%amount% &czlataku'
+      money: '&cNemas &e%amount% &czlataku'
+    deposit:
+      limit: '&cStatni kasa je plna! Limit je &e%limit%'
+      success: |
+        &2You've deposited &6%amount% &2money into your kingdom's bank.
+        Your new balance&8: &6%balance%
+        &2Your kingdom's bank&8: &6%kingdoms_fancy_bank%
+      disabled: '&cNemuzes vlozit zlataky'
+      min: '&cMinimalni castka pro vlozeni zlataku je &e$%min%'
+    withdraw:
+      min: '&cMinimalni castka pro vyber je &e$%min%'
+      disabled: '&cNemuzes si vybrat zlataky'
+      success: |
+        &2You've withdrawn &6%amount% &2money from your kingdom's bank.
+        Your new balance&8: &6%balance%
+        &2Your kingdom's bank&8: &6%kingdoms_fancy_bank%
+  show:
+    description: '&6Zobrazit informace o statu'
+    usage: '&4Pouzij: &e/k show &9[player | kingdom | #PLAYER] &2<player | kingdom>'
+    others-permission: '&cNemas opravneni videt dalsi informace'
+    message-admin: |
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+      &7| &2King&8: &6%king_status%
+      &7| &2Home&8: &6%kingdoms_home%
+      &7| &2Nexus&8: &6%kingdoms_nexus%
+      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Might&8: &6%kingdoms_fancy_might%
+      &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
+      &7| &2Shield&8: &6%kingdoms_shield_time_left%
+      &7| &2Since&8: &6%kingdoms_since%
+      &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
+      %members%
+    message: |
+      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+
+      &7| &2King&8: &6%king_status%
+      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Might&8: &6%kingdoms_might%
+      &7| &2Since&8: &6%kingdoms_since%
+      &7| &2Shield&8: &6%kingdoms_shield_time_left%
+      &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
+      &7| &2Bank&8: &6$%kingdoms_fancy_bank%
+      &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
+
+      &7| &2Members&8:
+      %members%
+    allies: |
+      &7| &2Allies&8:
+      &e%allies%
+    truces: |
+      &7| &2Truces&8:
+      %truces%
+    enemies: |
+      &7| &2Enemies&8:
+      &e%enemies%
+    online-prefix: |
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&2Joined&8: &6%kingdoms_joined%
+      &2Donations&8: &6%kingdoms_total_donations%
+      &2Last Donation&8: &6%kingdoms_last_donation_time%
+      &2Rank&8: &6%kingdoms_rank_name%}
+    offline-prefix: |
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&2Joined&8: &6%kingdoms_joined%
+      &2Donations&8: &6%kingdoms_total_donations%
+      &2Last Donation&8: &6%kingdoms_last_donation_time%
+      &2Rank&8: &6%kingdoms_rank_name%}
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+  claim:
+    description: '&6Zabrat uzemi, na kterem stojis'
+    chunk:
+      usage: '&4Pouzij&8: &e/k claim [x] <z>'
+      permission: '&cNemas pravo zabrat chunk se souradnicemi'
+      max-distance: '&cSnazis se zabrat uzemi, ktere je prilis daleko &8: &e%distance% &7> &e%max%'
+    disabled-world: '&cZabirani je vyputo &6%world%'
+    in-region: '&cNemuzes zabrat uzemi v chranenych prostorach'
+    near-region: '&cNemuzes zabrat uzemi blizko chranenych uzemi'
+    not-connected: '&cTve uzemi musi byt spojeno s uzemim od statu'
+    not-distanced: '&cJiz jiny stat ma zde zabrane uzemi'
+    nation-zone: '&cTohle uzemi je soucasti naroda &e%nation%''s &ctudiz nemuze byt zabrano'
+    success: '&2Zabrano &6%x%&7, &6%z% &2jako statni utemi'
+    fill:
+      in-claimed-land: '&cNelze zaplnit, jelikoz tato zeme je jiz zabrana'
+      failed: '&cPokus o ziskani uzemi na souradnicich&8: &e%x%&7, &e%z% &cse nezdaril'
+      max-fails: '&cPokus o ziskani uzemi byl zastaven, prilis mnoho pokusu'
+      max-claims: '&cNemuzes zabrat &e%lands% &cuzemi'
+      description: '&2Zabrat veskere uzemi mezi oznacenemi body'
+      done: '&2Udelej hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2pro zabrani uzemi'
+    exceeded-max: '&cNemuzes zabrat vice jak &e%max% &cuzemi!'
+    already-owned: '&cTvuj stat jiz toto uzemi vlastni!'
+    occupied-land: '&cTohle uzemi je obsazene jinym statem! Zautoc pro ziskani pomoci &e/k invade!'
+    cant-overclaim: '&cTohle kralovstvi nemuzete premoci'
+    max-claims-player: '&cMuzes zabrat max. &e%limit% &cuzemi'
+    max-claims: '&cTvuj stat muze zabrat max. &6%limit% &cuzemi &cpro zvyseni maxima priber cleny nebo si to zvys pomoci nexusu'
+    square:
+      description: '&2Zabrat uzemi pomoci zadani radiusu'
+      usage: '&4Pouzij&8: &e/k claim square &2<radius>'
+      radius:
+        invalid: '&cSpecifikovany radius je chybny &8: &e%radius%'
+        disallowed: '&cSpecifikovany radius musi byt min. &e2 &ca max. &e%max% &cgot&8: &e%radius%'
+      done: '&2Napis hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2pro zabrani uzemi'
+    auto:
+      description: '&2Zabrat uzemi po kterem chodis'
+      usage: '&4Pouzij&8: &e/k claim auto &9[player]'
+      permission: '&cNemas opravneni nastavit jiny autoclaim'
+      on: '&6Auto claim je  &aON&6. Nyni budes zabirat uzemi po kterem chodis'
+      off: '&6Auto claim je &cOFF&6.'
+    need-rp: '&cPotrebujes &e%cost% &cresource pointu pro zabrani!'
+    confirmation: |
+      &cYour kingdom has to pay &e%rp% &cresource points and &e%money% &cmoney.
+      Are you sure you want to continue? Do the command again.
+    need-money: '&cTvuj stat potrebuje &e%cost% &czlataku pro zabrani uzemi! Vloz zlataky do statni banky pomoci &e/k bank deposit'
+    disallowed-biome: |
+      &cYou can't claim in &e%biome% &cbiomes.
+      Note that usually the entire chunk needs to be made out of this type of biome.
+    line:
+      description: '&2Zabrat uzemi v primce smeru'
+      usage: '&4Pouzij&8: &e/k claim line <distance>'
+      invalid-direction: '&cChybny smer&8: &e%direction%'
+      max-distance: '&cMaximalni distance pro zabrani je &e%max%'
+      min-distance: '&cMinimalni distance pro zabrani je &e%min%'
+      done: '&2Napis hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2to claim the lands.'
+    clipboard:
+      description: '&6Pred potvrzenim upravte vyber zabrani'
+      usage: '&4Pouzij&8: &e/k claim clipboard [add/remove | clear] <x> <z>'
+      different-world: '&cVas clipboard patri svetu&8: &e%world%'
+      unknown-action: '&cNeznama clipboard akce&8: &e%action%'
+      empty: '&cNemas nic v  clipboard.'
+      added: '&2Pridano &6%x%&7, &6%z% &2do clipboardu'
+      already-added: '&e%x%&7, &e%z% &cJiz je v clipboardu'
+      removed: ' &6%x%&7, &6%z% &2vymazano z clipboardu'
+      not-foumd: '&e%x%&7, &e%z% &cnebylo v clipboardu'
+      cleared: '&2Clipboard byl uspesne vymazan'
+      cost: '&2Zabrani tohoto uzemi bude stat &6%rp% resource pointu &2a &6$%money% zlataku'
+    confirm:
+      description: '&6Potvrdit a zabrat veskera uzemi v clipboardu'
+      empty: '&cNemas nic v clipboardu'
+      fail: '&cNelze zabrat &e%x%&7, &e%z% &ckvuli zmenam'
+      success: '&2SUspesne zabrana veskera uzemi'
+    corner:
+      description: '&6Nastavit dve pozice a zabrat oznacene uzemi'
+      usage: '&4Pouzij&8: &e/k claim corner &9[pos1 &7| &9pos2]'
+      set:
+        pos1: '&2Prvni pozice v rohu chunku&8: &6%chunkX1%&7, &6%chunkZ1%'
+        pos2: '&2Druha pozice v rohu chunku&8: &6%chunkX2%&7, &6%chunkZ2%'
+  unclaim:
+    auto:
+      description: '&2Automaticky zabirat uzemi po kterem jdes'
+      usage: '&4Pouzij&8: &e/k unclaim auto &9[player]'
+      on: '&6Auto je &aON&6 &6Nyni budes zabirat uzemi po kterem chodis'
+      off: '&6Auto claim je &cOFF&6.'
+    description: '&6Odebrat uzemi na kterem stojis'
+    success: '&2Uzemi odebrano &6%x%&7, &6%z%'
+    disconnection: '&cUzemi ktere se snazis odebrat odpoji uzemi &8: &e%x%&7, &e%z%'
+    not-claimed: '&cTohle uzemi neni zabrane'
+    cooldown: '&cTohle uzemi muzes odebrat za &e%time%'
+    cannot-remove-nexus: |
+      &cCannot unclaim a land with nexus in it.
+      Please relocate your nexus usinghover:{&e/k nexus;&4Click to Enable;/k nexus} &ccommand.
+    occupied-land: '&cTohle uzemi je jiz zabrane jinym statem, zautocis pomoci &e/k invade!'
+    confirmation:
+      turrets: '&cTohle uzemi obsahuje nejake turrety zda li jsi si jisty ze ho chces odebrat napis &e/k unclaim confirm'
+      structures: '&cTohle uzemi obsahuje nejake struktury zda li jsi si jisty ze ho chces odebrat napis &e/k unclaim confirm'
+      home: '&cTohle uzemi obsahuje home od statu, pokud jsi si jisty ze ho chces odebrat napis &e/k unclaim confirm'
+    all:
+      description: '&6Ztratit veskere statni uzemi'
+      success: '&2ztracene uzemi dohromady &6%lands%'
+      not-enough-resourcepoints: '&cPotrebujes &e%rp% &cpro odebrani veskereho uzemi'
+      confirm: |
+        &cYou're about to unclaim &e&l%lands%&c.
+        All your turrets and structures will be unclaimed as well and your chests left unprotected.
+        If you want to continue do the command again.
+      announce: '&2Hrac &6%player% &2ztratil dohromady &6%lands% &2uzemi!'
+  shield:
+    description: '&6Deaktivovat stit'
+    no-shield: '&cStat nema zadny aktivni stit'
+    confirm: |
+      &cIf you disable your shield, you have to buy a new one.
+      Kingdom's shield time left&8: &e%kingdoms_shield_time_left%
+      &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
+    deactivated: '&e%executor% &cdeaktivoval stit statu, ktere melo jeste &e%kingdoms_shield_time_left% &ccasu na ukonceni'
+  admin:
+    unclaim:
+      all:
+        description: '&6Ztratit veskere uzemi'
+        usage: '&4Napis&8: &e/k admin unclaim all &2<kingdom>'
+      description: '&6Ztratit jakykoli uzemi'
+      success: '&2Uzemi ztaceno &6%x%&7, &6%z% &2od &6%kingdom%'
+      not-claimed: '&cTohle uzemi neni zabrane'
+    item-description: '&6Vlastni prikazy souvisejici s bodovymi zdroji'
+    item:
+      needs-kingdom: '&cStatni predmety vyzaduji, aby cilovy hrac mel kralovstvi'
+      resourcepoints:
+        description: '&6Daruj polozku ktera obsahuje rp'
+        usage: '&4Napis&8: &e/k item give &2<name> &9[amount] [player]'
+        unknown-item: '&cSpatny nazev itemu&8: &e%item%'
+        invalid-amount: '&cNeznama castka&8: &e%amount%'
+        done: '&2Uspesne darovano &6%amount% %item% &2ktery obsahovalo &6%rp% resource pointu &2hraci &6%target%'
+      inject:
+        description: '&6Trvale vlozit zdrojove body do predmetu'
+        usage: '&4Napis&8: &e/k item inject &2<resource points>'
+        no-item: '&cNedrzis zadny predmet pro vlozeni zdrojovych bodu'
+        done: '&2Uspesne vlozeno &6%rp% resource pointu &2do &6%item%'
+      turret:
+        description: '&6Ziskat predmet primo z veze'
+        usage: '&4Napis&8: &e/k item turret &2<style> &9[amount] [player]'
+        unknown-style: |
+          &cUnknown turret style&8: &e%style%
+          &cAvailable styles&8: &e%styles%
+        done: '&2Uspesne darovano &6%amount% %item% &2hraci &6%target%'
+      structure:
+        description: '&6 Ziskat predmet primo ze struktury'
+        usage: '&4Napis&8: &e/k item structure &2<style> &9[amount] [player]'
+        unknown-style: |
+          &cUnknown structure style&8: &e%style%
+          &cAvailable styles&8: &e%styles%
+        done: '&2Uspesne darovano &6%amount% %item% &2hraci &6%target%'
+    gui-description: '&6Open a container to automatically parse the contests within it as a GUI config.'
+    gui-opened: '&2Parsing the container... Please wait.'
+    gui-enabled: '&2GUI mode is now &9enabled&2. Open a container to parse the contents.'
+    gui-disabled: '&2GUI mode is now &cdisabled&2.'
+    gui-done: '&2Done. Saved the config to the plugin''s folder in a file named &6%file%'
+    description: '&6Shows the available admin commands.'
+    nation:
+      description: '&6Shows the available nation admin commands.'
+      disband:
+        description: '&6Disbands a nation.'
+        usage: '&4Usage&8: &e/k admin disband &2<nation> &9[silent]'
+        success: '&6%nation% &2nation has been disbanded.'
+        announce: '&e%nation% &6nation has been disbanded.'
+    debug:
+      description: '&6Debug'
+    sound:
+      description: '&6Test a sound string that you''re going to use in config.'
+      usage: '&4Usage&8: &e/k admin testsound &2<sound> &9[volume] [pitch]'
+      playing: '&2Playing now...'
+    test:
+      description: '&6Test a string with hex color codes, complex messages, line breaks and placeholders.'
+      usage: '&cUsage&8: &e/k admin test <message>'
+    execute:
+      description: '&6Execute a command for all the members in a kingdom.'
+      usage: '&4Usage&8: &e/k admin execute &2<kingdom> <executor> &9[filter] &9[/]&2<command>'
+      unknown:
+        executor: |
+          &cUnknown executor&8: &e%executor%
+          &cAvailable executors&8: &eself&7, &econsole&7, &emembers
+        filter: |
+          &cUnknown filter&8: &e%filter%
+          &cAvailable filters&8: &eonline&7, &eoffline
+        command: '&cUnknown command&8: &e%command%'
+      members-offline: '&cCannot execute as kingdom members with offline filter. Offline players cannot execute commands.'
+      members-no-filter: |
+        &cCannot execute as kingdom members with no filter.
+        Some kingdom members might be offline. Use the &eonline &cfilter parameter to fix this.
+      executed: '&2Executing the command &6%command% &2from plugin &6%plugin% &2for members of &6%kingdom% &2kingdom.'
+    evaluate:
+      description: '&6Evaluates an expression with placeholders and math functions.'
+      usage: '&cUsage&8: &e/k admin evaluate <expression>'
+      failed: |
+        &cTranslated Expression&8: &6%translated%
+        &cError&8: &e%result%
+      evaluated: |
+        &2Translated Expression&8: hover:{&6%translated%;&6%object-code%
+
+        &2What is this?
+        &7This is the final representation that the
+        math compiler could understand from your expression.
+        You can see any errors such as operator
+        precedence and how subexpressions are grouped.
+        You might not see seme operations since they were optimized out.}
+        &2Evaluated Expression&8: &6%result%
+    claim:
+      description: '&6Administrativni sprava Uzemi pro Staty'
+      usage: '&4Prikaz&8: &e/k admin claim &2<kingdom>'
+      success: '&2Uspesne obsazeno uzemi &6%x%&7, &6%z% &2pro Vas Stat.'
+      already-claimed: '&cTohle uzemi je jiz obsazeno Statem &e%kingdoms_name%'
+    rank:
+      description: '&6Administrativni sprava hodnosti Statu.'
+      usage: '&4Prikaz&8: &e/k admin rank &2<player> <rank>'
+      not-found: '&cHodnost nenalezena.'
+      no-kingdom: '&cDanny Obcan neni ve State.'
+      same-rank: '&cTento Obcan jiz ma tuhle hodnost.'
+      success: '&2Hodnost Obcana &6%name% &2byla zmenena z &6%previous_rank% &2na &6%rank%'
+      success-king: '&2Novy Vudce Statu &6[ %kingdom% ] &2je Obcan&8: &6%name%'
+      cant-demote-king: '&cObcan &e[ %player% ] &cje Vudcem Statu &e%kingdom_name% &cnejdrive musis nastavit Vudce.'
+    turret:
+      description: '&6Administrativni sprava Statnich turet.'
+      usage: '&4Prikaz&8: &e/k admin turret &2<change | remove> <style> &9[replacement style]'
+      unknown-style: |
+        &cNeznamy styl turety &8: &e%style%
+        &cZobrazi vsechny Statni &3Turety &cve &2slozce &cAdministrativi.
+      success: '&2Celkem &6%amount% &2Turet bylo cheknuto.'
+    nexus:
+      description: '&6Administrativni sprava Statnich nexusu.'
+      usage: '&4Prikaz&8: &e/k admin nexus &2<kingdom>'
+      tp-not-set: '&cStat &e[ %kingdom% ] &cjeste nevytvoril nexus.'
+      tp: '&2Administrativni teleportace na Statni nexus &6[ %kingdom% ]'
+    toggle:
+      description: '&6Administrativa Zapnout/Vypnout.'
+      on: '&6Administrativa&8: &2Zapnuta'
+      off: '&6Administrativa&8: &cVypnuta'
+    toggles:
+      description: '&6Ukaze Administrativni list, vsech Obcanu s prave funkcni Admnistrativou.'
+      header: '&2Obcani s Administrativni spravou&8:'
+      entry: '&8- &6%displayname%'
+    spy:
+      description: '&6Administrativni sledovani chatu Statu.'
+      on: '&6Chat spy faze&8: &2Zapnuta'
+      off: '&6Chat spy faze&8: &cVypnuta'
+    dynmap:
+      description: '&6Administrativni sprava, nacitani dynmapy.'
+      rendering: '&2Nacitame chunky Dynmapy, vyckejte prosim...'
+      usage: '&cPrikaz&8: &e/k admin dynmap <fullrender/update/remove>'
+      dynmap-not-available: '&cNelze najit Dynmap.'
+      rendered: '&2Celkem &6%lands% &2uzemi bylo nacteno v sekci uzemi.'
+      removed: '&2Celkem &6%lands% &2uzemi bylo odstraneno.'
+    masswar:
+      description: '&6Administrativni sprava Masswar.'
+      usage: '&4Prikaz&8: &c/k admin masswar <start/end>'
+      running: '&cMasswar prave probiha.'
+      not-running: '&cMasswar prave neprobiha.'
+    dailychecks:
+      description: '&6Administrativni cykly kontroli Statu.'
+      usage: '&4Prikaz&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      info: |
+        &2Dalsi prubeh za&8: &6%next%
+        &2Konkretni cas&8: &6%daily_checks%
+        &2Cas nyni&8: &6[ %time% ]
+        &2Stat&8: %state%
+      run: '&2Zpracovavame denni kontroly... Dnesni denni kontroli nebudou preskoceny.'
+      skip: '&2Preskocit zitrejsi kontrolu v intervalech.'
+      skipped: '&cZitrejsi kontrola je preskocena.'
+      resume: '&2Obnovujeme denni kontroli, vyckejte prosim.'
+      resumed: '&cDenni kontroli nejsou preskoceny.'
+    resourcepoints:
+      description: '&6Administrativni sprava pro Statni zdrojove body.'
+      usage: '&4Prikaz&8: &e/k admin resourcepoints &2<kingdom> &9[set | add | remove] &2<amount>'
+      player-no-kingdom: '&cSpecificky Obcan neni ve Statu.'
+      done: '&2zdrojove body Statu &6[ %kingdom% ]''&2jsou &8: &6[ %rp% ]'
+      added: '&2Tve Statni zdrojove body &8: &6[ %rp% ]'
+      invalid-action: '&cNeznama akce &e%action%&c! pouzi&8: &eadd/remove/set'
+    bank:
+      description: '&Administrativni sprava pro Statni banky.'
+      usage: '&4Prikaz&8: &e/k admin bank &2<kingdom> &9[set | add | remove] &2<amount>'
+      done: '&2Stat &c6[ %kingdom% ] &2ma novou banku &8: &6%kingdoms_fancy_bank%'
+      added: '&2Tva nova Statni banka&8: &6%kingdoms_fancy_bank%'
+      invalid-action: '&cNeznama akce &e%action%&c! pouzi&8: &eadd/remove/set'
+    commands:
+      description: '&6Napise list prikazu pluginu do souboru.'
+      done: '&2Prikaz napsan v &6%output%. &2Zkontroluj plugin Valky Staty.'
+    command:
+      description: '&cAdministrativni informace o prikazu.'
+      usage: '&4Prikaz&8: &e/k admin command &2<command>'
+      bad-start: '&cYou don''t need slash or the main /k command to get the command info.'
+      not-found: '&cNelze najit prikaz&8: &e%command%'
+      info: |
+        &8------------=( &2%main-name% &8)=------------
+        &7| &2Display Name&8: &9%command-displayname%
+        &7| &2Aliases&8: &9%aliases%
+        &7| &2Parent&8: &9%parent%
+        &7| &2Description&8: &9%description%
+        &7| &2Usage&8: &9%usage%
+        &7| &2Permission&8: &9hover:{%permission%;&2Click to copy;|%permission%}
+        &7| &2Default Permission Scope&8: &9%permission-scope%
+        &7| &2Cooldown&8: &9%cooldown%
+        &7| &2Disabled Worlds&8: &9%disabled-worlds%
+    join:
+      description: '&6Administrativni pripojeni Obcana do Statu.'
+      usage: '&cPrikaz&8: &e/k admin join &2<player> <kingdom>'
+      invalid-kingdom: '&cNelze najit Stat &e[ %kingdom% ]'
+      in-kingdom: |
+        &2Obcan &6[ %player% ] &2jiz je Obcanem Statu &6%kingdoms_name%
+        &2Pro pokracovani pres&8: hover:{&6/k admin join [ %player% ] [ %kingdom% ] confirm;&2Click to confirm;/k admin join [ %player% ] [ %kingdom% ] confirm}
+      already-in-kingdom: '&2Obcan &6[ %player% ] &2je jiz Obcanem Statu &6[ %kingdom% ]'
+      success: '&2Obcan &6[ %player% ] &2se stal administrativne Obcanem Statu &6[ %kingdom% ]'
+    home:
+      description: '&6Administrativni teleportace na domov Statu.'
+      usage: '&cPrikaz&8: &e/k admin home <kingdom>'
+      homeless: '&cStat &3[ %kingdom% ] &cnema nastaveny domov'
+      teleported: '&2Byl si Administrativne teleportovan na domov Statu &6[ %kingdom% ]'
+    create:
+      description: '&6Administrativni vytvoreni Statu pro samotne hrace.'
+      usage: '&cPrikaz&8: &e/k admin create &2<player &8| &2super> <name>'
+      already-exists: '&cJiz existuje Stat &8: &e[ %kingdom% ]'
+      super-creating: '&2Vytvareni Super Statu, ADMIN'
+      any-no-player-found: '&cNelze najit Obcana bez Statu.'
+      created: '&2Prave si administrativne vytvoril Stat &6[ %kingdom% ] &2pro Obcana &6%target%'
+    permanent:
+      description: '&cZapnout/Vypnout administrativne Permanent fazi.'
+      usage: '&cPrikaz&8: &e/k admin permanent &2<kingdom>'
+      on: '&2Permanent faze: &6Zapnuta.'
+      off: '&2Permanent faze: &cVypnuta.'
+    rename:
+      description: '&6Administrativni prejmenovani Statu.'
+      usage: '&cPrikaz&8: &e/k admin rename <kingdom> <name>'
+      already-exists: '&cJiz existuje Stat s nazvem&8: &e[ %kingdom% ]'
+      renamed: '&2Prave si administrativne prejmenoval Stat &6[ %kingdom% ] &2na &6%name%'
+    disband:
+      description: '&6Administrativni rozpusteni Statu.'
+      usage: '&cPrikaz&8: &e/k admin disband <kingdom> [silent]'
+      success: '&6Stat &6[ %kingdom% ] &2byl rozpusten.'
+      announce: '&6Stat &e[ %kingdom% ] &6byl Administrativne rozpusten.'
+    pacifism:
+      description: '&6Administrativni zmeneni stavu Statu.'
+      usage: '&cPrikaz&8: &e/k admin pacifism &2<kingdom> &8[&2true &7| &4false&8]'
+      enabled: '&6Mirumilovnost pro Stat &2[ %kingdom% ]&8: &2Zapnuto'
+      disabled: '&6Mirumilovnost pro Stat &2[ %kingdom% ]&8: &cVypnuto'
+    land:
+      description: '&6Administrativni teleportace.'
+      usage: '&4Prikaz&8: &e/k admin land [world] <x> <z>'
+      teleported: '&2Byl si teleportovan na &8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7, &5%z%&8)'
+      invalid-world: '&cNelze najit svet&8: &e%world%'
+      invalid-coordinates: '&cZadane souradnice jsou neplatne&8: &e%x%&7, &e%z%'
+    player:
+      description: '&6Zobrazi Administrativni info o Obcanovi.'
+      usage: '&4Prikaz&8: &e/k admin player &2<player>'
+      info: |
+        &7| &2Name&8: &6[ %player% ] &8(hover:{&5%id%;&2Copy;|%id%}&8)
+        &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
+        &7| &2Kingdom&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Rank&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2National Rank&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2Using Markers&8: %visualizer%
+        &7| &2Invites&8: &6%invites%
+        &7| &2Joined Kingdom At&8: &6%kingdoms_joined%
+        &7| &2Auto Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
+        &7| &2Map Size&8: &6%map_width% &8- &6%map_height%
+        &7| &2Total Donations&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
+        &7| &2Claims &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Compressed Data&8: &6%compressed%
+      found: '&2Obcan &6%name% &8(&7%uuid%&8) &2je ve State&8:'
+      kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
+      no-duplicates: '&cStat Obcana &6[ %player% ] &cneni zdvojeny.'
+    kick:
+      description: '&6Administrativni vyhozeni Obcanu ze Statu.'
+      usage: '&4Prikaz&8: &e/k admin kick &2<player>'
+      kicked: '&cByl vyhozen Obcan &e%kicked% &cze Statu &e[ %kingdom% ]'
+      kicked-king: '&cByl vyhozen Obcan &e%kicked% &cze Statu  &e[ %kingdom% ] &cnovy Vudce Statu je&8: &e%king%'
+      kicked-disbanded: '&cStat &e[ %kingdom% ] &cbyl rozpusten protoze Obcan &e%kicked% &cbyl jedinym Obcanem Statu.'
+      not-in-kingdom: '&cObcan &6%kicked% &cneni ve tvem State.'
+    kick-king: '&cNelze vyhodit Vudce Statu. Potrebujes zvolit noveho Vudce a nebo rozpustit Stat pro vyhozeni Obcana &6%kicked%&c.'
+    hologram:
+      description: '&6Odstranit zasekle hologramy.'
+      usage: '&cPrikaz&8: &e/k admin hologram <radius>'
+      removed: '&2Odstraneno &6%removed% &2hologramu.'
+    entity:
+      description: '&6Vyhledat vsechny moby okolo Obcana.'
+    maxlandmodifier:
+      description: '&6Zmenit modifikace uzemi pro Stat.'
+      usage: '&4Prikaz&8: &e/k admin maxLandModifier &2<kingdom> &9[set | add | remove] &9<amount>'
+      success: '&2Prave si zmenil maximamum modifikaci uzemi &6[ %kingdom% ] &2na &6%amount%'
+      invalid-action: '&cNeznama akce &e%action%&c! pouzi&8: &eadd/remove/set'
+    shield:
+      description: '&6Zmenit cas vyprseni stitu pro Stat.'
+      usage: '&4Prikaz&8: &e/k admin shield &2<kingdom> &9[set | add | remove] &2<time>'
+      success: '&2Prave si zmenil cas vyprseni stitu &6[ %kingdom% ] &2na &8: &6%amount%'
+      invalid-action: '&cNeznama akce &e%action%&c! pouzi&8: &eadd/remove/set'
+      invalid-kingdom: '&cNelze najit Stat &e[ %kingdom% ]'
+      invalid-time: '&cNeplatny cas&8: &e[ %time% ]'
+  sethome:
+    description: '&6Nastavit Statni domov na danne uzemi.'
+    not-claimed: '&cStatni domov muzes nastavit pouze na Statni uzemi.'
+    others-land: '&cStatni domov muzes nastavit pouze na Statni uzemi!'
+    nexus-land: '&cStatni domov muzes nastavit pouze na Statni uzemi!'
+    set: '&aStatni domov nastaven &8: &6%x%&7, &6%z%'
+  unsethome:
+    description: '&6Odstraneni Statniho domovu.'
+    not-set: '&cVas Statni domov neni nastaven.'
+    success: '&aVas Statni domov byl odstranen &8: &6%x%&7, &6%y%&7, &6%z%'
+  mail:
+    description: '&6Mail prikazy.'
+    reply:
+      description: '&6Odpovedet na mail schranky - tento prikaz neni pro pouzivani Obcanu.'
+      usage: '&4Prikaz&8: &e/k mail reply &2<id>'
+    open:
+      description: '&6Zobrazi mail schranku - tento prikaz neni primo pro pouzivani Obcanu.'
+    invalid:
+      id: '&cZadany mail ID neni platny.'
+    not:
+      found: '&cMail s timto ID neexistuje, zkontrolujte ID.'
+      yours: '&cTento mail nepatri Vasemu Statu.'
+  home:
+    description: '&6Teleport na Statni domov'
+    changed: '&cStatni domov byl zmenen. Teleportace zrusena.'
+    teleporting: '&2teleportace za &6%countdown% sekund, prosim nehybejte se, dekujeme'
+    not-set: '&cVas Stat nema nastaveny domov!'
+    not-set-others: '&cDomov Statu &e[ %kingdom% ] &cnebyl nastaven.'
+    permission: '&cBohuzel nemas pravomoce se teleportovat do jinych domovu, jinych Statu.'
+    not-public: '&cDomov Statu &e[ %kingdom% ] &cneni verejny'
+    cant-use-public-home: '&cNelze pouzit Statni domov &e[ %kingdom% ]'
+    being-invaded: '&cNemuzes se teleportovat do Statu &e[ %kingdom% ]''s &cVas domov je pod invazi.'
+    success: '&2teleportovano!'
+  nexus:
+    description: '&6Nastavit bod Statniho Nexusu.'
+    open:
+      description: '&6Zobrazit Statni Nexus.'
+    remove:
+      description: '&6Znicit Statni Nexus.'
+      permission: '&cNemas pravomoce na zniceni Statniho Nexusu.'
+      invasion: '&cNemuzes znicit Statni Nexus pri invazi.'
+      not-placed: '&cNexus Vaseho Statu nebyl vytvoren.'
+      removed: '&cPrave si znicil Nexus sveho Statu.'
+    help: |
+      &2Pravym kliknutim mysi, polozis nexus na misto kurzoru.
+      pro zruseni Nexus faze pouzi prikaz hover:{&6/k nexus;&cDisable;/k nexus} &2znovu.
+    actionbar-activated: '&6Nexus faze&8: &2Zapnuta'
+    actionbar-deactivated: '&6Nexus faze&8: &cVypnuta'
+    disabled: '&cNexus faze byla zrusena.'
+    disabled-world: '&cNelze vytvorit Nexus v zakazanych svetech.'
+    setting-nation: '&cPrave si nastavil Statni pozici nexusu.'
+    outside-of-land: '&cMusis byt ve Statnim uzemi pro vytvoreni nexusu.'
+    invasion: '&cNemuzes zmenit polohu Statniho nexusu pri invazi.'
+    not-claimed: '&cStatni nexus muzes polozit pouze na Sve Statni uzemi!'
+    another-structure: '&cNa tomto uzemi je jina Nexus Stavba, nelze vytvorit nexus.'
+    disabled-on-damage: '&cByl si zranen, nexus faze byla zrusena.'
+    disabled-on-land-change: '&cOpustil si uzemi Vaseho Statu, Nexus faze byla zrusena.'
+    already-there: '&cZde je tvuj nexus co se jako snazis zrobit??'
+    cannot-replace: '&cNelze premenit tenhle block za Vas Statni nexus!'
+    success: '&aVas nexus byl vytvoren na &6%x%&7, &6%y%&7, &6%z%'
+  disband:
+    description: '&cRozpustit Stat a vsichni Obcani budou vyhozeni.'
+    king-only: '&cPouze Vudce muze rozpustit Stat.'
+    success: '&4Vas Stat byl rozpusten, najdi si novy!'
+    confirmation: |
+      &4Prave chces rozpustit stat.
+      Vsichni Obcani budou vyhozeni a Vase Statni uzemi budou odnarokovany.
+      Stale Chcete rozpustit Stat??
+      pres prikaz &e/k disband &4again to confirm.
+    announce: '&6Vudce &e[ %player% ] &6rozpustil Svuj Stat &e%kingdoms_name%'
+  about:
+    description: '&6O pluginu Valka Statu.'
+  book:
+    description: '&6Statni kniha.'
+    chapter-not-found: '&cNelze najit Stranu&8: &e%chapter% &czkontroluj jmeno strany.'
+    permission: '&cNemas pravomoc prepisovat Statni knihu.'
+    rename:
+      description: '&6Prejmenovat strany Statni knihy.'
+      usage: '&4Prikaz&8: &e/k book rename &2<chapter> <name>'
+      same: '&cTato strana jiz mela tohle jmeno.'
+      duplicate: '&cVe Statni knize jiz existuje strana &e%chapter%'
+      renamed: '&2Prejmenova strana knihy &6%old_chapter% &2na &6%new_chapter%'
+    open:
+      description: '&6Zobrazit Statni knihu.'
+      usage: '&4Prikaz&8: &e/k book open &9[chapter]'
+    preview:
+      description: '&6Nadhled pro preformatovane strany knih.'
+      nothing-to-preview: '&cPrave neprepisujes zadne Stranu pro preformat nadhled.'
+      previewing: '&2Prave prohlizis preformat pro Stranu&8: &6%chapter%'
+    discard:
+      description: '&6Zrusit vsechny zmeny stran Statni knihy.'
+      nothing-to-discard: '&cNic neprepisujes pro moznost zruseni zmen.'
+      discarded: '&2Vsehny zmenu pro Stranu &6%chapter% &2byly zruseny.'
+    remove:
+      description: '&6Odstranit stranky ze Statni knihy.'
+      usage: '&4Prikaz&8: &e/k book remove &2<chapter>'
+      deleted: '&2Strana byla odstranena&8: &6%chapter%'
+    edit:
+      description: '&6Upravit Vasi Statni knihu.'
+      usage: '&4Prikaz&8: &e/k book edit &2<chapter>'
+      already-editing: '&cJiz upravujes Stranu &e%chapter%'
+      changed: '&2Zmeneno'
+      create: '&2Tato strana neexistuje. Pro vytvoreni nove strany, pres prikaz hover:{&6/k book cancel;/k book cancel;/k book cancel} &2to cancel.'
+      create-limit: '&cVas Stat nemuze mit vice jak &e%limit% &cstran knihy.'
+      create-max-length: '&cStrana knihy muze mit maximalne &e%max% &cznaku.'
+      modify: |
+        &2Prave prepisujes strannu&8: &6%chapter%
+        &2pres prikaz  hover:{&6/k book discard;/k book discard;/k book discard} &2zrusit vsechny zmeny.
+  sneak:
+    description: '&6Vase Statni smlouvy, nebudou vypinat letani Ostatnich Obcanu.'
+    others-permission: '&cNemas pravomoce nastavit nebo zmenit sneak fazi ostatnich Obcanu.'
+    enabled: '&6Sneak faze&8: &2Zapnuta'
+    disabled: '&6Sneak faze&8: &cVypnuta'
+  inventory:
+    description: '&6Zobrazit invertar Obcanu Vaseho Statu.'
+    usage: '&4Prikaz&8: &e/k invsee &9[player]'
+    not-in-kingdom: '&cObcan &e%target% &cneni ve Vasem State.'
+    permission: '&cNemas pravomoce pouzivat tyhle prikazy ve Vasem State, zeptej se nadrizeneho.'
+  vault:
+    description: '&6Otevrit truhly Statu.'
+    others-permission: '&cNemuzes otvirat truhly jinych Statu.'
+  invite:
+    invited: |
+      &2Obcan &6%inviter% &2ti poslal pozvanku do Statu &6[ %kingdom% ]&2.
+          hover:{&2Accept with /k accept;&2Accept;/k accept}
+          hover:{&cDecline with /k decline;&cDecline;/k decline}
+    usage: '&4Prikaz&8: &e/k invite &2<player> <kingdom>'
+    announce: '&cObcan &6%inviter% &2poslal pozvanku Obcanovi &6%invited%'
+    already-joined: '&cObcan &e%invited% &cjiz je ve Vasem State.'
+    description: '&6Poslat pozvanky Obcanum do Statu.'
+    already-in-kingdom: '&cTenhle Obcan jiz je ve State.'
+    already-invited: '&cTenhle Obcan je jiz pozvany do Statu Obcanem &e%inviter%'
+    max-members: '&cVas Stat jiz ma max Obcanu &e%kingdoms_members% &cnavyste si limit, nebo propuste Obcany.'
+    self: '&cBro na tohle musis mit povoleni od Boha, nez pozves sam sebe. XD'
+    expired: '&cVase pozvanka od &e%inviter% &cjiz vyprsela!'
+    expired-notify: '&cVase pozvanka pro &e%invited% &cjiz vyprsela!'
+  accept:
+    description: '&6Prijmout pozvanky do Statu.'
+    already-in-kingdom: '&2Jiz jste v jednom State, nelze byt ve dvou.'
+    accepted: '&2Prijmul si pozvanku Obcana &6%inviter% &2pro vstup do Vaseho Statu &e[ %kingdom% ]'
+    joined: '&2Obcan &6[ %player% ] &2se pripojil do Statu'
+    notify: '&2Obcan &6%name% &2prijal vasi pozvanku.'
+    no-invites: '&cNemas zadne pozvanky od jinych Statu.'
+    not-invited: '&cNejste pozvany do Statu &e[ %kingdom% ]'
+    expired: '&cVase pozvanky do Statu &e[ %kingdom% ] &cjiz vyprseli.'
+    max-members: '&cTento Stat jiz ma maximalni pocet Obcanu &e%kingdoms_members%'
+    no-longer-exists: '&cTento Stat jiz neexistuje.'
+    multiple-invites: '&cMas mnoho pozvanek, prosim specifikuj jmeno Statu do ktereho se chces pripojit pres prikaz: &ehover:{/k invites;&6Click to run;/k invites} &ccommand.'
+  join:
+    description: '&6Pripojit se do Statu co nepotrebuje pozvanku.'
+    usage: '&4Prikaz&8: &e/k join &2<kingdom>'
+    joined: '&2Obcan &6[ %player% ] &2se pripojil do Vaseho Statu.'
+    already-in-kingdom: '&cUz jste v jedno Statu, nelze byt ve dvou.'
+    max-members: '&cTenhle Stat je ma jiz plny pocet Obcanu, pockej az bude volne misto.'
+    elections: '&cNemuzes se pripojit do Statu pri jejich volbach na Vudce.'
+    requires-invite: '&cMusis byt pozvany do Statu &e[ %kingdom% ]'
+  decline:
+    description: '&6Odmitnout pozvanky do Statu'
+    declined: '&cOdmitl si pozvanku Obcana &6%inviter% &cktery Vas pozval do Statu &e[ %kingdom% ]'
+    notify: '&cObcan &e%name% &codmitl Vasi pozvanku, parchant.'
+    no-invites: '&cNemas zadne pozvanky od jinych Statu.'
+    not-invited: '&cNejste pozvany do Statu &e[ %kingdom% ]'
+    expired: '&cVase pozvanka pro Stat &e[ %kingdom% ] &cjiz vyprsela.'
+    no-longer-exists: '&cTento Stat jiz neexistuje.'
+    all: '&2Odmitnul si &6%invites% &2pozvanek od Statu.'
+    multiple-invites: |
+      &cMas mnoho pozvanek, prosim specifikujte pozvanky od urcitych Statu, nebo vsechno odmitnete pres &e* &c.
+      Muzes zobrazit nedavne pozvanky pres Prikaz: &ehover:{/k invites;&6Click to run;/k invites}
+  invites:
+    description: '&6Zobrazit pozvanky od Obcanu.'
+    no-invites: '&cNemas zadne pozvanky od Obcanu.'
+  teleport:
+    description: '&6Teleportovat se na uzemi kde je Vas Stat pod invazi.'
+    not-invading: '&cPrave zde nejsou zadne uzemi pod invazi.'
+    already-teleporting: '&cPrave Vas teleportujeme domu, nehybejte se, prosim.'
+    teleporting: '&2Teleportace za &6%countdown% sekund &2 - Nehybejte se, prosim.'
+    teleported: '&2Byl si teleportovan na uzemi bojiste.'
+    cancelled: '&cTeleportace byla zrusena!'
+  gui:
+    description: '&6Automaticky otevrit danne GUI.'
+    usage: '&4Prikaz&8: &e/k gui &2<name>'
+    not-found: '&cNenasel jsem GUI&8: &e%gui%'
+  invade:
+    description: '&6Stat na nepratelskem uzemi a zacit invazi.'
+    invading: '&2Prave si napadnul Stat &6[ %kingdom% ]&2. Sampion bude spawnut za &65 sekund.'
+    invading-defender-notify: '&cObcan &e[ %invander% ] &czacal utok na Vas Stat, bez a bojuj!!!'
+    countdown-defneder: '&e[ %invander% ] &cis going to invade in &e%sec% &cseconds'
+    countdown-attacker: '&2Sampion se spawne za &6%sec% sekund.'
+    announcement: '&2Obcan &6[ %invander% ] &2zautocil na Stat &6[ %kingdom% ] &2lokace: &6%location%'
+    announcement-defender: |
+      &cObcan &e[ %invander% ] &cze Statu &e[ %kingdom% ] &czautocil na uzemi %location%.
+      &cNapis Prikaz hover:{&e/k tp;&eTeleport;/k tp} &cpro teleportovani na bojiste.
+    announcement-nation: '&cObcan &e[ %invander% ] &cze Statu &e[ %kingdom% ] &czautocil na uzemi &e%location%'
+    own-land: '&cNemuzes obsadit vlastni Stat.'
+    not-claimed: '&cTohle uzemi neni obsazeno.'
+    already-being-invaded: '&cTohle uzemi jiz ma invazi.'
+    masswar-only: '&cMuzes zacit invazi pouze pri Masswar.'
+    already-invading: '&cJiz mate invazi na jiny Stat.'
+    self-pacifist: '&cVas Stat je mirumilovny, nelze zacit invazi na jine Staty.'
+    cooldown:
+      failed: '&cVas Stat nedokazal obsadit uzemi Statu &e[ %kingdom% ] &cPro dalsi invazi musis pockat &e%cooldown%'
+      successful: '&cVas Stat dokazal obsadit uzemi Statu &e[ %kingdom% ] &cPro dalsi invazi musis pockat &e%cooldown%'
+    min:
+      defenders-needed: '&cAspon &e%defenders% &cobrancu musi byt online.'
+      invaders-needed: '&cAspon &e%invaders% &cutocniku musi byt online.'
+    adjoining:
+      protectioin: |
+        &cTohle uzemi je chraneno sousedicim ochranym zdrojem.
+        Pro moznost invaze, musite najit zacatek uzemi tohoto Statu a začit invazi zde.
+    shield:
+      defender:
+        kingdom: '&cTento Stat je pod ochranou stitu, ktery vyprsi za &8: &e%shield%'
+        nation: '&cTento Narod je pod ochranou stitu, ktery vyprsi za &8: &e%shield%'
+      invader:
+        kingdom: |
+          &cVas Stat ma stit na &8: &e%shield% &cVas Stit bude zrusen pokud zapocnete invazi.
+          Pro pokracovani, zadejte prikaz znovu.
+        nation: |
+          &cVas Narod ma stit na &8: &e%shield% &cVas Stit bude zrusen pokud zapocnete invazi.
+          Pro pokracovani, zadejte prikaz znovu.
+        kingdom-disabled: '&cVas Statni stit vyprsel, trvak &8: &e%shield% &ckvuli Obcanovi &e[ %invander% ] &cktery zautocil na Vas Stat &e[ %kingdom% ]'
+        nation-disabled: '&cVas Narodni stit vyprsel, trval &8: &e%shield% &ckvuli Obcanovi &e[ %invander% ] &cktery zautocil na Vas Stat &e[ %kingdom% ]'
+    creative: '&cMuzes zautocit pouze ve Survival fazi, prave si v Creative fazi..'
+    max-misc-upgrade: |
+      &cVas Stat dosahl maximalniho poctu invazi na uzemi, zaroven.
+      Vylepsete si maximalni limit ve Statnim upgradu nebo pockejte na obnoveni limitu.
+    simultaneous: '&cVas Stat muze vyhlasit invazi na %amount% uzemi zaroven.'
+    costs: '&cVas Stat potrebuje &e[ %rp% ] &czdrojovych bodu a &e$%money% &cpro invazi.'
+    pacifist: '&cStat na ktery se snazis zautocit je mirumilovny, bohuzel nelze zautocit.'
+    challenge-not-started: '&cVas Stat vyhlasil invazi na tenhle stat, ale jeste nezacala. Zbyva - &8: &e%remaining-time%'
+    not-challenged: |
+      &cVas Stat jeste nevyzval tento Stat k invazi.
+      Pro vice info zadej prikaz: hover:{&e/k challenge [ %kingdom% ];&9Click to run;/k challenge [ %kingdom% ]}
+    ceasefire: '&cNemuzes vyhlasit invazi na tenhle Stat, protoze ma urcitou dohodu &e[ %relation% ]'
+    nation-capital: |
+      &cNelze napadnout hlavni uzemi predtim nez obsadis vsechny vedlejsi uzemi Statu.
+      Nasledujici Stat potrebuje byt napadnut Statem&8:
+      %kingdoms%
+    powercell: '&cBlizko je napajeci zdroj, ktery musis napadnout pred tim nez napadnes uzemi Statu na kterej je invaze.'
+  challenge:
+    description: '&6Planovat invazi na Staty.'
+    usage: '&4Prikaz&8: &e/k challenge &2<kingdom>'
+    yourself: '&cNemuzes vyhlasit vyzvu na Vas Stat, co si blazen???'
+    not-invadable: '&cStat, kteremu vyhlasujes vyzvu nema potrebny atribut invaze.'
+    challenged: '&cObcan &e[ %player% ] &cze Statu &e%kingdoms_name% &cvyhlasil vyzvu s vasim Statem, pro vice info, zobrazte Statni audio logy.'
+  top:
+    description: '&6Ukazat tabulku nejlepsich Obcanu na Serveru.'
+    loading: '&6Nacitani dat Obcanu, vyckejte...'
+    header: '&8----------------------------------'
+    footer: '     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8] &8[hover:{&6→;&6Next Page;/k top %next_page%}&8]'
+    no-more-pages: '&cZadne Strany k nacteni.'
+    negative: '&cNelze zobrazit Negativni Strany.'
+    entry: |
+      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
+      &7♦ &2Lands&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
+      &7♦ &2Resource Points&8: &6%kingdoms_fancy_resource_points%
+      &7♦ &2Bank&8: &6$%kingdoms_fancy_bank%;/k show %kingdoms_name%} &7- &6%kingdoms_fancy_might%
+  map:
+    settings-description: '&6Zmenit nastaveni mapy &e/k map'
+    description: '&6Ukazat mapu budov a Statu na Serveru.'
+    usage: '&4Prikaz&8: &e/k map &9[auto &8| &9height] [width]'
+    kingdom-player-only: '&cPouze Obcani Statu mohou pouzivat mapy, vytvor si Svuj Stat nebo se pripoj do existujiciho Statu.'
+    invalid-height: '&cSpatne cislo vysky &e%height% &czkus pouzit zakladni nastaveni.'
+    invalid-width: '&cSpatne cislo sirky &e%width% &czkus pouzit zakladni nastaveni.'
+    max-height: '&cMaximalni vyska mapy je &e%limit%'
+    max-width: '&cMaximalni sirka mapy je &e%limit%'
+    auto:
+      permission: '&cNemas pravomoce Zapinat/Vypinat auto mapu.'
+      enabled: '&2Auto mapa &6Zapnuta'
+      disabled: '&2Auto mapa &cVypnuta'
+    size:
+      permission: '&cNemas pravomoce nastavovat nebo menit mapy.'
+      changed: '&2Tvoje rozmery mapy byly zmeneny &7(&6Height&8: &9%kingdoms_map_height% &7| &6Width&8: &9%kingdoms_map_width%&7) &2to &7(&6Height&8: &9%new_height% &7| &6Width&8: &9%new_width%&7)'
+      reset: '&2Rozmery mapy byly obnoveny.'
+  fly:
+    description: '&6Povolit letani ve Statu.'
+    usage: '&4Prikaz&8: &e/k fly &9[player]'
+    others-permission: '&cNemas pravomoce zmenit nebo nastavovat letani ostanich Obcanu.'
+    enabled: '&6Letani&8: &2Zapnuto'
+    disabled: '&6Letani&8: &4Vypnuto'
+    not-allowed: '&cNelze letat na uzemi Statu &e[ %kingdom% ]'
+    unclaimed: '&cMuzes letat pouze ve Statnich uzemi kde je to povoleno.'
+    own-enemy-nearby: '&cNelze letat pokud jsou pobliz nepratele.'
+    cant-afford: '&cPotrebujes &e$%money% &cpenez pro aktivaci letani.'
+    cant-afford-kingdom: '&cVas Stat potrebuje &e%amount% &czdrojovych bodu pro aktivaci letani.'
+  kick:
+    person: '&cByl si vyhozen ze Statu &e[ %kingdom% ] &cObcanem &e%kicker%'
+    description: '&6Vyhodit Obcany ze Statu.'
+    usage: '&4Prikaz&8: &e/k kick &2<player> &9[silent]'
+    announce: '&cObcan &e%kicked% &cbyl vyhozen ze Statu Obcanem &e%kicker%'
+    self: '&cByl si vyhozen ze Statu, pokud se navratis nezapomen se omluvit!'
+    not-in-kingdom: '&cObcan neni ve Vasem State, zkontroluj jeho jmeno.'
+    elections: '&cNemuzes vyhazovat Obcany pri volbach.'
+    cant-kick: '&cNelze vyhodit Obcana &e%kicked%'
+  surrender:
+    invader: '&2Obcan &6[ %invander% ] &2Se vzdal pri invazi na Stat &6[ %kingdom% ] &2jejich Sampion bude despawnut.'
+    disabled:
+      invader: '&cNemuzes se vzdat,chudaku.'
+      defender: '&cNemuzes se vzdat,chudaku.'
+    defender-surrendered: '&cObcan &6[ %player% ] &2ze Statu &6%kingdoms_name% &2se vzdal. Uzemi obsadil Stat &6[ %kingdom% ]'
+    defender-permission: '&cNemas pravomoce se vzdat, chudaku.'
+    no-invasion: '&cPrave ted nemas zadnou invazi na Stat ani jiny Stat na Vas.'
+    description: |
+      &6Pokud jsi utocnik pri invazi a vzdas se, Vas Statni Sampion se despawne.
+      Pokud si obrance pri invazi a vzas se, Vase Statni uzemi bude obsazeno nepritelem.
+  leave:
+    success: '&2Prave si opustil Stat &6[ %kingdom% ] &cBudes nam chybet.'
+    description: '&6Opustit Vas Stat.'
+    king: |
+      &cNemuzes opustit Vas Stat, dokud si Vudce.
+      Zkus pouzit prikaz &e/k disband
+      &cNebo pres &e/k king &czvol noveho Vudce Statu.
+    announce: '&cObcan &e%left% &copustil Stat, bude nam chybet.'
+  undo:
+    description: '&6Zmenit nebo Vratit obsazeni Statu, Uzemi.'
+    already-unclaimed: '&6Posledni uzemi co bylo obsazene je jiz neobsazene. &6%x%&7, &6%z%'
+    already-claimed: '&6Posledni uzemi co nebylo obsazene je jiz obsazene. &6%x%&7, &6%z%'
+    claimed: '&2Vas Stat obsadil Vase obsazene uzemi na &6%x%&7, &6%z%'
+    claimed-not-owned: '&cUzemi &6%x%&7, &6%z% &cbylo obsazeno jinym Obcanem. &6%x%&7, &6%z%'
+    unclaimed: '&2Vas stat opustil neobsazene uzemi na &6%x%&7, &6%z%'
+    no-history: '&cVas Stat nema zadnou historii uzemi pro vraceni nebo zmenu.'
+  redo:
+    no-history: '&cVas Stat nema zadnou historii uzemi pro predelani nebo zmenu.'
+    description: '&6Zmenit nebo predelat obsazeni Statu, Uzemi.'
+    already-claimed: '&6Posledni uzemi ktere bylo obsazeno bylo obsazeno. &6%x%&7, &6%z%'
+    already-unclaimed: '&6Posledni uzemi ktere nebylo obsazeno nebylo obsazeno. &6%x%&7, &6%z%'
+  lore:
+    description: '&6Nastavit Statni tradici.'
+    usage: '&4Prikaz&8: &e/k lore &2<lore>'
+    blacklisted: '&cVase Statni tradice obsahuje nevhodne slovaci znaky, prosim, napis to slusneji.'
+    name-length: '&cStatni tradice nemuze obsahovat vice jak &e%limit% &cznaku.'
+    name-english: '&cStatni tradice musi byt v existujicim jazyce, doporucujeme Anglictinu.'
+    name-has-symbols: '&cStatni tradice nemohou obsahovat symboly, zakazane znaky a nevhodne slova.'
+    removed: '&2Byla odstranena Statni Tradice.'
+  extractor:
+    description: '&6Vybrat vsechny zdrojove body ze vsech Statnich Sberatelu.'
+    collected: '&2Vybrano &6[ %rp% ] &czdrojovych bodu &2ze sberatelu &6%extractors% &2Vaseho Statu'
+    collected-others: '&2Vybral si &6[ %rp% ] &czdrojovych bodu &2ze sberatelu &6%extractors% &2pro Stat &6[ %kingdom% ] &2.'
+    collect-others-permission: '&cNelze vybrat sberatele ostatnich Statu.'
+  election:
+    description: '&6System voleb kandidatu pro noveho Vudce Statu.'
+    no-ongoing-election: '&cPrave ted ve Vasem State nejsou volby, dalsi volby budou za &8: &e%next-election%'
+    vote:
+      description: '&6Hlasuj pro kandidata Statu.'
+      voted: '&2Hlasoval si pro Obcana &6[ %player% ]'
+      already-voted: '&cJiz si hlasoval pro Obcana &e[ %player% ]'
+      voted-again: '&2Hlasoval si pro Obcana &6[ %player% ] &2predtim si hlasoval pro &6%previous-candidate%'
+    statement:
+      description: '&6Nastavit volby kandidatu Statu.'
+      usage: '&4Prikaz&8: &e/k election statement &2<statement>'
+      set: '&2Vase nove Statni prohlaseni bylo zmeneno na&8: &r%statement%'
+  relations:
+    description: '&6Zobrazit vsechny zadosti Statu.'
+    no-requests: '&cVas Stat nema zadne papiry a zadosti.'
+  ally:
+    description: '&6Uzavrit spojenectvi se Staty.'
+    usage: '&4Prikaz&8: &e/k ally &2<kingdom>'
+    sender: '&2Sent an alliance request to &6[ %kingdom% ]'
+    limit: '&cVas Stat nemuze mit vice jak &e%max% &cspojenectvi se Staty.'
+    already: '&cVas Stat jiz ma spojenectvi se Statem &e[ %kingdom% ]'
+    already-requested: '&cVas Stat jiz poslal spojenectvi Statu &e[ %kingdom% ] &ccekej nez ho vyridi.'
+    self: '&cNemuzes mit spojenectvi s Vasim Statem.'
+    receiver: '&2Stat &6[ %kingdom% ] &2vam poslal spojenectvi, prijmi ho pres &6hover:{&6/k ally [ %kingdom% ];&2Accept;/k ally [ %kingdom% ]}'
+    allies: '&2Vas Stat ma spojenectvi se Statem &6[ %kingdom% ]'
+  enemy:
+    description: '&6Zahajit valku se Staty.'
+    usage: '&4Prikaz&8: &e/k enemy &2<kingdom>'
+    limit: '&cVas Stat nemuze byt ve valce s vice jak &e%max% &cStaty.'
+    kingdom-not-found: '&cStat &e[ %kingdom% ] &cnelze najit.'
+    already: '&cVas Stat je jiz ve valce se Statem &e[ %kingdom% ]'
+    self: '&cNemuzes vest valku na Vas Stat.'
+    enemies: '&cVas Stat je ve valce se Statem &e[ %kingdom% ]'
+  truce:
+    description: '&6Pozadat o mir s jinym Statem.'
+    usage: '&4usage&8 &e/k truce &2<kingdom>'
+    limit: '&cNemuzes byt v miru s vice jak &e%max% &cStaty.'
+    sender: '&2Poslal si mir Statu &6[ %kingdom% ]'
+    already: '&cUz si v miru se Statem &e[ %kingdom% ]'
+    already-requested: '&cUz si pozadal o mir se Statem &e[ %kingdom% ] &cPockej az jej schvali.'
+    self: '&cNelze mit mir s Vasim Statem.'
+    receiver: '&cStat &6[ %kingdom% ] &2chce mit mir s Vasim Statem, prijmi to pres &6hover:{&6/k truce [ %kingdom% ];&2Accept;/k truce [ %kingdom% ]}'
+    truces: '&2Vas Stat ma mir se Statem &6[ %kingdom% ]'
+    another-request: '&cStat &e[ %kingdom% ] &cPoslal mirumilovnou dohodu [ %relation% ] &cVasemu Statu.'
+  rejectrelation:
+    description: '&6Roztrhat mirumilovnou dohodu poslanou Vasemu Statu'
+    usage: '&4usage&8 &e/k rejectrelation &2<kingdom>'
+    not-requested: '&cStat &e%kingdoms_name% &cnema zadne mirumilovne dohody na Stole Vudce.'
+    rejected: '&cOdmitnuta mirumilovna dohoda [ %relation% ] &cposlana Statem &e%kingdoms_name%'
+    notification: '&cStat &c%kingdoms_name% &codmitl mirumilovnou dohodu [ %relation% ] &cs Vasim Statem'
+  revoke:
+    description: '&6Rozstrhat mirumilovnou dohodu se Staty.'
+    usage: '&4usage&8 &e/k revoke &2<kingdom>'
+    sender: '&cMirumilovna dohoda Vaseho statu byla roztrhana Statem &e[ %kingdom% ]'
+    no-relation: '&cnemas zadnou mirumilovnou dohodu se Statem &e[ %kingdom% ]'
+    already-neutral: '&cStat &e[ %kingdom% ] &cjiz je neutralni.'
+    self: '&cNelze it mirovou dohodu s Vasim Statem'
+    already-requested: '&cUz si jednu mirovou dohodu poslal, Statu &e[ %kingdom% ] &cpockej az ji schvali.'
+    specific-permission: '&cNemas pravomoc roztrhat mirovou dohodu &e[ %relation% ].'
+    receiver: '&cStat &e[ %kingdom% ] &cPrave ted rozthal mirovou dohodu s Vasim Statem.'
+    request-sender: '&2Poslat mirovou dohodu, Statu &6[ %kingdom% ]'
+    request-receiver: '&cStat &6[ %kingdom% ] &2si preje vytvorit mirovou dohodu, prijmi ji pres &6hover:{&6/k neutral [ %kingdom% ];&2Accept;/k neutral [ %kingdom% ]}'
+    neutrals: '&2Prave ted si neutralni se Statem &6[ %kingdom% ]'
+  chat:
+    description: '&6Zmenit druh Zprav Statu.'
+    usage: '&4usage&8 &e/k chat &2<channel> &9[message]'
+    already-in-channel: '&cPrave pises v &6%channel%'
+    muted-channel: '&cNelze posilat zpravy ve zablokovanych Channel, pres &ehover:{/k unmute %channel%;&eClick to unmute;/k unmute %internal-name%} &ccommand.'
+    unknown-channel: '&cNeznamy Channel, prosim vyber jiny pres &8: &fhover:{Global;Global;/k c g}&7, &2hover:{&2Kingdom;&2Kingdom;/k c k}&7, &ehover:{&aAlly;&aAlly;/k c a}&7, &ehover:{&eTruce;&eTruce;/k c t} &7or &ehover:{&9Nation;&9Nation;/k c n}'
+    changed: '&2Prave posilas zpravy do %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
+    direct:
+      message-missing: '&cPotrebujes poslat zpravu primo Tvemu Statu &e[ %kingdom% ]'
+      message-self: '&cNelze poslat primou zpravu Vasemu Statu.'
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8] &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8] %displayname% &7≫ &6%message%'
+  mute:
+    description: '&6Zablokovat danny Channel.'
+    usage: '&4usage&8 &e/k mute &2<channel>'
+    already-muted: '&cTento &6%channel% &2jiz je zablokovany.'
+    muted: '&2Zablokovat  &6%channel%'
+  unmute:
+    description: '&6Zablokovat danny Channel.'
+    usage: '&4usage&8 &e/k unmute &2<channel>'
+    not-muted: '&cTento &6%channel% &2jiz neni zablokovany.'
+    unmuted: '&2Odblokovat &6%channel%'
+  broadcast:
+    description: '&6Posilat zpravy Tvemu Statu.'
+    usage: '&4usage&8 &e/k broadcast &2<message>'
+    cooldown: '&cPockej &e[ %time% ] &cnez muzes poslat novou zpravu.'
+    format:
+      message: |
+
+        &8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c[ %player% ]&8] &6%message% 
+      sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
+  king:
+    description: '&6Povysit Vudce Statu.'
+    only-king: '&6Pouze Vudce muze zvolit noveho Vudce Statu.'
+    set: '&cHrac &6%king% &2se stal novym Vudcem Statu!'
+    not-in-kingdom: '&cHrac &e%king% &cneni ve Tvem Statu.'
+    self: '&cUz jsi Vudcem Vaseho Statu.'
+    usage: '&4usage&8 &e/k king &2<player>'
+  promote:
+    description: '&6Povysit obcany ve Tvem Statu.'
+    promoted: '&cHrac &6%promoted% &2byl povysen na &9%rank% &2Obcanem &6[ %player% ]'
+    not-in-kingdom: '&cHrac &e%promoted% &cneni ve Tvem Statu.'
+    cant-promote: '&cNelze povysit hrace &e%promoted%'
+    king: '&cHrac &e%promoted% &cma jiz nejvyssi hodnost. To promote the player to king use &e/k king'
+    usage: '&4usage&8 &e/k promote &2<player>'
+  demote:
+    description: '&6Degradovat obcany ve Tvem Statu.'
+    demoted: '&cHrac &e%demoted% &cbyl degradovan na &9%rank% &cObcanem &e[ %player% ]'
+    not-in-kingdom: '&cHrac &e%demoted% &cneni ve Tvem Statu'
+    cant-demote: '&cNemuzes degradovat toho to Obcana &e%demoted%'
+    cant-demote-king: '&cNelze degradovat Vudce &e%demoted%'
+    member: '&cTento hrac je jiz na nejnizsi hodnosti.'
+    usage: '&4usage&8 &e/k demote &2<player>'
+  visualize:
+    description: '&6Nastavit/Zrusit nekonecne vizualni indikatory.'
+    usage: '&4usage&8 &e/k visualize [permanent|toggle]'
+    display: |
+      &7| &2Location&8: &6%x%&7, &6%z%
+      &7| &2Kingdom&8: &6[ %kingdom% ]
+    admin-display: |
+      &7| &2Lokace&8: &6%x%&7, &6%z%
+      &7| &2Stat&8: &6[ %kingdom% ]
+      &7| &2Budova&8: 
+      &6%structures%
+      &7| &2Veze&8:
+      %turrets%
+      &7| &2Branene Cedulky&8:
+      %protection-signs%
+    toggle:
+      description: '&6Prepinat Indikatory (Vizualni nebo Mista zdroju uzemi)'
+      enabled: '&2Indikatory byli &6Zapnuty'
+      disabled: '&2Indikatory byli &cVypnuty'
+    all:
+      description: '&6Ukazat vsechny zdroje mist uzemi.'
+      showing: '&2Nahravame zdroje...'
+    markers:
+      description: '&6Zmenit druh mista droje uzemi.'
+      usage: '&4usage&8 &e/k visualize markers <type>'
+      already-using: '&cPrave pouzivas &e%markers% &cdruh misto zdroje uzemi.'
+      changed: '&2Tvuj zdroj uzemi byl zmenen na &6%markers%'
+      invalid: '&cNelze najit danne misto zdroje uzemi&8: &e%markers%'
+    permanent:
+      description: '&6Nastavit Indikatory.'
+      enabled: '&2Nekonecne indikatory byli &6Zapnuty.'
+      disabled: '&2Nekonecne indikatory byli &cVypnuty'
+  tradable:
+    description: '&6Zobrazi cenu predmetu ve zdrojovych bodu.'
+    message: |
+      &2Cena predmetu v tve ruce je&8: &6%amount% * %worth% = %total%
+
+      &6Scpecialni Predmety&8:
+      %list%
+    not-special: '&cnic specialniho'
+    item: '&2%material%&7: &9%worth%'
+  sell:
+    description: '&6Prodat Statni veci za Zdrojove body.'
+    invalid: '&cPredmet ktery mas v ruce neni majetkem Statu (Budova nebo Vez).'
+    item: '&2Prodal si &6x%amount% %item% &2pro &6%price% &2zdrojovych bodu.'
+  outpost:
+    description: '&6Zobrazit dostupne Outpost Event prikazy.'
+    not:
+      found: '&cNelze najit &e[ %outpost% ] &cOutpost event.'
+    edit-description: '&6Zmeni Outpost Event nastaveni.'
+    edit-usage: '&4usage&8 &e/k outpost edit &2<name>'
+    create:
+      description: '&6Vytvorit novy Outpost Event Region z WG.'
+      usage: '&4usage&8 &e/k outpost create &2<name> <region>'
+      region-not-found: '&cNelze najit region &e[ %region% ]'
+      name-already-taken: '&cJiz existuje Outpost Event &e[ %outpost% ]'
+      created: '&2Vytvoren Outpost Event &6[ %outpost% ] &2v regione  &6[ %region% ] &2. Muzes to zmenit pres &6hover:{&6/k outpost edit;&2Click to edit;/k outpost edit [ %outpost% ]} &2command.'
+    edit:
+      entrance-money:
+        enter: '&2Zadejte castku poplatku pro vstup do Outpost Eventu {$cancel}'
+        set: '&2Outpost Event poplatek pro vstup je&8: &6[ [ %outpost-new-entrance-money% ] ]'
+      max-participants:
+        set: '&2Maximalni pocet Obcanu pro Outpost Event nastaven na&8: &6[ %outpost-new-max-participants% ]'
+        invalid: '&cMaximalni pocet Obcanu, nesmi byt mensi jak minimalni pocet Obcanu pro Outpost Event'
+        enter: '&2Zadejte maximalni pocet Obcanu pro Outpost Event {$cancel}'
+      min-online-members:
+        enter: '&2Zadejte minimalni pocet Obcanu pro Outpost Event {$cancel}'
+        invalid: '&cMinimalni pocet Obcanu Statu nemuze byt mensi nez 1'
+      entrance-resource-points-fee:
+        enter: '&2Zadejte castku Outpost Event poplatku {$cancel}'
+        set: '&2Nastaven Outpost Event poplatek na&8: &6%[ %outpost-new-entrance-resource-points-fee% ]'
+      region:
+        enter: '&2Zadejte nove jmeno Outpost regionu {$cancel}'
+        set: '&2Zmenil jmeno Outpost regionu na&8: &6[ %outpost-new-region% ]'
+      spawn:
+        set: '&2Zmenil Outpost Event spawn souradnice.'
+        teleported: '&2Teleportoval te na spawn Outpost Eventu.'
+      center:
+        teleported: '&2Teleportoval te na souradnice Outpost Eventu.'
+        set: '&2Zmenil Outpost Event souradnice na Tvoje.'
+      name:
+        enter: '&2Zadejte nove jmeno Outpost Eventu {$cancel}'
+        invalid: '&e[ %input% ] &cJmeno obsahuje zakazane znaky. Try without &f" ˇ " &c &f" ´ "&c.'
+        already-in-use: '&e[ %input% ] &cJmeno jiz existuje.'
+        set: '&c[ %player% ] &2Zmenil jmeno Outpost Eventu na &8: &6[ %outpost-new-name% ]'
+      remove:
+        outpost-is-running: '&e[ %outpost-name% ] &cOutpost event jiz zacal, nelze ho odebrat.'
+        removed: '&2Odebrat &6[ %outpost-name% ] &2Outpost Event.'
+    join:
+      description: '&6Pripojit se do Outpost Eventu.'
+      usage: '&4usage&8 &e/k outpost join <outpost>'
+      event-not-started: '&cPrave nejsou zadne vstupy pro &e[ %outpost% ] &cOutpost event.'
+      event-full: '&e[ %outpost% ] &cOutpost Event je jiz plny, omlouvame se.'
+      min-online-members: '&cVas Stat potrebuje aspon &e[ %min% ] &caktivnich hracu pro vstup do &e[ %outpost% ] &cOutpost eventu.'
+      permission: '&cPouze Obcane Statu s &eWITHDRAW &cpravomocemi mohou vstoupit do Outpost Eventu.'
+      not-enough-resource-points: '&cVas Stat potrebuje &e[ %cost% ] &cZdrojovych bodu pro ucast v Eventu.'
+      not-enough-money: '&c&e[ %cost% ] &cmoney to join this event.'
+      joined: '&2Vas Stat se pripojil do &6[ %outpost% ] &2Outpost eventu. Teleportuj se do Areny pres &6hover:{&6/k outpost teleport;&2Teleport;/k outpost teleport}'
+      announcement: '&2Stat &6[ %kingdom% ] &2se pripojil do Eventu!'
+      already: '&cTvuj Stat se jiz pripojil do Eventu.'
+      win: |
+        &2Tvuj Stat &c[ %kingdom% ] &2 Vyhral Event!
+        &6%resource-points%+ &2Zdrojove body
+        &6%money%+ &2money
+      lost: '&cTvuj Stat prohral Event!'
+    start:
+      description: '&6Zacit Outpost event z existujicich Outpost Eventu.'
+      usage: '&4usage&8 &e/k outpost start <outpost> <time> <startIn>'
+      already-started: '&e[ %outpost% ] &cOutpost event prave zacal.'
+      invalid-start-time: '&cSpatny zacatek eventu&8: &e[ %time% ]'
+      invalid-time: '&cSpatny cas eventu&8: &e[ %time% ]'
+      scheduled: |
+
+
+        &6[ %outpost% ] &2outpost event zacne za &6%start% 
+
+      started: |
+
+
+        &6[ %outpost% ] &2outpost event zacal! 
+
+    stop:
+      description: '&6Zastavit Outpost event.'
+      usage: '&4usage&8 &e/k outpost stop <outpost>'
+      not-started: '&e[ %outpost% ] &coutpost event jeste nezacal.'
+      stopped: |
+
+
+        &e[ %outpost% ] &cOutpost event skoncil! 
+
+  donate:
+    description: '&6Darovat zdrojove body Statu.'
+    usage: '&4usage&8 &e/k donate <kingdom> <amount>'
+    dont-have: '&cNemas &e[ %rp% ] &czdrojovych bodu.'
+    done: '&2Daroval si &6[ %rp% ] &2zdrojovych bodu Statu &6[ %kingdom% ] &2Velmi ti dekuji.'
+    donated: '&cStat &6[ %kingdom% ] &2daroval &6[ %rp% ] zdrojovych bodu &2Vasemu Statu.'
+    invalid: '&cNemuzes darovat zdrojove body do Statu &6[ %kingdom% ] &c.'
+  color:
+    description: '&6Zmenit barvu sveho Statu.'
+    usage: '&4Prikaz: &e/k color &9[kingdom] [color]'
+    permission-others: '&cNemas pravo zmenit barvu Statu.'
+books:
+  cant-move: '&cNemuzes premistit tuhle knihu.'
+  used-by-another-session: '&cKniha je pouzivana v jine relaci, nejdrive dokonci prvni relaci.'
+  no-empty-slot: '&cMas plny HUD inventar.'
+vault:
+  blacklisted-item: '&cTenhle predmet nelze vlozit do Vasi Statni truhly.'
+relations-disabled-commands: '&cNelze pouzit tenhle prikaz v tomhle uzemi.'
+invasion:
+  blocked:
+    command: '&cNemuzes pouzit tenhle prikaz pri invazi.'
+    elytra: '&cNelze pouzivat Elytra pri invazi.'
+    world-change: '&cNelze odejit do jineho sveta pri invazi.'
+    teleportation: '&cNelze se teleportovat pri invazi, nezdrhej srabe!'
+    item: '&cTenhle predmet nelze pouzit pri invazi.'
+  end:
+    attackers:
+      success: '&cUtocnik &6[ %invander% ] &cdobil uzemi Statu &e[ %kingdom% ] &cSkvela bitva hrdino!'
+      logout: '&cUtocnik &e[ %invander% ] &cse odpojil pri invazi na Stat&e[ %kingdom% ]'
+      died: '&cUtocnik &e[ %invander% ] &czemrel pri invazi na Stat&e[ %kingdom% ]'
+      times-up: '&cUtocnik &e[ %invander% ] &cnedokazal dobit, v cas,uzemi Statu &e[ %kingdom% ]'
+      unclaimed: '&cStat &6[ %kingdom% ] &cneziskal uzemi, ktere utocnik &6[ %invander% ] &2chtel vzit.'
+      attacker-no-longer-in-kingdom: '&Utocnik &e[ %invander% ] &cuz dlouho neni na Tvem uzemi, aby invazi dokoncil.'
+      attacker-surrendered: '&cUtocnik &e[ %invander% ] &cse vzdal pri invazi na Tvuj Stat &e[ %kingdom% ]'
+      defender-surrendered: '&cStat &6[ %kingdom% ] &2se vzdal pri invazi &6[ %invander% ]'
+      attacker-death-limit: '&cTvoji Obcani umreli jiz mnohokrat pri invazi na Stat &e[ %kingdom% ]'
+      defender-death-limit: '&cObcani Statu &6[ %kingdom% ] umreli jiz mnohokrat pri Vasi Invazi.'
+    defenders:
+      success: '&cUtocnik &e[ %invander% ] &cdobil uzemi Tveho Statu, ziskej ho zpet!.'
+      logout: '&cUctocnik &6[ %invander% ] &cse odpojil pri invazi na Tvuj Stat.'
+      died: '&cUtocnik &6[ %invander% ] &cumrel pri invazi na Tvuj Stat.'
+      times-up: '&cUtocnik&6[ %invander% ] &cnedokazal dobit, v cas ,uzemi Statu &e[ %kingdom% ]'
+      attacker-no-longer-in-kingdom: '&cUtocnik &e[ %invander% ] &cUz dlouho neni na Tvem uzemi.'
+      unclaimed: '&cUzemi Vaseho Statu nebylo vzato utocnikem &e[ %invander% ] &c.'
+      attacker-surrendered: '&cUtocnik &6[ %invander% ] &cse vzdal pri invazi na Vas Stat.'
+      defender-surrendered: '&cTvuj Stat &6[ %kingdom% ] se vzdal pri invazi &e[ %invander% ]'
+      defender-death-limit: '&cTvoji obcani umreli jiz mnohokrat pri invazi na Vas Stat.'
+      attacker-death-limit: '&cObcani Statu &6[ %kingdom% ]&2 umreli jiz mnohokrat pri invazi na Vas Stat.'
+  home:
+    moved: '&cStatni spawn byl premisten z duvodu minule invaze na &e%new-home% &c.'
+elections:
+  default-statement: |
+    &2Klikni a Hlasuj.
+  results: '&6[ %candidate% ] &2Byl zvolen novym Vudcem s &6[ %votes% ] &2 hlasy.'
+  begin: '&2Zacalo hlasovani pro noveho Vudce. Hlasuj pres  &6hover:{/k election vote;&2Klikni a Hlasuj;/k election vote}'
+  join-notify: '&2Probiha hlasovani pro noveho Vudce. Hlasuj pres &6hover:{/k election vote;&2Klikni a Hlasuj;/k election vote}'
+  not-enough-data: '&cNebyl zvolen novy Vudce, protože bylo odhlasovano mene nez &e50% &c.'
+relations:
+  another-request: '&cStat &e[ %kingdom% ] &cPoslal Tvemu Statu [ %relation% ] &cspojenectvi.'
+  no-permission: '&cNemas pravomoc upravovat spojenectvi.'
+  no-requests: '&cNemas zadne prichozi spojenectvi.'
+bossbar:
+  editor:
+    title:
+      enter: '&2Zadejte Boss Bar Název {$cancel}'
+outpost-events:
+  death: '&cZemrel si, Tvuj Stat ztratil &e[ %rp% ] Zdrojovych Bodu Statu.'

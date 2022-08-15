@@ -9,7 +9,7 @@ import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarSettings;
 import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.config.ConfigSection;
-import org.kingdoms.utils.config.YamlAdapter;
+import org.kingdoms.utils.config.adapters.YamlFile;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 public final class OutpostHandler {
-    protected static final YamlAdapter DATA = new YamlAdapter(new File(Kingdoms.get().getDataFolder(), "outposts.yml"));
+    protected static final YamlFile DATA = new YamlFile(new File(Kingdoms.get().getDataFolder(), "outposts.yml"));
 
     public static void saveOutposts() {
         ConfigSection config = DATA.getConfig();
