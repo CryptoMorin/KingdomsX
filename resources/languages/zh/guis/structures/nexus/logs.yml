@@ -1,0 +1,71 @@
+title: "&8-=[ &4王国日志 &8]=-"
+rows: 6
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '&6下一页 &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '&6上一页 &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  entry:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+
+    join:
+      condition: "type == 'kingdom_join'"
+      material: GREEN_WOOL
+      name: '&2新加入玩家&8: &6%player%'
+      lore: |
+        &2时间&8: &6%time%
+        &2邀请者&8: &6%inviter%
+    kick:
+      condition: "type == 'kingdom_kick'"
+      material: RED_WOOL
+      name: '&2踢出玩家&8: &6%player%'
+      lore: |
+        &2时间&8: &6%time%
+        &2踢出者&8: &6%kicker%
+    leave:
+      condition: "type == 'kingdom_leave'"
+      material: RED_WOOL
+      name: '&2玩家离开&8: &6%player%'
+      lore: |
+        &2时间&8: &6%time%
+        &2原因&8: &6%reason%
+    challenger:
+      condition: "type == 'kingdoms_challenger'"
+      material: GREEN_WOOL
+      name: '&2挑战'
+      lore: |
+        &c成员 &e%player% &c挑战了
+        &e%kingdoms_name% &c王国。
+        
+        &7你还有 &c%start_time%
+        &7准备入侵他们。
+    challenged:
+      condition: "type == 'kingdoms_challenged'"
+      material: RED_WOOL
+      name: '&c被挑战'
+      lore: |
+        &e%kingdoms_name% &c挑战了你的王国。
+        
+        &7你还有 &c%start_time%
+        &7准备防守。
+    else:
+      material: BARRIER
+      name: '&c未知的日志类型'
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '&c返回'
