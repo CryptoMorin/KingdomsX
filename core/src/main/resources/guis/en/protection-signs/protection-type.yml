@@ -1,0 +1,69 @@
+title: "&8-=[ &5Protection Type &8]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  protected:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7This block will be protected
+        from all the players unless they're
+        added manually to access the block.
+      material: OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&4%protection%"
+      material: OAK_SIGN
+      lore: |-
+        &7This block will be protected
+        from all the players unless they're
+        added manually to access the block.
+    slot: 1
+  everyone-in-kingdom:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7This block will be protected
+        from all the players who are not
+        in your kingdom unless they're
+        added manually to access the block.
+      material: SPRUCE_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: SPRUCE_SIGN
+      lore: |-
+        &7This block will be protected
+        from all the players who are not
+        in your kingdom unless they're
+        added manually to access the block.
+    slot: 2
+  everyone:
+    enabled:
+      condition: enabled
+      name: "&2%protection%"
+      lore: |-
+        &7This block can be accessed
+        by everyone, outside or inside your
+        kingdom unless they're added manually
+        to not have access to this block.
+      material: DARK_OAK_SIGN
+      flags: [ HIDE_ENCHANTS ]
+      enchants:
+        DURABILITY: 1
+    else:
+      name: "&2%protection%"
+      material: DARK_OAK_SIGN
+      lore: |-
+        &7This block can be accessed
+        by everyone, outside or inside your
+        kingdom unless they're added manually
+        to not have access to this block.
+    slot: 3

@@ -1,0 +1,33 @@
+title: "&cPowercell"
+type: HOPPER
+sound: BLOCK_REDSTONE_TORCH_BURNOUT
+
+options:
+  break:
+    name: "&4Break"
+    material: REDSTONE_BLOCK
+    lore:
+      - "&6Breaks the structure."
+    slot: 0
+  upgrade:
+    slot: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Upgrade&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Range&8: &61 &7➔ &62"
+        - ""
+        - "&7⚫ &2Max Level&8: &6%max-level-roman%"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Level&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Range&8: &62"
+  close:
+    name: "&2Close"
+    material: BARRIER
+    lore:
+      - "&6Close the GUI."
+    slot: 4

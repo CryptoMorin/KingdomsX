@@ -1,0 +1,72 @@
+title: "&8-=[ &4Audit Logs &8]=-"
+rows: 6
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '&6Next Page &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '&6Previous Page &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  entry:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+
+    join:
+      condition: "type == 'kingdom_join'"
+      material: GREEN_WOOL
+      name: '&2Player Joined&8: &6%player%'
+      lore: |
+        &2At&8: &6%time%
+        &2Invited By&8: &6%inviter%
+    kick:
+      condition: "type == 'kingdom_kick'"
+      material: RED_WOOL
+      name: '&2Kicked Member&8: &6%player%'
+      lore: |
+        &2At&8: &6%time%
+        &2Kicker&8: &6%kicker%
+    leave:
+      condition: "type == 'kingdom_leave'"
+      material: RED_WOOL
+      name: '&2Player Left&8: &6%player%'
+      lore: |
+        &2At&8: &6%time%
+        &2Reason&8: &6%reason%
+    challenger:
+      condition: "type == 'kingdoms_challenger'"
+      material: GREEN_WOOL
+      name: '&2Challenged'
+      lore: |
+        &e%player% &chas challenged
+        &e%kingdoms_name% &ckingdom.
+        
+        &7You have until &c%start_time%
+        &7to prepare to attack.
+    challenged:
+      condition: "type == 'kingdoms_challenged'"
+      material: RED_WOOL
+      name: '&cChallenged'
+      lore: |
+        &e%kingdoms_name% &ckingdom has
+        &cchallenged your kingdom.
+        
+        &7You have until &c%start_time%
+        &7to prepare before they attack.
+    else:
+      material: BARRIER
+      name: '&cUnknown log type'
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '&cBack'
