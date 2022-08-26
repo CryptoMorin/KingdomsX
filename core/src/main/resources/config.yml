@@ -58,7 +58,7 @@ updates:
   # The starting directory is the plugin's folder.
   # Any folders that are not found in the specified path will be created.
   # Placeholders that can be used are %version% and %latest_version%
-  # Now you might be asking, why would you need to use the current version?
+  # Now you might be asking why would you need to use the current version?
   # The "update" folder in "plugins" folder (the folder name can be changed in bukkit.yml) is used to
   # automatically replace any JARs in that folder with the JARs in "plugins" folder that have the same name.
   # Now, because the plugin JAR name format is "name-version", this name must be
@@ -73,7 +73,7 @@ updates:
   configs: false
 
   # Automatically reload configs which is more efficient than /k reload.
-  # The only reason you might not want this is because this feature might not work properly for your environment setup.
+  # The only reason you might not want this, is because this feature might not work properly for your environment setup.
   # For more information read: https://github.com/CryptoMorin/KingdomsX/wiki/Installation#reloading
   # Requires a restart to work.
   automatic-config-reloads: true
@@ -181,6 +181,8 @@ integrations:
 
   bluemap: true
   dynmap: true
+  squaremap: true
+  pl3xmap: true
 
   luckperms: true
   vault: true
@@ -243,7 +245,7 @@ guis:
   default-click-sound: BLOCK_TRIPWIRE_CLICK_ON
 
 # Custom join and leave messages. One benefit is that the message shown to kingdom members are
-# different than those who are not in the same kingdom.
+# different from those who are not in the same kingdom.
 # Permissions: kingdoms.silent.join and kingdoms.silent.leave
 # Check the "join-leave-messages" section of your language file.
 join-leave-messages: true
@@ -288,6 +290,7 @@ placeholders:
     e: '&c' # error
     es: '&6' # error secondary
     sep: '&8' # separator
+    ssep: '&7' # secondary separator
 
     LightSalmon: 'F97'
     Maroon: '900'
@@ -304,7 +307,7 @@ placeholders:
   # Default placeholders used when a player is not a kingdom or nation.
   # Requires /k reload to be reloaded.
   # You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
-  # There are also default default placeholders for when placeholders here are not defined.
+  # There are also default placeholders for when placeholders here are not defined.
   # All the text placeholders default to an empty text and all the number placeholders default to 0
   defaults:
     distance-from-core-other-world: 'value * 100'
@@ -320,8 +323,8 @@ placeholders:
 # Used in /k top
 top-kingdoms:
   # Equation used for calculating a kingdoms might.
-  # A kingdoms might determines a kingdom's rank in /k top
-  # Higher might means higher rank.
+  # A kingdoms "might" determines a kingdom's rank in /k top
+  # Higher "might" means higher rank.
   might: "kingdoms_resource_points + kingdoms_members"
 
   # Updates top leaderboard
@@ -344,8 +347,8 @@ top-kingdoms:
 # Used in /k nation top
 top-nations:
   # Equation used for calculating a kingdoms might.
-  # A kingdoms might determines a kingdom's rank in /k top
-  # Higher might means higher rank.
+  # A kingdoms "might" determines a kingdom's rank in /k top
+  # Higher "might" means higher rank.
   might: "kingdoms_nation_resource_points + kingdoms_nation_kingdoms"
 
   # Note that it's recommended to keep this under 30
@@ -365,12 +368,37 @@ max-members:
   kingdoms: 10
   nations: 30
 
+# Kingdoms can change their flag URL for Dynmap via kingdoms settings.
+flag:
+  # Cooldown for changing the kingdom image.
+  # The option can be used to lag the server if used excessively since it passes multiple checks.
+  cooldown: 10sec
+
+  # The image's size limit. Resizing the image from the <img> HTML tag will not help.
+  # Set to 0 for no limit.
+  # Although most of the image services out there don't allow a certain link to be used for an image,
+  # players that have their own website can still set the URL that links to a small image then reupload
+  # a bigger image under the same link. That's up to you to handle.
+  # This option does not downlaod the image, so don't worry about your server's connection.
+  size-limit:
+    width: 1000
+    height: 1000
+
+  links:
+    blacklist: true
+    # If the URL contains one of these strings.
+    # It's possible to detect links wrongly, but it happens rarely.
+    contains: [ 'jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion' ]
+    # Only use if you know how RegEx works. You can use this site: https://regexr.com/
+    # If the URL contains any RegEx below then it'll not be allowed.
+    regex: [ ]
+
 # Settings for /k create and /k rename
 # Players who have admin mode enabled, will bypass all the following checks.
 kingdom-name:
   # To allow renaming you need kingdoms.command.rename permission.
   # Use 0 for no cooldown.
-  # This cooldown does no persist between server restarts.
+  # This cooldown does not persist between server restarts.
   renaming-cooldown: 1day
 
   # Maximum kingdom name length.
@@ -419,7 +447,7 @@ kingdom-name:
   case-sensitive: false
 
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
-  # If the name matches the any RegEx below then it'll not be allowed.
+  # If the name matches any RegEx below then it'll not be allowed.
   # To only allow a certain language, use "[^A-z]" where A is the first alphabet in that language and z is the last (lowercase if available)
   # alphabet in that language. The "[^A-z]" expression itself indicates that only English alphabets are allowed.
   blacklisted-names: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?",
@@ -432,8 +460,6 @@ tags:
   # For example "TheGreatPheonix" will be tagged as "TGP"
   # and "Apothicas" will be tagged as "Apoth"
   attempt-automatic-setting: true
-
-  renaming-cooldown: 1day
 
   max-length: 16
   min-length: 3
@@ -545,7 +571,7 @@ kingdom-lore:
 
   # Cooldown for each renaming.
   # Supports time suffix. Set to 0 to disable.
-  # This cooldown does no persist between server restarts.
+  # This cooldown does not persist between server restarts.
   renaming-cooldown: 0
 
   # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
@@ -560,7 +586,7 @@ kingdom-lore:
   remove-keywords: [ "remove", "none", "delete", "unset", "off" ]
 
   # Only use if you know how RegEx works. You can use this site: https://regexr.com/
-  # If the name matches the any RegEx below then it'll not be allowed.
+  # If the name matches any RegEx below then it'll not be allowed.
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Remind people that never had a kingdom before to join one.
@@ -625,7 +651,7 @@ economy:
 
     # Minimum amount of resource points that can be withdrawn.
     # This helps if your economy plugin doesn't support decimal currencies.
-    # By default you need to withdraw at least 2 rp (2 * 0.5 = $1)
+    # By default, you need to withdraw at least 2 rp (2 * 0.5 = $1)
     min-withdraw: 2
 
   # Basic costs. For claims refer to claims.yml
@@ -648,7 +674,7 @@ economy:
 # Daily checks are for checking kingdom inactivities, handling taxes and top kingdom and nation rewards.
 # After changing any of the options below, you need to restart the server for changes to apply.
 daily-checks:
-  # The time that daily checks are performed everyday. It uses the 24-hours format and optionally supports seconds.
+  # The time that daily checks are performed every day. It uses the 24-hours format and optionally supports seconds.
   # If the server is started after this time, the daily checks will not be performed for that day, and it'll
   # simply wait until the next day.
   time: '12:00'
@@ -666,7 +692,7 @@ daily-checks:
 
   # The time zone ID.
   # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  # You should copy paste one of the names under the "TZ database name" column.
+  # You should copy and paste one of the names under the "TZ database name" column.
   # By default this is "local". A special keyword that will automatically use your server's timezone.
   # To get the current UTC time just Google "UTC time"
   # This is purely for convenience, otherwise you could adjust the time option above
@@ -921,7 +947,7 @@ nexus:
     # If the player moves out of their own land.
     # This doesn't refer to a single chunk but all the lands.
     # Note that this will also control when you can do /k nexus
-    # You can't do it outside of your land if this is true.
+    # You can't do it outside your land if this is true.
     out-of-land: true
 
 
@@ -940,7 +966,7 @@ invitations:
   allow-from-other-kingdoms: false
 
   # If a player is invited to multiple kingdoms then a GUI (invite.yml) will open
-  # with a list of kingdoms invitations. Otherwise the last invite will be automatically
+  # with a list of kingdoms invitations. Otherwise, the last invite will be automatically
   # declined and replaced with the new invite.
   allow-multiple-invites: true
 
@@ -991,7 +1017,7 @@ home:
     # themselves using a bed.
     unless-has-bed: true
 
-  # Sets the kingdom's home after claiming the current land when the kingdoms is created if possible.
+  # Sets the kingdom's home after claiming the current land when the kingdoms are created if possible.
   # This was previously false by default. But from experience, many new players don't know about /k sethome command.
   set-on-create: true
 
@@ -1082,7 +1108,7 @@ tpa:
 
   teleport:
     # To stop the common annoying issue where the teleporter's request gets accepted
-    # all of the sudden while they're moving, this allows the teleporter to stop before
+    # all of a sudden while they're moving, this allows the teleporter to stop before
     # the timer begins. Doesn't support time suffixes.
     prepare-seconds: 10
 

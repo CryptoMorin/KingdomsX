@@ -9,7 +9,7 @@
 # 0 means no limit.
 simultaneous-invasions: 1
 
-# Whether doing /k invade invades multiple lands or just one that the player
+# Whether doing "/k invade" invades multiple lands or just one that the player
 # is currently standing in.
 multi-chunk-invasion:
   # Ignores unclaimed lands and searches the lands
@@ -23,7 +23,7 @@ multi-chunk-invasion:
 
 # This prevents players from running straight to the center
 # of claims and invading that area. Players will be forced to
-# invade neighboring chunks and fight their way thru
+# invade neighboring chunks and fight their way through
 # their targetted land. This protection only works
 # for lands that have all their sides surrounded by another claim.
 # Using this option makes powercells useless for the most part.
@@ -129,7 +129,7 @@ champions:
   # One of the following messages will be randomly announced when the champion dies.
   # Each one of the entries indicates a death cause. You can find a list of death causes here:
   # https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/entity/EntityDamageEvent.DamageCause.html
-  # Note: Some damage causes are disabled for champions. This depends on the mob type or
+  # Note: Some damage causes are disabled for champions. This depends on the mob type, or
   # they're disabled from disabled-champion-damages option.
   death-messages:
     # Defaults are used when the death cause is not specified in this list.
@@ -165,9 +165,9 @@ masswar:
     shields: true
 
   # Set to 0 to disable. These times will reset on server restart.
-  # The interval between each MassWar. This interval starts right after an automatic MassWar has ended.
+  # The interval between each MassWar. This interval persists between server restarts too.
   interval: 12hrs
-  # The duration of the MassWar.
+  # The duration of the MassWar. The interval starts after this time has ended.
   time: 1hr
 
   # Required resource points to invade during masswar events.
@@ -292,7 +292,7 @@ countdown:
     4: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.25
     5: ENTITY_EXPERIENCE_ORB_PICKUP, 10, 1.0
 
-# The cooldown for a kingdom when they fail to invade a kingdom
+# The cooldown for a kingdom when they fail to invade a kingdom,
 # and they want to try again.
 # Set to 0 to disable.
 cooldowns:
@@ -353,7 +353,7 @@ commands:
     kingdom-wide: false
 
     # Command names ignore slash "/" and are case-insensitive.
-    # This checks of the sent commmand "starts with" with one of
+    # This checks if the commmand "starts with" with one of
     # the elements in the list, so it supports arguments.
     # You have to add all the aliases for that specific command or subcommand.
     # Note that "pluginname:command" is also a valid command unless you blocked those entirely.
@@ -465,7 +465,7 @@ plunder:
         size: 2
 
   # This is only for attackers.
-  # This is different than win by deaths. Read the wiki for more info.
+  # This is different from win by deaths. Read the wiki for more info.
   capture-progress:
     increment: 0.1 # This happens every tick
     goal: 100 # after this, attackers win
