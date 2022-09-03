@@ -572,7 +572,7 @@ command:
       message-admin: |
         &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
-        &7| &7Столица&8: &6%kingdoms_nation_capital%
+        &7| &7Столица&8: &6%kingdoms_nation:capital get=name%
         &7| &7Спавн&8: &6%kingdoms_nation_spawn%
         &7| &7Нексус&8: &6%kingdoms_nation_nexus%
         &7| &7Дата создания&8: &6%kingdoms_nation_since%
@@ -736,7 +736,7 @@ command:
     capital:
       description: '&6Установить новую столицу нации'
       only-king: '&6Только король может изменить столицу нации!'
-      set: '&6%kingdoms_nation_capital% &7теперь новая столица!'
+      set: '&6%kingdoms_nation:capital get=name% &7теперь новая столица!'
       not-in-nation: '&e%kingdom% &cне в вашей нации'
       usage: '&7Использование&8: &e/k nation capital &7<королевство>'
     ally:

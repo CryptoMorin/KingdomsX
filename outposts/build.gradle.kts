@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.spigotmc:spigot:1.19-R0.1-SNAPSHOT")
+    compileOnly(org.kingdoms.main.PredefinedDependency.Spigot.LATEST) { isTransitive = false }
     compileOnly(project(":core"))
 }
 

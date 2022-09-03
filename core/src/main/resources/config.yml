@@ -286,9 +286,11 @@ placeholders:
     red: '&c'
 
     p: '&2' # primary
+    sp: '&9' # Secondary primary
+    desc: '&7'
     s: '&6' # secondary
     e: '&c' # error
-    es: '&6' # error secondary
+    es: '&e' # error secondary
     sep: '&8' # separator
     ssep: '&7' # secondary separator
 
@@ -330,8 +332,7 @@ top-kingdoms:
   # Updates top leaderboard
   update-interval: 30min
 
-  # Note that it's recommended to keep this under 30
-  # as it'll load every single kingdom data from this list.
+  # The limit of kingdom entries shown on each /k top page
   amount: 10
 
   # Show kingdoms that are pacifist in the list.
@@ -351,8 +352,7 @@ top-nations:
   # Higher "might" means higher rank.
   might: "kingdoms_nation_resource_points + kingdoms_nation_kingdoms"
 
-  # Note that it's recommended to keep this under 30
-  # as it'll load every single kingdom data from this list.
+  # The limit of nation entries shown on each /k nation top page
   amount: 10
 
   rewards:
@@ -367,6 +367,9 @@ top-nations:
 max-members:
   kingdoms: 10
   nations: 30
+
+# Should players be teleported back to spawn when they're kicked from their kingdom?
+teleport-to-spawn-after-kick: false
 
 # Kingdoms can change their flag URL for Dynmap via kingdoms settings.
 flag:
@@ -983,6 +986,50 @@ invitations:
 
   # Announce who invited the player to the kingdom.
   announce: true
+
+  codes:
+    # Kingdoms rarely need more than 5, but this number is chosen
+    # specifically because of the GUI layout.
+    max: 7
+
+    expiration:
+      min: 5min
+      # 0 for unlimited
+      max: 0
+
+    uses:
+      min: 1
+      # 0 for unlimited
+      max: 0
+
+    # Resource points cost for generating a physcal invite code.
+    paper:
+      item:
+        name: "&2Invite Code"
+        material: PAPER
+        lore: |
+          {$p}Code{$sep}: {$s}%invitecode-code%
+          {$p}Kingdom{$sep}: {$s}%kingdoms_name%
+          {$p}Created By{$sep}: {$s}%invitecode-creator%
+          {$p}Created At{$sep}: {$s}%invitecode-createdAt%
+          {$p}Expires At{$sep}: {$s}%invitecode-expiration%
+          
+          {$sep}[{$e}!{$sep}] {$es}The expiration date is subject
+          {$es}to change by the kingdom members.
+          
+          &9Right-click to use the invite code.
+      cost:
+        resource-points: 10
+
+    # Generated codes are never duplicated. They're case-sensitive.
+    generator:
+      # Length boundaries of the generated code.
+      length:
+        min: 5
+        max: 15
+      # The characters used to generate the code. You shouldn't change this.
+      characters: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+
 
 # For people who sincerely swear that they know what
 # the hell they're doing with this.

@@ -121,7 +121,7 @@ public class CommandOutpostEdit extends KingdomsCommand {
             try {
                 participants = Integer.parseInt(input);
             } catch (NumberFormatException ex) {
-                context.sendError(KingdomsLang.NOT_NUMBER);
+                context.sendError(KingdomsLang.INVALID_NUMBER);
                 return;
             }
             if (participants <= 2) {

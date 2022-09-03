@@ -39,26 +39,38 @@ cardinal-directions:
   SOUTH_EAST: "South East"
   SOUTH_WEST: "South West"
 
-# You can get some symbols here https://coolsymbol.com/
+# You can get some symbols here https://coolsymbol.com/    -   https://unicode.org/charts/nameslist/n_25A0.html
 # hover: The lore shown when you hover on the element icon.
 # action: Hover actions. You can read about it here: https://github.com/CryptoMorin/KingdomsX/wiki/Config#actions
+# item: This is used for the GUI map. The name of the item is the first entry of the hover option and the lore is the rest of the hover option.
+#       The material of the item is determined by the structure's block type (considering their level too) or specified here if not related to a structure.
+# Some people might also find using "⬛" or "■" appealing, the only disadvantage is that, there aren't many varieties of squares with this size.
+# Characters with the same size: ◉
+# When using GUIs, the "action" option also continues to work if it's a command (not a suggestion or a URL)
 elements:
   protected:
     icon: "&4▩"
     hover: [ "&cProtected region" ]
+    item:
+      material: PURPLE_WOOL
   you:
-    icon: "&2◆"
+    icon: "&2◈"
     hover: [ "&6You&8: &2%X%&7, &2%Z%" ]
+    item:
+      material: COMPASS
   wilderness:
     icon: "&7▩"
     action: "/k claim %X% %Z%"
     hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to claim." ]
-
+    item:
+      material: WHITE_WOOL
   clipboard:
     added:
       icon: "&5▩"
       action: "/k claim clipboard remove %X% %Z%"
       hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to remove from the clipboard." ]
+      item:
+        material: PINK_WOOL
     failed:
       icon: "&c▩"
       action: "/k claim clipboard remove %X% %Z%"
@@ -69,43 +81,57 @@ elements:
         - "from the clipboard."
         - "&cReason&8: &e"
         - "%reason%"
+      item:
+        material: RED_WOOL
     wilderness:
       icon: "&7▩"
       action: "/k claim clipboard add %X% %Z%"
       hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to add to the clipboard." ]
-
+      item:
+        material: WHITE_WOOL
   invasion:
     icon: "&4▩"
     hover:
       - "&6Location&8: &2%X%&7, &2%Z%"
       - "&cOngoing invasion in &e%kingdoms_other_name%'s &cland."
-
+    item:
+      material: RED_WOOL
   nation-zone:
     self:
-      icon: "&2◧"
+      icon: "&2◉"
       hover:
         - "&a%kingdoms_nation%'s Nation Zone"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: GREEN_TERRACOTTA
     ally:
-      icon: "&6◧"
+      icon: "&6◉"
       hover:
         - "&6%kingdoms_nation%'s Nation Zone"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: ORANGE_TERRACOTTA
     truce:
-      icon: "&e◧"
+      icon: "&e◉"
       hover:
         - "&e%kingdoms_nation%'s Nation Zone"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: YELLOW_TERRACOTTA
     neutral:
-      icon: "&f◧"
+      icon: "&f◉"
       hover:
         - "&f%kingdoms_nation%'s Nation Zone"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: GRAY_TERRACOTTA
     enemy:
-      icon: "&c◧"
+      icon: "&c◉"
       hover:
         - "&c%kingdoms_nation%'s Nation Zone"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: RED_TERRACOTTA
 
   land:
     self:
@@ -115,31 +141,43 @@ elements:
         - "&a%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
         - "&7Click to unclaim."
+      item:
+        material: GREEN_WOOL
     ally:
       icon: "&6▩"
       hover:
         - "&6%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: ORANGE_WOOL
     truce:
       icon: "&e▩"
       hover:
         - "&e%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: YELLOW_WOOL
     neutral:
       icon: "&f▩"
       hover:
         - "&f%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: GRAY_WOOL
     enemy:
       icon: "&c▩"
       hover:
         - "&c%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: RED_WOOL
     nation:
       icon: "&9▩"
       hover:
         - "&9%kingdoms_other_name%'s Land"
         - "&6Location&8: &2%X%&7, &2%Z%"
+      item:
+        material: BLUE_WOOL
   nexus:
     priority: 2
     self:

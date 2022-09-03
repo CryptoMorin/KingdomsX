@@ -592,7 +592,7 @@ command:
       message-admin: |
         &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
 
-        &7| &2Főváros: &6%kingdoms_nation_capital%
+        &7| &2Főváros: &6%kingdoms_nation:capital get=name%
         &7| &2Teremtőhely: &6%kingdoms_nation_spawn%
         &7| &2Nexus: &6%kingdoms_nation_nexus%
         &7| &2Létrehozás: &6%kingdoms_nation_since%
@@ -759,7 +759,7 @@ command:
     capital:
       description: '&6Nemzet központjának beállítása.'
       only-king: '&6Csak a Főkirályság királya tudja ezt beállítani.'
-      set: '&6%kingdoms_nation_capital% &2a nemzet központja.'
+      set: '&6%kingdoms_nation:capital get=name% &2a nemzet központja.'
       not-in-nation: '&e%kingdom% &cnem a te nemzeted.'
       usage: '&4Használat: &e/k nation capital &2<királyság>'
     ally:
