@@ -685,10 +685,20 @@ daily-checks:
   # Amount of days between each check.
   interval: 1
 
+  # For information check: https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#elections
   elections:
+    # The interval in days for election events.
     interval: 7
+
+    # The total voting percentage to consider election results.
+    # Meaning that more than 50% of kingdom members need to vote (for anyone)
+    # in order for a new king to be chosen.
     vote-percentage: 50
+
+    # The duration of election events before the results are evaluated.
     duration: 24hrs
+
+    # This is to prevent abusing the voting system.
     disallow:
       joins: true
       kicks: true
