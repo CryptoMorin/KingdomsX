@@ -16,7 +16,7 @@ public class Outpost {
     private static final Map<String, Outpost> OUTPOSTS = new HashMap<>();
 
     private @NonNull String name, region;
-    private MathCompiler.Sentence resourcePointsCost, cost;
+    private MathCompiler.Expression resourcePointsCost, moneyCost;
     private int maxParticipants, minOnlineMembers;
     private @NonNull OutpostRewards rewards;
     private @NonNull Location spawn, center;
@@ -27,17 +27,17 @@ public class Outpost {
         this.region = region;
         this.spawn = spawn;
         this.center = center;
-        this.rewards = new OutpostRewards("3000", "1000", new ArrayList<>(), new HashMap<>());
+        this.rewards = new OutpostRewards("3000", "1000", new ArrayList<>(), new ArrayList<>());
         this.bossBarSettings = new BossBarSettings("&8-=[ &6" + name + " &2Outpost Event &8]=-", BarColor.BLUE, BarStyle.SEGMENTED_6);
     }
 
     public Outpost(@NonNull String name, @NonNull String region, @NonNull Location spawn, @NonNull Location center,
-                   MathCompiler.Sentence cost, MathCompiler.Sentence resourcePointsCost,
+                   MathCompiler.Expression cost, MathCompiler.Expression resourcePointsCost,
                    int maxParticipants, int minOnlineMembers,
                    @Nullable BossBarSettings bossBarSettings, @NonNull OutpostRewards rewards) {
         this.name = name;
         this.region = region;
-        this.cost = cost;
+        this.moneyCost = cost;
         this.spawn = spawn;
         this.center = center;
         this.resourcePointsCost = resourcePointsCost;
@@ -127,19 +127,19 @@ public class Outpost {
         this.bossBarSettings = bossBarSettings;
     }
 
-    public MathCompiler.Sentence getResourcePointsCost() {
+    public MathCompiler.Expression getResourcePointsCost() {
         return resourcePointsCost;
     }
 
-    public void setResourcePointsCost(MathCompiler.Sentence resourcePointsCost) {
+    public void setResourcePointsCost(MathCompiler.Expression resourcePointsCost) {
         this.resourcePointsCost = resourcePointsCost;
     }
 
-    public MathCompiler.Sentence getCost() {
-        return cost;
+    public MathCompiler.Expression getMoneyCost() {
+        return moneyCost;
     }
 
-    public void setCost(MathCompiler.Sentence cost) {
-        this.cost = cost;
+    public void setMoneyCost(MathCompiler.Expression moneyCost) {
+        this.moneyCost = moneyCost;
     }
 }

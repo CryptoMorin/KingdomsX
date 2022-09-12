@@ -1,10 +1,11 @@
 plugins {
     id("commons")
     java
+    id("com.github.johnrengelman.shadow") version ("7.1.2")
 }
 
 group = "org.kingdoms"
-version = "1.0.0"
+version = "2.0.0"
 description = "An event similar to KoTH"
 
 buildscript {
@@ -17,6 +18,10 @@ buildscript {
 repositories {
     mavenLocal()
     mavenCentral()
+    maven { // For mojang authlib
+        name = "minecraft-repo"
+        url = uri("https://libraries.minecraft.net")
+    }
     maven {
         url = uri("https://repo.codemc.org/repository/nms/")
         content {
@@ -26,8 +31,8 @@ repositories {
 }
 
 dependencies {
-    compileOnly(org.kingdoms.main.PredefinedDependency.Spigot.LATEST) { isTransitive = false }
-    compileOnly(project(":core"))
+    compileOnly(org.kingdoms.main.PredefinedDependency.Spigot.LATEST)
+    implementation(project(path = ":core", configuration = "shadow")) // https://imperceptiblethoughts.com/shadow/multi-project/#depending-on-the-shadow-jar-from-another-project
 }
 
 tasks {

@@ -1,6 +1,5 @@
 package org.kingdoms.outposts;
 
-import com.cryptomorin.xseries.XMaterial;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -29,6 +28,7 @@ import org.kingdoms.main.locale.messager.MessageBuilder;
 import org.kingdoms.services.managers.ServiceHandler;
 import org.kingdoms.utils.bossbars.BossBarSession;
 import org.kingdoms.utils.time.TimeFormatter;
+import org.kingdoms.utils.xseries.XMaterial;
 
 import java.awt.*;
 import java.util.List;
@@ -248,7 +248,7 @@ public class OutpostEvent {
             kingdom.addResourcePoints(rewards.getResourcePoints(level));
             kingdom.addBank(rewards.getMoney(level));
             rewards.performCommands(kingdom);
-            List<ItemStack> items = rewards.getItems(level);
+            List<ItemStack> items = rewards.getItems();
 
             if (items != null && !items.isEmpty()) {
                 ThreadLocalRandom random = ThreadLocalRandom.current();

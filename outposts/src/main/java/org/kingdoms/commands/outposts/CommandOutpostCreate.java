@@ -8,7 +8,7 @@ import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.outposts.Outpost;
-import org.kingdoms.outposts.OutpostHandler;
+import org.kingdoms.outposts.OutpostDataHandler;
 import org.kingdoms.services.managers.SoftService;
 import org.kingdoms.services.worldguard.ServiceWorldGuard;
 
@@ -44,7 +44,7 @@ public class CommandOutpostCreate extends KingdomsCommand {
 
         Outpost outpost = new Outpost(outpostName, region, player.getLocation(), player.getLocation());
         Outpost.registerOutpost(outpost);
-        OutpostHandler.saveOutposts();
+        OutpostDataHandler.saveOutposts();
         KingdomsLang.COMMAND_OUTPOST_CREATE_CREATED.sendMessage(sender, "outpost", outpostName, "region", region);
     }
 

@@ -1,7 +1,9 @@
 title: str
 rows: int # Range handled internally
 sound: Sound
-interactable: List
+interactable:
+  - { (type): set, (elements): int }
+  - [ "empty" ]
 disallow-creative: bool
 message: str
 
@@ -9,10 +11,13 @@ options:
   (values):
     name: str
     material: Material
-    lore: str
+    lore:
+      - { (type): list, (elements): str }
+      - str
     interaction: Enum<org.kingdoms.gui.objects.GUIInteractionType>
     condition: str
     sound: Sound
+    refresh: bool
     message: str
     amount: int
     # Slot ranges are handled internally.

@@ -7,15 +7,14 @@ import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.string.StringUtils;
 
 import java.util.List;
-import java.util.Map;
 
 public class OutpostRewards {
-    private final String resourcePoints;
-    private final String money;
-    private final List<String> commands;
-    private final Map<Integer, List<ItemStack>> items;
+    private String resourcePoints;
+    private String money;
+    private List<String> commands;
+    private List<ItemStack> items;
 
-    public OutpostRewards(String resourcePoints, String money, List<String> commands, Map<Integer, List<ItemStack>> items) {
+    public OutpostRewards(String resourcePoints, String money, List<String> commands, List<ItemStack> items) {
         this.resourcePoints = resourcePoints;
         this.money = money;
         this.commands = commands;
@@ -36,26 +35,32 @@ public class OutpostRewards {
         return MathUtils.evaluateEquation(money, "lvl", lvl);
     }
 
-    public List<ItemStack> getItems(int lvl) {
-        int closest = 1;
-        for (int level : items.keySet()) {
-            if (level == lvl) {
-                closest = level;
-                break;
-            }
-
-            if (level < lvl && level > closest) closest = level;
-        }
-
-        return items.get(closest);
-    }
-
-    public Map<Integer, List<ItemStack>> getItems() {
+    public List<ItemStack> getItems() {
         return items;
     }
 
     public String getMoney() {
         return money;
+    }
+
+    public void setItems(List<ItemStack> items) {
+        this.items = items;
+    }
+
+    public void setCommands(List<String> commands) {
+        this.commands = commands;
+    }
+
+    public List<String> getCommands() {
+        return commands;
+    }
+
+    public void setMoney(String money) {
+        this.money = money;
+    }
+
+    public void setResourcePoints(String resourcePoints) {
+        this.resourcePoints = resourcePoints;
     }
 
     public String getResourcePoints() {

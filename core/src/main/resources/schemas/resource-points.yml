@@ -10,9 +10,12 @@ for-each: int
 give: int
 
 general-filters:
-  # TODO union bool and null
-  with-lore: any
-  enchanted: any
+  lore:
+    - { (type): list, (elements): str }
+    - 'null'
+  enchanted:
+    - { (keys): str, (values): int }
+    - 'null'
   material:
     blacklist: bool
     list:

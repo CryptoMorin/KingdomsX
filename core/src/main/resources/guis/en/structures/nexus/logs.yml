@@ -1,5 +1,7 @@
 title: "&8-=[ &4Audit Logs &8]=-"
+sound: ITEM_BOOK_PAGE_TURN
 rows: 6
+
 options:
   decoration:
     slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
@@ -42,7 +44,7 @@ options:
         &2At&8: &6%time%
         &2Reason&8: &6%reason%
     challenger:
-      condition: "type == 'kingdoms_challenger'"
+      condition: "type == 'kingdom_challenger'"
       material: GREEN_WOOL
       name: '&2Challenged'
       lore: |
@@ -52,7 +54,7 @@ options:
         &7You have until &c%start_time%
         &7to prepare to attack.
     challenged:
-      condition: "type == 'kingdoms_challenged'"
+      condition: "type == 'kingdom_challenged'"
       material: RED_WOOL
       name: '&cChallenged'
       lore: |
@@ -61,9 +63,105 @@ options:
         
         &7You have until &c%start_time%
         &7to prepare before they attack.
+    claim:
+      condition: "type == 'kingdom_claim'"
+      material: GRASS_BLOCK
+      name: '&2Claimed'
+      lore: |
+        {$s}%player% {$p}has claimed
+        the following lands{$sep}:
+        %lands%
+    unclaim:
+      condition: "type == 'kingdom_unclaim'"
+      material: GRASS_BLOCK
+      name: '&cUnclaimed'
+      lore: |
+        {$es}%player% {$e}has unclaimed
+        the following lands{$sep}:
+        %lands%
+    invader:
+      condition: "type == 'kingdom_invader'"
+      material: IRON_SWORD
+      name: '&2Invaded'
+      lore: |
+        {$s}%player% {$p}has invaded{$sep}:
+        {$s}%chunk%
+        {$p}Kingdom{$sep}: %kingdoms_name%
+        {$p}Ransack Mode{$sep}: %ransack-mode%
+        {$p}Result{$sep}: {$s}%result%
+        {$p}Affected Lands{$sep}:
+        %affected-lands%
+    invaded:
+      condition: "type == 'kingdom_invaded'"
+      material: GOLD_SWORD
+      name: '&cGot Invaded'
+      lore: |
+        {$s}%player% {$p}has invaded your kingdom at{$sep}:
+        {$s}%chunk%
+        {$p}Kingdom{$sep}: %kingdoms_name%
+        {$p}Ransack Mode{$sep}: %ransack-mode%
+        {$p}Result{$sep}: {$s}%result%
+        {$p}Affected Lands{$sep}:
+        %affected-lands%
+    upgrade-misc:
+      condition: "type == 'kingdom_misc_upgrade_upgrade'"
+      material: DIAMOND_HOE
+      name: '&9Misc Upgrade'
+      lore: |
+        {$s}%player% {$p}has upgraded
+        {$s}%upgrade% {$p}misc upgrade.
+        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+    upgrade-champion:
+      condition: "type == 'kingdom_champion_upgrade_upgrade'"
+      material: ZOMBIE_HEAD
+      name: '&9Champion Upgrade'
+      lore: |
+        {$s}%player% {$p}has upgraded
+        {$s}%upgrade% {$p}champion upgrade.
+        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+    upgrade-powerup:
+      condition: "type == 'kingdom_powerup_upgrade'"
+      material: DIAMOND_SWORD
+      name: '&9Powerup Upgrade'
+      lore: |
+        {$s}%player% {$p}has upgraded
+        {$s}%upgrade% {$p}powerup.
+        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+    upgrade-structure:
+      condition: "type == 'kingdom_item_structure_upgrade'"
+      material: EMERALD_BLOCK
+      name: '&aStructure Upgrade'
+      lore: |
+        {$s}%player% {$p}has upgraded
+        {$s}%item_style_display_name% {$p}structure at
+        {$s}%location%
+        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+    upgrade-turret:
+      condition: "type == 'kingdom_item_turret_upgrade'"
+      material: ARROW
+      name: '&aTurret Upgrade'
+      lore: |
+        {$s}%player% {$p}has upgraded
+        {$s}%item_style_display_name% {$p}turret at
+        {$s}%location%
+        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+    resource-points-convert:
+      condition: "type == 'kingdom_resource_points_convert'"
+      material: HAY_BLOCK
+      name: '&aResource Points Convert'
+      lore: |
+        {$s}%player% {$p}has changed 
+        resource points{$sep}:
+        {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
     else:
       material: BARRIER
-      name: '&cUnknown log type'
+      name: '{$e}Unknown log type{$sep}:'
+      lore: '{$es}%type%'
 
   back:
     posx: 5

@@ -1,8 +1,15 @@
-(keys): [ reinforcements, champions, focus, fangs, plow, thor, damage-cap,
-          death-duel, drag, throw, strength, speed, resistance, health ]
+(x-champion-upgrades): &championUpgrades [ reinforcements, champions, focus, fangs, plow, thor, damage-cap,
+                                           death-duel, drag, throw, strength, speed, resistance, health ]
+
+(required): *championUpgrades
+(keys): *championUpgrades
 (values):
   enabled: bool
   name: str
-  max-level: int
+  max-level: Math
+  radius: Math
+  cooldown: Math
+  chance: Math
   scaling: Math
-  cost: str
+  cost: Math
+  default-level: Math

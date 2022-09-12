@@ -84,7 +84,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
                 KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS.sendMessage(sender, "outpost", args[0], "cost", rp);
                 return;
             }
-            double cost = MathUtils.eval(outpost.getCost(), settings);
+            double cost = MathUtils.eval(outpost.getMoneyCost(), settings);
             if (!kingdom.hasMoney(cost)) {
                 KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY.sendMessage(sender, "outpost", args[0], "cost", cost);
                 return;

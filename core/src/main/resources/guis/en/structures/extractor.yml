@@ -4,10 +4,18 @@ sound: BLOCK_ANVIL_USE
 
 options:
   collect:
-    name: "&2Collect&8: &9%time% &7- &9%amount%"
-    material: GREEN_WOOL
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Out of fuel &9%time% &7- &9%fancy_amount%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Nothing to collect &9%time%"
+      material: RED_WOOL
+    else:
+      name: "&2Collect&8: &9%time% &7- &9%fancy_amount%"
+      material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
-    refresh: true
     lore:
       - "&6Collect all the generated"
       - "resource points."

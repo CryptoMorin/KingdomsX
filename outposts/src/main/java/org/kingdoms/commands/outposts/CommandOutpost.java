@@ -10,10 +10,10 @@ import org.kingdoms.outposts.Outpost;
 import org.kingdoms.services.managers.SoftService;
 
 public class CommandOutpost extends KingdomsParentCommand {
-    protected static boolean worldGuardMissing(CommandSender sender) {
+    public static boolean worldGuardMissing(CommandSender sender) {
         if (SoftService.WORLD_GUARD.isAvailable()) return false;
-        MessageCompiler.compile("&4You need to install hover:{&e&nWorldGuard;Click to open the download page;@https://dev.bukkit.org/projects/worldguard} " +
-                "plugin in order to use Outpost events."
+        MessageCompiler.compile("&4You need to install &ehover:{&nWorldGuard;Click to open the download page;@https://dev.bukkit.org/projects/worldguard} " +
+                "&4plugin in order to use Outpost events."
         ).getExtraProvider().err().send(sender, new MessageBuilder().usePrefix());
         return true;
     }

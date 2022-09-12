@@ -7,7 +7,9 @@ structures:
   (required): [ nexus, national-nexus ]
   (values):
     name: str
-    type: str #TODO Structure(type)
+    type: str # TODO Structure(type)
+    upgrade-cost: Math
+    max-level: Math
     particles:
       (keys): int
       (values):
@@ -36,6 +38,14 @@ structures:
         height: decimal
 
   extractor:
+    capacity: Math
+    fuel:
+      enabled: bool
+      capacity: Math
+      variants:
+        (values):
+          material: Material
+          fill-amount-per-item: decimal
     generator:
       (required): [ '1' ]
       (keys): int
@@ -48,8 +58,12 @@ structures:
     teleport-fuel-cost: str
     other-world-distance-factor: int
     fuel:
-      material: Material
-      fill-amount-per-item: int
+      enabled: bool
+      capacity: Math
+      variants:
+        (values):
+          material: Material
+          fill-amount-per-item: decimal
 
   regulator:
     auto-fill-cost: Math
@@ -58,8 +72,6 @@ structures:
     shield-damage:
       (keys): int
       (values): Period
-    
-    upgrade-cost: Math
     
     explosion-radius:
       (keys): int
