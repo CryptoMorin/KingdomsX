@@ -2,6 +2,162 @@ title: "&8-=[ &4Audit Logs &8]=-"
 sound: ITEM_BOOK_PAGE_TURN
 rows: 6
 
+# -nosync
+'[type]':
+  kingdom-join:
+    material: GREEN_WOOL
+    name: '&2Player Joined&8: &6%player%'
+    lore: |
+      {$p}At{$sep}: {$s}%time%
+      &2Invited By&8: &6%inviter%
+  kingdom-kick:
+    material: RED_WOOL
+    name: '&2Kicked Member&8: &6%player%'
+    lore: |
+      {$p}At{$sep}: {$s}%time%
+      &2Kicker&8: &6%kicker%
+  kingdom-leave:
+    material: RED_WOOL
+    name: '&2Player Left&8: &6%player%'
+    lore: |
+      &2At&8: &6%time%
+      &2Reason&8: &6%reason%
+  kingdom-challenge-challenger:
+    material: GREEN_WOOL
+    name: '&2Challenged'
+    lore: |
+      &e%player% &chas challenged
+      &e%kingdoms_name% &ckingdom.
+      {$p}At{$sep}: {$s}%time%
+      
+      &7You have until &c%start_time%
+      &7to prepare to attack.
+  kingdom-challenge-challenged:
+    material: RED_WOOL
+    name: '&cChallenged'
+    lore: |
+      &e%kingdoms_name% &ckingdom has
+      &cchallenged your kingdom.
+      {$p}At{$sep}: {$s}%time%
+      
+      &7You have until &c%start_time%
+      &7to prepare before they attack.
+  kingdom-claim:
+    material: GRASS_BLOCK
+    name: '&2Claimed'
+    lore: |
+      {$s}%player% {$p}has claimed
+      the following lands{$sep}:
+      %lands%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-unclaim:
+    material: GRASS_BLOCK
+    name: '&cUnclaimed'
+    lore: |
+      {$es}%player% {$e}has unclaimed
+      the following lands{$sep}:
+      %lands%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-invasion-invader:
+    material: IRON_SWORD
+    name: '&2Invaded'
+    lore: |
+      {$s}%player% {$p}has invaded{$sep}:
+      {$s}%chunk%
+      {$p}Kingdom{$sep}: {$s}%kingdoms_name%
+      {$p}Ransack Mode{$sep}: %ransack-mode%
+      {$p}Result{$sep}: {$s}%result%
+      {$p}At{$sep}: {$s}%time%
+      {$p}Affected Lands{$sep}:
+      %affected-lands%
+  kingdom-invasion-invaded:
+    material: GOLD_SWORD
+    name: '&cGot Invaded'
+    lore: |
+      {$s}%player% {$p}has invaded your kingdom at{$sep}:
+      {$s}%chunk%
+      {$p}Kingdom{$sep}: {$s}%kingdoms_name%
+      {$p}Ransack Mode{$sep}: %ransack-mode%
+      {$p}Result{$sep}: {$s}%result%
+      {$p}At{$sep}: {$s}%time%
+      {$p}Affected Lands{$sep}:
+      %affected-lands%
+  kingdom-upgrade_misc:
+    material: DIAMOND_HOE
+    name: '&9Misc Upgrade'
+    lore: |
+      {$s}%player% {$p}has upgraded
+      {$s}%upgrade% {$p}misc upgrade.
+      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-upgrade-champion:
+    material: ZOMBIE_HEAD
+    name: '&9Champion Upgrade'
+    lore: |
+      {$s}%player% {$p}has upgraded
+      {$s}%upgrade% {$p}champion upgrade.
+      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-upgrade-powerup:
+    material: DIAMOND_SWORD
+    name: '&9Powerup Upgrade'
+    lore: |
+      {$s}%player% {$p}has upgraded
+      {$s}%upgrade% {$p}powerup.
+      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-structure-upgrade:
+    material: EMERALD_BLOCK
+    name: '&aStructure Upgrade'
+    lore: |
+      {$s}%player% {$p}has upgraded
+      {$s}%item_style_display_name% {$p}structure at
+      {$s}%location%
+      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-structure-purchase:
+    material: EMERALD_BLOCK
+    name: '&aStructure Purchase'
+    lore: |
+      {$s}%player% {$p}has purchased {$s}%amount%
+      {$s}%item_style_display_name% {$p}structures.
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-turret-purchase:
+    material: EMERALD_BLOCK
+    name: '&aTurret Purchase'
+    lore: |
+      {$s}%player% {$p}has purchased {$s}%amount%
+      {$s}%item_style_display_name% {$p}turrets.
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-turret-upgrade:
+    material: ARROW
+    name: '&aTurret Upgrade'
+    lore: |
+      {$s}%player% {$p}has upgraded
+      {$s}%item_style_display_name% {$p}turret at
+      {$s}%location%
+      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  kingdom-resource-points-convert:
+    material: HAY_BLOCK
+    name: '&aResource Points Convert'
+    lore: |
+      {$s}%player% {$p}has changed 
+      resource points{$sep}:
+      {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
+      {$p}At{$sep}: {$s}%time%
+  '[else]':
+    material: BARRIER
+    name: '{$e}Unknown log type{$sep}:'
+    lore: '{$es}%type%'
+
 options:
   decoration:
     slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
@@ -21,147 +177,7 @@ options:
 
   entry:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
-
-    join:
-      condition: "type == 'kingdom_join'"
-      material: GREEN_WOOL
-      name: '&2Player Joined&8: &6%player%'
-      lore: |
-        &2At&8: &6%time%
-        &2Invited By&8: &6%inviter%
-    kick:
-      condition: "type == 'kingdom_kick'"
-      material: RED_WOOL
-      name: '&2Kicked Member&8: &6%player%'
-      lore: |
-        &2At&8: &6%time%
-        &2Kicker&8: &6%kicker%
-    leave:
-      condition: "type == 'kingdom_leave'"
-      material: RED_WOOL
-      name: '&2Player Left&8: &6%player%'
-      lore: |
-        &2At&8: &6%time%
-        &2Reason&8: &6%reason%
-    challenger:
-      condition: "type == 'kingdom_challenger'"
-      material: GREEN_WOOL
-      name: '&2Challenged'
-      lore: |
-        &e%player% &chas challenged
-        &e%kingdoms_name% &ckingdom.
-        
-        &7You have until &c%start_time%
-        &7to prepare to attack.
-    challenged:
-      condition: "type == 'kingdom_challenged'"
-      material: RED_WOOL
-      name: '&cChallenged'
-      lore: |
-        &e%kingdoms_name% &ckingdom has
-        &cchallenged your kingdom.
-        
-        &7You have until &c%start_time%
-        &7to prepare before they attack.
-    claim:
-      condition: "type == 'kingdom_claim'"
-      material: GRASS_BLOCK
-      name: '&2Claimed'
-      lore: |
-        {$s}%player% {$p}has claimed
-        the following lands{$sep}:
-        %lands%
-    unclaim:
-      condition: "type == 'kingdom_unclaim'"
-      material: GRASS_BLOCK
-      name: '&cUnclaimed'
-      lore: |
-        {$es}%player% {$e}has unclaimed
-        the following lands{$sep}:
-        %lands%
-    invader:
-      condition: "type == 'kingdom_invader'"
-      material: IRON_SWORD
-      name: '&2Invaded'
-      lore: |
-        {$s}%player% {$p}has invaded{$sep}:
-        {$s}%chunk%
-        {$p}Kingdom{$sep}: %kingdoms_name%
-        {$p}Ransack Mode{$sep}: %ransack-mode%
-        {$p}Result{$sep}: {$s}%result%
-        {$p}Affected Lands{$sep}:
-        %affected-lands%
-    invaded:
-      condition: "type == 'kingdom_invaded'"
-      material: GOLD_SWORD
-      name: '&cGot Invaded'
-      lore: |
-        {$s}%player% {$p}has invaded your kingdom at{$sep}:
-        {$s}%chunk%
-        {$p}Kingdom{$sep}: %kingdoms_name%
-        {$p}Ransack Mode{$sep}: %ransack-mode%
-        {$p}Result{$sep}: {$s}%result%
-        {$p}Affected Lands{$sep}:
-        %affected-lands%
-    upgrade-misc:
-      condition: "type == 'kingdom_misc_upgrade_upgrade'"
-      material: DIAMOND_HOE
-      name: '&9Misc Upgrade'
-      lore: |
-        {$s}%player% {$p}has upgraded
-        {$s}%upgrade% {$p}misc upgrade.
-        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-    upgrade-champion:
-      condition: "type == 'kingdom_champion_upgrade_upgrade'"
-      material: ZOMBIE_HEAD
-      name: '&9Champion Upgrade'
-      lore: |
-        {$s}%player% {$p}has upgraded
-        {$s}%upgrade% {$p}champion upgrade.
-        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-    upgrade-powerup:
-      condition: "type == 'kingdom_powerup_upgrade'"
-      material: DIAMOND_SWORD
-      name: '&9Powerup Upgrade'
-      lore: |
-        {$s}%player% {$p}has upgraded
-        {$s}%upgrade% {$p}powerup.
-        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-    upgrade-structure:
-      condition: "type == 'kingdom_item_structure_upgrade'"
-      material: EMERALD_BLOCK
-      name: '&aStructure Upgrade'
-      lore: |
-        {$s}%player% {$p}has upgraded
-        {$s}%item_style_display_name% {$p}structure at
-        {$s}%location%
-        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-    upgrade-turret:
-      condition: "type == 'kingdom_item_turret_upgrade'"
-      material: ARROW
-      name: '&aTurret Upgrade'
-      lore: |
-        {$s}%player% {$p}has upgraded
-        {$s}%item_style_display_name% {$p}turret at
-        {$s}%location%
-        {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-        {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-    resource-points-convert:
-      condition: "type == 'kingdom_resource_points_convert'"
-      material: HAY_BLOCK
-      name: '&aResource Points Convert'
-      lore: |
-        {$s}%player% {$p}has changed 
-        resource points{$sep}:
-        {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
-    else:
-      material: BARRIER
-      name: '{$e}Unknown log type{$sep}:'
-      lore: '{$es}%type%'
+    '[switch]': type
 
   back:
     posx: 5

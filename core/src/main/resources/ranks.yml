@@ -56,17 +56,6 @@ interact-blocks:
   - CONTAINS:SHULKER_BOX
   - CONTAINS:DOOR
 
-# Permissions that use the existing kingdom permissions for other purposes that
-# might not be directly related to that specific permission.
-permissions:
-  # For "/k outpost join" because of the resource point payment.
-  # DO NOT confuse "outpost" structure with "outpost events"
-  # There is a separate permission called "outposts" specifically for the structure.
-  outposts: WITHDRAW
-
-  # For /k invsee
-  invsee: FLY
-
 # Properties of a newly created rank.
 new-rank:
   # If this node already exists, it'll increment 'i' number in the format "node (i)" until it's not used.
@@ -112,7 +101,7 @@ ranks:
     material: GOLD_BLOCK
     max-claims: 10
     permissions: [ NEXUS, BUILD, NEXUS_BUILD, HOME, INVADE, NEXUS_CHEST, UNCLAIM_OWNED, CLAIM, TURRETS, INVITE, WITHDRAW, FLY,
-                   INTERACT, USE, INSTANT_TELEPORT, READ_MAILS ]
+                   INTERACT, USE, INSTANT_TELEPORT, READ_MAILS, INVSEE ]
   member:
     name: "Member"
     color: "&2"

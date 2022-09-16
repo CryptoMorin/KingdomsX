@@ -4,6 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.addons.Addon;
 import org.kingdoms.commands.outposts.CommandOutpost;
+import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.constants.player.KingdomPermission;
+import org.kingdoms.main.Kingdoms;
 import org.kingdoms.services.managers.SoftService;
 
 import java.io.File;
@@ -14,6 +17,14 @@ public final class OutpostAddon extends JavaPlugin implements Addon {
         getLogger().info("Saving outposts...");
         OutpostDataHandler.saveOutposts();
         disableAddon();
+    }
+
+    public static final KingdomPermission OUTPOST_JOIN_PERMISSION = new KingdomPermission(new Namespace("Outposts", "JOIN"));
+
+    @Override
+    public void onLoad() {
+        Kingdoms.get().getPermissionRegistery().register(OUTPOST_JOIN_PERMISSION);
+        Kingdoms.get().getAuditLogRegistry().register(LogKingdomOutpostJoin.PROVIDER);
     }
 
     @Override

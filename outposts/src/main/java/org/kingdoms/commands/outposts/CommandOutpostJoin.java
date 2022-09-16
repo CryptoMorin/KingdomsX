@@ -8,19 +8,17 @@ import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.constants.group.Kingdom;
-import org.kingdoms.constants.player.KingdomPermission;
-import org.kingdoms.constants.player.KingdomPermissionFactory;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.main.config.KingdomsConfig;
 import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.main.locale.messager.MessageBuilder;
+import org.kingdoms.outposts.LogKingdomOutpostJoin;
 import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.OutpostAddon;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.utils.MathUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public class CommandOutpostJoin extends KingdomsCommand {
@@ -70,9 +68,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
                 return;
             }
 
-            KingdomPermission perm = KingdomPermissionFactory.getPermission(KingdomsConfig.Ranks.PERMISSIONS_OUTPOSTS.getManager().getString());
-            Objects.requireNonNull(perm, () -> "Unknown permission for outpost events: " + KingdomsConfig.Ranks.PERMISSIONS_OUTPOSTS.getManager().getString());
-            if (!kp.hasPermission(perm)) {
+            if (!kp.hasPermission(OutpostAddon.OUTPOST_JOIN_PERMISSION)) {
                 KingdomsLang.COMMAND_OUTPOST_JOIN_PERMISSION.sendMessage(sender, "outpost", args[0]);
                 return;
             }
@@ -103,7 +99,9 @@ public class CommandOutpostJoin extends KingdomsCommand {
                 KingdomsLang.COMMAND_OUTPOST_JOIN_ANNOUNCEMENT.sendMessage(member, "kingdom", kingdom.getName(), "outpost", args[0]);
             }
         }
+
         event.participate(player, kingdom);
+        kingdom.log(new LogKingdomOutpostJoin(player.getUniqueId(), outpost.getName()));
     }
 
     @Override
