@@ -29,7 +29,6 @@ public class LogKingdomOutpostJoin extends AuditLog {
         public AuditLog construct() {
             return new LogKingdomOutpostJoin();
         }
-
         @Override
         public Namespace getNamespace() {
             return NS;

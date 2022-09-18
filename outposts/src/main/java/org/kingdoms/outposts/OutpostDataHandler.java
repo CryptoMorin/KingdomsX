@@ -2,7 +2,6 @@ package org.kingdoms.outposts;
 
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
-import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.main.locale.MessageHandler;
 import org.kingdoms.utils.LocationUtils;
@@ -39,7 +38,6 @@ public final class OutpostDataHandler {
             rewardsSection.set("resource-points", rewards.getResourcePoints());
             rewardsSection.set("money", rewards.getMoney());
 
-            KLogger.temp("Adding commands: " + rewards.getCommands());
             if (!rewards.getCommands().isEmpty()) {
                 rewardsSection.set("commands", rewards.getCommands());
             }
@@ -58,6 +56,9 @@ public final class OutpostDataHandler {
     }
 
     public static void loadOutposts() {
+        OutpostAddon.get().getLogger().info("Loading outposts...");
+
+        Outpost.getOutposts().clear();
         ConfigSection config = DATA.getConfig();
         if (config == null) return;
 
@@ -87,6 +88,7 @@ public final class OutpostDataHandler {
             Outpost outpost = new Outpost(name, section.getString("region"), spawn, center,
                     MathCompiler.compile(section.getString("cost")), MathCompiler.compile(section.getString("resource-points-cost")),
                     section.getInt("max-participants"), section.getInt("min-online-members"), bossbar, rewards);
+
             Outpost.getOutposts().put(name, outpost);
         }
     }

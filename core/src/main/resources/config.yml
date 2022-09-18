@@ -36,7 +36,9 @@
 # Prefixes are not shown for Complex Messages by default even if this option is enabled.
 prefix: false
 
-# For error profiling reasons.
+# For error profiling reasons. Is extremely spammy and shows messages
+# that are usually not needed. It also show some errors relating
+# to server connection issues.
 debug: false
 
 updates:
@@ -498,6 +500,26 @@ nation-name:
 
 # Should kingdom homes be public by default?
 default-public-homes: false
+
+audit-logs:
+  # Disabled logs
+  disabled: []
+
+  # How long do log datas are kept?
+  # You can either specify their exact name to
+  # have their own expiration time or change the
+  # "default" option for any other logs not specified here.
+  # Of course, the lower the time, the better the
+  # storage, memory and performance.
+  # For performance purposes, the expiration value
+  # cannot be lower than one hour.
+  expiration:
+    default: 30 days
+    kingdom-join: 10 days
+    kingdom-leave: 10 days
+    extractor-collect: 5 days
+    warppad-teleport: 3 days
+    kingdom-resource-points-convert: 20seconds
 
 # /k fly
 kingdom-fly:

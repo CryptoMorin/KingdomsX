@@ -28,6 +28,17 @@ options:
       country censoreship and etc.{$sep})
   addons:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    pending-restart:
+      condition: waiting_to_restart
+      name: '&8[&5Pending Restart&8] &9%addon-name%'
+      lore: |
+        %description%
+        
+        &2Version&8: &9%latest-version%
+        &5The addon is downloaded. Waiting
+        for the server to be restarted to
+        enable the addon.
+      material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
       name: '&8[&2Up to date&8] &9%addon-name%'

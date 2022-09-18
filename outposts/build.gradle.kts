@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "2.1.0"
+version = "2.1.1"
 description = "An event similar to KoTH"
 
 buildscript {
@@ -56,6 +56,7 @@ tasks {
 
     build {
         finalizedBy(named("copyAddon"))
+        finalizedBy(named("updateAddonMetaFile"))
     }
 }
 

@@ -12,38 +12,58 @@ import org.kingdoms.services.managers.SoftService;
 import java.io.File;
 
 public final class OutpostAddon extends JavaPlugin implements Addon {
+    private static boolean loaded = false;
+    private static OutpostAddon instance;
+
     @Override
     public void onDisable() {
+        if (!loaded) return;
         getLogger().info("Saving outposts...");
         OutpostDataHandler.saveOutposts();
         disableAddon();
+    }
+
+    public OutpostAddon() {
+        instance = this;
+    }
+
+    public static OutpostAddon get() {
+        return instance;
     }
 
     public static final KingdomPermission OUTPOST_JOIN_PERMISSION = new KingdomPermission(new Namespace("Outposts", "JOIN"));
 
     @Override
     public void onLoad() {
+        if (!isKingdomsLoaded()) return;
         Kingdoms.get().getPermissionRegistery().register(OUTPOST_JOIN_PERMISSION);
         Kingdoms.get().getAuditLogRegistry().register(LogKingdomOutpostJoin.PROVIDER);
     }
 
     @Override
     public void onEnable() {
-        registerAddon();
+        if (!isKingdomsLoaded()) {
+            getLogger().severe("Kingdoms plugin didn't load correctly. Disabling...");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
         if (!SoftService.WORLD_GUARD.isAvailable()) getLogger().warning("WorldGuard plugin is either not installed or disabled from kingdoms. " +
                 "This addon mostly relies on WorldGuard to run events.");
 
         getLogger().info("Registering commands to kingdoms...");
-        new CommandOutpost();
         getLogger().info("Registering event handlers...");
         Bukkit.getPluginManager().registerEvents(new OutpostManager(), this);
-        getLogger().info("Loading outposts...");
-        OutpostDataHandler.loadOutposts();
+
+        reloadAddon();
+        registerAddon();
+        loaded = true;
     }
 
     @Override
     public void reloadAddon() {
-
+        new CommandOutpost();
+        OutpostDataHandler.loadOutposts();
     }
 
     @Override

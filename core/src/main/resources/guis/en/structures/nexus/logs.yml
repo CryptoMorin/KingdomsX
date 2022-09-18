@@ -153,6 +153,36 @@ rows: 6
       resource points{$sep}:
       {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
       {$p}At{$sep}: {$s}%time%
+  extractor-collect:
+    material: EMERALD_BLOCK
+    name: '&aExtractor Collect'
+    lore: |
+      {$s}%player% {$p}has collected the 
+      extractor located at{$sep}:
+      {$s}%location%
+      {$p}Collected Resource Points{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+  warppad-teleport:
+    material: END_PORTAL_FRAME
+    name: '&3Warp Pad Teleport'
+    lore: |
+      {$s}%player% {$p}has teleported
+      using the Warp Pad located at
+      {$s}%from_location% {$p}to
+      {$s}%precise_location%
+      {$p}Fuel Cost{$sep}: {$s}%fancy_fuel_cost%
+      {$p}At{$sep}: {$s}%time%
+  outpost-item-purchase:
+    material: HAY_BLOCK
+    name: '&eOutpost Item Purchase'
+    lore: |
+      {$s}%player% {$p}has purchased
+      the following items from the
+      Outpost structure located at{$sep}:
+      {$s}%location%
+      {$p}Total Resource Points{$sep}: {$s}%fancy_resource_points%
+      {$p}At{$sep}: {$s}%time%
+      %purchases%
   '[else]':
     material: BARRIER
     name: '{$e}Unknown log type{$sep}:'
