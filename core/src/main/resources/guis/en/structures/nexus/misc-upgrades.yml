@@ -42,33 +42,47 @@ options:
   nexus-guards:
     name: "&4Nexus Guards"
     material: DIAMOND_AXE
+    pacifist:
+      condition: kingdoms_pacifist
+      perform-action: false
+      lore: |
+        &cYour kingdom is pacifist
+        and cannot use this upgrade.
+    else:
+      lore:
+        - "&6When someone enters your"
+        - "nexus land, spawns guards that"
+        - "are stronger than your normal guards."
+        - ""
+        - "&2Cost&8: &6%cost%"
+        - "&2Level&8: &6%level%"
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&6When someone enters your"
-      - "nexus land, spawns guards that"
-      - "are stronger than your normal guards."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
     posx: 5
     posy: 1
   guards:
     name: "&eGuards"
     material: IRON_AXE
+    pacifist:
+      condition: kingdoms_pacifist
+      perform-action: false
+      lore: |
+        &cYour kingdom is pacifist
+        and cannot use this upgrade.
+    else:
+      lore:
+        - "&6Guards will randomly spawn"
+        - "to protect the kingdom if"
+        - "a non-ally entered the land."
+        - ""
+        - "&2Cost&8: &6%cost%"
+        - "&2Level&8: &6%level%"
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&6Guards will randomly spawn"
-      - "to protect the kingdom if"
-      - "a non-ally entered the land."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
     posx: 6
     posy: 1
   insanity:
