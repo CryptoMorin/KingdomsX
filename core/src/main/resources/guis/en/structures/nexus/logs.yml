@@ -208,6 +208,102 @@ rows: 6
       changed with {$s}%kingdoms_name% {$p}kingdom{$sep}:
       %old-relation% {$sep}➜ %new-relation%
       {$p}At{$sep}: {$s}%time%
+  kingdom-invite:
+    material: BOOK
+    name: '&9Invite'
+    lore: |
+      {$s}%inviter% {$p}has invited {$s}%player% 
+      {$p}to the kingdom. They have {$s}%accept-time%
+      {$p}to accept the request.
+      {$p}At{$sep}: {$s}%time%
+  kingdom-king-change:
+    material: BOOK
+    name: '&4King Change'
+    lore: |
+      {$p}Kingdom's king has been changed{$sep}:
+      {$s}%old-king% {$sep}➜ {$s}%new-king%
+      {$p}Reason{$sep}: {$s}%reason%
+      {$p}At{$sep}: {$s}%time%
+  player-rank-change:
+    lore: "{$s}%old-rank% {$sep}➜ {$s}%new-rank%"
+    promoted:
+      condition: 'old_rank_priority > new_rank_priority' # It's the opposite
+      material: GREEN_WOOL
+      name: '&aPlayer Promoted{$sep}: {$s}%player%'
+    else: # demoted
+      material: RED_WOOL
+      name: '&cPlayer Demoted{$sep}: {$s}%player%'
+  rank-create:
+    material: BOOK
+    name: '&2Rank Created'
+    lore: |
+      {$p}A rank was created by {$s}%player%{$sep}:
+      {$p}Node{$sep}: {$s}%rank_node%
+      {$p}Display Name{$sep}: {$s}%rank_color%%rank_symbol% %rank_name%
+      {$p}Priority{$sep}: {$s}%rank_priority%
+      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
+      {$p}Material{$sep}: {$s}%rank_material%
+      {$p}At{$sep}: {$s}%time%
+  rank-delete:
+    material: BOOK
+    name: '&cRank Deleted'
+    lore: |
+      {$p}Rank was deleted by {$s}%player%{$sep}:
+      {$p}Node{$sep}: {$s}%rank_node%
+      {$p}Display Name{$sep}: {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Priority{$sep}: {$s}%rank_priority%
+      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
+      {$p}Material{$sep}: {$s}%rank_material%
+      {$p}At{$sep}: {$s}%time%
+  rank-change-name:
+    material: BOOK
+    name: '&9Rank Name Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}name was changed by {$s}%player%{$sep}:
+      {$s}%old-name% {$sep}➜ {$s}%new-name%
+      {$p}At{$sep}: {$s}%time%
+  rank-change-symbol:
+    material: BOOK
+    name: '&9Rank Symbol Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}symbol was changed by {$s}%player%{$sep}:
+      {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
+      {$s}%new-symbol%
+      {$p}At{$sep}: {$s}%time%
+  rank-change-color:
+    material: BOOK
+    name: '&9Rank Color Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}name was changed by {$s}%player%{$sep}:
+      {$s}%old-color%color {$sep}➜ {$s}%new-color%color
+      {$p}At{$sep}: {$s}%time%
+  rank-change-priority:
+    material: BOOK
+    name: '&9Rank Priority Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}priority was changed by {$s}%player%{$sep}:
+      {$s}%old-priority% {$sep}➜ {$s}%new-priority%
+      {$p}At{$sep}: {$s}%time%
+  rank-change-max-claims:
+    material: BOOK
+    name: '&9Rank Max Claims Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}max claims was changed by {$s}%player%{$sep}:
+      {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
+      {$p}At{$sep}: {$s}%time%
+  rank-change-material:
+    material: BOOK
+    name: '&9Rank Material Changed'
+    lore: |
+      {$p}The rank %rank%
+      {$p}material was changed by {$s}%player%{$sep}:
+      {$s}%old-material% {$sep}➜ {$s}%new-material%
+      {$p}At{$sep}: {$s}%time%
   '[else]':
     material: BARRIER
     name: '{$e}Unknown log type{$sep}:'
