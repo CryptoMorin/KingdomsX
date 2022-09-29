@@ -74,6 +74,28 @@ updates:
   # THIS IS AN EXPERIMENTAL FEATURE. ENABLE WITH CARE. ANYTHING CAN GO WRONG SILENTLY WITH THIS, MAKE SURE YOU HAVE BACKUPS ENABLED.
   configs: false
 
+  # This is an experimental feature.
+  # When using Kingdoms as an international plugin, updating GUI files will get troublesome
+  # as they have other non-translatable properties such as slots, material etc.
+  # When you decide to change the GUI layout for any GUI, you'd have to go to the
+  # GUI config of all languages to update the layout as well. To make this simpler,
+  # enabling this will allow you to synchronize non-translatable options across all
+  # GUIs in other languages when they're changed.
+  # You can also write "-NOSYNC" at the beginning of a comment of a YAML option to
+  # exclude that option from being synchronized. This is used for advanced translatable
+  # properties (such as commands or yaml functions)
+  synchronize-guis:
+    # This only works when you edit the GUIs while the server is running,
+    # and you have automatic config reloads enabled (unless you want to use the option below).
+    # The reference language used for automatic config reloads isn't the language specified below,
+    # but the language that the admin is currently editing.
+    automatic: false
+
+    # This only works if the option above is enabled.
+    # Setting this option to a language name will make the plugin synchronize
+    # GUIs automatically even starting the server and using /k reload
+    reference-language: ~
+
   # Automatically reload configs which is more efficient than /k reload.
   # The only reason you might not want this, is because this feature might not work properly for your environment setup.
   # For more information read: https://github.com/CryptoMorin/KingdomsX/wiki/Installation#reloading
@@ -503,7 +525,7 @@ default-public-homes: false
 
 audit-logs:
   # Disabled logs
-  disabled: []
+  disabled: [ ]
 
   # How long do log datas are kept?
   # You can either specify their exact name to

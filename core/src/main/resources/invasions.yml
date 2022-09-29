@@ -28,14 +28,16 @@ multi-chunk-invasion:
 # for lands that have all their sides surrounded by another claim.
 # Using this option makes powercells useless for the most part.
 adjoining-protection:
-  # The required radius of this connected is defined by this option.
-  # One means completely next to each other.
+  # The chunk radius which is protection works.
+  # E.g. 1 -> 3x3 = 9 (including the center chunk), 2 -> 5x5 = 25
   # Set to 0 to completely disable this protection system.
   radius: 0
 
-  # E.g. if the radius is set to 1 and this is set to 1
+  # E.g. When the radius is set to 1 and this is set to 1:
   # If a land has 7 claims around it, it'll still protect this
-  # land since it only has 1 missing surrounding claims.
+  # land since it only has 1 missing surrounding claims. (1 radius -> 1 land surrounding each side of
+  # a chunk -> 3x3 = 9 -> excluding the target land itself -> 8 lands -> out of these 8 lands around
+  # the target chunk one is not claimed -> 7 claimed lands)
   # Be careful with this value as you can technically make a kingdom completely immune to invasions.
   marginal-error-limit: 0
 
