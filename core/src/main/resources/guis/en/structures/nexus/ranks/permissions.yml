@@ -1,4 +1,4 @@
-title: '{$sep}-=( {$p}chest {$sep})=-'
+title: '{$sep}-=( {$p}Permissions {$sep})=-'
 rows: 6
 
 # Don't remove "-NOSYNC" from below.
@@ -48,7 +48,7 @@ rows: 6
       and {$p}BUILD_OWNED &7permission
       refer to the other permission.
   build-owned:
-    <<: *fn-perm [ "Build Owned", GOLD_PICKAxE ]
+    <<: *fn-perm [ "Build Owned", GOLD_PICKAXE ]
     lore: |
       &7The difference between &2BUILD &7and 
       &2BUILD_OWNED &7is that &2BUILD &7allows 
@@ -111,8 +111,8 @@ rows: 6
     <<: *fn-std-perm [ "Lore" ]
     lore: |
       &7Permission for using
-      {$s}/k lore{$sep}, {$s}/k rename &7and 
-      {$s}/k tag &7commands
+      {$s}/k lore{$sep}, {$s}/k rename {$sep},
+      {$s}/k book edit &7and {$s}/k tag &7commands.
   nexus:
     <<: *fn-perm [ "Nexus", BEACON ]
     lore: |
@@ -243,17 +243,12 @@ rows: 6
       &7Permission for using
       {$s}/k claim &7commands.
   unclaim-owned:
+    <<: *fn-std-perm [ "Unclaim Owned" ]
     lore: |
       &7Allows you to only unclaim
       the lands that you claimed yourself.
-    enabled:
-      condition: enabled
-      name: "&2Unclaim Owned"
-      material: GREEN_WOOL
-    else:
-      name: "{$disabled} Unclaim Owned"
-      material: RED_WOOL
   instant-teleport:
+    <<: *fn-std-perm [ "Instant Teleports" ]
     lore: |
       &7Instantly teleport to your
       members when using the &2/k tpa
@@ -262,15 +257,8 @@ rows: 6
       
       You will still have the teleport
       countdown before teleporting.
-    enabled:
-      condition: enabled
-      name: "&2Instant Teleports"
-      material: GREEN_WOOL
-    else:
-      name: "{$disabled} Instant Teleports"
-      material: RED_WOOL
   view-logs:
-    <<: *fn-std-perm [ "View Logs", KNOWLEDGE_BOOK ]
+    <<: *fn-perm [ "View Logs", KNOWLEDGE_BOOK ]
     lore: |
       &7View your kingdom audit logs
       which can be accessed from 
