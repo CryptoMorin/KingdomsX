@@ -32,7 +32,10 @@ options:
     posy: 1
     material: RED_WOOL
     name: '{$e}Remove all flags'
-  hide-attributes:
+  flag-hide-attributes:
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Attributes"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Attributes'
@@ -50,10 +53,13 @@ options:
         name: Test
         amount: 10
         operation: ADD_NUMBER
-  hide-destroys:
+  flag-hide-destroys:
     posx: 3
     posy: 2
     material: DIAMOND_PICKAXE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Destroys"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Destroys'
@@ -79,11 +85,14 @@ options:
         
         &7Can break:
         &8Stone
-  hide-dye:
+  flag-hide-dye:
     posx: 4
     posy: 2
     material: LEATHER_CHESTPLATE
     color: 255, 255, 255
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Dyes"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Dye'
@@ -93,10 +102,13 @@ options:
     lore: |
       &7Hide dye information from
       colored leather armors.
-  hide-enchants:
+  flag-hide-enchants:
     posx: 5
     posy: 2
     material: ENCHANTED_BOOK
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Enchants"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Enchants'
@@ -110,10 +122,13 @@ options:
       their description above the lore
       however this will still keep the 
       item's glowing effect.
-  hide-placed-on:
+  flag-hide-placed-on:
     posx: 6
     posy: 2
     material: STONE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Placed On"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Placed On'
@@ -139,11 +154,14 @@ options:
         
         &7Can be placed on:
         &8Stone
-  hide-potion-effects:
+  flag-hide-potion-effects:
     posx: 7
     posy: 2
     material: POTION
     effects: [ BLINDNESS, 1, 10 ]
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Potion Effects"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Potion Effects'
@@ -160,11 +178,14 @@ options:
       &7⚫ {$s}Map tooltips
       &7⚫ {$s}Patterns of banners
       &7⚫ {$s}Enchantments of enchanted books
-  hide-unbreakable:
+  flag-hide-unbreakable:
     posx: 8
     posy: 2
     material: OBSIDIAN
     unbreakable: true
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Unbreakable"
     enabled:
       condition: enabled
       name: '{$enabled} Hide Unbreakable'

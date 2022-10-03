@@ -2,9 +2,16 @@ title: "{$sep}-=( {$p}Enchantments {$sep})=-"
 rows: 6
 
 # What the hell is this: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
-enchant: &fn-enchant
+'[fn-enchant]': &fn-enchant
   args: [ "<x>" ]
   return:
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}<x>"
+      lore: |
+        {$e}This enchantment is not
+        supported in your current server
+        version.
     enabled:
       condition: enabled
       name: "{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})"
