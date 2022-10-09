@@ -1,4 +1,4 @@
-title: "&8-=( &2邮箱 &8)=-"
+title: "{$sep}-=({$p}邮箱{$sep})=-"
 rows: 6
 interactable: empty
 sound: BLOCK_CHEST_OPEN
@@ -9,75 +9,73 @@ options:
     posy: 1
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU1MGI3Zjc0ZTllZDc2MzNhYTI3NGVhMzBjYzNkMmU4N2FiYjM2ZDRkMWY0Y2E2MDhjZDQ0NTkwY2NlMGIifX19'
-    name: '&7上一页'
-    lore: '&2%page%&8/&2%pages%'
+    name: '{$p}上一页'
   next:
     posx: 9
     posy: 1
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYzMzlmZjJlNTM0MmJhMThiZGM0OGE5OWNjYTY1ZDEyM2NlNzgxZDg3ODI3MmY5ZDk2NGVhZDNiOGFkMzcwIn19fQ=='
-    name: '&7下一页'
-    lore: '&2%page%&8/&2%pages%'
+    name: '{$p}下一页'
   separators:
-    slots: [ 1, 3, 5, 7, 9, 13, 17, 18, 22, 26, 27, 31, 35, 36, 40, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [1, 3, 5, 7, 9, 13, 17, 18, 22, 26, 27, 31, 35, 36, 40, 44, 45, 46, 47, 48, 50, 51, 52, 53]
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   sent-indicator:
     slot: 2
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmFlNDI1YzViYTlmM2MyOTYyYjM4MTc4Y2JjMjMxNzJhNmM2MjE1YTExYWNjYjkyNzc0YTQ3MTZlOTZjYWRhIn19fQ=='
-    name: '&9已发送邮件'
+    name: '{$sp}已发送邮件'
   inbox-indicator:
     slot: 6
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmFlNDI1YzViYTlmM2MyOTYyYjM4MTc4Y2JjMjMxNzJhNmM2MjE1YTExYWNjYjkyNzc0YTQ3MTZlOTZjYWRhIn19fQ=='
-    name: '&9未读邮件'
+    name: '{$sp}未读邮件'
   get-envelope:
     posx: 5
     posy: 1
     material: WRITABLE_BOOK
-    name: '&2发送邮件'
+    name: '{$p}发送邮件'
     lore: |
-      &7给你一本特殊的书让你开始写邮件。
-      
+      {$p}给你一本特殊的书让你开始写邮件。
+
       你把书放哪都行。如要编辑&内容
-      &7只需&2右键&7，之后就和Minecraft原版写书的方式相同。
-      
+      {$p}只需{$p}右键{$p}，之后就和Minecraft原版写书的方式相同。
+
       若想编辑邮件的其他属性，如
-      &9主题&7或&9收件方&7,
-      &2则在潜行时右键&7。
-      
-      &7当全部完成之后，是时候&9发送
-      &7邮件了, 请将书移回之已发送邮件区域。
-      
-      &2需要金币&8: &6$%envelope-cost-money%
-      &2需要资源点&8: &6%envelope-cost-resource-points%
+      {$sp}主题{$p}或{$sp}收件方{$p},
+      {$p}则在潜行时右键{$p}。
+
+      {$p}当全部完成之后，是时候{$sp}发送
+      {$p}邮件了, 请将书移回之已发送邮件区域。
+
+      {$p}需要金币{$sep}:{$s}$%envelope-cost-money%
+      {$p}需要资源点{$sep}:{$s}%envelope-cost-resource-points%
   sent:
-    slots: [ 10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39 ]
+    slots: [10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39]
     material: PLAYER_HEAD
-    name: '&2主题&8: &6%subject%'
+    name: '{$p}主题{$sep}:{$s}%subject%'
     lore: |
-      &2发件方&8: &6%from%
-      &2收件方&8: &6%to%
-      &2抄送&8: &6%cc%
-      &2时间&8: &6%sent-date% %sent-time%
-      
-      &2总结&8:
+      {$p}发件方{$sep}:{$s}%from%
+      {$p}收件方{$sep}:{$s}%to%
+      {$p}抄送{$sep}:{$s}%cc%
+      {$p}时间{$sep}:{$s}%sent-date% %sent-time%
+
+      {$p}总结{$sep}:
       &f%summary%
   inbox:
-    slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
+    slots: [14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43]
     material: PLAYER_HEAD
-    name: '&2主题&8: &6%subject%'
+    name: '{$p}主题{$sep}:{$s}%subject%'
     lore: |
-      &2发件方&8: &6%from%
-      &2收件方&8: &6%to%
-      &2抄送&8: &6%cc%
-      &2时间&8: &6%sent-date% %sent-time%
-      
-      &2总结&8:
+      {$p}发件方{$sep}:{$s}%from%
+      {$p}收件方{$sep}:{$s}%to%
+      {$p}抄送{$sep}:{$s}%cc%
+      {$p}时间{$sep}:{$s}%sent-date% %sent-time%
+
+      {$p}总结{$sep}:
       &f%summary%
   back:
     posx: 5
     posy: 6
     material: BARRIER
-    name: '&c返回'
+    name: '{$e}返回'

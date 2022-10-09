@@ -1,13 +1,13 @@
-title: "&8-=[&5保护&8]=-"
+title: "{$sep}-=[&5保护{$sep}]=-"
 rows: 6
 sound: BLOCK_CHEST_OPEN
 
 options:
   include:
-    name: "&2添加玩家"
+    name: "{$p}添加玩家"
     material: GREEN_WOOL
     lore:
-      - "&6添加某个玩家"
+      - "{$s}添加某个玩家"
       - "使其能编辑这个方块。"
       - ""
       - "他们将不能编辑权限组"
@@ -15,10 +15,10 @@ options:
     posx: 1
     posy: 1
   exclude:
-    name: "&c移除玩家"
+    name: "{$e}移除玩家"
     material: RED_WOOL
     lore:
-      - "&6添加某个玩家"
+      - "{$s}添加某个玩家"
       - "阻止他们编辑方块。"
       - ""
       - "你王国中有越过"
@@ -30,27 +30,25 @@ options:
     name: "&4清除"
     material: WRITABLE_BOOK
     lore:
-      - "&6把所有玩家"
+      - "{$s}把所有玩家"
       - "移出此列表。"
     posx: 8
     posy: 1
   back:
     name: "&4返回"
     material: BARRIER
-    sound: default
     posx: 9
     posy: 1
   members:
     included:
       condition: included
-      name: "&6%name% &8- &2白名单&8- %online%"
+      name: "{$s}%name%{$sep}-{$p}白名单{$sep}-%online%"
       material: PLAYER_HEAD
     else:
-      name: "&6%name% &8- &c黑名单&8- %online%"
+      name: "{$s}%name%{$sep}-{$e}黑名单{$sep}-%online%"
       material: PLAYER_HEAD
-    sound: default
-    slots: [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
   black-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [ 2, 3, 4, 5, 6, 9, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    slots: [2, 3, 4, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]

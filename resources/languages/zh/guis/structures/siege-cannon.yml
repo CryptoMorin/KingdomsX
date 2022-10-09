@@ -1,32 +1,51 @@
 title: "&3攻城炮"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
-interactable: [ 2 ] #弹药格
+interactable: [2] #弹药格
 
 options:
   sit:
-    name: "&2坐上去"
+    name: "{$p}坐上去"
     lore:
-      - "&7坐上大炮以开始发射。"
+      - "{$p}坐上大炮以开始发射。"
     material: BRICK_STAIRS
     slot: 0
   ammo:
     name: "&4-------->"
     material: RED_STAINED_GLASS_PANE
     lore:
-      - "&2把这个栏位里放上一个火焰弹以装弹。"
+      - "{$p}把这个栏位里放上一个火焰弹以装弹。"
     slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "level < max_level"
+      name: "&9升级&8: &6%level_roman%&7➛&6%next_level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2对盾伤害&8: &6%shield-damage% &7➔ &6%next-shield-damage%"
+        - "&7⚫ &2冷却&8: &6%cooldown% &7➔ &6%next-cooldown%"
+        - "&7⚫ &2伤害&8: &6%damage% &7➔ &6%next-damage%"
+        - "&7⚫ &2击退&8: &6%knockback% &7➔ &6%next-knockback%"
+        - "&7⚫ &2爆炸半径&8: &6%explosion-radius% &7➔ &6%next-explosion-radius%"
+        - ""
+        - "&8[&4&l!&8]&7数值可能根据装载的炮弹差异而有所不同。"
+        - ""
+        - "&7⚫ &2满级&8: &6%max-level-roman%"
+        - "&7⚫ &2价格&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9等级&8: &6%level_roman%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2对盾伤害&8: &6%shield-damage%"
+        - "&7⚫ &2冷却&8: &6%cooldown%"
+        - "&7⚫ &2伤害&8: &6%damage%"
+        - "&7⚫ &2击退&8: &6%knockback%"
+        - "&7⚫ &2爆炸半径&8: &6%explosion-radius%"
   break:
     name: "&4破坏"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6破坏此建筑。"
-    slot: 3
-  close:
-    name: "&2关闭"
-    material: BARRIER
-    sound: default
-    lore:
-      - "&6关闭此界面。"
+      - "{$s}破坏此设施。"
     slot: 4

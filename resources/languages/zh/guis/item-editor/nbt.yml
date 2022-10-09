@@ -1,0 +1,76 @@
+title: '{$sep}-=({$p}NBT查看器{$sep})=-'
+rows: 6
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '{$p}返回'
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    material: ORANGE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    name: "&e信息"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    lore: |
+      {$p}NBT{$sep}({$p}二进制命名标签{$sep})
+      {$p}是Minecraft为物品，实体，方块储存数据的总方法。
+      
+      你在物品上看到的一切，如名称，介绍，附魔等
+      都以NBT数据组成。你几乎不会也不应编辑NBT
+      数据，因为编辑它们极端困难。
+      
+      这主要是用于调试目的，来查看运行的内部环节。
+      
+      NBT类型在此不做翻译，因为没有专业译名，真正需要
+      此功能的玩家也不需要翻译。
+  path:
+    posx: 9
+    posy: 1
+    material: PAPER
+    name: '{$p}当前路径{$sep}:'
+    lore: '%path%'
+  tag:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    compound:
+      condition: "tag == 'compound'"
+      name: '{$sep}[{$s}Compound{$sep}]{$p}%key%'
+      material: WHITE_WOOL
+    strings:
+      condition: "tag == 'string'"
+      name: '{$sep}[{$p}String{$sep}]{$p}%key%'
+      material: GREEN_WOOL
+    integers:
+      condition: "tag == 'int'"
+      name: '{$sep}[{$sp}Integer{$sep}]{$p}%key%'
+      material: BLUE_WOOL
+    byte:
+      condition: "tag == 'byte'"
+      name: '{$sep}[&aByte{$sep}]{$p}%key%'
+      material: LIME_WOOL
+    short:
+      condition: "tag == 'short'"
+      name: '{$sep}[&eShort{$sep}]{$p}%key%'
+      material: YELLOW_WOOL
+    long:
+      condition: "tag == 'long'"
+      name: '{$sep}[&5Long{$sep}]{$p}%key%'
+      material: PURPLE_WOOL
+    double:
+      condition: "tag == 'double'"
+      name: '{$sep}[&3Double{$sep}]{$p}%key%'
+      material: CYAN_WOOL
+    list:
+      condition: "tag == 'list'"
+      name: '{$sep}[{$p}List{$sep}]{$p}%key%'
+      material: GRAY_WOOL
+    else:
+      name: "{$sep}[{$e}未知{$sep}:{$s}%tag%{$sep}]{$p}%key%"
+      material: RED_WOOL
+    # The lore is the value which is set automatically by the plugin

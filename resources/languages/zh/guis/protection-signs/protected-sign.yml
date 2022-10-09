@@ -1,45 +1,44 @@
-title: "&8-=[&5保护&8]=-"
+title: "{$sep}-=[&5保护{$sep}]=-"
 type: HOPPER
 sound: BLOCK_CHEST_OPEN
 
 options:
   players:
-    name: "&2管理玩家"
-    lore: |-
-      &6添加或移除能编辑此方块的玩家。
+    name: "{$p}管理玩家"
+    lore: |
+      {$s}添加或移除能编辑此方块的玩家。
 
       玩家设置的权限高于王国设置，也就是说即使玩家的王国被移除或不在列表上，玩家仍可使用方块。
     material: PLAYER_HEAD
     skull: '%owner%'
     slot: 0
   kingdoms:
-    name: "&2管理王国"
-    lore: |-
-      &6添加或移除能编辑此方块的王国成员。
+    name: "{$p}管理王国"
+    lore: |
+      {$s}添加或移除能编辑此方块的王国成员。
     material: RED_BANNER
     sound: BLOCK_NOTE_BLOCK_BASS
     slot: 1
   info:
     name: "&5保护告示牌"
-    lore: |-
-      &6告示牌保护方块不受破坏。
+    lore: |
+      {$s}告示牌保护方块不受破坏。
       没有权限的任何人都无法使用它。
 
       如果一个玩家有编辑方块的权限，
       那他仍不能改变设置或破坏告示牌或方块。
 
-      &7点击这里以给这个方块输入密码。
+      {$p}点击这里以给这个方块输入密码。
       只有在容器方块(如箱子)被保护时才生效。
     material: NETHER_STAR
     slot: 2
   protection-type:
-    name: "&2保护方式&8: &9%protection_type%"
-    lore: |-
-      &6更改默认的从其他玩家的手中的保护方式。
+    name: "{$p}保护方式{$sep}:{$sp}%protection_type%"
+    lore: |
+      {$s}更改默认的从其他玩家的手中的保护方式。
     material: CHEST
     slot: 3
   back:
     name: "&4关闭界面"
     material: BARRIER
-    sound: default
     slot: 4

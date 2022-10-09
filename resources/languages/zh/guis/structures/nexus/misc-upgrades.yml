@@ -1,4 +1,4 @@
-title: "&8-=(&3杂项升级&8)=-"
+title: "{$sep}-=(&3杂项升级{$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
@@ -6,174 +6,171 @@ options:
   glory:
     name: "&3荣耀"
     material: NETHER_STAR
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&2一级&8:&6在你的土地上杀死非玩家实体掉落经验*2。"
-      - "&2二级&8:&6在你的土地上杀死非玩家实体掉落经验*2。"
+      - "{$p}一级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
+      - "{$p}二级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 3
     posy: 1
   anti-trample:
-    name: "&a反土地踩踏"
+    name: "&a土地防踩踏"
     material: WHEAT_SEEDS
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&2一级&8:&6你王国里的耕地不会被玩家踩坏。"
+      - "{$p}一级{$sep}:{$s}你王国里的耕地不会被玩家踩坏。"
       - ''
-      - "&2二级&8:&6在你王国土地外面的活塞会失效。"
+      - "{$p}二级{$sep}:{$s}在你王国土地外面的活塞会失效。"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}三级{$sep}:{$s}防止特定动物在王国土地中受伤。"
+      - ""
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 4
     posy: 1
   nexus-guards:
     name: "&4核心守卫"
     material: DIAMOND_AXE
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&6当有人挖掘你的核心的时候，"
-      - "一个带有你斗士武器的小僵尸会生成。"
-      - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+    pacifist:
+      condition: kingdoms_pacifist
+      perform-action: false
+      lore: |
+        &c你的王国是和平主义王国，
+        无法使用此升级。
+    else:
+      lore:
+        - "&6当有人进入核心所在土地，"
+        - "生成比普通守卫更强壮的核心守卫。"
+        - ""
+        - "&2价格&8: &6%cost%"
+        - "&2等级&8: &6%level%"
+
     posx: 5
     posy: 1
   guards:
     name: "&e守卫"
     material: IRON_AXE
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&6如果一个非盟友玩家进入土地，"
-      - "王国守卫会随机生成，"
-      - "以保卫王国。"
-      - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+    pacifist:
+      condition: kingdoms_pacifist
+      perform-action: false
+      lore: |
+        &c你的王国是和平主义王国，
+        无法使用此升级。
+    else:
+      lore:
+        - "&6若一个非盟友进入土地，"
+        - "王国守卫会随机生成以保护王国。"
+        - ""
+        - "&2价格&8: &6%cost%"
+        - "&2等级&8: &6%level%"
+
     posx: 6
     posy: 1
   insanity:
-    name: "&c疯狂"
+    name: "{$e}疯狂"
     material: REDSTONE
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&6在能量电池所在的土地上"
+      - "{$s}在能量枢纽所在的土地上"
       - "生成的保卫者和核心守卫"
       - "会有10秒钟的力量1"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 7
     posy: 1
-
+  
   invasion-teleportation:
     name: "&3入侵传送"
     material: ENDER_PEARL
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&2减少你输入/k tp的传送延迟时间"
+      - "{$p}减少你输入/k tp的传送延迟时间"
       - "等级越高减少越多"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 3
+    posy: 2
+  invasions:
+    name: "&3入侵"
+    material: DIAMOND_SWORD
+
+    lore:
+      - "&2你的王国可以入侵&6%invasion-limit%&2次。"
+      - "&2已使用次数&8: &6%invasions%"
+      - "&2刷新冷却&8: &6%invasion-refresh-cooldown%"
+      - ""
+      - "&2价格&8: &6%cost%"
+      - "&2等级&8: &6%level%"
+    posx: 2
     posy: 2
   anti-explosion:
     name: "&5防爆"
     material: GUNPOWDER
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&2一级&8:&7苦力怕爆炸不会破坏方块或造成伤害。"
+      - "{$p}一级{$sep}:{$p}苦力怕爆炸不会破坏方块或造成伤害。"
       - ""
-      - "&2二级&8: &7TNT爆炸不会破坏方块，但会对非盟友玩家造成伤害。"
+      - "{$p}二级{$sep}:{$p}TNT爆炸不会破坏方块，但会对非盟友玩家造成伤害。"
       - ""
-      - "&2Level 3&8: &7保护你的王国成员，动物，和其他被困住的怪物"
+      - "{$p}三级{$sep}:{$p}保护你的王国成员，动物，和其他被困住的怪物"
       - "免于爆炸伤害。"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 4
     posy: 2
   max-claims:
     name: "&3最大占领量"
     material: MAP
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&6每升一级增大&22&6最大占领量"
+      - "{$s}每升一级增大{$p}2{$s}最大占领量"
       - ""
-      - "&2当前最大土地量&8:&6%kingdoms_max_lands%"
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
-    posx: 5
+      - "{$p}当前最大土地量{$sep}:{$s}%kingdoms_max_lands%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
+    posx: 8
     posy: 2
   max-members:
     name: "&3最大玩家量"
     material: PLAYER_HEAD
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&6每升一级增加3最大玩家量。"
+      - "{$s}每升一级增加3最大玩家量。"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 6
     posy: 2
   chest-size:
     name: "&3核心箱子容量"
     material: ENDER_CHEST
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     lore:
-      - "&6增加你王国核心箱子的最大容量。"
+      - "{$s}增加你王国核心箱子的最大容量。"
       - ""
-      - "&2价格&8:&6%cost%"
-      - "&2等级&8:&6%level%"
+      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}等级{$sep}:{$s}%level%"
     posx: 7
     posy: 2
-
+  
   back:
-    name: "&2返回"
+    name: "{$p}返回"
     material: PLAYER_HEAD
-    sound: default
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "&6返回到核心界面。"
+      - "{$s}返回到核心界面。"
     posx: 5
     posy: 3
   cyan-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [ 1, 7, 9, 17, 19, 25 ]
+    slots: [1, 7, 9, 17, 19, 25]
   light-blue-glass:
     name: ''
     material: LIGHT_BLUE_STAINED_GLASS_PANE
-    slots: [ 0, 8, 18, 26 ]
+    slots: [0, 8, 18, 26]
