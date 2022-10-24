@@ -1,0 +1,101 @@
+title: "{$sep}-=( {$p}Tárgyszerkesztő {$sep})=-"
+rows: 3
+sound: BLOCK_LEVER_CLICK
+
+options:
+  item:
+    # Will be replaced by the actual item
+    material: STONE
+    interaction: FREE
+    slot: 15
+  name:
+    posx: 1
+    posy: 1
+    material: NAME_TAG
+    name: '{$p}Név'
+    lore: "%item_name%"
+  flags:
+    posx: 2
+    posy: 1
+    material: BLACK_BANNER
+    name: '{$p}Zászló'
+    lore: |
+      &7Klikk a módosításhoz
+      &7⚫ {$p}Rejtett attribútumok{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Rejtett megsemmisítések{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Rejtett festék{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Rejtett bűvölések{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Rejtett ráhelyezés{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Rejtett törhetetlenség{$sep}: %item_flag_hide_unbreakable%
+  attributes:
+    posx: 3
+    posy: 1
+    material: DIAMOND_SWORD
+    name: '{$p}Attribútumok'
+  decoration:
+    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  lore:
+    posx: 1
+    posy: 2
+    material: BOOK
+    name: '{$p}Történet'
+    # The lore is automatically set by the plugin for this option
+  enchantments:
+    posx: 2
+    posy: 2
+    material: ENCHANTED_BOOK
+    name: '{$p}Bűbájok'
+    lore: [ "&7Klikk a módosításhoz" ] # The lore is modified by the plugin to add set enchants
+  unbreakable:
+    isUnbreakable:
+      condition: item_unbreakable
+      name: '{$p}Törhetetlen'
+      glow: true
+    else:
+      name: '{$e}Törhető'
+    posx: 3
+    posy: 2
+    material: BEDROCK
+    lore: |
+      &7Ha egy tárgy törhetetlen, 
+      akkor nem csökken a tartóssága, 
+      amikor használod.
+  nbt:
+    posx: 4
+    posy: 2
+    material: BOOKSHELF
+    name: '{$p}NBT megjelenítő'
+  amount:
+    posx: 1
+    posy: 3
+    material: SLIME_BALL
+    name: '{$p}Mennyiség{$sep}: {$s}%item_amount%'
+    lore: |
+      &7Maximálisan {$p}64 &7lehet ez az
+      összeg, de technikailag beállítható 
+      {$p}127 &7is, ami ritka helyzetekben okozhat
+      problémákat. Például a GUI nem tudja
+      megjeleníteni ezt a változást, és 
+      amikor a leltárba kerül, előfordulhat,
+      hogy nem tartja meg az összeget.
+  custom-model-data:
+    posx: 2
+    posy: 3
+    material: FIREWORK_STAR
+    name: '{$p}Egyéni modelladat{$sep}: {$s}%item_custom_model_data%'
+    lore: |
+      &7Ez az 1.14+ verzióhoz készült
+      erőforrás csomagoknál van használva,
+      amelyek új tárgyakat adnak a játékhoz.
+      Ez alapvetően csak az azonos típusú 
+      tárgyak újbóli kinézetét jelenti. Ezt 
+      használják az olyan pluginek, mint az 
+      ItemsAdder, hogy új tárgyakat adjanak 
+      a játékhoz.
+  material:
+    posx: 3
+    posy: 3
+    material: STONE # This is a template material, the actual material is taken from the placed item
+    name: '{$p}Anyag{$sep}: {$s}%item_material%'

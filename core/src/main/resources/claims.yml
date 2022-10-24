@@ -91,13 +91,19 @@ confirmation: 10s
 # /k claim fill
 # https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-claim-autofillx-y
 fill:
-  # The maximum distance allowed to check for
+  # The maximum iterations allowed to check for
   # the shape borders to start filling.
-  max-distance: 5
+  # Each "iteration" consists of checking 4 chunks.
+  # The option below is another way to restrict this.
+  # For players in admin mode, this limit is increased to 500
+  max-iterations: 100
 
   # The maximum lands allowed to claim
   # when filling the shape.
-  max-claims: 50
+  # For players in admin mode, this limit will be removed.
+  # This isn't affected by the kingdom's max claims or the max rank claims.
+  # This option is prioritized over those.
+  max-claims: 100
 
 # /k claim square <radius>
 # 5 = 5 * 5 = 25 chunks around the player.

@@ -75,15 +75,23 @@ public class CommandOutpostJoin extends KingdomsCommand {
 
             MessageBuilder settings = new MessageBuilder().withContext(kingdom);
 
-            long rp = (long) MathUtils.eval(outpost.getResourcePointsCost(), settings);
-            if (!kingdom.hasResourcePoints(rp)) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS.sendMessage(sender, "outpost", args[0], "cost", rp);
-                return;
+            long rp = 0;
+            double cost = 0;
+
+            if (outpost.getResourcePointsCost() != null) {
+                rp = (long) MathUtils.eval(outpost.getResourcePointsCost(), settings);
+                if (!kingdom.hasResourcePoints(rp)) {
+                    KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS.sendMessage(sender, "outpost", args[0], "cost", rp);
+                    return;
+                }
             }
-            double cost = MathUtils.eval(outpost.getMoneyCost(), settings);
-            if (!kingdom.hasMoney(cost)) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY.sendMessage(sender, "outpost", args[0], "cost", cost);
-                return;
+
+            if (outpost.getMoneyCost() != null) {
+                cost = MathUtils.eval(outpost.getMoneyCost(), settings);
+                if (!kingdom.hasMoney(cost)) {
+                    KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY.sendMessage(sender, "outpost", args[0], "cost", cost);
+                    return;
+                }
             }
 
             kingdom.addResourcePoints(-rp);

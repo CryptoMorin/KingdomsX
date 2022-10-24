@@ -1,0 +1,73 @@
+title: "&8-=( &9Nyelvi csomag &8)=-"
+rows: 6
+
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '&2Elérhető nyelvek letöltése'
+    lore: |
+      &7Mindegyik &2500kb &7alatt van.
+      &7Vedd figyelembe, hogy mindig a 
+      legfrissebb verzió van letöltve, így 
+      ha egy GUI/üzenet átnevezésre, áthelyezésre 
+      vagy törlésre kerül, ami ritkán történik, 
+      a plugin &cnem lesz képes megmutatni ezeket.
+      
+      Az &2angol &7mindig telepítva van és ezt
+      &cnem  islehet eltávolítani &7mivel ez a 
+      'referencia' nyelv.
+      
+      &7Az összes letöltött nyelvi csomag mentésre
+      kerül a &2repository &7könyvtárba. 
+      Ezt a foldert soha ne szerkeszd kézzel.
+      Ez a referencia folder.
+      
+      Ha módosítani akarsz a letöltött nyelveken
+      akkor azt a &2languages &7folderben kell 
+      elvégezni. Akár törölheted is azokat, 
+      a plugin újra létrehoza a fájlokat 
+      újraletöltés nélkül.
+  download-all:
+    posx: 5
+    posy: 6
+    name: "&2Letöltés és az összes frissítése"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmFmZWMzYzdmYWIyYTM3MjkwNWZhM2ZjMWZiMjI4ZTc4M2JiOTNhNTNlNmQzMmU0NWViZGI0YTAyMThmY2NhIn19fQ=='
+    lore: |
+      Ez az opció letölti az összes 
+      még nem letöltött nyelvet, és 
+      frissíti az összes többi, már 
+      letöltött, de elavult nyelvet.
+  languages:
+    # The skull skin textures are used for "languages" GUI
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    material: PLAYER_HEAD
+    name: '&2%native-name% &8(&9%lang%&8)'
+    up-to-date:
+      condition: installed && updated
+      lore: |
+        &2Naprakész
+        &4Jobb klikk az eltávolításhoz.
+    outdated:
+      condition: installed
+      lore: |
+        &eElavult. Bal klikk a frissítéshez.
+        &8(&4!&8) &eA frissítés felülír minden 
+        frissítésre szoruló fájlt. Csak a lent
+        látható fájlok lesznek újra letöltve.  
+        &4Jobb klikk az eltávolításhoz. 
+        &9Középső klikk a frissített fájlok 
+        teljes listájának megtekintéséhez.
+        
+        &cÖsszefoglaló a frissített fájlokról&8:
+    not-installed:
+      lore: |
+        &4Nincs telepítve
+        Bal klikk a letöltéshez
