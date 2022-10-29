@@ -37,8 +37,9 @@
 prefix: false
 
 # For error profiling reasons. Is extremely spammy and shows messages
-# that are usually not needed. It also show some errors relating
+# that are usually not needed. It also shows some errors relating
 # to server connection issues.
+# Requires a restart to apply.
 debug: false
 
 updates:
@@ -120,19 +121,28 @@ updates:
 # Available Languages: https://github.com/CryptoMorin/KingdomsX/tree/master/resources/languages
 lang: en
 
-# Backups plugin's data. Most of the options require a restart to be changed.
+# Most of the options require a restart to be changed.
+# Kingdom backups are taken with the best possible compression method available in the system. (speed < file size)
+# The files are saved with the name as the current date in a "zip" extension
+# (the extension has nothing to do with the compression method used)
+# To restore a backup, simply stop the server, unarchive the files that you need to restore and start the files again.
 backups:
   # By default, backups are taken every day. Specifically every time when the server
   # starts it checks if backups are taken for that day and waits another 24 hours.
-  # It supports time suffixes.
+  # It supports time suffixes for the file names.
   interval: 24hrs
 
   enabled:
     enabled: true
+
+    # Data files include kingdoms, players, lands, nations and mails.
     data: true
+
+    # Includes the main configs, language files, and guis.
+    # Doesn't include the repository, since they shouldn't be changed.
     configs: true
 
-  # The path starts in Kingdoms plugin folder.
+  # The path relative to the Kingdoms plugin folder. Either separated with slashes / or backspaces \
   folder: 'Backups'
 
   # If this is enabled then every time the server is restarted

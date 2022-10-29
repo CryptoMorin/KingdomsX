@@ -1,134 +1,140 @@
-title: "&8-=( &3Misc Upgrades &8)=-"
+title: "{$sep}-=( &3Misc Upgrades {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
+'[fn-misc]': &fn-misc
+  args: [ "<name>", "<lore>", "<disallowPacifists>" ]
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&cYour kingdom is pacifist"
+        - "and cannot use this upgrade."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Level{$sep}: &6%level%"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Level{$sep}: {$s}%level% {$sep}({$s}Maxxed{$sep})"
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Upgrade Cost{$sep}: &6%cost%"
+        - "{$p}Level{$sep}: &6%level%"
+
+
 options:
   glory:
-    name: "&3Glory"
     material: NETHER_STAR
+    <<: *fn-misc ["&3Glory", [
+      "{$p}Level 1{$sep}: &6Killing non-players on your land\nyields x2 experience.",
+      "{$p}Level 2{$sep}: &6Killing players on your land\nyields x4 experience."
+    ], false ]
 
-    lore:
-      - "&2Level 1&8: &6Killing non-players on your land\nyields x2 experience."
-      - "&2Level 2&8: &6Killing players on your land\nyields x4 experience."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
     posx: 3
     posy: 1
   anti-trample:
-    name: "&aAnti-Trample"
     material: WHEAT_SEEDS
+    <<: *fn-misc ["&aAnti-Trample", [
+        "{$p}Level 1{$sep}: &6Your tilled soil cannot",
+        "be trampled by players.",
+        '',
+        "{$p}Level 2{$sep}: &6Pistons placed outside of your",
+        "land will no longer work.",
+        "",
+        "{$p}Level 3{$sep}: &6Protects certain animals from",
+        "being damaged in your lands."
+    ], false ]
 
-    lore:
-      - "&2Level 1&8: &6Your tilled soil cannot"
-      - "be trampled by players."
-      - ''
-      - "&2Level 2&8: &6Pistons placed outside of your"
-      - "land will no longer work."
-      - ""
-      - "&2Level 3&8: &6Protects certain animals from"
-      - "being damaged in your lands."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
     posx: 4
     posy: 1
   nexus-guards:
-    name: "&4Nexus Guards"
     material: DIAMOND_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &cYour kingdom is pacifist
-        and cannot use this upgrade.
-    else:
-      lore:
-        - "&6When someone enters your"
-        - "nexus land, spawns guards that"
-        - "are stronger than your normal guards."
-        - ""
-        - "&2Cost&8: &6%cost%"
-        - "&2Level&8: &6%level%"
+
+    <<: *fn-misc [ "&4Nexus Guards", [
+        "&6When someone enters your",
+        "nexus land, spawns guards that",
+        "are stronger than your normal guards."
+    ], true ]
 
     posx: 5
     posy: 1
   guards:
-    name: "&eGuards"
     material: IRON_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &cYour kingdom is pacifist
-        and cannot use this upgrade.
-    else:
-      lore:
-        - "&6Guards will randomly spawn"
-        - "to protect the kingdom if"
-        - "a non-ally entered the land."
-        - ""
-        - "&2Cost&8: &6%cost%"
-        - "&2Level&8: &6%level%"
+
+    <<: *fn-misc [ "&eGuards", [
+        "&6Guards will randomly spawn",
+        "to protect the kingdom if",
+        "a non-ally entered the land."
+    ], true ]
 
     posx: 6
     posy: 1
   insanity:
-    name: "&cInsanity"
     material: REDSTONE
 
-    lore:
-      - "&6Defenders and Nexus guards"
-      - "spawned on powercell land will have"
-      - "Strength I for 10 seconds."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+    <<: *fn-misc [ "&cInsanity", [
+        "&7Defenders and Nexus guards",
+        "spawned on powercell land will have{$sep}:",
+        "{$p}Level 1{$sep}: {$s}Strength I for 10 seconds.",
+        "{$p}Level 2{$sep}: {$s}Strength II for 10 seconds.",
+        "{$p}Level 2{$sep}: {$s}Strength III for 10 seconds."
+    ], true ]
+
     posx: 7
     posy: 1
 
   invasion-teleportation:
-    name: "&3Invasion Teleportation"
     material: ENDER_PEARL
 
-    lore:
-      - "&2Decreases your teleportation delay"
-      - "for &e/k tp &2after every upgrade."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+    <<: *fn-misc [ "&3Invasion Teleportation", [
+        "{$p}Decreases your teleportation delay",
+        "for &e/k tp {$p}after every upgrade."
+    ], true ]
+
     posx: 3
     posy: 2
   invasions:
-    name: "&3Invasions"
     material: DIAMOND_SWORD
 
-    lore:
-      - "&2Your kingdom can invade &6%invasion-limit% &2times"
-      - "&2Used invasions&8: &6%invasions%"
-      - "&2Refresh Cooldown&8: &6%invasion-refresh-cooldown%"
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+    <<: *fn-misc [ "&3Invasions", [
+        "{$p}Your kingdom can invade &6%invasion-limit% {$p}times",
+        "{$p}Used invasions{$sep}: &6%invasions%",
+        "{$p}Refresh Cooldown{$sep}: &6%invasion-refresh-cooldown%"
+    ], true ]
+
     posx: 2
     posy: 2
   anti-explosion:
-    name: "&5Anti-Explosion"
     material: GUNPOWDER
 
-    lore:
-      - "&2Level 1&8: &7Prevents creepers from"
-      - "destroying blocks in your land."
-      - ""
-      - "&2Level 2&8: &7Prevents TNTs from"
-      - "destroying blocks in your land."
-      - ""
-      - "&2Level 3&8: &7Protect your kingdom members,"
-      - "animals, and all the other trapped mobs"
-      - "within your lands from explosions."
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+    <<: *fn-misc [ "&5Anti-Explosion", [
+        "{$p}Level 1{$sep}: &7Prevents creepers from",
+        "destroying blocks in your land.",
+        "",
+        "{$p}Level 2{$sep}: &7Prevents TNTs from",
+        "destroying blocks in your land.",
+        "",
+        "{$p}Level 3{$sep}: &7Protect your kingdom members,",
+        "animals, and all the other trapped mobs",
+        "within your lands from explosions."
+    ], false ]
+
     posx: 4
     posy: 2
   max-claims:
@@ -137,11 +143,12 @@ options:
 
     lore:
       - "&6Increase your maximum claims"
-      - "by &22 &6every upgrade."
+      - "by {$p}2 &6every upgrade."
       - ""
-      - "&2Current Max Lands&8: &6%kingdoms_max_lands%"
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+      - "{$p}Current Max Lands{$sep}: &6%kingdoms_max_lands%"
+      - "{$p}Upgrade Cost{$sep}: &6%cost%"
+      - "{$p}Level{$sep}: &6%level%"
+
     posx: 8
     posy: 2
   max-members:
@@ -149,10 +156,12 @@ options:
     material: PLAYER_HEAD
 
     lore:
-      - "&6Every upgrade adds 3 more slots."
+      - "&7Every upgrade allows you to"
+      - "have {$p}3 &7more members."
       - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+      - "{$p}Upgrade Cost{$sep}: &6%cost%"
+      - "{$p}Level{$sep}: &6%level%"
+
     posx: 6
     posy: 2
   chest-size:
@@ -163,13 +172,14 @@ options:
       - "&6Increase you maximum nexus"
       - "chest size."
       - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+      - "{$p}Upgrade Cost{$sep}: &6%cost%"
+      - "{$p}Level{$sep}: &6%level%"
+
     posx: 7
     posy: 2
 
   back:
-    name: "&2Back"
+    name: "{$p}Back"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
