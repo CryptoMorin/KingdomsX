@@ -3,11 +3,10 @@ package org.kingdoms.outposts;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
-import org.kingdoms.commands.admin.debug.CommandAdminEvaluate;
+import org.kingdoms.commands.admin.debugging.CommandAdminEvaluate;
 import org.kingdoms.commands.outposts.CommandOutpost;
-import org.kingdoms.gui.GUIParser;
+import org.kingdoms.gui.GUIAccessor;
 import org.kingdoms.gui.InteractiveGUI;
-import org.kingdoms.gui.KingdomsGUI;
 import org.kingdoms.gui.ReusableOptionHandler;
 import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.main.locale.messager.MessageBuilder;
@@ -37,17 +36,17 @@ public final class OutpostEditor {
                 .raw("outpost-region", outpost.getRegion())
                 .raw("outpost-min-online-members", outpost.getMinOnlineMembers())
                 .raw("outpost-max-participants", outpost.getMaxParticipants())
-                .raw("outpost-entrance-money", outpost.getRewards().getMoney() == null ? 0 : outpost.getRewards().getMoney())
+                .raw("outpost-entrance-money", outpost.getMoneyCost() == null ? 0 : outpost.getMoneyCost())
+                .raw("outpost-entrance-resource-points-fee", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost())
                 .raw("outpost-spawn", KingdomsLang.LOCATIONS_NORMAL.parse(LocationUtils.getLocationEdits(outpost.getSpawn())))
                 .raw("outpost-center", KingdomsLang.LOCATIONS_NORMAL.parse(LocationUtils.getLocationEdits(outpost.getCenter())))
-                .raw("outpost-entrance-resource-points-fee", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost())
                 .raw("outpost-rewards-resource-points", outpost.getRewards().getResourcePoints() == null ? 0 : outpost.getRewards().getResourcePoints())
                 .raw("outpost-rewards-money", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost())
                 ;
     }
 
     public InteractiveGUI openOutpostEditor() {
-        InteractiveGUI gui = GUIParser.parse(player, KingdomsGUI.OUTPOSTS_EDITOR.getPath(), getEdits());
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.OUTPOSTS_EDITOR, getEdits());
         Objects.requireNonNull(gui, "GUI is null");
 
         //////////// Name
@@ -205,7 +204,7 @@ public final class OutpostEditor {
     }
 
     public InteractiveGUI openOutpostRewardsGUIEditor() {
-        InteractiveGUI gui = GUIParser.parse(player, "outposts/rewards/main", getEdits());
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.OUTPOSTS_REWARDS_MAIN, getEdits());
 
         gui.option("money").onNormalClicks(context -> {
             context.sendMessage(KingdomsLang.COMMAND_OUTPOST_EDIT_REWARDS_MONEY_ENTER);
@@ -241,7 +240,7 @@ public final class OutpostEditor {
     }
 
     public InteractiveGUI openOutpostRewardsItemGUIEditor(int page) {
-        InteractiveGUI gui = GUIParser.parse(player, "outposts/rewards/items", getEdits());
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.OUTPOSTS_REWARDS_ITEMS, getEdits());
 
         ReusableOptionHandler itemsOption = gui.getReusableOption("items");
         Collection<ItemStack> items = outpost.getRewards().getItems();
@@ -259,7 +258,7 @@ public final class OutpostEditor {
     }
 
     public InteractiveGUI openOutpostRewardsCommandGUIEditor() {
-        InteractiveGUI gui = GUIParser.parse(player, "outposts/rewards/commands", getEdits());
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.OUTPOSTS_REWARDS_COMMANDS, getEdits());
 
         ReusableOptionHandler cmdsOption = gui.getReusableOption("commands");
         List<String> commands = outpost.getRewards().getCommands();

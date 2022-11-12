@@ -12,10 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
-import org.bukkit.scoreboard.Scoreboard;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.constants.group.Kingdom;
@@ -23,15 +21,14 @@ import org.kingdoms.data.Pair;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.main.config.KingdomsConfig;
 import org.kingdoms.main.locale.KingdomsLang;
-import org.kingdoms.main.locale.MessageHandler;
+import org.kingdoms.main.locale.StaticMessenger;
+import org.kingdoms.main.locale.SupportedLanguage;
 import org.kingdoms.main.locale.messager.MessageBuilder;
 import org.kingdoms.services.managers.ServiceHandler;
+import org.kingdoms.utils.XScoreboard;
 import org.kingdoms.utils.bossbars.BossBarSession;
 import org.kingdoms.utils.time.TimeFormatter;
-import org.kingdoms.utils.xseries.XMaterial;
 
-import java.awt.*;
-import java.util.List;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -44,7 +41,7 @@ public class OutpostEvent {
     private final long time;
     private final @NonNull Map<UUID, OutpostParticipant> participants = new HashMap<>();
     private final @Nullable BossBarSession bossBar;
-    private final @NonNull Scoreboard scoreboard;
+    private final @NonNull XScoreboard scoreboard;
     private long started;
     private @Nullable BukkitTask task;
 
@@ -57,14 +54,10 @@ public class OutpostEvent {
             bossBar.setVisible(false);
         } else bossBar = null;
 
-        scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
-
-        Objective objective;
-        String title = MessageHandler.colorize(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getString());
-        if (XMaterial.supports(13)) objective = scoreboard.registerNewObjective("main", "dummy", title);
-        else objective = scoreboard.registerNewObjective("main", title);
-
-        objective.setDisplaySlot(DisplaySlot.SIDEBAR);
+        scoreboard = new XScoreboard("main",
+                new StaticMessenger(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getManager().getString())
+                        .getProvider(SupportedLanguage.EN).getMessage(),
+                new MessageBuilder());
     }
 
     public static Map<UUID, OutpostEvent> getKingdomsInEvents() {
@@ -115,7 +108,7 @@ public class OutpostEvent {
             started = System.currentTimeMillis();
 
             task = new BukkitRunnable() {
-                final Objective objective = scoreboard.getObjective("main");
+                final Objective objective = scoreboard.getScoreboard().getObjective("main");
 
                 @Override
                 public void run() {
@@ -222,14 +215,14 @@ public class OutpostEvent {
                     if (random.nextInt(0, 2) == 1) builder.trail(true);
                     builder.with(types[random.nextInt(0, types.length)]);
 
-                    List<Color> colors = new ArrayList<>();
+                    List<org.bukkit.Color> colors = new ArrayList<>();
                     int colorMax = random.nextInt(1, 4);
-                    for (int k = 0; k < colorMax; k++) colors.add(new Color(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
+                    for (int k = 0; k < colorMax; k++) colors.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
                     builder.withColor(colors);
 
-                    List<Color> fades = new ArrayList<>();
+                    List<org.bukkit.Color> fades = new ArrayList<>();
                     int fadeMax = random.nextInt(1, 4);
-                    for (int k = 0; k < fadeMax; k++) fades.add(new Color(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
+                    for (int k = 0; k < fadeMax; k++) fades.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
                     builder.withFade(fades);
 
                     effects.add(builder.build());
@@ -274,7 +267,7 @@ public class OutpostEvent {
         participants.put(kingdom.getId(), participant);
         KINGDOMS_IN_EVENTS.put(kingdom.getId(), this);
 
-        Score score = scoreboard.getObjective("main").getScore(ChatColor.GREEN + kingdom.getName());
+        Score score = scoreboard.getScoreboard().getObjective("main").getScore(ChatColor.GREEN + kingdom.getName());
         score.setScore(0);
 
         return participant;
@@ -282,7 +275,7 @@ public class OutpostEvent {
 
     public void display(Player player) {
         bossBar.addPlayer(player);
-        player.setScoreboard(scoreboard);
+        scoreboard.setForPlayer(player);
     }
 
     public long getTime() {
@@ -297,7 +290,7 @@ public class OutpostEvent {
         return participants;
     }
 
-    public @NonNull Scoreboard getScoreboard() {
+    public @NonNull XScoreboard getScoreboard() {
         return scoreboard;
     }
 }

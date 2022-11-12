@@ -2,6 +2,7 @@ title: "{$sep}-=( &3Misc Upgrades {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
+# -NOSYNC
 '[fn-misc]': &fn-misc
   args: [ "<name>", "<lore>", "<disallowPacifists>" ]
   return:
@@ -21,6 +22,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
         - "<lore>"
         - ""
         - "{$p}Level{$sep}: &6%level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
     maxxed:
       condition: 'enabled && maxxed'
       name: "{$enabled} <name>"
@@ -28,6 +30,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
         - "<lore>"
         - ""
         - "{$p}Level{$sep}: {$s}%level% {$sep}({$s}Maxxed{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Left-click to disable"
     else:
       condition: enabled
       name: "{$enabled} <name>"
@@ -36,12 +39,13 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
         - ""
         - "{$p}Upgrade Cost{$sep}: &6%cost%"
         - "{$p}Level{$sep}: &6%level%"
+        - *disable-upgrade
 
 
 options:
   glory:
     material: NETHER_STAR
-    <<: *fn-misc ["&3Glory", [
+    <<: *fn-misc [ "&3Glory", [
       "{$p}Level 1{$sep}: &6Killing non-players on your land\nyields x2 experience.",
       "{$p}Level 2{$sep}: &6Killing players on your land\nyields x4 experience."
     ], false ]
@@ -50,15 +54,15 @@ options:
     posy: 1
   anti-trample:
     material: WHEAT_SEEDS
-    <<: *fn-misc ["&aAnti-Trample", [
-        "{$p}Level 1{$sep}: &6Your tilled soil cannot",
-        "be trampled by players.",
-        '',
-        "{$p}Level 2{$sep}: &6Pistons placed outside of your",
-        "land will no longer work.",
-        "",
-        "{$p}Level 3{$sep}: &6Protects certain animals from",
-        "being damaged in your lands."
+    <<: *fn-misc [ "&aAnti-Trample", [
+      "{$p}Level 1{$sep}: &6Your tilled soil cannot",
+      "be trampled by players.",
+      '',
+      "{$p}Level 2{$sep}: &6Pistons placed outside of your",
+      "land will no longer work.",
+      "",
+      "{$p}Level 3{$sep}: &6Protects certain animals from",
+      "being damaged in your lands."
     ], false ]
 
     posx: 4
@@ -67,9 +71,9 @@ options:
     material: DIAMOND_AXE
 
     <<: *fn-misc [ "&4Nexus Guards", [
-        "&6When someone enters your",
-        "nexus land, spawns guards that",
-        "are stronger than your normal guards."
+      "&6When someone enters your",
+      "nexus land, spawns guards that",
+      "are stronger than your normal guards."
     ], true ]
 
     posx: 5
@@ -78,9 +82,9 @@ options:
     material: IRON_AXE
 
     <<: *fn-misc [ "&eGuards", [
-        "&6Guards will randomly spawn",
-        "to protect the kingdom if",
-        "a non-ally entered the land."
+      "&6Guards will randomly spawn",
+      "to protect the kingdom if",
+      "a non-ally entered the land."
     ], true ]
 
     posx: 6
@@ -89,11 +93,11 @@ options:
     material: REDSTONE
 
     <<: *fn-misc [ "&cInsanity", [
-        "&7Defenders and Nexus guards",
-        "spawned on powercell land will have{$sep}:",
-        "{$p}Level 1{$sep}: {$s}Strength I for 10 seconds.",
-        "{$p}Level 2{$sep}: {$s}Strength II for 10 seconds.",
-        "{$p}Level 2{$sep}: {$s}Strength III for 10 seconds."
+      "&7Defenders and Nexus guards",
+      "spawned on powercell land will have{$sep}:",
+      "{$p}Level 1{$sep}: {$s}Strength I for 10 seconds.",
+      "{$p}Level 2{$sep}: {$s}Strength II for 10 seconds.",
+      "{$p}Level 2{$sep}: {$s}Strength III for 10 seconds."
     ], true ]
 
     posx: 7
@@ -103,8 +107,8 @@ options:
     material: ENDER_PEARL
 
     <<: *fn-misc [ "&3Invasion Teleportation", [
-        "{$p}Decreases your teleportation delay",
-        "for &e/k tp {$p}after every upgrade."
+      "{$p}Decreases your teleportation delay",
+      "for &e/k tp {$p}after every upgrade."
     ], true ]
 
     posx: 3
@@ -113,9 +117,9 @@ options:
     material: DIAMOND_SWORD
 
     <<: *fn-misc [ "&3Invasions", [
-        "{$p}Your kingdom can invade &6%invasion-limit% {$p}times",
-        "{$p}Used invasions{$sep}: &6%invasions%",
-        "{$p}Refresh Cooldown{$sep}: &6%invasion-refresh-cooldown%"
+      "{$p}Your kingdom can invade &6%invasion-limit% {$p}times",
+      "{$p}Used invasions{$sep}: &6%invasions%",
+      "{$p}Refresh Cooldown{$sep}: &6%invasion-refresh-cooldown%"
     ], true ]
 
     posx: 2
@@ -124,15 +128,15 @@ options:
     material: GUNPOWDER
 
     <<: *fn-misc [ "&5Anti-Explosion", [
-        "{$p}Level 1{$sep}: &7Prevents creepers from",
-        "destroying blocks in your land.",
-        "",
-        "{$p}Level 2{$sep}: &7Prevents TNTs from",
-        "destroying blocks in your land.",
-        "",
-        "{$p}Level 3{$sep}: &7Protect your kingdom members,",
-        "animals, and all the other trapped mobs",
-        "within your lands from explosions."
+      "{$p}Level 1{$sep}: &7Prevents creepers from",
+      "destroying blocks in your land.",
+      "",
+      "{$p}Level 2{$sep}: &7Prevents TNTs from",
+      "destroying blocks in your land.",
+      "",
+      "{$p}Level 3{$sep}: &7Protect your kingdom members,",
+      "animals, and all the other trapped mobs",
+      "within your lands from explosions."
     ], false ]
 
     posx: 4

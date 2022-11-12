@@ -12,8 +12,13 @@
 enabled: true
 
 # Amount of turrets limited per land/chunk.
+# Set to 0 for no limit.
 limit: 5
+
+# Don't open the GUI when shift right-clicking (useful for placing blocks)
 disable-shift-click: true
+
+# Remove turrets when lands are unclaimed automatically? This will simply break the turret naturally as if it was broken by a player.
 remove-unclaimed: false
 
 # Should turrets go directly to the player's inventory who broke the turret.
@@ -23,11 +28,13 @@ to-inventory-on-break: false
 # Set to 0 to disable
 teleportation-invulnerability: 5
 
-# NOTE: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
-# By changing this option you're changing how often turrets perform checks and ativate.
-# By default it is 1 ticks. Meaning every 1 second, 20 checks are performed.
-# If you change it to 2 ticks for instance, all the "time" based turret options will be affected.
+# WARNING: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
+# By changing this option you're changing how often turrets perform checks and activate.
+# By default, it's every 1 tick. Meaning every 1 second, 20 checks are performed.
+# If you change it to 2 ticks for instance, all the turrets will be affected.
 # Meaning if the turret's cooldown was "10" ticks now it's "10 * 2 = 20" ticks.
-# Every single number of this option matters up to 100 ticks for performance. After 100 ticks the performance is just not noticable anymore.
+# For example, if you set this to 20, all turrets are limited to shoot every second, no matter how long the cooldown is.
+# Every single number of this option matters up to 100 ticks for performance. After 100 ticks the performance is just not noticable anymore,
+# unless you have an unusual high number of turrets.
 # Requires a restart to update.
 update-ticks: 1

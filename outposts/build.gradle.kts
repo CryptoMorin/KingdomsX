@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "2.1.1.1"
+version = "2.1.2"
 description = "An event similar to KoTH"
 
 buildscript {
