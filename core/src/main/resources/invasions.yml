@@ -46,8 +46,9 @@ adjoining-protection:
 # take certain resources from the invaded land.
 # For the resources taken refer to "bonus" mode.
 ransack-mode:
-  # Only disables it by default, empty the list below if you want to
-  # disable it completely.
+  # Only disables it by default if false. Meaning that if this is enabled,
+  # just running "/k invade" will start ransack mode.
+  # Empty the list below if you want to disable it completely.
   enabled: false
 
   # Ransack mode needs to disabled by default or this command
@@ -441,6 +442,9 @@ player-deaths:
 plunder:
   enabled: false
 
+  # The champion mechanics will stay the same. Meaning if the champion is killed the invasion ends
+  # and the invaders win, however the champion doesn't need to be killed if the defenders or attackers
+  # get enough kills for the invasion to end.
   keep-champion: false
 
   # Whether killing these players during plunder invasions
