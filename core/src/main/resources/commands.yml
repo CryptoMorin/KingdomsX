@@ -51,9 +51,7 @@ create:
 lore:
   aliases: [ desc, description, motd ]
 rename:
-  aliases: [ ]
 tag:
-  aliases: [ ]
   cooldown: 6hrs
 show:
   aliases: [ info, who, list ]
@@ -64,7 +62,8 @@ unsethome:
 nexus:
   aliases: [ setnexus, nexusset, placenexus, nexusplace ]
 king:
-  aliases: [ setking, leader, owner, ownership ]
+  # Thankfully this isn't a pronoun-compliant list, or I'd have to connect to a fucking database just fetch all that nonsense.
+  aliases: [ setking, leader, owner, ownership, queen, setqueen ]
 sethome:
   aliases: [ homeset ]
 chat:
@@ -96,24 +95,19 @@ decline:
   aliases: [ deny, denied, reject ]
 join:
   name: join
-  aliases: [ ]
 leave:
   name: leave
   aliases: [ left ]
 kick:
   name: kick
-  aliases: [ ]
 promote:
   name: promote
-  aliases: [ ]
 demote:
   name: demote
-  aliases: [ ]
 
 ### Claims ###
 claim:
   name: claim
-  aliases: [ ]
   commands:
     auto:
       aliases: [ a ]
@@ -121,10 +115,8 @@ claim:
       aliases: [ sqr ]
       cooldown: 20 sec
     fill:
-      aliases: [ ]
       cooldown: 10 sec
     line:
-      aliases: [ ]
     corner:
       aliases: [ corners ]
       cooldown: 5 sec
@@ -133,7 +125,6 @@ claim:
       aliases: [ clip ]
 unclaim:
   name: unclaim
-  aliases: [ ]
 unclaimall:
   name: unclaimall
   aliases: [ allunclaim ]
@@ -168,7 +159,6 @@ visualize:
   commands:
     toggle:
       name: toggle
-      aliases: [ ]
     permanent:
       name: permanent
       aliases: [ perm ]
@@ -228,7 +218,6 @@ enemy:
   aliases: [ enemies ]
 truce:
   name: truce
-  aliases: [ ]
 revoke:
   name: revoke
   aliases: [ neutral ]
@@ -266,13 +255,11 @@ surrender:
 about:
   aliases: [ version, ver, '-v', '--version' ]
 gui:
-  aliases: [ ]
 updates:
   name: updates
   aliases: [ update ]
 reload:
   name: reload
-  aliases: [ ]
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -305,7 +292,6 @@ nation:
       name: broadcast
       aliases: [ bc, announce ]
     tag:
-      aliases: [ ]
       cooldown: 6hrs
     nexus:
       name: nexus
@@ -334,13 +320,11 @@ nation:
       aliases: [ acceptinvite, acceptinv, acceptinvitation ]
     promote:
       name: promote
-      aliases: [ ]
     bank:
       name: bank
       aliases: [ money, $ ]
     top:
       name: top
-      aliases: [ ]
     leave:
       name: leave
       aliases: [ left ]
@@ -352,7 +336,6 @@ nation:
       aliases: [ new, make ]
     join:
       name: join
-      aliases: [ ]
     spawn:
       name: spawn
       aliases: [ home ]
@@ -361,13 +344,11 @@ nation:
       aliases: [ inv ]
     demote:
       name: demote
-      aliases: [ ]
     kick:
       name: kick
-      aliases: [ ]
+      aliases: [ leave ]
     rename:
       name: rename
-      aliases: [ ]
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -400,7 +381,6 @@ admin:
       aliases: [ s ]
     nexus:
       name: nexus
-      aliases: [ ]
     dynmap:
       name: dynmap
       aliases: [ map, bluemap, squaremap, Pl3xMap ]
@@ -431,7 +411,6 @@ admin:
       aliases: [ delete ]
     unclaim:
       name: unclaim
-      aliases: [ ]
     resourcepoints:
       name: resourcepoints
       aliases: [ rp, resourcepoint ]
@@ -440,16 +419,13 @@ admin:
       aliases: [ vault ]
     claim:
       name: claim
-      aliases: [ ]
     rank:
       name: rank
-      aliases: [ ]
     land:
       name: land
       aliases: [ tpland ]
     join:
       name: join
-      aliases: [ ]
     maxLandModifier:
       name: maxLandModifier
       aliases: [ mlm ]
@@ -458,18 +434,15 @@ admin:
       aliases: [ info ]
     masswar:
       name: masswar
-      aliases: [ ]
     evaluate:
       name: evaluate
       aliases: [ eval ]
     kick:
       name: kick
-      aliases: [ ]
     dailychecks:
       name: dailychecks
       aliases: [ dailycheck ]
     spy:
       name: spy
-      aliases: [ ]
     execute:
       aliases: [ exec ]
