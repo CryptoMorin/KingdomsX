@@ -10,17 +10,12 @@ message: str
 
 options:
   (values):
-    name: str
-    material: Material
-    lore:
-      - { (type): list, (elements): str }
-      - str
+    (extends): ItemStack
     interaction: Enum<org.kingdoms.gui.objects.GUIInteractionType>
     condition: str
     sound: Sound
     refresh: bool
     message: str
-    amount: int
     # Slot ranges are handled internally.
     slot: int
     posx: int

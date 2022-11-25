@@ -1,12 +1,17 @@
 connection-radius: int
 distance: int
 disabled-worlds:
-  (type): list
-  (elements): str
+  (type): set
+  (elements): World
+
 biomes:
+  (keys): World
   (values):
     whitelist: bool
-    biomes: list
+    biomes:
+      (type): set
+      (elements): Biome
+
 claim-on-create: int
 starter-free: int
 confirmation: str

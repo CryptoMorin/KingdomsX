@@ -55,19 +55,26 @@ powerups:
 power:
   enabled: false
   player:
-    max: 10.0
-    min: -10.0
-    initial: 0.0
+    max: 10
+    min: -10
 
+    # When a player first joins a kingdom.
+    initial: 0
+
+    # When the player is online.
     regeneration:
       every: '5 min'
       charge: 1
 
     loss:
-      death: 4.0
+      # Amount of power lost when the player dies in any way.
+      death: 4
+
       offline:
         every: '1 day'
-        lose: 0.5
-        min: 2.0
+        lose: 1
+
+        # The minimum amount that the offline power loss works for.
+        min: 2
   faction:
     max: 500

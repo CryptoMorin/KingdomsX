@@ -7,9 +7,12 @@ structures:
   (required): [ nexus, national-nexus ]
   (values):
     name: str
-    type: str # TODO Structure(type)
+    type: StructureType
     upgrade-cost: Math
     max-level: Math
+    item:
+      (keys): int
+      (values): ItemStack
     particles:
       (keys): int
       (values):
@@ -36,8 +39,6 @@ structures:
       (values):
         lines: list
         height: decimal
-
-  extractor:
     capacity: Math
     fuel:
       enabled: bool
@@ -52,30 +53,31 @@ structures:
       (values):
         amount: int
         every: str
-
-  warppad:
     teleport-delay: int
     teleport-fuel-cost: str
     other-world-distance-factor: int
-    fuel:
-      enabled: bool
-      capacity: Math
-      variants:
-        (values):
-          (extends): [ ItemMatcher ]
-          fill-amount-per-item: decimal
-
-  regulator:
     auto-fill-cost: Math
-
-  siege-cannon:
     shield-damage:
       (keys): int
       (values): Period
-    
+
     explosion-radius:
       (keys): int
-      (values): int
+      (values): Math
+
+    tube-textures:
+      (keys): int
+      (values): list
+
+    allow-damaging:
+      (keys): int
+      (values):
+        others:
+          (type): set
+          (elements): Material
+        turrets: bool
+        protected-blocks: bool
+        # TODO structures: StructureStyle | TurretStyle
     
     invalid-ammo-message: str
     damage: Math
@@ -84,11 +86,14 @@ structures:
     cooldown:
       (keys): int
       (values): int
-    
+
     actionbar:
-      sit: str
-      fire: str
-      cooldown: str
-      not-loaded: str
-    ammo:
-      material: Material
+      (values): str
+
+    projectiles:
+      (values):
+        (extends): ItemMatcher
+        shield-damage: Period
+        explosion-radius: decimal
+        damage: decimal
+        knockback: decimal
