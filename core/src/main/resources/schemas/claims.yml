@@ -29,7 +29,11 @@ history:
   limit: int
 
 max-claims:
-  default: str
+  (required): [ 'default' ]
+  (keys):
+    - [ 'default' ]
+    - World
+  (values): Math
 
 build-in-claimed-only:
   place: bool
@@ -112,7 +116,9 @@ indicator:
     border: bool
     on-claim: bool
     stay: int
-  
+
+  (values-keys): [ 'wilderness', 'no-kingdom', 'neutral', 'truce', 'self', 'ally', 'kingdom', 'nation', 'enemy' ]
+  (optional): true
   (values):
     particles:
       horizontal:

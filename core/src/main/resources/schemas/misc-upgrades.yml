@@ -1,8 +1,7 @@
-(x-miscUpgrades): &miscUpgrades [ invasions, invasion-teleportation, anti-explosion, anti-trample, nexus-guards, guards, max-members, max-claims, chest-size, glory, insanity ]
-
-(required): *miscUpgrades
+(required): &miscUpgrades [ invasions, invasion-teleportation, anti-explosion, anti-trample, nexus-guards,
+                            guards, max-members, max-claims, chest-size, glory, insanity ]
 (keys): *miscUpgrades
-(values):
+(values): &base-misc
   enabled: bool
   name: str
   scaling: Math
@@ -17,7 +16,23 @@
       (type): set
       (elements): Potion
 
+nexus-guards: &guards
+  <<: *base-misc
+  spawn-delay: int
+  levels:
+    (required): [ '1' ]
+    (keys): int
+    (values):
+      (values):
+        amount:
+          (type): int
+          (min): 1
+        (extends): Entity
+
+guards: *guards
+
 chest-size:
+  <<: *base-misc
   items:
     blacklist: bool
     list:

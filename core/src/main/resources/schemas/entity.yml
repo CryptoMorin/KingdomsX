@@ -1,0 +1,19 @@
+type: Enum<org.bukkit.entity.EntityType>
+name: str
+health: decimal
+
+baby: bool
+invulnerable: bool
+glowing: bool
+gravity: bool
+silent: bool
+
+effects:
+  (type): set
+  (elements): Potion
+
+equipment:
+  (keys): [ 'main-hand', 'off-hand', 'helmet', 'chestplate', 'leggings', 'boots' ]
+  (values):
+    item: ItemStack
+    drop-chance: int

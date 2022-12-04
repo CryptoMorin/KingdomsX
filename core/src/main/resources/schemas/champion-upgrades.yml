@@ -1,7 +1,19 @@
-(x-champion-upgrades): &championUpgrades [ reinforcements, champions, focus, fangs, plow, thor, damage-cap,
-                                           death-duel, drag, throw, strength, speed, resistance, health ]
+champions:
+  default: str
+  (values):
+    base: Entity
+    levels:
+      (keys): int
+      (required): [ '1' ]
+      (values): Entity
+    name: str
+    cost: Math
+    max-level:
+      (type): int
+      (min): 1
 
-(required): *championUpgrades
+(required): &championUpgrades [ reinforcements, champions, focus, fangs, plow, thor, damage-cap,
+                                death-duel, drag, throw, strength, speed, resistance, health ]
 (keys): *championUpgrades
 (values):
   enabled: bool
