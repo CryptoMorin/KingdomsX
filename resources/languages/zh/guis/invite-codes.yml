@@ -1,65 +1,90 @@
-title: "&0-=(&a邀请码&0)=-"
+title: "&0-=( &aInvite Codes &0)=-"
 rows: 3
 sound: ENTITY_EXPERIENCE_ORB_PICKUP
-
 options:
   invite-codes:
-    name: "{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]{$p}%player%"
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
     material: PLAYER_HEAD
     lore: |
-      {$p}邀请码{$sep}:{$s}%invitecode-code%
-      {$p}使用次数{$sep}:{$s}%invitecode-used%{$sep}/{$s}%invitecode-uses%
-      {$p}创建者{$sep}:{$s}%invitecode-creator%
-      {$p}创建时间{$sep}:{$s}%invitecode-createdAt%
-      {$p}过期时间{$sep}:{$s}%invitecode-expiration%
-      
-      {$p}左键以购买纸质邀请码。
-      {$sp}中键以收回邀请码。
-      {$e}右键以删除邀请码。
-    slots: [ 10, 11, 12, 13, 14, 15, 16 ]
+      {$p}Code{$sep}: {$s}%invitecode-code%
+      {$p}Uses{$sep}: {$s}%invitecode-used%{$sep}/{$s}%invitecode-uses%
+      {$p}Created By{$sep}: {$s}%invitecode-creator%
+      {$p}Created At{$sep}: {$s}%invitecode-createdAt%
+      {$p}Expires At{$sep}: {$s}%invitecode-expiration%
+
+      {$p}Left-click to buy paper codes.
+      &9Middle-click to redeem the code.
+      {$e}Right-click to delete.
+    slots:
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
   info:
-    name: "&e信息"
+    name: "&eInfo"
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
     posx: 5
     posy: 1
     lore: |
-      {$p}邀请码是一种可选的邀请玩家进入王国的方式。
-      它们与Discord邀请码类似。
-      
-      当你创建一个新邀请码，玩家可以输入
-      {$p}/k invitecode {$s}<邀请码>{$p}加入王国，
-      你也可以生成一个可以右键使用的纸质邀请码。
-      每张纸质邀请码需要花费{$s}%invitecode-paper-cost% 
-      {$p}资源点生成。
-      
-      邀请码会在一个特定时间过期，
-      并可以有有限/无限的使用次数。
+      &7Invite codes are an alternative
+      way of inviting players to your kingdom.
+      They're similar to discord invite codes.
+
+      Once you create a new invite code, a player
+      can either type the code using
+      {$p}/k invitecode {$s}<code> &7or you can
+      generate a physical paper which players can
+      right-click to use them.
+      Each invite code paper costs {$s}%invitecode-paper-cost%
+      &7resource points.
+
+      Invite codes expire at a certain point and
+      they can either have limited or unlimited uses.
   new-invite-code:
-    name: "{$p}创建新邀请码"
+    name: "&2Create New Invite Code"
     lore: |
-      {$p}你最多只能创建
-      {$p}%invitecode-max%{$p}个邀请码。
+      &7You can only make up to
+      {$p}%invitecode-max% &7invite codes.
     material: GREEN_WOOL
     posx: 6
     posy: 1
   delete-all:
-    name: "&4删除全部邀请码"
+    name: "&4Delete All Invite Codes"
     material: RED_WOOL
     posx: 4
     posy: 1
   blue-glass:
     name: ''
     material: BLUE_STAINED_GLASS_PANE
-    slots: [ 0, 1, 2, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
-
-#  next-page:
-#    name: '{$s}Next Page {$p}- &e%page%{$sep}/&e%pages%'
-#    material: PLAYER_HEAD
-#    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
-#    slot: 8
-#  previous-page:
-#    name: '{$s}Previous Page {$p}- &e%page%{$sep}/&e%pages%'
-#    material: PLAYER_HEAD
-#    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
-#    slot: 0
+    slots:
+      - 0
+      - 1
+      - 2
+      - 6
+      - 7
+      - 8
+      - 9
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+#next-page:
+#name: '&6Next Page &7- &e%page%&8/&e%pages%'
+#material: PLAYER_HEAD
+#skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+#slot: 8
+#previous-page:
+#name: '&6Previous Page &7- &e%page%&8/&e%pages%'
+#material: PLAYER_HEAD
+#skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+#slot: 0
