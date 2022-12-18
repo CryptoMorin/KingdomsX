@@ -1,60 +1,74 @@
-title: "&0-=({$s}%target%&2的物品栏&0)=-"
+title: "&0-=( &6%target% &0)=-"
 rows: 6
 sound: ENTITY_EXPERIENCE_ORB_PICKUP
-
-#我们需要四个空行。不要忘了快捷栏。
+#We need 4 free rows. Don't forget about the hotbar.
 context-start-row: 3
-
-#不改变护甲和手的配置条目名称很重要。
-#如果玩家拥有这个物品，这些栏将会被覆盖。
+#It's important to not change the config entry names of armors and hands.
+#These slots will be replaced if the player has the item.
 options:
   helmet:
-    name: '{$e}空'
+    name: '&cNo Helmet'
     posx: 2
     posy: 1
     material: LEATHER_HELMET
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   chestplate:
-    name: '{$e}空'
+    name: '&cNo Chestplate'
     posx: 3
     posy: 1
     material: LEATHER_CHESTPLATE
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   leggings:
-    name: '{$e}空'
+    name: '&cNo Leggings'
     posx: 4
     posy: 1
     material: LEATHER_LEGGINGS
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   boots:
-    name: '{$e}空'
+    name: '&cNo Boots'
     posx: 5
     posy: 1
     material: LEATHER_BOOTS
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   offhand:
-    name: '{$e}空'
+    name: '&cNo item in offhand'
     posx: 7
     posy: 1
     material: WOODEN_HOE
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   mainhand:
-    name: '{$e}主手为空'
+    name: '&cNo item in main hand'
     posx: 8
     posy: 1
     material: WOODEN_SWORD
-    flags: [ HIDE_ATTRIBUTES ]
+    flags:
+      - HIDE_ATTRIBUTES
   offhand-indicator:
-    name: '{$e}上方展示的是副手物品'
+    name: '&cAbove is showing the offhand'
     posx: 7
     posy: 2
     material: RED_STAINED_GLASS_PANE
   mainhand-indicator:
-    name: '{$e}上方展示的是位于栏位{$sep}:&e%held_slot%{$e}的主手物品'
+    name: '&cAbove is showing the main hand in slot&8: &e%held_slot%'
     posx: 8
     posy: 2
     material: RED_STAINED_GLASS_PANE
   separators:
     name: ''
-    slots: [ 0, 5, 8, 9, 10, 11, 12, 13, 14, 17 ]
+    slots:
+      - 0
+      - 5
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 17
     material: BLACK_STAINED_GLASS_PANE
