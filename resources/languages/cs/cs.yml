@@ -123,10 +123,10 @@ siege-cannon:
   not-ammo: '&cKanon muze byt nabit pouze naboji urcene v GUI'
   hit:
     unclaimed-land: '&cKanon zasahl nezabrane uzemi'
-    no-shield: '&2Kanon zasahl &6%kingdoms_name% &2 a nemaji stit'
-    pacifist: '&cKanon zasahl &e%kingdoms_name% &c but they''re a pacifist kingdom'
-    destroyed-shield: '&2Kanon zasahl stat &6%kingdoms_name% A jejich stit byl znicen'
-    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_name% &2zbyvajici stit&8: &6%kingdoms_shield_time_left%'
+    no-shield: '&2Kanon zasahl &6%kingdoms_kingdom_name% &2 a nemaji stit'
+    pacifist: '&cKanon zasahl &e%kingdoms_kingdom_name% &c but they''re a pacifist kingdom'
+    destroyed-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% A jejich stit byl znicen'
+    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% &2zbyvajici stit&8: &6%kingdoms_shield_time_left%'
     damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%kingdoms_shield_time_left%'
   friendly:
     fire: '&cKanon zasahl pratelske uzemi ktere patri &e%kingdom%'
@@ -496,7 +496,7 @@ mails:
   notifications:
     join: '&2Mas &6%mails% &2novych zprav otevri zpravy.'
     receivers: |
-      &9%player% &2from &9%kingdoms_name% &2kingdom has sent you a mail&8:
+      &9%player% &2from &9%kingdoms_kingdom_name% &2kingdom has sent you a mail&8:
       hover:{&f%subject%;&9Click to read;/k mail open %id%}
   primary-none: '&cNone'
   cc:
@@ -653,7 +653,7 @@ command:
       usage: '&4Pouzitim&8: &e/k show &9[player | nation | #PLAYER | #NATION] &2<player | nation>'
       others-permission: '&cNemas pravo videt dalsi informace'
       message-admin: |
-        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
         &7| &2Capital&8: &6%kingdoms_nation:capital get=name%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -667,10 +667,10 @@ command:
         &7| &2Kingdoms&8:
         %kingdoms%
       message: |
-        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2King&8: &6%king_status%
-        &7| &2Nation&8: &6%kingdoms_nation%
+        &7| &2Nation&8: &6%kingdoms_nation_name%
         &7| &2Since&8: &6%kingdoms_nation_since%
         &7| &2Might&8: &6%kingdoms_might%
         &7| &2Shield&8: &6%kingdoms_nation_shield_time_left%
@@ -690,10 +690,10 @@ command:
         &7| &2Enemies&8:
         &e%enemies%
       kingdoms: |
-        hover:{&6%kingdoms_name%;&2Members&8: &6%kingdoms_members%
+        hover:{&6%kingdoms_kingdom_name%;&2Members&8: &6%kingdoms_members%
         &2King&8: &6%kingdoms_king%
         &2Lands&8: &6%kingdoms_lands%}
-      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     not:
       in-nation: '&cNebyl nalezen zadny narod s timto jmenem a zadany stat nebo hrac take neni v narode'
     setspawn:
@@ -746,7 +746,7 @@ command:
         Vsichni clenove vaseho naroda budou vyhozeni.
         Jste si jisti, ze chcete pokracovat?
         Zadej &e/k nation disband &4znovu k potvzeni.
-      announce: '&6Hrac &e%player% &6Rozpustil narod &e%kingdoms_nation%'
+      announce: '&6Hrac &e%player% &6Rozpustil narod &e%kingdoms_nation_name%'
     invite:
       description: '&6Pozvat stat do naroda'
       usage: '&4Pouzitim&8: &e/k nation invite &2<kingdom> &9[expiration]'
@@ -798,7 +798,7 @@ command:
       no-more-pages: '&cJiz neni vice stranek k nacteni'
       negative: '&cNelze zobrazit negativni strany'
       entry: |
-        &8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
+        &8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -814,13 +814,13 @@ command:
       &cYou can't leave your nation as the capital.
       Either disband the nation using &e/k nation disband
       &cOr change your nation's capital using &e/k nation capital
-    leave-announce: '&cStat &e%kingdoms_name% &cOpustil narod'
+    leave-announce: '&cStat &e%kingdoms_kingdom_name% &cOpustil narod'
     broadcast-description: '&6Vyslat zpravu vsem clenum naroda'
     broadcast-usage: '&4Pouzij&8: &e/k nation broadcast &2<message>'
     broadcast-format:
       message: |
 
-        &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
+        &8[&6%kingdoms_nation_name%&7-&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
 
       sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
     capital:
@@ -1013,12 +1013,12 @@ command:
     usage: '&4Pouzij: &e/k show &9[player | kingdom | #PLAYER] &2<player | kingdom>'
     others-permission: '&cNemas opravneni videt dalsi informace'
     message-admin: |
-      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
-      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
@@ -1028,10 +1028,10 @@ command:
       &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
-      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_might%
       &7| &2Since&8: &6%kingdoms_since%
       &7| &2Shield&8: &6%kingdoms_shield_time_left%
@@ -1060,7 +1060,7 @@ command:
       &2Donations&8: &6%kingdoms_total_donations%
       &2Last Donation&8: &6%kingdoms_last_donation_time%
       &2Rank&8: &6%kingdoms_rank_name%}
-    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
     description: '&6Zabrat uzemi, na kterem stojis'
     chunk:
@@ -1268,7 +1268,7 @@ command:
       description: '&6Administrativni sprava Uzemi pro Staty'
       usage: '&4Prikaz&8: &e/k admin claim &2<kingdom>'
       success: '&2Uspesne obsazeno uzemi &6%x%&7, &6%z% &2pro Vas Stat.'
-      already-claimed: '&cTohle uzemi je jiz obsazeno Statem &e%kingdoms_name%'
+      already-claimed: '&cTohle uzemi je jiz obsazeno Statem &e%kingdoms_kingdom_name%'
     rank:
       description: '&6Administrativni sprava hodnosti Statu.'
       usage: '&4Prikaz&8: &e/k admin rank &2<player> <rank>'
@@ -1364,7 +1364,7 @@ command:
       usage: '&cPrikaz&8: &e/k admin join &2<player> <kingdom>'
       invalid-kingdom: '&cNelze najit Stat &e[ %kingdom% ]'
       in-kingdom: |
-        &2Obcan &6[ %player% ] &2jiz je Obcanem Statu &6%kingdoms_name%
+        &2Obcan &6[ %player% ] &2jiz je Obcanem Statu &6%kingdoms_kingdom_name%
         &2Pro pokracovani pres&8: hover:{&6/k admin join [ %player% ] [ %kingdom% ] confirm;&2Click to confirm;/k admin join [ %player% ] [ %kingdom% ] confirm}
       already-in-kingdom: '&2Obcan &6[ %player% ] &2je jiz Obcanem Statu &6[ %kingdom% ]'
       success: '&2Obcan &6[ %player% ] &2se stal administrativne Obcanem Statu &6[ %kingdom% ]'
@@ -1412,7 +1412,7 @@ command:
       info: |
         &7| &2Name&8: &6[ %player% ] &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Kingdom&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Kingdom&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
         &7| &2Rank&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &7| &2National Rank&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| &2Using Markers&8: %visualizer%
@@ -1421,10 +1421,10 @@ command:
         &7| &2Auto Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
         &7| &2Map Size&8: &6%map_width% &8- &6%map_height%
         &7| &2Total Donations&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
-        &7| &2Claims &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Claims &7(&6%kingdoms_player_claims%&7)&8: %claims%
         &7| &2Compressed Data&8: &6%compressed%
       found: '&2Obcan &6%name% &8(&7%uuid%&8) &2je ve State&8:'
-      kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
+      kingdom: '&8- &2%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&cStat Obcana &6[ %player% ] &cneni zdvojeny.'
     kick:
       description: '&6Administrativni vyhozeni Obcanu ze Statu.'
@@ -1521,7 +1521,7 @@ command:
       Vsichni Obcani budou vyhozeni a Vase Statni uzemi budou odnarokovany.
       Stale Chcete rozpustit Stat??
       pres prikaz &e/k disband &4again to confirm.
-    announce: '&6Vudce &e[ %player% ] &6rozpustil Svuj Stat &e%kingdoms_name%'
+    announce: '&6Vudce &e[ %player% ] &6rozpustil Svuj Stat &e%kingdoms_kingdom_name%'
   about:
     description: '&6O pluginu Valka Statu.'
   book:
@@ -1696,7 +1696,7 @@ command:
     usage: '&4Prikaz&8: &e/k challenge &2<kingdom>'
     yourself: '&cNemuzes vyhlasit vyzvu na Vas Stat, co si blazen???'
     not-invadable: '&cStat, kteremu vyhlasujes vyzvu nema potrebny atribut invaze.'
-    challenged: '&cObcan &e[ %player% ] &cze Statu &e%kingdoms_name% &cvyhlasil vyzvu s vasim Statem, pro vice info, zobrazte Statni audio logy.'
+    challenged: '&cObcan &e[ %player% ] &cze Statu &e%kingdoms_kingdom_name% &cvyhlasil vyzvu s vasim Statem, pro vice info, zobrazte Statni audio logy.'
   top:
     description: '&6Ukazat tabulku nejlepsich Obcanu na Serveru.'
     loading: '&6Nacitani dat Obcanu, vyckejte...'
@@ -1705,10 +1705,10 @@ command:
     no-more-pages: '&cZadne Strany k nacteni.'
     negative: '&cNelze zobrazit Negativni Strany.'
     entry: |
-      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
+      &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Members&8: &6%kingdoms_members%
       &7♦ &2Lands&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Bank&8: &6$%kingdoms_fancy_bank%;/k show %kingdoms_name%} &7- &6%kingdoms_fancy_might%
+      &7♦ &2Bank&8: &6$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- &6%kingdoms_fancy_might%
   map:
     settings-description: '&6Zmenit nastaveni mapy &e/k map'
     description: '&6Ukazat mapu budov a Statu na Serveru.'
@@ -1751,7 +1751,7 @@ command:
     disabled:
       invader: '&cNemuzes se vzdat,chudaku.'
       defender: '&cNemuzes se vzdat,chudaku.'
-    defender-surrendered: '&cObcan &6[ %player% ] &2ze Statu &6%kingdoms_name% &2se vzdal. Uzemi obsadil Stat &6[ %kingdom% ]'
+    defender-surrendered: '&cObcan &6[ %player% ] &2ze Statu &6%kingdoms_kingdom_name% &2se vzdal. Uzemi obsadil Stat &6[ %kingdom% ]'
     defender-permission: '&cNemas pravomoce se vzdat, chudaku.'
     no-invasion: '&cPrave ted nemas zadnou invazi na Stat ani jiny Stat na Vas.'
     description: |
@@ -1838,9 +1838,9 @@ command:
   rejectrelation:
     description: '&6Roztrhat mirumilovnou dohodu poslanou Vasemu Statu'
     usage: '&4usage&8 &e/k rejectrelation &2<kingdom>'
-    not-requested: '&cStat &e%kingdoms_name% &cnema zadne mirumilovne dohody na Stole Vudce.'
-    rejected: '&cOdmitnuta mirumilovna dohoda [ %relation% ] &cposlana Statem &e%kingdoms_name%'
-    notification: '&cStat &c%kingdoms_name% &codmitl mirumilovnou dohodu [ %relation% ] &cs Vasim Statem'
+    not-requested: '&cStat &e%kingdoms_kingdom_name% &cnema zadne mirumilovne dohody na Stole Vudce.'
+    rejected: '&cOdmitnuta mirumilovna dohoda [ %relation% ] &cposlana Statem &e%kingdoms_kingdom_name%'
+    notification: '&cStat &c%kingdoms_kingdom_name% &codmitl mirumilovnou dohodu [ %relation% ] &cs Vasim Statem'
   revoke:
     description: '&6Rozstrhat mirumilovnou dohodu se Staty.'
     usage: '&4usage&8 &e/k revoke &2<kingdom>'
@@ -1864,8 +1864,8 @@ command:
     direct:
       message-missing: '&cPotrebujes poslat zpravu primo Tvemu Statu &e[ %kingdom% ]'
       message-self: '&cNelze poslat primou zpravu Vasemu Statu.'
-      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8] &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
-      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8] %displayname% &7≫ &6%message%'
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8] &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8] %displayname% &7≫ &6%message%'
   mute:
     description: '&6Zablokovat danny Channel.'
     usage: '&4usage&8 &e/k mute &2<channel>'
@@ -1883,7 +1883,7 @@ command:
     format:
       message: |
 
-        &8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c[ %player% ]&8] &6%message% 
+        &8[&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c[ %player% ]&8] &6%message% 
       sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
   king:
     description: '&6Povysit Vudce Statu.'

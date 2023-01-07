@@ -1,0 +1,46 @@
+name: "&4Powercell"
+type: powercell
+default-name: 'Powercell'
+max-level: 2
+upgrade-cost: 10000
+dont-update-holograms: true
+
+particles:
+  1:
+    place:
+      particle: REDSTONE
+      count: 70
+      offset: 0.5, 0.5, 0.5
+      color: 255, 0, 0
+    break:
+      particle: REDSTONE
+      count: 70
+      offset: 0.5, 0.5, 0.5
+      color: 255, 0, 0
+sounds:
+  1:
+    place: BLOCK_BEACON_ACTIVATE
+    break: BLOCK_BEACON_DEACTIVATE
+hologram:
+  1:
+    lines:
+      - "&8-=( &4Powercell {$s}%roman_level% &8)=-"
+    height: 1
+block:
+  1: REDSTONE_LAMP
+  2: TARGET
+
+cost: 1000
+sell: 500
+item:
+  1:
+    name: "&bPowercell"
+    material: MUSIC_DISC_BLOCKS
+    flags: [ HIDE_POTION_EFFECTS ]
+    lore:
+      - "&7Chunks next to a chunk"
+      - "with a power cell cannot be"
+      - "invaded without invading the"
+      - "power cell first."
+      - "&cDoes not work on other power cell lands."
+      - "&7⚫ &2Level&8: &6%level_roman%"

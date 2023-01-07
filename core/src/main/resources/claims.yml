@@ -67,8 +67,13 @@ biomes:
   world_nether:
     whitelist: false
     biomes: [ CRIMSON_FOREST ]
-    #world_the_end:
-    #...
+
+    # Gives %biome_cost_factor% placeholder
+    cost-factor:
+      BADLANDS: 10
+      NETHER_WASTES: 50
+  #world_the_end:
+  #...
 
 # Claims the lands around the player once the player created a kingdom if possible.
 # Set to 0 to only claim the land that the player is standing in.
@@ -298,7 +303,7 @@ indicator:
     # If no floor block was found within this range, then the indicator will display on (y - x),
     # where x is the option and y is the player's y axis.
     # Setting to 0: Blocks will appear on the same y as the blocks the player is standing on.
-    # Otherwise blocks will be placed on the floor block.
+    # Otherwise, blocks will be placed on the floor block.
     # Note this must also be lower than the servers max view distance (16 by default but that is the chunk number)
     # as higher values are useless. There is a hard limit of 160 blocks.
     floor-check-height: 5
@@ -332,7 +337,7 @@ indicator:
   wilderness:
     corner-block: SEA_LANTERN
     two-block: QUARTZ_BLOCK
-    actionbar: "&8&l-=( &2&lUnoccupied Land &8&l)=-"
+    actionbar: "&8&l-=( &2&l{$unoccupied} &8&l)=-"
     particles:
       horizontal:
         color: 0, 0, 0
@@ -359,7 +364,7 @@ indicator:
         color: 0, 255, 0
 
     title:
-      title: "&2%kingdoms_name%"
+      title: "&2%kingdoms_kingdom_name%"
       subtitle: "%kingdoms_lore%"
       fade-in: 10
       stay: 40

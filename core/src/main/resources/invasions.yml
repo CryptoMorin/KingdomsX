@@ -41,31 +41,13 @@ adjoining-protection:
   # Be careful with this value as you can technically make a kingdom completely immune to invasions.
   marginal-error-limit: 0
 
-# Successfully invading a land during ransack mode will not
-# transfer ownership of the land to the invader, but will
-# take certain resources from the invaded land.
-# For the resources taken refer to "bonus" mode.
-ransack-mode:
-  # Only disables it by default if false. Meaning that if this is enabled,
-  # just running "/k invade" will start ransack mode.
-  # Empty the list below if you want to disable it completely.
-  enabled: false
-
-  # Ransack mode needs to disabled by default or this command
-  # argument will be useless.
-  # The argument name used for "/k invade ransack"
-  cmd-names: [ 'ransack', 'r' ]
-
-  costs:
-    resource-points: 40
-    money: 0
-
 # Resources taken after invading a normal land.
 # For nexus land resources there's a separate section.
 # Refer to "on-nexus-loss"
 bonus:
   # The bonuses get smaller and smaller every time you invade a new land from the same kingdom.
   # These are different when invading the nexus chunk, check below section.
+  # You can also use the "ransack" boolean placeholder here.
   resource-points: "kingdoms_resource_points / 5"
   bank: "kingdoms_bank / 10"
 
@@ -87,8 +69,9 @@ on-nexus-loss:
 
 # Required resource points to invade a kingdom.
 # This is different when using ransack mode, check above.
+# You can also use the "ransack" and kingdoms_masswar_isrunning boolean placeholders here.
 costs:
-  resource-points: 50
+  resource-points: 'eq(kingdoms_masswar_isrunning, 1, 0, eq(ransack, 1, 40, 50))'
   money: 0
 
 pacifism:
@@ -113,11 +96,26 @@ shields:
   # You'll lose your kingdom shield if you invade and cannot invade at all if your nation has a shield active.
   disallow-invasions: true
 
-  # Cooldown before buying shields again after the last invasion whether it failed or not.
-  last-invasion-cooldown: 1day
+  purchase-cooldown:
+    # Requires a restart to update
+    # Since the last time the kingdom was hit by a Siege cannon.
+    last-siege-cannon-hit: 6hrs
+
+    last-invasion:
+      # The last invasion whether it failed or not.
+      attacked: 1 day
+
+      # The last defended invasion only if it suceeded.
+      defended: 6hrs
 
   # Disable pvp for kingdoms with shields.
   disable-pvp: false
+
+  # If a kingdom is in a nation with an active shield, but wants to invade
+  # instead of disabling the whole nation's shield, it'll make that specific
+  # kingdom to lose access to the nation's shield. Meaning the nation's shield
+  # will not be affected, but other kingdoms can invade that specific kingdom.
+  nation-shield-access-loss: 10hrs
 
 champions:
   # Players with ceasefire attribute with the kingdom that the
@@ -172,11 +170,6 @@ masswar:
   interval: 12hrs
   # The duration of the MassWar. The interval starts after this time has ended.
   time: 1hr
-
-  # Required resource points to invade during masswar events.
-  costs:
-    resource-points: 0
-    money: 0
 
   bossbar:
     enabled: true
@@ -246,7 +239,10 @@ nations:
   # players will be still able to invade the kingdom.
   use-shield: true
 
+  # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#nation-zones
+  # Set to zero to disable.
   nation-zone-radius: 2
+
   capital-protection:
     # The land radius around the capital kingdom's nexus to protect from
     # invaders before the nation kingdoms nexus lands are invaded.

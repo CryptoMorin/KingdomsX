@@ -9,12 +9,9 @@ import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.main.locale.KingdomsLang;
-import org.kingdoms.main.locale.messager.MessageBuilder;
-import org.kingdoms.outposts.LogKingdomOutpostJoin;
-import org.kingdoms.outposts.Outpost;
-import org.kingdoms.outposts.OutpostAddon;
-import org.kingdoms.outposts.OutpostEvent;
+import org.kingdoms.locale.KingdomsLang;
+import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.outposts.*;
 import org.kingdoms.utils.MathUtils;
 
 import java.util.ArrayList;
@@ -33,14 +30,14 @@ public class CommandOutpostJoin extends KingdomsCommand {
 
         // TODO fix thess
         String[] args = context.args;
-        CommandSender sender = context.sender;
+        CommandSender sender = context.getSender();
 
         Outpost outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return;
 
         OutpostEvent event = outpost.getEvent();
         if (event == null) {
-            KingdomsLang.COMMAND_OUTPOST_JOIN_EVENT_NOT_STARTED.sendMessage(sender, "outpost", args[0]);
+            OutpostsLang.COMMAND_OUTPOST_JOIN_EVENT_NOT_STARTED.sendMessage(sender, "outpost", args[0]);
             return;
         }
 
@@ -53,23 +50,23 @@ public class CommandOutpostJoin extends KingdomsCommand {
         }
 
         if (OutpostEvent.getKingdomsInEvents().containsKey(kingdom.getId())) {
-            KingdomsLang.COMMAND_OUTPOST_JOIN_ALREADY.sendError(player);
+            OutpostsLang.COMMAND_OUTPOST_JOIN_ALREADY.sendError(player);
             return;
         }
 
         if (!kp.isAdmin()) {
             if (event.isFull()) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_EVENT_FULL.sendMessage(sender, "outpost", args[0]);
+                OutpostsLang.COMMAND_OUTPOST_JOIN_EVENT_FULL.sendMessage(sender, "outpost", args[0]);
                 return;
             }
 
             if (kingdom.getOnlineMembers().size() < outpost.getMinOnlineMembers()) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_MIN_ONLINE_MEMBERS.sendMessage(sender, "outpost", args[0], "min", outpost.getMinOnlineMembers());
+                OutpostsLang.COMMAND_OUTPOST_JOIN_MIN_ONLINE_MEMBERS.sendMessage(sender, "outpost", args[0], "min", outpost.getMinOnlineMembers());
                 return;
             }
 
             if (!kp.hasPermission(OutpostAddon.OUTPOST_JOIN_PERMISSION)) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_PERMISSION.sendMessage(sender, "outpost", args[0]);
+                OutpostsLang.COMMAND_OUTPOST_JOIN_PERMISSION.sendMessage(sender, "outpost", args[0]);
                 return;
             }
 
@@ -81,7 +78,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
             if (outpost.getResourcePointsCost() != null) {
                 rp = (long) MathUtils.eval(outpost.getResourcePointsCost(), settings);
                 if (!kingdom.hasResourcePoints(rp)) {
-                    KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS.sendMessage(sender, "outpost", args[0], "cost", rp);
+                    OutpostsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS.sendMessage(sender, "outpost", args[0], "cost", rp);
                     return;
                 }
             }
@@ -89,7 +86,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
             if (outpost.getMoneyCost() != null) {
                 cost = MathUtils.eval(outpost.getMoneyCost(), settings);
                 if (!kingdom.hasMoney(cost)) {
-                    KingdomsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY.sendMessage(sender, "outpost", args[0], "cost", cost);
+                    OutpostsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY.sendMessage(sender, "outpost", args[0], "cost", cost);
                     return;
                 }
             }
@@ -99,12 +96,12 @@ public class CommandOutpostJoin extends KingdomsCommand {
         }
 
         for (Player member : kingdom.getOnlineMembers()) {
-            KingdomsLang.COMMAND_OUTPOST_JOIN_JOINED.sendMessage(member, "outpost", args[0]);
+            OutpostsLang.COMMAND_OUTPOST_JOIN_JOINED.sendMessage(member, "outpost", args[0]);
         }
         for (UUID kingdomId : event.getParticipants().keySet()) {
             Kingdom participant = Kingdom.getKingdom(kingdomId);
             for (Player member : participant.getOnlineMembers()) {
-                KingdomsLang.COMMAND_OUTPOST_JOIN_ANNOUNCEMENT.sendMessage(member, "kingdom", kingdom.getName(), "outpost", args[0]);
+                OutpostsLang.COMMAND_OUTPOST_JOIN_ANNOUNCEMENT.sendMessage(member, "kingdom", kingdom.getName(), "outpost", args[0]);
             }
         }
 

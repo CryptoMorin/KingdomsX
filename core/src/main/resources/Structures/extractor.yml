@@ -1,0 +1,79 @@
+name: "&2Extractor"
+type: extractor
+default-name: 'Extractor'
+max-level: 3
+upgrade-cost: lvl * 1000
+
+limits:
+  per-land: 5
+  total: 50
+
+particles:
+  1:
+    place:
+      particle: CRIT
+      count: 70
+      offset: 0.5, 0.5, 0.5
+    break:
+      particle: CRIT
+      count: 70
+      offset: 0.5, 0.5, 0.5
+sounds:
+  1:
+    place: BLOCK_BEACON_ACTIVATE
+    break: BLOCK_BEACON_DEACTIVATE
+    fuel-fill: BLOCK_FIRE_EXTINGUISH
+hologram:
+  1:
+    lines:
+      - "&8-=( &2Extractor {$s}%roman_level% &8)=-"
+    height: 1
+block:
+  1: GOLD_BLOCK
+  2: DIAMOND_BLOCK
+  3: EMERALD_BLOCK
+cost: 2000
+sell: 1000
+
+capacity: 500
+
+fuel:
+  enabled: true
+  capacity: lvl * 1000
+
+  # https://github.com/CryptoMorin/KingdomsX/wiki/Config#item-matchers
+  variants:
+    first:
+      material: COAL
+      fill-amount-per-item: 5
+    second:
+      material: CHARCOAL
+      fill-amount-per-item: 3
+    third:
+      material: BLAZE_ROD
+      fill-amount-per-item: 100
+generator:
+  1:
+    amount: 1
+    fuel: 0.5
+    every: 25sec
+  2:
+    amount: 1
+    fuel: 0.5
+    every: 20sec
+  3:
+    amount: 1
+    fuel: 0.5
+    every: 10sec
+item:
+  1:
+    name: "&2Extractors"
+    material: MUSIC_DISC_CAT
+    lore:
+      - "&6Extractors will produce resource points."
+      - "&6You can collect the resource points"
+      - "at any time."
+      - ""
+      - "&7⚫ &2Fuel&8: &6%fuel%"
+      - "&7⚫ &2Every&8: &6%every%"
+      - "&7⚫ &2Resource Points&8: &6%resource-points%"

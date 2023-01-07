@@ -5,10 +5,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.main.config.KingdomsConfig;
-import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.string.StringUtils;
 
@@ -40,6 +39,6 @@ public final class OutpostManager implements Listener {
         if (rp <= 0) return;
 
         kingdom.addResourcePoints(-rp);
-        KingdomsLang.OUTPOST_EVENTS_DEATH.sendMessage(player, "rp", StringUtils.toFancyNumber(rp));
+        OutpostsLang.OUTPOST_EVENTS_DEATH.sendMessage(player, "rp", StringUtils.toFancyNumber(rp));
     }
 }

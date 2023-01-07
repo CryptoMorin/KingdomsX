@@ -7,12 +7,6 @@ adjoining-protection:
   radius: int
   marginal-error-limit: int
 
-ransack-mode:
-  enabled: bool
-  cmd-names:
-    (type): list
-    (elements): str
-
 bonus:
   resource-points: Math
   bank: Math
@@ -40,7 +34,11 @@ pacifism:
 
 shields:
   disallow-invasions: bool
-  last-invasion-cooldown: Period
+  purchase-cooldown:
+    last-siege-cannon-hit: Period
+    last-invasion:
+      attacked: Period
+      defended: Period
   disable-pvp: bool
 
 champions:
@@ -74,10 +72,6 @@ masswar:
 
   interval: Period
   time: str
-
-  costs:
-    resource-points: int
-    money: int
 
   bossbar:
     enabled: bool

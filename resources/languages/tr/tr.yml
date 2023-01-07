@@ -286,7 +286,7 @@ nexus:
         height: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cheight limit&8: &e%height%'
         width: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cwidth limit&8: &e%width%'
       set: '&2Krallığınızın bayrak resmi olarak değiştirildi&8: &6%flag%'
-      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_flag%} &6to open your current flag URL.
+      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%} &6to open your current flag URL.
       validate: '&2Validating image...'
       removed: '&2Your kingdom''s flag image was removed.'
     color:
@@ -497,7 +497,7 @@ command:
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
       others-permission: '&cBaşkalarının bilgilerini görme izniniz yok.'
       message-admin: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        COMPLEX:&8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
         &7| &2Başkent&8: &6%capital%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -511,10 +511,10 @@ command:
         &7| &2Krallıklar&8:
         %kingdoms%
       message: |
-        COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2Kral&8: &6%king_status%
-        &7| &2Ulus&8: &6%kingdoms_nation%
+        &7| &2Ulus&8: &6%kingdoms_nation_name%
         &7| &2İtibaren&8: &6%kingdoms_nation_since%
         &7| &2Olabilir&8: &6%kingdoms_might%
         &7| &2Kalkan&8: &6%kingdoms_nation_shield_time_left%
@@ -534,10 +534,10 @@ command:
         COMPLEX:&7| &2Düşmanlar&8:
         &e%enemies%
       kingdoms: |
-        COMPLEX:hover:{&6%kingdoms_name%;&2Üyeler&8: &6%kingdoms_members%
+        COMPLEX:hover:{&6%kingdoms_kingdom_name%;&2Üyeler&8: &6%kingdoms_members%
         &2Kral&8: &6%kingdoms_king%
         &2Araziler&8: &6%kingdoms_lands%}
-      relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+      relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%
     not:
       in-nation: '&cBelirtilen krallık/oyuncu ulusta değil.'
     setspawn:
@@ -585,7 +585,7 @@ command:
         Tüm ulus krallık üyeleri atılacak
         Devam etmek istediğine emin misin?
         &e/k nation disband &4yazarak onayla.
-      announce: '&e%player%, &e%kingdoms_nation% &2ulusunu dağıttı'
+      announce: '&e%player%, &e%kingdoms_nation_name% &2ulusunu dağıttı'
     invite:
       description: '&6Ulusa katılmaları için bir krallığa davetiye gönderir.'
       usage: '&4Kullanım&8: &e/k nation invite <krallık> [süre sonu]'
@@ -640,7 +640,7 @@ command:
       no-more-pages: '&cYüklenecek başka sayfa yok.'
       negative: '&cNegatif sayfalar gösterilemez.'
       entry: |
-        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Üyeler&8: &6%kingdoms_nation_kingdoms%
+        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Üyeler&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Kaynak Puanları&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Banka&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -656,7 +656,7 @@ command:
       &cUlusunuzu başkent olarak bırakamazsınız.
       &e/k nation disband &cyazarak ulusu dağıtmalısın
       &cya da &e/k nation capital &cyazarak ulusun başkentini değiştir
-    leave-announce: '&e%kingdoms_name% &culustan çıktı!'
+    leave-announce: '&e%kingdoms_kingdom_name% &culustan çıktı!'
     broadcast-description: '&6Tüm ulus üyelerine bir mesaj yayınlar.'
     broadcast-usage: /k nation broadcast <mesaj>
     broadcast-cooldown: '&cTekrar duyuru yapmak için &e%time% &ckadar beklemelisin.'
@@ -683,7 +683,7 @@ command:
     description: '&6Kullanılabilir ulus komutlarını gösterir.'
     broadcast-format: |
 
-      &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
+      &8[&6%kingdoms_nation_name%&7-&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
     ally:
       description: '&6Bir ulusa ittifak isteği gönderin.'
       usage: '&4Kullanım&8: &e/k nation ally &2<nation>'
@@ -831,12 +831,12 @@ command:
     usage: '/k show [oyuncu | krallık| #OYUNCU | #KRALLIK] <oyuncu | krallık>'
     others-permission: '&cDiğerlerinin bilgilerini görmek için yetkin yok.'
     message-admin: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Kral&8: &6%king_status%
       &7| &2Ev&8: &6%kingdoms_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
-      &7| &2Ulus&8: &6%kingdoms_nation%
+      &7| &2Ulus&8: &6%kingdoms_nation_name%
       &7| &2Olabilir&8: &6%kingdoms_fancy_might%
       &7| &2Banka&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Araziler&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
@@ -846,10 +846,10 @@ command:
       &7| &2Üyeler&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      COMPLEX:&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Kral&8: &6%king_status%
-      &7| &2Ulus&8: &6%kingdoms_nation%
+      &7| &2Ulus&8: &6%kingdoms_nation_name%
       &7| &2Olabilir&8: &6%kingdoms_might%
       &7| &2İtibaren&8: &6%kingdoms_since%
       &7| &2Kalkan&8: &6%kingdoms_shield_time_left%
@@ -873,7 +873,7 @@ command:
       &2Son Bağış&8: &6%kingdoms_last_donation_time%
       &2Rütbe&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_name%
+    relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%
   claim:
     description: '&6Üstünde durduğun yeri claimle.'
     disabled-world: '&6%world% &cdünyasında claim devre dışı'
@@ -1047,7 +1047,7 @@ command:
     success: '&4Krallığınız dağıldı!'
     confirmation: "&4Krallığınızı dağıtmak üzeresiniz.\nTüm üyeleriniz atılacak ve \ntopraklarınız sahipsiz\
       \ kalacaktır\ndevam etmek istediğine emin misin?\nTekrardan &e/k disband &4yaz ve onayla"
-    announce: '&e%player% &6krallıklarını dağıttı &e%kingdoms_name%'
+    announce: '&e%player% &6krallıklarını dağıttı &e%kingdoms_kingdom_name%'
   about:
     description: '&6Kingdoms eklentisi hakkında.'
   invite:
@@ -1176,7 +1176,7 @@ command:
     no-more-pages: '&cYüklenecek başka sayfa yok.'
     negative: '&cNegatif sayfalar gösterilemez.'
     entry: |
-      COMPLEX:&8♦ &7%rank%. hover::{&2%kingdoms_name%;&7♦ &2Üyeler&8: &6%kingdoms_members%
+      COMPLEX:&8♦ &7%rank%. hover::{&2%kingdoms_kingdom_name%;&7♦ &2Üyeler&8: &6%kingdoms_members%
       &7♦ &2Araziler&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2Kaynak Puanları&8: &6%kingdoms_fancy_resource_points%
       &7♦ &2Banka&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
@@ -1223,7 +1223,7 @@ command:
     disabled:
       invader: '&cYteslim olamazsın.'
       defender: '&cTeslim olamazsın.'
-    defender-surrendered: '&6%kingdoms_name% &2krallığından &6%player% &2teslim oldu. &2Topraklar artık
+    defender-surrendered: '&6%kingdoms_kingdom_name% &2krallığından &6%player% &2teslim oldu. &2Topraklar artık
       &6%kingdom% &2krallığının!'
     defender-permission: '&cYteslim olma izniniz yok.'
     no-invasion: '&cHiçbir krallığı işgal etmiyorsun ya da işgal edilmiyorsun.'
@@ -1330,15 +1330,15 @@ command:
     direct:
       message-missing: '&cYou need a message to directly send to &e%kingdom% &ckingdom.'
       message-self: '&cYou can''t send a direct message to your own kingdom.'
-      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8]
         &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
-      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8]
         %displayname% &7≫ &6%message%'
   broadcast:
     description: '&6Tüm krallık üyelerine bir mesaj yayınlar.'
     usage: /k broadcast <mesaj>
     cooldown: '&cTekrar duyuru yapabilmek için &e%time% &ckadar bekle.'
-    format: "\n&8[&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name%\
+    format: "\n&8[&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name%\
       \ &c%player%&8] &6%message% \n"
   king:
     description: '&6Krallığın yeni kral olarak belirleyin.'
@@ -1436,7 +1436,7 @@ command:
       description: '&6Şu anda bir krallık için bulunduğunuz ülkeyi zorla alın.'
       usage: /k admin claim <krallık>
       success: '&6%x%&7, &6%z% &2noktası krallık noktası olarak alındı.'
-      already-claimed: '&cBu toprak zaten &e%kingdoms_name% &ctarafından alınmış'
+      already-claimed: '&cBu toprak zaten &e%kingdoms_kingdom_name% &ctarafından alınmış'
     rank:
       description: '&6Bir oyuncunun krallık rütbesini değiştirin.'
       usage: /k admin rank <isim> <rütbe>
@@ -1494,7 +1494,7 @@ command:
       usage: '&cKullanım&8: &e/k admin join <isim> <krallık>'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım'
       in-kingdom: |
-        COMPLEX:&6%player% &2zaten &6%kingdoms_name% &2krallığından
+        COMPLEX:&6%player% &2zaten &6%kingdoms_kingdom_name% &2krallığından
         &2Devam etmek istiyorsan&8: hover::{&6/k admin join %player% %kingdom% confirm;&2Onaylamak için hover:;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player% &2zaten &6%kingdom% &2krallığından'
       success: '&6%player% &2artık &6%kingdom% &2krallığından'
@@ -1505,14 +1505,14 @@ command:
       success: '&6%kingdom% &2dağıtıldı.'
     player:
       found: '&6%name% &8(&7%uuid%&8) &2aşağıdaki krallıklarda&8:'
-      kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
+      kingdom: '&8- &2%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&cBu oyuncunun krallığı kopyalanmamış.'
       description: '&6Bir oyuncunun bilgilerini görüntüleyin.'
       usage: '&4Usage&8: &e/k admin player &2<player>'
       info: |
         &7| &2İsim&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Krallık&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Krallık&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
         &7| &2Rütbe&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &7| &2Ulus Rütbesi&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| &2İşaretleyicileri Kullanma&8: %visualizer%
@@ -1521,7 +1521,7 @@ command:
         &7| &2Otomatik Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
         &7| &2Harita Boyutu&8: &6%map_width% &8- &6%map_height%
         &7| &2Toplam Bağışlar&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
-        &7| &2Claimler &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Claimler &7(&6%kingdoms_player_claims%&7)&8: %claims%
         &7| &2Sıkıştırılmış Veri&8: &6%compressed%
     home:
       not-set: '&e%kingdom% &cbir başlangıç noktası yok.'
@@ -1931,7 +1931,7 @@ comamnd:
       info: |
         COMPLEX:&7| &2Isim&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Yönetici&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Krallık&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Krallık&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
         &7| &2Rütbe&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &7| &2Ulusal Sıra&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| &2İşaretçileri Kullanma&8: %visualizer%
@@ -1940,7 +1940,7 @@ comamnd:
         &7| &2Otomatik Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
         &7| &2Harita boyutu&8: &6%map_width% &8- &6%map_height%
         &7| &2Toplam Bağış&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
-        &7| &2Claimler &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Claimler &7(&6%kingdoms_player_claims%&7)&8: %claims%
         &7| &2Sıkıştırılmış Veriler&8: &6%compressed%
     nation:
       disband:
@@ -2007,10 +2007,10 @@ siege-cannon:
   not-ammo: '&cToplar yalnızca ateş yükleri (ateş topları) ile doldurulabilir.'
   hit:
     unclaimed-land: '&cTop sahipsiz bir araziye çarptı.'
-    no-shield: '&2Top, &6%kingdoms_name% &2krallığına ulaştı. Kalkanları yoktu.'
-    pacifist: '&cTop &e%kingdoms_name% &ckrallığını vurdu, ama onlar barışçıl bir krallık.'
-    destroyed-shield: '&2Top, &6%kingdoms_name% &2krallığına ulaştı. Kalkanları yok edildi.'
-    damaged-shield: '&2Top, &6%kingdoms_name% &2krallığına ulaştı. Kalan kalkan&8: &6%kingdoms_shield_time_left%'
+    no-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yoktu.'
+    pacifist: '&cTop &e%kingdoms_kingdom_name% &ckrallığını vurdu, ama onlar barışçıl bir krallık.'
+    destroyed-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yok edildi.'
+    damaged-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalan kalkan&8: &6%kingdoms_shield_time_left%'
     damaged-shield-notify: '&e%attacker-kingdom% &ckrallığı, topraklarınıza &e%attacked-chunk% &coranında
       çarptı. Kalan kalkan&8: &6%kingdoms_shield_time_left%'
   friendly:

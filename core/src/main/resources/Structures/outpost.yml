@@ -1,0 +1,67 @@
+name: "&eOutpost"
+default-name: 'Outpost'
+type: outpost
+
+limits:
+  per-land: 1
+  total: 10
+
+# A kingdom-wide limit that prevents players from
+# purchasing certain items after a certain amount is purchased.
+purchase-limits:
+  diamonds: # This name doesn't matter
+    # Here you can use ItemMatcher properties
+    # https://github.com/CryptoMorin/KingdomsX/wiki/Config#item-matchers
+    material: DIAMOND
+    purchase-limit: # This special section needs to be present
+      # The cooldown doesn't persist between restarts.
+
+      # We're using math here to make it easier to understand.
+      # In this case, if you purchase 10 items together, you'll hit the limit.
+      cooldown-per-item: '[6hr] / 64' # = ~5mins %outpost_cooldown_per_item%
+
+      # When you purchase the items, the cooldown will accumulate,
+      # And once this limit is reached, they'll have to wait.
+      # Players will not be able to purchase items if the total cooldown
+      # is going to be more than this limit.
+      max-cooldown: 6hrs # %outpost_max_cooldown%
+  xp:
+    material: EXPERIENCE_BOTTLE
+    purchase-limit:
+      cooldown-per-item: '[1hr] / 64'
+      max-cooldown: 1hr
+
+particles:
+  1:
+    place:
+      particle: SPELL
+      count: 70
+      offset: 0.5, 0.5, 0.5
+    break:
+      particle: SPELL
+      count: 70
+      offset: 0.5, 0.5, 0.5
+sounds:
+  1:
+    place: BLOCK_BEACON_ACTIVATE
+    break: BLOCK_BEACON_DEACTIVATE
+hologram:
+  1:
+    lines:
+      - "&8-=( &eOutpost &8)=-"
+    height: 1
+block:
+  1: HAY_BLOCK
+cost: 500
+sell: 250
+item:
+  1:
+    name: "&9Outpost"
+    material: HAY_BLOCK
+    flags: [ HIDE_POTION_EFFECTS ]
+    lore:
+      - "&7The Outpost allows direct access to your Nexus."
+      - "&7It enables you to access turrets, upgrades,"
+      - "and unlockable structures."
+      - "&7Outposts can produce exp bottles from"
+      - "resource points aswell."

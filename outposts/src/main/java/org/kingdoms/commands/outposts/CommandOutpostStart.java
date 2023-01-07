@@ -7,9 +7,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.KingdomsParentCommand;
-import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.outposts.Outpost;
 import org.kingdoms.outposts.OutpostEvent;
+import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.utils.time.TimeFormatter;
 import org.kingdoms.utils.time.TimeUtils;
 
@@ -26,17 +26,17 @@ public class CommandOutpostStart extends KingdomsCommand {
     @Override
     public void execute(CommandContext context) {
         if (context.requireArgs(3)) return;
-        if (CommandOutpost.worldGuardMissing(context.sender)) return;
+        if (CommandOutpost.worldGuardMissing(context.getSender())) return;
 
         // TODO fix thess
         String[] args = context.args;
-        CommandSender sender = context.sender;
+        CommandSender sender = context.getSender();
 
         Outpost outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return;
 
         if (OutpostEvent.isEventRunning(outpost.getName())) {
-            KingdomsLang.COMMAND_OUTPOST_START_ALREADY_STARTED.sendError(sender, "outpost", outpost.getName());
+            OutpostsLang.COMMAND_OUTPOST_START_ALREADY_STARTED.sendError(sender, "outpost", outpost.getName());
             return;
         }
 
@@ -44,20 +44,18 @@ public class CommandOutpostStart extends KingdomsCommand {
         Long startsIn = TimeUtils.parseTime(args[2], TimeUnit.MINUTES);
 
         if (time == null || time <= 0) {
-            KingdomsLang.COMMAND_OUTPOST_START_INVALID_TIME.sendError(sender, "time", args[1]);
+            OutpostsLang.COMMAND_OUTPOST_START_INVALID_TIME.sendError(sender, "time", args[1]);
             return;
         }
 
         if (startsIn == null || startsIn < 0) {
-            KingdomsLang.COMMAND_OUTPOST_START_INVALID_TIME.sendError(sender, "time", args[2]);
+            OutpostsLang.COMMAND_OUTPOST_START_INVALID_TIME.sendError(sender, "time", args[2]);
             return;
         }
 
         if (startsIn > 1000) {
-            TimeFormatter start = new TimeFormatter(startsIn);
-            String format = start.format();
             for (Player player : Bukkit.getOnlinePlayers()) {
-                KingdomsLang.COMMAND_OUTPOST_START_SCHEDULED.sendMessage(player, "outpost", outpost.getName(), "start", format);
+                OutpostsLang.COMMAND_OUTPOST_START_SCHEDULED.sendMessage(player, "outpost", outpost.getName(), "start", TimeFormatter.of(startsIn));
             }
         }
         OutpostEvent.startEvent(outpost, time, TimeUnit.MILLISECONDS.toSeconds(startsIn) * 20L);

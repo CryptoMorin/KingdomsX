@@ -216,6 +216,22 @@ upgrades:
   misc-disabled: '{$e}已禁用升级杂项&e%upgrade%{$e}。'
   misc-max: '{$e}你已经把&e%upgrade%{$e}升到满级了。'
   misc-not-enough-resourcepoints: '{$e}你需要&e%cost%{$e}资源点才能升级&e%upgrade%。'
+  powerup:
+    upgrade: '{$p}已将{$s}%powerup%{$p}升至{$s}%level%{$p}级。'
+    max: '{$es}%powerup%{$e}已是满级。'
+    not-enough-resourcepoints: '{$e}你需要花费{$es}%cost%{$e}资源点才能升级{$es}%powerup%{$e}。'
+  champion:
+    upgrade: '{$p}已将{$s}%upgrade%{$p}升至{$s}%level%{$p}级。'
+    max: '{$es}%upgrade%{$e}已是满级。'
+    not-enough-resourcepoints: '{$e}你需要花费{$es}%cost%{$e}资源点才能升级{$es}%upgrade%{$e}。'
+  misc:
+    upgrade: '{$p}已将{$s}%upgrade%{$p}升至{$s}%level%{$p}级。'
+    enabled: '{$p}已启用{$s}%upgrade%{$p}。'
+    not-upgraded: '{$e}无法禁用未升级的杂项升级。'
+    cannot-be-disabled: '{$e}此杂项升级无法禁用。'
+    disabled: '{$e}已禁用{$es}%upgrade%{$e}。'
+    max: '{$es}%upgrade%{$e}已是满级。'
+    not-enough-resourcepoints: '{$e}你需要花费{$es}%cost%{$e}资源点才能升级{$es}%upgrade%{$e}。'
 champion-type:
   changed: '{$p}你王国的斗士已从{$s}%old_champion%{$p}变为{$s}%new_champion%。'
   already-in-use: '{$e}你的王国已经在使用&e%champion%{$e}斗士。'
@@ -826,7 +842,7 @@ command:
   pvp:
     description: '{$s}启用友方pvp'
     others-permission: '{$e}你没有权限设置他人的pvp模式。'
-    'on': '{$s}pvp模式8: {$p}已启用'
+    'on': '{$s}pvp模式: {$p}已启用'
     'off': '{$s}pvp模式{$sep}:{$e}已禁用'
   glow:
     description: '{$s}轻松地找到你的王国成员。'
@@ -862,9 +878,12 @@ command:
           {$p}你成功地把{$s}%amount%{$p}资源点从你的王国转入了你的文明。
           文明资源点{$sep}:{$s}%kingdoms_fancy_nation_resource_points%
           {$p}王国资源点{$sep}:{$s}%kingdoms_fancy_resource_points%
+      kingdom-usage: '&4Usage{$sep}: {$es}/k rp transfer kingdom {$p}<resource points>'
+      nation-usage: '&4Usage{$sep}: {$es}/k rp transfer nation {$p}<resource points>'
     not-enough:
       resource-points: '{$e}你的王国没有&e%rp%{$e}资源点。'
       money: '&e%rp%资源点{$e}需要&e$%worth%{$e}金钱, 但你只有&e$%balance%。'
+      nation-resource-points: '{$e}Your nation doesn''t have {$es}%rp% {$e}resource points.'
     negative: '{$e}你不能调度大小为负数的资源点'
     zero: '{$e}你不能调度大小为零的资源点'
     transfer-kingdom-description: '{$s}把你文明的资源点转到你的王国。'
@@ -976,6 +995,7 @@ command:
       max-claims: '{$e}你不能占领&e%lands%{$e}块土地。'
       description: '{$p}占领由已占领的土地围成的图形。'
       done: '{$p}hover:{{$s}/k claim confirm;{$p}点我执行;/k claim confirm}{$p}以占领土地'
+      max-iterations: '{$e}Maximum fill iteration cycle reached. Your shape is either too big to fill, or not completely surrounded by claims.'
     exceeded-max: '{$e}你不能占领超过&e%max%{$e}块土地！'
     already-owned: '{$e}这块土地已经被你的王国占领了！'
     occupied-land: '{$e}这块土地为其他王国所有！如果要入侵请输入/k invade！'
@@ -1414,7 +1434,7 @@ command:
         {$p}| {$p}自动占领{$sep}:%auto_claim% {$p}| {$p}自动地图{$sep}:%auto_map%
         {$p}| {$p}地图大小{$sep}:{$s}%map_width% {$sep}- {$s}%map_height%
         {$p}| {$p}总捐献{$sep}:{$s}%kingdoms_total_donations% {$p}| {$p}Last Donation{$sep}:{$s}%kingdoms_last_donation_time%
-        {$p}| {$p}占领土地数{$p}({$s}%kingdoms_claims%{$p}){$sep}:%claims%
+        {$p}| {$p}占领土地数{$p}({$s}%kingdoms_player_claims%{$p}){$sep}:%claims%
         {$p}| {$p}压缩数据{$sep}:{$s}%compressed%
       found: '{$p}玩家{$s}%name% {$sep}({$p}%uuid%{$sep}) {$p}在以下王国中{$sep}:'
       kingdom: '{$sep}-{$p}%kingdoms_name%{$sep}({$s}%uuid%{$sep})'
@@ -1473,6 +1493,9 @@ command:
       not-supported: '{$e}服务器的平台不支持此操作。'
       error: '{$e}打开文件失败{$sep}:{$es}%error%'
       opened: '{$p}打开了文件{$sep}:{$s}%file%'
+      unknown-link: '{$e}未知的链接！仅能识别KingdomsX官方的github链接！{$sep}:{$es}%link%'
+      gui-warning: '{$sep}[{$es}!{$sep}]{$es}警告{$sep}:{$es}此文件为GUI菜单文件。如果你安装了多语言，可以前往hover:{{$e}updates{$sep}->{$e}synchronize-guis;{$sep}点我查看选项;@https://github.com/CryptoMorin/KingdomsX/blob/1ed7ea77cf2f7773f9dcad682ac95261b6a4094e/core/src/main/resources/config.yml#L87}
+        {$es}来解决多语言菜单同步问题。'
     languagepack:
       description: '{$s}展示一系列可以下载或更新的语言包。'
       in-progress: '{$e}另一个操作正在进行中，你现在不能对语言包执行操作。'
@@ -1522,6 +1545,11 @@ command:
       purging: '{$e}正在清空全部王国数据……请不要做像运行指令或关服等的事情。'
       done: '{$p}清空完毕。'
       done-with-errors: '{$e}清空出现了错误。你的数据可能未被正确清空。如果如此，请将控制台里的报错上传给作者。'
+      not-loaded: '{$e}请等待插件完全加载再使用此指令。'
+    files:
+      description: test
+    missingguis:
+      description: test2
   sneak:
     description: '{$s}你与其他王国的关系不会使飞行失效。'
     others-permission: '{$e}你没有权限把他人设为潜行模式。'
@@ -1686,7 +1714,7 @@ command:
       reset: '{$p}你的地图尺寸已重置。'
     settings-description: '{$s}改变你的&e/k map {$s}设置。'
     scoreboard:
-      not-supported: '{$e}This server version doesn''t support scoreboard-based maps.'
+      not-supported: '{$e}此服务器版本不支持计分板地图。'
   fly:
     description: '{$s}启用在你王国土地上的飞行。'
     usage: '&e/k fly {$sp}[player]'
@@ -1707,6 +1735,7 @@ command:
     not-in-kingdom: '{$e}这个玩家不在你的王国中。'
     elections: '{$e}你不能在国王选举期间踢出国王。'
     cant-kick: '{$e}无法踢出&e%kicked%。'
+    self-secondary: '{$e}别再想着踢自己了！如果你真想试试，试试{$es}&l&nhover:{这个;点我打开链接;@https://www.youtube.com/watch?v=fQg5IWBXRl4}{$e}。'
   surrender:
     invader: '{$s}%invader%{$p}投降了！{$s}%kingdom%{$p}的斗士离开了。'
     disabled:
@@ -2069,17 +2098,37 @@ command:
     no-requests: '{$e}你没有任何传送请求。'
     player-didnt-request: '{$e}你没有任何待处理的传送请求。'
     multiple-requests: '{$e}你收到了多个传送请求。请指定玩家名称。'
+    expired:
+      teleporter: '{$e}你向{$es}%target%{$e}发送的传送请求过期了。'
+      target: '{$es}%teleporter%{$e}向你发送的传送请求过期了。'
+    disabled-world-teleporter: '{$e}你不能从这个世界传送走。'
+    disabled-world-target: '{$es}%target%{$e}所在的世界不支持传送。'
+    requested:
+      teleporter: '{$p}已向{$s}%target%{$p}发送传送请求。'
+      target: |
+        {$s}%teleporter%{$p}向你发送了一个传送请求。
+          {$sep}●{$p}输入{$s}hover:{/k tpaaccept %teleporter%;&7点我接受;/k tpaaccept %teleporter%}{$p}同意，
+          {$sep}●{$e}输入{$es}hover:{/k tpareject %teleporter%;&7点我拒绝;/k tpareject %teleporter%}{$e}拒绝。
   tpaaccept:
     description: '{$s}同意一位玩家的传送请求。'
-    already-teleporting: '&e%teleporter% {$e}目前正在传送至其他地点，请稍后再试。'
-    already-teleporting-notification: '&e%target% {$e}已接受你的传送请求，但是你已在传送了。'
+    already-teleporting:
+      teleporter: '{$es}%target%{$e}接受了你的传送请求，但你已在向其他地方传送'
+      target: '{$es}%teleporter%{$e}已在向其他地方传送。'
+    already-teleporting-notification: '&e%target%{$e}已接受你的传送请求，但是你已在传送了。'
     usage: '&e/k tpaaccept {$sp}[player]'
-    requester-offline: '&e%requester% {$e}目前处于离线状态。'
-    target-about-to-teleport: '{$s}%teleporter% {$e}将要传送了。'
-    teleporter-about-to: '{$s}%target% {$p}同意了你的传送请求。请站在原地不动以开始传送。'
-    target-failed-to-teleport: '&e%teleporter% {$e}的传送失败了。'
+    requester-offline: '&e%requester%{$e}目前处于离线状态。'
+    target-about-to-teleport: '{$s}%teleporter%{$e}将要传送了。'
+    teleporter-about-to: '{$s}%target%{$p}同意了你的传送请求。请站在原地不动以开始传送。'
+    target-failed-to-teleport: '&e%teleporter%{$e}的传送失败了。'
     teleporter-failed-to-teleport: '{$e}传送失败。'
-    teleported-notification: '&e%teleporter% {$e}已传送。'
+    teleported-notification: '&e%teleporter%{$e}已传送。'
+    changed-relation: '{$e}由于王国关系临时发生了改变，你无法接受请求。'
+    disabled-world-teleporter: '{$es}%teleporter%{$e}所在世界不支持传送。'
+    disabled-world-teleporter-notify: '{$es}%target%{$e}接受了你的传送请求，但你所在世界不支持传送。'
+    disabled-world-target: '{$e}你所在世界不支持传送，无法接受传送请求。'
+    cancelled: '{$es}%teleporter%{$e}的传送被取消了。'
+    teleporting-target: '{$s}%teleporter%{$p}将在{$s}%timer%秒后传送至你……'
+    teleporting-teleporter: '{$s}%target%{$p}接受了你的传送请求。不要移动……'
   tpareject:
     description: '{$s}拒绝一位玩家的传送请求。'
     usage: '&e/k tpareject {$sp}[player]'
@@ -2361,6 +2410,8 @@ invite-codes:
   max-uses: '{$e}已达到邀请码的最大使用次数。'
   used: '{$s}%player%{$p}使用了邀请码加入王国。'
 structures-limit:
-  on-claim: '{$e}The land you claimed at {$es}%chunk% {$e}had some structures on it which were broken due to a structure limit.'
+  on-claim: '{$e}你占领的，位于{$es}%chunk%{$e}的土地由于设施数量限制，上面的部分设施被破坏了。'
 turrets-limit:
-  on-claim: '{$e}The land you claimed at {$es}%chunk% {$e}had some turrets on it which were broken due to a turret limit.'
+  on-claim: '{$e}你占领的，位于{$es}%chunk%{$e}的土地由于炮塔数量限制，上面的部分炮塔被破坏了。'
+chat-input:
+  cancel: cancel

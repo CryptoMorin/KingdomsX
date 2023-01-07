@@ -7,9 +7,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.KingdomsParentCommand;
-import org.kingdoms.main.locale.KingdomsLang;
 import org.kingdoms.outposts.Outpost;
 import org.kingdoms.outposts.OutpostEvent;
+import org.kingdoms.outposts.OutpostsLang;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +28,13 @@ public class CommandOutpostStop extends KingdomsCommand {
 
         OutpostEvent event = OutpostEvent.getEvent(outpost.getName());
         if (event == null) {
-            context.sendError(KingdomsLang.COMMAND_OUTPOST_STOP_NOT_STARTED, "outpost", outpost.getName());
+            context.sendError(OutpostsLang.COMMAND_OUTPOST_STOP_NOT_STARTED, "outpost", outpost.getName());
             return;
         }
 
         event.stop(true);
         for (Player player : Bukkit.getOnlinePlayers()) {
-            KingdomsLang.COMMAND_OUTPOST_STOP_STOPPED.sendMessage(player, "outpost", outpost.getName());
+            OutpostsLang.COMMAND_OUTPOST_STOP_STOPPED.sendMessage(player, "outpost", outpost.getName());
         }
     }
 

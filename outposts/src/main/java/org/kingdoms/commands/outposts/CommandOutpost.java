@@ -3,10 +3,10 @@ package org.kingdoms.commands.outposts;
 import org.bukkit.command.CommandSender;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
-import org.kingdoms.main.locale.KingdomsLang;
-import org.kingdoms.main.locale.compiler.MessageCompiler;
-import org.kingdoms.main.locale.messager.MessageBuilder;
+import org.kingdoms.locale.compiler.MessageCompiler;
+import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.services.managers.SoftService;
 
 public class CommandOutpost extends KingdomsParentCommand {
@@ -21,7 +21,7 @@ public class CommandOutpost extends KingdomsParentCommand {
     protected static Outpost getOutpost(CommandContext context, int index) {
         String outpostName = context.arg(index);
         Outpost outpost = Outpost.getOutpost(outpostName);
-        if (outpost == null) context.sendError(KingdomsLang.COMMAND_OUTPOST_NOT_FOUND, "outpost", outpostName);
+        if (outpost == null) context.sendError(OutpostsLang.COMMAND_OUTPOST_NOT_FOUND, "outpost", outpostName);
         return outpost;
     }
 

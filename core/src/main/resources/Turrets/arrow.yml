@@ -9,6 +9,10 @@ sell: 50
 # Maximum level this turret can be upgraded to.
 max-level: 3
 
+# Useful when "hologram-update-ticks" in config.yml is enabled.
+# Used for optimization purposes.
+dont-update-holograms: false
+
 particles:
   1:
     place:
@@ -71,7 +75,7 @@ cooldown: 15 - lvl
 max-targets: 1
 max-ammo: lvl * 2000
 upgrade-cost: lvl * 50
-fire: 100
+fire: 100 # From which level should the turret should shoot flame arrows
 particle: ~
 
 # From which level can this turret be controlled manually by players.

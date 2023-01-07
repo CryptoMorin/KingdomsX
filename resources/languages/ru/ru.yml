@@ -96,10 +96,10 @@ siege-cannon:
   not-ammo: '&cПушки могут быть заряжены только огненными снарядами (Фаерболами).'
   hit:
     unclaimed-land: '&cПушка попала на незахваченную землю!'
-    no-shield: '&7Пушка попала по &6%kingdoms_name% &7которые не имеют щит!'
-    pacifist: '&cПушка попала по &e%kingdoms_name% &cно они мирное королевство'
-    destroyed-shield: '&7Пушка поразила &6%kingdoms_name% &7, их щит был уничтожен!'
-    damaged-shield: '&7Пушка поразила &6%kingdoms_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%kingdoms_shield_time_left%'
+    no-shield: '&7Пушка попала по &6%kingdoms_kingdom_name% &7которые не имеют щит!'
+    pacifist: '&cПушка попала по &e%kingdoms_kingdom_name% &cно они мирное королевство'
+    destroyed-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7, их щит был уничтожен!'
+    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%kingdoms_shield_time_left%'
     damaged-shield-notify: '&7Королевство &e%attacker-kingdom% &7нанесло удар по вашей земле &e%attacked-chunk%&7.
       Осталось ЩИТа&8: &c%kingdoms_shield_time_left%'
   masswar-only: '&cВы можете использовать осадные пушки только во время массовых войн.'
@@ -327,7 +327,7 @@ nexus:
     flag:
       enter-value: '&7Пожалуйста введите ссылку на флаг в чат или нажмите или введите hover:{&ccancel;&cCancel;cancel}
         &7для отмены'
-      current: Нажмите hover:{&7здесь;&7Чтобы открыть ссылку;url:%kingdoms_flag%} &6чтобы открыть ваш
+      current: Нажмите hover:{&7здесь;&7Чтобы открыть ссылку;url:%kingdoms_kingdom_flag%} &6чтобы открыть ваш
         флаг
       wrong-url: '&cНеправильная ссылка&8: &e%flag%'
       contains: '&cСсылка на флаг не может быть принята, потому-что содержит запрещённые слова&8: &e%flag%'
@@ -570,7 +570,7 @@ command:
       usage: '&7Использование&8: &e/k show &9[player | nation | #PLAYER | #NATION] &7<player | nation>'
       others-permission: '&cУ вас недостаточно прав для просмотра остальной информации!'
       message-admin: |
-        &8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
         &7| &7Столица&8: &6%kingdoms_nation:capital get=name%
         &7| &7Спавн&8: &6%kingdoms_nation_spawn%
@@ -584,10 +584,10 @@ command:
         &7| &7Королевства&8:
         %kingdoms%
       message: |
-        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &7Король&8: &6%king_status%
-        &7| &7Нация&8: &6%kingdoms_nation%
+        &7| &7Нация&8: &6%kingdoms_nation_name%
         &7| &7Дата основания&8: &6%kingdoms_nation_since%
         &7| &7Мощь&8: &6%kingdoms_might%
         &7| &7Щит&8: &6%kingdoms_nation_shield_time_left%
@@ -607,10 +607,10 @@ command:
         &7| &7Враги&8:
         &e%enemies%
       kingdoms: |
-        hover:{&6%kingdoms_name%;&7Участники&8: &6%kingdoms_members%
+        hover:{&6%kingdoms_kingdom_name%;&7Участники&8: &6%kingdoms_members%
         &7Король&8: &6%kingdoms_king%
         &7Территории&8: &6%kingdoms_lands%}
-      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     not:
       in-nation: '&cВыбранное королевство/игрок не состоит в нации'
     setspawn:
@@ -659,7 +659,7 @@ command:
         Все королевства будут выгнаны из нации
         Вы точно хотите сделать это?
         Повторите команду &e/k nation disband &4чтобы подтвердить
-      announce: '&e%player% &6разрушил нацию &e%kingdoms_nation%!'
+      announce: '&e%player% &6разрушил нацию &e%kingdoms_nation_name%!'
     invite:
       description: '&6Отправляет приглашение в нацию указанному королевствту'
       usage: '&7Использование&8: &e/k nation invite &7<королевство> &9[expiration]'
@@ -714,7 +714,7 @@ command:
       no-more-pages: '&cБольше нет страниц для загрузки'
       negative: '&cНельзя посмотреть страницы с отрицательным числом'
       entry: |
-        &8♦ &7%rank%. hover:{&7%kingdoms_nation%;&7♦ &7Участники&8: &6%kingdoms_nation_kingdoms%
+        &8♦ &7%rank%. hover:{&7%kingdoms_nation_name%;&7♦ &7Участники&8: &6%kingdoms_nation_kingdoms%
         &7♦ &7Очки ресурсов&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &7Баланс&8: &6%kingdoms_fancy_nation_bank% монет} &7- &6%kingdoms_fancy_nation_might% монет
     kick:
@@ -730,7 +730,7 @@ command:
       &cСтолица не может покинуть нацию
       Распустите нацию командой &e/k nation disband
       &cИли измените столицу нации &e/k nation capital
-    leave-announce: '&e%kingdoms_name% &cпокинуло нацию!'
+    leave-announce: '&e%kingdoms_kingdom_name% &cпокинуло нацию!'
     broadcast-description: '&6Отправить объявления всем участникам нации'
     broadcast-usage: '&7Использование&8: &e/k nation broadcast &7<message>'
     capital:
@@ -803,7 +803,7 @@ command:
     description: '&6Показывает основные команды нации'
     broadcast-format: |
 
-      &8[&6%kingdoms_nation%&7-&6%kingdoms_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
+      &8[&6%kingdoms_nation_name%&7-&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
   rename:
     description: '&6Переименовывает ваше королевство'
     no-kingdom: '&cУ вас нет королевства!'
@@ -890,12 +890,12 @@ command:
     usage: '&4Использование: &e/k show &9[player | kingdom | #PLAYER] &7<player | kingdom>'
     others-permission: '&cУ вас недостаточно прав для просмотра другой информации'
     message-admin: |
-      &8&m---------------=(&9&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&9&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &8▪ &7Король&8: &e%king_status%
       &8▪ &7Спавн&8: &2%kingdoms_home%
       &8▪ &7Нексус&8: &b%kingdoms_nexus%
-      &8▪ &7Нация&8: &6%kingdoms_nation%
+      &8▪ &7Нация&8: &6%kingdoms_nation_name%
       &8▪ &7Сила&8: &c%kingdoms_fancy_might%
       &8▪ &7Баланс&8: &e%kingdoms_fancy_bank% монет 
       &8▪ &7Налоги&8:
@@ -908,10 +908,10 @@ command:
       &8▪ &7Участники&8: &b%kingdoms_members%&7/&3%kingdoms_max_members%
       %members%
     message: |
-      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &8▪ &7Король&8: &e%king_status%
-      &8▪ &7Нация&8: &2%kingdoms_nation%
+      &8▪ &7Нация&8: &2%kingdoms_nation_name%
       &8▪ &7Сила&8: &c%kingdoms_might%
       &8▪ &7Дата основания&8: &9%kingdoms_since%
       &8▪ &7Щит&8: &d%kingdoms_shield_time_left%
@@ -941,7 +941,7 @@ command:
       &7Послд.пожертвование&8: &6%kingdoms_last_donation_time%
       &7Должность&8: &6%kingdoms_rank_name%}
     # offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%'
-    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
     description: '&6Захватить землю, на которой вы сейчас находитесь.'
     disabled-world: '&cЗахват отключен в &6%world%'
@@ -1122,7 +1122,7 @@ command:
       Все земли будут заброшенны
       Вы уверены?
       Повторите &e/k disband &4снова чтобы распустить королевство.
-    announce: '&e%player% &6распустил королевство &e%kingdoms_name%!'
+    announce: '&e%player% &6распустил королевство &e%kingdoms_kingdom_name%!'
   about:
     description: '&6Про плагин Kingdom'
   book:
@@ -1249,7 +1249,7 @@ command:
       description: '&6Forcibly claim the land you are currently standing in for a kingdom.'
       usage: '&7Использование&8: &e/k admin claim &7<королевство>'
       success: '&7Claimed &6%x%&7, &6%z% &7as kingdom land.'
-      already-claimed: '&cThis land is already claimed by &e%kingdoms_name%'
+      already-claimed: '&cThis land is already claimed by &e%kingdoms_kingdom_name%'
     rank:
       description: '&6Change a players kingdom rank.'
       usage: '&7Использование&8: &e/k admin rank &7<player> <rank>'
@@ -1340,7 +1340,7 @@ command:
       usage: '&cИспользование&8: &e/k admin join &7<player> <kingdom>'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
       in-kingdom: |
-        &6%player% &7is already in a kingdom named &6%kingdoms_name%
+        &6%player% &7is already in a kingdom named &6%kingdoms_kingdom_name%
         &7If you'd like to continue do&8: hover:{&6/k admin join %player% %kingdom% confirm;&7Click to confirm;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player% &7is already a member of &6%kingdom%'
       success: '&6%player% &7is now a member of &6%kingdom%'
@@ -1387,7 +1387,7 @@ command:
       info: |
         &8| &7Никнейм&8: &6%player% &8(hover:{&5%id%;&7Copy;|%id%}&8)
         &8| &7Админ&8: %admin% &7| &7Spy&8: %spy%
-        &8| &7Королевство&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&7Copy;|%kingdom_id%}&8)
+        &8| &7Королевство&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&7Copy;|%kingdom_id%}&8)
         &8| &7Должность&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &8| &7Нац.банк&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &7Чат&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &8| &7Использует маркеры&8: %visualizer%
@@ -1396,10 +1396,10 @@ command:
         &8| &7Авто-взятие терр.&8: %auto_claim% &7| &7Авто-карта&8: %auto_map%
         &8| &7Размер карты&8: &6%map_width% &8- &6%map_height%
         &8| &7Всего задонатил&8: &6%kingdoms_total_donations% &7| &7Последний раз донатил&8: &6%kingdoms_last_donation_time%
-        &8| &7Территорий &7(&6%kingdoms_claims%&7)&8: %claims%
+        &8| &7Территорий &7(&6%kingdoms_player_claims%&7)&8: %claims%
         &8| &7Сжатые данные&8: &6%compressed%
       found: '&7Игрок &6%name% &8(&7%uuid%&8) &7находится в следующих королевствах&8:'
-      kingdom: '&8- &7%kingdoms_name% &8(&6%uuid%&8)'
+      kingdom: '&8- &7%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&cКоролевство этого игрока не дублируется.'
     kick:
       description: '&6Kick a player out of a kingdom.'
@@ -1582,7 +1582,7 @@ command:
     no-more-pages: '&cБольше нет страниц для загрузки'
     negative: '&cВы на самой первой странице!'
     entry: |
-      &8♦ &7%rank%. hover:{&7%kingdoms_name%;&7♦ &7Участники&8: &6%kingdoms_members%
+      &8♦ &7%rank%. hover:{&7%kingdoms_kingdom_name%;&7♦ &7Участники&8: &6%kingdoms_members%
       &7♦ &7Земли&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &7Очки ресурсов&8: &6%kingdoms_fancy_resource_points%
       &7♦ &7Баланс&8: &6%kingdoms_fancy_bank% монет} &7- &6%kingdoms_fancy_might%
@@ -1629,7 +1629,7 @@ command:
     disabled:
       invader: '&cВы не можете капитулировать'
       defender: '&cВы не можете капитулировать'
-    defender-surrendered: '&6%player% &7из &6%kingdoms_name% &7капитулировал! Теперь это земля &6%kingdom%'
+    defender-surrendered: '&6%player% &7из &6%kingdoms_kingdom_name% &7капитулировал! Теперь это земля &6%kingdom%'
     defender-permission: '&cУ вас нет прав для капитуляции'
     no-invasion: '&cВы не вторгаетесь в никого'
     description: |
@@ -1753,15 +1753,15 @@ command:
     direct:
       message-missing: '&cВам нужно сообщение чтобы отправить его в &e%kingdom%'
       message-self: '&cВы не можете отправить сообщение сами себе'
-      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+      message-sender-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8]
         &7-> &8[&9%receiver-kingdom%&8] %displayname% &7≫ &6%message%'
-      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_name%&8]
+      message-receiver-format: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&9%kingdoms_kingdom_name%&8]
         %displayname% &7≫ &6%message%'
   broadcast:
     description: '&6Создать объявление для всех участников королевства'
     usage: '&7Использование&8: &e/k broadcast &7<сообщение>'
     cooldown: '&cВам нужно подождать &e%time% &cпрежде чем снова создать объявление'
-    format: '&8[&6%kingdoms_name% &lОбъявление&8]&7|&8[&c%player%&8] &7%message%'
+    format: '&8[&6%kingdoms_kingdom_name% &lОбъявление&8]&7|&8[&c%player%&8] &7%message%'
   king:
     description: '&6Передать корону'
     only-king: '&6Только король может передать корону'

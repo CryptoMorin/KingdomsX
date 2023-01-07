@@ -18,7 +18,7 @@ champions:
       # The level of the mm mob is the same as the equipment's upgrade level.
       type: ZOMBIE
       baby: false
-      name: "&c%kingdoms_name% &6Champion"
+      name: "&c%kingdoms_kingdom_name% &6Champion"
     levels:
       1:
         equipment:
@@ -124,7 +124,7 @@ champions:
     base:
       type: SKELETON
       baby: false
-      name: "&c%kingdoms_name% &6Champion"
+      name: "&c%kingdoms_kingdom_name% &6Champion"
     levels:
       1:
         equipment:
@@ -230,72 +230,62 @@ champions:
               material: DIAMOND_BOOTS
 health:
   enabled: true
-  name: 'Health'
-  # Max health is 2048
+  # Max health is 2048, but you can change that
+  # in your server settings.
   scaling: "min((lvl + 1) * 50, 2048)"
   max-level: 40
   cost: "(lvl + 1) * 100"
 resistance:
   enabled: true
-  name: 'Resistance'
   max-level: 10
   # Chance
   scaling: "lvl * 10"
   cost: "(lvl + 1) * 100"
 speed:
   enabled: true
-  name: 'Speed'
   max-level: 5
   scaling: "lvl * 2"
   cost: "(lvl + 1) * 100"
 strength:
   enabled: true
-  name: 'Strength'
   max-level: 3
   cost: "(lvl + 1) * 100"
 throw:
   enabled: true
-  name: 'Throw'
   max-level: 5
   chance: "10 * lvl"
   scaling: "1 + (lvl / 10)"
   cost: "(lvl + 1) * 100"
 drag:
   enabled: true
-  name: 'Drag'
   scaling: "10 - lvl"
   max-level: 3
   cost: "(lvl + 1) * 100"
 death-duel:
   enabled: true
-  name: 'Death Duel'
   max-level: 1
   scaling: 50
   champion: 2
   cost: "(lvl + 1) * 100"
 damage-cap:
   enabled: true
-  name: 'Damage Cap'
   scaling: "20 - lvl"
   max-level: 5
   cost: "(lvl + 1) * 100"
 thor:
   enabled: true
-  name: 'Thor'
   scaling: "lvl"
   cooldown: '15 - lvl'
   max-level: 5
   cost: "(lvl + 1) * 100"
 plow:
   enabled: true
-  name: 'Plow'
   max-level: 1
   radius: 1
   cooldown: 5
   cost: "(lvl + 1) * 100"
 fangs:
   enabled: true
-  name: 'Fangs'
   max-level: 10
   cooldown: 3
   # How close the players should be for this ability to activate.
@@ -305,13 +295,11 @@ fangs:
   cost: "(lvl + 1) * 100"
 reinforcements:
   enabled: true
-  name: 'Reinforcements'
   max-level: 3
   scaling: "30 - (lvl * 2)"
   cost: "(lvl + 1) * 100"
 focus:
   enabled: true
-  name: 'Focus'
   max-level: 3
   scaling: "lvl + 1"
   cost: "(lvl + 1) * 100"

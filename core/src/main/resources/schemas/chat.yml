@@ -1,12 +1,23 @@
 channels:
-  (keys): [ global, kingdom, truce, ally, nation, direct-prefix ]
-  direct-prefix: str
+  (required): [ global ]
+  (optional): true
   (values):
-    name: str
-    short: str
+    (required): [ 'formats', 'admin-formats', 'color' ]
     color: str
+    recipients-condition: Condition
+    use-conditions:
+      - Condition
+      - { (keys): Condition, (values): str }
+    admin-formats:
+      - str
+      - { (keys): Condition, (values): str, (required): [ else ] }
+    formats:
+      - str
+      - { (keys): Condition, (values): str, (required): [ else ] }
 
-priority: str
+direct-prefix: str
+
+priority: Enum<org.bukkit.event.EventPriority>
 cancel: bool
 recipients:
   respect-others: bool

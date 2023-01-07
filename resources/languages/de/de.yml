@@ -74,7 +74,7 @@ comamnd:
       info: |-
         @&7| &2Name&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
         &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Königreich&8: &6%kingdoms_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Königreich&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
         &7| &2Rang&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &7| &2Nationaler Rang&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| &2Benutzt Marker&8: %visualizer%
@@ -83,7 +83,7 @@ comamnd:
         &7| &2Auto-Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
         &7| &2Map-Größe&8: &6%map_width% &8- &6%map_height%
         &7| &2Spenden Insgesammt&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_last_donation_time%
-        &7| &2Claims &7(&6%kingdoms_claims%&7)&8: %claims%
+        &7| &2Claims &7(&6%kingdoms_player_claims%&7)&8: %claims%
         &7| &2Compressed Data&8: &6%compressed%
     pacifism:
       description: '&6Changes the pacifism state of a kingdom.'
@@ -118,7 +118,7 @@ command:
       invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
       usage: /k admin bank <Königreich> [set/add/remove] <Anzahl>
     claim:
-      already-claimed: '&cDieses Land wurde bereits von &e%kingdoms_name% &cbeansprucht!'
+      already-claimed: '&cDieses Land wurde bereits von &e%kingdoms_kingdom_name% &cbeansprucht!'
       description: '&6Forcibly claim the land you are currently standing in for a
         kingdom.'
       success: '&2Das Land &6%x%&7, &6%z% &2wurde beansprucht.'
@@ -158,7 +158,7 @@ command:
     find-duplicate:
       description: '&6Schaut, ob ein Spieler in mehren Königreichen ist.'
       found: '&2Spieler &6%name% &8(&7%uuid%&8) &2ist in the folgenden Königreichen8:'
-      kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
+      kingdom: '&8- &2%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       not-found: '&cSpieler &e%name% &8(&7%uuid%&8) &cist in keinem Königreich!'
       usage: '&cBenutzung&8: &e/k admin fd <Spieler>'
     hologram:
@@ -174,7 +174,7 @@ command:
       already-in-kingdom: '&6%player% &2ist bereits ein Mitglied von &6%kingdom%'
       description: '&6Fügt einen Spieler zu einem Königreich hinzu.'
       in-kingdom: |-
-        @&6%player% &2ist bereits in &6%kingdoms_name%
+        @&6%player% &2ist bereits in &6%kingdoms_kingdom_name%
         &2Wenn du fortfahren möchtest, mache&8: hover:{&6/k admin join %player% %kingdom% confirm;&2Bestätigen;/k admin join %player% %kingdom% confirm}
       invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
       success: '&6%player% &2ist nun ein Mitglied von &6%kingdom%'
@@ -251,7 +251,7 @@ command:
       success: '&2Land-Löschung bei &6%x%&7, &6%z% &2von &6%kingdom%'
     player:
       found: '&cDer Spieler &6%name% &8(&7%uuid%&8) &cist in folgenden Königreichen&8:'
-      kingdom: '&8- &2%kingdoms_name% &8(&6%uuid%&8)'
+      kingdom: '&8- &2%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&aDer Spieler ist nicht in mehreren Königreichen.'
     execute:
       description: '&6Execute a command for all the members in a kingdom.'
@@ -466,7 +466,7 @@ command:
     not-in-kingdom: '&e%demoted% &cist nicht in deinem königreich.'
     usage: /k demote <Spieler>
   disband:
-    announce: '&e%player% &6hat das Königreich &e%kingdoms_name% &6gelöscht.'
+    announce: '&e%player% &6hat das Königreich &e%kingdoms_kingdom_name% &6gelöscht.'
     confirmation: |-
       &4Du bist dabei dein Königreich zu löschen.
       Alle Mitglieder werden rausgeworfen und
@@ -713,7 +713,7 @@ command:
       description: '&6Legt ein neues Kapitol fest.'
       not-in-nation: '&e%kingdom% &cist nicht in deiner Nation.'
       only-king: '&6Nur der König des Kapitols kann dies.'
-      set: '&6%kingdoms_nation% &2ist nun das neue Kapitol der Nation.'
+      set: '&6%kingdoms_nation_name% &2ist nun das neue Kapitol der Nation.'
       usage: /k nation capital <Königreich>
     create:
       already-in-nation: '&cDu bist bereits in einer Nationn. Verlasse deine
@@ -749,7 +749,7 @@ command:
       usage: /k nation demote <Spieler>
     description: '&6Zeigt die möglichen Befehle einer Nation.'
     disband:
-      announce: '&e%player% &6hat seine Nation &e%kingdoms_nation% &6aufgelöst'
+      announce: '&e%player% &6hat seine Nation &e%kingdoms_nation_name% &6aufgelöst'
       confirmation: |-
         &4Du bsit dabei deine Nation aufzulösen.
         Alle Mitglieder werden rausgeworfen!
@@ -791,7 +791,7 @@ command:
         &crausgeworfen.'
       self: '&cDu kannst deine eigene Nation nicht rauswerfen...'
       usage: /k nation kick <Königreich> [silent]
-    leave-announce: '&e%kingdoms_name% &chat die Nation verlassen!'
+    leave-announce: '&e%kingdoms_kingdom_name% &chat die Nation verlassen!'
     leave-capital: |-
       &cAls Kapitol, kannst du die Nation nicht verlassen.
       Entweder musst du die Nation mit &e/k nation disband &cauflösen,
@@ -853,14 +853,14 @@ command:
         @&7| &2Feinde&8:
         &e%enemies%
       kingdoms: |-
-        @hover:{&6%kingdoms_name%;&2Mitglieder&8: &6%kingdoms_members%
+        @hover:{&6%kingdoms_kingdom_name%;&2Mitglieder&8: &6%kingdoms_members%
         &2König&8: &6%kingdoms_king%
         &2Land&8: &6%kingdoms_lands%}
       message: |
-        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2König&8: &6%king_status%
-        &7| &2Nation&8: &6%kingdoms_nation%
+        &7| &2Nation&8: &6%kingdoms_nation_name%
         &7| &2Gründung&8: &6%kingdoms_nation_since%
         &7| &2Macht&8: &6%kingdoms_might%
         &7| &2Schild&8: &6%kingdoms_nation_shield_time_left%
@@ -871,7 +871,7 @@ command:
         &7| &2Königreiche&8:
         %kingdoms%
       message-admin: |
-        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
         &7| &2Kapital&8: &6%capital%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -886,7 +886,7 @@ command:
         %kingdoms%
       others-permission: '&cDU hast keine Berechtigung, um Informationen von anderen
         zu sehen.'
-      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
       truces: |
         @&7| &2Waffenstillstände&8:
         %truces%
@@ -902,11 +902,11 @@ command:
     top:
       description: '&6Zeigt die besten Nationen an.'
       entry: |-
-        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Mitglieder&8: &6%kingdoms_nation_kingdoms%
+        @&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Mitglieder&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%
 
-        &7(klicke für mehr Infos);/k nation show %kingdoms_nation%} &7- &6%kingdoms_fancy_nation_might%
+        &7(klicke für mehr Infos);/k nation show %kingdoms_nation_name%} &7- &6%kingdoms_fancy_nation_might%
       footer: '     &8[hover:{&6←;&6Vorherige Seite;/k nation top %previous_page%}&8]
         &8[hover:{&6→;&6Nächste Seite;/k nation top %next_page%}&8]'
       header: '&8----------------------------------'
@@ -1129,10 +1129,10 @@ command:
       @&7| &2Feinde&8:
       &e%enemies%
     message: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2König&8: &6%king_status%
-      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Macht&8: &6%kingdoms_might%
       &7| &2Gründung&8: &6%kingdoms_since%
       &7| &2Schild&8: &6%kingdoms_shield_time_left%
@@ -1142,12 +1142,12 @@ command:
       &7| &2Mitglieder&8:
       %members%
     message-admin: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2König&8: &6%king_status%
       &7| &2Zuhause&8: &6%kingdoms_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
-      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Macht&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Land&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
@@ -1163,18 +1163,18 @@ command:
       &2Letzte Spenden&8: &6%kingdoms_last_donation_time%
       &2Rang&8: &6%kingdoms_rank_name%}
     others-permission: '&cDafür hast du keine Berechtigung.'
-    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     truces: |
       @&7| &2Waffenstillstände&8:
       %truces%
     usage: '/k show [player | kingdom | #PLAYER | #KINGDOM] <player | kingdom>'
     message-console: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
-      &7| &2Nation&8: &6%kingdoms_nation%
+      &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
@@ -1185,7 +1185,7 @@ command:
       %members%
   surrender:
     defender-permission: '&cDu hast keine Berechtigung aufzugeben.'
-    defender-surrendered: '&6%player% &2von &6%kingdoms_name% &2hat aufgegeben! Das
+    defender-surrendered: '&6%player% &2von &6%kingdoms_kingdom_name% &2hat aufgegeben! Das
       Land ist nun von &6%kingdom%'
     description: |-
       &6Wenn du der Angreifer bist, kannst du aufegebn, damit der Champion verschwindet.
@@ -1206,12 +1206,12 @@ command:
   top:
     description: '&6Zeigt die besten Königreiche an.'
     entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Mitglieder&8: &6%kingdoms_members%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Mitglieder&8: &6%kingdoms_members%
       &7♦ &2Läderein&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
       &7♦ &2Schatzkammer&8: &6$%kingdoms_fancy_bank%
 
-      &7(klicke für mehr Infos);/k show %kingdoms_name%} &7- &6%kingdoms_fancy_might%
+      &7(klicke für mehr Infos);/k show %kingdoms_kingdom_name%} &7- &6%kingdoms_fancy_might%
     footer: '     &8[hover:{&6←;&6Vorherige Seite;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Nächste Seite;/k top %next_page%}&8]'
     header: '&8----------------------------------'
@@ -1578,7 +1578,7 @@ nexus:
       cooldown: '&cDu musst &e%cooldown% &cwarten, bevor du deine Flagge ändern kannst.'
       enter-value: |-
         @&6Bitte gebe eine neue Flaggen URL in den Chat ein. Oder tippe hover:{&cCancel;&cCancel;cancel}&6, um abzubrechen.
-        Klicke auf:{&2here;&2Open Flag URL;@%kingdoms_flag%}&6, um die aktuelle Flaggen URL zu öffnen.
+        Klicke auf:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%}&6, um die aktuelle Flaggen URL zu öffnen.
       regex: '&cFlaggen URL kann nicht akzeptiert werden&8: &e%flag%'
       set: '&2Die Flagge wurde geändert zu&8: &6%flag%'
       size-limit:
@@ -1586,7 +1586,7 @@ nexus:
         height: '&cDas Bild ist größer als &e%limit%&c. Höhe&8: &e%height%'
         width: '&cDas Bild ist breiter als &e%limit%&c. Breite&8: &e%width%'
       wrong-url: '&cUngültige URL für die Flagge&8: &e%flag%'
-      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_flag%} &6to open
+      current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%} &6to open
         your current flag URL.
     shield-activated: '&2Schild wurde aktiviert für &6%kingdoms_shield_time_left%'
     shield-not-enough-resource-points: '&cDu hast nicht genügend Ressourcenpunkte.'
@@ -1940,13 +1940,13 @@ siege-cannon:
   already-loaded: '&cDie Kannone ist ebreits geladen.'
   hit:
     unclaimed-land: '&cDIe Kannone hat ein unbeanspruchtes Land getroffen.'
-    no-shield: '&2Die Kannone hat das Königreich &6%kingdoms_name% &2getroffen. Sie hatten kein
+    no-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Sie hatten kein
       Schild.'
-    pacifist: '&cDie Kannone hat das Königreich &e%kingdoms_name% &cgetroffen, aber sie sind
+    pacifist: '&cDie Kannone hat das Königreich &e%kingdoms_kingdom_name% &cgetroffen, aber sie sind
       ein pazifistisches (friedliches) Königreich.'
-    destroyed-shield: '&2Die Kannone hat das Königreich &6%kingdoms_name% &2getroffen. Ihr Schild
+    destroyed-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Ihr Schild
       wurde zerstört.'
-    damaged-shield: '&2Die Kannone hat das Königreich &6%kingdoms_name% &2getroffen. Verbleibender Schutz&8:
+    damaged-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Verbleibender Schutz&8:
       &6%kingdoms_shield_time_left%'
 structures-enter-name: '&2Bitte gebe einen neuen Namen für die Struktur ein.'
 structures-name-set: '&2Der Struktur-Name wurde zu &6%name% &2geändert.'

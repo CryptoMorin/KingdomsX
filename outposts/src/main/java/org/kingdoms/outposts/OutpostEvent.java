@@ -1,6 +1,5 @@
 package org.kingdoms.outposts;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.FireworkEffect;
@@ -16,14 +15,13 @@ import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.data.Pair;
+import org.kingdoms.locale.SupportedLanguage;
+import org.kingdoms.locale.messenger.StaticMessenger;
+import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.main.config.KingdomsConfig;
-import org.kingdoms.main.locale.KingdomsLang;
-import org.kingdoms.main.locale.StaticMessenger;
-import org.kingdoms.main.locale.SupportedLanguage;
-import org.kingdoms.main.locale.messager.MessageBuilder;
 import org.kingdoms.services.managers.ServiceHandler;
 import org.kingdoms.utils.XScoreboard;
 import org.kingdoms.utils.bossbars.BossBarSession;
@@ -87,8 +85,8 @@ public class OutpostEvent {
 
     public static OutpostEvent startEvent(Outpost outpost, long time, long startTime) {
         Objects.requireNonNull(outpost, "Outpost cannot be null");
-        Validate.isTrue(time > 0, "Outpost event time cannot be less than 0");
-        Validate.isTrue(!EVENTS.containsKey(outpost.getName()), "Event for outpost '" + outpost + "' has already started");
+        if (time > 0) throw new IllegalArgumentException("Outpost event time cannot be less than 0");
+        if (!EVENTS.containsKey(outpost.getName())) throw new IllegalArgumentException("Event for outpost '" + outpost + "' has already started");
 
         OutpostEvent event = new OutpostEvent(outpost, time);
         EVENTS.put(outpost.getName(), event);
@@ -103,7 +101,7 @@ public class OutpostEvent {
     public void start(long startTime) {
         task = Bukkit.getScheduler().runTaskLater(Kingdoms.get(), () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                KingdomsLang.COMMAND_OUTPOST_START_STARTED.sendMessage(player, "outpost", outpost.getName());
+                OutpostsLang.COMMAND_OUTPOST_START_STARTED.sendMessage(player, "outpost", outpost.getName());
             }
             started = System.currentTimeMillis();
 
@@ -118,12 +116,9 @@ public class OutpostEvent {
                         return;
                     }
 
-                    TimeFormatter epoch = new TimeFormatter(passed - time);
-                    String format = epoch.format();
-
                     if (bossBar != null) {
                         double left = (double) passed / time;
-                        bossBar.updateTitle(new MessageBuilder().raw("left", format));
+                        bossBar.updateTitle(new MessageBuilder().raw("left", TimeFormatter.of(passed - time)));
                         bossBar.setProgress(left);
                     }
 
@@ -182,12 +177,12 @@ public class OutpostEvent {
             Kingdom kingdom = Kingdom.getKingdom(participant.getKey());
             for (Player player : kingdom.getOnlineMembers()) {
                 if (lost) {
-                    KingdomsLang.COMMAND_OUTPOST_JOIN_LOST.sendMessage(player, "outpost", outpost.getName());
+                    OutpostsLang.COMMAND_OUTPOST_JOIN_LOST.sendMessage(player, "outpost", outpost.getName());
                     if (ServiceHandler.isInRegion(player.getLocation(), outpost.getRegion())) {
                         Bukkit.getScheduler().runTask(Kingdoms.get(),
                                 () -> player.teleport(outpost.getSpawn()));
                     }
-                } else KingdomsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),
+                } else OutpostsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),
                         "money", outpost.getRewards().getMoney(1));
                 player.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
             }

@@ -30,7 +30,9 @@
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++|#
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
-# Should the plugin use the prefix for every message?
+# Should the plugin use a prefix for every message (except chats of course)?
+# A prefix like "[Kingdoms]" is added so players know that the message came from Kingdoms plugin.
+# The prefix is configurable in the language file of each language.
 # If this is set to false, you can use "PREFIX|" at the beginning of the messages to include the prefix regardless.
 # If this is set to true, you can use "NOPREFIX|" at the beginning of the messages to exclude the prefix regardless.
 # Prefixes are not shown for Complex Messages by default even if this option is enabled.
@@ -121,6 +123,9 @@ updates:
 # Available Languages: https://github.com/CryptoMorin/KingdomsX/tree/master/resources/languages
 lang: en
 
+# Disables language detection for new players and uses the language specified above.
+force-lang: false
+
 # Most of the options require a restart to be changed.
 # Kingdom backups are taken with the best possible compression method available in the system. (speed < file size)
 # The files are saved with the name as the current date in a "zip" extension
@@ -205,14 +210,26 @@ disabled-worlds: [ ]
 # This option is for security purposes.
 keep-admin-mode: false
 
+# The rate which the plugin updates holograms. These include turrets and structures.
+# The update is in ticks and is done asynchrously. This is useful for displaying turret
+# ammo, structure fuel, etc. i.e. information that are constantly updating.
+# You should consider keeping this value above one second.
+# A reasonable value would be 200 which means every 10 seconds.
+# Consider applying "dont-update-holograms: true" to turrets/structures that have no variable
+# in their holograms that needs updating to optimize this feature.
+# Set to 0 to disable.
+# Requires a restart to be applied.
+hologram-update-ticks: 200
+
 # Disables integration service for one of the following plugins.
 # Requires a restart to take effect.
 # https://github.com/CryptoMorin/KingdomsX/wiki/Installation#compatibility
 integrations:
-  citizens: true
+  citizens: true # Unused
   placeholderapi: true
   mvdwplaceholderapi: true
 
+  # Map Viewer Addon
   bluemap: true
   dynmap: true
   squaremap: true
@@ -226,23 +243,64 @@ integrations:
   discordsrv: true
   my-pet: true
   world-guard: true
+  world-edit: true
   essentials: true
   cmi: true
   slimefun: true
 
-# The universal time formatter for the plugin.
-# Each of these entries are used only if the time units above the specified time unit is 0.
-time-formatter:
-  # For example this entry is only used if the time is less than 60 seconds (1 minute)
-  seconds: '00:00:ssaf'
-  minutes: '00:mmaf:ssf'
-  hours: 'hhaf:mmf:ssf'
-  days: 'dda day(s), hhf:mmf:ssf'
-  weeks: 'wwwwa week(s), dd day(s), hhf:mmf:ssf'
-  months: 'MMA month(s), wwww week(s), dd day(s), hhf:mmf:ssf'
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                                  Commands                                   |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# The options for the base command.
+command:
+  # These two options require a server restart to update.
+
+  # You should usually choose the most obvious yet concise name for
+  # the main name, some plugins might use it.
+  name: kingdoms
+  aliases: [ kingdom, xkingdoms, kingdomsx, k ]
+
+commands:
+  ### Properties ###
+  # disabled: If this command should be completely disabled or not. Disabling command groups will disable all its subcommands.
+  # cooldown: The cooldown of the command whether the result was successful or not. Refer to the wiki to see time value formats.
+  #           Sometimes there are cooldowns for certain commands that are more suitable based on certain situations in other configs.
+  #           Note that these cooldowns do not persist between server restarts.
+  # diasbled-worlds: A list of world names that this command is disabled in.
+
+  # If any of these properties are not defined, the defaults will be used which are:
+  # disabled: false
+  # cooldown: 0
+  # disabled-worlds: []
+
+  # To edit the command names and aliases refer to your language file.
+
+  # You cannot move the position of command arguments or change their group/parent
+  # However you can add shortcut commands for them like "/nexus" for "/k nexus" thru the commands.yml
+  # found in your server's root folder (where your spigot.yml is).
+
+  # Example command:
+  help:
+    disabled: false
+    cooldown: 0
+    disabled-worlds: [ ]
 
 # /k help
 help:
+  # The order of commands which appear in pages. If the player doesn't have the permission for a particular command
+  # that command is simply skipped and the next command is shown.
+  # The names specified here must be the command's main node name, not the translated ones. (which can be obtained from /k admin cmd)
+  # Any commands that are not specified here will be put at the end of the list.
+  order: [ help, language, create, lore, rename, tag, show, home, unsethome, nexus, king, sethome, chat, challenge, mute,
+           unmute, bank, top, disband, invite, invites, invitecodes, accept, decline, join, leave, kick, promote, demote,
+           claim, unclaim, undo, redo,
+           inventory, vault, book, visualize, pvp, broadcast, fly, sneak, donate, resourcepoints, extractor, tradable, sell,
+           ally, enemy, truce, revoke, relations,
+           map, invade, tpa, tpaaccept, tpareject, teleport, surrender, about, gui, updates, reload, outpost, nation, admin ]
+
   # Amount of commands displayed in a single page.
   commands: 5
 
@@ -251,6 +309,69 @@ help:
   # For example if your current page is 7, it'll show:
   # 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
   footer-pages: 5
+
+# /k fly
+kingdom-fly:
+  # If you disable this, it'll only ignore the checks for performance improvements. If you like to disable the
+  # command as well, refer to commands.yml to completely disable the command itself.
+  enabled: true
+
+  # Disable flight after taking damage.
+  disable-on-damage: true
+
+  # Allow flying in unclaimed lands.
+  allow-unclaimed: false
+
+  # If the players fly should be disabled if they're near
+  # their enemy. Enemies are players who their kingdoms relation
+  # doesn't have "Ceasefire" attribute.
+  # Set to 0 to disable.
+  # Note: Higher numbers mean more lag.
+  # Players who have admin mode enabled, will bypass this.
+  # Requires a restart to update.
+  nearby-unfriendly-range: 30
+
+  charges:
+    # Requires a restart to take effect.
+    enabled: true
+
+    # Amount of seconds these charges are performed.
+    every-seconds: 1
+
+    # Player money if an economy is available
+    players:
+      # Set to ~ to disable
+      amount:
+        default: 1
+      activation-cost:
+        default: 100
+
+      # Whether this amount is paid to the kingdom or to the server.
+      # This is great if you want to charge your members more than the required amount.
+      pay-kingdom:
+        enabled: true
+        # false = kingdoms bank money
+        resource-points: true
+
+    # If the kingdom should also pay for additional charges.
+    kingdoms:
+      # Per player, set to ~ to disable.
+      amount:
+        default: 1
+      activation-cost:
+        default: 100
+      resource-points: true
+
+  # In seconds. Set to 0 to disable. If the player avoids the flight disable cause, the warning will end and the player will keep their flight.
+  warnings:
+    # Warn the player before disabling their fly if they go in a land that they cannot fly in.
+    land: 3
+
+    # We can give them more time. After all there's an activation cost for a reason.
+    charges: 10
+
+    # Warn the player before disabling their fly if they're near unfriendly players.
+    unfriendly-nearby: 5
 
 # The sound used for most of the actions that prevents or prohibits
 # a player from doing that certain action.
@@ -326,7 +447,7 @@ placeholders:
     # Most commonly used for separating enteries in a list.
     p: '&2' # primary
     sp: '&9' # Secondary primary
-    desc: '&7'
+    desc: '&7' # Used in GUIs
     s: '&6' # secondary
     e: '&c' # error
     es: '&e' # error secondary
@@ -340,10 +461,22 @@ placeholders:
     Fuchsia: 'F0F'
     Navy: '000080'
 
-    enabled: '&8[&aEnabled&8]&2'
-    disabled: '&8[&cDisabled&8]&4'
+    ### Conditional Variables ###
+    groupColor:
+      perm_color_admin: '&6'
+      else: '&r'
 
-    cancel: '&cor type hover:{&ecancel;&eClick to cancel;/cancel} &cto cancel the action.'
+    # Please just be care not to use recursive variables or your servers console will blow up.
+    channel: '&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]'
+    kingdomPrefix:
+      kingdoms_has_kingdom: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_kingdom_color@hex%%kingdoms_kingdom_name%&8] '
+      else: ''
+    nationPrefix:
+      kingdoms_has_nation: '&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %kingdoms_nation_color@hex%%kingdoms_nation_name%&8]&7|'
+      else: ''
+    spy:
+      kingdoms_other_is_spy: '{$channel}&7|'
+      else: ''
 
   # Default placeholders used when a player is not a kingdom or nation.
   # Requires /k reload to be reloaded.
@@ -352,13 +485,13 @@ placeholders:
   # All the text placeholders default to an empty text and all the number placeholders default to 0
   defaults:
     distance-from-core-other-world: 'value * 100'
-    name: ''
+    kingdom_name: ''
     lore: ''
     nation: '&cNo Nation'
     members: 0
-    territory: '&2Wilderness'
     # Green
-    color: '00ff00'
+    kingdom_color: '00ff00'
+    nation_color: '00ff00'
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
@@ -407,11 +540,7 @@ max-members:
   kingdoms: 10
   nations: 30
 
-# Should players be teleported back to spawn when they're kicked from their kingdom?
-# The spawn's location is the current world's spawn point that the player is in.
-teleport-to-spawn-after-kick: false
-
-# Kingdoms can change their flag URL for Dynmap via kingdoms settings.
+# Kingdoms can change their flag URL for web maps via kingdoms settings.
 flag:
   # Cooldown for changing the kingdom image.
   # The option can be used to lag the server if used excessively since it passes multiple checks.
@@ -427,6 +556,7 @@ flag:
     width: 1000
     height: 1000
 
+  # SVG files aren't acceptable at all. They can cause vulnerabilities.
   links:
     blacklist: true
     # If the URL contains one of these strings.
@@ -475,7 +605,7 @@ kingdom-name:
   # allow-non-english needs to be enabled if you want to set this to true.
   # If set to false, This will only allow other langauge numbers and letters, not symbols.
   # Note that you shouldn't allow colors for kingdom names. It causes a lot of issues. For example other plugins can't use the
-  # kingdom name from %kingdoms_name% placeholder if it's used somewhere that translates color codes (for example a command list)
+  # kingdom name from %kingdoms_kingdom_name% placeholder if it's used somewhere that translates color codes (for example a command list)
   # NOT RECOMMENDED as it'll make it harder to use commands that need a kingdom name.
   allow-symbols: false
 
@@ -516,6 +646,7 @@ tags:
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Settings for /k nation create and /k nation rename
+# All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
 # Players who have admin mode enabled, will bypass all the following checks.
 # For each item's description, refer to the previous "kingdom-name" section with the same options.
 nation-name:
@@ -529,6 +660,22 @@ nation-name:
   allow-symbols: false
   allow-duplicate-names: false
   case-sensitive: false
+  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
+
+# All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
+kingdom-lore: # /k lore
+  title:
+    fade-in: 10
+    stay: 20
+    fade-out: 10
+
+  allow-colors: true
+  max-length: 30
+  ignore-colors: true
+  renaming-cooldown: 0
+  allow-non-english: true
+  allow-symbols: false
+  remove-keywords: [ "remove", "none", "delete", "unset", "off" ]
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
 # Should kingdom homes be public by default?
@@ -561,110 +708,12 @@ audit-logs:
     rank-change-priority: 10 days
     rank-change-material: 7 days
 
-# /k fly
-kingdom-fly:
-  # If you disable this, it'll only ignore the checks for performance improvements. If you like to disable the
-  # command as well, refer to commands.yml to completely disable the command itself.
-  enabled: true
-
-  # Disable flight after taking damage.
-  disable-on-damage: true
-
-  # If the players fly should be disabled if they're near
-  # their enemy. Enemies are players who their kingdoms relation
-  # doesn't have "Ceasefire" attribute.
-  # Set to 0 to disable.
-  # Note: Higher numbers mean more lag.
-  # Players who have admin mode enabled, will bypass this.
-  # Requires a restart to update.
-  nearby-unfriendly-range: 30
-
-  charges:
-    # Requires a restart to take effect.
-    enabled: true
-
-    # Amount of seconds these charges are performed.
-    every-seconds: 1
-
-    # Player money if an economy is available
-    players:
-      # Set to ~ to disable
-      amount:
-        default: 1
-      activation-cost:
-        default: 100
-
-      # Whether this amount is paid to the kingdom or to the server.
-      # This is great if you want to charge your members more than the required amount.
-      pay-kingdom:
-        enabled: true
-        # false = kingdoms bank money
-        resource-points: true
-
-    # If the kingdom should also pay for additional charges.
-    kingdoms:
-      # Per player, set to ~ to disable.
-      amount:
-        default: 1
-      activation-cost:
-        default: 100
-      resource-points: true
-
-  # In seconds. Set to 0 to disable. If the player avoids the flight disable cause, the warning will end and the player will keep their flight.
-  warnings:
-    # Warn the player before disabling their fly if they go in a land that they cannot fly in.
-    land: 3
-
-    # We can give them more time. After all there's an activation cost for a reason.
-    charges: 10
-
-    # Warn the player before disabling their fly if they're near unfriendly players.
-    unfriendly-nearby: 5
-
-# Settings for /k lore
-# Players who have admin mode enabled, will bypass all the following checks.
-kingdom-lore:
-  title:
-    fade-in: 10
-    stay: 20
-    fade-out: 10
-
-  # Allow colors for lores. This merely just translates the & color code.
-  # It doesn't prevent users from using &, but it'll not translate it.
-  allow-colors: true
-
-  # Max length of the lore.
-  max-length: 30
-
-  # Ignore colors when comparing the kingdom lore length.
-  ignore-colors: true
-
-  # Cooldown for each renaming.
-  # Supports time suffix. Set to 0 to disable.
-  # This cooldown does not persist between server restarts.
-  renaming-cooldown: 0
-
-  # Allow characters that are not English. Underline, space, numbers and alphabets are considered English characters.
-  allow-non-english: true
-
-  # allow-non-english needs to be enabled if you want to set this to true.
-  # When set to false, this will only allow other langauge numbers and letters, not symbols.
-  allow-symbols: false
-
-  # Keywords used to remove the kingdom's lore.
-  # Only the first keyword will be used in the tab completion.
-  remove-keywords: [ "remove", "none", "delete", "unset", "off" ]
-
-  # Only use if you know how RegEx works. You can use this site: https://regexr.com/
-  # If the name matches any RegEx below then it'll not be allowed.
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
-
 # Remind people that never had a kingdom before to join one.
 # The message entry for this option is "no-kingdom-reminder"
 no-kingdom-reminder: false
 
 # If the elements below should be announced to everyone in the server.
-# After changing this, you might want to consider using %kingdoms_name% in the
+# After changing this, you might want to consider using %kingdoms_kingdom_name% in the
 # message of the element.
 # If set to false, it'll only announce it to the kingdom members.
 announcements:
@@ -680,6 +729,7 @@ announcements:
     nation: false
     # For /k disband please refer to "disband" section.
 
+# Outposts addon
 outpost-events:
   # If kingdom members participating in the event die,
   # their kingdom will lose rp.
@@ -867,6 +917,9 @@ inactivity:
   # Set to 0 to disable.
   # Supports time suffix. Default is seconds.
   kingdom:
+    # For example to exclude non-pacifist kingdoms from
+    # being disbanded, you can use '!kingdoms_pacifist'
+    exclude-condition: 'false'
     disband: 30 days
     announce: true
 
@@ -877,6 +930,7 @@ inactivity:
   # Note: It wouldn't make sense for this "kick" time option to be less than the kingdom's time option.
   # Because all the members would've been kicked before the kingdom is disbanded due to inactivity anyway.
   member:
+    exclude-condition: 'false'
     kick: 60 days
     disband-kingdom-if-king: false
     announce: true
@@ -887,16 +941,41 @@ creation:
     # Show the pacifist/aggressor GUI?
     show-kingdom-type-gui: true
 
-    # The default shield duration for new kingdoms to get prepared.
+    # Duration which new kingdoms are immune to invasions.
+    # Not to be confused with shields.
     newbie-protection: 5 days
 
     # Commands executed when the kingdom is created. You can use all the placeholders.
     commands: [ ]
   nations:
-    # The default shield duration for new kingdoms to get prepared.
+    # Duration which all kingdoms in a new nation are immune to invasions.
+    # This works even if the kingdom's own newbie protection is finished.
     newbie-protection: 0
 
     # Commands executed when the nation is created. You can use all the placeholders.
+    commands: [ ]
+
+# Commands that are executed for events. An event is simply something that happens.
+# While events are related to technical side of the plugins, this will allow extensive
+# customization of certain events. This technically work with all events, but
+# it can't accurately determine the "context" of all event. Context here means the
+# player/kingdom/nation involved in this event. Not all events have a context.
+# For commands that a player is involved you can use the "OP" command modifier,
+# but if no player is present, you HAVE to use the "CONSOLE" modifier.
+# The entry key of the sections here must be the fully qualified name of the event's class.
+# Almost no plugin documents the fully qualified event names, so you need the help of a developer
+# whether you want to use kingdom events or another plugin's events here.
+# Requires a restart to apply changes.
+events:
+  org.kingdoms.events.members.KingdomJoinEvent:
+    ignore-cancelled: true
+    priority: NORMAL
+    commands: [ ]
+    # For example, the commands defined here are executed when a player joins a kingdom.
+    # And of course since a player is involved, you can use placeholders and OP command modifier.
+    #commands:
+    #  - "CONSOLE:msg %player% You joined a kingdom!"
+  org.kingdoms.events.members.KingdomLeaveEvent:
     commands: [ ]
 
 disband:
@@ -922,9 +1001,6 @@ disband:
 nexus:
   # Place the nexus on the current block when the kingdom is created if possible.
   place-on-create: true
-
-  # You have to set your nexus in a claimed land.
-  claimed: true
 
   # The amount of resourcepoints taken from the kingdom that owns the nexus and given to the kingdom who broke the nexus.
   # Nothing will happen if they don't have any resource points.
@@ -1086,7 +1162,7 @@ invitations:
         material: PAPER
         lore: |
           {$p}Code{$sep}: {$s}%invitecode-code%
-          {$p}Kingdom{$sep}: {$s}%kingdoms_name%
+          {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
           {$p}Created By{$sep}: {$s}%invitecode-creator%
           {$p}Created At{$sep}: {$s}%invitecode-createdAt%
           {$p}Expires At{$sep}: {$s}%invitecode-expiration%
@@ -1219,6 +1295,10 @@ color-range:
     # Each entry must have only 2 angles.
     # The first angle must be the smaller one.
     red: [ 30, 330 ]
+
+# Should players be teleported back to spawn when they're kicked from their kingdom?
+# The spawn's location is the current world's spawn point that the player is in.
+teleport-to-spawn-after-kick: false
 
 tpa:
   # Should players be able to send request to players in other kingdoms?

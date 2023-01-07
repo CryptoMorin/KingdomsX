@@ -7,7 +7,7 @@ import org.kingdoms.constants.group.model.logs.AuditLogProvider;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
-import org.kingdoms.main.locale.messager.MessageBuilder;
+import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.utils.internal.FastUUID;
 
 import java.util.UUID;
@@ -64,7 +64,7 @@ public class LogKingdomOutpostJoin extends AuditLog {
     }
 
     @Override
-    protected void addEdits(MessageBuilder builder) {
+    public void addEdits(MessageBuilder builder) {
         builder.withContext(Bukkit.getOfflinePlayer(player));
         builder.raw("outpost_name", outpostName);
     }

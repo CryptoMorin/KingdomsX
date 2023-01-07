@@ -7,33 +7,93 @@
 # Kingdoms built-in chat system. Support hover messages as well.
 # Permissions: kingdoms.chat.colors
 # The channels section is only used for placeholders.
+# Custom channels can be defined here.
+# The permission for each channel is the equivalent of the command permission.
+# To prevent users from using the channels in certain worlds, you can use LuckPerms contextual permissions.
+# The mute permission for these channels are "kingdoms.channel.<id>.mute"
+# Note that the entry name of each channel is important and should not be changed
+# because it's the channel data name that is saved for players.
 channels:
-  # The prefix used to send messages to individual kingdoms.
-  # E.g. /k c @Apothicas hello how you doing?
-  # sends a message to all members of "Apothicas" kingdom.
-  # Set to ~ (without quotes) to disable.
-  direct-prefix: '@'
-
-  global:
-    name: "Global"
-    short: 'G'
+  # WARNING: DO NOT change the IDs of default channels.
+  global: # this is the channel's ID
+    # You can also use LuckPerms contextual permissions to disable these in certain worlds.
+    # Conditions the player must have in order to use this channel.
     color: '&f'
+
+    # This is used for console and DiscordSRV.
+    # The colors are obviously ignored for DiscordSRV.
+    # This option is also used for that chat event's formatting (only used when cancel option is set to false)
+    admin-formats:
+      kingdoms_has_kingdom: &standard-admin-format '{$channel}&7|{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ {$groupColor}%message%'
+      else: '{$channel} %displayname% &7≫ {$groupColor}%message%'
+
+    # This is the formats used for the chat. The entries are the conditions.
+    # To make conditions less confusing you can also use "placeholder formats" check them on the Wiki.
+    formats:
+      kingdoms_has_kingdom: "{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ {$groupColor}%message%"
+      else: "hover:{%displayname%;&2Message %player%;|/msg %player% } &7≫ {$groupColor}%message%"
   kingdom:
-    name: "Kingdom"
-    short: 'K'
+    # If the condition is not met, the message path specified will be shown to the player.
+    # If this option is not specified, all players will be able to use them.
+    use-conditions:
+      kingdoms_has_kingdom: 'no-kingdom.default'
+
+    # Conditions that the player must have in order to receive the messages
+    # If this option is not specified, all players will be able to see the messages.
+    recipients-condition: "kingdoms_is_spy || kingdoms_relation == 'SELF'"
     color: '&2'
-  truce:
-    name: "Truce"
-    short: 'T'
-    color: '&e'
-  ally:
-    name: "Ally"
-    short: 'A'
-    color: '&a'
+
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &d%message%"
   nation:
-    name: "Nation"
-    short: 'N'
+    use-conditions:
+      kingdoms_has_nation: 'no-nation.default'
+
+    recipients-condition: "kingdoms_is_spy || kingdoms_relation == 'NATION' || kingdoms_relation == 'SELF'"
     color: '&9'
+
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &9%message%"
+  truce:
+    use-conditions:
+      kingdoms_has_kingdom: 'no-kingdom.default'
+
+    recipients-condition: "kingdoms_is_spy || kingdoms_relation == 'TRUCE' || kingdoms_relation == 'SELF'"
+    color: '&e'
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &e%message%"
+  ally:
+    use-conditions:
+      kingdoms_has_kingdom: 'no-kingdom.default'
+
+    recipients-condition: "kingdoms_is_spy || kingdoms_relation == 'ALLY' || kingdoms_relation == 'SELF'"
+    color: '&a'
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &a%message%"
+  help:
+    recipients-condition: "perm_kingdoms_channel_help_see"
+    color: '&c'
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &c%message%"
+  ranged:
+    recipients-condition: "kingdoms_is_spy || (0 <= distance <= 50)"
+    color: "&e"
+    admin-formats: *standard-admin-format
+    formats: "{$spy}{$nationPrefix}{$kingdomPrefix}%displayname% &7≫ &e%message%"
+
+    # The prefix to bypass this range once added at the beginning of your message.
+    # Of course this prefix will be removed from the message itself.
+    # This requires kingdoms.channel.<name>.bypass.ranged which is given by default.
+    # Set this to an empty text to disable.
+    # Players in other worlds will have the "distance" placeholder return -1
+    # Technically this will cause "distance" placeholder to return 0
+    ranged-bypass-prefix: '!'
+
+# The prefix used to send messages to individual kingdoms.
+# E.g. /k c @Apothicas hello how are you doing?
+# sends a message to all members of "Apothicas" kingdom.
+# Set to ~ (without quotes) to disable.
+direct-prefix: '@'
 
 # The chat priority that kingdom handles. Not that changing this will not disable the chat. You need to use other options.
 # This is used when you're using another plugin that manages chat spams and other restrictions. You might want to increase the priorty in these cases.
@@ -70,21 +130,6 @@ recipients:
 
 # Reset the player's chat channel back to global when they leave.
 reset-channel-on-leave: false
-
-# Only players from a specific radius will see messages from channels.
-# Spies will bypass this limit.
-ranged-channels:
-  # The channels that are affected by this option.
-  # GLOBAL, NATION, KINGDOM, TRUCE, ALLY
-  channels: [ ]
-
-  # Set to 0 to only hide the messages from players in other worlds.
-  radius: 0
-
-  # The prefix to bypass this range once added at the beginning of your message.
-  # This requires kingdoms.chat.bypass.ranged which is given by default.
-  # Set this to an empty text to disable.
-  bypass-prefix: '!'
 
 # Tagging users like in Discord with a sound.
 # Players need kingdoms.chat.tag permission.
@@ -152,65 +197,34 @@ discordsrv:
   #   "second field title": second field message
   # They all support placeholders.
   announcements:
-    invasion:
+    invasion: # In this case, the main context belongs to the attacker player, and the second belongs to the defender kingdom.
       start: # This message is sent as soon as the invasion start countdown ends.
         channel: '$main'
         message:
-          description: ':crossed_swords: **%player%** from **%kingdoms_name%** is now invading **%defender%**'
+          description: ':crossed_swords: **%player%** from **%kingdoms_kingdom_name%** is now invading **%kingdoms_other_name%**'
           color: '#F00'
-          image: '%kingdoms_flag%'
+          image: '%kingdoms_kingdom_flag%'
 
       end:
         success:
           channel: '$main'
-          message: ':crossed_swords: **%player%** from **%kingdoms_name%** has successfully invaded **%defender%**'
+          message: ':crossed_swords: **%player%** from **%kingdoms_kingdom_name%** has successfully invaded **%kingdoms_other_name%**'
         fail:
           channel: '$main'
-          message: ':crossed_swords: **%player%** from **%kingdoms_name%** failed to invade **%defender%**'
+          message: ':crossed_swords: **%player%** from **%kingdoms_kingdom_name%** failed to invade **%kingdoms_other_name%**'
 
     kingdom:
       join:
         channel: '$main'
-        message: ':white_check_mark: **%player%** has joined **%kingdoms_name%**'
+        message: ':white_check_mark: **%player%** has joined **%kingdoms_kingdom_name%**'
       leave:
         channel: '$main'
-        message: ':x: **%player%** has left **%kingdoms_name%**'
+        message: ':x: **%player%** has left **%kingdoms_kingdom_name%**'
 
     nation:
       join:
         channel: '$main'
-        message: ':white_check_mark: **%kingdoms_name%** has joined **%kingdoms_nation%**'
+        message: ':white_check_mark: **%kingdoms_kingdom_name%** has joined **%kingdoms_nation_name%**'
       leave:
         channel: '$main'
-        message: ':x: **%kingdoms_name%** has left **%kingdoms_nation%**'
-
-# These formats support ranks too. To change the format for a specific rank just convert them into a config section
-# just like the global format below. The keys are the rank name and the values are the formats.
-# "default" refers to the default chat format if Vault wasn't found or there are no permission plugins.
-# If you only want to change the message color, you should use rank suffixes instead.
-formats:
-  # Used for global chnanel when a player doesn't have a kingdom.
-  global-no-kingdom: "hover:{%displayname%;&2Message %player%;|/msg %player% } &7≫ &r%message%"
-
-  # Used for global chnanel when a player is in a kingdom.
-  # An example for global using complex messages.
-  # global: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] hover:{%displayname%;&2Kingdom&8: &2%kingdoms_name%} &7≫ &r%message%"
-  # The only chat format that supports relational placeholders is the global one.
-  global:
-    # "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &r{%displayname% & -1}%message%"
-    # The format above takes the suffix color of the player's display name for the message.
-    default: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[%kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &r%message%"
-    admin: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[%kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &6%message%"
-  kingdom: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[%kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &d%message%"
-  ally: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[%kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &2%message%"
-  truce: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[%kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-  spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8]&7|&8[&2%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-
-# Used when a player is in a kingdom and that kingdom is in a nation.
-nation-formats:
-  nation: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &9%message%"
-  global: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &r%message%"
-  kingdom: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &d%message%"
-  ally: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &2%message%"
-  truce: "&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 &2%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_color@hex%%kingdoms_name%&8] %displayname% &7≫ &e%message%"
-  spy: "&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %kingdoms_color@hex%%kingdoms_nation%&8]&7|&8[%kingdoms_rank_color%%kingdoms_rank_symbol% &2%kingdoms_name%&8] %displayname%&7≫ &e%message%"
+        message: ':x: **%kingdoms_kingdom_name%** has left **%kingdoms_nation_name%**'

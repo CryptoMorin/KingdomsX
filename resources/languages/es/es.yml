@@ -335,7 +335,7 @@ command:
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
       others-permission: '&cNo tienes permiso para ver la información de otros jugadores.'
       message-admin: |
-        @&8&m---------------=(&c&l %kingdoms_nation% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
         &7| &2Capital&8: &6%kingdoms_nation:capital get=name%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -346,10 +346,10 @@ command:
         &7| &2Members&8:
         %kingdoms%
       message: |
-        @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2Rey&8: &6%king_status%
-        &7| &2Nación&8: &6%kingdoms_nation%
+        &7| &2Nación&8: &6%kingdoms_nation_name%
         &7| &2Poder&8: &6%kingdoms_might%
         &7| &2Territorios&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
         &7| &2RP&8: &6%kingdoms_resource_points%
@@ -366,10 +366,10 @@ command:
         @&7| &2Enemigos&8:
         &e%enemies%
       kingdoms: |-
-        @hover:{&6%kingdoms_name%;&2Miembros&8: &6%kingdoms_members%
+        @hover:{&6%kingdoms_kingdom_name%;&2Miembros&8: &6%kingdoms_members%
         &2Rey&8: &6%kingdoms_king%
         &2Territorios&8: &6%kingdoms_lands%}
-      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     not:
       in-nation: '&cEl jugador/reino especificado no está.'
     setspawn:
@@ -420,7 +420,7 @@ command:
         Todos los miembros del reino serán expulsados
         ¿Estás seguro de que quieres continuar?
         Utiliza de nuevo &e/k nation disband &4para confirmar.
-      announce: '&e%player% &6ha disuelto su reino &e%kingdoms_name%'
+      announce: '&e%player% &6ha disuelto su reino &e%kingdoms_kingdom_name%'
     invite:
       description: '&6Envía una invitación al reino para unirse a la nación.'
       usage: /k nation invite <Reino> [expiración]
@@ -477,11 +477,11 @@ command:
       no-more-pages: '&cNo more pages to load.'
       negative: '&cCannot show negative pages.'
       entry: |-
-        @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
+        @&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
         &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
         &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     top-entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_nation%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
       &7♦ &2RP&8: &6%kingdoms_fancy_nation_resource_points%
       &7♦ &2Banco&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
     kick:
@@ -497,7 +497,7 @@ command:
       &cNo puedes abandonar el reino siendo la capital.
       Utiliza &e/k nation disband &cPara eliminar la nación
       &cO cambia la capital del reino con &e/k nation capital
-    leave-announce: '&e¡%kingdoms_name% &cAbandonó la nación!'
+    leave-announce: '&e¡%kingdoms_kingdom_name% &cAbandonó la nación!'
     broadcast-description: '&6Emite un mensaje a todos los miembros de la nación.'
     broadcast-usage: /k nation broadcast <mensaje>
     broadcast-cooldown: '&cTienes que esperar &e%time% &cantes de emitir otro mensaje
@@ -506,7 +506,7 @@ command:
       description: '&6Establece la nueva capital del reino.'
       only-king: '&6Sólo el rey de la capital puede establecer la nueva capital de
         la nación.'
-      set: '&6%kingdoms_nation% &2Ahora es la capital de la nación.'
+      set: '&6%kingdoms_nation_name% &2Ahora es la capital de la nación.'
       not-in-nation: '&e%kingdom% &cNo está en tu nación.'
       usage: /k nation capital <Reino>
     promote:
@@ -596,12 +596,12 @@ command:
     usage: '/Kingdoms show [jugador | reino | #PLAYER | #KINGDOM] <jugador | reino>'
     others-permission: '&cYou don''t have permission to see others info.'
     message-admin: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_home%
       &7| &2Nexo&8: &6%kingdoms_nexus%
-      &7| &2Nación&8: &6%kingdoms_nation%
+      &7| &2Nación&8: &6%kingdoms_nation_name%
       &7| &2Poder&8: &6%kingdoms_fancy_might%
       &7| &2Banco&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Territorio&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
@@ -610,10 +610,10 @@ command:
       &7| &2Miembros&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      @&8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
-      &7| &2Nación&8: &6%kingdoms_nation%
+      &7| &2Nación&8: &6%kingdoms_nation_name%
       &7| &2Poder&8: &6%kingdoms_might%
       &7| &2Territorio&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2RP&8: &6%kingdoms_resource_points%
@@ -635,7 +635,7 @@ command:
       &2Última donación&8: &6%kingdoms_last_donation_time%
       &2Rango&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
     description: '&6Reclama el terreno sobre el que estás (Utiliza F3+G).'
     disabled-world: '&cNo se puede reclamar en este mundo.'
@@ -751,7 +751,7 @@ command:
       territorios serán desprotegidos.
       ¿Estás seguro de que quieres continuar?
       Utiliza &e/k disband &4de nuevo para confirmar.
-    announce: '&e%player% &6ha disuelto el reino &e%kingdoms_name%'
+    announce: '&e%player% &6ha disuelto el reino &e%kingdoms_kingdom_name%'
   about:
     description: '&6Sobre el plugin Kingdoms.'
   invite:
@@ -855,7 +855,7 @@ command:
     loading: '&6Cargando Datos...'
     header: '&8----------------------------------'
     entry: |-
-      @&8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
+      @&8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Members&8: &6%kingdoms_members%
       &7♦ &2Territorios&8: &6%kingdoms_lands%&7/&6%kingdoms_max_lands%
       &7♦ &2RP&8: &6%kingdoms_fancy_resource_points%
       &7♦ &2Banco&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
@@ -897,7 +897,7 @@ command:
     disabled:
       invader: '&cNo te puedes rendir.'
       defender: '&cNo te puedes rendir.'
-    defender-surrendered: '&6¡%player% &2del reino &6%kingdoms_name% &2se ha rendido!
+    defender-surrendered: '&6¡%player% &2del reino &6%kingdoms_kingdom_name% &2se ha rendido!
       El territorio ahora es del reino &6%kingdom%'
     defender-permission: '&cNo tienes permisos para rendirte.'
     no-invasion: '&cNo puedes invadir ningún reino o ser invadido.'
@@ -1091,7 +1091,7 @@ command:
       usage: /k admin join <player> <kingdom>
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
       in-kingdom: |-
-        &6%player% &2is already in a kingdom named &6%kingdoms_name%
+        &6%player% &2is already in a kingdom named &6%kingdoms_kingdom_name%
         &2If you'd like to continue do&8: &6/k admin join %player% confirm
       already-in-kingdom: '&6%player% &2is already a member of &6%kingdom%'
       success: '&6%player% &2is now a member of &6%kingdom%'

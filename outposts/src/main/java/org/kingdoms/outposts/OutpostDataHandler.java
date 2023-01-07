@@ -1,15 +1,15 @@
 package org.kingdoms.outposts;
 
+import com.cryptomorin.xseries.XItemStack;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
+import org.kingdoms.locale.MessageHandler;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.main.locale.MessageHandler;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarSettings;
 import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.config.ConfigSection;
 import org.kingdoms.utils.config.adapters.YamlFile;
-import org.kingdoms.utils.xseries.XItemStack;
 
 import java.io.File;
 import java.util.ArrayList;

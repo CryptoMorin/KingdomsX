@@ -12,6 +12,7 @@ updates:
   configs: bool
 
 lang: str
+force-lang: bool
 
 backups:
   interval: Period
@@ -47,9 +48,18 @@ keep-admin-mode: bool
 integrations:
   (values): bool
 
+events:
+  (keys): str
+  (values):
+    priority: Enum<org.bukkit.event.EventPriority>
+    ignore-cancelled: bool
+    commands: list
+
 placeholders:
   variables:
-    (values): str
+    (values):
+      - str
+      - { (keys): Condition, (values): str }
 
   defaults:
     (values): any
@@ -343,10 +353,12 @@ tax:
 
 inactivity:
   kingdom:
+    exclude-condition: Condition
     disband: Period
     announce: bool
   
   member:
+    exclude-condition: Condition
     kick: Period
     disband-kingdom-if-king: bool
     announce: bool
