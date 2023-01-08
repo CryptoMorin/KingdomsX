@@ -1,0 +1,89 @@
+# The duration for the contract to last if any long-term terms are selected.
+duration: 10 days
+
+war-points:
+  # Initial war points given to a kingdom when created.
+  initial: 0
+  max: 100
+
+  # Amount of war points given per action.
+  # These actions must be performed against an enemy relationship.
+  scores:
+    kill: 1
+    invade: 5
+
+# The minimum amount of selected terms required to send a contract.
+min-terms: 1
+
+# Remind players that they have an unfinished contract every once in a while.
+unfinished-contract-reminder: 5min
+
+terms:
+  # The names here should only use alphabets and dashes.
+  vassalization:
+    condition: # Used when selecting the term
+      # if the victim kingdom meets the condition below, selecting the term will fail
+      # and the specified message will be sent to the player.
+      # Note that these don't have any effect once the contract is sent.
+      "kingdoms_members >= 50": 'peace-treaties.vassalization.limits.members'
+      "kingdoms_lands >= 30": 'peace-treaties.vassalization.limits.lands'
+    terms: [ 'scutage', 'annul-treaties', 'limit-structures', 'limit-turrets', 'limit-claims', 'misc-upgrades' ]
+
+    # This GUI will be opened to change sub-terms.
+    # If none is specified, "default-term-editor" GUI will be opened.
+    # No GUI will be opened if none of the sub-terms require user input.
+    gui: 'peace-treaties/vassalization'
+
+    # Required war points to select this term.
+    war-points: 10
+
+    # Options that control each sub-term.
+    term-options:
+      scutage:
+        amount: 'percentOf(30, kingdoms_bank)'
+      limit-turrets:
+        amount: 30
+        min: 5
+      limit-structures:
+        amount: 50
+        min: 10
+      limit-claims:
+        amount: 50
+        min: 30
+
+  war-reparation:
+    war-points: 3
+    terms: [ "take-money" ]
+    gui: ~
+    term-options:
+      take-money:
+        # true means prompt the user for the value.
+        amount: true
+
+        min: 1000
+        max: 10000
+
+        conditions:
+          'amount > kingdoms_money': 'peace-treaties.take-money.high'
+
+  take-rp:
+    war-points: 3
+    terms: [ "take-resource-points" ]
+    term-options:
+      take-resource-points:
+        # true means prompt the user for the value.
+        amount: true
+        min: 1000
+        max: 100000
+
+  keep-lands:
+    war-points: 1
+    terms: [ "keep-lands" ]
+    term-options:
+      take-lands:
+        max: 10
+        min: 5
+
+  leave-nation:
+    war-points: 5
+    terms: [ "leave-nation" ]

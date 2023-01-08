@@ -1,0 +1,29 @@
+duration: Period
+
+war-points:
+  initial: Math
+  max: Math
+  scores:
+    (keys): [ kill, invade ]
+    (values): Math
+
+min-terms: int
+
+terms:
+  (optional): true
+  (required): [ terms, war-points ]
+  (values):
+    war-points: Math
+    terms:
+      (type): set
+      (elements): Term
+    conditions:
+      (keys): Condition
+      (values): str
+
+    term-options:
+      (keys): Term
+      (values):
+        conditions:
+          (keys): Condition
+          (values): str
