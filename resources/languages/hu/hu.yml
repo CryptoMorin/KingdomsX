@@ -132,8 +132,8 @@ siege-cannon:
     no-shield: '{$p}Az ágyú eltalálta a(z) {$s}%kingdoms_kingdom_name% {$p}királyságot aminek nem volt pajzsa.'
     pacifist: '{$e}Az ágyú eltalálta a(z) {$es}%kingdoms_kingdom_name% {$e}királyságot, de az egy békés királyság.'
     destroyed-shield: '{$p}Az ágyú eltalálta a(z) {$s}%kingdoms_kingdom_name% {$p}irályságot aminek a pajzsa megsemmisült.'
-    damaged-shield: '{$p}Az ágyú eltalálta a(z) {$s}%kingdoms_kingdom_name% {$p}királyságot. Hátralévő pajzs{$sep}: {$s}%kingdoms_shield_time_left%'
-    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}királyság eltalálta a  {$es}%attacked-chunk%{$e} chunk-on található területedet. Hátralévő pajzs{$sep}: {$s}%kingdoms_shield_time_left%'
+    damaged-shield: '{$p}Az ágyú eltalálta a(z) {$s}%kingdoms_kingdom_name% {$p}királyságot. Hátralévő pajzs{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}királyság eltalálta a  {$es}%attacked-chunk%{$e} chunk-on található területedet. Hátralévő pajzs{$sep}: {$s}%kingdoms_time_shield_time_left%'
   friendly:
     fire: '{$e}Az ágyú eltalált egy baráti területet (nincs OSTROM attribútum) ami a {$es}%kingdom% királysághoz tartozik.'
 lands:
@@ -416,7 +416,7 @@ nexus:
       {$e}Kérlek írj be egy helyes egyenletet.
     shield-not-enough-resource-points: '{$e}Nincs elég Nexus pontod.'
     shield-cooldown: '{$e}Várnod kell {$es}%time% {$e}mielőtt újra pajzsot vehetsz.'
-    shield-activated: '{$p}Pajzs aktiválva {$s}%kingdoms_shield_time_left% {$p}ideig.'
+    shield-activated: '{$p}Pajzs aktiválva {$s}%kingdoms_time_shield_time_left% {$p}ideig.'
 nexus-resource-points-enter-value: '{$s}Kérlek írd be a Nexus pontok mennyiségét vagy használd a hover:{{$e}Cancel;{$e}Mégsem;cancel} {$s}parancsot a megszakításhoz.'
 teleports:
   moved: '{$e}A teleportálás megszakadt mert mozogtál.'
@@ -1462,15 +1462,15 @@ command:
       {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
       &7| {$p}Király{$sep}: {$s}%king_status%
-      &7| {$p}Otthon{$sep}: {$s}%kingdoms_home%
+      &7| {$p}Otthon{$sep}: {$s}%kingdoms_kingdom_home%
       &7| {$p}Nexus{$sep}: {$s}%kingdoms_nexus%
       &7| {$p}Nemzet{$sep}: {$s}%kingdoms_nation_name%
       &7| {$p}Hatalom{$sep}: {$s}%kingdoms_fancy_might%
       &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       &7| {$p}Területek{$sep}: {$s}%kingdoms_fancy_lands%{$sep}/{$s}%kingdoms_fancy_max_lands%
       &7| {$p}Nexus pontok{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7| {$p}Pajzs{$sep}: {$s}%kingdoms_shield_time_left%
-      &7| {$p}Alapítva{$sep}: {$s}%kingdoms_since%
+      &7| {$p}Pajzs{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Alapítva{$sep}: {$s}%kingdoms_date_since%
       &7| {$p}Tagok{$sep}: {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -1479,8 +1479,8 @@ command:
       &7| {$p}Király{$sep}: {$s}%king_status%
       &7| {$p}Nemzet{$sep}: {$s}%kingdoms_nation_name%
       &7| {$p}Hatalom{$sep}: {$s}%kingdoms_might%
-      &7| {$p}Alapítva{$sep}: {$s}%kingdoms_since%
-      &7| {$p}Pajzs{$sep}: {$s}%kingdoms_shield_time_left%
+      &7| {$p}Alapítva{$sep}: {$s}%kingdoms_date_since%
+      &7| {$p}Pajzs{$sep}: {$s}%kingdoms_time_shield_time_left%
       &7| {$p}Területek{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
       &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%
       &7| {$p}Nexus pontok{$sep}: {$s}%kingdoms_fancy_resource_points%
@@ -1620,9 +1620,9 @@ command:
     no-shield: '{$e}A királyságodnak nincs aktív pajzsa.'
     confirm: |
       {$e}Ha kikapcsolod a királyság pajzsát akkor újat kell venned.
-      A királyság pajzsából a hátralevő idő{$sep}: {$es}%kingdoms_shield_time_left%
+      A királyság pajzsából a hátralevő idő{$sep}: {$es}%kingdoms_time_shield_time_left%
       {$e}Megerősítéshez és a folytatáshoz használd a hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}parancsot.
-    deactivated: '{$es}%executor% {$e}kikapcsolta a királyság pajzsát amiből még hátravolt: {$es}%kingdoms_shield_time_left% {$e}time left.'
+    deactivated: '{$es}%executor% {$e}kikapcsolta a királyság pajzsát amiből még hátravolt: {$es}%kingdoms_time_shield_time_left% {$e}time left.'
   sethome:
     description: '{$s}Királyság otthonának beállítása a jelenlegi pozíciódra.'
     not-claimed: '{$e}A királyságod otthonát csak elfoglalt területre állíthatod be.'

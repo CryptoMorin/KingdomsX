@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    commons
 }
 
 group = "org.kingdoms.services"

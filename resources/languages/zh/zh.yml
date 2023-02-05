@@ -94,8 +94,8 @@ siege-cannon:
     no-shield: '{$p}不能向{$s}%kingdoms_name%{$p}王国开火。他们没有护盾。'
     pacifist: '{$e}已经向&e%kingdoms_name%{$e}王国开火,但是他们是和平主义王国。'
     destroyed-shield: '{$p}已经向{$s}%kingdoms_name%{$p}王国开火。他们的护盾已被摧毁。'
-    damaged-shield: '{$p}已经向{$s}%kingdoms_name%{$p}王国开火。他们的护盾还剩下{$sep}:{$s}%kingdoms_shield_time_left%。'
-    damaged-shield-notify: '&e%attacker-kingdom%{$e}王国的攻城炮击中了你王国位于&e%attacked-chunk%{$e}的土地。 Remaining shield{$sep}:{$s}%kingdoms_shield_time_left%。'
+    damaged-shield: '{$p}已经向{$s}%kingdoms_name%{$p}王国开火。他们的护盾还剩下{$sep}:{$s}%kingdoms_time_shield_time_left%。'
+    damaged-shield-notify: '&e%attacker-kingdom%{$e}王国的攻城炮击中了你王国位于&e%attacked-chunk%{$e}的土地。 Remaining shield{$sep}:{$s}%kingdoms_time_shield_time_left%。'
     players-shield: '{$e}你的护盾被攻城炮打破了。'
   not-ammo: '{$e}攻城炮只能用火球作为弹药。'
   masswar-only: '{$e}你只能在大战期间使用攻城炮。'
@@ -352,7 +352,7 @@ nexus:
       {$e}请输入有效的税率。
     shield-not-enough-resource-points: '{$e}你没有足够的资源点购买护盾。'
     shield-cooldown: '{$e}你还需要等待&e%time%{$e}才能购买护盾。'
-    shield-activated: '{$p}护盾剩余时间{$s}%kingdoms_shield_time_left%。'
+    shield-activated: '{$p}护盾剩余时间{$s}%kingdoms_time_shield_time_left%。'
 nexus-resource-points-enter-value: '{$s}请输入资源点的数量或{$cancel}{$s}来取消。'
 extractor:
   not-enough-resource-points: '{$e}你没有足够的资源点。'
@@ -920,15 +920,15 @@ command:
       {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}:{$s}%king_status%
-      {$p}| {$p}家{$sep}:{$s}%kingdoms_home%
+      {$p}| {$p}家{$sep}:{$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}:{$s}%kingdoms_nexus%
       {$p}| {$p}文明{$sep}:{$s}%kingdoms_nation%
       {$p}| {$p}势力{$sep}:{$s}%kingdoms_fancy_might%
       {$p}| {$p}银行{$sep}:{$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}:{$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       {$p}| {$p}土地{$sep}:{$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
       {$p}| {$p}资源点{$sep}:{$s}%kingdoms_fancy_resource_points%
-      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_shield_time_left%
-      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_since%
+      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_time_shield_time_left%
+      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_date_since%
       {$p}| {$p}成员{$sep}:{$s}%kingdoms_members%{$p}/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -937,8 +937,8 @@ command:
       {$p}| {$p}国王{$sep}:{$s}%king_status%
       {$p}| {$p}文明{$sep}:{$s}%kingdoms_nation%
       {$p}| {$p}势力{$sep}:{$s}%kingdoms_might%
-      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_since%
-      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_shield_time_left%
+      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_date_since%
+      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_time_shield_time_left%
       {$p}| {$p}土地{$sep}:{$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
       {$p}| {$p}银行{$sep}:{$s}$%kingdoms_fancy_bank%
       {$p}| {$p}资源点{$sep}:{$s}%kingdoms_fancy_resource_points%
@@ -949,15 +949,15 @@ command:
       {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}:{$s}%king_status%
-      {$p}| {$p}家{$sep}:{$s}%kingdoms_home%
+      {$p}| {$p}家{$sep}:{$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}:{$s}%kingdoms_nexus%
       {$p}| {$p}文明{$sep}:{$s}%kingdoms_nation%
       {$p}| {$p}势力{$sep}:{$s}%kingdoms_fancy_might%
       {$p}| {$p}银行{$sep}:{$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}:{$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       {$p}| {$p}土地{$sep}:{$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
       {$p}| {$p}资源点{$sep}:{$s}%kingdoms_fancy_resource_points%
-      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_shield_time_left%
-      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_since%
+      {$p}| {$p}护盾{$sep}:{$s}%kingdoms_time_shield_time_left%
+      {$p}| {$p}创建日期{$sep}:{$s}%kingdoms_date_since%
       {$p}| {$p}成员{$sep}:{$s}%kingdoms_members%{$p}/{$s}%kingdoms_max_members% %members%
     allies: |
       {$p}| {$p}盟友{$sep}:
@@ -1062,9 +1062,9 @@ command:
     no-shield: '{$e}你的王国目前没有盾。'
     confirm: |
       {$e}如果你禁用你的盾，你得买一个新的。
-      剩余护盾时间{$sep}:&e%kingdoms_shield_time_left%
+      剩余护盾时间{$sep}:&e%kingdoms_time_shield_time_left%
       {$e}若要继续，输入hover:{&e/k shield confirm;/k shield confirm;/k shield confirm}{$e}以确定。
-    deactivated: '&e%executor%{$e}禁用了还有&e%kingdoms_shield_time_left%{$e}的王国护盾。'
+    deactivated: '&e%executor%{$e}禁用了还有&e%kingdoms_time_shield_time_left%{$e}的王国护盾。'
   unclaim:
     description: '{$s}放弃你脚下的土地。'
     success: '{$p}放弃了位于{$s}%x%{$p}, {$s}%z%的土地。'

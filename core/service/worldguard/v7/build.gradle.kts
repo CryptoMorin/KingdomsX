@@ -1,6 +1,6 @@
 plugins {
-    java
     commons
+    spigot
 }
 
 group = "org.kingdoms.services.worldguard"
@@ -21,7 +21,7 @@ repositories {
 dependencies {
     compileOnly(project(":core:service"))
     compileOnly(project(":core:service:worldguard"))
-    compileOnly(org.kingdoms.main.PredefinedDependency.Spigot.LATEST)
+    compileOnly("org.checkerframework:checker-qual:3.21.0")
     compileOnly("com.sk89q.worldedit:worldedit-core:7.3.0-SNAPSHOT")
     compileOnly("com.sk89q.worldguard:worldguard-bukkit:7.1.0-SNAPSHOT")
 }

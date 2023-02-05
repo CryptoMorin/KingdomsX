@@ -10,11 +10,7 @@ import org.snakeyaml.validation.ValidationContext;
 import org.snakeyaml.validation.ValidationFailure;
 
 public final class CustomConfigValidators {
-    private static final Tag TERM = new Tag("Term");
-
-    static {
-        org.kingdoms.utils.config.CustomConfigValidators.register(TERM, new Term());
-    }
+    private static final Tag TERM = org.kingdoms.utils.config.CustomConfigValidators.register("Term", new Term());
 
     public static void init() {}
 

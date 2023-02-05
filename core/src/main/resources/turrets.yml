@@ -29,6 +29,21 @@ to-inventory-on-break: false
 # Set to 0 to disable
 teleportation-invulnerability: 5
 
+# Disallow these mobs from being damage if a turret's shot was meant to
+# target another entity, but hit them instead.
+# This includes players as well.
+disallow-accidental-mob-damage:
+  # Disallow for friendly mobs.
+  # Mobs that are inside a kingdom are considered to
+  # be owned by them, and are friendly.
+  # Or more specifically, any mob that's inside any land
+  # that the owning kingdom of that land has CEASEFIRE attribute
+  # with the owning kingdom of the turret.
+  friendly: [ PLAYER, HORSE, COW, SHEEP ]
+
+  # Disallow for mobs that are outside friendly lands.
+  others: [ HORSE, COW, SHEEP ]
+
 # WARNING: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
 # By changing this option you're changing how often turrets perform checks and activate.
 # By default, it's every 1 tick. Meaning every 1 second, 20 checks are performed.

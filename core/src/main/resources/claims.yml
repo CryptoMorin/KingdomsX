@@ -141,6 +141,12 @@ history:
   # Older claim history will be deleted automatically.
   limit: 10
 
+# Cooldown before a land that was claimed, can be unclaimed again.
+# This is useful when allowing building inside claims, in order to prevent players from
+# temporary claiming a certain area just to build something and unclaim it again.
+# This cooldown doesn't persist between restarts.
+unclaim-cooldown: 0
+
 # The equation used to calculate the maximum claims for kingdoms (%kingdoms_max_lands% placeholder).
 # All the placeholders and math functions such as log() and round() can be used as well.
 # Note that using %kingdoms_max_lands% here can cause a Stack Overflow error which can crash your server.

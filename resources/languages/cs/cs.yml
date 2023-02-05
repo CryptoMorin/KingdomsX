@@ -126,8 +126,8 @@ siege-cannon:
     no-shield: '&2Kanon zasahl &6%kingdoms_kingdom_name% &2 a nemaji stit'
     pacifist: '&cKanon zasahl &e%kingdoms_kingdom_name% &c but they''re a pacifist kingdom'
     destroyed-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% A jejich stit byl znicen'
-    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% &2zbyvajici stit&8: &6%kingdoms_shield_time_left%'
-    damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%kingdoms_shield_time_left%'
+    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% &2zbyvajici stit&8: &6%kingdoms_time_shield_time_left%'
+    damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%kingdoms_time_shield_time_left%'
   friendly:
     fire: '&cKanon zasahl pratelske uzemi ktere patri &e%kingdom%'
 lands:
@@ -388,7 +388,7 @@ nexus:
       &cPlease enter a valid equation.
     shield-not-enough-resource-points: '&cNemas dostatek resource pointu'
     shield-cooldown: '&cMusis pockat &e%time% &cnez zakoupis stit znovu'
-    shield-activated: '&2Stit aktivovan na dobu &6%kingdoms_shield_time_left%'
+    shield-activated: '&2Stit aktivovan na dobu &6%kingdoms_time_shield_time_left%'
 nexus-resource-points-enter-value: '&6Zadej hodnotu resource pointu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
 extractor:
   not-enough-resource-points: '&cNemas dostatek resource pointu'
@@ -1016,15 +1016,15 @@ command:
       &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
-      &7| &2Home&8: &6%kingdoms_home%
+      &7| &2Home&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Shield&8: &6%kingdoms_shield_time_left%
-      &7| &2Since&8: &6%kingdoms_since%
+      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Since&8: &6%kingdoms_date_since%
       &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
@@ -1033,8 +1033,8 @@ command:
       &7| &2King&8: &6%king_status%
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_might%
-      &7| &2Since&8: &6%kingdoms_since%
-      &7| &2Shield&8: &6%kingdoms_shield_time_left%
+      &7| &2Since&8: &6%kingdoms_date_since%
+      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
       &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank%
       &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
@@ -1171,9 +1171,9 @@ command:
     no-shield: '&cStat nema zadny aktivni stit'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_shield_time_left%
+      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
-    deactivated: '&e%executor% &cdeaktivoval stit statu, ktere melo jeste &e%kingdoms_shield_time_left% &ccasu na ukonceni'
+    deactivated: '&e%executor% &cdeaktivoval stit statu, ktere melo jeste &e%kingdoms_time_shield_time_left% &ccasu na ukonceni'
   admin:
     unclaim:
       all:

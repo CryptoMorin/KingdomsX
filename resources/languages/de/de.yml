@@ -1134,8 +1134,8 @@ command:
       &7| &2König&8: &6%king_status%
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Macht&8: &6%kingdoms_might%
-      &7| &2Gründung&8: &6%kingdoms_since%
-      &7| &2Schild&8: &6%kingdoms_shield_time_left%
+      &7| &2Gründung&8: &6%kingdoms_date_since%
+      &7| &2Schild&8: &6%kingdoms_time_shield_time_left%
       &7| &2Land&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2Ressourcenpunkte&8: &6%kingdoms_resource_points%
 
@@ -1145,15 +1145,15 @@ command:
       @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2König&8: &6%king_status%
-      &7| &2Zuhause&8: &6%kingdoms_home%
+      &7| &2Zuhause&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Macht&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Land&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Schild&8: &6%kingdoms_shield_time_left%
-      &7| &2Gründung&8: &6%kingdoms_since%
+      &7| &2Schild&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Gründung&8: &6%kingdoms_date_since%
       &7| &2Mitglieder&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
@@ -1172,15 +1172,15 @@ command:
       @&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2King&8: &6%king_status%
-      &7| &2Home&8: &6%kingdoms_home%
+      &7| &2Home&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_fancy_might%
       &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_lands%&8/&6%kingdoms_max_lands%
       &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Shield&8: &6%kingdoms_shield_time_left%
-      &7| &2Since&8: &6%kingdoms_since%
+      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Since&8: &6%kingdoms_date_since%
       &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
   surrender:
@@ -1342,10 +1342,10 @@ command:
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |-
       @&cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_shield_time_left%
+      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
     deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had
-      &e%kingdoms_shield_time_left% &ctime left.'
+      &e%kingdoms_time_shield_time_left% &ctime left.'
   book:
     description: '&6A little handbook for your kingdom.'
     chapter-not-found: '&cCould not find chapter&8: &e%chapter%'
@@ -1588,7 +1588,7 @@ nexus:
       wrong-url: '&cUngültige URL für die Flagge&8: &e%flag%'
       current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%} &6to open
         your current flag URL.
-    shield-activated: '&2Schild wurde aktiviert für &6%kingdoms_shield_time_left%'
+    shield-activated: '&2Schild wurde aktiviert für &6%kingdoms_time_shield_time_left%'
     shield-not-enough-resource-points: '&cDu hast nicht genügend Ressourcenpunkte.'
     tax-enter-value: '&6Bitte gebe einen neuen Wert in den Chat ein, oder tippe
                        hover:{&cCancel;&cCancel;cancel} &6, um abzubrechen.'
@@ -1947,7 +1947,7 @@ siege-cannon:
     destroyed-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Ihr Schild
       wurde zerstört.'
     damaged-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Verbleibender Schutz&8:
-      &6%kingdoms_shield_time_left%'
+      &6%kingdoms_time_shield_time_left%'
 structures-enter-name: '&2Bitte gebe einen neuen Namen für die Struktur ein.'
 structures-name-set: '&2Der Struktur-Name wurde zu &6%name% &2geändert.'
 warppad:

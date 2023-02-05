@@ -99,9 +99,9 @@ siege-cannon:
     no-shield: '&7Пушка попала по &6%kingdoms_kingdom_name% &7которые не имеют щит!'
     pacifist: '&cПушка попала по &e%kingdoms_kingdom_name% &cно они мирное королевство'
     destroyed-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7, их щит был уничтожен!'
-    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%kingdoms_shield_time_left%'
+    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%kingdoms_time_shield_time_left%'
     damaged-shield-notify: '&7Королевство &e%attacker-kingdom% &7нанесло удар по вашей земле &e%attacked-chunk%&7.
-      Осталось ЩИТа&8: &c%kingdoms_shield_time_left%'
+      Осталось ЩИТа&8: &c%kingdoms_time_shield_time_left%'
   masswar-only: '&cВы можете использовать осадные пушки только во время массовых войн.'
 other-kingdoms:
   place: '&cВы не можете строить в чужом королевстве!'
@@ -358,7 +358,7 @@ nexus:
       &cВведите правильное уравнение.
     shield-not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
     shield-cooldown: '&cВам надо подождать &e%time% &cпрежде чем покупать щит снова'
-    shield-activated: '&7Щит активирован на &6%kingdoms_shield_time_left%'
+    shield-activated: '&7Щит активирован на &6%kingdoms_time_shield_time_left%'
 nexus-resource-points-enter-value: '&6Введите кол-во очков ресурсов или нажмите на hover:{&cОтмена;&cОтмена;cancel}
   &6для отмены'
 extractor:
@@ -893,7 +893,7 @@ command:
       &8&m---------------=(&9&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &8▪ &7Король&8: &e%king_status%
-      &8▪ &7Спавн&8: &2%kingdoms_home%
+      &8▪ &7Спавн&8: &2%kingdoms_kingdom_home%
       &8▪ &7Нексус&8: &b%kingdoms_nexus%
       &8▪ &7Нация&8: &6%kingdoms_nation_name%
       &8▪ &7Сила&8: &c%kingdoms_fancy_might%
@@ -903,8 +903,8 @@ command:
         &7Общий: &a%kingdoms_fancy_server_kingdom_tax% монет
       &8▪ &7Земли&8: &a%kingdoms_lands%&8/&2%kingdoms_max_lands%
       &8▪ &7Очков Ресурсов&8: &e%kingdoms_fancy_resource_points%
-      &8▪ &7Щит&8: &d%kingdoms_shield_time_left%
-      &8▪ &7Дата основания&8: &9%kingdoms_since%
+      &8▪ &7Щит&8: &d%kingdoms_time_shield_time_left%
+      &8▪ &7Дата основания&8: &9%kingdoms_date_since%
       &8▪ &7Участники&8: &b%kingdoms_members%&7/&3%kingdoms_max_members%
       %members%
     message: |
@@ -913,8 +913,8 @@ command:
       &8▪ &7Король&8: &e%king_status%
       &8▪ &7Нация&8: &2%kingdoms_nation_name%
       &8▪ &7Сила&8: &c%kingdoms_might%
-      &8▪ &7Дата основания&8: &9%kingdoms_since%
-      &8▪ &7Щит&8: &d%kingdoms_shield_time_left%
+      &8▪ &7Дата основания&8: &9%kingdoms_date_since%
+      &8▪ &7Щит&8: &d%kingdoms_time_shield_time_left%
       &8▪ &7Земли&8: &a%kingdoms_lands%&8/&2%kingdoms_max_lands%
       &8▪ &7Баланс&8: &e%kingdoms_fancy_bank% монет
       &8▪ &7Очков Ресурсов&8: &e%kingdoms_fancy_resource_points%
@@ -1032,9 +1032,9 @@ command:
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_shield_time_left%
+      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
-    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%kingdoms_shield_time_left%
+    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%kingdoms_time_shield_time_left%
       &ctime left.'
   unclaim:
     description: '&6Unclaim any lands.'

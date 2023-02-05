@@ -1,9 +1,11 @@
 package org.kingdoms.services.worldguard;
 
+import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.services.Service;
@@ -49,6 +51,14 @@ public abstract class ServiceWorldGuard implements Service {
     }
 
     public abstract boolean isLocationInRegion(Location location, String regionName);
+
+    public abstract boolean hasFlag(Player player, Location location, StateFlag flag);
+
+    public StateFlag getFriendlyFireFlag() {return null;}
+
+    public final boolean hasFriendlyFireFlag(Player player) {
+        return hasFlag(player, player.getLocation(), getFriendlyFireFlag());
+    }
 
     public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);
 

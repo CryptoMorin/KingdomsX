@@ -3,6 +3,7 @@ package org.kingdoms.services.worldguard;
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
@@ -15,7 +16,7 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.checkerframework.checker.nullness.qual.NonNull;
+import org.bukkit.entity.Player;
 
 import java.awt.*;
 import java.awt.geom.Area;
@@ -26,7 +27,9 @@ import java.util.Collection;
 import java.util.Objects;
 
 public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
-    private static final StateFlag CLAIMABLE;
+    private static final StateFlag
+            CLAIMABLE = registerFlag("claimable"),
+            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire");
     private static final MethodHandle INDEX;
 
     static {
@@ -52,26 +55,23 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         }
     }
 
-    static {
+    private static StateFlag registerFlag(String name) {
         // https://worldguard.enginehub.org/en/latest/developer/regions/custom-flags/
-        StateFlag flag = null;
-        String name = "claimable";
         FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
-
         try {
             // create a flag with the name "my-custom-flag", defaulting to true
             // only set our field if there was no error
-            flag = new StateFlag(name, true);
+            StateFlag flag = new StateFlag(name, false);
             registry.register(flag);
+            return flag;
         } catch (FlagConflictException e) {
             // some other plugin registered a flag by the same name already.
             // you can use the existing flag, but this may cause conflicts - be sure to check type
-            Flag<?> existing = registry.get(name);
-            if (existing instanceof StateFlag) flag = (StateFlag) existing;
             e.printStackTrace();
+            Flag<?> existing = registry.get(name);
+            if (existing instanceof StateFlag) return (StateFlag) existing;
+            return null;
         }
-
-        CLAIMABLE = flag;
     }
 
     public static boolean init() {
@@ -111,6 +111,11 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         return new Area(new Rectangle(x, z, width, height));
     }
 
+    @Override
+    public StateFlag getFriendlyFireFlag() {
+        return KINGDOMS_FRIENDLY_FIRE;
+    }
+
     private static Area toArea(ProtectedRegion region) {
         int x = region.getMinimumPoint().getBlockX();
         int z = region.getMinimumPoint().getBlockZ();
@@ -137,7 +142,7 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         return region.getFlag(CLAIMABLE) == StateFlag.State.ALLOW;
     }
 
-    protected RegionManager getRegionManager(@NonNull World world) {
+    protected RegionManager getRegionManager(World world) {
         Objects.requireNonNull(world, "Cannot get WorldGuard region manager from a null world");
         RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
         return container.get(BukkitAdapter.adapt(world));
@@ -174,5 +179,14 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
             if (region.getId().equals(regionName)) return true;
         }
         return false;
+    }
+
+    @Override
+    public boolean hasFlag(Player player, Location location, StateFlag flag) {
+        RegionManager manager = getRegionManager(location.getWorld());
+        if (manager == null) return false;
+
+        ApplicableRegionSet regions = manager.getApplicableRegions(BukkitAdapter.asBlockVector(location));
+        return regions.queryState(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
     }
 }

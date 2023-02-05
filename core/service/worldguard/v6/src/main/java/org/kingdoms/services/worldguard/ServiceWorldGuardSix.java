@@ -4,11 +4,13 @@ import com.sk89q.worldedit.BlockVector;
 import com.sk89q.worldguard.bukkit.RegionContainer;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 
@@ -79,5 +81,14 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
             throwable.printStackTrace();
             return false;
         }
+    }
+
+    @Override
+    public boolean hasFlag(Player player, Location location, StateFlag flag) {
+        com.sk89q.worldguard.protection.managers.RegionManager manager = getRegionManager(location.getWorld());
+        if (manager == null) return false;
+
+        return manager.getApplicableRegions(location)
+                .queryValue(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
     }
 }

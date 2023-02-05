@@ -1300,6 +1300,15 @@ color-range:
 # The spawn's location is the current world's spawn point that the player is in.
 teleport-to-spawn-after-kick: false
 
+# Options for /k merge
+merging:
+  conditions:
+    sender:
+      'kingdoms_kingdom_is_permanent': "command.merge.failed.permanent"
+      'kingdoms_kingdom_is_pacifist': "command.merge.failed.pacifist"
+    receiver:
+      'kingdoms_members > 50': "commands.merge.failed.max-members"
+
 tpa:
   # Should players be able to send request to players in other kingdoms?
   # If no,  players will only be able to send requests to players in their own kingdom.

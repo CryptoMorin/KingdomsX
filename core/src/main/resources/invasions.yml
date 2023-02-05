@@ -152,6 +152,11 @@ masswar:
   # The names are the same as the ones in misc-upgrades.yml (the config names, not the 'name' option)
   disable-misc-upgrades: [ anti-explosion ]
 
+  # Allowed/Disallowed commands during the event.
+  commands:
+    whitelist: false
+    list: [ 'k tpa' ]
+
   # Disable turrets during masswar.
   disable-turrets: false
 
@@ -167,6 +172,8 @@ masswar:
 
   # Set to 0 to disable. These times will reset on server restart.
   # The interval between each MassWar. This interval persists between server restarts too.
+  # This can also be set to a "hour:minute: format to start MassWars every day at the specified
+  # time with the time zone ID being the one specified in config.yml
   interval: 12hrs
   # The duration of the MassWar. The interval starts after this time has ended.
   time: 1hr

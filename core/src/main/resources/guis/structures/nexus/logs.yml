@@ -27,7 +27,7 @@ rows: 6
     name: '&2Challenged'
     lore: |
       &e%player% &chas challenged
-      &e%kingdoms_kingdom_name% &ckingdom.
+      &e%kingdoms_other_kingdom_name% &ckingdom.
       {$p}At{$sep}: {$s}%time%
       
       &7You have until &c%start_time%
@@ -235,7 +235,9 @@ rows: 6
       {$p}Reason{$sep}: {$s}%reason%
       {$p}At{$sep}: {$s}%time%
   player-rank-change:
-    lore: "{$s}%old-rank% {$sep}➜ {$s}%new-rank%"
+    lore: |
+      {$s}%old-rank% {$sep}➜ {$s}%new-rank%
+      {$p}By{$sep}: {$s}%by-player%
     promoted:
       condition: 'old_rank_priority > new_rank_priority' # It's the opposite
       material: GREEN_WOOL
@@ -411,9 +413,25 @@ rows: 6
 
 options:
   decoration:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
     material: RED_STAINED_GLASS_PANE
     name: ''
+
+  filters-and-sorting:
+    posx: 5
+    posy: 1
+    material: BOOK
+    name: "{$p}Filters & Sorting"
+    lore: |
+      {$p}Filters{$sep}:
+       {$sep}⚫ {$s}Player{$sep}: %bool_filters_player%
+       {$sep}⚫ {$s}Time{$sep}: %bool_filters_time%
+       {$sep}⚫ {$s}Type{$sep}: %bool_filters_type%
+      
+      {$p}Sorting{$sep}:
+       {$sep}⚫ {$s}Ascending Time{$sep}: %bool_sorting_time_ascending%
+       {$sep}⚫ {$s}Descending Time{$sep}: %bool_sorting_time_descending%
+       {$sep}⚫ {$s}Type{$sep}: %bool_sorting_type%
 
   next-page:
     name: '&6Next Page &7- &e%page%{$sep}/&e%pages%'
