@@ -246,6 +246,20 @@ unclaim-all:
     time: 15
     gui: true
 
+# The plugin will restore a chunk back to its original status once
+# it has been unclaimed.
+# All the options below require a restart to apply.
+restoration:
+  enabled: false
+
+  # Maximum amount of chunks that can be actively restored at once.
+  # Other chunks are queued to be restored later.
+  max-active-restoring-chunks: 30
+
+  # The rate which a single block of every active chunk that's being restored
+  # gets restored in ticks. Higher values will improve performance.
+  # Note that restoration include every single block, even the air blocks.
+  block-restoration-rate: 1
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
