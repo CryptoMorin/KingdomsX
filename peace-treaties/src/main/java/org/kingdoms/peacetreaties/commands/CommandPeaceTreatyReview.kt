@@ -22,7 +22,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
         @JvmStatic
         fun openGUI(player: Player, kingdom: Kingdom): InteractiveGUI {
             val gui = GUIAccessor.prepare(player, PeaceTreatyGUI.`PEACE$TREATIES`)
-            gui.edits.raw("page", 1).raw("pages", 1)
+            gui.settings.raw("page", 1).raw("pages", 1)
 
             val sentOpt = gui.getReusableOption("sent")
             val receivedOpt = gui.getReusableOption("received")
@@ -45,7 +45,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
                 sentOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID))
             }
 
-            gui.openInventory()
+            gui.open()
             return gui
         }
 

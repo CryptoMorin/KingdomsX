@@ -88,7 +88,7 @@ public class StandardPeaceTreatyEditor {
 
     private InteractiveGUI prepareGUI(String path) {
         InteractiveGUI gui = GUIAccessor.prepare(player, path);
-        peaceTreaty.getPlaceholderContextProvider(gui.getEdits());
+        peaceTreaty.getPlaceholderContextProvider(gui.getSettings());
         return gui;
     }
 
@@ -182,7 +182,7 @@ public class StandardPeaceTreatyEditor {
             PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
         });
 
-        gui.openInventory();
+        gui.open();
         isInsideNestedGUI.set(false);
     }
 
@@ -218,7 +218,7 @@ public class StandardPeaceTreatyEditor {
         }
 
         gui.push("back", this::open);
-        gui.openInventory();
+        gui.open();
 
         return gui;
     }

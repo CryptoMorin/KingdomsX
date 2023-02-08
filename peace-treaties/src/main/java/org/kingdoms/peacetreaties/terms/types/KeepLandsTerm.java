@@ -69,7 +69,7 @@ public class KeepLandsTerm extends Term {
             }
 
             gui.option("back").onNormalClicks(editor::open).done();
-            gui.openInventory();
+            gui.open();
         }
     };
 

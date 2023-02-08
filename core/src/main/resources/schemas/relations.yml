@@ -9,7 +9,8 @@ agreements: bool
 force-survival-mode: bool
 
 relations:
-  (keys): [ self, neutral, truce, ally, enemy, nation ]
+  (keys): &keys [ self, neutral, truce, ally, enemy, nation ]
+  (required): *keys
   (values):
     color: str
     ceasefire: bool
@@ -24,6 +25,7 @@ relations:
     manage-turrets: bool
     manage-structures: bool
     customizable: bool
+    show-holograms: bool
     pvp: Enum<org.kingdoms.managers.PvPManager$PvPType>
     effects:
       (type): list

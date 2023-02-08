@@ -5,9 +5,7 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.kingdoms.commands.admin.debugging.CommandAdminEvaluate;
 import org.kingdoms.commands.outposts.CommandOutpost;
-import org.kingdoms.gui.GUIAccessor;
-import org.kingdoms.gui.InteractiveGUI;
-import org.kingdoms.gui.ReusableOptionHandler;
+import org.kingdoms.gui.*;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.services.managers.ServiceHandler;
@@ -199,7 +197,7 @@ public final class OutpostEditor {
             player.closeInventory();
         }).done();
 
-        gui.openInventory();
+        gui.open();
         return gui;
     }
 
@@ -235,12 +233,16 @@ public final class OutpostEditor {
         gui.push("commands", this::openOutpostRewardsCommandGUIEditor);
 
         gui.push("back", this::openOutpostEditor);
-        gui.openInventory();
+        gui.open();
         return gui;
     }
 
     public InteractiveGUI openOutpostRewardsItemGUIEditor(int page) {
-        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.REWARDS_ITEMS, getEdits());
+        InventoryInteractiveGUI gui = new GUIBuilder(OutpostGUI.REWARDS_ITEMS)
+                .forPlayer(player)
+                .withSettings(getEdits())
+                .inventoryGUIOnly()
+                .build();
 
         ReusableOptionHandler itemsOption = gui.getReusableOption("items");
         Collection<ItemStack> items = outpost.getRewards().getItems();
@@ -253,7 +255,7 @@ public final class OutpostEditor {
         gui.onClose(() -> outpost.getRewards().setItems(gui.getInteractableItems()));
         gui.push("back", this::openOutpostRewardsGUIEditor);
 
-        gui.openInventory();
+        gui.open();
         return gui;
     }
 
@@ -295,7 +297,7 @@ public final class OutpostEditor {
         }).done();
 
         gui.push("back", this::openOutpostRewardsGUIEditor);
-        gui.openInventory();
+        gui.open();
         return gui;
     }
 }
