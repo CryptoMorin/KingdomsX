@@ -4,8 +4,10 @@ war-points:
   initial: Math
   max: Math
   scores:
-    (keys): [ kill, invade ]
-    (values): Math
+    gain: &warPts
+      (keys): [ kill, invade ]
+      (values): Math
+    lose: *warPts
 
 min-terms: int
 

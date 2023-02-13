@@ -1,0 +1,140 @@
+title: '{$sep}-=( {$p}Jogosultságok {$sep})=-'
+rows: 6
+
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  broadcast:
+    <<: *fn-std-perm [ "Broadcast" ]
+    lore: |
+      &7Engedély a {$s}/k broadcast
+      &7parancs használatához.
+  edit-ranks:
+    <<: *fn-std-perm [ "Rang szerkesztése" ]
+    lore: |
+      &7Jogosultság a rangok létrehozására,
+      törlésére és módosítására, beleértve
+      azok szimbólumait, nevét és jogosultságait.
+      
+      Nem módosíthatják saját rangjukat vagy
+      egy magasabb prioritású személy rangját.
+      
+      Ez nem ad engedélyt más játékosok 
+      lefokozására vagy előléptetésére.
+  home:
+    <<: *fn-std-perm [ "Otthon" ]
+    lore: |
+      &7Engedély a {$s}/k home 
+      &7parancs használatára.
+  invite:
+    <<: *fn-std-perm [ "Meghívás" ]
+    lore: |
+      &7Engedély a {$s}/k invite 
+      &7parancs használatára és a
+      {$s}/k invitecodes &7paranccsal
+      meghívókódok létrehozására.
+  kick:
+    <<: *fn-std-perm [ "Kirúgás" ]
+    lore: |
+      &7Engedély {$s}/k kick 
+      &7parancs használatára.
+      
+      &7Az ezzel a jogosultsággal 
+      rendelkező játékosok nem 
+      rúghatnak ki azonos vagy 
+      magasabb rangú játékosokat.
+  lore:
+    <<: *fn-std-perm [ "Történet" ]
+    lore: |
+      &7Engedély a {$s}/k lore{$sep}&7, 
+      a {$s}/k rename {$sep}&7, a 
+      {$s}/k book edit &7és a {$s}/k tag 
+      &7parancs használatára.
+  set-home:
+    <<: *fn-std-perm [ "Otthon beállítása" ]
+    lore: |
+      &7Engedély {$s}/k sethome
+      &7parancs használatára.
+  manage-ranks:
+    <<: *fn-std-perm [ "Rangok kezelése" ]
+    lore: |
+      &7Engedély a játékosnál
+      alacsonyabb rangú tagok
+      kinevezésére és lefokozására.
+      
+      Nem ad engedélyt a rangok
+      beállításainak módosítására.
+  withdraw:
+    <<: *fn-std-perm [ "Kivesz" ]
+    lore: |
+      &7Engedély a {$s}/k rp withdraw &7parancs
+      használatára és a Nexus pontok
+      pénzre történő cseréjére hasonlóan
+      mint például a nexus GUI felületén
+      belüli Nexus pont átalakító opciója.
+  relation-attributes:
+    <<: *fn-std-perm [ "Kapcsolati attribútumok" ]
+    lore: |
+      &7Engedély a kapcsolati
+      attribútumok szerkesztésére.
+  settings:
+    <<: *fn-std-perm [ "Beállítások" ]
+    lore: |
+      &7A nexus GUI felületében található
+      általános nemzet beállításainak
+      szerkesztésének engedélye.
+  "[else]":
+    name: "&4Ismeretlen: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '&6Következő oldal &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '&6Előző oldal &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # This is a special feature
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Vissza'

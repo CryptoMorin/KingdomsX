@@ -5,6 +5,14 @@
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Invasion
 
+# Prevents strong kingdoms from enemying and invading weak kingdoms.
+# The person trying to invade/enemy is the primary context of this inequation and the
+# person being enemy'd/invaded is the secondary context.
+strength-comparison: |
+  (kingdoms_structures_total - kingdoms_other_structures_total > 50) ||
+  (kingdoms_turrets_total - kingdoms_other_turrets_total > 100) ||
+  (kingdoms_claims - kingdoms_other_claims > 50)
+
 # By default, your kingdom can only invade one kingdom at a time.
 # 0 means no limit.
 simultaneous-invasions: 1
@@ -69,9 +77,9 @@ on-nexus-loss:
 
 # Required resource points to invade a kingdom.
 # This is different when using ransack mode, check above.
-# You can also use the "ransack" and kingdoms_masswar_isrunning boolean placeholders here.
+# You can also use the "ransack" and kingdoms_masswar_is_running boolean placeholders here.
 costs:
-  resource-points: 'eq(kingdoms_masswar_isrunning, 1, 0, eq(ransack, 1, 40, 50))'
+  resource-points: 'eq(kingdoms_masswar_is_running, 1, 0, eq(ransack, 1, 40, 50))'
   money: 0
 
 pacifism:

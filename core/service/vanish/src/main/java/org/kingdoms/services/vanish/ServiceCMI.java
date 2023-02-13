@@ -8,4 +8,9 @@ public final class ServiceCMI implements ServiceVanish {
     public boolean isVanished(Player player) {
         return CMI.getInstance().getVanishManager().getAllVanished().contains(player.getUniqueId());
     }
+
+    @Override
+    public boolean isInGodMode(Player player) {
+        return CMI.getInstance().getPlayerManager().getUser(player).isGod();
+    }
 }

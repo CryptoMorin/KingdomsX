@@ -24,8 +24,8 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             val gui = GUIAccessor.prepare(player, PeaceTreatyGUI.`PEACE$TREATIES`)
             gui.settings.raw("page", 1).raw("pages", 1)
 
-            val sentOpt = gui.getReusableOption("sent")
-            val receivedOpt = gui.getReusableOption("received")
+            val sentOpt = gui.getReusableOption("sent")!!
+            val receivedOpt = gui.getReusableOption("received")!!
 
             for (contract in kingdom.getReceivedPeaceTreaties().values) {
                 contract.getPlaceholderContextProvider(receivedOpt.settings)

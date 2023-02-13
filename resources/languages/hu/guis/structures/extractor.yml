@@ -6,14 +6,14 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}Kifogyott: &9%time% &7- &9%fancy_amount%"
+      name: "{$e}Kifogyott: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
-      name: "{$e}Nincs mit begyűjteni &9%time%"
+      name: "{$e}Nincs mit begyűjteni &9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Begyűjt&8: &9%time% &7- &9%fancy_amount%"
+      name: "&2Begyűjt&8: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
@@ -30,7 +30,13 @@ options:
       &7Az üzemanyag feltöltéséhez
       egyszerűen dobd az egyik
       üzemanyagtárgyat a fúró
-      blokkra.
+      blokkjára.
+      
+      &7Ezen kívül elhelyezhetsz
+      egy tölcsért a furó északi,
+      déli, keleti, nyugati vagy
+      felső részére a következő 
+      elemekkel.
       
       &2Szén&8: &95
       &2Faszén&8: &93

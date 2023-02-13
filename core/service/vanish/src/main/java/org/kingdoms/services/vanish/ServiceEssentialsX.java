@@ -11,4 +11,9 @@ public final class ServiceEssentialsX implements ServiceVanish {
     public boolean isVanished(Player player) {
         return ESS.getUser(player).isVanished();
     }
+
+    @Override
+    public boolean isInGodMode(Player player) {
+        return ESS.getUser(player).isGodModeEnabled();
+    }
 }

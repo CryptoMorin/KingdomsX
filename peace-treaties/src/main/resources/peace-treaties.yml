@@ -9,8 +9,16 @@ war-points:
   # Amount of war points given per action.
   # These actions must be performed against an enemy relationship.
   scores:
-    kill: 1
-    invade: 5
+    gain:
+      kill: 1
+      invade: 5
+      break-turret: 2
+      break-structure: 3
+    lose: # The points lost from the enemy kingdom
+      kill: 0.5
+      invade: 2.5
+      break-turret: 1
+      break-structure: 1.5
 
 # The minimum amount of selected terms required to send a contract.
 min-terms: 1

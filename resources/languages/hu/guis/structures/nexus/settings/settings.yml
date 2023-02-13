@@ -1,120 +1,133 @@
 title: "&8-=( &7Beállítások &8)=-"
-rows: 1
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
-  pacifism:
-    disabled:
-      condition: kingdoms_pacifist
-      name: "&2Békés &6módban vagy."
-      material: END_CRYSTAL
-      lore:
-        - "&7Amikor a királyságod békés akkor"
-        - "a királyságod nem ostromolhat és más"
-        - "királyságok nem ostromolhatják."
-        - ""
-        - "Ha megostromolsz egy királyságot akkor"
-        - "egy hétig nem válthasz vissza békés módba."
-        - ""
-        - "&2Hátralevő idő&8: &6%pacifism_cooldown%"
-    else:
-      name: "&cAgresszor &6módban vagy."
-      material: END_CRYSTAL
-      lore:
-        - "&7Amikor a királyságod békés akkor"
-        - "a királyságod nem ostromolhat és más"
-        - "királyságok nem ostromolhatják."
-        - ""
-        - "Ha megostromolsz egy királyságot akkor"
-        - "egy hétig nem válthasz vissza békés módba."
-        - ""
-        - "&2Hátralevő idő&8: &6%pacifism_cooldown%"
+  back:
     posx: 1
     posy: 1
-  shields:
-    name: "&6Pajzs&8: &2%kingdoms_time_shield_time_left%"
-    material: SHIELD
-    lore:
-      - "&7Vásárolj pajzsot a királyságodnak,"
-      - "hogy megvédjen az ostromok ellen."
-    posx: 2
-    posy: 1
-  invites:
-    name: "&6Meghívás&8: %invites%"
-    material: BOOK
-    lore:
-      - "&7Amikor ki van kapcsolva (&cDisabled&7) akkor"
-      - "meghívás nélkül is lehet csatlakozni a"
-      - "királyságodhoz a következő paranccsal:"
-      - "&2/k join %kingdoms_kingdom_name%"
-    posx: 3
-    posy: 1
-  relations:
-    name: "&6Kapcsolatok"
-    material: WRITABLE_BOOK
-    lore:
-      - "&7Más királyságokkal való kapcsolati"
-      - "attribútumok megváltoztatása."
+    material: PLAYER_HEAD
+    name: '&2Vissza'
+    lore: [ '&6Vissza a nexus menübe.' ]
+    skull: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
     posx: 4
     posy: 1
-  tax:
-    name: "&6Adó"
-    material: PAPER
-    lore:
-      - "&7A királyság tagjainak"
-      - "adóinak módosítása."
-      - ""
-      - "&6Adó&8: &2$%kingdoms_fancy_tax%"
-      - "&6Egyenlet&8: &2%tax_equation%"
-      - ""
-      - "&6Számlázott adó&8: &2$%kingdoms_fancy_kingdom_tax%"
+    material: DARK_OAK_DOOR
+    name: "{$s}Nyilvános otthon{$sep}: %kingdoms_bool_kingdom_home_is_public%"
+    lore: |
+      &7Amikor nyilvános az otthonod,
+      bárki odateleportálhat használva
+      a {$p}/k home %kingdoms_name%
+      &7parancsot.
+  hidden:
     posx: 5
     posy: 1
-  public-home:
-    true:
-      condition: public_home
-      name: "&cNyilvános &6az otthonod!"
-      material: DARK_OAK_DOOR
-      lore:
-        - "&7Nyilvánossá teheted az otthonodat,"
-        - "hogy más játékosok meg tudják látogatni"
-        - "a &6/k home %kingdoms_kingdom_name%"
-        - "&7parancsot használva."
-    else:
-      name: "&2Nem nyilvános &6az otthonod!"
-      material: DARK_OAK_DOOR
-      lore:
-        - "&7Nyilvánossá teheted az otthonodat,"
-        - "hogy más játékosok meg tudják látogatni"
-        - "a &6/k home %kingdoms_kingdom_name%"
-        - "&7parancsot használva."
+    material: POTION
+    color: 818595
+    name: "{$s}Rejtett{$sep}: %kingdoms_bool_kingdom_is_hidden%"
+    lore: |
+      &7Rejtett királyság nem látszódik
+      a {$p}/k map &7parancsnál és az
+      online térképeken.
+  tax:
     posx: 6
     posy: 1
-
+    material: PAPER
+    name: '&6Adó'
+    lore: |
+      &7Királyságod adóinak
+      változtatása a tagok
+      számára.
+      
+      &6Tagság adóegyenlete&8:
+      &2%tax_equation%
+      &6Tagjaidnak adója&8: &2$%kingdoms_fancy_tax%
+      
+      &6Királyság kiszólgáló adó&8: &2$%kingdoms_fancy_kingdom_tax%
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  relations:
+    posx: 3
+    posy: 3
+    material: WRITABLE_BOOK
+    name: '&6Kapcsolatok'
+    lore: |
+      &7Királyságodnak a kapcsolati
+      attribútumainak változtatása
+      más királyságok számára.
+      
+      {$sep}[&e!{$sep}] {$es}Egyes attribútumok működéséhez
+      mindkét királyságban szükséges 
+      engedélyezni az attribútumokat
+      a kapcsolathoz.
+      
+      Például ha a {$e}BUILD {$es}attribútum
+      engedélyezve van a szövetségesek
+      számára, de egy olyan szövetséges
+      földjére próbálsz építeni, akinél
+      nincs engedélyezve a {$e}BUILD
+      {$es}attribútum a szövetségeseinek,
+      ez nem fog működni. Nem fognak tudni
+      a területeden építeni.
   flag:
-    name: "&6Zászló"
+    posx: 5
+    posy: 3
     material: BLACK_BANNER
-    lore:
-      - "&7A királyság zászlójának beállítása a"
-      - "Dynmap-hoz. Klikk a zászlód URL-jére a"
-      - "megtekintéséhez. Nem frissíti a térképet!"
+    name: '&6Zászló'
+    lore: |
+      &7Állítsd be a királyságod zászlóját
+      az online térképekhez. Klikk a zászló
+      URL-jének megtekintéséhez.
+      Ez nem frissíti azonnal a térképet.
+  pacifism:
     posx: 7
-    posy: 1
+    posy: 3
+    material: END_CRYSTAL
+    name: '&6Békés&8: %kingdoms_bool_kingdom_is_pacifist%'
+    lore: |
+      &7Amikor békés módban vagy, a
+      királyságod nem támadhat és
+      nem is támadhatják meg más
+      királyságok.
+      
+      Ha megostromolsz egy királyságot,
+      akkor egy hétig nem válthatsz
+      vissza békés módba.
+      
+      &2Hátralévő idő&8: &6%pacifism_cooldown%
+  invites:
+    posx: 3
+    posy: 5
+    material: BOOK
+    name: '&6Meghívás szükséges&8: %kingdoms_bool_kingdom_requires_invite%'
+    lore: |
+      &7Amikor ki van kapcsolva akkor bárki
+      meghívás nélkül is tud csatlakozni
+      ehhez a királyságodhoz, használva a 
+      {$p}/k join %kingdoms_name%
+      &7parancsot.
   color:
-    name: "&6Szín&8: &c%r%&7, &2%g%&7, &9%b% &7(&d%hex%&7)"
-    material: BLACK_DYE
-    lore:
-      - "&7A királyság jelölőszínének beállítása"
-      - "a Dynmap számára."
-      - "Nem frissíti a térképet!"
-    posx: 8
-    posy: 1
-
-  back:
-    name: "&2Vissza"
-    material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore:
-      - "&6Vissza a Nexus menübe."
-    posx: 9
-    posy: 1
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '&6Szín&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_kingdom_color@hex%%kingdoms_kingdom_color%&7)'
+    lore: |
+      &7Állítsd be a királyságod
+      jelölőszínét a csevegéshez
+      és az online földtérképekhez.
+  shields:
+    posx: 7
+    posy: 5
+    material: SHIELD
+    name: '&6Pajzs&8: &2%kingdoms_time_shield_time_left%'
+    lore: |
+      &7Vásárolj pajzsot a
+      királyságodnak, hogy 
+      megvédd az ostromok ellen.

@@ -9,8 +9,8 @@ options:
     flags: [ HIDE_ATTRIBUTES ]
     lore:
       - "&7A Bajnok beállításainak módosítása,"
-      - "úgymint a felszerelés fejlesztése vagy"
-      - "a Bajnok típusának cserélése."
+      - "úgymint a felszerelés fejlesztése"
+      - "vagy a Bajnok típusának cserélése."
     posx: 3
     posy: 2
   health:
@@ -31,6 +31,9 @@ options:
     lore:
       - "&7Minden fejlesztés &230 &7másodpercenként"
       - "további Nexus Őrzőket idéz le."
+      - "A megjelenő őrök megegyeznek"
+      - "a nexus őrökkel az egyéb"
+      - "fejlesztésektől függően."
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
@@ -42,7 +45,7 @@ options:
     lore:
       - "&7Minden fejlesztés növeli az esélyt, hogy"
       - "a Bajnok ne löködjön hátra ha megtámadják."
-      - "Aktuális szint: &2%scaling%%&7"
+      - "Aktuális szint&8: &2%scaling%%&7"      
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
@@ -66,7 +69,7 @@ options:
       - "&7A játékonsak akit a Bajnok"
       - "megüt &2%scaling% &7másodpercre"
       - "megszűnik az összes aktív"
-      - "bájítal hatása."
+      - "bájítal hatása."      
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
@@ -78,19 +81,19 @@ options:
     lore:
       - "&7A Bajnok erő bájítal hatása"
       - "alá kerül amihez minden szinent"
-      - "&7tovább erősödik."
+      - "&7tovább erősödik."    
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
     posx: 4
     posy: 3
   throw:
-    name: "&bHajítás"
+    name: "&bDobás"
     material: COOKED_PORKCHOP
     lore:
       - "&7Minden támadásnak esélye lesz a játékosok"
-      - "&7égbe repítésére. Minden fejlesztés &210%&7-al"
-      - "&7növeli ennek az esélyét."
+      - "&7levegőbe dobására. Minden fejlesztés"
+      - "&210%&7-al növeli ennek az esélyét."
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
@@ -139,8 +142,8 @@ options:
     material: DIAMOND_AXE
     flags: [ HIDE_ATTRIBUTES ]
     lore:
-      - "&7Minden &23. másodpercben&7 villámcsapást"
-      - "&7kapnak az ostromlók és a közelben levő"
+      - "&7Minden {$p}%cooldown% &7elteltével villámcsapást"
+      - "&7kapnak az ostromlók és a közelben levő" 
       - "&7nem szövetséges játékosok. A villámok"
       - "&7sebzést és hátralökést okoznak."
       - ""
@@ -152,19 +155,21 @@ options:
     name: "&bSzántás"
     material: COBWEB
     lore:
-      - "&7A Bajnokod megpróbálja megtisztítani"
-      - "a területet a lávától és a pókhálótól."
+      - "&7A Bajnokod megpróbálja megtisztítani" 
+      - "a területedet a lávától és a pókhálótól"
+      - "ennyi időnként&8: {$p}%cooldown%"
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
     posx: 6
     posy: 4
   fangs:
-    name: "&bAgyar"
+    name: "&bAgyarak"
     material: EVOKER_SPAWN_EGG
     lore:
-      - "&7A Bajnok körül agyarak idéződnek"
-      - "az ellenséges játékosokra."
+      - "&7Az ellenséges játékosokra, a"
+      - "Bajnok körül minden {$p}%cooldown%"
+      - "&7elteltével agyarak idéződnek"
       - ""
       - "&2Szint&8: &6%level%"
       - "&2Költség&8: &6%cost%"
@@ -175,7 +180,7 @@ options:
     name: "&2Vissza"
     material: BARRIER
     lore:
-      - "&6Vissza a Nexus menübe."
+      - "&6Vissza a nexus menübe."
     posx: 5
     posy: 6
   purple-glass:

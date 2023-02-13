@@ -130,8 +130,9 @@ indicator:
     border: bool
     on-claim: bool
     stay: int
+    all-stay: int
 
-  (values-keys): [ 'wilderness', 'no-kingdom', 'neutral', 'truce', 'self', 'ally', 'kingdom', 'nation', 'enemy' ]
+  (values-keys): [ 'wilderness', 'no-kingdom', 'nation-zone', 'neutral', 'truce', 'self', 'ally', 'kingdom', 'nation', 'enemy' ]
   (optional): true
   (values):
     particles:
@@ -140,13 +141,6 @@ indicator:
       vertical:
         color: str
 
-    title:
-      title: str
-      subtitle: str
-      fade-in: int
-      stay: int
-      fade-out: int
-
-    actionbar: str
+    send-messages-for-same-chunk-type: bool
     corner-block: Material
     two-block: Material

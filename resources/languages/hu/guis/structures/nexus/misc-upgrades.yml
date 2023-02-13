@@ -1,179 +1,227 @@
-title: "&8-=( &3Egyéb fejlesztések &8)=-"
+title: "{$sep}-=( &3Vegyes fejlesztések {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
+# -NOSYNC
+'[fn-misc]': &fn-misc
+  args: [ "<name>", "<lore>", "<disallowPacifists>" ]
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&cKirályságod békés és nem"
+        - "tudja használni ezt a frissítést."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl "{$p}Szint{$sep}: &6%level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Jobb klikk az engedélyezéshez"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl-maxxed "{$p}Szint{$sep}: {$s}%level% {$sep}({$s}Maximumon{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb klikk a letíltásához"
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &upgrade-cost "{$p}Fejlesztés ára{$sep}: &6%cost%"
+        - *lvl
+        - *disable-upgrade
+
+# -NOSYNC
+'[fn-misc-basic]': &fn-misc-basic
+  args: [ "<lore>" ]
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - *lvl-maxxed
+    else:
+      lore:
+        - "<lore>"
+        - *lvl
+        - *upgrade-cost
+
 options:
   glory:
-    name: "&3Dicsőség"
     material: NETHER_STAR
+    <<: *fn-misc [ "&3Dicsőség", [
+      "{$p}Szint 1{$sep}: &6Területeden a nem játékosok megölése",
+      "          &62x annyi tapasztalatot ér.",
+      "{$p}Szint 2{$sep}: &6Területeden játékosok megölése",
+      "          4x annyi tapasztalatot ér."
+    ], false ]
 
-    lore:
-      - "&21. szint&8: &6A területeden a nem játékosok megölése"
-      - "           &62x annyi tapasztalatot ér."
-      - "&22. szint&8: &6A területeden a játékosok megölése"
-      - "           &64x annyi tapasztalatot ér."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
     posx: 3
     posy: 1
   anti-trample:
-    name: "&aLetaposásvédelem"
     material: WHEAT_SEEDS
+    <<: *fn-misc [ "&aLetaposásvédelem", [
+      "{$p}Szint 1{$sep}: &6A megművelt talajt a",
+      "játékosok nem tudják kitaposni.",
+      '',
+      "{$p}Szint 2{$sep}: &6Területeden kívül levő",
+      "dugattyúk amelyek blokkokat tolnak",
+      "be/ki a királyságodból, nem fognak",
+      "működni. Ez azt is megakadályozza,",
+      "hogy az Endermanok a területeden",
+      "belül blokkokat lopjanak el.",
+      "",
+      "{$p}Szint 3{$sep}: &6Megvéd bizonyos állatokat attól,",
+      "hogy a területeden megsérüljenek.",
+      "Megakadályozza azt is, hogy az ellenséges",
+      "játékosok Véggyöngyöket használjanak",
+      "a területed belsejébe való teleportálásra."
+    ], false ]
 
-    lore:
-      - "&21. szint&8: &6A megművelt talajt a"
-      - "a játékosok nem tudják kitaposni."
-      - ''
-      - "&22.szint&8: &6Továbbiakban a területeden"
-      - "kivűl levő dugattyúk nem fognak működni."
-      - ""
-      - "&23.szint&8: &6Megvéd bizonyos állatokat"
-      - "attól, hogy a területeden sérüljenek."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
     posx: 4
     posy: 1
   nexus-guards:
-    name: "&4Nexus Őrzők"
     material: DIAMOND_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &cKirályságod pacifista, és nem 
-        használhatja ezt a fejlesztést.
-    else:
-      lore:
-        - "&6Amikor valaki belép a Nexusod"
-        - "területére, akkor a normál őrzőknél"
-        - "erősebbek jelennek meg."
-        - ""
-        - "&2Költség&8: &6%cost%"
-        - "&2Szint&8: &6%level%"
+
+    <<: *fn-misc [ "&4Nexus Őrzők", [
+      "&6Amikor valaki belép a Nexusod",
+      "területére, akkor a normál őröknél",
+      "erősebbek jelennek meg."
+    ], true ]
+
     posx: 5
     posy: 1
   guards:
-    name: "&eŐrök"
     material: IRON_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &cKirályságod pacifista, és nem 
-        használhatja ezt a fejlesztést.
-    else:
-      lore:
-        - "&6Az Őrök véletlenszerűen jelennek"
-        - "meg, hogy megvédjék a királyságot"
-        - "a nem szövetséges belépőktől."
-        - ""
-        - "&2Költség&8: &6%cost%"
-        - "&2Szint&8: &6%level%"
+
+    <<: *fn-misc [ "&eŐrök", [
+      "&6Az Őrök véletlenszerűen jelennek",
+      "meg, hogy megvédjék a királyságot",
+      "a nem szövetséges belépőktől."
+    ], true ]
+
     posx: 6
     posy: 1
   insanity:
-    name: "&cŐrület"
     material: REDSTONE
 
-    lore:
-      - "&6Védők és a Nexus őrzők jelennek"
-      - "meg az erőtér területén akik Erő I"
-      - "hatás alatt lesznek 10 másodpercre."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc [ "&cŐrület", [
+      "&7Védők és a Nexus őrzők jelennek meg",
+      "az erőtér területén a következő szerint{$sep}:",
+      "{$p}Szint 1{$sep}: {$s}Erő I 10 másodpercig.",
+      "{$p}Szint 2{$sep}: {$s}Erő II 10 másodpercig.",
+      "{$p}Szint 2{$sep}: {$s}Erő III 10 másodpercig."
+    ], true ]
+
     posx: 7
     posy: 1
 
   invasion-teleportation:
-    name: "&3Inváziós teleport"
     material: ENDER_PEARL
 
-    lore:
-      - "&2Minden fejlesztés után csökkent a &e/k tp"
-      - "&2teleportáció késleltetési ideje."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc [ "&3Inváziós teleport", [
+      "{$p}Minden fejlesztés után csökkent a",
+      "&e/k tp &2teleportáció késleltetési ideje."
+    ], true ]
+
     posx: 3
     posy: 2
   invasions:
-    name: "&3Inváziók"
     material: DIAMOND_SWORD
 
-    lore:
-      - "&2Királyságod &6%invasion-limit% &2alkalommal ostromolhat"
-      - "&2Elhasznált ostromok&8: &6%invasions%"
-      - "&2Visszatöltési idő frissítése&8: &6%invasion-refresh-cooldown%"
-      - ""
-      - "&2Cost&8: &6%cost%"
-      - "&2Level&8: &6%level%"
+    <<: *fn-misc [ "&3Inváziók", [
+      "{$p}Királyságod &6%invasion-limit% {$p}alkalommal ostromolhat",
+      "{$p}Elhasznált ostromok{$sep}: &6%invasions%",
+      "{$p}Visszatöltés ideje{$sep}: &6%invasion-refresh-cooldown%"
+    ], true ]
+
     posx: 2
     posy: 2
   anti-explosion:
-    name: "&5Robbanásvédelem"
     material: GUNPOWDER
 
-    lore:
-      - "&21. szint&8: &7A királyságod területén"
-      - "a creeper-ök nem tudnak rombolni."
-      - ""
-      - "&22. szint&8: &7A királyságod területén"
-      - "a TNT-ék nem tudnak rombolni."
-      - ""
-      - "&23. szint&8: &7Megvédi a királyságod"
-      - "területén levő tagokat, állatokat és a"
-      - "csapdába esett szörnyeket a robbanásoktól."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc [ "&5Robbanásvédelem", [
+      "{$p}Szint 1{$sep}: &7A királyságod területén",
+      "a creeper-ök nem tudnak rombolni.",
+      "",
+      "{$p}Szint 2{$sep}: &7A királyságod területén",
+      "a TNT-ék nem tudnak rombolni.",
+      "",
+      "{$p}Szint 3{$sep}: &7Megvédi a királyságod",
+      "területén levő tagokat, állatokat",
+      "és a csapdába esett szörnyeket",
+      "a robbanásoktól."
+    ], false ]
+
     posx: 4
     posy: 2
   max-claims:
     name: "&3Max foglalások"
     material: MAP
 
-    lore:
-      - "&6Minden fejlesztés &22&6-vel növeli"
-      - "az elfoglalható területek számát."
-      - ""
-      - "&2Aktuális max terület&8: &6%kingdoms_max_claims%"
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc-basic [ [
+      "&6Minden fejlesztés {$p}2&6-vel növeli",
+      "az elfoglalható területek számát.",
+      "",
+      "{$p}Aktuális max terület{$sep}: &6%kingdoms_max_lands%"
+    ] ]
+
     posx: 8
     posy: 2
+  max-turrets:
+    name: "&3Max toronyok"
+    material: ARROW
+
+    <<: *fn-misc-basic [ [
+      "&7Területenként minden fejlesztés {$p}1&7-gyel",
+      "növeli a maximálisan lerakható tornyok",
+      "számát.",
+      "",
+      "{$p}Területenkénti max tornyszám{$sep}: &6%max_turrets_per_land%",
+    ] ]
+
+    posx: 5
+    posy: 2
   max-members:
-    name: "&3Max játékosok"
+    name: "&3Max tagság"
     material: PLAYER_HEAD
 
-    lore:
-      - "&6Minden fejlesztés 3-al emeli a helyet."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc-basic [ [
+      "&7Minden fejlesztés {$p}3&7-al",
+      "több tagot engedélyez.",
+      "",
+    ] ]
+
     posx: 6
     posy: 2
   chest-size:
     name: "&3Nexus láda mérete"
     material: ENDER_CHEST
 
-    lore:
-      - "&6Megnöveli a Nexus láda"
-      - "maximális méretét."
-      - ""
-      - "&2Költség&8: &6%cost%"
-      - "&2Szint&8: &6%level%"
+    <<: *fn-misc-basic [ [
+      "&6Megnöveli a Nexus láda",
+      "maximális méretét.",
+      "",
+    ] ]
+
     posx: 7
     posy: 2
 
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore:
-      - "&6Vissza a Nexus menübe."
+    lore: "&6Vissza a nexus menübe."
     posx: 5
     posy: 3
   cyan-glass:

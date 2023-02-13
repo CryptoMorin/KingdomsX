@@ -1,65 +1,106 @@
 title: "&eSzabályok"
-type: HOPPER
+rows: 3
 sound: BLOCK_ANVIL_USE
 
 options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '{$p}Vissza'
+  pink-stained-glass-pane:
+    slots: [ 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 22, 23, 25, 26 ]
+    material: PINK_STAINED_GLASS_PANE
+    name: ''
   disable-mob-spawning:
+    material: ZOMBIE_SPAWN_EGG
+    lore: |
+      &7Letiltja az összes {$p}természetes
+      &7szörny (mob) megjelenését. Az
+      állatok továbbra is megidéződnek.
     enabled:
       condition: enabled
-      name: "&2Szörnyek megjelenésének tiltása&8: &2Engedélyezve"
-      material: ZOMBIE_SPAWN_EGG
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
+      name: "{$enabled} Szörnyek megjelenésének tiltása"
+      glow: true
     else:
-      name: "&2Szörnyek megjelenésének tiltása&8: &cTiltva"
-      material: ZOMBIE_SPAWN_EGG
-    slot: 0
+      name: "{$disabled} Szörnyek megjelenésének tiltása"
+    posx: 3
+    posy: 1
   disable-animal-spawning:
+    material: SHEEP_SPAWN_EGG
+    lore: |
+      &7Letiltja az összes {$p}természetes
+      &7állat megjelenését.
     enabled:
       condition: enabled
-      name: "&2Állatok megjelenésének tiltása&8: &2Engedélyezve"
-      material: SHEEP_SPAWN_EGG
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
+      name: "{$enabled} Állatok megjelenésének tiltása"
+      glow: true
     else:
-      name: "&2Állatok megjelenésének tiltása&8: &cTiltva"
-      material: SHEEP_SPAWN_EGG
-    slot: 1
+      name: "{$disabled} Állatok megjelenésének tiltása"
+    posx: 3
+    posy: 3
   disable-turrets:
+    material: ARROW
+    lore: |
+      &7Megakadályozza az összes
+      torony lövését, amelyek ezen
+      a területen vannak elhelyezve.
     enabled:
       condition: enabled
-      name: "&2Torony letíiltása&8: &2Engedélyezve"
-      material: ARROW
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
+      name: "{$enabled} Torony letiltása"
+      glow: true
     else:
-      name: "&2Torony letíiltása&8: &cTiltva"
-      material: ARROW
-    slot: 2
+      name: "{$disabled} Torony letiltása"
+    posx: 6
+    posy: 2
   auto-fill-turrets:
+    material: SPECTRAL_ARROW
+    lore: |
+      &7Automatikusan tölti lőszerrel
+      ezen a területen lévő tornyokat.
+      {$p}Feltételek{$sep}:
+      &7⚫ {$s}A toronyból teljesen ki
+        kell fogynia a lőszernek.
+      &7⚫ {$s}A toronynak egy területen
+        kell lennie a szabályozóval.
+      &7⚫ A királyságodnak elég Nexus
+        ponttal kell rendelkeznie az
+        újratöltéshez
     enabled:
       condition: enabled
-      name: "&2Torony automatikus töltése&8: &2Engedélyezve"
-      material: SPECTRAL_ARROW
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
+      name: "{$enabled} Torony automatikus töltése"
+      glow: true
     else:
-      name: "&2Torony automatikus töltése&8: &cTiltva"
-      material: SPECTRAL_ARROW
-    slot: 3
+      name: "{$disabled} Torony automatikus töltése"
+    posx: 4
+    posy: 2
   allow-explosions:
+    material: TNT
+    lore: |
+      &7Engedélyezi, hogy az összes
+      fajta robbanás kárt tegyen
+      ezen a területen.
     enabled:
       condition: enabled
-      name: "&2Robbanások engedélyezése&8: &2Engedélyezve"
-      material: TNT
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
+      name: "{$enabled} Robbanások engedélyezése"
+      glow: true
     else:
-      name: "&2Robbanások engedélyezése&8: &cTiltva"
-      material: TNT
-    slot: 4
+      name: "{$disabled} Robbanások engedélyezése"
+    posx: 7
+    posy: 1
+  allow-fire:
+    posx: 7
+    posy: 3
+    material: FIRE_CHARGE
+    lore: |
+      &7Engedélyezi az összes fajta
+      tűzkárt ezen a területen.
+      Beleértve a tűzterjedést,
+      a blokkégést, stb.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Tűz"
+      glow: true
+    else:
+      name: "{$disabled} Tűz"

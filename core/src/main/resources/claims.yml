@@ -345,13 +345,13 @@ indicator:
     # In seconds.
     stay: 3
 
+    # /k visualize all
+    all-stay: 20
+
   # The land types to send the indicators and visualizers.
+  # You can edit the title, sound, actionbar and message of these from your language file's "lands.visualizers.<relation>" entry.
   # corner-block: The 4 corner block used to indicate the chunk corners.
   # two-blocks: The two blocks next to each corner blocks on sides.
-  # actionbar: The action bar message sent when entering this type of land.
-  # title: The title message to sent when entering this type of land.
-  #   -> title, subtitle, fade-in, stay, fade-out (all these 3 are in ticks)
-  # sound: Sound played when entering this type of land.
   # send-messages-for-same-chunk-type: If titles, actionbars, visualizers and sound should
   #   be used again if the player is entering the same type of land as their previous land.
   #   For example, if you're going from an unclaimed land to another unclaimed land, and this option is set to
@@ -361,17 +361,12 @@ indicator:
   wilderness:
     corner-block: SEA_LANTERN
     two-block: QUARTZ_BLOCK
-    actionbar: "&8&l-=( &2&l{$unoccupied} &8&l)=-"
     particles:
       horizontal:
         color: 0, 0, 0
       vertical:
         color: 0, 0, 0
   no-kingdom:
-    title:
-      title: "%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
-
     particles:
       horizontal:
         color: 255, 255, 255
@@ -387,13 +382,6 @@ indicator:
       vertical:
         color: 0, 255, 0
 
-    title:
-      title: "&2%kingdoms_kingdom_name%"
-      subtitle: "%kingdoms_lore%"
-      fade-in: 10
-      stay: 40
-      fade-out: 10
-
     corner-block: SEA_LANTERN
     two-block: EMERALD_BLOCK
   neutral:
@@ -402,9 +390,6 @@ indicator:
         color: 255, 255, 255
       vertical:
         color: 255, 255, 255
-    title:
-      title: "%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: IRON_BLOCK
@@ -414,9 +399,6 @@ indicator:
         color: 100, 255, 0
       vertical:
         color: 100, 255, 0
-    title:
-      title: "&6%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: DIAMOND_BLOCK
@@ -426,9 +408,6 @@ indicator:
         color: 255, 255, 0
       vertical:
         color: 255, 255, 0
-    title:
-      title: "&e%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: GOLD_BLOCK
@@ -438,21 +417,24 @@ indicator:
         color: 0, 0, 255
       vertical:
         color: 0, 0, 255
-    title:
-      title: "&9%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: BLUE_WOOL
+  nation-zone:
+    particles:
+      horizontal:
+        color: 0, 120, 255
+      vertical:
+        color: 0, 120, 255
+
+    corner-block: SEA_LANTERN
+    two-block: BLUE_STAINED_GLASS
   enemy:
     particles:
       horizontal:
         color: 255, 0, 0
       vertical:
         color: 255, 0, 0
-    title:
-      title: "&c%kingdoms_other_name%"
-      subtitle: "%kingdoms_other_lore%"
 
     corner-block: SEA_LANTERN
     two-block: REDSTONE_BLOCK

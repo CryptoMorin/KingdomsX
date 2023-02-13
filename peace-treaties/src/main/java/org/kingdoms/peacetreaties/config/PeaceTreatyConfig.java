@@ -17,8 +17,14 @@ public enum PeaceTreatyConfig implements EnumConfig {
     MIN_TERMS,
     UNFINISHED_CONTRACT_REMINDER,
     WAR_POINTS_MAX(2),
-    WAR_POINTS_SCORES_KILL(2, 3),
-    WAR_POINTS_SCORES_INVADE(2, 3),
+    WAR_POINTS_SCORES_GAIN_KILL(2, 3, 4),
+    WAR_POINTS_SCORES_LOSE_KILL(2, 3, 4),
+    WAR_POINTS_SCORES_GAIN_BREAK_STRUCTURE(2, 3, 4),
+    WAR_POINTS_SCORES_LOSE_BREAK_STRUCTURE(2, 3, 4),
+    WAR_POINTS_SCORES_GAIN_BREAK_TURRET(2, 3, 4),
+    WAR_POINTS_SCORES_LOSE_BREAK_TURRET(2, 3, 4),
+    WAR_POINTS_SCORES_GAIN_INVADE(2, 3),
+    WAR_POINTS_SCORES_LOSE_INVADE(2, 3),
     ;
 
     public static final YamlResource PEACE_TREATIES = new YamlResource(PeaceTreatiesAddon.get(), Kingdoms.getPath("peace-treaties.yml").toFile(), "peace-treaties.yml").load();

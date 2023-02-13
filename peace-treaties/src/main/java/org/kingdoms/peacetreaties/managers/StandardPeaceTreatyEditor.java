@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.scheduler.BukkitTask;
+import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
@@ -39,15 +40,19 @@ public class StandardPeaceTreatyEditor {
             if (reminderTask != null) reminderTask.cancel();
         }
 
-        private PendingContract(PeaceTreaty contract) {
+        private PendingContract(PeaceTreaty contract, boolean remind) {
             this.contract = contract;
 
-            long every = TimeUtils.millisToTicks(PeaceTreatyConfig.UNFINISHED_CONTRACT_REMINDER.getManager().getTimeMillis());
-            this.reminderTask = Bukkit.getScheduler().runTaskTimerAsynchronously(PeaceTreatiesAddon.get(), () -> {
-                Player player = contract.getPlayer().getPlayer();
-                if (player == null) return;
-                PeaceTreatyLang.EDITOR_UNFINISHED.sendMessage(player);
-            }, every, every);
+            if (!remind) {
+                this.reminderTask = null;
+            } else {
+                long every = TimeUtils.millisToTicks(PeaceTreatyConfig.UNFINISHED_CONTRACT_REMINDER.getManager().getTimeMillis());
+                this.reminderTask = Bukkit.getScheduler().runTaskTimerAsynchronously(PeaceTreatiesAddon.get(), () -> {
+                    Player player = contract.getPlayer().getPlayer();
+                    if (player == null) return;
+                    PeaceTreatyLang.EDITOR_UNFINISHED.sendMessage(player);
+                }, every, every);
+            }
         }
     }
 
@@ -76,14 +81,47 @@ public class StandardPeaceTreatyEditor {
         return editor;
     }
 
-    public void pause() {
-        PENDING_CONTRACTS.put(player.getUniqueId(), new PendingContract(peaceTreaty));
+    public void pause(boolean remind) {
+        PENDING_CONTRACTS.put(player.getUniqueId(), new PendingContract(peaceTreaty, remind));
     }
 
     public StandardPeaceTreatyEditor(Player player, PeaceTreaty peaceTreaty) {
         this.player = player;
         this.peaceTreaty = peaceTreaty;
         this.isAdmin = KingdomPlayer.getKingdomPlayer(player).isAdmin();
+        pause(false);
+    }
+
+    public static void kingdomNotAvailable(Kingdom kingdom) {
+        List<UUID> removeList = new ArrayList<>();
+        for (Map.Entry<UUID, PendingContract> entry : PENDING_CONTRACTS.entrySet()) {
+            Player player = Bukkit.getPlayer(entry.getKey());
+            boolean remove = false;
+            if (entry.getValue().contract.getVictimKingdomId().equals(kingdom.getId())) {
+                if (player != null) PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player);
+                remove = true;
+            } else if (entry.getValue().contract.getProposerKingdomId().equals(kingdom.getId())) {
+                // No need to send a message, they're already notified when their kingdom gets disbanded.
+                remove = true;
+            }
+
+            if (remove) {
+                if (player != null) player.closeInventory();
+                removeList.add(entry.getKey());
+                entry.getValue().cancelReminder();
+            }
+        }
+
+        removeList.forEach(PENDING_CONTRACTS::remove);
+    }
+
+    public static void outOfKingdom(KingdomPlayer kp) {
+        Player player = kp.getPlayer();
+        if (player != null) player.closeInventory();
+
+        PendingContract pendingContract = PENDING_CONTRACTS.remove(kp.getId());
+        if (pendingContract == null) return;
+        pendingContract.cancelReminder();
     }
 
     private InteractiveGUI prepareGUI(String path) {
@@ -178,7 +216,7 @@ public class StandardPeaceTreatyEditor {
 
         gui.onClose(() -> {
             if (wasSent.get() || isInsideNestedGUI.get()) return;
-            pause();
+            pause(true);
             PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
         });
 

@@ -2,14 +2,18 @@ package org.kingdoms.peacetreaties.managers
 
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerJoinEvent
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.group.model.relationships.KingdomRelation
 import org.kingdoms.events.general.GroupRelationshipChangeEvent
 import org.kingdoms.events.general.GroupRelationshipRequestEvent
+import org.kingdoms.events.general.KingdomDisbandEvent
+import org.kingdoms.events.members.KingdomLeaveEvent
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.main.KLogger
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
@@ -40,6 +44,16 @@ class RelationshipListener : Listener {
         }, 20L)
     }
 
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    fun closeTreatyEditorOnDisband(event: KingdomDisbandEvent) {
+        StandardPeaceTreatyEditor.kingdomNotAvailable(event.kingdom)
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    fun closeTreatyEditorOnKick(event: KingdomLeaveEvent) {
+        StandardPeaceTreatyEditor.outOfKingdom(event.getPlayer())
+    }
+
     @EventHandler(ignoreCancelled = true)
     fun onNeutralRelationshipRequest(event: GroupRelationshipRequestEvent) {
         if (event.relationship != KingdomRelation.NEUTRAL) return
@@ -48,6 +62,7 @@ class RelationshipListener : Listener {
         val from = event.from as Kingdom
         val to = event.to as Kingdom
 
+        KLogger.temp("called onNeutral: ${from.getRelationWith(to)}")
         if (from.getRelationWith(to) != KingdomRelation.ENEMY) return
         event.isCancelled = true
 

@@ -32,16 +32,15 @@ options:
       material: EMERALD_BLOCK
       name: "{$p}Ostromlottak{$sep}:"
       lore: &lore |
-        {$p}Játékos{$sep}: {$s}%player%
         {$p}Terület{$sep}: {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
         {$p}Bajnok{$sep}: {$s}%champion% {$sep}({$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep})
         {$p}Mióta{$sep}: {$s}%since%
         {$p}Időtartam{$sep}: {$s}%duration%
         {$p}Átadott{$sep}: {$s}%passed%
         {$p}Teljes terület{$sep}: {$s}%total_lands%
-    # These are for plunders only.
-    #        {$p}Attacker Score{$sep}: {$s}%attacker_score%{$sep}/{$s}%defender_death_limit%
-    #        {$p}Defender Score{$sep}: {$s}%defender_score%{$sep}/{$s}%attacker_death_limit%
+# These are for plunders only.
+#        {$p}Attacker Score{$sep}: {$s}%attacker_score%{$sep}/{$s}%defender_death_limit%
+#        {$p}Defender Score{$sep}: {$s}%defender_score%{$sep}/{$s}%attacker_death_limit%
     else:
       material: PURPLE_STAINED_GLASS_PANE
   attacking:
@@ -50,7 +49,7 @@ options:
     name: '{$p}Védő{$sep}: {$s}%kingdoms_other_name%'
     lore: *lore
   defending:
-    slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
+    slots: [14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43]
     material: PLAYER_HEAD
     name: '{$e}Ostromló{$sep}: {$es}%kingdoms_kingdom_name%'
     lore: *lore
