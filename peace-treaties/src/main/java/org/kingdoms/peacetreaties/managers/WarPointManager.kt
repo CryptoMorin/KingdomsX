@@ -11,9 +11,11 @@ import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.invasion.KingdomInvadeEvent
 import org.kingdoms.events.items.KingdomItemBreakEvent
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
+import org.kingdoms.locale.provider.MessageBuilder
 import org.kingdoms.main.KLogger
 import org.kingdoms.managers.PvPManager
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
+import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.WarPoint.Companion.addWarPoints
 import org.kingdoms.utils.KingdomsBukkitExtensions.asKingdomPlayer
 import org.kingdoms.utils.MathUtils
@@ -35,12 +37,19 @@ class WarPointManager : Listener {
         val defender = invasion.defender
         if (attacker.getRelationWith(defender) != KingdomRelation.ENEMY) return
 
-        val ctx = PlaceholderContextBuilder().withContext(attacker).other(defender)
+        val ctx = MessageBuilder().withContext(attacker).other(defender)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_INVADE.manager.mathExpression, ctx)
         val lost = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_INVADE.manager.mathExpression, ctx)
 
         attacker.addWarPoints(defender, gained)
         defender.addWarPoints(attacker, -lost)
+
+        ctx.raw("war_points", gained)
+        PeaceTreatyLang.WAR_POINTS_GAIN_INVADE.sendMessage(invasion.invaderPlayer, ctx)
+        ctx.raw("war_points", lost)
+        for (member in defender.onlineMembers) {
+            PeaceTreatyLang.WAR_POINTS_GAIN_INVADE.sendError(member, ctx)
+        }
 
         KLogger.debug(DEBUG_NS) { "Added $gained war points to ${attacker.name} kingdom: invaded ${defender.name}" }
     }
@@ -58,12 +67,17 @@ class WarPointManager : Listener {
 
         if (deadKingdom.getRelationWith(killerKingdom) != KingdomRelation.ENEMY) return
 
-        val ctx = PlaceholderContextBuilder().withContext(killer).other(dead)
+        val ctx = MessageBuilder().withContext(killer).other(dead)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_KILL.manager.mathExpression, ctx)
         val lost = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_KILL.manager.mathExpression, ctx)
 
         killerKingdom.addWarPoints(deadKingdom, gained)
         deadKingdom.addWarPoints(killerKingdom, -lost)
+
+        ctx.raw("war_points", gained)
+        PeaceTreatyLang.WAR_POINTS_GAIN_KILL.sendMessage(killer, ctx)
+        ctx.raw("war_points", lost)
+        deadKingdom.onlineMembers.forEach { x -> PeaceTreatyLang.WAR_POINTS_LOST_KILL.sendError(x, ctx) }
 
         KLogger.debug(DEBUG_NS) { "Added $gained war points to ${killerKingdom.name} kingdom: ${killer.name} killed ${dead.name}" }
     }
@@ -73,13 +87,13 @@ class WarPointManager : Listener {
         event.getMetadata<SiegeCannon>(SiegeCannon.NS) ?: return
         val item = event.getKingdomItem()!!
 
+        val player = event.getPlayer() ?: return // Not caused by a player
         val itemKingdom = item.getLand()!!.kingdom!!
-        val player = event.getPlayer()!!
         val playerKingdom = player.kingdom!!
 
         if (itemKingdom.getRelationWith(playerKingdom) != KingdomRelation.ENEMY) return
 
-        val ctx = PlaceholderContextBuilder().withContext(player.offlinePlayer).other(itemKingdom)
+        val ctx = MessageBuilder().withContext(player.offlinePlayer).other(itemKingdom)
 
         val isTurret = item is Turret
         val gainedOpt = if (isTurret) PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_TURRET else PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_STRUCTURE
@@ -90,6 +104,15 @@ class WarPointManager : Listener {
 
         playerKingdom.addWarPoints(itemKingdom, gained)
         itemKingdom.addWarPoints(playerKingdom, -lost)
+
+        ctx.raw("style", item.style.displayName)
+        ctx.raw("war_points", gained)
+        val gainedMsg = if (isTurret) PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_STRUCTURE
+        player.player?.let { gainedMsg.sendMessage(it, ctx) }
+
+        ctx.raw("war_points", lost)
+        val lostMsg = if (isTurret) PeaceTreatyLang.WAR_POINTS_LOST_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_LOST_BREAK_STRUCTURE
+        itemKingdom.onlineMembers.forEach { x -> lostMsg.sendError(x, ctx) }
 
         KLogger.debug(DEBUG_NS) {
             "Added $gained war points to ${playerKingdom.name} kingdom because ${player.offlinePlayer.name} destroyed a " +
