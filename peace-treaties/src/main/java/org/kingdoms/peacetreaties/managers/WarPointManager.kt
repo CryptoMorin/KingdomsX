@@ -8,6 +8,7 @@ import org.bukkit.event.entity.PlayerDeathEvent
 import org.kingdoms.constants.group.model.relationships.KingdomRelation
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
+import org.kingdoms.events.invasion.KingdomInvadeEndEvent
 import org.kingdoms.events.invasion.KingdomInvadeEvent
 import org.kingdoms.events.items.KingdomItemBreakEvent
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
@@ -29,7 +30,7 @@ class WarPointManager : Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    fun onInvade(event: KingdomInvadeEvent) {
+    fun onInvade(event: KingdomInvadeEndEvent) {
         val invasion = event.getInvasion()
         if (!invasion.result.isSuccessful) return
 

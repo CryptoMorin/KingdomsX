@@ -62,7 +62,6 @@ class RelationshipListener : Listener {
         val from = event.from as Kingdom
         val to = event.to as Kingdom
 
-        KLogger.temp("called onNeutral: ${from.getRelationWith(to)}")
         if (from.getRelationWith(to) != KingdomRelation.ENEMY) return
         event.isCancelled = true
 

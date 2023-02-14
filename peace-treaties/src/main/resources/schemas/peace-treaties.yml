@@ -5,7 +5,7 @@ war-points:
   max: Math
   scores:
     gain: &warPts
-      (keys): [ kill, invade ]
+      (keys): [ kill, invade, break-turret, break-structure ]
       (values): Math
     lose: *warPts
 
@@ -13,8 +13,8 @@ min-terms: int
 
 terms:
   (optional): true
-  (required): [ terms, war-points ]
   (values):
+    (required): [ terms, war-points ]
     war-points: Math
     terms:
       (type): set

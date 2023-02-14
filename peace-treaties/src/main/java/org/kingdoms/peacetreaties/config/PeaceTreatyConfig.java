@@ -27,7 +27,9 @@ public enum PeaceTreatyConfig implements EnumConfig {
     WAR_POINTS_SCORES_LOSE_INVADE(2, 3),
     ;
 
-    public static final YamlResource PEACE_TREATIES = new YamlResource(PeaceTreatiesAddon.get(), Kingdoms.getPath("peace-treaties.yml").toFile(), "peace-treaties.yml").load();
+    public static final YamlResource PEACE_TREATIES =
+            new YamlResource(PeaceTreatiesAddon.get(),
+                    Kingdoms.getPath("peace-treaties.yml").toFile(), "peace-treaties.yml").load();
 
     static {
         ConfigWatcher.register(PEACE_TREATIES.getFile().toPath().getParent(), ConfigWatcher::handleNormalConfigs);
@@ -41,10 +43,6 @@ public enum PeaceTreatyConfig implements EnumConfig {
 
     PeaceTreatyConfig() {
         this.option = new ConfigPath(StringUtils.configOption(this));
-    }
-
-    PeaceTreatyConfig(String option) {
-        this.option = new ConfigPath(option);
     }
 
     PeaceTreatyConfig(int... grouped) {

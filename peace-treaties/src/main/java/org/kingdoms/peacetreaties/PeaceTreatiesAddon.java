@@ -58,6 +58,8 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
                 .forEach(termRegistry::register);
 
         LanguageManager.registerMessenger(PeaceTreatyLang.class);
+        CustomConfigValidators.init();
+        ConfigManager.registerAsMainConfig(PeaceTreatyConfig.PEACE_TREATIES);
     }
 
     @Override
@@ -76,7 +78,6 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         new CommandPeaceTreaty();
 
         PeaceTreatiesPlaceholder.init();
-        CustomConfigValidators.init();
 
         // peace-treaties.yml
         ConfigWatcher.register(PeaceTreatyConfig.PEACE_TREATIES.getFile().toPath().getParent(), ConfigWatcher::handleNormalConfigs);
