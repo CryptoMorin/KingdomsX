@@ -193,6 +193,9 @@ database:
   use-data-folder: true
 
   # Table names for databases, also used as the folder name for local databases.
+  # Note for SQL databases, you should change these values to something like
+  # "kingdoms_nations", "kingdoms_players", etc.
+  # WARNING: You cannot change these values once they're set. Your data will be corrupted if you change these later.
   tables:
     nations: Nations
     kingdoms: Kingdoms
@@ -281,6 +284,8 @@ commands:
   # You cannot move the position of command arguments or change their group/parent
   # However you can add shortcut commands for them like "/nexus" for "/k nexus" thru the commands.yml
   # found in your server's root folder (where your spigot.yml is).
+
+  # You need to /k reload for the following settings to take effect.
 
   # Example command:
   help:
