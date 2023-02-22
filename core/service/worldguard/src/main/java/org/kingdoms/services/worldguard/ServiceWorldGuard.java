@@ -50,7 +50,6 @@ public abstract class ServiceWorldGuard implements Service {
         return manager == null ? new HashSet<>() : manager.getRegions().keySet();
     }
 
-    public abstract boolean isLocationInRegion(Location location, String regionName);
 
     public abstract boolean hasFlag(Player player, Location location, StateFlag flag);
 
@@ -59,6 +58,8 @@ public abstract class ServiceWorldGuard implements Service {
     public final boolean hasFriendlyFireFlag(Player player) {
         return hasFlag(player, player.getLocation(), getFriendlyFireFlag());
     }
+
+    public abstract boolean isLocationInRegion(Location location, String regionName);
 
     public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);
 

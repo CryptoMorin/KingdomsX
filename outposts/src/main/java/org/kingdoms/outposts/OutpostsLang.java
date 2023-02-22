@@ -1,5 +1,6 @@
 package org.kingdoms.outposts;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
@@ -84,9 +85,9 @@ public enum OutpostsLang implements DefinedMessenger {
     OutpostsLang(String defaultValue, int... group) {
         this.defaultValue = defaultValue;
         this.languageEntry = DefinedMessenger.getEntry("outposts", this, group);
-        ;
     }
 
+    @NonNull
     @Override
     public LanguageEntry getLanguageEntry() {
         return languageEntry;

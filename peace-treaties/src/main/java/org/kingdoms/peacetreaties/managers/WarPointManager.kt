@@ -9,9 +9,7 @@ import org.kingdoms.constants.group.model.relationships.KingdomRelation
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent
-import org.kingdoms.events.invasion.KingdomInvadeEvent
 import org.kingdoms.events.items.KingdomItemBreakEvent
-import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.locale.provider.MessageBuilder
 import org.kingdoms.main.KLogger
 import org.kingdoms.managers.PvPManager

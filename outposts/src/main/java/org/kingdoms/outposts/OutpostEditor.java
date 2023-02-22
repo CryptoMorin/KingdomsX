@@ -36,11 +36,10 @@ public final class OutpostEditor {
                 .raw("outpost-max-participants", outpost.getMaxParticipants())
                 .raw("outpost-entrance-money", outpost.getMoneyCost() == null ? 0 : outpost.getMoneyCost())
                 .raw("outpost-entrance-resource-points-fee", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost())
-                .raw("outpost-spawn", KingdomsLang.LOCATIONS_NORMAL.parse(LocationUtils.getLocationEdits(outpost.getSpawn())))
-                .raw("outpost-center", KingdomsLang.LOCATIONS_NORMAL.parse(LocationUtils.getLocationEdits(outpost.getCenter())))
+                .raw("outpost-spawn", LocationUtils.parseLocation(outpost.getSpawn()))
+                .raw("outpost-center", LocationUtils.parseLocation(outpost.getCenter()))
                 .raw("outpost-rewards-resource-points", outpost.getRewards().getResourcePoints() == null ? 0 : outpost.getRewards().getResourcePoints())
-                .raw("outpost-rewards-money", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost())
-                ;
+                .raw("outpost-rewards-money", outpost.getResourcePointsCost() == null ? 0 : outpost.getResourcePointsCost());
     }
 
     public InteractiveGUI openOutpostEditor() {

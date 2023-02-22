@@ -111,17 +111,17 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         return new Area(new Rectangle(x, z, width, height));
     }
 
-    @Override
-    public StateFlag getFriendlyFireFlag() {
-        return KINGDOMS_FRIENDLY_FIRE;
-    }
-
     private static Area toArea(ProtectedRegion region) {
         int x = region.getMinimumPoint().getBlockX();
         int z = region.getMinimumPoint().getBlockZ();
         int width = region.getMaximumPoint().getBlockX() - x + 1;
         int height = region.getMaximumPoint().getBlockZ() - z + 1;
         return new Area(new Rectangle(x, z, width, height));
+    }
+
+    @Override
+    public StateFlag getFriendlyFireFlag() {
+        return KINGDOMS_FRIENDLY_FIRE;
     }
 
     @SuppressWarnings("RedundantIfStatement")

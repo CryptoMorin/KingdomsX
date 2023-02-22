@@ -1,5 +1,6 @@
 package org.kingdoms.peacetreaties.config;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.config.Path;
 import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
@@ -59,7 +60,8 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     WAR_POINTS_LOST_INVADE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}for losing the invasion.", 2, 3),
     WAR_POINTS_LOST_KILL("{$e}Your kingdom has lost {$es}%war_points% war points {$p}for death of {$es}%other_player% {$e}by {$es}%player%", 2, 3),
     WAR_POINTS_LOST_BREAK_TURRET("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}turret.", 2, 3),
-    WAR_POINTS_LOST_BREAK_STRUCTURE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}structure.", 2, 3),
+    WAR_POINTS_LOST_BREAK_STRUCTURE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}structure.",
+            2, 3),
 
     TERMS_TAKE_RESOURCE_POINTS_MESSAGE("{$e}Your kingdom must pay{$sep}: {$es}%fancy_term_take_resource_points_amount% resource points.", 1, 4),
     TERMS_TAKE_MONEY_MESSAGE("{$e}Your kingdom must pay{$sep}: {$es}$%fancy_term_take_money_amount%", 1, 3),
@@ -93,9 +95,9 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     PeaceTreatyLang(String defaultValue, int... group) {
         this.defaultValue = defaultValue;
         this.languageEntry = DefinedMessenger.getEntry("peace-treaties", this, group);
-        ;
     }
 
+    @NonNull
     @Override
     public LanguageEntry getLanguageEntry() {
         return languageEntry;

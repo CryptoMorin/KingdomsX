@@ -25,23 +25,28 @@ public class OutpostRewards {
         return (int) MathUtils.evaluateEquation(resourcePoints, "lvl", lvl);
     }
 
-    public void performCommands(Kingdom kingdom) {
-        for (OfflinePlayer member : kingdom.getPlayerMembers()) {
-            StringUtils.performCommands(member, commands);
-        }
+    public String getResourcePoints() {
+        return resourcePoints;
     }
 
     public double getMoney(int lvl) {
         return MathUtils.evaluateEquation(money, "lvl", lvl);
     }
 
+    public String getMoney() {
+        return money;
+    }
+
+    public void performCommands(Kingdom kingdom) {
+        for (OfflinePlayer member : kingdom.getPlayerMembers()) {
+            StringUtils.performCommands(member, commands);
+        }
+    }
+
     public List<ItemStack> getItems() {
         return items;
     }
 
-    public String getMoney() {
-        return money;
-    }
 
     public void setItems(List<ItemStack> items) {
         this.items = items;
@@ -63,7 +68,4 @@ public class OutpostRewards {
         this.resourcePoints = resourcePoints;
     }
 
-    public String getResourcePoints() {
-        return resourcePoints;
-    }
 }

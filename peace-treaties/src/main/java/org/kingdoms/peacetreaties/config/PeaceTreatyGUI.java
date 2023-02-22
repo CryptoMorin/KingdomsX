@@ -13,7 +13,6 @@ public enum PeaceTreatyGUI implements GUIPathContainer {
 
     PeaceTreatyGUI() {
         this.path = "peace-treaties/" + GUIPathContainer.translateEnumPath(this);
-        ;
     }
 
     @Override

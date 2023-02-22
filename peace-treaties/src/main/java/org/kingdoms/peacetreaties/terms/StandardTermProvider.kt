@@ -22,7 +22,7 @@ open class StandardTermProvider(
     constructor(namespace: Namespace, constructor: () -> Term) : this(namespace, constructor, false, false)
 
     override fun requiresData(options: TermGroupingOptions): Boolean {
-        return requiresData && (options.getConfigOf(this)?.getBoolean("amount") ?: true)
+        return requiresData && options.getConfigOf(this)?.getBoolean("amount") ?: true
     }
 
     override fun isLongTerm(): Boolean = longTerm

@@ -5,7 +5,7 @@ import yaml
 
 crowdinFiles = []
 
-for subdir, _, files in os.walk("core/src/main/resources/guis"):
+for subdir, _, files in os.walk(r"core/src/main/resources/guis"):
     for file in files:
         subdir = subdir.replace('\\', '/')
         filepath = subdir + '/' + file

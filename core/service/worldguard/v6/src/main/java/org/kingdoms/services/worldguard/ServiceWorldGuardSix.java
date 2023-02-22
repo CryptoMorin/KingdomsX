@@ -45,6 +45,24 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
         }
     }
 
+    @Override
+    public boolean isLocationInRegion(Location location, String regionName) {
+        try {
+            com.sk89q.worldguard.protection.managers.RegionManager manager = getRegionManager(location.getWorld());
+            if (manager == null) return false;
+
+            //Object pt1 = getToBlockPoint.invoke(location.getX(), location.getY(), location.getZ());
+            com.sk89q.worldguard.protection.ApplicableRegionSet regions = (ApplicableRegionSet) manager.getApplicableRegions(location);
+            for (ProtectedRegion region : regions.getRegions()) {
+                if (region.getId().equals(regionName)) return false;
+            }
+            return false;
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+            return false;
+        }
+    }
+
     public RegionContainer getRegionContainer() {
         return WorldGuardPlugin.inst().getRegionContainer();
     }
@@ -65,23 +83,6 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
         }
     }
 
-    @Override
-    public boolean isLocationInRegion(Location location, String regionName) {
-        try {
-            com.sk89q.worldguard.protection.managers.RegionManager manager = getRegionManager(location.getWorld());
-            if (manager == null) return false;
-
-            //Object pt1 = getToBlockPoint.invoke(location.getX(), location.getY(), location.getZ());
-            com.sk89q.worldguard.protection.ApplicableRegionSet regions = (ApplicableRegionSet) manager.getApplicableRegions(location);
-            for (ProtectedRegion region : regions.getRegions()) {
-                if (region.getId().equals(regionName)) return false;
-            }
-            return false;
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-            return false;
-        }
-    }
 
     @Override
     public boolean hasFlag(Player player, Location location, StateFlag flag) {
