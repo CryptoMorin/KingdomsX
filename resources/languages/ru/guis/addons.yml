@@ -36,21 +36,20 @@ options:
     material: NETHER_STAR
     name: '&9Инфа'
     lore: |
-      &7Addons are additional
-      downloadable content that
-      can be installed separately.
+      &7Аддоны являются дополнительными
+      загружаемый контент, который
+      можно установить отдельно.
 
-      The reason why addons exist in
-      the first place, is because of
-      {$p}performance{$sep}, {$p}modularization
-      &7and {$p}file size limits.
+      Причины, по которой аддоны существуют это
+      {$p}производительности{$sep}, {$p}модуляризация
+      &7и {$p}ограничения размера файла.
 
-      {$sep}[{$s}!{$sep}] &7In order to be
-      able to install addons, you need to
-      have a internet connection that's
-      able to connect to {$p}GitHub.com
-      {$sep}(&7not blocked by firewall,
-      country censoreship and etc.{$sep})
+      {$sep}[{$s}!{$sep}] &7Чтобы быть
+      возможность установки дополнений, вам необходимо
+      иметь подключение к Интернету, которое
+      может подключиться к {$p}GitHub.com
+      {$sep}(&7не блокируется брандмауэром,
+      государственная цензура и т.д.{$sep})
   addons:
     slots:
       - 10
@@ -83,32 +82,32 @@ options:
       - 43
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] &9%addon-name%'
+      name: '&8[&5Ожидание перезапуска&8] &9%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
-        &5The addon is downloaded. Waiting
-        for the server to be restarted to
-        enable the addon.
+        &2Версия&8: &9%latest-version%
+        &5Аддон скачивается. 
+        Ожидание перезапуска сервера 
+        для включения аддона.
       material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[&2Up to date&8] &9%addon-name%'
+      name: '&8[&2Обновлен&8] &9%addon-name%'
       lore: |
         %description%
-        &2Version&8: &9%installed-version%
-        &4Right-click to uninstall
+        &2Версия&8: &9%installed-version%
+        &4Щелкните ПКМ, чтобы удалить
       material: GREEN_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Устаревший&8] &9%addon-name%'
       lore: |
         %description%
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
-        &2Left-click to install
-        &4Right-click to uninstall
+        &4Установленная версия&8: &9%installed-version%
+        &2Последняя версия&8: &9%latest-version%
+        &2ЛКМ для установки
+        &4ПКМ для удаления
       material: RED_WOOL
     not-installed:
       name: '&8[&6Not installed&8] &9%addon-name%'
