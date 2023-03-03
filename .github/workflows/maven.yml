@@ -1,0 +1,30 @@
+name: Build DEV Jars
+
+on: [push, pull_request]
+
+jobs:
+  build_dev_jars:
+    name: Build DEV jars
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+      - name: Build with Maven
+        run: |
+         ./mvn package
+          git_hash=$(git rev-parse --short "$GITHUB_SHA")
+          echo "git_hash=$git_hash" >> $GITHUB_ENV
+          echo "snapshotVersion=1.0-SNAPSHOT" >> $GITHUB_ENV
+          echo "artifactPath=$(pwd)/builds" >> $GITHUB_ENV
+      - name: Upload Plugin jar
+        uses: actions/upload-artifact@v3
+        with:
+          name: Plugin-${{ env.snapshotVersion }}-${{ env.git_hash }}.jar
+          path: ${{ env.artifactPath }}/Plugin-${{ env.snapshotVersion }}.jar
