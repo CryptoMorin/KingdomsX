@@ -26,9 +26,9 @@ backups:
   delete-backups-older-than: int
 
 database:
-  method: str
-  data-folder: str
+  method: [ sqlite, h2, json, yaml, mysql, mariadb, postgresql, mongodb ]
   auto-save-interval: Period
+  use-data-folder: bool
   smart-save: bool
   load-all-data-on-startup: bool
 
@@ -44,12 +44,18 @@ database:
   database: str
   username: str
   password: str
+  uri: str
 
   pool-settings:
-    maximum-pool-size:
-      (type): int
-      (min): 1
-      (max): 1000
+    size:
+      max:
+        (type): int
+        (min): 1
+        (max): 1000
+      min:
+        (type): int
+        (min): 0
+        (max): 100
 
     minimum-idle:
       (type): int
@@ -57,15 +63,18 @@ database:
       (max): 100
 
     maximum-lifetime: Period
-    keepalive-time: int
     connection-timeout: Period
+    keepalive-time: int
+    max-concurrent-connections: int
+
+    ssl:
+      enabled: bool
+      verify-server-certificate: bool
+      allow-public-key-retrieval: bool
 
     properties:
       (keys): str
       (values): any
-
-  mongodb:
-    connection-uri: str
 
 disabled-worlds:
   (type): set

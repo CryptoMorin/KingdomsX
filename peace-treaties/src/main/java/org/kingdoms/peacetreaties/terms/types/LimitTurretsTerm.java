@@ -1,9 +1,10 @@
 package org.kingdoms.peacetreaties.terms.types;
 
-import com.google.gson.JsonObject;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor;
 import org.kingdoms.peacetreaties.terms.StandardTermProvider;
@@ -41,14 +42,14 @@ public class LimitTurretsTerm extends Term {
 
     @Override
     public void deserialize(DeserializationContext context) {
-        JsonObject json = context.getJson();
-        this.maxTurrets = json.get("maxTurrets").getAsInt();
+        SectionableDataGetter json = context.getDataProvider();
+        this.maxTurrets = json.get("maxTurrets").asInt();
     }
 
     @Override
     public void serialize(SerializationContext context) {
-        JsonObject json = context.getJson();
-        json.addProperty("maxTurrets", maxTurrets);
+        SectionableDataSetter json = context.getDataProvider();
+        json.setInt("maxTurrets", maxTurrets);
     }
 
     @Override

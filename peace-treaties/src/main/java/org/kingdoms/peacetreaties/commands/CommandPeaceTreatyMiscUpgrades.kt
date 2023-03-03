@@ -14,7 +14,7 @@ class CommandPeaceTreatyMiscUpgrades(parent: KingdomsParentCommand) : KingdomsCo
 
         val target = context.getKingdom(0) ?: return CommandResult.FAILED
         val kingdom = context.kingdom
-        val contract = target.getReceivedPeaceTreaties()[kingdom.id]
+        val contract = target.getReceivedPeaceTreaties()[kingdom.dataKey]
 
         context.settings.withContext(target)
         if (contract == null) {

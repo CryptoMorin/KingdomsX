@@ -70,18 +70,18 @@ class RelationshipListener : Listener {
             return
         }
 
-        if (to.getReceivedPeaceTreaties().containsKey(from.id)) {
+        if (to.getReceivedPeaceTreaties().containsKey(from.dataKey)) {
             PeaceTreatyLang.COMMAND_REVOKE_PEACETREATY_ALREADY_SENT.sendError(player.player)
             return
         }
-        if (from.getReceivedPeaceTreaties().containsKey(to.id)) {
+        if (from.getReceivedPeaceTreaties().containsKey(to.dataKey)) {
             PeaceTreatyLang.COMMAND_REVOKE_PEACETREATY_ALREADY_RECEIVED.sendError(player.player)
             return
         }
 
         val settings = PlaceholderContextBuilder().withContext(from).other(to)
         val durationMillis = PeaceTreatyConfig.DURATION.manager.getTime(settings)
-        val contract = PeaceTreaty(from.id, to.id, 0, System.currentTimeMillis(), Duration.ofMillis(durationMillis), player.id)
+        val contract = PeaceTreaty(from.dataKey, to.dataKey, 0, System.currentTimeMillis(), Duration.ofMillis(durationMillis), player.id)
         StandardPeaceTreatyEditor.fromContract(contract).open()
     }
 }

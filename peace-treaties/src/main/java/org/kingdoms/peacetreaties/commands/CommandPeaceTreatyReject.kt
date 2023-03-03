@@ -20,7 +20,7 @@ class CommandPeaceTreatyReject(parent: KingdomsParentCommand) : KingdomsCommand(
         val targetKingdom = context.getKingdom(0) ?: return CommandResult.FAILED
         context.settings.withContext(targetKingdom)
 
-        val contract: PeaceTreaty = kingdom.getReceivedPeaceTreaties()[targetKingdom.id] ?: run {
+        val contract: PeaceTreaty = kingdom.getReceivedPeaceTreaties()[targetKingdom.dataKey] ?: run {
             context.sendError(PeaceTreatyLang.COMMAND_PEACETREATY_NO_CONTRACT_FROM_KINGDOM)
             return CommandResult.FAILED
         }

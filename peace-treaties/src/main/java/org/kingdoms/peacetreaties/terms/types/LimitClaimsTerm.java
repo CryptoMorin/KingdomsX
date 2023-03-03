@@ -1,9 +1,10 @@
 package org.kingdoms.peacetreaties.terms.types;
 
-import com.google.gson.JsonObject;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
@@ -49,14 +50,14 @@ public class LimitClaimsTerm extends Term {
 
     @Override
     public void deserialize(DeserializationContext context) {
-        JsonObject json = context.getJson();
-        this.maxClaims = json.get("maxClaims").getAsInt();
+        SectionableDataGetter json = context.getDataProvider();
+        this.maxClaims = json.get("maxClaims").asInt();
     }
 
     @Override
     public void serialize(SerializationContext context) {
-        JsonObject json = context.getJson();
-        json.addProperty("maxClaims", maxClaims);
+        SectionableDataSetter json = context.getDataProvider();
+        json.setInt("maxClaims", maxClaims);
     }
 
     @Override

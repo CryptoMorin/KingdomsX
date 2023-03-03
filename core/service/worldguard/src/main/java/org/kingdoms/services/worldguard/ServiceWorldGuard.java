@@ -55,8 +55,18 @@ public abstract class ServiceWorldGuard implements Service {
 
     public StateFlag getFriendlyFireFlag() {return null;}
 
+    public StateFlag getDamageChampionFlag() {return null;}
+
     public final boolean hasFriendlyFireFlag(Player player) {
-        return hasFlag(player, player.getLocation(), getFriendlyFireFlag());
+        return hasFlag(player, getFriendlyFireFlag());
+    }
+
+    private final boolean hasFlag(Player player, StateFlag flag) {
+        return hasFlag(player, player.getLocation(), flag);
+    }
+
+    public final boolean canDamageChampion(Player player) {
+        return hasFlag(player, getDamageChampionFlag());
     }
 
     public abstract boolean isLocationInRegion(Location location, String regionName);

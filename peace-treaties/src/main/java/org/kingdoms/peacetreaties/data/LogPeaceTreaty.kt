@@ -10,7 +10,6 @@ import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.locale.provider.MessageBuilder
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
-import org.kingdoms.utils.internal.FastUUID
 import java.time.Duration
 
 abstract class LogPeaceTreaty() : AuditLog() {
@@ -23,25 +22,25 @@ abstract class LogPeaceTreaty() : AuditLog() {
 
     override fun deserialize(context: DeserializationContext) {
         super.deserialize(context)
-        val json = context.json
+        val json = context.dataProvider
 
-        val proposerKingdomId = FastUUID.fromString(json["proposerKingdom"].asString)
-        val player = FastUUID.fromString(json["player"].asString)
-        val victimKingdom = FastUUID.fromString(json["victimKingdom"].asString)
-        val duration = json["duration"].asLong
+        val proposerKingdomId = json["proposerKingdom"].asUUID()
+        val player = json["player"].asUUID()
+        val victimKingdom = json["victimKingdom"].asUUID()
+        val duration = json["duration"].asLong()
 
         this.peaceTreaty = PeaceTreaty(proposerKingdomId, victimKingdom, 0, time, Duration.ofMillis(duration), player)
     }
 
     override fun serialize(context: SerializationContext) {
         super.serialize(context)
-        val json = context.json
+        val json = context.dataProvider
         val peaceTreaty = this.peaceTreaty!!
 
-        json.addProperty("player", FastUUID.toString(peaceTreaty.requesterPlayerID))
-        json.addProperty("proposerKingdom", FastUUID.toString(peaceTreaty.proposerKingdomId))
-        json.addProperty("victimKingdom", FastUUID.toString(peaceTreaty.victimKingdomId))
-        json.addProperty("duration", peaceTreaty.duration.toMillis())
+        json.setUUID("player", peaceTreaty.requesterPlayerID)
+        json.setUUID("proposerKingdom", peaceTreaty.proposerKingdomId)
+        json.setUUID("victimKingdom", peaceTreaty.victimKingdomId)
+        json.setLong("duration", peaceTreaty.duration.toMillis())
     }
 
     override fun addEdits(builder: MessageBuilder) {

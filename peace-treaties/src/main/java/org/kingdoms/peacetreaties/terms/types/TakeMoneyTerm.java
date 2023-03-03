@@ -1,10 +1,11 @@
 package org.kingdoms.peacetreaties.terms.types;
 
-import com.google.gson.JsonObject;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
@@ -39,14 +40,14 @@ public class TakeMoneyTerm extends Term {
 
     @Override
     public void deserialize(DeserializationContext context) {
-        JsonObject json = context.getJson();
-        this.amount = json.get("amount").getAsDouble();
+        SectionableDataGetter json = context.getDataProvider();
+        this.amount = json.get("amount").asDouble();
     }
 
     @Override
     public void serialize(SerializationContext context) {
-        JsonObject json = context.getJson();
-        json.addProperty("amount", amount);
+        SectionableDataSetter json = context.getDataProvider();
+        json.setDouble("amount", amount);
     }
 
     @Override

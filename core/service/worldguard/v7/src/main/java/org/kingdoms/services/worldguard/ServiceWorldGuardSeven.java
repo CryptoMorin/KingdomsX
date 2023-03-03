@@ -28,8 +28,9 @@ import java.util.Objects;
 
 public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
     private static final StateFlag
-            CLAIMABLE = registerFlag("claimable"),
-            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire");
+            KINGDOMS_CLAIMABLE = registerFlag("kingdoms-claimable"),
+            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire"),
+            KINGDOMS_DAMAGE_CHAMPION = registerFlag("kingdoms-damage-champion");
     private static final MethodHandle INDEX;
 
     static {
@@ -75,7 +76,7 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
     }
 
     public static boolean init() {
-        return CLAIMABLE != null;
+        return KINGDOMS_CLAIMABLE != null;
     }
 
     private static Collection<ProtectedRegion> getRegions(RegionManager manager) {
@@ -124,6 +125,11 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         return KINGDOMS_FRIENDLY_FIRE;
     }
 
+    @Override
+    public StateFlag getDamageChampionFlag() {
+        return KINGDOMS_DAMAGE_CHAMPION;
+    }
+
     @SuppressWarnings("RedundantIfStatement")
     private static boolean intersectsBoundingBox(CuboidRegionProperties properties, ProtectedRegion region) {
         BlockVector3 rMaxPoint = region.getMaximumPoint();
@@ -139,7 +145,7 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
 
     @Override
     public boolean isClaimable(ProtectedRegion region) {
-        return region.getFlag(CLAIMABLE) == StateFlag.State.ALLOW;
+        return region.getFlag(KINGDOMS_CLAIMABLE) == StateFlag.State.ALLOW;
     }
 
     protected RegionManager getRegionManager(World world) {

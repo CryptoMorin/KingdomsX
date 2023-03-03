@@ -1,14 +1,14 @@
 package org.kingdoms.outposts;
 
-import com.google.gson.JsonObject;
 import org.bukkit.Bukkit;
 import org.kingdoms.constants.group.model.logs.AuditLog;
 import org.kingdoms.constants.group.model.logs.AuditLogProvider;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.provider.MessageBuilder;
-import org.kingdoms.utils.internal.FastUUID;
 
 import java.util.UUID;
 
@@ -51,16 +51,16 @@ public class LogKingdomOutpostJoin extends AuditLog {
 
     @Override
     public void deserialize(DeserializationContext context) {
-        JsonObject json = context.getJson();
-        this.player = FastUUID.fromString(json.get("player").getAsString());
-        this.outpostName = json.get("outpostName").getAsString();
+        SectionableDataGetter json = context.getDataProvider();
+        this.player = json.get("player").asUUID();
+        this.outpostName = json.get("outpostName").asString();
     }
 
     @Override
     public void serialize(SerializationContext context) {
-        JsonObject json = context.getJson();
-        json.addProperty("player", FastUUID.toString(player));
-        json.addProperty("outpostName", this.outpostName);
+        SectionableDataSetter json = context.getDataProvider();
+        json.setUUID("player", player);
+        json.setString("outpostName", this.outpostName);
     }
 
     @Override

@@ -1,10 +1,8 @@
 package org.kingdoms.peacetreaties.data
 
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
-import com.google.gson.JsonSerializationContext
 import org.kingdoms.constants.group.Kingdom
+import org.kingdoms.constants.land.abstraction.data.DeserializationContext
+import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.metadata.KingdomMetadata
 import org.kingdoms.constants.metadata.KingdomMetadataHandler
 import org.kingdoms.constants.metadata.KingdomsObject
@@ -12,29 +10,26 @@ import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.utils.MathUtils
-import org.kingdoms.utils.internal.FastUUID
 import java.util.*
 
 typealias WarPoints = MutableMap<UUID, Double>
 
 class WarPointsMeta(var warPoints: WarPoints) : KingdomMetadata {
-    override fun getValue(): WarPoints = warPoints
-    override fun setValue(p0: Any) {
-        @Suppress("UNCHECKED_CAST")
-        this.warPoints = p0 as WarPoints
-    }
-
-    override fun serialize(container: KingdomsObject, jsonSerializationContext: JsonSerializationContext): JsonElement {
-        val obj = JsonObject()
-
-        for (warPoint in warPoints) {
-            obj.addProperty(FastUUID.toString(warPoint.key), warPoint.value)
+    @Suppress("UNCHECKED_CAST")
+    override var value: Any
+        get() = warPoints
+        set(value) {
+            this.warPoints = value as WarPoints
         }
 
-        return obj
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+        context.dataProvider.setMap(warPoints) { key, keyProvider, value ->
+            keyProvider.setUUID(key)
+            keyProvider.getValueProvider().setDouble(value)
+        }
     }
 
-    override fun shouldSave(container: KingdomsObject): Boolean = warPoints.isNotEmpty()
+    override fun shouldSave(container: KingdomsObject<*>): Boolean = warPoints.isNotEmpty()
 }
 
 class WarPoint {
@@ -52,7 +47,7 @@ class WarPoint {
         }
 
         @JvmStatic
-        fun Kingdom.getWarPoints(other: Kingdom): Double = getWarPoints()[other.id] ?: 0.0
+        fun Kingdom.getWarPoints(other: Kingdom): Double = getWarPoints()[other.dataKey] ?: 0.0
 
         @JvmStatic
         fun Kingdom.hasWarPoints(other: Kingdom, amount: Double): Boolean = getWarPoints(other) >= amount
@@ -63,7 +58,7 @@ class WarPoint {
         @JvmStatic
         fun Kingdom.setWarPoints(other: Kingdom, amount: Double) {
             val meta = getWarPoints()
-            meta[other.id] = amount
+            meta[other.dataKey] = amount
         }
 
         @JvmStatic
@@ -80,20 +75,15 @@ class WarPoint {
         @JvmStatic
         fun Kingdom.addWarPoints(other: Kingdom, amount: Double): Double {
             val maxWarPoints = getMaxWarPoints(other)
-            return getWarPoints().compute(other.id) { _, v -> maxWarPoints.coerceAtMost(if (v == null) amount else v + amount) }!!
+            return getWarPoints().compute(other.dataKey) { _, v -> maxWarPoints.coerceAtMost(if (v == null) amount else v + amount) }!!
         }
     }
 }
 
 class WarPointsMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "WAR_POINTS")) {
-    override fun deserialize(container: KingdomsObject, jsonElement: JsonElement, jsonDeserializationContext: JsonDeserializationContext): WarPointsMeta {
-        val obj = jsonElement.asJsonObject
-        val warPoints: WarPoints = hashMapOf()
-
-        for (warPointEntry in obj.entrySet()) {
-            val kingdomId = FastUUID.fromString(warPointEntry.key)
-            val points = warPointEntry.value.asDouble
-            warPoints[kingdomId] = points
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): KingdomMetadata {
+        val warPoints: WarPoints = context.dataProvider.asMap(hashMapOf()) { map, key, value ->
+            map[key.asUUID()!!] = value.asDouble()
         }
 
         return WarPointsMeta(warPoints)

@@ -1,10 +1,5 @@
 package org.kingdoms.peacetreaties.data
 
-import com.google.gson.JsonDeserializationContext
-import com.google.gson.JsonElement
-import com.google.gson.JsonObject
-import com.google.gson.JsonSerializationContext
-import org.kingdoms.adapters.KingdomsGson
 import org.kingdoms.constants.group.Group
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
@@ -18,69 +13,60 @@ import org.kingdoms.locale.compiler.placeholders.PlaceholderTranslator
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.TermRegistry
-import org.kingdoms.utils.internal.FastUUID
 import java.time.Duration
 import java.util.*
 
 typealias PeaceTreatyMap = Map<UUID, PeaceTreaty>
 
 class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetadata {
-    override fun getValue(): PeaceTreatyMap = peaceTreaties
-    override fun setValue(p0: Any) {
-        @Suppress("UNCHECKED_CAST")
-        this.peaceTreaties = p0 as PeaceTreatyMap
-    }
-
-    override fun serialize(container: KingdomsObject, jsonSerializationContext: JsonSerializationContext): JsonElement {
-        val contractsObj = JsonObject()
-
-        for (contractEntry in peaceTreaties) {
-            val contractObj = JsonObject()
-            val contract = contractEntry.value
-            val terms = JsonObject()
-
-            for (termGrouping in contract.terms) {
-                val termGroupingObj = JsonObject()
-
-                for (term in termGrouping.value.terms) {
-                    val termObj = JsonObject()
-                    term.value.serialize(SerializationContext(termObj, jsonSerializationContext))
-                    termGroupingObj.add(term.key.asNormalizedString(), termObj)
-                }
-
-                terms.add(termGrouping.key, termGroupingObj)
-            }
-
-            with(contractObj) {
-                addProperty("requesterPlayer", FastUUID.toString(contract.requesterPlayerID))
-                addProperty("duration", contract.duration.toMillis())
-                addProperty("started", contract.started)
-                addProperty("time", contract.sentTime)
-                add("terms", terms)
-            }
-
-            val key = FastUUID.toString(contract.proposerKingdomId)
-            contractsObj.add(key, contractObj)
+    @Suppress("UNCHECKED_CAST")
+    override var value: Any
+        get() = peaceTreaties
+        set(value) {
+            this.peaceTreaties = value as PeaceTreatyMap
         }
 
-        return contractsObj
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+        val provider = context.dataProvider
+
+        provider.setMap(peaceTreaties) { proposerId, keyProvider, contract ->
+            keyProvider.setUUID(proposerId)
+            val valueProvider = keyProvider.getValueProvider().createSection()
+
+            valueProvider["terms"].setMap(contract.terms) { termName, termKeyProvider, termValue ->
+                termKeyProvider.setString(termName)
+                val termProvider = termKeyProvider.getValueProvider().createSection()
+                termProvider.setMap(termValue.terms) { subtermName, subtermKeyProvider, subterm ->
+                    subtermKeyProvider.setString(subtermName.asNormalizedString())
+                    subterm.serialize(SerializationContext(subtermKeyProvider.getValueProvider().createSection()))
+                }
+            }
+
+            with(valueProvider) {
+                setUUID("requesterPlayer", contract.requesterPlayerID)
+                setLong("duration", contract.duration.toMillis())
+                setLong("started", contract.started)
+                setLong("time", contract.sentTime)
+            }
+        }
     }
 
-    override fun shouldSave(container: KingdomsObject): Boolean = peaceTreaties.isNotEmpty()
+    override fun shouldSave(container: KingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
 }
 
 class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMetadata {
-    override fun getValue(): MutableSet<UUID> = peaceTreaties
-    override fun setValue(p0: Any) {
-        @Suppress("UNCHECKED_CAST")
-        this.peaceTreaties = p0 as MutableSet<UUID>
+    @Suppress("UNCHECKED_CAST")
+    override var value: Any
+        get() = peaceTreaties
+        set(value) {
+            peaceTreaties = value as MutableSet<UUID>
+        }
+
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+        context.dataProvider.setCollection(peaceTreaties) { elementProvider, id -> elementProvider.setUUID(id) }
     }
 
-    override fun serialize(container: KingdomsObject, jsonSerializationContext: JsonSerializationContext): JsonElement {
-        return jsonSerializationContext.serialize(peaceTreaties, KingdomsGson.UUID_SET)
-    }
-
-    override fun shouldSave(container: KingdomsObject): Boolean = peaceTreaties.isNotEmpty()
+    override fun shouldSave(container: KingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
 }
 
 @Suppress("unused")
@@ -138,7 +124,7 @@ class PeaceTreaties {
             while (iter.hasNext()) {
                 val uuid = iter.next()
                 val other = Kingdom.getKingdom(uuid) ?: continue
-                val realContract = other.getReceivedPeaceTreaties()[this.id]
+                val realContract = other.getReceivedPeaceTreaties()[this.dataKey]
                 if (realContract == null) {
                     iter.remove()
                     continue
@@ -158,41 +144,32 @@ class PeaceTreaties {
 }
 
 class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "RECEIVED")) {
-    override fun deserialize(container: KingdomsObject, jsonElement: JsonElement, jsonDeserializationContext: JsonDeserializationContext): PeaceTreatyReceiverMeta {
-        val contractsObj = jsonElement.asJsonObject
-        val contracts = hashMapOf<UUID, PeaceTreaty>()
+    @Suppress("LABEL_NAME_CLASH")
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): KingdomMetadata {
+        val contractsObj = context.dataProvider
+        val contracts = context.dataProvider.asMap(hashMapOf<UUID, PeaceTreaty>()) { map, key, value ->
+            val proposerID = key.asUUID()
+            val receiverID = (container as Group).dataKey
 
-        for (contractObj in contractsObj.entrySet()) {
-            val proposerID = FastUUID.fromString(contractObj.key)
-            val receiverID = (container as Group).id
-
-            val data = contractObj.value.asJsonObject
-            val started = data["started"].asLong
-            val duration = Duration.ofMillis(data["duration"].asLong)
-            val sentTime = data["time"].asLong
-            val requesterPlayer = FastUUID.fromString(data["requesterPlayer"].asString)
+            val started = value["started"].asLong()
+            val duration = Duration.ofMillis(value["duration"].asLong())
+            val sentTime = value["time"].asLong()
+            val requesterPlayer = value["requesterPlayer"].asUUID()
 
             val contract = PeaceTreaty(proposerID, receiverID, started, sentTime, duration, requesterPlayer)
 
-            val termsObj = data["terms"].asJsonObject
-
-            for (termEntry in termsObj.entrySet()) {
-                val termName = termEntry.key
-                val term = termEntry.value
-                val grouping = TermRegistry.getTermGroupings()[termName] ?: continue
-                val subTerms = term.asJsonObject
-                for (subTerm in subTerms.entrySet()) {
-                    val subTermName = subTerm.key
-                    val subTermProvider = PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermName)) ?: continue
-                    val subTermObj = subTerm.value
+            val termsObj: Map<Void, Void> = value["terms"].asMap(hashMapOf()) { _, termKey, termValue ->
+                val grouping = TermRegistry.getTermGroupings()[termKey.asString()] ?: return@asMap
+                val subTerms: Map<Void, Void> = termValue.asMap(hashMapOf()) { _, subTermKey, subTermvalue ->
+                    val subTermProvider = PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermKey.asString())) ?: return@asMap
                     val constructed = subTermProvider.construct()
 
-                    constructed.deserialize(DeserializationContext(subTermObj.asJsonObject, jsonDeserializationContext))
+                    constructed.deserialize(DeserializationContext(subTermvalue))
                     contract.addOrCreateTerm(grouping, constructed)
                 }
             }
 
-            contracts[proposerID] = contract
+            map[proposerID!!] = contract
         }
 
         return PeaceTreatyReceiverMeta(contracts)
@@ -205,12 +182,12 @@ class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHand
 }
 
 class PeaceTreatyProposerMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
-    override fun deserialize(container: KingdomsObject, jsonElement: JsonElement, jsonDeserializationContext: JsonDeserializationContext): PeaceTreatyProposedMeta {
-        return PeaceTreatyProposedMeta(jsonDeserializationContext.deserialize(jsonElement, KingdomsGson.UUID_SET))
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): PeaceTreatyProposedMeta {
+        return PeaceTreatyProposedMeta(context.dataProvider.asCollection(hashSetOf()) { c, x -> c.add(x.asUUID()!!) })
     }
 
     companion object {
         @JvmField
-        val INSTANCE = PeaceTreatyProposerMetaHandler()
+        val INSTANCE: PeaceTreatyProposerMetaHandler = PeaceTreatyProposerMetaHandler()
     }
 }
