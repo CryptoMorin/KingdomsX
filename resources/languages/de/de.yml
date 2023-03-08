@@ -128,10 +128,10 @@ command:
       run: '&6Daily-Checks werden ausgeführt...'
       usage: '&4Usage&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
       info: |-
-        &2Next cycle in&8: &6%next%
-        &2Exact Time&8: &6%daily_checks%
-        &2Current time&8: &6%time%
-        &2State&8: %state%
+        {$sep}| {$p}Next cycle in{$sep}: {$s}%next%
+        {$sep}| {$p}Exact Cycle Start Time{$sep}: {$s}%daily_checks%
+        {$sep}| {$p}Current Server Time{$sep}: {$s}%time%
+        {$sep}| {$p}Cycle State{$sep}: {$s}%state%
       skip: '&2Skipping the next daily checks interval.'
       skipped: '&cThe next daily checks is already skipped.'
       resume: '&2Resuming the daily checks...'
@@ -1328,11 +1328,11 @@ command:
     name-numbers: '&cBitte verwende keine Nummern.'
     usage: '&4Benutzung&8: &e/k tag <Name>'
     no-kingdom: '&cDu besitzt kein Königreich.'
-    changed: '&2Dein Königreich-Tag wurde von &6%tag% &2zu %kingdoms_tag% &2von &6%player%
+    changed: '&2Dein Königreich-Tag wurde von &6%tag% &2zu %kingdoms_kingdom_tag% &2von &6%player%
       62geändert!'
     cost: '&cDein Königreich benötigt &e%cost%$&, um den Königreich-Tag zu ändern.'
     cooldown: '&cYou need to wait &e%cooldown% &cbefore renaming your kingdom''s tag.'
-    set: '&2Your kingdom''s tag was set to &6%kingdoms_tag% &2by &6%player%'
+    set: '&2Your kingdom''s tag was set to &6%kingdoms_kingdom_tag% &2by &6%player%'
   glow:
     description: '&6Easily find your kingdom members.'
     enabled: '&6Glow mode&8: &2Enabled'

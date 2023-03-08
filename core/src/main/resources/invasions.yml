@@ -8,6 +8,7 @@
 # Prevents strong kingdoms from enemying and invading weak kingdoms.
 # The person trying to invade/enemy is the primary context of this inequation and the
 # person being enemy'd/invaded is the secondary context.
+# To disable, set this to "false"
 strength-comparison: |
   (kingdoms_structures_total - kingdoms_other_structures_total > 50) ||
   (kingdoms_turrets_total - kingdoms_other_turrets_total > 100) ||
@@ -429,6 +430,8 @@ time-limit:
 
 # Minimium members needed to be online to start the invasion.
 # This supports AuthMe authentication system.
+# For a better experience consider using the %kingdoms_members% placeholder
+# as a fraction and with conditional functions to prevent players from abusing this feature.
 online-members:
   invader: 0
   defender: 0
