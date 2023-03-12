@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 
 public class KeepLandsTerm extends Term {
     @NonNull
-    private Set<SimpleChunkLocation> keptLands;
+    private Set<SimpleChunkLocation> keptLands = new HashSet<>();
 
     public static Set<SimpleChunkLocation> getInvadedLands(Kingdom invader, UUID victimKingdomId) {
         return invader.getLogs().stream()

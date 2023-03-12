@@ -1061,16 +1061,10 @@ creation:
     # Duration which new kingdoms are immune to invasions.
     # Not to be confused with shields.
     newbie-protection: 5 days
-
-    # Commands executed when the kingdom is created. You can use all the placeholders.
-    commands: [ ]
   nations:
     # Duration which all kingdoms in a new nation are immune to invasions.
     # This works even if the kingdom's own newbie protection is finished.
     newbie-protection: 0
-
-    # Commands executed when the nation is created. You can use all the placeholders.
-    commands: [ ]
 
 # Commands that are executed for events. An event is simply something that happens.
 # While events are related to technical side of the plugins, this will allow extensive
@@ -1092,6 +1086,10 @@ events:
     # And of course since a player is involved, you can use placeholders and OP command modifier.
     #commands:
     #  - "CONSOLE:msg %player% You joined a kingdom!"
+    # Or
+    #commands:
+    #  "condition": "command"
+    #  "kingdoms_members < 10": "give %player% diamonds 10"
   org.kingdoms.events.members.KingdomLeaveEvent:
     commands: [ ]
 

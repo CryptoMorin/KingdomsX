@@ -55,13 +55,12 @@ open class StandardTermProvider(
                 )
             }
 
-            editor.player.closeInventory()
 
             val min: Double? = config.getMathExpression("min").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
             val max: Double? = config.getMathExpression("max").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
             val messenger = SimpleMessenger(editor.player, MessageBuilder().inheritPlaceholders(ctx))
-            messenger.settings.raw("min", min).raw("max", max)
 
+            messenger.settings.raw("min", min).raw("max", max)
             messenger.sendMessage(lang("ENTER", KingdomsLang.VALUE_ENTER))
 
             return ChatInputManager.awaitInput(editor.player) { input: String ->

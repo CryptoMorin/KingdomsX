@@ -13,6 +13,7 @@ import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.OptionHandler;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.main.KLogger;
+import org.kingdoms.managers.chat.ChatInputManager;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;
@@ -215,7 +216,7 @@ public class StandardPeaceTreatyEditor {
         }).done();
 
         gui.onClose(() -> {
-            if (wasSent.get() || isInsideNestedGUI.get()) return;
+            if (wasSent.get() || isInsideNestedGUI.get() || ChatInputManager.isConversing(player) || gui.wasSwitched()) return;
             pause(true);
             PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
         });
@@ -254,6 +255,12 @@ public class StandardPeaceTreatyEditor {
                 openTermGroupingGUI(grouping, guiName);
             }).done();
         }
+
+        gui.onClose(() -> {
+            if (ChatInputManager.isConversing(player) || gui.wasSwitched()) return;
+            pause(true);
+            PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
+        });
 
         gui.push("back", this::open);
         gui.open();

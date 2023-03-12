@@ -24,7 +24,6 @@ public class ScutageTerm extends Term {
         }
     };
 
-
     private ScutageTerm() {}
 
     public ScutageTerm(double money) {

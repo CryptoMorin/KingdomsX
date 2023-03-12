@@ -91,7 +91,12 @@ events:
   (values):
     priority: Enum<org.bukkit.event.EventPriority>
     ignore-cancelled: bool
-    commands: list
+    commands:
+      - (keys): Condition
+        (values): list
+
+      - (type): list
+        (elements): str
 
 placeholders:
   variables:
@@ -414,15 +419,8 @@ creation:
   kingdoms:
     show-kingdom-type-gui: bool
     newbie-protection: Period
-
-    commands:
-      (type): list
-      (elements): str
   nations:
     newbie-protection: Period
-    commands:
-      (type): list
-      (elements): str
 
 disband:
   confirm: bool

@@ -27,7 +27,6 @@ public class LimitClaimsTerm extends Term {
                 }
             };
 
-
     public LimitClaimsTerm(int maxClaims) {
         this.maxClaims = maxClaims;
     }
