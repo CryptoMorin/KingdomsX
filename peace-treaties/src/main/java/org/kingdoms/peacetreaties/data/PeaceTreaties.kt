@@ -8,13 +8,17 @@ import org.kingdoms.constants.metadata.KingdomMetadata
 import org.kingdoms.constants.metadata.KingdomMetadataHandler
 import org.kingdoms.constants.metadata.KingdomsObject
 import org.kingdoms.constants.namespace.Namespace
+import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.locale.compiler.placeholders.KingdomsPlaceholder
 import org.kingdoms.locale.compiler.placeholders.PlaceholderTranslator
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.TermRegistry
+import org.kingdoms.utils.string.StringUtils
 import java.time.Duration
 import java.util.*
+import java.util.function.Supplier
 
 typealias PeaceTreatyMap = Map<UUID, PeaceTreaty>
 
@@ -26,7 +30,9 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
             this.peaceTreaties = value as PeaceTreatyMap
         }
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+    override fun toString(): String = "PeaceTreatyReceiverMeta[${StringUtils.associatedArrayMap(peaceTreaties)}]"
+
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         val provider = context.dataProvider
 
         provider.setMap(peaceTreaties) { proposerId, keyProvider, contract ->
@@ -35,8 +41,7 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
 
             valueProvider["terms"].setMap(contract.terms) { termName, termKeyProvider, termValue ->
                 termKeyProvider.setString(termName)
-                val termProvider = termKeyProvider.getValueProvider().createSection()
-                termProvider.setMap(termValue.terms) { subtermName, subtermKeyProvider, subterm ->
+                termKeyProvider.getValueProvider().setMap(termValue.terms) { subtermName, subtermKeyProvider, subterm ->
                     subtermKeyProvider.setString(subtermName.asNormalizedString())
                     subterm.serialize(SerializationContext(subtermKeyProvider.getValueProvider().createSection()))
                 }
@@ -62,7 +67,7 @@ class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMeta
             peaceTreaties = value as MutableSet<UUID>
         }
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         context.dataProvider.setCollection(peaceTreaties) { elementProvider, id -> elementProvider.setUUID(id) }
     }
 
@@ -95,13 +100,17 @@ class PeaceTreaties {
         @Suppress("UNCHECKED_CAST")
         @JvmStatic
         fun Kingdom.getReceivedPeaceTreaties(): PeaceTreatyMap {
-            var data: KingdomMetadata? = this.metadata[PeaceTreatyReceiverMetaHandler.INSTANCE]
-            if (data == null) {
-                data = PeaceTreatyReceiverMeta(hashMapOf())
-                this.metadata[PeaceTreatyReceiverMetaHandler.INSTANCE] = data
-            }
-
+            val data: KingdomMetadata = this.metadata[PeaceTreatyReceiverMetaHandler.INSTANCE] ?: return Collections.emptyMap()
             return Collections.unmodifiableMap(data.value as PeaceTreatyMap)
+        }
+
+        @JvmStatic fun <T> initializeMeta(kingdom: Kingdom, metadataHandler: KingdomMetadataHandler, default: Supplier<KingdomMetadata>): T {
+            var metadata: KingdomMetadata? = kingdom.metadata[metadataHandler]
+            if (metadata == null) {
+                metadata = default.get()
+                kingdom.metadata[metadataHandler] = metadata
+            }
+            return metadata.value as T
         }
 
         @JvmStatic
@@ -111,11 +120,7 @@ class PeaceTreaties {
         @Suppress("UNCHECKED_CAST")
         @JvmStatic
         fun Kingdom.getProposedPeaceTreaties(): PeaceTreatyMap {
-            var data = this.metadata[PeaceTreatyProposerMetaHandler.INSTANCE]
-            if (data == null) {
-                data = PeaceTreatyProposedMeta(hashSetOf())
-                this.metadata[PeaceTreatyProposerMetaHandler.INSTANCE] = data
-            }
+            val data = this.metadata[PeaceTreatyProposerMetaHandler.INSTANCE] ?: return Collections.emptyMap()
 
             val set: MutableSet<UUID> = data.value as MutableSet<UUID>
             val contractMap: MutableMap<UUID, PeaceTreaty> = hashMapOf()
@@ -145,9 +150,8 @@ class PeaceTreaties {
 
 class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "RECEIVED")) {
     @Suppress("LABEL_NAME_CLASH")
-    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): KingdomMetadata {
-        val contractsObj = context.dataProvider
-        val contracts = context.dataProvider.asMap(hashMapOf<UUID, PeaceTreaty>()) { map, key, value ->
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext<SectionableDataGetter>): KingdomMetadata {
+        return PeaceTreatyReceiverMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             val proposerID = key.asUUID()
             val receiverID = (container as Group).dataKey
 
@@ -170,9 +174,7 @@ class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHand
             }
 
             map[proposerID!!] = contract
-        }
-
-        return PeaceTreatyReceiverMeta(contracts)
+        })
     }
 
     companion object {
@@ -182,7 +184,7 @@ class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHand
 }
 
 class PeaceTreatyProposerMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
-    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): PeaceTreatyProposedMeta {
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext<SectionableDataGetter>): PeaceTreatyProposedMeta {
         return PeaceTreatyProposedMeta(context.dataProvider.asCollection(hashSetOf()) { c, x -> c.add(x.asUUID()!!) })
     }
 

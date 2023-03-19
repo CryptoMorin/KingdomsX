@@ -8,6 +8,8 @@ import org.kingdoms.constants.group.model.logs.StandardAuditLogProvider
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
 import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.namespace.Namespace
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter
 import org.kingdoms.locale.provider.MessageBuilder
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import java.time.Duration
@@ -20,7 +22,7 @@ abstract class LogPeaceTreaty() : AuditLog() {
         this.peaceTreaty = peaceTreaty
     }
 
-    override fun deserialize(context: DeserializationContext) {
+    override fun deserialize(context: DeserializationContext<SectionableDataGetter>) {
         super.deserialize(context)
         val json = context.dataProvider
 
@@ -32,7 +34,7 @@ abstract class LogPeaceTreaty() : AuditLog() {
         this.peaceTreaty = PeaceTreaty(proposerKingdomId, victimKingdom, 0, time, Duration.ofMillis(duration), player)
     }
 
-    override fun serialize(context: SerializationContext) {
+    override fun serialize(context: SerializationContext<SectionableDataSetter>) {
         super.serialize(context)
         val json = context.dataProvider
         val peaceTreaty = this.peaceTreaty!!

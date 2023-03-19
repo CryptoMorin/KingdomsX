@@ -47,6 +47,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
 
         Kingdoms.get().getMetadataRegistry().register(PeaceTreatyProposerMetaHandler.INSTANCE);
         Kingdoms.get().getMetadataRegistry().register(PeaceTreatyReceiverMetaHandler.INSTANCE);
+        Kingdoms.get().getMetadataRegistry().register(WarPointsMetaHandler.INSTANCE);
 
         Kingdoms.get().getAuditLogRegistry().register(LogPeaceTreatySent.PROVIDER);
         Kingdoms.get().getAuditLogRegistry().register(LogPeaceTreatyReceived.PROVIDER);

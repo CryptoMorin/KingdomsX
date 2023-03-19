@@ -39,13 +39,13 @@ public class TakeMoneyTerm extends Term {
     }
 
     @Override
-    public void deserialize(DeserializationContext context) {
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {
         SectionableDataGetter json = context.getDataProvider();
         this.amount = json.get("amount").asDouble();
     }
 
     @Override
-    public void serialize(SerializationContext context) {
+    public void serialize(SerializationContext<SectionableDataSetter> context) {
         SectionableDataSetter json = context.getDataProvider();
         json.setDouble("amount", amount);
     }

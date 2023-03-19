@@ -7,6 +7,8 @@ import org.kingdoms.constants.metadata.KingdomMetadata
 import org.kingdoms.constants.metadata.KingdomMetadataHandler
 import org.kingdoms.constants.metadata.KingdomsObject
 import org.kingdoms.constants.namespace.Namespace
+import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.utils.MathUtils
@@ -22,7 +24,7 @@ class WarPointsMeta(var warPoints: WarPoints) : KingdomMetadata {
             this.warPoints = value as WarPoints
         }
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext) {
+    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         context.dataProvider.setMap(warPoints) { key, keyProvider, value ->
             keyProvider.setUUID(key)
             keyProvider.getValueProvider().setDouble(value)
@@ -81,12 +83,10 @@ class WarPoint {
 }
 
 class WarPointsMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "WAR_POINTS")) {
-    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext): KingdomMetadata {
-        val warPoints: WarPoints = context.dataProvider.asMap(hashMapOf()) { map, key, value ->
+    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext<SectionableDataGetter>): KingdomMetadata {
+        return WarPointsMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             map[key.asUUID()!!] = value.asDouble()
-        }
-
-        return WarPointsMeta(warPoints)
+        })
     }
 
     companion object {

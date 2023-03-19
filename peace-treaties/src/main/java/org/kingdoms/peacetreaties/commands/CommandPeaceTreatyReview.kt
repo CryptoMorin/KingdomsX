@@ -2,12 +2,14 @@ package org.kingdoms.peacetreaties.commands
 
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
+import org.bukkit.event.inventory.ClickType
 import org.kingdoms.commands.*
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.gui.GUIAccessor
 import org.kingdoms.gui.InteractiveGUI
 import org.kingdoms.locale.ContextualMessenger
 import org.kingdoms.locale.KingdomsLang
+import org.kingdoms.main.KLogger
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
@@ -30,18 +32,24 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             for (contract in kingdom.getReceivedPeaceTreaties().values) {
                 contract.getPlaceholderContextProvider(receivedOpt.settings)
                 receivedOpt.onNormalClicks { ctx ->
-                    showDetails(ctx, contract)
+                    showDetails(ctx, contract, !contract.isAccepted)
                     player.closeInventory()
                 }
+                contract.getPlaceholderContextProvider(receivedOpt.settings)
                 receivedOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID))
             }
 
             for (contract in kingdom.getProposedPeaceTreaties().values) {
                 contract.getPlaceholderContextProvider(sentOpt.settings)
-                sentOpt.onNormalClicks { ctx ->
-                    showDetails(ctx, contract)
+                sentOpt.on(ClickType.LEFT) { ctx ->
+                    showDetails(ctx, contract, false)
                     player.closeInventory()
                 }
+                sentOpt.on(ClickType.RIGHT) { _ ->
+                    contract.revoke()
+                    openGUI(player, kingdom)
+                }
+                contract.getPlaceholderContextProvider(sentOpt.settings)
                 sentOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID))
             }
 
@@ -49,7 +57,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             return gui
         }
 
-        fun showDetails(context: ContextualMessenger, contract: PeaceTreaty) {
+        fun showDetails(context: ContextualMessenger, contract: PeaceTreaty, showAcceptTip: Boolean) {
             contract.getPlaceholderContextProvider(context.settings)
             context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_HEADER)
 
@@ -57,22 +65,11 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
                 for (term in termGrouping.terms.values) {
                     context.settings.raw("term_message", term.provider.message)
                     term.addEdits(context.settings)
-
-                    if (term is KeepLandsTerm) {
-                        val returningLands = KeepLandsTerm.getInvadedLands(contract.proposerKingdom, contract.victimKingdomId)
-                        returningLands.removeAll(term.keptLands)
-
-                        context.settings.parse(
-                            "term_keep_lands_returning_lands", "{\$s}" + returningLands.stream()
-                                .map { x -> KingdomsLang.LOCATIONS_CHUNK.parse(*LocationUtils.getChunkEdits(x)) }
-                                .collect(Collectors.joining("{\$sep}| {\$s}"))
-                        )
-                    }
                     context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_TERMS)
                 }
             }
 
-            context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_FOOTER)
+            if (showAcceptTip) context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_FOOTER)
         }
     }
 
@@ -94,7 +91,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             return CommandResult.FAILED
         }
 
-        showDetails(context, contract)
+        showDetails(context, contract, !contract.isAccepted)
 
         return CommandResult.SUCCESS
     }

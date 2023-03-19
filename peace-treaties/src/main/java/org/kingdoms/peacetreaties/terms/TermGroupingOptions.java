@@ -56,4 +56,12 @@ public class TermGroupingOptions {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "TermGroupingOptions{" +
+                "name='" + name + '\'' +
+                ", terms=" + terms.keySet() +
+                '}';
+    }
 }

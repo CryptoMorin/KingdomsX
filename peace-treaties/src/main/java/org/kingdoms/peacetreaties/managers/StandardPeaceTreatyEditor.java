@@ -12,6 +12,7 @@ import org.kingdoms.gui.GUIAccessor;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.OptionHandler;
 import org.kingdoms.locale.messenger.Messenger;
+import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.main.KLogger;
 import org.kingdoms.managers.chat.ChatInputManager;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
@@ -99,7 +100,7 @@ public class StandardPeaceTreatyEditor {
             Player player = Bukkit.getPlayer(entry.getKey());
             boolean remove = false;
             if (entry.getValue().contract.getVictimKingdomId().equals(kingdom.getId())) {
-                if (player != null) PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player);
+                if (player != null) PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player, new MessageBuilder().withContext(kingdom));
                 remove = true;
             } else if (entry.getValue().contract.getProposerKingdomId().equals(kingdom.getId())) {
                 // No need to send a message, they're already notified when their kingdom gets disbanded.
@@ -165,7 +166,7 @@ public class StandardPeaceTreatyEditor {
 
                 String gui = grouping.getConfig().getString("gui");
                 if (gui == null) {
-                    long termsThatRequireData = grouping.getTerms().values().stream().filter(x -> x.requiresData(grouping)).limit(2).count();
+                    long termsThatRequireData = grouping.getTerms().values().stream().filter(x -> x.requiresData(grouping)).count();
                     if (termsThatRequireData > 1) {
                         gui = PeaceTreatyGUI.DEFAULT$TERM$EDITOR.getGUIPath();
                     } else if (termsThatRequireData == 0) {
@@ -202,7 +203,9 @@ public class StandardPeaceTreatyEditor {
                 return;
             }
 
-            WarPoint.addWarPoints(peaceTreaty.getProposerKingdom(), peaceTreaty.getVictimKingdom(), -peaceTreaty.getTotalRequiredWarPoints());
+            WarPoint.setWarPoints(peaceTreaty.getProposerKingdom(), peaceTreaty.getVictimKingdom(),
+                    Math.max(0, WarPoint.getWarPoints(peaceTreaty.getProposerKingdom(), peaceTreaty.getVictimKingdom())
+                            - peaceTreaty.getTotalRequiredWarPoints()));
 
             wasSent.set(true);
             player.closeInventory();

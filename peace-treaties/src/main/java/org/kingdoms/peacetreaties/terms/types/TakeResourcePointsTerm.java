@@ -44,13 +44,13 @@ public class TakeResourcePointsTerm extends Term {
     }
 
     @Override
-    public void deserialize(DeserializationContext context) {
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {
         SectionableDataGetter json = context.getDataProvider();
         this.amount = json.get("amount").asLong();
     }
 
     @Override
-    public void serialize(SerializationContext context) {
+    public void serialize(SerializationContext<SectionableDataSetter> context) {
         SectionableDataSetter json = context.getDataProvider();
         json.setLong("amount", amount);
     }

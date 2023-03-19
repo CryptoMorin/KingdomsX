@@ -2,6 +2,8 @@ package org.kingdoms.peacetreaties.terms;
 
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
+import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
+import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
@@ -17,9 +19,9 @@ public abstract class Term {
         return null;
     }
 
-    public void deserialize(DeserializationContext context) {}
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {}
 
-    public void serialize(SerializationContext context) {}
+    public void serialize(SerializationContext<SectionableDataSetter> context) {}
 
     public void addEdits(MessageBuilder builder) {}
 

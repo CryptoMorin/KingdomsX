@@ -41,13 +41,13 @@ public class LimitTurretsTerm extends Term {
     }
 
     @Override
-    public void deserialize(DeserializationContext context) {
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {
         SectionableDataGetter json = context.getDataProvider();
         this.maxTurrets = json.get("maxTurrets").asInt();
     }
 
     @Override
-    public void serialize(SerializationContext context) {
+    public void serialize(SerializationContext<SectionableDataSetter> context) {
         SectionableDataSetter json = context.getDataProvider();
         json.setInt("maxTurrets", maxTurrets);
     }

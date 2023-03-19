@@ -50,14 +50,14 @@ public class LogKingdomOutpostJoin extends AuditLog {
     }
 
     @Override
-    public void deserialize(DeserializationContext context) {
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {
         SectionableDataGetter json = context.getDataProvider();
         this.player = json.get("player").asUUID();
         this.outpostName = json.get("outpostName").asString();
     }
 
     @Override
-    public void serialize(SerializationContext context) {
+    public void serialize(SerializationContext<SectionableDataSetter> context) {
         SectionableDataSetter json = context.getDataProvider();
         json.setUUID("player", player);
         json.setString("outpostName", this.outpostName);

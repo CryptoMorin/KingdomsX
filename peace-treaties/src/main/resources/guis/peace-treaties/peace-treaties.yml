@@ -44,23 +44,40 @@ options:
       certain compensations from the other
       kingdom and might restrict the other
       kingdom as well.
+      
+      {$p}Total War Points{$sep}: {$s}%kingdoms_total_war_points%
   sent:
     slots: [ 10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39 ]
     material: PLAYER_HEAD
-    name: '{$s}%kingdoms_name%'
+    accepted:
+      condition: peacetreaty_accepted
+      name: '{$sep}[{$p}Accepted{$sep}] {$s}%kingdoms_name%'
+    else:
+      name: '{$sep}[{$e}Not Accepted Yet{$sep}] {$s}%kingdoms_name%'
     lore: |
       {$p}Contract Duration{$sep}: {$s}%time_peacetreaty_duration%
       {$p}Sent At{$sep}: {$s}%date_peacetreaty_requested_time%
       {$p}Terms{$sep}: {$s}%peacetreaty_count_terms%
-      {$p}For more information click
+      {$p}Your War Points{$sep}: {$s}%kingdoms_other_war_points%
+      {$p}Their War Points{$sep}: {$s}%kingdoms_war_points%
+      
+      {$p}Left-click for more information.
+      {$p}Right-click to revoke the contract.
   received:
     slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
     material: PLAYER_HEAD
-    name: '{$s}%kingdoms_other_name%'
+    accepted:
+      condition: peacetreaty_accepted
+      name: '{$sep}[{$p}Accepted{$sep}] {$s}%kingdoms_other_name%'
+    else:
+      name: '{$sep}[{$e}Not Accepted Yet{$sep}] {$s}%kingdoms_other_name%'
     lore: |
       {$p}Contract Duration{$sep}: {$s}%time_peacetreaty_duration%
       {$p}Sent At{$sep}: {$s}%date_peacetreaty_requested_time%
       {$p}Terms{$sep}: {$s}%peacetreaty_count_terms%
+      {$p}Your War Points{$sep}: {$s}%kingdoms_war_points%
+      {$p}Their War Points{$sep}: {$s}%kingdoms_other_war_points%
+      
       {$p}For more information click
   close:
     posx: 5

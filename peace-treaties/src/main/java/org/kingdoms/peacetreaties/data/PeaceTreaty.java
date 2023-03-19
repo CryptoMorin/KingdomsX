@@ -74,19 +74,31 @@ public class PeaceTreaty implements PlayerOperator {
     }
 
     @SuppressWarnings("unchecked")
+    public void revoke() {
+        Kingdom proposer = getProposerKingdom();
+        Kingdom victim = getVictimKingdom();
+
+        KingdomMetadata victimMeta = victim.getMetadata().get(PeaceTreatyReceiverMetaHandler.INSTANCE);
+        if (victimMeta != null) ((Map<UUID, PeaceTreaty>) victimMeta.getValue()).remove(proposer.getId());
+
+        KingdomMetadata proposerMeta = proposer.getMetadata().get(PeaceTreatyProposerMetaHandler.INSTANCE);
+        if (proposerMeta != null) ((Set<UUID>) proposerMeta.getValue()).remove(victim.getId());
+    }
+
     public void propose() {
         Kingdom proposer = getProposerKingdom();
         Kingdom victim = getVictimKingdom();
 
-        // Initialize if not set
-        PeaceTreaties.getReceivedPeaceTreaties(victim);
-        PeaceTreaties.getProposedPeaceTreaties(proposer);
-
-        KingdomMetadata victimMeta = victim.getMetadata().get(PeaceTreatyReceiverMetaHandler.INSTANCE);
-        ((Map<UUID, PeaceTreaty>) victimMeta.getValue()).put(proposer.getId(), this);
-
-        KingdomMetadata proposerMeta = proposer.getMetadata().get(PeaceTreatyProposerMetaHandler.INSTANCE);
-        ((Set<UUID>) proposerMeta.getValue()).add(victim.getId());
+        {
+            Map<UUID, PeaceTreaty> victimMeta = PeaceTreaties.initializeMeta(victim, PeaceTreatyReceiverMetaHandler.INSTANCE,
+                    () -> new PeaceTreatyReceiverMeta(new HashMap<>()));
+            victimMeta.put(proposer.getId(), this);
+        }
+        {
+            Set<UUID> proposerMeta = PeaceTreaties.initializeMeta(proposer, PeaceTreatyProposerMetaHandler.INSTANCE,
+                    () -> new PeaceTreatyProposedMeta(new HashSet<>()));
+            proposerMeta.add(victim.getId());
+        }
 
         MessageBuilder settings = getPlaceholderContextProvider(new MessageBuilder());
         for (Player online : proposer.getOnlineMembers()) {
@@ -101,10 +113,10 @@ public class PeaceTreaty implements PlayerOperator {
         victim.log(new LogPeaceTreatyReceived(this));
     }
 
+    @SuppressWarnings("unchecked")
     public void removeContract() {
         Kingdom proposer = getProposerKingdom();
         Kingdom victim = getVictimKingdom();
-
 
         // Initialize if not set
         PeaceTreaties.getReceivedPeaceTreaties(victim);
