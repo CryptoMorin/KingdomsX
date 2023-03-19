@@ -99,15 +99,31 @@ options:
         &2Версия&8: &9%installed-version%
         &4Щелкните ПКМ, чтобы удалить
       material: GREEN_WOOL
+    outdated-core-version:
+      condition: 'installed && outdated && outdated_core_version'
+      name: '&8[&4Outdated&8] &9%addon-name%'
+      lore: |
+        %description%
+
+        &4Installed Version&8: &9%installed-version%
+        &2Latest Version&8: &9%latest-version%
+
+        {$sep}[{$e}!{$sep}] {$es}This version requires
+        kingdoms {$p}v%supported-core-version% {$es}to work.
+        Current version{$sep}: {$e}%current-core-version%
+
+        &2Left-click to update
+        &4Right-click to uninstall
+      material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
       name: '&8[&4Устаревший&8] &9%addon-name%'
       lore: |
         %description%
-        &4Установленная версия&8: &9%installed-version%
-        &2Последняя версия&8: &9%latest-version%
-        &2ЛКМ для установки
-        &4ПКМ для удаления
+        &4Installed Version&8: &9%installed-version%
+        &2Latest Version&8: &9%latest-version%
+        &2Left-click to update
+        &4Right-click to uninstall
       material: RED_WOOL
     not-installed:
       name: '&8[&6Не установлен&8] &9%addon-name%'
