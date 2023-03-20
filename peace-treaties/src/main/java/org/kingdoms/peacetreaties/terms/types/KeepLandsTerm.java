@@ -7,10 +7,12 @@ import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.constants.namespace.Namespace;
+import org.kingdoms.data.Pair;
 import org.kingdoms.data.database.dataprovider.DataSetter;
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.gui.GUIAccessor;
+import org.kingdoms.gui.GUIPagination;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.ReusableOptionHandler;
 import org.kingdoms.locale.KingdomsLang;
@@ -32,16 +34,15 @@ public class KeepLandsTerm extends Term {
     @NonNull
     private Set<SimpleChunkLocation> keptLands = new HashSet<>();
 
-    public static Set<SimpleChunkLocation> getInvadedLands(Kingdom invader, UUID victimKingdomId) {
+    public static Map<SimpleChunkLocation, LogKingdomInvader> getInvadedLands(Kingdom invader, UUID victimKingdomId) {
         return invader.getLogs().stream()
                 .filter(x -> x instanceof LogKingdomInvader)
                 .map(x -> (LogKingdomInvader) x)
                 .filter(x -> x.getResult().isSuccessful())
                 .filter(x -> x.correspondingKingdom.equals(victimKingdomId))
-                .map(x -> x.affectedLands)
-                .flatMap(Collection::stream)
-                .filter(invader::isClaimed)
-                .collect(Collectors.toSet());
+                .flatMap(x -> x.affectedLands.stream().map(y -> Pair.of(y, x)))
+                .filter(x -> invader.isClaimed(x.getKey()))
+                .collect(Collectors.toMap(Pair::getKey, Pair::getValue, (prev, next) -> next, HashMap::new));
     }
 
     public static final TermProvider PROVIDER = new StandardTermProvider(Namespace.kingdoms("KEEP_LANDS"), KeepLandsTerm::new, true, false) {
@@ -53,24 +54,34 @@ public class KeepLandsTerm extends Term {
                     .map(value -> ((KeepLandsTerm) value).keptLands)
                     .orElseGet(() -> new HashSet<>(10));
 
-            prompt(options, editor, completableFuture, added);
+            prompt(editor, completableFuture, added, 0);
             return completableFuture;
         }
 
-        private void prompt(TermGroupingOptions options, StandardPeaceTreatyEditor editor,
+        private void prompt(StandardPeaceTreatyEditor editor,
                             CompletableFuture<Term> completableFuture,
-                            Set<SimpleChunkLocation> added) {
+                            Set<SimpleChunkLocation> added, int page) {
             InteractiveGUI gui = GUIAccessor.prepare(editor.getPlayer(), PeaceTreatyGUI.KEEP$LANDS);
 
-            ReusableOptionHandler option = gui.getReusableOption("land");
             Kingdom kingdom = editor.getPeaceTreaty().getProposerKingdom();
-            Set<SimpleChunkLocation> invadedLands = getInvadedLands(kingdom, editor.getPeaceTreaty().getVictimKingdomId());
+            List<Pair<SimpleChunkLocation, LogKingdomInvader>> invadedLands =
+                    getInvadedLands(kingdom, editor.getPeaceTreaty().getVictimKingdomId())
+                            .entrySet().stream()
+                            .map(x -> Pair.of(x.getKey(), x.getValue()))
+                            .collect(Collectors.toList());
 
-            for (SimpleChunkLocation invadedLand : invadedLands) {
+            Pair<ReusableOptionHandler, Collection<Pair<SimpleChunkLocation, LogKingdomInvader>>> pagination =
+                    GUIPagination.paginate(gui, invadedLands, "land", page,
+                            (newPage) -> prompt(editor, completableFuture, added, newPage));
+
+            ReusableOptionHandler option = pagination.getKey();
+            for (Pair<SimpleChunkLocation, LogKingdomInvader> pair : pagination.getValue()) {
+                SimpleChunkLocation invadedLand = pair.getKey();
                 option.setEdits("added", added.contains(invadedLand)).onNormalClicks(() -> {
                     if (!added.remove(invadedLand)) added.add(invadedLand);
-                    prompt(options, editor, completableFuture, added);
+                    prompt(editor, completableFuture, added, page);
                 });
+                pair.getValue().addEdits(option.getSettings());
                 LocationUtils.getChunkEdits(option.getSettings(), invadedLand, "");
                 option.done();
             }

@@ -2,22 +2,38 @@ title: '{$sep}-=( {$p}Keep Lands {$sep})=-'
 rows: 6
 
 options:
+  next-page:
+    name: '{$p}Next Page {$sep}- {$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$p}Previous Page {$sep}- {$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
   cancel:
-    posx: 1
+    posx: 4
     posy: 1
     material: BARRIER
     name: '{$e}Back'
   done:
-    posx: 9
+    posx: 6
     posy: 1
     material: GREEN_WOOL
     name: '{$p}Done'
   magenta-stained-glass-pane:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    slots: [ 1, 2, 4, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
     material: MAGENTA_STAINED_GLASS_PANE
     name: ''
   land:
     name: "%bool_added% {$p}%translated-world%{$sep}, {$p}%x%{$sep}, {$p}%z%"
+    lore: |
+      {$p}Player{$sep}: {$s}%player%
+      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
+      {$p}Ransack Mode{$sep}: %ransack-mode%
+      {$p}Result{$sep}: {$s}%result%
+      {$p}At{$sep}: {$s}%time%
     added:
       condition: added
       material: GREEN_WOOL
