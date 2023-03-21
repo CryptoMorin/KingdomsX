@@ -94,6 +94,11 @@ public class StandardPeaceTreatyEditor {
         pause(false);
     }
 
+    public void pause() {
+        pause(true);
+        PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
+    }
+
     public static void kingdomNotAvailable(Kingdom kingdom) {
         List<UUID> removeList = new ArrayList<>();
         for (Map.Entry<UUID, PendingContract> entry : PENDING_CONTRACTS.entrySet()) {
@@ -158,7 +163,7 @@ public class StandardPeaceTreatyEditor {
 
                 double totalRequiredWarPoints = peaceTreaty.getTotalRequiredWarPoints() + grouping.getRequiredWarPoints(peaceTreaty);
                 double ownedWarPoints = WarPoint.getWarPoints(peaceTreaty.getProposerKingdom(), peaceTreaty.getVictimKingdom());
-                ctx.getSettings().raw("total_required_war_points", totalRequiredWarPoints);
+                ctx.getSettings().raw("peacetreaty_war_points", totalRequiredWarPoints);
                 if (!isAdmin && totalRequiredWarPoints > ownedWarPoints) {
                     ctx.sendError(PeaceTreatyLang.TERM_INSUFFICIENT_WAR_POINTS);
                     return;

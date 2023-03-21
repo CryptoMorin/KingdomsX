@@ -23,20 +23,55 @@ options:
     material: GREEN_WOOL
     name: '{$p}Done'
   magenta-stained-glass-pane:
-    slots: [ 1, 2, 4, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    slots: [ 1, 2, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
     material: MAGENTA_STAINED_GLASS_PANE
     name: ''
-  land:
-    name: "%bool_added% {$p}%translated-world%{$sep}, {$p}%x%{$sep}, {$p}%z%"
-    lore: |
-      {$p}Player{$sep}: {$s}%player%
-      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Ransack Mode{$sep}: %ransack-mode%
-      {$p}Result{$sep}: {$s}%result%
-      {$p}At{$sep}: {$s}%time%
-    added:
-      condition: added
-      material: GREEN_WOOL
+  display-mode:
+    posx: 5
+    posy: 1
+    grouped:
+      condition: displaymode_grouped
+      name: '{$p}Grouped'
+      material: BOOK
+      lore: |
+        &7The invaded lands will be
+        shown as a group of invaded
+        lands if that is an option.
     else:
-      material: RED_WOOL
+      material: PAPER
+      name: '{$p}Individual'
+      lore: |
+        &7The invaded lands will be
+        shown as individually invaded
+        lands.
+  land:
+    displaymode-grouped:
+      added:
+        condition: added
+        material: GREEN_WOOL
+      else:
+        material: RED_WOOL
+      condition: displaymode_grouped
+      name: "%bool_added%"
+      lore: |
+        {$p}Player{$sep}: {$s}%player%
+        {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
+        {$p}Ransack Mode{$sep}: %ransack-mode%
+        {$p}Result{$sep}: {$s}%result%
+        {$p}At{$sep}: {$s}%time%
+        {$p}Affected Lands{$sep}:
+        %affected-lands%
+    else:
+      added:
+        condition: added
+        material: GREEN_WOOL
+      else:
+        material: RED_WOOL
+      name: "%bool_added% {$p}%translated-world%{$sep}, {$p}%x%{$sep}, {$p}%z%"
+      lore: |
+        {$p}Player{$sep}: {$s}%player%
+        {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
+        {$p}Ransack Mode{$sep}: %ransack-mode%
+        {$p}Result{$sep}: {$s}%result%
+        {$p}At{$sep}: {$s}%time%
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]

@@ -53,7 +53,7 @@ public class PeaceTreaty implements PlayerOperator {
                 .raw("peacetreaty_count_terms", terms.size())
                 .raw("peacetreaty_accepted", isAccepted());
 
-        settings.raw("total_required_war_points", Fn.supply(this::getTotalRequiredWarPoints));
+        settings.raw("peacetreaty_war_points", Fn.supply(this::getTotalRequiredWarPoints));
 
         settings.addGroupedPlaceholder("term", x -> {
             x = x.replace('_', '-');
