@@ -104,6 +104,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
     public void reloadAddon() {
         PeaceTreatyConfig.getConfig().reload();
         TermRegistry.loadTermGroupings();
+        new CommandPeaceTreaty();
     }
 
     @Override

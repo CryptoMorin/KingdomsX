@@ -28,9 +28,9 @@ import java.util.Objects;
 
 public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
     private static final StateFlag
-            KINGDOMS_CLAIMABLE = registerFlag("kingdoms-claimable"),
-            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire"),
-            KINGDOMS_DAMAGE_CHAMPION = registerFlag("kingdoms-damage-champion");
+            KINGDOMS_CLAIMABLE = registerFlag("kingdoms-claimable", false),
+            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire", false),
+            KINGDOMS_DAMAGE_CHAMPION = registerFlag("kingdoms-damage-champion", true);
     private static final MethodHandle INDEX;
 
     static {
@@ -56,13 +56,13 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         }
     }
 
-    private static StateFlag registerFlag(String name) {
+    private static StateFlag registerFlag(String name, boolean defaultState) {
         // https://worldguard.enginehub.org/en/latest/developer/regions/custom-flags/
         FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
         try {
             // create a flag with the name "my-custom-flag", defaulting to true
             // only set our field if there was no error
-            StateFlag flag = new StateFlag(name, false);
+            StateFlag flag = new StateFlag(name, defaultState);
             registry.register(flag);
             return flag;
         } catch (FlagConflictException e) {

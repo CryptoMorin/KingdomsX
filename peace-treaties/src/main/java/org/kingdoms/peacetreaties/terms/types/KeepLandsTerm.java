@@ -183,8 +183,8 @@ public class KeepLandsTerm extends Term {
         Set<SimpleChunkLocation> givingBackChunks = getLandsGivingBack(invader, victim.getId());
         if (givingBackChunks.isEmpty()) return true;
 
-        invader.unclaim(givingBackChunks, peaceTreaty.getPlayer(), UnclaimLandEvent.Reason.CUSTOM, false);
-        victim.claim(givingBackChunks, null, ClaimLandEvent.Reason.CUSTOM, false);
+        victim.unclaim(givingBackChunks, peaceTreaty.getPlayer(), UnclaimLandEvent.Reason.CUSTOM, false);
+        invader.claim(givingBackChunks, null, ClaimLandEvent.Reason.CUSTOM, false);
 
         return true;
     }
