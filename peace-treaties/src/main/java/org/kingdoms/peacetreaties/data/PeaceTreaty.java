@@ -13,9 +13,13 @@ import org.kingdoms.events.general.GroupRelationshipChangeEvent;
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder;
 import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
+import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.managers.RelationshipListener;
 import org.kingdoms.peacetreaties.terms.*;
+import org.kingdoms.utils.ConditionProcessor;
+import org.kingdoms.utils.MathUtils;
+import org.kingdoms.utils.config.NodeInterpreter;
 import org.kingdoms.utils.internal.Fn;
 
 import java.time.Duration;
@@ -51,9 +55,12 @@ public class PeaceTreaty implements PlayerOperator {
                 .raw("peacetreaty_requested_time", sentTime)
                 .raw("peacetreaty_requester_player", Bukkit.getOfflinePlayer(requesterPlayer).getName())
                 .raw("peacetreaty_count_terms", terms.size())
-                .raw("peacetreaty_accepted", isAccepted());
+                .raw("peacetreaty_can_enforce_acceptance", Fn.supply(this::canEnforceAcceptance))
+                .raw("peacetreaty_accepted", isAccepted())
+                .raw("peacetreaty_war_points", Fn.supply(this::getTotalRequiredWarPoints));
 
-        settings.raw("peacetreaty_war_points", Fn.supply(this::getTotalRequiredWarPoints));
+        settings.raw("peacetreaty_force_acceptance_war_points",
+                MathUtils.eval(PeaceTreatyConfig.FORCE_ACCEPT_WAR_POINTS.getManager().getMathExpression(), settings));
 
         settings.addGroupedPlaceholder("term", x -> {
             x = x.replace('_', '-');
@@ -83,6 +90,15 @@ public class PeaceTreaty implements PlayerOperator {
 
         KingdomMetadata proposerMeta = proposer.getMetadata().get(PeaceTreatyProposerMetaHandler.INSTANCE);
         if (proposerMeta != null) ((Set<UUID>) proposerMeta.getValue()).remove(victim.getId());
+    }
+
+    public boolean canEnforceAcceptance() {
+        return ConditionProcessor.process(
+                PeaceTreatyConfig.FORCE_ACCEPT_CONDITION.getManager().get(NodeInterpreter.CONDITION),
+                new MessageBuilder()
+                        .withContext(getVictimKingdom())
+                        .other(getProposerKingdom())
+        );
     }
 
     public void propose() {

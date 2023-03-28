@@ -35,13 +35,28 @@ options:
     # https://minecraft-heads.com/custom-heads/alphabet/21778-blue-checkmark
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZmNDQzMWU5ODNiM2M4NTQwNDRiYzAwYjdjNTQ4MDAyNDNjZDdkYmY5NGRlMzM5YjhjMmY3YjI1NjZhNTIwMSJ9fX0='
     name: '{$p}Send'
-    lore: |
-      &7Sends the proposal to the other
-      kingdom. You'd have to wait for
-      the to review and accept it.
-      
-      {$p}Used War Points{$sep}: {$s}%peacetreaty_war_points%
-      {$p}War Points{$sep}: {$s}%kingdoms_other_war_points%
+    can-force-accpet:
+      condition: peacetreaty_can_enforce_acceptance
+      lore: |
+        &7Sends the proposal to the other
+        kingdom. You'd have to wait for
+        the to review and accept it.
+        
+        {$p}Used War Points{$sep}: {$s}%peacetreaty_war_points%
+        {$p}War Points{$sep}: {$s}%kingdoms_other_war_points%
+        
+        {$p}Your kingdom is able to enforce an 
+        contract on this kingdom. Right-click to 
+        force the peace treaty on the other kingdom. 
+        This will take {$s}%peacetreaty_force_acceptance_war_points% {$p}war points.
+    else:
+      lore: |
+        &7Sends the proposal to the other
+        kingdom. You'd have to wait for
+        the to review and accept it.
+
+        {$p}Used War Points{$sep}: {$s}%peacetreaty_war_points%
+        {$p}War Points{$sep}: {$s}%kingdoms_other_war_points%
   term-take-rp:
     posx: 3
     posy: 3

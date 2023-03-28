@@ -52,6 +52,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     COMMAND_PEACETREATY_ACCEPT_ACCEPTED_SENDER("{$s}%kingdoms_name% {$p}has accepted your peace treaty contract.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_RESUME_NONE("{$e}You don't have any active peace treaties to edit.", 1, 2, 3),
     EDITOR_PAUSED("{$p}You can resume your editing by running {$s}hover:{/k peacetreaty resume;&7Click to resume;/k peacetreaty resume}", 1),
+    EDITOR_FORCE_FAILED("{$e}This contract cannot be enforced because the kingdom would receive the following errors{$sep}:", 1),
     EDITOR_VICTIM_KINGDOM_DISBANDED("{$e}The kingdom you were proposing to {$sep}({$es}%kingdoms_kingdom_name%{$sep}) {$e}was disbanded.", 1),
     TERM_INSUFFICIENT_WAR_POINTS("{$e}You need {$es}%peacetreaty_war_points% {$e}total war points {$e}in order to use this term.", 1),
     TERMS_MIN("{$e}You need to specify at least {$es}%terms_min% {$e}terms.", 1),

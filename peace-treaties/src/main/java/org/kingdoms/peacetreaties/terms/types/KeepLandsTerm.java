@@ -55,11 +55,7 @@ public class KeepLandsTerm extends Term {
     }
 
     public Set<SimpleChunkLocation> getLandsGivingBack(Kingdom invader, UUID victimKingdomId) {
-        return invader.getLogs().stream()
-                .filter(x -> x instanceof LogKingdomInvader)
-                .map(x -> (LogKingdomInvader) x)
-                .filter(x -> x.getResult().isSuccessful())
-                .filter(x -> x.correspondingKingdom.equals(victimKingdomId))
+        return getInvadedLandsSimple(invader, victimKingdomId).stream()
                 .flatMap(x -> x.affectedLands.stream())
                 .filter(invader::isClaimed)
                 .filter(x -> !keptLands.contains(x))
@@ -183,8 +179,8 @@ public class KeepLandsTerm extends Term {
         Set<SimpleChunkLocation> givingBackChunks = getLandsGivingBack(invader, victim.getId());
         if (givingBackChunks.isEmpty()) return true;
 
-        victim.unclaim(givingBackChunks, peaceTreaty.getPlayer(), UnclaimLandEvent.Reason.CUSTOM, false);
-        invader.claim(givingBackChunks, null, ClaimLandEvent.Reason.CUSTOM, false);
+        invader.unclaim(givingBackChunks, peaceTreaty.getPlayer(), UnclaimLandEvent.Reason.CUSTOM, false);
+        victim.claim(givingBackChunks, null, ClaimLandEvent.Reason.CUSTOM, false);
 
         return true;
     }

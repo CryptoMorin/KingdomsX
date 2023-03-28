@@ -15,6 +15,8 @@ import org.kingdoms.utils.string.StringUtils;
 public enum PeaceTreatyConfig implements EnumConfig {
     DURATION,
     MIN_TERMS,
+    FORCE_ACCEPT_CONDITION(2),
+    FORCE_ACCEPT_WAR_POINTS(2),
     UNFINISHED_CONTRACT_REMINDER,
     WAR_POINTS_MAX(2),
     WAR_POINTS_SCORES_GAIN_KILL(2, 3, 4),

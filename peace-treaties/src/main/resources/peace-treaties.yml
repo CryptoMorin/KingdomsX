@@ -1,6 +1,17 @@
 # The duration for the contract to last if any long-term terms are selected.
 duration: 10 days
 
+# Based on what condition should the sender of a peace treaty should be able
+# to force the contract on the other side without concept?
+# This is useful for situations where the other side has completely lost everything
+# and are being stubborn to continue the war with nothing.
+# This default condition checks if the proposer has 100 more war points than the victim kingdom.
+force-accept:
+  condition: 'kingdoms_war_points - kingdoms_other_war_points >= 100'
+
+  # Taken war points if acceptance is enforced.
+  war-points: 50
+
 war-points:
   # Initial war points given to a kingdom when created.
   initial: 0

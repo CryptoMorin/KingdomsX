@@ -21,15 +21,13 @@ import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.data.WarPoint;
-import org.kingdoms.peacetreaties.terms.TermGrouping;
-import org.kingdoms.peacetreaties.terms.TermGroupingOptions;
-import org.kingdoms.peacetreaties.terms.TermProvider;
-import org.kingdoms.peacetreaties.terms.TermRegistry;
+import org.kingdoms.peacetreaties.terms.*;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.time.TimeUtils;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 public class StandardPeaceTreatyEditor {
     private static final Map<UUID, PendingContract> PENDING_CONTRACTS = new HashMap<>();
@@ -199,7 +197,7 @@ public class StandardPeaceTreatyEditor {
         }
 
         AtomicBoolean wasSent = new AtomicBoolean();
-        gui.option("send").onNormalClicks(ctx -> {
+        Consumer<OptionHandler> consumer = ctx -> {
             int minTerms = (int) MathUtils.eval(PeaceTreatyConfig.MIN_TERMS.getManager().getMathExpression(), ctx.getSettings());
             ctx.getSettings().raw("terms_min", minTerms);
 
@@ -216,6 +214,29 @@ public class StandardPeaceTreatyEditor {
             player.closeInventory();
             peaceTreaty.propose();
             removePending();
+        };
+
+        gui.option("send").on(ClickType.LEFT, consumer).on(ClickType.RIGHT, ctx -> {
+            boolean canEnforce = peaceTreaty.canEnforceAcceptance();
+            if (canEnforce) {
+                List<Messenger> errors = new ArrayList<>();
+                peaceTreaty.getTerms().values().forEach(x -> x.getTerms().values().forEach(y -> {
+                    Messenger error = y.canAccept(x.getOptions(), peaceTreaty);
+                    if (error != null) errors.add(error);
+                }));
+
+                if (!errors.isEmpty())  {
+                    ctx.sendError(PeaceTreatyLang.EDITOR_FORCE_FAILED);
+                    errors.forEach(x -> x.sendMessage(player));
+                    player.closeInventory();
+                    return;
+                }
+            }
+
+                consumer.accept(ctx);
+            if (canEnforce) {
+            peaceTreaty.accept();
+            }
         }).done();
 
         gui.option("pause").onNormalClicks(ctx -> {

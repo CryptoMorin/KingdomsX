@@ -5,6 +5,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.addons.Addon;
 import org.kingdoms.config.managers.ConfigManager;
 import org.kingdoms.config.managers.ConfigWatcher;
+import org.kingdoms.constants.metadata.KingdomMetadataHandler;
+import org.kingdoms.constants.metadata.KingdomMetadataRegistry;
 import org.kingdoms.gui.GUIConfig;
 import org.kingdoms.locale.LanguageManager;
 import org.kingdoms.main.Kingdoms;
@@ -20,7 +22,7 @@ import org.kingdoms.peacetreaties.terms.TermRegistry;
 import org.kingdoms.peacetreaties.terms.types.*;
 
 import java.io.File;
-import java.util.Arrays;
+import java.util.*;
 
 public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
     private static boolean loaded = false;
@@ -39,15 +41,22 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         return instance;
     }
 
+    private final Set<KingdomMetadataHandler> metadataHandlers = new HashSet<>();
+
+    @Override
+    public void uninstall() {
+        getLogger().info("Removing peace treaties metadata info...");
+        KingdomMetadataRegistry.removeMetadata(Kingdoms.get().getDataCenter().getKingdomManager(), metadataHandlers);
+    }
+
     @Override
     public void onLoad() {
         if (!isKingdomsLoaded()) return;
 
         getLogger().info("Registering kingdoms metadata handler...");
 
-        Kingdoms.get().getMetadataRegistry().register(PeaceTreatyProposerMetaHandler.INSTANCE);
-        Kingdoms.get().getMetadataRegistry().register(PeaceTreatyReceiverMetaHandler.INSTANCE);
-        Kingdoms.get().getMetadataRegistry().register(WarPointsMetaHandler.INSTANCE);
+        metadataHandlers.addAll(Arrays.asList(PeaceTreatyProposerMetaHandler.INSTANCE, PeaceTreatyReceiverMetaHandler.INSTANCE, WarPointsMetaHandler.INSTANCE));
+        metadataHandlers.forEach(x -> Kingdoms.get().getMetadataRegistry().register(x));
 
         Kingdoms.get().getAuditLogRegistry().register(LogPeaceTreatySent.PROVIDER);
         Kingdoms.get().getAuditLogRegistry().register(LogPeaceTreatyReceived.PROVIDER);

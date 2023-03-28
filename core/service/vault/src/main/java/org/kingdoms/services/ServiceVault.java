@@ -9,37 +9,29 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
 public final class ServiceVault implements Service {
-    private static final Economy ECONOMY;
-    private static final Permission PERMISSIONS;
-    private static final Chat CHAT;
-
-    static {
-        RegisteredServiceProvider<Economy> economyRSP = Bukkit.getServicesManager().getRegistration(Economy.class);
-        if (economyRSP == null) ECONOMY = null;
-        else ECONOMY = economyRSP.getProvider();
-
-        RegisteredServiceProvider<Permission> permissionRSP = Bukkit.getServicesManager().getRegistration(Permission.class);
-        if (permissionRSP == null) PERMISSIONS = null;
-        else PERMISSIONS = permissionRSP.getProvider();
-
-        RegisteredServiceProvider<Chat> chatRSP = Bukkit.getServicesManager().getRegistration(Chat.class);
-        if (chatRSP == null) CHAT = null;
-        else CHAT = chatRSP.getProvider();
+    private static Economy getEconomy() {
+        RegisteredServiceProvider<Economy> service = Bukkit.getServicesManager().getRegistration(Economy.class);
+        return service == null ? null : service.getProvider();
     }
 
-    @Override
-    public boolean isAvailable() {
-        return ECONOMY != null || PERMISSIONS != null || CHAT != null;
+    private static Permission getPermission() {
+        RegisteredServiceProvider<Permission> service = Bukkit.getServicesManager().getRegistration(Permission.class);
+        return service == null ? null : service.getProvider();
+    }
+
+    private static Chat getChat() {
+        RegisteredServiceProvider<Chat> service = Bukkit.getServicesManager().getRegistration(Chat.class);
+        return service == null ? null : service.getProvider();
     }
 
     public static boolean isAvailable(Component component) {
         switch (component) {
             case ECO:
-                return ECONOMY != null;
+                return getEconomy() != null;
             case CHAT:
-                return CHAT != null;
+                return getChat() != null;
             case PERM:
-                return PERMISSIONS != null;
+                return getPermission() != null;
             default:
                 throw new AssertionError("Unknown Vault component: " + component);
         }
@@ -48,30 +40,30 @@ public final class ServiceVault implements Service {
     public enum Component {ECO, CHAT, PERM;}
 
     public static double getMoney(OfflinePlayer player) {
-        return ECONOMY == null ? 0 : ECONOMY.getBalance(player);
+        return getEconomy() == null ? 0 : getEconomy().getBalance(player);
     }
 
     public static void deposit(OfflinePlayer player, double amount) {
-        ECONOMY.depositPlayer(player, amount);
+        getEconomy().depositPlayer(player, amount);
     }
 
     public static boolean hasMoney(OfflinePlayer player, double amount) {
-        return ECONOMY != null && ECONOMY.has(player, amount);
+        return getEconomy() != null && getEconomy().has(player, amount);
     }
 
     public static String getDisplayName(Player player) {
-        if (CHAT == null) return player.getDisplayName();
-        String prefix = CHAT.getPlayerPrefix(player);
-        String suffix = CHAT.getPlayerSuffix(player);
+        if (getChat() == null) return player.getDisplayName();
+        String prefix = getChat().getPlayerPrefix(player);
+        String suffix = getChat().getPlayerSuffix(player);
         return prefix + player.getName() + suffix;
     }
 
     public static void withdraw(OfflinePlayer player, double amount) {
-        ECONOMY.withdrawPlayer(player, amount);
+        getEconomy().withdrawPlayer(player, amount);
     }
 
     public static String getGroup(Player player) {
-        if (PERMISSIONS == null) return "default";
-        return PERMISSIONS.hasGroupSupport() ? PERMISSIONS.getPrimaryGroup(player) : "default";
+        if (getPermission() == null) return "default";
+        return getPermission().hasGroupSupport() ? getPermission().getPrimaryGroup(player) : "default";
     }
 }
