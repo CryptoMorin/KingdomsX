@@ -44,8 +44,18 @@ class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand(
             val victim = contract.victimKingdom
             val proposer = contract.proposerKingdom
 
-            victim.onlineMembers.forEach { x -> context.sendMessage(x, PeaceTreatyLang.COMMAND_PEACETREATY_ACCEPT_ACCEPTED_RECEIVER) }
-            proposer.onlineMembers.forEach { x -> context.sendMessage(x, PeaceTreatyLang.COMMAND_PEACETREATY_ACCEPT_ACCEPTED_SENDER) }
+            victim.onlineMembers.forEach { x ->
+                context.sendMessage(
+                    x,
+                    PeaceTreatyLang.COMMAND_PEACETREATY_ACCEPT_ACCEPTED_RECEIVER
+                )
+            }
+            proposer.onlineMembers.forEach { x ->
+                context.sendMessage(
+                    x,
+                    PeaceTreatyLang.COMMAND_PEACETREATY_ACCEPT_ACCEPTED_SENDER
+                )
+            }
 
             CommandResult.SUCCESS
         } else {

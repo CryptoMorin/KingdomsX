@@ -12,7 +12,8 @@ import org.snakeyaml.validation.ValidationFailure;
 public final class CustomConfigValidators {
     private static final Tag TERM = org.kingdoms.utils.config.CustomConfigValidators.register("Term", new Term());
 
-    public static void init() {}
+    public static void init() {
+    }
 
     private static final class Term implements NodeValidator {
         @Override

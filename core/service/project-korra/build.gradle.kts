@@ -13,5 +13,9 @@ dependencies {
     // https://github.com/ProjectKorra/ProjectKorra/wiki
     //https://projectkorra.com/docs/
     compileOnly(project(":core:service"))
-    compileOnly(files(rootDir.toPath().resolve("local-dependencies").resolve("ProjectKorra-1.10.2.jar"))) // They don't have an official API.
+    compileOnly(
+        files(
+            rootDir.toPath().resolve("local-dependencies").resolve("ProjectKorra-1.10.2.jar")
+        )
+    ) // They don't have an official API.
 }

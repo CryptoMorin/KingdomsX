@@ -284,6 +284,8 @@ database:
     # This setting controls the maximum lifetime of a connection in the pool.
     # - The value should be at least 30 seconds less than any database or infrastructure imposed
     #   connection time limit.
+    # - Known issues: https://github.com/brettwooldridge/HikariCP/pull/1594
+    # - MariaDB wait_timeout: https://mariadb.com/docs/server/ref/mdb/system-variables/wait_timeout/
     maximum-lifetime: 30 minutes
 
     # This setting controls how frequently the pool will 'ping' a connection in order to prevent it

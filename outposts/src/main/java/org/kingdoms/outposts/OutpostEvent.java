@@ -86,7 +86,8 @@ public class OutpostEvent {
     public static OutpostEvent startEvent(Outpost outpost, long time, long startTime) {
         Objects.requireNonNull(outpost, "Outpost cannot be null");
         if (time > 0) throw new IllegalArgumentException("Outpost event time cannot be less than 0");
-        if (!EVENTS.containsKey(outpost.getName())) throw new IllegalArgumentException("Event for outpost '" + outpost + "' has already started");
+        if (!EVENTS.containsKey(outpost.getName()))
+            throw new IllegalArgumentException("Event for outpost '" + outpost + "' has already started");
 
         OutpostEvent event = new OutpostEvent(outpost, time);
         EVENTS.put(outpost.getName(), event);
@@ -182,8 +183,9 @@ public class OutpostEvent {
                         Bukkit.getScheduler().runTask(Kingdoms.get(),
                                 () -> player.teleport(outpost.getSpawn()));
                     }
-                } else OutpostsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),
-                        "money", outpost.getRewards().getMoney(1));
+                } else
+                    OutpostsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),
+                            "money", outpost.getRewards().getMoney(1));
                 player.setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
             }
         }
@@ -212,12 +214,14 @@ public class OutpostEvent {
 
                     List<org.bukkit.Color> colors = new ArrayList<>();
                     int colorMax = random.nextInt(1, 4);
-                    for (int k = 0; k < colorMax; k++) colors.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
+                    for (int k = 0; k < colorMax; k++)
+                        colors.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
                     builder.withColor(colors);
 
                     List<org.bukkit.Color> fades = new ArrayList<>();
                     int fadeMax = random.nextInt(1, 4);
-                    for (int k = 0; k < fadeMax; k++) fades.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
+                    for (int k = 0; k < fadeMax; k++)
+                        fades.add(org.bukkit.Color.fromRGB(random.nextInt(1, 255), random.nextInt(1, 255), random.nextInt(1, 255)));
                     builder.withFade(fades);
 
                     effects.add(builder.build());

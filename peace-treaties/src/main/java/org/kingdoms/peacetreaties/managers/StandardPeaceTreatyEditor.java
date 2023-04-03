@@ -21,7 +21,10 @@ import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.data.WarPoint;
-import org.kingdoms.peacetreaties.terms.*;
+import org.kingdoms.peacetreaties.terms.TermGrouping;
+import org.kingdoms.peacetreaties.terms.TermGroupingOptions;
+import org.kingdoms.peacetreaties.terms.TermProvider;
+import org.kingdoms.peacetreaties.terms.TermRegistry;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.time.TimeUtils;
 
@@ -103,7 +106,8 @@ public class StandardPeaceTreatyEditor {
             Player player = Bukkit.getPlayer(entry.getKey());
             boolean remove = false;
             if (entry.getValue().contract.getVictimKingdomId().equals(kingdom.getId())) {
-                if (player != null) PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player, new MessageBuilder().withContext(kingdom));
+                if (player != null)
+                    PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player, new MessageBuilder().withContext(kingdom));
                 remove = true;
             } else if (entry.getValue().contract.getProposerKingdomId().equals(kingdom.getId())) {
                 // No need to send a message, they're already notified when their kingdom gets disbanded.
@@ -225,7 +229,7 @@ public class StandardPeaceTreatyEditor {
                     if (error != null) errors.add(error);
                 }));
 
-                if (!errors.isEmpty())  {
+                if (!errors.isEmpty()) {
                     ctx.sendError(PeaceTreatyLang.EDITOR_FORCE_FAILED);
                     errors.forEach(x -> x.sendMessage(player));
                     player.closeInventory();
@@ -233,9 +237,9 @@ public class StandardPeaceTreatyEditor {
                 }
             }
 
-                consumer.accept(ctx);
+            consumer.accept(ctx);
             if (canEnforce) {
-            peaceTreaty.accept();
+                peaceTreaty.accept();
             }
         }).done();
 
@@ -245,7 +249,8 @@ public class StandardPeaceTreatyEditor {
         }).done();
 
         gui.onClose(() -> {
-            if (wasSent.get() || isInsideNestedGUI.get() || ChatInputManager.isConversing(player) || gui.wasSwitched()) return;
+            if (wasSent.get() || isInsideNestedGUI.get() || ChatInputManager.isConversing(player) || gui.wasSwitched())
+                return;
             pause(true);
             PeaceTreatyLang.EDITOR_PAUSED.sendMessage(player);
         });

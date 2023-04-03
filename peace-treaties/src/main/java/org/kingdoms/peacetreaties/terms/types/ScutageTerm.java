@@ -24,7 +24,8 @@ public class ScutageTerm extends Term {
         }
     };
 
-    private ScutageTerm() {}
+    private ScutageTerm() {
+    }
 
     public ScutageTerm(double money) {
         this.percent = money;

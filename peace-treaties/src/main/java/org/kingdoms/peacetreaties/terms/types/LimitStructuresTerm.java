@@ -32,7 +32,8 @@ public class LimitStructuresTerm extends Term {
         this.maxStructures = maxStructures;
     }
 
-    public LimitStructuresTerm() {}
+    public LimitStructuresTerm() {
+    }
 
     @Override
     public TermProvider getProvider() {

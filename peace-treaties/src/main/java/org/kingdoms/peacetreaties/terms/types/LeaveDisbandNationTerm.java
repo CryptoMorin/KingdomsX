@@ -22,7 +22,8 @@ public class LeaveDisbandNationTerm extends Term {
                     Kingdom kingdom = peaceTreaty.getVictimKingdom();
                     Nation nation = kingdom.getNation();
                     if (nation == null) return KingdomsLang.NO_NATION_OTHER;
-                    if (nation.isPermanent() && nation.getCapitalId().equals(kingdom.getId())) return PeaceTreatyLang.TERMS_LEAVE_NATION_PERMANENT;
+                    if (nation.isPermanent() && nation.getCapitalId().equals(kingdom.getId()))
+                        return PeaceTreatyLang.TERMS_LEAVE_NATION_PERMANENT;
                     return null;
                 }
             };

@@ -40,7 +40,12 @@ class RelationshipListener : Listener {
         Bukkit.getScheduler().runTaskLater(PeaceTreatiesAddon.get(), { ->
             kingdom.getReceivedPeaceTreaties().values
                 .filter { x -> !x.isAccepted }
-                .forEach { x -> PeaceTreatyLang.NOTIFICATION_RECEIVERS.sendMessage(player, x.getPlaceholderContextProvider(MessageBuilder()) as MessageBuilder) }
+                .forEach { x ->
+                    PeaceTreatyLang.NOTIFICATION_RECEIVERS.sendMessage(
+                        player,
+                        x.getPlaceholderContextProvider(MessageBuilder()) as MessageBuilder
+                    )
+                }
         }, 20L)
     }
 
@@ -64,14 +69,20 @@ class RelationshipListener : Listener {
 
         val fromContract = isUnderAnnulTreaties(from)
         if (fromContract != null) {
-            if (player != null) PeaceTreatyLang.UNDER_CONTRACT_ANNUL_TREATIES_FROM.sendError(player, fromContract.placeholderContextProvider)
+            if (player != null) PeaceTreatyLang.UNDER_CONTRACT_ANNUL_TREATIES_FROM.sendError(
+                player,
+                fromContract.placeholderContextProvider
+            )
             event.isCancelled = true
             return
         }
 
         val toContract = isUnderAnnulTreaties(to)
         if (toContract != null) {
-            if (player != null) PeaceTreatyLang.UNDER_CONTRACT_ANNUL_TREATIES_TO.sendError(player, toContract.placeholderContextProvider)
+            if (player != null) PeaceTreatyLang.UNDER_CONTRACT_ANNUL_TREATIES_TO.sendError(
+                player,
+                toContract.placeholderContextProvider
+            )
             event.isCancelled = true
             return
         }
@@ -130,7 +141,14 @@ class RelationshipListener : Listener {
 
         val settings = PlaceholderContextBuilder().withContext(from).other(to)
         val durationMillis = PeaceTreatyConfig.DURATION.manager.getTime(settings)
-        val contract = PeaceTreaty(from.dataKey, to.dataKey, 0, System.currentTimeMillis(), Duration.ofMillis(durationMillis), player.id)
+        val contract = PeaceTreaty(
+            from.dataKey,
+            to.dataKey,
+            0,
+            System.currentTimeMillis(),
+            Duration.ofMillis(durationMillis),
+            player.id
+        )
         StandardPeaceTreatyEditor.fromContract(contract).open()
     }
 }

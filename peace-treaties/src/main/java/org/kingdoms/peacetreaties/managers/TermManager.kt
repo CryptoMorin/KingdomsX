@@ -85,7 +85,12 @@ class TermManager : Listener {
             val turrets = kingdom.lands.sumOf { x -> x.turrets.size }
             if (turrets + 1 > term.maxTurrets) {
                 event.isCancelled = true
-                event.getPlayer()?.player?.let { PeaceTreatyLang.TERMS_MAX_STRUCTURES_LIMITED.sendMessage(it, settings) }
+                event.getPlayer()?.player?.let {
+                    PeaceTreatyLang.TERMS_MAX_STRUCTURES_LIMITED.sendMessage(
+                        it,
+                        settings
+                    )
+                }
             }
         }
     }

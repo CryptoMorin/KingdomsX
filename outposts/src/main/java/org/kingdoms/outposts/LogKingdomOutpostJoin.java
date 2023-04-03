@@ -16,7 +16,8 @@ public class LogKingdomOutpostJoin extends AuditLog {
     private UUID player;
     private String outpostName;
 
-    protected LogKingdomOutpostJoin() {}
+    protected LogKingdomOutpostJoin() {
+    }
 
     public LogKingdomOutpostJoin(UUID player, String outpostName) {
         this.player = player;

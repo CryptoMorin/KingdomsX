@@ -53,9 +53,13 @@ public abstract class ServiceWorldGuard implements Service {
 
     public abstract boolean hasFlag(Player player, Location location, StateFlag flag);
 
-    public StateFlag getFriendlyFireFlag() {return null;}
+    public StateFlag getFriendlyFireFlag() {
+        return null;
+    }
 
-    public StateFlag getDamageChampionFlag() {return null;}
+    public StateFlag getDamageChampionFlag() {
+        return null;
+    }
 
     public final boolean hasFriendlyFireFlag(Player player) {
         return hasFlag(player, getFriendlyFireFlag());

@@ -28,7 +28,8 @@ public class TakeResourcePointsTerm extends Term {
         }
     };
 
-    TakeResourcePointsTerm() {}
+    TakeResourcePointsTerm() {
+    }
 
     public TakeResourcePointsTerm(long amount) {
         this.amount = amount;

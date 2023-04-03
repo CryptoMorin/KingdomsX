@@ -34,7 +34,6 @@ class WarPointManager : Listener {
 
         val attacker = invasion.attacker
         val defender = invasion.defender
-        if (attacker.getRelationWith(defender) != KingdomRelation.ENEMY) return
 
         val ctx = MessageBuilder().withContext(attacker).other(defender)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_INVADE.manager.mathExpression, ctx)
@@ -64,8 +63,6 @@ class WarPointManager : Listener {
         val deadKingdom = deadKp.kingdom ?: return
         val killerKingdom = killerKp.kingdom ?: return
 
-        if (deadKingdom.getRelationWith(killerKingdom) != KingdomRelation.ENEMY) return
-
         val ctx = MessageBuilder().withContext(killer).other(dead)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_KILL.manager.mathExpression, ctx)
         val lost = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_KILL.manager.mathExpression, ctx)
@@ -90,13 +87,13 @@ class WarPointManager : Listener {
         val itemKingdom = item.getLand()!!.kingdom!!
         val playerKingdom = player.kingdom!!
 
-        if (itemKingdom.getRelationWith(playerKingdom) != KingdomRelation.ENEMY) return
-
         val ctx = MessageBuilder().withContext(player.offlinePlayer).other(itemKingdom)
 
         val isTurret = item is Turret
-        val gainedOpt = if (isTurret) PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_TURRET else PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_STRUCTURE
-        val lostOpt = if (isTurret) PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_BREAK_TURRET else PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_BREAK_STRUCTURE
+        val gainedOpt =
+            if (isTurret) PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_TURRET else PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_BREAK_STRUCTURE
+        val lostOpt =
+            if (isTurret) PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_BREAK_TURRET else PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_BREAK_STRUCTURE
 
         val gained = MathUtils.eval(gainedOpt.manager.mathExpression, ctx)
         val lost = MathUtils.eval(lostOpt.manager.mathExpression, ctx)
@@ -106,11 +103,13 @@ class WarPointManager : Listener {
 
         ctx.raw("style", item.style.displayName)
         ctx.raw("war_points", gained)
-        val gainedMsg = if (isTurret) PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_STRUCTURE
+        val gainedMsg =
+            if (isTurret) PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_GAIN_BREAK_STRUCTURE
         player.player?.let { gainedMsg.sendMessage(it, ctx) }
 
         ctx.raw("war_points", lost)
-        val lostMsg = if (isTurret) PeaceTreatyLang.WAR_POINTS_LOST_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_LOST_BREAK_STRUCTURE
+        val lostMsg =
+            if (isTurret) PeaceTreatyLang.WAR_POINTS_LOST_BREAK_TURRET else PeaceTreatyLang.WAR_POINTS_LOST_BREAK_STRUCTURE
         itemKingdom.onlineMembers.forEach { x -> lostMsg.sendError(x, ctx) }
 
         KLogger.debug(DEBUG_NS) {

@@ -19,11 +19,14 @@ public abstract class Term {
         return null;
     }
 
-    public void deserialize(DeserializationContext<SectionableDataGetter> context) {}
+    public void deserialize(DeserializationContext<SectionableDataGetter> context) {
+    }
 
-    public void serialize(SerializationContext<SectionableDataSetter> context) {}
+    public void serialize(SerializationContext<SectionableDataSetter> context) {
+    }
 
-    public void addEdits(MessageBuilder builder) {}
+    public void addEdits(MessageBuilder builder) {
+    }
 
     public final MessageBuilder getEdits() {
         MessageBuilder edits = new MessageBuilder();

@@ -51,8 +51,9 @@ public final class OutpostAddon extends JavaPlugin implements Addon {
             return;
         }
 
-        if (!SoftService.WORLD_GUARD.isAvailable()) getLogger().warning("WorldGuard plugin is either not installed or disabled from kingdoms. " +
-                "This addon mostly relies on WorldGuard to run events.");
+        if (!SoftService.WORLD_GUARD.isAvailable())
+            getLogger().warning("WorldGuard plugin is either not installed or disabled from kingdoms. " +
+                    "This addon mostly relies on WorldGuard to run events.");
 
         getLogger().info("Registering commands to kingdoms...");
         getLogger().info("Registering event handlers...");

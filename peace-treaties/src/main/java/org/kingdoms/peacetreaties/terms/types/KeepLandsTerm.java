@@ -146,7 +146,8 @@ public class KeepLandsTerm extends Term {
         }
     };
 
-    private KeepLandsTerm() {}
+    private KeepLandsTerm() {
+    }
 
     public KeepLandsTerm(@NonNull Set<SimpleChunkLocation> keptLands) {
         this.keptLands = Objects.requireNonNull(keptLands);

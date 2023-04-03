@@ -29,7 +29,8 @@ public class LimitTurretsTerm extends Term {
         this.maxTurrets = maxTurrets;
     }
 
-    public LimitTurretsTerm() {}
+    public LimitTurretsTerm() {
+    }
 
     @Override
     public TermProvider getProvider() {

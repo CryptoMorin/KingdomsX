@@ -26,7 +26,9 @@ public interface TermProvider extends NamespaceContainer {
 
     CompletionStage<Term> prompt(TermGroupingOptions options, StandardPeaceTreatyEditor editor);
 
-    default Messenger canApply(TermGroupingOptions options, PeaceTreaty peaceTreaty) {return null;}
+    default Messenger canApply(TermGroupingOptions options, PeaceTreaty peaceTreaty) {
+        return null;
+    }
 
     default Messenger getMessage() {
         return new LanguageEntryMessenger("peace-treaties", "terms", StringUtils.configOption(getNamespace().getKey()), "message");

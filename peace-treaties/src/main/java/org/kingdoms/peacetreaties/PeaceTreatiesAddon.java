@@ -22,7 +22,9 @@ import org.kingdoms.peacetreaties.terms.TermRegistry;
 import org.kingdoms.peacetreaties.terms.types.*;
 
 import java.io.File;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
     private static boolean loaded = false;

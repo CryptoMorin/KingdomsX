@@ -28,7 +28,8 @@ public class TakeMoneyTerm extends Term {
         }
     };
 
-    private TakeMoneyTerm() {}
+    private TakeMoneyTerm() {
+    }
 
     public TakeMoneyTerm(double money) {
         this.amount = money;

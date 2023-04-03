@@ -31,7 +31,8 @@ public class LimitClaimsTerm extends Term {
         this.maxClaims = maxClaims;
     }
 
-    public LimitClaimsTerm() {}
+    public LimitClaimsTerm() {
+    }
 
     @Override
     public TermProvider getProvider() {

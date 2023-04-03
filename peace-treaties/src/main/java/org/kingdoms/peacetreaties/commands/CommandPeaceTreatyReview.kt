@@ -8,16 +8,11 @@ import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.gui.GUIAccessor
 import org.kingdoms.gui.InteractiveGUI
 import org.kingdoms.locale.ContextualMessenger
-import org.kingdoms.locale.KingdomsLang
-import org.kingdoms.main.KLogger
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaty
-import org.kingdoms.peacetreaties.terms.types.KeepLandsTerm
-import org.kingdoms.utils.LocationUtils
-import java.util.stream.Collectors
 
 class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand("review", parent) {
     companion object {
@@ -35,8 +30,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
                     showDetails(ctx, contract, !contract.isAccepted)
                     player.closeInventory()
                 }
-                contract.getPlaceholderContextProvider(receivedOpt.settings)
-                receivedOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID))
+                receivedOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID), false)
             }
 
             for (contract in kingdom.getProposedPeaceTreaties().values) {
@@ -49,8 +43,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
                     contract.revoke()
                     openGUI(player, kingdom)
                 }
-                contract.getPlaceholderContextProvider(sentOpt.settings)
-                sentOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID))
+                sentOpt.pushHead(Bukkit.getOfflinePlayer(contract.requesterPlayerID), false)
             }
 
             gui.open()

@@ -100,11 +100,17 @@ class PeaceTreaties {
         @Suppress("UNCHECKED_CAST")
         @JvmStatic
         fun Kingdom.getReceivedPeaceTreaties(): PeaceTreatyMap {
-            val data: KingdomMetadata = this.metadata[PeaceTreatyReceiverMetaHandler.INSTANCE] ?: return Collections.emptyMap()
+            val data: KingdomMetadata =
+                this.metadata[PeaceTreatyReceiverMetaHandler.INSTANCE] ?: return Collections.emptyMap()
             return Collections.unmodifiableMap(data.value as PeaceTreatyMap)
         }
 
-        @JvmStatic fun <T> initializeMeta(kingdom: Kingdom, metadataHandler: KingdomMetadataHandler, default: Supplier<KingdomMetadata>): T {
+        @JvmStatic
+        fun <T> initializeMeta(
+            kingdom: Kingdom,
+            metadataHandler: KingdomMetadataHandler,
+            default: Supplier<KingdomMetadata>
+        ): T {
             var metadata: KingdomMetadata? = kingdom.metadata[metadataHandler]
             if (metadata == null) {
                 metadata = default.get()
@@ -148,9 +154,13 @@ class PeaceTreaties {
     }
 }
 
-class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "RECEIVED")) {
+class PeaceTreatyReceiverMetaHandler private constructor() :
+    KingdomMetadataHandler(Namespace("PeaceTreaties", "RECEIVED")) {
     @Suppress("LABEL_NAME_CLASH")
-    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext<SectionableDataGetter>): KingdomMetadata {
+    override fun deserialize(
+        container: KingdomsObject<*>,
+        context: DeserializationContext<SectionableDataGetter>
+    ): KingdomMetadata {
         return PeaceTreatyReceiverMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             val proposerID = key.asUUID()
             val receiverID = (container as Group).dataKey
@@ -165,7 +175,9 @@ class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHand
             val termsObj: Map<Void, Void> = value["terms"].asMap(hashMapOf()) { _, termKey, termValue ->
                 val grouping = TermRegistry.getTermGroupings()[termKey.asString()] ?: return@asMap
                 val subTerms: Map<Void, Void> = termValue.asMap(hashMapOf()) { _, subTermKey, subTermvalue ->
-                    val subTermProvider = PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermKey.asString())) ?: return@asMap
+                    val subTermProvider =
+                        PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermKey.asString()))
+                            ?: return@asMap
                     val constructed = subTermProvider.construct()
 
                     constructed.deserialize(DeserializationContext(subTermvalue))
@@ -183,8 +195,12 @@ class PeaceTreatyReceiverMetaHandler private constructor() : KingdomMetadataHand
     }
 }
 
-class PeaceTreatyProposerMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
-    override fun deserialize(container: KingdomsObject<*>, context: DeserializationContext<SectionableDataGetter>): PeaceTreatyProposedMeta {
+class PeaceTreatyProposerMetaHandler private constructor() :
+    KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
+    override fun deserialize(
+        container: KingdomsObject<*>,
+        context: DeserializationContext<SectionableDataGetter>
+    ): PeaceTreatyProposedMeta {
         return PeaceTreatyProposedMeta(context.dataProvider.asCollection(hashSetOf()) { c, x -> c.add(x.asUUID()!!) })
     }
 
