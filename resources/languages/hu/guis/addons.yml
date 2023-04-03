@@ -47,14 +47,30 @@ options:
         &2Verzió&8: &9%installed-version%
         &4Jobb klikk az eltávolításhoz
       material: GREEN_WOOL
+    outdated-core-version:
+      condition: 'installed && outdated && outdated_core_version'
+      name: '&8[&4Elavult&8] &9%addon-name%'
+      lore: |
+        %description%
+
+        &4Telepített verzió&8: &9%installed-version%
+        &2Legfrisebb verzió&8: &9%latest-version%
+
+        {$sep}[{$e}!{$sep}] {$es}Ennek a verziónak a
+        működéséhez a Kindoms {$p}v%supported-core-version% {$es}szükséges.
+        Aktuális verzió{$sep}: {$e}%current-core-version%
+
+        &2Bal klikk a frissítéshez
+        &4Jobb klikk az eltávolításhoz
+      material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
       name: '&8[&4Elavult&8] &9%addon-name%'
       lore: |
         %description%
         &4Telepített verzió&8: &9%installed-version%
-        &2Legfrisebb verzió&8: &9%latest-version%
-        &2Bal klikk a telepítéshez
+        &2Legújabb verzió&8: &9%latest-version%
+        &2Bal klikk a frissítéshez
         &4Jobb klikk az eltávolításhoz
       material: RED_WOOL
     not-installed:

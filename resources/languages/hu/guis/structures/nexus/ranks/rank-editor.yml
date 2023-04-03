@@ -34,7 +34,7 @@ options:
     posy: 3
   material:
     name: "&eNyersanyag&8: &2%rank_material%"
-    material: STONE # Template material. Gets replaced
+    material: STONE # Gets replaced by the material that the player picked, don't change.
     lore:
       - "&6A rangok GUI felületen való"
       - "megjelenítéséhez használt"
@@ -75,9 +75,16 @@ options:
   max-claims:
     name: "&7Max foglalás&8: &2%rank_max_claims%"
     material: BOOK
-    lore:
-      - "&6Ennek a rangnak az engedélyeinek"
-      - "a beállítása."
+    lore: |
+      &7Az ezzel a ranggal rendelkező játékosok
+      nem foglalhatnak a megadott értéknél
+      több területet.
+
+      Ha több területet akarnak foglalni,
+      akkor azokat a területeket kell
+      feloldaniuk, amelyeket ők maguk
+      foglaltak, nem pedig azokat,
+      amelyeket más tagok foglaltak.
     posx: 8
     posy: 3
   copy:
