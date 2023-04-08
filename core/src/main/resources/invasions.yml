@@ -37,11 +37,16 @@ multi-chunk-invasion:
 # for lands that have all their sides surrounded by another claim.
 # Using this option makes powercells useless for the most part.
 adjoining-protection:
-  # The chunk radius which is protection works.
+  # The chunk radius of the protection. This controls the amount of
+  # square ring layers around the chunk that the player wants to invade.
+  # If the chunk that the player wants to invade is fully surrounded by
+  # the amount of rings specified here (to relax this option, check the option below)
+  # then the player won't be able to invade that specific chunk.
   # E.g. 1 -> 3x3 = 9 (including the center chunk), 2 -> 5x5 = 25
   # Set to 0 to completely disable this protection system.
   radius: 0
 
+  # The best way to explain this option is with an example:
   # E.g. When the radius is set to 1 and this is set to 1:
   # If a land has 7 claims around it, it'll still protect this
   # land since it only has 1 missing surrounding claims. (1 radius -> 1 land surrounding each side of

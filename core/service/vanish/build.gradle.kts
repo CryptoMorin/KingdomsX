@@ -4,16 +4,24 @@ plugins {
 }
 
 group = "org.kingdoms.services.vanish"
-version = "1.0.0"
+version = "2.0.0"
 
 repositories {
-    maven { url = uri("https://repo.essentialsx.net/snapshots/") }
+    maven("https://repo.essentialsx.net/snapshots/")
 }
 
 dependencies {
     compileOnly(project(":core:service"))
-    compileOnly("net.essentialsx:EssentialsX:2.20.0-SNAPSHOT") {
-        isTransitive = false
-    } // https://repo.essentialsx.net/snapshots/net/essentialsx/EssentialsX
-    compileOnly("org.cmi:CMI-API:9.0.0") { isTransitive = false } // Local https://github.com/Zrips/CMI-API/issues/6
+
+    // https://repo.essentialsx.net/snapshots/net/essentialsx/EssentialsX
+    // https://repo.essentialsx.net/releases/net/essentialsx/EssentialsX
+    // https://jd-v2.essentialsx.net/
+    // https://github.com/EssentialsX/Essentials/
+    compileOnly("net.essentialsx:EssentialsX:2.20.0-SNAPSHOT") { isTransitive = false }
+
+    // https://github.com/Zrips/CMI-API/releases
+    // https://www.zrips.net/cmi/api/
+    // compileOnly("org.cmi:CMI-API:9.3.1.5") { isTransitive = false }
+    // https://jitpack.io/#Zrips/CMI-API Builds are failing...
+     compileOnly(files(rootDir.toPath().resolve("local-dependencies").resolve("CMI-API-9.3.1.5.jar")))
 }

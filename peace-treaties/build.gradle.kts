@@ -1,6 +1,3 @@
-import org.kingdoms.main.PredefinedDependency.excludeKotlin
-import org.kingdoms.main.PredefinedDependency.relocateLibs
-
 plugins {
     commons
     shadowed
@@ -11,7 +8,7 @@ plugins {
 }
 
 group = "org.kingdoms.peacetreaties"
-version = "1.2.5"
+version = "1.2.5.1"
 description = "A contract management for neutral relationships."
 
 buildscript {
@@ -22,9 +19,4 @@ buildscript {
 
 dependencies {
     compileOnly(project(":core"))
-}
-
-tasks.shadowJar {
-    excludeKotlin()
-    relocateLibs()
 }

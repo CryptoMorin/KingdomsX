@@ -8,9 +8,9 @@
 # name: The name used in messages (such as upgrading), this name is not used for any GUI.
 # cost: Resource points required each time you upgrade.
 # scaling: This depends on what the powerup does.
-# max-level: If you decrease the max-level kingdoms who already
-#            upgraded their level beyond the new value will keep it and it
-#            won't affect them. Unfortunately, you can't fix this unless you
+# max-level: If you decrease the max-level, kingdoms that already
+#            upgraded that specific upgrade beyond the new value will keep their level,
+#            and it won't affect them. Unfortunately, you can't fix this unless you
 #            manually edit their data file.
 # own-land-only: Powerups should only work in your own kingdom lands.
 powerups:
@@ -35,6 +35,12 @@ powerups:
   regeneration-boost:
     enabled: true
     cost: "(lvl + 1) * 70"
+
+    # In this case, "amount" refers to the regeneration amount.
+    # This is normally a half heart every 0.5 seconds which comes
+    # from eating normal food. This option changes the amount, not the
+    # 0.5sec interval.
+    # https://minecraft.fandom.com/wiki/Hunger
     scaling: "percentOf(lvl, amount)"
     max-level: 100
     own-land-only: true

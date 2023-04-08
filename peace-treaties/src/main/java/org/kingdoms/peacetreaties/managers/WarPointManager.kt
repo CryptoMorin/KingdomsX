@@ -6,6 +6,7 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.kingdoms.constants.group.model.relationships.KingdomRelation
+import org.kingdoms.constants.group.model.relationships.StandardRelationAttribute
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent
@@ -62,6 +63,8 @@ class WarPointManager : Listener {
 
         val deadKingdom = deadKp.kingdom ?: return
         val killerKingdom = killerKp.kingdom ?: return
+
+        if (deadKingdom.hasAttribute(killerKingdom, StandardRelationAttribute.CEASEFIRE)) return
 
         val ctx = MessageBuilder().withContext(killer).other(dead)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_KILL.manager.mathExpression, ctx)
