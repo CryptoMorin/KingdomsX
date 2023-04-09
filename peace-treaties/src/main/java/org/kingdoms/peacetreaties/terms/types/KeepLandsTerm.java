@@ -160,14 +160,16 @@ public class KeepLandsTerm extends Term {
 
     @Override
     public void deserialize(DeserializationContext<SectionableDataGetter> context) {
+        super.deserialize(context);
         SectionableDataGetter json = context.getDataProvider();
-        this.keptLands = json.asCollection(new HashSet<>(), (c, e) -> c.add(e.asSimpleChunkLocation()));
+        this.keptLands = json.get("kept-lands").asCollection(new HashSet<>(), (c, e) -> c.add(e.asSimpleChunkLocation()));
     }
 
     @Override
     public void serialize(SerializationContext<SectionableDataSetter> context) {
+        super.serialize(context);
         SectionableDataSetter json = context.getDataProvider();
-        json.setCollection(keptLands, DataSetter::setSimpleChunkLocation);
+        json.get("kept-lands").setCollection(keptLands, DataSetter::setSimpleChunkLocation);
     }
 
     @Override
