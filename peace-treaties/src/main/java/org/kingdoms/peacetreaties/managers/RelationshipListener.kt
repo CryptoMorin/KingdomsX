@@ -16,9 +16,12 @@ import org.kingdoms.locale.provider.MessageBuilder
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
+import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaty
+import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.types.AnnulTreatiesTerm
+import org.kingdoms.utils.KingdomsBukkitExtensions.asKingdom
 import org.kingdoms.utils.KingdomsBukkitExtensions.getKingdom
 import java.time.Duration
 
@@ -50,8 +53,19 @@ class RelationshipListener : Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    fun closeTreatyEditorOnDisband(event: KingdomDisbandEvent) {
-        StandardPeaceTreatyEditor.kingdomNotAvailable(event.kingdom)
+    fun onDisband(event: KingdomDisbandEvent) {
+        val kingdom = event.kingdom
+
+        // Close treaty editor
+        StandardPeaceTreatyEditor.kingdomNotAvailable(kingdom)
+
+        // Remove peace treaty data
+        kingdom.getReceivedPeaceTreaties().values.forEach { x -> x.revoke() }
+        kingdom.getProposedPeaceTreaties().values.forEach { x -> x.revoke() }
+
+        // Remove war points data
+        kingdom.getWarPoints().keys.forEach { x -> x.asKingdom()?.getWarPoints()?.remove(kingdom.id) }
+        kingdom.getWarPoints().clear()
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)

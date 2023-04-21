@@ -5,6 +5,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
+import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.group.model.relationships.KingdomRelation
 import org.kingdoms.constants.group.model.relationships.StandardRelationAttribute
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
@@ -26,6 +27,10 @@ class WarPointManager : Listener {
     companion object {
         @JvmField
         val DEBUG_NS: DebugNS = KingdomsDebug.register("PEACE_TREATIES/WAR_POINTS")
+
+        private fun allowedRelationShip(kingdom: Kingdom, other: Kingdom): Boolean {
+            return PeaceTreatyConfig.WAR_POINTS_ALLOWED_RELATIONSHIPS.manager.stringList.contains(kingdom.getRelationWith(other).name)
+        }
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -35,6 +40,8 @@ class WarPointManager : Listener {
 
         val attacker = invasion.attacker
         val defender = invasion.defender
+
+        if (!allowedRelationShip(attacker, defender)) return
 
         val ctx = MessageBuilder().withContext(attacker).other(defender)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_INVADE.manager.mathExpression, ctx)
@@ -47,7 +54,7 @@ class WarPointManager : Listener {
         PeaceTreatyLang.WAR_POINTS_GAIN_INVADE.sendMessage(invasion.invaderPlayer, ctx)
         ctx.raw("war_points", lost)
         for (member in defender.onlineMembers) {
-            PeaceTreatyLang.WAR_POINTS_GAIN_INVADE.sendError(member, ctx)
+            PeaceTreatyLang.WAR_POINTS_LOST_INVADE.sendError(member, ctx)
         }
 
         KLogger.debug(DEBUG_NS) { "Added $gained war points to ${attacker.name} kingdom: invaded ${defender.name}" }
@@ -63,6 +70,8 @@ class WarPointManager : Listener {
 
         val deadKingdom = deadKp.kingdom ?: return
         val killerKingdom = killerKp.kingdom ?: return
+
+        if (!allowedRelationShip(deadKingdom, killerKingdom)) return
 
         if (deadKingdom.hasAttribute(killerKingdom, StandardRelationAttribute.CEASEFIRE)) return
 
@@ -89,6 +98,8 @@ class WarPointManager : Listener {
         val player = event.getPlayer() ?: return // Not caused by a player
         val itemKingdom = item.getLand()!!.kingdom!!
         val playerKingdom = player.kingdom!!
+
+        if (!allowedRelationShip(itemKingdom, playerKingdom)) return
 
         val ctx = MessageBuilder().withContext(player.offlinePlayer).other(itemKingdom)
 
