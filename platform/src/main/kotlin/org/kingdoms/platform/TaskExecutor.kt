@@ -10,6 +10,7 @@ interface TaskExecutor {
     fun repeat(runnable: Runnable, initialDelay: Long, repeatInterval: Long, timeUnit: TimeUnit?): Task
 
     companion object {
-        @JvmStatic fun ticksToMillis(ticks: Long): Long = (ticks / 20) * 1000
+        @JvmStatic
+        fun ticksToMillis(ticks: Long): Long = (ticks / 20) * 1000
     }
 }

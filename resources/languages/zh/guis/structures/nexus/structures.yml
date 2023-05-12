@@ -1,19 +1,20 @@
-title: "{$sep}-=(&5设施{$sep})=-"
+title: "{$sep}-=( &5设施{$sep} )=-"
 rows: 3
 sound: BLOCK_CONDUIT_ACTIVATE
 
-# 很明显，HIDE_POTION_EFFECTS 标志会把CD的名称从lore中移除……
+# 很明显, HIDE_POTION_EFFECTS 标志会把CD的名称从lore中移除……
 options:
   powercell:
-    name: "&4能量枢纽"
+    name: "&4发电站"
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}被能量枢纽土地包围的9*9的土地不会被入侵，"
-      - "除非能量枢纽所在的土地先被入侵。"
+      - "{$s}带有发电站的土地周围3*3的土地不会被入侵(二级则为5*5), "
+      - "除非发电站所在的土地先被入侵。"
+      - "&c两个带有发电站的土地不会互相保护。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 3
     posy: 2
   extractor:
@@ -22,10 +23,10 @@ options:
     sound: BLOCK_ANVIL_LAND
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}提取器会生产资源点。"
-      - "{$s}你可以在任何时候收集资源点。"
+      - "&6提取器可以生产资源点。"
+      - "&6你可以随时收集这些资源点。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 4
     posy: 2
   outpost:
@@ -34,10 +35,11 @@ options:
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}你可以用资源点"
-      - "在前哨换取附魔之瓶和其他好东西。"
+      - "&7前哨允许你直接访问王国核心。"
+      - "&7你可以使用前哨访问炮塔，使用升级，和解锁设施。"
+      - "&7你也可以在前哨使用资源点购买附魔之瓶。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 5
     posy: 2
   warppad:
@@ -46,9 +48,9 @@ options:
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}传送板可以用于从一个设施传送至另一个。"
+      - "&6传送板可用于在设施间传送。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 6
     posy: 2
   regulator:
@@ -57,14 +59,15 @@ options:
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}管理玩家特权，如建造，"
-      - "炮塔停火等，"
-      - "改变哪个玩家能与哪个方块交互，"
-      - "禁用/启用怪物，动物的生成及炮塔，"
-      - "或允许爆炸，"
-      - "自动填充炮塔弹药等等。"
+      - "&6通过控制器你可以……"
+      - "&7⚫ 管理玩家属性，如建造"
+      - "&7⚫ 炮塔停火"
+      - "&7⚫ 玩家可以与哪些方块交互"
+      - "&7⚫ 禁用动物/怪物生成与炮塔"
+      - "&7⚫ 允许爆炸与火焰"
+      - "&7⚫ 自动填充炮塔弹药"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 7
     posy: 2
   siege-cannon:
@@ -73,8 +76,9 @@ options:
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ HIDE_POTION_EFFECTS ]
     lore:
-      - "{$s}用于打破一个王国护盾的大炮。"
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&6可以打破王国护盾的大炮。"
+      - ""
+      - "{$p}价格{$sep}: {$s}%cost%"
     posx: 5
     posy: 1
 

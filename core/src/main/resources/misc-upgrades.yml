@@ -168,8 +168,14 @@ glory:
   cost: "(lvl + 1) * 100"
   # This is currently not used.
   scaling: "xp * lvl"
-  max-level: 2
+  max-level: 3
   default-level: 0
+  xp:
+    # The player XP multiplier is protected by an anti-exploit system.
+    # Killing the same player within 5 minutes will just yield the default XP.
+    "lvl >= 3 && type == 'PLAYER' && kingdoms_relation == 'ENEMY'": "xp * 1.5"
+    "lvl >= 2 && (type == 'ZOMBIE' || type == 'SKELETON')": "xp * 2"
+    "type != 'PLAYER'": "xp + (lvl * 5)"
 chest-size:
   enabled: true
   scaling: lvl

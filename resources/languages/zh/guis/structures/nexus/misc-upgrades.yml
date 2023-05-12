@@ -1,4 +1,4 @@
-title: "{$sep}-=(&3杂项升级{$sep})=-"
+title: "{$sep}-=( &3杂项升级{$sep} )=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
@@ -11,11 +11,12 @@ options:
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "{$p}一级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
-      - "{$p}二级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
+      - "{$p}一级{$sep}: {$s}在你的土地上杀死非玩家实体掉落经验*2。"
+      - "{$p}二级{$sep}: {$s}在你的土地上杀死非玩家实体掉落经验*2。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 3
     posy: 1
   anti-trample:
@@ -26,14 +27,15 @@ options:
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "{$p}一级{$sep}:{$s}你王国里的耕地不会被玩家踩坏。"
+      - "{$p}一级{$sep}: {$s}你王国里的耕地不会被玩家踩坏。"
       - ''
-      - "{$p}二级{$sep}:{$s}在你王国土地外面的活塞会失效。"
+      - "{$p}二级{$sep}: {$s}在你王国土地外面的活塞会失效。"
       - ""
-      - "{$p}三级{$sep}:{$s}防止特定动物在王国土地中受伤。"
+      - "{$p}三级{$sep}: {$s}防止特定动物在王国土地中受伤。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 4
     posy: 1
   nexus-guards:
@@ -43,19 +45,20 @@ options:
       condition: kingdoms_pacifist
       perform-action: false
       lore: |
-        &c你的王国是和平主义王国，
+        &c你的王国是和平主义王国, 
         无法使用此升级。
     else:
       lore:
-        - "&6当有人进入核心所在土地，"
+        - "&6当有人进入核心所在土地, "
         - "生成比普通守卫更强壮的核心守卫。"
         - ""
-        - "&2价格&8: &6%cost%"
-        - "&2等级&8: &6%level%"
+        - &lvl "{$p}等级{$sep}: &6%level%"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}]{$es}右键以禁用"
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     posx: 5
     posy: 1
   guards:
@@ -65,19 +68,20 @@ options:
       condition: kingdoms_pacifist
       perform-action: false
       lore: |
-        &c你的王国是和平主义王国，
+        &c你的王国是和平主义王国, 
         无法使用此升级。
     else:
       lore:
-        - "&6若一个非盟友进入土地，"
+        - "&6若一个非盟友进入土地, "
         - "王国守卫会随机生成以保护王国。"
         - ""
-        - "&2价格&8: &6%cost%"
-        - "&2等级&8: &6%level%"
+        - &lvl "{$p}等级{$sep}: &6%level%"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}]{$es}右键以禁用"
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+
     posx: 6
     posy: 1
   insanity:
@@ -88,12 +92,13 @@ options:
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "{$s}在能量枢纽所在的土地上"
+      - "{$s}在发电站所在的土地上"
       - "生成的保卫者和核心守卫"
       - "会有10秒钟的力量1"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 7
     posy: 1
 
@@ -108,8 +113,9 @@ options:
       - "{$p}减少你输入/k tp的传送延迟时间"
       - "等级越高减少越多"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 3
     posy: 2
   invasions:
@@ -126,6 +132,7 @@ options:
       - ""
       - "&2价格&8: &6%cost%"
       - "&2等级&8: &6%level%"
+
     posx: 2
     posy: 2
   anti-explosion:
@@ -136,19 +143,20 @@ options:
       not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
       upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "{$p}一级{$sep}:{$p}苦力怕爆炸不会破坏方块或造成伤害。"
+      - "{$p}一级{$sep}: {$p}苦力怕爆炸不会破坏方块或造成伤害。"
       - ""
-      - "{$p}二级{$sep}:{$p}TNT爆炸不会破坏方块，但会对非盟友玩家造成伤害。"
+      - "{$p}二级{$sep}: {$p}TNT爆炸不会破坏方块, 但会对非盟友玩家造成伤害。"
       - ""
-      - "{$p}三级{$sep}:{$p}保护你的王国成员，动物，和其他被困住的怪物"
+      - "{$p}三级{$sep}: {$p}保护你的王国成员, 动物, 和其他被困住的怪物"
       - "免于爆炸伤害。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 4
     posy: 2
   max-claims:
-    name: "&3最大占领量"
+    name: "&3最大土地数"
     material: MAP
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
@@ -157,9 +165,10 @@ options:
     lore:
       - "{$s}每升一级增大{$p}2{$s}最大占领量"
       - ""
-      - "{$p}当前最大土地量{$sep}:{$s}%kingdoms_max_claims%"
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}当前最大土地量{$sep}: {$s}%kingdoms_max_lands%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 8
     posy: 2
   max-members:
@@ -172,12 +181,13 @@ options:
     lore:
       - "{$s}每升一级增加3最大玩家量。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 6
     posy: 2
   chest-size:
-    name: "&3核心箱子容量"
+    name: "&3国库容量"
     material: ENDER_CHEST
     sounds:
       max-level: BLOCK_NOTE_BLOCK_BASS
@@ -186,8 +196,9 @@ options:
     lore:
       - "{$s}增加你王国核心箱子的最大容量。"
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+      - "{$p}价格{$sep}: {$s}%cost%"
+      - "{$p}等级{$sep}: {$s}%level%"
+
     posx: 7
     posy: 2
 

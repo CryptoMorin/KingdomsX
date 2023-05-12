@@ -6,7 +6,6 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.kingdoms.constants.group.Kingdom
-import org.kingdoms.constants.group.model.relationships.KingdomRelation
 import org.kingdoms.constants.group.model.relationships.StandardRelationAttribute
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
@@ -29,7 +28,11 @@ class WarPointManager : Listener {
         val DEBUG_NS: DebugNS = KingdomsDebug.register("PEACE_TREATIES/WAR_POINTS")
 
         private fun allowedRelationShip(kingdom: Kingdom, other: Kingdom): Boolean {
-            return PeaceTreatyConfig.WAR_POINTS_ALLOWED_RELATIONSHIPS.manager.stringList.contains(kingdom.getRelationWith(other).name)
+            return PeaceTreatyConfig.WAR_POINTS_ALLOWED_RELATIONSHIPS.manager.stringList.contains(
+                kingdom.getRelationWith(
+                    other
+                ).name
+            )
         }
     }
 

@@ -1,0 +1,76 @@
+title: "&8-=[ &4事件过滤&排序 &8]=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 3
+
+options:
+  back:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '&cBack'
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: MAGENTA_STAINED_GLASS_PANE
+    name: ''
+  filters-player:
+    posx: 2
+    posy: 2
+    material: PLAYER_HEAD
+    enabled:
+      condition: enabled
+      name: '{$enabled}过滤玩家'
+      lore: "{$p}%filters_player_name%"
+    else:
+      name: '{$disabled}过滤玩家'
+  filters-time:
+    posx: 3
+    posy: 2
+    material: CLOCK
+    enabled:
+      condition: enabled
+      name: '{$enabled}过滤时间'
+      lore: |
+        {$p}起始时间{$sep}: {$s}%date_filters_time_after%
+        {$p}截止时间{$sep}: {$s}%date_filters_time_before%
+    else:
+      name: '{$disabled}过滤时间'
+  filters-type:
+    posx: 4
+    posy: 2
+    material: BARRIER # Template
+    enabled:
+      condition: enabled
+      name: '{$enabled}过滤事件'
+      lore: "{$p}%filters_type_type%"
+    else:
+      name: '{$disabled}过滤事件'
+  sort-ascending-time:
+    posx: 6
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q2OTVkMzM1ZTZiZThjYjJhMzRlMDVlMThlYTJkMTJjM2IxN2I4MTY2YmE2MmQ2OTgyYTY0M2RmNzFmZmFjNSJ9fX0='
+    enabled:
+      condition: enabled
+      name: '{$enabled}按时间升序排列'
+    else:
+      name: '{$disabled}按时间升序排列'
+  sort-descending-time:
+    posx: 7
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDM3ODYyY2RjMTU5OTk4ZWQ2YjZmZGNjYWFhNDY3NTg2N2Q0NDg0ZGI1MTJhODRjMzY3ZmFiZjRjYWY2MCJ9fX0='
+    enabled:
+      condition: enabled
+      name: '{$enabled}按时间降序排列'
+    else:
+      name: '{$disabled}按时间降序排列'
+  sort-type:
+    posx: 8
+    posy: 2
+    material: PAPER
+    enabled:
+      condition: enabled
+      name: '{$enabled}按事件种类排列'
+    else:
+      name: '{$disabled}按事件种类排列'

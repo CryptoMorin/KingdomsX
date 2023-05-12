@@ -1,47 +1,73 @@
-title: "{$sep}-=({$p}设置{$sep})=-"
-rows: 1
+title: "{$sep}-=( {$p}设置{$sep} )=-"
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   shields:
-    name: "{$s}护盾{$sep}:{$p}%kingdoms_time_shield_time_left%"
+    name: "{$s}护盾{$sep}: {$p}%kingdoms_shield_time_left%"
     material: SHIELD
     lore:
-      - "{$p}给你的文明买一个保护它免受侵略的护盾。"
-    posx: 1
-    posy: 1
-  invites:
-    name: "{$s}邀请{$sep}:%invites%"
-    material: BOOK
-    lore:
-      - "{$p}当关上时，任何人都无需邀请，只需要输入{$p}/k nation join %kingdoms_nation%即可加入"
-    posx: 2
-    posy: 1
+      - "{$p}给你的邦联买一个保护它免受侵略的护盾。"
+    posx: 7
+    posy: 5
   relations:
     name: "{$s}外交关系"
     material: WRITABLE_BOOK
     lore:
-      - "{$p}改变你与其他文明的外交关系。"
+      - "{$p}改变你与其他邦联的外交关系。"
     posx: 3
-    posy: 1
+    posy: 3
+  flag:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '&6旗帜'
+    lore: |
+      &7设置你的邦联在Dynmap上显示的旗帜。
+      点击查看旗帜URL。
+      此项不会立即生效。
+  color:
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '&6Color&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_nation_color@hex%%kingdoms_nation_color%&7)'
+    lore: |
+      &7设置你的邦联标记颜色, 
+      可用于聊天和在线地图。
   tax:
     name: "{$s}赋税"
     material: PAPER
     lore:
-      - "{$p}改变你的文明收取成员国的税款。"
+      - "{$p}改变你的邦联收取成员国的税款。"
       - ""
-      - "{$s}赋税{$sep}:{$p}$%kingdoms_fancy_nation_tax%"
-      - "{$s}税率{$sep}:{$p}%tax_equation%"
+      - "{$s}赋税{$sep}: {$p}$%kingdoms_fancy_nation_tax%"
+      - "{$s}税率{$sep}: {$p}%tax_equation%"
       - ""
-      - "{$s}税款{$sep}:{$p}$%kingdoms_fancy_server_nation_tax%"
-    posx: 4
+      - "{$s}税款{$sep}: {$p}$%kingdoms_fancy_server_nation_tax%"
+    posx: 6
     posy: 1
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
 
   back:
     name: "{$p}返回"
     material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    skull: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
     lore:
       - "{$s}返回到核心界面。"
-    posx: 9
+    posx: 1
     posy: 1
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
+    posx: 4
+    posy: 1
+    material: DARK_OAK_DOOR
+    name: "{$s}公开的家{$sep}: %kingdoms_bool_kingdom_home_is_public%"
+    lore: |
+      &7若家是公开的, 大家都可以输入
+      {$p}/k home %kingdoms_name% &7前往。

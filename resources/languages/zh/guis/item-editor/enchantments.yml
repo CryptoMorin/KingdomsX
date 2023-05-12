@@ -1,4 +1,4 @@
-title: "{$sep}-=({$p}附魔{$sep})=-"
+title: "{$sep}-=({ $p}附魔{$sep} )=-"
 rows: 6
 
 # What the hell is this: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
@@ -7,28 +7,33 @@ rows: 6
   return:
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}<x>"
+      name: "{$sep}[{$e}不支持{$sep}] {$es}<x>"
       lore: |
-        {$e}你的服务端版本不支持此附魔。
+        {$e}此附魔在当前服务器版本不支持。
     enabled:
       condition: enabled
-      name: "{$enabled}<x>{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
+        &7左键更改附魔等级
+        &7右键移除附魔
     else:
       name: "{$disabled} <x>"
       lore: |
-        {$p}左键以添加附魔
+        &7左键添加附魔
 options:
   water-worker:
     posx: 1
     posy: 1
     material: WATER_BUCKET
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}水下速掘"
+      lore: |
+        {$e}此附魔在当前服务器版本不支持。
     enabled:
       condition: enabled
-      name: "{$enabled}水下速掘{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}水下速掘{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -41,9 +46,14 @@ options:
     posx: 2
     posy: 1
     material: WATER_BUCKET
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}深海探索者"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}深海探索者{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}深海探索者{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -56,9 +66,14 @@ options:
     posx: 3
     posy: 1
     material: WATER_BUCKET
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}穿刺"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}穿刺{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}穿刺{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -71,9 +86,14 @@ options:
     posx: 4
     posy: 1
     material: WATER_BUCKET
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}水下呼吸"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}水下呼吸{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}水下呼吸{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -86,9 +106,14 @@ options:
     posx: 5
     posy: 1
     material: DIAMOND_SWORD
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}锋利"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}锋利{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}锋利{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -101,9 +126,14 @@ options:
     posx: 6
     posy: 1
     material: GOLDEN_SWORD
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}击退"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}击退{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}击退{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -116,9 +146,14 @@ options:
     posx: 7
     posy: 1
     material: DIAMOND_PICKAXE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}效率"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}效率{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}效率{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -131,9 +166,14 @@ options:
     posx: 8
     posy: 1
     material: BLUE_ICE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}冰霜行者"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}冰霜行者{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}冰霜行者{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -146,9 +186,14 @@ options:
     posx: 9
     posy: 1
     material: DIAMOND_LEGGINGS
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}迅捷潜行"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}迅捷潜行{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}迅捷潜行{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -161,9 +206,14 @@ options:
     posx: 1
     posy: 2
     material: ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}力量"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}力量{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}力量{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -176,9 +226,14 @@ options:
     posx: 2
     posy: 2
     material: ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}冲击"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}冲击{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}冲击{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -191,9 +246,14 @@ options:
     posx: 3
     posy: 2
     material: ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}火矢"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}火矢{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}火矢{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -206,9 +266,14 @@ options:
     posx: 4
     posy: 2
     material: ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}多重射击"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}多重射击{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}多重射击{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -221,9 +286,14 @@ options:
     posx: 5
     posy: 2
     material: ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}穿透"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}穿透{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}穿透{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -236,9 +306,14 @@ options:
     posx: 6
     posy: 2
     material: SPECTRAL_ARROW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}无限"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}无限{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}无限{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -251,9 +326,14 @@ options:
     posx: 7
     posy: 2
     material: CROSSBOW
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}快速装填"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}快速装填{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}快速装填{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -266,9 +346,14 @@ options:
     posx: 8
     posy: 2
     material: EXPERIENCE_BOTTLE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}经验修补"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}经验修补{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}经验修补{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -281,9 +366,14 @@ options:
     posx: 9
     posy: 2
     material: OBSIDIAN
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}耐久"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}耐久{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}耐久{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -296,9 +386,14 @@ options:
     posx: 1
     posy: 3
     material: FIRE_CHARGE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}火焰附加"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}火焰附加{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}火焰附加{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -311,9 +406,14 @@ options:
     posx: 2
     posy: 3
     material: TRIDENT
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}引雷"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}引雷{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}引雷{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -326,9 +426,14 @@ options:
     posx: 3
     posy: 3
     material: TRIDENT
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}忠诚"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}忠诚{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}忠诚{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -341,9 +446,14 @@ options:
     posx: 4
     posy: 3
     material: TRIDENT
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}激流"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}激流{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}激流{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -356,9 +466,14 @@ options:
     posx: 5
     posy: 3
     material: DIAMOND_CHESTPLATE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}保护"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}保护{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}保护{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -371,9 +486,14 @@ options:
     posx: 6
     posy: 3
     material: GOLDEN_CHESTPLATE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}弹射物保护"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}弹射物保护{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}弹射物保护{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -386,9 +506,14 @@ options:
     posx: 7
     posy: 3
     material: TNT
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}爆炸保护"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}爆炸保护{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}爆炸保护{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -401,9 +526,14 @@ options:
     posx: 8
     posy: 3
     material: LAVA_BUCKET
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}火焰保护"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}火焰保护{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}火焰保护{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -416,9 +546,14 @@ options:
     posx: 9
     posy: 3
     material: ROSE_BUSH
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}荆棘"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}荆棘{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}荆棘{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -431,9 +566,14 @@ options:
     posx: 1
     posy: 4
     material: ZOMBIE_HEAD
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}亡灵杀手"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}亡灵杀手{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}亡灵杀手{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -446,9 +586,14 @@ options:
     posx: 2
     posy: 4
     material: SPIDER_SPAWN_EGG
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}节肢杀手"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}节肢杀手{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}节肢杀手{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -461,9 +606,14 @@ options:
     posx: 3
     posy: 4
     material: SOUL_SAND
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}灵魂疾行"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}灵魂疾行{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}灵魂疾行{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -476,9 +626,14 @@ options:
     posx: 4
     posy: 4
     material: ENDER_EYE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}消失诅咒"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}消失诅咒{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}消失诅咒{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -491,9 +646,14 @@ options:
     posx: 5
     posy: 4
     material: ENDER_PEARL
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}绑定诅咒"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}绑定诅咒{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}绑定诅咒{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -506,9 +666,14 @@ options:
     posx: 7
     posy: 4
     material: ENCHANTED_BOOK
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}抢夺"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}抢夺{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}抢夺{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -521,9 +686,14 @@ options:
     posx: 8
     posy: 4
     material: ENCHANTED_BOOK
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}时运"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}时运{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}时运{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -536,9 +706,14 @@ options:
     posx: 9
     posy: 4
     material: ENCHANTED_BOOK
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}精准采集"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}精准采集{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}精准采集{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -551,9 +726,14 @@ options:
     posx: 1
     posy: 5
     material: FISHING_ROD
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}海之眷顾"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}海之眷顾{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}海之眷顾{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -566,9 +746,14 @@ options:
     posx: 2
     posy: 5
     material: FISHING_ROD
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}饵钓"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}饵钓{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}饵钓{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级
@@ -581,9 +766,14 @@ options:
     posx: 3
     posy: 5
     material: FEATHER
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}不支持{$sep}]{$es}摔落保护"
+      lore: |
+        {$e}当前服务器版本不支持此附魔。
     enabled:
       condition: enabled
-      name: "{$enabled}摔落保护{$sep}:{$s}%roman_level%{$sep}({$s}%level%{$sep})"
+      name: "{$enabled}摔落保护{$sep}: {$s}%roman_level%{$sep}( {$s}%level%{$sep} )"
       glow: true
       lore: |
         {$p}左键以更改附魔等级

@@ -13,19 +13,19 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}缺少燃料&9%time%&7-&9%fancy_amount%"
+      name: "{$e}缺少燃料&9%extractor-last-collected-time-passed%&7-&9%fancy_extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
-      name: "{$e}暂无资源点&9%time%"
+      name: "{$e}暂无资源点&7-&9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2收集&8:&9%time%&7-&9%fancy_amount%"
+      name: "&2收集&8:&9%extractor-last-collected-time-passed%&7-&9%fancy_extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
       - "{$s}收集所有生成的资源点。"
-      - "上次被{$sep}:{$p}%extractor-last-collector%{$s}收集。"
+      - "上次被{$sep}: {$p}%extractor-last-collector%{$s}收集。"
     slot: 0
   fuel:
     name: "&2燃料&8: &6%fuel%&8/&6%fancy_max_fuel%"
@@ -33,7 +33,7 @@ options:
     refresh: true
     slot: 1
     lore: |
-      &7要灌注燃料，将燃料物品
+      &7要灌注燃料, 将燃料物品
       扔至提取器上即可。
 
       &2煤炭&8: &95
@@ -43,17 +43,17 @@ options:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "{$sp}收集{$sep}:{$s}%roman_level%{$p}➛{$s}%roman_next_level%"
+      name: "{$sp}收集{$sep}: {$s}%level_roman%{$p}➛{$s}%next_level_roman%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}每次生成资源点时间{$sep}:{$s}%every%{$p}➔{$s}%next-every%"
-        - "{$p}⚫ {$p}一次生成资源点数量{$sep}:{$s}%resource-points%{$p}➔{$s}%next-resource-points%"
+        - "{$p}⚫ {$p}每次生成资源点时间{$sep}: {$s}%every%{$p}➔{$s}%next-every%"
+        - "{$p}⚫ {$p}一次生成资源点数量{$sep}: {$s}%resource-points%{$p}➔{$s}%next-resource-points%"
         - ""
-        - "{$p}⚫ {$p}满级{$sep}:{$s}%roman_next_level%"
-        - "{$p}⚫ {$p}价格{$sep}:{$s}%upgrade_cost%"
+        - "{$p}⚫ {$p}满级{$sep}: {$s}%max-level-roman%"
+        - "{$p}⚫ {$p}价格{$sep}: {$s}%upgrade_cost%"
     maxxed:
-      name: "{$sp}等级{$sep}:{$s}%roman_level%"
+      name: "{$sp}等级{$sep}: {$s}%level_roman%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}每次生成资源点时间{$sep}:{$s}%every%"
-        - "{$p}⚫ {$p}一次生成资源点数量{$sep}:{$s}%resource-points%"
+        - "{$p}⚫ {$p}每次生成资源点时间{$sep}: {$s}%every%"
+        - "{$p}⚫ {$p}一次生成资源点数量{$sep}: {$s}%resource-points%"

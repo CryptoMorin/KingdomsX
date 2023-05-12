@@ -1,65 +1,77 @@
-title: "{$sep}-=({$p}设置{$sep})=-"
-rows: 1
+title: "{$sep}-=( {$p}设置{$sep} )=-"
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   pacifism:
-    name: "{$s}和平主义{$sep}:%pacifism%"
+    name: "{$s}和平主义{$sep}: %pacifism%"
     material: END_CRYSTAL
     lore:
-      - "{$p}当处于和平主义中时，"
-      - "你的王国不能进行侵略，"
+      - "{$p}当处于和平主义中时, "
+      - "你的王国不能进行侵略, "
       - "也不能被其他王国侵略。"
       - ""
-      - "如果你侵略了一个王国，"
+      - "如果你侵略了一个王国, "
       - "你将一周内无法处于和平主义。"
       - ""
-      - "{$p}冷却{$sep}:{$s}%pacifism_cooldown%"
-    posx: 1
-    posy: 1
+      - "{$p}冷却{$sep}: {$s}%pacifism_cooldown%"
+    posx: 7
+    posy: 3
   shields:
-    name: "{$s}护盾{$sep}:{$p}%kingdoms_time_shield_time_left%"
+    name: "{$s}护盾{$sep}: {$p}%kingdoms_shield_time_left%"
     material: SHIELD
     lore:
       - "{$p}给你的王国买一个保护它免受侵略的护盾。"
-    posx: 2
-    posy: 1
+    posx: 7
+    posy: 5
   invites:
-    name: "{$s}邀请{$sep}:%invites%"
+    name: "{$s}邀请{$sep}: %invites%"
     material: BOOK
     lore:
-      - "{$p}当关上时，任何人都无需邀请，"
+      - "{$p}当关上时, 任何人都无需邀请, "
       - "只需要输入{$p}/k join %kingdoms_name%即可加入。"
     posx: 3
-    posy: 1
+    posy: 5
   relations:
     name: "{$s}外交关系"
     material: WRITABLE_BOOK
     lore:
       - "{$p}改变你与其他王国的外交关系。"
-    posx: 4
-    posy: 1
+    posx: 3
+    posy: 3
   tax:
     name: "{$s}赋税"
     material: PAPER
     lore:
       - "{$p}改变你王国收取成员的税款。"
       - ""
-      - "{$s}赋税{$sep}:{$p}$%kingdoms_fancy_tax%"
-      - "{$s}税率{$sep}:{$p}%tax_equation%"
+      - "{$s}赋税{$sep}: {$p}$%kingdoms_fancy_tax%"
+      - "{$s}税率{$sep}: {$p}%tax_equation%"
       - ""
-      - "{$s}税款{$sep}:{$p}$%kingdoms_fancy_kingdom_tax%"
-    posx: 5
-    posy: 1
-  public-home:
-    name: "{$s}公开的家{$sep}:{$p}%public_home%"
-    material: DARK_OAK_DOOR
-    lore:
-      - "{$p}你可以公开你王国的家，"
-      - "这样其他玩家可以输入{$s}/k home %kingdoms_name%"
-      - "{$p}以访问你王国的家。"
+      - "{$s}税款{$sep}: {$p}$%kingdoms_fancy_kingdom_tax%"
     posx: 6
     posy: 1
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
+    name: "{$s}公开的家{$sep}: {$p}%public_home%"
+    material: DARK_OAK_DOOR
+    lore:
+      - "{$p}你可以公开你王国的家, "
+      - "这样其他玩家可以输入{$s}/k home %kingdoms_name%"
+      - "{$p}以访问你王国的家。"
+    posx: 4
+    posy: 1
+  hidden:
+    posx: 5
+    posy: 1
+    material: POTION
+    color: 818595
+    name: "{$s}隐藏{$sep}: %kingdoms_bool_kingdom_is_hidden%"
+    lore: |
+      &7隐藏王国在{$p}/k map&7地图上和服务器卫星地图上会被隐藏。
   flag:
     name: "{$s}旗帜"
     material: BLACK_BANNER
@@ -67,23 +79,27 @@ options:
       - "{$p}设置你的王国在Dynmap(一个能与王国联动的插件)上"
       - "显示的位置。点击这里查看当前的旗帜URL。"
       - "这不会使地图立即更新。"
-    posx: 7
-    posy: 1
+    posx: 5
+    posy: 3
   color:
-    name: "&6Color&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_color@hex%%kingdoms_color%&7)"
+    name: "&6颜色&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_kingdom_color@hex%%kingdoms_kingdom_color%&7)"
     material: LIME_DYE
     lore:
       - "{$p}设置你的王国在Dynmap(一个能与王国联动的插件)上"
       - "显示的土地颜色。"
       - "这不会使地图立即更新。"
-    posx: 8
-    posy: 1
+    posx: 5
+    posy: 5
 
   back:
     name: "{$p}返回"
     material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    skull: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
     lore:
       - "{$s}返回到核心界面。"
-    posx: 9
+    posx: 1
     posy: 1
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''

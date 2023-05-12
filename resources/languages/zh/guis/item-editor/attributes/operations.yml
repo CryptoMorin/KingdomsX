@@ -1,4 +1,4 @@
-title: "{$sep}-=({$p}属性操作{$sep})=-"
+title: "{$sep}-=( {$p}属性操作{$sep} )=-"
 rows: 3
 
 op: &fn-op
@@ -36,32 +36,47 @@ options:
     material: PLAYER_HEAD
     glow: true
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGQ4YjcxNzNkODQxZjI1NjNlYzEwODg4OGIwZjc5NzkxN2VmYzE4YmUyNzg2MWYwYTY3NjFhYTNlZDkxY2UifX19'
-    <<: *fn-op [ "增加数字" ]
+    enabled:
+      condition: enabled
+      name: "{$sep}[{$p}已启用{$sep}] {$p}增加数字"
+      glow: true
+    else:
+      name: "{$p}增加数字"
     lore: |
-      {$p}把所有修改器的值加到属性的当前值上
-      例如，基础值是{$p}3{$p}，修改器的数值分别为{$p}2{$p}和{$p}4{$p}，
-      {$p}结果为{$p}3+2+4=9
+      {$desc}把所有修改器的值加到属性的当前值上
+      例如, 基础值是{$p}3{$desc}, 修改器的数值分别为{$p}2{$desc}和{$p}4{$desc}, 
+      {$desc}结果为{$p}3+2+4=9
   multiply-scalar-1:
     posx: 5
     posy: 2
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTljZGI5YWYzOGNmNDFkYWE1M2JjOGNkYTc2NjVjNTA5NjMyZDE0ZTY3OGYwZjE5ZjI2M2Y0NmU1NDFkOGEzMCJ9fX0='
-    <<: *fn-op [ "相乘" ]
+    enabled:
+      condition: enabled
+      name: "{$sep}[{$p}已启用{$sep}] {$p}相乘"
+      glow: true
+    else:
+      name: "{$p}相乘"
     lore: |
-      {$p}对于每个修改器, 它会将属性的当前值乘上{$p}(1 + x){$p}
-      ，x代表修改器的数值。
-      在只带有一个{$p}操作1或2{$p}的修改器时运作，
+      {$desc}对于每个修改器, 它会将属性的当前值乘上{$p}(1 + x){$desc}
+      , x代表修改器的数值。
+      在只带有一个{$p}操作1{$desc}或{$p}操作2{$desc}的修改器时运作, 
       但多个修改器之间会相乘而非相加。
-      例如，基础值是{$p}3{$p}，修改器的数值分别为{$p}2{$p}和{$p}4{$p}，
-      {$p}结果为{$p}3*(1+2)*(1+4)=45
+      例如, 基础值是{$p}3{$desc}, 修改器的数值分别为{$p}2{$desc}和{$p}4{$desc}, 
+      {$desc}结果为{$p}3*(1+2)*(1+4)=45
   add-scalar:
     posx: 8
     posy: 2
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ4NmRiOWExNGQ1ODc5ZmEyODExZDMwMWNjYmQ1MjY5OTRmODcxMjQ3YjYyZjJkOWE0ODE4M2U5NjQxYWQ2OSJ9fX0='
-    <<: *fn-op [ "添加标量" ]
+    enabled:
+      condition: enabled
+      name: "{$sep}[{$p}已启用{$sep}] {$p}添加标量"
+      glow: true
+    else:
+      name: "{$p}添加标量"
     lore: |
-      {$p}以{$p}1 + x{$p}的公式计算属性的当前值，
+      {$desc}以{$p}1 + x{$desc}的公式计算属性的当前值, 
       x是修改器数值之和。
-      例如，基础值是{$p}3{$p}，修改器的数值分别为{$p}2{$p}和{$p}4{$p}，
-      {$p}结果为{$p}3*(1+2+4)=21
+      例如, 基础值是{$p}3{$desc}, 修改器的数值分别为{$p}2{$desc}和{$p}4{$desc}, 
+      {$desc}结果为{$p}3*(1+2+4)=21
