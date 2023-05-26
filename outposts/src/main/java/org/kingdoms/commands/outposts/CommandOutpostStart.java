@@ -58,6 +58,7 @@ public class CommandOutpostStart extends KingdomsCommand {
                 OutpostsLang.COMMAND_OUTPOST_START_SCHEDULED.sendMessage(player, "outpost", outpost.getName(), "start", TimeFormatter.of(startsIn));
             }
         }
+
         OutpostEvent.startEvent(outpost, time, TimeUnit.MILLISECONDS.toSeconds(startsIn) * 20L);
     }
 

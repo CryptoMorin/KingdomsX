@@ -159,6 +159,8 @@ champions:
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
+  enabled: true
+
   # You can only invade during MassWar events.
   during-masswar-only: false
 
@@ -184,10 +186,13 @@ masswar:
     # Allow invading shielded kingdoms during Mass Wars.
     shields: true
 
-  # Set to 0 to disable. These times will reset on server restart.
-  # The interval between each MassWar. This interval persists between server restarts too.
-  # This can also be set to a "hour:minute: format to start MassWars every day at the specified
+  # "hour:minute: format to start MassWars every day at the specified
   # time with the time zone ID being the one specified in config.yml
+  # [!] After setting this option, you HAVE TO change "interval" option to days. For example, just "1 day"
+  start: ''
+  # These times will reset on server restart.
+  # The interval between each MassWar. This interval persists between server restarts too.
+  # When "start" option is used this option has to be defined in days.
   interval: 12hrs
   # The duration of the MassWar. The interval starts after this time has ended.
   time: 1hr
