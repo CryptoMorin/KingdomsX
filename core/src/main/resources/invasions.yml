@@ -189,7 +189,7 @@ masswar:
   # "hour:minute: format to start MassWars every day at the specified
   # time with the time zone ID being the one specified in config.yml
   # [!] After setting this option, you HAVE TO change "interval" option to days. For example, just "1 day"
-  start: ''
+  start: ~
   # These times will reset on server restart.
   # The interval between each MassWar. This interval persists between server restarts too.
   # When "start" option is used this option has to be defined in days.
@@ -469,6 +469,17 @@ player-deaths:
 plunder:
   enabled: false
 
+  # The allowed y range which the players need to stand on for it
+  # to count towards the caputre progress.
+  vertical-boundaries:
+    enabled: true
+
+    # These are calculated from the place where the player used /k invade
+    # It's recommended to keep these values above 10 to account for steep mountains.
+    # If the invasion is taken place on a cliff, players will have to go where the invader initially started.
+    upwards: 20
+    downwards: 10
+
   # The champion mechanics will stay the same. Meaning if the champion is killed the invasion ends
   # and the invaders win, however the champion doesn't need to be killed if the defenders or attackers
   # get enough kills for the invasion to end.
@@ -529,6 +540,8 @@ plunder:
 
 # Read the /k challenge GUI for more info.
 # Or read: https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-challenge
+# If you set the minimum required defenders option, sending a
+# challenge request is not needed if that requirement is met.
 challenges:
   enabled: false
 

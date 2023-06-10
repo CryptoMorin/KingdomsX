@@ -1,0 +1,2807 @@
+# Read config.yml 'prefix' option for info.
+prefix: '&6[&lK&eingdoms&6] &2'
+chat-input:
+  
+  # During chat inputs (mostly used in GUIs like asking for rank name, priority, etc)
+  # When the player writes this in the chat, it cancels the operation.
+  # The sustainable thing to use for hover messages is the '/cancel' command instead.
+
+  # The reason this doesn''t support multiple words is that it''ll minimize the amount of
+  # inputs players can choose for all the chat inputs.
+  cancel: cancel
+
+# Usually the %world% placeholder shows the raw name for internal purposes (such as hover messages)
+# But this is used for %translated-world% placeholder and places where messages cannot be directly translated.
+worlds:
+  world: Overworld
+  world_nether: The Nether
+  world_the_end: The End
+
+# Used for displaying no limit. Currently only used for invite codes.
+unlimited: '&5Illimitato'
+
+# Used for boolean placeholder modifier.
+enabled: '{$p}✔'
+disabled: '{$e}✗'
+
+# Used for command input that require a yes/no.
+true: true
+false: false
+
+# Used in places were the data is no longer available.
+# For example, a kingdom that sent a mail was disbanded.
+unknown: '&4Sconosciuto'
+
+# Used where a defined message language entry
+# in a config isn''t set in the language file.
+unknown-message-entry: '{$e}Voce di messaggio sconosciuta'
+
+# Used for absence of a value.
+none: '&4None'
+
+# Used for time-based placeholders.
+# The default time related placeholders like %kingdoms_shield_time% are shown as
+# random numbers if you use it just like that, you''d have to use the timer modifier:
+# %kingdoms_time_shield_time%
+time-formatter:
+  seconds: 00:00:%ssaf%
+  minutes: 00:%mmaf%:%ssf%
+  hours: '%hhaf%:%mmf%:%ssf%'
+  days: '%dda% day(s), %hhf%:%mmf%:%ssf%'
+  weeks: '%wwwwa% week(s), %dd% day(s), %hhf%:%mmf%:%ssf%'
+  months: '%MMA% month(s), %wwww% week(s), %dd% day(s), %hhf%:%mmf%:%ssf%'
+
+# Used for date-based placeholders.
+# The default time related placeholders like %kingdoms_since% are shown as
+# random numbers if you use it just like that, you''d have to use the date modifier:
+# %kingdoms_date_since%
+
+# It uses Java''s default date formatter syntax which can be found here:
+# https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
+date-formatter: '{$s}yyyy{$sep}/{$s}MM{$sep}/{$s}dd {$s}hh{$sep}:{$s}mm{$sep}:{$s}ss'
+
+# Used for /k map and /k claim line
+cardinal-directions:
+  north: Nord
+  east: Est
+  south: Sud
+  west: Ovest
+  north-east: Nord Est
+  north-west: Nord Ovest
+  south-east: Sud Est
+  south-west: Sud Ovest
+
+# Used for {$name} variables inside other messages.
+variables:
+  cancel: '&cor scrivi hover:{{$e}Cancel;{$e}Click to cancel;/cancel}} &cper cancellare l'' azione '
+  usage: '&4Usa{$sep}: {$es}/k '
+  enabled: '&8[&aAbilita&8]&2'
+  disabled: '&8[&cDisabilita&8]&4'
+
+# The following values are used when no custom message is set for certain actions.
+value:
+  enter: '{$p}Inserire un valore {$cancel}'
+  min: '{$e}Il valore minimo e''{$sep}: {$es}%min%'
+  max: '{$e}Il valore massimo e''{$sep}: {$es}%max%'
+channels:
+  
+  default:
+    permission-fail: '{$e}Non hai il permesso di usare %channel_color%%channel_name% {$e}channel.'
+  global:
+    name: Global
+    short-name: G
+  kingdom:
+    name: Kingdom
+    short-name: K
+  ally:
+    name: Ally
+    short-name: A
+  truce:
+    name: Truce
+    short-name: T
+  nation:
+    name: Nation
+    short-name: N
+  ranged:
+    name: Ranged
+    short-name: R
+  help:
+    name: Help
+    short-name: H
+
+permissions:
+  claim: '{$e}Non puoi claimare il terreno'
+  jail: '{$e}Non puoi gestire la prigione'
+  unclaim: '{$e}Non puoi unclaimare il terreno'
+  unclaim-owned: '{$e}Puoi unclaimare solo il tuo terreno, questo terreno e'' di {$es}%claimer%'
+  home: '{$e}Non puoi usare kingdom''s home.'
+  instant-teleport: '{$e}Non puoi teletrasportarti istantaneamente dai tuoi compagni'
+  read-mails: '{$e}Non hai il permesso di leggere la posta del regno'
+  invsee: '{$e}Non hai il permesso di vedere l''inventario dei componenti del regno'
+  view-logs: '{$e}Non hai il permesso di vedere i logs'
+  manage-mails: '{$e}Non hai il permesso di inviare posta'
+  set-home: '{$e}Non puoi impostare kingdom''s home.'
+  lore: '{$e}Non hai il permesso di cambiare il nome o la leggenda del regno'
+  nation: '{$e}Non puoi amministare lo stato'
+  build: '{$e}Non puoi costruire nel terreno del tuo regno'
+  build-owned: '{$e}Non puoi costruire nel terreno del tuo regno'
+  nexus-build: '{$e}Non puoi costruire nel terreno del nexus del tuo regno'
+  nexus: '{$e}Non puoi cambiare il nexus del regno'
+  broadcast: '{$e}Non puoi trasmettere messaggi'
+  alliance: '{$e}Non puoi cambiare le alleanze del regno'
+  exclude-tax: ~Unused message entry
+  protection-signs: ~Unused message entry
+  edit-ranks: '{$e}Non puoi modificare ranghi e permessi'
+  relation-attributes: '{$e}Non puoi modificare gli attributi della relazione'
+  manage-ranks: '{$e}Non puoi cambiare il rango'
+  upgrade: '{$e}Non puoi aggiornare'
+  enemy: '{$e}Non puoi usare /k enemy other kingdoms.'
+  truce: '{$e}Non puoi usare /k truce other kingdoms.'
+  fly: '{$e}Non puoi usare kingdoms fly'
+  settings: '{$e}Non puoi modificare le impostazioni del regno'
+  donate: '{$e}Non puoi gestire i punti risorsa del regno'
+  invade: '{$e}Non puoi invadere altri regni'
+  invite: '{$e}Non puoi invitare altri player nel regno'
+  kick: '{$e}Non puoi cacciare membri del regno'
+  nexus-chest: '{$e}Non puoi usare le casse nexus'
+  outpost: '{$e}Non puoi usare gli avamposti'
+  protected-chests: '{$e}Non puoi usare le chest protette'
+  interact: '{$e}Non sei autorizzato a interagire nel terreno del regno'
+  use: '{$e}Non sei autorizzato a usarlo nel terreno del regno'
+  structures: '{$e}Non puoi usare le strutture'
+  turrets: '{$e}Non puoi usare le torrette'
+  withdraw: '{$e}Non puoi prelevare dal tuo regno'
+
+plugin-permission-scope:
+  everyone: '&2Tutti'
+  no-one: '&cNessuno'
+  op: '&4OP'
+  not-op: '&6Non OP'
+tags:
+  tagged:
+    
+    message: hover:{{$s}&l@%tag%;{$p}Sei stato taggato}
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+  others: hover:{&l@%tag%;&9Tag}
+  offline: hover:{{$es}@%tag%;{$e}Offline}
+  unknown-player: hover:{{$e}@%tag%;&4Giocatore sconosciuto}
+world-edit:
+  excluded: '{$e}Un totale di {$es}%blocks% {$e}sono esclusi da WorldEdit poiche'' non sono nella tua terra'
+tax:
+  kick: '{$e}Non hai abbastanza soldi per le tasse del regno, pertanto verrai cacciato'
+  reminder: |
+
+    &4&l&nAttention{$sep}: {$e}&lIl controllo giornaliero verra'' effettuato tra{$sep}: {$es}%time%
+  total: '{$p}Il tuo regno ha guadagnato un totale di {$s}$%tax% {$p}dalle tasse raccolte'
+  paid: 'sono stati prelevati {$es}$%tax% {$e}per le tasse del regno'
+  excluded-permission: '{$p}Non hai pagato le tasse del regno perche'' sei stato esentato'
+  excluded-new: '{$p}Non hai pagato le tasse del regno perche'' sei nuovo'
+  kingdom:
+    age: '&5Il tuo regno non ha pagato le tasse poiché e'' nuovo'
+    paid: |
+      {$p}Un totale di {$s}$%tax% {$p}sono stati pagati per le tasse del regno.
+      Nuovo bilancio bancario del regno{$sep}: {$s}$%kingdoms_fancy_bank%
+    paid-nation: |
+      {$p}un totale di {$s}$%tax% {$p}delle tasse del regno sono state pagate allo stato
+       Nuovo bilancio bancario del regno{$sep}: {$s}$%kingdoms_fancy_bank%
+      {$p} Nuovo bilancio bancario dello stato{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+    kicked: 'il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dalla nazione per non esser stato capace di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    disbanded: '{$e}Il tuo regno e'' stato sciolto per non aver pagato le tasse{$sep}: {$es}$%tax%'
+    disbanded-announce: 'il regno {$es}%kingdom% {$e}e'' stato sciolto per non esser stato in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    kicked-announce: 'Il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dallo stato di {$es}%kingdoms_nation_name% {$e}per non esser stato in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+  nation:
+    age: '&5Il tuo stato non ha pagato le tasse perche'' e'' nuovo'
+    paid: |
+      {$p}Un totale di {$s}$%tax% {$p}tasse statali sono state pagate
+      Nuovo bilancio bancario nazionale{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+    disbanded: '{$e}Il tuo stato e'' stato sciolto per non esser stato in grado di pagare le tasse{$sep}: {$es}$%tax%'
+    disbanded-announce: 'La nazione {$es}%nation% {$e}e'' stata sciolta per non esser stata in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_nation_bank% {$sep}< {$es}$%tax%'
+  notifications: |
+    {$sep}[&4WARNING{$sep}] {$e}Il tuo regno non ha abbastanza soldi &7({$es}%kingdoms_fancy_bank%&7) {$e}in banca per pagare il prossimo ciclo di tasse{$sep}: {$es}%tax%
+    {$e}Se i soldi raccolti tra i membri non sono abbastanza, il tuo regno sara'' sciolto
+  kick-announce: '{$es}%player% {$e}e'' stato cacciato per non esser stato in grado di pagare le tasse{$sep}: {$es}%tax%'
+  member-paid: '{$s}$%tax% {$p}sono stati presi per le tasse del regno'
+in-claim-only:
+  placing:
+    general: '{$e}Puoi costruire solo sul tuo claim'
+    radius: '{$e}Puoi costruire solo nel tuo terreno claimato o in un raggio di{$s}%radius% {$e}chunks dal tuo terreno'
+    charges: '{$e}Hai bisogno di {$es}$%money% {$e}monete e il tuo regno ha bisogno di {$es}%rp% {$e}punti risorsa per piazzare blocchi al di fuori del tuo terreno'
+  breaking:
+    charges: '{$e}Hai bisogno di {$es}$%money% {$e}monete e il tuo regno ha bisogno di {$es}%rp% {$e}punti risorsa per distruggere blocchi al di fuori del tuo terreno'
+    radius: '{$e}Puoi costruire solo nel tuo terreno claimato o in un raggio di {$s}%radius% {$e}chunks dal tuo terreno'
+    general: '{$e}Puoi costruire solo sul tuo claim'
+structures:
+  limit: '{$e}Puoi avere solo {$es}%limit% {$e}edfici totali per terreno'
+  specific-limit: '{$e}Puoi avere solo {$es}%limit% %style% {$e}edfici totali per terreno'
+  specific-total-limit: '{$e}Puoi avere solo {$es}%limit% %style% {$e}edfici'
+  cant-place-in-biome: '{$e}Questo edificio non puo'' essere piazzato in questo bioma'
+  block-occupied: '{$e}Non puoi piazzare l''edificio qui, un {$es}%material% {$e}block e'' piazzato qui'
+  enter-name: '{$p}Inserire il nome dell''edificio'
+  name-set: '{$p}Il nome dell''edificio e'' stato settato in {$sep}: {$s}%name%'
+  disabled-world: '{$e}Non puoi piazzare strutture in mondi disabilitati'
+  upgrade:
+    max-level: '{$e}La struttura e'' gia'' al livello massimo'
+  upgrade-not-enough-resource-points: '{$e}Hai bisogno di {$es}%cost% {$e}punti risorsa per essere livellata'
+  upgrade-upgraded: '{$p}Aggiorna la struttura al livello {$s}%level%'
+structures-limit:
+  on-claim: '{$e}il terreno claimato a {$es}%chunk% {$e}aveva alcune strutture su die esso danneggiate a causa di un limite strutturale'
+turrets:
+  limit: '{$e}Puoi mettere solo {$es}%limit% {$e}torrete in ogni terreno'
+  block-occupied: '{$e}Non puoi piazzare torrette qui, un blocco di {$es}%material% {$e}e'' piazzato qui'
+  already-placed: '{$e}C''e'' gia'' una torretta piazzata qui'
+  cant-place: '{$e}La torretta non puo essere piazzata qui, per favore piazzare la torretta su un {$es}fence {$e}o un {$es}wall block'
+  cant-place-in-biome: '{$e}La torretta non puo essere piazzata in questo bioma'
+  disabled-world: '{$e}Non puoi piazzare la torretta in un mondo disabilittato'
+  not-manual: '{$e}La torretta non e'' in modalita'' manuale, per favore prima attivarlo'
+  manual-operating: '{$p}Manual mode{$sep}: {$p}Punta la direzione verso cui si trova il nemico, con qualsiasi oggetto in mano, e premi il &9tasto sinistro.'
+turrets-limit:
+  on-claim: '{$e}Il terreno claimato a {$es}%chunk% {$e}aveva alcune torrette danneggiate per dei limiti'
+locations:
+  normal: '{$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
+  chunk: '{$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%z%'
+placeholders:
+  top-not-found: '{$e}Nessun regno nella posizione top{$sep}: {$es}%position%'
+bossbar:
+  editor:
+    title:
+      enter: '{$p}Inserire la barra titolo del boss {$cancel}'
+siege-cannon:
+  ready-fire: '{$p}Il cannone e'' pronto per far fuoco'
+  sit: '{$p}Sei al comando del cannone, caricalo da solo o fallo fare da qualcuno'
+  occupied: '{$e}Qualcuno e'' gia'' ai comandi del cannone'
+  masswar-only: '{$e}Puoi usare il cannone d''assedio durante una guerra'
+  already-loaded: '{$e}Il cannone si sta ricaricando'
+  not-ammo: '{$e}Il cannone puo'' essere caricato solo con i proiettili indicati nella GUI'
+  hit:
+    unclaimed-land: '{$e}Hai colpito col cannone un terreno non claimato'
+    players-shield: '{$e}Lo scudo e'' stato colpito da un cannone d''assedio ed e'' stato danneggiato'
+    no-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, non hanno uno scudo'
+    pacifist: '{$e}Il cannone ha colpito il regno {$es}%kingdoms_kingdom_name% {$e}, ma e'' un regno pacifista'
+    destroyed-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, il loro scudo e'' stato distrutto'
+    damaged-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, scudo rimanente{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    damaged-shield-notify: 'Il regno{$es}%attacker-kingdom% {$e}ha attaccato la tua terra {$es}%attacked-chunk%{$e}. Scudo rimanente{$sep}: {$s}%kingdoms_time_shield_time_left%'
+  friendly:
+    fire: '{$e}Il cannone ha colpito un terreno amico (nessun attributo d''invasione) che appartiene a {$es}%kingdom%'
+lands:
+  build-own-only: '{$e}Puoi solo costruire nel terreno che hai claimato'
+  portal-protection: '{$e}Il teletrasport e'' stato cancellato perche'' porta in un regno nemico'
+  ender-pearl-protection: '{$e}La tua perla dell''end porta in un regno nemico'
+  gamemode-protection: '{$e}La tua modalita'' di gioco e'' stata cambiata per entrare in una terra straniera'
+  gamemode-protection-activated: '{$e}Non puoi usare la modalita'' creativa in questa terra'
+  nation-zone:
+    place: '{$e}Non puoi piazzare blocchi nella zona dello stato di {$es}%nation%'
+    break: '{$e}Non puoi distruggere blocchi nella zona dello stato di {$es}%nation%'
+    interact: '{$e}Non puoi interagire nella zona dello stato di {$es}%nation%'
+  visualizer:
+    wilderness:
+      actionbar: '{$sep}&l-=( {$p}&lTerreno non occupato  {$sep}&l)=-'
+    no-kingdom:
+      titles:
+        title: '%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_lore%'
+    self:
+      titles:
+        title: '&a%kingdoms_kingdom_name%'
+        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+    neutral:
+      titles:
+        title: '%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+    nation:
+      titles:
+        title: '&9%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+    nation-zone:
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+    ally:
+      titles:
+        title: '&6%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+    truce:
+      titles:
+        title: '&e%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+    enemy:
+      titles:
+        title: '&c%kingdoms_other_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+other-kingdoms:
+  place: '{$e}Non puoi costruire nel terreno di un altro regno'
+  break: '{$e}Non puoi costruire nel terreno di un altro regno'
+  kill: '{$e}YNon puoi uccidere {$es}%entity% {$e}nel terreno di un altro regno'
+  interact: '{$e}Non puoi interagire nel terreno di un altro regno'
+  use: '{$e}Non puoi utilizzare il terreno degli altri regni'
+  structure:
+    place: '{$e}Non puoi mettere strutture nel terreno di un altro regno'
+    interact: '{$e}Non puoi aprire le stutture di un altro regno'
+    break: '{$e}Non puoi distruggere strutture nel terreno di un altro regno'
+    can-take: '{$e}Puoi tenere la strutture finche'' un regno non compra il terreno'
+  nexus:
+    break: '{$p}Hai guadagnato {$s}%rp% {$p}per aver rotto questo nexus'
+    break-wrong-item: '{$e}Puoi solo guadagnare punti risorsa rompendo il nexus con {$es}diamond hoe{$e}.'
+    break-pacifist: '{$e}Non puoi guadagnare punti risorsa distruggendo un nexus nel territorio di un regno pacifista'
+  turret:
+    can-take: '{$e}Puoi tenere la torretta finche'' un regno non compra il terreno'
+    place: '{$e}Non puoi piazzare torrette nel terreno di un altro regno'
+    interact: '{$e}Non puoi aprire una torretta nel terreno di un altro regno'
+    break: '{$e}Non puoi distruggere una torretta nel terreno di un altro regno'
+guis:
+  creative: '{$e}Non puoi aprire questa GUI nella modalita'' creativa'
+  open-inventory-during-input: '{$e}Non puoi aprire l''inventario durante un azione dell''utente, scrivi hover:{{$es}cancel;{$es}Cancel;/cancel} {$e}per cancellare l''azione '
+  command-during-input: '{$e}Non puoi eseguire il comando durante un azione dell''utente, scrivi hover:{{$es}cancel;{$es}Cancel;/cancel} {$e}per cancellare l''azione'
+  cant-open-during-invasion: '{$e}Non puoi aprire questa GUI mentre il tuo regno viene invaso'
+  pages:
+    next-page-not-available: '{$e}Pagina finale, pagine massime{$sep}: {$es}%pages%'
+    previous-page-not-available: '{$e}pagine precedenti non presenti'
+protected-signs:
+  cant-modify: '{$e}Non puoi modificare il settagio di questo blocco protetto '
+  already-protected: '{$s}Il blocco e'' gia'' protetto'
+  broke: '{$s}Hai distrutto un blocco protetto'
+  unprotected: '{$e}Questo blocco non e'' piu'' protetto'
+  cant-break: '{$e}Solo l''owner puo'' rompere questo blocco'
+  protected: '{$e}Questo blocco e'' protetto'
+  invalid-sign: '{$e}Non puoi proteggerti usando questo cartello'
+  invalid-sign-block: '{$e}Non puoi proteggere questo lato del blocco perche'' un {$es}%block% {$e}e'' piazzato qui'
+  invalid-block: '{$e}Non puoi proteggere questo blocco' 
+  not-attached: '{$e}Questo cartello dev''essere attaccato al blocco da proteggere'
+  unclaimed: '{$e}Non puoi usare il cartello di protezione in un terreno non claimato'
+  kingdom-items: '{$e}Non puoi usare cartelli di protezione negli oggetti del regno come torrette e strutture'
+  other-kingdoms: '{$e}Non puoi usare cartelli di protezione nel terreno di altri regni'
+  cant-protect-double-chest: '{$e}Questa cassa non puo'' essere protetta poiché l''altro lato si trova in una terra non claimata'
+  password:
+    invalid: '{$e}Password errata, riprova'
+    cant-move: '{$e}Non puoi muoverti finche'' non inserisci la password'
+    error-429: '{$e}Troppi tentativi falliti'
+    in-cooldown: |
+      {$e}Questo contenitore richiede una password per accedere, tuttavia hai effettuato troppi tentativi falliti..
+      Puoi riprovare tra{$sep}: {$es}%cooldown%
+    required: '{$e}Questo contenitore richiede una password per essere aperto, scrivi hover:{{$es}cancel;{$es}Cancel;/cancel} {$e}per cancellare l''azione'
+    ask: '{$s}Per favore inserisci la password o scrivi hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare e hover:{{$e}remove;{$e}Remove;remove} {$s}per rimuovere la password'
+    container-only: '{$e}Puoi settare la password in contenitori come {$es}chests, hoppers, furnaces and etc.'
+    length: '{$e}La password dev''essere lunga {$es}%min% {$e}and less than {$es}%max% {$e}got{$sep}: {$es}%length%'
+    removed: '{$p}Password del contenitore rimossa'
+    not-set: '{$e}Nessuna password e'' settata per questo blocco protetto'
+    set: '{$p}La password del contenitore e'' stata cambiata con successo'
+  double-chest-protected: '{$p}Double chest protetta'
+  protection-type:
+    already-using: '{$e}Questo blocco usa un metodo di protezione'
+    changed: '{$p}Metodo di protezione del blocco cambiato con successo in {$es}%protection%{$e}.'
+  players:
+    cleared: '{$p}Tutti i membri sono stati rimossi'
+    removed: '{$p}Rimosso {$s}%name% {$p}dal gruppo'
+    limit: '{$e}Non puoi aggiungere piu'' di {$es}%limit% {$e}membri al tuo gruppo'
+    include:
+      included: '{$p}Aggiunto {$s}%name% {$p}al gruppo'
+      is-already-in-group: '&3%name% {$e}e'' gia'' nel gruppo'
+      owner: '{$e}Sei il proprietario del blocco...'
+      name: '{$p}Inserire il nome del player da inserire'
+    exclude:
+      excluded: '{$p}Escluso {$s}%name% {$p}dal gruppo'
+      is-already-in-group: '{$es}%name% {$e}e'' gia'' stato escluso dal gruppo'
+      owner: '{$e}Sei il proprietario del blocco...'
+      name: '{$p}Inserire il nome del player da rimuovere'
+  kingdoms:
+    cleared: '{$p}Rimossi tutti i regni'
+    removed: '{$p}Rimosso {$s}%name% {$p}dal regno del gruppo'
+    disbanded: '{$e}Regno con UUID {$es}%id% {$e}e'' stato rimosso automaticamente da questo cartello poiché non esiste piu''..'
+    limit: '{$e}Non puoi aggiungere piu'' di {$es}%limit% {$e}al gruppo del regno'
+    include:
+      included: '{$p}aggiunto {$s}%name% {$p}al gruppo del regno'
+      is-already-in-group: '&3%name% {$e}e'' gia'' nel gruppo del regno'
+      owner: '{$e}Per includere il tuo regno, cambia semplicemente il tipo di protezione'
+      name: '{$p}Inserisci il nome del regno che vuoi aggiungere'
+    exclude:
+      excluded: '{$p}Rimosso {$s}%name% {$p}dal gruppo del regno'
+      is-already-in-group: 'Il regno {$es}%name% {$e}e'' gia'' escluso dal gruppo'
+      owner: '{$e}Per escludere il tuo regno, cambia il tipo di protezione'
+      name: '{$p}Inserire il nome del regno da escludere'
+top-rewards:
+  kingdom: |
+    {$p}Il tuo regno e'' stato ricompensato di {$s}$%money% {$p}monete e {$s}%rp% {$p}punti risorse per essere rankato a {$sep}: &5%rank%
+    {$p}Nuovo bilancio del regno{$sep}: {$s}$%kingdoms_fancy_bank%
+    {$p}Nuovi punti risorsa del regno{$sep}: {$s}%kingdoms_fancy_resource_points%
+  nation: |
+    {$p}Il tuo stato e'' stato ricompensato di {$s}$%money% {$p}monete e {$s}%rp% {$p}punti risorse per essere rankato a {$sep}: &5%rank%
+    {$p}Nuovo bilancio dello stato{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+    {$p}Nuovi punti risorsa dello stato{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+join-leave-messages:
+  join:
+    kingdom:
+      message: NOPREFIX|{$sep}[{$p}◆{$sep}]{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$p}%displayname%
+      sound: BLOCK_NOTE_BLOCK_BELL
+    others: NOPREFIX|{$s}%displayname% {$p}e'' entrato nel server.
+  leave:
+    kingdom:
+      message: NOPREFIX|{$sep}[{$e}◆{$sep}]{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%displayname%
+      sound: BLOCK_NOTE_BLOCK_FLUTE
+    others: NOPREFIX|{$es}%displayname% {$e}e'' uscito dal server.
+join:
+  invites: '{$p}Hai invitato {$s}%invites% {$p}, controllalo con {$s}hover:{/k invites;&9Click to open;/k invites}'
+  unread-mails: '{$p}Hai {$s}%unread-mails% {$p}messaggi del regno non letti'
+  language:
+    not-supported: |
+      {$e}Il linguaggio rilevato dal tuo client e'' {$es}%detected-lang% {$e}che probabilmente non e'' supportato dal plugin o non e'' installato nel server
+      Puoi cambiare la lingua dopo aver usato il comando hover:{{$es}/k language;&9Click to run;|/k language} {$e}
+    supported: |
+      {$p}Il linguaggio rilevato e'' {$s}%detected-lang% {$sep}({$s}%kingdoms_lang%{$sep})
+      {$sep}[&9&l!{$sep}] {$p}Se pensi che sia sbagliato puoi cambiarlo con il comando hover:{{$s}/k language;&9Click to open;/k language} {$p}
+upgrades:
+  powerup:
+    upgrade: '{$p}Hai livellato {$s}%powerup% {$p}al livello {$s}%new_level%'
+    max: '{$e}Hai gia'' livellato {$es}%powerup% {$e}al livello massimo'
+    not-enough-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}resourcepoints per livellare {$es}%powerup%'
+    damage-boost:
+      name: Damage Boost
+    damage-reduction:
+      name: Damage Reduction
+    regeneration-boost:
+      name: Regeneration Boost
+    arrow-boost:
+      name: Arrow Boost
+  champion:
+    upgrade: '{$p}Hai livellato {$s}%upgrade% {$p}al livello {$s}%new_level%'
+    max: '{$e}Hai gia'' livellato {$es}%upgrade% {$e}al livello massimo'
+    not-enough-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}resourcepoints per livellare {$es}%upgrade%'
+    reinforcements:
+      name: Reinforcements
+    resistance:
+      name: Resistance
+    death-duel:
+      name: Death Duel
+    damage-cap:
+      name: Damage Cap
+    strength:
+      name: Strength
+    equipment:
+      name: Equipment
+    health:
+      name: Health
+    focus:
+      name: Focus
+    throw:
+      name: Throw
+    speed:
+      name: Speed
+    drag:
+      name: Drag
+    thor:
+      name: Thor
+    fangs:
+      name: Fangs
+    plow:
+      name: Plow
+  misc:
+    anti-explosion:
+      name: Anti-Explosion
+    anti-trample:
+      name: Anti-Trample
+    nexus-guards:
+      name: Nexus Guard
+    chest-size:
+      name: Vault Size
+    max-members:
+      name: Max Members
+    max-turrets:
+      name: Max Turrets
+    max-claims:
+      name: Max Claims
+    invasion-teleportation:
+      name: Invasion Teleportation
+    guards:
+      name: Guards
+    insanity:
+      name: Insanity
+    glory:
+      name: Glory
+    invasions:
+      name: Invasions
+    upgrade: '{$p}Hai livellato {$s}%upgrade% {$p}al livello {$s}%new_level%'
+    enabled: '{$p}Abilita {$s}%upgrade% {$p}misc aggiornamento'
+    not-upgraded: '{$e}Non e'' possibile disabilitare un aggiornamento che non e'' stato migliorato'
+    cannot-be-disabled: '{$e}Questo aggiornamento non puo'' essere disabilitato'
+    disabled: '{$e}Disabilta {$es}%upgrade% {$e}misc aggiornamento'
+    max: '{$e}Hai gia'' aggiornato {$es}%upgrade% {$e}al livello massimo'
+    not-enough-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}resourcepoints per aggiornare {$es}%upgrade%'
+champion-type:
+  changed: '{$p}Il campione del tuo regno e'' cambiato da {$s}%old_champion% {$p}a {$s}%new_champion%'
+  already-in-use: '{$e}Il tuo regno sta gia'' usando il campione {$es}%champion% {$e}'
+misc:
+  upgrades:
+    alerts:
+      notify-members: '{$es}%player% {$e}dal regno nemico {$es}%kingdoms_kingdom_name% {$e}stanno entrando nel tuo terrendo da{$sep}: {$es}%world%&7, {$es}%x%&7, {$es}%y%&7, {$es}%z%'
+relations:
+  another-request: '{$es}%kingdom% {$e}ti ha inviato prima una %relation% {$e}richiesta di amicizia'
+  no-permission: '{$e}Non hai il permesso di gestire le relazioni'
+  no-requests: '{$e}Non hai alcuna richiesta di relazione inviata al tuo gruppo'
+  disabled-commands: '{$e}Non puoi usare questo comando in questo territorio'
+  
+  # Below names are also used for %kingdoms_relation_name%, but not for %kingdoms_land_relation%
+  # For the color of relations (%kingdoms_relation_color%), refer to relations.yml instead.
+  neutral:
+    name: Neutral
+  enemy:
+    name: Enemy
+  ally:
+    name: Ally
+  truce:
+    name: Truce
+  nation:
+    name: Nation
+  self:
+    name: Self
+  wilderness:
+    name: Wilderness
+    # The color for this relation is special and is defined in language files instead of relations.yml
+    color: '&f'
+fly:
+  enemies-nearby: '{$e}Ci sono nemici vicino a te, la fly e'' disabilitata'
+  charges-cant-afford: '{$e}Hai bisogno di {$es}$%money% {$e}per ogni {$es}%interval% secondo {$e}di fly'
+  charges:
+    cant-afford-kingdom: '{$e}Il tuo regno ha bisogno di {$es}$%amount% {$e}per ogni {$es}%interval% secondo {$e}di fly'
+  out:
+    of-land: '{$e}Puoi usare la fly solo nel tuo terreno, la tua fly e'' stata disabilitata'
+  damage: '{$e}Hai subito danno e la fly e'' stata disabilitata'
+  warnings:
+    charges: '{$e}La tua fly verra'' disabilitata nel giro di {$es}%counter% {$e}secondi, perche'' non hai piu'' soldi per pagare la carica'
+    unfriendly-nearby:
+      safe: '{$p}Sei al sicuro dai player ostili'
+      warn: '{$e}La tua fly sta per essere disabilitata nel giro di {$es}%counter% {$e}secondi per la vicinanza di nemici! Torna indietro'
+    out-of-land:
+      safe: '{$p}Sei al sicuro in questo territorio'
+      warn: '{$e}La tua fly sta per essere disabilitata nel giro di {$es}%counter% {$e}secondi perche'' ti stai avvicinando ad un territorio dove non puoi volare! Torna indietro'
+# This message should usually refer to some kind of recruitment forum.
+no-kingdom-reminder: '{$e}Reminder{$sep}: {$es}Non ti sei ancora unito al regno.'
+regulator:
+  attributes:
+    add-self: '{$e}Non puoi aggiungerlo a te stesso'
+    already-added: '{$es}%add% {$e}e'' gia'' aggiunto'
+    add: '{$p}Per favore inserire il nome del player'
+    added: '{$p}Aggiungere {$s}%add% {$p}dagli attributi'
+    removed: '{$p}Rimuovere {$s}%player% {$p}dagli attributi'
+  interactions:
+    add-self: '{$e}Non puoi aggiungerlo a te stesso'
+    already-added: '{$es}%add% {$e}e'' gia'' aggiunto'
+    add: '{$p}Per favore inserire il nome del player'
+    added: '{$p}Aggiungere {$s}%add% {$p}all''interazione'
+    removed: '{$p}Rimuovere {$s}%player% {$p}dall''interazione'
+nexus:
+  pacifism:
+    enable: '{$s}Il tuo regno e'' ora {$p}pacifista'
+    disable: '{$s}Il tuo regno non e'' piu'' {$e}pacifista'
+    cooldown: '{$e}Il tuo regno non puo essere pacifista per{$sep}: {$es}%cooldown%'
+    permanent: '{$e}Il tuo regno non puo essere pacifista per{$sep}: {$es}%cooldown%'
+  home:
+    public: '{$s}Il tuo regno e'' ora{$p}pubblico'
+    not-public: '{$s}Il tuo regno non e'' piu'' {$e}pubblico.'
+  hidden:
+    enabled: '{$p}Il tuo gruppo e'' ora nascosto'
+    disabled: '{$p}Il tuo gruppo non e'' piu'' nascosto'
+  cant-be-removed: Non puoi rimuovere il tuo regno nexus.
+  shield:
+    enable: '{$p}Scudo abilitato per il tuo regno'
+    disable: '{$e}Scudo disabilitato per il tuo regno'
+  invites:
+    enable: '{$s}Il tuo regno richiede un invito per entrare'
+    king-only: '{$e}Solo il Re puo cambiare le impostazioni del regno'
+    disable: '{$s}Il tuo regno ora non richiede piu'' un invito per entrare'
+  structure-inventory-full: '{$e}Il tuo inventario e'' pieno!'
+  turret-inventory-full: '{$e}Il tuo inventario e'' pieno!'
+  structure-purchased: '{$p}Hai comprato {$s}%structure% {$p}per {$s}%fancy_cost% punti risorsa'
+  structure-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}punti risorsa per acquistare questa struttura'
+  turret-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}punti risorsa per acquistare la torretta'
+  turret-purchased: '{$p}Hai comprato {$s}%turret% {$p}per {$s}%fancy_cost% punti risorsa'
+  resource-points: '{$s}Un totale di {$es}%amount% {$s}punti risorsa sono stati aggiunti'
+  rank-editor:
+    enter-value: '{$s}Per favore inserire il nuovo valore in chat o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per annullare'
+    max: '{$e}Non puoi creare piu'' di {$es}%limit% {$e}ranghi per il tuo regno'
+    other: '{$e}Non puoi cambiare i settaggi dei ranghi del regno'
+    cannot-delete-rank: '{$e}Non puoi cancellare questo rango, il tuo regno ha bisogno di almeno 2 ranghi'
+    cannot-delete-king: '{$e}Non puoi eliminare il rango del re'
+    cannot-delete-member: '{$e}Non puoi eliminare il rango del re'
+    copy: '{$p}Copiato con successo {$s}%copy_node% {$p}il rango di {$s}%rank_node%'
+    length:
+      node: '{$e}La lunghezza del nodo non puo'' essere maggiore di {$es}%limit%'
+      name: '{$e}La lunghezza del nome non puo'' essere maggiore di {$es}%limit%'
+      color: '{$e}La lunghezza del colore non puo'' essere maggiore di {$es}%limit%'
+      symbol: '{$e}La lunghezza del simbolo non puo'' essere maggiore di {$es}%limit%'
+    node:
+      already-exists: '{$e}C''e'' un altro rango su questo nodo'
+    unknown-material: '{$e}Materiale insufficiente{$sep}: {$es}%material%'
+    invalid:
+      material: '{$e}Non puoi usare il materiale {$es}%material%'
+      max-claims: '{$e}Il max claims dev''essere un numero e maggiore di 0'
+      priority: '{$e}Priorita'' invalida, dev''essere minore di {$es}%kingdoms_ranks% {$e}e maggiore di {$es}0'
+      node: '{$e}Il nodo del rango non puo contenere caratteri speciali, solo lettere e numeri'
+    max-claims-limit: '{$e}Il max claims non puo essere piu'' di {$es}%limit%'
+    color:
+      has-none-colors: '{$e}Il testo specificato puo contenere solo codici colore, gli spazi non sono consentiti'
+  chest:
+    others: '{$e}Non puoi aprire la cassa nexus di altri regni'
+  misc-upgrades:
+    others: '{$e}Non puoi cambiare gli aggiornamenti di altri regni'
+  members:
+    others: '{$e}Non puoi gestire i membri di altri regni'
+  settings:
+    tax-enter-value: '{$s}Inserire il nuovo valore in chat, o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare'
+    flag:
+      enter-value: '{$s}Per favore inserire la nuova finestra URL in chat, o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare'
+      current: '{$s}Click hover:{{$p}here;{$p}Open Flag URL;@%kingdoms_kingdom_flag%} {$s}to open your current flag URL.'
+      wrong-url: '{$e}Url non valida per flag{$sep}: {$es}%flag%'
+      contains: '{$e}La finestra URL non puo essere accetata se ha una parola nella blacklist{$sep}: {$es}%flag%'
+      regex: '{$e}La finestra URL non puo essere accetata{$sep}: {$es}%flag%'
+      validate: '{$p}Validazione immagine...'
+      cooldown: '{$e}Devi aspettare {$es}%cooldown% {$e}prima che cambi la tua finestra'
+      size-limit:
+        fail: '{$e}L''URL inserito non e'' un immagine o non e'' accessibile{$sep}: {$es}%flag%'
+        height: '{$e}L''immagine selezionata supera il massimo di {$es}%limit% {$e}Limite in altezza{$sep}: {$es}%height%'
+        width: '{$e}L''immagine selezionata supera il massimo di {$es}%limit% {$e}Limite in lunghezza{$sep}: {$es}%width%'
+      set: '{$p}L''immagine della barriera del tuo regno e'' stata cambiata da{$sep}: {$s}%flag%'
+      removed: '{$p}L''immagine della bandiera del tuo regno e'' stata rimossa'
+    color:
+      enter-value: |
+        {$s}Inserire il nuovo codice colore hex in chat, o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare.
+        Puoi trovare il codice hex per il colore da hover:{{$p}here;{$p}Click to Open;@https://htmlcolorcodes.com/}
+      wrong-hex: '{$e}Colore hex invalido{$sep}: {$es}%color%'
+      wrong-rgb: '{$e}Colore RGB invalido{$sep}: {$es}%color%'
+      range-blacklisted: '{$e}Il colore che hai scelto non si trova nella lista disponibile'
+      set: '{$p}Il colore del tuo regno e'' stato cambiato in{$sep}: {$s}%color%'
+    tax-set: |
+      {$p}La quota delle tasse e'' stato settato a{$sep}: {$s}%tax%
+      {$p}Test tasse su di te{$sep}: {$s}%test%
+    tax-illegal-variable: '{$e}Placeholdere non consentito all''indice {$es}%index% {$e}nella quota{$sep}: {$es}%tax%'
+    tax-invalid: |
+      {$e}Non e' stato possibile testare la quota {$es}%tax% {$e}delle tasse su di te{$sep}: {$es}%reason%
+      {$e}Per favore inserire una quota valida
+    shield:
+      not-enough-resource-points: '{$e}Non hai abbastanza punti risorsa'
+      cooldown:
+        siege-cannon: '{$e}Devi aspettare {$es}%time% {$e}prima di comprare di nuovo uno scudo, Sei stato attaccato dai cannoni {$es}%last% {$e}anni fa'
+        invasions:
+          attacked: '{$e}Devi aspettare {$es}%time% {$e}prima di comprare di nuovo uno scudo, da quando il tuo regno ha invaso {$es}%last% {$e}ago.'
+          defended: '{$e}Devi aspettare {$es}%time% {$e}prima di comprare di nuovo uno scudo, da quando il tuo regno e'' stato invaso {$es}%last% {$e}ago.'
+    shield-activated: '{$p}Scudo attivo per{$sep}: {$s}%kingdoms_time_shield_time_left%'
+nexus-resource-points-enter-value: '{$s}Per favore inserire la somma dei punti risorsa o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare'
+teleports:
+  moved: '{$e}Teletrasporto cancellato perche'' ti sei mosso'
+  already-teleporting: '{$e}Ti sei gia'' teletrasportato da qualche parte'
+  timer:
+    actionbar: '{$p}Teletrasporto in{$sep}: &9%timer%'
+  teleported:
+    actionbar: '&9Teletrasportato'
+warppad:
+  teleporting: '{$p}Teletrasporto in {$s}%countdown% seconds{$p}... Non muoverti'
+  low-fuel: |
+    {$e}hai bisogno di {$es}%fuel-cost% fuel {$e}per teletrasportarti, questo warp pad ha solo {$es}%fuel%
+    {$e}Puoi rifornirlo mettendogli {$es}coals {$e}
+  no-safe-location: '{$e}Non ci sono localita'' sicure attorno questo warp pad per teletrasportarsi'
+  success: '{$p}Teletrasportato!'
+structure:
+  fuel:
+    fill: '{$p}Carburante della struttura{$sep}: {$s}%old-fuel% &7+ {$s}%added-fuel% &7= {$s}%fuel%'
+    maxxed: '{$p}Carburante della struttura{$sep}: {$s}%old-fuel% &7+ {$s}%added-fuel% &7= {$s}%fuel% {$sep}({$s}Max capacity reached{$sep})'
+    full: '{$e}Carburante massimo della struttura raggiunto{$sep}: {$es}%fuel%'
+outpost:
+  not-enough-resource-points: '{$e}Non hai abbastanza punti risorsa'
+  cooldown: '{$e}Non puoi comprare questo oggetto prima di{$sep}: {$es}%time_cooldown%'
+  purchased: '{$p}Hai comprato {$s}%amount%x %name% {$p}per {$s}%fancy_cost% punti risorsa'
+turret:
+  ammo:
+    not-enough-resource-points: '{$e}Non hai abbastanza spazio per i punti risorsa'
+    purchased: '{$p}Munizioni acquistate per la torretta'
+    max-ammo: '{$e}Munizioni massime raggiunte'
+  upgrade:
+    max-level: '{$e}Questa torretta e'' gia'' stata livellata al livello massimo'
+  upgrade-not-enough-resource-points: '{$e}Non hai abbastanza punti risorse per effetuare l''aggiornamento'
+  upgrade-upgraded: '{$p}Torretta livellata a {$s}%level%'
+disabled-world: '{$e}I regni sono disabilitati in {$s}%world%'
+not-found:
+  kingdom: '{$e}Il regno specificato {$es}%kingdom% {$e}non e'' stato trovato'
+  nation: '{$e}La nazione specificata non e'' stata trovata'
+  player: '{$e}Il player specificato non e'' stato trovato'
+  player-no-kingdom: '{$e}Il giocatore specificato non appartiene a nessun regno'
+  player-no-nation: '{$e}Il regno del player specificato non fa parte di nessuno stato'
+  player-or-kingdom: '{$e}Nessun regno o player con quel nome e'' stato trovato.'
+  player-or-kingdom-or-nation: '{$e}Nessuno stato, regno o player con quel nome sono stati trovati'
+  in-your-kingdom: '{$e}Quel giocatore non e'' del tuo regno'
+masswar:
+  started: |
+
+    &4&lMassWar&4 e'' iniziata! {$es}le invasioni sono libere per 1 ora!
+  stopped: '{$s}Masswar e'' finita'
+  command-disallowed: '{$e}Quel comando e'' disattivato durante una MassWars.'
+players:
+  online: '{$p}Online'
+  offline: '&4Offline'
+power:
+  death: '{$e}Sei morto e hai perso {$es}%lost% {$e}di potere'
+kingdom-guards-spawning: '{$es}%kingdoms_kingdom_name% {$e}Guardie del regno sono spawnate vicino a te...'
+no-kingdom:
+  default: '{$e}Non hai un regno'
+  target: '{$e}Il player specificato non ha un regno'
+  structures-use: '{$e}Devi far parte di un regno per usare le strutture'
+  turrets-use: '{$e}Devi far parte di un regno per usare le torrette'
+no-nation: '{$e}Il tuo regno non e'' in uno stato'
+no-nation-other: '{$e}Il regno specificato non e'' in uno stato'
+unclaimed:
+  place-structures: '{$e}Non puoi piazzare strutture in una terra non claimata'
+  place-turrets: '{$e}Non puoi piazzare torrette in un terreno non claimato'
+invalid:
+  number: '{$es}%arg% {$e}non e'' un numero'
+  uuid: '{$es}%arg% {$e}non e'' valido &nhover:{UUID;&7Click to open Wikipedia page;@https://en.wikipedia.org/wiki/Universally_unique_identifier#Format}'
+  number-negative: '{$e}Dev''essere un numero positivo'
+  amount: '{$e}Somma non valida{$sep}: {$es}%amount%'
+  material: '{$e}Materiale sconosciuto{$sep}: {$es}%material%'
+  time: '{$e}Tempo non valido{$sep}: {$es}%time% {$sep}({$e}Correct format{$sep}: {$es}<amount><time-suffix> {$e}e.g.{$sep}: {$es}1s{$sep}, {$es}50days{$sep})'
+  boolean: '{$es}%arg% {$e}non e'' un''opzione valida, Per favore usa ''&2true{$e}'' o ''&4false{$e}'' '
+item-editor:
+  name:
+    enter: '{$p}Inserire il nome dell''oggetto {$cancel}'
+  lore:
+    enter: '{$p}Inserisci la descrizione dell''oggetto separata da nuove righe {$cancel}'
+  material:
+    enter: '{$p}Inserire il materiale dell''oggetto {$cancel}'
+  amount:
+    enter: '{$p}Inserire la quantita'' degli oggetti {$cancel}'
+    warning: '{$e}La somma specificata non e'' standard, le risorse standard di minecraft non vanno oltre {$es}127{$e}, qualsiasi numero superiore a quello non mostrera'' l''oggetto o causera'' altri comportamenti strani'
+  enchant:
+    enter: '{$p}Inserire il livello dell''incantesimo {$cancel}'
+  attributes:
+    amount:
+      enter: '{$p}Inserire la quantita'' dell''attributo {$cancel}'
+    name:
+      enter: '{$p}Inserire il nome dell''attributo {$cancel}'
+    uuid:
+      enter: '{$p}Inserire l''UUID dell''attributo {$cancel}'
+  custom-model-data:
+    enter: '{$p}Inserisci il numero di dati del modello personalizzato {$cancel}'
+    not-supported: '{$e}I dati del tuo modello custom non sono supportati nella tua versione del server'
+  nbt:
+    name:
+      enter: '{$p}Inserire il percorso degli NBT''s {$cancel}'
+    value:
+      enter: '{$p}Inserire i valori degli NBT''s {$cancel}'
+      error: '{$e}Errore nel valore settato{$sep}: {$es}%error%'
+commands:
+  insufficient-permission: '{$e}Non hai abbastanza permessi per fare questo'
+  cooldown: '{$e}Questo commando e'' in cooldown per{$sep}: {$es}%cooldown%'
+  disabled-world: '{$e}Questo commando non puo essere usato in questo mondo'
+  tags:
+    identifier:
+      players: '#PLAYER'
+      kingdoms: '#KINGDOM'
+      nations: '#NATION'
+    players: <player>
+    kingdoms: <kingdom>
+    nations: <nation>
+  players-only: '{$e}Solo i player possono usare questo commando'
+  unknown-command: '{$e}Commando sconosciuto!'
+kingdom:
+  name-blacklisted: '{$e}Il tuo regno contiene parole nella black list'
+  tag-blacklisted: '{$e}Il tuo tag contiene parole nella black list'
+death-penalty: '{$es}%name% {$e}e'' morto {$es}%penalty% {$e}punti risorsa sono stati presi dal tuo regno'
+mails:
+  header-format:
+    sent: |
+      {$p}Soggetto{$sep}: {$s}%subject%
+      {$p}Da{$sep}: {$s}%from%
+      {$p}Mittente{$sep}: {$s}%sender%
+      {$p}Destinatario{$sep}: {$s}%to%
+      {$p}CC{$sep}: {$s}%cc%
+      {$p}Il{$sep}: {$s}%date_sent%
+
+                hover:{{$sep}[{$p}Reply{$sep}];{$sep}Click to reply;/k mail reply %id%}
+      &7.......................................................
+    received: |
+      {$p}Soggetto{$sep}: {$s}%subject%
+      {$p}Da{$sep}: {$s}%from%
+      {$p}Mittente{$sep}: {$s}%sender%
+      {$p}Destinatario{$sep}: {$s}%to%
+      {$p}CC{$sep}: {$s}%cc%
+      {$p}Il{$sep}: {$s}%date_sent%
+
+                hover:{{$sep}[{$p}Reply{$sep}];{$sep}Click to reply;/k mail reply %id%}
+      &7.......................................................
+  reply-subject-formatter: '{$sep}[{$p}RE{$sep}] &f%subject%'
+  notifications:
+    join: '{$p}hai {$s}%mails% {$p}nuovi messaggi, apri la tua mailbox per leggerli'
+    receivers: |
+      &9%player% {$p}from &9%kingdoms_kingdom_name% {$p}regno ti ha inviato un messaggio{$sep}:
+      hover:{&f%subject%;&9Click to read;/k mail open %id%}
+  primary-none: '{$e}Niente'
+  cc:
+    each: '{$p}%cc%'
+    none: '{$e}Niente'
+    separator: '&7, '
+    removed: '{$e}Rimuovi contenitore CC {$sep}: {$es}%recipient%'
+    max: '{$e}Non puoi inviare piu'' di %limit% copie carbone'
+    enter: '{$p}Inserisci il nome del regno che vuoi inserire in copia carbone o scrivi hover:{{$e}cancel;{$es}Cancel;/cancel} {$p}per cancellare'
+  to-enter: '{$p}Inserire il nome del regno a cui vuoi inviare un messaggio o scrivi hover:{{$e}cancel;{$es}Cancel;/cancel} {$p}per cancellare'
+  to-yourself: '{$e}Non puoi mandare messaggi al tuo stesso regno'
+  already-recipient: '{$e}Il regno specificato e'' gia'' un contenitore'
+  subject:
+    empty: '{$e}Niente'
+    enter: '{$p}Inserire un soggetto nel messaggio o scrivi hover:{{$e}cancel;{$es}Cancel;/cancel} {$p}per cancellare'
+    limit: '{$e}Il soggetto del tuo messaggio puo'' essere lungo {$es}%limit% {$e}caratteri'
+    changed: '{$p}soggetto del messaggio cambiato{$sep}: {$s}%subject%'
+  content:
+    empty: '{$e}Niente'
+  cleared-properties: '{$p}Cancellate tutte le proprieta'' del messaggio'
+  envelope:
+    no-free-slot: '{$e}Non hai slot liberi nel tuo inventario per la busta'
+    not-enough-resources: '{$e}Il tuo regno ha bisogno di {$es}%rp% punti risorsa {$e}and {$es}$%money% {$e}per una busta'
+    give: '{$p}Premi col tasto destro sull''oggetto mentre sei in sneak per modificare le proprieta'' speciali.'
+  send:
+    missing-subject: '{$e}Il messaggio non ha un soggetto'
+    missing-primary-recipient: '{$e}Il tuo messaggio non ha un contenitore primario'
+    missing-content: '{$e}Il contenuto della mail e'' vuoto'
+    total-cooldown: '{$e}Il tuo regno puo inviare un nuovo messaggio tra{$sep}: {$es}%cooldown%'
+    per-group-cooldown: '{$e}Il tuo regno puo inviare un uovo messaggio a {$es}%kingdom% {$e}in{$sep}: {$es}%cooldown%'
+  not:
+    an-envelope: '{$e}L''oggetto non e'' una busta'
+kingdom-item:
+  inventory: '{$e}Non puoi usare l''oggetto del regno in questo inventario'
+  craft: '{$e}Non puoi usare l''oggetto del regno per craftare'
+  shoot: '{$e}Non puoi colpire gli oggetti del regno con l''arco'
+auto:
+  claim:
+    disabled-world: '{$e}Il claiming e'' disabilitato in {$s}%world%'
+    actionbar:
+      enabled:
+        actionbar: '{$p}Auto-claim{$sep}: {$s}Enabled'
+      disabled:
+        actionbar: '{$p}Auto-claim{$sep}: {$e}Disabled'
+    success: '{$p}Claimato {$s}%x%&7, {$s}%z% {$p}come terreno del regno'
+    nation-zone: '{$e}Questo terreno e'' parte della zona dello stato di {$es}%nation% {$e}e non puo essere claimato'
+  unclaim:
+    actionbar:
+      enabled:
+        actionbar: '{$p}Auto-unclaim{$sep}: {$s}Enabled'
+      disabled:
+        actionbar: '{$p}Auto-unclaim{$sep}: {$e}Disabled'
+    success: '{$p}Unclaimato {$s}%x%&7, {$s}%z% {$p}come terreno del regno'
+inactivity-announce:
+  player: '{$es}%player% {$e}e'' stato kikkato per inattivita'' '
+  kingdom: '{$es}%kingdom% {$s}e'' stato sciolto per inattivita'' '
+command:
+  updates:
+    description: '{$s}Controllo se ci sono aggiornamenti per il regno'
+    name: updates
+    aliases: update
+  help:
+    description: '{$s}Visualizzazione di tutti i commandi'
+    name: help
+    aliases: h ? --help /? -h
+    usage: '{$usage}%command% &9[page]'
+    grouped-header: '{$sep}&m---------------=({$e}&l %group% {$sep})=---------------'
+    negative-pages: '{$e}Questa non e'' una struttura, non puoi semplicemente andare ad una pagina negativa'
+    grouped-commands: hover:{{$sep}/{$p}k %cmd% &7- %description%;{$sep}/{$p}k %cmd%;|/k %cmd%}
+    footer: hover:{{$s}←;{$s}Pagina precedente;/k %command% %previous_page%} %pages%hover:{{$s}→;{$s}Pagina successiva;/k %command% %next_page%}
+    footer-page: hover:{{$sep}[{$p}%number%{$sep}];{$s}Vai alla pagina {$p}%number%;/k %command% %number%}
+    footer-current-page: hover:{{$sep}[{$p}&l%number%{$sep}];{$p}Pagina corrente}
+    header: '{$sep}&m---------------=({$e}&l Kingdoms {$s}%page%&7/{$s}%max_pages% {$sep}&m)=---------------'
+    no-more-pages: '{$e}Non ci sono piu'' pagine da caricare'
+    commands: hover:{{$sep}/{$p}k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
+    bad-start: '{$e}Non hai bisogno della barra o del comando principale /k per ottenere le info del comando'
+    not-found: '{$e}Impossibile trovare alcun comando corrispondente{$sep}: {$es}%command%'
+    info: |
+      {$sep}------------=( {$p}%main-name% {$sep})=------------
+      &7| {$p}Nome visualizzato{$sep}: &9%command-displayname%
+      &7| {$p}Aliases{$sep}: &9%aliases%
+      &7| {$p}Descrizione{$sep}: &9%description%
+      &7| {$p}Uso{$sep}: &9%usage%
+      &7| {$p}Cooldown{$sep}: &9%cooldown%
+  admin:
+    fsck:
+      description: Tentativi di riparare i dati corrotti
+      name: FSCK
+      aliases: SFC
+      scanning: '{$p}Caricamento e scannerizzazione di tutti i data files... quest''operazione richiedera'' qualche minuto'
+      error: '{$e}Un errore e'' comparso durante la scannerizazione dei data files, per favore controllare la console'
+      done:
+        no-corruption: '{$p}Scannerizzazione completata, nessun dato corrotto trovato. Per favore riavviare il server per prevenire eventuali cali di performance'
+        corrupted: '{$e}Scannerizzazione completata, fixati un totale di {$es}%corrupted% {$e}dati corrotti. &lPer favore riavviare il server con /stop ora per salvare i dati'
+    item:
+      editor:
+        description: '{$s}Edita tutte le propieta'' di oggetti, Inclusi i loro nomi, descrizione, dati dei modelli custom, materiali, attributi ecc... . Questo comando prende l''oggetto che hai in mano, se non stai tenendo nulla un modello sara'' preso instantantaneamente'
+      description: '{$s}Comandi relativi agli oggetti dei punti risorse custom'
+      needs-kingdom: '{$e}Gli oggetti del regno richiedono che il giocatore di destinazione abbia un regno per costruire l''oggetto.'
+      style-has-no-item: '{$e}L''oggetto del regno non e'' assocciato a nessun oggetto, e'' accessibile solo tramite il blocco piazzato'
+      resourcepoints:
+        description: '{$s}Dai un oggetto custom definito nel config che contiene rp'
+        usage: '{$usage}Item dato {$p}<name> &9[amount] [player]'
+        unknown-item: '{$e}Nome oggetto custom sconoscuito{$sep}: {$es}%item%'
+        invalid-amount: '{$e}Totale non valido{$sep}: {$es}%amount%'
+        done: '{$pDato con successo {$s}%amount% %item% {$p}dal valore di {$s}%rp% resource points {$p}to {$s}%target%'
+      inject:
+        description: '{$s}Punti risorsa inseriti permanentemente nell''oggetto'
+        usage: '{$usage}Oggetto inserito {$p}<resource points>'
+        no-item: '{$e}Non stai tenendo un oggetto dove inserire i punti risorsa'
+        done: '{$p}Inseriti con successo {$s}%rp% punti risorsa {$p}nel {$s}%item%'
+      turret:
+        description: '{$s}Ottieni direttamente un oggetto torretta'
+        usage: '{$usage}Oggetto torretta {$p}<style> &9[amount] [player]'
+        unknown-style: |
+          {$e}Stile torretta sconosciuto{$sep}: {$es}%style%
+          {$e}Stili disponibili{$sep}: {$es}%styles%
+        done: '{$p}Dato con successo {$s}%amount% %item% {$p}a {$s}%target%'
+      structure:
+        description: '{$s}Ottieni direttamente un oggetto struttura'
+        usage: '{$usage}Oggetto struttura {$p}<style> &9[amount] [player]'
+        unknown-style: |
+          {$e}Stile struttura sconosciuto{$sep}: {$es}%style%
+          {$e}Stili disponibili{$sep}: {$es}%styles%
+        done: '{$p}Dato con successo {$s}%amount% %item% {$p}a {$s}%target%'
+    openfile:
+      description: '{$s}Apre un file relativo alla cartella del plugin del regno nell''editor di testo predefinito del programma su cui il server e'' in esecuzione, questo non e'' pensato per essere usato direttamente dagli amministratori, ma per {$p}/k admin track {$s}il comando per accedere facilmente ai file per te. Il giocatore che accede a questo comando ha bisogno di
+        essere oppato. Questo puo essere fatto direttamente se hai un link github dalla repository di KingdomX. Se lo stai eseguendo da un server senza interfaccia grafica non funzionera'' '
+      permission: '{$e}Devi essere oppato per eseguire questa funzione'
+      usage: '{$usage}admin openfile {$p}[file path relative to kingdoms folder]'
+      not-supported: '{$e}La piattaforma che sta eseguendo il tuo server non supporta l''operazione'
+      error: '{$e}Fallimento ad aprire il file{$sep}: {$es}%error%'
+      unknown-link: '{$e}Link sconosciuto, gli unici link ufficialmente riconosciuti sono i link KingdomsX GitHub{$sep}: {$es}%link%'
+      gui-warning: '{$sep}[{$es}!{$sep}] {$es}Warning{$sep}: {$es}Il file si riferisce ad un file GUI, se hai piu'' lingue installate potrebbero riferirsi ad hover:{{$e}updates {$sep}-> {$e}synchronize-guis;{$sep}Clicca per vedere le opzioni;@https://github.com/CryptoMorin/KingdomsX/blob/1ed7ea77cf2f7773f9dcad682ac95261b6a4094e/core/src/main/resources/config.yml#L87}
+        {$es}Sezione di configurazione per errori di sincronizzazione'
+      opened: '{$p}File aperto{$sep}: {$s}%file%'
+    files:
+      description: '{$s}Per scopi di debug, scrivi una lista di tutti i file all''interno della cartella ''Kingdoms'' in un file'
+      done: '{$p}L''albero dei file e'' stato scritto su {$s}hover:{%output%;&7Click to open;/k admin openfile %sanitized_output%}'
+    missingguis:
+      description: '{$s}Per scopi di debug, Scrivi una lista di tutti i file GUI che mancano ai pacchetti lingua installati'
+      no-language-packs-installed: '{$e}Il tuo server non ha nessun pacchetto lingua installato'
+      done: '{$p}L''albero dei file e'' stato scritto su {$s}hover:{%output%;&7Click to open;/k admin openfile %sanitized_output%}'
+    searchconfig:
+      description: '{$s}Cerca in tutte le configurazioni principali escludendo i file GUI e il file di lingua per una determinata opzione, il comando dato supporta RegEx patterns.'
+      usage: '&4Usa{$sep}: {$e}/k admin searchConfig {$p}<regex>'
+      no-results: '{$e}Nessun risultato trovato nel pattern dato{$sep}: {$es}%pattern%'
+      found: '{$p}I seguenti risultati sono stati trovati per il pattern fornito{$sep}: {$es}%pattern%'
+      entry: '{$p}In file {$s}%path%{$sep}:'
+    unclaim:
+      all:
+        description: '{$s}Unclaima tutte le terre del tuo regno'
+        usage: '{$usage}admin unclaim all {$p}<kingdom>'
+      description: '{$s}Unclaima tutte le terre'
+      success: '{$p}Unclaimed terreno a {$s}%x%&7, {$s}%z% {$p}da {$s}%kingdom%'
+      not-claimed: '{$e}Questo terreno non e'' claimato'
+      name: unclaim
+    languagepack:
+      description: '{$s}Shows a list of available language packs to install and also to update.'
+      in-progress: '{$e}You cannot do anything with language packs while another process is still in progress.'
+      notification: |
+        {$p}Un aggiornamento e'' disponibile per il seguente pacchetto lingua{$sep}:
+        %update%
+
+        {$p}Puoi scaricarlo andando su {$s}hover:{/k admin languagepacks;&7Clicca per aprire;/k admin languagepacks} {$p}GUI.
+      all: |
+        {$p}Scarica e aggiorna tutti i pacchetti lingua, queata operazione prendera'' piu'' di 10 minuti
+        Se non vedi nessune messaggio tra qualche minuto, controlla la tua console per eventuali errori. Questo processo non finira'' finche'' non ci sara'' il messaggio di conferma che tutti i file lingua ti sono stati inviati
+      all-done: '{$p}Tutte le lingue sono scaricate e aggiornate'
+      all-no-action-needed: '{$p}Nessun azione presa, tutti i pacchetti installati sono aggiornati'
+      indexing: '{$p}Attendere mentre vengono raccolte le ultime informazioni sulla lingua...'
+      indexing-failed: '{$p}Indicizzazione pacchetto lingua fallito, per favore controlla la console per maggiori informazioni'
+      downloading: '{$p}Scaricamento lingua {$s}%lang% {$p}, questa operazione richiedera'' qualche minuto'
+      updating: '{$p}Aggiornamento lingua {$s}%lang% {$p}'
+      uninstalling: '{$e}Disinstallazione lingua {$es}%lang% {$e}'
+      done: '{$s}%lang% {$p}I file di lingua sono stati scaricati, puoi usarli da {$s}hover:{/k lang;&7Click to open;/k lang}'
+      progress: '{$p}Scaricati   {$s}%downloaded%{$sep}/{$s}%total%'
+      aliases: languagespack languagespacks languagepacks langpack langspack lang langs languages
+      name: languagepack
+    addons:
+      description: '{$s}Ottieni una lista di tutti gli addons verificati per questo plugin'
+      indexing: '{$p}Attendi mentre le ultime informazioni su questo addon vengono raccolte...'
+      downloading: '{$p}Download dell''ultima versione dell''addon...'
+      outdated-core-version: '{$e}La versione corrente del plugin kingdom e'' troppo vecchia per questo plugin {$sep}({$es}%current-core-version% {$sep}< {$es}%supported-core-version%{$sep}).'
+      download-failed: '{$e}Download dell''addon fallito{$sep}: {$es}%message% {$e}controllare la console per maggiori dettagli'
+      installed: '{$p}Riavviare il server per finire l''installazione dell''addon'
+      finish-updating: '{$p}Riavviare il server per finire l''aggiornamento dell''addon, e'' raccomandato farlo il prima possibile per evitare problemi'
+      uninstalling: '{$p}Disinstallazione dell''addon...'
+      uninstalling-done: '{$p}Disinstallazione finita, riavviare il server per applicare i cambiamenti. E'' raccomandato farlo il prima possibile per evitare problemi'
+      mismatch: |
+        {$e}Il nome del file non sembra corrispondere alla versione dell''addon{$sep}: {$es}%addon-name% v%installed-version% {$sep}- {$p}Latest {$s}v%latest-version%
+        {$e}Path{$sep}: {$es}%addon-file%
+      indexing-failed: |
+        {$e}Fallimento nell''ottenere informazioni dell''addon. Hai bisogno di una connessione internet per questo e la tua connessione internet deve essere in grado di connettersi a github.com
+        Controlla la console per maggiori informazioni.
+      notification: |
+        {$p}Un aggiornamento e'' disponibile per i seguenti addons{$sep}:
+        %update%
+
+        {$p}Puoi scaricarli da {$s}hover:{/k admin addons;&7Click to open;/k admin addons} {$p}GUI.
+      aliases: addon plugin plugins add-on add-ons
+    gui:
+      description: '{$s}Apri un contenitore per analizzare automaticamente i contenuti al suo interno come configurazione GUI. Puoi anche fornire il percorso di una GUI come parametro per aprirla, in modo da poter modificare gli elementi liberamente, Una volta che chiudi quella GUI salvera'' il contenuto. La modalita'' in cui il contenuto delle GUI viene analizzato e'' speciale. Per tutte le opzioni condizionali, viene scelta la prima condizione possibile e nessuno dei colori o segnaposto verra'' tradotto'
+      opened: '{$p}Analizzando le informazioni... Per favore attendere'
+      enabled: '{$p}GUI mode e'' ora &9abilitata{$p}. Apri un contenitore per analizzare i contenuti'
+      disabled: '{$p}GUI mode e'' ora {$e}disabilitata{$p}.'
+      done: '{$p}Fatto, salvataggio configurazione nella cartella del plugin sotto il file rinominato {$s}hover:{%file%;&7Click to open;/k admin openfile %file%}'
+      usage: '{$usage}admin gui &9[gui path]'
+    description: '{$s}Mostra i comandi eseguibili da admin'
+    nation:
+      description: '{$s}Mostra i comandi disponibili dell''admin dello stato'
+      disband:
+        description: '{$s}Scoglimento nazione'
+        usage: '{$usage}Admin ha sciolto {$p}<nation> &9[silent]'
+        success: 'Lo stato {$s}%nation% {$p}e'' stato sciolto'
+        announce: 'Lo stato {$es}%nation% {$s}e'' stato sciolto'
+      name: nation
+      aliases: nations n
+    track:
+      description: '{$s}Mostra il percorso del messaggio che ti e'' stato inviato'
+      enabled: '&9Tracking Mode{$sep}: {$p}Enabled {$sep}(&7Non puoi vedere il percorso del messaggio che ti e'' stato inviato{$sep})'
+      disabled: '&9Tracking Mode{$sep}: {$e}Disabled'
+      tracked: |
+        {$p}Il seguente messaggio e'' inviato da {$s}hover:{%path%;&7Click to open the file;/k admin openfile %file%} {$p}at line {$s}%line%
+        {$p}Il messaggio grezzo{$sep}: &fhover:{%raw%;Click to copy;|%raw%}
+      gui: '{$p}Questa GUI e'' in{$sep}: {$s}hover:{%path%;&7Click to open the file;/k admin openfile %sanitized_path%}'
+      aliases: tracker
+    migrate:
+      description: '{$s}Comando utilizzato per la gestione delle migrazioni dei dati'
+      database:
+        description: |
+          {$s}Migrazione da un tipo di database a un altro, non hai bisogno di ulteriori step se il tuo server e'' una piccola community. Ma se hai molti regni e server si sicuro che il server sia in whitelist e di rimuovere i plugin non necessari al funzionamento del server (che e'' quasi nullo)
+          Questo comando non puo'' lavorare se non hai molta memoria e RAM per processarlo.
+        console-only: '{$e}Questo comando puo'' essere eseguito da console'
+        please-wait: '{$e}Per favore attendere...'
+        error-loading-new-database: '{$e}Errore nel caricamento delle nuove impostazioni del database, operazione di migrazione interrotta. Per favore inserire le informazioni corrette ed eseguire il comando di nuovo, o ripristina quelle iniziali e riavvia il server'
+        same-database-type: '{$e}L''impostazione del nuovo database e'' uguale al vecchio {$sep}({$es}%method%{$sep}) {$e}assicurarsi di aver salvato correttamente il config.yml. Richiesto riavvio manuale del plugin'
+        cooldown: |
+          {$s}Migrazione da un tipo di database a un altro, non hai bisogno di ulteriori step se il tuo server e'' una piccola community. Ma se hai molti regni e server si sicuro che il server sia in whitelist e di rimuovere i plugin non necessari al funzionamento del server (che e'' quasi nullo)
+          Questo comando non puo'' lavorare se non hai molta memoria e RAM per processarlo.
+          {$e}Sei sicuro di voler iniziare il processo di migrazione? Se si digita nuovamente il comando.
+        start: '{$p}Vai al {$s}config.yml {$p}e configura le impostazioni del nuovo database e salva il tutto. Quando hai fatto esegui questo comando di nuovo'
+        done: '{$p}Tutti i dati sono stati salvati con successo. Il server verra'' riavviato in 10 secondi per finalizzare i cambiamenti'
+    purge:
+      description: '{$s}Elimina tutti i dati dei regni e rimuove tutto in modo affidabile'
+      confirm: '{$e}Esegui nuovamente il comando entro 5 secondi per confermare che desideri eliminare tutti i dati dei regni. &4Questo eliminera'' tutti i dati di stati, regni, terreni e players (non il loro inventario). Questa azione non puo'' essere annullata, la tua unica soluzione sarebbe di utilizzare la cartella di backup.
+                 Questo causera'' l''espulsione forzata di tutti i giocatori, aggiungera'' il server alla whitelist e lo fermera'' automaticamente una volta completato il processo.'
+      already: '{$e}Il plugin e'' gia'' nel processo di cancellazione dei dati...'
+      not-loaded: '{$e}Attendere che il plugin sia caricato per intero prima di usare il comando'
+      console-only: '&4Questo comando puo'' solo essere eseguito da console'
+      stop: '{$e}Non puoi stoppare il server durante il processo di eliminazione del regno'
+      command: '{$e}Non puoi eseguire il comando durante il processo di eliminazione del regno. Eseguire {$es}/stop {$e}se desideri riavviare il server'
+      purging: '{$e}Eliminazione di tutti i dati del regno... Non eseguire comandi o riavviare il server'
+      done: '{$p}Eliminazione completata'
+      done-with-errors: '{$e}Eliminazione completata, I tuoi dati potrebbero o potrebbero non essere eliminati correttamente. se no riportare l''errore in console'
+    resetconfigs:
+      description: '{$s}Eliminazione di tutti i relativi files di configurazione. Incluse GUI, pacchetti lingua scaricati e impostazioni varie'
+      confirm: '{$e}Esegui nuovamente il comando entro 5 secondi per confermare che desideri ripristinare tutte le configurazioni.
+       Cio'' cancellera'' tutti i pacchetti lingua scaricati, tutte le GUI, tutti i file di configurazione e tutte le cache relative al tempo, come i controlli giornalieri.
+        Dati, logs e backup non verrano cancellati.'
+      already: '{$e}Il plugin e'' gia'' in fase di ripristino delle configurazioni...'
+      console-only: '&4Questo comando puo essere eseguito da console'
+      requested: '{$p}Il plugin resettera'' tutte le impostazioni dopo esser stato riavviato. Stop del server in 10 secondi...'
+      resetting: '{$e}Reset di tutte le impostazioni del regno... Non fare nulla incluso eseguire comandi o stoppare il server'
+    sound:
+      description: '{$s}Test di una stringa di suono che varra'' usata nelle config'
+      error: '{$e}Errore{$sep}: ${es}%error%'
+      usage: '{$usage}admin testsound {$p}<sound> &9[volume] [pitch]'
+      playing: '{$p}Riproduzione...'
+      name: sound
+      aliases: testsound soundtest
+    test:
+      description: '{$s}Test di una stringa con codici colori hex, messaggi complessi, separatori di linea e placeholders.'
+      usage: '{$e}Usage{$sep}: {$es}/k admin test <message>'
+      name: test
+      aliases: msg
+    execute:
+      description: '{$s}Esecuzione di un comando per tutti i membri del regno'
+      usage: '{$usage}admin execute {$p}<kingdom> <executor> &9[filter] &9[/]{$p}<command>'
+      unknown:
+        executor: |
+          {$e}Esecutore sconosciuto{$sep}: {$es}%executor%
+          {$e}Esecutori disponibili{$sep}: {$es}self&7, {$es}console&7, {$es}members
+        filter: |
+          {$e}Filtro sconosciuto{$sep}: {$es}%filter%
+          {$e}Filtri disponibili{$sep}: {$es}online&7, {$es}offline
+        command: '{$e}Comando sconosciuto{$sep}: {$es}%command%'
+      members-offline: '{$e}Impossibile eseguire come membri del regno con il filtro offline, offline players nono possono eseguire comandi'
+      members-no-filter: |
+        {$e}Impossibile eseguire come membri del regno senza filtro
+        Alcuni membri potrebbero essere offline, Usare il filtro parametri {$es}online {$e}per fixare questo
+      executed: '{$p}Eseguire il comando {$s}%command% {$p}dal plugin {$s}%plugin% {$p}per i membri del regno {$s}%kingdom% {$p}'
+      aliases: exec
+    evaluate:
+      description: '{$s}Valuta un espressione con placeholders e funzioni matematiche'
+      usage: '{$e}Usa{$sep}: {$es}/k admin evaluate <expression>'
+      failed: |
+        {$e}Translated Expression{$sep}: {$s}%translated%
+        {$e}Error{$sep}: {$es}%result%
+      evaluated: |
+        {$p}Translated Expression{$sep}: hover:{{$s}%translated%;{$s}%object-code%
+
+        {$p}Che cos''e'' questo?
+        &7Questa e'' la rappresentazione finale che il tuo
+        compilatore matematico non capisce dall''espressione.
+        Puoi vedere eventuali errori come la 
+        precedenza degli operatori e come le subespressioni sono raggruppate.
+        Potresti non vedere alcune operazioni di seme poiché sono state ottimizzate.}
+        {$p}Evaluated Expression{$sep}: {$s}%result%
+      name: evaluate
+      aliases: eval math
+    claim:
+      description: '{$s}Rivendica forzatamente la terra su cui ti trovi per conto del regno'
+      usage: '{$usage}admin claim {$p}<kingdom>'
+      success: '{$p}Claimed {$s}%x%&7, {$s}%z% {$p}come terra del regno'
+      already-claimed: '{$e}Questa terra e'' gia'' claimata da {$es}%kingdoms_kingdom_name%'
+      name: claim
+    rank:
+      description: '{$s}Cambia il rango del regno di un player'
+      usage: '{$usage}admin rank {$p}<player> <rank>'
+      not-found: '{$e}Rango non trovato'
+      no-kingdom: '{$e}Il player specificato non e'' in un regno'
+      same-rank: '{$e}Il player ha gia'' questo rango'
+      success: '{$p}Cambiato {$s}%player% {$p}rango da {$s}%previous_rank% {$p}a {$s}%rank%'
+      success-king: 'Il nuovo re di {$s}%kingdoms_kingdom_name% {$p}e'' {$sep}: {$s}%name%'
+      cant-demote-king: '{$es}%player% {$e}e'' il re di {$es}%kingdoms_kingdom_name% {$e}devi prima settare il re'
+      name: rank
+    turret:
+      description: '{$s}Rimuovi o cambia/aggiorna certe torrette'
+      usage: '{$usage}admin turret {$p}<change | remove> <style> &9[replacement style]'
+      unknown-style: |
+        {$e}Stile torretta sconosciuto{$sep}: {$es}%style%
+        {$e}Guarda nella tua cartella {$es}Turrets {$e}per vedere tutti gli stili dei nomi delle torrette
+      success: '{$p}Un totale di {$s}%amount% {$p}torrette sono state processate'
+    nexus:
+      description: '{$s}Apertura di un regno nexus.'
+      usage: '{$usage}admin nexus {$p}<kingdom>'
+      tp-not-set: '{$es}%kingdom% {$e}non ha settato il nexus'
+      tp: '{$p}Teletrasporto al {$s}%kingdom% {$p}nexus...'
+      name: nexus
+    toggle:
+      description: '{$s}Cambiamento modalita'' admin per te'
+      on: '{$s}Modalita'' admin e'' ora{$sep}: {$p}ON'
+      off: '{$s}Modalita'' admin e'' ora{$sep}: {$e}OFF'
+      name: toggle
+      aliases: admin bypass god godmode
+    toggles:
+      description: '{$s}Mostra una lista digiocatori con la modalita'' admin attiva'
+      header: '{$p}Giocatori con la modalita'' admin attiva{$sep}:'
+      entry: '{$sep}- {$s}%displayname%'
+    spy:
+      description: '{$s}Spia nella chat del regno'
+      on: '{$s}Chat spy mode{$sep}: {$p}ON'
+      off: '{$s}Chat spy mode{$sep}: {$e}OFF'
+      name: spy
+    dynmap:
+      description: '{$s}Esecuzioni differenti azioni per la dynmap'
+      rendering: '{$p}Renderizzazione...'
+      usage: '{$e}Usage{$sep}: {$es}/k admin dynmap <fullrender/update/remove>'
+      not-available: '{$e}Tutti i supporti alla mappa sembrano disabilitati'
+      rendered: '{$p}Renderizzato un totale di {$s}%lands% {$p}sezioni di terreno'
+      removed: '{$p}Un totale di {$s}%lands% {$p}e'' stato rimosso'
+      name: dynmap
+      aliases: map bluemap squaremap Pl3xMap
+    masswar:
+      description: '{$s}Inizia o finisci manualmente una masswar.'
+      usage: '&4Usage{$sep}: {$e}/k admin masswar <start/end>'
+      running: '{$e}Masswar e'' attualmente in uso'
+      not-running: '{$e}Masswar non sta funzionando'
+      name: masswar
+    dailychecks:
+      description: '{$s}Avvia manualmente il ciclo di controlli giornalieri'
+      usage: '{$usage}admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      info: |
+        {$p}Prossimo ciclo in{$sep}: {$s}%next%
+        {$p}Tempo esatto{$sep}: {$s}%daily_checks%
+        {$p}Tempo corrente{$sep}: {$s}%time%
+        {$p}Stato{$sep}: %state%
+      run: '{$p}Controllo giornaliero in corso... Controlli totali di oggi {$s}non possono {$p}essere saltati'
+      skip: '{$p}Salta il prossimo intervallo di controlli giornalieri'
+      skipped: '{$e}I prossimi controlli giornalieri sono stati saltati'
+      resume: '{$p}Ripresa dei controlli giornalieri...'
+      resumed: '{$e}I controlli giornalieri non si possono saltare'
+      name: dailychecks
+      aliases: dailycheck
+    resourcepoints:
+      description: '{$sAggiungi o prendi punti risorsa da un regno'
+      usage: '{$usage}Punti risorsa admin {$p}<kingdom> &9[set | add | remove] {$p}<amount>'
+      player-no-kingdom: '{$e}Il player specificato non ha un regno'
+      done: '{$s}%kingdom% {$p}Nuovi punti risorsa{$sep}: {$s}%rp%'
+      added: '{$p}Nuovi punti risorsa del regno{$sep}: {$s}%rp%'
+      invalid-action: '{$e}Azione non valida {$es}%action%{$e}! Usa{$sep}: {$es}add/remove/set'
+      name: resourcepoints
+      aliases: rp resourcepoint
+    bank:
+      description: '{$s}Aggiungi o prendi soldi dalla banca del regno'
+      usage: '{$usage}admin bank {$p}<kingdom> &9[set | add | remove] {$p}<amount>'
+      done: '{$s}%kingdom% {$p}nuova banca{$sep}: {$s}%kingdoms_fancy_bank%'
+      added: '{$p}Nuova banca del regno{$sep}: {$s}%kingdoms_fancy_bank%'
+      invalid-action: '{$e}Azione non valida {$es}%action%{$e}! Usa{$sep}: {$es}add/remove/set'
+      name: bank
+      aliases: vault
+    commands:
+      description: '{$s}Scrivi una lista dei comandi con le relative autorizzazioni in un file'
+      done: '{$p}Scrivi le informazioni del comando in {$s}%output%. {$p}controlla la cartella di kingdom'
+      name: commands
+      aliases: cmds
+    command:
+      description: '{$e}Ottieni tutte le info relative al comando'
+      usage: '{$usage}admin command {$p}<command>'
+      info: |
+        {$sep}------------=( {$p}%main-name% {$sep})=------------
+        &7| {$p}Nome visualizzato{$sep}: &9%command-displayname%
+        &7| {$p}Aliases{$sep}: &9%aliases%
+        &7| {$p}Simili{$sep}: &9%parent%
+        &7| {$p}Descrizione{$sep}: &9%description%
+        &7| {$p}Uso{$sep}: &9%usage%
+        &7| {$p}Permessi{$sep}: &9hover:{%permission%;{$p}Click to copy;|%permission%}
+        &7| {$p}Ambito predefinito delle autorizzazioni{$sep}: &9%permission-scope%
+        &7| {$p}Cooldown{$sep}: &9%cooldown%
+        &7| {$p}Parole{$sep}: &9%disabled-worlds%
+      name: command
+      aliases: cmd
+    join:
+      description: '{$s}Fai unire l''utente a un altro regno'
+      usage: '{$e}Usa{$sep}: {$es}/k admin join {$p}<player> <kingdom>'
+      invalid-kingdom: '{$e}Regno non trovato {$es}%kingdom%'
+      in-kingdom: |
+        {$s}%player% {$p}e'' gia'' nel regno {$s}%kingdoms_kingdom_name%
+        {$p}Se vuoi continuare, fare{$sep}: hover:{{$s}/k admin join %player% %kingdom% confirm;{$p}Click to confirm;/k admin join %player% %kingdom% confirm}
+      king: '{$es}%player% {$e}e'' il re di {$es}%kingdoms_kingdom_name% {$e}Consider disbanding the kingdom or changing the king first.'
+      already-in-kingdom: '{$s}%player% {$p}e'' gia'' un membro di {$s}%kingdoms_kingdom_name%'
+      success: '{$s}%player% {$p}e'' ora un membro di {$s}%kingdoms_kingdom_name%'
+      name: join
+    home:
+      description: '{$s}Teletrasportato a un''altra kingdom home.'
+      usage: '{$e}Usage{$sep}: {$es}/k admin home <kingdom>'
+      homeless: 'Il regno &3%kingdom% {$e}Non ha un home settata'
+      teleported: '{$p}Sei stato teletrasportato a {$s}%kingdom% {$p}kingdom home.'
+      aliases: h
+    create:
+      description: '{$s}Creato un regno per un altro player'
+      usage: '{$e}Usa{$sep}: {$es}/k admin create {$p}<player {$sep}| {$p}super> <name>'
+      already-exists: '{$e}C''e'' gia'' un altro regno con il nome di{$sep}: {$es}%kingdom%'
+      super-creating: '{$p}Creazione di un super regno...'
+      any-no-player-found: '{$e}Impossibile trovare alcun giocatore che non abbia un regno'
+      created: '{$p}Creato con successo il regno con nome {$s}%kingdom% {$p}per il giocatore {$s}%target%'
+    permanent:
+      description: '{$e}Abilita modalita'' permanente per un regno'
+      usage: '{$e}Usa{$sep}: {$es}/k admin permanent {$p}<kingdom>'
+      on: '{$p}Modalita'' permanente {$s}abilitata'
+      off: '{$p}}Modalita'' permanente {$e}disabilitata'
+    rename:
+      description: '{$s}Rinomina il regno'
+      usage: '{$e}Usage{$sep}: {$es}/k admin rename <kingdom> <name>'
+      already-exists: '{$e}C''e'' gia'' un regno con quel nome {$sep}: {$es}%kingdom%'
+      renamed: '{$p}Regno rinominato con successo da {$s}%kingdom% {$p}a {$s}%name%'
+      aliases: name
+    disband:
+      description: '{$s}Sciogli un regno'
+      usage: '{$e}Usa{$sep}: {$es}/k admin disband <kingdom> [silent]'
+      success: '{$s}%kingdom% {$p}e'' stato sciolto'
+      announce: '{$es}%kingdom% {$s}e'' stato sciolto'
+      name: disband
+      aliases: delete
+    pacifism:
+      description: '{$s}Cambia lo stato pacifista del regno'
+      usage: '{$e}Usa{$sep}: {$es}/k admin pacifism {$p}<kingdom> {$sep}[{$p}true &7| &4false{$sep}]'
+      enabled: '{$s}Pacifismo per {$p}%kingdom% kingdom{$sep}: {$p}Abilitato'
+      disabled: '{$s}Pacifismo per {$p}%kingdom% kingdom{$sep}: {$e}Disabilitato'
+      aliases: pacifist
+    land:
+      description: '{$s}Teletrasportato alle coordinate date'
+      usage: '{$usage}admin land [world] <x> <z>'
+      teleported: '{$p}Sei stato teletrasportato nel terreno a{$sep}: {$s}%translated-world%&7, {$s}%chunk_x%&7, {$s}%chunk_z% {$sep}(&5%x%&7, &5%y%&7, &5%z%{$sep})'
+      invalid-world: '{$e}Non e'' stato possibile trovare il mondo{$sep}: {$es}%world%'
+      invalid-coordinates: '{$e}Coordinate inserite non valide{$sep}: {$es}%x%&7, {$es}%z%'
+      preparing: '{$e}Preparazione chunk per il teletrasporto, questo prendera'' qualche minuto'
+      name: land
+      aliases: tpland
+    player:
+      description: '{$s}Visualizza le informazioni del giocatore'
+      usage: '{$usage}admin player {$p}<player>'
+      info: |
+        &7| {$p}Nome{$sep}: {$s}%player% {$sep}(hover:{&5%id%;{$p}Copy;|%id%}{$sep})
+        &7| {$p}Admin{$sep}: %admin% &7| {$p}Spy{$sep}: %spy%
+        &7| {$p}Regno{$sep}: {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
+        &7| {$p}Rango{$sep}: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| {$p}Rango nazionale{$sep}: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Chat Channel{$sep}: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| {$p}Marcatore usato{$sep}: %visualizer%
+        &7| {$p}Invito{$sep}: {$s}%invites%
+        &7| {$p}Entrato nel regno il{$sep}: {$s}%kingdoms_date_joined%
+        &7| {$p}Auto Claim{$sep}: %auto_claim% &7| {$p}Auto Map{$sep}: %auto_map%
+        &7| {$p}Dimensione mappa{$sep}: {$s}%map_width% {$sep}- {$s}%map_height%
+        &7| {$p}Donazioni totali{$sep}: {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$sep}: {$s}%kingdoms_last_donation_time%
+        &7| {$p}Claims &7({$s}%kingdoms_player_claims%&7){$sep}: %claims%
+        &7| {$p}Dati compressi{$sep}: {$s}%compressed%
+      found: '{$p}Giocatore {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}e'' nel seguente regno{$sep}:'
+      kingdom: '{$sep}- {$p}%kingdoms_kingdom_name% {$sep}({$s}%uuid%{$sep})'
+      no-duplicates: '{$e}Il giocatore di questo regno non e'' duplicato'
+      name: player
+      aliases: info
+    kick:
+      description: '{$s}Espelli un giocatore da un regno'
+      usage: '{$usage}admin kick {$p}<player>'
+      kicked: '{$e}Cacciato {$es}%kicked% {$e}da {$es}%kingdom%'
+      kicked-king: '{$e}Cacciato {$es}%kicked% {$e}da {$es}%kingdom% {$e}il nuovo re e'' ora {$sep}: {$es}%king%'
+      kicked-disbanded: '{$e}Sciolto il regno di {$es}%kingdom% perche'' {$es}%kicked% {$e}era l''unico membro del regno'
+      not-in-kingdom: '{$e}Quel player non e'' in un regno'
+      name: kick
+    kick-king: '{$e}Il giocatore che stai cercando di kikkare e'' il re di questo regno, devi o sciogliere il regno o nominare un nuovo re'
+    hologram:
+      description: '{$s}Rimozione ologrammi buggati attorno a te'
+      usage: '{$e}Usage{$sep}: {$es}/k admin hologram <radius>'
+      removed: '{$p}Rimossi un totale di {$s}%removed% {$p}ologrammi(s).'
+      name: hologram
+      aliases: holograms holo
+    entity:
+      description: '{$s}Trovate tutte le entita'' attorno al giocatore'
+    maxlandmodifier:
+      description: '{$s}Cambia il massimo dei terreni modificabili nel regno.'
+      usage: '{$usage}admin maxLandModifier {$p}<kingdom> &9[set | add | remove] &9<amount>'
+      success: '{$p}Cambiato con successo, il massimo dei terreni modificabili per {$s}%kingdom% {$p}a {$s}%amount%'
+      invalid-action: '{$e}Azione non valida {$es}%action%{$e}! Usa{$sep}: {$es}add/remove/set'
+      name: maxLandModifier
+      aliases: mlm maxClaim maxClaims maxLand maxLands maxClaimsModifier maxClaimModifier maxLandsModifier
+    shield:
+      description: '{$s}Cambia la durata dello scudo per il regno'
+      usage: '{$usage}admin shield {$p}<kingdom> &9[set | add | remove] {$p}<time>'
+      success: '{$p}Cambiata con successo, la durata dello scudo per il regno di {$s}%kingdom% {$p}a{$sep}: {$s}%amount%'
+      invalid-action: '{$e}Azione non valida {$es}%action%{$e}! Usa{$sep}: {$es}add/remove/set'
+      invalid-kingdom: '{$e}Non ho potuto trovare il regno {$es}%kingdom%'
+      invalid-time: '{$e}Unita'' di tempo invalida{$sep}: {$es}%time%'
+      name: shield
+      aliases: s
+    debug:
+      not-enabled: '{$e}Debug non abilitato, per favore vai su {$es}config.yml {$p}e setta {$es}debug {$p}a {$es}true {$p}e riavvia il server!'
+      description: '{$s}Comandi relativi al debugging'
+      unknown-debug: '{$e}Gruppo debug sconosciuto{$sep}: {$es}%debug%'
+      toggle:
+        added: '{$p}Aggiunto alla debug list{$sep}: {$s}%debug%'
+        removed: '{$p}Rimosso dalla lista di debug{$sep}: {$s}%debug%'
+      special:
+        description: '{$s}Utilizzato per scopi di sviluppo, non e'' nemmeno pensato per essere utilizzato dagli amministratori'
+      stacktrace:
+        description: '{$s}Attiva o disattiva la stampa dell''intera traccia dello stack per i debug inclusi'
+        added: '{$p}Aggiunto {$s}%debug% {$p} alla lista stacktrace'
+        removed: '{$p}Rimosso {$s}%debug% {$p} alla lista stacktrace'
+        enabled: '{$s}Debug Stack Trace{$sep}: {$p}Whitelist'
+        disabled: '{$s}Debug Stack Trace{$sep}: {$e}Blacklist'
+      list:
+        description: '{$s}Rendi la lista di debug una whitelist o una blacklist'
+        whitelist: '{$s}La lista di debug e'' ora una {$p}whitelist{$s}.'
+        blacklist: '{$s}La lista di debug e'' ora una {$e}blacklist{$s}.'
+    name: admin
+    aliases: administrator administration
+  reload:
+    description: '{$s}Riavvio del plugin'
+    usage: '{$usage}Riavviato &9[config]'
+    success: '{$p}Plugin riavviato con successo'
+    error: '{$e}Un errore e'' comparso durante il riavvio del server, per favore controlla la console'
+    commands: '{$p}Tutti i comandi sono stati riavviati'
+    name: reload
+  create:
+    description: '{$s}Crea un regno'
+    name-length: '{$e}La lunghezza del nome del regno non puo'' essere maggiore di {$es}%max% {$e}o minore di {$es}%min%'
+    name-english: '{$e}Il nome del regno deve contenere solo lettere'
+    name-has-symbols: '{$e}Il nome del regno non puo'' avere caratteri speciali, solo lettere'
+    name-numbers: '{$e}Il nome del regno non puo'' tenere numeri'
+    name-already-in-use: '{$e}Un altro regno usa gia'' questo nome'
+    usage: '{$usage}create {$p}<name>'
+    already-in-kingdom: '{$e}Sei gia'' in un regno, abbandonalo e creane uno nuovo'
+    success:
+      message: '{$p}Hai fondato {$s}%kingdom%{$p}!'
+      sound: UI_TOAST_CHALLENGE_COMPLETE
+    pacifist: '{$p}Sei un {$p}regno {$s}pacifico'
+    aggressor: '{$p}Sei un  {$p}regno {$e}aggressivo'
+    announce: '{$s}%player% {$p}ha fondato il regno {$s}%kingdom% {$p}!'
+    cost: '{$e}Hai bisogno di {$es}%cost% {$e}monete per creare il regno'
+    confirmation: |
+      {$e}Devi pagare {$es}%cost% {$e}monete per creare un regno.
+      Sei sicuro di voler continuare? Premi il comando di nuovo
+    aliases: new make
+  tag:
+    description: '{$s}Cambia il tag del regno'
+    name-length: '{$e}La lunghezza del tag del regno non puo'' essere maggiore di {$es}%max% {$e}o minore di {$es}%min%'
+    name-english: '{$e}I tag deve contenere solo lettere'
+    name-has-symbols: '{$e}I tag non possono contenere simboli, solo lettere'
+    name-numbers: '{$e}I tag non possono contenere numeri'
+    usage: '{$usage}tag <name>'
+    changed: '{$p}Il tag del tuo regno e'' cambiato da {$s}%tag% {$p}a {$s}%kingdoms_kingdom_tag% {$p}da {$s}%player%'
+    set: '{$p}Il tag del tuo regno e'' stato settato a {$s}%kingdoms_kingdom_tag% {$p}da {$s}%player%'
+    cost: '{$e}Il regno ha bisogno di {$es}%cost% {$e}monete per cambiare il tag'
+  nation:
+    tag:
+      description: '{$s}Cambia il tag del tuo stato, I tag dello stato sono piu'' brevi dei loro nomi e sono solitamente destinati ad essere utilizzati come abbreviazione'
+      usage: '{$usage}tag stato{$p}<tag>'
+      changed: '{$p}Il tag della nazione e'' cambiato da {$s}%tag% {$p}a%kingdoms_nation_tag% {$p}da {$s}%player%'
+      set: '{$p}Il tag della tua nazione e'' stato settato a {$s}%kingdoms_nation_tag% {$p}da {$s}%player%'
+      cost: '{$e}Il tuo stato richiede {$es}%cost% {$e}monete per cambiare il tag'
+    create:
+      description: '{$s}Crea un tuo stato'
+      name-length: '{$e}La lunghezza del nome dello stato non puo'' essere maggiore di  {$es}%max% {$e}or less than {$es}%min%'
+      name-english: '{$e}Il nome delo stato deve contenere solo lettere'
+      name-has-symbols: '{$e}Il nome dello stato non puo'' avere caratteri speciali, solo lettere'
+      name-numbers: '{$e}Il nome dello stato non puo'' tenere numeri'
+      king-only: '{$e}Solo il re del regno puo creare un nuovo stato'
+      name-already-in-use: '{$e}Un altro stato usa gia'' questo nome'
+      usage: '{$usage}stato creato <name>'
+      already-in-nation: '{$e}Sei gia'' in uno stato, lascia il tuo stato scrivendo hover:{{$es}/k nation leave;{$e}Leave;/k nation leave} {$e}per crearne uno nuovo'
+      success:
+        message: '{$p}Hai fondato lo stato di {$s}%nation% {$p}'
+        sound: UI_TOAST_CHALLENGE_COMPLETE
+      announce: '{$s}%player% {$p}ha fondato lo stato di {$s}%nation% {$p}!'
+      cost: '{$e}Hai bisogno di {$es}%cost% {$e}monete per creare uno stato'
+      name: create
+      aliases: new make
+    rename:
+      description: '{$s}Rinomina lo stato'
+      king-only: '{$e}Solo il re della capitale dello stato puo rinominare lo stato'
+      name-english: '{$e}Il nome delo stato deve contenere solo lettere'
+      name-numbers: '&Il nome dello stato non puo'' tenere numeri'
+      name-already-in-use: '{$e}Un altro stato usa gia'' questo nome'
+      cooldown: '{$e}Devi aspettare {$es}%cooldown% {$e}prima di rinominare il tuo stato'
+      usage: '{$usage}stato rinominato in &5<name>'
+      success: '{$p}Il nome dello stato e'' cambiato in {$sep}: {$s}%name%'
+      cost: '{$e}Lo stato richiede {$es}%cost% {$e}nonete per cambiare nome'
+      name: rename
+    bank:
+      description: '{$s}Trasferisci i soldi della banca della tua nazione'
+      usage: '{$usage}Banca dello stato {$p}<deposit/withdraw> <amount>'
+      unknown-transaction: '{$e}Transazione sconosciuta {$es}%transaction%'
+      not-enough:
+        nation-money: '{$e}La banca del tuo stato non ha {$es}%amount% {$e}monete'
+        money: '{$e}Non hai {$es}%amount% {$e}monete'
+      deposit:
+        success: |
+          {$p}Hai depositato {$s}%amount% {$p}monete nella banca del tuo stato
+          Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
+          {$p}Banca dello stato{$sep}: {$s}%kingdoms_fancy_nation_bank%
+        disabled: '{$e}Non puoi depositare soldi'
+      withdraw:
+        disabled: '{$e}Non puoi prelevare monete'
+        success: |
+          {$p}Hai prelevato {$s}%amount% {$p}Monete dalla banca dello stato
+          {$p}Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
+          {$p}Banca dello stato{$sep}: {$s}%kingdoms_fancy_nation_bank%
+      negative: '{$e}Non puoi fare transazioni con numeri negativi...'
+      zero: '{$e}Non puoi fare nessuna transazione'
+      name: bank
+      aliases: money $
+    show:
+      description: '{$s}Mostra informazioni sullo stato'
+      usage: '{$usage}show &9[player | nation | #PLAYER | #NATION] {$p}<player | nation>'
+      others-permission: '{$e}Non hai il permesso di vedere altre informazioni'
+      message-admin: |
+        {$sep}&m---------------=({$e}&l %kingdoms_nation_name% {$sep}&m)=---------------
+
+        &7| {$p}Capitale{$sep}: {$s}%kingdoms_nation:capital get=name%
+        &7| {$p}Spawn{$sep}: {$s}%kingdoms_nation_spawn%
+        &7| {$p}Nexus{$sep}: {$s}%kingdoms_nation_nexus%
+        &7| {$p}Da{$sep}: {$s}%kingdoms_date_nation_since%
+        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_nation_might%
+        &7| {$p}Scudo{$sep}: {$s}%kingdoms_nation_shield_time_left%
+        &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
+        &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+
+        &7| {$p}Kingdoms{$sep}:
+        %kingdoms%
+      message: |
+        {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
+
+        &7| {$p}Re{$sep}: {$s}%king_status%
+        &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
+        &7| {$p}Da{$sep}: {$s}%kingdoms_date_nation_since%
+        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_might%
+        &7| {$p}Scudo{$sep}: {$s}%kingdoms_nation_shield_time_left%
+        &7| {$p}Banca{$sep}: {$s}%kingdoms_fancy_nation_bank%
+        &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+
+        &7| {$p}Regni{$sep}:
+        %kingdoms%
+      allies: |
+        &7| {$p}Alleati{$sep}:
+        {$es}%allies%
+      truces: |
+        &7| {$p}Armistizi{$sep}:
+        %truces%
+      enemies: |
+        &7| {$p}Nemici{$sep}:
+        {$es}%enemies%
+      kingdoms: |
+        hover:{{$s}%kingdoms_kingdom_name%;{$p}Members{$sep}: {$s}%kingdoms_members%
+        {$p}RE{$sep}: {$s}%kingdoms_king%
+        {$p}Terreni{$sep}: {$s}%kingdoms_claims%}
+      relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
+      name: show
+      aliases: info who
+    not:
+      in-nation: '{$e}Nessuna nazione e'' stata trovata con quel nome e ne'' il regno ne'' il giocatore specificato appartiene a una nazione'
+    setspawn:
+      description: '{$s}Setta lo spawn del tuo stato nella tua posizione'
+      not-claimed: '{$e}Puoi settare lo spawn del tuo stato nei territori claimati'
+      others-land: '{$e}Puoi settare lo spawn del tuo stato solo nella capitale'
+      nexus-land: '{$e}Puoi settare l''home del tuo regno solo nei territori nexus'
+      set: '&aSetta spawn dello stato in {$sep}: {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
+      name: setspawn
+      aliases: homeset sethome spawnset
+    unsetspawn:
+      description: '{$s}Rimuovi lo spawn dello stato.'
+      not-set: '{$e}Lo spawn del tuo stato non e'' settato'
+      success: '&aLo spawn del tuo stato e'' stato rimosso {$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+      name: unsetspawn
+      aliases: spawnunset unsethome homeunset
+    spawn:
+      description: '{$s}Teletrasporto allo spawn del tuo stato'
+      already-teleporting: '{$e}Gia'' teletrasportato allo spawn del tuo stato...'
+      cancelled: '{$e}Teletrasporto allo spawn cancellato!'
+      changed: '{$e}La location dello spawn e'' cambiata, teletrasporto cancellato'
+      teleporting: '{$p}Teletrasporto in {$s}%countdown% secondi{$p}... Non muoverti'
+      not-set: '{$e}Il tuo stato non ha uno spawn settato!'
+      success: '{$p}Teletrasportato!'
+      name: spawn
+      aliases: home
+    spawn-not-set-others: 'l''home dello stato {$es}%nation% {$e}non e'' settato'
+    spawn-permission: '{$e}Non hai i permessi per teletrasportarti nella home di altri stati'
+    spawn-not-public: 'La home dello stato{$es}%nation% {$e}non e'' pubblico'
+    spawn-cant-use-public-home: '{$e}Non puoi usare la home pubblica dello stato {$es}%nation% {$e}'
+    spawn-being-invaded: '{$e}Non puoi teletrasportarti alla home di {$es}%nation% {$e}mentre viene invaso'
+    nexus:
+      description: '{$s}Setta il tuo punto nexus del tuo stato'
+      help: |
+        {$p}Right-click on a block to turn it into your new nexus.
+        Per disabilitare la nexus mode fare hover:{{$s}/k nation nexus;{$e}Disable;/k nation nexus} {$p}di nuovo.
+      activated:
+        actionbar: '{$s}Nexus Mode{$sep}: {$p}Activated'
+      deactivated:
+        actionbar: '{$s}Nexus Mode{$sep}: {$e}Deactivated'
+      disabled: '{$e}Nexus mode has been disabled.'
+      open:
+        description: '{$s}Apri la nexus del tuo stato da remoto'
+      open-nexus-permission: '{$e}Non hai il permesso di aprire il nexus da remoto'
+      setting-kingdom: '{$e}Hai gia'' settato la location nexus del tuo regno'
+      outside-of-land: '{$e}Devi essere nella tua terra per posizionare il tuo nexus'
+      not-claimed: '{$e}Puoi settare il nexus del tuo stato solo nella tua terra!'
+      another-structure: '{$e}C''e'' gia'' un''altra struttura del regno in questa terra'
+      disabled-on-damage: '{$e}Sei stato danneggiato, la modalita'' nexus e'' stata disabilitata'
+      disabled-on-land-change: '{$e}Ti sei mosso al di fuori della terra del tuo stato, la modalita'' nexus e'' stata disabilitata'
+      already-there: '{$e}Ecco il tuo nexus, Cosa stai cercando di fare...?'
+      cannot-replace: '{$e}Non puoi sostituire quel blocco con il tuo nexus!'
+      success: '&aNexus piazzato con successo a {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+      name: nexus
+      aliases: setnexus nexusset placenexus nexusplace
+    disband:
+      description: '{$e}La tua nazione e'' stata sciolta, i regni sono stati kikkati'
+      king-only: '{$e}Solo il re della capitale puo sciogliere lo stato'
+      success: '&4Il tuo stato e'' stato sciolto'
+      confirmation: |
+        &4Stai per sciogliere il tuo stato.
+        Ogni membro dello stato e del regno e'' stato kikkato
+        Sei sicuro di voler procedere?
+        Esegui {$es}/k nation disband &4ancora per confermare
+      announce: '{$es}%player% {$s}ha sciolto il suo stato {$es}%kingdoms_nation_name%'
+      name: disband
+      aliases: delete
+    invite:
+      description: '{$s}Inivia un invito al regno per entrare nel tuo stato'
+      usage: '{$usage}Invito dello stato {$p}<kingdom> &9[expiration]'
+      invited: |
+        {$s}%inviter% {$p}ti ha invitato a entrare nello stato {$s}%nation% {$p}
+            hover:{{$p}Accetta con /k nation accept;{$p}Accept;/k nation accept}
+            hover:{{$e}Respingi con /k nation decline;{$e}Decline;/k nation decline}
+      announce: '{$s}%inviter% {$p}e'' stato invitato nello stato di {$s}%kingdom% {$p}'
+      already-joined: 'Il regno {$es}%kingdom% {$e}e gia'' nel tuo stato'
+      already-in-kingdom: '{$e}Il regno e'' gia'' nello stato'
+      already-nation-invited: '{$e}Questo regno e'' gia'' stato invitato nello stato da {$es}%inviter%'
+      max-members: '{$e}Il tuo stato e'' pieno con {$es}%kingdoms_nation_kingdoms% {$e}membri'
+      self: '{$e}Non puoi invitare il tuo stesso regno nello stato'
+      expired: '{$e}L''invito dello stato da {$es}%inviter% {$e}e'' scaduto'
+      kingdom-not-found: '{$es}%kingdom% {$e}regno non trovato'
+      expired-notify: '{$e}L''invito del tuo stato a {$es}%invited% {$e}e'' scaduto'
+      name: invite
+      aliases: inv
+    accept:
+      description: '{$s}Accetta l''invito a entrare nello stato'
+      accepted: '{$p}Hai accettato l''invito di {$s}%inviter% {$p}per entrare nello stato di {$es}%nation% {$p}'
+      joined: '{$s}%kingdom% {$p}e'' entrato nello stato'
+      notify: '{$s}%kingdom% {$p}ha accettato il tuo invito'
+      no-invites: '{$e}Non hai nessun invito per entrare in uno stato'
+      not-invited: '{$e}Non sei invitato ad entrare nello stato di {$es}%nation% {$e}'
+      expired: '{$e}Il tuo invito dello stato di {$es}%nation% {$e}e'' scaduto'
+      max-members: '{$e}Questo stato e'' pieno con {$es}%kingdoms_nation_kingdoms% {$e}membri'
+      no-longer-exists: '{$e}Questo stato non esiste piu'' '
+      multiple-invites: '{$e}Hai piu'' inviti, specificare il nome dello stato in cui si vuole entrare'
+      name: accept
+      aliases: acceptinvite acceptinv acceptinvitation
+    join:
+      description: '{$s}Entra in uno stato che non richiede un invito'
+      usage: '{$usage}Adesione allo stato {$p}<nation>'
+      joined: '{$s}%kingdom% {$p}e'' entrato nel tuo stato'
+      already-in-nation: '{$e}Il tuo regno e'' gia'' in uno stato'
+      requires-invite: '{$e}Devi essere invitato per entrare nello stato di {$es}%nation% {$e}'
+      name: join
+    decline:
+      description: '{$s}Rifiuta l''invito a entrare nello stato'
+      declined: '{$e}Hai rifiutato l''invito di {$s}%inviter% {$e}per entrare nello stato di {$es}%nation% {$e}'
+      notify: '{$es}%name% {$e}ha rifiutato il tuo invito'
+      no-invites: '{$e}Non hai nessun invito da nessun stato'
+      not-invited: '{$e}Il tuo regno non e'' invitato nello stato di {$es}%nation% {$e}'
+      expired: '{$e}Il tuo invito dello stato di {$es}%nation% {$e}e'' scaduto'
+      no-longer-exists: '{$e}Questo stato non esiste piu'' '
+      all: '{$p}Hai declinato un totale di {$s}%invites% {$p}inviti da parte di stati'
+      multiple-invites: '{$e}Hai piu'' inviti, specificare il nome dello stato di cui si vuole declinare l''invito o {$es}* {$e}declinargli tutti'
+      name: decline
+      aliases: deny denied reject
+    top:
+      description: '{$s}Mostra il top stato'
+      loading: '{$s}Caricamento dati...'
+      header: '{$sep}----------------------------------'
+      footer: '     {$sep}[hover:{{$s}←;{$s}Previous Page;/k nation top %previous_page%}{$sep}] {$sep}[hover:{{$s}→;{$s}Next Page;/k nation top %next_page%}{$sep}]'
+      no-more-pages: '{$e}Nessun''altra pagina da caricare'
+      negative: '{$e}Non vengono mostrate pagine negative'
+      entry: |
+        {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Membri{$sep}: {$s}%kingdoms_nation_kingdoms%
+        &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank%} &7- {$s}%kingdoms_fancy_nation_might%
+      name: top
+    kick:
+      description: '{$s}Caccia un regno dallo stato'
+      person: '{$e}Il tuo regno e'' stato cacciato dallo stato di {$es}%nation% {$e}da {$es}%kicker%'
+      usage: '{$usage}E'' stato kikkato {$p}<kingdom> &9[silent]'
+      announce: '{$es}%kingdom% {$e}e'' stato kikkato fuori dallo stato da {$es}%kicker%'
+      self: '{$e}Non puoi kikkare il tuo stesso regno...'
+      not-in-kingdom: '{$e}Il regno specificato non e'' nel tuo stato'
+      cant-kick: '{$e}Non puoi kikkare {$es}%kingdom%{$e}.'
+      name: kick
+    leave:
+      description: '{$s}Il tuo regno sta lasciando lo stato'
+      capital: |
+        {$e}Sei la capitale dello stato non puoi lasciare
+        oppure sciogliere la nazione usando{$es}/k nation disband
+        {$e}o cambiare la capitale usando {$es}/k nation capital
+      announce: '{$es}%kingdoms_kingdom_name% {$e}ha lasciato lo stato'
+      name: leave
+      aliases: left
+    broadcast:
+      description: '{$s}Trasmetti un messaggio a tutti i membri dello stato'
+      usage: '{$usage}Trasmissione statale {$p}<message>'
+      format:
+        message: |
+
+          {$sep}[{$s}%kingdoms_nation_name%&7-{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
+        sound: ENTITY_EXPERIENCE_ORB_PICKUP
+      name: broadcast
+      aliases: bc announce
+    capital:
+      description: '{$s}Imposta la nuova capitale dello stato'
+      only-king: '{$s}Solo il re della capitale ne puo'' impostare una nuova'
+      set: '{$s}%kingdoms_nation:capital get=name% {$p}e'' ora la capitale dello stato'
+      not-in-nation: '{$es}%kingdom% {$e}non e'' nel tuo stato'
+      usage: '{$usage}capitale dello stato {$p}<kingdom>'
+      name: capital
+      aliases: king
+    ally:
+      description: '{$s}Invia una richiesta di alleanza allo stato'
+      usage: '{$usage}Alleati {$p}<nation>'
+      sender: '{$p}Invia una richiesta di alleanza a {$s}%nation%'
+      limit: '{$e}Non puoi allearti a piu'' di {$es}%max% {$e}stati'
+      already: '{$e}Sei gia'' alleato con {$es}%nation%'
+      already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%nation%'
+      self: '{$e}Non puoi allearti con te stesso'
+      receiver: '{$s}%nation% {$p}vuole allearsi con te, accetta con hover:{{$s}/k nation ally %nation%;{$p}Accept;/k nation ally %nation%}'
+      success: |
+        {$p}Il tuo stato e'' alleato con {$s}%nation%
+        {$p}Il tuo regno e'' automaticamente alleato con tutti i regni dello stato
+      another-request: '{$es}%nation% {$e}ti ha inviato una %relation% {$e}richiesta di rapporto di alleanza'
+    truce:
+      description: '{$s}Invia una richiesta di tregua allo stato'
+      usage: '{$usage}tregua dello stato  {$p}<nation>'
+      sender: '{$p}Invia una richiesta di tregua a {$s}%nation%'
+      limit: '{$e}Non puoi concordare piu'' di {$es}%max% {$e}richieste di tregua'
+      already: '{$e}Sei gia'' in tregua con {$es}%nation%'
+      already-requested: '{$e}Hai gia'' inviato una richiesta di tregua a {$es}%nation%'
+      self: '{$e}Non puoi concordare una tregua con il tuo stesso stato'
+      receiver: '{$s}%nation% {$p}desidera concordare una tregua con te, accetta con hover:{{$s}/k nation truce %nation%;{$p}Accept;/k nation truce %nation%}'
+      success: |
+        {$p}Il tuo stato e'' in tregua con {$s}%nation%
+        {$p}Il tuo regno e'' automaticamente in tregua con tutti i regni di questo stato
+      another-request: '{$es}%nation% {$e}ti ha inviato una %relation% {$e}richiesta di rapporto di tregua'
+    enemy:
+      description: '{$s}Stato nemico'
+      usage: '{$usage}Nemico dello stato {$p}<nation>'
+      limit: '{$e}Non puoi avere piu'' di {$es}%max% {$e}stati nemici'
+      already: '{$e}Sei gia'' nemico di {$es}%nation%'
+      self: '{$e}Non puoi farti nemico il tuo stesso stato'
+      success: |
+        {$p}Il tuo stato e'' nemico di {$s}%nation%
+        {$p}Il tuo regno e'' automaticamente nemico di tutti i regni di questo stato
+    revoke:
+      description: '{$s}Sospensione relazioni tra regni'
+      usage: '{$usage}Revoca delle relazioni {$p}<nation>'
+      sender: |
+        {$e}Il tuo stato ha revocato le relazioni con {$es}%nation% {$e}, tutte le tue relazioni con i regni in quello stato sono automaticamente rimosse
+      no-relation: '{$e}Non hai nessuna relazione con {$es}%nation%'
+      self: '{$e}Non puoi intrattenere relazioni con il tuo stesso stato...'
+      receiver: |
+        {$es}%nation% {$e}ha revocato le relazioni con il tuo stato
+        {$e}Tutte le tue relazioni con i regni di questo stato sono state automaticamente rimosse
+    promote:
+      description: '{$s}Promuovi un membro nel tuo regno'
+      promoted: '{$s}%promoted% {$p}e'' stato promosso a &9%rank% {$p}da {$s}%player% {$s}nello stato'
+      not-in-kingdom: '{$es}%promoted% {$e}non e'' nel tuo stato'
+      cant-promote: '{$e}Non puoi promuovere {$es}%promoted%'
+      king: '{$e}Quel giocatore e'' re dello stato'
+      to-be-king: '{$es}%promoted% {$e}ha gia'' il piu'' alto rango nello stato, il re dello stato e'' il re della capitale dello stato'
+      usage: '{$usage}Promozione di stato {$p}<player>'
+      name: promote
+    demote:
+      description: '{$s}Degrada un membro del tuo stato'
+      demoted: '{$es}%demoted% {$e}e'' stato degradato a &9%rank% {$e}da {$es}%player% {$e}nello stato'
+      not-in-kingdom: '{$es}%demoted% {$e}non e'' nel tuo regno'
+      cant-demote: '{$e}Non puoi degradare {$es}%demoted%'
+      member: '{$e}Questo player ha il rango di membro'
+      usage: '{$usage}Degradazione di stato {$p}<player>'
+      name: demote
+    description: '{$s}Mostra tutti i comandi disponibili del tuo stato'
+    name: nation
+    aliases: community civilization civil
+  rename:
+    description: '{$s}Rinomina il tuo regno'
+    king-only: '{$e}Solo il re puo rinominare il regno'
+    name-english: '{$e}Il nome del regno puo contenere solo lettere'
+    name-numbers: '{$e}Il nome del regno non puo contenere numeri'
+    name-already-in-use: '{$e}Un altro regno usa gia'' questo nome'
+    cooldown: '{$e}Devi aspettare {$es}%cooldown% secondi {$e}prima di rinominare'
+    usage: '{$usage}rinomina <name>'
+    success: '{$s}%player% {$p}ha cambiato nome in{$sep}: {$s}%name%'
+    cost: '{$e}La banca del tuo regno ha bisogno di {$es}%cost% {$e}monete per rinominare il regno'
+    name: rename
+  pvp:
+    description: '{$s}Abilita il fuoco amico tra regni'
+    others-permission: '{$e}Non hai il permesso di settare altre modalita'' pvp'
+    on: '{$s}Modalita'' pvp{$sep}: {$p}ON'
+    off: '{$s}Modalita'' pvp{$sep}: {$e}OFF'
+    name: pvp
+    aliases: friendlyfire
+  language:
+    description: '{$s}Setta la lingua del plugin'
+    name: language
+    aliases: lang langs languages
+    usage: '{$usage}bank &9[language]'
+    info: |
+      {$sep}⚫ {$p}Lingua scelta dal regno{$sep}: &9%kingdoms_lang%
+      {$sep}⚫ {$p}Client della lingua rilevato{$sep}: &9%client-locale%
+      {$sep}⚫ {$p}Lista di lingue supportate{$sep}: %langs%
+    supported-entry: '{$s}%lang% {$sep}({$s}%internal-name%{$sep})'
+    unknown-language: '{$e}Lingua sconosciuta{$sep}: {$es}%chosen% &7({$s}il plugin probabilmente non la supporta&7)'
+    already-set: '{$e}La tua lingua e'' gia'' settata a {$es}%chosen%'
+    set: '{$p}Lingua aggiornata{$sep}: &9%old-lang% &7➡ &9%kingdoms_lang%'
+    not-english-warn: '{$sep}[&4&l!{$sep}] {$e}Potresti vedere messaggi non tradotti mentre usi traduzioni in lingue diverse dall''inglese. Questo è normale, ma tieni presente che potresti non riuscire ad accedere a alcune funzioni nelle interfacce grafiche se sono obsolete'
+  tpa:
+    description: '{$s}Teletrasportati istantaneamente dai tuoi membri o invia una richiesta agli alleati per teletrasportarti da loro'
+    usage: '{$usage}tpa {$p}<player>'
+    not-friendly: '{$e}Puoi inviare richieste di teletrasporto solo ai giocatori che hanno entrambi i requisiti {$es}ceasefire {$e}e {$es}turret ceasefire {$e}attributi di relazione con il tuo regno'
+    yourself: '{$p}Successo! Ti sei teletrasportato su te stesso'
+    pending-request: '{$e}Hai gia'' inviato una richiesta di tp a {$es}%previous-request-player%'
+    expired:
+      teleporter: '{$e}La tua richiesta di tp {$es}%target% {$e}e'' scaduta'
+      target: '{$es}%teleporter%{$e} richiesta di teletrasporto e'' scaduta'
+    disabled-world-teleporter: '{$e}Non puoi teletrasportarti da questo mondo'
+    disabled-world-target: '{$es}%target% {$e}non e'' permesso in questo mondo, non puoi teletrasportarti qui'
+    instant-teleporter: '{$p}Ti sei teletrasportato a {$s}%target%'
+    requested:
+      teleporter: '{$p}Invia una richiesta di tp a {$s}%target%'
+      target: |
+        {$s}%teleporter% {$p}ti ha inviato una richiesta di tp
+          {$sep}● {$p}Accetta con {$s}hover:{/k tpaaccept %teleporter%;&7Click to accept;/k tpaaccept %teleporter%}
+          {$sep}● {$e}Refiuta con {$es}hover:{/k tpareject %teleporter%;&7Click to reject;/k tpareject %teleporter%}
+    target-notification: '{$s}%teleporter% {$p}si e'' teletrasportato da te'
+    no-requests: '{$e}Non hai nessuna richiesta di tp'
+    player-didnt-request: '{$e}Non hai nessuna richiesta di tp'
+    multiple-requests: '{$e}Hai piu'' richieste di tp, specifica il nome del player'
+    name: tpa
+  tpaaccept:
+    description: '{$s}accetta la richiesta di teletrasporto dal giocatore'
+    already-teleporting:
+      teleporter: '{$es}%target% {$e}sta cercando di accettare la tua richiesta, ma ti sei gia'' teletrasportato da qualcuno'
+      target: '{$es}%teleporter% {$e}si e'' gia'' teletrasportato da qualcuno'
+    changed-relation: '{$e}Falitto nell''accettare la richiesta per via di un recente cambio di relazioni'
+    usage: '{$usage}tpaaccept &9[player]'
+    requester-offline: '{$es}%requester% {$e}e'' attualmente offline'
+    target-about-to-teleport: '{$s}%teleporter% {$e}sta per teletrasportarsi'
+    teleporter-about-to: '{$s}%target% {$p}ha accettato la tua richiesta, resta dove sei per l''avvio del teletrasporto'
+    target-failed-to-teleport: '{$es}%teleporter% {$e}ha fallito nel teletrasportarsi'
+    teleporter-failed-to-teleport: '{$e}Fallimento nel teletrasportarsi'
+    disabled-world-teleporter: '{$es}%teleporter% {$e}attualmente si trova in un mondo disabilitato e non puo'' teletrasportarsi'
+    disabled-world-teleporter-notify: '{$es}%target% {$e}cerca di accettare la tua tp request, ma sei in un mondo disabilitato'
+    disabled-world-target: '{$e}Sei in un mondo disabilitato e non puoi accettare richieste di tp'
+    teleported-notification: '{$s}%teleporter% {$p}si e'' teletrasportato da te'
+    cancelled: 'La richiesta di teletrasporto di {$es}%teleporter%{$e}e'' stata cancellata'
+    teleporting-target: '{$s}%teleporter% {$p}si teletrasportera'' da te in {$s}%timer% secondi'
+    teleporting-teleporter: '{$s}%target% {$p}ha accettato la tua richiesta di tp, non muoverti finche'' non vieni teletrasportato...'
+  tpareject:
+    description: '{$s}Rifiuta la richiesta di teletrasporto da un giocatore'
+    usage: '{$usage}tpareject &9[player]'
+    rejected: '{$e}Respinta richiesta di teletrasporto da {$es}%teleporter%'
+    rejected-notification: '{$es}%target% {$e}ha respinto la tua richiesta di teletrasporto'
+  glow:
+    description: '{$s}Trova facilmente i membri del tuo regno'
+    enabled: '{$s}Glow mode{$sep}: {$p}Enabled'
+    disabled: '{$s}Glow mode{$sep}: {$e}Disabled'
+  resourcepoints:
+    description: '{$s}Un set di comandi per gestire i punti risorsa'
+    converter:
+      description: '{$s}Apri il convertitore di punti risorsa nel nexus a distanza'
+    deposit:
+      description: '{$s}Prendi punti risorsa usando i tuoi soldi'
+      usage: '{$usage}rp deposito {$p}<resource points>'
+      success: |
+        {$p}Hai depositato con successo {$s}%rp% resource points {$p}nel tuo regno per {$s}$%worth%
+        {$p}Il tuo nuovo bilancio{$sep}: {$s}$%balance%
+    withdraw:
+      description: '{$s}Prendi soldi tramite i punti risorsa del tuo regno'
+      usage: '{$usage}rp prelievo {$p}<resource points>'
+      min: '{$e}Devi ritirare almeno {$es}%min% punti risorsa{$e}.'
+      success: |
+        {$p}Hai ritirato con successo {$s}%rp% {$p}resource points from your kingdom for {$s}$%worth%
+        {$p}Il tuo nuovo bilancio{$sep}: {$s}$%balance%
+        {$p}I punti risorsa del tuo regno{$sep}: {$s}%kingdoms_fancy_resource_points%
+    transfer:
+      description: '{$s}Trasfermimento punti risorsa dal tuo stato/regno al tuo stato/regno'
+      kingdom:
+        description: '{$s}Trasferisci punti risorsa dal tuo stato al regno'
+        usage: '{$usage}trasfermimento rp al regno {$p}<resource points>'
+      nation:
+        description: '{$s}Trasferimento punti risorsa dal tuo regno al tuo stato'
+        usage: '{$usage}trasfermimento rp allo stato {$p}<resource points>'
+      usage: '{$usage}rp transferimento {$p}<kingdom | nation> <resource points>'
+      success:
+        kingdom: |
+          {$p}Hai trasferito con successo {$s}%amount% {$p}punti risorsa dal tuo stato al regno.
+          Punti risorsa del regno{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+        nation: |
+          {$p}Hai trasferito con successo {$s}%amount% {$p}Punti risorsa dal tuo regno al tuo stato
+          Punti risorsa dello stato{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+    not-enough:
+      resource-points: '{$e}Il tuo regno non ha {$es}%rp% {$e}punti risorsa'
+      nation-resource-points: '{$e}Il tuo stato non ha {$es}%rp% {$e}punti risorsa'
+      money: '{$es}%rp% punti risorsa {$e}necessari {$es}$%worth%{$e}, ma hai solo {$es}$%balance%'
+    negative: '{$e}Non puoi effettuare una transazione di punti risorsa negativa...'
+    zero: '{$e}Non puoi effettuare nessuna transazione'
+    aliases: rp resourcepoint
+  bank:
+    description: '{$s}Deposita o preleva soldi dalla banca del tuo regno'
+    usage: '{$usage}banca {$p}<deposit/withdraw> <amount>'
+    unknown-transaction: '{$e}Transazione sconosciuta {$es}%transaction%'
+    negative: '{$e}Non puoi effettuare transazioni con importi negativi...'
+    zero: '{$e}Non puoi effettuare nessuna transazione'
+    not-enough:
+      kingdom-money: '{$e}La banca del tuo regno non ha {$es}%amount% {$e}monete'
+      money: '{$e}Non hai {$es}%amount% {$e}monete'
+    deposit:
+      limit: '{$e}La banca del tuo regno e'' piena, il limite e'' {$es}%limit%'
+      success: |
+        {$p}Hai depositato {$s}%amount% {$p}monete nella banca del regno
+        Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
+        {$p}La banca del regno{$sep}: {$s}%kingdoms_fancy_bank%
+      disabled: '{$e}Non puoi depositare soldi'
+      min: '{$e}Puoi effettuare un deposito minimo di {$es}$%min%'
+    withdraw:
+      min: '{$e}Puoi effettuare un prelievo minimo di {$es}$%min%'
+      disabled: '{$e}Non puoi prelevare soldi'
+      success: |
+        {$p}Hai prelevato {$s}%amount% {$p}monete dalla banca del regno
+        il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
+        {$p}La banca del regno{$sep}: {$s}%kingdoms_fancy_bank%
+    aliases: money $
+  show:
+    description: '{$s}Mostra informazioni sul regno'
+    usage: '&4Usage: {$es}/k show &9[player | kingdom | #PLAYER] {$p}<player | kingdom>'
+    others-permission: '{$e}Non hai il permesso di vedere altre info'
+    message-admin: |
+      {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
+
+      &7| {$p}Re{$sep}: {$s}%king_status%
+      &7| {$p}Home{$sep}: {$s}%kingdoms_kingdom_home%
+      &7| {$p}Nexus{$sep}: {$s}%kingdoms_nexus%
+      &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
+      &7| {$p}Potere{$sep}: {$s}%kingdoms_fancy_might%
+      &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
+      &7| {$p}Terreni{$sep}: {$s}%kingdoms_fancy_claims%{$sep}/{$s}%kingdoms_fancy_max_claims%
+      &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_resource_points%
+      &7| {$p}Scudo{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Fondato{$sep}: {$s}%kingdoms_date_since%
+      &7| {$p}Membri{$sep}: {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
+      %members%
+    message: |
+      {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
+
+      &7| {$p}Re{$sep}: {$s}%king_status%
+      &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
+      &7| {$p}Potere{$sep}: {$s}%kingdoms_might%
+      &7| {$p}Fondato{$sep}: {$s}%kingdoms_date_since%
+      &7| {$p}Scudo{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Terreni{$sep}: {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
+      &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_bank%
+      &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_resource_points%
+
+      &7| {$p}Membri{$sep}:
+      %members%
+    allies: |
+      &7| {$p}Alleati{$sep}:
+      {$es}%allies%
+    truces: |
+      &7| {$p}Tregue{$sep}:
+      %truces%
+    enemies: |
+      &7| {$p}Nemici{$sep}:
+      {$es}%enemies%
+    online-prefix: |
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Joined{$sep}: {$s}%kingdoms_date_joined%
+      {$p}Donazioni{$sep}: {$s}%kingdoms_total_donations%
+      {$p}Ultima donazione{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Rango{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
+    offline-prefix: |
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Joined{$sep}: {$s}%kingdoms_date_joined%
+      {$p}Donazioni{$sep}: {$s}%kingdoms_total_donations%
+      {$p}Ultima donazione{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Rango{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
+    relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
+    aliases: info who list
+  claim:
+    description: '{$s}Claima il terreno in cui ti trovi attualmente'
+    chunk:
+      usage: '{$usage}claim [x] <z>'
+      permission: '{$e}Non hai il permesso di claimare terreni con chunk coordinates.'
+      max-distance: '{$e}Stai cercando di claimare un terreno che e'' troppo distante{$sep}: {$es}%distance% &7> {$es}%max%'
+    disabled-world: '{$e}Claiming e'' disabilitata in questo mondo {$s}%world%'
+    in-region: '{$e}Non puoi claimare un terreno in una regione protetta'
+    near-region: '{$e}Non puoi claimare un terreno vicino a una regione protetta'
+    not-connected: '{$e}YIl terreno dev''essere connesso agli altri terreni del tuo regno'
+    not-distanced: '{$e}Un altro regno ha claimato i terreni attorno al territorio che stai cercando di claimare'
+    nation-zone: '{$e}Questo terreno e'' parte del territorio dello stato di{$es}%nation%{$e}e non puo essere claimato'
+    success: '{$p}Claimato {$s}%x%&7, {$s}%z% {$p}come terreno del regno'
+    list:
+      description: '{$s}Un elenco di tutti i claim che un regno ha. Per uno spaziamento accurato delle colonne, considera il download di un pacchetto di risorse con font a spaziatura fissa '
+      no-claims: '{$e}Nessun claim da mostrare'
+      teleport-description: |
+        &7| {$p}Structures{$sep}: {$s}%structures%
+        &7| {$p}Turrets{$sep}: {$s}%turrets%
+      teleport-admin-description: |
+        &7| {$p}Structures{$sep}: {$s}%structures%
+        &7| {$p}Turrets{$sep}: {$s}%turrets%
+
+        &7Clicca per teletrasportarti
+        al centro del territorio.
+    fill:
+      description: |
+        {$p}Rivendica tutte le terre all''interno di una forma segnata dai claim. Ad esempio, se rivendichi un confine a forma di quadrato (Invece di usare {$e}/k claim square{$p}, se si vuole claimare solo il perimetro del quadrato), Sarai in grado di rivendicare l''area (in senso matematico) del quadrato stando all''interno (in qualsiasi terra non rivendicata all''interno) e utilizzandolo. 
+        Ovviamente questo e'' inutile per un quadrato, ma funziona anche per forme arbitrarie
+        Questo comando considera tutti i terreni claimati e confini, significa che se si vuole occupare una terra accanto ad un''area CLAIMATA da un altro regno, e'' possibile semplicemente claimare i 3 lati adiacenti al quarto lato che appartiene all''altro regno.
+      in-claimed-land: '{$e}Impossibile riempire, perche'' la terra su cui ti trovi e'' gia'' stata claimata'
+      max-iterations: '{$e}Raggiunto il ciclo massimo di iterazioni di riempimento. La tua forma e'' troppo grande per essere riempita o non e'' completamente circondata da claim'
+      max-claims: '{$e}Processo di riempimento interrotto poiché non e'' possibile claimare piu'' di {$es}%lands% {$e}terreni. La tua forma e'' probabilmente piu'' grande del riempimento, o non completamente circondata da claim'
+      done: '{$p}Fai hover:{{$s}/k claim confirm;{$p}Esegui;/k claim confirm} {$p}per claimare i terreni'
+    exceeded-max: '{$e}Non puoi claimare piu'' di {$es}%max% {$e}terreni'
+    already-owned: '{$e}Il tuo regno ha gia'' preso questo terreno'
+    occupied-land: '{$e}Questo terreno e'' gia'' occupato da un regno! Invadilo con {$es}/k invade!'
+    cant-overclaim: '{$e}Non puoi overclaimare questo regno'
+    max-claims-player: '{$e}Con il tuo rango puoi claimare solo {$es}%limit% {$e}terreni'
+    no-claims-player: '{$e}Il tuo rango non ti permette di claimare terreni'
+    max-claims: '{$e}Il tuo regno puo claimare solo {$s}%limit% {$e}terreni. {$e}Due modi per aumentare questo limite sono di avere piu'' membri o di aggiornare l''upgrade vario di rivendicazioni massime dal tuo nexus'
+    square:
+      description: '{$p}Claima un quadrato con un raggio specifico attorno a te'
+      usage: '{$usage}quadrato claimato {$p}<radius>'
+      radius:
+        invalid: '{$e}Il raggio del quadrato specificato non e'' valido{$sep}: {$es}%radius%'
+        disallowed: '{$e}Il raggio specifico del quadrato dev''essere meno {$es}2 {$e}e di piu'' {$es}%max% {$e}got{$sep}: {$es}%radius%'
+      done: '{$p}Fai hover:{{$s}/k claim confirm;{$p}Execute;/k claim confirm} {$p}per claimare un terreno'
+    auto:
+      description: '{$p}Automatically claim lands as you walk.'
+      usage: '{$usage}claim auto &9[player]'
+      permission: '{$e}Non hai il permesso di settare altri auto-claim'
+      on: '{$s}Auto claim e'' ora &aON{$s}, puoi claimare tutti i terreni su cui cammini'
+      off: '{$s}Auto claim e'' ora {$e}OFF{$s}.'
+    need-rp: '{$e}Hai bisogno di {$es}%fancy_rp% {$e}punti risorsa per claimare il terreno'
+    confirmation: |
+      {$e}Il tuo regno ha pagato {$es}%fancy_rp% {$e}punti risorsa e {$es}%fancy_money% {$e}monete
+      Sei sicuro di voler continuare? Eseguire il comando ancora
+    need-money: '{$e}Il tuo regno ha bisogno di {$es}%fancy_money% {$e}monete per claimare il terreno! Deposita monete nella banca del regno usando {$es}/k bank deposit'
+    disallowed-biome: |
+      {$e}Non puoi claimare nel bioma {$es}%biome% {$e}
+      Si noti che di solito l''intero chunk deve essere composto da questo tipo di bioma
+    line:
+      description: '{$p}Claima una linea dritta in una direzione. Se non c''e'' una direzione specificata, verra'' presa quella in cui guarda il giocatore'
+      usage: '{$usage}linea claimata {$s}[distance]'
+      invalid-direction: '{$e}Direzione non valida{$sep}: {$es}%direction%'
+      max-distance: '{$e}La distanza massima di claim e'' {$es}%max%'
+      min-distance: '{$e}La distanza minima di claim e'' {$es}%min%'
+      done: |
+        {$p}Claimato terreno {$s}%lands% {$p}in direzione {$s}%direction% {$p}
+        Digita hover:{{$s}/k claim confirm;{$p}Esegui;/k claim confirm} {$p}per claimare il terreno
+    clipboard:
+      description: '{$s}Modifica la tua selezione del claim prima di continuare'
+      usage: '{$usage}claim clipboard [add/remove | clear] <x> <z>'
+      different-world: '{$e}La tua clipboard appartiene al mondo{$sep}: {$es}%world%'
+      unknown-action: '{$e}Azione clipboard sconosciuta{$sep}: {$es}%action%'
+      empty: '{$e}Non hai niente nella clipboard'
+      added: '{$p}Aggiunto {$s}%x%&7, {$s}%z% {$p}alla clipboard.'
+      already-added: '{$es}%x%&7, {$es}%z% {$e}was already in the clipboard.'
+      removed: '{$p}Removed {$s}%x%&7, {$s}%z% {$p}from the clipboard.'
+      not-foumd: '{$es}%x%&7, {$es}%z% {$e}was not in the clipboard.'
+      cleared: '{$p}La tua clipboard e'' stata ripulita con successo'
+      cost: '{$p}Claimare questa terra ti costera'' {$s}%rp% punti risorsa {$p}e {$s}$%money% monete'
+    confirm:
+      description: '{$s}Conferma e claima tutti i territori sulla tua claim clipboard'
+      empty: '{$e}Non hai niente nella tua clipboard'
+      fail: |
+        {$e}Non puoi claimare {$es}%x%&7, {$es}%z% {$e}per via di recenti cambiamenti{$sep}:
+            {$e}%error%
+      success: '{$p}Terreno claimato con successo'
+    corner:
+      description: '{$s}Setta due posizioni come angoli e claima tutto il rettangolo'
+      usage: '{$usage}claim angolo &9[pos1 &7| &9pos2]'
+      set:
+        pos1: '{$p}Il primo angolo posizionato e'' stato settato nel chunk{$sep}: {$s}%chunkX1%&7, {$s}%chunkZ1%'
+        pos2: '{$p}Il secondo angolo posizionato e'' stato settato nel chunk{$sep}: {$s}%chunkX2%&7, {$s}%chunkZ2%'
+    name: claim
+  unclaim:
+    auto:
+      description: '{$p}Claima automaticamente terreni mentre si cammina'
+      usage: '{$usage}unclaim automatico &9[player]'
+      on: '{$s}Auto claim e'' ora &aON{$s}, stai claimando terreni mentre cammini'
+      off: '{$s}Auto claim e'' ora {$e}OFF{$s}'
+    line:
+      description: '{$p}Uclaima la proprieta'' su una linea retta in una direzione. Se non c''e'' una direzione specificata, sara'' presa la direzione in cui guarda il player'
+      usage: '{$usage}linea unclaim {$s}[distance]'
+      done: |
+        {$p}Unclaimato {$s}%lands% {$p}terreni in direzione {$s}%direction% {$p}
+        fai hover:{{$s}/k unclaim confirm;{$p}esegui;/k unclaim confirm} {$p}Per unclaimare terreni
+    description: '{$s}Unclaima il terreno in cui stai attualmente'
+    success: '{$p}Unclaima terreni a {$s}%x%&7, {$s}%z%'
+    disconnection: '{$e}Rinunciare a quella terra disconnettera'' le terre nella posizione che si sta cercando di unclaimare.'
+    not-claimed: '{$e}Questo terreno non e'' claimato'
+    cooldown: '{$e}Puoi unclaimare il terreno in {$es}%time%'
+    cannot-remove-nexus: |
+      {$e}Non e' possibile unclaimare un terreno su cui e'' presente un nexus.
+      Rilocare il nexus usando hover:{{$es}/k nexus;&4Clicca per abilitare;/k nexus} {$e}command.
+    occupied-land: '{$e}Questo terreno e'' occupato da un altro regno! Invadilo usando {$es}/k invade!'
+    confirmation:
+      turrets: '{$e}Questo terreno contiene torrette, se sei sicuro di volerlo unclaimare usa {$es}/k unclaim confirm'
+      structures: '{$e}Questo terreno contiene strutture, se vuoi unclaimarlo fai {$es}/k unclaim confirm'
+      home: '{$e}Questo terreno contiene la home del regno, se sei sicuro di unclaimarlo fai {$es}/k unclaim confirm'
+    all:
+      description: '{$s}Unclaima tutti i territori del regno'
+      success: '{$p}Unclaima un terreno di {$s}%lands% {$p}terreni!'
+      not-enough-resourcepoints: '{$e}Hai bisogno di {$es}%rp% {$e}punti risorsa per unclaimare tutti i terreni'
+      confirm: |
+        {$e}Stai per unclaimare {$es}&l%lands%{$e}.
+        Tutte le torrette e strutture sono state unclaimate e le chest sono senza protezione.
+        Se vuoi continuare esegui nuovamente il commando.
+      announce: '{$s}%player% {$p}ha unclaimato un totale di {$s}%lands% {$p}terreni!'
+    name: unclaim
+  shield:
+    description: '{$s}Disattiva il tuo scudo'
+    no-shield: '{$e}Il tuo regno non ha uno scudo attivo'
+    confirm: |
+      {$e}Se disattivi lo scudo, devi comprarne uno nuovo.
+      Tempo dello scudo rimasto{$sep}: {$es}%kingdoms_time_shield_time_left%
+      {$e}Per continuare usa il comando hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}per confermare.
+    deactivated: '{$es}%executor% {$e}ha disattivato lo scudo corrente che aveva un tempo rimanente di {$es}%kingdoms_time_shield_time_left% {$e}'
+  sethome:
+    description: '{$s}Setta la home del tuo regno alla tua posizione corrente'
+    not-claimed: '{$e}Puoi settare l''home del tuo regno solo nei terreni claimati'
+    others-land: '{$e}Puoi settare la home del tuo regno solo nei terreni di tua proprieta'' '
+    nexus-land: '{$e}Puoi settare l''home del tuo regno solo nei terreni nexus!'
+    set: '&aSetta l''home del regno a{$sep}: {$s}%x%&7, {$s}%z%'
+    aliases: homeset
+  unsethome:
+    description: '{$s}Rimuovi l''home del tuo regno'
+    not-set: '{$e}Il tuo regno non ha un''home settata'
+    success: '&aLa kingdom home e'' stata rimossa{$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+    aliases: homeunset
+  mail:
+    description: '{$s}Comandi relativi alla posta'
+    reply:
+      description: '{$s}Rispondi al messaggio, questo comando non viene usato direttamente dai giocatori'
+      usage: '{$usage}rispondi alla mail {$p}<id>'
+    open:
+      description: '{$s}Apri la posta da remoto, questo comando non viene usato direttamente dai giocatori'
+      usage: '{$usage}apri la posta {$p}<id>'
+    invalid:
+      id: '{$e}L''ID inserito nel messaggio non e'' valido'
+    not:
+      found: '{$e}Nessun messaggio esistente con quell''ID, probabilmente e'' stato cancellato'
+      yours: '{$e}Questo messaggio non appartiene al tuo regno'
+  not-intended-for-direct-use: '{$e}Questo comando non viene usato direttamente dai giocatori, quindi a meno che tu non stia vedendo questo senza aver eseguito il comando tu stesso, si tratta di un bug'
+  home:
+    description: '{$s}Teletrasporta l''home del tuo regno'
+    usage: '{$usage}home {$s}[kingdom]'
+    changed: '{$e}L''home del regno e'' cambiata, il teletrasporto e'' stato cambiato'
+    teleporting: '{$p}Teletrasporto in {$s}%countdown% secondi{$p}... Non muoverti'
+    not-set: '{$e}Il tuo regno non ha un''home settata!'
+    not-set-others: 'La home del regno {$es}%kingdom% {$e}non e'' settata'
+    permission: '{$e}Non hai il permesso per teletrasportarti nelle home di altri regni'
+    not-public: 'La home del regno {$es}%kingdom% {$e}non e'' pubblica'
+    cant-use-public-home: '{$e}Non puoi usare la home pubblica del regno {$es}%kingdom% {$e}'
+    being-invaded: '{$e}Non puoi teletrasportarti alla home del regno {$es}%kingdom% {$e}durante l''invasione'
+    success: '{$p}Teletrasporto!'
+    aliases: spawn
+  nexus:
+    description: '{$s}Setta il nexus point'
+    open:
+      description: '{$s}Apri il nexus del regno direttamente'
+    remove:
+      description: '{$s}Rimuovi il tuo nexus direttamente'
+      permission: '{$e}Non hai il permesso per rimuovere il nexus.'
+      invasion: '{$e}Non puoi rimuovere il nexus durante l''invasione del terreno'
+      not-placed: '{$e}Il nexus del tuo regno non e'' settato'
+      removed: '{$e}Rimosso con successo il nexus del tuo regno'
+    help: |
+      {$p}Clicca col tasto destro del mouse il blocco per farlo diventare nexus.
+      Per disabilitare la modalita'' nexus esegui hover:{{$s}/k nexus;{$e}Disable;/k nexus} {$p}ancora.
+    activated:
+      actionbar: '{$s}Modalita'' nexus{$sep}: {$p}Attivata'
+    deactivated:
+      actionbar: '{$s}Modalita'' nexus{$sep}: {$e}Disattivata'
+    disabled: '{$e}La modalita'' nexus e'' stata disattivata'
+    disabled-world: '{$e}Non si puo'' settare la nexus in un mondo disabilitato'
+    setting-nation: '{$e}Hai gia'' settato la posizione nexus del tuo stato'
+    outside-of-land: '{$e}Devi essere nel tuo terreno per settare il nexus'
+    invasion: '{$e}Non puoi spostare il nexus mentre il tuo terreno viene invaso'
+    not-claimed: '{$e}Puoi settare il nexus del tuo regno nei tuoi terreni!'
+    another-structure: '{$e}C''e'' gia'' una strutture nexus nel terreno del tuo stato'
+    disabled-on-damage: '{$e}Sei stato danneggiato e la modalita'' nexus e'' stata disabilitata'
+    disabled-on-land-change: '{$e}Sei uscito dal terreno del regno la modalita'' nexus e'' stata disabilitata'
+    already-there: '{$e}C''e'' il tuo nexus qui, cosa stai cercando di fare...?'
+    cannot-replace: '{$e}Non puoi rimpiazzare questo blocco con il nexus!'
+    success: '&aPiazzatto con successo il nexus a {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+    aliases: setnexus nexusset placenexus nexusplace
+  disband:
+    description: '{$e}Sciogli il regno e kikka tutti i membri'
+    king-only: '{$e}Solo il re puo'' sciogliere il regno'
+    success: '&4Il tuo regno e'' stato sciolto!'
+    confirmation: |
+      &4Stai per sciogliere il tuo regno.
+      Tutti i membri saranno kikkati e
+      i tuoi terreni saranno unclaimati.
+      Sei sicuro di procedere?
+      Fai {$es}/k disband &4ancora per confermare.
+    announce: '{$es}%player% {$s}ha sciolto il suo regno {$es}%kingdoms_kingdom_name%'
+    aliases: delete dissolve
+  about:
+    description: '{$s}About the Kingdoms plugin.'
+    aliases: version ver -v --version
+  book:
+    description: '{$s}Un piccolo manuale per il tuo regno'
+    chapter-not-found: '{$e}Capitolo non trovato{$sep}: {$es}%chapter%'
+    permission: '{$e}Non hai il permesso per modificare il manuale'
+    rename:
+      description: '{$s}Rinomina un capitolo del manuale del tuo regno'
+      usage: '{$usage}Manuale rinominato {$p}<chapter> <name>'
+      same: '{$e}Questo capitolo ha gia'' lo stesso nome'
+      duplicate: '{$e}C''e'' un altro capitolo con il nome {$es}%chapter%'
+      renamed: '{$p}Rinominato con successo da {$s}%old_chapter% {$p}a {$s}%new_chapter%'
+    open:
+      description: '{$s}Leggi il manuale del tuo regno'
+      usage: '{$usage}manuale aperto a &9[chapter]'
+    preview:
+      description: '{$s}Anteprima della versione formattata del capitolo che stai modificando'
+      nothing-to-preview: '{$e}Non stai modificando nessun capitolo da visualizzare in anteprima'
+      previewing: '{$p}Stai ora visualizzando un''anteprima della versione formattata del capitolo{$sep}: {$s}%chapter%'
+    discard:
+      description: '{$s}Annulla tutte le modifiche al capitolo'
+      nothing-to-discard: '{$e}Non hai nessuna modifica da annullare'
+      discarded: '{$p}Tutte le modifiche effettuate a {$s}%chapter% {$p}sono state annullate'
+    remove:
+      description: '{$s}Rimuovi un capitolo dal manuale del tuo regno'
+      usage: '{$usage}rimosso dal libro {$p}<chapter>'
+      deleted: '{$p}rimosso con successo il capitolo{$sep}: {$s}%chapter%'
+    edit:
+      description: '{$s}Modifica il manuale del regno'
+      usage: '{$usage}modifica il manuale {$p}<chapter>'
+      already-editing: '{$e}Stai gia'' modificando il capitolo {$es}%chapter%'
+      changed: '{$p}Cambiato'
+      create: '{$p}Questo capitolo non esiste piu'', creazione di un nuovo capitolo... Esegui hover:{{$s}/k book cancel;/k book cancel;/k book cancel} {$p}per cancellare'
+      create-limit: '{$e}Il tuo regno non puo'' avere piu'' di {$es}%limit% {$e}capitoli'
+      create-max-length: '{$e}Il titolo del capitolo deve avere massimo {$es}%max% {$e}caratteri'
+      modify: |
+        {$p}Stai modificando il capitolo{$sep}: {$s}%chapter%
+        {$p}Fai hover:{{$s}/k book discard;/k book discard;/k book discard} {$p}per annulare le modifiche.
+    aliases: rules rule handbook notes note
+  sneak:
+    description: '{$s}La tua relazione di alleanza con un altro giocatore non disabilitera'' la sua fly'
+    others-permission: '{$e}Non hai permessi per abilitare altre modalita'' sneak'
+    enabled: '{$s}Modalita'' sneak{$sep}: {$p}Attivata'
+    disabled: '{$s}Modalita'' sneak{$sep}: {$e}Disattivata'
+    aliases: silent stealth
+  inventory:
+    description: '{$s}Vedi l''inventario di altri membri del tuo regno'
+    usage: '{$usage}Visualizza inventario &9[player]'
+    not-in-kingdom: '{$es}%target% {$e}non e'' nel tuo regno'
+    permission: '{$e}Non hai il permesso di usare questo comando nel tuo regno'
+    aliases: inv invsee
+  vault:
+    description: '{$s}Apri la chest del tuo regno da remoto'
+    others-permission: '{$e}Non hai il permesso per accedere ad altre chest del tuo regno'
+    aliases: storage
+  invite:
+    invited: |
+      {$s}%inviter% {$p}ti ha invitato ad entrare nel suo regno {$s}%kingdom%{$p}.
+          hover:{{$p}Accetta con /k accept;{$p}Accept;/k accept}
+          hover:{{$e}Rifiuta con /k decline;{$e}Decline;/k decline}
+    usage: '{$usage}invita {$p}<player> <kingdom>'
+    announce: '{$s}%inviter% {$p}ha invitato {$s}%invited% {$p}nel regno'
+    already-joined: '{$es}%invited% {$e}e'' gia'' nel tuo regno'
+    description: '{$s}Invia un invito al giocatore per entrare nel tuo regno'
+    already-in-kingdom: '{$e}Quel giocatore e'' gia'' in un altro regno'
+    already-invited: '{$e}Questo giocatore e'' gia'' stato invitato dal regno di {$es}%inviter%'
+    max-members: '{$e}Il tuo regno e'' gia'' pieno con {$es}%kingdoms_members% {$e}membri'
+    self: '{$e}Prima devi consultare gli dei antichi prima di invitare te stesso'
+    expired: '{$e}Il tuo invito da {$es}%inviter% {$e}e'' scaduto!'
+    expired-notify: '{$e}Il tuo invito a {$es}%invited% {$e}e'' scaduto!'
+    name: invite
+  invitecodes:
+    description: '{$s}Il codice d''invito e'' un''alternativa per invitare giocatori nel tuo regno, e'' simile ai codici invito di Discord e ti consente di creare codici che qualsiasi giocatore puo'' usare per unirsi al tuo regno. Solo giocatori con il permesso {$p}INVITE {$s}puo'' crearlo, riscattare e cancellare codici d''invito'
+    permission:
+      redeem: '{$e}Non hai il permessoper riscattare codici d''invito'
+      delete: '{$e}Non ha il permesso per cancellare codici d''invito'
+      get: '{$e}Non hai il permesso di ottenere i codici invito'
+      create: '{$e}Non hai il permesso di creare codici d''invito'
+    paper:
+      cost: '{$e}Hai bisogno di {$es}%fancy_invitecode-paper-cost% punti risorsa {$e}per generare codici d''invito'
+      give: '{$p}Compra un codice d''invito con {$s}%fancy_invitecode-paper-cost% punti risorsa'
+    max: '{$e}Il regno puo'' fare solo {$es}%invitecodes-max% {$e}codici d''invito'
+    duration:
+      enter: '{$p}Inserire il periodo di validita'' del codice d''invito {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
+      out:
+        of-range: '{$e}La durata di validita'' del codice d''invito dev''essere minimo di {$es}%duration-min%'
+    uses:
+      out:
+        of-range: '{$e}La durata di validita'' del codice d''invito dev''essere massimo di {$es}%uses-min%'
+      enter: '{$p}Inserire il numero d''usi dei codici d''invito, cio'' limita il numero di giocatori che possono utilizzare questo codice prima che diventi inutilizzabile. Settalo a {$s}0 {$p}per un uso illimitato {$cancel}'
+    redeem:
+      enter: '{$p}Inserire la nuova durata del codice per riscattarlo {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
+    deleted-all: '{$p}Cancella tutti i codici d''inviti'
+    aliases: invitescode codeinvite codesinvite codesinvites
+  accept:
+    description: '{$s}Accetta l''invito per entrare nel regno'
+    already-in-kingdom: '{$p}Sei gia'' in un regno'
+    accepted: '{$p}Hai accettato l''invito {$s}%inviter% {$p}per entrare in {$es}%kingdom%'
+    joined: '{$s}%player% {$p}e'' entrato nel regno'
+    notify: '{$s}%name% {$p}ha accettato l''invito'
+    no-invites: '{$e}Non hai nessun''invito'
+    not-invited: '{$e}Non sei stato invitato da {$es}%kingdom%'
+    expired: '{$e}Il tuo invito da {$es}%kingdom% {$e}e'' scaduto'
+    max-members: '{$e}Questo regno e'' gia'' pieno, con {$es}%kingdoms_members% {$e}membri'
+    no-longer-exists: '{$e}Il tuo regno non esiste piu'' '
+    multiple-invites: '{$e}Hai molti inviti, specifica il nome del regno in cui vuoi entrare. Puoi vedere tutti gli inviti usando il comando {$es}hover:{/k invites;{$s}Click to run;/k invites} {$e}'
+    name: accept
+    aliases: acceptinvite acceptinv acceptinvitation
+  join:
+    description: '{$s}Entra in un regno che non richiede l''invito'
+    usage: '{$usage}entra {$p}<kingdom>'
+    joined: '{$s}%player% {$p}e'' entrato nel regno'
+    already-in-kingdom: '{$e}Sei gia'' in un regno'
+    elections: '{$e}Non puoi entrare in un regno durante le elezioni'
+    requires-invite: '{$e}Devi essere invitato per entrare {$es}%kingdom%'
+    name: join
+  requestjoin:
+    description: '{$s}Richiedi ad un regno di entrare'
+    usage: '{$usage}richiesta entrata {$p}<kingdom>'
+    already-sent: '{$e}Hai gia'' inviato una richiesta a questo regno'
+    sent: '{$p}Invia una richiesta d''entrata al regno {$s}%kingdoms_kingdom_name% {$p}'
+    sent-announce: '{$s}%player% {$p}desidera entrare nel tuo regno, puoi accettare la richiesta da {$s}hover:{/k joinrequests;&7Click to run;/k joinrequests}'
+  joinrequests:
+    description: '{$s}Mostra tutte le richieste dei giocatori che vogliono entrare nel tuo regno'
+    accepted-player: '{$s}%player% {$p}ha accettato la richiesta d''entrata nel regno'
+    accepted-self: '{$p}Hai accettato la richiesta di {$s}%player% {$p}entrare in {$s}%kingdoms_kingdom_name%'
+    denied-player: '{$es}%player% {$e}ha rifiutato la richiesta di entrare in {$es}%kingdoms_kingdom_name%'
+    denied-self: '{$e}Hai rifiutato la richiesta di {$es}%player% {$e}di entrare nel regno'
+  decline:
+    description: '{$s}Rifiuta gli inviti di entrare nel regno'
+    declined: '{$e}Hai rifiutato l''invito di {$s}%inviter% {$e}di entrare in {$es}%kingdom%'
+    notify: '{$es}%name% {$e}ha rifiutato il tuo invito'
+    no-invites: '{$e}Non hai nessun invito'
+    not-invited: '{$e}Non sei invitato da {$es}%kingdom%'
+    expired: '{$e}Il tuo invito da {$es}%kingdom% {$e}e'' scaduto'
+    no-longer-exists: '{$e}Quel regno non esiste piu'' '
+    all: '{$p}Rifiutati un totale di {$s}%invites% {$p}inviti'
+    multiple-invites: |
+      {$e}Hai tanti inviti, specifica il nome del regno di cui vuoi rifiutare l''invito o {$es}* {$e}rifiuta tutti gli inviti.
+      Puoi anche visualizzare gli inviti con il comando {$es}hover:{/k invites;{$s}Click to run;/k invites} {$e}.
+    aliases: deny denied reject
+  invites:
+    description: '{$s}Visualizza tutti gli inviti'
+    no-invites: '{$e}Non hai inviti'
+    name: invites
+  teleport:
+    description: '{$s}Teletrasportati alla posizione dove il tuo regno sta subendo l''invasione'
+    not-invading: '{$e}Non ci sono terreni sotto attacco'
+    already-teleporting: '{$e}Gia'' teletrasportato alla home...'
+    teleporting: '{$p}Teletrasporto in {$s}%countdown% secondi{$p}... Non muoverti'
+    teleported: '{$p}Sei gia stato teletrasportato dove l''invasione e'' iniziata'
+    cancelled: '{$e}Il teletrasporto e'' stato cancellato!'
+    name: teleport
+    aliases: tp teleportation
+  gui:
+    description: '{$s}Apri direttamente una GUI con il suo nome'
+    usage: '{$usage}gui {$p}<name> &9[additional args]'
+    not-found: '{$e}GUI sconosciuta{$sep}: {$es}%gui%'
+    needs:
+      player: '{$e}Questa GUI richiede un giocatore come parametro'
+      kingdom: '{$e}Questa GUI richiede il nome di un regno come parametro'
+    name: gui
+  ransack:
+    description: '{$s}Stai sulla terra del nemico e invadila, non conquisterai la terra ma il tuo regno guadagnera'' dei bonus'
+  invade:
+    description: '{$s}Stai sulla terra del nemico e invadila'
+    higher-strength: '{$e}Il tuo regno e'' piu'' forte dell''altro, non puoi invaderlo'
+    invading: '{$p}Stai invadendo {$s}%kingdom%{$p}. Il campione spawnera'' in {$s}5 secondi'
+    invading-defender-notify: '{$es}%invader% {$e}ha iniziato l''invasione del tuo regno'
+    countdown-defneder: '{$es}%invader% {$e}sta per invadere in {$es}%sec% {$e}secondi'
+    countdown-attacker: '{$p}Il campione spawnera'' in... {$s}%sec% secondi'
+    announcement: '{$s}%invader% {$p}ha iniziato a invadere {$s}%kingdom% {$p}in {$s}%location%'
+    announcement-defender: |
+      {$es}%player% {$e}da {$es}%kingdoms_kingdom_name% {$e}ha iniziato ha invadere il territorio da %start_location%.
+      {$e}fai hover:{{$es}/k tp;{$es}Teleport;/k tp} {$e}per teletrasportarti al luogo dell''invasione.
+    announcement-nation: '{$es}%invader% {$e}da {$es}%kingdom% {$e}ha iniziato a invadere il territorio da {$es}%location%'
+    own-land: '{$e}Non puoi invadere il tuo stesso regno'
+    newbie-protection:
+      defender:
+        kingdom: '{$e}Questo e'' un regno nuovo, non puoi ancora invaderlo'
+        nation: '{$e}Questo regno e'' parte di un nuovo stato, non puoi ancora invaderlo'
+      attacker:
+        kingdom: '{$e}Il tuo regno e'' nuovo, non puoi ancora invadere nessuno. Devi aspettare {$es}%kingdom-newbie-protection-left%'
+        nation: '{$e}Il tuo regno e'' parte di un nuovo stato, non puoi invadere ancora nessuno. Devi aspettare {$es}%nation-newbie-protection-left%'
+    not-claimed: '{$e}Questo terreno non e'' claimato'
+    already-being-invaded: '{$e}Questo terreno e'' stato invaso'
+    masswar-only: '{$e}Puoi invadere solo durante MassWars'
+    already-invading: '{$e}Hai gia'' invaso questo terreno'
+    self-pacifist: '{$e}Sei un regno pacifista, non puoi invadere altri regni'
+    cooldown:
+      failed: '{$e}Il tuo regno ha fallito nell''invadere {$es}%kingdom% {$e}, devi aspettare {$es}%cooldown% {$e}prima di invadere ancora'
+      successful: '{$e}Il tuo regno ha avuto successo nell''invadere {$es}%kingdom% {$e}, devi aspettare {$es}%cooldown% {$e}prima di invadere ancora'
+    min:
+      defenders-needed: '{$e}Ci devono essere almeno {$es}%defenders% {$e}difensori online'
+      defenders-needed-challenge: '{$e}Ci devono essere almeno {$es}%defenders% {$e}difensori online, altrimenti devi invece lanciare una sfida'
+      invaders-needed: '{$e}Ci devono essere almeno {$es}%invaders% {$e}invasori online'
+    adjoining:
+      protectioin: |
+        {$e}Questa terra e'' protetta dal sistema di protezione adiacente.
+        Per invaderla, dovrai trovare i confini claimati del regno e invadere da lì.
+    shield:
+      defender:
+        kingdom: '{$e}Questo regno e'' protetto da uno scudo per{$sep}: {$es}%shield%'
+        nation: '{$e}Questo stato e'' protetto da uno scudo per{$sep}: {$es}%shield%'
+      invader:
+        kingdom: |
+          {$e}Il tuo regno ha uno scudo attivo per{$sep}: {$es}%shield% {$e}Devi disattivare lo scudo per invadere.
+          Per continuare esegui di nuovo il comando.
+        nation: '{$e}Il tuo stato ha uno scudo attivo per{$sep}: {$es}%shield% {$e}Se invadi, perderai l''accesso allo scudo dello stato per {$es}%access-loss-time%'
+        nation-shield-access-loss: |
+          {$e}Il tuo regno ha perso l''accesso allo scudo dello stato per {$es}%access-loss-time%
+          {$e}Se continui a invadere il timer si resettera''.
+        kingdom-disabled: '{$e}Lo scudo del tuo regno e'' stato disattivato e durava per{$sep}: {$es}%shield% {$e}a causa di {$es}%invader% {$e}che ha invaso {$es}%kingdom%'
+        nation-disabled: '{$e}Lo scudo del tuo stato e'' stato disattivato e durava per{$sep}: {$es}%shield% {$e}a causa di {$es}%invader% {$e}che ha invaso {$es}%kingdom%'
+    creative: '{$e}Puoi solo invadere nella modalita'' sopravivvenza'
+    no-claim-permission: '{$e}Devi avere i comandi di claim per invadere'
+    max-misc-upgrade: |
+      {$e}Il tuo regno ha raggiunto il limite massimo di invasioni per le tue impostazioni.
+      Aggiorna le tue impostazioni generali o aspetta che si ripristinino.
+    simultaneous: '{$e}Your kingdom can only invade %amount% lands simultaneously.'
+    costs: '{$e}Hai bisogno di {$es}%rp% punti risorsa {$e}e {$es}$%money% {$e}monete per invadere'
+    pacifist: '{$e}Il regno che stai cercando di invadere e'' pacifista'
+    challenge-not-started: '{$e}Il tuo regno ha sfidato questo regno, ma non avete ancora iniziato. Tempo rimanente{$sep}: {$es}%remaining-time%'
+    challenge-not-started-opponent: '{$e}Il tuo avversario ha sfidato il tuo regno, ma non ha ancora iniziato. Tempo rimanente{$sep}: {$es}%remaining-time%'
+    not-challenged: |
+      {$e}Il tuo regno non ha ancora sfidato quel regno.
+      Per piu' info controllare hover:{{$es}/k challenge %kingdom%;&9Clicca per eseguire;/k challenge %kingdom%}
+    ceasefire: '{$e}Non puoi invadere questo regno, perche'' sono {$es}%relation%'
+    nation-capital: |
+      {$e}Non puoi invadere le terre della capitale della nazione prima di aver invaso tutte le altre terre del nexus del regno della nazione.
+      E'' necessario invadere il seguente nexus del regno{$sep}:
+      %kingdoms%
+    powercell: '{$e}C''e'' una cella energetica vicina che devi invadere prima di invadere questa terra.'
+    name: invade
+    aliases: invasion
+  challenge:
+    description: '{$s}Pianifica una futura invasione'
+    usage: '{$usage}sfida {$p}<kingdom>'
+    yourself: '{$e}Non puoi sfidare il tuo stesso regno... O puoi?'
+    already-challenged: '{$e}Hai gia'' sfidato questo regno'
+    not-invadable: '{$e}Il regno che stai cercando di sfidare non ha l''attributo di relazione d''invasione'
+    challenged: '{$es}%player% {$e}dal regno {$es}%kingdoms_kingdom_name% {$e}ha sfidato il regno. Leggi gli audit logs del tuo regno per piu'' info'
+    notify-self-members: '{$es}%player% {$e}ha sfidato {$es}%kingdoms_kingdom_name%{$e}'
+    name: challenge
+  top:
+    description: '{$s}Mostra i top ranghi del regno'
+    loading: '{$s}Caricamento dati...'
+    header: '{$sep}----------------------------------'
+    footer: '     {$sep}[hover:{{$s}←;{$s}Pagina precedente;/k top %previous_page%}{$sep}] {$sep}[hover:{{$s}→;{$s}Pagina successiva;/k top %next_page%}{$sep}]'
+    no-more-pages: '{$e}Nessuna pagina da caricare'
+    negative: '{$e}Non possono essere mostrate pagine negative'
+    entry: |
+      {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_kingdom_name%;&7♦ {$p}Members{$sep}: {$s}%kingdoms_members%
+      &7♦ {$p}Terreni{$sep}: {$s}%kingdoms_claims%&7/{$s}%kingdoms_max_claims%
+      &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+      &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%kingdoms_fancy_might%
+    name: top
+  map:
+    settings:
+      description: '{$s}Cambia l''impostazione {$es}/k map {$s}'
+    description: '{$s}Mostra una mappa del regno e delle strutture attorno a te'
+    usage: '{$usage}mappa &9[auto {$sep}| &9height] [width]'
+    kingdom-player-only: '{$e}Solo i giocatori con un regno possono usare la mappa'
+    invalid-height: '{$e}Valore altezza non valido {$es}%height% {$e}usa l''altezza di default'
+    invalid-width: '{$e}Valore larghezza non valido {$es}%width% {$e}usa la larghezza di default'
+    max-height: '{$e}L''altezza massima della mappa e'' {$es}%limit%'
+    max-width: '{$e}La larghezza massima della mappa e''{$es}%limit%'
+    auto:
+      permission: '{$e}Non hai il permesso di usare l''auto map'
+      enabled: '{$p}Auto map e'' {$s}ON'
+      disabled: '{$p}Auto map e'' {$e}OFF'
+    size:
+      permission: '{$e}Non hai il permesso di cambiare la misura della mappa'
+      changed: '{$p}La misura della mappa e'' cambiata da &7({$s}Height{$sep}: &9%kingdoms_map_height% &7| {$s}Width{$sep}: &9%kingdoms_map_width%&7) {$p}a &7({$s}Height{$sep}: &9%new_height% &7| {$s}Width{$sep}: &9%new_width%&7)'
+      reset: '{$p}La lunghezza della mappa e'' stata resettata'
+    scoreboard:
+      not-supported: '{$e}La versione del server non supporta scoreboard-based maps'
+    name: map
+    aliases: lands chunks plots
+  merge:
+    description: |
+      {$s}Richiedi a un altro regno di unirti a lui. Unirti a un regno comporta trasferire punti risorsa, soldi in banca, membri e terreni all''altro regno. Cio'' trasferisce anche qualsiasi potenziamento che ha un livello piu'' elevato. I membri trasferiti saranno retrocessi al rango di membro. Tutte le torrette e strutture rimarrano nei terreni trasferiti.
+      Queste richieste possono essere gestite solo dal re.
+    usage: '{$usage}unisci {$p}<kingdom>'
+    failed:
+      permanent: '{$e}Il tuo regno e'' permanente, non puo'' essere unito'
+      pacifist: '{$e}Il tuo regno e'' pacifista, non puo essere unito'
+      max-members: '{$e}Il regno specificato ha piu'' di 50 membri, non puoi unirti con lui'
+      unknown: '{$e}Fallito{$sep}: {$es}%error%'
+    own: '{$e}Non puoi unirti al tuo stesso regno...'
+    only-king: '{$e}Solo il re del regno puo inviare richieste di unione'
+    already-sent: '{$e}Il tuo regno ha gia'' inviato una richiesta di unione a {$es}%kingdoms_kingdom_name%'
+    request-sent: '{$p}Inviata una richiesta di unione a {$s}%kingdoms_kingdom_name% {$p}'
+    request-received: '{$s}%kingdoms_kingdom_name% {$p}ha inviato una richiesta di unione al tuo regno'
+    merged-sender: '{$p}Il tuo regno si e'' unito con successo a {$s}%kingdoms_kingdom_name%'
+    merged-receiver: '{$s}%kingdom% {$p}si e'' unito con successo al tuo regno'
+  fly:
+    description: '{$s}Abilita la fly nei tuoi terreni'
+    usage: '{$usage}fly &9[player]'
+    others-permission: '{$e}Non hai il permesso di impostare la modalita'' fly degli altri'
+    enabled: '{$s}Modalita'' fly{$sep}: {$p}ON'
+    disabled: '{$s}Modalita'' fly{$sep}: &4OFF'
+    not-allowed: '{$e}Non puoi volare nei terreni di {$es}%kingdom%'
+    unclaimed: '{$e}Puoi volare solo nei terreni claimati in cui e'' permesso'
+    own-enemy-nearby: '{$e}Non puoi volare, ci sono nemici nelle vicinanze'
+    cant-afford: '{$e}Hai bisogno di {$es}$%money% {$e}monete per poter volare'
+    cant-afford-kingdom: '{$e}Il tuo regno ha bisogno di {$es}%amount% {$e}punti risorsa per attivare la fly'
+    name: fly
+    aliases: flight
+  kick:
+    person: '{$e}Sei stato cacciato da {$es}%kingdom% {$e}da {$es}%kicker%'
+    description: '{$s}Caccia un membro dal regno'
+    usage: '{$usage}caccia {$p}<player> &9[silent]'
+    announce: '{$es}%kicked% {$e}e'' stato cacciato dal regno da {$es}%kicker%'
+    self: '{$e}Non puoi cacciare te stesso. Non e'' fisicamente possibile, ma posso aiutarti. Ecco qua.'
+    self-secondary: '{$e}Smettila di cercare di cacciarti da solo. Se vuoi provare, prova questo {$es}&l&nhover:{this;Click to open link;@https://www.youtube.com/watch?v=dQw4w9WgXcQ} {$e}'
+    not-in-kingdom: '{$e}Il giocatore specificato non e'' nel tuo regno'
+    elections: '{$e}Non puoi cacciare giocatori durante le elezioni'
+    cant-kick: '{$e}Non puoi cacciare {$es}%kicked%'
+    name: kick
+  surrender:
+    defender-permission: '{$e}Non hai il permesso di arrenderti'
+    already-ended: '{$e}L''invasione e'' gia'' finita'
+    description: |
+      {$s}Se sei l''attaccante, Puoi arrenderti e il campione verra'' rimosso.
+      Se sei il difensore e ti arrendi, l''attaccante vince e si prende il terreno.
+    name: surrender
+    aliases: forfeit ff
+  leave:
+    success: '{$p}Hai lasciato {$s}%kingdom%'
+    description: '{$s}Lascia il tuo regno'
+    king: |
+      {$e}Non puoi lasciare il regno se sei re.
+      Altrimenti sciogli il regno usando {$es}/k disband
+      {$e}o promuovi qualcuno a re {$es}/k king
+    announce: '{$es}%left% {$e}e'' uscito dal regno!'
+    name: leave
+    aliases: left
+  undo:
+    description: '{$s}Annula claim/unclaim.'
+    already-unclaimed: '{$s}L''ultimo terreno che e'' stato claimato e'' gia'' stato unclaimato {$s}%x%&7, {$s}%z%'
+    already-claimed: '{$s}L''ultimo terreno che e'' stato unclaimato e'' gia'' stato claimato {$s}%x%&7, {$s}%z%'
+    claimed: '{$p}Hai gia'' claimato il terreno a {$s}%x%&7, {$s}%z%'
+    claimed-not-owned: '{$e}Il terreno a {$s}%x%&7, {$s}%z% {$e}e'' gia'' stato claimato da un altro giocatore {$s}%x%&7, {$s}%z%'
+    unclaimed: '{$p}Hai unclaimato il terreno aq {$s}%x%&7, {$s}%z%'
+    no-history: '{$e}Non hai piu'' cronologia dei terreni da annullare'
+    name: undo
+  redo:
+    no-history: '{$e}Non hai piu'' cronologia delle terre da rifare'
+    description: '{$s}Rifai un claim/unclaim.'
+    already-claimed: '{$s}L''ultimo terreno claimato e'' gia'' stato claimato {$s}%x%&7, {$s}%z%'
+    already-unclaimed: '{$s}L''ultimo terreno unclaimato e'' gia'' stato unclaimato {$s}%x%&7, {$s}%z%'
+    name: redo
+  lore:
+    description: '{$s}Setta la storia del tuo regno'
+    usage: '{$usage}lore {$p}<lore>'
+    blacklisted: '{$e}La storia del tuo regno contiene parole inappropriate '
+    name-length: '{$e}La storia del regno non puo essere piu'' lunga di {$es}%limit%'
+    name-english: '{$e}La storia del regno puo tenere solo lettere e numeri'
+    name-has-symbols: '{$e}La storia del regno non puo tenere simboli speciali, solo lettere e numeri'
+    removed: '{$p}Rimuovi la storia del regno'
+    aliases: desc description motd
+  extractor:
+    description: '{$s}Riscuoti tutti i punti risorsa dagli estrattori del regno'
+    collected: '{$p}Presi {$s}%rp% punti risorsa {$p}da {$s}%extractors% estrattori {$p}nel tuo regno'
+    collected-others: '{$p}PResi {$s}%rp% punti risorsa {$p}da {$s}%extractors% estrattori {$p}per il regno di {$s}%kingdom% {$p}'
+    collect-others-permission: '{$e}Non puoi svuotare gli estrattori di altri regni'
+    aliases: extractors extract
+  election:
+    description: '{$s}Sistema di elezioni con candidati membri del regno per determinare il prossimo re'
+    no-ongoing-election: '{$e}Non ci sono elezioni immininenti, prossime elezioni in{$sep}: {$es}%next-election%'
+    vote:
+      description: '{$s}Vota per il candidato'
+      voted: '{$p}Hai votato per {$s}%player%'
+      already-voted: '{$e}Hai gia'' votato per {$es}%player%'
+      voted-again: '{$p}Hai votato per {$s}%player% {$p}hai votato in precedenza per {$s}%previous-candidate%'
+    statement:
+      description: '{$s}Imposta il tuo programma come candidato alle elezioni'
+      usage: '{$usage}programma elettorale {$p}<statement>'
+      set: '{$p}Il tuo nuovo programma e'' settato a{$sep}: &r%statement%'
+  relations:
+    description: '{$s}Mostra tutte le richieste di relazione attuali'
+    no-requests: '{$e}Il tuo regno non ha richieste'
+    name: relations
+    aliases: relation relationship relationships
+  ally:
+    description: '{$s}Manda una richiesta di alleanza a un regno'
+    usage: '{$usage}alleanza {$p}<kingdom>'
+    sender: '{$p}Manda una richiesta di alleanza a {$s}%kingdoms_other_kingdom_name%'
+    limit: '{$e}Non puoi allearti con piu'' di {$es}%max% {$e}regni'
+    already: '{$e}Ti sei gia'' alleato con {$es}%kingdoms_other_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%kingdoms_other_kingdom_name%'
+    self: '{$e}Non puoi allearti con te stesso'
+    receiver: '{$s}%kingdoms_kingdom_name% {$p}desidera allearsi con te, accetta con hover:{{$s}/k ally %kingdoms_kingdom_name%;{$p}Accept;/k ally %kingdoms_kingdom_name%}'
+    allies: '{$p}Ti sei alleato con {$s}%kingdom%'
+    name: ally
+    aliases: alliance allies
+  enemy:
+    description: '{$s}Dichiara tuo nemico un regno'
+    usage: '{$usage}nemico {$p}<kingdom>'
+    limit: '{$e}Non puoi avere piu'' di {$es}%max% {$e}regni nemici'
+    already: '{$e}Sei gia'' nemico con {$es}%kingdoms_other_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta di rivalita'' a {$es}%kingdoms_other_kingdom_name%'
+    higher-strength: '{$e}Il tuo regno e'' piu'' forte di quello, non puoi essere nemico con lui'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}e'' nemico di %kingdoms_other_name% {$e}, entrambi i regni sono tuoi alleati'
+    self: '{$e}Non puoi essere nemico di te stesso'
+    cost: '{$e}Hai bisogno di {$es}%cost% punti risorsa {$e}per entrare in rivalita'' con un regno'
+    enemies: '{$e}Sei gia'' nemico di {$es}%kingdom%'
+    name: enemy
+    aliases: enemies
+  truce:
+    description: '{$s}Invia una richiesta di tregua a un regno'
+    usage: '{$usage}tregua {$p}<kingdom>'
+    limit: '{$e}Non puoi avere piu'' di {$es}%max% {$e}tregue con i regni'
+    sender: '{$p}Invia una richiesta di tregua a {$s}%kingdoms_other_kingdom_name%'
+    already: '{$e}Sei gia'' in tregua con {$es}%kingdoms_other_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%kingdoms_other_kingdom_name%'
+    self: '{$e}Non puoi inviare una richiesta di tregua a te stesso'
+    receiver: '{$s}%kingdoms_kingdom_name% {$p}deidera una tregua con te, accetta con hover:{{$s}/k truce %kingdoms_kingdom_name%;{$p}Accept;/k truce %kingdoms_kingdom_name%}'
+    truces: '{$p}Sei in tregua con {$s}%kingdom%'
+    name: truce
+  rejectrelation:
+    description: '{$s}Rifiuta una richiesta di relazioni con un regno'
+    usage: '{$usage}rifiuta relazioni {$p}<kingdom>'
+    not-requested: '{$es}%kingdoms_kingdom_name% {$e}non hai richieste di relazioni'
+    rejected: '{$e}Rejected the %relation% {$e}richiesta di relzioni inviata a {$es}%kingdoms_kingdom_name%'
+    notification: '{$e}%kingdoms_kingdom_name% {$es}ha rifiutato la tua richiesta %relation% {$e}di relazioni'
+  revoke:
+    description: '{$s}Revoca relazioni con un regno'
+    usage: '{$usage}revoca {$p}<kingdom>'
+    sender: '{$e}Hai revocato le relazioni con {$es}%kingdoms_other_kingdom_name%'
+    no-relation: '{$e}Non hai relazioni con {$es}%kingdoms_other_kingdom_name%'
+    already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}e'' gia'' neutrale'
+    self: '{$e}Non puoi avere relazioni con te stesso...'
+    specific-permission: '{$e}Non hai il permesso di revocare relazioni {$es}%relation% {$e}'
+    receiver: '{$es}%kingdoms_kingdom_name% {$e}ha revocato le relazioni con te, ora sei neutrale'
+    request-sender: '{$p}Inviata richiesta di pace con {$s}%kingdoms_other_kingdom_name%'
+    request-receiver: '{$s}%kingdoms_kingdom_name% {$p}desidera fare la pace con te, accetta con hover:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Accept;/k neutral %kingdoms_kingdom_name%}'
+    neutrals: '{$p}Sei ora neutrale con {$s}%kingdom%'
+    name: revoke
+    aliases: neutral
+  chat:
+    description: '{$s}Cambia canel di chat del regno'
+    usage: '{$usage}chat {$p}<channel> &9[message]'
+    tab-completion-message: '[message]'
+    already-in-channel: '{$e}Stai gia'' chattando in {$s}%kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
+    muted-channel: '{$e}Non puoi chattare in un canale muto, smuta il canale con il comando {$es}hover:{/k unmute %channel%;{$es}Clicca per smuttare;/k unmute %internal-name%} {$e}'
+    unknown-channel: '{$e}Canale sconosciuto! Per favore scegliere{$sep}: &fhover:{Global;Global;/k c g}&7, {$p}hover:{{$p}Kingdom;{$p}Kingdom;/k c k}&7, &ahover:{&aAlly;&aAlly;/k c a}&7, {$es}hover:{{$es}Truce;{$es}Truce;/k c t} &7o {$es}hover:{&9Nation;&9Nation;/k c n}'
+    changed: '{$p}Stai chattando in %kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
+    direct:
+      message-missing: '{$e}Devi inviare un messaggio diretto la regno di {$es}%kingdom% {$e}'
+      message-self: '{$e}Non puoi inviare un messaggio diretto al tuo stesso regno'
+      message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] &7-> {$sep}[&9%receiver-kingdom%{$sep}] %displayname% &7≫ {$s}%message%'
+      message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] %displayname% &7≫ {$s}%message%'
+    aliases: channel chan c
+  mute:
+    description: '{$s}Muta un canale specifico'
+    usage: '{$usage}muta {$p}<channel>'
+    already-muted: 'Il canale {$s}%channel% {$p}e'' gia'' mutato'
+    muted: '{$p}Mutato {$s}%channel%'
+    name: mute
+  unmute:
+    description: '{$s}Smuta uno specifico canale'
+    usage: '{$usage}smuta {$p}<channel>'
+    not-muted: 'Il canale {$s}%channel% {$p}e'' gia'' smutato'
+    unmuted: '{$p}Smutato {$s}%channel%'
+    name: unmute
+  broadcast:
+    description: '{$s}Trasmetti un messaggio a tutti i membri del regno'
+    usage: '{$usage}Trasmetti {$p}<message>'
+    cooldown: '{$e}Devi aspettare un tempo di {$es}%time% {$e}prima di trasmettere ancora'
+    format:
+      message: |
+
+        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% 
+      sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    name: broadcast
+    aliases: bc announce
+  king:
+    description: '{$s}Setta il nuovo re del regno'
+    only-king: '{$s}Solo il re puo settare un nuovo sovrano del regno'
+    set: '{$s}%king% {$p}e'' il nuovo re del regno!'
+    not-in-kingdom: '{$es}%king% {$e}non e'' nel tuo regno'
+    self: '{$e}Sei gia'' il re del regno'
+    usage: '{$usage}re {$p}<player>'
+    aliases: setking leader owner ownership queen setqueen
+  promote:
+    description: '{$s}Promuovi un membro nel tuo regno'
+    promoted: '{$s}%promoted% {$p}e'' stato promosso a &9%rank% {$p}by {$s}%player%'
+    not-in-kingdom: '{$es}%promoted% {$e}non e'' nel tuo regno'
+    cant-promote: '{$e}Non puoi promuovere {$es}%promoted%'
+    king: '{$es}%promoted% {$e}e'' gia'' al rango piu'' alto nel tuo regno, per promuovere il giocatore a re eseguire il comando {$es}/k king'
+    usage: '{$usage}promuovi {$p}<player>'
+    name: promote
+  demote:
+    description: '{$s}Degrada un giocatore'
+    demoted: '{$es}%demoted% {$e}e'' stato degradato a &9%rank% {$e}by {$es}%player%'
+    not-in-kingdom: '{$es}%demoted% {$e}non e'' nel tuo regno'
+    cant-demote: '{$e}Non puoi degradare {$es}%demoted%'
+    cant-demote-king: '{$e}Non puoi degradare il re {$es}%demoted%'
+    member: '{$e}Questo giocatore ha il rango di membro'
+    usage: '{$usage}degrada {$p}<player>'
+    name: demote
+  visualize:
+    description: '{$s}Setta indicatori permanenti o disabilitali'
+    usage: '{$usage}visualizza [permanent|toggle]'
+    display: |
+      &7| {$p}Posizione{$sep}: {$s}%x%&7, {$s}%z%
+      &7| {$p}Regno{$sep}: {$s}%kingdom%
+    admin-display: |
+      &7| {$p}Posizione{$sep}: {$s}%x%&7, {$s}%z%
+      &7| {$p}Regno{$sep}: {$s}%kingdom%
+      &7| {$p}Strutture{$sep}: 
+      {$s}%structures%
+      &7| {$p}Torrette{$sep}:
+      %turrets%
+      &7| {$p}Segnali di protezione{$sep}:
+      %protection-signs%
+    toggle:
+      description: '{$s}Attiva/disattiva indicatori di terreno (visualizzatori o marcatori)'
+      enabled: '{$p}Stato indicatori {$s}ON'
+      disabled: '{$p}Stato indicatori {$e}OFF'
+    all:
+      description: '{$s}Mostra tutti i visualizzatori dei chunk claimati dal tuo regno'
+      showing: '{$p}Visualizzazione...'
+    markers:
+      description: '{$s}Cambia il tipo di marcatori dei tuoi terreni'
+      usage: '{$usage}visualizza marcatori <type>'
+      already-using: '{$e}Stai gia'' utilizzando il marcatore tipo {$es}%markers% {$e}markers type.'
+      changed: '{$p}I marcatori dei tuoi terreni sono cambiati in {$s}%markers%'
+      invalid: '{$e}Non e'' stato possibile trovare il marcatore specifico del terreno {$sep}: {$es}%markers%'
+    permanent:
+      description: '{$s}Attivare/disattivare se l''indicatore di terreno deve essere permanente'
+      enabled: '{$p}Stato indicatore permanente {$s}ON.'
+      disabled: '{$p}Stato indicatore permanente {$e}OFF'
+    aliases: visualizer visual v seechunk sc
+  tradable:
+    description: '{$s}Mostra il valore di tutti gli oggetti in punti risorsa'
+    message: |
+      {$p}L'oggetto nella tua mano vale{$sep}: {$s}%amount% * %worth% = %total%
+
+      {$s}Special Items{$sep}:
+      %list%
+    not-special: '{$e}non speciale'
+    item: '{$p}%material%&7: &9%worth%'
+    name: tradable
+    aliases: worth tradeable
+  sell:
+    description: '{$s}Vandi oggetti del regno per punti risorsa'
+    invalid: '{$e}L''oggetto nella tua mano non e'' un oggetto del regno (Una torretta o una struttura).'
+    item: '{$p}Hai venduto {$s}x%amount% %item% {$p}per {$s}%price% {$p}punti risorsa'
+    name: sell
+    aliases: s
+  donate:
+    description: '{$s}Dona punti risorsa al regno'
+    usage: '{$usage}dona <kingdom> <amount>'
+    dont-have: '{$e}Non hai {$es}%rp% {$e}punti risorsa'
+    done: '{$p}Hai donato {$s}%rp% {$p}a {$s}%kingdom%'
+    donated: '{$s}%kingdom% {$p}ha donato {$s}%rp% {$p}punti risorsa a te'
+    invalid: '{$e}Non puoi donare {$es}%rp% {$e}punti risorsa...'
+    name: donate
+    aliases: give giverp rpgive
+  color:
+    description: '{$s}Cambia il colore del tuo regno'
+    usage: '&4Usa: {$es}/k color &9[color]'
+    tab-complete:
+      hex: '#<hex color code>'
+      rgb: red green blue
+  unclaimall:
+    name: unclaimall
+    aliases: allunclaim
+  item:
+    aliases: customitem items
+  tpaccept:
+    name: tpaccept
+  tpreject:
+    name: tpreject
+    aliases: tpr tpareject tpdecline tpadecline
+books:
+  cant-move: '{$e}Non puoi muovere questo libro'
+  used-by-another-session: '{$e}L''input del libro e'' in uso da un''altra sessione, completa prima quello'
+  no-empty-slot: '{$e}Non hai uno slot vuoto disponibile hotbar'
+vault:
+  blacklisted-item: '{$e}Non puoi mettere questo oggetto nel vault del tuo regno'
+invite-codes:
+  kingdom-doesnt-exist: '{$e}Il regno per cui e'' stato creato il codice invito non esiste piu'' '
+  no-longer-valid: '{$e}Questo codice invito non e'' piu'' valido, e'' scaduto oppure qualcuno lo ha rimosso manualmente.'
+  max-uses: '{$e}Hai raggiunto il limito massimo di codici d''invito'
+  used: '{$s}%player% {$p}ha usato un codice d''invito per entrare nel regno'
+audit-logs:
+  filters:
+    player:
+      enter: '{$p}Inserire il nome del player che si desidera vedere'
+    type:
+      enter: '{$p}Inserisci il nome del tipo di registro che desideri visualizzare {$cancel}'
+      invalid: '{$e}Tipo di log sconosciuto{$sep}: {$es}%type%'
+    time:
+      enter: |
+        {$p}Inserisci le date precedenti e successive.
+        Formato{$sep}: {$s}afterYear/afterMonth/afterDay {$sep}- {$s}beforeYear/afterMonth/afterDay
+        {$p}Formato relativo{$sep}: {$s}afterX <time unit> {$sep}- {$s}beforeX <time unit>
+        {$p}Esempio{$sep}: {$s}2022/0/0 - 2023/2/2{$sep}, {$s}20days - 10days{$sep}, {$s}10days (shows logs from 10 days ago)
+      invalid: '{$e}Formato tempo/data non valido{$sep}: {$es}%input%'
+invasion:
+  blocked:
+    command: '{$e}Non puoi usare questo comando durante un invasione'
+    damaing-champion-in-protected-region: '{$e}Non puoi danneggiare il campione in questa regione'
+    elytra: '{$e}Non puoi usare l''elytra durante un invasione'
+    world-change: '{$e}Non puoi andare in un altro mondo durante l''invasione'
+    teleportation: '{$e}Non puoi teletrasportarti durante un''invasione'
+    item: '{$e}Non puoi usare questo oggetto durante un invasione'
+  end:
+    attackers:
+      success: '{$s}%invader% {$p}ha invaso con successo {$es}%kingdom%'
+      logout: '{$es}%invader% {$e}ha sloggato mentre invadeva {$es}%kingdom%'
+      died: '{$es}%invader% {$e}e'' morto mentre invadeva {$es}%kingdom%'
+      times-up: '{$es}%invader% {$e}non e'' riuscito a invadere in tempo {$es}%kingdom%'
+      unclaimed: '{$s}%kingdom% {$p}ha unclaimato il terreno {$s}%invader% {$p}invaso'
+      attacker-no-longer-in-kingdom: '{$es}%invader% {$e}non fa piu'' parte del regno per continuare l''invasione'
+      attacker-surrendered: '{$es}%invader% {$e}si e'' arresso mentre invadeva {$es}%kingdom%'
+      defender-surrendered: '{$s}%kingdom% {$p}si e'' arresso mentre veniva invaso da {$s}%invader%'
+      attacker-death-limit: '{$e}I membri del tuo regno sono morti molteplici volte mentre invadevano {$es}%kingdom%'
+      defender-death-limit: 'I membri del regno {$s}%kingdom% {$p}sono morti molteplici volte mentre invadevi'
+    defenders:
+      success: '{$es}%invader% {$e}ha invaso con successo il tuo regno'
+      logout: '{$s}%invader% {$p}ha sloggato mentre invadeva il tuo regno'
+      died: '{$s}%invader% {$p}e'' morto mentre invadeva il tuo regno'
+      times-up: '{$s}%invader% {$p}could not make it in time invading {$es}%kingdom%'
+      attacker-no-longer-in-kingdom: '{$es}%invader% {$e}non fa piu'' parte del regno per continuare l''invasione'
+      unclaimed: '{$e}Il terreno del regno che stava venendo invasa da {$es}%invader% {$e}era unclaimato'
+      attacker-surrendered: '{$s}%invader% {$e}si e'' arreso mentre invadeva il tuo regno'
+      defender-surrendered: '{$e}Il tuo regno si e'' arreso mentre veniva invaso da  {$es}%invader%'
+      defender-death-limit: '{$e}I membri del tuo regno sono morti molteplici volte mentre venite invasi'
+      attacker-death-limit: 'I membri del regno{$s}%kingdom% {$p}sono morti molteplici volte mentre invadano il tuo regno'
+  home:
+    moved: '{$e}La home del regno e'' stata impostata a {$es}%new-home% {$e}in conseguenza alla precedente invasione'
+elections:
+  default-statement: |
+    {$p}Clicca per votare
+    questo candidato.
+  results: '{$s}%candidate% {$p}e'' stato scelto come nuovo re con {$s}%votes% {$p}voti'
+  begin: '{$p}Le elezioni sono iniziate, vota il tuo candidato favorito con {$s}hover:{/k election vote;{$p}Click to vote;/k election vote}'
+  join-notify: '{$p}C''e'' un''elezione in corso, vota per il tuo candidato preferito con {$s}hover:{/k election vote;{$p}Click to vote;/k election vote}'
+  not-enough-data: '{$e}Non e'' stato scelto un nuovo re perche'' meno del {$es}50% {$e}del regno ha votato'

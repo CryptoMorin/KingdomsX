@@ -142,4 +142,11 @@ public class Outpost {
     public void setMoneyCost(MathCompiler.Expression moneyCost) {
         this.moneyCost = moneyCost;
     }
+
+    @Override
+    public String toString() {
+        return "Outpost{" +
+                "name='" + name + '\'' +
+                '}';
+    }
 }

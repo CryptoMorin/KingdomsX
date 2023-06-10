@@ -86,7 +86,7 @@ public class OutpostEvent {
     public static OutpostEvent startEvent(Outpost outpost, long time, long startTime) {
         Objects.requireNonNull(outpost, "Outpost cannot be null");
         if (time <= 0) throw new IllegalArgumentException("Outpost event time cannot be less than or equal to 0");
-        if (!EVENTS.containsKey(outpost.getName()))
+        if (EVENTS.containsKey(outpost.getName()))
             throw new IllegalArgumentException("Event for outpost '" + outpost + "' has already started");
 
         OutpostEvent event = new OutpostEvent(outpost, time);

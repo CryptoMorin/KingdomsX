@@ -162,7 +162,6 @@ global-channel:
     # %kingdoms_relation_name%
     name: ''
 
-# The channel to send private messages too. Set to ~ to disable.
 # You can either use the channel ID or name (case-insensitive).
 # There are two special values. "$console" which uses the console channel from DiscordSRV
 # and "$main" that uses the main chat channel from DiscordSRV. Note that the dollar signs are
@@ -173,9 +172,14 @@ global-channel:
 # in DiscordSRV's config.yml "Channels" option. This is most likely already defined for your
 # normal chat channel, but if you wish to see private messages as webhook messages in your console,
 # or any other channel, you'd need to add the channel in the config as well.
+# You can also set these two options to ~ to disable them.
+# - DiscordSRV's "Channels" option:
+#   https://github.com/DiscordSRV/DiscordSRV/blob/767828469573c2f0fa3ed5a44feb0b2f15f2c02d/src/main/resources/config/en.yml#L11-L30
+# - DiscordSRV's console channel option:
+#   https://github.com/DiscordSRV/DiscordSRV/blob/767828469573c2f0fa3ed5a44feb0b2f15f2c02d/src/main/resources/config/en.yml#L32-L33
 discordsrv:
   global-channel: '$main'
-  private-channel: '$console'
+  private-channel: '$console' # Kingdoms, allies and truces
 
   # message: The plain text message. If you want to use embeds. You have to put an option with the same name under this.
   # title:
