@@ -85,7 +85,7 @@ enum class PeaceTreatiesPlaceholder(default: Any, translator: PlaceholderTransla
     ;
 
     init {
-        KingdomsPlaceholder.of(this.name.lowercase(), default, translator)
+        KingdomsPlaceholder.of(this.name.lowercase(Locale.ENGLISH), default, translator)
     }
 
     companion object {

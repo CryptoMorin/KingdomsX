@@ -44,7 +44,7 @@ time-formatter:
   seconds: 00:00:%ssaf%
   minutes: 00:%mmaf%:%ssf%
   hours: '%hhaf%:%mmf%:%ssf%'
-  days: '%dda% nap(ok), %hhf%:%mmf%:%ssf%'
+  days: '%dda% nap, %hhf%:%mmf%:%ssf%'
   weeks: '%wwwwa% hét, %dd% nap, %hhf%:%mmf%:%ssf%'
   months: '%MMA% hónap, %wwww% hét, %dd% nap, %hhf%:%mmf%:%ssf%'
 
@@ -105,6 +105,9 @@ channels:
   help:
     name: Segíség
     short-name: S
+  staff:
+    short-name: S
+    name: Staff
 
 permissions:
   claim: '{$e}Nem tudsz lefoglalni területet.'
@@ -316,6 +319,7 @@ other-kingdoms:
   nexus:
     break: '{$p}A nexus kiütéséért {$s}%rp% {$p}Nexus pontot kaptál.'
     break-wrong-item: '{$e}Nexus kiütéséért csak {$es}gyémánt kapát{$e} használva kapsz Nexus pontot.'
+    break-pacifist: '{$e}Nem tudsz Nexus pontot szerezni egy pacifista királyság nexusának kiütésével.'
   turret:
     can-take: '{$e}Elveheted ezt a tornyot mert ezt a területet nem birtokolja királyság.'
     place: '{$e}Nem helyezhetsz el tornyot más királyság területén.'
@@ -390,6 +394,7 @@ protected-signs:
       is-already-in-group: '{$es}%name% {$e}királyság már ki van zárva a csoportból.'
       owner: '{$e}A királyságod kizárásához egyszerűen változtasd meg a védelem típusát'
       name: '{$p}Írd be a királyság nevét akit ki szeretnél zárni.'
+  invalid-sign-block: '{$e}Nem tudod védeni a blokknak ezt az oldalát, mert itt egy {$es}%block% {$e} van elhelyezve.'
 top-rewards:
   kingdom: |
     {$p}Királyságod {$s}$%money% {$p}pénzt és {$s}%rp% {$p}Nexus pontot kapott a helyezéséért{$sep}: &5%rank%
@@ -546,17 +551,17 @@ fly:
       warn: '{$e}A repülés {$es}%counter% {$e}másodperc múlva kikapcsolásra kerül mivel itt nem tudsz repülni. Fordulj vissza!'
 # This message should usually refer to some kind of recruitment forum.
 no-kingdom-reminder: '{$e}Emlékeztető{$sep}: {$es}Még nem csatlakoztál egy királysághoz sem.'
-rregulator:
+regulator:
   attributes:
-    add-self: '{$e}Nem adhatod hozzá önmagadat.'
+    add-self: '{$e}Magadat nem adhatod hozzá'
     already-added: '{$es}%add% {$e}már hozzá van adva.'
-    add: '{$p}Kérlek írj be egy játékosnevet.'
+    add: '{$p}Írd be a játékos nevét.'
     added: '{$s}%add% {$p}hozzáadtad az attribútumokhoz.'
     removed: '{$s}%player% {$p}eltávolítva az atribútumokból.'
   interactions:
-    add-self: '{$e}Nem adhatod hozzá önmagadat.'
-    already-added: '{$es}%add% {$e}cmár hozzá van adva.'
-    add: '{$p}Kérlek írj be egy játékosnevet'
+    add-self: '{$e}Magadat nem adhatod hozzá'
+    already-added: '{$es}%add% {$e}már hozzá van adva.'
+    add: '{$p}Írd be a játékos nevét.'
     added: '{$s}%add% {$p}hozzáadtad az interakciókhoz.'
     removed: '{$s}%player% {$p}eltávolítva az interakciókból.'
 nexus:
@@ -918,9 +923,10 @@ command:
           {$e}Ismeretlen struktúratípus{$sep}: {$es}%style%
           {$e}Elérhető típusok{$sep}: {$es}%styles%
         done: '{$s}%target% {$p}kapott {$s}%amount% %item% {$p}nevű struktúrát.'
+      style-has-no-item: '{$e}A királyság eleméhez nincs társított elem, csak lehelyezett blokkok formájában érhető el.'
     openfile:
-      description: '{$s}Fájl megnyitása a Kingdoms plugin könyvtárához képest a szerver alapértelmezet szövegszerkesztőjében. Ez nem közvetlenül az adminoknak van szánva, hanem a {$p}/k admin track {$s}parancsnak, hogy számodra könnyebben elérje a fájlokat.
-      A parancshoz hozzáférő játékosnak OP-nak kell lennie. Ez közvetlenül is használható, ha van egy GitHub link a KingdomsX tárolóból. Ha a szervernek nincs grafikus felülete a parancs értelemszerűen nem fog működni.'
+      description: '{$s}Fájl megnyitása a Kingdoms plugin könyvtárához képest a szerver alapértelmezet szövegszerkesztőjében. Ez nem közvetlenül az adminoknak van szánva, hanem a {$p}/k admin track {$s}parancsnak, hogy számodra könnyebben elérje a fájlokat. A parancshoz hozzáférő játékosnak OP-nak kell
+        lennie. Ez közvetlenül is használható, ha van egy GitHub link a KingdomsX tárolóból. Ha a szervernek nincs grafikus felülete a parancs értelemszerűen nem fog működni.'
       permission: '{$e}OP és admin módban kell lenned, hogy használni tudd ezt a funkcionalítást.'
       usage: '&4Használat{$sep}: {$es}/k admin openfile {$p}[fájl elérési útvonala a kingdoms mappához képest]'
       not-supported: '{$e}A platform, amelyen a szervert futtatja, nem támogatja ezt a műveletet.'
@@ -971,6 +977,7 @@ command:
       done: '{$s}%lang% {$p}nyelvi fájl le lett töltve. Mostantól használható a {$s}hover:{/k lang;&7Klikk a megnyitáshoz;/k lang} {$p}parancs.'
       progress: '{$p}Letöltés alatt   {$s}%downloaded%{$sep}/{$s}%total%'
       aliases: languagepacks langpack lang langs languages
+      name: languagepack
     addons:
       description: '{$s}Lista a plugin összes elérhető és ellenőrzött kiegészítőjéről.'
       indexing: '{$p}Kérem várjon amíg a legfrissebb kiegészítőkről az információk gyűjtése folyamatban van...'
@@ -1039,8 +1046,8 @@ command:
         done: '{$p}Minden adat sikeresen mentésre került. A szerver 10 másodperc múlva újraindul, hogy véglegesítse a módosításokat.'
     purge:
       description: '{$s}Törli az összes királyság adatát, szóval mindent eltávolít.'
-      confirm: '{$e}Írd be ismét a parancsot 5 másodpercen belül, hogy megerősítse a királyságok minden adatának a törlését. Ez az összes királyság adatát törli, beleértve az összes nemzet, királyság, föld, játékos (Eszköztárat nem) adatait. Ezt a műveletet nem lehet visszavonni, az egyetlen megoldás a
-        biztonsági mentések mappájából való visszaállítás lehet. Ezzel az összes játékost erőszakosan kirúgja és fehérlistára teszi a szervert, és a szerver automatikusan leáll, ha kész lesz.'
+      confirm: '{$e}Írd be ismét a parancsot 5 másodpercen belül, hogy megerősítse a királyságok minden adatának a törlését. Ez az összes királyság adatát törli, beleértve az összes nemzet, királyság, föld, játékos (Eszköztárat nem) adatait. Ezt a műveletet nem lehet visszavonni, az egyetlen megoldás
+        a biztonsági mentések mappájából való visszaállítás lehet. Ezzel az összes játékost erőszakosan kirúgja és fehérlistára teszi a szervert, és a szerver automatikusan leáll, ha kész lesz.'
       already: '{$e}A plugin adatainak törlése már folyamatban van...'
       not-loaded: '{$e}Várd meg a plugin teljes betöltődését, mielőtt használnád ezt a parancsot.'
       console-only: '&4Ezt a parancsot csak konzolról lehet kiadni.'
@@ -1352,12 +1359,32 @@ command:
         blacklist: '{$s}A hibakeresési lista mostantól {$e}feketelista{$s}.'
     name: admin
     aliases: administrator administration
+    fsck:
+      name: FSCK
+      corruption:
+        nation:
+          kingdom: '{$sep}⚫ {$e}Ismeretlen királyság a nemzeten belül{$sep}: {$e}Nemzet{$sep}: {$es}%nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
+        player:
+          claim-unknown: '{$sep}⚫ {$e}Ismeretlen foglalás a játékos számára{$sep}: {$es}%player% {$sep}- {$e}Terület{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+          kingdom-unknown: '{$sep}⚫ {$e}Ismeretlen királyságbeli játékos{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
+        land:
+          unknown-world: '{$sep}⚫ {$e}Ismeretlen világ a területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+        kingdom:
+          nation: '{$sep}⚫ {$e}Ismeretlen nemzet a királyság számára{$sep}: {$e}Nemzet{$sep}: {$es}%nation_id% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+      description: 'Kísérletek a sérült adatok javítására'
+      done:
+        no-corruption: '{$p}Az átvizsgálás kész. Sérült adat nem található. Indítsd újra a szervert a teljesítményproblémák megelőzése érdekében.'
+        corrupted: '{$e}Az átvizsglás kész, összesen {$es}%corrupted% {$e}sérült adat lett javítva. &lIndítsd újra a szervert a /stop paranccsal, hogy mentésre kerüljön az összes adat.'
+      scanning: '{$p}Az összes adatfájl betöltése és átvizsgálása... Ez eltarthat egy ideig.'
+      aliases: SFC
+      error: '{$e}Hiba történt a Királyság adatfájljainak átvizsgálása közben, ellenőrizd a konzolt!'
   reload:
     description: '{$s}Plugin újratöltése.'
     usage: '{$usage}reload &9[config]'
     success: '{$p}A plugin sikeresen újratöltődött.'
     commands: '{$p}Az összes parancs újratöltődött.'
     name: reload
+    error: '{$e}Hiba történt a plugin újratöltése közben, ellenőrizd a konzolt.'
   create:
     description: '{$s}Királyság létrehozása.'
     name-length: '{$e}A királyság neve nem lehet hosszabb mint {$es}%max% {$e}vagy rövidebb mint {$es}%min% {$e}karakter.'
@@ -1411,6 +1438,7 @@ command:
       cost: '{$e}Szükséged van {$es}%cost% {$e}pénzre a királyság létrehozásához.'
       name: create
       aliases: new make
+      king-only: '{$e}Csak a királyság királya hozhat létre új nemzetet.'
     rename:
       description: '{$s}Nemzet átnevezése.'
       king-only: '{$e}Csak a főnemzet királya tudja átnevezni a nemzetet.'

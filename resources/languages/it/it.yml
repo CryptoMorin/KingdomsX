@@ -1,7 +1,7 @@
 # Read config.yml 'prefix' option for info.
 prefix: '&6[&lK&eingdoms&6] &2'
 chat-input:
-  
+
   # During chat inputs (mostly used in GUIs like asking for rank name, priority, etc)
   # When the player writes this in the chat, it cancels the operation.
   # The sustainable thing to use for hover messages is the '/cancel' command instead.
@@ -84,7 +84,7 @@ value:
   min: '{$e}Il valore minimo e''{$sep}: {$es}%min%'
   max: '{$e}Il valore massimo e''{$sep}: {$es}%max%'
 channels:
-  
+
   default:
     permission-fail: '{$e}Non hai il permesso di usare %channel_color%%channel_name% {$e}channel.'
   global:
@@ -159,7 +159,7 @@ plugin-permission-scope:
   not-op: '&6Non OP'
 tags:
   tagged:
-    
+
     message: hover:{{$s}&l@%tag%;{$p}Sei stato taggato}
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
   others: hover:{&l@%tag%;&9Tag}
@@ -342,7 +342,7 @@ protected-signs:
   protected: '{$e}Questo blocco e'' protetto'
   invalid-sign: '{$e}Non puoi proteggerti usando questo cartello'
   invalid-sign-block: '{$e}Non puoi proteggere questo lato del blocco perche'' un {$es}%block% {$e}e'' piazzato qui'
-  invalid-block: '{$e}Non puoi proteggere questo blocco' 
+  invalid-block: '{$e}Non puoi proteggere questo blocco'
   not-attached: '{$e}Questo cartello dev''essere attaccato al blocco da proteggere'
   unclaimed: '{$e}Non puoi usare il cartello di protezione in un terreno non claimato'
   kingdom-items: '{$e}Non puoi usare cartelli di protezione negli oggetti del regno come torrette e strutture'
@@ -514,7 +514,7 @@ relations:
   no-permission: '{$e}Non hai il permesso di gestire le relazioni'
   no-requests: '{$e}Non hai alcuna richiesta di relazione inviata al tuo gruppo'
   disabled-commands: '{$e}Non puoi usare questo comando in questo territorio'
-  
+
   # Below names are also used for %kingdoms_relation_name%, but not for %kingdoms_land_relation%
   # For the color of relations (%kingdoms_relation_color%), refer to relations.yml instead.
   neutral:
@@ -911,7 +911,7 @@ command:
         usage: '{$usage}Item dato {$p}<name> &9[amount] [player]'
         unknown-item: '{$e}Nome oggetto custom sconoscuito{$sep}: {$es}%item%'
         invalid-amount: '{$e}Totale non valido{$sep}: {$es}%amount%'
-        done: '{$pDato con successo {$s}%amount% %item% {$p}dal valore di {$s}%rp% resource points {$p}to {$s}%target%'
+        done: '{$p}Dato con successo {$s}%amount% %item% {$p}dal valore di {$s}%rp% resource points {$p}to {$s}%target%'
       inject:
         description: '{$s}Punti risorsa inseriti permanentemente nell''oggetto'
         usage: '{$usage}Oggetto inserito {$p}<resource points>'
@@ -1192,7 +1192,7 @@ command:
       name: dailychecks
       aliases: dailycheck
     resourcepoints:
-      description: '{$sAggiungi o prendi punti risorsa da un regno'
+      description: '{$s}Aggiungi o prendi punti risorsa da un regno'
       usage: '{$usage}Punti risorsa admin {$p}<kingdom> &9[set | add | remove] {$p}<amount>'
       player-no-kingdom: '{$e}Il player specificato non ha un regno'
       done: '{$s}%kingdom% {$p}Nuovi punti risorsa{$sep}: {$s}%rp%'
@@ -2635,7 +2635,7 @@ command:
     format:
       message: |
 
-        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% 
+        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
       sound: ENTITY_EXPERIENCE_ORB_PICKUP
     name: broadcast
     aliases: bc announce
