@@ -99,14 +99,14 @@ channels:
 # Set to ~ (without quotes) to disable.
 direct-prefix: '@'
 
-# The chat priority that kingdom handles. Not that changing this will not disable the chat. You need to use other options.
+# The chat priority that kingdom handles. Note that changing this will not disable the chat in any way.
 # This is used when you're using another plugin that manages chat spams and other restrictions. You might want to increase the priorty in these cases.
 # This option requires a restart to work.
 # In Bukkit logic, lower priorities mean executed before the higher priorities.
-# So for example, if a plugin like Essentials or LiteBans use NORMAL priority to format chat or mute players,
-# you'd have to choose "HIGH" priority so the plugin can know chat has been cancelled by these plugins.
-# Normally you shouldn't and wouldn't need to use the MONITOR priority, but if a plugin higher priorities for
-# any reason (which they shouldn't) you can use it.
+# So for example, if a plugin like Essentials or LiteBans uses NORMAL priority to format chat or mute players,
+# you'd have to choose HIGH priority so Kingdoms can know that the chat has been cancelled by these plugins.
+# Normally you shouldn't and wouldn't need to use the MONITOR priority, but if a plugin uses higher priorities for
+# any reason (which they shouldn't) you can use it. Using MONITOR can cause many other issues.
 # We will use the HIGHEST priority here just in case.
 # LOWEST, LOW, NORMAL, HIGH, HIGHEST, MONITOR
 priority: HIGHEST
