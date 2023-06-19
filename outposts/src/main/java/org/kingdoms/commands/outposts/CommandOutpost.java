@@ -34,5 +34,6 @@ public class CommandOutpost extends KingdomsParentCommand {
         new CommandOutpostStart(this);
         new CommandOutpostStop(this);
         new CommandOutpostEdit(this);
+        new CommandOutpostTeleport(this);
     }
 }

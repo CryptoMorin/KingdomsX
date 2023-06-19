@@ -73,6 +73,10 @@ public enum OutpostsLang implements DefinedMessenger {
     COMMAND_OUTPOST_STOP_NOT_STARTED("{$es}%outpost% {$e}outpost event is not started.", 1, 2, 3),
     COMMAND_OUTPOST_STOP_STOPPED("\n\n{$es}%outpost% {$e}outpost event has been stopped! \n\n", 1, 2, 3),
 
+    COMMAND_OUTPOST_TELEPORT_DESCRIPTION("{$s}Teleports to the spawn of an outpost.", 1, 2, 3),
+    COMMAND_OUTPOST_TELEPORT_USAGE("{$usage}outpost teleport &2<outpost>", 1, 2, 3),
+    COMMAND_OUTPOST_TELEPORT_TELEPORTED("{$p}Teleported to outpost spawn.", 1, 2, 3),
+
     OUTPOST_EVENTS_DEATH("{$e}You died and your kingdom lost {$es}%rp% resource points", 2),
 
     COMMAND_OUTPOST_NAME("outpost"),
