@@ -1,4 +1,4 @@
-title: str
+title: Message
 rows: int # Range handled internally
 #type: handled internally
 sound: Sound
@@ -6,7 +6,10 @@ interactable:
   - { (type): set, (elements): int }
   - [ "empty" ]
 disallow-creative: bool
-message: str
+message: Message
+open-options:
+  (keys): Condition
+  (values): Message
 
 options:
   (values):
@@ -15,7 +18,7 @@ options:
     condition: str
     sound: Sound
     refresh: bool
-    message: str
+    message: Message
     # Slot ranges are handled internally.
     slot: int
     posx: int

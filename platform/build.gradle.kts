@@ -1,5 +1,5 @@
-import org.kingdoms.main.PredefinedDependency.excludeKotlin
-import org.kingdoms.main.PredefinedDependency.relocateLibs
+import org.kingdoms.main.KingdomsGradleCommons.excludeKotlin
+import org.kingdoms.main.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons

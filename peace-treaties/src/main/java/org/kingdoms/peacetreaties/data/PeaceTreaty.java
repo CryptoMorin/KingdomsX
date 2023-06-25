@@ -17,7 +17,7 @@ import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.managers.RelationshipListener;
 import org.kingdoms.peacetreaties.terms.*;
-import org.kingdoms.utils.ConditionProcessor;
+import org.kingdoms.utils.conditions.ConditionProcessor;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.config.NodeInterpreter;
 import org.kingdoms.utils.internal.Fn;
