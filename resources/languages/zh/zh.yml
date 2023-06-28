@@ -2238,7 +2238,7 @@ command:
     already: '{$e}你已经向&e%kingdom%{$e}王国宣战了。'
     self: '{$e}你不能向自己的王国宣战……(晃晃脑袋吧，听听大海的声音~)'
     enemies: '{$e}你现在与&e%kingdom%{$e}处于敌对状态了。'
-    notify: '{$es}%kingdoms_name%{$e}向%kingdoms_other_name%宣战了。{$e}不幸的是，这两个王国都是你的盟友。'
+    notify: '{$es}%kingdoms_name%{$e}向%kingdoms_other_kingdom_name%宣战了。{$e}不幸的是，这两个王国都是你的盟友。'
     cost: '{$e}你需要{$es}%cost%资源点{$e}才能宣战。'
     name: enemy
     aliases: enemies
@@ -2652,22 +2652,22 @@ command:
       description: '{$s}查看一份和平条约以决定是否接受。'
       name: review
       aliases: view
-      header: '{$es}%kingdoms_other_name%{$e}的和平条约包含以下条款{$sep}: '
+      header: '{$es}%kingdoms_other_kingdom_name%{$e}的和平条约包含以下条款{$sep}: '
       terms: '{$sep}⚫%term_message%'
-      footer: '{$e}你可以输入{$es}hover:{/k pt accept %kingdoms_other_name%;&7或点我;|/k pt accept %kingdoms_other_name%}{$e}以接受。'
+      footer: '{$e}你可以输入{$es}hover:{/k pt accept %kingdoms_other_kingdom_name%;&7或点我;|/k pt accept %kingdoms_other_kingdom_name%}{$e}以接受。'
     accept:
       name: accept
       description: '{$s}接受一份和平条约。'
       failed: '{$e}你的王国并未满足条约的全部条件，因此无法接受{$sep}: '
       accepted:
-        receiver: '{$p}你的王国接受了{$s}%kingdoms_other_name%{$p}王国发送的和平条约。'
+        receiver: '{$p}你的王国接受了{$s}%kingdoms_other_kingdom_name%{$p}王国发送的和平条约。'
         sender: '{$s}%kingdoms_name%{$p}接受了你的王国发送的和平条约。'
       usage: '{$usage}pt accept {$p}<王国>'
     reject:
       description: '{$s}拒绝一份和平条约。'
       name: reject
       notifications:
-        receiver: '{$p}你的王国拒绝了{$s}%kingdoms_other_name%{$p}王国发送的和平条约。'
+        receiver: '{$p}你的王国拒绝了{$s}%kingdoms_other_kingdom_name%{$p}王国发送的和平条约。'
         sender: '{$s}%kingdoms_name%{$p}拒绝了你的王国发送的和平条约。'
       usage: '{$usage}pt reject {$p}<王国>'
   joinrequests:
@@ -2772,11 +2772,11 @@ lands:
   visualizer:
     no-kingdom:
       titles:
-        title: '%kingdoms_other_name%'
+        title: '%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_lore%'
     neutral:
       titles:
-        title: '%kingdoms_other_name%'
+        title: '%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     wilderness:
       actionbar: '{$sep}&l-=({$p}&l无主之地{$sep}&l)=-'
@@ -2786,21 +2786,21 @@ lands:
         subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
     enemy:
       titles:
-        title: '&c%kingdoms_other_name%'
+        title: '&c%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     ally:
       titles:
-        title: '&6%kingdoms_other_name%'
+        title: '&6%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     nation:
       titles:
-        title: '&9%kingdoms_other_name%'
+        title: '&9%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     nation-zone:
       actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%邦联区域{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     truce:
       titles:
-        title: '&e%kingdoms_other_name%'
+        title: '&e%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
 guis:
   creative: '{$e}你不能在创造模式下打开此界面。'
@@ -3149,7 +3149,7 @@ peace-treaties:
 audit-logs:
   peacetreaties:
     sent: '{$p}你的王国向{$s}%kingdoms_name%{$p}王国发送了一份和平条约。查看你的王国编年史了解更多。'
-    received: '{$p}你的王国收到了一份来自{$s}%kingdoms_other_name%{$p}王国的和平条约。查看你的王国编年史了解更多。'
+    received: '{$p}你的王国收到了一份来自{$s}%kingdoms_other_kingdom_name%{$p}王国的和平条约。查看你的王国编年史了解更多。'
   filters:
     type:
       enter: '{$p}请输入你想查看的事件类型，{$cancel}'

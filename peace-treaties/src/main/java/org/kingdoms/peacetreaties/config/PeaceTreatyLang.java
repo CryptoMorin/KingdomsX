@@ -35,20 +35,20 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     COMMAND_PEACETREATY_REVIEW_DESCRIPTION("{$s}Review a sent peace treaty contract in order to decide to accept it or not.", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_NAME("review", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_ALIASES("view", 1, 2, 3),
-    COMMAND_PEACETREATY_REVIEW_HEADER("{$es}%kingdoms_other_name% {$e}peace treaty contains the following terms{$sep}:", 1, 2, 3),
+    COMMAND_PEACETREATY_REVIEW_HEADER("{$es}%kingdoms_other_kingdom_name% {$e}peace treaty contains the following terms{$sep}:", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_TERMS("{$sep}⚫ %term_message%", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_FOOTER("{$e}You can accept this contract by running {$es}" +
-            "hover:{/k pt accept %kingdoms_other_name%;&7Click to accept;|/k pt accept %kingdoms_other_name%}", 1, 2, 3),
+            "hover:{/k pt accept %kingdoms_other_kingdom_name%;&7Click to accept;|/k pt accept %kingdoms_other_kingdom_name%}", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_NAME("accept", 1, 2, 3),
     COMMAND_PEACETREATY_REJECT_DESCRIPTION("{$s}Rejects a peace treaty contract.", 1, 2, 3),
     COMMAND_PEACETREATY_REJECT_USAGE("{$usage}pt reject {$p}<kingdom>", 1, 2, 3),
     COMMAND_PEACETREATY_REJECT_NAME("reject", 1, 2, 3),
-    COMMAND_PEACETREATY_REJECT_NOTIFICATIONS_RECEIVER("{$e}Your kingdom has rejected {$es}%kingdoms_other_name% {$e}peace treaty.", 1, 2, 3, 4),
+    COMMAND_PEACETREATY_REJECT_NOTIFICATIONS_RECEIVER("{$e}Your kingdom has rejected {$es}%kingdoms_other_kingdom_name% {$e}peace treaty.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_REJECT_NOTIFICATIONS_SENDER("{$es}%kingdoms_name% {$e}has rejected your kingdom's peace treaty contract.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_ACCEPT_DESCRIPTION("{$s}Accepts a peace treaty contract.", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_USAGE("{$usage}pt accept {$p}<kingdom>", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_FAILED("{$e}Your kingdom failed to meet all the contract's requirements to accept{$sep}:", 1, 2, 3),
-    COMMAND_PEACETREATY_ACCEPT_ACCEPTED_RECEIVER("{$p}Your kingdom has accepted the peace treaty contract from {$s}%kingdoms_other_name% {$p}kingdom.", 1, 2, 3, 4),
+    COMMAND_PEACETREATY_ACCEPT_ACCEPTED_RECEIVER("{$p}Your kingdom has accepted the peace treaty contract from {$s}%kingdoms_other_kingdom_name% {$p}kingdom.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_ACCEPT_ACCEPTED_SENDER("{$s}%kingdoms_name% {$p}has accepted your peace treaty contract.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_RESUME_NONE("{$e}You don't have any active peace treaties to edit.", 1, 2, 3),
     EDITOR_PAUSED("{$p}You can resume your editing by running {$s}hover:{/k peacetreaty resume;&7Click to resume;/k peacetreaty resume}", 1),
@@ -93,7 +93,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     @Path({"audit-logs", "peacetreaties", "sent"})
     LOGS_SENT("{$p}Your kingdom has sent one peace treaty to {$s}%kingdoms_name% {$p}Check your kingdom logs for more info."),
     @Path({"audit-logs", "peacetreaties", "received"})
-    LOGS_RECEIVED("{$p}Your kingdom has receieved a peace treaty from {$s}%kingdoms_other_name% {$p}Check your kingdom logs for more info.");
+    LOGS_RECEIVED("{$p}Your kingdom has receieved a peace treaty from {$s}%kingdoms_other_kingdom_name% {$p}Check your kingdom logs for more info.");
 
     private final LanguageEntry languageEntry;
     private final String defaultValue;
