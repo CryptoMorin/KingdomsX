@@ -497,9 +497,12 @@ kingdom-fly:
         default: 100
       resource-points: true
 
-  # In seconds. Set to 0 to disable. If the player avoids the flight disable cause, the warning will end and the player will keep their flight.
+  # In seconds. If the player avoids the flight disable cause,
+  # the warning will end and the player will keep their flight.
+  # - Set to 0 to instantly disable their flight.
   warnings:
     # Warn the player before disabling their fly if they go in a land that they cannot fly in.
+    # Players that teleport will have their flight instantly disabled if the land that they teleported to doesn't allow flight.
     land: 3
 
     # We can give them more time. After all there's an activation cost for a reason.

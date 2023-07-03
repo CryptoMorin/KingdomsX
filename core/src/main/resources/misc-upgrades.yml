@@ -15,6 +15,16 @@ invasions:
   default-level: 0
 invasion-teleportation:
   enabled: true
+
+  # This option can be used to make upgrade trees.
+  #condition:
+    # Makes "invasions" upgrade to be a requirement to be maxxed to upgrade this upgrade.
+    #"{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "miscupgrades.required.invasions"
+
+    # If anti-explosion upgrade is upgraded, you won't be able to upgrade this and any other upgrade that depends on this.
+    # You could block anti-explosion from being upgraded if this option is upgraded by doing the same thing.
+    #"{kingdoms_kingdom_upgrade:level type=misc, of=ANTI_EXPLOSION} > 0": "miscupgrades.tree.anti-explosion"
+
   # This amount is reduced from invasions.yml -> teleportation -> teleport-delay
   scaling: lvl
   cost: "(lvl + 1) * 10"
@@ -156,6 +166,7 @@ guards:
         health: 20
 insanity:
   enabled: true
+  can-be-disabled: false
   cost: "(lvl + 1) * 500"
   effects:
     1: [ "STRENGTH, 10, 1" ]
@@ -177,6 +188,7 @@ glory:
     "type != 'PLAYER'": "xp + (lvl * 5)"
 chest-size:
   enabled: true
+  can-be-disabled: false
   scaling: lvl
   cost: "(lvl + 1) * 100"
   # You cannot change this to a higher number, otherwise a lot of unexpected errors will spam.
@@ -198,6 +210,7 @@ chest-size:
 # max-claims equation in claims.yml
 max-claims:
   enabled: true
+  can-be-disabled: false
   scaling: 'lvl * 2'
   cost: "(lvl + 1) * 200"
   max-level: 10
@@ -211,7 +224,60 @@ max-members:
   default-level: 0
 max-turrets: # This works per land, it doesn't bypass per turret limits.
   enabled: true
+  can-be-disabled: false
   cost: "(lvl + 1) * 10000"
   scaling: 'lvl' # Used by "misc_upgrades_max_turrets" placeholder inside turrets.yml
   max-level: 5
   default-level: 0
+
+
+"[fn-add-permission]": &fn-add-permission
+  args: [ "<<permission>>" ]
+  return: "CONSOLE:k admin forEach contextType=playersInKingdom context=%kingdoms_kingdom_name% command=\"CONSOLE:lp user %player% permission set <<permission>> true\""
+
+"[fn-remove-permission]": &fn-remove-permission
+  args: [ "<<permission>>" ]
+  return: "CONSOLE:k admin forEach contextType=playersInKingdom context=%kingdoms_kingdom_name% command=\"CONSOLE:lp user %player% permission unset <<permission>>\""
+
+# This example is not used by default inside the misc upgrades nexus GUI, so players
+# will not be able to use it by default. To fix it you'd have to go to the GUI and
+# add an option named "custom-misc-upgrade"
+# Note that for this to function properly, you also need to remove permissions when
+# a player leaves their kingdom. To do this, you have to use the events option in config.yml
+# For a full guide, visit this:
+custom-misc-upgrade: # Namespace: Kingdoms:CUSTOM_MISC_UPGRADE
+  enabled: true
+  can-be-disabled: true
+  max-level: 3
+  commands:
+
+    # Unlike most other conditions inside the plugin, this condition list
+    # will execute every entry that meets the condition, and it will not stop at the first
+    # one that is true. Here in order to make the config much cleaner, we used functions
+    # and YAML anchors/aliases to prevent repeating the same thing over and over again.
+    # The numbers here represent the misc upgrade level.
+    1:
+      enabled: &custom-enabled-1
+        - *fn-add-permission [ 'kingdoms.upgrade.custom.1' ]
+      "!enabled": &custom-disabled-1
+        - *fn-remove-permission [ 'kingdoms.upgrade.custom.1' ]
+
+    # Here the "toggle" variable is true if the upgrade is being turned on/off rather than
+    # being upgraded. This helps with keeping permissions from previous upgrades.
+    # So if I were to disable this upgrade when at level 2, players would have
+    # both their kingdoms.upgrade.custom.1 and kingdoms.upgrade.custom.2 permissions removed.
+    2:
+      enabled: &custom-enabled-2
+        toggle: *custom-enabled-1
+        true: *fn-add-permission [ 'kingdoms.upgrade.custom.2' ]
+      "!enabled": &custom-disabled-2
+        toggle: *custom-disabled-1
+        true: *fn-remove-permission [ 'kingdoms.upgrade.custom.2' ]
+
+    3:
+      enabled: &custom-enabled-3
+        toggle: *custom-enabled-2
+        true: *fn-add-permission [ 'kingdoms.upgrade.custom.3' ]
+      "!enabled": &custom-disabled-3
+        toggle: *custom-disabled-2
+        true: *fn-remove-permission [ 'kingdoms.upgrade.custom.3' ]

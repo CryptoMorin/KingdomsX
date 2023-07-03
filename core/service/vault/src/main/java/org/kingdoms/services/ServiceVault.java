@@ -8,6 +8,9 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
+import java.util.concurrent.CompletableFuture;
+
+// https://github.com/LuckPerms/LuckPerms/blob/master/bukkit/src/main/java/me/lucko/luckperms/bukkit/vault/LuckPermsVaultPermission.java
 public final class ServiceVault implements Service {
     private static Economy getEconomy() {
         RegisteredServiceProvider<Economy> service = Bukkit.getServicesManager().getRegistration(Economy.class);
@@ -49,6 +52,14 @@ public final class ServiceVault implements Service {
 
     public static boolean hasMoney(OfflinePlayer player, double amount) {
         return getEconomy() != null && getEconomy().has(player, amount);
+    }
+
+    public static void addPermission(OfflinePlayer player, String permission) {
+        getPermission().playerAddTransient(player, permission);
+    }
+
+    public static void removePermission(OfflinePlayer player, String permission) {
+        getPermission().playerRemoveTransient(player, permission);
     }
 
     public static String getDisplayName(Player player) {
