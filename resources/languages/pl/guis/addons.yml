@@ -36,21 +36,19 @@ options:
     material: NETHER_STAR
     name: '&9Informacje'
     lore: |
-      &7Addons are additional
-      downloadable content that
-      can be installed separately.
+      &7Dodatki to dodatkowe
+      pobieralne treści, które
+      można zainstalować osobno.
 
-      The reason why addons exist in
-      the first place, is because of
-      {$p}performance{$sep}, {$p}modularization
-      &7and {$p}file size limits.
+      Powodem istnienia dodatków
+      jest {$p}wydajność{$sep}, {$p}modularyzacja
+      &7oraz {$p}ograniczenia rozmiaru plików.
 
-      {$sep}[{$s}!{$sep}] &7In order to be
-      able to install addons, you need to
-      have a internet connection that's
-      able to connect to {$p}GitHub.com
-      {$sep}(&7not blocked by firewall,
-      country censoreship and etc.{$sep})
+      {$sep}[{$s}!{$sep}] &7Aby móc instalować
+      musisz mieć połączenie internetowe,
+      które jest w stanie połączyć się z {$p}GitHub.com
+      {$sep}(&7Nie będąc blokowane przez zapory ogniowe,
+      cenzurę kraju, itp..{$sep})
   addons:
     slots:
       - 10
@@ -83,48 +81,46 @@ options:
       - 43
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] &9%addon-name%'
+      name: '&8[&5Oczekuje na Restart&8] &9%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
-        &5The addon is downloaded. Waiting
-        for the server to be restarted to
-        enable the addon.
+        &2Wersja&8: &9%latest-version%
+        &5Dodatek został pobrany. Oczekiwanie
+        Na restart serwera w celu włączenia dodatku.
       material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[&2Up to date&8] &9%addon-name%'
+      name: '&8[&2Aktualny&8] &9%addon-name%'
       lore: |
         %description%
-        &2Version&8: &9%installed-version%
-        &4Right-click to uninstall
+        &2Wersja&8: &9%installed-version%
+        &4Kliknij prawym aby odinstalować
       material: GREEN_WOOL
     outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Nieaktualny&8] &9%addon-name%'
       lore: |
         %description%
 
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
+        &4Zainstalowana wersja&8: &9%installed-version%
+        &2Najnowsza Wersja&8: &9%latest-version%
 
-        {$sep}[{$e}!{$sep}] {$es}This version requires
-        kingdoms {$p}v%supported-core-version% {$es}to work.
-        Current version{$sep}: {$e}%current-core-version%
+        {$sep}[{$e}!{$sep}] {$es}Ten dodatek wymaga wersji {$p}v%supported-core-version% {$es}aby działala.
+        Bieżąca wersja{$sep}: {$e}%current-core-version%
 
-        &2Left-click to update
-        &4Right-click to uninstall
+        &2Kliknij lewym aby zaktualizować
+        &4Kliknij prawym aby odinstalować
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Nieaktualny&8] &9%addon-name%'
       lore: |
         %description%
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
-        &2Left-click to update
-        &4Right-click to uninstall
+        &4Zainstalowana wersja &8: &9%installed-version%
+        &2Najnowsza wersja &8: &9%latest-version%
+        &2Kliknij lewym aby zaktualizować
+        &4Kliknij prawym aby odinstalować
       material: RED_WOOL
     not-installed:
       name: '&8[&6Not installed&8] &9%addon-name%'
