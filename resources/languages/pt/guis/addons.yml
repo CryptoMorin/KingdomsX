@@ -36,21 +36,21 @@ options:
     material: NETHER_STAR
     name: '&9Informação'
     lore: |
-      &7Addons are additional
-      downloadable content that
-      can be installed separately.
+      &7Addons são conteúdos adicionais
+      para download que
+      podem ser instalados separadamente.
 
-      The reason why addons exist in
-      the first place, is because of
-      {$p}performance{$sep}, {$p}modularization
-      &7and {$p}file size limits.
+      A razão pela qual os complementos existem em
+      primeiro lugar, é por causa de
+      {$p}de desempenho{$sep}, {$p}modularização
+      &7and {$p}limites de tamanho dos arquivos.
 
-      {$sep}[{$s}!{$sep}] &7In order to be
-      able to install addons, you need to
-      have a internet connection that's
-      able to connect to {$p}GitHub.com
-      {$sep}(&7not blocked by firewall,
-      country censoreship and etc.{$sep})
+      {$sep}[{$s}!{$sep}] &7Para ser
+      capaz de instalar os addons, você precisa
+      ter uma conexão com a internet que
+      consegue se conectar ao {$p}GitHub. om
+      {$sep}(&7não bloqueado pelo firewall,
+      país censohip, etc.{$sep})
   addons:
     slots:
       - 10
@@ -79,58 +79,58 @@ options:
       - 39
       - 40
       - 41
-      - 42
+      - 52
       - 43
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] &9%addon-name%'
+      name: '&8[&5Reinício pendente&8] &9%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
-        &5The addon is downloaded. Waiting
-        for the server to be restarted to
-        enable the addon.
+        &2Versão&8: &9%latest-version%
+        &5O complemento foi baixado. Aguardando
+        para que o servidor seja reiniciado para
+        ativar o complemento.
       material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[&2Up to date&8] &9%addon-name%'
+      name: '&8[&2Atualizada&8] &9%addon-name%'
       lore: |
         %description%
         &2Version&8: &9%installed-version%
-        &4Right-click to uninstall
+        &4Clique com o botão direito do mouse para desinstalar
       material: GREEN_WOOL
     outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Desatualizado&8] &9%addon-name%'
       lore: |
         %description%
 
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
+        &4Versão Instalada&8: &9%installed-version%
+        &2Última Versão&8: &9%latest-version%
 
-        {$sep}[{$e}!{$sep}] {$es}This version requires
-        kingdoms {$p}v%supported-core-version% {$es}to work.
-        Current version{$sep}: {$e}%current-core-version%
+        {$sep}[{$e}!{$sep}] {$es}Essa versão requer
+        reinos {$p}v%supported-core-version% {$es}para funcionar.
+        Versão{$sep}atual: {$e}%current-core-version%
 
-        &2Left-click to update
-        &4Right-click to uninstall
+        &2Clique esquerdo para atualizar
+        &4Clique direito para desinstalar
       material: RED_WOOL
     outdated:
-      condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      condition: 'instalado && desatualizado'
+      name: '&8[&4Desatualizado&8] &9%addon-name%'
       lore: |
         %description%
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
-        &2Left-click to update
-        &4Right-click to uninstall
+        &4Versão Instalada&8: &9%installed-version%
+        &2Última Versão&8: &9%latest-version%
+        &2Clique esquerdo para atualizar
+        &4Direita para desinstalar
       material: RED_WOOL
     not-installed:
-      name: '&8[&6Not installed&8] &9%addon-name%'
+      name: '&8[&6Não instalado&8] &9%addon-name%'
       lore: |
         %description%
         &2Version&8: &9%latest-version%
-        &2Left-click to install
-      condition: '!installed'
+        &2Clique esquerdo para instalar
+      condition: '!instalado'
       material: BLUE_WOOL
