@@ -8,8 +8,6 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
-import java.util.concurrent.CompletableFuture;
-
 // https://github.com/LuckPerms/LuckPerms/blob/master/bukkit/src/main/java/me/lucko/luckperms/bukkit/vault/LuckPermsVaultPermission.java
 public final class ServiceVault implements Service {
     private static Economy getEconomy() {
@@ -63,9 +61,10 @@ public final class ServiceVault implements Service {
     }
 
     public static String getDisplayName(Player player) {
-        if (getChat() == null) return player.getDisplayName();
-        String prefix = getChat().getPlayerPrefix(player);
-        String suffix = getChat().getPlayerSuffix(player);
+        Chat chat = getChat();
+        if (chat == null) return player.getDisplayName();
+        String prefix = chat.getPlayerPrefix(player);
+        String suffix = chat.getPlayerSuffix(player);
         return prefix + player.getName() + suffix;
     }
 

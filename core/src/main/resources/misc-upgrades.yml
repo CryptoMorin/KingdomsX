@@ -19,6 +19,8 @@ invasion-teleportation:
   # This option can be used to make upgrade trees.
   #condition:
     # Makes "invasions" upgrade to be a requirement to be maxxed to upgrade this upgrade.
+    # The "miscupgrades.required.invasions" refers to a custom language entry inside your language files. (e.g. en.yml)
+    # %kingdoms_kingdom_upgrade% is a functional placeholder: https://github.com/CryptoMorin/KingdomsX/wiki/Placeholders#placeholder-functions
     #"{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "miscupgrades.required.invasions"
 
     # If anti-explosion upgrade is upgraded, you won't be able to upgrade this and any other upgrade that depends on this.
@@ -239,6 +241,7 @@ max-turrets: # This works per land, it doesn't bypass per turret limits.
   args: [ "<<permission>>" ]
   return: "CONSOLE:k admin forEach contextType=playersInKingdom context=%kingdoms_kingdom_name% command=\"CONSOLE:lp user %player% permission unset <<permission>>\""
 
+# https://github.com/CryptoMorin/KingdomsX/wiki/NFAQ#making-custom-misc-upgrades
 # This example is not used by default inside the misc upgrades nexus GUI, so players
 # will not be able to use it by default. To fix it you'd have to go to the GUI and
 # add an option named "custom-misc-upgrade"
@@ -249,6 +252,20 @@ custom-misc-upgrade: # Namespace: Kingdoms:CUSTOM_MISC_UPGRADE
   enabled: true
   can-be-disabled: true
   max-level: 3
+
+  permissions:
+    1:
+      permissions:
+        - "kingdoms.upgrade.custom.1"
+    2:
+      previous: remove
+      permissions:
+        - "kingdoms.upgrade.custom.2"
+    3:
+      previous: remove
+      permissions:
+        - "kingdoms.upgrade.custom.3"
+
   commands:
 
     # Unlike most other conditions inside the plugin, this condition list

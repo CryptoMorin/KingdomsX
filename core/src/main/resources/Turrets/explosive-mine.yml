@@ -4,14 +4,21 @@ cost: 200
 sell: 100
 upgrade-cost: lvl * 50
 effects: ~
+
 # https://minecraft.gamepedia.com/Explosion#Typical_damage_radius
 # https://minecraft.gamepedia.com/Damage#Explosions
 damage: 0
-# From Level, Power, From Level Fire
+
 explosion:
-  level: 2
-  fire: 3
-  power: lvl * 0.5
+  # From which level should explosions be enabled?
+  level: 1
+
+  # From which level should explosions spread fire?
+  fire: 1
+
+  # The level of the explosion. Usually anything under 1 doesn't cause any block damage.
+  power: 3
+
 particles:
   1:
     place:

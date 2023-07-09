@@ -4,6 +4,8 @@ cost: Math
 sell: Math
 max-level: Math
 dont-update-holograms: bool
+vertical-knockback: Math
+lingering: bool
 sounds:
   (values):
     (values): Sound
@@ -27,11 +29,16 @@ pass-through: Math
 upgrade-cost: Math
 fire: Math
 manual: Math
+explosion:
+  level: int
+  fire: int
+  power: Math
 effects:
   (values): list
   (optional): true
 projectile:
   (required): [ '1' ]
+  (keys): int
   (values): str
   (optional): true
 speed: Math
@@ -43,10 +50,12 @@ entities:
     (elements): Enum<org.bukkit.entity.EntityType>
 block:
   (required): [ '1' ]
+  (keys): int
   (values): Material
 
 skull:
   (required): [ '1' ]
+  (keys): int
   (values): str
 item:
   (keys): int

@@ -29,6 +29,14 @@ to-inventory-on-break: false
 # Set to 0 to disable
 teleportation-invulnerability: 5
 
+# * These options require a restart to change.
+pacifists:
+  # Should turrets target pacifist players?
+  target: false
+
+  # Should turrets placed inside pacifist kingdoms shoot players?
+  enabled: false
+
 # Disallow these mobs from being damage if a turret's shot was meant to
 # target another entity, but hit them instead.
 # This includes players as well.
@@ -49,12 +57,14 @@ disallow-accidental-mob-damage:
 temporary-hologram-display: 5mins
 
 # WARNING: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
-# By changing this option you're changing how often turrets perform checks and activate.
-# By default, it's every 1 tick. Meaning every 1 second, 20 checks are performed.
-# If you change it to 2 ticks for instance, all the turrets will be affected.
-# Meaning if the turret's cooldown was "10" ticks now it's "10 * 2 = 20" ticks.
-# For example, if you set this to 20, all turrets are limited to shoot every second, no matter how long the cooldown is.
-# Every single number of this option matters up to 100 ticks for performance. After 100 ticks the performance is just not noticable anymore,
-# unless you have an unusual high number of turrets.
-# Requires a restart to update.
+# - By changing this option you're changing how often turrets perform checks and activate.
+# - By default, it's every 1 tick. Meaning every 1 second, 20 checks are performed.
+# - If you change it to 2 ticks for instance, all the turrets will be affected.
+#   Meaning if the turret's cooldown was "10" ticks now it's "10 * 2 = 20" ticks.
+#   For example, if you set this to 20, all turrets are limited to shoot every second,
+#   no matter how long the cooldown is.
+# - Every single number of this option matters up to 100 ticks for performance.
+#   After 100 ticks the performance is just not noticable anymore, unless
+#   you have an unusual high number of turrets.
+# * Requires a restart to update.
 update-ticks: 1

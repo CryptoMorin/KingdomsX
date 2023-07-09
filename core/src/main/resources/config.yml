@@ -358,15 +358,18 @@ integrations:
   luckperms: true
   vault: true
 
-  mythic-mobs: true
-  auth-me: true
-  discordsrv: true
-  my-pet: true
   world-guard: true
   world-edit: true
+
   essentials: true
   cmi: true
+
+  mythic-mobs: true
+  my-pet: true
+  auth-me: true
+  discordsrv: true
   slimefun: true
+  project-korra: true
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -988,7 +991,9 @@ daily-checks:
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#taxes
 tax:
   kingdoms:
+    # Should kingdoms pay taxes to the server?
     enabled: false
+
     # The equation used to evaluate "pacifism_factor" placeholder for the tax equation.
     # This is used when a kingdom is pacifist.
     # If the kingdom is not a pacifist, this will simply be equal to 0
@@ -1024,7 +1029,9 @@ tax:
       # Kick kingdom members if they cannot pay taxes.
       kick-if-cant-pay: true
   nations:
+    # Should nations pay taxes to the server?
     enabled: false
+
     scaling: "kingdoms_nation_kingdoms * kingdoms_nation_kingdoms"
 
     # The amount of time new nations are excluded from paying taxes.
@@ -1149,8 +1156,14 @@ nexus:
     item:
       material: DIAMOND_HOE
 
+    # This was first inteded to be an anti-cheat for isntamine/fastbreak hacks
+    # because some anti-cheat plugins don't detect this for some reasons.
+    # The default breaking time for a beacon is 4.5seconds for all tools.
+    cooldown: 10 seconds
+
     # If this is acceptable in creative mode too.
     creative: false
+
     # The amount of resource points given after breaking.
     cost: 20
 

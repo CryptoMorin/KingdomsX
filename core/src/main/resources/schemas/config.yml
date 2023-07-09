@@ -86,8 +86,22 @@ hologram-update-ticks: int
 integrations:
   (values): bool
 
-events:
+command:
+  name: str
+  aliases: set
+
+commands:
+  (optional): true
   (keys): str
+  (values):
+    disabled: bool
+    cooldown: Period
+    disabled-worlds:
+      (type): set
+      (elements): World
+
+events:
+  (keys): Class
   (values):
     priority: Enum<org.bukkit.event.EventPriority>
     ignore-cancelled: bool
