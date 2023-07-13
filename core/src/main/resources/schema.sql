@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}players` (
     `mapSize_height` INT NULL, `mapSize_width` INT NULL,
     `readMails` JSON NULL,
     `claims` JSON NULL,
+    `protectedBlocks` JSON NULL,
     `mutedChannels` JSON NULL,
     `invites` JSON NULL,
     SimpleChunkLocation(jailCell) NULL,

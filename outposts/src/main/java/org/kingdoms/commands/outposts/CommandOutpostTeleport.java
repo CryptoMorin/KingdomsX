@@ -5,19 +5,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionDefault;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
-import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
-import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.LocationLocale;
-import org.kingdoms.locale.provider.MessageBuilder;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.outposts.*;
-import org.kingdoms.utils.MathUtils;
+import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.OutpostEvent;
+import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.utils.PaperUtils;
 
 import java.util.List;
-import java.util.UUID;
 
 public class CommandOutpostTeleport extends KingdomsCommand {
     public CommandOutpostTeleport(KingdomsParentCommand parent) {
