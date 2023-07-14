@@ -1,52 +1,69 @@
-title: '{$sep}-=( {$p}Zászlók {$sep})=-'
+title: '{$sep}-=( {$p}Flags {$sep})=-'
 rows: 3
-
 options:
   back:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    name: '&cVissza'
+    name: '&cBack'
   decoration:
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    slots:
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 9
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   info:
     posx: 5
     posy: 1
-    name: "&eInformáció"
+    name: "&eInfo"
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
     slot: 4
     lore: |
-      &7A tárgyzászlók elrejthetnek bizonyos
-      tulajdonságokat a tárgyakból. Ez nem 
-      változtatja meg a viselkedésüket, csak 
-      elrejti őket a tárgy leírásából, ami 
-      vagy a tárgy története felett vagy 
-      alatt van..
+      &7Item flags can hide some
+      properties from items.
+      This won't change their actual
+      behavior it just hides them
+      from the item's description
+      which is either above or below
+      ther item's lore.
   remove-all:
     posx: 9
     posy: 1
     material: RED_WOOL
-    name: '{$e}Összes zászló eltávolítása'
+    name: '{$e}Remove all flags'
   flag-hide-attributes:
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett attribútumok"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Attributes"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett attribútumok'
+      name: '{$enabled} Hide Attributes'
       glow: true
     else:
-      name: '{$disabled} Rejtett attribútumok'
+      name: '{$disabled} Hide Attributes'
     posx: 2
     posy: 2
     material: DIAMOND_SWORD
     lore: |
-      &7A tárgy attribútumai azok a kis leírások,
-      amelyek egyes tárgyak története alatt látszanak.
+      &7Item attributes are the small descriptions
+      shown under the lore of some items.
     attributes:
       GENERIC_ATTACK_DAMAGE:
         name: Test
@@ -58,32 +75,32 @@ options:
     material: DIAMOND_PICKAXE
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett megsemísitések"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Destroys"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett megsemísitések'
+      name: '{$enabled} Hide Destroys'
       glow: true
       lore: |
-        &7Ezt csak az igazán ritka tárgyaknál van
-        használva, amelyek a legtöbb szerveren 
-        gyakorlatilag használhatatlanok. Ez egy 
-        olyan speciális attribútumot rejt, amely 
-        korlátozza, hogy a tárgyak ne tudjanak 
-        elpusztítani bizonyos blokkokat, amikor 
-        a játékos kaland módban van.
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        items from being able to destroy
+        certain blocks when the player is
+        in adventure mode.
     else:
-      name: '{$disabled} Rejtett megsemísitések'
+      name: '{$disabled} Hide Destroys'
       lore: |
-        &7Ezt csak az igazán ritka tárgyaknál van
-        használva, amelyek a legtöbb szerveren 
-        gyakorlatilag használhatatlanok. Ez egy 
-        olyan speciális attribútumot rejt, amely 
-        korlátozza, hogy a tárgyak ne tudjanak 
-        elpusztítani bizonyos blokkokat, amikor 
-        a játékos kaland módban van.
-        
-        &7Kitörhető:
-        &8Kő
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        items from being able to destroy
+        certain blocks when the player is
+        in adventure mode.
+
+        &7Can break:
+        &8Stone
   flag-hide-dye:
     posx: 4
     posy: 2
@@ -91,93 +108,93 @@ options:
     color: 255, 255, 255
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett festékek"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Dyes"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett festékek'
+      name: '{$enabled} Hide Dye'
       glow: true
     else:
-      name: '{$disabled} Rejtett festékek'
+      name: '{$disabled} Hide Dye'
     lore: |
-      &7Elrejti a színes bőrpáncélok
-      festékinformációit.
+      &7Hide dye information from
+      colored leather armors.
   flag-hide-enchants:
     posx: 5
     posy: 2
     material: ENCHANTED_BOOK
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett bűvölések"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Enchants"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett bűvülések'
+      name: '{$enabled} Hide Enchants'
       glow: true
     else:
-      name: '{$disabled} Rejtett bűvülések'
+      name: '{$disabled} Hide Enchants'
     enchants:
       DURABILITY: 1
     lore: |
-      &7Elrejti a tárgy bűbájait a történet
-      feletti leírásból, azonban a tárgy 
-      továbbra megtartja a fénylő effektjét.
+      &7Hides item enchantments from
+      their description above the lore
+      however this will still keep the
+      item's glowing effect.
   flag-hide-placed-on:
     posx: 6
     posy: 2
     material: STONE
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett ráhelyezés"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Placed On"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett ráhelyezés'
+      name: '{$enabled} Hide Placed On'
       glow: true
       lore: |
-        &7Ezt csak az igazán ritka 
-        tárgyaknál van használva, 
-        melyek a legtöbb szerveren 
-        gyakorlatilag használhatatlanok.
-        Ellrejt egy speciális attribútumot,
-        amely korlátozza a blokkok elhelyezését 
-        bizonyos blokkokon, amikor a játékos
-        kaland módban van.
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        blocks from being placed on certain
+        blocks when the player is in adventure
+        mode.
     else:
-      name: '{$disabled} Rejtett ráhelyezés'
+      name: '{$disabled} Hide Placed On'
       lore: |
-        &7Ezt csak az igazán ritka 
-        tárgyaknál van használva, 
-        melyek a legtöbb szerveren 
-        gyakorlatilag használhatatlanok.
-        Ellrejt egy speciális attribútumot,
-        amely korlátozza a blokkok elhelyezését 
-        bizonyos blokkokon, amikor a játékos
-        kaland módban van.
-        
-        &7Rárakhatod:
-        &8Kő
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        blocks from being placed on certain
+        blocks when the player is in adventure
+        mode.
+
+        &7Can be placed on:
+        &8Stone
   flag-hide-potion-effects:
     posx: 7
     posy: 2
     material: POTION
-    effects: [ "BLINDNESS, 1, 10" ]
+    effects:
+      - "BLINDNESS, 1, 10"
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett bájitalhatások"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Potion Effects"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett bájitalhatások'
+      name: '{$enabled} Hide Potion Effects'
       glow: true
     else:
-      name: '{$disabled} Rejtett bájitalhatások'
+      name: '{$disabled} Hide Potion Effects'
     lore: |
-      &7Ez egyike azoknak a Minecraft furcsa
-      viselkedéseknek, ennek a zászlónak 
-      több funkciója van. Rejtettek{$sep}:
-      &7⚫ {$s}Bájitalhatások
-      &7⚫ {$s}Könyvinformáció, mint például a szerző
-      &7⚫ {$s}Tűzijáték információ
-      &7⚫ {$s}Térkép gyorsúgó
-      &7⚫ {$s}Bannerek mintái
-      &7⚫ {$s}Varázskönyvek bűbájai
+      &7This is one of those Minecraft
+      weird behaviors, this flag has
+      multiple functionalities. It Hides{$sep}:
+      &7⚫ {$s}Potion effects
+      &7⚫ {$s}Book information such as the author
+      &7⚫ {$s}Firework information
+      &7⚫ {$s}Map tooltips
+      &7⚫ {$s}Patterns of banners
+      &7⚫ {$s}Enchantments of enchanted books
   flag-hide-unbreakable:
     posx: 8
     posy: 2
@@ -185,14 +202,14 @@ options:
     unbreakable: true
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}rejtett törhetetlenség"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Unbreakable"
     enabled:
       condition: enabled
-      name: '{$enabled} Rejtett törhetetlenség'
+      name: '{$enabled} Hide Unbreakable'
       glow: true
     else:
-      name: '{$disabled} Rejtett törhetetlenség'
+      name: '{$disabled} Hide Unbreakable'
     lore: |
-      &7Elrejti a törhetetlen leírást a tárgyakról. 
-      A törhetetlen tárgyak nem veszítenek 
-      tartósságukból, amikor használod őket.
+      &7Hides the unbreakable description
+      from items. Unbreakable items don't
+      lose durability when you use them.
