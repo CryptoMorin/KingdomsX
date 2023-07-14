@@ -1,54 +1,62 @@
-title: "&a资源点转换器"
+title: "&aResource Points Converter"
 rows: 6
 sound: BLOCK_BELL_USE
-interactable: [999]
+interactable: empty
 disallow-creative: true
-
-# 刷新选项是用来当玩家用物品转换完资源点在界面中刷新%total_worth%变量用的。
+#"refresh" option below is used to update %fancy_total_worth% placeholders when
+#players change the items in the GUI.
 options:
   withdraw:
-    name: "{$p}支出"
+    name: "&2Withdraw"
     material: PAPER
     posx: 4
     posy: 6
     lore:
-      - "{$s}把资源点从王国支出到你的账户里。"
+      - "&6Withdraw resource points"
+      - "from your kingdom to your balance."
   info:
-    name: "{$s}资源点{$sep}:{$p}%kingdoms_fancy_resource_points%"
+    name: "&6Resource Points&8: &2%kingdoms_fancy_resource_points%"
     lore:
-      - "{$s}总捐献{$sep}:{$p}%kingdoms_fancy_total_donations%"
-      - "{$s}上次捐献时间{$sep}:{$p}%kingdoms_last_donation_time%"
-      - "{$s}上次捐献数量{$sep}:{$p}%kingdoms_last_donation_amount%"
+      - "&6Total Donations&8: &2%kingdoms_fancy_total_donations%"
+      - "&6Last Donation Time&8: &2%kingdoms_date_last_donation_time%"
+      - "&6Last Donation Amount&8: &2%kingdoms_fancy_last_donation_amount%"
     material: NETHER_STAR
     posx: 5
     posy: 6
   deposit:
-    name: "{$p}存入"
+    name: "&2Deposit"
     material: PAPER
     posx: 6
     posy: 6
     lore:
-      - "{$s}把钱从你的账户里存入到王国中。"
+      - "&6Deposit resource points"
+      - "to your kingdom from your balance."
   apply:
-    name: "{$p}确认"
+    name: "&2Apply"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDMxMmNhNDYzMmRlZjVmZmFmMmViMGQ5ZDdjYzdiNTVhNTBjNGUzOTIwZDkwMzcyYWFiMTQwNzgxZjVkZmJjNCJ9fX0="
     refresh: true
     lore:
-      - "{$s}把当前物品转换为资源点。"
-      - "{$p}当前物品可转换资源点{$sep}:&e%total_worth%"
+      - "&6Convert the current items"
+      - "into resource points."
+      - "&2Current Value&8: &e%fancy_total_worth%"
     posx: 9
     posy: 6
   back:
-    name: "{$e}返回"
+    name: "&cBack"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "{$s}返回到核心界面。"
-      - "这将取消资源点转换。"
+      - "&6Go back to nexus menu."
+      - "this will cancel the"
+      - "resource point conversion."
     posx: 1
     posy: 6
   lime-glass:
     name: ''
     material: LIME_STAINED_GLASS_PANE
-    slots: [46, 47, 51, 52]
+    slots:
+      - 46
+      - 47
+      - 51
+      - 52
