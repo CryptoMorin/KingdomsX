@@ -1,97 +1,117 @@
-title: "{$sep}-=(&5设施{$sep})=-"
+title: "&8-=( &5Structures &8)=-"
 rows: 3
 sound: BLOCK_CONDUIT_ACTIVATE
-
-# 很明显，HIDE_POTION_EFFECTS 标志会把CD的名称从lore中移除……
+#Apparently HIDE_POTION_EFFECTS item flag will
+#remove the disc's name from the lore...
 options:
   powercell:
-    name: "&4能量枢纽"
+    name: "&4Powercell"
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}被能量枢纽土地包围的9*9的土地不会被入侵，"
-      - "除非能量枢纽所在的土地先被入侵。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&6Lands surrounded by a powercell cannot"
+      - "be invaded until the powercell"
+      - "land is invaded first."
+      - "The protection radius is &23x3 &6for level 1"
+      - "and &25x5 &6for level 2."
+      - "&2Cost&8: &6%cost%"
     posx: 3
     posy: 2
   extractor:
-    name: "&a提取器"
+    name: "&aExtractor"
     material: MUSIC_DISC_CAT
     sound: BLOCK_ANVIL_LAND
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}提取器会生产资源点。"
-      - "{$s}你可以在任何时候收集资源点。"
+      - "&6Extractors will produce resource points."
+      - "&6You can collect the resource points"
+      - "at any time."
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&2Cost&8: &6%cost%"
     posx: 4
     posy: 2
   outpost:
-    name: "&e前哨"
+    name: "&eOutpost"
     material: MUSIC_DISC_13
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}你可以用资源点"
-      - "在前哨换取附魔之瓶和其他好东西。"
+      - "&6You can get EXP Bottles from"
+      - "outposts using resource points."
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&2Cost&8: &6%cost%"
     posx: 5
     posy: 2
   warppad:
-    name: "{$e}传送板"
+    name: "&cWarp Pad"
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}传送板可以用于从一个设施传送至另一个。"
+      - "&6Warp pads can be used to teleport"
+      - "from a structure to another."
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 2
   regulator:
-    name: "&3控制器"
+    name: "&3Regulator"
     material: MUSIC_DISC_WARD
     sound: ENTITY_VILLAGER_AMBIENT
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}管理玩家特权，如建造，"
-      - "炮塔停火等，"
-      - "改变哪个玩家能与哪个方块交互，"
-      - "禁用/启用怪物，动物的生成及炮塔，"
-      - "或允许爆炸，"
-      - "自动填充炮塔弹药等等。"
+      - "&6Manage player attributes such as building,"
+      - "turret ceasefire and etc..."
+      - "Change which player can interact with what block."
+      - "Disable mob or animal spawning and turrets."
+      - "Enable explosions."
+      - "Auto fill turrets ammo."
       - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 2
   siege-cannon:
-    name: "&3攻城炮"
+    name: "&3Siege Cannon"
     material: MUSIC_DISC_STRAD
     sound: ENTITY_VILLAGER_AMBIENT
-    flags: [HIDE_POTION_EFFECTS]
+    flags:
+      - HIDE_POTION_EFFECTS
     lore:
-      - "{$s}用于打破一个王国护盾的大炮。"
-      - "{$p}价格{$sep}:{$s}%cost%"
+      - "&6Cannon used to break a kingdom's"
+      - "shield."
+      - "&2Cost&8: &6%cost%"
     posx: 5
     posy: 1
-  
   back:
-    name: "{$p}返回"
+    name: "&2Back"
     material: PLAYER_HEAD
-    # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
+    #https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     lore:
-      - "{$s}返回到核心界面。"
+      - "&6Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:
     name: ""
     material: CYAN_STAINED_GLASS_PANE
-    slots: [1, 7, 9, 17, 19, 25]
+    slots:
+      - 1
+      - 7
+      - 9
+      - 17
+      - 19
+      - 25
   light-blue-glass:
     name: ""
     material: LIGHT_BLUE_STAINED_GLASS_PANE
-    slots: [0, 8, 18, 26]
+    slots:
+      - 0
+      - 8
+      - 18
+      - 26
