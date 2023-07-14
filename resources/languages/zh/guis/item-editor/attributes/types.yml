@@ -1,17 +1,35 @@
-title: "{$sep}-=({$p}属性种类{$sep})=-"
+title: "{$sep}-=( {$p}Attribute Types {$sep})=-"
 rows: 4
-
-
-
 options:
   back:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    name: '{$p}返回'
+    name: '{$p}Back'
   orange-stained-glass-pane:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+    slots:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 17
+      - 18
+      - 26
+      - 27
+      - 28
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
     material: ORANGE_STAINED_GLASS_PANE
     name: ''
   generic-max-health:
@@ -19,109 +37,123 @@ options:
     posy: 2
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjg2OWJkZDlhOGY3N2VlZmY3NWQ4ZjY3ZWQwMzIyYmQ5YzE2ZGQ0OTQ5NzIzMTRlZDcwN2RkMTBhMzEzOWE1OCJ9fX0='
-    name: 通用最大生命值
+    name: Generic Max Health
     lore: |
-      {$p}生物的最大生命值
-      (2生命值=1心); 会决定生物可以
-      恢复到的最大生命。      
-      若玩家想召唤高生命值生物，
-      可以使用如这个和生命值标签{Health:200.0f}的方法。
-      (1.17禁用)
+      &7The maximum health of this mob
+      (in half-hearts); determines the
+      highest health they may be healed to.
+      If the player is using this to summon
+      a mob with high health, use this and
+      the Health tag {Health:200.0f} for example.
+      (Disabled in 1.17)
   generic-follow-range:
     posx: 3
     posy: 2
     material: COMPASS
-    name: 通用生物最大跟随距离
+    name: Generic Follow Range
     lore: |
-      {$p}生物追踪玩家的距离 
-      超过此距离后生物会停止跟随玩家。
-      大多数生物距离为{$p}16{$p}, 
-      但僵尸为{$p}40{$p}。
+      &7The range in blocks within which
+      a mob with this attribute targets players
+      or other mobs to track.
+      Exiting this range causes the mob to
+      cease following the player/mob.
+      Actual value used by most mobs is {$p}16&7;
+      for zombies it is {$p}40&7.
   generic-knockback-resistance:
     posx: 4
     posy: 2
     material: ANVIL
-    name: 通用击退抗性
+    name: Generic Knockback Resistance
     lore: |
-      {$p}攻击和弹射物水平击退的减免。
-      竖直击退不受影响。
-      爆炸击退不受影响。{$p}1.0{$p}指{$p}100%免疫击退。
-      {$p}0.4{$p}指仅有{$p}60%{$p}的击退。
+      &7The scale of horizontal knockback
+      resisted from attacks and projectiles.
+      Vertical knockback is not affected.
+      Does not affect explosions. {$p}1.0 &7is {$p}100%
+      &7knockback resistance. {$p}0.4 &7means {$p}60% &7of
+      knockback is applied.
   generic-movement-speed:
     posx: 5
     posy: 2
     material: DIAMOND_BOOTS
-    name: 通用移动速度
+    name: Generic Movement Speed
     lore: |
-      {$p}实体的移动速度。
-      生物的最高移动速度略高于{$p}43 
-      {$p}方块/秒, 但会被多种状态影响，如 
-      被骑乘(马), 奔跑，逃跑，(被动生物), 
-      攻击(末影人或僵尸猪灵), 
-      被栓绳牵引，带有速度/缓慢药水效果，
-      小僵尸移速加成, 或女巫喝药水。
+      &7Movement speed of an entity.
+      The mob's maximum speed in
+      blocks/second is a bit over {$p}43
+      &7times this value, but can be
+      affected by various conditions, such as:
+      being ridden (if a horse), sprinting,
+      fleeing (if a passive mob), attacking
+      (if an Enderman or Zombified Piglin),
+      being led by a leash, being under the
+      effect of a Speed or Slowness potion,
+      being a baby zombie, or being a witch
+      and drinking a potion.
   generic-flying-speed:
     posx: 6
     posy: 2
     material: ELYTRA
-    name: 通用飞行速度
-    lore: "{$p}实体的飞行速度"
+    name: Generic Flying Speed
+    lore: "&7Fly speed of an entity."
   generic-armor:
     posx: 7
     posy: 2
     material: DIAMOND_CHESTPLATE
-    name: 通用护甲值
-    lore: "{$p}实体的护甲值。"
+    name: Generic Armor
+    lore: "&7Armor bonus of an entity."
   generic-armor-toughness:
     posx: 8
     posy: 2
     material: GOLDEN_CHESTPLATE
-    name: 通用盔甲韧性
-    lore: "{$p}实体的盔甲韧性。"
+    name: Generic Armor Toughness
+    lore: "&7Armor durability bonus of an entity."
   generic-attack-damage:
     posx: 2
     posy: 3
     material: DIAMOND_SWORD
-    name: 通用攻击伤害
-    lore: "{$p}实体的攻击伤害。"
+    name: Generic Attack Damage
+    lore: "&7Attack strength of an entity."
   generic-attack-speed:
     posx: 3
     posy: 3
     material: GOLDEN_SWORD
-    name: 通用攻击速度
+    name: Generic Attack Speed
     lore: |
-      {$p}实体的攻速。
-      攻速值为实体一秒内打出100%伤害的最大次数。
+      &7Attack speed of an entity.
+      Value is the number of full-strength
+      attacks per second.
   generic-attack-knockback:
     posx: 4
     posy: 3
     material: FISHING_ROD
-    name: 通用攻击击退
+    name: Generic Attack Knockback
     lore: |
-      {$p}实体攻击的击退强度。
-      仅对物理伤害的生物有效。
-      {$p}劫掠兽{$sep}:{$s}1.5
-      {$p}疣猪兽{$sep}:{$s}1.0
-      {$p}僵尸疣猪兽{$sep}:{$s}1.0
+      &7Attack knockback strength of an entity.
+      Applies only to mobs with physical attacks.
+      {$p}Ravager{$sep}: {$s}1.5
+      {$p}Hoglin{$sep}: {$s}1.0
+      {$p}Zoglin{$sep}: {$s}1.0
   horse-jump-strength:
     posx: 5
     posy: 3
     material: DIAMOND_HORSE_ARMOR
-    name: 马跳跃强度
-    lore: "{$p}马可以跳跃的高度。"
+    name: Horse Jump Strength
+    lore: "&7How high horses can jump."
   generic-luck:
     posx: 6
     posy: 3
     material: EMERALD
-    name: 通用运气
+    name: Generic Luck
     lore: |
-      {$p}影响{$p}战利品生成的结果
-      {$p}通过{$p}quality{$p}或{$p}bonus_rolls{$p}标签
-      {$p}(影响范围: 打开箱子/箱子矿车，钓鱼，和击杀生物。)
+      &7Affects the results of {$p}loot tables
+      &7using the {$p}quality &7or {$p}bonus_rolls {$p}tag
+      &7(e.g. when opening chests or chest
+      minecarts, fishing, and killing mobs).
   zombie-spawn-reinforcements:
     posx: 7
     posy: 3
     material: ZOMBIE_HEAD
-    name: 僵尸生成支援
+    name: Zombie Spawn Reinforcements
     lore: |
-      {$p}僵尸被攻击时生成另一个僵尸的几率。
+      &7Chance for a zombie to spawn
+      another zombie when attacked.
