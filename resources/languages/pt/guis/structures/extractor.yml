@@ -1,0 +1,68 @@
+title: "&2Extractor"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+options:
+  collect:
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Out of fuel &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Nothing to collect &9%extractor-last-collected-time-passed%"
+      material: RED_WOOL
+    else:
+      name: "&2Collect&8: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: GREEN_WOOL
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&6Collect all the generated"
+      - "resource points."
+      - "Last collected by&8: &2%extractor-last-collector%"
+    slot: 0
+  fuel:
+    name: "&2Fuel&8: &6%fancy_fuel%&8/&6%fancy_max_fuel%"
+    material: COAL
+    refresh: true
+    slot: 1
+    lore: |
+      &7To fill the fuel, simply drop
+      one of the fuel items on the
+      extractor block.
+
+      &7Additionally you can place a {$p}hopper
+      &7on north, south, east, west or top of
+      the extractor with the following items.
+      Note that this only works once the extractor's
+      fuel is almost at zero.
+
+      &2Coal&8: &95
+      &2Charcoal&8: &93
+      &2Blaze Rods&8: &9100
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Every&8: &6%every% &7➔ &6%next-every%"
+        - "&7⚫ &2Resource Points&8: &6%fancy_resource-points% &7➔ &6%fancy_next-resource-points%"
+        - "&7⚫ &2Fuel Consumption&8: &6%fancy_extractor_needed_fuel% &7➔ &6%fancy_next_extractor_needed_fuel%"
+        - ""
+        - "&7⚫ &2Max Level&8: &6%roman_next_level%"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Level&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Every&8: &6%every%"
+        - "&7⚫ &2Resource Points&8: &6%fancy_resource-points%"
+        - "&7⚫ &2Fuel Consumption&8: &6%fancy_extractor_needed_fuel%"
+  break:
+    name: "&4Break"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6Breaks the structure."
+    slot: 4
