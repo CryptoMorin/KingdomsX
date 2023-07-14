@@ -1,10 +1,9 @@
-title: "{$sep}-=({$p}物品编辑器{$sep})=-"
+title: "{$sep}-=( {$p}Item Editor {$sep})=-"
 rows: 3
 sound: BLOCK_LEVER_CLICK
-
 options:
   item:
-    # Will be replaced by the actual item
+    #Will be replaced by the actual item
     material: STONE
     interaction: FREE
     slot: 15
@@ -12,84 +11,105 @@ options:
     posx: 1
     posy: 1
     material: NAME_TAG
-    name: '{$p}物品名称'
+    name: '{$p}Name'
     lore: "%item_name%"
   flags:
     posx: 2
     posy: 1
     material: BLACK_BANNER
-    name: '{$p}旗标'
+    name: '{$p}Flags'
     lore: |
-      {$p}点击以编辑
-      {$p}⚫ {$p}隐藏属性{$sep}:%item_flag_hide_attributes%
-      {$p}⚫ {$p}隐藏可破坏方块{$sep}:%item_flag_hide_destroys%
-      {$p}⚫ {$p}隐藏染料{$sep}:%item_flag_hide_dye%
-      {$p}⚫ {$p}隐藏附魔{$sep}:%item_flag_hide_enchants%
-      {$p}⚫ {$p}隐藏可放置方块{$sep}:%item_flag_hide_placed_on%
-      {$p}⚫ {$p}隐藏不可破坏{$sep}:%item_flag_hide_unbreakable%
+      &7Click to modify
+      &7⚫ {$p}Hide Attributes{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Hide Destroys{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Hide Dye{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Hide Enchants{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Hide Placed On{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Hide Unbreakable{$sep}: %item_flag_hide_unbreakable%
   attributes:
     posx: 3
     posy: 1
     material: DIAMOND_SWORD
-    name: '{$p}属性'
+    name: '{$p}Attributes'
   decoration:
-    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    slots:
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 13
+      - 14
+      - 16
+      - 17
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
     material: BLACK_STAINED_GLASS_PANE
     name: ''
   lore:
     posx: 1
     posy: 2
     material: BOOK
-    name: '{$p}介绍'
-    # The lore is automatically set by the plugin for this option
+    name: '{$p}Lore'
+  #The lore is automatically set by the plugin for this option
   enchantments:
     posx: 2
     posy: 2
     material: ENCHANTED_BOOK
-    name: '{$p}附魔'
-    lore: ["{$p}点击以编辑"] # The lore is modified by the plugin to add set enchants
+    name: '{$p}Enchantments'
+    lore:  #The lore is modified by the plugin to add set enchants
+      - "&7Click to modify"
   unbreakable:
     isUnbreakable:
       condition: item_unbreakable
-      name: '{$p}不可破坏'
+      name: '{$p}Unbreakable'
       glow: true
     else:
-      name: '{$e}可破坏'
+      name: '{$e}Breakable'
     posx: 3
     posy: 2
     material: BEDROCK
     lore: |
-      {$p}不可破坏的物品是指
-      在使用时不会降低耐久度的物品。
+      &7If an item is unbreakable,
+      it'll not decrease its durability
+      when you use it.
   nbt:
     posx: 4
     posy: 2
     material: BOOKSHELF
-    name: '{$p}NBT查看器'
+    name: '{$p}NBT Viewer'
   amount:
     posx: 1
     posy: 3
     material: SLIME_BALL
-    name: '{$p}数量{$sep}:{$s}%item_amount%'
+    name: '{$p}Amount{$sep}: {$s}%item_amount%'
     lore: |
-      {$p}物品数量上限为{$p}64{$p}，
-      {$p}但你在技术上可以设为{$p}127{$p}。
-      {$p}这在稀有情况下会导致错误，
-      如GUI无法展示物品或在移动至物品栏时
-      无法维持此数目。
+      &7Maximum amount would be {$p}64
+      &7while you can technically set up
+      to {$p}127 &7it will cause issues
+      in rare situations. For example,
+      the GUI isn't able to show this
+      change and when it's being
+      transferred to your inventory,
+      it might not keep its amount.
   custom-model-data:
     posx: 2
     posy: 3
     material: FIREWORK_STAR
-    name: '{$p}自定义模型数据{$sep}:{$s}%item_custom_model_data%'
+    name: '{$p}Custom Model Data{$sep}: {$s}%item_custom_model_data%'
     lore: |
-      {$p}这用于Minecraft1.14及以上的版本
-      材质包，可用于给游戏添加新物品。
-      这基本只是给相同的物品类型换了个马甲，
-      同时也是如ItemsAdder这样的插件
-      给游戏添加新物品的方式。
+      &7This is used for resource packs
+      that are made for 1.14+
+      to add new items to the game.
+      This is basically just a reskin
+      of the same item type.
+      This is what plugins like ItemsAdder
+      use to add new items to the game.
   material:
     posx: 3
     posy: 3
-    material: STONE # This is a template material, the actual material is taken from the placed item
-    name: '{$p}材质{$sep}:{$s}%item_material%'
+    material: STONE #This is a template material, the actual material is taken from the placed item
+    name: '{$p}Material{$sep}: {$s}%item_material%'
