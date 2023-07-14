@@ -1,51 +1,62 @@
-title: "&3攻城炮"
+title: "&3Siege Cannon"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
-interactable: [2] #弹药格
-
+interactable:  #The ammo slot
+  - 2
 options:
   sit:
-    name: "{$p}坐上去"
+    name: "&2Sit"
     lore:
-      - "{$p}坐上大炮以开始发射。"
+      - "&7Sit on the cannon"
+      - "to start shooting."
     material: BRICK_STAIRS
     slot: 0
   ammo:
     name: "&4-------->"
     material: RED_STAINED_GLASS_PANE
     lore:
-      - "{$p}把这个栏位里放上一个火焰弹以装弹。"
+      - "&2Put a fire charge in this"
+      - "slot to load the cannon."
+      - ""
+      - "&8[&4&l!&8] &7Loaded projectiles will disappear"
+      - "once the server is restarted."
+      - ""
+      - "&2Iron Blocks&8: &9Tier I"
+      - "&2Gold Blocks&8: &9Tier II"
+      - "&2Fire Charges&8: &9Tier III"
     slot: 1
   upgrade:
     slot: 3
     upgrade:
       condition: "level < max_level"
-      name: "&9升级&8: &6%level_roman%&7➛&6%next_level_roman%"
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2对盾伤害&8: &6%shield-damage% &7➔ &6%next-shield-damage%"
-        - "&7⚫ &2冷却&8: &6%cooldown% &7➔ &6%next-cooldown%"
-        - "&7⚫ &2伤害&8: &6%damage% &7➔ &6%next-damage%"
-        - "&7⚫ &2击退&8: &6%knockback% &7➔ &6%next-knockback%"
-        - "&7⚫ &2爆炸半径&8: &6%explosion-radius% &7➔ &6%next-explosion-radius%"
+        - "&7⚫ &2Shield Dmg&8: &6%shield-damage% &7➔ &6%next-shield-damage%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next-cooldown%"
+        - "&7⚫ &2Damage&8: &6%damage% &7➔ &6%next-damage%"
+        - "&7⚫ &2Knockback&8: &6%knockback% &7➔ &6%next-knockback%"
+        - "&7⚫ &2Explosion Radius&8: &6%explosion-radius% &7➔ &6%next-explosion-radius%"
         - ""
-        - "&8[&4&l!&8]&7数值可能根据装载的炮弹差异而有所不同。"
+        - "&8[&4&l!&8] &7The values shown here might"
+        - "differ based on the projectile that you"
+        - "used to load the cannon."
         - ""
-        - "&7⚫ &2满级&8: &6%max-level-roman%"
-        - "&7⚫ &2价格&8: &6%upgrade_cost%"
+        - "&7⚫ &2Max Level&8: &6%roman_next_level%"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      name: "&9等级&8: &6%level_roman%"
+      name: "&9Level&8: &6%roman_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2对盾伤害&8: &6%shield-damage%"
-        - "&7⚫ &2冷却&8: &6%cooldown%"
-        - "&7⚫ &2伤害&8: &6%damage%"
-        - "&7⚫ &2击退&8: &6%knockback%"
-        - "&7⚫ &2爆炸半径&8: &6%explosion-radius%"
+        - "&7⚫ &2Shield Dmg&8: &6%shield-damage%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
+        - "&7⚫ &2Damage&8: &6%damage%"
+        - "&7⚫ &2Knockback&8: &6%knockback%"
+        - "&7⚫ &2Explosion Radius&8: &6%explosion-radius%"
   break:
-    name: "&4破坏"
+    name: "&4Break"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "{$s}破坏此设施。"
+      - "&6Breaks the structure."
     slot: 4
