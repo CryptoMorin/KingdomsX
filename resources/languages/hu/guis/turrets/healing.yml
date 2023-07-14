@@ -1,54 +1,53 @@
-title: "&dGyógyító torony"
+title: "&dHealing Turret"
 type: HOPPER
 sound: ITEM_ARMOR_EQUIP_DIAMOND
-
 options:
   ammo:
-    name: "&9Töltény&8: &2%ammo%"
+    name: "&9Ammo&8: &2%ammo%"
     material: ARROW
     ammo: 100
     cost: 10
     fill-cost: 'neededAmmo / 8'
-    lore:
-      - '&2Vásárolj &6%ammo-buy-amount% &2töltényt &6%cost% &2Nexus pontért.'
-      - '&2Teljes feltöltés a &6bal klikk &2használatával'
-      - '&6%fill-cost% &2Nexus pontért.'
+    lore: |
+      &2Buy &6%ammo-buy-amount% &2ammo for &6%cost% &2resource points.
+      &2Fully fill ammo by &6shift clicking
+      &2for &6%fill-cost% &2resource points.
     slot: 0
   upgrade:
     upgrade:
       condition: "level < max_level"
-      name: "&9Fejlesztés&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Hatótávolság&8: &6%range% &7➔ &6%next_range%"
-        - "&7⚫ &2Max töltény&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
-        - "&7⚫ &2Késleltetési idő8: &6%cooldown% &7➔ &6%next_cooldown%"
-        - "&7⚫ &2Max célpontok&8: &6%max_targets% &7➔ &6%next_max_targets%"
-        - "&7⚫ &2Sebesség&8: &6%speed% &7➔ &6%next_speed%"
-        - "&7⚫ &2Sebzés&8: &6%damage% &7➔ &6%next_damage%"
+        - "&7⚫ &2Range&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Max Targets&8: &6%max_targets% &7➔ &6%next_max_targets%"
+        - "&7⚫ &2Speed&8: &6%speed% &7➔ &6%next_speed%"
+        - "&7⚫ &2Damage&8: &6%damage% &7➔ &6%next_damage%"
         - ""
-        - "&7⚫ &2Max szintl&8: &6III"
-        - "&7⚫ &2Költség&8: &6%upgrade_cost%"
+        - "&7⚫ &2Max Level&8: &6III"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      name: "&9Szint&8: &6%level_roman%"
+      name: "&9Level&8: &6%roman_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Hatótávolság&8: &6%range%"
-        - "&7⚫ &2Max töltény&8: &6%max_ammo%"
-        - "&7⚫ &2Késleltetési idő&8: &6%cooldown%"
-        - "&7⚫ &2Max célpontok&8: &6%max_targets%"
-        - "&7⚫ &2Sebességd&8: &6%speed%"
-        - "&7⚫ &2Sebzés&8: &6%damage%"
+        - "&7⚫ &2Range&8: &6%range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
+        - "&7⚫ &2Max Targets&8: &6%max_targets%"
+        - "&7⚫ &2Speed&8: &6%speed%"
+        - "&7⚫ &2Damage&8: &6%damage%"
     slot: 1
   break:
-    name: "&cKiütés"
+    name: "&cBreak"
     material: REDSTONE_BLOCK
     lore:
-      - "&4A struktúra kiütése."
+      - "&4Breaks this turret."
     slot: 3
   close:
-    name: "&cBezár"
+    name: "&cClose"
     material: BARRIER
     lore:
-      - "&6A GUI bezárása."
+      - "&6Close the GUI"
     slot: 4
