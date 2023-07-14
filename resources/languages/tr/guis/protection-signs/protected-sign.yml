@@ -1,57 +1,56 @@
-title: "&8-=[ &5Koruma &8]=-"
+title: "&8-=[ &5Protection &8]=-"
 type: HOPPER
 sound: BLOCK_CHEST_OPEN
-
 options:
   players:
-    name: "&2Oyuncuları Yönet"
+    name: "&2Manage Players"
     lore: |-
-      &6Bu bloğa erişmek için bireysel oyuncuları dahil 
-      edin veya hariç tutun.
+      &6Include or exclude individual players
+      for accessing this block.
 
-      Oyuncu ayarları krallık ayarlarını geçersiz kılar. 
-      Yani bir oyuncu dahil edilen veya hariç tutulan 
-      bir krallığın parçasıysa, krallık hariç 
-      tutulursa bloğu kullanmaya devam
-      edebilir veya krallık dahilse 
-      bloğu kullanamaz.
+      Player settings override the kingdom
+      settings. Meaning that if a player is
+      a part of an included or excluded kingdom,
+      they can still use the block if the kingdom
+      is excluded or not use the block if the
+      kingdom is included.
     material: PLAYER_HEAD
     skull: '%owner%'
     slot: 0
   kingdoms:
-    name: "&2Krallıkları Yönet"
+    name: "&2Manage Kingdoms"
     lore: |-
-      &6Bu bloğa erişmek için krallıkları dahil 
-      edin veya hariç tutun, böylece o krallıktaki 
-      herkes dahil edilir veya hariç tutulur.
+      &6Include or exclude kingdoms for
+      accessing this block so everyone in
+      that kingdom are included or excluded.
     material: RED_BANNER
     sound: BLOCK_NOTE_BLOCK_BASS
     slot: 1
   info:
-    name: "&5Koruma Tabelaları"
+    name: "&5Protection Signs"
     lore: |-
-      &6Korumalı bloklar grieflere karşı 
-      korunur ve hiçbir oyuncu izinsiz 
-      kullanamaz.
+      &6Protected blocks are protected
+      against griefs and no player can use it
+      without permission.
 
-      Bir oyuncunun bu bloğa erişimi varsa, 
-      yine de tabela(koruma) ayarlarını değiştiremez 
-      veya işareti veya bloğu kıramaz.
+      If a player has access to this block,
+      they still cannot change the sign settings
+      or break the sign or the block.
 
-      &7Blokta bir şifre belirlemek için buraya tıklayın. 
-      Bu, yalnızca korunan blok sandık gibi 
-      bir blok ise yarar.
+      &7Click here to set a password on the block.
+      This only works if the block being protected
+      is a container such as a chest.
     material: NETHER_STAR
     slot: 2
   protection-type:
-    name: "&2Koruma Türü&8: &9%protection_type%"
+    name: "&2Protection Type&8: &9%protection_type%"
     lore: |-
-      &6Bu bloğun varsayılan olarak 
-      diğer oyunculardan nasıl 
-      korunacağının yöntemini değiştirin.
+      &6Change the method of how
+      this block is protected from
+      other players by default.
     material: CHEST
     slot: 3
   back:
-    name: "&4GUI'yi kapatın"
+    name: "&4Close the GUI"
     material: BARRIER
     slot: 4
