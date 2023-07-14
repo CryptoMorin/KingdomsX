@@ -31,6 +31,9 @@ class ServiceProjectKorra(val handler: (player: Player, location: Location) -> B
             ConfigManager.getConfig().getBoolean("Properties.RegionProtection.Kingdoms.ProtectDuringInvasions")
     }
 
+    /**
+     * Registered by constructor.
+     */
     inner class KingdomsRegionProtector : RegionProtectionBase("Kingdoms", "Kingdoms.Respect") {
         override fun isRegionProtectedReal(
             player: Player,
