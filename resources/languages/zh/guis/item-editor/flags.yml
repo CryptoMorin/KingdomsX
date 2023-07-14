@@ -1,4 +1,4 @@
-title: '{$sep}-=({$p}旗标{$sep})=-'
+title: '{$sep}-=( {$p}Flags {$sep})=-'
 rows: 3
 options:
   back:
@@ -6,77 +6,101 @@ options:
     posy: 1
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    name: '&c返回'
+    name: '&cBack'
   decoration:
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    slots:
+      - 1
+      - 2
+      - 3
+      - 5
+      - 6
+      - 7
+      - 9
+      - 17
+      - 18
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   info:
     posx: 5
     posy: 1
-    name: "&e信息"
+    name: "&eInfo"
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
     slot: 4
     lore: |
-      {$p}物品旗标可以隐藏部分物品属性。
-      这不会更改它们的实际效果，仅会
-      将其从物品lore的上方或下方隐藏。
+      &7Item flags can hide some
+      properties from items.
+      This won't change their actual
+      behavior it just hides them
+      from the item's description
+      which is either above or below
+      ther item's lore.
   remove-all:
     posx: 9
     posy: 1
     material: RED_WOOL
-    name: '{$e}移除全部旗标'
-  hide-attributes:
+    name: '{$e}Remove all flags'
   flag-hide-attributes:
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏属性"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Attributes"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏属性'
+      name: '{$enabled} Hide Attributes'
       glow: true
     else:
-      name: '{$disabled}隐藏属性'
+      name: '{$disabled} Hide Attributes'
     posx: 2
     posy: 2
     material: DIAMOND_SWORD
     lore: |
-      {$p}物品属性是在一些物品lore
-      下方展示的一些属性描述。
+      &7Item attributes are the small descriptions
+      shown under the lore of some items.
     attributes:
       GENERIC_ATTACK_DAMAGE:
-        name: 测试
+        name: Test
         amount: 10
         operation: ADD_NUMBER
-  hide-destroys:
   flag-hide-destroys:
     posx: 3
     posy: 2
     material: DIAMOND_PICKAXE
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏可破坏方块"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Destroys"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏可破坏方块'
+      name: '{$enabled} Hide Destroys'
       glow: true
       lore: |
-        {$p}这仅用于极少数物品，且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时，
-        限制物品能否挖掘一种特定方块的属性。
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        items from being able to destroy
+        certain blocks when the player is
+        in adventure mode.
     else:
-      name: '{$disabled}隐藏可破坏方块'
+      name: '{$disabled} Hide Destroys'
       lore: |
-        {$p}这仅用于极少数物品，且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时，
-        限制物品能否挖掘一种特定方块的属性。
-        
-        {$p}能破坏:
-        {$sep}石头
-  hide-dye:
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        items from being able to destroy
+        certain blocks when the player is
+        in adventure mode.
+
+        &7Can break:
+        &8Stone
   flag-hide-dye:
     posx: 4
     posy: 2
@@ -84,86 +108,93 @@ options:
     color: 255, 255, 255
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏染料"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Dyes"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏染料'
+      name: '{$enabled} Hide Dye'
       glow: true
     else:
-      name: '{$disabled}隐藏染料'
+      name: '{$disabled} Hide Dye'
     lore: |
-      {$p}隐藏皮革护甲的颜色。
-  hide-enchants:
+      &7Hide dye information from
+      colored leather armors.
   flag-hide-enchants:
     posx: 5
     posy: 2
     material: ENCHANTED_BOOK
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏附魔"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Enchants"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏附魔'
+      name: '{$enabled} Hide Enchants'
       glow: true
     else:
-      name: '{$disabled}隐藏附魔'
+      name: '{$disabled} Hide Enchants'
     enchants:
       DURABILITY: 1
     lore: |
-      {$p}移除物品lore上方的
-      附魔显示，但这不会取消物品上的附魔光泽。
-  hide-placed-on:
+      &7Hides item enchantments from
+      their description above the lore
+      however this will still keep the
+      item's glowing effect.
   flag-hide-placed-on:
     posx: 6
     posy: 2
     material: STONE
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏可放置方块"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Placed On"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏可放置方块'
+      name: '{$enabled} Hide Placed On'
       glow: true
       lore: |
-        {$p}这仅用于极少数物品，且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时，
-        限制物品能否放置在特定方块上的属性。
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        blocks from being placed on certain
+        blocks when the player is in adventure
+        mode.
     else:
-      name: '{$disabled}隐藏可放置方块'
+      name: '{$disabled} Hide Placed On'
       lore: |
-        {$p}这仅用于极少数物品，且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时，
-        限制物品能否放置在特定方块上的属性。
-        
-        {$p}可以放在:
-        {$sep}石头
-  hide-potion-effects:
+        &7This is only used for really
+        rare items that are practically
+        useless in most servers. This hides
+        a special attribute which restricts
+        blocks from being placed on certain
+        blocks when the player is in adventure
+        mode.
+
+        &7Can be placed on:
+        &8Stone
   flag-hide-potion-effects:
     posx: 7
     posy: 2
     material: POTION
-    effects: [ "BLINDNESS, 1, 10" ]
+    effects:
+      - "BLINDNESS, 1, 10"
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏药水效果"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Potion Effects"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏药水效果'
+      name: '{$enabled} Hide Potion Effects'
       glow: true
     else:
-      name: '{$disabled}隐藏药水效果'
+      name: '{$disabled} Hide Potion Effects'
     lore: |
-      {$p}这是Minecraft奇怪的特性之一。
-      此旗标具有多重作用。它会隐藏{$sep}:
-      {$p}⚫ {$s}药水效果
-      {$p}⚫ {$s}书籍信息(如作者)
-      {$p}⚫ {$s}烟花信息
-      {$p}⚫ {$s}地图信息
-      {$p}⚫ {$s}旗帜图案
-      {$p}⚫ {$s}附魔书的附魔等级
-  hide-unbreakable:
+      &7This is one of those Minecraft
+      weird behaviors, this flag has
+      multiple functionalities. It Hides{$sep}:
+      &7⚫ {$s}Potion effects
+      &7⚫ {$s}Book information such as the author
+      &7⚫ {$s}Firework information
+      &7⚫ {$s}Map tooltips
+      &7⚫ {$s}Patterns of banners
+      &7⚫ {$s}Enchantments of enchanted books
   flag-hide-unbreakable:
     posx: 8
     posy: 2
@@ -171,13 +202,14 @@ options:
     unbreakable: true
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏不可破坏"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}Hide Unbreakable"
     enabled:
       condition: enabled
-      name: '{$enabled}隐藏不可破坏'
+      name: '{$enabled} Hide Unbreakable'
       glow: true
     else:
-      name: '{$disabled}隐藏不可破坏'
+      name: '{$disabled} Hide Unbreakable'
     lore: |
-      {$p}隐藏物品的不可破坏描述。
-      不可破坏的物品在使用时不会降低耐久度。
+      &7Hides the unbreakable description
+      from items. Unbreakable items don't
+      lose durability when you use them.
