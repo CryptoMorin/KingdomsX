@@ -1,57 +1,140 @@
 title: "&eWarppad"
 rows: 6
 sound: BLOCK_ANVIL_USE
-
 options:
+  next-page:
+    name: '{$p}Next Page {$sep}- {$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$p}Previous Page {$sep}- {$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
   nexus:
-    name: "&2Central"
+    name: "&2Nexus"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
     material: BEACON
-    slots: [ 0 ]
+    posx: 2
+    posy: 1
   national-nexus:
-    name: "&9Central de la nacion"
+    name: "&9National Nexus"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
     material: BEACON
-    slots: [ 1 ]
-  powercell:
-    name: "&cCelda de poder&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: REDSTONE_LAMP
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 17 ]
-  extractor:
-    name: "&2Extractor&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: EMERALD_BLOCK
-    slots: [ 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
-  warppad:
-    name: "&c%warppad%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: END_PORTAL_FRAME
-    slots: [ 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
-  regulator:
-    name: "&3Regulador&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: LECTERN
-    slots: [ 36, 37, 38, 39, 40, 41, 42, 43, 44 ]
-  outpost:
-    name: "&eAvanzada&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
-    material: HAY_BLOCK
-    slots: [ 45, 46, 47, 48, 49, 50, 51 ]
-
+    posx: 3
+    posy: 1
   rename:
-    name: "&2Renombrar"
+    name: "&2Rename"
     lore:
-      - "&7Renombrar este warp pad."
-      - "&2Nombre&8: &7%name%"
+      - "&7Rename this warp pad."
+      - "{$p}Name{$sep}: {$s}%structure-custom-name%"
+      - "{$p}Fuel{$sep}: {$s}%fancy_fuel%{$sep}/{$s}%fancy_max_fuel%"
     material: PAPER
-    posx: 7
+    posx: 6
     posy: 1
   break:
-    name: "&4Destruir"
+    name: "&4Break"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Destruir la estructura."
-    posx: 8
+      - "&6Breaks the structure."
+    posx: 7
     posy: 1
   close:
-    name: "&2Cerrar"
+    name: "&2Close"
     material: BARRIER
     lore:
-      - "&6Cerrar el menu."
-    posx: 9
+      - "&6Close the GUI."
+    posx: 8
     posy: 1
+  orange-stained-glass-pane:
+    posx: 1
+    posy: 2
+    material: ORANGE_STAINED_GLASS_PANE
+    name: '&cPowercells&8:'
+  powercell:
+    slots:
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 17
+    material: REDSTONE_LAMP
+    name: "&cPowercell&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  lime-stained-glass-pane:
+    posx: 1
+    posy: 3
+    material: LIME_STAINED_GLASS_PANE
+    name: '&aExtractors&8:'
+  extractor:
+    slots:
+      - 19
+      - 20
+      - 21
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
+    material: EMERALD_BLOCK
+    name: "&2Extractor&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  green-stained-glass-pane:
+    posx: 1
+    posy: 4
+    material: GREEN_STAINED_GLASS_PANE
+    name: '&2Warp Pads&8:'
+  warppad:
+    slots:
+      - 28
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 34
+      - 35
+    material: END_PORTAL_FRAME
+    name: "&c%structure-name%&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+  yellow-stained-glass-pane:
+    posx: 1
+    posy: 5
+    material: YELLOW_STAINED_GLASS_PANE
+    name: '&eOutposts&8:'
+  outpost:
+    name: "&eOutpost&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+    slots:
+      - 37
+      - 38
+      - 39
+      - 40
+      - 41
+      - 42
+      - 43
+      - 44
+    material: HAY_BLOCK
+  brown-stained-glass-pane:
+    posx: 1
+    posy: 6
+    material: BROWN_STAINED_GLASS_PANE
+    name: '&7Regulators&8:'
+  regulator:
+    name: "&3Regulator&8: &6%world%&7, &6%x%&7, &6%y%&7, &6%z%"
+    lore: "&2Fuel Cost&8: &6%fuel-cost%"
+    slots:
+      - 46
+      - 47
+      - 48
+      - 49
+      - 50
+      - 51
+      - 52
+      - 53
+    material: LECTERN
