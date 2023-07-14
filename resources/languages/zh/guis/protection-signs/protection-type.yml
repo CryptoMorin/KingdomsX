@@ -1,57 +1,71 @@
-title: "{$sep}-=[&5保护方式{$sep}]=-"
+title: "&8-=[ &5Protection Type &8]=-"
 type: HOPPER
 sound: BLOCK_CHEST_OPEN
-
 options:
   protected:
     enabled:
       condition: enabled
-      name: "{$p}%protection%"
-      lore: |
-        {$p}这个方块会自动从其他玩家手中被保护，
-        除非玩家被手动添加到列表。
+      name: "&2%protection%"
+      lore: |-
+        &7This block will be protected
+        from all the players unless they're
+        added manually to access the block.
       material: OAK_SIGN
-      flags: [HIDE_ENCHANTS]
+      flags:
+        - HIDE_ENCHANTS
       enchants:
         DURABILITY: 1
     else:
       name: "&4%protection%"
       material: OAK_SIGN
-      lore: |
-        {$p}这个方块会自动从其他玩家手中被保护，
-        除非玩家被手动添加到列表。
+      lore: |-
+        &7This block will be protected
+        from all the players unless they're
+        added manually to access the block.
     slot: 1
   everyone-in-kingdom:
     enabled:
       condition: enabled
-      name: "{$p}%protection%"
-      lore: |
-        {$p}这个方块会自动从其他非本王国的玩家手中被保护，
-        除非玩家被手动添加到列表。
+      name: "&2%protection%"
+      lore: |-
+        &7This block will be protected
+        from all the players who are not
+        in your kingdom unless they're
+        added manually to access the block.
       material: SPRUCE_SIGN
-      flags: [HIDE_ENCHANTS]
+      flags:
+        - HIDE_ENCHANTS
       enchants:
         DURABILITY: 1
     else:
-      name: "{$p}%protection%"
+      name: "&2%protection%"
       material: SPRUCE_SIGN
-      lore: |
-        {$p}这个方块会自动从其他非本王国的玩家手中被保护，
-        除非玩家被手动添加到列表。
+      lore: |-
+        &7This block will be protected
+        from all the players who are not
+        in your kingdom unless they're
+        added manually to access the block.
     slot: 2
   everyone:
     enabled:
       condition: enabled
-      name: "{$p}%protection%"
-      lore: |
-        {$p}任何玩家都可以编辑这个方块，除非玩家被手动移出此列表。
+      name: "&2%protection%"
+      lore: |-
+        &7This block can be accessed
+        by everyone, outside or inside your
+        kingdom unless they're added manually
+        to not have access to this block.
       material: DARK_OAK_SIGN
-      flags: [HIDE_ENCHANTS]
+      flags:
+        - HIDE_ENCHANTS
       enchants:
         DURABILITY: 1
     else:
-      name: "{$p}%protection%"
+      name: "&2%protection%"
       material: DARK_OAK_SIGN
-      lore: |
-        {$p}任何玩家都可以编辑这个方块，除非玩家被手动移出此列表。
+      lore: |-
+        &7This block can be accessed
+        by everyone, outside or inside your
+        kingdom unless they're added manually
+        to not have access to this block.
     slot: 3
