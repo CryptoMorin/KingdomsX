@@ -1,81 +1,132 @@
-title: "{$sep}-=({$p}邮箱{$sep})=-"
+title: "&8-=( &2Mailbox &8)=-"
 rows: 6
 interactable: empty
 sound: BLOCK_CHEST_OPEN
-
 options:
   previous:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODU1MGI3Zjc0ZTllZDc2MzNhYTI3NGVhMzBjYzNkMmU4N2FiYjM2ZDRkMWY0Y2E2MDhjZDQ0NTkwY2NlMGIifX19'
-    name: '{$p}上一页'
+    name: '&7Previous Page {$sep}- {$p}%page%&8/{$p}%pages%'
   next:
     posx: 9
     posy: 1
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTYzMzlmZjJlNTM0MmJhMThiZGM0OGE5OWNjYTY1ZDEyM2NlNzgxZDg3ODI3MmY5ZDk2NGVhZDNiOGFkMzcwIn19fQ=='
-    name: '{$p}下一页'
+    name: '&7Next Page {$sep}- {$p}%page%&8/{$p}%pages%'
   separators:
-    slots: [1, 3, 5, 7, 9, 13, 17, 18, 22, 26, 27, 31, 35, 36, 40, 44, 45, 46, 47, 48, 50, 51, 52, 53]
+    slots:
+      - 1
+      - 3
+      - 5
+      - 7
+      - 9
+      - 13
+      - 17
+      - 18
+      - 22
+      - 26
+      - 27
+      - 31
+      - 35
+      - 36
+      - 40
+      - 44
+      - 45
+      - 46
+      - 47
+      - 48
+      - 50
+      - 51
+      - 52
+      - 53
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   sent-indicator:
     slot: 2
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmFlNDI1YzViYTlmM2MyOTYyYjM4MTc4Y2JjMjMxNzJhNmM2MjE1YTExYWNjYjkyNzc0YTQ3MTZlOTZjYWRhIn19fQ=='
-    name: '{$sp}已发送邮件'
+    name: '&9Sent Mails'
   inbox-indicator:
     slot: 6
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmFlNDI1YzViYTlmM2MyOTYyYjM4MTc4Y2JjMjMxNzJhNmM2MjE1YTExYWNjYjkyNzc0YTQ3MTZlOTZjYWRhIn19fQ=='
-    name: '{$sp}未读邮件'
+    name: '&9Inbox'
   get-envelope:
     posx: 5
     posy: 1
     material: WRITABLE_BOOK
-    name: '{$p}发送邮件'
+    name: '&2Send Mail'
     lore: |
-      {$p}给你一本特殊的书让你开始写邮件。
+      &7Gives you a special book
+      to start writing your mail.
 
-      你把书放哪都行。如要编辑&内容
-      {$p}只需{$p}右键{$p}，之后就和Minecraft原版写书的方式相同。
+      You can put this book anywhere
+      you want. To edit the mail &9contents
+      &7just &2right-click &7and write like
+      you normally would.
 
-      若想编辑邮件的其他属性，如
-      {$sp}主题{$p}或{$sp}收件方{$p},
-      {$p}则在潜行时右键{$p}。
+      To edit other properties like the
+      &9subject &7or &9recipients&7,
+      &2right-click while sneaking&7.
 
-      {$p}当全部完成之后，是时候{$sp}发送
-      {$p}邮件了, 请将书移回之已发送邮件区域。
+      Once you're done and ready to &9send
+      &7the mail, drop this book back into
+      the sent section here.
 
-      {$p}需要金币{$sep}:{$s}$%envelope-cost-money%
-      {$p}需要资源点{$sep}:{$s}%envelope-cost-resource-points%
+      &2Needed Money&8: &6$%envelope-cost-money%
+      &2Needed Resource Points&8: &6%envelope-cost-resource-points%
   sent:
-    slots: [10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39]
+    slots:
+      - 10
+      - 11
+      - 12
+      - 19
+      - 20
+      - 21
+      - 28
+      - 29
+      - 30
+      - 37
+      - 38
+      - 39
     material: PLAYER_HEAD
-    name: '{$p}主题{$sep}:{$s}%subject%'
+    name: '&2Subject&8: &6%subject%'
     lore: |
-      {$p}发件方{$sep}:{$s}%from%
-      {$p}收件方{$sep}:{$s}%to%
-      {$p}抄送{$sep}:{$s}%cc%
-      {$p}时间{$sep}:{$s}%sent-date% %sent-time%
+      &2From&8: &6%from%
+      &2To&8: &6%to%
+      &2CC&8: &6%cc%
+      &2At&8: &6%sent%
 
-      {$p}总结{$sep}:
+      &2Summary&8:
       &f%summary%
   inbox:
-    slots: [14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43]
+    slots:
+      - 14
+      - 15
+      - 16
+      - 23
+      - 24
+      - 25
+      - 32
+      - 33
+      - 34
+      - 41
+      - 42
+      - 43
     material: PLAYER_HEAD
-    name: '{$p}主题{$sep}:{$s}%subject%'
+    name: '&2Subject&8: &6%subject%'
     lore: |
-      {$p}发件方{$sep}:{$s}%from%
-      {$p}收件方{$sep}:{$s}%to%
-      {$p}抄送{$sep}:{$s}%cc%
-      {$p}时间{$sep}:{$s}%sent-date% %sent-time%
+      &2From&8: &6%from%
+      &2To&8: &6%to%
+      &2CC&8: &6%cc%
+      &2At&8: &6%sent%
 
-      {$p}总结{$sep}:
+      &2Summary&8:
       &f%summary%
   back:
     posx: 5
     posy: 6
     material: BARRIER
-    name: '{$e}返回'
+    name: '&cBack'
