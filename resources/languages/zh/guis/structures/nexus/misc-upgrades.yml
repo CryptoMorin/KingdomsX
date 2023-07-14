@@ -1,176 +1,522 @@
-title: "{$sep}-=(&3杂项升级{$sep})=-"
+title: "{$sep}-=( &3Misc Upgrades {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
-
+#-NOSYNC
+'[fn-misc]':
+  args:
+    - "<name>"
+    - "<lore>"
+    - "<disallowPacifists>"
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&cYour kingdom is pacifist"
+        - "and cannot use this upgrade."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Level{$sep}: &6%level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - 
+          "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+        - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Upgrade Cost{$sep}: &6%cost%"
+        - '*lvl'
+        - '*disable-upgrade'
+#-NOSYNC
+'[fn-misc-basic]':
+  args:
+    - "<lore>"
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - '*lvl-maxxed'
+    else:
+      lore:
+        - "<lore>"
+        - '*lvl'
+        - '*upgrade-cost'
 options:
   glory:
-    name: "&3荣耀"
     material: NETHER_STAR
-
-    lore:
-      - "{$p}一级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
-      - "{$p}二级{$sep}:{$s}在你的土地上杀死非玩家实体掉落经验*2。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 3
     posy: 1
   anti-trample:
-    name: "&a土地防踩踏"
     material: WHEAT_SEEDS
-
-    lore:
-      - "{$p}一级{$sep}:{$s}你王国里的耕地不会被玩家踩坏。"
-      - ''
-      - "{$p}二级{$sep}:{$s}在你王国土地外面的活塞会失效。"
-      - ""
-      - "{$p}三级{$sep}:{$s}防止特定动物在王国土地中受伤。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 4
     posy: 1
   nexus-guards:
-    name: "&4核心守卫"
     material: DIAMOND_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &c你的王国是和平主义王国，
-        无法使用此升级。
-    else:
-      lore:
-        - "&6当有人进入核心所在土地，"
-        - "生成比普通守卫更强壮的核心守卫。"
-        - ""
-        - "&2价格&8: &6%cost%"
-        - "&2等级&8: &6%level%"
-
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 5
     posy: 1
   guards:
-    name: "&e守卫"
     material: IRON_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &c你的王国是和平主义王国，
-        无法使用此升级。
-    else:
-      lore:
-        - "&6若一个非盟友进入土地，"
-        - "王国守卫会随机生成以保护王国。"
-        - ""
-        - "&2价格&8: &6%cost%"
-        - "&2等级&8: &6%level%"
-
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 6
     posy: 1
   insanity:
-    name: "{$e}疯狂"
     material: REDSTONE
-
-    lore:
-      - "{$s}在能量枢纽所在的土地上"
-      - "生成的保卫者和核心守卫"
-      - "会有10秒钟的力量1"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 7
     posy: 1
-  
   invasion-teleportation:
-    name: "&3入侵传送"
     material: ENDER_PEARL
-
-    lore:
-      - "{$p}减少你输入/k tp的传送延迟时间"
-      - "等级越高减少越多"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 3
     posy: 2
   invasions:
-    name: "&3入侵"
     material: DIAMOND_SWORD
-
-    lore:
-      - "&2你的王国可以入侵&6%invasion-limit%&2次。"
-      - "&2已使用次数&8: &6%invasions%"
-      - "&2刷新冷却&8: &6%invasion-refresh-cooldown%"
-      - ""
-      - "&2价格&8: &6%cost%"
-      - "&2等级&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 2
     posy: 2
   anti-explosion:
-    name: "&5防爆"
     material: GUNPOWDER
-
-    lore:
-      - "{$p}一级{$sep}:{$p}苦力怕爆炸不会破坏方块或造成伤害。"
-      - ""
-      - "{$p}二级{$sep}:{$p}TNT爆炸不会破坏方块，但会对非盟友玩家造成伤害。"
-      - ""
-      - "{$p}三级{$sep}:{$p}保护你的王国成员，动物，和其他被困住的怪物"
-      - "免于爆炸伤害。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 4
     posy: 2
   max-claims:
-    name: "&3最大占领量"
+    name: "&3Max Claims"
     material: MAP
-
-    lore:
-      - "{$s}每升一级增大{$p}2{$s}最大占领量"
-      - ""
-      - "{$p}当前最大土地量{$sep}:{$s}%kingdoms_max_lands%"
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 8
     posy: 2
+  max-turrets:
+    name: "&3Max Turrets"
+    material: ARROW
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
+    posx: 5
+    posy: 2
   max-members:
-    name: "&3最大玩家量"
+    name: "&3Max Players"
     material: PLAYER_HEAD
-
-    lore:
-      - "{$s}每升一级增加3最大玩家量。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 6
     posy: 2
   chest-size:
-    name: "&3核心箱子容量"
+    name: "&3Nexus Chest Size"
     material: ENDER_CHEST
-
-    lore:
-      - "{$s}增加你王国核心箱子的最大容量。"
-      - ""
-      - "{$p}价格{$sep}:{$s}%cost%"
-      - "{$p}等级{$sep}:{$s}%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 7
     posy: 2
-  
   back:
-    name: "{$p}返回"
+    name: "{$p}Back"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore:
-      - "{$s}返回到核心界面。"
+    lore: "&6Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [1, 7, 9, 17, 19, 25]
+    slots:
+      - 1
+      - 7
+      - 9
+      - 17
+      - 19
+      - 25
   light-blue-glass:
     name: ''
     material: LIGHT_BLUE_STAINED_GLASS_PANE
-    slots: [0, 8, 18, 26]
+    slots:
+      - 0
+      - 8
+      - 18
+      - 26
