@@ -1,244 +1,220 @@
-title: "&8Улучшения защитника"
+title: "&8-=( &2Champion Upgrades &8)=-"
 rows: 6
 sound: ITEM_ARMOR_EQUIP_DIAMOND
-
 options:
   settings:
-    name: "&bНастройки"
-    material: IRON_SWORD
-    flags: [ HIDE_ATTRIBUTES ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    name: "&bSettings"
+    material: DIAMOND_SWORD
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&7Настройки вашего защитника"
+      - "&7Change your champion's settings"
+      - "such as upgrading its equipment or"
+      - "changing your champion type."
     posx: 3
     posy: 2
   health:
-    name: "&bЗдоровье защитника"
+    name: "&bChampion Health"
     material: MELON_SLICE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Повышает макс.здоровье"
-      - "на &950 &7каждый уровень"
-      - "&7Текущее здоровье защитника&8: &9%scaling%"
+      - "&7Increases champion's health"
+      - "by &250 &7every level."
+      - "&7Current champion's health&8: &2%scaling%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 4
     posy: 2
   reinforcements:
-    name: "&bПодкрепления"
+    name: "&bReinforcements"
     material: ZOMBIE_HEAD
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Каждое обновление будет создавать"
-      - "доп.стража нексуса каждые &930 секунд"
+      - "&7Spawns nexus guardian every {$p}3 &7minutes."
+      - "Each upgrade will reduce the time by {$p}15 seconds&7."
+      - "The spawned guards exactly match your"
+      - "nexus guards depending on the"
+      - "misc upgrade."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 5
     posy: 2
   resistance:
-    name: "&bСопротивление"
+    name: "&bResistance"
     material: BRICK
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Каждое обновление добавляет &9%scaling%% &7шанс"
-      - "что защитник не будет отброшен атакой"
+      - "&7Each upgrade adds &2%scaling%% &7chance that the"
+      - "Champion won't be knocked back by an attack."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 2
   speed:
-    name: "&bСкорость"
+    name: "&bSpeed"
     material: POTION
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Увеличивает скорость чемпиона,"
-      - "когда его здоровье ниже &920%"
+      - "&7Increases champion's Speed when"
+      - "his health is lower than &220%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 2
   focus:
-    name: "&bФокус"
+    name: "&bFocus"
     material: ENDER_EYE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Игроки, пораженные чемпионом,"
-      - "будут на &9%scaling% секунд"
-      - "&7лишены всех своих эффектов"
+      - "&7Players hit by the champion will"
+      - "have &2%scaling% &7second removed from all"
+      - "their active potion effects."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 3
     posy: 3
   strength:
-    name: "&bСила"
+    name: "&bStrength"
     material: ANVIL
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Зелье силы будет "
-      - "добавлено к чемпиону"
-      - "&7и будет усиливаться с каждым уровнем."
+      - "&7Strength potion will be"
+      - "added to the champion"
+      - "&7and will be amplified each level."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 4
     posy: 3
   throw:
-    name: "&bБросок"
+    name: "&bThrow"
     material: COOKED_PORKCHOP
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7При каждой атаке будет шанс подбросить"
-      - "&7грока в небо. Каждое улучшение"
-      - "&7увеличивает этот шанс на &910%"
+      - "&7Every attack, there will be a chance"
+      - "&7to knock the player into the sky."
+      - "&7Each upgrade increases this chance by &210%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 5
     posy: 3
   death-duel:
-    name: "&bСмертельная дуэль"
+    name: "&bDeath Duel"
     material: GOLDEN_SWORD
-    flags: [ HIDE_ATTRIBUTES ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&8− &7Все игроки, кроме захватчика, будут наносить"
-      - "чемпиону на &950% меньше &7урона."
-      - "Чемпион также будет наносить двойной урон"
-      - "всем игрокам, кроме захватчиков."
+      - "&7All players except the invader will deal"
+      - "&250% &7less damage to the champion. The"
+      - "champion will also deal double damage"
+      - "to all players except the invaders."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 3
   drag:
-    name: "&bУдочка"
+    name: "&bDrag"
     material: FISHING_ROD
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Если вторгшийся игрок находится более чем"
-      - "в &9%scaling% блоков &7от чемпиона,"
-      - "игрок будет перетащен к чемпиону."
+      - "&7If the invading player is more than"
+      - "&2%scaling% &7blocks away from the champion, the"
+      - "player will be dragged to the champion."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 3
   damage-cap:
-    name: "&bМаксимальный урон"
-    material: IRON_CHESTPLATE
-    flags: [ HIDE_ATTRIBUTES ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    name: "&bDamage Cap"
+    material: DIAMOND_CHESTPLATE
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&8− &7Ваш чемпион может получить только"
-      - "до &9%scaling% урона &7при любой атаке."
+      - "&7Your champion can only receive up to"
+      - "&2%scaling% &7damages on any attack."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 4
     posy: 4
   thor:
-    name: "&bТор"
-    material: IRON_AXE
-    flags: [ HIDE_ATTRIBUTES ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    name: "&bThor"
+    material: DIAMOND_AXE
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&8− &7Каждые &93 секунды&7, молния "
-      - "поражает вторгшегося игрока и всех"
-      - "&7ближайших несоюзных игроков."
-      - "&7Наносит урон, а также отбрасывает игроков назад."
+      - "&7Every {$p}%cooldown%&7, lightning"
+      - "&7strikes the invading player and all"
+      - "&7nearby non-allied players. Deals"
+      - "&7damage, and knocks the players back also."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 3
     posy: 4
   plow:
-    name: "&bОчистка"
+    name: "&bPlow"
     material: COBWEB
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Ваш чемпион попытается очистить"
-      - "лаву и паутину"
+      - "&7Your champion will try to clear"
+      - "lava and webs every {$p}%cooldown%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 4
   fangs:
-    name: "&bКлыки"
+    name: "&bFangs"
     material: EVOKER_SPAWN_EGG
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Создайте клыки для вражеских"
-      - "игроков вокруг чемпиона"
+      - "&7Spawn fangs for the enemy"
+      - "players around the champion"
+      - "every {$p}%cooldown%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 4
-
   back:
-    name: "&cНазад"
+    name: "&2Back"
     material: BARRIER
     lore:
-      - ""
+      - "&6Go back to nexus menu."
     posx: 5
     posy: 6
   purple-glass:
     name: ""
     material: PURPLE_STAINED_GLASS_PANE
-    slots: [ 0, 2, 6, 8, 18, 26, 27, 35, 45, 47, 51, 53 ]
+    slots:
+      - 0
+      - 2
+      - 6
+      - 8
+      - 18
+      - 26
+      - 27
+      - 35
+      - 45
+      - 47
+      - 51
+      - 53
   black-glass:
     name: ""
     material: BLACK_STAINED_GLASS_PANE
-    slots: [ 1, 7, 9, 17, 36, 44, 46, 52 ]
+    slots:
+      - 1
+      - 7
+      - 9
+      - 17
+      - 36
+      - 44
+      - 46
+      - 52
   magenta-glass:
     name: ""
     material: MAGENTA_STAINED_GLASS_PANE
-    slots: [ 10, 16, 37, 43 ]
+    slots:
+      - 10
+      - 16
+      - 37
+      - 43
