@@ -1,10 +1,9 @@
-title: "{$sep}-=( {$p}Tárgyszerkesztő {$sep})=-"
+title: "{$sep}-=( {$p}Item Editor {$sep})=-"
 rows: 3
 sound: BLOCK_LEVER_CLICK
-
 options:
   item:
-    # Will be replaced by the actual item
+    #Will be replaced by the actual item
     material: STONE
     interaction: FREE
     slot: 15
@@ -12,90 +11,105 @@ options:
     posx: 1
     posy: 1
     material: NAME_TAG
-    name: '{$p}Név'
+    name: '{$p}Name'
     lore: "%item_name%"
   flags:
     posx: 2
     posy: 1
     material: BLACK_BANNER
-    name: '{$p}Zászló'
+    name: '{$p}Flags'
     lore: |
-      &7Klikk a módosításhoz
-      &7⚫ {$p}Rejtett attribútumok{$sep}: %item_flag_hide_attributes%
-      &7⚫ {$p}Rejtett megsemmisítések{$sep}: %item_flag_hide_destroys%
-      &7⚫ {$p}Rejtett festék{$sep}: %item_flag_hide_dye%
-      &7⚫ {$p}Rejtett bűvölések{$sep}: %item_flag_hide_enchants%
-      &7⚫ {$p}Rejtett ráhelyezés{$sep}: %item_flag_hide_placed_on%
-      &7⚫ {$p}Rejtett törhetetlenség{$sep}: %item_flag_hide_unbreakable%
+      &7Click to modify
+      &7⚫ {$p}Hide Attributes{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Hide Destroys{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Hide Dye{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Hide Enchants{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Hide Placed On{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Hide Unbreakable{$sep}: %item_flag_hide_unbreakable%
   attributes:
     posx: 3
     posy: 1
     material: DIAMOND_SWORD
-    name: '{$p}Attribútumok'
+    name: '{$p}Attributes'
   decoration:
-    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    slots:
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 13
+      - 14
+      - 16
+      - 17
+      - 22
+      - 23
+      - 24
+      - 25
+      - 26
     material: BLACK_STAINED_GLASS_PANE
     name: ''
   lore:
     posx: 1
     posy: 2
     material: BOOK
-    name: '{$p}Történet'
-    # The lore is automatically set by the plugin for this option
+    name: '{$p}Lore'
+  #The lore is automatically set by the plugin for this option
   enchantments:
     posx: 2
     posy: 2
     material: ENCHANTED_BOOK
-    name: '{$p}Bűbájok'
-    lore: [ "&7Klikk a módosításhoz" ] # The lore is modified by the plugin to add set enchants
+    name: '{$p}Enchantments'
+    lore:  #The lore is modified by the plugin to add set enchants
+      - "&7Click to modify"
   unbreakable:
     isUnbreakable:
       condition: item_unbreakable
-      name: '{$p}Törhetetlen'
+      name: '{$p}Unbreakable'
       glow: true
     else:
-      name: '{$e}Törhető'
+      name: '{$e}Breakable'
     posx: 3
     posy: 2
     material: BEDROCK
     lore: |
-      &7Ha egy tárgy törhetetlen, 
-      akkor nem csökken a tartóssága, 
-      amikor használod.
+      &7If an item is unbreakable,
+      it'll not decrease its durability
+      when you use it.
   nbt:
     posx: 4
     posy: 2
     material: BOOKSHELF
-    name: '{$p}NBT megjelenítő'
+    name: '{$p}NBT Viewer'
   amount:
     posx: 1
     posy: 3
     material: SLIME_BALL
-    name: '{$p}Mennyiség{$sep}: {$s}%item_amount%'
+    name: '{$p}Amount{$sep}: {$s}%item_amount%'
     lore: |
-      &7Maximálisan {$p}64 &7lehet ez az
-      összeg, de technikailag beállítható 
-      {$p}127 &7is, ami ritka helyzetekben okozhat
-      problémákat. Például a GUI nem tudja
-      megjeleníteni ezt a változást, és 
-      amikor a leltárba kerül, előfordulhat,
-      hogy nem tartja meg az összeget.
+      &7Maximum amount would be {$p}64
+      &7while you can technically set up
+      to {$p}127 &7it will cause issues
+      in rare situations. For example,
+      the GUI isn't able to show this
+      change and when it's being
+      transferred to your inventory,
+      it might not keep its amount.
   custom-model-data:
     posx: 2
     posy: 3
     material: FIREWORK_STAR
-    name: '{$p}Egyéni modelladat{$sep}: {$s}%item_custom_model_data%'
+    name: '{$p}Custom Model Data{$sep}: {$s}%item_custom_model_data%'
     lore: |
-      &7Ez az 1.14+ verzióhoz készült
-      erőforrás csomagoknál van használva,
-      amelyek új tárgyakat adnak a játékhoz.
-      Ez alapvetően csak az azonos típusú 
-      tárgyak újbóli kinézetét jelenti. Ezt 
-      használják az olyan pluginek, mint az 
-      ItemsAdder, hogy új tárgyakat adjanak 
-      a játékhoz.
+      &7This is used for resource packs
+      that are made for 1.14+
+      to add new items to the game.
+      This is basically just a reskin
+      of the same item type.
+      This is what plugins like ItemsAdder
+      use to add new items to the game.
   material:
     posx: 3
     posy: 3
-    material: STONE # This is a template material, the actual material is taken from the placed item
-    name: '{$p}Anyag{$sep}: {$s}%item_material%'
+    material: STONE #This is a template material, the actual material is taken from the placed item
+    name: '{$p}Material{$sep}: {$s}%item_material%'
