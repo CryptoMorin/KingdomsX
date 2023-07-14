@@ -1,75 +1,81 @@
-title: "&a箭塔"
+title: "&aArrow Turret"
 type: HOPPER
 sound: ITEM_ARMOR_EQUIP_DIAMOND
-
 options:
   ammo:
-    name: "{$sp}弹药{$sep}:{$p}%ammo%"
+    name: "&9Ammo&8: &2%ammo%"
     material: ARROW
     ammo: 100
     cost: 10
-    #设为0以禁用。
+    #Set to 0 to disable.
     fill-cost: 'neededAmmo / 8'
-    lore:
-      - '{$p}花费{$s}%cost%{$p}资源点购买{$s}%ammo-buy-amount%{$p}弹药。'
-      - '{$p}按住{$s}shift{$p}点击以花费{$s}%fill-cost%{$p}资源点填满弹药。'
+    lore: |
+      &2Buy &6%ammo-buy-amount% &2ammo for &6%cost% &2resource points.
+      &2Fully fill ammo by &6shift clicking
+      &2for &6%fill-cost% &2resource points.
     slot: 0
   upgrade:
     upgrade:
       condition: "level < max_level"
-      name: "{$sp}升级{$sep}:{$s}%level_roman%{$p}➛{$s}%next_level_roman%"
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}攻击距离{$sep}:{$s}%range%{$p}➔{$s}%next_range%"
-        - "{$p}⚫ {$p}弹药量{$sep}:{$s}%max_ammo%{$p}➔{$s}%next_max_ammo%"
-        - "{$p}⚫ {$p}冷却时间{$sep}:{$s}%cooldown%{$p}➔{$s}%next_cooldown%"
-        - "{$p}⚫ {$p}最多目标数{$sep}:{$s}%max_targets%{$p}➔{$s}%next_max_targets%"
-        - "{$p}⚫ {$p}箭矢速度{$sep}:{$s}%speed%{$p}➔{$s}%next_speed%"
-        - "{$p}⚫ {$p}伤害{$sep}:{$s}%damage%{$p}➔{$s}%next_damage%"
+        - "&7⚫ &2Range&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Max Targets&8: &6%max_targets% &7➔ &6%next_max_targets%"
+        - "&7⚫ &2Speed&8: &6%speed% &7➔ &6%next_speed%"
+        - "&7⚫ &2Damage&8: &6%damage% &7➔ &6%next_damage%"
         - ""
-        - "{$p}⚫ {$p}满级{$sep}:{$s}III"
-        - "{$p}⚫ {$p}价格{$sep}:{$s}%upgrade_cost%"
+        - "&7⚫ &2Max Level&8: &6III"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      name: "{$sp}等级{$sep}:{$s}%level_roman%"
+      name: "&9Level&8: &6%roman_level%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}攻击距离{$sep}:{$s}%range%"
-        - "{$p}⚫ {$p}弹药量{$sep}:{$s}%max_ammo%"
-        - "{$p}⚫ {$p}冷却时间{$sep}:{$s}%cooldown%"
-        - "{$p}⚫ {$p}最多目标数{$sep}:{$s}%max_targets%"
-        - "{$p}⚫ {$p}箭矢速度{$sep}:{$s}%speed%"
-        - "{$p}⚫ {$p}伤害{$sep}:{$s}%damage%"
+        - "&7⚫ &2Range&8: &6%range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
+        - "&7⚫ &2Max Targets&8: &6%max_targets%"
+        - "&7⚫ &2Speed&8: &6%speed%"
+        - "&7⚫ &2Damage&8: &6%damage%"
     slot: 1
   manual:
     manual:
       condition: "manual"
-      name: "{$p}手动模式"
+      name: "&2Manual"
       material: LEVER
       lore: |
-        {$p}人工模式禁用了炮塔自动激活，
-        你可以自己操控炮塔。
+        &7Manual mode allows you
+        to disable turrets from
+        activating automatically and
+        you can take control of them instead.
 
-        {$p}左键以切换至{$sp}自动模式。
+        &2Left-click to go into
+        &9automatic mode
 
-        {$p}右键开始操控炮塔。
+        &2Right-click to start
+        operating the turret
     automatic:
-      name: "{$sp}自动模式"
+      name: "&9Automatic"
       material: COMPARATOR
       lore: |
-        {$p}自动模式会自动检测附近的敌人，
-        并向其开火。
+        &7Automatic mode will make
+        turrets automatically detect
+        nearby enemies and shoot at them.
 
-        {$p}左键以切换至{$sp}手动模式。
+        &2Left-click to go into
+        &9manual mode
     slot: 2
   break:
-    name: "{$e}破坏"
+    name: "&cBreak"
     material: REDSTONE_BLOCK
     lore:
-      - "&4破坏此炮塔。"
+      - "&4Breaks this turret."
     slot: 3
   close:
-    name: "{$e}关闭"
+    name: "&cClose"
     material: BARRIER
     lore:
-      - "{$s}关闭此界面。"
+      - "&6Close the GUI"
     slot: 4
