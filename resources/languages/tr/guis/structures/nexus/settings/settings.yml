@@ -1,94 +1,164 @@
-title: "&8-=( &7Ayarlar &8)=-"
-rows: 1
+title: "&8-=( &7Settings &8)=-"
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
-
 options:
-  pacifism:
-    name: "&6Barışçıl&8: %pacifism%"
-    material: END_CRYSTAL
-    lore:
-      - "&7Barışçıl modundayken, krallığınız"
-      - "başka krallıklar tarafından istila"
-      - "edilemez ve istila edilemez."
-      - ""
-      - "Bir Krallığı işgal ederseniz, bir hafta boyunca "
-      - "barışçıl moduna geri dönemezsiniz."
-      - ""
-      - "&2Bekleme Süresi&8: &6%pacifism_cooldown%"
+  back:
     posx: 1
     posy: 1
-  shields:
-    name: "&6Kalkan&8: &2%kingdoms_shield_time_left%"
-    material: SHIELD
+    material: PLAYER_HEAD
+    name: '&2Back'
     lore:
-      - "&7Krallığınızı istilalara karşı"
-      - "korumak için krallığınız için"
-      - "bir kalkan satın alın."
-    posx: 2
-    posy: 1
-  invites:
-    name: "&6Davetler&8: %invites%"
-    material: BOOK
-    lore:
-      - "&7Kapatıldığında, &2/k join %kingdoms_name% &7ile"
-      - "herhangi bir davetiyeye ihtiyaç duymadan"
-      - "herkes bu krallığa katılabilir."
-    posx: 3
-    posy: 1
-  relations:
-    name: "&6İlişkiler"
-    material: WRITABLE_BOOK
-    lore:
-      - "&7Diğer krallıklar için ilişki"
-      - "niteliklerinizi değiştirin."
+      - '&6Go back to nexus menu.'
+    skull: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
+  light-blue-stained-glass-pane:
+    slots:
+      - 1
+      - 2
+      - 6
+      - 7
+      - 8
+      - 9
+      - 17
+      - 18
+      - 21
+      - 23
+      - 26
+      - 27
+      - 29
+      - 30
+      - 31
+      - 32
+      - 33
+      - 35
+      - 36
+      - 39
+      - 41
+      - 44
+      - 45
+      - 53
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
     posx: 4
     posy: 1
-  tax:
-    name: "&6Vergi"
-    material: PAPER
-    lore:
-      - "&7Üyeler için krallık vergilerinizi"
-      - "değiştirin."
-      - ""
-      - "&6Vergi&8: &2$%kingdoms_fancy_tax%"
-      - "&6Denklem&8: &2%tax_equation%"
-      - ""
-      - "&6Fatura Vergisi&8: &2$%kingdoms_fancy_kingdom_tax%"
+    material: DARK_OAK_DOOR
+    name: "{$s}Public Home{$sep}: %kingdoms_bool_kingdom_home_is_public%"
+    lore: |
+      &7When your home is public, anyone
+      can teleport to it using
+      {$p}/k home %kingdoms_name%
+  hidden:
     posx: 5
     posy: 1
-  public-home:
-    name: "&6Public Home&8: &2%public_home%"
-    material: DARK_OAK_DOOR
-    lore:
-      - "&6/k home %kingdoms_name% &7komutunu"
-      - "kullanarak diğer oyuncuların ziyaret"
-      - "edebilmesi için evinizi herkese açık hale getirebilirsiniz."
+    material: POTION
+    color: 818595
+    name: "{$s}Hidden{$sep}: %kingdoms_bool_kingdom_is_hidden%"
+    lore: |
+      &7Hidden kingdoms aren't displayed
+      in {$p}/k map &7and online maps.
+  tax:
     posx: 6
     posy: 1
-  flag:
-    name: "&6Bayrak"
-    material: BLACK_BANNER
-    lore:
-      - "&7Dynmap için krallık bayrağınızı ayarlayın."
-      - "Bayrak URL'nizi görmek için tıklayın."
-      - "Bu, haritayı anında güncellemeyecektir."
-    posx: 7
-    posy: 1
-  color:
-    name: "&6Renk&8: &c%r%&7, &2%g%&7, &9%b% &7(&d%hex%&7)"
-    material: BLACK_DYE
-    lore:
-      - "&7Dynmap için krallık işaretleyici(markers)"
-      - "renginizi ayarlayın."
-      - "Bu, haritayı anında güncellemeyecektir."
-    posx: 8
-    posy: 1
+    material: PAPER
+    name: '&6Tax'
+    lore: |
+      &7Change your kingdom taxes
+      for members.
 
-  back:
-    name: "&2Geri Dön"
-    material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore:
-      - "&6Nexus menüsüne geri dönün."
-    posx: 9
-    posy: 1
+      &6Member Tax Equation&8:
+      &2%tax_equation%
+      &6Your Personal Tax&8: &2$%kingdoms_fancy_tax%
+
+      &6Kingdom Tax&8: &2$%kingdoms_fancy_kingdom_tax%
+  blue-stained-glass-pane:
+    slots:
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+      - 16
+      - 19
+      - 25
+      - 28
+      - 34
+      - 37
+      - 43
+      - 46
+      - 47
+      - 48
+      - 49
+      - 50
+      - 51
+      - 52
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  relations:
+    posx: 3
+    posy: 3
+    material: WRITABLE_BOOK
+    name: '&6Relations'
+    lore: |
+      &7Change your relation attributes
+      for other kingdoms.
+
+      {$sep}[&e!{$sep}] {$es}In order for some attributes
+      to work, both kingdoms need to have the
+      attribute enabled for the relationship.
+
+      For example, if you have {$e}BUILD {$es}attribute
+      enabled for allies, but you're trying to
+      build in an ally's land that doesn't
+      have {$e}BUILD {$es}attribute enabled for allies,
+      this won't work. They won't be able to
+      build in your land either.
+  flag:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '&6Flag'
+    lore: |
+      &7Set your kingdom flag for Dynmap.
+      Click to see your flag URL.
+      This won't update the map instantly.
+  pacifism:
+    posx: 7
+    posy: 3
+    material: END_CRYSTAL
+    name: '&6Pacifist&8: %kingdoms_bool_kingdom_is_pacifist%'
+    lore: |
+      &7When you're in pacifism mode,
+      your kingdom cannot invade
+      and cannot be invaded by other kingdoms.
+
+      If you invade a Kingdom, you cannot go
+      back into pacifism mode for a week.
+
+      &2Cooldown&8: &6%pacifism_cooldown%
+  invites:
+    posx: 3
+    posy: 5
+    material: BOOK
+    name: '&6Requires Invite&8: %kingdoms_bool_kingdom_requires_invite%'
+    lore: |
+      &7When turned off, anyone can
+      join this kingdom without needing
+      an invitation with {$p}/k join %kingdoms_name%
+  color:
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '&6Color&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_kingdom_color@hex%%kingdoms_kingdom_color%&7)'
+    lore: |
+      &7Set your kingdom marker
+      color for chat and online land maps.
+  shields:
+    posx: 7
+    posy: 5
+    material: SHIELD
+    name: '&6Shield&8: &2%kingdoms_time_shield_time_left%'
+    lore: |
+      &7Buy a shield for your
+      kingdom to protect your kingdom
+      against invades.
