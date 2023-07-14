@@ -1,169 +1,522 @@
-title: "&8-=( &3Çeşitli Yükseltmeler &8)=-"
+title: "{$sep}-=( &3Misc Upgrades {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
-
+#-NOSYNC
+'[fn-misc]':
+  args:
+    - "<name>"
+    - "<lore>"
+    - "<disallowPacifists>"
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&cYour kingdom is pacifist"
+        - "and cannot use this upgrade."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Level{$sep}: &6%level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - 
+          "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+        - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - "{$p}Upgrade Cost{$sep}: &6%cost%"
+        - '*lvl'
+        - '*disable-upgrade'
+#-NOSYNC
+'[fn-misc-basic]':
+  args:
+    - "<lore>"
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - '*lvl-maxxed'
+    else:
+      lore:
+        - "<lore>"
+        - '*lvl'
+        - '*upgrade-cost'
 options:
   glory:
-    name: "&3Glory"
     material: NETHER_STAR
-
-    lore:
-      - "&2Seviye 1&8: &6Arazinizde oyuncu olmayanları öldürmek\n2 kat deneyim sağlar."
-      - "&2Seviye 2&8: &6Toprağınızda oyuncu öldürmek\nx4 deneyim sağlar."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 3
     posy: 1
   anti-trample:
-    name: "&aEzilme Önleyici(Anti-Trample)"
     material: WHEAT_SEEDS
-
-    lore:
-      - "&2Seviye 1&8: &6İşlenmiş toprağınız oyuncular"
-      - "tarafından çiğnenemez."
-      - ''
-      - "&2Seviye 2&8: &6Arazinizin dışına yerleştirilen"
-      - "pistonlar artık çalışmayacak."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 4
     posy: 1
   nexus-guards:
-    name: "&4Nexus Muhafızları"
     material: DIAMOND_AXE
-
-    lore:
-      - "&6Birisi nexus alanınıza girdiğinde,"
-      - "normal muhafızlarınızdan daha güçlü"
-      - "muhafızlar ortaya çıkarır."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 5
     posy: 1
   guards:
-    name: "&eMuhafızlar"
     material: IRON_AXE
-
-    lore:
-      - "&6Muhafızlar, ülkeye müttefik olmayan"
-      - "biri girerse krallığı korumak için"
-      - "rastgele ortaya çıkar."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 6
     posy: 1
   insanity:
-    name: "&cDelilik"
     material: REDSTONE
-
-    lore:
-      - "&6Güç Hücresi(Powercell) arazisinde ortaya çıkan"
-      - "savunucular ve Nexus muhafızları,"
-      - "10 saniye boyunca Güç I'e sahip olacak."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 7
     posy: 1
-
   invasion-teleportation:
-    name: "&3İstila Işınlanması"
     material: ENDER_PEARL
-
-    lore:
-      - "&2Her yükseltmeden sonra &e/k tp &2için"
-      - "ışınlanma gecikmenizi azaltır."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 3
     posy: 2
   invasions:
-    name: "&3İşgaller"
     material: DIAMOND_SWORD
-
-    lore:
-      - "&2Krallığınız &6%invasion-limit% &2kez istila edebilir"
-      - "&2Kullanılan istilalar&8: &6%invasions%"
-      - "&2Bekleme Süresini Yenile&8: &6%invasion-refresh-cooldown%"
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], true ]'
     posx: 2
     posy: 2
   anti-explosion:
-    name: "&5Patlama Önleyici(Anti-Explosion)"
     material: GUNPOWDER
-
-    lore:
-      - "&2Seviye 1&8: &7Creeperlerin topraklarınızdaki "
-      - "blokları yok etmesini önler."
-      - ""
-      - "&2Seviye 2&8: &7TNT'lerin arazinizdeki"
-      - "blokları yok etmesini önler."
-      - ""
-      - "&2Seviye 3&8: &7Krallık üyelerinizi, hayvanlarınızı"
-      - "ve topraklarınızdaki diğer tüm tuzağa düşmüş"
-      - "mobları patlamalardan koruyun."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <name>
+      - <lore>
+      - <disallowPacifists>
+    return:
+      pacifist:
+        condition: <disallowPacifists> && kingdoms_pacifist
+        name: <name>
+        perform-action: false
+        lore:
+          - <lore>
+          - 
+          - '&cYour kingdom is pacifist'
+          - and cannot use this upgrade.
+      disabled:
+        condition: '!enabled'
+        name: '{$disabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Level{$sep}: &6%level%'
+          - '{$sep}[{$e}!{$sep}] {$es}Right-click to enable'
+      maxxed:
+        condition: enabled && maxxed
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - 
+            "&lvl-maxxed \"{$p}Level{$sep}": '{$s}%level% {$sep}({$s}Maxxed{$sep})"'
+          - '&disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"'
+      else:
+        condition: enabled
+        name: '{$enabled} <name>'
+        lore:
+          - <lore>
+          - 
+          - '{$p}Upgrade Cost{$sep}: &6%cost%'
+          - '*lvl'
+          - '*disable-upgrade'
+    0: '], false ]'
     posx: 4
     posy: 2
   max-claims:
-    name: "&3Maksimum Claim"
+    name: "&3Max Claims"
     material: MAP
-
-    lore:
-      - "&6Her güncellemede maksimum"
-      - "claimlerinizi &22 &6artırın."
-      - ""
-      - "&2Mevcut Maksimum Arazi&8: &6%kingdoms_max_lands%"
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 8
     posy: 2
+  max-turrets:
+    name: "&3Max Turrets"
+    material: ARROW
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
+    posx: 5
+    posy: 2
   max-members:
-    name: "&3Maksimum Üye"
+    name: "&3Max Players"
     material: PLAYER_HEAD
-
-    lore:
-      - "&6Her yükseltme, 3 yuva daha ekler."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 6
     posy: 2
   chest-size:
-    name: "&3Nexus Sandık Boyutu"
+    name: "&3Nexus Chest Size"
     material: ENDER_CHEST
-
-    lore:
-      - "&6Maksimum nexus sandık boyutunu"
-      - "artırın."
-      - ""
-      - "&2Maliyet&8: &6%cost%"
-      - "&2Seviye&8: &6%level%"
+    args:
+      - <lore>
+    return:
+      maxxed:
+        condition: enabled && maxxed
+        lore:
+          - <lore>
+          - '*lvl-maxxed'
+      else:
+        lore:
+          - <lore>
+          - '*lvl'
+          - '*upgrade-cost'
+    0: '] ]'
     posx: 7
     posy: 2
-
   back:
-    name: "&2Geri Dön"
+    name: "{$p}Back"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore:
-      - "&6Nexus menüsüne geri dönün."
+    lore: "&6Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [ 1, 7, 9, 17, 19, 25 ]
+    slots:
+      - 1
+      - 7
+      - 9
+      - 17
+      - 19
+      - 25
   light-blue-glass:
     name: ''
     material: LIGHT_BLUE_STAINED_GLASS_PANE
-    slots: [ 0, 8, 18, 26 ]
+    slots:
+      - 0
+      - 8
+      - 18
+      - 26
