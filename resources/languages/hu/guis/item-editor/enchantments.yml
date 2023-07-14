@@ -1,231 +1,769 @@
-title: "{$sep}-=( {$p}Bűbájok {$sep})=-"
+title: "{$sep}-=( {$p}Enchantments {$sep})=-"
 rows: 6
-
-# What the hell is this: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
-'[fn-enchant]': &fn-enchant
-  args: [ "<x>" ]
+#What the hell is this: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
+'[fn-enchant]':
+  args:
+    - "<x>"
   return:
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}Nem támogatott{$sep}] {$es}<x>"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}<x>"
       lore: |
-        {$e}Ez a bűbáj nem támogatott
-        az aktuális szerververziódon.
+        {$e}This enchantment is not
+        supported in your current server
+        version.
     enabled:
       condition: enabled
       name: "{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})"
       glow: true
       lore: |
-        &7Bal klikk a szint váloztatásához
-        &7Jobb klikk az eltávolításhoz
+        &7Left-click to change level
+        &7Right-click to remove
     else:
       name: "{$disabled} <x>"
       lore: |
-        &7Bal klikk a bűbáj hozzáadásához
-
+        &7Left-click to add enchant
 options:
   water-worker:
     posx: 1
     posy: 1
     material: WATER_BUCKET
-    <<: *fn-enchant [ "Vízaffinitás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   depth-strider:
     posx: 2
     posy: 1
     material: WATER_BUCKET
-    <<: *fn-enchant [ "Mélyjárás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   impaling:
     posx: 3
     posy: 1
     material: WATER_BUCKET
-    <<: *fn-enchant [ "Felnyársalás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   oxygen:
     posx: 4
     posy: 1
     material: WATER_BUCKET
-    <<: *fn-enchant [ "Légzés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   damage-all:
     posx: 5
     posy: 1
     material: DIAMOND_SWORD
-    <<: *fn-enchant [ "Élesség" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   knockback:
     posx: 6
     posy: 1
     material: GOLDEN_SWORD
-    <<: *fn-enchant [ "Hátralökés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   dig-speed:
     posx: 7
     posy: 1
     material: DIAMOND_PICKAXE
-    <<: *fn-enchant [ "Hatékonyság" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   frost-walker:
     posx: 8
     posy: 1
     material: BLUE_ICE
-    <<: *fn-enchant [ "Fagyjárás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   swift-sneak:
     posx: 9
     posy: 1
     material: DIAMOND_LEGGINGS
-    <<: *fn-enchant [ "Gyors lopódzás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   arrow-damage:
     posx: 1
     posy: 2
     material: ARROW
-    <<: *fn-enchant [ "Erő" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   arrow-knockback:
     posx: 2
     posy: 2
     material: ARROW
-    <<: *fn-enchant [ "Ütés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   arrow-fire:
     posx: 3
     posy: 2
     material: ARROW
-    <<: *fn-enchant [ "Láng" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   multishot:
     posx: 4
     posy: 2
     material: ARROW
-    <<: *fn-enchant [ "Többszörös lövés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   piercing:
     posx: 5
     posy: 2
     material: ARROW
-    <<: *fn-enchant [ "Átdöfés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   arrow-infinite:
     posx: 6
     posy: 2
     material: SPECTRAL_ARROW
-    <<: *fn-enchant [ "Végtelen" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   quick-charge:
     posx: 7
     posy: 2
     material: CROSSBOW
-    <<: *fn-enchant [ "Gyors töltés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   mending:
     posx: 8
     posy: 2
     material: EXPERIENCE_BOTTLE
-    <<: *fn-enchant [ "Önjavítás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   durability:
     posx: 9
     posy: 2
     material: OBSIDIAN
-    <<: *fn-enchant [ "Törhetetlenség" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   fire-aspect:
     posx: 1
     posy: 3
     material: FIRE_CHARGE
-    <<: *fn-enchant [ "Lángpallos" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   channeling:
     posx: 2
     posy: 3
     material: TRIDENT
-    <<: *fn-enchant [ "Földelés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   loyalty:
     posx: 3
     posy: 3
     material: TRIDENT
-    <<: *fn-enchant [ "Hűség" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   riptide:
     posx: 4
     posy: 3
     material: TRIDENT
-    <<: *fn-enchant [ "Szökőár" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   protection-environmental:
     posx: 5
     posy: 3
     material: DIAMOND_CHESTPLATE
-    <<: *fn-enchant [ "Védelem" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   protection-projectile:
     posx: 6
     posy: 3
     material: GOLDEN_CHESTPLATE
-    <<: *fn-enchant [ "Lövedékvédelem" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   protection-explosions:
     posx: 7
     posy: 3
     material: TNT
-    <<: *fn-enchant [ "Robbanásvédelem" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   protection-fire:
     posx: 8
     posy: 3
     material: LAVA_BUCKET
-    <<: *fn-enchant [ "Tűzállóság" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   thorns:
     posx: 9
     posy: 3
     material: ROSE_BUSH
-    <<: *fn-enchant [ "Tüskék" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   damage-undead:
     posx: 1
     posy: 4
     material: ZOMBIE_HEAD
-    <<: *fn-enchant [ "Sújtás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   damage-arthropods:
     posx: 2
     posy: 4
     material: SPIDER_SPAWN_EGG
-    <<: *fn-enchant [ "Ízeltlábúak veszedelme" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   soul-speed:
     posx: 3
     posy: 4
     material: SOUL_SAND
-    <<: *fn-enchant [ "Lélekjárás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   vanishing-curse:
     posx: 4
     posy: 4
     material: ENDER_EYE
-    <<: *fn-enchant [ "Felejtés átka" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   binding-curse:
     posx: 5
     posy: 4
     material: ENDER_PEARL
-    <<: *fn-enchant [ "Bilincselés átka" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   loot-bonus-mobs:
     posx: 7
     posy: 4
     material: ENCHANTED_BOOK
-    <<: *fn-enchant [ "Zsákmányolás" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   loot-bonus-blocks:
     posx: 8
     posy: 4
     material: ENCHANTED_BOOK
-    <<: *fn-enchant [ "Szerencse" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   silk-touch:
     posx: 9
     posy: 4
     material: ENCHANTED_BOOK
-    <<: *fn-enchant [ "Gyngéd érintés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   luck:
     posx: 1
     posy: 5
     material: FISHING_ROD
-    <<: *fn-enchant [ "Horgászszerencse" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   lure:
     posx: 2
     posy: 5
     material: FISHING_ROD
-    <<: *fn-enchant [ "Csalétek" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   protection-fall:
     posx: 3
     posy: 5
     material: FEATHER
-    <<: *fn-enchant [ "Könnyű esés" ]
+    args:
+      - <x>
+    return:
+      not-supported:
+        condition: '!supported'
+        name: '{$sep}[{$e}Not Supported{$sep}] {$es}<x>'
+        lore: "{$e}This enchantment is not\nsupported in your current server\nversion."
+      enabled:
+        condition: enabled
+        name: '{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})'
+        glow: true
+        lore: "&7Left-click to change level\n&7Right-click to remove"
+      else:
+        name: '{$disabled} <x>'
+        lore: '&7Left-click to add enchant'
   back:
     posx: 1
     posy: 6
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    name: '{$p}Vissza'
+    name: '{$p}Back'
   decoration:
-    slots: [ 46, 47, 48, 50, 51, 52 ]
+    slots:
+      - 46
+      - 47
+      - 48
+      - 50
+      - 51
+      - 52
     material: BLACK_STAINED_GLASS_PANE
     name: ''
   remove-all:
     posx: 9
     posy: 6
     material: RED_WOOL
-    name: '{$e}Az összes bűbáj eltávolítása'
+    name: '{$e}Remove All Enchantments'
