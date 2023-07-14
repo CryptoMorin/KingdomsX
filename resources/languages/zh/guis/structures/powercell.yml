@@ -1,33 +1,32 @@
-title: "{$e}能量枢纽"
+title: "&cPowercell"
 type: HOPPER
 sound: BLOCK_REDSTONE_TORCH_BURNOUT
-
 options:
   break:
-    name: "&4破坏"
+    name: "&4Break"
     material: REDSTONE_BLOCK
     lore:
-      - "{$s}破坏此设施。"
+      - "&6Breaks the structure."
     slot: 0
   upgrade:
     slot: 2
     upgrade:
       condition: "level < max_level"
-      name: "{$sp}升级{$sep}:{$s}%level_roman%{$p}➛{$s}%next_level_roman%"
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}保护范围{$sep}:{$s}1{$p}➔{$s}2"
+        - "&7⚫ &2Range&8: &61 &7➔ &62"
         - ""
-        - "{$p}⚫ {$p}满级{$sep}:{$s}%max-level-roman%"
-        - "{$p}⚫ {$p}价格{$sep}:{$s}%upgrade_cost%"
+        - "&7⚫ &2Max Level&8: &6%roman_next_level%"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      name: "{$sp}等级{$sep}:{$s}%level_roman%"
+      name: "&9Level&8: &6%roman_level%"
       material: NETHER_STAR
       lore:
-        - "{$p}⚫ {$p}保护范围{$sep}:{$s}2"
+        - "&7⚫ &2Range&8: &62"
   close:
-    name: "{$p}关闭"
+    name: "&2Close"
     material: BARRIER
     lore:
-      - "{$s}关闭此界面。"
+      - "&6Close the GUI."
     slot: 4
