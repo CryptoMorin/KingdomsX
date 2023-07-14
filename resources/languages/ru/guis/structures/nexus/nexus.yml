@@ -1,167 +1,225 @@
-title: "&8Нексус &3%kingdoms_name%"
+title: "&2&l%kingdoms_kingdom_name%'s &6&lNexus"
 rows: 6
 sound: BLOCK_BEACON_ACTIVATE, 0.3
-
+icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Nexus-Logo.png"
+form-type: CUSTOM
+form-options:
+  settings:
+    component-type: LABEL
+    text: "&5Settings"
 options:
   settings:
-    name: "&7Настройки"
+    name: "&7Settings"
     material: NETHER_STAR
     lore:
-      - "&8− &7Изменение настроек королевства"
+      - "&6Change your kingdom settings."
     posx: 5
     posy: 2
   members:
-    name: "&2Жители"
+    name: "&2Members"
     material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
     lore:
-      - "&8− &7Управление жителями"
-      - "&8− &7вашего королевства"
+      - "&6Manage your kingdom members."
+      - "&6Promote or demote them."
     posx: 5
     posy: 3
   masswar:
     running:
       condition: kingdoms_masswar_is_running
-      name: "&4Массовая война"
+      name: "&4Masswar"
       material: CLOCK
       lore:
-        - "&8− &7Массовая война &2активна."
+        - "&6During masswar invasion is free."
+        - "Masswar is currently &2running."
+        - ""
+        - "{$p}Mass War ends in{$sep}: {$s}%kingdoms_time_masswar_time%"
     else:
       name: "&4Masswar"
       material: RED_WOOL
       lore:
-        - "&8− &7Массовая война &4неактивна."
+        - "&6During masswar invasion is free."
+        - "Masswar is currently &cnot running."
+        - ""
+        - "{$p}Next Mass War in{$sep}: {$s}%kingdoms_time_masswar_time%"
     posx: 6
     posy: 3
   nexus-chest:
-    name: "&eСклад нексуса"
+    name: "&eNexus Chest"
     material: CHEST
     lore:
-      - "&8− &7Положите предметы сюда"
-      - "  &7чтобы все могли ими пользоваться"
+      - "&6Put items in your kingdoms chest"
+      - "&6for everyone to use."
     posx: 7
     posy: 3
   turrets:
-    name: "&9Турели"
+    name: "&9Turrets"
     material: SPECTRAL_ARROW
     lore:
-      - "&8− &7"
+      - "&6You can buy turrets with"
+      - "resource points to place them"
+      - "on your land. It protects against"
+      - "mobs and invaders."
     posx: 3
     posy: 3
   structures:
-    name: "&5Структуры"
+    name: "&5Structures"
     material: REDSTONE_LAMP
     lore:
-      - "&8− &7Структуры могут делать разные вещи."
-      - "У вас может быть только"
-      - "одно строение на чанке"
-      - "Обратите внимание, что нексус"
-      - "тоже является структурой."
-      - "Вы можете их покупать"
-      - "за очки ресурсов."
+      - "&6Structures can do different things."
+      - "You can only have one structure per land."
+      - "Note that the nexus is a structure itself."
+      - "You can buy structures with resource points."
     posx: 4
     posy: 3
   misc-upgrades:
-    name: "&bПрочие обновления"
+    name: "&bMisc Upgrades"
     material: ENCHANTING_TABLE
     lore:
-      - "&8− &7Дополнительные различные улучшения"
-      - "чтобы улучшить свое королевство"
-      - "в разных аспектах"
+      - "&6Extra miscellaneous upgrades"
+      - "to improve your kingdom"
+      - "in different aspects."
     posx: 2
     posy: 3
   logs:
-    name: "&aЖурнал"
+    name: "&aAudit Logs"
     material: KNOWLEDGE_BOOK
-    sound: BLOCK_NOTE_BLOCK_BASS
+    lore:
+      - "&6View kingdom logs including"
+      - "invasions, claiming, unclaiming,"
+      - "and other member activities."
+      - ""
+      - "&7Most of these logs stay for"
+      - "30 days after they're deleted."
+      - "Some may stay for a shorter time"
+      - "that are less important."
     posx: 8
     posy: 3
   resource-points:
-    name: "&eПреобразователь очков ресурсов"
+    name: "&eResource Points Converter"
     material: HAY_BLOCK
     lore:
-      - "&8− &7Преобразуйте минералы"
-      - "в очки ресурсов"
-      - "У вашего королевства &e%kingdoms_fancy_resource_points% оч.ресурсов"
+      - "&6Convert your items to"
+      - "resource points."
+      - "Your kingdom has &e%kingdoms_fancy_resource_points% &6resource points."
     posx: 4
     posy: 5
   damage-reduction:
-    name: "&3Уменьшение урона"
-    material: IRON_CHESTPLATE
-    flags: [ HIDE_ATTRIBUTES ]
+    name: "&3Damage Reduction"
+    material: DIAMOND_CHESTPLATE
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&8− &7Уменьшает урон"
-      - "на &a1 процент"
+      - "&6Each upgrade reduces damage"
+      - "taken by &e1% &6when you're in"
+      - "your own kingdom land."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&6Level&8: &2%level%"
+      - "&6Cost&8: &2%cost%"
     posx: 7
     posy: 4
   damage-boost:
-    name: "&3Увеличение урона"
-    material: IRON_SWORD
-    flags: [ HIDE_ATTRIBUTES ]
+    name: "&3Damage Boost"
+    material: DIAMOND_SWORD
+    flags:
+      - HIDE_ATTRIBUTES
     lore:
-      - "&8− &7Увеличивает ваш урон"
-      - "на &a1 процент"
+      - "&6Each upgrade increases your"
+      - "damage by &e1% &6when you're in"
+      - "your own kingdom land."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&6Level&8: &2%level%"
+      - "&6Cost&8: &2%cost%"
     posx: 3
     posy: 4
   arrow-boost:
-    name: "&7Улучшение лука"
+    name: "&7Arrow Boost"
     material: BOW
     lore:
-      - "&8− &7Увеличивает урон у"
-      - "лука на &a1 процент"
+      - "&6Each upgrade increases your bow"
+      - "damage by &e1% &6when you're in"
+      - "your own kingdom land."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&6Level&8: &2%level%"
+      - "&6Cost&8: &2%cost%"
     posx: 4
     posy: 4
   regeneration-boost:
-    name: "&dРегенерация"
-    material: APPLE
+    name: "&dRegeneration Boost"
+    material: GOLDEN_APPLE
     lore:
-      - "&8− &7Улучшение регенерации"
-      - "на территориях вашего королевства на &a1 процент"
+      - "&6Each upgrade increases your"
+      - "regeneration rate by &e1% &6in your land."
+      - "This update doesn't do any regeneration by"
+      - "itself. It only boosts your health regeneration"
+      - "amount that you gained by eating food."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&6Level&8: &2%level%"
+      - "&6Cost&8: &2%cost%"
     posx: 6
     posy: 4
   ranks:
-    name: "&5Ранги & Права"
+    name: "&5Ranks & Permissions"
     material: BOOKSHELF
     lore:
-      - "&8− &7Изменение рангов и прав для"
-      - "вашего королевства"
+      - "&6Modify ranks and permissions for"
+      - "your kingdom."
     posx: 6
     posy: 5
   champion-upgrades:
-    name: "&2Улучшение защитника"
+    name: "&2Champion Upgrades"
     material: ZOMBIE_HEAD
     lore:
-      - "&8− &7Улучшайте своего защитника для более"
-      - "сильной защиты от захватчиков"
+      - "&6Upgrade your champion for stronger"
+      - "defence against invaders."
     posx: 5
     posy: 5
-  mail-box:
-    name: "&eПочта"
+  mailbox:
+    name: "&2Mailbox"
     material: PLAYER_HEAD
-    sound: BLOCK_NOTE_BLOCK_BASS
-    # https://minecraft-heads.com/custom-heads/decoration/18059-letter-box-gray
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjk2YWYzNmVhYWVkOGE3ZGJkMjcyN2ZkNGNkN2FmYmM2YzBhZmI4Yzc2MDYyOTRjOWNiNDAxMTQxYWFjMzc5In19fQ=="
-    lore:
-      - "&c&lВ РАЗРАБОТКЕ..."
+    #https://minecraft-heads.com/custom-heads/decoration/18054-mailbox-green
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+    lore: |
+      &7Send & recieve mails from
+      other kingdoms.
+      &2Total mails&8: &6%kingdoms_mails_total%
     posx: 5
     posy: 4
-
   red-glass:
     name: ""
     material: RED_STAINED_GLASS_PANE
-    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+    slots:
+      - 1
+      - 4
+      - 7
+      - 9
+      - 10
+      - 16
+      - 17
+      - 36
+      - 37
+      - 43
+      - 44
+      - 46
+      - 49
+      - 52
   black-glass:
     name: ""
     material: BLACK_STAINED_GLASS_PANE
-    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]
+    slots:
+      - 0
+      - 2
+      - 3
+      - 5
+      - 6
+      - 8
+      - 18
+      - 26
+      - 27
+      - 35
+      - 45
+      - 47
+      - 48
+      - 50
+      - 51
+      - 53
