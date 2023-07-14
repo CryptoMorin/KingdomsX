@@ -1,47 +1,47 @@
-title: "&5Призывающая турель"
+title: "&5Soldier Turret"
 type: HOPPER
 sound: ITEM_ARMOR_EQUIP_DIAMOND
-
 options:
   ammo:
-    name: "&9Патрон&8: &2%ammo%"
+    name: "&9Ammo&8: &2%ammo%"
     material: ARROW
     ammo: 100
     cost: 10
-    lore:
-      - '&2Купить &6100 &2стрел за &610 &2очков ресурсов.'
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      &2Buy &6%ammo-buy-amount% &2ammo for &6%cost% &2resource points.
+      &2Fully fill ammo by &6shift clicking
+      &2for &6%fill-cost% &2resource points.
     slot: 0
   upgrade:
     upgrade:
       condition: "level < max_level"
-      name: "&9Улучшить&8: &6%level_roman% &7➛ &6%next_level_roman%"
+      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Дальность стрельбы&8: &6%range% &7➔ &6%next_range%"
-        - "&7⚫ &2Боезапас&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
-        - "&7⚫ &2Охлаждение&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Range&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
         - ""
-        - "&7⚫ &2Количество уровней&8: &6III"
-        - "&7⚫ &2Стоимость&8: &6%upgrade_cost%"
+        - "&7⚫ &2Max Level&8: &6III"
+        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
     maxxed:
-      name: "&9Уровень&8: &6%level_roman%"
+      name: "&9Level&8: &6%roman_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Дальность стрельбы&8: &6%range%"
-        - "&7⚫ &2Боезапас&8: &6%max_ammo%"
-        - "&7⚫ &2Охлаждение&8: &6%cooldown%"
+        - "&7⚫ &2Range&8: &6%range%"
+        - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
     slot: 1
   break:
-    name: "&cСломать"
+    name: "&cBreak"
     material: REDSTONE_BLOCK
-    sound: default
     lore:
-      - "&4Ломает турель."
+      - "&4Breaks this turret."
     slot: 3
   close:
-    name: "&cЗакрыть"
+    name: "&cClose"
     material: BARRIER
-    sound: default
     lore:
-      - "&6Закрыть интерфейс"
+      - "&6Close the GUI"
     slot: 4
