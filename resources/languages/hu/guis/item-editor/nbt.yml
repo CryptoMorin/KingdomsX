@@ -5,7 +5,8 @@ options:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    skull: >-
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
     name: '{$p}Back'
   decoration:
     slots:
@@ -36,9 +37,10 @@ options:
   info:
     posx: 5
     posy: 1
-    name: "&eInfo"
+    name: '&eInfo'
     material: PLAYER_HEAD
-    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    skull: >-
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0=
     lore: |
       &7NBT {$sep}(&7Named Binary Tag{$sep}) &7is a way
       for Minecraft to store data for different
@@ -62,9 +64,10 @@ options:
     name: '{$p}Current Path{$sep}:'
     lore: '%path%'
   add-nbt:
-    name: "{$p}Add Tag"
+    name: '{$p}Add Tag'
     material: PLAYER_HEAD
-    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZmMzE0MzFkNjQ1ODdmZjZlZjk4YzA2NzU4MTA2ODFmOGMxM2JmOTZmNTFkOWNiMDdlZDc4NTJiMmZmZDEifX19'
+    skull: >-
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZmMzE0MzFkNjQ1ODdmZjZlZjk4YzA2NzU4MTA2ODFmOGMxM2JmOTZmNTFkOWNiMDdlZDc4NTJiMmZmZDEifX19
     lore: |
       &7Adds a new tag to
       the current compound.
@@ -105,38 +108,37 @@ options:
       - 42
       - 43
     compound:
-      condition: "tag == 'compound'"
+      condition: tag == 'compound'
       name: '{$sep}[{$s}NBTTagCompound{$sep}] {$p}%key%'
       material: WHITE_WOOL
     strings:
-      condition: "tag == 'string'"
+      condition: tag == 'string'
       name: '{$sep}[&2NBTTagString{$sep}] {$p}%key%'
       material: GREEN_WOOL
     integers:
-      condition: "tag == 'int'"
+      condition: tag == 'int'
       name: '{$sep}[&9Integer{$sep}] {$p}%key%'
       material: BLUE_WOOL
     byte:
-      condition: "tag == 'byte'"
+      condition: tag == 'byte'
       name: '{$sep}[&aNBTTagByte{$sep}] {$p}%key%'
       material: LIME_WOOL
     short:
-      condition: "tag == 'short'"
+      condition: tag == 'short'
       name: '{$sep}[&eNBTTagShort{$sep}] {$p}%key%'
       material: YELLOW_WOOL
     long:
-      condition: "tag == 'long'"
+      condition: tag == 'long'
       name: '{$sep}[&5NBTTagLong{$sep}] {$p}%key%'
       material: PURPLE_WOOL
     double:
-      condition: "tag == 'double'"
+      condition: tag == 'double'
       name: '{$sep}[&3NBTTagDouble{$sep}] {$p}%key%'
       material: CYAN_WOOL
     list:
-      condition: "tag == 'list'"
+      condition: tag == 'list'
       name: '{$sep}[&7NBTTagList{$sep}] {$p}%key%'
       material: GRAY_WOOL
     else:
-      name: "{$sep}[{$e}Unknown{$sep}: {$s}%tag%{$sep}] {$p}%key%"
+      name: '{$sep}[{$e}Unknown{$sep}: {$s}%tag%{$sep}] {$p}%key%'
       material: RED_WOOL
-    #The lore is the value which is set automatically by the plugin
