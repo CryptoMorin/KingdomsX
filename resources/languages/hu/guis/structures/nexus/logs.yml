@@ -1,7 +1,6 @@
-title: "&8-=[ &4Audit Logs &8]=-"
+title: '&8-=[ &4Audit Logs &8]=-'
 sound: ITEM_BOOK_PAGE_TURN
 rows: 6
-#-NOSYNC
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
@@ -137,11 +136,16 @@ rows: 6
   kingdom-turret-purchase-ammo:
     name: '&aTurret Ammo Purchase'
     material: EMERALD_BLOCK
-    lore: |
+    lore: >
       {$s}%player% {$p}has purchased ammo for
-      {$s}%style% {$p}turret at {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
+
+      {$s}%style% {$p}turret at {$s}%translated-world%{$sep}, {$s}%x%{$sep},
+      {$s}%y%{$sep}, {$s}%z%
+
       {$s}%fancy_old_amount% {$sep}➜ {$s}%fancy_new_amount%
+
       {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+
       {$p}At{$sep}: {$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
@@ -202,12 +206,18 @@ rows: 6
   shield-purchase:
     material: SHIELD
     name: '&5Shield Purchase'
-    lore: |
+    lore: >
       {$s}%player% {$p}has purchased
+
       a shield for the kingdom.
+
       {$p}Purchased Shield Duration{$sep}: {$s}%purchased-shield-time%
-      {$p}Shield Duration{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+
+      {$p}Shield Duration{$sep}: {$s}%old-shield-time% {$sep}➜
+      {$s}%new-shield-time%
+
       {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
+
       {$p}At{$sep}: {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
@@ -238,10 +248,10 @@ rows: 6
       {$s}%old-rank% {$sep}➜ {$s}%new-rank%
       {$p}By{$sep}: {$s}%by-player%
     promoted:
-      condition: 'old_rank_priority > new_rank_priority' #It's the opposite
+      condition: old_rank_priority > new_rank_priority
       material: GREEN_WOOL
       name: '&aPlayer Promoted{$sep}: {$s}%player%'
-    else:  #demoted
+    else:
       material: RED_WOOL
       name: '&cPlayer Demoted{$sep}: {$s}%player%'
   rank-create:
@@ -319,27 +329,37 @@ rows: 6
     name: '&9Nexus Placed'
     placed:
       condition: placed
-      lore: |
+      lore: >
         {$p}The kingdom's nexus was
+
         placed by {$s}%player%{$sep}:
-        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+
+        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep},
+        {$s}%to_z%
+
         {$p}At{$sep}: {$s}%time%
     else:
-      lore: |
+      lore: >
         {$p}The kingdom's nexus was
+
         moved by {$s}%player%{$sep}:
-        {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+
+        {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep},
+        {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜
+        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep},
+        {$s}%to_z%
+
         {$p}At{$sep}: {$s}%time%
   group-tax-server-pay:
     material: PAPER
-    name: "&9Server Tax"
+    name: '&9Server Tax'
     lore: |
       {$p}Server taxes paid.
       {$p}Amount{$sep}: {$s}%fancy_amount%
       {$p}At{$sep}: {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
-    name: "&9Champion Change"
+    name: '&9Champion Change'
     lore: |
       {$p}The champion was changed
       by {$s}%player%{$sep}:
@@ -347,7 +367,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-change-lore:
     material: PAPER
-    name: "&9Change Lore"
+    name: '&9Change Lore'
     lore: |
       {$p}The kingdom's lore was changed
       by {$s}%player%{$sep}:
@@ -355,7 +375,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-rename:
     material: PAPER
-    name: "&9Rename"
+    name: '&9Rename'
     lore: |
       {$p}The kingdom was renamed
       by {$s}%player%{$sep}:
@@ -363,7 +383,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-change-tag:
     material: PAPER
-    name: "&9Change Tag"
+    name: '&9Change Tag'
     lore: |
       {$p}The kingdom's tag was changed
       by {$s}%player%{$sep}:
@@ -371,34 +391,34 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-nation-join:
     material: BEACON
-    name: "&9Nation Join"
+    name: '&9Nation Join'
     lore: |
       {$p}Your kingdom has joined
       {$s}%kingdoms_nation_name% {$p}nation.
       {$p}At{$sep}: {$s}%time%
   kingdom-nation-leave:
     material: BEACON
-    name: "&cNation Leave"
+    name: '&cNation Leave'
     lore: |
       {$p}Your kingdom has left
       {$s}%kingdoms_nation_name% {$p}nation.
       {$p}At{$sep}: {$s}%time%
-  'PeaceTreaties:received':
+  PeaceTreaties:received:
     material: BOOK
-    name: "&9Received Peace Treaty"
+    name: '&9Received Peace Treaty'
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - k pt review %kingdoms_other_kingdom_name%
     lore: |
       {$p}Proposer{$sep}: {$s}%kingdoms_other_kingdom_name%
       {$p}Contract Duration{$sep}: {$s}%peacetreaty_duration%
 
       {$p}For more information do{$sep}:
       {$s}/k pt review %kingdoms_other_kingdom_name%
-  'PeaceTreaties:sent':
+  PeaceTreaties:sent:
     material: BOOK
-    name: "&9Sent Peace Treaty"
+    name: '&9Sent Peace Treaty'
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - k pt review %kingdoms_other_kingdom_name%
     lore: |
       {$p}To{$sep}: {$s}%kingdoms_name%
       {$p}Contract Duration{$sep}: {$s}%peacetreaty_duration%
@@ -440,7 +460,7 @@ options:
     posx: 5
     posy: 1
     material: BOOK
-    name: "{$p}Filters & Sorting"
+    name: '{$p}Filters & Sorting'
     lore: |
       {$p}Filters{$sep}:
        {$sep}⚫ {$s}Player{$sep}: %bool_filters_player%
@@ -454,12 +474,14 @@ options:
   next-page:
     name: '&6Next Page &7- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    skull: >-
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19
     slot: 8
   previous-page:
     name: '&6Previous Page &7- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    skull: >-
+      eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0=
     slot: 0
   entry:
     slots:
