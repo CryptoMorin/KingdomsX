@@ -2,6 +2,7 @@ package org.kingdoms.peacetreaties.config;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.config.Path;
+import org.kingdoms.config.RawPath;
 import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
@@ -16,6 +17,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     UNDER_CONTRACT_TO("{$e}Your kingdom has a peace treaty contract with that kingdom.", 2),
     UNDER_CONTRACT_ANNUL_TREATIES_FROM("{$e}Your kingdom is under a peace treaty contract with {$es}%kingdoms_kingdom_name% {$e}that controls " +
             "your relationships and you cannot change them.", 2, 4),
+    UNDER_CONTRACT_ENEMIES("{$e}Your kingdom is under a peace treaty contract with {$es}%kingdoms_kingdom_name% {$e}and you cannot be enemies.", 2),
     UNDER_CONTRACT_ANNUL_TREATIES_TO("{$e}That kingdom is under a peace treaty contract that controls their relationship.", 2, 4),
     COMMAND_REVOKE_PEACETREATY_ALREADY_RECEIVED("{$e}Your kingdom has already received a peace treaty to that kingdom.", 1, 2, 3),
     COMMAND_REVOKE_PEACETREATY_ALREADY_SENT("{$e}Your kingdom has already sent a peace treaty to that kingdom.", 1, 2, 3),
@@ -79,6 +81,11 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     TERMS_LIMIT_STRUCTURES_MESSAGE("{$e}Your total number of placed structures will be limited to{$sep}: {$es}%term_limit_structures_amount%", 1, 3),
     TERMS_LIMIT_TURRETS_MESSAGE("{$e}Your total number of placed turrets will be limited to{$sep}: {$es}%term_limit_turrets_amount%", 1, 3),
     TERMS_LIMIT_CLAIMS_MESSAGE("{$e}Your total number of claims will be limited to{$sep}: {$es}%term_limit_claims_amount%", 1, 3),
+
+    @RawPath
+    COMMAND_ADMIN_FSCK_PEACETREATIES_KINGDOM_UNKNOWN("Peace treaty with unknown kingdoms found for{$sep}: " +
+            "\n  {$e}Proposer{$sep}: {$e}%proposer%" +
+            "\n  {$e}Victim{$sep}: {$e}%victim%", 1, 2, 3, 4, 5),
 
     TERMS_TAKE_RESOURCE_POINTS_NOT_ENOUGH("{$e}Your kingdom needs {$es}%fancy_term_take_resource_points_amount% resource points.", 1, 4),
     TERMS_LEAVE_NATION_PERMANENT("{$e}The kingdom is the capital of a nation that is permanent. Can't disband a permanent nation.", 1, 3),

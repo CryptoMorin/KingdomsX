@@ -42,8 +42,8 @@ public class PeaceTreaty implements PlayerOperator {
         this.requesterPlayer = requesterPlayer;
     }
 
-    public PlaceholderContextBuilder getPlaceholderContextProvider() {
-        return getPlaceholderContextProvider(new PlaceholderContextBuilder());
+    public MessageBuilder getPlaceholderContextProvider() {
+        return getPlaceholderContextProvider(new MessageBuilder());
     }
 
     public <T extends PlaceholderContextBuilder> T getPlaceholderContextProvider(T settings) {
@@ -85,11 +85,15 @@ public class PeaceTreaty implements PlayerOperator {
         Kingdom proposer = getProposerKingdom();
         Kingdom victim = getVictimKingdom();
 
-        KingdomMetadata victimMeta = victim.getMetadata().get(PeaceTreatyReceiverMetaHandler.INSTANCE);
-        if (victimMeta != null) ((Map<UUID, PeaceTreaty>) victimMeta.getValue()).remove(proposer.getId());
+        if (victim != null) {
+            KingdomMetadata victimMeta = victim.getMetadata().get(PeaceTreatyReceiverMetaHandler.INSTANCE);
+            if (victimMeta != null) ((Map<UUID, PeaceTreaty>) victimMeta.getValue()).remove(proposerKingdom);
+        }
 
-        KingdomMetadata proposerMeta = proposer.getMetadata().get(PeaceTreatyProposerMetaHandler.INSTANCE);
-        if (proposerMeta != null) ((Set<UUID>) proposerMeta.getValue()).remove(victim.getId());
+        if (proposer != null) {
+            KingdomMetadata proposerMeta = proposer.getMetadata().get(PeaceTreatyProposerMetaHandler.INSTANCE);
+            if (proposerMeta != null) ((Set<UUID>) proposerMeta.getValue()).remove(victimKingdom);
+        }
     }
 
     public boolean canEnforceAcceptance() {

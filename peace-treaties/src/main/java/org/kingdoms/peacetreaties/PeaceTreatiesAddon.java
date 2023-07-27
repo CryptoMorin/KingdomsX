@@ -10,11 +10,13 @@ import org.kingdoms.constants.metadata.KingdomMetadataRegistry;
 import org.kingdoms.gui.GUIConfig;
 import org.kingdoms.locale.LanguageManager;
 import org.kingdoms.main.Kingdoms;
+import org.kingdoms.managers.fsck.CheckupHandler;
 import org.kingdoms.peacetreaties.commands.CommandPeaceTreaty;
 import org.kingdoms.peacetreaties.config.CustomConfigValidators;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.data.*;
+import org.kingdoms.peacetreaties.managers.PeaceTreatyFSCK;
 import org.kingdoms.peacetreaties.managers.RelationshipListener;
 import org.kingdoms.peacetreaties.managers.TermManager;
 import org.kingdoms.peacetreaties.managers.WarPointManager;
@@ -102,6 +104,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         GUIConfig.loadGUIs(this);
 
         registerAddon();
+        CheckupHandler.addCheckupHandler(new PeaceTreatyFSCK());
         loaded = true;
     }
 

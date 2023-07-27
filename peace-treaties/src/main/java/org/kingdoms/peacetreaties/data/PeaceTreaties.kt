@@ -106,6 +106,13 @@ class PeaceTreaties {
         }
 
         @JvmStatic
+        fun Kingdom.getContractWith(other: Kingdom): PeaceTreaty? {
+            return this.getReceivedPeaceTreaties().values.find { x -> x.proposerKingdomId == other.id }
+                ?: other.getReceivedPeaceTreaties().values.find { x -> x.proposerKingdomId == this.id }
+        }
+
+        @Suppress("UNCHECKED_CAST")
+        @JvmStatic
         fun <T> initializeMeta(
             kingdom: Kingdom,
             metadataHandler: KingdomMetadataHandler,
@@ -176,7 +183,7 @@ class PeaceTreatyReceiverMetaHandler private constructor() :
                 val grouping = TermRegistry.getTermGroupings()[termKey.asString()] ?: return@asMap
                 val subTerms: Map<Void, Void> = termValue.asMap(hashMapOf()) { _, subTermKey, subTermvalue ->
                     val subTermProvider =
-                        PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermKey.asString()))
+                        PeaceTreatiesAddon.get().termRegistry.getRegistered(Namespace.fromString(subTermKey.asString()!!))
                             ?: return@asMap
                     val constructed = subTermProvider.construct()
 

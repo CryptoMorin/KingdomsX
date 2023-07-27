@@ -13,9 +13,11 @@ import org.kingdoms.events.general.KingdomDisbandEvent
 import org.kingdoms.events.members.KingdomLeaveEvent
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.main.KLogger
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
+import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getContractWith
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaty
@@ -74,12 +76,24 @@ class RelationshipListener : Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    fun onRelationshipChange(event: GroupRelationshipRequestEvent) {
-        if (event.from !is Kingdom) return
+    fun onRelationshipChange(event: GroupRelationshipChangeEvent) {
+        if (event.first !is Kingdom) return
 
         val player = event.getPlayer()?.player
-        val from = event.from as Kingdom
-        val to = event.to as Kingdom
+        val from = event.first as Kingdom
+        val to = event.second as Kingdom
+
+        if (event.newRelation == KingdomRelation.ENEMY) {
+            val contract = from.getContractWith(to)
+            if (contract != null) {
+                PeaceTreatyLang.UNDER_CONTRACT_ENEMIES.sendError(
+                    player,
+                    contract.placeholderContextProvider
+                )
+                event.isCancelled = true
+                return
+            }
+        }
 
         val fromContract = isUnderAnnulTreaties(from)
         if (fromContract != null) {
