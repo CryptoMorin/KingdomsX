@@ -7,8 +7,7 @@ plugins {
     shadowed
 }
 
-group "org.kingdoms.platform.folia"
-version "unspecified"
+group = "org.kingdoms.platform.folia"
 
 repositories {
     maven {
@@ -19,7 +18,10 @@ repositories {
 
 dependencies {
     compileOnly(project(":platform"))
-    compileOnly("dev.folia:folia-api:1.19.4-R0.1-SNAPSHOT") // https://github.com/PaperMC/Folia
+
+    // https://github.com/PaperMC/Folia/blob/master/README.md#the-new-rules
+    // https://github.com/PaperMC/Folia
+    compileOnly("dev.folia:folia-api:1.20.1-R0.1-SNAPSHOT")
 }
 
 tasks.shadowJar {
