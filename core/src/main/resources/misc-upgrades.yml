@@ -24,7 +24,7 @@ invasion-teleportation:
     #"{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "miscupgrades.required.invasions"
 
     # If anti-explosion upgrade is upgraded, you won't be able to upgrade this and any other upgrade that depends on this.
-    # You could block anti-explosion from being upgraded if this option is upgraded by doing the same thing.
+  # You could block anti-explosion from being upgraded if this option is upgraded by doing the same thing.
   #"{kingdoms_kingdom_upgrade:level type=misc, of=ANTI_EXPLOSION} > 0": "miscupgrades.tree.anti-explosion"
 
   # This amount is reduced from invasions.yml -> teleportation -> teleport-delay
@@ -32,6 +32,7 @@ invasion-teleportation:
   cost: "(lvl + 1) * 10"
   max-level: 5
   default-level: 0
+
 anti-explosion:
   enabled: true
   cost: "(lvl + 1) * 100"
@@ -40,6 +41,7 @@ anti-explosion:
 
   # It'll throw the blocks in the air!
   fancy-explosions:
+    # Requires a restart to change.
     enabled: true
 
     # The options below require a server restart to be applied
@@ -56,14 +58,19 @@ anti-explosion:
   drop-destroyed-kingdom-items: false
 
   # Auto regenerate the blocks slowly.
-  # This option has its own limitations.
+  # This option has its own limitations. Containers such as chests will not be removed.
+  # Kingdom items (turrets and structures) will not be removed.
   auto-regenerate:
     # Requires a restart to apply.
+    # When set to false, blocks will simply not disappear at all.
     enabled: true
+
     # The delay before starting the regeneration in seconds.
     delay: 2
+
     # The interval between each block regeneration in ticks.
     interval: 1
+
 anti-trample:
   enabled: true
   cost: "(lvl + 1) * 100"

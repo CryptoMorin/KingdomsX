@@ -13,7 +13,6 @@ import org.kingdoms.events.general.KingdomDisbandEvent
 import org.kingdoms.events.members.KingdomLeaveEvent
 import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
 import org.kingdoms.locale.provider.MessageBuilder
-import org.kingdoms.main.KLogger
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang

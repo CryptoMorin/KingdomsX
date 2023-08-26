@@ -1,7 +1,6 @@
 package org.kingdoms.peacetreaties.managers
 
 import org.kingdoms.constants.group.Kingdom
-import org.kingdoms.main.KLogger
 import org.kingdoms.managers.fsck.CheckupHandler
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
