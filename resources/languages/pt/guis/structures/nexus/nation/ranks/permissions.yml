@@ -1,0 +1,143 @@
+title: '{$sep}-=( {$p}Permissions {$sep})=-'
+rows: 6
+
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  broadcast:
+    <<: *fn-std-perm [ "Broadcast" ]
+    lore: |
+      &7Permission for using
+      {$s}/k broadcast &7command.
+  edit-ranks:
+    <<: *fn-std-perm [ "Edit Ranks" ]
+    lore: |
+      &7Permission for creating, deleting
+      and modifying ranks including their
+      symbols, names and permissions.
+
+      They will not be able to modify
+      their own rank or a rank of
+      someone with higher priority.
+
+      This does not give them permission
+      to demote or promote other players.
+  home:
+    <<: *fn-std-perm [ "Home" ]
+    lore: |
+      &7Permission for using
+      {$s}/k home &7command.
+  invite:
+    <<: *fn-std-perm [ "Invite" ]
+    lore: |
+      &7Permission for using
+      {$s}/k invite &7command and
+      for making invite codes from
+      {$s}/k invitecodes
+  kick:
+    <<: *fn-std-perm [ "Kick" ]
+    lore: |
+      &7Permission for using
+      {$s}/k kick &7command.
+
+      &7Players with this
+      permission will not be
+      able to kick players with
+      the same or higher ranks.
+  lore:
+    <<: *fn-std-perm [ "Lore" ]
+    lore: |
+      &7Permission for using
+      {$s}/k lore{$sep}, {$s}/k rename {$sep},
+      {$s}/k book edit &7and {$s}/k tag &7commands.
+  set-home:
+    <<: *fn-std-perm [ "Set Home" ]
+    lore: |
+      &7Permission for using
+      {$s}/k sethome &7command.
+  manage-ranks:
+    <<: *fn-std-perm [ "Manage Ranks" ]
+    lore: |
+      &7Permission for promoting
+      and demoting members with
+      lower rank than the player.
+
+      This does not give them
+      permission to modify rank
+      settings.
+  withdraw:
+    <<: *fn-std-perm [ "Withdraw" ]
+    lore: |
+      &7Permission for using
+      {$s}/k rp withdraw &7command
+      and withdrawing resource points
+      in exchange for money by other
+      means like the option in
+      resource points converter inside
+      nexus GUI.
+  relation-attributes:
+    <<: *fn-std-perm [ "Relationship Attributes" ]
+    lore: |
+      &7Permission for editing
+      relationship attributes.
+  settings:
+    <<: *fn-std-perm [ "Settings" ]
+    lore: |
+      &7Permission for editing general
+      nation settings located inside
+      nexus GUI.
+  "[else]":
+    name: "&4Unknown: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '&6Next Page &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '&6Previous Page &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # This is a special feature
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Back'

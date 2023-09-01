@@ -1,0 +1,304 @@
+title: '{$sep}-=( {$p}Permissions {$sep})=-'
+rows: 6
+import:
+  pagination: { }
+
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  alliance:
+    <<: *fn-std-perm [ "Alliance" ]
+    lore: |
+      &7Permission for using
+      {$s}/k ally &7command.
+  broadcast:
+    <<: *fn-std-perm [ "Broadcast" ]
+    lore: |
+      &7Permission for using
+      {$s}/k broadcast &7command.
+  build:
+    <<: *fn-perm [ 'Build', DIAMOND_PICKAXE ]
+    lore: |
+      &7Permission to build anywhere
+      in the kingdom.
+
+      For the difference between this
+      and {$p}BUILD_OWNED &7permission
+      refer to the other permission.
+  build-owned:
+    <<: *fn-perm [ "Build Owned", GOLD_PICKAXE ]
+    lore: |
+      &7The difference between &2BUILD &7and
+      &2BUILD_OWNED &7is that &2BUILD &7allows
+      you to build anywhere in your kingdom
+      (except the nexus land that needs
+      &2NEXUS_BUILD&7)
+
+      &2BUILD_OWNED &7only allows you to build
+      in the lands that you claimed yourself.
+      For example if you &6/k claim &7somewhere
+      other people with &2BUILD_OWNED &7can't
+      build there, but you or people who have
+      &2BUILD &7permission can.
+  edit-ranks:
+    <<: *fn-std-perm [ "Edit Ranks" ]
+    lore: |
+      &7Permission for creating, deleting
+      and modifying ranks including their
+      symbols, names and permissions.
+
+      They will not be able to modify
+      their own rank or a rank of
+      someone with higher priority.
+
+      This does not give them permission
+      to demote or promote other players.
+  enemy:
+    <<: *fn-std-perm [ "Enemy" ]
+    lore: |
+      &7Permission for using
+      {$s}/k enemy &7command.
+  home:
+    <<: *fn-std-perm [ "Home" ]
+    lore: |
+      &7Permission for using
+      {$s}/k home &7command.
+  invade:
+    <<: *fn-std-perm [ "Invade" ]
+    lore: |
+      &7Permission for using
+      {$s}/k invade &7command.
+  invite:
+    <<: *fn-std-perm [ "Invite" ]
+    lore: |
+      &7Permission for using
+      {$s}/k invite &7command and
+      for making invite codes from
+      {$s}/k invitecodes
+  kick:
+    <<: *fn-std-perm [ "Kick" ]
+    lore: |
+      &7Permission for using
+      {$s}/k kick &7command.
+
+      &7Players with this
+      permission will not be
+      able to kick players with
+      the same or higher ranks.
+  lore:
+    <<: *fn-std-perm [ "Lore" ]
+    lore: |
+      &7Permission for using
+      {$s}/k lore{$sep}, {$s}/k rename {$sep},
+      {$s}/k book edit &7and {$s}/k tag &7commands.
+  nexus:
+    <<: *fn-perm [ "Nexus", BEACON ]
+    lore: |
+      &7Permission for moving the
+      kingdom nexus using
+      {$s}/k nexus &7command.
+  nexus-build:
+    <<: *fn-perm [ "Nexus Build", BEACON ]
+    lore: |
+      &7Permission for building
+      in the nexus land
+  nexus-chest:
+    <<: *fn-perm [ "Nexus Chest", CHEST ]
+    lore: |
+      &7Permission for modifying
+      the kingdom's nexus chest.
+  outpost:
+    <<: *fn-perm [ "Outpost", HAY_BLOCK ]
+    lore: |
+      &7Permission for buying
+      items from outpost structures.
+  protection-signs:
+    <<: *fn-perm [ "Protection Signs Bypass", OAK_SIGN ]
+    lore: |
+      &7Permission for bypassing
+      sign protected blocks inside
+      kingdom lands.
+  set-home:
+    <<: *fn-std-perm [ "Set Home" ]
+    lore: |
+      &7Permission for using
+      {$s}/k sethome &7command.
+  invsee:
+    <<: *fn-std-perm [ "Invsee" ]
+    lore: |
+      &7Permission for using
+      {$s}/k invsee &7command.
+  structures:
+    <<: *fn-perm [ "Structures", REDSTONE_LAMP ]
+    lore: |
+      &7Permission for buying, placing
+      breaking and modifying structures.
+  use:
+    <<: *fn-perm [ "Use", FURNACE ]
+    lore: |
+      &7Permission for using certain
+      blocks inside the kingdom.
+  interact:
+    <<: *fn-perm [ "Interact", OAK_DOOR ]
+    lore: |
+      &7Permission for interacting
+      with certain blocks such as
+      doors and buttons inside
+      kingdom lands.
+  upgrade:
+    <<: *fn-std-perm [ "Upgrade" ]
+    lore: |
+      &7Permission for upgrading
+      anything that can be upgraded
+      inside the kingdom such as
+      misc-upgrades, champion upgrades,
+      powerups, turrets and structures.
+  truce:
+    <<: *fn-std-perm [ "Truce" ]
+    lore: |
+      &7Permission for using
+      {$s}/k truce &7command.
+  turrets:
+    <<: *fn-perm [ "Turrets", ARROW ]
+    lore: |
+      &7Permission for buying, placing
+      breaking and modifying turrets.
+  unclaim:
+    <<: *fn-std-perm [ "Unclaim" ]
+    lore: |
+      &7Permission for using
+      {$s}/k unclaim &7commands.
+  manage-ranks:
+    <<: *fn-std-perm [ "Manage Ranks" ]
+    lore: |
+      &7Permission for promoting
+      and demoting members with
+      lower rank than the player.
+
+      This does not give them
+      permission to modify rank
+      settings.
+  withdraw:
+    <<: *fn-std-perm [ "Withdraw" ]
+    lore: |
+      &7Permission for using
+      {$s}/k rp withdraw &7command
+      and withdrawing resource points
+      in exchange for money by other
+      means like the option in
+      resource points converter inside
+      nexus GUI.
+  fly:
+    <<: *fn-perm [ "Fly", ELYTRA ]
+    lore: |
+      &7Permission for using
+      {$s}/k fly &7command.
+  nation:
+    <<: *fn-perm [ "Nation", BLUE_WOOL ]
+    lore: |
+      &7Permission for joining
+      or leaving nations.
+  exclude-tax:
+    <<: *fn-std-perm [ "Tax Exclusion" ]
+    lore: |
+      &7Kingdom members with this
+      permission are not required
+      to pay taxes to the kingdom.
+  relation-attributes:
+    <<: *fn-std-perm [ "Relationship Attributes" ]
+    lore: |
+      &7Permission for editing
+      relationship attributes.
+  settings:
+    <<: *fn-std-perm [ "Settings" ]
+    lore: |
+      &7Permission for editing general
+      kingdom settings located inside
+      nexus GUI.
+  claim:
+    <<: *fn-std-perm [ "Claim" ]
+    lore: |
+      &7Permission for using
+      {$s}/k claim &7commands.
+  unclaim-owned:
+    <<: *fn-std-perm [ "Unclaim Owned" ]
+    lore: |
+      &7Allows you to only unclaim
+      the lands that you claimed yourself.
+  instant-teleport:
+    <<: *fn-std-perm [ "Instant Teleports" ]
+    lore: |
+      &7Instantly teleport to your
+      members when using the &2/k tpa
+      &7command. Otherwise you'll have
+      to wait for them to accept the request.
+
+      You will still have the teleport
+      countdown before teleporting.
+  view-logs:
+    <<: *fn-perm [ "View Logs", KNOWLEDGE_BOOK ]
+    lore: |
+      &7View your kingdom audit logs
+      which can be accessed from
+      your nexus.
+  read-mails:
+    <<: *fn-perm [ "Read Mails", PLAYER_HEAD ]
+    lore: |
+      &7Permission for reading
+      kingdom mails located inside
+      nexus GUI.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    <<: *fn-perm [ "Manage Mails", PLAYER_HEAD ]
+    lore: |
+      &7Send new mails and reply.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  'Outposts:join':
+    <<: *fn-std-perm [ "Join Outpost Events" ]
+    lore: |
+      &7Permission to use
+      {$s}/k outposts join &7command.
+  "[else]":
+    name: "&4Unknown: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # This is a special feature
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Back'

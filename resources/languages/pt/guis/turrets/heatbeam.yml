@@ -1,0 +1,54 @@
+title: "&9Torre de Raio de Calor"
+type: HOPPER
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "&9Munição&8: &2%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      &2Comprar &6%ammo-buy-amount% &2munição para &6%cost% &2pontos de recursos.
+      &2Encha totalmente a munição &6Shift clicando
+      &2para &6%fill-cost% &2pontos de recursos.
+    slot: 0
+  upgrade:
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Atualizar&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Distancia&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Munição máxima&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Metas máximas&8: &6%max_targets% &7➔ &6%next_max_targets%"
+        - "&7⚫ &2Velocidade&8: &6%speed% &7➔ &6%next_speed%"
+        - "&7⚫ &2Dano&8: &6%damage% &7➔ &6%next_damage%"
+        - ""
+        - "&7⚫ &2Nível máximo&8: &6III"
+        - "&7⚫ &2Custo&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Level&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Distancia&8: &6%range%"
+        - "&7⚫ &2Munição máxima&8: &6%max_ammo%"
+        - "&7⚫ &2Cooldown&8: &6%cooldown%"
+        - "&7⚫ &2Metas máximas&8: &6%max_targets%"
+        - "&7⚫ &2Velocidade&8: &6%speed%"
+        - "&7⚫ &2Dano&8: &6%damage%"
+    slot: 1
+  break:
+    name: "&cQuebrar"
+    material: REDSTONE_BLOCK
+    lore:
+      - "&4Quebra esta torre."
+    slot: 3
+  close:
+    name: "&cFechar"
+    material: BARRIER
+    lore:
+      - "&6Feche a GUI"
+    slot: 4

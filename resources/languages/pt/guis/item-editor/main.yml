@@ -1,0 +1,101 @@
+title: "{$sep}-=( {$p}Editor de itens {$sep})=-"
+rows: 3
+sound: BLOCK_LEVER_CLICK
+
+options:
+  item:
+    # Will be replaced by the actual item
+    material: STONE
+    interaction: FREE
+    slot: 15
+  name:
+    posx: 1
+    posy: 1
+    material: NAME_TAG
+    name: '{$p}Nome'
+    lore: "%item_name%"
+  flags:
+    posx: 2
+    posy: 1
+    material: BLACK_BANNER
+    name: '{$p}Bandeiras'
+    lore: |
+      &7Clique para modificar
+      &7⚫ {$p}Ocultar atributos{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Ocultar Destruições{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Esconder corante{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Ocultar Encantamentos{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Ocultar colocado em{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Esconder Inquebrável{$sep}: %item_flag_hide_unbreakable%
+  attributes:
+    posx: 3
+    posy: 1
+    material: DIAMOND_SWORD
+    name: '{$p}Atributos'
+  decoration:
+    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  lore:
+    posx: 1
+    posy: 2
+    material: BOOK
+    name: '{$p}Lore'
+    # The lore is automatically set by the plugin for this option
+  enchantments:
+    posx: 2
+    posy: 2
+    material: ENCHANTED_BOOK
+    name: '{$p}Encantamentos'
+    lore: [ "&7Clique para modificar" ] # The lore is modified by the plugin to add set enchants
+  unbreakable:
+    isUnbreakable:
+      condition: item_unbreakable
+      name: '{$p}Inquebrável'
+      glow: true
+    else:
+      name: '{$e}Quebrável'
+    posx: 3
+    posy: 2
+    material: BEDROCK
+    lore: |
+      &7Se um item for inquebrável,
+      não diminuirá sua durabilidade
+      quando você o usa.
+  nbt:
+    posx: 4
+    posy: 2
+    material: BOOKSHELF
+    name: '{$p}NBT Visualizador'
+  amount:
+    posx: 1
+    posy: 3
+    material: SLIME_BALL
+    name: '{$p}Quantia{$sep}: {$s}%item_amount%'
+    lore: |
+      &7O valor máximo seria {$p}64
+      &7enquanto você pode configurar tecnicamente
+      para {$p}127 &7isso causará problemas
+      em situações raras.Por exemplo,
+      a GUI não é capaz de mostrar isso
+      mudar e quando estiver sendo
+      transferido para seu inventário,
+      pode não manter seu valor.
+  custom-model-data:
+    posx: 2
+    posy: 3
+    material: FIREWORK_STAR
+    name: '{$p}Dados de modelo personalizado{$sep}: {$s}%item_custom_model_data%'
+    lore: |
+      &7Isso é usado para pacotes de recursos
+      que são feitos para 1.14+
+      para adicionar novos itens ao jogo.
+      Isso é basicamente apenas uma nova skin
+      do mesmo tipo de item.
+      Isto é o que plugins como ItemsAdder
+      use para adicionar novos itens ao jogo.
+  material:
+    posx: 3
+    posy: 3
+    material: STONE # This is a template material, the actual material is taken from the placed item
+    name: '{$p}Material{$sep}: {$s}%item_material%'

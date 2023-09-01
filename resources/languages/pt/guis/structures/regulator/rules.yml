@@ -1,0 +1,103 @@
+title: "&eRegras"
+rows: 3
+sound: BLOCK_ANVIL_USE
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '{$p}Back'
+  pink-stained-glass-pane:
+    slots: [ 1, 3, 4, 5, 7, 8, 9, 10, 11, 13, 15, 16, 17, 18, 19, 21, 22, 23, 25, 26 ]
+    material: PINK_STAINED_GLASS_PANE
+    name: ''
+  disable-mob-spawning:
+    material: ZOMBIE_SPAWN_EGG
+    lore: |
+      &7Desativa tudo {$p}naturais &7 mob
+      desova.Todos os mobs, exceto animais.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Desativar geração de mobs"
+      glow: true
+    else:
+      name: "{$disabled} Desativar geração de mobs"
+    posx: 3
+    posy: 1
+  disable-animal-spawning:
+    material: SHEEP_SPAWN_EGG
+    lore: |
+      &7Desativa tudo {$p} &7animal
+      desova natural.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Desativar a geração de animais"
+      glow: true
+    else:
+      name: "{$disabled} Desativar a geração de animais"
+    posx: 3
+    posy: 3
+  disable-turrets:
+    material: ARROW
+    lore: |
+      &7Impede que todas as torres
+      tiro que são colocados em
+      esta terra.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Desativar Torres"
+      glow: true
+    else:
+      name: "{$disabled} Desativar Torres"
+    posx: 6
+    posy: 2
+  auto-fill-turrets:
+    material: SPECTRAL_ARROW
+    lore: |
+      &7Preenche automaticamente as torres
+      dentro desta terra com munição.
+      {$p}Condições{$sep}:
+      &7⚫ {$s}A torre deve estar completamente
+        sem munição.
+      &7⚫ {$s}A torre deve estar no mesmo
+        terra como regulador.
+      &7⚫ {$s}Seu reino deve ter o suficiente
+        pontos de recursos para pagar a recarga.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Torretas de preenchimento automático"
+      glow: true
+    else:
+      name: "{$disabled} Torretas de preenchimento automático"
+    posx: 4
+    posy: 2
+  allow-explosions:
+    material: TNT
+    lore: |
+      &7Permite todos os tipos de
+      explosões para danificar esta terra.
+    enabled:
+      condition: enabled
+      name: "{$enabled} Permitir explosões"
+      glow: true
+    else:
+      name: "{$disabled} Permitir explosões"
+    posx: 7
+    posy: 1
+  allow-fire:
+    posx: 7
+    posy: 3
+    material: FIRE_CHARGE
+    lore: |
+      &7Permite todos os tipos de fogo
+      danos a este território.
+      Incluindo propagação de incêndio, bloquear
+      queimaduras, etc
+    enabled:
+      condition: enabled
+      name: "{$enabled} Fogo"
+      glow: true
+    else:
+      name: "{$disabled} Fogo"

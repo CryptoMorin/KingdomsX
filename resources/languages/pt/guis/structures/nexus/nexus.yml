@@ -1,0 +1,196 @@
+title: "&2&l%kingdoms_kingdom_name%'s &6&lNexus"
+rows: 6
+sound: BLOCK_BEACON_ACTIVATE, 0.3
+
+icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Nexus-Logo.png"
+form-type: CUSTOM
+form-options:
+  settings:
+    component-type: LABEL
+    text: "&5Configurações"
+
+options:
+  settings:
+    name: "&7Configurações"
+    material: NETHER_STAR
+    lore:
+      - "&6Altere as configurações do seu reino."
+    posx: 5
+    posy: 2
+  members:
+    name: "&2Membros"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
+    lore:
+      - "&6Gerencie os membros do seu reino."
+      - "&6Promova-os ou rebaixe-os."
+    posx: 5
+    posy: 3
+  masswar:
+    running:
+      condition: kingdoms_masswar_is_running
+      name: "&4fotógrafo"
+      material: CLOCK
+      lore:
+        - "&6Durante a guerra em massa, a invasão é gratuita."
+        - "Masswar está atualmente &2correndo."
+        - ""
+        - "{$p}A guerra em massa termina em{$sep}: {$s}%kingdoms_time_masswar_time%"
+    else:
+      name: "&4fotógrafo"
+      material: RED_WOOL
+      lore:
+        - "&6Durante a guerra em massa, a invasão é gratuita."
+        - "Masswar está atualmente &cnão está funcionando."
+        - ""
+        - "{$p}Próxima Guerra em Massa em{$sep}: {$s}%kingdoms_time_masswar_time%"
+    posx: 6
+    posy: 3
+  nexus-chest:
+    name: "&eBaú do Nexus"
+    material: CHEST
+    lore:
+      - "&6Coloque itens no baú do seu reino"
+      - "&6para todos usarem."
+    posx: 7
+    posy: 3
+  turrets:
+    name: "&9Torres"
+    material: SPECTRAL_ARROW
+    lore:
+      - "&6Você pode comprar torres com"
+      - "pontos de recursos para colocá-los"
+      - "na sua terra. Protege contra"
+      - "multidões e invasores."
+    posx: 3
+    posy: 3
+  structures:
+    name: "&5Estruturas"
+    material: REDSTONE_LAMP
+    lore:
+      - "&6As estruturas podem fazer coisas diferentes."
+      - “Só pode ter uma estrutura por terreno.”
+      - “Observe que o nexo é uma estrutura em si.”
+      - "Você pode comprar estruturas com pontos de recursos."
+    posx: 4
+    posy: 3
+  misc-upgrades:
+    name: "&bAtualizações diversas"
+    material: ENCHANTING_TABLE
+    lore:
+      - "&6Atualizações extras diversas"
+      - "para melhorar o seu reino"
+      - "em diferentes aspectos."
+    posx: 2
+    posy: 3
+  logs:
+    name: "&aRegistros de auditoria"
+    material: KNOWLEDGE_BOOK
+    lore:
+      - "&6Veja os registros do reino, incluindo"
+      - "invasões, reivindicação, não reivindicação"
+      - "e outras atividades dos membros."
+      - ""
+      - "&7A maioria desses registros permanece por"
+      - "30 dias após serem excluídos."
+      - "Alguns podem ficar por menos tempo"
+      - "que são menos importantes."
+    posx: 8
+    posy: 3
+  resource-points:
+    name: "&eConversor de Pontos de Recursos"
+    material: HAY_BLOCK
+    lore:
+      - "&6Converta seus itens em"
+      - "pontos de recursos."
+      - "Seu reino tem &e%kingdoms_fancy_resource_points% &6pontos de recursos."
+    posx: 4
+    posy: 5
+  damage-reduction:
+    name: "&3Redução de danos"
+    material: DIAMOND_CHESTPLATE
+    flags: [ HIDE_ATTRIBUTES ]
+    lore:
+      - "&6Cada atualização reduz os danos"
+      - "tirado por &e1% &6quando você está dentro"
+      - "sua própria terra do reino."
+      - ""
+      - "&6Nível&8: &2%level%"
+      - "&6Custo&8: &2%cost%"
+    posx: 7
+    posy: 4
+  damage-boost:
+    name: "&3Aumento de dano"
+    material: DIAMOND_SWORD
+    flags: [ HIDE_ATTRIBUTES ]
+    lore:
+      - "&6Cada atualização aumenta o seu"
+      - "dano em &e1% &6quando você estiver dentro"
+      - "sua própria terra do reino."
+      - ""
+      - "&6Nível&8: &2%level%"
+      - "&6Custo&8: &2%cost%"
+    posx: 3
+    posy: 4
+  arrow-boost:
+    name: "&7Impulso de flecha"
+    material: BOW
+    lore:
+      - "&6Cada atualização aumenta seu arco"
+      - "dano em &e1% &6quando você estiver dentro"
+      - "sua própria terra do reino."
+      - ""
+      - "&6Nível&8: &2%level%"
+      - "&6Custo&8: &2%cost%"
+    posx: 4
+    posy: 4
+  regeneration-boost:
+    name: "&dImpulso de regeneração"
+    material: GOLDEN_APPLE
+    lore:
+      - "&6Cada atualização aumenta o seu"
+      - "taxa de regeneração por &e1% &6na sua terra."
+      - "Esta atualização não faz nenhuma regeneração"
+      - "em si. Apenas aumenta a regeneração da sua saúde"
+      - "quantidade que você ganhou comendo comida."
+      - ""
+      - "&6Nível&8: &2%level%"
+      - "&6Custo&8: &2%cost%"
+    posx: 6
+    posy: 4
+  ranks:
+    name: "&5Ranks e Permissões"
+    material: BOOKSHELF
+    lore:
+      - "&6Modifique classificações e permissões para"
+      - "seu reino."
+    posx: 6
+    posy: 5
+  champion-upgrades:
+    name: "&2Atualizações de Campeão"
+    material: ZOMBIE_HEAD
+    lore:
+      - "&6Atualize seu campeão para ficar mais forte"
+      - “defesa contra invasores”.
+    posx: 5
+    posy: 5
+  mailbox:
+    name: "&2Caixa de correio"
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/decoration/18054-mailbox-green
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+    lore: |
+      &7Enviar e receber e-mails de
+      outros reinos.
+      &2Total de e-mails&8: &6%kingdoms_mails_total%
+    posx: 5
+    posy: 4
+
+  red-glass:
+    name: ""
+    material: RED_STAINED_GLASS_PANE
+    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]

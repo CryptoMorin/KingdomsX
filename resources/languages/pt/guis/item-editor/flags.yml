@@ -1,0 +1,198 @@
+title: '{$sep}-=( {$p}Flags {$sep})=-'
+rows: 3
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '&cBack'
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: GREEN_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    name: "&eInformação"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    slot: 4
+    lore: |
+      &7Sinalizadores de itens podem ocultar alguns
+      propriedades dos itens.
+      Isso não mudará seu real
+      comportamento, apenas os esconde
+      da descrição do item
+      que está acima ou abaixo
+      conhecimento do outro item.
+  remove-all:
+    posx: 9
+    posy: 1
+    material: RED_WOOL
+    name: '{$e}Remover todas as bandeiras'
+  flag-hide-attributes:
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Hide Attributes"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Ocultar atributos'
+      glow: true
+    else:
+      name: '{$disabled} Ocultar atributos'
+    posx: 2
+    posy: 2
+    material: DIAMOND_SWORD
+    lore: |
+      &7Os atributos do item são as pequenas descrições
+      mostrado sob a tradição de alguns itens.
+    attributes:
+      GENERIC_ATTACK_DAMAGE:
+        name: Test
+        amount: 10
+        operation: ADD_NUMBER
+  flag-hide-destroys:
+    posx: 3
+    posy: 2
+    material: DIAMOND_PICKAXE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Hide Destroys"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Ocultar Destruições'
+      glow: true
+      lore: |
+        &7Isso só é usado para realmente
+        itens raros que são praticamente
+        inútil na maioria dos servidores.Isso esconde
+        um atributo especial que restringe
+        itens de serem capazes de destruir
+        certos blocos quando o jogador está
+        no modo aventura.
+    else:
+      name: '{$disabled} Ocultar Destruições'
+      lore: |
+        &7Isso só é usado para realmente
+        itens raros que são praticamente
+        inútil na maioria dos servidores.Isso esconde
+        um atributo especial que restringe
+        itens de serem capazes de destruir
+        certos blocos quando o jogador está
+        no modo aventura.
+
+        &7Pode quebrar:
+        &8Pedra
+  flag-hide-dye:
+    posx: 4
+    posy: 2
+    material: LEATHER_CHESTPLATE
+    color: 255, 255, 255
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Esconder corantes"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Esconder corante'
+      glow: true
+    else:
+      name: '{$disabled} Esconder corante'
+    lore: |
+      &7Ocultar informações de corante de
+      armaduras de couro coloridas.
+  flag-hide-enchants:
+    posx: 5
+    posy: 2
+    material: ENCHANTED_BOOK
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Ocultar Encantamentos"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Ocultar Encantamentos'
+      glow: true
+    else:
+      name: '{$disabled} Ocultar Encantamentos'
+    enchants:
+      DURABILITY: 1
+    lore: |
+      &7Oculta encantamentos de itens
+      sua descrição acima da tradição
+      no entanto, isso ainda manterá o
+      efeito brilhante do item.
+  flag-hide-placed-on:
+    posx: 6
+    posy: 2
+    material: STONE
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Ocultar colocado em"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Ocultar colocado em'
+      glow: true
+      lore: |
+        &7Isso só é usado para realmente
+        itens raros que são praticamente
+        inútil na maioria dos servidores.Isso esconde
+        um atributo especial que restringe
+        blocos sejam colocados em determinados
+        blocos quando o jogador está em aventura
+        modo.
+    else:
+      name: '{$disabled} Ocultar colocado em'
+      lore: |
+        &7Isso só é usado para realmente
+        itens raros que são praticamente
+        inútil na maioria dos servidores.Isso esconde
+        um atributo especial que restringe
+        blocos sejam colocados em determinados
+        blocos quando o jogador está em aventura
+        modo.
+
+        &7Pode ser colocado:
+        &8Pedra
+  flag-hide-potion-effects:
+    posx: 7
+    posy: 2
+    material: POTION
+    effects: [ "BLINDNESS, 1, 10" ]
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Ocultar efeitos de poção"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Ocultar efeitos de poção'
+      glow: true
+    else:
+      name: '{$disabled} Ocultar efeitos de poção'
+    lore: |
+      &7Este é um daqueles Minecraft
+      comportamentos estranhos, esta bandeira tem
+      múltiplas funcionalidades.Ele se esconde{$sep}:
+      &7⚫ {$s}Efeitos de poção
+      &7⚫ {$s}Informações do livro, como o autor
+      &7⚫ {$s}Informações sobre fogos de artifício
+      &7⚫ {$s}Dicas de ferramentas do mapa
+      &7⚫ {$s}Padrões de banners
+      &7⚫ {$s}Encantamentos de livros encantados
+  flag-hide-unbreakable:
+    posx: 8
+    posy: 2
+    material: OBSIDIAN
+    unbreakable: true
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Não suportado{$sep}] {$es}Hide Unbreakable"
+    enabled:
+      condition: enabled
+      name: '{$enabled} Esconder Inquebrável'
+      glow: true
+    else:
+      name: '{$disabled} Esconder Inquebrável'
+    lore: |
+      &7Esconde a descrição inquebrável
+      de itens.Itens inquebráveis não
+      perdem durabilidade ao usá-los.

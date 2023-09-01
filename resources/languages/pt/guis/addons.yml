@@ -1,0 +1,83 @@
+title: "&8-=( &2Complementos &8)=-"
+rows: 6
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    material: PURPLE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: NETHER_STAR
+    name: '&9Informação'
+    lore: |
+      &7Addons são adicionais
+      conteúdo para download que
+      pode ser instalado separadamente.
+
+      A razão pela qual existem complementos em
+      em primeiro lugar, é por causa
+      {$p}desempenho{$sep}, {$p}modularização
+      &7e {$p}limites de tamanho de arquivo.
+
+      {$sep}[{$s}!{$sep}] &7De forma a
+      capaz de instalar complementos, você precisa
+      ter uma conexão com a internet que seja
+      capaz de se conectar a {$p}GitHub.com
+      {$sep}(&7não bloqueado por firewall,
+      censura do país e etc.{$sep})
+  addons:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    pending-restart:
+      condition: waiting_to_restart
+      name: '&8[&5Reinicialização pendente&8] &9%addon-name%'
+      lore: |
+        %description%
+
+        &2Versão&8: &9%latest-version%
+        &5O complemento foi baixado.Esperando
+        para o servidor ser reiniciado para
+        habilite o complemento.
+      material: PURPLE_WOOL
+    updated:
+      condition: 'installed && !outdated'
+      name: '&8[&2Atualizado&8] &9%addon-name%'
+      lore: |
+        %description%
+        &2Versão&8: &9%installed-version%
+        &4Clique com o botão direito para desinstalar
+      material: GREEN_WOOL
+    outdated-core-version:
+      condition: 'installed && outdated && outdated_core_version'
+      name: '&8[&4Desatualizado&8] &9%addon-name%'
+      lore: |
+        %description%
+        
+        &4Versão instalada&8: &9%installed-version%
+        &2Última versão&8: &9%latest-version%
+        
+        {$sep}[{$e}!{$sep}] {$es}Esta versão requer
+        reinos {$p}v%supported-core-version% {$es}to work.
+        Versão Atual{$sep}: {$e}%current-core-version%
+        
+        &2Clique com o botão esquerdo para atualizar
+        &4Clique com o botão direito para desinstalar
+      material: RED_WOOL
+    outdated:
+      condition: 'installed && outdated'
+      name: '&8[&4Desatualizado&8] &9%addon-name%'
+      lore: |
+        %description%
+        &4Versão instalada&8: &9%installed-version%
+        &2Última versão&8: &9%latest-version%
+        &2Clique com o botão esquerdo para atualizar
+        &4Clique com o botão direito para desinstalar
+      material: RED_WOOL
+    not-installed:
+      name: '&8[&6Não instalado&8] &9%addon-name%'
+      lore: |
+        %description%
+        &2Versão&8: &9%latest-version%
+        &2Clique com o botão esquerdo para instalar
+      condition: '!installed'
+      material: BLUE_WOOL
