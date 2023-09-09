@@ -6,6 +6,7 @@ import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.flags.Flag;
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
@@ -27,10 +28,6 @@ import java.util.Collection;
 import java.util.Objects;
 
 public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
-    private static final StateFlag
-            KINGDOMS_CLAIMABLE = registerFlag("kingdoms-claimable", false),
-            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire", false),
-            KINGDOMS_DAMAGE_CHAMPION = registerFlag("kingdoms-damage-champion", true);
     private static final MethodHandle INDEX;
 
     static {
@@ -54,29 +51,6 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         } catch (Throwable ex) {
             return false;
         }
-    }
-
-    private static StateFlag registerFlag(String name, boolean defaultState) {
-        // https://worldguard.enginehub.org/en/latest/developer/regions/custom-flags/
-        FlagRegistry registry = WorldGuard.getInstance().getFlagRegistry();
-        try {
-            // create a flag with the name "my-custom-flag", defaulting to true
-            // only set our field if there was no error
-            StateFlag flag = new StateFlag(name, defaultState);
-            registry.register(flag);
-            return flag;
-        } catch (FlagConflictException e) {
-            // some other plugin registered a flag by the same name already.
-            // you can use the existing flag, but this may cause conflicts - be sure to check type
-            e.printStackTrace();
-            Flag<?> existing = registry.get(name);
-            if (existing instanceof StateFlag) return (StateFlag) existing;
-            return null;
-        }
-    }
-
-    public static boolean init() {
-        return KINGDOMS_CLAIMABLE != null;
     }
 
     private static Collection<ProtectedRegion> getRegions(RegionManager manager) {
@@ -120,16 +94,6 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         return new Area(new Rectangle(x, z, width, height));
     }
 
-    @Override
-    public StateFlag getFriendlyFireFlag() {
-        return KINGDOMS_FRIENDLY_FIRE;
-    }
-
-    @Override
-    public StateFlag getDamageChampionFlag() {
-        return KINGDOMS_DAMAGE_CHAMPION;
-    }
-
     @SuppressWarnings("RedundantIfStatement")
     private static boolean intersectsBoundingBox(CuboidRegionProperties properties, ProtectedRegion region) {
         BlockVector3 rMaxPoint = region.getMaximumPoint();
@@ -144,8 +108,8 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
     }
 
     @Override
-    public boolean isClaimable(ProtectedRegion region) {
-        return region.getFlag(KINGDOMS_CLAIMABLE) == StateFlag.State.ALLOW;
+    protected FlagRegistry getFlagRegistry() {
+        return WorldGuard.getInstance().getFlagRegistry();
     }
 
     protected RegionManager getRegionManager(World world) {
@@ -188,11 +152,11 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
     }
 
     @Override
-    public boolean hasFlag(Player player, Location location, StateFlag flag) {
+    public boolean hasFlag(Player player, Location location, Flag<?> flag) {
         RegionManager manager = getRegionManager(location.getWorld());
         if (manager == null) return false;
 
         ApplicableRegionSet regions = manager.getApplicableRegions(BukkitAdapter.asBlockVector(location));
-        return regions.queryState(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
+        return regions.queryValue(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
     }
 }

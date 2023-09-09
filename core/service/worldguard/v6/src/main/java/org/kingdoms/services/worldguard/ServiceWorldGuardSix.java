@@ -4,7 +4,11 @@ import com.sk89q.worldedit.BlockVector;
 import com.sk89q.worldguard.bukkit.RegionContainer;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
+import com.sk89q.worldguard.protection.flags.Flag;
+import com.sk89q.worldguard.protection.flags.Flags;
 import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
+import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
@@ -68,8 +72,8 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
     }
 
     @Override
-    public boolean isClaimable(ProtectedRegion region) {
-        return false;
+    protected FlagRegistry getFlagRegistry() {
+        return WorldGuardPlugin.inst().getFlagRegistry();
     }
 
     @Override
@@ -83,9 +87,8 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
         }
     }
 
-
     @Override
-    public boolean hasFlag(Player player, Location location, StateFlag flag) {
+    public boolean hasFlag(Player player, Location location, Flag<?> flag) {
         com.sk89q.worldguard.protection.managers.RegionManager manager = getRegionManager(location.getWorld());
         if (manager == null) return false;
 

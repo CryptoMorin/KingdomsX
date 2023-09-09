@@ -1,6 +1,10 @@
 package org.kingdoms.services.worldguard;
 
+import com.sk89q.worldguard.WorldGuard;
+import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
+import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
+import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Location;
@@ -10,11 +14,51 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.services.Service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class ServiceWorldGuard implements Service {
+    private static final StateFlag
+            KINGDOMS_CLAIMABLE = registerFlag("kingdoms-claimable", false),
+            KINGDOMS_FRIENDLY_FIRE = registerFlag("kingdoms-friendly-fire", false),
+            KINGDOMS_DAMAGE_CHAMPION = registerFlag("kingdoms-damage-champion", true);
     protected static final String CHECK_REGION_ID = "ChunkRegion";
+
+    public static void registerFlags() {
+
+    }
+
+    private static StateFlag registerFlag(String name, boolean defaultState) {
+        // https://worldguard.enginehub.org/en/latest/developer/regions/custom-flags/
+        FlagRegistry registry;
+        try {
+            registry = ((ServiceWorldGuard) Class.forName("org.kingdoms.services.worldguard.ServiceWorldGuardSeven")
+                    .getConstructor().newInstance()).getFlagRegistry();
+        } catch (Throwable ex) {
+            try {
+                registry = ((ServiceWorldGuard) Class.forName("org.kingdoms.services.worldguard.ServiceWorldGuardSix")
+                        .getConstructor().newInstance()).getFlagRegistry();
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        try {
+            // create a flag with the name "my-custom-flag", defaulting to true
+            // only set our field if there was no error
+            StateFlag flag = new StateFlag(name, defaultState);
+            registry.register(flag);
+            return flag;
+        } catch (FlagConflictException e) {
+            // some other plugin registered a flag by the same name already.
+            // you can use the existing flag, but this may cause conflicts - be sure to check type
+            e.printStackTrace();
+            Flag<?> existing = registry.get(name);
+            if (existing instanceof StateFlag) return (StateFlag) existing;
+            return null;
+        }
+    }
 
     public final boolean isChunkInRegion(World world, int x, int z, int radius) {
         if (radius < 0) throw new IllegalArgumentException("Cannot check chunk in regions with radius: " + radius);
@@ -33,12 +77,16 @@ public abstract class ServiceWorldGuard implements Service {
 
         CuboidRegionProperties properties = new CuboidRegionProperties(minX, minZ, maxX, maxZ);
         ProtectedRegion region = isLocationInRegion(world, properties);
-        return region != null && !isClaimable(region);
+        return region != null && region.getFlag(KINGDOMS_CLAIMABLE) == StateFlag.State.DENY;
     }
 
     public boolean hasRegion(@NonNull World world, String region) {
         RegionManager regionManager = getRegionManager(world);
         return regionManager != null && regionManager.hasRegion(region);
+    }
+
+    public Flag<?> getFlag(String name) {
+        return getFlagRegistry().get(name);
     }
 
     @Nullable
@@ -50,8 +98,9 @@ public abstract class ServiceWorldGuard implements Service {
         return manager == null ? new HashSet<>() : manager.getRegions().keySet();
     }
 
+    protected abstract FlagRegistry getFlagRegistry();
 
-    public abstract boolean hasFlag(Player player, Location location, StateFlag flag);
+    public abstract boolean hasFlag(Player player, Location location, Flag<?> flag);
 
     public StateFlag getFriendlyFireFlag() {
         return null;
@@ -62,7 +111,7 @@ public abstract class ServiceWorldGuard implements Service {
     }
 
     public final boolean hasFriendlyFireFlag(Player player) {
-        return hasFlag(player, getFriendlyFireFlag());
+        return hasFlag(player, KINGDOMS_FRIENDLY_FIRE);
     }
 
     private final boolean hasFlag(Player player, StateFlag flag) {
@@ -75,7 +124,10 @@ public abstract class ServiceWorldGuard implements Service {
 
     public abstract boolean isLocationInRegion(Location location, String regionName);
 
-    public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);
+    public boolean canFly(Player player, Location location) {
+        // https://github.com/aromaa/WorldGuardExtraFlags/blob/master/WG/src/main/java/net/goldtreeservers/worldguardextraflags/flags/Flags.java#L49
+        return hasFlag(player, location, getFlag("fly"));
+    }
 
-    public abstract boolean isClaimable(ProtectedRegion region);
+    public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);
 }
