@@ -102,14 +102,6 @@ public abstract class ServiceWorldGuard implements Service {
 
     public abstract boolean hasFlag(Player player, Location location, Flag<?> flag);
 
-    public StateFlag getFriendlyFireFlag() {
-        return null;
-    }
-
-    public StateFlag getDamageChampionFlag() {
-        return null;
-    }
-
     public final boolean hasFriendlyFireFlag(Player player) {
         return hasFlag(player, KINGDOMS_FRIENDLY_FIRE);
     }
@@ -119,7 +111,7 @@ public abstract class ServiceWorldGuard implements Service {
     }
 
     public final boolean canDamageChampion(Player player) {
-        return hasFlag(player, getDamageChampionFlag());
+        return hasFlag(player, KINGDOMS_DAMAGE_CHAMPION);
     }
 
     public abstract boolean isLocationInRegion(Location location, String regionName);

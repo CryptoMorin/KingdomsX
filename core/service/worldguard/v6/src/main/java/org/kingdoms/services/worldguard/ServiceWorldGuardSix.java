@@ -89,6 +89,10 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
 
     @Override
     public boolean hasFlag(Player player, Location location, Flag<?> flag) {
+        Objects.requireNonNull(player);
+        Objects.requireNonNull(location);
+        Objects.requireNonNull(flag);
+
         com.sk89q.worldguard.protection.managers.RegionManager manager = getRegionManager(location.getWorld());
         if (manager == null) return false;
 

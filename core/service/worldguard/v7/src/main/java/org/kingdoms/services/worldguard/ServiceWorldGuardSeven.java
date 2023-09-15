@@ -141,6 +141,9 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
 
     @Override
     public boolean isLocationInRegion(Location location, String regionName) {
+        Objects.requireNonNull(location);
+        Objects.requireNonNull(regionName);
+
         RegionManager manager = getRegionManager(location.getWorld());
         if (manager == null) return false;
 
@@ -153,6 +156,10 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
 
     @Override
     public boolean hasFlag(Player player, Location location, Flag<?> flag) {
+        Objects.requireNonNull(player);
+        Objects.requireNonNull(location);
+        Objects.requireNonNull(flag);
+
         RegionManager manager = getRegionManager(location.getWorld());
         if (manager == null) return false;
 

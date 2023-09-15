@@ -6,7 +6,21 @@
 
 # Completely disables the protection system except for when placing turrets and structures.
 # This can be useful if you want to customize the behavior using an addon.
+# Requires a restart to change.
 disable-protection-system: false
+
+# When true, crops will no longer break due to any natural/external sources.
+# This includes placing blocks near them, but crop farms that rely on water should continue to work.
+# This setting is here due to a server exploit in 1.18 which allows players
+# to get infinite amount of plants by placing a bed next to them when they don't have
+# kingdom build permission for their rank. This doesn't include normal grass.
+# This will affect all crops regardless of where they're placed.
+# Players will still be able to directly break these crops.
+# This issue is only confirmed in 1.18, and confirmed to be fixed in 1.20
+# This issue has nothing to do with this plugin specifically, it's a global issue
+# that affects all other plugins, this is just a simple option to fix it quickly.
+# - Requires a restart to apply.
+disable-crops-physics: false
 
 # If the claims should be connected next to each other.
 # This option is not affected by relation attributes.
