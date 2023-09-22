@@ -381,6 +381,14 @@ integrations:
 command:
   # These two options require a server restart to update.
 
+  # Should the plugin not use colors for command tab completion suggestions?
+  # It's recommended to keep this off, because right now, if players auto complete
+  # a tab suggestion that contains colors, it will put the text with the transated §
+  # codes, and since the client can't normally type that symbol into the chat, it'll
+  # kick them out of the server if they run the command like that with the message "Illegal characters in chat"
+  # This option only works for 1.13+ servers.
+  enable-tab-colorization: false
+
   # You should usually choose the most obvious yet concise name for
   # the main name, some plugins might use it.
   name: kingdoms
