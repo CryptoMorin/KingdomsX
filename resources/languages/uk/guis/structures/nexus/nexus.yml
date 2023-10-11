@@ -1,0 +1,196 @@
+title: "&2&l%kingdoms_kingdom_name%'s &6&lNexus"
+rows: 6
+sound: BLOCK_BEACON_ACTIVATE, 0.3
+
+icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Nexus-Logo.png"
+form-type: CUSTOM
+form-options:
+  settings:
+    component-type: LABEL
+    text: "&5Налаштування"
+
+options:
+  settings:
+    name: "&7Налаштування"
+    material: NETHER_STAR
+    lore:
+      - "&6Змініть налаштування вашого королівства."
+    posx: 5
+    posy: 2
+  members:
+    name: "&2Учасники"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
+    lore:
+      - "&6Управління учасниками вашого королівства."
+      - "&6Підвищення або пониження їх."
+    posx: 5
+    posy: 3
+  masswar:
+    running:
+      condition: kingdoms_masswar_is_running
+      name: "&4Масовий бій"
+      material: CLOCK
+      lore:
+        - "&6Під час масового вторгнення вторгнення безкоштовне."
+        - "Масовий бій в даний час &2проходить."
+        - ""
+        - "{$p}Масовий бій закінчиться через{$sep}: {$s}%kingdoms_time_masswar_time%"
+    else:
+      name: "&4Масовий бій"
+      material: RED_WOOL
+      lore:
+        - "&6Під час масового вторгнення вторгнення безкоштовне."
+        - "Масовий бій в даний час &cне проводиться."
+        - ""
+        - "{$p}Наступний Масовий бій через{$sep}: {$s}%kingdoms_time_masswar_time%"
+    posx: 6
+    posy: 3
+  nexus-chest:
+    name: "&eСховище Nexusу"
+    material: CHEST
+    lore:
+      - "&6Покладайте предмети у сховище вашого королівства"
+      - "&6для використання всіма."
+    posx: 7
+    posy: 3
+  turrets:
+    name: "&9Вежі"
+    material: SPECTRAL_ARROW
+    lore:
+      - "&6Ви можете купувати вежі"
+      - "за рахунок ресурсів, щоб встановити їх"
+      - "на вашій землі. Вони захищають від"
+      - "мобів та вторгнень."
+    posx: 3
+    posy: 3
+  structures:
+    name: "&5Споруди"
+    material: REDSTONE_LAMP
+    lore:
+      - "&6Споруди можуть виконувати різні функції."
+      - "Ви можете мати лише одну споруду на землі."
+      - "Зауважте, що сам Nexus є спорудою."
+      - "Споруди можна купити за рахунок ресурсів."
+    posx: 4
+    posy: 3
+  misc-upgrades:
+    name: "&bРізні Покращення"
+    material: ENCHANTING_TABLE
+    lore:
+      - "&6Додаткові різні покращення"
+      - "для покращення вашого королівства"
+      - "в різних аспектах."
+    posx: 2
+    posy: 3
+  logs:
+    name: "&aЖурнали Аудиту"
+    material: KNOWLEDGE_BOOK
+    lore:
+      - "&6Перегляд журналів королівства, включаючи"
+      - "вторгнення, проголошення, скасування проголошення,"
+      - "та інші дії учасників."
+      - ""
+      - "&7Більшість цих журналів зберігаються"
+      - "протягом 30 днів після їх видалення."
+      - "Деякі можуть зберігатися коротший час,"
+      - "які є менш важливими."
+    posx: 8
+    posy: 3
+  resource-points:
+    name: "&eКонвертер Ресурсів"
+    material: HAY_BLOCK
+    lore:
+      - "&6Конвертуйте ваші предмети у"
+      - "ресурси. У вашому королівстві є &e%kingdoms_fancy_resource_points% &6ресурсів."
+    posx: 4
+    posy: 5
+  damage-reduction:
+    name: "&3Зменшення пошкоджень"
+    material: DIAMOND_CHESTPLATE
+    flags: [HIDE_ATTRIBUTES]
+    lore:
+      - "&6Кожне покращення зменшує отримані"
+      - "пошкодження на &e1% &6, коли ви перебуваєте"
+      - "на своїй власній території королівства."
+      - ""
+      - "&6Рівень&8: &2%level%"
+      - "&6Вартість&8: &2%cost%"
+    posx: 7
+    posy: 4
+  damage-boost:
+    name: "&3Підвищення пошкоджень"
+    material: DIAMOND_SWORD
+    flags: [HIDE_ATTRIBUTES]
+    lore:
+      - "&6Кожне покращення збільшує ваші"
+      - "пошкодження на &e1% &6, коли ви перебуваєте"
+      - "на своїй власній території королівства."
+      - ""
+      - "&6Рівень&8: &2%level%"
+      - "&6Вартість&8: &2%cost%"
+    posx: 3
+    posy: 4
+  arrow-boost:
+    name: "&7Підвищення стріл"
+    material: BOW
+    lore:
+      - "&6Кожне покращення збільшує вашу силу"
+      - "стрільби з лука на &e1% &6, коли ви перебуваєте"
+      - "на своїй власній території королівства."
+      - ""
+      - "&6Рівень&8: &2%level%"
+      - "&6Вартість&8: &2%cost%"
+    posx: 4
+    posy: 4
+  regeneration-boost:
+    name: "&dПідвищення регенерації"
+    material: GOLDEN_APPLE
+    lore:
+      - "&6Кожне покращення збільшує швидкість"
+      - "відновлення вашого здоров'я на &e1% &6"
+      - "на вашій території."
+      - "Ця модифікація сама по собі не виконує"
+      - "регенерацію, вона лише підвищує кількість"
+      - "здоров'я, яке ви отримуєте від їжі."
+      - ""
+      - "&6Рівень&8: &2%level%"
+      - "&6Вартість&8: &2%cost%"
+    posx: 6
+    posy: 4
+  ranks:
+    name: "&5Ранги і Дозволи"
+    material: BOOKSHELF
+    lore:
+      - "&6Змінюйте ранги та дозволи для"
+      - "вашого королівства."
+    posx: 6
+    posy: 5
+  champion-upgrades:
+    name: "&2Покращення Чемпіона"
+    material: ZOMBIE_HEAD
+    lore:
+      - "&6Покращуйте вашого чемпіона для сильнішого"
+      - "захисту від вторгнень."
+    posx: 5
+    posy: 5
+
+  mailbox:
+    name: "&2Поштова скринька"
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/decoration/18054-mailbox-green
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+    lore: |
+      &7Send & recieve mails from
+      other kingdoms.
+      &2Total mails&8: &6%kingdoms_mails_total%
+    posx: 5
+    posy: 4
+  red-glass:
+    name: ""
+    material: RED_STAINED_GLASS_PANE
+    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]

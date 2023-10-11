@@ -1,0 +1,71 @@
+title: "&8-=( &9Мовні Пакети &8)=-"
+rows: 6
+
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY9fX19'
+    name: '&2Доступні Мови Для Завантаження'
+    lore: |
+      &7Вони всі займають менше &2500 кб,
+      &7зауважте, що завжди завантажується
+      остання версія, тому, якщо GUI/повідомлення
+      були перейменовані, переміщені або видалені,
+      цей плагін &cне зможе їх показати.
+
+      &2Англійська &7завжди встановлена і
+      &cне може бути вилучена, &7оскільки це
+      "джерело" мови.
+
+      &7Всі завантажені мовні пакети зберігаються
+      в папці з ім'ям &2repository&7. Цю папку
+      не слід редагувати вручну. Це &2основна папка.
+
+      Якщо ви хочете змінити завантажені мови,
+      ви повинні це зробити в папці &2languages&7.
+      Навіть видалення зовсім не є проблемою,
+      плагін знову згенерує їх без повторного
+      завантаження.
+  download-all:
+    posx: 5
+    posy: 6
+    name: "&2Завантажити та Оновити Всі"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy9taW5lY3JhZnQubmV0L3RleHR1cmUvZmFmZWMzYzdmYWIyYTM3MjkwNWZhM2ZjMWZiMjI4ZTc4M2JiOTNhNTNlNmQzMmU0NWViZGI0YTAyMThmY2NhIn19fX19'
+    lore: |
+      &7Ця опція завантажує всі
+      мови, які ще не були завантажені, та
+      оновлює всі інші мови, які вже були
+      завантажені, але застарілі.
+  languages:
+    # The skull skin textures are used for "languages" GUI
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    material: PLAYER_HEAD
+    name: '&2%native-name% &8(&9%lang%&8)'
+    up-to-date:
+      condition: installed && updated
+      lore: |
+        &2Актуальна версія
+        &4Правий клік для вилучення.
+    outdated:
+      condition: installed
+      lore: |
+        &eЗастаріла. Лівий клік для оновлення.
+        &8(&4!&8) &eОновлення перезапише всі файли,
+        які потребують оновлення. Завантажуються
+        лише файли, перераховані нижче.
+        &4Правий клік для вилучення.
+        &9Middle-click для перегляду повного списку
+        оновлених файлів.
+
+        &cЗведення інформації про оновлені файли&8:
+    not-installed:
+      lore: |
+        &4Не встановлена
+        Лівий клік для завантаження.

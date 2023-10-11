@@ -118,7 +118,8 @@ public abstract class ServiceWorldGuard implements Service {
 
     public boolean canFly(Player player, Location location) {
         // https://github.com/aromaa/WorldGuardExtraFlags/blob/master/WG/src/main/java/net/goldtreeservers/worldguardextraflags/flags/Flags.java#L49
-        return hasFlag(player, location, getFlag("fly"));
+        Flag<?> flyFlag = getFlag("fly");
+        return flyFlag == null || hasFlag(player, location, flyFlag);
     }
 
     public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);

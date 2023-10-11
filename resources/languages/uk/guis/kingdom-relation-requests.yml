@@ -1,0 +1,38 @@
+title: "&0-=( &aЗапити на відносини &0)=-"
+rows: 6
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  request:
+    material: PLAYER_HEAD
+
+    valid:
+      condition: expired
+      name: "ЗАКІНЧЕНО &8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+      lore: |
+        &2Від Королівства&8: &9%kingdoms_kingdom_name%
+        &2Відправлено&8: &6%timestamp%
+        &2Запитана Відносина&8: %relation-color%%relation-name%
+        &cКлацніть для видалення
+    else:
+      name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+      lore: |
+        &2Від Королівства&8: &9%kingdoms_kingdom_name%
+        &2Запитана Відносина&8: %relation-color%%relation-name%
+        &2Закінчується через&8: &6%time-left-to-accpet%
+        &2Відправлено&8: &6%timestamp%
+        &2Пройшло часу&8: &6%time-passed%
+
+        &2&lЛівий клік, щоб прийняти
+        &c&lПравий клік, щоб відхилити
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20 ]
+  decline-all:
+    name: "&cВідхилити все"
+    material: RED_WOOL
+    lore: "&4Відхилити всі запрошення"
+    posx: 5
+    posy: 1
+  blue-glass:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]

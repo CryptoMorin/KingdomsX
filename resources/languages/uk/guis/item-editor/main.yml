@@ -1,0 +1,101 @@
+title: "{$sep}-=( {$p}Редактор Предметів {$sep})=-"
+rows: 3
+sound: BLOCK_LEVER_CLICK
+
+options:
+  item:
+    # Буде замінено на фактичний предмет
+    material: STONE
+    interaction: FREE
+    slot: 15
+  name:
+    posx: 1
+    posy: 1
+    material: NAME_TAG
+    name: '{$p}Назва'
+    lore: "%item_name%"
+  flags:
+    posx: 2
+    posy: 1
+    material: BLACK_BANNER
+    name: '{$p}Прапори'
+    lore: |
+      &7Натисніть, щоб змінити
+      &7⚫ {$p}Приховування Атрибутів{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Приховування Руйнування{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Приховування Фарби{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Приховування Заклять{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Приховування Можливості Покласти На{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Приховування Незламності{$sep}: %item_flag_hide_unbreakable%
+  attributes:
+    posx: 3
+    posy: 1
+    material: DIAMOND_SWORD
+    name: '{$p}Атрибути'
+  decoration:
+    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  lore:
+    posx: 1
+    posy: 2
+    material: BOOK
+    name: '{$p}Опис'
+    # Опис автоматично встановлюється плагіном для цієї опції
+  enchantments:
+    posx: 2
+    posy: 2
+    material: ENCHANTED_BOOK
+    name: '{$p}Закляття'
+    lore: [ "&7Натисніть, щоб змінити" ] # Опис змінюється плагіном для додавання встановлених чар
+  unbreakable:
+    isUnbreakable:
+      condition: item_unbreakable
+      name: '{$p}Незламний'
+      glow: true
+    else:
+      name: '{$e}Зламний'
+    posx: 3
+    posy: 2
+    material: BEDROCK
+    lore: |
+      &7Якщо предмет незламний,
+      то він не втрачатиме витривалості
+      при використанні.
+  nbt:
+    posx: 4
+    posy: 2
+    material: BOOKSHELF
+    name: '{$p}Переглядач NBT'
+  amount:
+    posx: 1
+    posy: 3
+    material: SLIME_BALL
+    name: '{$p}Кількість{$sep}: {$s}%item_amount%'
+    lore: |
+      &7Максимальна кількість - {$p}64
+      &7Хоча технічно можна встановити
+      до {$p}127, &7це може викликати проблеми
+      в рідких ситуаціях. Наприклад,
+      інтерфейс користувацького інтерфейсу
+      не зможе показати цю зміну, і коли
+      предмет передається у ваш інвентар,
+      він може не зберегти свою кількість.
+  custom-model-data:
+    posx: 2
+    posy: 3
+    material: FIREWORK_STAR
+    name: '{$p}Спеціальний Код Моделі{$sep}: {$s}%item_custom_model_data%'
+    lore: |
+      &7Це використовується для ресурсних пакетів
+      призначених для 1.14+
+      для додавання нових предметів до гри.
+      Це, фактично, лише новий дизайн
+      того ж типу предмета.
+      Це те, що використовують плагіни,
+      такі як ItemsAdder, для додавання нових предметів до гри.
+  material:
+    posx: 3
+    posy: 3
+    material: STONE # Це шаблонний матеріал, фактичний матеріал береться з розміщеного предмета
+    name: '{$p}Матеріал{$sep}: {$s}%item_material%'

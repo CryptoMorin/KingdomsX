@@ -1,0 +1,50 @@
+title: "%player%"
+type: HOPPER
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  kick:
+    name: "&cВигнати"
+    material: RED_WOOL
+    cantKick:
+      condition: '!can_kick'
+      lore: |
+        &cВи не можете вигнати цього члена.
+    else: { }
+    slot: 0
+  demote:
+    name: '&eПонизити'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM4NTJiZjYxNmYzMWVkNjdjMzdkZTRiMGJhYTJjNWY4ZDhmY2E4MmU3MmRiY2FmY2JhNjY5NTZhODFjNCJ9fX0="
+    cantDemote:
+      condition: '!can_demote'
+      lore: |
+        &cВи не можете понизити цього члена.
+    else: { }
+    slot: 1
+  member:
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+    material: PLAYER_HEAD
+    lore:
+      - "%online%"
+      - "&2Приєднався&8: &6%kingdoms_date_joined%"
+      - "&2Пожертви&8: &6%kingdoms_total_donations%"
+      - "&2Остання Пожертва&8: &6%kingdoms_last_donation_time%"
+      - "&2Ранг&8: &6%kingdoms_rank_name%"
+    slot: 2
+  promote:
+    name: '&aПідвищити'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5таW5lY3JhZnQubmV0L3RleHR1cmUvYjIyMWRhNDQxOGJkM2JmYjQyZWI2NGQyYWI0MjljNjFkZWNiOGY0YmY3ZDRjZmI3N2ExNjJiZTNkY2IwYjkyNyJ9fX0="
+    canPromote:
+      condition: '!can_promote'
+      lore: |
+        &cВи не можете підвищити цього члена.
+    else: { }
+    slot: 3
+  back:
+    name: "&2Назад"
+    material: BARRIER
+    lore:
+      - "&6Повернутися в меню членів."
+    slot: 4

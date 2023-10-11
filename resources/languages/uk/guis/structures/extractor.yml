@@ -1,0 +1,69 @@
+title: "&2Видобувач"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+
+options:
+  collect:
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Закінчено пальне &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Немає чого збирати &9%extractor-last-collected-time-passed%"
+      material: RED_WOOL
+    else:
+      name: "&2Збирати&8: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: GREEN_WOOL
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&6Зберіть всі нагромаджені"
+      - "бонуси за ресурси."
+      - "Останній збір &8: &2%extractor-last-collector%"
+    slot: 0
+  fuel:
+    name: "&2Пальне&8: &6%fancy_fuel%&8/&6%fancy_max_fuel%"
+    material: COAL
+    refresh: true
+    slot: 1
+    lore: |
+      &7Щоб заправити пальне, просто киньте
+      один із предметів пального на
+      блок видобувача.
+
+      &7Крім того, ви можете розмістити {$p}лоток
+      &7на півночі, півдні, сході, заході або зверху
+      видобувача із наступними предметами.
+      Зауважте, що це працює лише тоді, коли пальне видобувача
+      майже вичерпано.
+
+      &2Вугілля&8: &95
+      &2Вугілля деревне&8: &93
+      &2Вогню стебла&8: &9100
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "&9Покращення&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Кожні&8: &6%every% &7➔ &6%next-every%"
+        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy_resource-points% &7➔ &6%fancy_next-resource-points%"
+        - "&7⚫ &2Витрати пального&8: &6%fancy_extractor_needed_fuel% &7➔ &6%fancy_next_extractor_needed_fuel%"
+        - ""
+        - "&7⚫ &2Максимальний Рівень&8: &6%roman_next_level%"
+        - "&7⚫ &2Вартість&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Рівень&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Кожні&8: &6%every%"
+        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy_resource-points%"
+        - "&7⚫ &2Витрати пального&8: &6%fancy_extractor_needed_fuel%"
+  break:
+    name: "&4Розібрати"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6Розібрати структуру."
+    slot: 4

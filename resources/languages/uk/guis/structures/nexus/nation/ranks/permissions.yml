@@ -1,0 +1,140 @@
+title: '{$sep}-=( {$p}Права {$sep})=-'
+rows: 6
+
+# Не видаляйте "-NOSYNC" нижче.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  broadcast:
+    <<: *fn-std-perm [ "Трансляція" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k broadcast &7.
+  edit-ranks:
+    <<: *fn-std-perm [ "Змінити Звання" ]
+    lore: |
+      &7Право на створення, видалення
+      та зміну звань, включаючи їхні
+      символи, назви та права.
+
+      Гравці не зможуть змінювати
+      своє власне звання або звання
+      гравця з вищим пріоритетом.
+
+      Це не дає їм право понижувати
+      або підвищувати інших гравців.
+  home:
+    <<: *fn-std-perm [ "Дім" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k home &7.
+  invite:
+    <<: *fn-std-perm [ "Запрошення" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k invite &7 та
+      створення кодів запрошення
+      через {$s}/k invitecodes
+  kick:
+    <<: *fn-std-perm [ "Вигнати" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k kick &7.
+
+      &7Гравці з цим правом не зможуть
+      виганяти інших гравців з такими ж
+      або вищими званнями.
+  lore:
+    <<: *fn-std-perm [ "Лор" ]
+    lore: |
+      &7Право на використання
+      команд {$s}/k lore{$sep}, {$s}/k rename {$sep},
+      {$s}/k book edit &7 та {$s}/k tag &7.
+  set-home:
+    <<: *fn-std-perm [ "Встановити Дім" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k sethome &7.
+  manage-ranks:
+    <<: *fn-std-perm [ "Керувати Званнями" ]
+    lore: |
+      &7Право на підвищення та
+      пониження гравців із
+      званнями нижчими за ваше.
+
+      Це не дає їм право змінювати
+      налаштування звань.
+  withdraw:
+    <<: *fn-std-perm [ "Зняти" ]
+    lore: |
+      &7Право на використання
+      команди {$s}/k rp withdraw &7
+      та зняття ресурсних балів
+      на користь грошей іншими
+      способами, також через опцію
+      конвертування ресурсних балів
+      в інтерфейсі Nexus.
+  relation-attributes:
+    <<: *fn-std-perm [ "Атрибути Співвідношення" ]
+    lore: |
+      &7Право на редагування
+      атрибутів співвідношення.
+  settings:
+    <<: *fn-std-perm [ "Налаштування" ]
+    lore: |
+      &7Право на редагування загальних
+      налаштувань нації, розташованих
+      в інтерфейсі Nexus.
+  "[else]":
+    name: "&4Невідомо: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '&6Наступна Сторінка &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcyI6"
+    slot: 8
+  previous-page:
+    name: '&6Попередня Сторінка &7- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MhMmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+  permissions:
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # Це особлива функція
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Назад'

@@ -1,0 +1,231 @@
+title: "{$sep}-=( {$p}Закляття {$sep})=-"
+rows: 6
+
+
+'[fn-enchant]': &fn-enchant
+  args: [ "<x>" ]
+  return:
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Не Підтримується{$sep}] {$es}<x>"
+      lore: |
+        {$e}Це закляття не підтримується
+        у вашій поточній версії сервера.
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>{$sep}: {$s}%roman_level% {$sep}({$s}%level%{$sep})"
+      glow: true
+      lore: |
+        &7Лівий клік, щоб змінити рівень
+        &7Правий клік, щоб зняти
+    else:
+      name: "{$disabled} <x>"
+      lore: |
+        &7Лівий клік, щоб додати закляття
+
+options:
+  water-worker:
+    posx: 1
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Аква Інфініті" ]
+  depth-strider:
+    posx: 2
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Ходьба на Глибині" ]
+  impaling:
+    posx: 3
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Ураган" ]
+  oxygen:
+    posx: 4
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Дихання" ]
+  damage-all:
+    posx: 5
+    posy: 1
+    material: DIAMOND_SWORD
+    <<: *fn-enchant [ "Заточка" ]
+  knockback:
+    posx: 6
+    posy: 1
+    material: GOLDEN_SWORD
+    <<: *fn-enchant [ "Відштовхування" ]
+  dig-speed:
+    posx: 7
+    posy: 1
+    material: DIAMOND_PICKAXE
+    <<: *fn-enchant [ "Ефективність" ]
+  frost-walker:
+    posx: 8
+    posy: 1
+    material: BLUE_ICE
+    <<: *fn-enchant [ "Морозний Похід" ]
+  swift-sneak:
+    posx: 9
+    posy: 1
+    material: DIAMOND_LEGGINGS
+    <<: *fn-enchant [ "Швидкий Крок" ]
+  arrow-damage:
+    posx: 1
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Сила" ]
+  arrow-knockback:
+    posx: 2
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Відштовхування" ]
+  arrow-fire:
+    posx: 3
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Полум'я" ]
+  multishot:
+    posx: 4
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Багатозарядний" ]
+  piercing:
+    posx: 5
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Проникнення" ]
+  arrow-infinite:
+    posx: 6
+    posy: 2
+    material: SPECTRAL_ARROW
+    <<: *fn-enchant [ "Безмежність" ]
+  quick-charge:
+    posx: 7
+    posy: 2
+    material: CROSSBOW
+    <<: *fn-enchant [ "Швидке Заряджання" ]
+  mending:
+    posx: 8
+    posy: 2
+    material: EXPERIENCE_BOTTLE
+    <<: *fn-enchant [ "Зцілення" ]
+  durability:
+    posx: 9
+    posy: 2
+    material: OBSIDIAN
+    <<: *fn-enchant [ "Незламність" ]
+  fire-aspect:
+    posx: 1
+    posy: 3
+    material: FIRE_CHARGE
+    <<: *fn-enchant [ "Вогненний Аспект" ]
+  channeling:
+    posx: 2
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Направленість" ]
+  loyalty:
+    posx: 3
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Лояльність" ]
+  riptide:
+    posx: 4
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Підводний Перекид" ]
+  protection-environmental:
+    posx: 5
+    posy: 3
+    material: DIAMOND_CHESTPLATE
+    <<: *fn-enchant [ "Захист" ]
+  protection-projectile:
+    posx: 6
+    posy: 3
+    material: GOLDEN_CHESTPLATE
+    <<: *fn-enchant [ "Захист від Стріл" ]
+  protection-explosions:
+    posx: 7
+    posy: 3
+    material: TNT
+    <<: *fn-enchant [ "Захист від Вибухів" ]
+  protection-fire:
+    posx: 8
+    posy: 3
+    material: LAVA_BUCKET
+    <<: *fn-enchant [ "Захист від Вогню" ]
+  thorns:
+    posx: 9
+    posy: 3
+    material: ROSE_BUSH
+    <<: *fn-enchant [ "Терни" ]
+  damage-undead:
+    posx: 1
+    posy: 4
+    material: ZOMBIE_HEAD
+    <<: *fn-enchant [ "Смертельний Удар" ]
+  damage-arthropods:
+    posx: 2
+    posy: 4
+    material: SPIDER_SPAWN_EGG
+    <<: *fn-enchant [ "Погань для Членистоногих" ]
+  soul-speed:
+    posx: 3
+    posy: 4
+    material: SOUL_SAND
+    <<: *fn-enchant [ "Швидкість Душі" ]
+  vanishing-curse:
+    posx: 4
+    posy: 4
+    material: ENDER_EYE
+    <<: *fn-enchant [ "Прокляття Зникнення" ]
+  binding-curse:
+    posx: 5
+    posy: 4
+    material: ENDER_PEARL
+    <<: *fn-enchant [ "Прокляття Прив'язаності" ]
+  loot-bonus-mobs:
+    posx: 7
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Добича" ]
+  loot-bonus-blocks:
+    posx: 8
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Багатство" ]
+  silk-touch:
+    posx: 9
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Шовковий Доторк" ]
+  luck:
+    posx: 1
+    posy: 5
+    material: FISHING_ROD
+    <<: *fn-enchant [ "Удача Моря" ]
+  lure:
+    posx: 2
+    posy: 5
+    material: FISHING_ROD
+    <<: *fn-enchant [ "Приманка" ]
+  protection-fall:
+    posx: 3
+    posy: 5
+    material: FEATHER
+    <<: *fn-enchant [ "Легкий Крок" ]
+  back:
+    posx: 1
+    posy: 6
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcyI6eyJSYXRpbmFtZSI6IkFzc2VtYmxlIFN0YXRlZ25ldHMifX19"
+    name: '{$p}Назад'
+  decoration:
+    slots: [ 46, 47, 48, 50, 51, 52 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  remove-all:
+    posx: 9
+    posy: 6
+    material: RED_WOOL
+    name: '{$e}Видалити Всі Закляття'

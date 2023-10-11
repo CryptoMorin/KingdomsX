@@ -1,0 +1,81 @@
+title: "&8-=( &2Додатки &8)=-"
+rows: 6
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    material: PURPLE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: NETHER_STAR
+    name: '&9Інформація'
+    lore: |
+      &7Додатки - це додатковий
+      завантажувальний вміст, який можна
+      встановити окремо.
+
+      Причина існування додатків
+      полягає в {$p}продуктивності{$sep}, {$p}модульності
+      &7та обмеженнях на розмір файлів.
+
+      {$sep}[{$s}!{$sep}] &7Для встановлення додатків
+      необхідне підключення до Інтернету, яке
+      може підключитися до {$p}GitHub.com
+      {$sep}(&7без блокування брандмауером,
+      цензурою країни тощо{$sep})
+  addons:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    pending-restart:
+      condition: waiting_to_restart
+      name: '&8[&5Очікує перезавантаження&8] &9%addon-name%'
+      lore: |
+        %description%
+
+        &2Версія&8: &9%latest-version%
+        &5Додаток завантажено. Очікуємо
+        перезапуску сервера для
+        активації додатку.
+      material: PURPLE_WOOL
+    updated:
+      condition: 'installed && !outdated'
+      name: '&8[&2Оновлено&8] &9%addon-name%'
+      lore: |
+        %description%
+        &2Версія&8: &9%installed-version%
+        &4Клацніть, щоб видалити
+      material: GREEN_WOOL
+    outdated-core-version:
+      condition: 'installed && outdated && outdated_core_version'
+      name: '&8[&4Застарілий&8] &9%addon-name%'
+      lore: |
+        %description%
+        
+        &4Встановлена версія&8: &9%installed-version%
+        &2Остання версія&8: &9%latest-version%
+        
+        {$sep}[{$e}!{$sep}] {$es}Ця версія вимагає
+        kingdoms {$p}v%supported-core-version% {$es}для роботи.
+        Поточна версія{$sep}: {$e}%current-core-version%
+        
+        &2Клацніть лівою кнопкою для оновлення
+        &4Клацніть правою кнопкою для видалення
+      material: RED_WOOL
+    outdated:
+      condition: 'installed && outdated'
+      name: '&8[&4Застарілий&8] &9%addon-name%'
+      lore: |
+        %description%
+        &4Встановлена версія&8: &9%installed-version%
+        &2Остання версія&8: &9%latest-version%
+        &2Клацніть лівою кнопкою для оновлення
+        &4Клацніть правою кнопкою для видалення
+      material: RED_WOOL
+    not-installed:
+      name: '&8[&6Не встановлено&8] &9%addon-name%'
+      lore: |
+        %description%
+        &2Версія&8: &9%latest-version%
+        &2Клацніть лівою кнопкою для встановлення
+      condition: '!installed'
+      material: BLUE_WOOL
