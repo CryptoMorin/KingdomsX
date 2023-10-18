@@ -138,10 +138,15 @@ backups:
   interval: 24hrs
 
   enabled:
+    # Should backups be taken at all?
     enabled: true
 
     # Data files include kingdoms, players, lands, nations and mails.
     data: true
+
+    # Chunk snapshots are only taken when restoration is enabled in claims.yml
+    # It's not recommended to backup these files as they can take a lot of space on big servers.
+    chunk-snapshots: false
 
     # Includes the main configs, language files, and guis.
     # Doesn't include the repository, since they shouldn't be changed.
