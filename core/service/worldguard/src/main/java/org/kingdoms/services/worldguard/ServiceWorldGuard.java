@@ -45,8 +45,12 @@ public abstract class ServiceWorldGuard implements Service {
         }
 
         try {
+            // https://github.com/EngineHub/WorldGuard/blob/master/worldguard-core/src/main/java/com/sk89q/worldguard/protection/flags/StateFlag.java
             // create a flag with the name "my-custom-flag", defaulting to true
             // only set our field if there was no error
+            // Default flag causes the getFlag() method to return:
+            // true -> ALLOW
+            // false -> null
             StateFlag flag = new StateFlag(name, defaultState);
             registry.register(flag);
             return flag;
@@ -77,7 +81,7 @@ public abstract class ServiceWorldGuard implements Service {
 
         CuboidRegionProperties properties = new CuboidRegionProperties(minX, minZ, maxX, maxZ);
         ProtectedRegion region = isLocationInRegion(world, properties);
-        return region != null && region.getFlag(KINGDOMS_CLAIMABLE) == StateFlag.State.DENY;
+        return region != null && region.getFlag(KINGDOMS_CLAIMABLE) != StateFlag.State.ALLOW;
     }
 
     public boolean hasRegion(@NonNull World world, String region) {
