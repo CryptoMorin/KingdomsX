@@ -62,13 +62,13 @@ public class PeaceTreaty implements PlayerOperator {
         settings.raw("peacetreaty_force_acceptance_war_points",
                 MathUtils.eval(PeaceTreatyConfig.FORCE_ACCEPT_WAR_POINTS.getManager().getMathExpression(), settings));
 
-        settings.addGroupedPlaceholder("term", x -> {
+        settings.addChild("term", x -> {
             x = x.replace('_', '-');
             if (!TermRegistry.getTermGroupings().containsKey(x)) return null;
             return terms.containsKey(x);
         });
 
-        settings.addGroupedPlaceholder("subterm", x -> {
+        settings.addChild("subterm", x -> {
             Namespace ns = Namespace.fromConfigString(x);
             if (!PeaceTreatiesAddon.get().getTermRegistry().isRegisetered(ns)) return null;
             return terms.values().stream()

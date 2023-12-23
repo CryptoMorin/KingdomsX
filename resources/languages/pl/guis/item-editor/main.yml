@@ -1,0 +1,99 @@
+title: "{$sep}-=( {$p}Edytor przedmiotów {$sep})=-"
+rows: 3
+sound: BLOCK_LEVER_CLICK
+
+options:
+  item:
+    # Will be replaced by the actual item
+    material: STONE
+    interaction: FREE
+    slot: 15
+  name:
+    posx: 1
+    posy: 1
+    material: NAME_TAG
+    name: '{$p}Nazwa'
+    lore: "%item_name%"
+  flags:
+    posx: 2
+    posy: 1
+    material: BLACK_BANNER
+    name: '{$p}Flagi'
+    lore: |
+      &7Kliknij, aby modyfikować
+      &7⚫ {$p}Ukryj Atrybuty{$sep}: %item_flag_hide_attributes%
+      &7⚫ {$p}Ukryj Niszczy{$sep}: %item_flag_hide_destroys%
+      &7⚫ {$p}Ukryj Barwnik{$sep}: %item_flag_hide_dye%
+      &7⚫ {$p}Ukryj Zaklęcia{$sep}: %item_flag_hide_enchants%
+      &7⚫ {$p}Ukryj Umieszczane na{$sep}: %item_flag_hide_placed_on%
+      &7⚫ {$p}Ukryj Niezniszczalność{$sep}: %item_flag_hide_unbreakable%
+  attributes:
+    posx: 3
+    posy: 1
+    material: DIAMOND_SWORD
+    name: '{$p}Atrybuty'
+  decoration:
+    slots: [ 4, 5, 6, 7, 8, 13, 14, 16, 17, 22, 23, 24, 25, 26 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  lore:
+    posx: 1
+    posy: 2
+    material: BOOK
+    name: '{$p}Opis'
+    # The lore is automatically set by the plugin for this option
+  enchantments:
+    posx: 2
+    posy: 2
+    material: ENCHANTED_BOOK
+    name: '{$p}Zaklęcia'
+    lore: [ "&7Kliknij aby modyfikować" ] # The lore is modified by the plugin to add set enchants
+  unbreakable:
+    isUnbreakable:
+      condition: item_unbreakable
+      name: '{$p}Niezniszczalność'
+      glow: true
+    else:
+      name: '{$e}Łamliwy'
+    posx: 3
+    posy: 2
+    material: BEDROCK
+    lore: |
+      &7Jeśli przedmiot jest niezniszczalny,
+      nie traci wytrzymałości przy użyciu.
+  nbt:
+    posx: 4
+    posy: 2
+    material: BOOKSHELF
+    name: '{$p}Przeglądarka NBT'
+  amount:
+    posx: 1
+    posy: 3
+    material: SLIME_BALL
+    name: '{$p}Ilość{$sep}: {$s}%item_amount%'
+    lore: |
+      &7Maksymalna ilość wynosi {$p}64,
+      ale teoretycznie można ustawić
+      do {$p}127, co może powodować problemy
+      w rzadkich sytuacjach. Na przykład,
+      GUI może nie być w stanie pokazać tej
+      zmiany, a gdy jest przekazywany do
+      twojego inwentarza, ilość może nie być zachowana.
+  custom-model-data:
+    posx: 2
+    posy: 3
+    material: FIREWORK_STAR
+    name: '{$p}Custom Model Data{$sep}: {$s}%item_custom_model_data%'
+    lore: |
+      &7To jest używane w paczkach zasobów,
+      które są stworzone dla wersji 1.14+
+      w celu dodania nowych przedmiotów do gry.
+      To jest w zasadzie tylko zmiana wyglądu
+      tego samego typu przedmiotu.
+      To jest to, co używają wtyczki takie jak ItemsAdder,
+      aby dodać nowe przedmioty do gry.
+  material:
+    posx: 3
+    posy: 3
+    material: STONE # This is a template material, the actual material is taken from the placed item
+    name: '{$p}Materiał{$sep}: {$s}%item_material%'

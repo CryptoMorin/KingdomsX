@@ -1,0 +1,143 @@
+title: '{$sep}-=( {$p}Traktat Pokojowy {$sep})=-'
+rows: 6
+
+options:
+  pause:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/miscellaneous/2299-stop
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYxMzlmZDFjNTY1NGU1NmU5ZTRlMmM4YmU3ZWIyYmQ1YjQ5OWQ2MzM2MTY2NjNmZWVlOTliNzQzNTJhZDY0In19fQ=='
+    name: '{$e}Pauza'
+    lore: |
+      &7Wstrzymuje bieżącą sesję edycji
+      kontraktu. Możesz wznowić ją później
+      za pomocą komendy {$p}/k peacetreaty resume,
+      ale wygaśnie po wyłączeniu serwera.
+  cancel:
+    material: BARRIER
+    name: "{$e}Anuluj"
+    posx: 5
+    posy: 1
+  lime-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 26, 28, 29, 30, 32, 33, 34, 36, 39, 40, 41, 44, 46, 48, 50, 52 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  blue-stained-glass-pane:
+    slots: [ 3, 5, 11, 15, 19, 25, 27, 35, 37, 43, 45, 47, 49, 51, 53 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  send:
+    posx: 9
+    posy: 1
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/alphabet/21778-blue-checkmark
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZmNDQzMWU5ODNiM2C8NTQwNDRiYzAwYjdjNTQ4MDAyNDNjZDdkYmY5NGRlMzM5YjhjMmY3YjI1NjZhNTIwMSJ9fX0='
+    name: '{$p}Wyślij'
+    can-force-accpet:
+      condition: peacetreaty_can_enforce_acceptance
+      lore: |
+        &7Wysyła propozycję do innej
+        krainy. Musisz poczekać na ich
+        recenzję i akceptację.
+        
+        {$p}Użyte Punkty Wojny{$sep}: {$s}%peacetreaty_war_points%
+        {$p}Punkty Wojny{$sep}: {$s}%kingdoms_other_war_points%
+        
+        {$p}Twoje królestwo może wymusić 
+        kontrakt na tym królestwie. Kliknij prawym 
+        przyciskiem myszy, aby wymusić traktat pokojowy 
+        na drugie królestwo. To kosztuje 
+        {$s}%peacetreaty_force_acceptance_war_points% {$p}punktów wojennych.
+    else:
+      lore: |
+        &7Wysyła propozycję do innej
+        krainy. Musisz poczekać na ich
+        recenzję i akceptację.
+
+        {$p}Użyte Punkty Wojny{$sep}: {$s}%peacetreaty_war_points%
+        {$p}Punkty Wojny{$sep}: {$s}%kingdoms_other_war_points%
+  term-take-rp:
+    posx: 3
+    posy: 3
+    material: DIAMOND
+    name: '%bool_term_take_rp% {$p}Weź Punkty Zasobów'
+    enabled:
+      condition: term_take_rp
+      lore: |
+        &7Wymaga pewnej ilości
+        punktów zasobów do zabrania
+        z królestwa i przeniesienia
+        do Twojego królestwa.
+
+        {$p}Ilość{$sep}: {$s}%fancy_term_take_resource_points_amount%
+        {$p}Punkty Wojny{$sep}: {$s}%war_points%
+    else:
+      lore: |
+        &7Wymaga pewnej ilości
+        punktów zasobów do zabrania
+        z królestwa i przeniesienia
+        do Twojego królestwa.
+
+        {$p}Punkty Wojny{$sep}: {$s}%war_points%
+  term-war-reparation:
+    posx: 7
+    posy: 3
+    material: EMERALD
+    name: '%bool_term_war_reparation% {$p}Odszkodowanie Wojenne'
+    enabled:
+      condition: term_war_reparation
+      lore: |
+        &7Wymaga pewnej ilości
+        pieniędzy do zabrania z banku
+        królestwa i przeniesienia do
+        Twojego królestwa.
+
+        {$p}Ilość{$sep}: {$s}%fancy_term_take_money_amount%
+        {$p}Punkty Wojny{$sep}: {$s}%war_points%
+    else:
+      lore: |
+        &7Wymaga pewnej ilości
+        pieniędzy do zabrania z banku
+        królestwa i przeniesienia do
+        Twojego królestwa.
+
+        {$p}Punkty Wojny{$sep}: {$s}%war_points%
+  term-vassalization:
+    posx: 5
+    posy: 4
+    material: WRITABLE_BOOK
+    name: '%bool_term_vassalization% &cWasalizacja'
+    lore: |
+      &7Nakłada pewne ograniczenia/zasady
+      na wasze wasalne królestwo jako
+      królestwo nadrzędne, takie jak relacje,
+      ulepszenia itp.
+
+      {$p}Punkty Wojny{$sep}: {$s}%war_points%
+  term-leave-nation:
+    posx: 3
+    posy: 5
+    material: IRON_DOOR
+    name: '%bool_term_leave_nation% {$p}Opuść Naród'
+    lore: |
+      &7Wymaga, aby królestwo opuściło
+      naród, w którym się obecnie znajduje,
+      lub rozwiązania go, jeśli jest stolicą.
+      
+      To również uniemożliwia im dołączanie do
+      innych narodów do czasu zakończenia
+      traktatu pokojowego.
+
+      {$p}Punkty Wojny{$sep}: {$s}%war_points%
+  term-keep-lands:
+    posx: 7
+    posy: 5
+    material: GRASS_BLOCK
+    name: '%bool_term_keep_lands% {$p}Zachowaj Ziemie'
+    lore: |
+      &7Zachowaj pewne ziemie, które
+      zdobyłeś od tego królestwa i oddaj
+      resztę temu królestwu.
+
+      {$p}Punkty Wojny{$sep}: {$s}%war_points%

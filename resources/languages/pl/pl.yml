@@ -1,7 +1,7 @@
-# Translation by 77DaVid77
+# Translation by dc: 77davidek77
 prefix: '&6[&lK&eingdoms&6] &7'
 chat-input:
-  
+
   cancel: cancel
 
 worlds:
@@ -9,38 +9,39 @@ worlds:
   world_nether: The Nether
   world_the_end: The End
 
-unlimited: '&5Bez limitu'
-enabled: '{$p}Włączono {$s}%upgrade% {$p}misc upgrade.'
-disabled: '{$e}Wyłączono {$es}%upgrade% {$e}misc upgrade.'
+unlimited: '&5Unlimited'
+
+enabled: '{$p}✔'
+disabled: '{$e}✗'
 
 true: true
 false: false
 
-unknown: '&4Błąd'
+unlimited: '&5Bez limitu'
 
-unknown-message-entry: '{$e}Nieznany wpis wiadomości'
+unknown-message-entry: '{$e}Błąd wiadomości'
 
-none: '&40'
+none: '&4None'
 
 time-formatter:
   seconds: 00:00:%ssaf%
   minutes: 00:%mmaf%:%ssf%
   hours: '%hhaf%:%mmf%:%ssf%'
-  days: '%dda% Dni, %hhf%:%mmf%:%ssf%'
-  weeks: '%wwwwa% Tygodnie, %dd% Dni, %hhf%:%mmf%:%ssf%'
-  months: '%MMA% Miesiące, %wwww% Tygodnie, %dd% Dni, %hhf%:%mmf%:%ssf%'
+  days: '%dda% dni, %hhf%:%mmf%:%ssf%'
+  weeks: '%wwwwa% tygodni, %dd% dni, %hhf%:%mmf%:%ssf%'
+  months: '%MMA% miesięcy, %wwww% tygodni, %dd% dni, %hhf%:%mmf%:%ssf%'
 
 date-formatter: '{$s}yyyy{$sep}/{$s}MM{$sep}/{$s}dd {$s}hh{$sep}:{$s}mm{$sep}:{$s}ss'
 
 cardinal-directions:
-  north: North
-  east: East
-  south: South
-  west: West
-  north-east: North_East
-  north-west: North_West
-  south-east: South_East
-  south-west: South_West
+  north: Północ
+  east: Wschód
+  south: Południe
+  west: Zachód
+  north-east: Północny_wschód
+  north-west: Północny_zachód
+  south-east: Południowy_wschód
+  south-west: Południowy_zachód
 
 variables:
   cancel: '&cNaciśnij: {&ecancel;&eKliknij, aby anulować;/cancel} &caby anulować akcję.'
@@ -132,33 +133,24 @@ plugin-permission-scope:
   not-op: '&6Nie OP'
 tags:
   tagged:
-  unknown-player: hover:{{$e}@%tag%;&4Unknown Player}
-  offline: hover:{{$es}@%tag%;{$e}Offline}
+    
+    message: hover:{{$s}&l@%tag%;{$p}You have been tagged}
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
   others: hover:{&l@%tag%;&9Tag}
+  offline: hover:{{$es}@%tag%;{$e}Offline}
+  unknown-player: hover:{{$e}@%tag%;&4Unknown Player}
+tips:
 
-tag:
-  message:
-    hover: '{{ $s }}&l@%tag%;{{ $p }}Zostałeś oznaczony'
-  sound: ENTITY_EXPERIENCE_ORB_PICKUP
-others:
-  hover: '{&l@%tag%;&9Oznaczony}'
-offline:
-  hover: '{{ $es }}@%tag%;{{ $e }}Offline'
-unknown-player:
-  hover: '{{ $e }}@%tag%;{&4}Nieznany Gracz'
-  
-  # Tip messages that are shown in console based on the server.
   message:
     header: '&8----------------=( &cPorady &8)=----------------'
     entry: '&8- %description%'
     footer: '&8----------------=------------=----------------'
-disable-crops-physics: '&2Powinieneś rozważyć włączenie opcji ''disable-crops-physics'' w claims.yml, ale ma to skutki uboczne. Aby zignorować ten tip, użyj &c/k admin tip ignore DISABLE_CROPS_PHYSICS'
+  disable-crops-physics: '&2Powinieneś rozważyć włączenie opcji ''disable-crops-physics'' w claims.yml, ale ma to skutki uboczne. Aby zignorować ten tip, użyj &c/k admin tip ignore DISABLE_CROPS_PHYSICS'
 world-edit:
   excluded: '{$e}Łącznie {$es}%blocks% {$e}bloków zostało wyłączonych z WorldEdit, ponieważ nie znajdowały się na twoim terytorium.'
 tax:
   kick: '{$e}Nie miałeś wystarczająco pieniędzy na opłacenie podatków za królestwo, dlatego zostałeś wyrzucony.'
   reminder: |
-
     &4&l&nUwaga{$sep}: {$e}&lCodzienne sprawdzenia zostaną przeprowadzone za{$sep}: {$es}%time%
   total: '{$p}Twoje królestwo uzyskało łącznie {$s}$%tax% {$p}z opłacania podatków.'
   paid: '{$es}$%tax% {$e}zostało pobrane z twojego konta na podatek za królestwo.'
@@ -250,21 +242,20 @@ siege-cannon:
     damaged-shield: '{$p}Działo trafiło w królestwo {$s}%kingdoms_kingdom_name% {$p}. Pozostały czas tarczy{$sep}: {$s}%kingdoms_time_shield_time_left%'
     damaged-shield-notify: '{$es}%attacker-kingdom% {$e}królestwo trafiło twoją ziemię na {$es}%attacked-chunk%{$e}. Pozostały czas tarczy{$sep}: {$s}%kingdoms_time_shield_time_left%'
   friendly:
-    fire: '{$e}Cannon has hit a friendly (no INVADE attribute) land which belongs to {$es}%kingdom%'
-fire: '{$e}Działo trafiło w przyjazną (bez atrybutu INVADE) ziemię, która należy do {$es}%kingdom%'
+      fire: '{$e}Działo trafiło w przyjazną (bez atrybutu INVADE) ziemię, która należy do królestwa {$es}%kingdom%'
 lands:
-  build-own-only: '{$e}Możesz budować tylko na ziemiach, które zgłosiłeś.'
-  portal-protection: '{$e}Twoja teleportacja portalem została anulowana, ponieważ ten portal prowadzi do wrogiego królestwa.'
-  ender-pearl-protection: '{$e}Twoja ender perła wylądowała w wrogim królestwie!'
-  gamemode-protection: '{$e}Twój tryb gry został zmieniony po wejściu na obcą ziemię.'
+  build-own-only: '{$e}Możesz budować tylko na ziemiach, które zaanektowałeś.'
+  portal-protection: '{$e}Twoje teleportacje przez portal zostały anulowane, ponieważ ten portal prowadzi do wrogiego królestwa.'
+  ender-pearl-protection: '{$e}Twoja perła końca wylądowała w wrogim królestwie!'
+  gamemode-protection: '{$e}Twój tryb gry został zmieniony po wejściu na teren obcy.'
   gamemode-protection-activated: '{$e}Nie możesz używać trybu kreatywnego na tej ziemi.'
   nation-zone:
-    place: '{$e}Nie możesz stawiać bloków w strefie narodowej {$es}%nation%'
-    break: '{$e}Nie możesz niszczyć bloków w strefie narodowej {$es}%nation%'
-    interact: '{$e}Nie możesz oddziaływać w strefie narodowej {$es}%nation%'
+    place: '{$e}Nie możesz umieszczać bloków w strefie narodowej królestwa {$es}%nation%'
+    break: '{$e}Nie możesz niszczyć bloków w strefie narodowej królestwa {$es}%nation%'
+    interact: '{$e}Nie możesz oddziaływać z blokami w strefie narodowej królestwa {$es}%nation%'
   visualizer:
     wilderness:
-      actionbar: '{$sep}&l-=( &7&lNieznany teren {$sep}&l)=-'
+      actionbar: '&8&l-=( &7&lNieprzejęty Teren &8&l)=-'
     no-kingdom:
       titles:
         title: '%kingdoms_other_kingdom_name%'
@@ -292,13 +283,11 @@ lands:
         title: '&e%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     enemy:
-  titles:
-    title: '&c%kingdoms_other_kingdom_name%'
-    subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
-  grow-structure-protected: '{$e}You cannot do this here because there''s a kingdom protected block at {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
-  grow-structure-error: '{$e}You cannot do this here because it causes an issue at {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
-grow-structure-error: '{$e}Nie możesz tego tutaj zrobić, ponieważ powoduje to problem na pozycji {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
-grow-structure-protected: '{$e}Nie możesz tego tutaj zrobić, ponieważ istnieje chroniony blok królestwa na pozycji {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
+      titles:
+        title: '&c%kingdoms_other_kingdom_name%'
+        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+  grow-structure-error: '{$e}Nie możesz tego zrobić tutaj, ponieważ jest chroniony blok królestwa na pozycji  {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
+  grow-structure-protected: '{$e}Nie możesz tego tutaj zrobić, ponieważ istnieje chroniony blok królestwa na pozycji {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
 other-kingdoms:
   place: '{$e}Nie możesz budować na terenie innych królestw.'
   break: '{$e}Nie możesz niszczyć na terenie innych królestw.'
@@ -358,57 +347,39 @@ protected-signs:
     removed: '{$p}Hasło do pojemnika zostało usunięte.'
     not-set: '{$e}Nie ustawiono hasła dla tego chronionego bloku.'
     set: '{$p}Hasło do pojemnika zostało pomyślnie zmienione.'
-  double-chest-protected: '{$p}Ochrona podwójnej skrzyni.'
+  double-chest-protected: '{$p}Protecting the double chest.'
   protection-type:
     already-using: '{$e}Ten blok już używa tej metody ochrony.'
     changed: '{$p}Pomyślnie zmieniono metodę ochrony bloku na {$es}%protection%{$e}.'
   players:
-    exclude:
-      excluded: '{$p}Excluded {$s}%name% {$p}from the group.'
-      name: '{$p}Enter the name of the player you wish to exclude.'
-      is-already-in-group: '{$es}%name% {$e}is already excluded from the group.'
-      owner: '{$e}You''re the owner of the block...'
-    limit: '{$e}You can''t add more than {$es}%limit% {$e}member to the group.'
+    cleared: '{$p}Usunięto wszystkich członków.'
+    removed: '{$p}Usunięto {$s}%name% {$p}z grupy.'
+    limit: '{$e}Nie możesz dodać więcej niż {$es}%limit% {$e}członków do grupy.'
     include:
-      included: '{$p}Added {$s}%name% {$p}to the group.'
-      owner: '{$e}You''re the owner of the block...'
-      name: '{$p}Enter the name of the player you wish to add.'
-      is-already-in-group: '&3%name% {$e}is already in the group.'
-    cleared: '{$p}Removed all the members.'
-    removed: '{$p}Removed {$s}%name% {$p}from the group.'
+      included: '{$p}Dodano {$s}%name% {$p}do grupy.'
+      owner: '{$e}Jesteś właścicielem tego bloku...'
+      name: '{$p}Wpisz nazwę gracza, którego chcesz dodać.'
+      is-already-in-group: '&3%name% {$e}jest już w grupie.'
+    exclude:
+      is-already-in-group: '{$es}%name% {$e}królestwo jest już wykluczone z grupy.'
+      name: '{$p}Wpisz nazwę królestwa, które chcesz wykluczyć.'
+      owner: '{$e}Aby wykluczyć swoje królestwo, wystarczy zmienić typ ochrony.'
+      excluded: '{$p}Wykluczono {$s}%name% {$p}królestwo z grupy.'
   kingdoms:
-    cleared: '{$p}Removed all the kingdoms.'
-    exclude:
-      is-already-in-group: '{$es}%name% {$e}kingdom is already excluded from the group.'
-      name: '{$p}Enter the name of the kingdom you wish to exclude.'
-      owner: '{$e}To exlude your kingdom, simply change the protection type.'
-      excluded: '{$p}Excluded {$s}%name% {$p}kingdom from the group.'
+    cleared: '{$p}Usunięto wszystkie królestwa.'
+    removed: '{$p}Usunięto królestwo {$s}%name% {$p}z grupy.'
+    disbanded: '{$e}Królestwo o UUID {$es}%id% {$e}zostało automatycznie usunięte z tego znaku, ponieważ już nie istnieje.'
+    limit: '{$e}Nie możesz dodać więcej niż {$es}%limit% {$e}królestw do grupy.'
     include:
-      owner: '{$e}To include your kingdom, simply change the protection type.'
-      included: '{$p}Added {$s}%name% {$p}kingdom to the group.'
-      name: '{$p}Enter the name of the kingdom you wish to add.'
-      is-already-in-group: '&3%name% {$e}kingdom is already in the group.'
-    disbanded: '{$e}Kingdom with UUID {$es}%id% {$e}has been automatically removed from this sign as they no longer exist.'
-    limit: '{$e}You can''t add more than {$es}%limit% {$e}kingdoms to the group.'
-    removed: '{$p}Removed {$s}%name% {$p}kingdom from the group.'
-players:
-  online: '{$p}Online'
-  offline: '&4Offline'
-kingdoms:
-  cleared: '{$p}Usunięto wszystkie królestwa.'
-  removed: '{$p}Usunięto królestwo {$s}%name% {$p}z grupy.'
-  disbanded: '{$e}Królestwo o UUID {$es}%id% {$e}zostało automatycznie usunięte z tego znaku, ponieważ już nie istnieje.'
-  limit: '{$e}Nie możesz dodać więcej niż {$es}%limit% {$e}królestw do grupy.'
-  include:
-    included: '{$p}Dodano królestwo {$s}%name% {$p}do grupy.'
-    is-already-in-group: '&3Królestwo {$e}%name% jest już w grupie.'
-    owner: '{$e}Aby dołączyć swoje królestwo, po prostu zmień typ ochrony.'
-    name: '{$p}Podaj nazwę królestwa, które chcesz dodać.'
-  exclude:
-    excluded: '{$p}Wyłączono królestwo {$s}%name% {$p}z grupy.'
-    is-already-in-group: '{$es}Królestwo {$e}%name% jest już wyłączone z grupy.'
-    owner: '{$e}Aby wyłączyć swoje królestwo, po prostu zmień typ ochrony.'
-    name: '{$p}Podaj nazwę królestwa, które chcesz wyłączyć.'
+      included: '{$p}Dodano królestwo {$s}%name% {$p}do grupy.'
+      is-already-in-group: '&3Królestwo {$e}%name% jest już w grupie.'
+      owner: '{$e}Aby dołączyć swoje królestwo, po prostu zmień typ ochrony.'
+      name: '{$p}Podaj nazwę królestwa, które chcesz dodać.'
+    exclude:
+      excluded: '{$p}Wyłączono królestwo {$s}%name% {$p}z grupy.'
+      is-already-in-group: '{$es}Królestwo {$e}%name% jest już wyłączone z grupy.'
+      owner: '{$e}Aby wyłączyć swoje królestwo, po prostu zmień typ ochrony.'
+      name: '{$p}Podaj nazwę królestwa, które chcesz wyłączyć.'
 top-rewards:
   kingdom: |
     {$p}Twoje królestwo zostało nagrodzone kwotą {$s}$%money% {$p}oraz punktami zasobów {$s}%rp% za zajęcie pozycji {$sep}: &5%rank%
@@ -434,18 +405,11 @@ join:
   unread-mails: '{$p}Masz {$s}%unread-mails% {$p}nieprzeczytanych wiadomości od królestw.'
   language:
     not-supported: |
-      {$e}The detected language for your client was {$es}%detected-lang% {$e}which is probably not supported by the plugin or installed by the server.
-      You can change your language later using hover:{{$es}/k language;&9Click to run;|/k language} {$e}command.
+      {$e}Wykryty język w twoim kliencie to {$es}%detected-lang% {$e}który prawdopodobnie nie jest obsługiwany przez wtyczkę lub nie jest zainstalowany na serwerze.
+      Możesz później zmienić swój język, używając komendy hover:{{$es}/k language;&9Kliknij aby uruchomić;|/k language} {$e}.
     supported: |
-      {$p}Your detected language is {$s}%detected-lang% {$sep}({$s}%kingdoms_lang%{$sep})
-      {$sep}[&9&l!{$sep}] {$p}If you believe this was a mistake, you can change it with hover:{{$s}/k language;&9Click to open;/k language} {$p}command.
-language:
-  not-supported: |
-    {$e}Wykryty język Twojego klienta to {$es}%detected-lang% {$e}i prawdopodobnie nie jest obsługiwany przez wtyczkę lub zainstalowany na serwerze.
-    Możesz później zmienić swój język za pomocą hover:{{$es}/k language;&9Kliknij, aby uruchomić;|/k language} {$e}komendy.
-  supported: |
-    {$p}Twój wykryty język to {$s}%detected-lang% {$sep}({$s}%kingdoms_lang%{$sep})
-    {$sep}[&9&l!{$sep}] {$p}Jeśli uważasz, że to był błąd, możesz to zmienić za pomocą hover:{{$s}/k language;&9Kliknij, aby otworzyć;/k language} {$p}komendy.
+      {$p}Twój wykryty język to {$s}%detected-lang% {$sep}({$s}%kingdoms_lang%{$sep})
+      {$sep}[&9&l!{$sep}] {$p}Jeśli uważasz, że to błąd, możesz go zmienić za pomocą komendy hover:{{$s}/k language;&9Kliknij aby otworzyć;/k language} {$p}.
 upgrades:
   powerup:
     upgrade: '{$p}Zaktualizowałeś {$s}%powerup% {$p}do poziomu {$s}%new_level%'
@@ -459,102 +423,38 @@ upgrades:
       name: Regeneration Boost
     arrow-boost:
       name: Arrow Boost
-  misc:
-    anti-explosion:
-      name: Anti-Explosion
-    max: '{$e}You''ve already upgraded {$es}%upgrade% {$e}to max level.'
-    enabled: '{$p}Enabled {$s}%upgrade% {$p}misc upgrade.'
-    insanity:
-      name: Insanity
-    upgrade: '{$p}You''ve upgraded {$s}%upgrade% {$p}to level {$s}%new_level%'
-    not-upgraded: '{$e}Cannot disable an upgrade that''s not upgraded.'
-    guards:
-      name: Guards
-    max-turrets:
-      name: Max Turrets
-    cannot-be-disabled: '{$e}This upgrade cannot be disabled.'
-    invasion-teleportation:
-      name: Invasion Teleportation
-    max-claims:
-      name: Max Claims
-    not-enough-resourcepoints: '{$e}You need {$es}%cost% {$e}resourcepoints to upgrade {$es}%upgrade%'
-    anti-trample:
-      name: Anti-Trample
-    invasions:
-      name: Invasions
-    max-members:
-      name: Max Members
-    disabled: '{$e}Disabled {$es}%upgrade% {$e}misc upgrade.'
-    nexus-guards:
-      name: Nexus Guard
-    glory:
-      name: Glory
-    chest-size:
-      name: Vault Size
   champion:
-    focus:
-      name: Focus
-    death-duel:
-      name: Death Duel
-    speed:
-      name: Speed
-    max: '{$e}You''ve already upgraded {$es}%upgrade% {$e}to max level.'
-    upgrade: '{$p}You''ve upgraded {$s}%upgrade% {$p}to level {$s}%new_level%'
-    drag:
-      name: Drag
-    health:
-      name: Health
-    plow:
-      name: Plow
-    resistance:
-      name: Resistance
-    equipment:
-      name: Equipment
-    strength:
-      name: Strength
-    fangs:
-      name: Fangs
+    max: '{$e}Już ulepszyłeś {$es}%upgrade% {$e}do maksymalnego poziomu.'
+    upgrade: '{$p}Ulepszyłeś {$s}%upgrade% {$p}do poziomu {$s}%new_level%'
+    not-enough-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby ulepszyć {$es}%upgrade%'
     reinforcements:
       name: Reinforcements
-    thor:
-      name: Thor
-    throw:
-      name: Throw
-    not-enough-resourcepoints: '{$e}You need {$es}%cost% {$e}resource points to upgrade {$es}%upgrade%'
+    resistance:
+      name: Resistance
+    death-duel:
+      name: Death Duel
     damage-cap:
       name: Damage Cap
-champion:
-  upgrade: '{$p}Zaktualizowałeś {$s}%upgrade% {$p}do poziomu {$s}%new_level%'
-  max: '{$e}Zaktualizowałeś już {$es}%upgrade% {$e}do maksymalnego poziomu.'
-  not-enough-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby ulepszyć {$es}%upgrade%'
-  reinforcements:
-    name: Reinforcements
-  resistance:
-    name: Resistance
-  death-duel:
-    name: Death Duel
-  damage-cap:
-    name: Damage Cap
-  strength:
-    name: Strength
-  equipment:
-    name: Equipment
-  health:
-    name: Health
-  focus:
-    name: Focus
-  throw:
-    name: Throw
-  speed:
-    name: Speed
-  drag:
-    name: Drag
-  thor:
-    name: Thor
-  fangs:
-    name: Fangs
-  plow:
-    name: Plow
+    strength:
+      name: Strength
+    equipment:
+      name: Equipment
+    health:
+      name: Health
+    focus:
+      name: Focus
+    throw:
+      name: Throw
+    speed:
+      name: Speed
+    drag:
+      name: Drag
+    thor:
+      name: Thor
+    fangs:
+      name: Fangs
+    plow:
+      name: Plow
   misc:
     anti-explosion:
       name: Anti-Explosion
@@ -580,11 +480,13 @@ champion:
       name: Glory
     invasions:
       name: Invasions
-upgrade: '{$p}Ulepszyłeś {$s}%upgrade% {$p}do poziomu {$s}%new_level%'
-not-upgraded: '{$e}Nie można wyłączyć ulepszenia, które nie jest ulepszone.'
-cannot-be-disabled: '{$e}To ulepszenie nie może być wyłączone.'
-max: '{$e}Już ulepszyłeś {$es}%upgrade% {$e}do maksymalnego poziomu.'
-not-enough-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby ulepszyć {$es}%upgrade%'
+    upgrade: '{$p}Ulepszyłeś {$s}%upgrade% {$p}do poziomu {$s}%new_level%'
+    enabled: '{$p}Enabled {$s}%upgrade% {$p}misc upgrade.'
+    not-upgraded: '{$e}Nie można wyłączyć ulepszenia, które nie jest ulepszone.'
+    cannot-be-disabled: '{$e}To ulepszenie nie może być wyłączone.'
+    disabled: '{$e}Disabled {$es}%upgrade% {$e}misc upgrade.'
+    max: '{$e}Już ulepszyłeś {$es}%upgrade% {$e}do maksymalnego poziomu.'
+    not-enough-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby ulepszyć {$es}%upgrade%'
 champion-type:
   changed: '{$p}Champion twojego królestwa został zmieniony z {$s}%old_champion% {$p}na {$s}%new_champion%'
   already-in-use: '{$e}Twoje królestwo już używa championa {$es}%champion% {$e}.'
@@ -597,9 +499,7 @@ relations:
   no-permission: '{$e}Nie masz uprawnień do zarządzania relacjami.'
   no-requests: '{$e}Nie masz żadnych wysłanych prośb o relacje do Twojej grupy.'
   disabled-commands: '{$e}Nie możesz użyć tej komendy na tym terytorium.'
-  
-  # Below names are also used for %kingdoms_relation_name%, but not for %kingdoms_land_relation%
-  # For the color of relations (%kingdoms_relation_color%), refer to relations.yml instead.
+
   neutral:
     name: Neutral
   enemy:
@@ -614,7 +514,7 @@ relations:
     name: Self
   wilderness:
     name: Wilderness
-    # The color for this relation is special and is defined in language files instead of relations.yml
+
     color: '&f'
 fly:
   enemies-nearby: '{$e}W pobliżu są wrogowie. Twój lot został wyłączony.'
@@ -632,7 +532,7 @@ fly:
     out-of-land:
       safe: '{$p}Jesteś teraz bezpieczny na tej ziemi.'
       warn: '{$e}Twój lot zostanie wyłączony za {$es}%counter% {$e}sekund z powodu znajdowania się na ziemi, na której nie możesz latać! Natychmiast wróć.'
-# This message should usually refer to some kind of recruitment forum.
+
 no-kingdom-reminder: '{$e}Przypomnienie{$sep}: {$es}Nie dołączyłeś jeszcze do królestwa.'
 regulator:
   attributes:
@@ -675,136 +575,67 @@ nexus:
   turret-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby kupić tę wieżę.'
   turret-purchased: '{$p}Zakupiłeś {$s}%turret% {$p}za {$s}%fancy_cost% punktów zasobów'
   resource-points: '{$s}Całkowita liczba {$es}%amount% {$s}punktów zasobów została dodana.'
-  settings:
-    tax-invalid: |
-      {$e}Could not test {$es}%tax% {$e}tax equation on you{$sep}: {$es}%reason%
-      {$e}Please enter a valid equation.
-    flag:
-      current: '{$s}Click hover:{{$p}here;{$p}Open Flag URL;@%kingdoms_kingdom_flag%} {$s}to open your current flag URL.'
-      size-limit:
-        fail: '{$e}The URL specified is either not an image or inaccessible{$sep}: {$es}%flag%'
-        height: '{$e}The image specified exceeds the maximum {$es}%limit% {$e}height limit{$sep}: {$es}%height%'
-        width: '{$e}The image specified exceeds the maximum {$es}%limit% {$e}width limit{$sep}: {$es}%width%'
-      enter-value: '{$s}Please enter the new flag URL in chat. Or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.'
-      regex: '{$e}Flag URL cannot be accepted{$sep}: {$es}%flag%'
-      wrong-url: '{$e}Invalid URL for flag{$sep}: {$es}%flag%'
-      contains: '{$e}Flag URL cannot be accepted as it contains a blacklisted word{$sep}: {$es}%flag%'
-      cooldown: '{$e}You need to wait {$es}%cooldown% {$e}before changing your flag.'
-      validate: '{$p}Validating image...'
-      set: '{$p}Your kingdom''s flag image was changed to{$sep}: {$s}%flag%'
-      removed: '{$p}Your kingdom''s flag image was removed.'
-    color:
-      range-blacklisted: '{$e}The color you''ve chosen is not in the range of available colors.'
-      enter-value: |
-        {$s}Please enter the new hex color code in chat. Or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.
-        You can get the hex code for colors from hover:{{$p}here;{$p}Click to Open;@https://htmlcolorcodes.com/}
-      wrong-hex: '{$e}Invalid hex color{$sep}: {$es}%color%'
-      set: '{$p}Your kingdom''s color was changed to{$sep}: {$s}%color%'
-      wrong-rgb: '{$e}Invalid RGB color{$sep}: {$es}%color%'
-    tax-illegal-variable: '{$e}Illegal placeholder used at index {$es}%index% {$e}in equation{$sep}: {$es}%tax%'
-    shield:
-      cooldown:
-        invasions:
-          attacked: '{$e}You need to wait {$es}%time% {$e}before buying a shield again. Since your kingdom invaded {$es}%last% {$e}ago.'
-          defended: '{$e}You need to wait {$es}%time% {$e}before buying a shield again. Since your kingdom was invaded {$es}%last% {$e}ago.'
-        siege-cannon: '{$e}You need to wait {$es}%time% {$e}before buying a shield again. Since you were attacked by a siege cannon {$es}%last% {$e}ago.'
-      not-enough-resource-points: '{$e}You don''t have enough resource points.'
-    tax-enter-value: '{$s}Please enter the new value in chat. Or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.'
-    shield-activated: '{$p}Shield activated for{$sep}: {$s}%kingdoms_time_shield_time_left%'
-    tax-set: |
-      {$p}Tax equation has been set to{$sep}: {$s}%tax%
-      {$p}Tested tax on you{$sep}: {$s}%test%
   rank-editor:
+    enter-value: '{$s}Proszę wprowadź nową wartość w czacie lub wpisz hover:{{$e}Anuluj;{$e}Anuluj;/anuluj} {$s}aby anulować.'
+    max: '{$e}Nie możesz stworzyć więcej niż {$es}%limit% {$e}rang dla swojego królestwa.'
+    other: '{$e}Nie możesz zmieniać ustawień rang innych królestw.'
+    cannot-delete-rank: '{$e}Nie możesz usunąć tej rangi. Twoje królestwo musi mieć co najmniej 2 rangi.'
+    cannot-delete-king: '{$e}Nie można usunąć rangi króla.'
+    cannot-delete-member: '{$e}Nie można usunąć rangi członka.'
+    copy: '{$p}Pomyślnie skopiowano rangę {$s}%copy_node% {$p}do rangi {$s}%rank_node%'
     length:
-      node: '{$e}Node length cannot be greater than {$es}%limit%'
-      color: '{$e}Color length cannot be greater than {$es}%limit%'
-      symbol: '{$e}Symbol length cannot be greater than {$es}%limit%'
-      name: '{$e}Name length cannot be greater than {$es}%limit%'
-    cannot-delete-king: '{$e}Cannot delete the king rank.'
-    cannot-delete-rank: '{$e}You can''t delete this rank. Your Kingdom must at least have 2 ranks.'
-    invalid:
-      material: '{$e}You can''t use the material {$es}%material%'
-      max-claims: '{$e}Max claims must be a number and greater than 0'
-      node: '{$e}Rank node cannot contain special characters. Alphabets and numbers only.'
-      priority: '{$e}Invalid priority. Priority must be lower than {$es}%kingdoms_ranks% {$e}and higher than {$es}0'
-    copy: '{$p}Successfully coped {$s}%copy_node% {$p}rank to {$s}%rank_node%'
-    cannot-delete-member: '{$e}Cannot delete the member rank.'
-    max: '{$e}You can''t create more than {$es}%limit% {$e}ranks for your kingdom.'
-    max-claims-limit: '{$e}Max claims cannot be greater than {$es}%limit%'
-    other: '{$e}You can''t change rank settings of other kingdoms.'
-    unknown-material: '{$e}No such material{$sep}: {$es}%material%'
+      node: '{$e}Długość Node nie może być większa niż {$es}%limit%'
+      name: '{$e}Długość nazwy nie może być większa niż {$es}%limit%'
+      color: '{$e}Długość koloru nie może być większa niż {$es}%limit%'
+      symbol: '{$e}Długość symbolu nie może być większa niż {$es}%limit%'
     node:
-      already-exists: '{$e}There''s another rank with this node.'
-    enter-value: '{$s}Please enter the new value in chat or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.'
+      already-exists: '{$e}Jest już inna ranga z tym nodem.'
+    unknown-material: '{$e}Nie ma takiego materiału{$sep}: {$es}%material%'
+    invalid:
+      material: '{$e}Nie możesz używać materiału {$es}%material%'
+      max-claims: '{$e}Maksymalna liczba terenów musi być liczbą większą od 0'
+      node: '{$e}Węzeł rangi nie może zawierać znaków specjalnych. Tylko litery i cyfry są dozwolone.'
+      priority: '{$e}Nieprawidłowy priorytet. Priorytet musi być niższy niż {$es}%kingdoms_ranks% {$e}i wyższy niż {$es}0'
+    max-claims-limit: '{$e}Maksymalna ilość reklamacji nie może być większa niż {$es}%limit%'
     color:
-      has-none-colors: '{$e}The specified text must only contain color codes. Spaces aren''t allowed either.'
-  misc-upgrades:
-    others: '{$e}You can''t change misc upgrades of other kingdoms.'
-  members:
-    others: '{$e}You can''t manage members of other kingdoms.'
+      has-none-colors: '{$e}Określony tekst musi zawierać tylko kody kolorów. Spacje nie są dozwolone.'
   chest:
-    others: '{$e}You can''t open nexus chest of other kingdoms.'
-rank-editor:
-  enter-value: '{$s}Wpisz nową wartość w czacie lub wpisz hover:{{$e}Anuluj;{$e}Anuluj;/anuluj} {$s}aby anulować.'
-  max: '{$e}Nie możesz tworzyć więcej niż {$es}%limit% {$e}rang dla swojego królestwa.'
-  other: '{$e}Nie możesz zmieniać ustawień rang innych królestw.'
-  cannot-delete-rank: '{$e}Nie możesz usunąć tej rangi. Twoje królestwo musi mieć co najmniej 2 rangi.'
-  cannot-delete-king: '{$e}Nie można usunąć rangi króla.'
-  cannot-delete-member: '{$e}Nie można usunąć rangi członka.'
-  copy: '{$p}Pomyślnie skopiowano rangę {$s}%copy_node% {$p}do rangi {$s}%rank_node%'
-  length:
-    node: '{$e}Długość węzła nie może być większa niż {$es}%limit%'
-    name: '{$e}Długość nazwy nie może być większa niż {$es}%limit%'
-    color: '{$e}Długość koloru nie może być większa niż {$es}%limit%'
-    symbol: '{$e}Długość symbolu nie może być większa niż {$es}%limit%'
-  node:
-    already-exists: '{$e}Istnieje już inna ranga z tym węzłem.'
-  unknown-material: '{$e}Brak takiego materiału{$sep}: {$es}%material%'
-  invalid:
-    material: '{$e}Nie możesz użyć materiału {$es}%material%'
-    max-claims: '{$e}Maksymalna liczba roszczeń musi być liczbą większą niż 0'
-    priority: '{$e}Nieprawidłowy priorytet. Priorytet musi być niższy niż {$es}%kingdoms_ranks% {$e}i wyższy niż {$es}0'
-    node: '{$e}Węzeł rangi nie może zawierać znaków specjalnych. Dozwolone są tylko litery i cyfry.'
-  max-claims-limit: '{$e}Maksymalna liczba roszczeń nie może być większa niż {$es}%limit%'
-  color:
-    has-none-colors: '{$e}Określony tekst może zawierać tylko kody kolorów. Spacje nie są dozwolone.'
-chest:
-  others: '{$e}Nie możesz otwierać skrzyni nexus innych królestw.'
-misc-upgrades:
-  others: '{$e}Nie możesz zmieniać różnych ulepszeń innych królestw.'
-members:
-  others: '{$e}Nie możesz zarządzać członkami innych królestw.'
+    others: '{$e}Nie możesz otwierać skarbców Nexusa innych królestw.'
+  misc-upgrades:
+    others: '{$e}Nie możesz zmieniać ulepszeń różnych opcji innych królestw.'
+  members:
+    others: '{$e}Nie możesz zarządzać członkami innych królestw.'
   settings:
-  tax-enter-value: '{$s}Proszę wprowadzić nową wartość w czacie. Lub wpisz hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.'
-  flag:
-    enter-value: '{$s}Proszę wprowadzić nowy URL flagi w czacie. Lub wpisz hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.'
-    current: '{$s}Kliknij hover:{{$p}tutaj;{$p}Otwórz URL flagi;@%kingdoms_kingdom_flag%} {$s}aby otworzyć swój obecny URL flagi.'
-    wrong-url: '{$e}Nieprawidłowy URL dla flagi{$sep}: {$es}%flag%'
-    contains: '{$e}URL flagi nie może być zaakceptowany, ponieważ zawiera zakazane słowo{$sep}: {$es}%flag%'
-    regex: '{$e}URL flagi nie może być zaakceptowany{$sep}: {$es}%flag%'
-    validate: '{$p}Trwa walidacja obrazu...'
-    cooldown: '{$e}Musisz poczekać {$es}%cooldown% {$e}przed zmianą swojej flagi.'
-    size-limit:
-      fail: '{$e}Określony URL nie jest obrazem lub jest nieosiągalny{$sep}: {$es}%flag%'
-      height: '{$e}Określony obraz przekracza maksymalny limit wysokości {$es}%limit% {$e}{$sep}: {$es}%height%'
-      width: '{$e}Określony obraz przekracza maksymalny limit szerokości {$es}%limit% {$e}{$sep}: {$es}%width%'
-    set: '{$p}Obraz flagi twojego królestwa został zmieniony na{$sep}: {$s}%flag%'
-    removed: '{$p}Obraz flagi twojego królestwa został usunięty.'
-color:
-  enter-value: |
-    {$s}Proszę wprowadzić nowy kod koloru hex w czacie. Lub wpisz hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.
-    Możesz uzyskać kod hex dla kolorów, klikając hover:{{$p}tutaj;{$p}Kliknij, aby otworzyć;@https://htmlcolorcodes.com/}
-  wrong-hex: '{$e}Nieprawidłowy kolor hex{$sep}: {$es}%color%'
-  wrong-rgb: '{$e}Nieprawidłowy kolor RGB{$sep}: {$es}%color%'
-  range-blacklisted: '{$e}Wybrany przez ciebie kolor nie mieści się w dostępnych kolorach.'
-  set: '{$p}Kolor twojego królestwa został zmieniony na{$sep}: {$s}%color%'
-tax-set: |
-  {$p}Równanie podatkowe zostało ustawione na{$sep}: {$s}%tax%
-  {$p}Przetestowane na tobie, podatek wynosi{$sep}: {$s}%test%
-tax-illegal-variable: '{$e}Nielegalny atrybut używany na indeksie {$es}%index% {$e}w równaniu{$sep}: {$es}%tax%'
-tax-invalid: |
-  {$e}Nie można przetestować równania podatkowego {$es}%tax% {$e}na tobie{$sep}: {$es}%reason%
-  {$e}Proszę podać poprawne równanie.
+    tax-enter-value: '{$s}Proszę podać nową wartość w czacie. Lub wpisz hover:{{$e}Anuluj;{$e}Anuluj;/anuluj} {$s}aby anulować.'
+    flag:
+      enter-value: '{$s}Proszę wprowadzić nowy URL flagi w czacie. Lub wpisz hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.'
+      current: '{$s}Kliknij hover:{{$p}tutaj;{$p}Otwórz URL flagi;@%kingdoms_kingdom_flag%} {$s}aby otworzyć swój obecny URL flagi.'
+      wrong-url: '{$e}Nieprawidłowy URL dla flagi{$sep}: {$es}%flag%'
+      contains: '{$e}URL flagi nie może być zaakceptowany, ponieważ zawiera zakazane słowo{$sep}: {$es}%flag%'
+      regex: '{$e}URL flagi nie może być zaakceptowany{$sep}: {$es}%flag%'
+      validate: '{$p}Trwa walidacja obrazu...'
+      cooldown: '{$e}Musisz poczekać {$es}%cooldown% {$e}przed zmianą swojej flagi.'
+      size-limit:
+        fail: '{$e}Określony URL nie jest obrazem lub jest nieosiągalny{$sep}: {$es}%flag%'
+        height: '{$e}Określony obraz przekracza maksymalny limit wysokości {$es}%limit% {$e}{$sep}: {$es}%height%'
+        width: '{$e}Określony obraz przekracza maksymalny limit szerokości {$es}%limit% {$e}{$sep}: {$es}%width%'
+      set: '{$p}Obraz flagi twojego królestwa został zmieniony na{$sep}: {$s}%flag%'
+      removed: '{$p}Obraz flagi twojego królestwa został usunięty.'
+    color:
+      enter-value: |
+        {$s}Proszę wprowadzić nowy kod koloru hex w czacie. Lub wpisz hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.
+        Możesz uzyskać kod hex dla kolorów, klikając hover:{{$p}tutaj;{$p}Kliknij, aby otworzyć;@https://htmlcolorcodes.com/}
+      wrong-hex: '{$e}Nieprawidłowy kolor hex{$sep}: {$es}%color%'
+      wrong-rgb: '{$e}Nieprawidłowy kolor RGB{$sep}: {$es}%color%'
+      range-blacklisted: '{$e}Wybrany przez ciebie kolor nie mieści się w dostępnych kolorach.'
+      set: '{$p}Kolor twojego królestwa został zmieniony na{$sep}: {$s}%color%'
+    tax-set: |
+      {$p}Równanie podatkowe zostało ustawione na{$sep}: {$s}%tax%
+      {$p}Przetestowane na tobie, podatek wynosi{$sep}: {$s}%test%
+    tax-illegal-variable: '{$e}Nielegalny atrybut używany na indeksie {$es}%index% {$e}w równaniu{$sep}: {$es}%tax%'
+    tax-invalid: |
+      {$e}Nie można przetestować równania podatkowego {$es}%tax% {$e}na tobie{$sep}: {$es}%reason%
+      {$e}Proszę podać poprawne równanie.
 shield:
   not-enough-resource-points: '{$e}Nie masz wystarczającej liczby punktów zasobów.'
   cooldown:
@@ -812,7 +643,7 @@ shield:
     invasions:
       attacked: '{$e}Musisz poczekać {$es}%time% {$e}przed ponownym zakupem osłony. Ponieważ twoje królestwo najechało inne królestwo {$es}%last% {$e}temu.'
       defended: '{$e}Musisz poczekać {$es}%time% {$e}przed ponownym zakupem osłony. Ponieważ twoje królestwo zostało najechane przez inne królestwo {$es}%last% {$e}temu.'
-shield-activated: '{$p}Osłona aktywowana na czas{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    shield-activated: '{$p}Osłona aktywowana na czas{$sep}: {$s}%kingdoms_time_shield_time_left%'
 nexus-resource-points-enter-value: '{$s}Proszę wprowadzić ilość punktów zasobów lub wpisać hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.'
 teleports:
   moved: '{$e}Teleportacja została anulowana, ponieważ się poruszyłeś.'
@@ -820,16 +651,14 @@ teleports:
   timer:
     actionbar: '{$p}Teleportacja za{$sep}: &9%timer%'
   teleported:
-    actionbar: '&9Teleported'
-teleported:
-  actionbar: '&9Przeteleportowano'
+    actionbar: '&9Przeteleportowano'
 warppad:
   teleporting: '{$p}Teleportacja za {$s}%countdown% sekundy{$p}... Nie ruszaj się.'
   low-fuel: |
     {$e}Potrzebujesz {$es}%fuel-cost% paliwa {$e}do teleportacji, ten Warppad ma tylko {$es}%fuel%
     {$e}Możesz zatankować warppad, rzucając na niego {$es}weglowe kluski{$e}.
   no-safe-location: '{$e}Wokół tego Warppada nie ma bezpiecznych miejsc do teleportacji.'
-  success: '{$p}Zteleportowano!'
+  success: '{$p}Przeteleportowano!'
 structure:
   fuel:
     fill: '{$p}Paliwo struktury{$sep}: {$s}%old-fuel% &7+ {$s}%added-fuel% &7= {$s}%fuel%'
@@ -864,6 +693,9 @@ masswar:
     &4&lMassWar&4 rozpoczęta! {$es}Inwazje są darmowe przez 1 godzinę!
   stopped: '{$s}Masswar zakończony!'
   command-disallowed: '{$e}To polecenie jest niedozwolone podczas MassWars.'
+players:
+  online: '{$p}Online'
+  offline: '&4Offline'
 power:
   death: '{$e}Zginąłeś i straciłeś {$es}%lost% {$e}mocy.'
 kingdom-guards-spawning: '{$es}%kingdoms_kingdom_name% {$e}Strażnicy królestwa pojawiają się wokół ciebie...'
@@ -904,24 +736,15 @@ item-editor:
       enter: '{$p}Wprowadź nazwę atrybutu {$cancel}'
     uuid:
       enter: '{$p}Wprowadź UUID atrybutu {$cancel}'
-  nbt:
-    value:
-      error: '{$e}Error when setting value{$sep}: {$es}%error%'
-      enter: '{$p}Please enter the NBT''s value {$cancel}'
-    name:
-      enter: '{$p}Please enter the NBT''s path name {$cancel}'
   custom-model-data:
-    not-supported: '{$e}Custom model datas are not supported in your server version.'
-    enter: '{$p}Enter the custom model data number {$cancel}'
-custom-model-data:
-  enter: '{$p}Podaj numer niestandardowego modelu danych {$cancel}'
-  not-supported: '{$e}Niestandardowe dane modelu nie są obsługiwane w twojej wersji serwera.'
-nbt:
-  name:
-    enter: '{$p}Podaj nazwę ścieżki NBT {$cancel}'
-  value:
-    enter: '{$p}Podaj wartość NBT {$cancel}'
-    error: '{$e}Błąd podczas ustawiania wartości{$sep}: {$es}%error%'
+    enter: '{$p}Wprowadź numer niestandardowych danych modelu {$cancel}'
+    not-supported: '{$e}Niestandardowe dane modelu nie są obsługiwane w twojej wersji serwera.'
+  nbt:
+    name:
+      enter: '{$p}Proszę podać nazwę ścieżki NBT {$cancel}'
+    value:
+      error: '{$e}Błąd podczas ustawiania wartości NBT{$sep}: {$es}%error%'
+      enter: '{$p}Proszę podać wartość NBT {$cancel}'
 commands:
   insufficient-permission: '{$e}Nie masz uprawnień do wykonania tej komendy.'
   cooldown: '{$e}Ta komenda jest w trybie odstępowym przez{$sep}: {$es}%cooldown%'
@@ -1124,7 +947,7 @@ command:
           unknown: |
             Znaleziono traktat pokojowy z nieznanymi królestwami dla{$sep}: 
               {$e}Inicjator{$sep}: {$e}%proposer%
-              {$e}Ofiara{$sep}: {$e}%victim%'
+              {$e}Ofiara{$sep}: {$e}%victim%
     item:
       editor:
         description: '{$s}Edytuj wszystkie właściwości dowolnego przedmiotu, w tym ich nazwę, opis, niestandardowe dane modelu, materiał, atrybuty itp. Ta komenda używa przedmiotu, który aktualnie trzymasz w głównej dłoni. Jeśli nie trzymasz niczego, zostanie użyty przedmiot szablonowy.'
@@ -1137,13 +960,11 @@ command:
         unknown-item: '{$e}Nieznany niestandardowy przedmiot o nazwie{$sep}: {$es}%item%'
         invalid-amount: '{$e}Nieprawidłowa ilość{$sep}: {$es}%amount%'
         done: '{$p}Pomyślnie przekazano {$s}%amount% %item% {$p}o wartości {$s}%rp% punktów zasobów {$p}do {$s}%target%'
-      
       inject:
         description: '{$s}Trwale wstrzykuj punkty zasobów do przedmiotu.'
         usage: '{$usage}item inject {$p}<punkty zasobów>'
         no-item: '{$e}Nie trzymasz żadnego przedmiotu, do którego można wstrzyknąć punkty zasobów.'
         done: '{$p}Pomyślnie wstrzyknięto {$s}%rp% punktów zasobów {$p}do {$s}%item%'
-      
       turret:
         description: '{$s}Otrzymaj bezpośrednio przedmiot wieży.'
         usage: '{$usage}item turret {$p}<styl> &9[ilość] [gracz]'
@@ -1151,16 +972,13 @@ command:
           {$e}Nieznany styl wieży{$sep}: {$es}%style%
           {$e}Dostępne style{$sep}: {$es}%styles%
         done: '{$p}Pomyślnie przekazano {$s}%amount% %item% {$p}do {$s}%target%'
-      
       structure:
         description: '{$s}Otrzymaj bezpośrednio przedmiot struktury.'
         usage: '{$usage}item structure {$p}<styl> &9[ilość] [gracz]'
         unknown-style: |
           {$e}Nieznany styl struktury{$sep}: {$es}%style%
           {$e}Dostępne style{$sep}: {$es}%styles%
-        done: '{$p}Successfully gave {$s}%amount% %item% {$p}to {$s}%target%'
-      done: '{$p}Pomyślnie przekazano {$s}%amount% %item% {$p}do {$s}%target%'
-    
+        done: '{$p}Pomyślnie przekazano {$s}%amount% %item% {$p}do {$s}%target%'
     openfile:
       description: '{$s}Otwiera plik względny w stosunku do folderu pluginu królestwa w domyślnym edytorze tekstu uruchomionym na serwerze. Nie jest to przeznaczone do bezpośredniego użytku przez administratorów, ale dla komendy {$p}/k admin track {$s} w celu łatwego dostępu do plików. Gracz korzystający
         z tej komendy musi mieć nadane uprawnienia operatora. Można to także używać bezpośrednio, jeśli masz link GitHuba z repozytorium KingdomsX. Jeśli serwer nie obsługuje interfejsu graficznego, ta komenda oczywiście nie będzie działać.'
@@ -1175,28 +993,32 @@ command:
     files:
       description: '{$s}Dla celów debugowania. Zapisuje listę wszystkich plików w folderze Kingdoms do pliku.'
       done: '{$p}Struktura plików została zapisana do {$s}hover:{%output%;&7Kliknij, aby otworzyć;/k admin openfile %sanitized_output%}'
-    
     missingguis:
       description: '{$s}Dla celów debugowania. Zapisuje listę wszystkich plików GUI, których brakuje w zainstalowanych pakietach językowych.'
       no-language-packs-installed: '{$e}Twój serwer nie ma zainstalowanych żadnych pakietów językowych.'
       done: '{$p}Struktura plików została zapisana do {$s}hover:{%output%;&7Kliknij, aby otworzyć;/k admin openfile %sanitized_output%}'
-    
     searchconfig:
       description: '{$s}Przeszukuje wszystkie główne pliki konfiguracyjne, pomijając pliki GUI i plik językowy, w poszukiwaniu określonej opcji. Podany parametr obsługuje wzorce RegEx.'
       usage: '&4Sposób użycia{$sep}: {$e}/k admin searchConfig {$p}<wzorzec>'
       no-results: '{$e}Brak wyników dla podanego wzorca{$sep}: {$es}%pattern%'
       found: '{$p}Znaleziono następujące wyniki dla podanego wzorca{$sep}: {$es}%pattern%'
       entry: '{$p}W pliku {$s}%path%{$sep}:'
-    
     unclaim:
       all:
         description: '{$s}Odwódź wszystkie ziemie twojego królestwa.'
-        usage: '{$usage}admin unclaim all {$p}<królestwo>'
+        usage: '{$usage}admin unclaim all {$p}<kingdom>'
       description: '{$s}Odwódź dowolne ziemie.'
       success: '{$p}Odwóczono ziemię na {$s}%x%&7, {$s}%z% {$p}od {$s}%kingdom%'
       not-claimed: '{$e}Ta ziemia nie jest odwóczona.'
       name: unclaim
     languagepack:
+      description: '{$s}Wyświetla listę dostępnych pakietów językowych do instalacji lub aktualizacji.'
+      in-progress: '{$e}Nie możesz wykonywać operacji na pakietach językowych, gdy inny proces jest w trakcie.'
+      notification: |
+        {$p}Dostępna jest aktualizacja dla następujących pakietów językowych{$sep}:
+        %update%
+
+        {$p}Możesz je pobrać, przechodząc do {$s}hover:{/k admin languagepacks;&7Kliknij, aby otworzyć;/k admin languagepacks} {$p}GUI.
       all: |
         {$p}Pobieranie i aktualizacja wszystkich pakietów językowych. To może zająć więcej niż 10 minut.
         Jeśli przez kilka minut nie zobaczysz żadnych wiadomości, sprawdź konsolę w poszukiwaniu błędów. Ten proces nie zostanie zakończony, dopóki nie otrzymasz wiadomości potwierdzającej pobranie wszystkich języków.
@@ -1221,14 +1043,6 @@ command:
       progress: '{$p}Pobieranie   {$s}%downloaded%{$sep}/{$s}%total%'
       aliases: languagespack languagespacks languagepacks langpack langspack lang langs languages
       name: languagepack
-      in-progress: '{$e}You cannot do anything with language packs while another process is still in progress.'
-      description: '{$s}Shows a list of available language packs to install and also to update.'
-      notification: |
-        {$p}An update is available for the following language packs{$sep}:
-        %update%
-
-        {$p}You can download them by going to {$s}hover:{/k admin languagepacks;&7Click to open;/k admin languagepacks} {$p}GUI.
-    
     addons:
       description: '{$s}Pobierz listę wszystkich dostępnych zweryfikowanych dodatków do pluginu.'
       indexing: '{$p}Proszę czekać, aż zostaną zebrane najnowsze informacje o dodatkach...'
@@ -1349,7 +1163,7 @@ command:
       aliases: eval math
     claim:
       description: '{$s}Wymuszenie przejęcia terenu, na którym obecnie się znajdujesz, dla królestwa.'
-      usage: '{$usage}admin claim {$p}<królestwo>'
+      usage: '{$usage}admin claim {$p}<kingdom>'
       success: '{$p}Przejęto teren {$s}%x%&7, {$s}%z% {$p}jako ziemię królestwa.'
       already-claimed: '{$e}Ten teren jest już zajęty przez {$es}%kingdoms_kingdom_name%'
       name: claim
@@ -1372,7 +1186,7 @@ command:
       success: '{$p}Łącznie przetworzono {$s}%amount% {$p}wież.'
     nexus:
       description: '{$s}Otwórz nexus królestwa.'
-      usage: '{$usage}admin nexus {$p}<królestwo>'
+      usage: '{$usage}admin nexus {$p}<kingdom>'
       tp-not-set: '{$es}%kingdom% {$e}nie ma ustawionego swojego nexusa.'
       tp: '{$p}Teleportowanie do nexusa {$s}%kingdom%'
       name: nexus
@@ -1423,17 +1237,17 @@ command:
       aliases: dailycheck
     resourcepoints:
       description: '{$s}Dodaj lub odejmij punkty zasobów królestwa.'
-      usage: '{$usage}admin resourcepoints {$p}<królestwo> &9[ustaw | dodaj | usuń] {$p}<ilość>'
+      usage: '{$usage}admin resourcepoints {$p}<kingdom> &9[ustaw | dodaj | usuń] {$p}<ilość>'
       player-no-kingdom: '{$e}Określony gracz nie ma królestwa.'
-      done: '{$s}Nowe punkty zasobów królestwa {$p}%królestwo%{$sep}: {$s}%rp%'
+      done: '{$s}Nowe punkty zasobów królestwa {$p}%kingdom%{$sep}: {$s}%rp%'
       added: '{$p}Nowe punkty zasobów Twojego królestwa{$sep}: {$s}%rp%'
       invalid-action: '{$e}Nieprawidłowa akcja {$es}%action%{$e}! Użyj{$sep}: {$es}dodaj/usuń/ustaw'
       name: resourcepoints
       aliases: rp resourcepoint
     bank:
       description: '{$s}Dodaj lub odejmij pieniądze z banku królestwa.'
-      usage: '{$usage}admin bank {$p}<królestwo> &9[ustaw | dodaj | usuń] {$p}<ilość>'
-      done: '{$s}Nowy stan banku królestwa {$p}%królestwo%{$sep}: {$s}%kingdoms_fancy_bank%'
+      usage: '{$usage}admin bank {$p}<kingdom> &9[ustaw | dodaj | usuń] {$p}<ilość>'
+      done: '{$s}Nowy stan banku królestwa {$p}%kingdom%{$sep}: {$s}%kingdoms_fancy_bank%'
       added: '{$p}Nowy stan banku Twojego królestwa{$sep}: {$s}%kingdoms_fancy_bank%'
       invalid-action: '{$e}Nieprawidłowa akcja {$es}%action%{$e}! Użyj{$sep}: {$es}dodaj/usuń/ustaw'
       name: bank
@@ -1461,51 +1275,51 @@ command:
       aliases: cmd
     join:
       description: '{$s}Spowoduj, że użytkownik dołączy do innego królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin join {$p}<gracz> <królestwo>'
-      invalid-kingdom: '{$e}Nie można znaleźć królestwa {$es}%królestwo%'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin join {$p}<gracz> <kingdom>'
+      invalid-kingdom: '{$e}Nie można znaleźć królestwa {$es}%kingdom%'
       in-kingdom: |
         {$s}%gracz% {$p}już należy do królestwa o nazwie {$s}%kingdoms_kingdom_name%
-        {$p}Jeśli chcesz kontynuować, wykonaj{$sep}: hover:{{$s}/k admin join %gracz% %królestwo% confirm;{$p}Kliknij, aby potwierdzić;/k admin join %gracz% %królestwo% confirm}
+        {$p}Jeśli chcesz kontynuować, wykonaj{$sep}: hover:{{$s}/k admin join %gracz% %kingdom% confirm;{$p}Kliknij, aby potwierdzić;/k admin join %gracz% %kingdom% confirm}
       king: '{$es}%gracz% {$e}jest królem królestwa {$es}%kingdoms_kingdom_name% {$e}Rozważ rozwiązanie królestwa lub zmianę króla.'
       already-in-kingdom: '{$s}%gracz% {$p}już jest członkiem królestwa {$s}%kingdoms_kingdom_name%'
       success: '{$s}%gracz% {$p}jest teraz członkiem królestwa {$s}%kingdoms_kingdom_name%'
       name: join
     home:
       description: '{$s}Teleportuj się do domu innego królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin home <królestwo>'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin home <kingdom>'
       homeless: '&3Królestwo {$e}%kingdom% {$e}nie ma ustawionego domu.'
       teleported: '{$p}Zostałeś przeniesiony do domu królestwa {$s}%kingdom%'
       aliases: h
     create:
       description: '{$s}Utwórz królestwo dla innego gracza.'
       usage: '{$e}Użycie{$sep}: {$es}/k admin create {$p}<gracz {$sep}| {$p}super> <nazwa>'
-      already-exists: '{$e}Istnieje już królestwo o nazwie{$sep}: {$es}%królestwo%'
+      already-exists: '{$e}Istnieje już królestwo o nazwie{$sep}: {$es}%kingdom%'
       super-creating: '{$p}Tworzenie super królestwa...'
       any-no-player-found: '{$e}Nie można znaleźć żadnego gracza, który nie ma królestwa.'
-      created: '{$p}Pomyślnie utworzono królestwo o nazwie {$s}%królestwo% {$p}dla gracza {$s}%target%'
+      created: '{$p}Pomyślnie utworzono królestwo o nazwie {$s}%kingdom% {$p}dla gracza {$s}%target%'
     permanent:
       description: '{$e}Włącz tryb trwały dla królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin permanent {$p}<królestwo>'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin permanent {$p}<kingdom>'
       on: '{$p}Tryb trwały {$s}włączony.'
       off: '{$p}Tryb trwały {$e}wyłączony.'
     rename:
       description: '{$s}Zmień nazwę królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin rename <królestwo> <nazwa>'
-      already-exists: '{$e}Istnieje już królestwo o nazwie{$sep}: {$es}%królestwo%'
-      renamed: '{$p}Pomyślnie zmieniono nazwę królestwa {$s}%królestwo% {$p}na {$s}%nazwa%'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin rename <kingdom> <nazwa>'
+      already-exists: '{$e}Istnieje już królestwo o nazwie{$sep}: {$es}%kingdom%'
+      renamed: '{$p}Pomyślnie zmieniono nazwę królestwa {$s}%kingdom% {$p}na {$s}%nazwa%'
       aliases: name
     disband:
       description: '{$s}Rozwiązanie królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin disband <królestwo> [cisza]'
-      success: '{$s}%królestwo% {$p}zostało rozwiązane.'
-      announce: '{$es}%królestwo% {$s}zostało rozwiązane.'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin disband <kingdom> [cisza]'
+      success: '{$s}%kingdom% {$p}zostało rozwiązane.'
+      announce: '{$es}%kingdom% {$s}zostało rozwiązane.'
       name: disband
       aliases: delete
     pacifism:
       description: '{$s}Zmienia stan pacyfizmu królestwa.'
-      usage: '{$e}Użycie{$sep}: {$es}/k admin pacifism {$p}<królestwo> {$sep}[{$p}true &7| &4false{$sep}]'
-      enabled: '{$s}Pacyfizm dla królestwa {$p}%królestwo%{$sep}: {$p}Włączony'
-      disabled: '{$s}Pacyfizm dla królestwa {$p}%królestwo%{$sep}: {$e}Wyłączony'
+      usage: '{$e}Użycie{$sep}: {$es}/k admin pacifism {$p}<kingdom> {$sep}[{$p}true &7| &4false{$sep}]'
+      enabled: '{$s}Pacyfizm dla królestwa {$p}%kingdom%{$sep}: {$p}Włączony'
+      disabled: '{$s}Pacyfizm dla królestwa {$p}%kingdom%{$sep}: {$e}Wyłączony'
       aliases: pacifist
     land:
       description: '{$s}Teleportuj się do kraju na podanych współrzędnych.'
@@ -1523,7 +1337,7 @@ command:
         usage: '{$usage}admin player {$p}<gracz>'
       kingdom:
         description: '{$s}Wyświetl informacje o królestwie.'
-        usage: '{$usage}admin kingdom {$p}<królestwo>'
+        usage: '{$usage}admin kingdom {$p}<kingdom>'
       kingdom-message: |
         {$sep}| {$p}ID{$sep}: {$s}%id%
         {$sep}| {$p}Nazwa{$sep}: {$s}%kingdoms_kingdom_name%
@@ -1566,14 +1380,14 @@ command:
       description: '{$s}Znajdź wszystkie jednostki wokół gracza.'
     maxlandmodifier:
       description: '{$s}Zmień maksymalny modyfikator ziem dla królestwa.'
-      usage: '{$usage}admin maxLandModifier {$p}<królestwo> &9[set | add | remove] &9<ilość>'
+      usage: '{$usage}admin maxLandModifier {$p}<kingdom> &9[set | add | remove] &9<ilość>'
       success: '{$p}Pomyślnie zmieniono maksymalny modyfikator ziem dla {$s}%kingdom% {$p}na {$s}%ilość%'
       invalid-action: '{$e}Nieprawidłowa akcja {$es}%action%{$e}! Użyj{$sep}: {$es}add/remove/set'
       name: maxLandModifier
       aliases: mlm maxClaim maxClaims maxLand maxLands maxClaimsModifier maxClaimModifier maxLandsModifier
     shield:
       description: '{$s}Zmień czas trwania tarczy dla królestwa.'
-      usage: '{$usage}admin shield {$p}<królestwo> &9[set | add | remove] {$p}<czas>'
+      usage: '{$usage}admin shield {$p}<kingdom> &9[set | add | remove] {$p}<czas>'
       success: '{$p}Pomyślnie zmieniono czas trwania tarczy dla {$s}%kingdom% {$p}na{$sep}: {$s}%ilość%'
       invalid-action: '{$e}Nieprawidłowa akcja {$es}%action%{$e}! Użyj{$sep}: {$es}add/remove/set'
       invalid-kingdom: '{$e}Nie można znaleźć królestwa {$es}%kingdom%'
@@ -1655,8 +1469,8 @@ command:
       changed: '{$p}Twój tag nacji został zmieniony z {$s}%tag% {$p}na %kingdoms_nation_tag% {$p}przez {$s}%player%'
       set: '{$p}Twój tag nacji został ustawiony na {$s}%kingdoms_nation_tag% {$p}przez {$s}%player%'
       cost: '{$e}Twoja nacja potrzebuje {$es}%cost% {$e}pieniędzy, aby zmienić swój tag.'
-      description: '{$s}Change your nation''s tag. Nation tags are smaller than nation names and are usually intended to be used as an abbreviation.'
-      usage: '{$usage}nation tag {$p}<tag>'
+      description: '{$s}Zmień znacznik twojej nacji. Znaczniki nacji są krótsze niż nazwy nacji i zazwyczaj są używane jako skróty.'
+      usage: '{$usage}nacja znacznik {$p}<znacznik>'
     create:
       name-length: '{$e}Długość nazwy nacji nie może być większa niż {$es}%max% {$e}lub mniejsza niż {$es}%min%'
       name-english: '{$e}Nazwa nacji musi być po angielsku i zawierać tylko cyfry i litery.'
@@ -1666,13 +1480,13 @@ command:
       name-already-in-use: '{$e}Inna nacja już używa tej nazwy.'
       already-in-nation: '{$e}Już należysz do nacji. Opuść swoją nację, używając hover:{{$es}/k nation leave;{$e}Leave;/k nation leave} {$e}aby stworzyć nową.'
       aliases: new make
-      description: '{$s}Creates a nation.'
-      announce: '{$s}%player% {$p}has founded {$s}%nation% {$p}nation!'
-      usage: '{$usage}nation create <name>'
+      description: '{$s}Tworzy nację.'
+      announce: '{$s}%player% {$p}założył nację {$s}%nation% {$p}!'
+      usage: '{$usage}nacja stwórz <nazwa>'
       name: create
-      cost: '{$e}You need {$es}%cost% {$e}money to create a kingdom.'
+      cost: '{$e}Aby założyć nację, potrzebujesz {$es}%cost% {$e}pieniędzy.'
       success:
-        message: '{$p}You have founded {$s}%nation% {$p}nation!'
+        message: '{$p}Założyłeś nację {$s}%nation% {$p}!'
         sound: UI_TOAST_CHALLENGE_COMPLETE
     rename:
       king-only: '{$e}Tylko król stolicy nacji może zmienić nazwę nacji.'
@@ -1682,311 +1496,309 @@ command:
       cooldown: '{$e}Musisz poczekać {$es}%cooldown% {$e}przed zmianą nazwy nacji.'
       success: '{$p}Nazwa nacji została zmieniona na{$sep}: {$s}%name%'
       cost: '{$e}Twoja nacja potrzebuje {$es}%cost% {$e}pieniędzy, aby zmienić nazwę.'
-      description: '{$s}Renames your nation.'
+      description: '{$s}Zmienia nazwę twojej nacji.'
       name: rename
-      usage: '{$usage}nation rename &5<name>'
+      usage: '{$usage}nation rename &5<nazwa>'
     nexus:
       help: |
-        {$p}Right-click on a block to turn it into your new nexus.
-        To disable nexus mode, do hover:{{$s}/k nation nexus;{$e}Disable;/k nation nexus} {$p}again.
-      open-nexus-permission: '{$e}You don''t have permission to open nexus remotely.'
-      cannot-replace: '{$e}You cannot replace that block with your nexus!'
-      success: '&aSuccessfully placed your nexus at {$s}%x%&7, {$s}%y%&7, {$s}%z%'
-      already-there: '{$e}That''s your nexus right there. What are you trying to do...?'
-      outside-of-land: '{$e}You need to be in your own land to place your nexus.'
-      disabled: '{$e}Nexus mode has been disabled.'
+        {$p}Kliknij prawym przyciskiem myszy na blok, aby zamienić go na nowy nexus.
+        Aby wyłączyć tryb nexus, użyj polecenia hover:{{$s}/k nation nexus;{$e}Wyłącz;/k nation nexus} {$p}ponownie.
+      open-nexus-permission: '{$e}Nie masz uprawnień do otwierania nexusa zdalnie.'
+      cannot-replace: '{$e}Nie możesz zamienić tego bloku na twój nexus!'
+      success: '&aPomyślnie umieszczono twój nexus na pozycji {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+      already-there: '{$e}To jest twój nexus. Co próbujesz zrobić...?'
+      outside-of-land: '{$e}Musisz być na własnej ziemi, aby umieścić swój nexus.'
+      disabled: '{$e}Tryb nexus został wyłączony.'
       aliases: setnexus nexusset placenexus nexusplace
-      disabled-on-land-change: '{$e}You''ve moved out of your kingdom land and nexus mode has been disabled.'
-      not-claimed: '{$e}You can only set your nation nexus on your own land!'
+      disabled-on-land-change: '{$e}Opuściłeś obszar swojej krainy, a tryb nexus został wyłączony.'
+      not-claimed: '{$e}Możesz umieścić twój nexus tylko na swojej ziemi!'
       name: nexus
       open:
-        description: '{$s}Open your nation''s nexus remotely.'
+        description: '{$s}Otwórz swój nexus zdalnie.'
       deactivated:
-        actionbar: '{$s}Nexus Mode{$sep}: {$e}Deactivated'
-      setting-kingdom: '{$e}You''re already setting your kingdom''s nexus location.'
-      another-structure: '{$e}There''s already another kingdom structure in this land.'
+        actionbar: '{$s}Tryb Nexus{$sep}: {$e}Wyłączony'
+      setting-kingdom: '{$e}Już ustawiasz lokalizację nexusa dla swojej nacji.'
+      another-structure: '{$e}Na tej ziemi już znajduje się inna struktura nacji.'
       activated:
-        actionbar: '{$s}Nexus Mode{$sep}: {$p}Activated'
-      disabled-on-damage: '{$e}You''ve been damaged and nexus mode has been disabled.'
-      description: '{$s}Set your nation''s nexus point.'
+        actionbar: '{$s}Tryb Nexus{$sep}: {$p}Włączony'
+      disabled-on-damage: '{$e}Zostałeś zraniony, a tryb nexus został wyłączony.'
+      description: '{$s}Ustaw punkt nexusa dla swojej nacji.'
     top:
-      description: '{$s}Shows the top ranking nations.'
-      footer: '     {$sep}[hover:{{$s}←;{$s}Previous Page;/k nation top %previous_page%}{$sep}] {$sep}[hover:{{$s}→;{$s}Next Page;/k nation top %next_page%}{$sep}]'
+      description: '{$s}Pokazuje najlepsze nacje w rankingu.'
+      footer: '     {$sep}[hover:{{$s}←;{$s}Poprzednia Strona;/k nation top %previous_page%}{$sep}] {$sep}[hover:{{$s}→;{$s}Następna Strona;/k nation top %next_page%}{$sep}]'
       entry: |
-        {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Members{$sep}: {$s}%kingdoms_nation_kingdoms%
+        {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Członków{$sep}: {$s}%kingdoms_nation_kingdoms%
         &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
         &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank%} &7- {$s}%kingdoms_fancy_nation_might%
-      negative: '{$e}Cannot show negative pages.'
-      loading: '{$s}Loading data...'
-      no-more-pages: '{$e}No more pages to load.'
+      negative: '{$e}Nie można pokazać stron ujemnych.'
+      loading: '{$s}Ładowanie danych...'
+      no-more-pages: '{$e}Brak więcej stron do załadowania.'
       header: '{$sep}----------------------------------'
       name: top
     bank:
       not-enough:
-        nation-money: '{$e}Your nation''s bank doesn''t have {$es}%amount% {$e}money.'
-        money: '{$e}You don''t have {$es}%amount% {$e}money.'
+        nation-money: '{$e}Bank twojego narodu nie ma {$es}%amount% {$e}pieniędzy.'
+        money: '{$e}Nie masz {$es}%amount% {$e}pieniędzy.'
       deposit:
         success: |
-          {$p}You've deposited {$s}%amount% {$p}money into your nation's bank.
-          Your new balance{$sep}: {$s}%fancy_balance%
-          {$p}Your nation's bank{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        disabled: '{$e}You cannot deposit money.'
+          {$p}Wpłaciłeś {$s}%amount% {$p}pieniędzy do banku swojego narodu.
+          Twój nowy stan konta{$sep}: {$s}%fancy_balance%
+          {$p}Bank twojego narodu{$sep}: {$s}%kingdoms_fancy_nation_bank%
+        disabled: '{$e}Nie możesz wpłacać pieniędzy.'
       withdraw:
         success: |
-          {$p}You've withdrawn {$s}%amount% {$p}money from your nation's bank.
-          {$p}Your new balance{$sep}: {$s}%fancy_balance%
-          {$p}Your nation's bank{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        disabled: '{$e}You cannot withdraw money.'
-      zero: '{$e}You can''t transit nothing.'
-      usage: '{$usage}nation bank {$p}<deposit/withdraw> <amount>'
-      aliases: money $
-      description: '{$s}Transit your nation''s bank money.'
-      unknown-transaction: '{$e}Unknown transaction {$es}%transaction%'
+          {$p}Wypłaciłeś {$s}%amount% {$p}pieniędzy z banku swojego narodu.
+          {$p}Twój nowy stan konta{$sep}: {$s}%fancy_balance%
+          {$p}Bank twojego narodu{$sep}: {$s}%kingdoms_fancy_nation_bank%
+        disabled: '{$e}Nie możesz wypłacać pieniędzy.'
+      zero: '{$e}Nie możesz przelać nic.'
+      usage: '{$usage}nation bank {$p}<wpłać/wypłać> <kwota>'
+      aliases: pieniądze $
+      description: '{$s}Przelej pieniądze z banku swojego narodu.'
+      unknown-transaction: '{$e}Nieznana transakcja {$es}%transaction%'
       name: bank
-      negative: '{$e}You can''t transit negative values...'
+      negative: '{$e}Nie możesz przelać wartości ujemnej...'
     invite:
-      self: '{$e}You can''t invite your own kingdom to the nation.'
-      already-joined: '{$es}%kingdom% {$e}kingdom is already in your nation.'
+      self: '{$e}Nie możesz zaprosić własnego królestwa do narodu.'
+      already-joined: '{$es}%kingdom% {$e}królestwo już należy do twojego narodu.'
       invited: |
-        {$s}%inviter% {$p}has invited you to join {$s}%nation% {$p}nation.
-            hover:{{$p}Accept with /k nation accept;{$p}Accept;/k nation accept}
-            hover:{{$e}Decline with /k nation decline;{$e}Decline;/k nation decline}
-      already-nation-invited: '{$e}This kingdom is already invited to the nation by {$es}%inviter%'
-      already-in-kingdom: '{$e}That kingdom is already in a nation.'
-      announce: '{$s}%inviter% {$p}has invited {$s}%kingdom% {$p}to the nation.'
-      usage: '{$usage}nation invite {$p}<kingdom> &9[expiration]'
+        {$s}%inviter% {$p}zaprosił cię do dołączenia do {$s}%nation% {$p}narodu.
+            hover:{{$p}Akceptuj za pomocą /k nation accept;{$p}Akceptuj;/k nation accept}
+            hover:{{$e}Odrzuć za pomocą /k nation decline;{$e}Odrzuć;/k nation decline}
+      already-nation-invited: '{$e}To królestwo już zostało zaproszone do narodu przez {$es}%inviter%'
+      already-in-kingdom: '{$e}To królestwo już należy do narodu.'
+      announce: '{$s}%inviter% {$p}zaprosił {$s}%kingdom% {$p}do dołączenia do narodu.'
+      usage: '{$usage}nation invite {$p}<kingdom> &9[data wygaśnięcia]'
       name: invite
       aliases: inv
-      expired: '{$e}Your nation invite from {$es}%inviter% {$e}has expired!'
-      expired-notify: '{$e}Your invite to {$es}%invited% {$e}nation has expired!'
-      description: '{$s}Sends an invitation to a kingdom to join the nation.'
-      max-members: '{$e}Your nation is already full with {$es}%kingdoms_nation_kingdoms% {$e}members.'
+      expired: '{$e}Twoje zaproszenie od {$es}%inviter% {$e}do narodu wygasło!'
+      expired-notify: '{$e}Twoje zaproszenie do {$es}%invited% {$e}narodu wygasło!'
+      description: '{$s}Wysyła zaproszenie do królestwa, aby dołączyło do narodu.'
+      max-members: '{$e}Twój naród jest już pełny z {$es}%kingdoms_nation_kingdoms% {$e}członkami.'
     ally:
-      receiver: '{$s}%nation% {$p}wishes to be allies with you. Accept with hover:{{$s}/k nation ally %nation%;{$p}Accept;/k nation ally %nation%}'
-      limit: '{$e}You can''t ally more than {$es}%max% {$e}nations.'
-      another-request: '{$es}%nation% {$e}sent you a %relation% {$e}relation request.'
+      receiver: '{$s}%nation% {$p}chce być sojusznikiem z twoim narodem. Zaakceptuj za pomocą hover:{{$s}/k nation ally %nation%;{$p}Akceptuj;/k nation ally %nation%}'
+      limit: '{$e}Nie możesz zawierać sojuszy z więcej niż {$es}%max% {$e}narodami.'
+      another-request: '{$es}%nation% {$e}wysłał do ciebie prośbę o sojusz {$e}typu %relation%.'
       usage: '{$usage}nation ally {$p}<nation>'
-      already: '{$e}You''re already allies with {$es}%nation%'
+      already: '{$e}Już jesteś sojusznikiem z {$es}%nation%'
       success: |
-        {$p}Your nation has allied {$s}%nation%
-        {$p}Your kingdom has automatically allied every kingdom in that nation.
-      self: '{$e}You can''t make your own nation an ally.'
-      description: '{$s}Send an alliance request to a nation.'
-      sender: '{$p}Sent an alliance request to {$s}%nation%'
-      already-requested: '{$e}You''ve already sent a request to {$es}%nation%'
+        {$p}Twój naród zawarł sojusz z {$s}%nation%
+        {$p}Twoje królestwo automatycznie zawarło sojusz ze wszystkimi królestwami w tym nardzie.
+      self: '{$e}Nie możesz zawierać sojuszy ze swoim własnym narodem.'
+      description: '{$s}Wyślij prośbę o sojusz do narodu.'
+      sender: '{$p}Wysłano prośbę o sojusz do {$s}%nation%'
+      already-requested: '{$e}Już wysłałeś prośbę o sojusz do {$es}%nation%'
     accept:
       aliases: acceptinvite acceptinv acceptinvitation
-      notify: '{$s}%kingdom% {$p}has accepted your invitation.'
-      max-members: '{$e}This nation is already full with {$es}%kingdoms_nation_kingdoms% {$e}members.'
-      no-invites: '{$e}You don''t have any nation invitations sent to you.'
-      expired: '{$e}Your invitation to {$es}%nation% {$e}nation has already expired.'
-      no-longer-exists: '{$e}That nation no longer exists.'
-      not-invited: '{$e}You''re not invited to {$es}%nation% {$e}nation.'
-      accepted: '{$p}You''ve accepted {$s}%inviter%''s {$p}invitation to join {$es}%nation% {$p}nation.'
-      description: '{$s}Accept invitations to join a nation.'
-      multiple-invites: '{$e}You have multiple invites, please specify the nation name that you want to join.'
+      notify: '{$s}%kingdom% {$p}zaakceptowało twoje zaproszenie.'
+      max-members: '{$e}Ten naród jest już pełny z {$es}%kingdoms_nation_kingdoms% {$e}członkami.'
+      no-invites: '{$e}Nie masz żadnych zaproszeń do narodu.'
+      expired: '{$e}Twoje zaproszenie do narodu {$es}%nation% {$e}już wygasło.'
+      no-longer-exists: '{$e}Ten naród już nie istnieje.'
+      not-invited: '{$e}Nie masz zaproszenia do narodu {$es}%nation%'
+      accepted: '{$p}Zaakceptowałeś zaproszenie od {$s}%inviter% {$p}dołączenia do narodu {$es}%nation%'
+      description: '{$s}Akceptuj zaproszenia do dołączenia do narodu.'
+      multiple-invites: '{$e}Masz kilka zaproszeń, proszę określ nazwę narodu, do którego chcesz dołączyć.'
       name: accept
-      joined: '{$s}%kingdom% {$p}has joined the nation.'
+      joined: '{$s}%kingdom% {$p}dołączyło do narodu.'
     capital:
       usage: '{$usage}nation capital {$p}<kingdom>'
-      already: '{$es}%kingdoms_other_kingdom_name% {$e}is already the nation''s capital.'
-      description: '{$s}Set your nation''s new capital.'
+      already: '{$es}%kingdoms_other_kingdom_name% {$e}jest już stolicą narodu.'
+      description: '{$s}Ustaw nową stolicę swojego narodu.'
       name: capital
-      not-in-nation: '{$es}%kingdom% {$e}is not in your nation.'
-      only-king: '{$e}Only the capital''s king can set the new nation capital.'
-      set: '{$s}%kingdoms_nation:capital get=name% {$p}is now the nation''s capital.'
+      not-in-nation: '{$es}%kingdom% {$e}nie należy do twojego narodu.'
+      only-king: '{$e}Tylko król stolicy może ustawić nową stolicę narodu.'
+      set: '{$s}%kingdoms_nation:capital get=name% {$p}jest teraz stolicą narodu.'
       aliases: king
     setspawn:
-      nexus-land: '{$e}You can only set your kingdom home on your nexus land!'
-      description: '{$s}Sets your nation spawn to your current location.'
-      set: '&aSet nation spawn to{$sep}: {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
+      nexus-land: '{$e}Możesz ustawić spawn swojego narodu tylko na ziemi nexus!'
+      description: '{$s}Ustawia spawn narodu na twojej obecnej lokalizacji.'
+      set: '&aUstaw spawn narodu na{$sep}: {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
       aliases: homeset sethome spawnset
       name: setspawn
-      others-land: '{$e}You can only set your nation spawn on the capital.'
-      not-claimed: '{$e}You can only set your nation spawn on claimed lands.'
+      others-land: '{$e}Możesz ustawić spawn narodu tylko w stolicy.'
+      not-claimed: '{$e}Możesz ustawić spawn narodu tylko na zdobytych ziemiach.'
     kick:
       name: kick
-      person: '{$e}Your kingdom has been kicked out of {$es}%nation% {$e}nation by {$es}%kicker%'
-      self: '{$e}You can''t kick your own kingdom...'
-      cant-kick: '{$e}Can''t kick {$es}%kingdom%{$e}.'
-      description: '{$s}Kicks a kingdom from your nation.'
-      announce: '{$es}%kingdom% {$e}has been kicked out of the nation by {$es}%kicker%'
+      person: '{$e}Twoje królestwo zostało wyrzucone z narodu {$es}%nation% {$e}przez {$es}%kicker%'
+      self: '{$e}Nie możesz wyrzucić swojego własnego królestwa...'
+      cant-kick: '{$e}Nie można wyrzucić {$es}%kingdom%{$e}.'
+      description: '{$s}Wyrzuć królestwo z twojego narodu.'
+      announce: '{$es}%kingdom% {$e}zostało wyrzucone z narodu przez {$es}%kicker%'
       usage: '{$usage}nation kick {$p}<kingdom> &9[silent]'
-      not-in-kingdom: '{$e}The specified kingdom is not in your nation.'
+      not-in-kingdom: '{$e}Określone królestwo nie należy do twojego narodu.'
     spawn:
-      not-set: '{$e}Your nation does not have a spawn set!'
-      already-teleporting: '{$e}Already teleporting to nation''s spawn...'
+      not-set: '{$e}Twojemu narodowi nie ustawiono spawnu!'
+      already-teleporting: '{$e}Już teleportujesz się do spawnu narodu...'
       name: spawn
-      cancelled: '{$e}Spawn teleportation has been cancelled!'
-      changed: '{$e}Spawn location has been changed. Teleportation has been cancelled.'
-      description: '{$s}Teleport to your nation''s spawn.'
-      success: '{$p}Teleported!'
-      teleporting: '{$p}Teleporting in {$s}%countdown% seconds{$p}... Don''t move.'
+      cancelled: '{$e}Teleportacja do spawnu została anulowana!'
+      changed: '{$e}Lokalizacja spawnu została zmieniona. Teleportacja została anulowana.'
+      description: '{$s}Teleportuj się do spawnu swojego narodu.'
+      success: '{$p}Teleportowano!'
+      teleporting: '{$p}Teleportowanie za {$s}%countdown% sekundy{$p}... Nie ruszaj się.'
       aliases: home
     promote:
       name: promote
-      not-in-kingdom: '{$es}%promoted% {$e}is not in your nation.'
-      king: '{$e}That player is the king of the nation.'
-      description: '{$s}Promotes a member in your nation.'
-      usage: '{$usage}nation promote {$p}<player>'
-      cant-promote: '{$e}You can''t promote {$es}%promoted%'
-      promoted: '{$s}%promoted% {$p}has been promoted to &9%rank% {$p}by {$s}%player% {$p}in nation.'
-      to-be-king: '{$es}%promoted% {$e}already has the highest rank in the nation. The king of the nation is the king of the nation''s capital.'
+      not-in-kingdom: '{$es}%promoted% {$e}nie należy do twojego narodu.'
+      king: '{$e}Ten gracz jest królem narodu.'
+      description: '{$s}Awansuj członka w swoim narodzie.'
+      usage: '{$usage}nation promote {$p}<gracz>'
+      cant-promote: '{$e}Nie możesz awansować {$es}%promoted%'
+      promoted: '{$s}%promoted% {$p}został awansowany na &9%rank% {$p}przez {$s}%player% {$p}w narodzie.'
+      to-be-king: '{$es}%promoted% {$e}ma już najwyższą rangę w narodzie. Królem narodu jest król stolicy narodu.'
     truce:
       success: |
-        {$p}Your nation has truced {$s}%nation%
-        {$p}Your kingdom has automatically truced every kingdom in that nation.
-      another-request: '{$es}%nation% {$e}sent you a %relation% {$e}relation request.'
-      receiver: '{$s}%nation% {$p}wishes to be truces with you. Accept with hover:{{$s}/k nation truce %nation%;{$p}Accept;/k nation truce %nation%}'
+        {$p}Twój naród zawarł rozejm z {$s}%nation%
+        {$p}Twoje królestwo automatycznie zawarło rozejm ze wszystkimi królestwami w tym nardzie.
+      another-request: '{$es}%nation% {$e}wysłał do ciebie prośbę o rozejm {$e}typu %relation%.'
+      receiver: '{$s}%nation% {$p}chce zawrzeć rozejm z tobą. Akceptuj za pomocą hover:{{$s}/k nation truce %nation%;{$p}Akceptuj;/k nation truce %nation%}'
       usage: '{$usage}nation truce {$p}<nation>'
-      sender: '{$p}Sent a truce request to {$s}%nation%'
-      already-requested: '{$e}You''ve already sent a request to {$es}%nation%'
-      self: '{$e}You can''t make your own nation a truce.'
-      limit: '{$e}You can''t truce more than {$es}%max% {$e}nations.'
-      description: '{$s}Send a truce request to a nation.'
-      already: '{$e}You''re already truces with {$es}%nation%'
+      sender: '{$p}Wysłano prośbę o rozejm do {$s}%nation%'
+      already-requested: '{$e}Już wysłałeś prośbę o rozejm do {$es}%nation%'
+      self: '{$e}Nie możesz uczynić swojego własnego narodu w rozejm.'
+      limit: '{$e}Nie możesz zawrzeć rozejmu z więcej niż {$es}%max% {$e}narodami.'
+      description: '{$s}Wyślij prośbę o rozejm do narodu.'
+      already: '{$e}Już masz rozejm z {$es}%nation%'
     name: nation
     decline:
-      description: '{$s}Decline invitations to join a nation.'
-      multiple-invites: '{$e}You have multiple invites, please specify the nation name that you want to decline the invitation to. Or {$es}* {$e}to decline all the invitations.'
-      declined: '{$e}You''ve declined {$s}%inviter%''s {$e}invitation to join {$es}%nation% {$e}nation.'
-      no-longer-exists: '{$e}That nation no longer exists.'
+      description: '{$s}Odrzuć zaproszenia do dołączenia do narodu.'
+      multiple-invites: '{$e}Masz kilka zaproszeń, proszę określ nazwę narodu, którego zaproszenie chcesz odrzucić. Lub {$es}* {$e}aby odrzucić wszystkie zaproszenia.'
+      declined: '{$e}Odrzuciłeś zaproszenie od {$s}%inviter% {$e}do dołączenia do narodu {$es}%nation%'
+      no-longer-exists: '{$e}Ten naród już nie istnieje.'
       aliases: deny denied reject
-      notify: '{$es}%name% {$e}has declined your invitation.'
-      expired: '{$e}Your kingdom''s invitation to {$es}%nation% {$e}nation has already expired.'
-      no-invites: '{$e}You don''t have any nation invitations sent to you.'
-      all: '{$p}Declined a total of {$s}%invites% {$p}nation invitations.'
+      notify: '{$es}%name% {$e}odrzucił twoje zaproszenie.'
+      expired: '{$e}Zaproszenie twojego królestwa do narodu {$es}%nation% {$e}wygasło.'
+      no-invites: '{$e}Nie masz żadnych zaproszeń do narodu.'
+      all: '{$p}Odrzucono łącznie {$s}%invites% {$p}zaproszeń do narodu.'
       name: decline
-      not-invited: '{$e}Your kingdom is not invited to {$es}%nation% {$e}nation.'
+      not-invited: '{$e}Twoje królestwo nie jest zaproszone do narodu {$es}%nation%'
     disband:
-      king-only: '{$e}Only the capital king can disband the nation.'
+      king-only: '{$e}Tylko król stolicy może rozwiązać naród.'
       aliases: delete
-      description: '{$e}Disbands your nation and all the kingdoms will be kicked.'
-      success: '&4Your nation has been disbanded!'
+      description: '{$e}Rozwiązuje twój naród, a wszyscy członkowie królestw zostaną wyrzuceni.'
+      success: '&4Twój naród został rozwiązany!'
       name: disband
-      announce: '{$es}%player% {$s}has disbanded their nation {$es}%kingdoms_nation_name%'
+      announce: '{$es}%player% {$s}rozwiązał swój naród {$es}%kingdoms_nation_name%'
       confirmation: |
-        &4You're about to disband your nation.
-        All your nation kingdom members will be kicked.
-        Are you sure you want to proceed?
-        Do {$es}/k nation disband &4again to confirm.
+        &4Masz zamiar rozwiązać swój naród.
+        Wszyscy członkowie twojego narodu zostaną wyrzuceni.
+        Czy na pewno chcesz kontynuować?
+        Wpisz {$es}/k nation disband &4ponownie, aby potwierdzić.
     enemy:
-      already: '{$e}You''re already enemies with {$es}%nation%'
-      self: '{$e}You can''t make your own nation an enemy.'
-      description: '{$s}Enemy a nation.'
+      already: '{$e}Już jesteś wrogiem narodu {$es}%nation%'
+      self: '{$e}Nie możesz uczynić swojego własnego narodu wrogiem.'
+      description: '{$s}Uczynij naród wrogiem.'
       success: |
-        {$p}Your nation has enemy'd {$s}%nation%
-        {$p}Your kingdom has automatically enemy'd every kingdom in that nation.
+        {$p}Twój naród uczynił wrogiem {$s}%nation%
+        {$p}Twoje królestwo automatycznie uczyniło wrogiem każde królestwo w tym narodzie.
       usage: '{$usage}nation nation {$p}<nation>'
-      limit: '{$e}You can''t enemy more than {$es}%max% {$e}nations.'
+      limit: '{$e}Nie możesz uczynić wrogiem więcej niż {$es}%max% {$e}narodów.'
     broadcast:
       name: broadcast
       usage: '{$usage}nation broadcast {$p}<message>'
       format:
         message: |
-
           {$sep}[{$s}%kingdoms_nation_name%&7-{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
-
         sound: ENTITY_EXPERIENCE_ORB_PICKUP
-      description: '{$s}Broadcasts a message to all the nation members.'
+      description: '{$s}Wysyła wiadomość do wszystkich członków narodu.'
       aliases: bc announce
     revoke:
       receiver: |
-        {$es}%nation% {$e}has revoked their relation with your nation.
-        {$e}All your relations with any of the kingdoms in that nation has been automatically revoked.
+        {$es}%nation% {$e}odwołał swoje relacje z twoim narodem.
+        {$e}Wszystkie twoje relacje z dowolnym z królestw w tym narodzie zostały automatycznie odwołane.
       sender: |
-        {$e}Your nation has revoked relations with {$es}%nation% {$e}All your relations with any of the kingdoms in that nation has been automatically revoked.
-      no-relation: '{$e}You have no relations with {$es}%nation%'
+        {$e}Twój naród odwołał relacje z {$es}%nation% {$e}Wszystkie twoje relacje z dowolnym z królestw w tym narodzie zostały automatycznie odwołane.
+      no-relation: '{$e}Nie masz żadnych relacji z {$es}%nation%'
       usage: '{$usage}nation revoke {$p}<nation>'
-      description: '{$s}Revoke relationship with a nation.'
-      self: '{$e}You can''t have any relationship with your own nation...'
+      description: '{$s}Odwołuje relacje z narodem.'
+      self: '{$e}Nie możesz mieć żadnych relacji ze swoim własnym narodem...'
     unsetspawn:
       name: unsetspawn
-      success: '&aNation spawn has been removed{$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
-      description: '{$s}Removes your nation''s spawn.'
-      not-set: '{$e}Your nation''s spawn is not set.'
+      success: '&aNation spawn został usunięty{$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+      description: '{$s}Usuwa spawn twojego narodu.'
+      not-set: '{$e}Spawn twojego narodu nie jest ustawiony.'
       aliases: spawnunset unsethome homeunset
-    spawn-not-public: '{$es}%nation% {$e}nation''s home is not public.'
+    spawn-not-public: '{$es}%nation% {$e}Naród nie ma publicznego spawnu.'
     leave:
-      description: '{$s}Your kingdom will leave the nation.'
+      description: '{$s}Twoje królestwo opuści naród.'
       aliases: left
       capital: |
-        {$e}You can't leave your nation as the capital.
-        Either disband the nation using {$es}/k nation disband
-        {$e}Or change your nation's capital using {$es}/k nation capital
+        {$e}Nie możesz opuścić swojego narodu jako stolica.
+        Albo rozwiąż naród za pomocą {$es}/k nation disband
+        {$e}Albo zmień stolicę swojego narodu za pomocą {$es}/k nation capital
       name: leave
-      announce: '{$es}%kingdoms_kingdom_name% {$e}has left the nation!'
-    spawn-permission: '{$e}You don''t have permission to teleport to other nations'' homes.'
+      announce: '{$es}%kingdoms_kingdom_name% {$e}opuściło naród!'
+    spawn-permission: '{$e}Nie masz uprawnień do teleportacji do domów innych nacji.'
     show:
       name: show
-      description: '{$s}Shows information about a nation.'
-      others-permission: '{$e}You don''t have permission to see others info.'
+      description: '{$s}Pokazuje informacje o nacji.'
+      others-permission: '{$e}Nie masz uprawnień do przeglądania informacji o innych.'
       usage: '{$usage}show &9[player | nation | #PLAYER | #NATION] {$p}<player | nation>'
       message-admin: |
         {$sep}&m---------------=({$e}&l %kingdoms_nation_name% {$sep}&m)=---------------
 
-        &7| {$p}Capital{$sep}: {$s}%kingdoms_nation:capital get=name%
+        &7| {$p}Stolica{$sep}: {$s}%kingdoms_nation:capital get=name%
         &7| {$p}Spawn{$sep}: {$s}%kingdoms_nation_spawn%
         &7| {$p}Nexus{$sep}: {$s}%kingdoms_nation_nexus%
-        &7| {$p}Since{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_nation_might%
-        &7| {$p}Shield{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
-        &7| {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Od{$sep}: {$s}%kingdoms_date_nation_since%
+        &7| {$p}Moc{$sep}: {$s}%kingdoms_fancy_nation_might%
+        &7| {$p}Tarcza{$sep}: {$s}%kingdoms_nation_shield_time_left%
+        &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Podatek{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
+        &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
 
-        &7| {$p}Kingdoms{$sep}:
+        &7| {$p}Królestwa{$sep}:
         %kingdoms%
       kingdoms: |
-        hover:{{$s}%kingdoms_kingdom_name%;{$p}Members{$sep}: {$s}%kingdoms_members%
-        {$p}King{$sep}: {$s}%kingdoms_king%
-        {$p}Lands{$sep}: {$s}%kingdoms_claims%}
+        hover:{{$s}%kingdoms_kingdom_name%;{$p}Członkowie{$sep}: {$s}%kingdoms_members%
+        {$p}Król{$sep}: {$s}%kingdoms_king%
+        {$p}Ziemie{$sep}: {$s}%kingdoms_claims%}
       allies: |
-        &7| {$p}Allies{$sep}:
+        &7| {$p}Sojusznicy{$sep}:
         {$es}%allies%
       truces: |
-        &7| {$p}Truces{$sep}:
+        &7| {$p}Rozejmy{$sep}:
         %truces%
       message: |
         {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
-        &7| {$p}King{$sep}: {$s}%king_status%
-        &7| {$p}Nation{$sep}: {$s}%kingdoms_nation_name%
-        &7| {$p}Since{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_might%
-        &7| {$p}Shield{$sep}: {$s}%kingdoms_nation_shield_time_left%
+        &7| {$p}Król{$sep}: {$s}%king_status%
+        &7| {$p}Nacja{$sep}: {$s}%kingdoms_nation_name%
+        &7| {$p}Od{$sep}: {$s}%kingdoms_date_nation_since%
+        &7| {$p}Moc{$sep}: {$s}%kingdoms_fancy_might%
+        &7| {$p}Tarcza{$sep}: {$s}%kingdoms_nation_shield_time_left%
         &7| {$p}Bank{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        &7| {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
 
-        &7| {$p}Kingdoms{$sep}:
+        &7| {$p}Królestwa{$sep}:
         %kingdoms%
       aliases: info who
       enemies: |
-        &7| {$p}Enemies{$sep}:
+        &7| {$p}Wrogowie{$sep}:
         {$es}%enemies%
       relation: '{$sep}◆ {$s}%kingdoms_nation_name%'
     demote:
-      cant-demote: '{$e}You can''t demote {$es}%demoted%'
+      cant-demote: '{$e}Nie możesz degradować {$es}%demoted%'
       usage: '{$usage}nation demote {$p}<player>'
-      demoted: '{$es}%demoted% {$e}has been demoted to &9%rank% {$e}by {$es}%player% {$e}in nation.'
-      member: '{$e}This player has the member rank.'
+      demoted: '{$es}%demoted% {$e}został zdegradowany do &9%rank% {$e}przez {$es}%player% {$e}w nacji.'
+      member: '{$e}Ten gracz ma rangę członka.'
       name: demote
-      not-in-kingdom: '{$es}%demoted% {$e}is not in your kingdom.'
-      description: '{$s}Demotes a member in your nation.'
-    spawn-cant-use-public-home: '{$e}You can''t use {$es}%nation% {$e}Nation''s public home.'
-    spawn-being-invaded: '{$e}You can''t teleport to {$es}%nation%''s {$e}home as it''s being invaded.'
-    description: '{$s}Shows the available nation commands.'
+      not-in-kingdom: '{$es}%demoted% {$e}nie jest w twoim królestwie.'
+      description: '{$s}Degraduje członka w twojej nacji.'
+    spawn-cant-use-public-home: '{$e}Nie możesz używać publicznego spawnu {$es}%nation% {$e}Nacji.'
+    spawn-being-invaded: '{$e}Nie możesz teleportować się do domu {$es}%nation% {$e}Nacji, ponieważ jest on pod inwazją.'
+    description: '{$s}Pokazuje dostępne komendy nacji.'
     join:
       usage: '{$usage}nation join {$p}<nation>'
-      joined: '{$s}%kingdom% {$p}has joined the nation.'
-      description: '{$s}Join a nation that doesn''t require an invitation to join.'
-      requires-invite: '{$e}You need to be invited to join {$es}%nation% {$e}nation.'
-      already-in-nation: '{$e}Your kingdom is already in a nation.'
+      joined: '{$s}%kingdom% {$p}dołączyło do nacji.'
+      description: '{$s}Dołącz do nacji, która nie wymaga zaproszenia.'
+      requires-invite: '{$e}Musisz być zaproszony, aby dołączyć do nacji {$es}%nation% {$e}Nacji.'
+      already-in-nation: '{$e}Twoje królestwo już należy do nacji.'
       name: join
     aliases: community civilization civil
-    spawn-not-set-others: '{$es}%nation% {$e}nation''s home is not set.'
+    spawn-not-set-others: '{$es}%nation% {$e}Dom nacji nie jest ustawiony.'
     not:
-      in-nation: '{$e}No nation was found with that name and the specified kingdom/player is not in a nation either.'
-  bank:
+      in-nation: '{$e}Nie znaleziono nacji o tej nazwie, a określone królestwo/gracz nie należy do żadnej nacji.'
+    bank:
     description: '{$s}Wpłać lub wypłać pieniądze z banku swojego królestwa.'
     usage: '{$usage}bank {$p}<wpłata/wypłata> <kwota>'
     unknown-transaction: '{$e}Nieznana transakcja {$es}%transaction%'
@@ -2126,13 +1938,13 @@ command:
       usage: '{$usage}rp transfer {$p}<królestwo | nacja> <punkty zasobów>'
       success:
         nation: |
-          {$p}You've successfully transfered {$s}%amount% {$p}resource points from your kingdom to your nation.
-          Nation Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+          {$p}Pomyślnie przeniesiono {$s}%amount% {$p}punktów zasobów z twojego królestwa do twojej nacji.
+          Punkty Zasobów Nacji{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
         kingdom: |
-          {$p}You've successfully transfered {$s}%amount% {$p}resource points from your nation to kingdom.
-          Nation Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+          {$p}Pomyślnie przeniesiono {$s}%amount% {$p}punktów zasobów z twojej nacji do królestwa.
+          Punkty Zasobów Nacji{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
     success:
       kingdom: |
         {$p}Pomyślnie przetransferowałeś {$s}%amount% {$p}punktów zasobów z twojej nacji do królestwa.
@@ -2513,8 +2325,8 @@ command:
     aliases: inv invsee
   vault:
     blacklisted-item: '{$e}Nie możesz umieścić tego przedmiotu w skarbcu swojego królestwa.'
-    others-permission: '{$e}You can''t access other kingdoms chest.'
-    description: '{$s}Open your kingdom chest remotely.'
+    others-permission: '{$e}Nie masz dostępu do skrzyń innych królestw.'
+    description: '{$s}Otwórz swoją skrzynię królestwa zdalnie.'
     aliases: storage
   
   invite:
@@ -2545,22 +2357,21 @@ command:
       get: '{$e}Nie masz uprawnień do uzyskiwania papierów z kodami zaproszeń.'
       create: '{$e}Nie masz uprawnień do tworzenia kodów zaproszeń.'
     uses:
-      enter: '{$p}Please enter the number of uses for this invite code. This limits how many players can use this particular code before it becomes useless. Set it to {$s}0 {$p}for unlimited uses {$cancel}'
+      enter: '{$p}Proszę podać liczbę użyć dla tego kodu zaproszeniowego. To ogranicza, ile graczy może użyć tego konkretnego kodu, zanim stanie się bezużyteczny. Ustaw go na {$s}0 {$p}dla nieograniczonych użyć {$cancel}'
       out:
-        of-range: '{$e}Invite code uses must be equal or greater than {$es}%uses-min%'
+        of-range: '{$e}Liczba użyć kodu zaproszeniowego musi być równa lub większa niż {$es}%uses-min%'
     duration:
-      enter: '{$p}Please enter the expiration duration of the invite code {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
+      enter: '{$p}Proszę podać czas trwania ważności kodu zaproszeniowego {$sep}({$s}np. 1 dzień lub 0, aby nigdy nie wygasł{$sep}) {$cancel}'
       out:
-        of-range: '{$e}Invite code durations must be longer than {$es}%duration-min%'
+        of-range: '{$e}Czas trwania kodu zaproszeniowego musi być dłuższy niż {$es}%duration-min%'
     redeem:
-      enter: '{$p}Please enter the new expiration duration of the invite code to redeem it {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
-    deleted-all: '{$p}Deleted all invite codes.'
+      enter: '{$p}Proszę podać nowy czas trwania ważności kodu zaproszeniowego, aby go wykorzystać {$sep}({$s}np. 1 dzień lub 0, aby nigdy nie wygasł{$sep}) {$cancel}'
+    deleted-all: '{$p}Usunięto wszystkie kody zaproszeniowe.'
     aliases: invitescode codeinvite codesinvite codesinvites
-    max: '{$e}Kingdoms can only make up to {$es}%invitecodes-max% {$e}invite codes.'
+    max: '{$e}Królestwa mogą tworzyć maksymalnie {$es}%invitecodes-max% {$e}kodów zaproszeniowych.'
     paper:
-      give: '{$p}Bought an invite paper for {$s}%fancy_invitecode-paper-cost% resource point'
-      cost: '{$e}You need {$es}%fancy_invitecode-paper-cost% resource points {$e}to generate an invite code paper.'
-  
+      give: '{$p}Zakupiono papier z kodem zaproszeniowym za {$s}%fancy_invitecode-paper-cost% punktów zasobów'
+      cost: '{$e}Potrzebujesz {$es}%fancy_invitecode-paper-cost% punktów zasobów {$e}aby wygenerować papier z kodem zaproszeniowym.'
   paper:
     cost: '{$e}Potrzebujesz {$es}%fancy_invitecode-paper-cost% punktów zasobów {$e}do wygenerowania zaproszenia.'
     give: '{$p}Zakupiono papier zaproszenia za {$s}%fancy_invitecode-paper-cost% punktów zasobów'
@@ -2907,7 +2718,7 @@ command:
     aliases: alliance allies
   enemy:
     description: '{$s}Ustaw królestwo jako wroga.'
-    usage: '{$usage}wrogi {$p}<królestwo>'
+    usage: '{$usage}wrogi {$p}<kingdom>'
     limit: '{$e}Nie możesz być wrogi z więcej niż {$es}%max% {$e}królestwami.'
     already: '{$e}Jesteś już wrogiem {$es}%kingdoms_other_kingdom_name%'
     already-requested: '{$e}Już wysłałeś prośbę o wrogość do {$es}%kingdoms_other_kingdom_name%'
@@ -2920,7 +2731,7 @@ command:
     aliases: enemies
   truce:
     description: '{$s}Wysyła prośbę o rozejm do królestwa.'
-    usage: '{$usage}rozejm {$p}<królestwo>'
+    usage: '{$usage}rozejm {$p}<kingdom>'
     limit: '{$e}Nie możesz zawrzeć rozejmu z więcej niż {$es}%max% {$e}królestwami.'
     sender: '{$p}Wysłano prośbę o rozejm do {$s}%kingdoms_other_kingdom_name%'
     already: '{$e}Jesteś już w rozejmie z {$es}%kingdoms_other_kingdom_name%'
@@ -2929,11 +2740,11 @@ command:
     receiver: '{$s}%kingdoms_other_kingdom_name% {$p}chce zawrzeć rozejm z tobą. Akceptuj, najedź kursorem:{{$s}/k rozejm %kingdoms_other_kingdom_name%;{$p}Akceptuj;/k rozejm %kingdoms_other_kingdom_name%}'
     rozejm: '{$p}Jesteś teraz w rozejmie z {$s}%kingdoms_other_kingdom_name%'
     name: rozejm
-    truces: '{$p}You''re now truce with {$s}%kingdoms_other_kingdom_name%'
-  
+    truces: '{$p}Jesteś teraz w zawieszeniu broni z {$s}%kingdoms_other_kingdom_name%'
+
   rejectrelation:
     description: '{$s}Odrzuć prośbę o relacje wysłaną do twojego królestwa.'
-    usage: '{$usage}odrzucrelacje {$p}<królestwo>'
+    usage: '{$usage}odrzucrelacje {$p}<kingdom>'
     not-requested: '{$es}%kingdoms_kingdom_name% {$e}nie wysłało żadnej prośby o relacje.'
     rejected: '{$e}Odrzucono prośbę o relacje %relation% {$e}wysłaną przez {$es}%kingdoms_kingdom_name%'
     notification: '{$e}%kingdoms_kingdom_name% {$es}odrzuciło twoją prośbę o relacje %relation% {$e}.'
@@ -2941,7 +2752,7 @@ command:
   
   revoke:
     description: '{$s}Unieważnij relacje z królestwem.'
-    usage: '{$usage}uniewaznij {$p}<królestwo>'
+    usage: '{$usage}uniewaznij {$p}<kingdom>'
     sender: '{$e}Unieważniono relacje z {$es}%kingdoms_other_kingdom_name%'
     no-relation: '{$e}Nie masz relacji z {$es}%kingdoms_other_kingdom_name%'
     already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}jest już neutralne.'
@@ -2956,21 +2767,21 @@ command:
     peacetreaty:
       already-received: '{$e}Twoje królestwo już otrzymało traktat o pokoju od tego królestwa.'
       already-sent: '{$e}Twoje królestwo już wysłało traktat o pokoju do tego królestwa.'
-    neutrals: '{$p}You''re now neutral with {$s}%kingdom%'
+    neutrals: '{$p}Jesteś teraz w stanie neutralnym z {$s}%kingdom%'
   chat:
     aliases: channel chan c
-    unknown-channel: '{$e}Unknown channel! Please choose{$sep}: &fhover:{Global;Global;/k c g}&7, {$p}hover:{{$p}Kingdom;{$p}Kingdom;/k c k}&7, &ahover:{&aAlly;&aAlly;/k c a}&7, {$es}hover:{{$es}Truce;{$es}Truce;/k c t} &7or {$es}hover:{&9Nation;&9Nation;/k c n}'
-    changed: '{$p}You''re now chatting in %kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
+    unknown-channel: '{$e}Nieznany kanał! Wybierz{$sep}: &fhover:{Global;Global;/k c g}&7, {$p}hover:{{$p}Kingdom;{$p}Kingdom;/k c k}&7, &ahover:{&aAlly;&aAlly;/k c a}&7, {$es}hover:{{$es}Truce;{$es}Truce;/k c t} &7lub {$es}hover:{&9Nation;&9Nation;/k c n}'
+    changed: '{$p}Teraz rozmawiasz w %kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
     direct:
-      message-missing: '{$e}You need a message to directly send to {$es}%kingdom% {$e}kingdom.'
+      message-missing: '{$e}Musisz podać wiadomość, aby wysłać bezpośrednio do {$es}%kingdom% {$e}królestwa.'
       message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] &7-> {$sep}[&9%receiver-kingdom%{$sep}] %displayname% &7≫ {$s}%message%'
-      message-self: '{$e}You can''t send a direct message to your own kingdom.'
+      message-self: '{$e}Nie możesz wysłać bezpośredniej wiadomości do własnego królestwa.'
       message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] %displayname% &7≫ {$s}%message%'
-    usage: '{$usage}chat {$p}<channel> &9[message]'
-    description: '{$s}Switch kingdom chat channels.'
-    muted-channel: '{$e}You can''t chat in muted channels. Unmute the channel with {$es}hover:{/k unmute %channel%;{$es}Click to unmute;/k unmute %internal-name%} {$e}command.'
-    already-in-channel: '{$e}You''re already chatting in {$s}%kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
-    tab-completion-message: '[message]'
+    usage: '{$usage}chat {$p}<channel> &9[wiadomość]'
+    description: '{$s}Przełącz kanały czatu królestwa.'
+    muted-channel: '{$e}Nie możesz rozmawiać na wyciszonych kanałach. Odcisz kanał za pomocą {$es}hover:{/k unmute %channel%;{$es}Kliknij, aby odciszyć;/k unmute %internal-name%} {$e}komendy.'
+    already-in-channel: '{$e}Już rozmawiasz w {$s}%kingdoms_chat_channel_color%%kingdoms_chat_channel_name%'
+    tab-completion-message: '[wiadomość]'
   description: '{$s}Zmień kanały rozmów królestwa.'
   usage: '{$usage}rozmowa {$p}<kanał> &9[wiadomość]'
   tab-completion-message: '[wiadomość]'
@@ -3092,7 +2903,7 @@ command:
   
   donate:
     description: '{$s}Przekazuj punkty zasobów królestwu.'
-    usage: '{$usage}przekaz <królestwo> <ilość>'
+    usage: '{$usage}przekaz <kingdom> <ilość>'
     dont-have: '{$e}Nie masz {$es}%rp% {$e}punktów zasobów.'
     done: '{$p}Przekazałeś {$s}%rp% {$p}do {$s}%kingdom%'
     donated: '{$s}%kingdom% {$p}przekazało ci {$s}%rp% {$p}punktów zasobów.'
@@ -3224,7 +3035,7 @@ command:
     aliases: traktatypokojowe tptp
     miscupgrades:
       description: '{$s}Zmienia różne ulepszenia królestwa objęte umową.'
-      usage: '{$usage}tptp miscUpgrades {$p}<królestwo>'
+      usage: '{$usage}tptp miscUpgrades {$p}<kingdom>'
       doesnt-have-term: '{$e}Umowa z określonym królestwem nie obejmuje ulepszeń.'
     resume:
       name: wznow
@@ -3240,14 +3051,14 @@ command:
     accept:
       name: akceptuj
       description: '{$s}Akceptuje kontrakt traktatu pokojowego.'
-      usage: '{$usage}tptp akceptuj {$p}<królestwo>'
+      usage: '{$usage}tptp akceptuj {$p}<kingdom>'
       failed: '{$e}Twoje królestwo nie spełniło wszystkich wymagań kontraktu, aby go zaakceptować{$sep}:'
       accepted:
         receiver: '{$p}Twoje królestwo zaakceptowało kontrakt traktatu pokojowego od {$s}%kingdoms_other_kingdom_name% {$p}królestwa.'
         sender: '{$s}%kingdoms_name% {$p}zaakceptowało kontrakt traktatu pokojowego twojego królestwa.'
     reject:
       description: '{$s}Odrzuca kontrakt traktatu pokojowego.'
-      usage: '{$usage}tptp odrzuć {$p}<królestwo>'
+      usage: '{$usage}tptp odrzuć {$p}<kingdom>'
       name: odrzuć
       notifications:
         receiver: '{$e}Twoje królestwo odrzuciło traktat pokojowy z {$es}%kingdoms_other_kingdom_name% {$e}.'
@@ -3271,220 +3082,220 @@ command:
   unclaim:
     line:
       done: |
-        {$p}Unclaimed {$s}%lands% {$p}lands in {$s}%direction% {$p}direction.
-        Do hover:{{$s}/k unclaim confirm;{$p}Execute;/k unclaim confirm} {$p}to unclaim the lands.
-      description: '{$p}Unclaim a straight line in a direction. If no direction is specified, it''ll be the direction that the player is facing.'
+        {$p}Odjęto {$s}%lands% {$p}terenów w kierunku {$s}%direction%.
+        Do hover:{{$s}/k unclaim confirm;{$p}Execute;/k unclaim confirm} {$p}aby odjąć tereny.
+      description: '{$p}Odjąć prostą linię w określonym kierunku. Jeśli nie podano kierunku, będzie to kierunek, w którym patrzy gracz.'
       usage: '{$usage}unclaim line {$s}[distance]'
     all:
-      not-enough-resourcepoints: '{$e}You need {$es}%rp% {$e}to unclaim all your lands.'
+      not-enough-resourcepoints: '{$e}Potrzebujesz {$es}%rp% {$e}aby odjąć wszystkie swoje tereny.'
       confirm: |
-        {$e}You're about to unclaim {$es}&l%lands%{$e}.
-        All your turrets and structures will be unclaimed as well and your chests left unprotected.
-        If you want to continue do the command again.
-      description: '{$s}Unclaims all your kingdom lands.'
-      announce: '{$s}%player% {$p}has unclaimed a total of {$s}%lands% {$p}lands!'
-      success: '{$p}Unclaimed a total of {$s}%lands% {$p}lands!'
-    cooldown: '{$e}You can unclaim this land in {$es}%time%'
-    success: '{$p}Unclaimed land at {$s}%x%&7, {$s}%z%'
-    occupied-land: '{$e}This land is occupied by another kingdom! Invade it with {$es}/k invade!'
+        {$e}Zamierzasz odjąć {$es}&l%lands%{$e}.
+        Wszystkie twoje wieżyczki i struktury zostaną odjęte, a twoje skrzynie pozostaną niechronione.
+        Jeśli chcesz kontynuować, wykonaj komendę ponownie.
+      description: '{$s}Odjąć wszystkie terytoria twojego królestwa.'
+      announce: '{$s}%player% {$p}odjął łącznie {$s}%lands% {$p}terenów!'
+      success: '{$p}Odjąłeś łącznie {$s}%lands% {$p}terenów!'
+    cooldown: '{$e}Możesz odjąć ten teren za {$es}%time%'
+    success: '{$p}Odjęto teren na pozycji {$s}%x%&7, {$s}%z%'
+    occupied-land: '{$e}Ten teren jest zajęty przez inne królestwo! Zajmij go za pomocą {$es}/k invade!'
     confirmation:
-      structures: '{$e}This land contains some structures. If you''re sure you want to unclaim it do {$es}/k unclaim confirm'
-      turrets: '{$e}This land contains some turrets. If you''re sure you want to unclaim it do {$es}/k unclaim confirm'
-      home: '{$e}This land is the kingdoms home. If you''re sure you want to unclaim it do {$es}/k unclaim confirm'
-    not-claimed: '{$e}This land is not claimed.'
+      structures: '{$e}Ten teren zawiera pewne struktury. Jeśli jesteś pewien, że chcesz go odjąć, użyj {$es}/k unclaim confirm'
+      turrets: '{$e}Ten teren zawiera pewne wieżyczki. Jeśli jesteś pewien, że chcesz go odjąć, użyj {$es}/k unclaim confirm'
+      home: '{$e}Ten teren to dom królestwa. Jeśli jesteś pewien, że chcesz go odjąć, użyj {$es}/k unclaim confirm'
+    not-claimed: '{$e}Ten teren nie jest zajęty.'
     cannot-remove-nexus: |
-      {$e}Cannot unclaim a land with nexus in it.
-      Please relocate your nexus usinghover:{{$es}/k nexus;&4Click to Enable;/k nexus} {$e}command.
-    disconnection: '{$e}Unclaiming that land will disconnect lands at the location you''re trying to unclaim.'
-    description: '{$s}Unclaim the land you are currently standing in.'
+      {$e}Nie można odjąć terenu z nexus w środku.
+      Przenieś swój nexus za pomocąhover:{{$es}/k nexus;&4Click to Enable;/k nexus} {$e}komendy.
+    disconnection: '{$e}Odjęcie tego terenu spowoduje odłączenie terenów w miejscu, które próbujesz odjąć.'
+    description: '{$s}Odjąć teren, na którym obecnie stoisz.'
     name: unclaim
     auto:
-      usage: '{$usage}unclaim auto &9[player]'
-      on: '{$s}Auto unclaim is now &aON{$s}. You''ll now unclaim lands as you walk.'
-      off: '{$s}Auto unclaim is now {$e}OFF{$s}.'
-      description: '{$p}Automatically unclaim lands as you walk.'
+      usage: '{$usage}unclaim auto &9[gracz]'
+      on: '{$s}Automatyczne odjęcie terenów jest teraz &aWŁĄCZONE{$s}. Będziesz teraz odjąć tereny podczas chodzenia.'
+      off: '{$s}Automatyczne odjęcie terenów jest teraz {$e}WYŁĄCZONE{$s}.'
+      description: '{$p}Automatycznie odjąć tereny podczas chodzenia.'
   claim:
     confirm:
-      description: '{$s}Confirm and claim all the lands in your claim clipboard.'
-      success: '{$p}Successfully claimed all the lands.'
-      empty: '{$e}You don''t have anything in the clipboard.'
+      description: '{$s}Potwierdź i zajmij wszystkie ziemie w schowku.'
+      success: '{$p}Pomyślnie zajęto wszystkie ziemie.'
+      empty: '{$e}Nie masz niczego w schowku.'
       fail: |
-        {$e}Could not claim {$es}%x%&7, {$es}%z% {$e}due to recent changes{$sep}:
+        {$e}Nie można było zająć {$es}%x%&7, {$es}%z% {$e}ze względu na niedawne zmiany{$sep}:
             {$e}%error%
     line:
-      usage: '{$usage}claim line {$s}[distance]'
-      description: '{$p}Claim a straight line in a direction. If no direction is specified, it''ll be the direction that the player is facing.'
-      invalid-direction: '{$e}Invalid direction{$sep}: {$es}%direction%'
-      min-distance: '{$e}Minimum claiming distance is {$es}%min%'
+      usage: '{$usage}claim line {$s}[odległość]'
+      description: '{$p}Zajmij prostą linię w określonym kierunku. Jeśli nie podano kierunku, będzie to kierunek, w którym patrzy gracz.'
+      invalid-direction: '{$e}Nieprawidłowy kierunek{$sep}: {$es}%direction%'
+      min-distance: '{$e}Minimalna odległość zajmowania wynosi {$es}%min%'
       done: |
-        {$p}Claimed {$s}%lands% {$p}lands in {$s}%direction% {$p}direction.
-        Do hover:{{$s}/k claim confirm;{$p}Execute;/k claim confirm} {$p}to claim the lands.
-      max-distance: '{$e}Maximum claiming distance is {$es}%max%'
+        {$p}Zajęto {$s}%lands% {$p}ziemi w kierunku {$s}%direction% {$p}.
+        Kliknij hover:{{$s}/k claim confirm;{$p}Wykonaj;/k claim confirm} {$p}aby zająć te ziemie.
+      max-distance: '{$e}Maksymalna odległość zajmowania wynosi {$es}%max%'
     name: claim
     clipboard:
-      empty: '{$e}You don''t have anything in the clipboard.'
+      empty: '{$e}Nie masz niczego w schowku.'
       usage: '{$usage}claim clipboard [add/remove | clear] <x> <z>'
-      already-added: '{$es}%x%&7, {$es}%z% {$e}was already in the clipboard.'
-      cleared: '{$p}Your clipboard has been successfully cleared.'
-      description: '{$s}Modify your claim selection before confirming.'
-      unknown-action: '{$e}Unknown clipboard action{$sep}: {$es}%action%'
-      cost: '{$p}Claiming these lands will cost {$s}%rp% resource points {$p}and {$s}$%money% money.'
-      different-world: '{$e}Your clipboard belongs to the world{$sep}: {$es}%world%'
-      not-foumd: '{$es}%x%&7, {$es}%z% {$e}was not in the clipboard.'
-      added: '{$p}Added {$s}%x%&7, {$s}%z% {$p}to the clipboard.'
-      removed: '{$p}Removed {$s}%x%&7, {$s}%z% {$p}from the clipboard.'
+      already-added: '{$es}%x%&7, {$es}%z% {$e}jest już w schowku.'
+      cleared: '{$p}Twój schowek został pomyślnie wyczyszczony.'
+      description: '{$s}Modyfikuj swoje zaznaczenie przed potwierdzeniem.'
+      unknown-action: '{$e}Nieznana akcja schowka{$sep}: {$es}%action%'
+      cost: '{$p}Zajęcie tych ziem będzie kosztować {$s}%rp% punktów zasobów {$p}i {$s}$%money% pieniędzy.'
+      different-world: '{$e}Twój schowek jest przypisany do świata{$sep}: {$es}%world%'
+      not-found: '{$es}%x%&7, {$es}%z% {$e}nie jest w schowku.'
+      added: '{$p}Dodano {$s}%x%&7, {$s}%z% {$p}do schowka.'
+      removed: '{$p}Usunięto {$s}%x%&7, {$s}%z% {$p}z schowka.'
     corner:
       set:
-        pos1: '{$p}The first corner position has been set in chunk{$sep}: {$s}%chunkX1%&7, {$s}%chunkZ1%'
-        pos2: '{$p}The second corner position has been set in chunk{$sep}: {$s}%chunkX2%&7, {$s}%chunkZ2%'
+        pos1: '{$p}Pierwszy narożnik został ustawiony na chunk{$sep}: {$s}%chunkX1%&7, {$s}%chunkZ1%'
+        pos2: '{$p}Drugi narożnik został ustawiony na chunk{$sep}: {$s}%chunkX2%&7, {$s}%chunkZ2%'
       usage: '{$usage}claim corner &9[pos1 &7| &9pos2]'
-      description: '{$s}Set two positions as corners and claim everything as a rectangle.'
+      description: '{$s}Ustaw dwie pozycje jako narożniki i zajmij wszystko jako prostokąt.'
     square:
-      description: '{$p}Claim a square with a specified radius around you.'
-      usage: '{$usage}claim square {$p}<radius>'
+      description: '{$p}Zajmij kwadrat o określonym promieniu wokół siebie.'
+      usage: '{$usage}claim square {$p}<promień>'
       radius:
-        invalid: '{$e}The specified square radius is invalid{$sep}: {$es}%radius%'
-        disallowed: '{$e}The specified square radius is must be at least {$es}2 {$e}and less than {$es}%max% {$e}got{$sep}: {$es}%radius%'
-      done: '{$p}Do hover:{{$s}/k claim confirm;{$p}Execute;/k claim confirm} {$p}to claim the lands.'
-    not-connected: '{$e}Your land must be connected to your other kingdom lands.'
-    nation-zone: '{$e}This land is a part of {$es}%nation%''s {$e}nation zone and cannot be claimed.'
-    occupied-land: '{$e}This land is occupied by another kingdom! Invade it with {$es}/k invade!'
-    need-rp: '{$e}You need {$es}%fancy_rp% {$e}resource points to claim land!'
-    already-owned: '{$e}Your kingdom already owns this land!'
-    success: '{$p}Claimed {$s}%x%&7, {$s}%z% {$p}as kingdom land.'
-    max-claims: '{$e}Your kingdom can only claim {$s}%limit% {$e}lands. {$e}Two ways to increase this limit is to get more members or upgrade the max claims misc upgrade from your nexus.'
+        invalid: '{$e}Podany promień kwadratu jest nieprawidłowy{$sep}: {$es}%radius%'
+        disallowed: '{$e}Podany promień kwadratu musi wynosić co najmniej {$es}2 {$e}i być mniejszy niż {$es}%max% {$e}otrzymałeś{$sep}: {$es}%radius%'
+      done: '{$p}Kliknij hover:{{$s}/k claim confirm;{$p}Wykonaj;/k claim confirm} {$p}aby zająć te ziemie.'
+    not-connected: '{$e}Twoje ziemie muszą być połączone z innymi ziemiami Twojego królestwa.'
+    nation-zone: '{$e}Te ziemie są częścią strefy narodowej {$es}%nation% {$e}i nie mogą być zajęte.'
+    occupied-land: '{$e}Te ziemie są zajęte przez inne królestwo! Najpierw je najedź {$es}/k invade!'
+    need-rp: '{$e}Potrzebujesz {$es}%fancy_rp% {$e}punktów zasobów, aby zająć te ziemie!'
+    already-owned: '{$e}Twoje królestwo już posiada te ziemie!'
+    success: '{$p}Zajęto {$s}%x%&7, {$s}%z% {$p}jako ziemię królestwa.'
+    max-claims: '{$e}Twoje królestwo może jedynie zajmować {$s}%limit% {$e}ziemi. {$e}Dwa sposoby na zwiększenie tego limitu to zdobycie więcej członków lub ulepszenie maksymalnej ilości roszczeń w ulepszeniach różności w swoim nexusie.'
     fill:
-      max-iterations: '{$e}Maximum fill iteration cycle reached. Your shape is either too big to fill, or not completely surrounded by claims.'
-      done: '{$p}Do hover:{{$s}/k claim confirm;{$p}Execute;/k claim confirm} {$p}to claim the lands.'
-      max-claims: '{$e}Stopped filling process since you can''t claim more than {$es}%lands% {$e}lands. Your shape is probably either too big to fill, or not completely surrounded by claims.'
-      in-claimed-land: '{$e}Cannot fill, because the land you''re standing in is claimed.'
+      max-iterations: '{$e}Osiągnięto maksymalny cykl wypełniania. Twój kształt jest albo zbyt duży do wypełnienia, albo nie jest całkowicie otoczony roszczeniami.'
+      done: '{$p}Kliknij hover:{{$s}/k claim confirm;{$p}Wykonaj;/k claim confirm} {$p}aby zająć te ziemie.'
+      max-claims: '{$e}Zatrzymano proces wypełniania, ponieważ nie możesz rościć prawa do więcej niż {$es}%lands% {$e}ziemi. Twój kształt prawdopodobnie jest albo zbyt duży do wypełnienia, albo nie jest całkowicie otoczony roszczeniami.'
+      in-claimed-land: '{$e}Nie można wypełniać, ponieważ stoisz na zajętej ziemi.'
       description: |
-        {$p}Claim all the lands inside a shape marked by claims. For example, if you claim a square shaped border (instead of using {$e}/k claim square {$p}you claim the perimeter of the square only.), you'll be able to claim the area (in a mathematical sense) of the square by standing inside the square (any unclaimed land inside) and using.
-        Of course this is useless for a square, but this also works for arbitrary shapes.
-        This command considers all types of claimed lands as "borders", meaning if you wanted to fill a shape next to an area claimed by another kingdom, you could simply claim 3 other sides connected to the 4th side which belongs to the other kingdom.
+        {$p}Zajmij wszystkie ziemie wewnątrz kształtu zaznaczonego przez roszczenia. Na przykład, jeśli zajmujesz obszar w kształcie kwadratu (zamiast używać {$e}/k claim square {$p}do zajęcia tylko obwodu kwadratu.), będziesz mógł zająć obszar (w sensie matematycznym) kwadratu, stając wewnątrz kwadratu (dowolna niezajęta ziemia wewnątrz) i używając.
+        Oczywiście jest to bezużyteczne dla kwadratu, ale działa to również dla dowolnych kształtów.
+        Ta komenda uważa wszystkie rodzaje ziem za "granice", co oznacza, że jeśli chcesz zapełnić kształt obok obszaru zajętego przez inne królestwo, wystarczy zająć 3 inne strony połączone z czwartą stroną, która należy do innego królestwa.
     chunk:
-      max-distance: '{$e}You''re trying to claim a land that''s too far away{$sep}: {$es}%distance% &7> {$es}%max%'
-      permission: '{$e}You don''t have permission to claim lands with chunk coordinates.'
+      max-distance: '{$e}Próbujesz zająć ziemię, która jest zbyt daleko{$sep}: {$es}%distance% &7> {$es}%max%'
+      permission: '{$e}Nie masz uprawnień do zajmowania ziem z użyciem współrzędnych chunków.'
       usage: '{$usage}claim [x] <z>'
-    description: '{$s}claim the land you are currently standing in.'
+    description: '{$s}Zajmij terytorium, na którym aktualnie stoisz.'
     list:
       teleport-admin-description: |
-        &7| {$p}Structures{$sep}: {$s}%structures%
-        &7| {$p}Turrets{$sep}: {$s}%turrets%
-        &7| {$p}Claimed By{$sep}: {$s}%claimedBy%
+        &7| {$p}Struktury{$sep}: {$s}%structures%
+        &7| {$p}Wieżyczki{$sep}: {$s}%turrets%
+        &7| {$p}Zajęte przez{$sep}: {$s}%claimedBy%
 
-        &7Click to teleport to the
-        center of the land.
+        &7Kliknij, aby teleportować się
+        na środek terytorium.
       own-color: '&5'
-      no-claims: '{$e}No claims to show.'
-      description: '{$s}A list of all the claims that a kingdom has. For accurate spacing for columns, consider downloading a resource pack with monospace font. '
+      no-claims: '{$e}Brak dostępnych terytoriów.'
+      description: '{$s}Lista wszystkich terytoriów posiadanych przez królestwo. Dla dokładnych odstępów między kolumnami, rozważ pobranie paczki zasobów ze sztywnym fontem.'
       land-owner: |
-        &7| {$p}Structures{$sep}: {$s}%structures%
-        &7| {$p}Turrets{$sep}: {$s}%turrets%
+        &7| {$p}Struktury{$sep}: {$s}%structures%
+        &7| {$p}Wieżyczki{$sep}: {$s}%turrets%
 
-        &5You claimed this land
+        &5Oto twoje terytorium
       teleport-description: |
-        &7| {$p}Structures{$sep}: {$s}%structures%
-        &7| {$p}Turrets{$sep}: {$s}%turrets%
-    confirmation: |
-      {$e}Your kingdom has to pay {$es}%fancy_rp% {$e}resource points and {$es}%fancy_money% {$e}money.
-      Are you sure you want to continue? Do the command again.
-    exceeded-max: '{$e}You cannot claim more than {$es}%max% {$e}lands!'
-    max-claims-player: '{$e}Your rank is only allowed to claim {$es}%limit% {$e}lands.'
-    disallowed-biome: |
-      {$e}You can't claim in {$es}%biome% {$e}biomes.
-      Note that usually the entire chunk needs to be made out of this type of biome.
-    near-region: '{$e}You cannot claim lands near protected regions.'
-    auto:
-      on: '{$s}Auto claim is now &aON{$s}. You''ll now claim lands as you walk.'
-      off: '{$s}Auto claim is now {$e}OFF{$s}.'
-      permission: '{$e}You don''t have permission to set others auto claim.'
-      description: '{$p}Automatically claim lands as you walk.'
-      usage: '{$usage}claim auto &9[player]'
-    no-claims-player: '{$e}Your rank is not allowed to claim any lands.'
-    not-distanced: '{$e}Another kingdom claimed the lands around the land you''re trying to claim.'
-    in-region: '{$e}You cannot claim lands in protected regions.'
-    cant-overclaim: '{$e}You cannot overclaim this kingdom.'
-    need-money: '{$e}Your kingdom needs {$es}%fancy_money% {$e}money to claim land! Deposit money to your kingdom bank using {$es}/k bank deposit'
-    disabled-world: '{$e}Claiming is disabled in {$s}%world%'
+        &7| {$p}Struktury{$sep}: {$s}%structures%
+        &7| {$p}Wieżyczki{$sep}: {$s}%turrets%
+      confirmation: |
+        {$e}Twoje królestwo musi zapłacić {$es}%fancy_rp% {$e}punkty zasobów i {$es}%fancy_money% {$e}pieniądze.
+        Czy na pewno chcesz kontynuować? Wykonaj komendę ponownie.
+      exceeded-max: '{$e}Nie możesz zajmować więcej niż {$es}%max% {$e}terenów!'
+      max-claims-player: '{$e}Twój rangi pozwala na zajmowanie tylko {$es}%limit% {$e}terenów.'
+      disallowed-biome: |
+        {$e}Nie możesz zajmować terenów w biomie {$es}%biome%{$e}.
+        Zazwyczaj cały chunk musi składać się z tego rodzaju biomu.
+      near-region: '{$e}Nie możesz zajmować terenów w pobliżu chronionych regionów.'
+      auto:
+        on: '{$s}Automatyczne zajmowanie jest teraz &aWŁĄCZONE{$s}. Będziesz zajmować tereny podczas chodzenia.'
+        off: '{$s}Automatyczne zajmowanie jest teraz {$e}WYŁĄCZONE{$s}.'
+        permission: '{$e}Nie masz uprawnień do ustawiania automatycznego zajmowania dla innych.'
+        description: '{$p}Automatycznie zajmuj tereny podczas chodzenia.'
+        usage: '{$usage}claim auto &9[gracz]'
+      no-claims-player: '{$e}Twoja ranga nie pozwala na zajmowanie żadnych terenów.'
+      not-distanced: '{$e}Inne królestwo zajęło terytoria wokół miejsca, które próbujesz zająć.'
+      in-region: '{$e}Nie możesz zajmować terenów w chronionych regionach.'
+      cant-overclaim: '{$e}Nie możesz przejąć kontroli nad tym królestwem.'
+      need-money: '{$e}Twoje królestwo potrzebuje {$es}%fancy_money% {$e}pieniędzy, aby zająć ten teren! Wpłać pieniądze na konto królestwa używając komendy {$es}/k bank deposit'
+      disabled-world: '{$e}Zajmowanie jest wyłączone na świecie {$s}%world%'
   shield:
-    description: '{$s}Deactivate your shield.'
-    no-shield: '{$e}Your kingdom doesn''t have an active shield.'
+    description: '{$s}Dezaktywuj swój tarczownik.'
+    no-shield: '{$e}Twoje królestwo nie ma aktywnej tarczy.'
     confirm: |
-      {$e}If you disable your shield, you have to buy a new one.
-      Kingdom's shield time left{$sep}: {$es}%kingdoms_time_shield_time_left%
-      {$e}To continue do the command hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}to confirm.
-    deactivated: '{$es}%executor% {$e}has deactivated kingdom''s current shield which had {$es}%kingdoms_time_shield_time_left% {$e}time left.'
+      {$e}Jeśli wyłączysz tarczę, będziesz musiał kupić nową.
+      Pozostały czas tarczy królestwa{$sep}: {$es}%kingdoms_time_shield_time_left%
+      {$e}Aby kontynuować, wykonaj komendę hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}aby potwierdzić.
+    deactivated: '{$es}%executor% {$e}dezaktywował obecną tarczę królestwa, która miała {$es}%kingdoms_time_shield_time_left% {$e}czasu.'
   home:
-    description: '{$s}Teleport to your kingdom''s home.'
-    permission: '{$e}You don''t have permission to teleport to other kingdoms'' homes.'
+    description: '{$s}Teleportuj się do domu twojego królestwa.'
+    permission: '{$e}Nie masz uprawnień do teleportacji do domów innych królestw.'
     usage: '{$usage}home {$s}[kingdom]'
-    cant-use-public-home: '{$e}You can''t use {$es}%kingdom% {$e}kingdom''s public home.'
-    not-public: '{$es}%kingdom% {$e}kingdom''s home is not public.'
+    cant-use-public-home: '{$e}Nie możesz używać publicznego domu {$es}%kingdom%{$e} królestwa.'
+    not-public: '{$es}Dom {$e}królestwa %kingdom%{$e} nie jest publiczny.'
     aliases: spawn
-    teleporting: '{$p}Teleporting in {$s}%countdown% seconds{$p}... Don''t move.'
-    changed: '{$e}Home location has been changed. Teleportation has been cancelled.'
-    success: '{$p}Teleported!'
-    not-set: '{$e}Your kingdom does not have a home set!'
-    not-set-others: '{$es}%kingdom% {$e}kingdom''s home is not set.'
-    being-invaded: '{$e}You can''t teleport to {$es}%kingdom%''s {$e}home as it''s being invaded.'
+    teleporting: '{$p}Teleportacja za {$s}%countdown% sekundy{$p}... Nie ruszaj się.'
+    changed: '{$e}Lokalizacja domu została zmieniona. Teleportacja została anulowana.'
+    success: '{$p}Teleportowano!'
+    not-set: '{$e}Twoje królestwo nie ma ustawionego domu!'
+    not-set-others: '{$es}Dom {$e}królestwa %kingdom%{$e} nie jest ustawiony.'
+    being-invaded: '{$e}Nie możesz teleportować się do domu {$es}%kingdom%{$e}, ponieważ jest ono atakowane.'
   nexus:
-    invasion: '{$e}You can''t move your nexus while the land is being invaded.'
+    invasion: '{$e}Nie możesz przemieszczać swojego nexusa, gdy terytorium jest atakowane.'
     remove:
-      invasion: '{$e}You don''t remove your nexus while the land is being invaded.'
-      not-placed: '{$e}Your kingdom nexus is not placed.'
-      permission: '{$e}You don''t have permission to remove your nexus.'
-      removed: '{$e}Successfully removed your kingdom nexus.'
-      description: '{$s}Remove your nexus remotely.'
-    disabled-world: '{$e}Cannot set nexus in disabled world.'
-    another-structure: '{$e}There''s already another national nexus structure in this land.'
-    description: '{$s}Set your nexus point.'
-    already-there: '{$e}That''s your nexus right there. What are you trying to do...?'
-    disabled: '{$e}Nexus mode has been disabled.'
-    setting-nation: '{$e}You''re already setting your nation''s nexus location.'
-    disabled-on-land-change: '{$e}You''ve moved out of your kingdom land and nexus mode has been disabled.'
-    cannot-replace: '{$e}You cannot replace that block with your nexus!'
-    success: '&aSuccessfully placed your nexus at {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+      invasion: '{$e}Nie możesz usuwać swojego nexusa, gdy terytorium jest atakowane.'
+      not-placed: '{$e}Twój nexus nie jest ustawiony.'
+      permission: '{$e}Nie masz uprawnień do usunięcia swojego nexusa.'
+      removed: '{$e}Pomyślnie usunięto twój nexus królestwa.'
+      description: '{$s}Usuń swój nexus zdalnie.'
+    disabled-world: '{$e}Nie można ustawić nexusa w wyłączonym świecie.'
+    another-structure: '{$e}Już istnieje inna struktura narodowego nexusa na tej ziemi.'
+    description: '{$s}Ustaw punkt swojego nexusa.'
+    already-there: '{$e}To jest twój nexus. Co próbujesz zrobić...?'
+    disabled: '{$e}Tryb nexusa został wyłączony.'
+    setting-nation: '{$e}Już ustawiasz lokalizację nexusa swojej nacji.'
+    disabled-on-land-change: '{$e}Przeszedłeś z terenu swojego królestwa, a tryb nexusa został wyłączony.'
+    cannot-replace: '{$e}Nie możesz zastąpić tego bloku swoim nexusem!'
+    success: '&aPomyślnie umieszczono twój nexus na pozycji {$s}%x%&7, {$s}%y%&7, {$s}%z%'
     help: |
-      {$p}Right-click on a block to turn it into your new nexus.
-      To disable nexus mode, do hover:{{$s}/k nexus;{$e}Disable;/k nexus} {$p}again.
-    outside-of-land: '{$e}You need to be in your own land to place your nexus.'
+      {$p}Kliknij prawym przyciskiem myszy na blok, aby zamienić go na swój nowy nexus.
+      Aby wyłączyć tryb nexusa, użyj komendy: {{$s}/k nexus;{$e}Disable;/k nexus} {$p}ponownie.
+    outside-of-land: '{$e}Musisz być na swojej ziemi, aby umieścić swój nexus.'
     open:
-      description: '{$s}Open your kingdom''s nexus remotely.'
-    not-claimed: '{$e}You can only set your kingdom nexus on your own land!'
+      description: '{$s}Otwórz swój nexus królestwa zdalnie.'
+    not-claimed: '{$e}Możesz ustawić swój nexus królestwa tylko na własnej ziemi!'
     activated:
-      actionbar: '{$s}Nexus Mode{$sep}: {$p}Activated'
-    disabled-on-damage: '{$e}You''ve been damaged and nexus mode has been disabled.'
-    another-item: '{$e}There''s already another kingdom item placed there.'
+      actionbar: '{$s}Tryb Nexusa{$sep}: {$p}Aktywowany'
+    disabled-on-damage: '{$e}Zostałeś zraniony, a tryb nexusa został wyłączony.'
+    another-item: '{$e}Już umieszczono inną rzecz królestwa tam.'
     deactivated:
-      actionbar: '{$s}Nexus Mode{$sep}: {$e}Deactivated'
+      actionbar: '{$s}Tryb Nexusa{$sep}: {$e}Dezaktywowany'
     aliases: setnexus nexusset placenexus nexusplace
   mail:
     open:
       usage: '{$usage}mail open {$p}<id>'
-      description: '{$s}Remotely open a mail. This command is not intended to be used by players directly.'
+      description: '{$s}Otwórz zdalnie wiadomość. To polecenie nie jest przeznaczone do bezpośredniego użytku przez graczy.'
     invalid:
-      id: '{$e}The entered mail ID is invalid.'
-    description: '{$s}Mail related commands.'
+      id: '{$e}Wprowadzone ID wiadomości jest nieprawidłowe.'
+    description: '{$s}Komendy związane z pocztą.'
     not:
-      yours: '{$e}This mail doesn''t belong to your kingdom.'
-      found: '{$e}No mail exists with that ID. It was probably deleted.'
+      yours: '{$e}Ta wiadomość nie należy do twojego królestwa.'
+      found: '{$e}Nie istnieje żadna wiadomość o tym identyfikatorze. Prawdopodobnie została usunięta.'
     reply:
       usage: '{$usage}mail reply {$p}<id>'
-      description: '{$s}Reply to a mail. This command is not intended to be used by players directly.'
+      description: '{$s}Odpowiedz na wiadomość. To polecenie nie jest przeznaczone do bezpośredniego użytku przez graczy.'
   sethome:
-    description: '{$s}Sets your kingdom home to your current location.'
-    nexus-land: '{$e}You can only set your kingdom home on your nexus land!'
+    description: '{$s}Ustawia dom twojego królestwa na twojej obecnej lokalizacji.'
+    nexus-land: '{$e}Możesz ustawić dom królestwa tylko na ziemi Nexus!'
     aliases: homeset
-    others-land: '{$e}You can only set your kingdom home on your own land!'
-    set: '&aSet kingdom home to{$sep}: {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
-    not-claimed: '{$e}You can only set your kingdom home on claimed lands.'
-  not-intended-for-direct-use: '{$e}This command isn''t intended to be used by players directly, so unless you''re seeing this without using the command yourself, this is a bug.'
+    others-land: '{$e}Możesz ustawić dom królestwa tylko na własnej ziemi!'
+    set: '&aUstawiono dom królestwa na{$sep}: {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
+    not-claimed: '{$e}Możesz ustawić dom królestwa tylko na zajętych terenach.'
+  not-intended-for-direct-use: '{$e}To polecenie nie jest przeznaczone do bezpośredniego użytku przez graczy, więc chyba że widzisz to bez użycia polecenia, to jest błąd.'
   unsethome:
-    success: '&aKingdom home has been removed{$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
+    success: '&aDom Królestwa został usunięty{$sep}: {$s}%x%&7, {$s}%y%&7, {$s}%z%'
     aliases: homeunset
-    not-set: '{$e}Your kingdom home is not set.'
-    description: '{$s}Removes your kingdom home.'
+    not-set: '{$e}Twoje królestwo nie ma ustawionego domu.'
+    description: '{$s}Usuwa ustawiony dom twojego królestwa.'
 time:
   enter: |
     {$p}Proszę podać daty przed i po.
@@ -3503,7 +3314,7 @@ invasion:
     world-change: '{$e}Nie możesz przenosić się do innych światów podczas inwazji.'
     teleportation: '{$e}Nie możesz teleportować się podczas inwazji.'
     item: '{$e}Nie możesz używać tego przedmiotu podczas inwazji.'
-    damaing-champion-in-protected-region: '{$e}You cannot damage the champion in this region.'
+    damaing-champion-in-protected-region: '{$e}Nie możesz zadawać obrażeń mistrzowi w tej regionie.'
   end:
     attackers:
       success: '{$s}%invader% {$p}pomyślnie najechało {$es}%kingdom%'
@@ -3528,7 +3339,7 @@ invasion:
       defender-death-limit: '{$e}Członkowie Twojego królestwa zginęli zbyt wiele razy, będąc najechanym.'
       attacker-death-limit: '{$s}%kingdom% {$p}członkowie zginęli zbyt wiele razy podczas inwazji na Twoje królestwo.'
   home:
-    moved: '{$e}Your kingdoms home has been moved to {$es}%new-home% {$e}as a result of the previous invasion.'
+    moved: '{$e}Twój dom królestwa został przeniesiony do {$es}%new-home% {$e}w wyniku poprzedniej inwazji.'
 home:
   moved: '{$e}Dom Twojego królestwa został przeniesiony do {$es}%new-home% {$e}w wyniku poprzedniej inwazji.'
 elections:
@@ -3618,35 +3429,29 @@ audit-logs:
   filters:
     time:
       enter: |
-        {$p}Please enter the before and after dates.
-        Format{$sep}: {$s}afterYear/afterMonth/afterDay {$sep}- {$s}beforeYear/afterMonth/afterDay
-        {$p}Relative Format{$sep}: {$s}afterX <time unit> {$sep}- {$s}beforeX <time unit>
-        {$p}Examples{$sep}: {$s}2022/0/0 - 2023/2/2{$sep}, {$s}20days - 10days{$sep}, {$s}10days (shows logs from 10 days ago)
-      invalid: '{$e}Invalid time/date{$sep}: {$es}%input%'
+        {$p}Proszę podać daty przed i po.
+        Format{$sep}: {$s}poRok/poMiesiąc/poDzień {$sep}- {$s}przedRok/przedMiesiąc/przedDzień
+        {$p}Format względny{$sep}: {$s}poX <jednostka_czasu> {$sep}- {$s}przedX <jednostka_czasu>
+        {$p}Przykłady{$sep}: {$s}2022/0/0 - 2023/2/2{$sep}, {$s}20dni - 10dni{$sep}, {$s}10dni (pokazuje dzienniki sprzed 10 dni)
+      invalid: '{$e}Nieprawidłowa data/czas{$sep}: {$es}%input%'
     type:
-      invalid: '{$e}Unknown log type{$sep}: {$es}%type%'
-      enter: '{$p}Please enter the log''s type name you wish to see {$cancel}'
+      invalid: '{$e}Nieznany typ dziennika{$sep}: {$es}%type%'
+      enter: '{$p}Proszę podać nazwę typu dziennika, który chcesz zobaczyć {$cancel}'
     player:
-      enter: '{$p}Please enter the player''s name you wish to see.'
+      enter: '{$p}Proszę podać nazwę gracza, którego dzienniki chcesz zobaczyć.'
   peacetreaties:
-    received: '{$p}Your kingdom has receieved a peace treaty from {$s}%kingdoms_other_kingdom_name% {$p}Check your kingdom logs for more info.'
-    sent: '{$p}Your kingdom has sent one peace treaty to {$s}%kingdoms_name% {$p}Check your kingdom logs for more info.'
+    received: '{$p}Twoje królestwo otrzymało traktat pokojowy od {$s}%kingdoms_other_kingdom_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
+    sent: '{$p}Twoje królestwo wysłało jeden traktat pokojowy do {$s}%kingdoms_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
 books:
-  used-by-another-session: '{$e}Book input is being used by another session. Please complete that first.'
-  cant-move: '{$e}You can''t move this book.'
-  no-empty-slot: '{$e}You don''t have an empty slot available in your hotbar.'
+  used-by-another-session: '{$e}Wprowadzenie książki jest używane przez inną sesję. Proszę najpierw ją zakończyć.'
+  cant-move: '{$e}Nie możesz przemieścić tej książki.'
+  no-empty-slot: '{$e}Nie masz dostępnego pustego miejsca na pasku szybkiego dostępu.'
 invite-codes:
-  kingdom-doesnt-exist: '{$e}The kingdom that the invite code was made for no longer exists.'
-  used: '{$s}%player% {$p}has used an invite code to join the kingdom.'
-  no-longer-valid: '{$e}That invite code is no longer valid. It either expired or someone removed it manually.'
-  max-uses: '{$e}Maximum uses for invite code has already been reached.'
+  kingdom-doesnt-exist: '{$e}Królestwo, dla którego został utworzony kod zaproszeniowy, już nie istnieje.'
+  used: '{$s}%player% {$p}użył kodu zaproszeniowego, aby dołączyć do królestwa.'
+  no-longer-valid: '{$e}Ten kod zaproszeniowy już nie jest ważny. Wygasł lub ktoś go ręcznie usunął.'
+  max-uses: '{$e}Osiągnięto już maksymalną liczbę użyć kodu zaproszeniowego.'
 vault:
-  blacklisted-item: '{$e}You can''t put this item into your kingdom''s vault.'
+  blacklisted-item: '{$e}Nie możesz umieścić tego przedmiotu w skarbcu twojego królestwa.'
 tips:
-  disable-crops-physics: '&2You should consider enabling ''disable-crops-physics'' option in claims.yml, but it has side effects. To ignore this tip, use &c/k admin tip ignore DISABLE_CROPS_PHYSICS'
-  
-  # Tip messages that are shown in console based on the server.
-  message:
-    footer: '&8----------------=------------=----------------'
-    entry: '&8- %description%'
-    header: '&8----------------=( &cTips &8)=----------------'
+  disable-crops-physics: '&2Rozważ włączenie opcji ''disable-crops-physics'' w claims.yml, ale ma to skutki uboczne. Aby zignorować ten tip, użyj &c/k admin tip ignore DISABLE_CROPS_PHYSICS'

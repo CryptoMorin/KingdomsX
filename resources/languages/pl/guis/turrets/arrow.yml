@@ -1,0 +1,81 @@
+title: "&aWieża Strzał"
+type: HOPPER
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "&9Amunicja&8: &2%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    # Ustaw na 0, aby wyłączyć.
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      &2Kup &6%ammo-buy-amount% &2amunicji za &6%cost% &2punktów zasobów.
+      &2W pełni uzupełnij amunicję przez &6kliknięcie shift
+      &2za &6%fill-cost% &2punktów zasobów.
+    slot: 0
+  upgrade:
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Ulepszenie&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Zasięg&8: &6%range% &7➔ &6%next_range%"
+        - "&7⚫ &2Max Amunicja&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
+        - "&7⚫ &2Czas Odnowienia&8: &6%cooldown% &7➔ &6%next_cooldown%"
+        - "&7⚫ &2Max Celów&8: &6%max_targets% &7➔ &6%next_max_targets%"
+        - "&7⚫ &2Prędkość&8: &6%speed% &7➔ &6%next_speed%"
+        - "&7⚫ &2Obrażenia&8: &6%damage% &7➔ &6%next_damage%"
+        - ""
+        - "&7⚫ &2Max Poziom&8: &6III"
+        - "&7⚫ &2Koszt&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Poziom&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Zasięg&8: &6%range%"
+        - "&7⚫ &2Max Amunicja&8: &6%max_ammo%"
+        - "&7⚫ &2Czas Odnowienia&8: &6%cooldown%"
+        - "&7⚫ &2Max Celów&8: &6%max_targets%"
+        - "&7⚫ &2Prędkość&8: &6%speed%"
+        - "&7⚫ &2Obrażenia&8: &6%damage%"
+    slot: 1
+  manual:
+    manual:
+      condition: "manual"
+      name: "&2Ręczny"
+      material: LEVER
+      lore: |
+        &7Tryb ręczny pozwala ci
+        wyłączyć automatyczne aktywowanie
+        wież i zamiast tego możesz nimi sterować.
+
+        &2Kliknij lewym przyciskiem, aby przejść
+        w &9tryb automatyczny
+
+        &2Kliknij prawym przyciskiem, aby rozpocząć
+        obsługę wieży
+    automatic:
+      name: "&9Automatyczny"
+      material: COMPARATOR
+      lore: |
+        &7Tryb automatyczny spowoduje,
+        że wieże automatycznie wykrywają
+        pobliskich wrogów i strzelają do nich.
+
+        &2Kliknij lewym przyciskiem, aby przejść
+        w &9tryb ręczny
+    slot: 2
+  break:
+    name: "&cZniszcz"
+    material: REDSTONE_BLOCK
+    lore:
+      - "&4Niszczy tę wieżę."
+    slot: 3
+  close:
+    name: "&cZamknij"
+    material: BARRIER
+    lore:
+      - "&6Zamknij GUI"
+    slot: 4

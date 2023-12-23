@@ -1,0 +1,69 @@
+title: "&2Extractor"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+
+options:
+  collect:
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Brak paliwa &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Nic do zebrania &9%extractor-last-collected-time-passed%"
+      material: RED_WOOL
+    else:
+      name: "&2Zbierz&8: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      material: GREEN_WOOL
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "&6Zebranie wszystkich wygenerowanych"
+      - "punktów zasobów."
+      - "Ostatnio zebrane przez&8: &2%extractor-last-collector%"
+    slot: 0
+  fuel:
+    name: "&2Paliwo&8: &6%fancy_fuel%&8/&6%fancy_max_fuel%"
+    material: COAL
+    refresh: true
+    slot: 1
+    lore: |
+      &7Aby uzupełnić paliwo, po prostu upuść
+      jeden z przedmiotów paliwowych na
+      blok extractor.
+
+      &7Dodatkowo można umieścić {$p}lejek
+      &7na północy, południu, wschodzie, zachodzie lub
+      &7na górze extractor z następującymi przedmiotami.
+      &7Zauważ, że to działa tylko wtedy, gdy paliwo
+      &7w extractorze jest prawie na zerze.
+
+      &2Węgiel&8: &95
+      &2Węgiel drzewny&8: &93
+      &2Pałki Blaze&8: &9100
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "&9Ulepsz&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Co&8: &6%every% &7➔ &6%next-every%"
+        - "&7⚫ &2Punkty Zasobów&8: &6%fancy_resource-points% &7➔ &6%fancy_next-resource-points%"
+        - "&7⚫ &2Zużycie Paliwa&8: &6%fancy_extractor_needed_fuel% &7➔ &6%fancy_next_extractor_needed_fuel%"
+        - ""
+        - "&7⚫ &2Maksymalny Poziom&8: &6%roman_next_level%"
+        - "&7⚫ &2Koszt&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Poziom&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Co&8: &6%every%"
+        - "&7⚫ &2Punkty Zasobów&8: &6%fancy_resource-points%"
+        - "&7⚫ &2Zużycie Paliwa&8: &6%fancy_extractor_needed_fuel%"
+  break:
+    name: "&4Zniszcz"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "&6Niszczy strukturę."
+    slot: 4

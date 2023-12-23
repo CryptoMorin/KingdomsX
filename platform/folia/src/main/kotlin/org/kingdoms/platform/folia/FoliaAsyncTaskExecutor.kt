@@ -21,6 +21,7 @@ class FoliaAsyncTaskExecutor(private val plugin: Plugin) : TaskExecutor {
     override fun repeat(runnable: Runnable, initialDelay: Long, repeatInterval: Long, timeUnit: TimeUnit?): Task {
         val initialMillis = timeUnit?.toMillis(initialDelay) ?: TaskExecutor.ticksToMillis(initialDelay)
         val intervalMillis = timeUnit?.toMillis(repeatInterval) ?: TaskExecutor.ticksToMillis(repeatInterval)
+
         return FoliaTask(
             Bukkit.getAsyncScheduler()
                 .runAtFixedRate(plugin, { _ -> runnable.run() }, initialMillis, intervalMillis, TimeUnit.MILLISECONDS)

@@ -1374,7 +1374,7 @@ command:
         &7| {$p}Ingressou no Reino em{$sep}: {$s}%kingdoms_date_joined%
         &7| {$p}Claim Automático{$sep}: %auto_claim% &7| {$p}Auto Map{$sep}: %auto_map%
         &7| {$p}Tamanho do mapa{$sep}: {$s}%map_width% {$sep}- {$s}%map_height%
-        &7| {$p}Total Donations{$sep}: {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$sep}: {$s}%kingdoms_last_donation_time%
+        &7| {$p}Total Donations{$sep}: {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$sep}: {$s}%kingdoms_date_last_donation_time%
         &7| {$p}Claims &7({$s}%kingdoms_player_claims%&7){$sep}: %claims%
         &7| {$p}Dados compactados{$sep}: {$s}%compressed%
       found: "{$p}Player {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}está nos seguintes reinos{$sep}:"
@@ -2034,12 +2034,12 @@ command:
     online-prefix: |
       hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Ingressou{$sep}: {$s}%kingdoms_date_joined%
       {$p}Doações{$sep}: {$s}%kingdoms_total_donations%
-      {$p}Última Doação{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Última Doação{$sep}: {$s}%kingdoms_date_last_donation_time%
       {$p}Rank{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     offline-prefix: |
       hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Ingressou{$sep}: {$s}%kingdoms_date_joined%
       {$p}Doações{$sep}: {$s}%kingdoms_total_donations%
-      {$p}Última Doação{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Última Doação{$sep}: {$s}%kingdoms_date_last_donation_time%
       {$p}Rank{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     relation: "{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%"
     aliases: info who list

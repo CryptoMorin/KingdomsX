@@ -1,0 +1,226 @@
+title: "{$sep}-=( &3Różne Ulepszenia {$sep})=-"
+rows: 3
+sound: BLOCK_ENCHANTMENT_TABLE_USE
+
+# -NOSYNC
+'[fn-misc]': &fn-misc
+  args: [ "<name>", "<lore>", "<disallowPacifists>" ]
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&cTwoje królestwo jest pokojowe"
+        - "i nie może używać tego ulepszenia."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl "{$p}Poziom{$sep}: &6%level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Kliknij, aby włączyć"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl-maxxed "{$p}Poziom{$sep}: {$s}%level% {$sep}({$s}Osiągnięto Maksimum{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Kliknij, aby wyłączyć"
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &upgrade-cost "{$p}Koszt Ulepszenia{$sep}: &6%cost%"
+        - *lvl
+        - *disable-upgrade
+
+# -NOSYNC
+'[fn-misc-basic]': &fn-misc-basic
+  args: [ "<lore>" ]
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - *lvl-maxxed
+    else:
+      lore:
+        - "<lore>"
+        - *lvl
+        - *upgrade-cost
+
+options:
+  glory:
+    material: NETHER_STAR
+    <<: *fn-misc [ "&3Chwała", [
+      "{$p}Poziom 1{$sep}: {$s}Zabicie mobów niemonsterskich na twojej ziemi\nzwiększa zdobywane doświadczenie o {$p}5 {$s}na każdy poziom.",
+      "{$p}Poziom 2{$sep}: {$s}Zabicie zombie i szkieletów na twojej ziemi\nzwiększa zdobywane doświadczenie o {$p}2 {$s}.",
+      "{$p}Poziom 3{$sep}: {$s}Zabicie wrogów graczy na twojej ziemi\nzwiększa zdobywane doświadczenie o {$p}1.5 {$s}."
+    ], false ]
+
+    posx: 3
+    posy: 1
+  anti-trample:
+    material: WHEAT_SEEDS
+    <<: *fn-misc [ "&aAnty-Trampel", [
+      "{$p}Poziom 1{$sep}: &6Twoje uprawione gleby nie mogą",
+      "być zdeptane przez graczy.",
+      '',
+      "{$p}Poziom 2{$sep}: &6Pistony umieszczone poza twoją",
+      "ziemią, które przesuwają bloki do/na terenie twojego królestwa, nie będą działać.",
+      "Zabezpiecza to również przed endermanami kradnącymi bloki na twoim terytorium.",
+      "",
+      "{$p}Poziom 3{$sep}: &6Chroni pewne zwierzęta przed",
+      "zadawaniem obrażeń na twojej ziemi.",
+      "Uniemożliwia także wrogim graczom korzystanie",
+      "z enderperłów do teleportacji na terenie twojego królestwa."
+    ], false ]
+
+    posx: 4
+    posy: 1
+  nexus-guards:
+    material: DIAMOND_AXE
+
+    <<: *fn-misc [ "&4Strażnicy Nexusa", [
+      "&6Kiedy ktoś wchodzi na twoją",
+      "ziemię Nexusa, pojawiają się strażnicy",
+      "silniejsi niż twoi zwykli strażnicy."
+    ], true ]
+
+    posx: 5
+    posy: 1
+  guards:
+    material: IRON_AXE
+
+    <<: *fn-misc [ "&eStrażnicy", [
+      "&6Strażnicy losowo pojawiają się,",
+      "aby chronić królestwo, gdy na teren wchodzi",
+      "nieprzyjazny gracz."
+    ], true ]
+
+    posx: 6
+    posy: 1
+  insanity:
+    material: REDSTONE
+
+    <<: *fn-misc [ "&cObłęd", [
+      "&7Obrońcy i strażnicy Nexusa",
+      "pojawiający się na terenie ogniska",
+      "mocy będą mieć{$sep}:",
+      "{$p}Poziom 1{$sep}: {$s}Wzmacnienie I przez 10 sekund.",
+      "{$p}Poziom 2{$sep}: {$s}Wzmacnienie II przez 10 sekund.",
+      "{$p}Poziom 3{$sep}: {$s}Wzmacnienie III przez 10 sekund."
+    ], true ]
+
+    posx: 7
+    posy: 1
+
+  invasion-teleportation:
+    material: ENDER_PEARL
+
+    <<: *fn-misc [ "&3Teleportacja podczas Inwazji", [
+      "{$p}Zmniejsza opóźnienie teleportacji",
+      "dla &e/k tp{$p} po każdym ulepszeniu."
+    ], true ]
+
+    posx: 3
+    posy: 2
+  invasions:
+    material: DIAMOND_SWORD
+
+    <<: *fn-misc [ "&3Inwazje", [
+      "{$p}Twoje królestwo może dokonać inwazji &6%invasion-limit% {$p}razy",
+      "{$p}Użyte inwazje{$sep}: &6%invasions%",
+      "{$p}Odzyskiwanie odświeżania{$sep}: &6%invasion-refresh-cooldown%"
+    ], true ]
+
+    posx: 2
+    posy: 2
+  anti-explosion:
+    name: "&5Przeciw Wybuchom"
+    material: GUNPOWDER
+
+    <<: *fn-misc [ "&5Przeciw Wybuchom", [
+      "{$p}Poziom 1{$sep}: &7Zapobiega zniszczeniu bloków przez creepery",
+      "",
+      "{$p}Poziom 2{$sep}: &7Zapobiega zniszczeniu bloków przez TNT",
+      "",
+      "{$p}Poziom 3{$sep}: &7Chroni członków twojego królestwa,",
+      "zwierzęta i wszystkie inne uwięzione moby",
+      "w twoich ziemiach przed eksplozjami."
+    ], false ]
+
+    posx: 4
+    posy: 2
+  max-claims:
+    name: "&3Maks. Ziemie"
+    material: MAP
+
+    <<: *fn-misc-basic [ [
+      "&6Zwiększ swoje maksymalne ziemie",
+      "o {$p}2 &6każda ulepszenie.",
+      "",
+      "{$p}Obecne Maksymalne Ziemie{$sep}: &6%kingdoms_max_claims%"
+    ] ]
+
+    posx: 8
+    posy: 2
+  max-turrets:
+    name: "&3Maks. Wieże"
+    material: ARROW
+
+    <<: *fn-misc-basic [ [
+      "&7Zwiększ swoje maksymalne wieże",
+      "na jedno terytorium o {$p}1 &7przy każdym ulepszeniu.",
+      "",
+      "{$p}Obecny Maks. Wież na Terytorium{$sep}: &6%max_turrets_per_land%",
+    ] ]
+
+    posx: 5
+    posy: 2
+  max-members:
+    name: "&3Maks. Gracze"
+    material: PLAYER_HEAD
+
+    <<: *fn-misc-basic [ [
+      "&7Każda ulepszenie pozwala ci na",
+      "posiadanie {$p}3 &7więcej członków.",
+      "",
+    ] ]
+
+    posx: 6
+    posy: 2
+  chest-size:
+    name: "&3Rozmiar Skrzyni Nexus"
+    material: ENDER_CHEST
+
+    <<: *fn-misc-basic [ [
+      "&6Zwiększ maksymalny rozmiar skrzyni nexus",
+      "",
+    ] ]
+
+    posx: 7
+    posy: 2
+
+  back:
+    name: "{$p}Powrót"
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    lore: "&6Wróć do menu."
+    posx: 5
+    posy: 3
+  cyan-glass:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 1, 7, 9, 17, 19, 25 ]
+  light-blue-glass:
+    name: ''
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    slots: [ 0, 8, 18, 26 ]

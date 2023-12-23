@@ -1,0 +1,33 @@
+title: "&cPowercell"
+type: HOPPER
+sound: BLOCK_REDSTONE_TORCH_BURNOUT
+
+options:
+  break:
+    name: "&4Zniszcz"
+    material: REDSTONE_BLOCK
+    lore:
+      - "&6Zniszcz strukture."
+    slot: 0
+  upgrade:
+    slot: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Ulepsz&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Zasięg&8: &61 &7➔ &62"
+        - ""
+        - "&7⚫ &2Maks. poziom&8: &6%roman_next_level%"
+        - "&7⚫ &2Koszt&8: &6%upgrade_cost%"
+    maxxed:
+      name: "&9Poziom&8: &6%roman_level%"
+      material: NETHER_STAR
+      lore:
+        - "&7⚫ &2Zasięg&8: &62"
+  close:
+    name: "&2Zamknij"
+    material: BARRIER
+    lore:
+      - "&6Zamyka Gui."
+    slot: 4

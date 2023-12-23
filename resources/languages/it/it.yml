@@ -1300,7 +1300,7 @@ command:
         &7| {$p}Entrato nel regno il{$sep}: {$s}%kingdoms_date_joined%
         &7| {$p}Auto Claim{$sep}: %auto_claim% &7| {$p}Auto Map{$sep}: %auto_map%
         &7| {$p}Dimensione mappa{$sep}: {$s}%map_width% {$sep}- {$s}%map_height%
-        &7| {$p}Donazioni totali{$sep}: {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$sep}: {$s}%kingdoms_last_donation_time%
+        &7| {$p}Donazioni totali{$sep}: {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$sep}: {$s}%kingdoms_date_last_donation_time%
         &7| {$p}Claims &7({$s}%kingdoms_player_claims%&7){$sep}: %claims%
         &7| {$p}Dati compressi{$sep}: {$s}%compressed%
       found: '{$p}Giocatore {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}e'' nel seguente regno{$sep}:'
@@ -1930,12 +1930,12 @@ command:
     online-prefix: |
       hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Joined{$sep}: {$s}%kingdoms_date_joined%
       {$p}Donazioni{$sep}: {$s}%kingdoms_total_donations%
-      {$p}Ultima donazione{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Ultima donazione{$sep}: {$s}%kingdoms_date_last_donation_time%
       {$p}Rango{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     offline-prefix: |
       hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Joined{$sep}: {$s}%kingdoms_date_joined%
       {$p}Donazioni{$sep}: {$s}%kingdoms_total_donations%
-      {$p}Ultima donazione{$sep}: {$s}%kingdoms_last_donation_time%
+      {$p}Ultima donazione{$sep}: {$s}%kingdoms_date_last_donation_time%
       {$p}Rango{$sep}: {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     aliases: info who list

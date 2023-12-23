@@ -1,0 +1,76 @@
+title: "&8-=[ &4Filtry i Sortowanie Logów &8]=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 3
+
+options:
+  back:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '&cPowrót'
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 13, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: MAGENTA_STAINED_GLASS_PANE
+    name: ''
+  filters-player:
+    posx: 2
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2Q2OTVkMzM1ZTZiZThjYjJhMzRlMDVlMThlYTJkMTJjM2IxN2I4MTY2YmE2MmQ2OTgyYTY0M2RmNzFmZmFjNSJ9fX0='
+    enabled:
+      condition: enabled
+      name: '{$enabled} Filtr Gracza'
+      lore: "{$p}%filters_player_name%"
+    else:
+      name: '{$disabled} Filtr Gracza'
+  filters-time:
+    posx: 3
+    posy: 2
+    material: CLOCK
+    enabled:
+      condition: enabled
+      name: '{$enabled} Filtr Czasu'
+      lore: |
+        {$p}Po{$sep}: {$s}%date_filters_time_after%
+        {$p}Przed{$sep}: {$s}%date_filters_time_before%
+    else:
+      name: '{$disabled} Filtr Czasu'
+  filters-type:
+    posx: 4
+    posy: 2
+    material: BARRIER # Szablon
+    enabled:
+      condition: enabled
+      name: '{$enabled} Filtr Typu'
+      lore: "{$p}%filters_type_type%"
+    else:
+      name: '{$disabled} Filtr Typu'
+  sort-ascending-time:
+    posx: 6
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDM3ODYyY2RjMTU5OTk4ZWQ2YjZmZGNjYWFhNDY3NTg2N2Q0NDg0ZGI1MTJhODRjMzY3ZmFiZjRjYWY2MCJ9fX0='
+    enabled:
+      condition: enabled
+      name: '{$enabled} Sortowanie Czasu Rosnąco'
+    else:
+      name: '{$disabled} Sortowanie Czasu Rosnąco'
+  sort-descending-time:
+    posx: 7
+    posy: 2
+    material: PLAYER_HEAD
+    enabled:
+      condition: enabled
+      name: '{$enabled} Sortowanie Czasu Malejąco'
+    else:
+      name: '{$disabled} Sortowanie Czasu Malejąco'
+  sort-type:
+    posx: 8
+    posy: 2
+    material: PAPER
+    enabled:
+      condition: enabled
+      name: '{$enabled} Sortowanie Typu'
+    else:
+      name: '{$disabled} Sortowanie Typu'

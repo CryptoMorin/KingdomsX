@@ -1,0 +1,50 @@
+title: "%player%"
+type: HOPPER
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  kick:
+    name: "&cWyrzuć"
+    material: RED_WOOL
+    cantKick:
+      condition: '!can_kick'
+      lore: |
+        &cNie możesz wyrzucić tego członka.
+    else: { }
+    slot: 0
+  demote:
+    name: '&eDegraduj'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM4NTJiZjYxNmYzMWVkNjdjMzdkZTRiMGJhYTJjNWY4DQhmY2E4MmU3MmRiY2FmY2JhNjY5NTZhODFjNCJ9fX0="
+    cantDemote:
+      condition: '!can_demote'
+      lore: |
+        &cNie możesz zdegradować tego członka.
+    else: { }
+    slot: 1
+  member:
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+    material: PLAYER_HEAD
+    lore:
+      - "%online%"
+      - "&2Dołączył&8: &6%kingdoms_date_joined%"
+      - "&2Dotacje&8: &6%kingdoms_total_donations%"
+      - "&2Ostatnia Dotacja&8: &6%kingdoms_last_donation_time%"
+      - "&2Ranga&8: &6%kingdoms_rank_name%"
+    slot: 2
+  promote:
+    name: '&aAwansuj'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjIyMWRhNDQxOGJkM2JmYjQyZWI2NGQyYWI0MjljNjFkZWNiOGY0YmY3ZDRjZmI3N2ExNjJiZTNkY2IwYjkyNyJ9fX0="
+    canPromote:
+      condition: '!can_promote'
+      lore: |
+        &cNie możesz awansować tego członka.
+    else: { }
+    slot: 3
+  back:
+    name: "&2Powrót"
+    material: BARRIER
+    lore:
+      - "&6Wróć do menu członków."
+    slot: 4

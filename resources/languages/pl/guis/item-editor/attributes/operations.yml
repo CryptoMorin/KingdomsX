@@ -1,0 +1,76 @@
+title: "{$sep}-=( {$p}Operacje na atrybutach {$sep})=-"
+rows: 3
+
+op: &fn-op
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$sep}[{$p}Aktywny{$sep}] {$p}<x>"
+      glow: true
+    else:
+      name: "{$p}<x>"
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    name: '{$p}Wróć'
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 8, 9, 11, 12, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: BROWN_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: NETHER_STAR
+    name: '&eInfo'
+    lore: |
+      &7Operacja modyfikatora określa,
+      w jaki sposób modyfikuje bazową wartość atrybutu.
+  add-number:
+    posx: 2
+    posy: 2
+    material: PLAYER_HEAD
+    glow: true
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGQ4YjcxNzNkODQxZjI1NjNlYzEwODg4OGIwZjc5NzkxN2VmYzE4YmUyNzg2MWYwYTY3NjFhYTNlZDkxY2UifX19'
+    <<: *fn-op [ "Add Number" ]
+    lore: |
+      &7Dodaje wszystkie ilości modyfikatorów do
+      bieżącej wartości atrybutu.
+      Na przykład, modyfikowanie atrybutu z
+      {$p}Ilość 2 &7i {$p}Ilość 4 &7z
+      {$p}Bazą 3 &7skutkuje wartością {$p}3 + 2 + 4 = 9
+  multiply-scalar-1:
+    posx: 5
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTljZGI5YWYzOGNmNDFkYWE1M2JjOGNkYTc2NjVjNTA5NjMyZDE0ZTY3OGYwZjE5ZjI2M2Y0NmU1NDFkOGEzMCJ9fX0='
+    <<: *fn-op [ "Multiply" ]
+    lore: |
+      &7Dla każdego modyfikatora mnoży
+      bieżącą wartość atrybutu przez {$p}(1 + x)&7,
+      gdzie x to ilość danego modyfikatora.
+      Działa tak samo jak {$p}Dodaj Skalar
+      &7, jeśli istnieje tylko jeden modyfikator
+      o {$p}operacji 1 lub 2&7. Jednakże, dla wielu
+      modyfikatorów mnoży je, a nie dodaje.
+      Na przykład, modyfikowanie atrybutu z
+      {$p}Ilość 2 &7i {$p}Ilość 4 &7z
+      {$p}Bazą 3 &7skutkuje wartością
+      {$p}3 * (1 + 2) * (1 + 4) = 45
+  add-scalar:
+    posx: 8
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ4NmRiOWExNGQ1ODc5ZmEyODExZDMwMWNjYmQ1MjY5OTRmODcxMjQ3YjYyZjJkOWE0ODE4M2U5NjQxYWQ2OSJ9fX0='
+    <<: *fn-op [ "Add Scalar" ]
+    lore: |
+      &7Mnoży bieżącą wartość atrybutu przez
+      {$p}1 + x&7, gdzie x to suma ilości modyfikatorów.
+      Na przykład, modyfikowanie atrybutu z
+      {$p}Ilość 2 &7i {$p}Ilość 4 z
+      {$p}Bazą 3 &7skutkuje wartością
+      {$p}3 * (1 + 2 + 4) = 21

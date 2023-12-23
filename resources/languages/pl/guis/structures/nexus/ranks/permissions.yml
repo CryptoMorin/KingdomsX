@@ -1,0 +1,300 @@
+title: '{$sep}-=( {$p}Uprawnienia {$sep})=-'
+rows: 6
+import:
+  pagination: { }
+
+# Nie usuwaj "-NOSYNC" poniżej.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  alliance:
+    <<: *fn-std-perm [ "Sojusze" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k sojusz &7.
+  broadcast:
+    <<: *fn-std-perm [ "Ogłoszenia" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k broadcast &7.
+  build:
+    <<: *fn-perm [ 'Budowa', DIAMOND_PICKAXE ]
+    lore: |
+      &7Uprawnienie do budowy w dowolnym miejscu
+      w królestwie.
+
+      Aby dowiedzieć się różnicy między tym
+      a uprawnieniem {$p}BUDOWA_POSIADANA &7, 
+      sprawdź inne uprawnienie.
+  build-owned:
+    <<: *fn-perm [ "Budowanie Właściciela", GOLD_PICKAXE ]
+    lore: |
+      &7Różnica między uprawnieniem &2BUDOWA &7a
+      &2BUDOWA_POSIADANA &7polega na tym, że
+      uprawnienie &2BUDOWA &7pozwala na budowę w
+      dowolnym miejscu w twoim królestwie
+      (z wyjątkiem krainy nexus, która wymaga
+      uprawnienia &2NEXUS_BUDOWA&7).
+
+      &2BUDOWA_POSIADANA &7pozwala ci tylko na budowę
+      na gruntach, które sami zaanektowaliście.
+      Na przykład, jeśli &6/k zaznaczysz &7gdzieś
+      inni gracze z uprawnieniem &2BUDOWA_POSIADANA &7nie
+      będą mogli tam budować, ale ty lub osoby,
+      które mają uprawnienie &2BUDOWA &7, będziecie mogli.
+  edit-ranks:
+    <<: *fn-std-perm [ "Edytowanie Rang" ]
+    lore: |
+      &7Uprawnienie do tworzenia, usuwania
+      i modyfikowania rang, w tym ich
+      symboli, nazw i uprawnień.
+
+      Nie będą w stanie modyfikować
+      swojej własnej rangi ani rangi
+      gracza o wyższym priorytecie.
+
+      To uprawnienie nie daje im możliwości
+      degradowania lub awansowania innych graczy.
+  enemy:
+    <<: *fn-std-perm [ "Wróg" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k enemy &7.
+  home:
+    <<: *fn-std-perm [ "Dom" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k home &7.
+  invade:
+    <<: *fn-std-perm [ "Najazd" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k invade &7.
+  invite:
+    <<: *fn-std-perm [ "Zaproszenia" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k invite &7oraz
+      do tworzenia kodów zaproszeń za pomocą
+      {$s}/k invitecodes &7.
+  kick:
+    <<: *fn-std-perm [ "Wyrzuć" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k kick &7.
+
+      &7Gracze posiadający to
+      uprawnienie nie będą mogli
+      wyrzucić graczy z tymi samymi
+      lub wyższymi rangami.
+  lore:
+    <<: *fn-std-perm [ "Opis" ]
+    lore: |
+      &7Uprawnienie do korzystania z komend
+      {$s}/k lore{$sep}, {$s}/k rename {$sep},
+      {$s}/k book edit &7i {$s}/k tag &7.
+  nexus:
+    <<: *fn-perm [ "Nexus", BEACON ]
+    lore: |
+      &7Uprawnienie do przenoszenia
+      nexusa królestwa za pomocą
+      komendy {$s}/k nexus &7.
+  nexus-build:
+    <<: *fn-perm [ "Budowanie NEXUS", BEACON ]
+    lore: |
+      &7Uprawnienie do budowania
+      na terenie nexusa
+  nexus-chest:
+    <<: *fn-perm [ "Skrzynia Nexus", CHEST ]
+    lore: |
+      &7Uprawnienie do modyfikowania
+      skrzyni nexusa królestwa.
+  outpost:
+    <<: *fn-perm [ "Outpost", HAY_BLOCK ]
+    lore: |
+      &7Uprawnienie do zakupu
+      przedmiotów z budynków placówki.
+  protection-signs:
+    <<: *fn-perm [ "Obejście znaków ochronnych", OAK_SIGN ]
+    lore: |
+      &7Uprawnienie do omijania
+      zabezpieczonych znaków wewnątrz
+      królestw.
+  set-home:
+    <<: *fn-std-perm [ "Ustawianie domu" ]
+    lore: |
+      &7Uprawnienie do korzystania
+      z komendy {$s}/k sethome.
+  invsee:
+    <<: *fn-std-perm [ "Patrzenie do inventory" ]
+    lore: |
+      &7Uprawnienie do korzystania
+      z komendy {$s}/k invsee.
+  structures:
+    <<: *fn-perm [ "Struktury", REDSTONE_LAMP ]
+    lore: |
+      &7Uprawnienie do kupowania, umieszczania,
+      niszczenia i modyfikowania struktur.
+  use:
+    <<: *fn-perm [ "Użyj", FURNACE ]
+    lore: |
+      &7Uprawnienie do korzystania z pewnych
+      bloków w królestwie.
+  interact:
+    <<: *fn-perm [ "Interakcja", OAK_DOOR ]
+    lore: |
+      &7Uprawnienie do interakcji
+      z pewnymi blokami, takimi jak
+      drzwi i przyciski w królestwie.
+  upgrade:
+    <<: *fn-std-perm [ "Ulepsz" ]
+    lore: |
+      &7Uprawnienie do ulepszania
+      wszystkiego, co można ulepszać
+      w królestwie, takie jak
+      ulepszenia różności, ulepszenia mistrza,
+      wzmocnienia, wieże i struktury.
+  truce:
+    <<: *fn-std-perm [ "Rozejm" ]
+    lore: |
+      &7Uprawnienie do korzystania z komendy
+      {$s}/k truce &7.
+  turrets:
+    <<: *fn-perm [ "Wieże", ARROW ]
+    lore: |
+      &7Uprawnienie do kupowania, umieszczania,
+      niszczenia i modyfikowania wież obronnych.
+  unclaim:
+    <<: *fn-std-perm [ "Unclaim" ]
+    lore: |
+      &7Uprawnienie do używania komendy
+      {$s}/k unclaim &7.
+  manage-ranks:
+    <<: *fn-std-perm [ "Zarządzanie Rangami" ]
+    lore: |
+      &7Uprawnienie do awansowania
+      i degradowania członków
+      o niższym rankingu od gracza.
+
+      Nie upoważnia do modyfikacji
+      ustawień rang.
+  withdraw:
+    <<: *fn-std-perm [ "Wypłać" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komendy {$s}/k rp withdraw &7i
+      wypłacania punktów zasobów
+      na rzecz pieniędzy za pomocą
+      innych środków, takich jak
+      opcja w przeliczniku punktów
+      zasobów w interfejsie GUI Nexus.
+  fly:
+    <<: *fn-perm [ "Latanie", ELYTRA ]
+    lore: |
+      &7Uprawnienie do korzystania
+      z komendy {$s}/k fly &7.
+  nation:
+    <<: *fn-perm [ "Nation", BLUE_WOOL ]
+    lore: |
+      &7Uprawnienie do dołączania
+      lub opuszczania nacji.
+  exclude-tax:
+    <<: *fn-std-perm [ "Wyłączenie podatkowe" ]
+    lore: |
+      &7Członkowie królestwa z tym
+      uprawnieniem nie są zobowiązani
+      do płacenia podatków królestwu.
+  relation-attributes:
+    <<: *fn-std-perm [ "Edytowanie relacji" ]
+    lore: |
+      &7Uprawnienie do edytowania
+      atrybutów relacji.
+
+  settings:
+    <<: *fn-std-perm [ "Ustawienia" ]
+    lore: |
+      &7Uprawnienie do edytowania ogólnych
+      ustawień królestwa znajdujących się w
+      menu nexus GUI.
+  claim:
+    <<: *fn-std-perm [ "Przejmowanie" ]
+    lore: |
+      &7Uprawnienie do korzystania z
+      komend {$s}/k claim &7.
+  unclaim-owned:
+    <<: *fn-std-perm [ "Unclaim Owned" ]
+    lore: |
+      &7Pozwala na pozostaienie 
+      przejętego terenu.
+  instant-teleport:
+    <<: *fn-std-perm [ "Natychmiastowe teleporty" ]
+    lore: |
+      &7Natychmiastowo teleportuj się do swoich
+      członków po użyciu komendy &2/k tpa
+      &7. W przeciwnym razie będziesz musiał
+      czekać, aż zaakceptują prośbę.
+
+      Nadal będziesz miał odliczanie przed teleportacją.
+  view-logs:
+    <<: *fn-perm [ "Podgląd Logów", KNOWLEDGE_BOOK ]
+    lore: |
+      &7Przeglądaj dzienniki logów swojego królestwa,
+      które można uzyskać z Twojego Nexusa.
+  read-mails:
+    <<: *fn-perm [ "Czytanie Listów", PLAYER_HEAD ]
+    lore: |
+      &7Uprawnienie do czytania wiadomości królestwa
+      znajdujących się w menu Nexus.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    <<: *fn-perm [ "Zarządzanie Listami", PLAYER_HEAD ]
+    lore: |
+      &7Wysyłaj nowe wiadomości i odpowiadaj.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  'Outposts:join':
+    <<: *fn-std-perm [ "Join Outpost Events" ]
+    lore: |
+      &7Zezwala na korzystanie z komendy {$s}/k outposts join &7do dołączania do placówek.
+  "[else]":
+    name: "&4Nie znana: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # This is a special feature
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Wróć'
