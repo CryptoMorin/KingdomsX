@@ -16,7 +16,7 @@ Kingdoms is heavily optimized and easy to use.
 
 ### Links:
 
-- [SpigotMC](https://www.spigotmc.org/resources/77670/): The official and the only page of KingdomsX plugin.
+- [SpigotMC](https://www.spigotmc.org/resources/77670/): The first original page of KingdomsX plugin.
 - [Modrinth](https://modrinth.com/plugin/kingdomsx/): The official modrinth page of KingdomsX plugin. Here, it's easier to keep track of plugin versions for people who still wish to use outdated server patches.
 - [Discord](https://discord.gg/cKsSwtt): Official Kingdoms Discord server. Ask questions, suggest features and report
   bugs.
