@@ -1,4 +1,4 @@
-title: "{$sep}-=[ &4王国编年史 {$sep}]=-"
+title: "{$sep}-=[&4王国编年史{$sep}]=-"
 sound: ITEM_BOOK_PAGE_TURN
 rows: 6
 
@@ -6,330 +6,389 @@ rows: 6
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
-    name: '&2Player Joined{$sep}: &6%player%'
+    name: '&2玩家加入&8:&6%player%'
     lore: |
-      {$p}At{$sep}: {$s}%time%
-      &2Invited By{$sep}: &6%inviter%
+      {$p}加入时间{$sep}:{$s}%time%
+      &2邀请人&8:&6%inviter%
   kingdom-kick:
     material: RED_WOOL
-    name: '&2Kicked Member{$sep}: &6%player%'
+    name: '&2踢出玩家&8:&6%player%'
     lore: |
-      {$p}At{$sep}: {$s}%time%
-      &2Kicker{$sep}: &6%kicker%
+      {$p}踢出时间{$sep}:{$s}%time%
+      &2踢出者&8:&6%kicker%
   kingdom-leave:
     material: RED_WOOL
-    name: '&2Player Left{$sep}: &6%player%'
+    name: '&2玩家离开&8:&6%player%'
     lore: |
-      &2At{$sep}: &6%time%
-      &2Reason{$sep}: &6%reason%
+      &2离开时间&8:&6%time%
+      &2离开原因&8:&6%reason%
   kingdom-challenge-challenger:
     material: GREEN_WOOL
-    name: '&2Challenged'
+    name: '&2挑战王国'
     lore: |
-      &e%player% &chas challenged
-      &e%kingdoms_other_kingdom_name% &ckingdom.
-      {$p}At{$sep}: {$s}%time%
+      &c玩家&e%player%&c挑战了
+      &e%kingdoms_name%&c王国。
+      {$p}挑战时间{$sep}:{$s}%time%
 
-      &7You have until &c%start_time%
-      &7to prepare to attack.
+      &7你还有&c%start_time%
+      &7准备入侵。
   kingdom-challenge-challenged:
     material: RED_WOOL
-    name: '&cChallenged'
+    name: '&c王国被挑战'
     lore: |
-      &e%kingdoms_kingdom_name% &ckingdom has
-      &cchallenged your kingdom.
-      {$p}At{$sep}: {$s}%time%
+      &e%kingdoms_name%&c王国
+      &c挑战了你的王国。
+      {$p}挑战时间{$sep}:{$s}%time%
 
-      &7You have until &c%start_time%
-      &7to prepare before they attack.
+      &7你还有&c%start_time%
+      &7准备防守。
   kingdom-claim:
     material: GRASS_BLOCK
-    name: '&2Claimed'
+    name: '&2占领地块'
     lore: |
-      {$s}%player% {$p}has claimed
-      the following lands{$sep}:
+      {$p}玩家{$s}%player%
+      {$p}占领了以下地块{$sep}:
       %lands%
-      {$p}At{$sep}: {$s}%time%
+      {$p}占领时间{$sep}:{$s}%time%
   kingdom-unclaim:
     material: GRASS_BLOCK
-    name: '&cUnclaimed'
+    name: '&c放弃地块'
     lore: |
-      {$es}%player% {$e}has unclaimed
-      the following lands{$sep}:
+      {$p}玩家{$s}%player%
+      {$p}放弃了以下地块{$sep}:
       %lands%
-      {$p}At{$sep}: {$s}%time%
+      {$p}时间{$sep}:{$s}%time%
   kingdom-invasion-invader:
     material: IRON_SWORD
-    name: '&2Invaded'
+    name: '&2入侵地块'
     lore: |
-      {$s}%player% {$p}has invaded{$sep}:
+      {$p}玩家{$s}%player%{$p}入侵了地块{$sep}:
       {$s}%chunk%
-      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Ransack Mode{$sep}: %ransack-mode%
-      {$p}Result{$sep}: {$s}%result%
-      {$p}At{$sep}: {$s}%time%
-      {$p}Affected Lands{$sep}:
+      {$p}入侵王国{$sep}:{$s}%kingdoms_name%
+      {$p}劫掠模式{$sep}:%ransack-mode%
+      {$p}入侵结果{$sep}:{$s}%result%
+      {$p}入侵时间{$sep}:{$s}%time%
+      {$p}受影响地块{$sep}:
       %affected-lands%
   kingdom-invasion-invaded:
     material: GOLD_SWORD
-    name: '&cGot Invaded'
+    name: '&c地块被入侵'
     lore: |
-      {$s}%player% {$p}has invaded your kingdom at{$sep}:
+      {$p}玩家{$s}%player%{$p}入侵了你王国的地块{$sep}:
       {$s}%chunk%
-      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Ransack Mode{$sep}: %ransack-mode%
-      {$p}Result{$sep}: {$s}%result%
-      {$p}At{$sep}: {$s}%time%
-      {$p}Affected Lands{$sep}:
+      {$p}入侵王国{$sep}:{$s}%kingdoms_name%
+      {$p}劫掠模式{$sep}:%ransack-mode%
+      {$p}入侵结果{$sep}:{$s}%result%
+      {$p}入侵时间{$sep}:{$s}%time%
+      {$p}受影响地块{$sep}:
       %affected-lands%
   kingdom-upgrade-misc:
     material: DIAMOND_HOE
-    name: '&9Misc Upgrade'
+    name: '&9杂项升级'
     lore: |
-      {$s}%player% {$p}has upgraded
-      {$s}%upgrade% {$p}misc upgrade.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}升级了杂项{$sep}:
+      {$s}%upgrade%{$p}。
+      {$p}等级{$sep}:{$s}%old_level%{$sep}➜{$s}%new_level%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}升级时间{$sep}:{$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
-    name: '&9Champion Upgrade'
+    name: '&9斗士升级'
     lore: |
-      {$s}%player% {$p}has upgraded
-      {$s}%upgrade% {$p}champion upgrade.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}升级了斗士升级{$sep}:
+      {$s}%upgrade%{$p}。
+      {$p}等级{$sep}:{$s}%old_level%{$sep}➜{$s}%new_level%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}升级时间{$sep}:{$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
     name: '&9Powerup Upgrade'
     lore: |
-      {$s}%player% {$p}has upgraded
-      {$s}%upgrade% {$p}powerup.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}升级了加成{$sep}:
+      {$s}%upgrade%{$p}。
+      {$p}等级{$sep}:{$s}%old_level%{$sep}➜{$s}%new_level%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}升级时间{$sep}:{$s}%time%
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
-    name: '&aStructure Upgrade'
+    name: '&a设施升级'
     lore: |
-      {$s}%player% {$p}has upgraded
-      {$s}%item_style_display_name% {$p}structure at
-      {$s}%location%
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}升级了设施{$sep}:
+      {$s}%item_style_display_name%{$p}, 
+      {$p}设施坐标: {$s}%location%
+      {$p}等级{$sep}:{$s}%old_level%{$sep}➜{$s}%new_level%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}升级时间{$sep}:{$s}%time%
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
-    name: '&aStructure Purchase'
+    name: '&a设施购买'
     lore: |
-      {$s}%player% {$p}has purchased {$s}%amount%
-      {$s}%item_style_display_name% {$p}structures.
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}购买了设施{$sep}:
+      {$s}%item_style_display_name%{$p}, 数量为{$s}%amount%{$p}。
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}购买时间{$sep}:{$s}%time%
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
-    name: '&aTurret Purchase'
+    name: '&a炮塔购买'
     lore: |
-      {$s}%player% {$p}has purchased {$s}%amount%
-      {$s}%item_style_display_name% {$p}turrets.
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}购买了炮塔{$sep}:
+      {$s}%item_style_display_name%{$p}, 数量为{$s}%amount%{$p}个。
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}购买时间{$sep}:{$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
-    name: '&aTurret Upgrade'
+    name: '&a炮塔升级'
     lore: |
-      {$s}%player% {$p}has upgraded
-      {$s}%item_style_display_name% {$p}turret at
-      {$s}%location%
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}升级了炮塔{$sep}:
+      {$s}%item_style_display_name%{$p}, {$s}%amount%
+      {$p}炮塔坐标: {$s}%location%
+      {$p}等级{$sep}:{$s}%old_level%{$sep}➜{$s}%new_level%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}升级时间{$sep}:{$s}%time%
   kingdom-resource-points-convert:
     material: HAY_BLOCK
-    name: '&aResource Points Convert'
+    name: '&a资源点转换'
     lore: |
-      {$s}%player% {$p}has changed 
-      resource points{$sep}:
-      {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了资源点{$sep}:
+      {$s}%fancy_amount-before%{$sep}➜{$s}%fancy_amount-after%
+      {$p}转换时间{$sep}:{$s}%time%
   extractor-collect:
     material: EMERALD_BLOCK
-    name: '&aExtractor Collect'
+    name: '&a收集提取器'
     lore: |
-      {$s}%player% {$p}has collected the 
-      extractor located at{$sep}:
-      {$s}%location%
-      {$p}Collected Resource Points{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}收集了提取器, 
+      设施坐标{$sep}:{$s}%location%
+      {$p}收集资源点数{$sep}:{$s}%fancy_resource_points%
+      {$p}收集时间{$sep}:{$s}%time%
   warppad-teleport:
     material: END_PORTAL_FRAME
-    name: '&3Warp Pad Teleport'
+    name: '&3传送板传送'
     lore: |
-      {$s}%player% {$p}has teleported
-      using the Warp Pad located at
-      {$s}%from_location% {$p}to
-      {$s}%precise_location%
-      {$p}Fuel Cost{$sep}: {$s}%fancy_fuel_cost%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}使用了传送板传送, 
+      {$p}初始坐标{$sep}:{$s}%from_location%
+      {$p}终点坐标{$sep}:{$s}%precise_location%
+      {$p}花费燃料{$sep}:{$s}%fancy_fuel_cost%
+      {$p}传送时间{$sep}:{$s}%time%
   outpost-item-purchase:
     material: HAY_BLOCK
-    name: '&eOutpost Item Purchase'
+    name: '&e前哨物品购买'
     lore: |
-      {$s}%player% {$p}has purchased
-      the following items from the
-      Outpost structure located at{$sep}:
-      {$s}%location%
-      {$p}Total Resource Points{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}从前哨购买了物品。
+      前哨坐标{$sep}:{$s}%location%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}购买时间{$sep}:{$s}%time%
+      {$p}购买物品{$sep}:
       %purchases%
   kingdom-pacifism-change:
     material: NETHER_STAR
-    name: '&5Pacifism Change'
+    name: '&5和平主义更改'
     lore: |
-      {$s}%player% {$p}has changed the
-      pacifism state of the kingdom.
-      {$p}Pacifist{$sep}: {$s}%bool_pacifist%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了王国的和平主义状态。
+      {$p}和平主义{$sep}:{$s}%bool_pacifist%
+      {$p}更改时间{$sep}:{$s}%time%
   shield-purchase:
     material: SHIELD
-    name: '&5Shield Purchase'
+    name: '&5护盾购买'
     lore: |
-      {$s}%player% {$p}has purchased
-      a shield for the kingdom.
-      {$p}Purchased Shield Duration{$sep}: {$s}%purchased-shield-time%
-      {$p}Shield Duration{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy_resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}为王国购买了护盾。
+      {$p}护盾时间{$sep}:{$s}%shield-time%
+      {$p}花费资源点{$sep}:{$s}%fancy_resource_points%
+      {$p}购买时间{$sep}:{$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
-    name: '&9Relationship Change'
+    name: '&9外交关系更改'
     lore: |
-      {$p}Kingdom's relationship has
-      changed with {$s}%kingdoms_kingdom_name% {$p}kingdom{$sep}:
-      %old-relation% {$sep}➜ %new-relation%
-      {$p}At{$sep}: {$s}%time%
+      {$p}本国与{$s}%kingdoms_name%{$p}王国的外交关系发生了更改{$sep}:
+      %old-relation%{$sep}➜%new-relation%
+      {$p}更改时间{$sep}:{$s}%time%
   kingdom-invite:
     material: BOOK
-    name: '&9Invite'
+    name: '&9邀请玩家'
     lore: |
-      {$s}%inviter% {$p}has invited {$s}%player% 
-      {$p}to the kingdom. They have {$s}%accept-time%
-      {$p}to accept the request.
-      {$p}At{$sep}: {$s}%time%
+      {$s}%inviter%{$p}邀请了{$p}玩家{$s}%player%
+      {$p}加入王国。他们有{$s}%accept-time%
+      {$p}同意请求。
+      {$p}邀请时间{$sep}:{$s}%time%
   kingdom-king-change:
     material: BOOK
-    name: '&4King Change'
+    name: '&4国王更改'
     lore: |
-      {$p}Kingdom's king has been changed{$sep}:
-      {$s}%old-king% {$sep}➜ {$s}%new-king%
-      {$p}Reason{$sep}: {$s}%reason%
-      {$p}At{$sep}: {$s}%time%
+      {$p}王国的国王更改了{$sep}:
+      {$s}%old-king%{$sep}➜{$s}%new-king%
+      {$p}原因{$sep}:{$s}%reason%
+      {$p}更改时间{$sep}:{$s}%time%
   player-rank-change:
-    lore: |
-      {$s}%old-rank% {$sep}➜ {$s}%new-rank%
-      {$p}By{$sep}: {$s}%by-player%
+    lore: "{$s}%old-rank%{$sep}➜{$s}%new-rank%"
     promoted:
       condition: 'old_rank_priority > new_rank_priority' # It's the opposite
       material: GREEN_WOOL
-      name: '&aPlayer Promoted{$sep}: {$s}%player%'
+      name: '&a玩家晋升{$sep}:{$s}%player%'
     else: # demoted
       material: RED_WOOL
-      name: '&cPlayer Demoted{$sep}: {$s}%player%'
+      name: '&c玩家降职{$sep}:{$s}%player%'
   rank-create:
     material: BOOK
-    name: '&2Rank Created'
+    name: '&2创建权限组'
     lore: |
-      {$p}A rank was created by {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Display Name{$sep}: {$s}%rank_color%%rank_symbol% %rank_name%
-      {$p}Priority{$sep}: {$s}%rank_priority%
-      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
-      {$p}Material{$sep}: {$s}%rank_material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}创建了权限组{$sep}:
+      {$p}节点{$sep}:{$s}%rank_node%
+      {$p}名称{$sep}:{$s}%rank_color%%rank_symbol%%rank_name%
+      {$p}优先级{$sep}:{$s}%rank_priority%
+      {$p}最大占领数{$sep}:{$s}%rank_max_claims%
+      {$p}材质{$sep}:{$s}%rank_material%
+      {$p}创建时间{$sep}:{$s}%time%
   rank-delete:
     material: BOOK
-    name: '&cRank Deleted'
+    name: '&c删除权限组'
     lore: |
-      {$p}Rank was deleted by {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Display Name{$sep}: {$s}%rank_color% %rank_symbol% %rank_name%
-      {$p}Priority{$sep}: {$s}%rank_priority%
-      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
-      {$p}Material{$sep}: {$s}%rank_material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}删除了了权限组{$sep}:
+      {$p}节点{$sep}:{$s}%rank_node%
+      {$p}名称{$sep}:{$s}%rank_color%%rank_symbol%%rank_name%
+      {$p}优先级{$sep}:{$s}%rank_priority%
+      {$p}最大占领数{$sep}:{$s}%rank_max_claims%
+      {$p}材质{$sep}:{$s}%rank_material%
+      {$p}创建时间{$sep}:{$s}%time%
   rank-change-name:
     material: BOOK
-    name: '&9Rank Name Changed'
+    name: '&9权限组名称更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}name was changed by {$s}%player%{$sep}:
-      {$s}%old-name% {$sep}➜ {$s}%new-name%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的名称{$sep}:
+      {$s}%old-name%{$sep}➜{$s}%new-name%
+      {$p}更改时间{$sep}:{$s}%time%
   rank-change-symbol:
     material: BOOK
-    name: '&9Rank Symbol Changed'
+    name: '&9权限组符号更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}symbol was changed by {$s}%player%{$sep}:
-      {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的符号{$sep}:
+      {$s}%old-symbol%{$sep}➜{$s}%new-symbol%
+      {$p}更改时间{$sep}:{$s}%time%
   rank-change-color:
     material: BOOK
-    name: '&9Rank Color Changed'
+    name: '&9权限组颜色更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}name was changed by {$s}%player%{$sep}:
-      {$s}%old-color%color {$sep}➜ {$s}%new-color%color
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的颜色{$sep}:
+      {$s}%old-color%color{$sep}➜{$s}%new-color%color
+      {$p}更改时间{$sep}:{$s}%time%
   rank-change-priority:
     material: BOOK
-    name: '&9Rank Priority Changed'
+    name: '&9权限组优先级更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}priority was changed by {$s}%player%{$sep}:
-      {$s}%old-priority% {$sep}➜ {$s}%new-priority%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的优先级{$sep}:
+      {$s}%old-priority%{$sep}➜{$s}%new-priority%
+      {$p}更改时间{$sep}:{$s}%time%
   rank-change-max-claims:
     material: BOOK
-    name: '&9Rank Max Claims Changed'
+    name: '&9权限组最大地块占领数更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}max claims was changed by {$s}%player%{$sep}:
-      {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的最大地块占领数{$sep}:
+      {$s}%old-max-claims%{$sep}➜{$s}%new-max-claims%
+      {$p}更改时间{$sep}:{$s}%time%
   rank-change-material:
     material: BOOK
-    name: '&9Rank Material Changed'
+    name: '&9权限组材质更改'
     lore: |
-      {$p}The rank %rank%
-      {$p}material was changed by {$s}%player%{$sep}:
-      {$s}%old-material% {$sep}➜ {$s}%new-material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}玩家{$s}%player%{$p}更改了权限组{$sep}:
+      %rank%{$p}的材质{$sep}:
+      {$s}%old-material%{$sep}➜{$s}%new-material%
+      {$p}更改时间{$sep}:{$s}%time%
+  structures-nexus-move:
+    material: BEACON
+    name: '&9王国核心放置'
+    placed:
+      condition: placed
+      lore: |
+        {$p}玩家{$s}%player%{$p}将王国核心移动至了
+        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}移动时间{$sep}:{$s}%time%
+    else:
+      lore: |
+        {$p}玩家{$s}%player%{$p}移动了王国核心{$sep}:
+        {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z%{$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}移动时间{$sep}:{$s}%time%
+  group-tax-server-pay:
+    material: PAPER
+    name: "&9服务器收税"
+    lore: |
+      {$p}已向服务器缴税。
+      {$p}税额{$sep}:{$s}%fancy_amount%
+      {$p}收税时间{$sep}:{$s}%time%
+  kingdom-champion-change:
+    material: ZOMBIE_HEAD
+    name: "&9斗士更改"
+    lore: |
+      {$p}玩家{$s}%player%{$p}更改了斗士类型{$sep}:
+      {$s}%old%{$sep}➜{$s}%new%
+      {$p}更改时间{$sep}:{$s}%time%
+  kingdom-change-lore:
+    material: PAPER
+    name: "&9王国介绍更改"
+    lore: |
+      {$p}玩家{$s}%player%{$p}更改了王国介绍{$sep}:
+      {$s}%old%{$sep}➜{$s}%new%
+      {$p}更改时间{$sep}:{$s}%time%
+  kingdom-rename:
+    material: PAPER
+    name: "&9王国名称更改"
+    lore: |
+      {$p}玩家{$s}%player%{$p}更改了王国名称{$sep}:
+      {$s}%old%{$sep}➜{$s}%new%
+      {$p}更改时间{$sep}:{$s}%time%
+  kingdom-change-tag:
+    material: PAPER
+    name: "&9王国标签更改"
+    lore: |
+      {$p}玩家{$s}%player%{$p}更改了王国标签{$sep}:
+      {$s}%old%{$sep}➜{$s}%new%
+      {$p}更改时间{$sep}:{$s}%time%
+  kingdom-nation-join:
+    material: BEACON
+    name: "&9加入邦联"
+    lore: |
+      {$p}你的王国加入了邦联{$s}%kingdoms_nation_name%{$p}。
+      {$p}加入时间{$sep}:{$s}%time%
+  kingdom-nation-leave:
+    material: BEACON
+    name: "&c离开邦联"
+    lore: |
+      {$p}你的王国离开了邦联{$s}%kingdoms_nation_name%{$p}。
+      {$p}离开时间{$sep}:{$s}%time%
+  'PeaceTreaties:received':
+    material: BOOK
+    name: "&9收到和平条约"
+    commands:
+      - 'k pt review %kingdoms_other_kingdom_name%'
+    lore: |
+      {$p}发送方{$sep}:{$s}%kingdoms_other_kingdom_name%
+      {$p}条约生效时间{$sep}:{$s}%peacetreaty_duration%
+
+      {$p}输入{$sep}:{$s}/k pt review %kingdoms_other_kingdom_name%
+      {$p}以获取更多信息。
+  'PeaceTreaties:sent':
+    material: BOOK
+    name: "&9发送和平条约"
+    commands:
+      - 'k pt review %kingdoms_other_kingdom_name%'
+    lore: |
+      {$p}接收方{$sep}:{$s}%kingdoms_name%
+      {$p}条约生效时间{$sep}:{$s}%peacetreaty_duration%
+
+      {$p}输入{$sep}:{$s}/k pt review %kingdoms_other_kingdom_name%
+      {$p}以获取更多信息。
   '[else]':
     material: BARRIER
-    name: '{$e}Unknown log type{$sep}:'
+    name: '{$e}未知的编年史种类{$sep}:'
     lore: '{$es}%type%'
 
 options:
   decoration:
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
     material: RED_STAINED_GLASS_PANE
     name: ''
-  filters-and-sorting:
-    posx: 5
-    posy: 1
-    material: BOOK
-    name: "{$p}过滤&分类"
-    lore: |
-      {$p}过滤{$sep}: 
-       {$sep}⚫ {$s}玩家{$sep}: %bool_filters_player%
-       {$sep}⚫ {$s}时间{$sep}: %bool_filters_time%
-       {$sep}⚫ {$s}事件种类{$sep}: %bool_filters_type%
-      {$p}排序{$sep}: 
-       {$sep}⚫ {$s}时间升序{$sep}: %bool_sorting_time_ascending%
-       {$sep}⚫ {$s}时间降序{$sep}: %bool_sorting_time_descending%
-       {$sep}⚫ {$s}事件种类{$sep}: %bool_sorting_type%
   next-page:
     name: '{$s}下一页 {$p}- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
@@ -340,11 +399,11 @@ options:
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
     slot: 0
-
+  
   entry:
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
     '[switch]': type
-
+  
   back:
     posx: 5
     posy: 6

@@ -1,0 +1,481 @@
+title: '{$sep}-=({$p}权限{$sep})=-'
+rows: 6
+
+# Don't remove "-nosync" from below.
+# -nosync
+'[fn-std-perm]': &fn-std-perm
+  args: ["<x>"]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -nosync
+'[fn-perm]': &fn-perm
+  args: ["<x>", "<material>"]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -nosync
+'[permission]':
+  alliance:
+    enabled:
+      condition: enabled
+      name: "{$enabled}结盟"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}结盟"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k ally&7指令的权限。。
+  broadcast:
+    enabled:
+      condition: enabled
+      name: "{$enabled}广播"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}广播"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k broadcast&7指令的权限。
+  build:
+    material: DIAMOND_PICKAXE
+    enabled:
+      condition: enabled
+      name: "{$enabled}建造"
+      glow: true
+    else:
+      name: "{$disabled}建造"
+    lore: |
+      &7在王国里建造的权限。
+
+      此权限与{$p}私有地块建造&7权限的区别请参考{$p}私有地块建造&7权限。
+  build-owned:
+    material: GOLD_PICKAXE
+    enabled:
+      condition: enabled
+      name: "{$enabled}私有地块建造"
+      glow: true
+    else:
+      name: "{$disabled}私有地块建造"
+    lore: |
+      - "{$p}建造{$p}和{$p}私有地块建造{$p}的区别"
+      - "{$p}在于{$p}前者允许你在王国任何非核心区块上建造, "
+      - "{$p}但后者仅允许你在自己占领的地块上建造。"
+      - "{$p}其他有{$p}私有地块建造{$p}权限的人无法在此类区块上建造, "
+      - "{$p}但有{$p}建造权限{$p}的人可以。"
+  edit-ranks:
+    enabled:
+      condition: enabled
+      name: "{$enabled}权限组"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}权限组"
+      material: RED_WOOL
+    lore: |
+      &7创建, 删除, 和更改权限组的权限。
+      可更改内容包括符号, 名称, 和权限。
+
+      他们不能编辑自己的权限组或优先级更高的权限组。
+
+      此权限不会给予他们晋升&降职玩家的权限。
+  enemy:
+    enabled:
+      condition: enabled
+      name: "{$enabled}宣战"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}宣战"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k enemy&7指令的权限。
+  home:
+    enabled:
+      condition: enabled
+      name: "{$enabled}家"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}家"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k home&7指令的权限。
+  invade:
+    enabled:
+      condition: enabled
+      name: "{$enabled}入侵"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}入侵"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k invade&7指令的权限。
+  invite:
+    enabled:
+      condition: enabled
+      name: "{$enabled}邀请"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}邀请"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k invite&7指令和
+      使用{$s}/k invitecodes&7指令制作邀请码的权限。
+  kick:
+    enabled:
+      condition: enabled
+      name: "{$enabled}踢出玩家"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}踢出玩家"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k kick&7指令的权限。
+
+      &7拥有此权限的玩家无法踢出与
+      他们权限组相同或权限组
+      优先级比他们更高的玩家。
+  lore:
+    enabled:
+      condition: enabled
+      name: "{$enabled}介绍"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}介绍"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k lore{$sep}, {$s}/k rename&7和{$s}/k tag&7指令的权限。
+  nexus:
+    material: BEACON
+    enabled:
+      condition: enabled
+      name: "{$enabled}核心"
+      glow: true
+    else:
+      name: "{$disabled}核心"
+    lore: |
+      &7使用{$s}/k nexus&7指令移动王国核心的权限。
+  nexus-build:
+    material: BEACON
+    enabled:
+      condition: enabled
+      name: "{$enabled}核心地块建造"
+      glow: true
+    else:
+      name: "{$disabled}核心地块建造"
+    lore: |
+      &7在核心所在地块里建造的权限。
+  nexus-chest:
+    material: CHEST
+    enabled:
+      condition: enabled
+      name: "{$enabled}核心箱子"
+      glow: true
+    else:
+      name: "{$disabled}核心箱子"
+    lore: |
+      &7编辑王国核心箱子的权限。
+  outpost:
+    material: HAY_BLOCK
+    enabled:
+      condition: enabled
+      name: "{$enabled}前哨"
+      glow: true
+    else:
+      name: "{$disabled}前哨"
+    lore: |
+      &7从设施"前哨"之中购买物品的权限。
+  protection-signs:
+    material: OAK_SIGN
+    enabled:
+      condition: enabled
+      name: "{$enabled}绕过保护告示牌"
+      glow: true
+    else:
+      name: "{$disabled}绕过保护告示牌"
+    lore: |
+      &7绕过王国地块内保护告示牌编辑方块的权限。
+  set-home:
+    enabled:
+      condition: enabled
+      name: "{$enabled}设置家"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}设置家"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k sethome&7指令的权限。
+  invsee:
+    enabled:
+      condition: enabled
+      name: "{$enabled}查看背包"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}查看背包"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k invsee&7指令的权限。
+  structures:
+    material: REDSTONE_LAMP
+    enabled:
+      condition: enabled
+      name: "{$enabled}设施"
+      glow: true
+    else:
+      name: "{$disabled}设施"
+    lore: |
+      &7购买, 放置, 破坏和编辑设施的权限。
+  use:
+    material: FURNACE
+    enabled:
+      condition: enabled
+      name: "{$enabled}使用"
+      glow: true
+    else:
+      name: "{$disabled}使用"
+    lore: |
+      &7在王国内使用特定方块。
+  interact:
+    material: OAK_DOOR
+    enabled:
+      condition: enabled
+      name: "{$enabled}交互"
+      glow: true
+    else:
+      name: "{$disabled}交互"
+    lore: |
+      &7在王国地块内与特定方块交互
+      (如门和按钮)的权限。
+  upgrade:
+    enabled:
+      condition: enabled
+      name: "{$enabled}升级"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}升级"
+      material: RED_WOOL
+    lore: |
+      &7升级王国中全部可升级选项, 
+      如杂项升级, 斗士升级, 加成, 
+      炮塔与设施等。
+  truce:
+    enabled:
+      condition: enabled
+      name: "{$enabled}停战"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}停战"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k truce&7指令的权限。
+  turrets:
+    material: ARROW
+    enabled:
+      condition: enabled
+      name: "{$enabled}炮塔"
+      glow: true
+    else:
+      name: "{$disabled}炮塔"
+    lore: |
+      &7使用{$s}/k broadcast&7指令的权限。
+  unclaim:
+    enabled:
+      condition: enabled
+      name: "{$enabled}放弃"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}放弃"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k unclaim&7指令的权限。
+  manage-ranks:
+    enabled:
+      condition: enabled
+      name: "{$enabled}管理成员权限组"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}管理成员权限组"
+      material: RED_WOOL
+    lore: |
+      &7将权限组低于自己的玩家
+      晋升&降职的权限。
+
+      此权限不会给予他们编辑权限组的权限。
+  withdraw:
+    enabled:
+      condition: enabled
+      name: "{$enabled}取出"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}取出"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k rp withdraw&7指令
+      取出王国资源点转换为自己账户中的金钱
+      (如通过王国核心GUI的资源点转换器)的权限。
+  fly:
+    material: ELYTRA
+    enabled:
+      condition: enabled
+      name: "{$enabled}飞行"
+      glow: true
+    else:
+      name: "{$disabled}飞行"
+    lore: |
+      &7使用{$s}/k fly&7指令的权限。
+  nation:
+    material: BLUE_WOOL
+    enabled:
+      condition: enabled
+      name: "{$enabled}文明"
+      glow: true
+    else:
+      name: "{$disabled}文明"
+    lore: |
+      &7加入&离开文明的权限。
+  exclude-tax:
+    enabled:
+      condition: enabled
+      name: "{$enabled}免税"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}免税"
+      material: RED_WOOL
+    lore: |
+      &7无需缴税的权限。
+  relation-attributes:
+    enabled:
+      condition: enabled
+      name: "{$enabled}外交关系属性"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}外交关系属性"
+      material: RED_WOOL
+    lore: |
+      &7编辑外交关系属性的权限。
+  settings:
+    enabled:
+      condition: enabled
+      name: "{$enabled}设置"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}设置"
+      material: RED_WOOL
+    lore: |
+      &7更改在王国核心GUI内部
+      设置的权限。
+  claim:
+    enabled:
+      condition: enabled
+      name: "{$enabled}占领"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}占领"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k claim&7指令的权限。
+  unclaim-owned:
+    lore: |
+      &7仅允许玩家放弃自己占领的地块的权限。
+    enabled:
+      condition: enabled
+      name: "{$enabled}放弃私有地块"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}放弃私有地块"
+      material: RED_WOOL
+  instant-teleport:
+    lore: |
+      &7当输入&2/k tpa&7指令时立即传送至玩家身边的权限, 
+      若禁用则必须等待玩家同意。
+
+      你在传送前仍需要等待倒计时结束。
+    enabled:
+      condition: enabled
+      name: "&2瞬时传送"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}瞬时传送"
+      material: RED_WOOL
+  view-logs:
+    enabled:
+      condition: enabled
+      name: "{$enabled}查看编年史"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}查看编年史"
+      material: RED_WOOL
+    lore: |
+      &7通过王国核心GUI查看王国编年史的权限。
+  read-mails:
+    material: PLAYER_HEAD
+    enabled:
+      condition: enabled
+      name: "{$enabled}查看邮件"
+      glow: true
+    else:
+      name: "{$disabled}查看邮件"
+    lore: |
+      &7使用王国核心GUI查看邮件的权限。
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    material: PLAYER_HEAD
+    enabled:
+      condition: enabled
+      name: "{$enabled}管理邮件"
+      glow: true
+    else:
+      name: "{$disabled}管理邮件"
+    lore: |
+      &7发送新邮件&回复邮件的权限。
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  'Outposts:join':
+    enabled:
+      condition: enabled
+      name: "{$enabled}参加前哨锦标赛"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled}参加前哨锦标赛"
+      material: RED_WOOL
+    lore: |
+      &7使用{$s}/k outposts join&7指令的权限。
+  "[else]":
+    name: "&4未知: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  
+  next-page:
+    name: '{$s}下一页{$p}-&e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$s}上一页{$p}-&e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+  
+  permissions:
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+    # This is a special feature
+    '[switch]': permission
+  
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}返回'
