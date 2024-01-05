@@ -251,7 +251,7 @@ public final class OutpostEditor {
             itemsOption.editItem(templateItem -> item).done();
         }
 
-        gui.onClose(() -> outpost.getRewards().setItems(gui.getInteractableItems()));
+        gui.onClose(true, () -> outpost.getRewards().setItems(gui.getInteractableItems()));
         gui.push("back", this::openOutpostRewardsGUIEditor);
 
         gui.open();

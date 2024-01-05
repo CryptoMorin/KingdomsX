@@ -50,11 +50,9 @@ open class StandardTermProvider(
 
             fun lang(x: String, default: Messenger): Messenger {
                 return DefaultedMessenger(
-                    LanguageEntryMessenger("terms", provider.namespace.key.replace('_', '_'), x),
-                    default
-                )
+                    LanguageEntryMessenger("terms", provider.namespace.key.replace('_', '_'), x)
+                ) { default }
             }
-
 
             val min: Double? = config.getMathExpression("min").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
             val max: Double? = config.getMathExpression("max").nullIfDefault()?.let { MathUtils.eval(it, ctx) }

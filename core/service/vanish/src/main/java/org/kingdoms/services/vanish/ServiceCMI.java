@@ -4,7 +4,7 @@ import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Containers.CMIUser;
 import org.bukkit.entity.Player;
 
-public final class ServiceCMI implements ServiceVanish {
+public final class ServiceCMI implements ServiceCommons {
     @Override
     public boolean isVanished(Player player) {
         return CMI.getInstance().getVanishManager().getAllVanished().contains(player.getUniqueId());

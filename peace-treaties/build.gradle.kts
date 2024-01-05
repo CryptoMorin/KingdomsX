@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.kingdoms.peacetreaties"
-version = "1.2.6"
+version = "1.2.6.0.1"
 description = "A contract management for neutral relationships."
 
 buildscript {

@@ -56,6 +56,28 @@ disallow-accidental-mob-damage:
 # it starts shooting at that player.
 temporary-hologram-display: 5mins
 
+# The accuracy of the turrets based on ticks.
+# Basically what this option does is that it updates
+# cached data from previous turret fires in order to
+# improve performance.
+# The number on this option shows the amount of ticks
+# it takes for each turret to update their data again.
+# - Higher number means less accuracy.
+# - Higher number means more performance.
+# - Must be between 1 and infinity.
+# - This option is not affected by "update-ticks" option.
+# - Values between 1 and 5 will just give extra overhead and should not be used.
+# - Set to 0 to disable. (Instant updates)
+# - This option doesn't take turret cooldown into account, so it doesn't matter whether a
+#   turret has 5 or 10 tick cooldown, it will recheck after 20 absolute server ticks.
+# For example a high number like 100 can mean that if a player were
+# to go out of a turret's range, the turret will continue to attempt to
+# shoot the playr for another 5 seconds until its surroundings are updated.
+# - Other delayed scenarios include changing the turret settings, adding ammo,
+#   spawning mobs, killed players, etc.
+# * Requires a restart to update.
+accuracy: 20
+
 # WARNING: BE VERY CAREFUL WHEN CHANGING THIS OPTION:
 # - By changing this option you're changing how often turrets perform checks and activate.
 # - By default, it's every 1 tick. Meaning every 1 second, 20 checks are performed.
@@ -66,5 +88,9 @@ temporary-hologram-display: 5mins
 # - Every single number of this option matters up to 100 ticks for performance.
 #   After 100 ticks the performance is just not noticable anymore, unless
 #   you have an unusual high number of turrets.
+# - While this option and "accuracy" are very similar, this option has more impact
+#   on performance compared to "accuracy" option. Since the previous option removed
+#   some of the checks for performance, but this option will entirely put the turrets
+#   into a "sleeping" state which causes them to not shoot at all.
 # * Requires a restart to update.
 update-ticks: 1

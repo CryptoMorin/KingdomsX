@@ -5,7 +5,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 // https://github.com/EssentialsX/Essentials/blob/2.x/Essentials/src/main/java/com/earth2me/essentials/User.java
-public final class ServiceEssentialsX implements ServiceVanish {
+public final class ServiceEssentialsX implements ServiceCommons {
     private static final Essentials ESS = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
 
     @Override
