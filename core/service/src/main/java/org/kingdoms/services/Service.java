@@ -5,9 +5,7 @@ public interface Service {
         return true;
     }
 
-    default void enable() {
-    }
+    default void enable() {}
 
-    default void disable() {
-    }
+    default void disable() {}
 }

@@ -40,7 +40,7 @@ class ServiceProjectKorra(val handler: (player: Player, location: Location) -> B
             location: Location,
             ability: CoreAbility?,
             isIgnite: Boolean,
-            isExplosive: Boolean
+            isExplosive: Boolean,
         ): Boolean {
             // https://github.com/ProjectKorra/ProjectKorra/blob/3ee5c834f96d860be1792b38b2ded2d140dd62bf/src/com/projectkorra/projectkorra/region/Kingdoms.java
             return handler(player, location)

@@ -116,7 +116,7 @@ class PeaceTreaties {
         fun <T> initializeMeta(
             kingdom: Kingdom,
             metadataHandler: KingdomMetadataHandler,
-            default: Supplier<KingdomMetadata>
+            default: Supplier<KingdomMetadata>,
         ): T {
             var metadata: KingdomMetadata? = kingdom.metadata[metadataHandler]
             if (metadata == null) {
@@ -166,7 +166,7 @@ class PeaceTreatyReceiverMetaHandler private constructor() :
     @Suppress("LABEL_NAME_CLASH")
     override fun deserialize(
         container: KingdomsObject<*>,
-        context: DeserializationContext<SectionableDataGetter>
+        context: DeserializationContext<SectionableDataGetter>,
     ): KingdomMetadata {
         return PeaceTreatyReceiverMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             val proposerID = key.asUUID()
@@ -206,7 +206,7 @@ class PeaceTreatyProposerMetaHandler private constructor() :
     KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
     override fun deserialize(
         container: KingdomsObject<*>,
-        context: DeserializationContext<SectionableDataGetter>
+        context: DeserializationContext<SectionableDataGetter>,
     ): PeaceTreatyProposedMeta {
         return PeaceTreatyProposedMeta(context.dataProvider.asCollection(hashSetOf()) { c, x -> c.add(x.asUUID()!!) })
     }

@@ -85,7 +85,7 @@ class WarPoint {
 class WarPointsMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "WAR_POINTS")) {
     override fun deserialize(
         container: KingdomsObject<*>,
-        context: DeserializationContext<SectionableDataGetter>
+        context: DeserializationContext<SectionableDataGetter>,
     ): KingdomMetadata {
         return WarPointsMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             map[key.asUUID()!!] = value.asDouble()

@@ -3,7 +3,6 @@ import org.kingdoms.main.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons
-    kotlin
     shadowed
 }
 

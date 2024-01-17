@@ -38,7 +38,7 @@ open class StandardTermProvider(
         @JvmStatic
         fun standardAmountPrompt(
             provider: TermProvider, options: TermGroupingOptions, editor: StandardPeaceTreatyEditor,
-            handler: (Number) -> Term?
+            handler: (Number) -> Term?,
         ): CompletionStage<Term> {
             val config = options.getConfigOf(provider)
             val ctx = editor.peaceTreaty.placeholderContextProvider

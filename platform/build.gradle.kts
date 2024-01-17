@@ -3,12 +3,11 @@ import org.kingdoms.main.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons
-    kotlin
     shadowed
 }
 
-group "org.kingdoms.platform"
-version "unspecified"
+group = "org.kingdoms.platform"
+version = "unspecified"
 
 tasks.shadowJar {
     excludeKotlin()

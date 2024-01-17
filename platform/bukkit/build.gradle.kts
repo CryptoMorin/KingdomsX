@@ -1,6 +1,4 @@
 plugins {
-    java
-    kotlin
     commons
     spigot
 }

@@ -1,6 +1,6 @@
 package org.kingdoms.server.location
 
-import java.util.UUID
+import java.util.*
 
 interface World {
     fun getName(): String
