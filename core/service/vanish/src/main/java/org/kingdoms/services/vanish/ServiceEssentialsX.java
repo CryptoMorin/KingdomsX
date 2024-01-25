@@ -17,4 +17,9 @@ public final class ServiceEssentialsX implements ServiceCommons {
     public boolean isInGodMode(Player player) {
         return ESS.getUser(player).isGodModeEnabled();
     }
+
+    @Override
+    public boolean isIgnoring(Player ignorant, Player ignoring) {
+        return ESS.getUser(ignorant).isIgnoredPlayer(ESS.getUser(ignoring));
+    }
 }

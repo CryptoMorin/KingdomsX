@@ -7,4 +7,6 @@ public interface ServiceCommons extends Service {
     boolean isVanished(Player player);
 
     boolean isInGodMode(Player player);
+
+    boolean isIgnoring(Player ignorant, Player ignoring);
 }

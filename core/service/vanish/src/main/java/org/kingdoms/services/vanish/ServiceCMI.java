@@ -10,10 +10,14 @@ public final class ServiceCMI implements ServiceCommons {
         return CMI.getInstance().getVanishManager().getAllVanished().contains(player.getUniqueId());
     }
 
+    private CMIUser getUser(Player player) {
+        return CMI.getInstance().getPlayerManager().getUser(player);
+    }
+
     @Override
     public boolean isInGodMode(Player player) {
         // "This can return NULL in some rare situations, so perform NPE check."
-        CMIUser user = CMI.getInstance().getPlayerManager().getUser(player);
+        CMIUser user = getUser(player);
         try {
             return user != null && user.isGod();
         } catch (NoSuchMethodError ex) {
@@ -26,5 +30,11 @@ public final class ServiceCMI implements ServiceCommons {
              */
             return false;
         }
+    }
+
+    @Override
+    public boolean isIgnoring(Player ignorant, Player ignoring) {
+        CMIUser user = getUser(ignorant);
+        return user != null && user.isIgnoring(ignoring.getUniqueId());
     }
 }
