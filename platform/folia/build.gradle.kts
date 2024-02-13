@@ -1,5 +1,5 @@
-import org.kingdoms.main.KingdomsGradleCommons.excludeKotlin
-import org.kingdoms.main.KingdomsGradleCommons.relocateLibs
+import org.kingdoms.gradle.KingdomsGradleCommons.excludeKotlin
+import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons

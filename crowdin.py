@@ -1,7 +1,7 @@
 # Setup: Project Settings > Facets > Python
 #        Or Right-click on "KingdomsX" project folder in Intellij > Add Framework Support > Python
 #        After doing this, wait for indexing to finish.
-# Run: Right-click anywhere in this file and click "Run File in Python Console"
+# Run: Right-click anywhere in this file and click "Run File in Python Console" (IntelliJ)
 # Used Python version: 3.11.2
 # Used libs: https://pyyaml.org/wiki/PyYAMLDocumentation
 
@@ -10,8 +10,7 @@ import os
 import yaml
 
 
-# Pyyaml doesn't indent lists: https://github.com/yaml/pyyaml/issues/234
-# Ain't not fucking way...
+# Pyyaml doesn't indent lists w h a t?: https://github.com/yaml/pyyaml/issues/234
 class CrowdinDumper(yaml.Dumper):
     def increase_indent(self, flow=False, indentless=False):
         return super(CrowdinDumper, self).increase_indent(flow, False)

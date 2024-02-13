@@ -1,3 +1,5 @@
+import org.kingdoms.gradle.KingdomsGradleCommons.localDependency
+
 plugins {
     commons
     spigot
@@ -23,5 +25,5 @@ dependencies {
     // https://www.zrips.net/cmi/api/
     // compileOnly("org.cmi:CMI-API:9.3.1.5") { isTransitive = false }
     // https://jitpack.io/#Zrips/CMI-API Builds are failing...
-    compileOnly(files(rootDir.toPath().resolve("local-dependencies").resolve("CMI-API-9.3.1.5.jar")))
+    compileOnly(localDependency("CMI-API-9.3.1.5.jar"))
 }

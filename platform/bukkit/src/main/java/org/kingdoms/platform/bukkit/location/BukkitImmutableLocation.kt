@@ -17,7 +17,7 @@ object BukkitImmutableLocation {
     @JvmStatic fun from(location: ImmutableLocation?): Location? {
         location ?: return null
         return location.run {
-            Location(Bukkit.getWorld(getWorld().getId()), getX(), getY(), getZ(), getYaw(), getPitch())
+            Location(BukkitWorld.getWorld(getWorld().getId(), location), getX(), getY(), getZ(), getYaw(), getPitch())
         }
     }
 }

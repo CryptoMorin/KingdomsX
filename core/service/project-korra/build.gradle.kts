@@ -1,3 +1,5 @@
+import org.kingdoms.gradle.KingdomsGradleCommons.localDependency
+
 plugins {
     java
     commons
@@ -14,8 +16,6 @@ dependencies {
     // https://projectkorra.com/docs/
     compileOnly(project(":core:service"))
     compileOnly(
-        files(
-            rootDir.toPath().resolve("local-dependencies").resolve("ProjectKorra-1.11.2.jar")
-        )
+        localDependency("ProjectKorra-1.11.2.jar")
     ) // They don't have an official API.
 }
