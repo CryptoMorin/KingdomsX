@@ -20,29 +20,18 @@ interface VersionPart : VersionBase<VersionPart> {
     override fun canBeComparedTo(other: VersionPart): Boolean
     override fun getFriendlyString(short: Boolean): String
 
-    /**
-     * Whether this version component is considered to supersede
-     * other versions if the other versions length is shorter.
-     *
-     * - 1.2.0 > 1.2.0-BETA
-     * - 1.2.0 < 1.2.0.1
-     * - 1.2.0 = 1.2.0.0
-     */
-    fun compareWhenNotSpecified(): Int
-
     override fun hashCode(): Int
     override fun equals(other: Any?): Boolean
 
     class Numeric(val number: Int) : VersionPart {
         override fun canBeComparedTo(other: VersionPart): Boolean = other is Numeric
         override fun getFriendlyString(short: Boolean): String = number.toString()
-        override fun compareWhenNotSpecified(): Int = this.number.compareTo(0)
         override fun asDataString(): String = number.toString()
         override fun hashCode(): Int = number.hashCode()
         override fun equals(other: Any?): Boolean = other is Numeric && this.number == other.number
         override fun compareTo(other: VersionPart): Int = when (other) {
             is Numeric -> this.number.compareTo(other.number)
-            is Stage -> 1
+            is Stage -> if (other.type.unstable) 1 else 0
             else -> 0
         }
 
@@ -53,7 +42,6 @@ interface VersionPart : VersionBase<VersionPart> {
         override fun canBeComparedTo(other: VersionPart): Boolean = other is Unknown
         override fun asDataString(): String = id
         override fun getFriendlyString(short: Boolean): String = id
-        override fun compareWhenNotSpecified(): Int = 1
         override fun hashCode(): Int = id.hashCode()
         override fun equals(other: Any?): Boolean = other is Unknown && this.id == other.id
         override fun compareTo(other: VersionPart): Int = when (other) {
@@ -86,7 +74,6 @@ interface VersionPart : VersionBase<VersionPart> {
                 .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
         }
 
-        override fun compareWhenNotSpecified(): Int = if (this.type.unstable) -1 else 1
         override fun hashCode(): Int = type.ordinal
         override fun equals(other: Any?): Boolean = other is Stage && this.type == other.type
         override fun asDataString(): String = when (this.type) {
@@ -96,6 +83,7 @@ interface VersionPart : VersionBase<VersionPart> {
 
         override fun compareTo(other: VersionPart): Int = when (other) {
             is Stage -> this.type.compareTo(other.type)
+            is Numeric -> if (type.unstable) -1 else 0
             else -> 0
         }
 
@@ -144,7 +132,6 @@ open class AbstractVersion(private val originalString: String, private val parts
     override fun compareTo(other: Version): Int {
         val otherParts = other.getParts()
         val size = Math.min(parts.size, otherParts.size)
-        System.out.println("min betwee $parts (${parts.size}) and $otherParts (${otherParts.size}) is $size")
         for (i in 0..<size) {
             val part = parts[i]
             val otherPart = otherParts[i]
@@ -152,13 +139,24 @@ open class AbstractVersion(private val originalString: String, private val parts
             if (compareTo != 0) return compareTo
         }
 
-        val nextAfterFinal = if (parts.size > size) {
-            parts[Math.min(size, parts.size - 1)]
-        } else {
-            otherParts[Math.min(size, otherParts.size - 1)]
-        }
+        if (parts.size == otherParts.size) return 0
 
-        return nextAfterFinal.compareWhenNotSpecified()
+        // Handles cases like:
+        // 1.0.0.0.0.0 = 1.0.0
+        // 1.0.0.1 > 1.0
+        // 1.0.0.0.1-ALPHA > 1.0.0
+
+        if (otherParts.size > parts.size) {
+            val lastOfFirst = parts.last()
+            val restOfSecond = otherParts.subList(parts.size - 1, otherParts.size /* exclusive */)
+            restOfSecond.map { lastOfFirst.compareTo(it) }.find { it != 0 }?.let { return it }
+            return 0
+        } else {
+            val lastOfSecond = otherParts.last()
+            val restOfFirst = parts.subList(otherParts.size - 1, parts.size /* exclusive */)
+            restOfFirst.map { it.compareTo(lastOfSecond) }.find { it != 0 }?.let { return it }
+            return 0
+        }
     }
 
     override fun canBeComparedTo(other: Version): Boolean = true
