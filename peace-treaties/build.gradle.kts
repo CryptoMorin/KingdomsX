@@ -2,19 +2,18 @@ plugins {
     commons
     shadowed
     spigot
-    addon
     kotlin
     sublibs
+    addon
+    buildFiles
 }
 
 group = "org.kingdoms.peacetreaties"
 version = "1.2.6.0.3"
 description = "A contract management for neutral relationships."
 
-buildscript {
-    extra.apply {
-        set("outputName", "Kingdoms-Addon-Peace-Treaties")
-    }
+kingdomsAddon {
+    addonName.set("Peace-Treaties")
 }
 
 dependencies {

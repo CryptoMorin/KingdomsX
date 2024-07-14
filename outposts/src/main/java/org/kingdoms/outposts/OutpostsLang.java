@@ -5,11 +5,11 @@ import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
 public enum OutpostsLang implements DefinedMessenger {
-    COMMAND_OUTPOST_DESCRIPTION("{$s}Shows the available outpost commands."),
+    COMMAND_OUTPOST_DESCRIPTION("{$s}Shows the available outpost commands.", 1, 2, 3),
     COMMAND_OUTPOST_NOT_FOUND("{$e}Could not find {$es}%outpost% {$e}outpost.", 1, 2, 3),
 
-    COMMAND_OUTPOST_EDIT_DESCRIPTION("{$s}Modify outpost settings."),
-    COMMAND_OUTPOST_EDIT_USAGE("{$usage}outpost edit {$p}<name>"),
+    COMMAND_OUTPOST_EDIT_DESCRIPTION("{$s}Modify outpost settings.", 1, 2, 3),
+    COMMAND_OUTPOST_EDIT_USAGE("{$usage}outpost edit {$p}<name>", 1, 2, 3),
 
     COMMAND_OUTPOST_CREATE_DESCRIPTION("{$s}Creates a new outpost from WorldGuard region.", 1, 2, 3),
     COMMAND_OUTPOST_CREATE_USAGE("{$usage}outpost create {$p}<name> <region>", 1, 2, 3),

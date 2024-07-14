@@ -15,10 +15,8 @@ group = "org.kingdoms.enginehub"
 version = "1.0.0"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
-buildFiles {
-    projectName.set("Kingdoms-Addon-EngineHub")
-    outputFileName.set("Kingdoms-Addon-EngineHub")
-    appendVersionSuffix.set(true)
+kingdomsAddon {
+    addonName.set("EngineHub")
 }
 
 repositories {

@@ -4,16 +4,15 @@ plugins {
     sublibs
     spigot
     addon
+    buildFiles
 }
 
 group = "org.kingdoms"
 version = "3.0.1.6.3"
 description = "An event similar to KoTH"
 
-buildscript {
-    extra.apply {
-        set("outputName", "Kingdoms-Addon-Outposts")
-    }
+kingdomsAddon {
+    addonName.set("Outposts")
 }
 
 dependencies {

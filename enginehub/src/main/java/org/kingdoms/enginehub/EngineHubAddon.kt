@@ -85,6 +85,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
         reloadAddon()
 
         if (hasWorldGuard()) WorldGuardHandler(this)
+        registerAddon()
     }
 
     override fun reloadAddon() {
