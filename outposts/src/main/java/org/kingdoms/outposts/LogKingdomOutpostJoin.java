@@ -8,7 +8,7 @@ import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 
 import java.util.UUID;
 
@@ -65,7 +65,7 @@ public class LogKingdomOutpostJoin extends AuditLog {
     }
 
     @Override
-    public void addEdits(MessageBuilder builder) {
+    public void addEdits(MessagePlaceholderProvider builder) {
         builder.withContext(Bukkit.getOfflinePlayer(player));
         builder.raw("outpost_name", outpostName);
     }

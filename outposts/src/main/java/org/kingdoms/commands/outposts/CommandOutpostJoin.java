@@ -6,7 +6,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.outposts.*;
 import org.kingdoms.utils.MathUtils;
 
@@ -19,7 +19,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
     }
 
     @Override
-    public CommandResult executeX(CommandContext context) {
+    public CommandResult execute(CommandContext context) {
         if (context.assertPlayer()) return CommandResult.FAILED;
         if (context.requireArgs(1)) return CommandResult.FAILED;
         if (context.assertHasKingdom()) return CommandResult.FAILED;
@@ -54,7 +54,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
                 return context.fail(OutpostsLang.COMMAND_OUTPOST_JOIN_PERMISSION);
             }
 
-            MessageBuilder settings = new MessageBuilder().withContext(kingdom);
+            MessagePlaceholderProvider settings = new MessagePlaceholderProvider().withContext(kingdom);
 
             long rp = 0;
             double cost = 0;

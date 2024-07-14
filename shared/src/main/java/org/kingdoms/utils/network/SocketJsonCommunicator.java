@@ -59,7 +59,8 @@ public abstract class SocketJsonCommunicator {
                         ex.printStackTrace();
                     }
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 

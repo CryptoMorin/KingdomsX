@@ -44,9 +44,10 @@ class OfflinePlayer(private val id: UUID, private val name: String) : OfflinePla
     override fun getFirstPlayed(): Long = unsupported()
     override fun getLastPlayed(): Long = unsupported()
     override fun getBedSpawnLocation(): Location = unsupported()
+    override fun getRespawnLocation(): Location? = unsupported()
     // Paper
-//    override fun getLastLogin(): Long = unsupported()
-//    override fun getLastSeen(): Long = unsupported()
+    //    override fun getLastLogin(): Long = unsupported()
+    //    override fun getLastSeen(): Long = unsupported()
 
     override fun incrementStatistic(statistic: Statistic) = unsupported()
     override fun incrementStatistic(statistic: Statistic, amount: Int) = unsupported()
@@ -67,4 +68,5 @@ class OfflinePlayer(private val id: UUID, private val name: String) : OfflinePla
     override fun getStatistic(statistic: Statistic, material: Material): Int = unsupported()
     override fun getStatistic(statistic: Statistic, entityType: EntityType): Int = unsupported()
     override fun getLastDeathLocation(): Location = unsupported()
+    override fun getLocation(): Location? = unsupported()
 }

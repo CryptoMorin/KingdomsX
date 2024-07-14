@@ -19,13 +19,13 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
         @JvmStatic
         fun openGUI(player: Player, kingdom: Kingdom): InteractiveGUI {
             val gui = GUIAccessor.prepare(player, PeaceTreatyGUI.`PEACE$TREATIES`)
-            gui.settings.raw("page", 1).raw("pages", 1)
+            gui.messageContext.raw("page", 1).raw("pages", 1)
 
             val sentOpt = gui.getReusableOption("sent")!!
             val receivedOpt = gui.getReusableOption("received")!!
 
             for (contract in kingdom.getReceivedPeaceTreaties().values) {
-                contract.getPlaceholderContextProvider(receivedOpt.settings)
+                contract.getPlaceholderContextProvider(receivedOpt.messageContext)
                 receivedOpt.onNormalClicks { ctx ->
                     showDetails(ctx, contract, !contract.isAccepted)
                     player.closeInventory()
@@ -34,7 +34,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             }
 
             for (contract in kingdom.getProposedPeaceTreaties().values) {
-                contract.getPlaceholderContextProvider(sentOpt.settings)
+                contract.getPlaceholderContextProvider(sentOpt.messageContext)
                 sentOpt.on(ClickType.LEFT) { ctx ->
                     showDetails(ctx, contract, false)
                     player.closeInventory()
@@ -51,13 +51,13 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
         }
 
         fun showDetails(context: ContextualMessenger, contract: PeaceTreaty, showAcceptTip: Boolean) {
-            contract.getPlaceholderContextProvider(context.settings)
+            contract.getPlaceholderContextProvider(context.messageContext)
             context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_HEADER)
 
             for (termGrouping in contract.terms.values) {
                 for (term in termGrouping.terms.values) {
-                    context.settings.raw("term_message", term.provider.message)
-                    term.addEdits(context.settings)
+                    context.messageContext.raw("term_message", term.provider.message)
+                    term.addEdits(context.messageContext)
                     context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_TERMS)
                 }
             }
@@ -66,7 +66,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
         }
     }
 
-    override fun executeX(context: CommandContext): CommandResult {
+    override fun execute(context: CommandContext): CommandResult {
         if (context.assertPlayer()) return CommandResult.FAILED
         if (context.assertHasKingdom()) return CommandResult.FAILED
         val kingdom = context.kingdom
@@ -77,7 +77,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
         }
 
         val targetKingdom = context.getKingdom(0) ?: return CommandResult.FAILED
-        context.settings.withContext(targetKingdom)
+        context.messageContext.withContext(targetKingdom)
 
         val contract: PeaceTreaty = kingdom.getReceivedPeaceTreaties()[targetKingdom.dataKey] ?: kotlin.run {
             context.sendError(PeaceTreatyLang.COMMAND_PEACETREATY_NO_CONTRACT_FROM_KINGDOM)

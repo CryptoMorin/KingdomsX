@@ -27,7 +27,7 @@ rows: 6
     name: '&2Kihívott'
     lore: |
       &e%player% &ckihívta
-      &e%kingdoms_other_kingdom_name% &ckirályságát.
+      &e%other*kingdoms_kingdom_name% &ckirályságát.
       {$p}Mikor{$sep}: {$s}%time%
 
       &7Még &c%start_time% időd van
@@ -89,7 +89,7 @@ rows: 6
       {$s}%player% {$p}felfejlesztette a
       {$s}%upgrade% {$p}nevű vegyes fejlesztést.
       {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
@@ -98,7 +98,7 @@ rows: 6
       {$s}%player% {$p}felfejlesztette
       {$s}%upgrade% {$p}bajnok fejlesztést.
       {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
@@ -107,7 +107,7 @@ rows: 6
       {$s}%player% {$p}felfejlesztette
       {$s}%upgrade% {$p}nevű erősítést.
       {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
@@ -117,7 +117,7 @@ rows: 6
       {$s}%item_style_display_name% {$p}struktúrát itt{$sep}:
       {$s}%location%
       {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
@@ -125,7 +125,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}vásárolt {$s}%amount% {$s}db
       {$s}%item_style_display_name% {$p}struktúrát.
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
@@ -133,7 +133,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}vásárolt {$s}%amount% {$s}db
       {$s}%item_style_display_name% {$p}tornyot.
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-turret-purchase-ammo:
     name: '&aToronylőszer vásárlás'
@@ -141,8 +141,8 @@ rows: 6
     lore: |
       {$s}%player% {$p}lőszert vásárolt a
       {$s}%style% {$p}toronynak itt{$sep}: {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
-      {$s}%fancy_old_amount% {$sep}➜ {$s}%fancy_new_amount%
-      {$p}Nexus pont költsége{$sep}: {$s}%fancy_resource_points%
+      {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
+      {$p}Nexus pont költsége{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
@@ -152,7 +152,7 @@ rows: 6
       {$s}%item_style_display_name% {$p}tornyot itt{$sep}:
       {$s}%location%
       {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-resource-points-convert:
     material: HAY_BLOCK
@@ -160,7 +160,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}megváltoztatta
       a Nexus pontokat{$sep}:
-      {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
+      {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
       {$p}Mikor{$sep}: {$s}%time%
   extractor-collect:
     material: EMERALD_BLOCK
@@ -169,7 +169,7 @@ rows: 6
       {$s}%player% {$p}begyűjtött a fúró
       területről itt{$sep}:
       {$s}%location%
-      {$p}Begyűjtött Nexus pontok{$sep}: {$s}%fancy_resource_points%
+      {$p}Begyűjtött Nexus pontok{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   warppad-teleport:
     material: END_PORTAL_FRAME
@@ -179,7 +179,7 @@ rows: 6
       teleportpadot használva erről a
       területről {$s}%from_location% {$p}ide
       {$s}%precise_location%
-      {$p}Üzemanyagköltség{$sep}: {$s}%fancy_fuel_cost%
+      {$p}Üzemanyagköltség{$sep}: {$s}%fancy@fuel_cost%
       {$p}Mikor{$sep}: {$s}%time%
   outpost-item-purchase:
     material: HAY_BLOCK
@@ -189,7 +189,7 @@ rows: 6
       következő tárgyakat ezen a területen
       található előőrsből{$sep}:
       {$s}%location%
-      {$p}Összes Nexus pont{$sep}: {$s}%fancy_resource_points%
+      {$p}Összes Nexus pont{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
       %purchases%
   kingdom-pacifism-change:
@@ -208,7 +208,7 @@ rows: 6
       vásárolt a királyságnak.
       {$p}Megvásárolt pajzs időtartama{$sep}: {$s}%purchased-shield-time%
       {$p}Pajzs időtartama{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy_resource_points%
+      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
@@ -336,7 +336,7 @@ rows: 6
     name: "&9Kiszolgálóadó"
     lore: |
       {$p}Fizetett kiszolgálóadók.
-      {$p}Értéke{$sep}: {$s}%fancy_amount%
+      {$p}Értéke{$sep}: {$s}%fancy@amount%
       {$p}Mikor{$sep}: {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
@@ -388,24 +388,24 @@ rows: 6
     material: BOOK
     name: "&9Kapott békeszerződés"
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Felajánló{$sep}: {$s}%kingdoms_other_kingdom_name%
+      {$p}Felajánló{$sep}: {$s}%other*kingdoms_kingdom_name%
       {$p}Szerződés időtartalma{$sep}: {$s}%peacetreaty_duration%
 
       {$p}További információért használd ezt{$sep}:
-      {$s}/k pt review %kingdoms_other_kingdom_name%
+      {$s}/k pt review %other*kingdoms_kingdom_name%
   'PeaceTreaties:sent':
     material: BOOK
     name: "&9Békeszerződés küldése"
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Kinek{$sep}: {$s}%kingdoms_name%
+      {$p}Kinek{$sep}: {$s}%kingdoms_kingdom_name%
       {$p}Szerződés időtartalma{$sep}: {$s}%peacetreaty_duration%
 
       {$p}További információért használd ezt{$sep}:
-      {$s}/k pt review %kingdoms_other_kingdom_name%
+      {$s}/k pt review %other*kingdoms_kingdom_name%
   '[else]':
     material: BARRIER
     name: '{$e}Ismeretlen naplótípus{$sep}:'

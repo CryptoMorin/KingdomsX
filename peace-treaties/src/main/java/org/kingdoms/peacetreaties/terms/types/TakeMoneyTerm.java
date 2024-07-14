@@ -7,7 +7,7 @@ import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.messenger.Messenger;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor;
@@ -52,7 +52,7 @@ public class TakeMoneyTerm extends Term {
     }
 
     @Override
-    public void addEdits(MessageBuilder builder) {
+    public void addEdits(MessagePlaceholderProvider builder) {
         super.addEdits(builder);
         builder.raw("term_take_money_amount", amount);
     }

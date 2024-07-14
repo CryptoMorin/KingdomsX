@@ -57,7 +57,11 @@ options:
   sent:
     slots: [ 10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39 ]
     material: PLAYER_HEAD
-    name: '&2Subject&8: &6%subject%'
+    read:
+      condition: read
+      name: '&2Subject&8: &6%subject%'
+    else:
+      name: '{$sep}(&4Unread{$sep}) &2Subject&8: &6%subject%'
     lore: |
       &2From&8: &6%from%
       &2To&8: &6%to%
@@ -69,7 +73,11 @@ options:
   inbox:
     slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
     material: PLAYER_HEAD
-    name: '&2Subject&8: &6%subject%'
+    read:
+      condition: read
+      name: '&2Subject&8: &6%subject%'
+    else:
+      name: '{$sep}(&4Unread{$sep}) &2Subject&8: &6%subject%'
     lore: |
       &2From&8: &6%from%
       &2To&8: &6%to%

@@ -47,10 +47,10 @@ tax:
     age: '&5Krallığınız yeni olduğu için vergileri ödemedi.'
     paid: |
       &2Toplam &6$%tax% &2krallık vergisi ödendi
-      Güncel Krallık Banka Bakiyesi&8: &6$%kingdoms_fancy_bank%
+      Güncel Krallık Banka Bakiyesi&8: &6$%fancy@kingdoms_bank%
     paid-nation: |
       &2Krallığınız toplam &6$%tax% &2ulus vergisi ödedi
-      Güncel Krallık Banka Bakiyesi&8: &6$%kingdoms_fancy_bank%
+      Güncel Krallık Banka Bakiyesi&8: &6$%fancy@kingdoms_bank%
     kicked: '&e%krallık% &ckrallığı vergileri ödeyemediği için ulustan atıldı&8: &e$%tax%'
     disbanded: '&cKrallığın vergileri ödeyemediği için dağıtıldı&8: &e$%tax%'
     disbanded-announce: '&e%kingdom% &ckrallığı vergileri ödeyemediği için dağıtıldı.'
@@ -62,7 +62,7 @@ tax:
     disbanded: '&cKrallığınız vergileri ödeyemediği için ulustan atıldı.'
     disbanded-announce: '&e%nation% &culus vergileri ödeyemediği için dağıtıldı&8: &e$%tax%'
   notifications: |
-    &8[&4UYARI&8] &cKrallığınızın bankasında bir sonraki faturalama döngüsü için vergileri karşılayacak kadar parası &7(&e$%kingdoms_fancy_bank% &7) &cparası yok.
+    &8[&4UYARI&8] &cKrallığınızın bankasında bir sonraki faturalama döngüsü için vergileri karşılayacak kadar parası &7(&e$%fancy@kingdoms_bank% &7) &cparası yok.
     &cÜyelerden toplanan vergiler yeterli değilse, krallığınız dağılacak. &e$%tax%
   kick-announce: '&e%player% &cvergileri ödeyemediği için atıldı&8: &e%tax%'
   member-paid: '&6$%tax% &2krallık vergisi hesabından alındı.'
@@ -305,7 +305,7 @@ nexus:
       &cSizin üzerinizde &e%tax% &cvergi denklemi test edilemedi&8: &e%reason%
       &cLütfen geçerli bir denklem girin.
     shield-not-enough-resource-points: '&cYeterli kaynak puanınız yok.'
-    shield-activated: '&2Kalkan aktifleştirildi &6%kingdoms_time_shield_time_left%'
+    shield-activated: '&2Kalkan aktifleştirildi &6%time@kingdoms_shield_time_left%'
     shield-cooldown: '&cYou need to wait &e%time% &cbefore buying a shield again.'
 nexus-resource-points-enter-value: Lütfen &6kaynak puanı miktarını girin. &6Iptal etmek için &ecancel
   &6yazınız.
@@ -482,14 +482,14 @@ command:
         success: |
           &2Ülkenizin bankasına &6%amount% &2miktar para yatırdınız.
           Yeni bakiyeniz&8: &6%balance%
-          &2Ülkenizin bankası&8: &6%kingdoms_fancy_nation_bank%
+          &2Ülkenizin bankası&8: &6%fancy@kingdoms_nation_bank%
         disabled: '&cPara yatıramazsınız.'
       withdraw:
         disabled: '&cPara çekemezsiniz.'
         success: |
           &2Ülkenizin bankasından &6%amount% &2miktar para çektiniz.
           &2Yeni bakiyeniz&8: &6%balance%
-          &2Ülke bankanız&8: &6%kingdoms_fancy_nation_bank%
+          &2Ülke bankanız&8: &6%fancy@kingdoms_nation_bank%
       negative: '&cNegatif değerleri aktaramazsınız...'
       zero: '&cHiçbir şeyi aktaramazsın.'
     show:
@@ -504,8 +504,8 @@ command:
         &7| &2Nexus&8: &6%kingdoms_nation_nexus%
         &7| &2İtibaren&8: &6%kingdoms_date_nation_since%
         &7| &2Olabilir&8: &6%kingdoms_nation_might%
-        &7| &2Kalkan&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Banka&8: &6$%kingdoms_fancy_nation_bank% &8| &2Tax&8: &6$%kingdoms_fancy_nation_tax% &8- &6$%kingdoms_fancy_server_nation_tax%
+        &7| &2Kalkan&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Banka&8: &6$%fancy@kingdoms_nation_bank% &8| &2Tax&8: &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
         &7| &2Kaynak Puanları&8: &6%kingdoms_nation_resource_points%
 
         &7| &2Krallıklar&8:
@@ -517,8 +517,8 @@ command:
         &7| &2Ulus&8: &6%kingdoms_nation_name%
         &7| &2İtibaren&8: &6%kingdoms_date_nation_since%
         &7| &2Olabilir&8: &6%kingdoms_might%
-        &7| &2Kalkan&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Banka&8: &6%kingdoms_fancy_nation_bank%
+        &7| &2Kalkan&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Banka&8: &6%fancy@kingdoms_nation_bank%
         &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
         &7| &2Kaynak Puanları&8: &6%kingdoms_resource_points%
 
@@ -641,8 +641,8 @@ command:
       negative: '&cNegatif sayfalar gösterilemez.'
       entry: |
         COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Üyeler&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &2Kaynak Puanları&8: &6%kingdoms_fancy_nation_resource_points%
-        &7♦ &2Banka&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+        &7♦ &2Kaynak Puanları&8: &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &2Banka&8: &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
     kick:
       description: '&6Ulusunuzdan bir krallığı atar.'
       person: '&cKrallığınız &e%kicker% &ctarafından &e%nation% &culustan atıldı'
@@ -783,12 +783,12 @@ command:
       success:
         kingdom: |
           &2Ulusunuzdan krallığınıza &6%amount% &2kaynak puanı aktardınız
-          Ulus kaynak puanı&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Krallık kaynak puanı&8: &6%kingdoms_fancy_resource_points%
+          Ulus kaynak puanı&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Krallık kaynak puanı&8: &6%fancy@kingdoms_resource_points%
         nation: |
           &2Krallığınızdan ulusunuza &6%amount% &2kaynak puanı aktardınız
-          Ulus kaynak puanı&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Krallık kaynak puanı&8: &6%kingdoms_fancy_resource_points%
+          Ulus kaynak puanı&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Krallık kaynak puanı&8: &6%fancy@kingdoms_resource_points%
       description: '&6Transfer resource points from/to your kingdom/nation.'
       usage: '&4Kullanım&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
     negative: '&cNegatif kaynak puanları aktaramazsınız...'
@@ -816,7 +816,7 @@ command:
       success: |
         &2Krallık bankasına &6$%amount% &2para yatırdın
         Yeni Bakiyeniz&8: &6%balance%
-        &2Krallık Bankası&8: &6%kingdoms_fancy_bank%
+        &2Krallık Bankası&8: &6%fancy@kingdoms_bank%
       disabled: '&cPara yatıramazsınız.'
       min: '&cEn az &e$%min% &cyatırmanız gerekiyor'
     withdraw:
@@ -824,7 +824,7 @@ command:
       success: |
         &2Krallık bankasından &6$%amount% &2para çektin
         Yeni bakiyeniz&8: &6%balance%
-        &2Krallık Bankası&8: &6%kingdoms_fancy_bank%
+        &2Krallık Bankası&8: &6%fancy@kingdoms_bank%
       min: '&cEn az &e$%min% &cmiktar para çekebilirsiniz.'
   show:
     description: '&6Bir krallık hakkında bilgi gösterir.'
@@ -837,11 +837,11 @@ command:
       &7| &2Ev&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Ulus&8: &6%kingdoms_nation_name%
-      &7| &2Olabilir&8: &6%kingdoms_fancy_might%
-      &7| &2Banka&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Olabilir&8: &6%fancy@kingdoms_might%
+      &7| &2Banka&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
       &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Kaynak Puanları&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Kalkan&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
+      &7| &2Kalkan&8: &6%time@kingdoms_shield_time_left%
       &7| &2İtibaren&8: &6%kingdoms_date_since%
       &7| &2Üyeler&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
@@ -852,7 +852,7 @@ command:
       &7| &2Ulus&8: &6%kingdoms_nation_name%
       &7| &2Olabilir&8: &6%kingdoms_might%
       &7| &2İtibaren&8: &6%kingdoms_date_since%
-      &7| &2Kalkan&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Kalkan&8: &6%time@kingdoms_shield_time_left%
       &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
       &7| &2Kaynak Puanları&8: &6%kingdoms_resource_points%
 
@@ -1178,8 +1178,8 @@ command:
     entry: |
       COMPLEX:&8♦ &7%rank%. hover::{&2%kingdoms_kingdom_name%;&7♦ &2Üyeler&8: &6%kingdoms_members%
       &7♦ &2Araziler&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &2Kaynak Puanları&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Banka&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
+      &7♦ &2Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
+      &7♦ &2Banka&8: &6$%fancy@kingdoms_bank%} &7- &6%fancy@kingdoms_might%
   map:
     description: '&6Çevrenizdeki krallıkların ve yapıların bir haritasını gösterir.'
     usage: '&4Kullanım&8: &e/k map [auto/height] [width]'
@@ -1485,8 +1485,8 @@ command:
     bank:
       description: '&6Bir krallık bankasından para ekleyin veya alın.'
       usage: /k admin bank <krallık> [set/add/remove] <miktar>
-      done: '&6%kingdom% krallığının &2yeni bankası&8: &6%kingdoms_fancy_bank%'
-      added: '&2Yeni krallık bankanız&8: &6%kingdoms_fancy_bank%'
+      done: '&6%kingdom% krallığının &2yeni bankası&8: &6%fancy@kingdoms_bank%'
+      added: '&2Yeni krallık bankanız&8: &6%fancy@kingdoms_bank%'
       invalid-action: '&cGeçersiz &e%action% &ceylem! Kullanım&8: &eadd/remove/set'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım'
     join:
@@ -1786,9 +1786,9 @@ command:
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
+      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
-    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%kingdoms_time_shield_time_left%
+    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%time@kingdoms_shield_time_left%
       &ctime left.'
   book:
     description: '&6A little handbook for your kingdom.'
@@ -1960,12 +1960,12 @@ comamnd:
 top-rewards:
   kingdom: |
     &2Krallığınız, rütbe&8: &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
-    &2Yeni Krallık Bakiyesi&8: &6$%kingdoms_fancy_bank%
-    &2Yeni Krallık Kaynak Puanları&8: &6%kingdoms_fancy_resource_points%
+    &2Yeni Krallık Bakiyesi&8: &6$%fancy@kingdoms_bank%
+    &2Yeni Krallık Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
   nation: |
     &2Ülkeniz, rütbe&8: &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
-    &2Yeni Ulus Bakiyesi&8: &6$%kingdoms_fancy_nation_bank%
-    &2Yeni Ulus Kaynak Puanı&8: &6%kingdoms_fancy_nation_resource_points%
+    &2Yeni Ulus Bakiyesi&8: &6$%fancy@kingdoms_nation_bank%
+    &2Yeni Ulus Kaynak Puanı&8: &6%fancy@kingdoms_nation_resource_points%
 kingdom-item:
   inventory: '&cBu envanterde krallık eşyası kullanılamaz.'
   craft: '&cZanaat yapmak için krallık eşyaları kullanılamaz.'
@@ -2010,9 +2010,9 @@ siege-cannon:
     no-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yoktu.'
     pacifist: '&cTop &e%kingdoms_kingdom_name% &ckrallığını vurdu, ama onlar barışçıl bir krallık.'
     destroyed-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yok edildi.'
-    damaged-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalan kalkan&8: &6%kingdoms_time_shield_time_left%'
+    damaged-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalan kalkan&8: &6%time@kingdoms_shield_time_left%'
     damaged-shield-notify: '&e%attacker-kingdom% &ckrallığı, topraklarınıza &e%attacked-chunk% &coranında
-      çarptı. Kalan kalkan&8: &6%kingdoms_time_shield_time_left%'
+      çarptı. Kalan kalkan&8: &6%time@kingdoms_shield_time_left%'
   friendly:
     fire: '&cTop, &e%kingdom% &ckrallığına ait bir dost (INVADE özelliği olmayan) bir araziyi vurdu.'
 lands:

@@ -16,5 +16,5 @@ repositories {
 
 dependencies {
     compileOnly(project(":core:service"))
-    compileOnly("net.skinsrestorer:skinsrestorer-api:14.2.8")
+    compileOnly("net.skinsrestorer:skinsrestorer-api:15.1.0")
 }

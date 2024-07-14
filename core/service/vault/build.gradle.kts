@@ -8,5 +8,5 @@ version = "1.0.0"
 
 dependencies {
     compileOnly(project(":core:service"))
-    compileOnly("com.github.MilkBowl:VaultAPI:1.7") { isTransitive = false }// https://github.com/MilkBowl/VaultAPI
+    compileOnly("com.github.MilkBowl:VaultAPI:1.7") { isTransitive = false } // https://github.com/MilkBowl/VaultAPI
 }

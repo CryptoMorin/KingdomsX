@@ -180,24 +180,24 @@ tax:
     age: '&5Il tuo regno non ha pagato le tasse poiché e'' nuovo'
     paid: |
       {$p}Un totale di {$s}$%tax% {$p}sono stati pagati per le tasse del regno.
-      Nuovo bilancio bancario del regno{$sep}: {$s}$%kingdoms_fancy_bank%
+      Nuovo bilancio bancario del regno{$sep}: {$s}$%fancy@kingdoms_bank%
     paid-nation: |
       {$p}un totale di {$s}$%tax% {$p}delle tasse del regno sono state pagate allo stato
-       Nuovo bilancio bancario del regno{$sep}: {$s}$%kingdoms_fancy_bank%
-      {$p} Nuovo bilancio bancario dello stato{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    kicked: 'il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dalla nazione per non esser stato capace di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+       Nuovo bilancio bancario del regno{$sep}: {$s}$%fancy@kingdoms_bank%
+      {$p} Nuovo bilancio bancario dello stato{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    kicked: 'il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dalla nazione per non esser stato capace di pagare le tasse{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
     disbanded: '{$e}Il tuo regno e'' stato sciolto per non aver pagato le tasse{$sep}: {$es}$%tax%'
-    disbanded-announce: 'il regno {$es}%kingdom% {$e}e'' stato sciolto per non esser stato in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
-    kicked-announce: 'Il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dallo stato di {$es}%kingdoms_nation_name% {$e}per non esser stato in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: 'il regno {$es}%kingdom% {$e}e'' stato sciolto per non esser stato in grado di pagare le tasse{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
+    kicked-announce: 'Il regno {$es}%kingdoms_kingdom_name% {$e}e'' stato cacciato dallo stato di {$es}%kingdoms_nation_name% {$e}per non esser stato in grado di pagare le tasse{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
   nation:
     age: '&5Il tuo stato non ha pagato le tasse perche'' e'' nuovo'
     paid: |
       {$p}Un totale di {$s}$%tax% {$p}tasse statali sono state pagate
-      Nuovo bilancio bancario nazionale{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+      Nuovo bilancio bancario nazionale{$sep}: {$s}$%fancy@kingdoms_nation_bank%
     disbanded: '{$e}Il tuo stato e'' stato sciolto per non esser stato in grado di pagare le tasse{$sep}: {$es}$%tax%'
-    disbanded-announce: 'La nazione {$es}%nation% {$e}e'' stata sciolta per non esser stata in grado di pagare le tasse{$sep}: {$es}%kingdoms_fancy_nation_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: 'La nazione {$es}%nation% {$e}e'' stata sciolta per non esser stata in grado di pagare le tasse{$sep}: {$es}%fancy@kingdoms_nation_bank% {$sep}< {$es}$%tax%'
   notifications: |
-    {$sep}[&4WARNING{$sep}] {$e}Il tuo regno non ha abbastanza soldi &7({$es}%kingdoms_fancy_bank%&7) {$e}in banca per pagare il prossimo ciclo di tasse{$sep}: {$es}%tax%
+    {$sep}[&4WARNING{$sep}] {$e}Il tuo regno non ha abbastanza soldi &7({$es}%fancy@kingdoms_bank%&7) {$e}in banca per pagare il prossimo ciclo di tasse{$sep}: {$es}%tax%
     {$e}Se i soldi raccolti tra i membri non sono abbastanza, il tuo regno sara'' sciolto
   kick-announce: '{$es}%player% {$e}e'' stato cacciato per non esser stato in grado di pagare le tasse{$sep}: {$es}%tax%'
   member-paid: '{$s}$%tax% {$p}sono stati presi per le tasse del regno'
@@ -258,8 +258,8 @@ siege-cannon:
     no-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, non hanno uno scudo'
     pacifist: '{$e}Il cannone ha colpito il regno {$es}%kingdoms_kingdom_name% {$e}, ma e'' un regno pacifista'
     destroyed-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, il loro scudo e'' stato distrutto'
-    damaged-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, scudo rimanente{$sep}: {$s}%kingdoms_time_shield_time_left%'
-    damaged-shield-notify: 'Il regno{$es}%attacker-kingdom% {$e}ha attaccato la tua terra {$es}%attacked-chunk%{$e}. Scudo rimanente{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    damaged-shield: '{$p}Il cannone ha colpito il regno {$s}%kingdoms_kingdom_name% {$p}, scudo rimanente{$sep}: {$s}%time@kingdoms_shield_time_left%'
+    damaged-shield-notify: 'Il regno{$es}%attacker-kingdom% {$e}ha attaccato la tua terra {$es}%attacked-chunk%{$e}. Scudo rimanente{$sep}: {$s}%time@kingdoms_shield_time_left%'
   friendly:
     fire: '{$e}Il cannone ha colpito un terreno amico (nessun attributo d''invasione) che appartiene a {$es}%kingdom%'
 lands:
@@ -277,34 +277,34 @@ lands:
       actionbar: '{$sep}&l-=( {$p}&lTerreno non occupato  {$sep}&l)=-'
     no-kingdom:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*kingdoms_lore%'
     self:
       titles:
         title: '&a%kingdoms_kingdom_name%'
-        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+        subtitle: '%hex@kingdoms_kingdom_color%%kingdoms_lore%'
     neutral:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation:
       titles:
-        title: '&9%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&9%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$sep}: %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     ally:
       titles:
-        title: '&6%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&6%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     truce:
       titles:
-        title: '&e%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&e%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     enemy:
       titles:
-        title: '&c%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&c%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
 other-kingdoms:
   place: '{$e}Non puoi costruire nel terreno di un altro regno'
   break: '{$e}Non puoi costruire nel terreno di un altro regno'
@@ -398,12 +398,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     {$p}Il tuo regno e'' stato ricompensato di {$s}$%money% {$p}monete e {$s}%rp% {$p}punti risorse per essere rankato a {$sep}: &5%rank%
-    {$p}Nuovo bilancio del regno{$sep}: {$s}$%kingdoms_fancy_bank%
-    {$p}Nuovi punti risorsa del regno{$sep}: {$s}%kingdoms_fancy_resource_points%
+    {$p}Nuovo bilancio del regno{$sep}: {$s}$%fancy@kingdoms_bank%
+    {$p}Nuovi punti risorsa del regno{$sep}: {$s}%fancy@kingdoms_resource_points%
   nation: |
     {$p}Il tuo stato e'' stato ricompensato di {$s}$%money% {$p}monete e {$s}%rp% {$p}punti risorse per essere rankato a {$sep}: &5%rank%
-    {$p}Nuovo bilancio dello stato{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    {$p}Nuovi punti risorsa dello stato{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+    {$p}Nuovo bilancio dello stato{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    {$p}Nuovi punti risorsa dello stato{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 join-leave-messages:
   join:
     kingdom:
@@ -586,10 +586,10 @@ nexus:
     disable: '{$s}Il tuo regno ora non richiede piu'' un invito per entrare'
   structure-inventory-full: '{$e}Il tuo inventario e'' pieno!'
   turret-inventory-full: '{$e}Il tuo inventario e'' pieno!'
-  structure-purchased: '{$p}Hai comprato {$s}%structure% {$p}per {$s}%fancy_cost% punti risorsa'
+  structure-purchased: '{$p}Hai comprato {$s}%structure% {$p}per {$s}%fancy@cost% punti risorsa'
   structure-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}punti risorsa per acquistare questa struttura'
   turret-resourcepoints: '{$e}Hai bisogno di {$es}%cost% {$e}punti risorsa per acquistare la torretta'
-  turret-purchased: '{$p}Hai comprato {$s}%turret% {$p}per {$s}%fancy_cost% punti risorsa'
+  turret-purchased: '{$p}Hai comprato {$s}%turret% {$p}per {$s}%fancy@cost% punti risorsa'
   resource-points: '{$s}Un totale di {$es}%amount% {$s}punti risorsa sono stati aggiunti'
   rank-editor:
     enter-value: '{$s}Per favore inserire il nuovo valore in chat o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per annullare'
@@ -659,7 +659,7 @@ nexus:
         invasions:
           attacked: '{$e}Devi aspettare {$es}%time% {$e}prima di comprare di nuovo uno scudo, da quando il tuo regno ha invaso {$es}%last% {$e}ago.'
           defended: '{$e}Devi aspettare {$es}%time% {$e}prima di comprare di nuovo uno scudo, da quando il tuo regno e'' stato invaso {$es}%last% {$e}ago.'
-    shield-activated: '{$p}Scudo attivo per{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    shield-activated: '{$p}Scudo attivo per{$sep}: {$s}%time@kingdoms_shield_time_left%'
 nexus-resource-points-enter-value: '{$s}Per favore inserire la somma dei punti risorsa o scrivere hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}per cancellare'
 teleports:
   moved: '{$e}Teletrasporto cancellato perche'' ti sei mosso'
@@ -683,7 +683,7 @@ structure:
 outpost:
   not-enough-resource-points: '{$e}Non hai abbastanza punti risorsa'
   cooldown: '{$e}Non puoi comprare questo oggetto prima di{$sep}: {$es}%time_cooldown%'
-  purchased: '{$p}Hai comprato {$s}%amount%x %name% {$p}per {$s}%fancy_cost% punti risorsa'
+  purchased: '{$p}Hai comprato {$s}%amount%x %name% {$p}per {$s}%fancy@cost% punti risorsa'
 turret:
   ammo:
     not-enough-resource-points: '{$e}Non hai abbastanza spazio per i punti risorsa'
@@ -1203,8 +1203,8 @@ command:
     bank:
       description: '{$s}Aggiungi o prendi soldi dalla banca del regno'
       usage: '{$usage}admin bank {$p}<kingdom> &9[set | add | remove] {$p}<amount>'
-      done: '{$s}%kingdom% {$p}nuova banca{$sep}: {$s}%kingdoms_fancy_bank%'
-      added: '{$p}Nuova banca del regno{$sep}: {$s}%kingdoms_fancy_bank%'
+      done: '{$s}%kingdom% {$p}nuova banca{$sep}: {$s}%fancy@kingdoms_bank%'
+      added: '{$p}Nuova banca del regno{$sep}: {$s}%fancy@kingdoms_bank%'
       invalid-action: '{$e}Azione non valida {$es}%action%{$e}! Usa{$sep}: {$es}add/remove/set'
       name: bank
       aliases: vault
@@ -1444,15 +1444,15 @@ command:
       deposit:
         success: |
           {$p}Hai depositato {$s}%amount% {$p}monete nella banca del tuo stato
-          Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
-          {$p}Banca dello stato{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          Il tuo nuovo bilancio{$sep}: {$s}%fancy@balance%
+          {$p}Banca dello stato{$sep}: {$s}%fancy@kingdoms_nation_bank%
         disabled: '{$e}Non puoi depositare soldi'
       withdraw:
         disabled: '{$e}Non puoi prelevare monete'
         success: |
           {$p}Hai prelevato {$s}%amount% {$p}Monete dalla banca dello stato
-          {$p}Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
-          {$p}Banca dello stato{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          {$p}Il tuo nuovo bilancio{$sep}: {$s}%fancy@balance%
+          {$p}Banca dello stato{$sep}: {$s}%fancy@kingdoms_nation_bank%
       negative: '{$e}Non puoi fare transazioni con numeri negativi...'
       zero: '{$e}Non puoi fare nessuna transazione'
       name: bank
@@ -1468,10 +1468,10 @@ command:
         &7| {$p}Spawn{$sep}: {$s}%kingdoms_nation_spawn%
         &7| {$p}Nexus{$sep}: {$s}%kingdoms_nation_nexus%
         &7| {$p}Da{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_nation_might%
-        &7| {$p}Scudo{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
-        &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Might{$sep}: {$s}%fancy@kingdoms_nation_might%
+        &7| {$p}Scudo{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Banca{$sep}: {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
+        &7| {$p}Punti risorsa{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Kingdoms{$sep}:
         %kingdoms%
@@ -1481,10 +1481,10 @@ command:
         &7| {$p}Re{$sep}: {$s}%king_status%
         &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
         &7| {$p}Da{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Might{$sep}: {$s}%kingdoms_fancy_might%
-        &7| {$p}Scudo{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Banca{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Might{$sep}: {$s}%fancy@kingdoms_might%
+        &7| {$p}Scudo{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Banca{$sep}: {$s}%fancy@kingdoms_nation_bank%
+        &7| {$p}Punti risorsa{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Regni{$sep}:
         %kingdoms%
@@ -1630,8 +1630,8 @@ command:
       negative: '{$e}Non vengono mostrate pagine negative'
       entry: |
         {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Membri{$sep}: {$s}%kingdoms_nation_kingdoms%
-        &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank%} &7- {$s}%kingdoms_fancy_nation_might%
+        &7♦ {$p}Resource Points{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        &7♦ {$p}Bank{$sep}: {$s}$%fancy@kingdoms_nation_bank%} &7- {$s}%fancy@kingdoms_nation_might%
       name: top
     kick:
       description: '{$s}Caccia un regno dallo stato'
@@ -1834,7 +1834,7 @@ command:
       success: |
         {$p}Hai ritirato con successo {$s}%rp% {$p}resource points from your kingdom for {$s}$%worth%
         {$p}Il tuo nuovo bilancio{$sep}: {$s}$%balance%
-        {$p}I punti risorsa del tuo regno{$sep}: {$s}%kingdoms_fancy_resource_points%
+        {$p}I punti risorsa del tuo regno{$sep}: {$s}%fancy@kingdoms_resource_points%
     transfer:
       description: '{$s}Trasfermimento punti risorsa dal tuo stato/regno al tuo stato/regno'
       kingdom:
@@ -1847,12 +1847,12 @@ command:
       success:
         kingdom: |
           {$p}Hai trasferito con successo {$s}%amount% {$p}punti risorsa dal tuo stato al regno.
-          Punti risorsa del regno{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Punti risorsa del regno{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Kingdom Resource Points{$sep}: {$s}%fancy@kingdoms_resource_points%
         nation: |
           {$p}Hai trasferito con successo {$s}%amount% {$p}Punti risorsa dal tuo regno al tuo stato
-          Punti risorsa dello stato{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Punti risorsa dello stato{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Kingdom Resource Points{$sep}: {$s}%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '{$e}Il tuo regno non ha {$es}%rp% {$e}punti risorsa'
       nation-resource-points: '{$e}Il tuo stato non ha {$es}%rp% {$e}punti risorsa'
@@ -1873,8 +1873,8 @@ command:
       limit: '{$e}La banca del tuo regno e'' piena, il limite e'' {$es}%limit%'
       success: |
         {$p}Hai depositato {$s}%amount% {$p}monete nella banca del regno
-        Il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
-        {$p}La banca del regno{$sep}: {$s}%kingdoms_fancy_bank%
+        Il tuo nuovo bilancio{$sep}: {$s}%fancy@balance%
+        {$p}La banca del regno{$sep}: {$s}%fancy@kingdoms_bank%
       disabled: '{$e}Non puoi depositare soldi'
       min: '{$e}Puoi effettuare un deposito minimo di {$es}$%min%'
     withdraw:
@@ -1882,8 +1882,8 @@ command:
       disabled: '{$e}Non puoi prelevare soldi'
       success: |
         {$p}Hai prelevato {$s}%amount% {$p}monete dalla banca del regno
-        il tuo nuovo bilancio{$sep}: {$s}%fancy_balance%
-        {$p}La banca del regno{$sep}: {$s}%kingdoms_fancy_bank%
+        il tuo nuovo bilancio{$sep}: {$s}%fancy@balance%
+        {$p}La banca del regno{$sep}: {$s}%fancy@kingdoms_bank%
     aliases: money $
   show:
     description: '{$s}Mostra informazioni sul regno'
@@ -1896,11 +1896,11 @@ command:
       &7| {$p}Home{$sep}: {$s}%kingdoms_kingdom_home%
       &7| {$p}Nexus{$sep}: {$s}%kingdoms_nexus%
       &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
-      &7| {$p}Potere{$sep}: {$s}%kingdoms_fancy_might%
-      &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
-      &7| {$p}Terreni{$sep}: {$s}%kingdoms_fancy_claims%{$sep}/{$s}%kingdoms_fancy_max_claims%
-      &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7| {$p}Scudo{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Potere{$sep}: {$s}%fancy@kingdoms_might%
+      &7| {$p}Banca{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Tax{$sep}: {$s}$%fancy@kingdoms_tax% {$sep}- {$s}$%fancy@kingdoms_server_kingdom_tax%
+      &7| {$p}Terreni{$sep}: {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
+      &7| {$p}Punti risorsa{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7| {$p}Scudo{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Fondato{$sep}: {$s}%kingdoms_date_since%
       &7| {$p}Membri{$sep}: {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
@@ -1911,10 +1911,10 @@ command:
       &7| {$p}Stato{$sep}: {$s}%kingdoms_nation_name%
       &7| {$p}Potere{$sep}: {$s}%kingdoms_might%
       &7| {$p}Fondato{$sep}: {$s}%kingdoms_date_since%
-      &7| {$p}Scudo{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Scudo{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Terreni{$sep}: {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
-      &7| {$p}Banca{$sep}: {$s}$%kingdoms_fancy_bank%
-      &7| {$p}Punti risorsa{$sep}: {$s}%kingdoms_fancy_resource_points%
+      &7| {$p}Banca{$sep}: {$s}$%fancy@kingdoms_bank%
+      &7| {$p}Punti risorsa{$sep}: {$s}%fancy@kingdoms_resource_points%
 
       &7| {$p}Membri{$sep}:
       %members%
@@ -1993,11 +1993,11 @@ command:
       permission: '{$e}Non hai il permesso di settare altri auto-claim'
       on: '{$s}Auto claim e'' ora &aON{$s}, puoi claimare tutti i terreni su cui cammini'
       off: '{$s}Auto claim e'' ora {$e}OFF{$s}.'
-    need-rp: '{$e}Hai bisogno di {$es}%fancy_rp% {$e}punti risorsa per claimare il terreno'
+    need-rp: '{$e}Hai bisogno di {$es}%fancy@rp% {$e}punti risorsa per claimare il terreno'
     confirmation: |
-      {$e}Il tuo regno ha pagato {$es}%fancy_rp% {$e}punti risorsa e {$es}%fancy_money% {$e}monete
+      {$e}Il tuo regno ha pagato {$es}%fancy@rp% {$e}punti risorsa e {$es}%fancy@money% {$e}monete
       Sei sicuro di voler continuare? Eseguire il comando ancora
-    need-money: '{$e}Il tuo regno ha bisogno di {$es}%fancy_money% {$e}monete per claimare il terreno! Deposita monete nella banca del regno usando {$es}/k bank deposit'
+    need-money: '{$e}Il tuo regno ha bisogno di {$es}%fancy@money% {$e}monete per claimare il terreno! Deposita monete nella banca del regno usando {$es}/k bank deposit'
     disallowed-biome: |
       {$e}Non puoi claimare nel bioma {$es}%biome% {$e}
       Si noti che di solito l''intero chunk deve essere composto da questo tipo di bioma
@@ -2076,9 +2076,9 @@ command:
     no-shield: '{$e}Il tuo regno non ha uno scudo attivo'
     confirm: |
       {$e}Se disattivi lo scudo, devi comprarne uno nuovo.
-      Tempo dello scudo rimasto{$sep}: {$es}%kingdoms_time_shield_time_left%
+      Tempo dello scudo rimasto{$sep}: {$es}%time@kingdoms_shield_time_left%
       {$e}Per continuare usa il comando hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}per confermare.
-    deactivated: '{$es}%executor% {$e}ha disattivato lo scudo corrente che aveva un tempo rimanente di {$es}%kingdoms_time_shield_time_left% {$e}'
+    deactivated: '{$es}%executor% {$e}ha disattivato lo scudo corrente che aveva un tempo rimanente di {$es}%time@kingdoms_shield_time_left% {$e}'
   sethome:
     description: '{$s}Setta la home del tuo regno alla tua posizione corrente'
     not-claimed: '{$e}Puoi settare l''home del tuo regno solo nei terreni claimati'
@@ -2240,8 +2240,8 @@ command:
       get: '{$e}Non hai il permesso di ottenere i codici invito'
       create: '{$e}Non hai il permesso di creare codici d''invito'
     paper:
-      cost: '{$e}Hai bisogno di {$es}%fancy_invitecode-paper-cost% punti risorsa {$e}per generare codici d''invito'
-      give: '{$p}Compra un codice d''invito con {$s}%fancy_invitecode-paper-cost% punti risorsa'
+      cost: '{$e}Hai bisogno di {$es}%fancy@invitecode-paper-cost% punti risorsa {$e}per generare codici d''invito'
+      give: '{$p}Compra un codice d''invito con {$s}%fancy@invitecode-paper-cost% punti risorsa'
     max: '{$e}Il regno puo'' fare solo {$es}%invitecodes-max% {$e}codici d''invito'
     duration:
       enter: '{$p}Inserire il periodo di validita'' del codice d''invito {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
@@ -2415,8 +2415,8 @@ command:
     entry: |
       {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_kingdom_name%;&7♦ {$p}Members{$sep}: {$s}%kingdoms_members%
       &7♦ {$p}Terreni{$sep}: {$s}%kingdoms_claims%&7/{$s}%kingdoms_max_claims%
-      &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%kingdoms_fancy_might%
+      &7♦ {$p}Resource Points{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7♦ {$p}Bank{$sep}: {$s}$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%fancy@kingdoms_might%
     name: top
   map:
     settings:
@@ -2549,10 +2549,10 @@ command:
   ally:
     description: '{$s}Manda una richiesta di alleanza a un regno'
     usage: '{$usage}alleanza {$p}<kingdom>'
-    sender: '{$p}Manda una richiesta di alleanza a {$s}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Manda una richiesta di alleanza a {$s}%other*kingdoms_kingdom_name%'
     limit: '{$e}Non puoi allearti con piu'' di {$es}%max% {$e}regni'
-    already: '{$e}Ti sei gia'' alleato con {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Ti sei gia'' alleato con {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Non puoi allearti con te stesso'
     receiver: '{$s}%kingdoms_kingdom_name% {$p}desidera allearsi con te, accetta con hover:{{$s}/k ally %kingdoms_kingdom_name%;{$p}Accept;/k ally %kingdoms_kingdom_name%}'
     allies: '{$p}Ti sei alleato con {$s}%kingdom%'
@@ -2562,10 +2562,10 @@ command:
     description: '{$s}Dichiara tuo nemico un regno'
     usage: '{$usage}nemico {$p}<kingdom>'
     limit: '{$e}Non puoi avere piu'' di {$es}%max% {$e}regni nemici'
-    already: '{$e}Sei gia'' nemico con {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Hai gia'' inviato una richiesta di rivalita'' a {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Sei gia'' nemico con {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta di rivalita'' a {$es}%other*kingdoms_kingdom_name%'
     higher-strength: '{$e}Il tuo regno e'' piu'' forte di quello, non puoi essere nemico con lui'
-    notify: '{$es}%kingdoms_kingdom_name% {$e}e'' nemico di %kingdoms_other_kingdom_name% {$e}, entrambi i regni sono tuoi alleati'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}e'' nemico di %other*kingdoms_kingdom_name% {$e}, entrambi i regni sono tuoi alleati'
     self: '{$e}Non puoi essere nemico di te stesso'
     cost: '{$e}Hai bisogno di {$es}%cost% punti risorsa {$e}per entrare in rivalita'' con un regno'
     enemies: '{$e}Sei gia'' nemico di {$es}%kingdom%'
@@ -2575,9 +2575,9 @@ command:
     description: '{$s}Invia una richiesta di tregua a un regno'
     usage: '{$usage}tregua {$p}<kingdom>'
     limit: '{$e}Non puoi avere piu'' di {$es}%max% {$e}tregue con i regni'
-    sender: '{$p}Invia una richiesta di tregua a {$s}%kingdoms_other_kingdom_name%'
-    already: '{$e}Sei gia'' in tregua con {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Invia una richiesta di tregua a {$s}%other*kingdoms_kingdom_name%'
+    already: '{$e}Sei gia'' in tregua con {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Hai gia'' inviato una richiesta a {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Non puoi inviare una richiesta di tregua a te stesso'
     receiver: '{$s}%kingdoms_kingdom_name% {$p}deidera una tregua con te, accetta con hover:{{$s}/k truce %kingdoms_kingdom_name%;{$p}Accept;/k truce %kingdoms_kingdom_name%}'
     truces: '{$p}Sei in tregua con {$s}%kingdom%'
@@ -2591,13 +2591,13 @@ command:
   revoke:
     description: '{$s}Revoca relazioni con un regno'
     usage: '{$usage}revoca {$p}<kingdom>'
-    sender: '{$e}Hai revocato le relazioni con {$es}%kingdoms_other_kingdom_name%'
-    no-relation: '{$e}Non hai relazioni con {$es}%kingdoms_other_kingdom_name%'
-    already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}e'' gia'' neutrale'
+    sender: '{$e}Hai revocato le relazioni con {$es}%other*kingdoms_kingdom_name%'
+    no-relation: '{$e}Non hai relazioni con {$es}%other*kingdoms_kingdom_name%'
+    already-neutral: '{$es}%other*kingdoms_kingdom_name% {$e}e'' gia'' neutrale'
     self: '{$e}Non puoi avere relazioni con te stesso...'
     specific-permission: '{$e}Non hai il permesso di revocare relazioni {$es}%relation% {$e}'
     receiver: '{$es}%kingdoms_kingdom_name% {$e}ha revocato le relazioni con te, ora sei neutrale'
-    request-sender: '{$p}Inviata richiesta di pace con {$s}%kingdoms_other_kingdom_name%'
+    request-sender: '{$p}Inviata richiesta di pace con {$s}%other*kingdoms_kingdom_name%'
     request-receiver: '{$s}%kingdoms_kingdom_name% {$p}desidera fare la pace con te, accetta con hover:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Accept;/k neutral %kingdoms_kingdom_name%}'
     neutrals: '{$p}Sei ora neutrale con {$s}%kingdom%'
     name: revoke

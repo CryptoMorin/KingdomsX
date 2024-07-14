@@ -3,13 +3,13 @@ package org.kingdoms.managers.network.socket
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import org.kingdoms.constants.namespace.Namespace
-import org.kingdoms.constants.namespace.NamespaceContainer
-import org.kingdoms.constants.namespace.NamespaceRegistry
+import org.kingdoms.constants.namespace.Namespaced
+import org.kingdoms.constants.namespace.NamespacedRegistry
 import org.kingdoms.utils.network.SocketJsonCommunicator
 import java.util.function.Consumer
 import java.util.logging.Logger
 
-class SocketManager(val logger: Logger) : NamespaceRegistry<SocketHandler>() {
+class SocketManager(val logger: Logger) : NamespacedRegistry<SocketHandler>() {
     companion object {
         @JvmStatic private var INSTANCE: SocketManager? = null
         @JvmStatic fun initMainManager(logger: Logger) {
@@ -45,7 +45,8 @@ class SocketManager(val logger: Logger) : NamespaceRegistry<SocketHandler>() {
     }
 }
 
-abstract class SocketHandler(private val ns: Namespace, val needsRequestId: Boolean = false) : NamespaceContainer {
+abstract class SocketHandler(private val ns: Namespace, val needsRequestId: Boolean = false) :
+    Namespaced {
     abstract fun onReceive(session: SocketSession)
     override fun getNamespace() = ns
 

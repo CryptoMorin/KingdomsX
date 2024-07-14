@@ -25,12 +25,12 @@ public final class ServiceMythicMobFive implements ServiceMythicMobs {
     }
 
     @Override
-    public boolean isAvailable() {
+    public Throwable checkAvailability() {
         try {
             MythicProvider.get().getMobManager();
-            return true;
+            return null;
         } catch (Throwable ex) {
-            return false;
+            return ex;
         }
     }
 

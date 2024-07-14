@@ -1,12 +1,9 @@
 package org.kingdoms.commands.outposts;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.kingdoms.commands.CommandContext;
-import org.kingdoms.commands.KingdomsCommand;
-import org.kingdoms.commands.KingdomsParentCommand;
+import org.kingdoms.commands.*;
 import org.kingdoms.outposts.Outpost;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
@@ -20,28 +17,30 @@ public class CommandOutpostStop extends KingdomsCommand {
     }
 
     @Override
-    public void execute(CommandContext context) {
-        if (context.requireArgs(1)) return;
+    public CommandResult execute(CommandContext context) {
+        if (context.requireArgs(1)) return CommandResult.FAILED;
 
         Outpost outpost = CommandOutpost.getOutpost(context, 0);
-        if (outpost == null) return;
+        if (outpost == null) return CommandResult.FAILED;
 
         OutpostEvent event = OutpostEvent.getEvent(outpost.getName());
         if (event == null) {
             context.sendError(OutpostsLang.COMMAND_OUTPOST_STOP_NOT_STARTED, "outpost", outpost.getName());
-            return;
+            return CommandResult.FAILED;
         }
 
         event.stop(true);
         for (Player player : Bukkit.getOnlinePlayers()) {
             OutpostsLang.COMMAND_OUTPOST_STOP_STOPPED.sendMessage(player, "outpost", outpost.getName());
         }
+
+        return CommandResult.SUCCESS;
     }
 
     @Override
     public @NonNull
-    List<String> tabComplete(@NonNull CommandSender sender, @NonNull String[] args) {
-        if (args.length == 1) return new ArrayList<>(Outpost.getOutposts().keySet());
+    List<String> tabComplete(@NonNull CommandTabContext context) {
+        if (context.isAtArg(0)) return new ArrayList<>(Outpost.getOutposts().keySet());
         return KingdomsCommand.emptyTab();
     }
 }

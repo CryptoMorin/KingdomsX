@@ -180,6 +180,11 @@ build-in-claimed-only:
   place: false
   break: false
 
+  # If the above options are enabled, breaking/placing these blocks are allowed even in unclaimed lands.
+  whitelist:
+    place: [ ]
+    break: [ GRASS, TALL_GRASS ]
+
   # This option can significantly affect server's performance.
   # The radius that players are allowed to build if there are nearby claims
   # that belong to their kingdom.
@@ -244,7 +249,7 @@ money:
 
 # Sends a confirmation message before unclaiming certain lands
 # that contain one of elements below.
-# Priority: Nexus -> Home -> Structures -> Turrets
+# org.kingdoms.tasks.priority.Priority: Nexus -> Home -> Structures -> Turrets
 unclaim-confirmation:
   turrets: false
   structures: true

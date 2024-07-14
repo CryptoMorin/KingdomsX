@@ -10,8 +10,8 @@ import org.kingdoms.constants.metadata.KingdomMetadata;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.events.general.GroupRelationshipChangeEvent;
-import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
+import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
@@ -42,8 +42,8 @@ public class PeaceTreaty implements PlayerOperator {
         this.requesterPlayer = requesterPlayer;
     }
 
-    public MessageBuilder getPlaceholderContextProvider() {
-        return getPlaceholderContextProvider(new MessageBuilder());
+    public MessagePlaceholderProvider getPlaceholderContextProvider() {
+        return getPlaceholderContextProvider(new MessagePlaceholderProvider());
     }
 
     public <T extends PlaceholderContextBuilder> T getPlaceholderContextProvider(T settings) {
@@ -99,7 +99,7 @@ public class PeaceTreaty implements PlayerOperator {
     public boolean canEnforceAcceptance() {
         return ConditionProcessor.process(
                 PeaceTreatyConfig.FORCE_ACCEPT_CONDITION.getManager().get(NodeInterpreter.CONDITION),
-                new MessageBuilder()
+                new MessagePlaceholderProvider()
                         .withContext(getVictimKingdom())
                         .other(getProposerKingdom())
         );
@@ -120,7 +120,7 @@ public class PeaceTreaty implements PlayerOperator {
             proposerMeta.add(victim.getId());
         }
 
-        MessageBuilder settings = getPlaceholderContextProvider(new MessageBuilder());
+        MessagePlaceholderProvider settings = getPlaceholderContextProvider(new MessagePlaceholderProvider());
         for (Player online : proposer.getOnlineMembers()) {
             PeaceTreatyLang.NOTIFICATION_SENDERS.sendMessage(online, settings);
         }

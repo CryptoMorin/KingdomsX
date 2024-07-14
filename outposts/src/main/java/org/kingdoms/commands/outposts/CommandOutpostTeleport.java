@@ -22,7 +22,7 @@ public class CommandOutpostTeleport extends KingdomsCommand {
     }
 
     @Override
-    public CommandResult executeX(CommandContext context) {
+    public CommandResult execute(CommandContext context) {
         if (context.assertPlayer()) return CommandResult.FAILED;
         if (context.requireArgs(1)) return CommandResult.FAILED;
         if (context.assertHasKingdom()) return CommandResult.FAILED;
@@ -42,8 +42,8 @@ public class CommandOutpostTeleport extends KingdomsCommand {
             location.setPitch(playerDir.getPitch());
             Kingdoms.taskScheduler().sync().execute(() -> player.teleport(outpost.getSpawn()));
 
-            LocationLocale.of(location).withBuilder(context.getSettings()).build();
-            LocationLocale.of(chunk).withBuilder(context.getSettings()).withPrefix("chunk_").build();
+            LocationLocale.of(location).withBuilder(context.getMessageContext()).build();
+            LocationLocale.of(chunk).withBuilder(context.getMessageContext()).withPrefix("chunk_").build();
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_TELEPORT_TELEPORTED);
         });
 

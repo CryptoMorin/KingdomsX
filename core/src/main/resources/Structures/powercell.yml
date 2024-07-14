@@ -1,3 +1,13 @@
+(import):
+  structure:
+    parameters:
+      <name>: powercell
+      <build-duration-factor>: '+5 minutes'
+      <durability-factor>: 100
+      <material-1>: REDSTONE_LAMP
+      <material-2>: TARGET
+      <material-3>: TARGET
+
 name: "&4Powercell"
 type: powercell
 default-name: 'Powercell'
@@ -21,14 +31,6 @@ sounds:
   1:
     place: BLOCK_BEACON_ACTIVATE
     break: BLOCK_BEACON_DEACTIVATE
-hologram:
-  1:
-    lines:
-      - "&8-=( &4Powercell {$s}%roman_level% &8)=-"
-    height: 1
-block:
-  1: REDSTONE_LAMP
-  2: TARGET
 
 cost: 1000
 sell: 500
@@ -36,11 +38,11 @@ item:
   1:
     name: "&bPowercell"
     material: MUSIC_DISC_BLOCKS
-    flags: [ HIDE_POTION_EFFECTS ]
+    flags: [ ALL ]
     lore:
       - "&7Chunks next to a chunk"
       - "with a power cell cannot be"
       - "invaded without invading the"
       - "power cell first."
       - "&cDoes not work on other power cell lands."
-      - "&7⚫ &2Level&8: &6%roman_level%"
+      - "&7⚫ &2Level&8: &6%roman@level%"

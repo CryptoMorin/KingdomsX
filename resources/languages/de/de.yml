@@ -111,9 +111,9 @@ command:
     notify: '&6%name% &2hat deine Einladung angenommen.'
   admin:
     bank:
-      added: '&2Königreichs Schatzkammer&8: &6%kingdoms_fancy_bank%'
+      added: '&2Königreichs Schatzkammer&8: &6%fancy@kingdoms_bank%'
       description: '&6Enfternt/Fügt Geld zu der Königreich-Bank (hinzu).'
-      done: '&6%kingdom%''s &2neuer Königreich-Bank-Stand&8: &6%kingdoms_fancy_bank%'
+      done: '&6%kingdom%''s &2neuer Königreich-Bank-Stand&8: &6%fancy@kingdoms_bank%'
       invalid-action: '&cUngültiger Paramter: &e%action%&c! Benutze&8: &eadd/remove/set'
       invalid-kingdom: '&cDas Königreich &e%kingdom% &ckonnte nicht gefunden werden!'
       usage: /k admin bank <Königreich> [set/add/remove] <Anzahl>
@@ -303,7 +303,7 @@ command:
       success: |-
         &2Du hast &6%amount%&2$ deinem Königreich gegeben.
         Dein neues Guthaben&8: &6%balance%
-        &2Schatzkammer&8: &6%kingdoms_fancy_bank%
+        &2Schatzkammer&8: &6%fancy@kingdoms_bank%
     description: '&6Ein- oder Auszahlung von Geld.'
     not-enough:
       kingdom-money: '&cDein Königreich hat nicht &e%amount%&c$.'
@@ -316,7 +316,7 @@ command:
       success: |-
         &2Du hast &6%amount%&2$ aus der Schatzkammer deines Königreiches genommen.
         Dein neues Guthaben&8: &6%balance%
-        &2Schatzkammer&8: &6%kingdoms_fancy_bank%
+        &2Schatzkammer&8: &6%fancy@kingdoms_bank%
     negative: '&cDu kannst keine negativen Werte übergeben...'
     zero: '&cDu kannst nicht nichts transferieren.'
   broadcast:
@@ -689,7 +689,7 @@ command:
         success: |-
           &2Du hast &6%amount%&2$ deiner Nation gegeben.
           Dein neues Guthaben&8: &6%balance%
-          &2Schatzkammer der Nationk&8: &6%kingdoms_fancy_nation_bank%
+          &2Schatzkammer der Nationk&8: &6%fancy@kingdoms_nation_bank%
       description: '&6Zahlt Geld aus der Bank ein oder aus.'
       not-enough:
         money: '&cDu hast keine &e%amount%&c$.'
@@ -702,7 +702,7 @@ command:
         success: |-
           &2Du hast &6%amount%&2$ von deiner Nation abgehoben.
           &2Dein neues Guthaben&8: &6%balance%
-          &2Schatzkammer der Nation&8: &6%kingdoms_fancy_nation_bank%
+          &2Schatzkammer der Nation&8: &6%fancy@kingdoms_nation_bank%
       negative: '&cDu kannst keine negativen Werte transferieren...'
       zero: '&cDu kannst nicht nichts transferieren.'
     broadcast-cooldown: '&cDu musst &e%time% &cwarten, bevor du einen weiteren Rundruf
@@ -863,8 +863,8 @@ command:
         &7| &2Nation&8: &6%kingdoms_nation_name%
         &7| &2Gründung&8: &6%kingdoms_date_nation_since%
         &7| &2Macht&8: &6%kingdoms_might%
-        &7| &2Schild&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Bank&8: &6%kingdoms_fancy_nation_bank%
+        &7| &2Schild&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6%fancy@kingdoms_nation_bank%
         &7| &2Land&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
         &7| &2Ressourcenpunkte&8: &6%kingdoms_resource_points%
 
@@ -878,8 +878,8 @@ command:
         &7| &2Nexus&8: &6%kingdoms_nation_nexus%
         &7| &2Gründung&8: &6%kingdoms_date_nation_since%
         &7| &2Macht&8: &6%kingdoms_nation_might%
-        &7| &2Schild&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Bank&8: &6$%kingdoms_fancy_nation_bank% &8| &2Tax&8: &6$%kingdoms_fancy_nation_tax% &8- &6$%kingdoms_fancy_server_nation_tax%
+        &7| &2Schild&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6$%fancy@kingdoms_nation_bank% &8| &2Tax&8: &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
         &7| &2Ressourcenpunkte&8: &6%kingdoms_nation_resource_points%
 
         &7| &2Königreiche&8:
@@ -903,10 +903,10 @@ command:
       description: '&6Zeigt die besten Nationen an.'
       entry: |-
         &8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Mitglieder&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
-        &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%
+        &7♦ &2Ressourcenpunkte&8: &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &2Bank&8: &6$%fancy@kingdoms_nation_bank%
 
-        &7(klicke für mehr Infos);/k nation show %kingdoms_nation_name%} &7- &6%kingdoms_fancy_nation_might%
+        &7(klicke für mehr Infos);/k nation show %kingdoms_nation_name%} &7- &6%fancy@kingdoms_nation_might%
       footer: '     &8[hover:{&6←;&6Vorherige Seite;/k nation top %previous_page%}&8]
         &8[hover:{&6→;&6Nächste Seite;/k nation top %next_page%}&8]'
       header: '&8----------------------------------'
@@ -1076,12 +1076,12 @@ command:
       success:
         kingdom: |-
           &2Du hast erfolgreich &6%amount% &2Ressourcenpunkte von deiner Nation zu deinem Königreich transferiert.
-          Nations Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Köngreiche Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
+          Nations Ressourcenpunkte&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Köngreiche Ressourcenpunkte&8: &6%fancy@kingdoms_resource_points%
         nation: |-
           &2Du hast erfolgreich &6%amount% &2Ressourcenpunkte von deinem Königreich zu deiner Nation transferiert.
-          Nations Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Königreich Ressourcenpunkte &8: &6%kingdoms_fancy_resource_points%
+          Nations Ressourcenpunkte&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Königreich Ressourcenpunkte &8: &6%fancy@kingdoms_resource_points%
       description: '&6Transfer resource points from/to your kingdom/nation.'
       usage: '&4Usage&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
     unknown-transaction: '&cUnbekannte Transaktion &e%transaction%'
@@ -1135,7 +1135,7 @@ command:
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Macht&8: &6%kingdoms_might%
       &7| &2Gründung&8: &6%kingdoms_date_since%
-      &7| &2Schild&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Schild&8: &6%time@kingdoms_shield_time_left%
       &7| &2Land&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
       &7| &2Ressourcenpunkte&8: &6%kingdoms_resource_points%
 
@@ -1148,11 +1148,11 @@ command:
       &7| &2Zuhause&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
-      &7| &2Macht&8: &6%kingdoms_fancy_might%
-      &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Macht&8: &6%fancy@kingdoms_might%
+      &7| &2Bank&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
       &7| &2Land&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Schild&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Ressourcenpunkte&8: &6%fancy@kingdoms_resource_points%
+      &7| &2Schild&8: &6%time@kingdoms_shield_time_left%
       &7| &2Gründung&8: &6%kingdoms_date_since%
       &7| &2Mitglieder&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
@@ -1175,11 +1175,11 @@ command:
       &7| &2Home&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
-      &7| &2Might&8: &6%kingdoms_fancy_might%
-      &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Might&8: &6%fancy@kingdoms_might%
+      &7| &2Bank&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Resource Points&8: &6%fancy@kingdoms_resource_points%
+      &7| &2Shield&8: &6%time@kingdoms_shield_time_left%
       &7| &2Since&8: &6%kingdoms_date_since%
       &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
@@ -1208,10 +1208,10 @@ command:
     entry: |-
       &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Mitglieder&8: &6%kingdoms_members%
       &7♦ &2Läderein&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Schatzkammer&8: &6$%kingdoms_fancy_bank%
+      &7♦ &2Ressourcenpunkte&8: &6%fancy@kingdoms_resource_points%
+      &7♦ &2Schatzkammer&8: &6$%fancy@kingdoms_bank%
 
-      &7(klicke für mehr Infos);/k show %kingdoms_kingdom_name%} &7- &6%kingdoms_fancy_might%
+      &7(klicke für mehr Infos);/k show %kingdoms_kingdom_name%} &7- &6%fancy@kingdoms_might%
     footer: '     &8[hover:{&6←;&6Vorherige Seite;/k top %previous_page%}&8]
       &8[hover:{&6→;&6Nächste Seite;/k top %next_page%}&8]'
     header: '&8----------------------------------'
@@ -1342,10 +1342,10 @@ command:
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |-
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
+      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
     deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had
-      &e%kingdoms_time_shield_time_left% &ctime left.'
+      &e%time@kingdoms_shield_time_left% &ctime left.'
   book:
     description: '&6A little handbook for your kingdom.'
     chapter-not-found: '&cCould not find chapter&8: &e%chapter%'
@@ -1588,7 +1588,7 @@ nexus:
       wrong-url: '&cUngültige URL für die Flagge&8: &e%flag%'
       current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%} &6to open
         your current flag URL.
-    shield-activated: '&2Schild wurde aktiviert für &6%kingdoms_time_shield_time_left%'
+    shield-activated: '&2Schild wurde aktiviert für &6%time@kingdoms_shield_time_left%'
     shield-not-enough-resource-points: '&cDu hast nicht genügend Ressourcenpunkte.'
     tax-enter-value: '&6Bitte gebe einen neuen Wert in den Chat ein, oder tippe
                        hover:{&cCancel;&cCancel;cancel} &6, um abzubrechen.'
@@ -1805,9 +1805,9 @@ tax:
       Schatzkammer&8: &6$%kingdoms_bank%
     age: '&5Dein Königreich musste die Steuern nicht bezahlen, da es neu ist.'
     disbanded-announce: '&cDas Königreich &e%kingdom% &cwurde gelöscht, da es nicht
-      in der Lage war die Steuern zu bezahlen&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+      in der Lage war die Steuern zu bezahlen&8: &e%fancy@kingdoms_bank% &8< &e$%tax%'
     kicked-announce: '&cDas Königreich &e%kingdom% &cwurde aus der Nation  &e%nation%
-      &cgekickt, da es nich in der Lage war die Steuern zu bezahlen&8: &e%kingdoms_fancy_bank%
+      &cgekickt, da es nich in der Lage war die Steuern zu bezahlen&8: &e%fancy@kingdoms_bank%
       &8< &e$%tax%'
   member-paid: '&6$%tax% &2wurden dir genommen, um die Steuern zu bezahlen.'
   nation:
@@ -1817,9 +1817,9 @@ tax:
       bezahlen konnte.'
     age: '&5Deine Nation musste die Steuern nicht bezahlen, da es neu ist.'
     disbanded-announce: '&cDie Nation &e%nation% &cwurde gelsöcht, da es die Steuern
-      nicht bezahlen konnte&8: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
+      nicht bezahlen konnte&8: &e%fancy@kingdoms_nation_bank% &8< &e$%tax%'
   notifications: |-
-    NOPREFIX|&8[&4WARNUNG&8] &cDein Königreich hat nicht genügend Geld &7(&e%kingdoms_fancy_bank%&7) &cin der Bank, um die nächste Zahlung zu begleichen&8: &e%tax%
+    NOPREFIX|&8[&4WARNUNG&8] &cDein Königreich hat nicht genügend Geld &7(&e%fancy@kingdoms_bank%&7) &cin der Bank, um die nächste Zahlung zu begleichen&8: &e%tax%
      &cWenn die eingesammlten Steuern von deinen Mitgliedern nicht reichen, wird dein Königreich gelöscht.
   paid: '&e%tax% &cwurden dir für die Steuern deines Königreiches abgenommen.'
   reminder: |2
@@ -1872,12 +1872,12 @@ warppad-name-set: '&2Warp Pad Name wurde zu &6%name% &2geändert.'
 top-rewards:
   kingdom: |-
     &2Dein Königreich wurde mit &6$%money%$ &2und &6%rp% &2Ressourcenpunkte belohnt, weil es Rang &5%rank% &2ist.
-    &2Guthaben&8: &6$%kingdoms_fancy_bank%
-    &2Ressourcenpunkte&8: &6%kingdoms_fancy_resource_points%
+    &2Guthaben&8: &6$%fancy@kingdoms_bank%
+    &2Ressourcenpunkte&8: &6%fancy@kingdoms_resource_points%
   nation: |-
     &2Dein Nation wurde mit &6$%money%$ &2und &6%rp% &2Ressourcenpunkte belohnt, weil es Rang &5%rank% &2ist.
-    &2NeGuthaben&8: &6$%kingdoms_fancy_nation_bank%
-    &2Ressourcenpunkte&8: &6%kingdoms_fancy_nation_resource_points%
+    &2NeGuthaben&8: &6$%fancy@kingdoms_nation_bank%
+    &2Ressourcenpunkte&8: &6%fancy@kingdoms_nation_resource_points%
 champion-type:
   changed: '&2Der Champion deines Königreiches wurde von &6%old_champion% &2zu &6%new_champion%
     &2geändert.'
@@ -1947,7 +1947,7 @@ siege-cannon:
     destroyed-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Ihr Schild
       wurde zerstört.'
     damaged-shield: '&2Die Kannone hat das Königreich &6%kingdoms_kingdom_name% &2getroffen. Verbleibender Schutz&8:
-      &6%kingdoms_time_shield_time_left%'
+      &6%time@kingdoms_shield_time_left%'
 structures-enter-name: '&2Bitte gebe einen neuen Namen für die Struktur ein.'
 structures-name-set: '&2Der Struktur-Name wurde zu &6%name% &2geändert.'
 warppad:

@@ -15,7 +15,7 @@ public abstract class AsyncChunks {
         } else if (versionChecker.apply(9) && !versionChecker.apply(13)) {
             return new AsyncChunksPaper_9_12();
         } else {
-            //noinspection StaticInitializerReferencesSubClass
+            // noinspection StaticInitializerReferencesSubClass
             return new AsyncChunksSync();
         }
     }

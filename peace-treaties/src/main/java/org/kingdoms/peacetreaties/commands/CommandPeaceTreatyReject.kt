@@ -6,7 +6,7 @@ import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceT
 import org.kingdoms.peacetreaties.data.PeaceTreaty
 
 class CommandPeaceTreatyReject(parent: KingdomsParentCommand) : KingdomsCommand("reject", parent) {
-    override fun executeX(context: CommandContext): CommandResult {
+    override fun execute(context: CommandContext): CommandResult {
         if (context.assertPlayer()) return CommandResult.FAILED
         if (context.assertHasKingdom()) return CommandResult.FAILED
         if (context.requireArgs(1)) return CommandResult.FAILED
@@ -18,7 +18,7 @@ class CommandPeaceTreatyReject(parent: KingdomsParentCommand) : KingdomsCommand(
         }
 
         val targetKingdom = context.getKingdom(0) ?: return CommandResult.FAILED
-        context.settings.withContext(targetKingdom)
+        context.messageContext.withContext(targetKingdom)
 
         val contract: PeaceTreaty = kingdom.getReceivedPeaceTreaties()[targetKingdom.dataKey] ?: run {
             context.sendError(PeaceTreatyLang.COMMAND_PEACETREATY_NO_CONTRACT_FROM_KINGDOM)
@@ -27,7 +27,7 @@ class CommandPeaceTreatyReject(parent: KingdomsParentCommand) : KingdomsCommand(
 
         if (contract.isAccepted) return context.fail(PeaceTreatyLang.COMMAND_PEACETREATY_ALREADY_ACCEPTED)
 
-        contract.getPlaceholderContextProvider(context.settings)
+        contract.getPlaceholderContextProvider(context.messageContext)
         contract.removeContract()
         val victim = contract.victimKingdom
         val proposer = contract.proposerKingdom

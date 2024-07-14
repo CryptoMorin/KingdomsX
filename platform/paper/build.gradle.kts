@@ -1,6 +1,5 @@
 plugins {
-    java
-    kotlin
+    commons
     sublibs
 }
 
@@ -21,13 +20,3 @@ dependencies {
 
 // Paper is compiled with the latest LTS, so we "trick" gradle into using the latest Java version,
 // but we compile with Java 8
-java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(17))
-    }
-    disableAutoTargetJvm()
-}
-tasks.compileJava {
-    options.encoding = Charsets.UTF_8.name()
-    options.release.set(8)
-}

@@ -15,7 +15,7 @@ import java.util.function.Function;
 public final class NonNullMap<K, V> implements Map<K, V> {
     private final Map<K, V> map;
 
-    public NonNullMap(Map<K, V> map) {
+    private NonNullMap(Map<K, V> map) {
         this.map = Objects.requireNonNull(map);
     }
 
@@ -24,7 +24,7 @@ public final class NonNullMap<K, V> implements Map<K, V> {
     }
 
     public NonNullMap() {
-        this.map = new HashMap<>();
+        this(new HashMap<>());
     }
 
     public static <K, V> NonNullMap<K, V> of(Map<K, V> map) {
@@ -32,7 +32,7 @@ public final class NonNullMap<K, V> implements Map<K, V> {
         return new NonNullMap<>(map);
     }
 
-    public static <K, V> NonNullMap<K, V> checked(Map<K, V> map) {
+    public static <K, V> NonNullMap<K, V> ofChecked(Map<K, V> map) {
         if (map instanceof NonNullMap) return (NonNullMap<K, V>) map;
         for (Entry<K, V> entry : map.entrySet()) {
             assertNonNullKey(entry.getKey());

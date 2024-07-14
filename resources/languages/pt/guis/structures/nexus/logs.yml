@@ -27,7 +27,7 @@ rows: 6
     name: '&2Desafiada'
     lore: |
       &e%player% &cdesafiou
-      &e%kingdoms_other_kingdom_name% &creino.
+      &e%other*kingdoms_kingdom_name% &creino.
       {$p}No{$sep}: {$s}%time%
 
       &7Você tem até &c%start_time%
@@ -89,7 +89,7 @@ rows: 6
       {$s}%player% {$p}atualizou
       {$s}%upgrade% {$p}atualização diversa.
       {$p}Nível{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
@@ -98,7 +98,7 @@ rows: 6
       {$s}%player% {$p}atualizou
       {$s}%upgrade% {$p}atualização de campeão.
       {$p}Nível{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
@@ -107,7 +107,7 @@ rows: 6
       {$s}%player% {$p}atualizou
       {$s}%upgrade% {$p}energizar.
       {$p}Nível{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
@@ -117,7 +117,7 @@ rows: 6
       {$s}%item_style_display_name% {$p}estrutura em
       {$s}%location%
       {$p}Nível{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
@@ -125,7 +125,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}comprou {$s}%amount%
       {$s}%item_style_display_name% {$p}estruturas.
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
@@ -133,7 +133,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}comprou {$s}%amount%
       {$s}%item_style_display_name% {$p}torres.
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-turret-purchase-ammo:
     name: '&aCompra de munição de torre'
@@ -141,8 +141,8 @@ rows: 6
     lore: |
       {$s}%player% {$p}comprou munição para
       {$s}%style% {$p}turret at {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
-      {$s}%fancy_old_amount% {$sep}➜ {$s}%fancy_new_amount%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
@@ -152,7 +152,7 @@ rows: 6
       {$s}%item_style_display_name% {$p}torre em
       {$s}%location%
       {$p}Nível{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-resource-points-convert:
     material: HAY_BLOCK
@@ -160,7 +160,7 @@ rows: 6
     lore: |
       {$s}%player% {$p}mudou
       pontos de recursos{$sep}:
-      {$s}%fancy_amount-before% {$sep}➜ {$s}%fancy_amount-after%
+      {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
       {$p}No{$sep}: {$s}%time%
   extractor-collect:
     material: EMERALD_BLOCK
@@ -169,7 +169,7 @@ rows: 6
       {$s}%player% {$p}recolheu o
       extrator localizado em{$sep}:
       {$s}%location%
-      {$p}Pontos de recursos coletados{$sep}: {$s}%fancy_resource_points%
+      {$p}Pontos de recursos coletados{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   warppad-teleport:
     material: END_PORTAL_FRAME
@@ -179,7 +179,7 @@ rows: 6
       usando o Warp Pad localizado em
       {$s}%from_location% {$p}to
       {$s}%precise_location%
-      {$p}Custo de combustível{$sep}: {$s}%fancy_fuel_cost%
+      {$p}Custo de combustível{$sep}: {$s}%fancy@fuel_cost%
       {$p}No{$sep}: {$s}%time%
   outpost-item-purchase:
     material: HAY_BLOCK
@@ -189,7 +189,7 @@ rows: 6
       os seguintes itens do
       Estrutura do posto avançado localizada em{$sep}:
       {$s}%location%
-      {$p}Total de pontos de recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Total de pontos de recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
       %purchases%
   kingdom-pacifism-change:
@@ -208,7 +208,7 @@ rows: 6
       um escudo para o reino.
       {$p}Duração do escudo adquirido{$sep}: {$s}%purchased-shield-time%
       {$p}Duração do escudo{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy_resource_points%
+      {$p}Custo de Pontos de Recursos{$sep}: {$s}%fancy@resource_points%
       {$p}No{$sep}: {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
@@ -336,7 +336,7 @@ rows: 6
     name: "&9Imposto do Servidor"
     lore: |
       {$p}Impostos do servidor pagos.
-      {$p}Quantia{$sep}: {$s}%fancy_amount%
+      {$p}Quantia{$sep}: {$s}%fancy@amount%
       {$p}No{$sep}: {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
@@ -388,24 +388,24 @@ rows: 6
     material: BOOK
     name: "&9Tratado de Paz Recebido"
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Proponente{$sep}: {$s}%kingdoms_other_kingdom_name%
+      {$p}Proponente{$sep}: {$s}%other*kingdoms_kingdom_name%
       {$p}Duração do contrato{$sep}: {$s}%peacetreaty_duration%
 
       {$p}Para mais informações faça{$sep}:
-      {$s}/k pt review %kingdoms_other_kingdom_name%
+      {$s}/k pt review %other*kingdoms_kingdom_name%
   'PeaceTreaties:sent':
     material: BOOK
     name: "&9Enviado Tratado de Paz"
     commands:
-      - 'k pt review %kingdoms_other_kingdom_name%'
+      - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Para{$sep}: {$s}%kingdoms_name%
+      {$p}Para{$sep}: {$s}%kingdoms_kingdom_name%
       {$p}Duração do contrato{$sep}: {$s}%peacetreaty_duration%
 
       {$p}Para mais informações faça{$sep}:
-      {$s}/k pt review %kingdoms_other_kingdom_name%
+      {$s}/k pt review %other*kingdoms_kingdom_name%
   '[else]':
     material: BARRIER
     name: '{$e}Tipo de registro desconhecido{$sep}:'

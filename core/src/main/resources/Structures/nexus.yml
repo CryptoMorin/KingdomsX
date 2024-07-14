@@ -1,9 +1,39 @@
+(import):
+  building:
+    anchors: [ &fnPoints fnPoints, &holograms holograms ]
+    extend: false
+  structure:
+    parameters:
+      <name>: nexus
+      <build-duration-factor>: '-45 seconds'
+      <durability-factor>: 100
+      <material-1>: BEACON
+      <material-2>: BEACON
+      <material-3>: BEACON
+
 # Refer to config.yml for more nexus options.
 name: "&bNexus"
 type: nexus
 default-name: "Nexus"
+max-level: 5
+upgrade-cost: 'level * 1000'
 dont-update-holograms: true
 hide-holograms: true
+
+building:
+  4:
+    schematic: 'structures/nexus/4'
+    functional-points: *fnPoints
+    block:
+      material: BEACON
+    holograms: *holograms
+  5:
+    schematic: 'structures/nexus/5'
+    functional-points: *fnPoints
+    block:
+      material: BEACON
+    holograms: *holograms
+
 particles:
   1:
     place:
@@ -14,13 +44,3 @@ particles:
       particle: DRAGON_BREATH
       count: 70
       offset: 0.5, 0.5, 0.5
-sounds:
-  1:
-    place: BLOCK_BEACON_ACTIVATE
-    break: BLOCK_BEACON_DEACTIVATE
-block: BEACON
-hologram:
-  1:
-    lines:
-      - "&8-=( &9Nexus &8)=-"
-    height: 1

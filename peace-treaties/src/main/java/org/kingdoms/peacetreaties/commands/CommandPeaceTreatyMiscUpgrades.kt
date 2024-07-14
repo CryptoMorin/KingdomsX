@@ -7,7 +7,7 @@ import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceT
 import org.kingdoms.peacetreaties.terms.types.MiscUpgradesTerm
 
 class CommandPeaceTreatyMiscUpgrades(parent: KingdomsParentCommand) : KingdomsCommand("miscUpgrades", parent) {
-    override fun executeX(context: CommandContext): CommandResult {
+    override fun execute(context: CommandContext): CommandResult {
         if (context.assertPlayer()) return CommandResult.FAILED
         if (context.assertHasKingdom()) return CommandResult.FAILED
         if (context.requireArgs(1)) return CommandResult.FAILED
@@ -16,7 +16,7 @@ class CommandPeaceTreatyMiscUpgrades(parent: KingdomsParentCommand) : KingdomsCo
         val kingdom = context.kingdom
         val contract = target.getReceivedPeaceTreaties()[kingdom.dataKey]
 
-        context.settings.withContext(target)
+        context.messageContext.withContext(target)
         if (contract == null) {
             context.sendError(PeaceTreatyLang.COMMAND_PEACETREATY_NO_CONTRACT_TO_KINGDOM)
             return CommandResult.FAILED

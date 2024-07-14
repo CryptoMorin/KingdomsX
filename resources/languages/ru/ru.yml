@@ -46,27 +46,27 @@ tax:
     age: '&7Ваше королевство не платило налоги так как оно было основано совсем недавно'
     paid: |
       &7Всего &e%tax% &7было уплачено за налоги королевства.
-      Баланс королевства&8: &e%kingdoms_fancy_bank%
+      Баланс королевства&8: &e%fancy@kingdoms_bank%
     paid-nation: |
       &7Всего &e%tax% &8было уплачено за налоги нации.
-      Баланс королевства&8: &e%kingdoms_fancy_bank%
-      &7Баланс нации&8: &e%kingdoms_fancy_nation_bank%
-    kicked: '&e%kingdom% &cбыло выгнано из нации за не уплату налогов&8: &e%kingdoms_fancy_bank% &8< %tax%'
+      Баланс королевства&8: &e%fancy@kingdoms_bank%
+      &7Баланс нации&8: &e%fancy@kingdoms_nation_bank%
+    kicked: '&e%kingdom% &cбыло выгнано из нации за не уплату налогов&8: &e%fancy@kingdoms_bank% &8< %tax%'
     disbanded: '&cВаше королевство было распущено за неуплату налогов&8: &e%tax%'
     disbanded-announce: '&e%kingdom% &cВаше королевство было распущено поскольку не смогла уплатить налоги&8:
-      &e%kingdoms_fancy_bank% &8< &e%tax%'
+      &e%fancy@kingdoms_bank% &8< &e%tax%'
     kicked-announce: '&e%kingdom% &cбыло изгнано из нации &e%nation% &cпоскольу не смогла уплатить налоги&8:
-      &e%kingdoms_fancy_bank% &8< &e%tax%'
+      &e%fancy@kingdoms_bank% &8< &e%tax%'
   nation:
     age: '&7Ваша нация не платила налоги поскольку она новая!'
     paid: |
       &7Всего было &e%tax% монет &7уплачено нацией за налоги
-      Баланс нации&8: &6%kingdoms_fancy_nation_bank% монет
+      Баланс нации&8: &6%fancy@kingdoms_nation_bank% монет
     disbanded: '&cВаша нация была распущена поскольку не смогла уплатить налоги&8: &e%tax%'
     disbanded-announce: '&e%nation% &cВаша нация была распущена потому-что не смогла уплатить налоги&8:
-      &e%kingdoms_fancy_nation_bank% &8< &e%tax%'
+      &e%fancy@kingdoms_nation_bank% &8< &e%tax%'
   notifications: |
-    &8[&4Внимание&8] &cВашему королевству недостаточно монет &7(&e%kingdoms_fancy_bank%&7) &cдля оплаты налоги в следующем сборе налогов&8: &e%tax%
+    &8[&4Внимание&8] &cВашему королевству недостаточно монет &7(&e%fancy@kingdoms_bank%&7) &cдля оплаты налоги в следующем сборе налогов&8: &e%tax%
     &cЕсли собранных налогов с участников будет недостаточно, королевство будет распущено
   kick-announce: '&e%player% &cбыл выгнан из королевства за не уплату налогов&8: &e%tax%'
   member-paid: '&7%tax% монет &7было оплачено за налоги'
@@ -99,9 +99,9 @@ siege-cannon:
     no-shield: '&7Пушка попала по &6%kingdoms_kingdom_name% &7которые не имеют щит!'
     pacifist: '&cПушка попала по &e%kingdoms_kingdom_name% &cно они мирное королевство'
     destroyed-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7, их щит был уничтожен!'
-    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%kingdoms_time_shield_time_left%'
+    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%time@kingdoms_shield_time_left%'
     damaged-shield-notify: '&7Королевство &e%attacker-kingdom% &7нанесло удар по вашей земле &e%attacked-chunk%&7.
-      Осталось ЩИТа&8: &c%kingdoms_time_shield_time_left%'
+      Осталось ЩИТа&8: &c%time@kingdoms_shield_time_left%'
   masswar-only: '&cВы можете использовать осадные пушки только во время массовых войн.'
 other-kingdoms:
   place: '&cВы не можете строить в чужом королевстве!'
@@ -210,12 +210,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     &7Ваше королевство вознаграждено &6%money% &7монет и &6%rp% &7очками ресурсов за новый уровень &8: &5%rank%
-    &7Баланс королевства&8: &6%kingdoms_fancy_bank% монет
-    &7Баланс очков ресурсов королевства&8: &6%kingdoms_fancy_resource_points%
+    &7Баланс королевства&8: &6%fancy@kingdoms_bank% монет
+    &7Баланс очков ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
   nation: |
     &7Ваша нация вознаграждена &6%money% &7монет и &6%rp% &7 очков ресурсов, за новый ранг&8: &5%rank%
-    &7Баланс нации&8: &6%kingdoms_fancy_nation_bank% монет
-    &7Баланс очков ресурсов нации&8: &6%kingdoms_fancy_nation_resource_points%
+    &7Баланс нации&8: &6%fancy@kingdoms_nation_bank% монет
+    &7Баланс очков ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
 upgrades:
   powerup-upgrade: '&7Вы улучшили &6%powerup% &7до уровня &6%level%'
   powerup-max: '&cВы уже улучшили &e%powerup% &cна максимальный уровень!'
@@ -358,7 +358,7 @@ nexus:
       &cВведите правильное уравнение.
     shield-not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
     shield-cooldown: '&cВам надо подождать &e%time% &cпрежде чем покупать щит снова'
-    shield-activated: '&7Щит активирован на &6%kingdoms_time_shield_time_left%'
+    shield-activated: '&7Щит активирован на &6%time@kingdoms_shield_time_left%'
 nexus-resource-points-enter-value: '&6Введите кол-во очков ресурсов или нажмите на hover:{&cОтмена;&cОтмена;cancel}
   &6для отмены'
 extractor:
@@ -555,14 +555,14 @@ command:
         success: |
           &7Вы зачислили &6%amount% &7монет на баланс вашей нации!
           Ваш баланс&8: &6%balance%
-          &7Баланс нации&8: &6%kingdoms_fancy_nation_bank%
+          &7Баланс нации&8: &6%fancy@kingdoms_nation_bank%
         disabled: '&cВы не можете зачислять монеты!'
       withdraw:
         disabled: '&cВы не можете снимать монеты!'
         success: |
           &7Вы сняли &6%amount% &7монет с баланса вашей нации!
           &7Ваш баланс&8: &6%balance%
-          &7Баланс нации&8: &6%kingdoms_fancy_nation_bank%
+          &7Баланс нации&8: &6%fancy@kingdoms_nation_bank%
       negative: '&cВы не можете переводить отрицательные значения...'
       zero: '&cВы не можете перевести ничего!'
     show:
@@ -577,8 +577,8 @@ command:
         &7| &7Нексус&8: &6%kingdoms_nation_nexus%
         &7| &7Дата создания&8: &6%kingdoms_date_nation_since%
         &7| &7Мощь&8: &6%kingdoms_nation_might%
-        &7| &7Щит&8: &6%kingdoms_nation_shield_time_left%
-        &7| &7Баланс&8: &6%kingdoms_fancy_nation_bank% монет &8| &7Tax&8: &6%kingdoms_fancy_nation_tax% &8- &6%kingdoms_fancy_server_nation_tax% монет
+        &7| &7Щит&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &7Баланс&8: &6%fancy@kingdoms_nation_bank% монет &8| &7Tax&8: &6%fancy@kingdoms_nation_tax% &8- &6%fancy@kingdoms_server_nation_tax% монет
         &7| &7Очки ресурсов&8: &6%kingdoms_nation_resource_points%
 
         &7| &7Королевства&8:
@@ -590,8 +590,8 @@ command:
         &7| &7Нация&8: &6%kingdoms_nation_name%
         &7| &7Дата основания&8: &6%kingdoms_date_nation_since%
         &7| &7Мощь&8: &6%kingdoms_might%
-        &7| &7Щит&8: &6%kingdoms_nation_shield_time_left%
-        &7| &7Баланс&8: &6%kingdoms_fancy_nation_bank%
+        &7| &7Щит&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &7Баланс&8: &6%fancy@kingdoms_nation_bank%
         &7| &7Земли&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
         &7| &7Очки ресурсов&8: &6%kingdoms_resource_points%
 
@@ -715,8 +715,8 @@ command:
       negative: '&cНельзя посмотреть страницы с отрицательным числом'
       entry: |
         &8♦ &7%rank%. hover:{&7%kingdoms_nation_name%;&7♦ &7Участники&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &7Очки ресурсов&8: &6%kingdoms_fancy_nation_resource_points%
-        &7♦ &7Баланс&8: &6%kingdoms_fancy_nation_bank% монет} &7- &6%kingdoms_fancy_nation_might% монет
+        &7♦ &7Очки ресурсов&8: &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &7Баланс&8: &6%fancy@kingdoms_nation_bank% монет} &7- &6%fancy@kingdoms_nation_might% монет
     kick:
       description: '&6Выгнать королевство из нации'
       person: '&cВаше королевство было выгнано из нации &e%nation% &cигроком &e%kicker%'
@@ -841,19 +841,19 @@ command:
       success: |
         &7Вы успешно сняли &6%rp% &7очков ресурсов из королевства для &6%worth%
         &7Ваш новый баланс&8: &6%balance% монет
-        &7Очки ресурсов королевства&8: &6%kingdoms_fancy_resource_points%
+        &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
     transfer:
       description: '&6Перевести очки ресурсов из нации/королевства в королевство/нацию'
       usage: '&7Использование&8: &e/k rp transfer &7<kingdom | nation> <resource points>'
       success:
         kingdom: |
           &7Вы успешно перевели &6%amount% &7очков ресурсов из вашей нации в королевство.
-          Очки ресурсов нации&8: &6%kingdoms_fancy_nation_resource_points%
-          &7Очки ресурсов королевства&8: &6%kingdoms_fancy_resource_points%
+          Очки ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
+          &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
         nation: |
           &7Вы успешно перевели &6%amount% &7очков ресурсов из вашего королевства в нацию.
-          Очки ресурсов нации&8: &6%kingdoms_fancy_nation_resource_points%
-          &7Очки ресурсов королевства&8: &6%kingdoms_fancy_resource_points%
+          Очки ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
+          &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '&cВаше королевство не имеет &e%rp% &cочков ресурсов.'
       money: '&e%rp% очков ресурсов &cнужно &e%worth%&c, но у вас только &e%balance% монет'
@@ -875,7 +875,7 @@ command:
       success: |
         &7Вы зачислили &6%amount% &7монет на баланс вашего королевства.
         Ваш новый баланс&8: &6%balance% монет
-        &7Баланс вашего королевства&8: &6%kingdoms_fancy_bank%
+        &7Баланс вашего королевства&8: &6%fancy@kingdoms_bank%
       disabled: '&cВы не можете положить монеты на баланс королевства'
       min: '&cВам нужно как минимум &e%min% &cмонет'
     withdraw:
@@ -884,7 +884,7 @@ command:
       success: |
         &7Вы сняли &6%amount% &7монет с баланса вашего королевства.
         Ваш новый баланс&8: &6%balance%
-        &7Баланс вашего королевства&8: &6%kingdoms_fancy_bank%
+        &7Баланс вашего королевства&8: &6%fancy@kingdoms_bank%
   show:
     description: '&6Показать информацию о вашем королевстве'
     usage: '&4Использование: &e/k show &9[player | kingdom | #PLAYER] &7<player | kingdom>'
@@ -896,14 +896,14 @@ command:
       &8▪ &7Спавн&8: &2%kingdoms_kingdom_home%
       &8▪ &7Нексус&8: &b%kingdoms_nexus%
       &8▪ &7Нация&8: &6%kingdoms_nation_name%
-      &8▪ &7Сила&8: &c%kingdoms_fancy_might%
-      &8▪ &7Баланс&8: &e%kingdoms_fancy_bank% монет
+      &8▪ &7Сила&8: &c%fancy@kingdoms_might%
+      &8▪ &7Баланс&8: &e%fancy@kingdoms_bank% монет
       &8▪ &7Налоги&8:
-        &7Твой: &a%kingdoms_fancy_tax% монет
-        &7Общий: &a%kingdoms_fancy_server_kingdom_tax% монет
+        &7Твой: &a%fancy@kingdoms_tax% монет
+        &7Общий: &a%fancy@kingdoms_server_kingdom_tax% монет
       &8▪ &7Земли&8: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
-      &8▪ &7Очков Ресурсов&8: &e%kingdoms_fancy_resource_points%
-      &8▪ &7Щит&8: &d%kingdoms_time_shield_time_left%
+      &8▪ &7Очков Ресурсов&8: &e%fancy@kingdoms_resource_points%
+      &8▪ &7Щит&8: &d%time@kingdoms_shield_time_left%
       &8▪ &7Дата основания&8: &9%kingdoms_date_since%
       &8▪ &7Участники&8: &b%kingdoms_members%&7/&3%kingdoms_max_members%
       %members%
@@ -914,10 +914,10 @@ command:
       &8▪ &7Нация&8: &2%kingdoms_nation_name%
       &8▪ &7Сила&8: &c%kingdoms_might%
       &8▪ &7Дата основания&8: &9%kingdoms_date_since%
-      &8▪ &7Щит&8: &d%kingdoms_time_shield_time_left%
+      &8▪ &7Щит&8: &d%time@kingdoms_shield_time_left%
       &8▪ &7Земли&8: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
-      &8▪ &7Баланс&8: &e%kingdoms_fancy_bank% монет
-      &8▪ &7Очков Ресурсов&8: &e%kingdoms_fancy_resource_points%
+      &8▪ &7Баланс&8: &e%fancy@kingdoms_bank% монет
+      &8▪ &7Очков Ресурсов&8: &e%fancy@kingdoms_resource_points%
 
       &8▪ &7Участники&8:
       %members%
@@ -1032,9 +1032,9 @@ command:
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
+      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
-    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%kingdoms_time_shield_time_left%
+    deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%time@kingdoms_shield_time_left%
       &ctime left.'
   unclaim:
     description: '&6Unclaim any lands.'
@@ -1315,8 +1315,8 @@ command:
     bank:
       description: '&6Add or take money from a kingdom bank.'
       usage: '&7Использование&8: &e/k admin bank &7<королевство> &9[set | add | remove] &7<amount>'
-      done: '&6%kingdom%''s &7new bank&8: &6%kingdoms_fancy_bank%'
-      added: '&7Новое значение казны&8: &6%kingdoms_fancy_bank%'
+      done: '&6%kingdom%''s &7new bank&8: &6%fancy@kingdoms_bank%'
+      added: '&7Новое значение казны&8: &6%fancy@kingdoms_bank%'
       invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
     command:
@@ -1584,8 +1584,8 @@ command:
     entry: |
       &8♦ &7%rank%. hover:{&7%kingdoms_kingdom_name%;&7♦ &7Участники&8: &6%kingdoms_members%
       &7♦ &7Земли&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &7Очки ресурсов&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &7Баланс&8: &6%kingdoms_fancy_bank% монет} &7- &6%kingdoms_fancy_might%
+      &7♦ &7Очки ресурсов&8: &6%fancy@kingdoms_resource_points%
+      &7♦ &7Баланс&8: &6%fancy@kingdoms_bank% монет} &7- &6%fancy@kingdoms_might%
   map:
     description: '&6Показывает карту королевств и ваших структур'
     usage: '&7Использование&8: &e/k map &9[auto &8| &9height] [width]'

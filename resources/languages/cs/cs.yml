@@ -59,24 +59,24 @@ tax:
     age: '&2Tvuj stat neplatil dane protoze je novy'
     paid: |
       &2A total of &6$%tax% &2kingdom tax has been paid.
-      New Kingdom Bank Balance&8: &6$%kingdoms_fancy_bank%
+      New Kingdom Bank Balance&8: &6$%fancy@kingdoms_bank%
     paid-nation: |
       &2A total of &6$%tax% &2kingdom tax has been paid to your nation.
-      New Kingdom Bank Balance&8: &6$%kingdoms_fancy_bank%
-      &2New Nation Bank Balance&8: &6$%kingdoms_fancy_nation_bank%
-    kicked: '&e%kingdom% &cstat byl vyhozen z narodu protoze neplatil dane&8:&e%kingdoms_fancy_bank% &8< $%tax%'
+      New Kingdom Bank Balance&8: &6$%fancy@kingdoms_bank%
+      &2New Nation Bank Balance&8: &6$%fancy@kingdoms_nation_bank%
+    kicked: '&e%kingdom% &cstat byl vyhozen z narodu protoze neplatil dane&8:&e%fancy@kingdoms_bank% &8< $%tax%'
     disbanded: '&cVas stat byl rozpusten protoze nebyl schopen platit dane&8: &e$%tax%'
-    disbanded-announce: '&e%kingdom% &cVas stat byl rozpusten, protoze nebyl schopen platit dane&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
-    kicked-announce: '&e%kingdom% &cStat byl vyhozen z &e%nation% &cnation protoze neplatil dane&8: &e%kingdoms_fancy_bank% &8< &e$%tax%'
+    disbanded-announce: '&e%kingdom% &cVas stat byl rozpusten, protoze nebyl schopen platit dane&8: &e%fancy@kingdoms_bank% &8< &e$%tax%'
+    kicked-announce: '&e%kingdom% &cStat byl vyhozen z &e%nation% &cnation protoze neplatil dane&8: &e%fancy@kingdoms_bank% &8< &e$%tax%'
   nation:
     age: '&2Tvuj narod neplatil dane protoze je novy'
     paid: |
       &2A total of &6$%tax% &2nation tax has been paid.
-      New Nation Bank Balance&8: &6$%kingdoms_fancy_nation_bank%
+      New Nation Bank Balance&8: &6$%fancy@kingdoms_nation_bank%
     disbanded: '&cTvuj narod byl rozpusten protoze nebyl schopen platit dane&8: &e$%tax%'
-    disbanded-announce: '&e%nation% &cTvuj narod byl rozpusten protoze nebyl schopen platit dane&8: &e%kingdoms_fancy_nation_bank% &8< &e$%tax%'
+    disbanded-announce: '&e%nation% &cTvuj narod byl rozpusten protoze nebyl schopen platit dane&8: &e%fancy@kingdoms_nation_bank% &8< &e$%tax%'
   notifications: |
-    &8[&4WARNING&8] &cstat nema dostatek zlataku &7(&e%kingdoms_fancy_bank%&7) &cv bance pro zaplaceni pristich dani&8: &e%tax%
+    &8[&4WARNING&8] &cstat nema dostatek zlataku &7(&e%fancy@kingdoms_bank%&7) &cv bance pro zaplaceni pristich dani&8: &e%tax%
     &cIf the collected taxes from the members are not enough, your kingdom will be disbanded.
   kick-announce: '&e%player% &cbyl vyhozen protoze nebyl schopny platit dane&8: &e%tax%'
   member-paid: '&6$%tax% &cbylo ubrano z tveho uctu kvuli dani'
@@ -126,8 +126,8 @@ siege-cannon:
     no-shield: '&2Kanon zasahl &6%kingdoms_kingdom_name% &2 a nemaji stit'
     pacifist: '&cKanon zasahl &e%kingdoms_kingdom_name% &c but they''re a pacifist kingdom'
     destroyed-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% A jejich stit byl znicen'
-    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% &2zbyvajici stit&8: &6%kingdoms_time_shield_time_left%'
-    damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%kingdoms_time_shield_time_left%'
+    damaged-shield: '&2Kanon zasahl stat &6%kingdoms_kingdom_name% &2zbyvajici stit&8: &6%time@kingdoms_shield_time_left%'
+    damaged-shield-notify: '&e%attacker-kingdom% &czasahl tve uzemi &e%attacked-chunk%&c. zbyvajici stit&8: &6%time@kingdoms_shield_time_left%'
   friendly:
     fire: '&cKanon zasahl pratelske uzemi ktere patri &e%kingdom%'
 lands:
@@ -230,12 +230,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     &2Your kingdom has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
-    &2New Kingdom Balance&8: &6$%kingdoms_fancy_bank%
-    &2New Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+    &2New Kingdom Balance&8: &6$%fancy@kingdoms_bank%
+    &2New Kingdom Resource Points&8: &6%fancy@kingdoms_resource_points%
   nation: |
     &2Your nation has been rewarded &6$%money% &2money and &6%rp% &2resource points for being rank &8: &5%rank%
-    &2New Nation Balance&8: &6$%kingdoms_fancy_nation_bank%
-    &2New Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
+    &2New Nation Balance&8: &6$%fancy@kingdoms_nation_bank%
+    &2New Nation Resource Points&8: &6%fancy@kingdoms_nation_resource_points%
 join-leave-messages:
   join:
     kingdom:
@@ -388,7 +388,7 @@ nexus:
       &cPlease enter a valid equation.
     shield-not-enough-resource-points: '&cNemas dostatek resource pointu'
     shield-cooldown: '&cMusis pockat &e%time% &cnez zakoupis stit znovu'
-    shield-activated: '&2Stit aktivovan na dobu &6%kingdoms_time_shield_time_left%'
+    shield-activated: '&2Stit aktivovan na dobu &6%time@kingdoms_shield_time_left%'
 nexus-resource-points-enter-value: '&6Zadej hodnotu resource pointu nebo napis hover:{&cCancel;&cCancel;cancel} &6pro ukonceni'
 extractor:
   not-enough-resource-points: '&cNemas dostatek resource pointu'
@@ -638,14 +638,14 @@ command:
         success: |
           &2Vlozil jsi &6%amount% &2zlataky do banky naroda.
           Vas novy zustatek&8: &6%balance%
-          &2Banka vaseho naroda&8: &6%kingdoms_fancy_nation_bank%
+          &2Banka vaseho naroda&8: &6%fancy@kingdoms_nation_bank%
         disabled: '&cNemuzes vlozit zlataky'
       withdraw:
         disabled: '&cNemuzes vybrat zlataky'
         success: |
           &2Vybral/a jsi &6%amount% &2zlataku z banky naroda.
           &2Vas novy zustatek&8: &6%balance%
-          &2Banka vaseho naroda&8: &6%kingdoms_fancy_nation_bank%
+          &2Banka vaseho naroda&8: &6%fancy@kingdoms_nation_bank%
       negative: '&c Nemuzes presunout negativni castky...'
       zero: '&cNemuzes presunout nic'
     show:
@@ -660,8 +660,8 @@ command:
         &7| &2Nexus&8: &6%kingdoms_nation_nexus%
         &7| &2Since&8: &6%kingdoms_date_nation_since%
         &7| &2Might&8: &6%kingdoms_nation_might%
-        &7| &2Shield&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Bank&8: &6$%kingdoms_fancy_nation_bank% &8| &2Tax&8: &6$%kingdoms_fancy_nation_tax% &8- &6$%kingdoms_fancy_server_nation_tax%
+        &7| &2Shield&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6$%fancy@kingdoms_nation_bank% &8| &2Tax&8: &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
         &7| &2Resource Points&8: &6%kingdoms_nation_resource_points%
 
         &7| &2Kingdoms&8:
@@ -673,8 +673,8 @@ command:
         &7| &2Nation&8: &6%kingdoms_nation_name%
         &7| &2Since&8: &6%kingdoms_date_nation_since%
         &7| &2Might&8: &6%kingdoms_might%
-        &7| &2Shield&8: &6%kingdoms_nation_shield_time_left%
-        &7| &2Bank&8: &6%kingdoms_fancy_nation_bank%
+        &7| &2Shield&8: &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Bank&8: &6%fancy@kingdoms_nation_bank%
         &7| &2Lands&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
         &7| &2Resource Points&8: &6%kingdoms_resource_points%
 
@@ -799,8 +799,8 @@ command:
       negative: '&cNelze zobrazit negativni strany'
       entry: |
         &8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
-        &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+        &7♦ &2Resource Points&8: &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &2Bank&8: &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
     kick:
       description: '&6Vyhodit stat z tveho naroda'
       person: '&cVas stat byl vyhozen z naroda &e%nation% &chracem &e%kicker%'
@@ -964,19 +964,19 @@ command:
       success: |
         &2You've successfully withdrawn &6%rp% &2resource points from your kingdom for &6$%worth%
         &2Your new balance&8: &6$%balance%
-        &2Your kingdom's resource points&8: &6%kingdoms_fancy_resource_points%
+        &2Your kingdom's resource points&8: &6%fancy@kingdoms_resource_points%
     transfer:
       description: '&6Prenest zdrojove body/do statu/narodu'
       usage: '&4Usage&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
       success:
         kingdom: |
           &2You've successfully transfered &6%amount% &2resource points from your nation to kingdom.
-          Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+          Nation Resource Points&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Kingdom Resource Points&8: &6%fancy@kingdoms_resource_points%
         nation: |
           &2You've successfully transfered &6%amount% &2resource points from your kingdom to your nation.
-          Nation Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
-          &2Kingdom Resource Points&8: &6%kingdoms_fancy_resource_points%
+          Nation Resource Points&8: &6%fancy@kingdoms_nation_resource_points%
+          &2Kingdom Resource Points&8: &6%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '&cTvuj stat nema &e%rp% &cresource pointu'
       money: '&e%rp% resource points &cneeds &e$%worth%&c, but you only have &e$%balance%'
@@ -998,7 +998,7 @@ command:
       success: |
         &2You've deposited &6%amount% &2money into your kingdom's bank.
         Your new balance&8: &6%balance%
-        &2Your kingdom's bank&8: &6%kingdoms_fancy_bank%
+        &2Your kingdom's bank&8: &6%fancy@kingdoms_bank%
       disabled: '&cNemuzes vlozit zlataky'
       min: '&cMinimalni castka pro vlozeni zlataku je &e$%min%'
     withdraw:
@@ -1007,7 +1007,7 @@ command:
       success: |
         &2You've withdrawn &6%amount% &2money from your kingdom's bank.
         Your new balance&8: &6%balance%
-        &2Your kingdom's bank&8: &6%kingdoms_fancy_bank%
+        &2Your kingdom's bank&8: &6%fancy@kingdoms_bank%
   show:
     description: '&6Zobrazit informace o statu'
     usage: '&4Pouzij: &e/k show &9[player | kingdom | #PLAYER] &2<player | kingdom>'
@@ -1019,11 +1019,11 @@ command:
       &7| &2Home&8: &6%kingdoms_kingdom_home%
       &7| &2Nexus&8: &6%kingdoms_nexus%
       &7| &2Nation&8: &6%kingdoms_nation_name%
-      &7| &2Might&8: &6%kingdoms_fancy_might%
-      &7| &2Bank&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Might&8: &6%fancy@kingdoms_might%
+      &7| &2Bank&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
       &7| &2Lands&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Resource Points&8: &6%fancy@kingdoms_resource_points%
+      &7| &2Shield&8: &6%time@kingdoms_shield_time_left%
       &7| &2Since&8: &6%kingdoms_date_since%
       &7| &2Members&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
@@ -1034,10 +1034,10 @@ command:
       &7| &2Nation&8: &6%kingdoms_nation_name%
       &7| &2Might&8: &6%kingdoms_might%
       &7| &2Since&8: &6%kingdoms_date_since%
-      &7| &2Shield&8: &6%kingdoms_time_shield_time_left%
+      &7| &2Shield&8: &6%time@kingdoms_shield_time_left%
       &7| &2Lands&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Bank&8: &6$%kingdoms_fancy_bank%
-      &7| &2Resource Points&8: &6%kingdoms_fancy_resource_points%
+      &7| &2Bank&8: &6$%fancy@kingdoms_bank%
+      &7| &2Resource Points&8: &6%fancy@kingdoms_resource_points%
 
       &7| &2Members&8:
       %members%
@@ -1171,9 +1171,9 @@ command:
     no-shield: '&cStat nema zadny aktivni stit'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%kingdoms_time_shield_time_left%
+      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
-    deactivated: '&e%executor% &cdeaktivoval stit statu, ktere melo jeste &e%kingdoms_time_shield_time_left% &ccasu na ukonceni'
+    deactivated: '&e%executor% &cdeaktivoval stit statu, ktere melo jeste &e%time@kingdoms_shield_time_left% &ccasu na ukonceni'
   admin:
     unclaim:
       all:
@@ -1337,8 +1337,8 @@ command:
     bank:
       description: '&Administrativni sprava pro Statni banky.'
       usage: '&4Prikaz&8: &e/k admin bank &2<kingdom> &9[set | add | remove] &2<amount>'
-      done: '&2Stat &c6[ %kingdom% ] &2ma novou banku &8: &6%kingdoms_fancy_bank%'
-      added: '&2Tva nova Statni banka&8: &6%kingdoms_fancy_bank%'
+      done: '&2Stat &c6[ %kingdom% ] &2ma novou banku &8: &6%fancy@kingdoms_bank%'
+      added: '&2Tva nova Statni banka&8: &6%fancy@kingdoms_bank%'
       invalid-action: '&cNeznama akce &e%action%&c! pouzi&8: &eadd/remove/set'
     commands:
       description: '&6Napise list prikazu pluginu do souboru.'
@@ -1707,8 +1707,8 @@ command:
     entry: |
       &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Members&8: &6%kingdoms_members%
       &7♦ &2Lands&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &2Resource Points&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Bank&8: &6$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- &6%kingdoms_fancy_might%
+      &7♦ &2Resource Points&8: &6%fancy@kingdoms_resource_points%
+      &7♦ &2Bank&8: &6$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} &7- &6%fancy@kingdoms_might%
   map:
     settings-description: '&6Zmenit nastaveni mapy &e/k map'
     description: '&6Ukazat mapu budov a Statu na Serveru.'

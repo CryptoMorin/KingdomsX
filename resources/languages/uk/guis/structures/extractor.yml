@@ -6,14 +6,14 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}Закінчено пальне &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      name: "{$e}Закінчено пальне &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
       name: "{$e}Немає чого збирати &9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Збирати&8: &9%extractor-last-collected-time-passed% &7- &9%fancy_extractor_collected_resource_points%"
+      name: "&2Збирати&8: &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
@@ -22,7 +22,7 @@ options:
       - "Останній збір &8: &2%extractor-last-collector%"
     slot: 0
   fuel:
-    name: "&2Пальне&8: &6%fancy_fuel%&8/&6%fancy_max_fuel%"
+    name: "&2Пальне&8: &6%fancy@fuel%&8/&6%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
@@ -44,22 +44,22 @@ options:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Покращення&8: &6%roman_level% &7➛ &6%roman_next_level%"
+      name: "&9Покращення&8: &6%roman@level% &7➛ &6%roman@next_level%"
       material: NETHER_STAR
       lore:
         - "&7⚫ &2Кожні&8: &6%every% &7➔ &6%next-every%"
-        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy_resource-points% &7➔ &6%fancy_next-resource-points%"
-        - "&7⚫ &2Витрати пального&8: &6%fancy_extractor_needed_fuel% &7➔ &6%fancy_next_extractor_needed_fuel%"
+        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
+        - "&7⚫ &2Витрати пального&8: &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
         - ""
-        - "&7⚫ &2Максимальний Рівень&8: &6%roman_next_level%"
+        - "&7⚫ &2Максимальний Рівень&8: &6%roman@next_level%"
         - "&7⚫ &2Вартість&8: &6%upgrade_cost%"
     maxxed:
-      name: "&9Рівень&8: &6%roman_level%"
+      name: "&9Рівень&8: &6%roman@level%"
       material: NETHER_STAR
       lore:
         - "&7⚫ &2Кожні&8: &6%every%"
-        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy_resource-points%"
-        - "&7⚫ &2Витрати пального&8: &6%fancy_extractor_needed_fuel%"
+        - "&7⚫ &2Бонуси за ресурси&8: &6%fancy@resource-points%"
+        - "&7⚫ &2Витрати пального&8: &6%extractor_needed_fuel%"
   break:
     name: "&4Розібрати"
     material: REDSTONE_BLOCK

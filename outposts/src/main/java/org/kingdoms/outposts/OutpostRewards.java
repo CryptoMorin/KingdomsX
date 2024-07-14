@@ -4,7 +4,7 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.utils.MathUtils;
-import org.kingdoms.utils.string.StringUtils;
+import org.kingdoms.utils.string.Strings;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class OutpostRewards {
 
     public void performCommands(Kingdom kingdom) {
         for (OfflinePlayer member : kingdom.getPlayerMembers()) {
-            StringUtils.performCommands(member, commands);
+            Strings.performCommands(member, commands);
         }
     }
 

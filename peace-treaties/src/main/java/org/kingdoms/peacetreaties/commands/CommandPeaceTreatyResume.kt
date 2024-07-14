@@ -5,7 +5,7 @@ import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor
 
 class CommandPeaceTreatyResume(parent: KingdomsParentCommand) : KingdomsCommand("resume", parent) {
-    override fun executeX(context: CommandContext): CommandResult {
+    override fun execute(context: CommandContext): CommandResult {
         if (context.assertPlayer()) return CommandResult.FAILED
         if (context.assertHasKingdom()) return CommandResult.FAILED
 

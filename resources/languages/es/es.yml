@@ -68,13 +68,13 @@ tax:
     kicked: El Reino &e%kingdom% &c ha sido expulsado de la nación debido a que no pudo pagar los impuestos.
     disbanded: '&cTu reino se ha disuelto debido a que no pudo pagar los impuestos.'
     age: '&5Your kingdom did not pay the taxes as it''s new.'
-    disbanded-announce: '{$es}%kingdom% {$e}kingdom has been disbanded due to not being able to pay the taxes{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
-    kicked-announce: '{$es}%kingdoms_name% {$e}kingdom has been kicked out of {$es}%kingdoms_nation% {$e}nation due to not being able to pay the taxes{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%kingdom% {$e}kingdom has been disbanded due to not being able to pay the taxes{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
+    kicked-announce: '{$es}%kingdoms_kingdom_name% {$e}kingdom has been kicked out of {$es}%kingdoms_nation% {$e}nation due to not being able to pay the taxes{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
   nation:
     paid: '&cTu reino ha sido expulsado de la nacion debido a que no pudo pagar los impuestos.'
     disbanded: '&cTu reino ha sido expulsado de la nacion debido a que no se pudo pagar los impuestos.'
     age: '&5Your nation did not pay the taxes as it''s new.'
-    disbanded-announce: '{$es}%nation% {$e}nation has been disbanded due to not being able to pay the taxes{$sep}: {$es}%kingdoms_fancy_nation_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%nation% {$e}nation has been disbanded due to not being able to pay the taxes{$sep}: {$es}%fancy@kingdoms_nation_bank% {$sep}< {$es}$%tax%'
   reminder: |
 
     &4&l&nAttention{$sep}: {$e}&lTaxes will be collected in{$sep}: {$es}%time%
@@ -82,7 +82,7 @@ tax:
   excluded-permission: '{$p}You did not pay kingdom taxes because you were excluded.'
   excluded-new: '{$p}You did not pay kingdom taxes because you were new.'
   notifications: |
-    {$sep}[&4WARNING{$sep}] {$e}Your kingdom doesn't have enough money &7({$es}%kingdoms_fancy_bank%&7) {$e}in bank to afford taxes for the next billing cycle{$sep}: {$es}%tax%
+    {$sep}[&4WARNING{$sep}] {$e}Your kingdom doesn't have enough money &7({$es}%fancy@kingdoms_bank%&7) {$e}in bank to afford taxes for the next billing cycle{$sep}: {$es}%tax%
     {$e}If the collected taxes from the members are not enough, your kingdom will be disbanded.
 place-in-claimed-only: '&cSolo puedes construir en tu zona reclamada.'
 break-in-claimed-only: '&cSolo puedes destruir en tu zona reclamada.'
@@ -283,7 +283,7 @@ nexus:
     &cPor favor escribe una ecuación válida.
   settings:
     shield-not-enough-resource-points: '&cNo tienes suficientes RP.'
-    shield-activated: '&2Escudo activado por &6%kingdoms_time_shield_time_left%'
+    shield-activated: '&2Escudo activado por &6%time@kingdoms_shield_time_left%'
     tax-enter-value: '{$s}Please enter the new value in chat. Or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.'
     flag:
       enter-value: '{$s}Please enter the new flag URL in chat. Or type hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}to cancel.'
@@ -504,7 +504,7 @@ command:
       usage: '/Kingdoms show [player | nation | #PLAYER | #NATION] <player | nation>'
       others-permission: '&cNo tienes permiso para ver la información de otros jugadores.'
       message-admin: |
-        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2Capital&8: &6%kingdoms_nation:capital get=name%
         &7| &2Spawn&8: &6%kingdoms_nation_spawn%
@@ -515,10 +515,10 @@ command:
         &7| &2Members&8:
         %kingdoms%
       message: |
-        &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+        &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
         &7| &2Rey&8: &6%king_status%
-        &7| &2Nación&8: &6%kingdoms_name%
+        &7| &2Nación&8: &6%kingdoms_kingdom_name%
         &7| &2Poder&8: &6%kingdoms_might%
         &7| &2Territorios&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
         &7| &2RP&8: &6%kingdoms_resource_points%
@@ -535,10 +535,10 @@ command:
         &7| &2Enemigos&8:
         &e%enemies%
       kingdoms: |
-        hover:{&6%kingdoms_name%;&2Miembros&8: &6%kingdoms_members%
+        hover:{&6%kingdoms_kingdom_name%;&2Miembros&8: &6%kingdoms_members%
         &2Rey&8: &6%kingdoms_king%
         &2Territorios&8: &6%kingdoms_claims%}
-      relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+      relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     not:
       in-nation: '&cEl jugador/reino especificado no está.'
     setspawn:
@@ -588,7 +588,7 @@ command:
         Todos los miembros del reino serán expulsados
         ¿Estás seguro de que quieres continuar?
         Utiliza de nuevo &e/k nation disband &4para confirmar.
-      announce: '&e%player% &6ha disuelto su reino &e%kingdoms_name%'
+      announce: '&e%player% &6ha disuelto su reino &e%kingdoms_kingdom_name%'
     invite:
       description: '&6Envía una invitación al reino para unirse a la nación.'
       usage: /k nation invite <Reino> [expiración]
@@ -641,13 +641,13 @@ command:
       no-more-pages: '&cNo more pages to load.'
       negative: '&cCannot show negative pages.'
       entry: |
-        &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &2Resource Points&8: &6%kingdoms_fancy_nation_resource_points%
-        &7♦ &2Bank&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+        &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Members&8: &6%kingdoms_nation_kingdoms%
+        &7♦ &2Resource Points&8: &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &2Bank&8: &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
     top-entry: |
-      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
-      &7♦ &2RP&8: &6%kingdoms_fancy_nation_resource_points%
-      &7♦ &2Banco&8: &6$%kingdoms_fancy_nation_bank%} &7- &6%kingdoms_fancy_nation_might%
+      &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Miembros&8: &6%kingdoms_nation_kingdoms%
+      &7♦ &2RP&8: &6%fancy@kingdoms_nation_resource_points%
+      &7♦ &2Banco&8: &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
     kick:
       description: '&6Expulsa a un reino de la nación.'
       person: '&cTu reino ha sido expulsado de la nación &e%nation%.'
@@ -661,14 +661,14 @@ command:
       &cNo puedes abandonar el reino siendo la capital.
       Utiliza &e/k nation disband &cPara eliminar la nación
       &cO cambia la capital del reino con &e/k nation capital
-    leave-announce: '&e¡%kingdoms_name% &cAbandonó la nación!'
+    leave-announce: '&e¡%kingdoms_kingdom_name% &cAbandonó la nación!'
     broadcast-description: '&6Emite un mensaje a todos los miembros de la nación.'
     broadcast-usage: /k nation broadcast <mensaje>
     broadcast-cooldown: '&cTienes que esperar &e%time% &cantes de emitir otro mensaje de nuevo.'
     capital:
       description: '&6Establece la nueva capital del reino.'
       only-king: '&6Sólo el rey de la capital puede establecer la nueva capital de la nación.'
-      set: '&6%kingdoms_name% &2Ahora es la capital de la nación.'
+      set: '&6%kingdoms_kingdom_name% &2Ahora es la capital de la nación.'
       not-in-nation: '&e%kingdom% &cNo está en tu nación.'
       usage: /k nation capital <Reino>
     promote:
@@ -700,7 +700,7 @@ command:
     broadcast-format:
       message: |
 
-        {$sep}[{$s}%kingdoms_nation%&7-{$s}%kingdoms_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
+        {$sep}[{$s}%kingdoms_nation%&7-{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
 
       sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
     ally:
@@ -794,12 +794,12 @@ command:
       success:
         kingdom: |
           &2Transferiste exitosamente &6%amount% &2RP de tu nación al reino.
-          RP de Nación&8: &6%kingdoms_fancy_nation_resource_points%
-          &2RP del Reino&8: &6%kingdoms_fancy_resource_points%
+          RP de Nación&8: &6%fancy@kingdoms_nation_resource_points%
+          &2RP del Reino&8: &6%fancy@kingdoms_resource_points%
         nation: |
           &2Transferiste exitosamente &6%amount% &2RP de tu reino a tu nación.
-          RP de la Nación&8: &6%kingdoms_fancy_nation_resource_points%
-          &2RP del Reino&8: &6%kingdoms_fancy_resource_points%
+          RP de la Nación&8: &6%fancy@kingdoms_nation_resource_points%
+          &2RP del Reino&8: &6%fancy@kingdoms_resource_points%
       description: '{$s}Transfer resource points from/to your kingdom/nation.'
       kingdom-usage: '&4Usage{$sep}: {$es}/k rp transfer kingdom {$p}<resource points>'
       nation-usage: '&4Usage{$sep}: {$es}/k rp transfer nation {$p}<resource points>'
@@ -844,24 +844,24 @@ command:
     usage: '/Kingdoms show [jugador | reino | #PLAYER | #KINGDOM] <jugador | reino>'
     others-permission: '&cYou don''t have permission to see others info.'
     message-admin: |
-      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
       &7| &2Home&8: &6%kingdoms_kingdom_home%
       &7| &2Nexo&8: &6%kingdoms_nexus%
-      &7| &2Nación&8: &6%kingdoms_name%
-      &7| &2Poder&8: &6%kingdoms_fancy_might%
-      &7| &2Banco&8: &6$%kingdoms_fancy_bank% &8| &2Tax&8: &6$%kingdoms_fancy_tax% &8- &6$%kingdoms_fancy_server_kingdom_tax%
+      &7| &2Nación&8: &6%kingdoms_kingdom_name%
+      &7| &2Poder&8: &6%fancy@kingdoms_might%
+      &7| &2Banco&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
       &7| &2Territorio&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2RP&8: &6%kingdoms_fancy_resource_points%
+      &7| &2RP&8: &6%fancy@kingdoms_resource_points%
 
       &7| &2Miembros&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
-      &8&m---------------=(&c&l %kingdoms_name% &8&m)=---------------
+      &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
       &7| &2Rey&8: &6%king_status%
-      &7| &2Nación&8: &6%kingdoms_name%
+      &7| &2Nación&8: &6%kingdoms_kingdom_name%
       &7| &2Poder&8: &6%kingdoms_might%
       &7| &2Territorio&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
       &7| &2RP&8: &6%kingdoms_resource_points%
@@ -883,7 +883,7 @@ command:
       &2Última donación&8: &6%kingdoms_date_last_donation_time%
       &2Rango&8: &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
-    relation: '&8◆ %kingdoms_relation_color%%kingdoms_name%'
+    relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
     description: '&6Reclama el terreno sobre el que estás (Utiliza F3+G).'
     disabled-world: '&cNo se puede reclamar en este mundo.'
@@ -937,7 +937,7 @@ command:
         disallowed: '{$e}The specified square radius is must be at least {$es}2 {$e}and less than {$es}%max% {$e}got{$sep}: {$es}%radius%'
       done: '{$p}Do hover:{{$s}/k claim confirm;{$p}Execute;/k claim confirm} {$p}to claim the lands.'
     confirmation: |
-      {$e}Your kingdom has to pay {$es}%fancy_rp% {$e}resource points and {$es}%fancy_money% {$e}money.
+      {$e}Your kingdom has to pay {$es}%fancy@rp% {$e}resource points and {$es}%fancy@money% {$e}money.
       Are you sure you want to continue? Do the command again.
     disallowed-biome: |
       {$e}You can't claim in {$es}%biome% {$e}biomes.
@@ -1074,7 +1074,7 @@ command:
       territorios serán desprotegidos.
       ¿Estás seguro de que quieres continuar?
       Utiliza &e/k disband &4de nuevo para confirmar.
-    announce: '&e%player% &6ha disuelto el reino &e%kingdoms_name%'
+    announce: '&e%player% &6ha disuelto el reino &e%kingdoms_kingdom_name%'
   about:
     description: '&6Sobre el plugin Kingdoms.'
   invite:
@@ -1202,10 +1202,10 @@ command:
     loading: '&6Cargando Datos...'
     header: '&8----------------------------------'
     entry: |
-      &8♦ &7%rank%. hover:{&2%kingdoms_name%;&7♦ &2Members&8: &6%kingdoms_members%
+      &8♦ &7%rank%. hover:{&2%kingdoms_kingdom_name%;&7♦ &2Members&8: &6%kingdoms_members%
       &7♦ &2Territorios&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &2RP&8: &6%kingdoms_fancy_resource_points%
-      &7♦ &2Banco&8: &6$%kingdoms_fancy_bank%} &7- &6%kingdoms_fancy_might%
+      &7♦ &2RP&8: &6%fancy@kingdoms_resource_points%
+      &7♦ &2Banco&8: &6$%fancy@kingdoms_bank%} &7- &6%fancy@kingdoms_might%
     footer: '     &8[hover:{&6←;&6Previous Page;/k top %previous_page%}&8] &8[hover:{&6→;&6Next Page;/k top %next_page%}&8]'
     no-more-pages: '&cNo more pages to load.'
     negative: '&cCannot show negative pages.'
@@ -1254,7 +1254,7 @@ command:
     disabled:
       invader: '&cNo te puedes rendir.'
       defender: '&cNo te puedes rendir.'
-    defender-surrendered: '&6¡%player% &2del reino &6%kingdoms_name% &2se ha rendido! El territorio ahora es del reino &6%kingdom%'
+    defender-surrendered: '&6¡%player% &2del reino &6%kingdoms_kingdom_name% &2se ha rendido! El territorio ahora es del reino &6%kingdom%'
     defender-permission: '&cNo tienes permisos para rendirte.'
     no-invasion: '&cNo puedes invadir ningún reino o ser invadido.'
     description: |
@@ -1326,7 +1326,7 @@ command:
     already: '&cYa eres aliado del reino &e%kingdom%'
     already-requested: '&cYa se ha enviado una solicitud de alianza a &e%kingdom%'
     self: '&cNo puedes aliarte con tu propio reino. ¿Qué intentas hacer?'
-    receiver: '&6%kingdom% &2desea aliarte con tu reino. Acepta con:{&6/k ally%kingdom%;&2Acepta;/k ally %kingdom%}'
+    receiver: '&6%kingdom% &2desea aliarte con tu reino. Acepta hover:{&6/k ally%kingdom%;&2Acepta;/k ally %kingdom%}'
     allies: '&2Ahora estás aliado con el reino &5%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
     limit: '{$e}You can''t ally more than {$es}%max% {$e}kingdoms.'
@@ -1338,7 +1338,7 @@ command:
     self: '&cNo puedes enemistarte con tu reino. ¿Quieres llevarte mal con tu gente...?'
     enemies: '&cAhora eres enemigo de &e%kingdom%'
     limit: '{$e}You can''t be enemies with more than {$es}%max% {$e}kingdoms.'
-    notify: '{$es}%kingdoms_name% {$e}has enemied %kingdoms_other_kingdom_name% {$e}which both kingdoms are your allies.'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}has enemied %other*kingdoms_kingdom_name% {$e}which both kingdoms are your allies.'
   truce:
     description: '&6Envía una solicitud de tregua a un reino.'
     usage: /k truce <reino>
@@ -1347,7 +1347,7 @@ command:
     already: '&cYa estás en una tregua con &e%kingdom%'
     already-requested: '&cYa le has mandado una solicitud a &e%kingdom%'
     self: '&cNo puedes hacer una tregua con tu propio reino.'
-    receiver: '&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala tregua con:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}'
+    receiver: '&6%kingdom% &2Desea pactar una tregua con tu reino. Aceptala tregua hover:{&6/k truce %kingdom%;&2Acepta;/k truce %kingdom%}'
     truces: '&2Has pactado una tregua con &6%kingdom%'
     another-request: '&e%kingdom% &csent you a %relation% &crelation request.'
     limit: '{$e}You can''t be truce with more than {$es}%max% {$e}kingdoms.'
@@ -1375,8 +1375,8 @@ command:
     direct:
       message-missing: '{$e}You need a message to directly send to {$es}%kingdom% {$e}kingdom.'
       message-self: '{$e}You can''t send a direct message to your own kingdom.'
-      message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_name%{$sep}] &7-> {$sep}[&9%receiver-kingdom%{$sep}] %displayname% &7≫ {$s}%message%'
-      message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_name%{$sep}] %displayname% &7≫ {$s}%message%'
+      message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] &7-> {$sep}[&9%receiver-kingdom%{$sep}] %displayname% &7≫ {$s}%message%'
+      message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]&7|{$sep}[&9%kingdoms_kingdom_name%{$sep}] %displayname% &7≫ {$s}%message%'
   broadcast:
     description: '&6Emite un mensaje a todos los miembros del reino.'
     usage: /k broadcast <mensaje>
@@ -1384,7 +1384,7 @@ command:
     format:
       message: |
 
-        {$sep}[{$s}%kingdoms_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
+        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
       sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.0, 1.0
   king:
     description: '&6Nombra a un nuevo rey para tu reino.'
@@ -1471,7 +1471,7 @@ command:
       description: '&6Forcibly claim the land you are currently standing in for a kingdom.'
       usage: /k admin claim <kingdom>
       success: '&2Claimed &6%x%&7, &6%z% &2as kingdom land.'
-      already-claimed: '{$e}This land is already claimed by {$es}%kingdoms_name%'
+      already-claimed: '{$e}This land is already claimed by {$es}%kingdoms_kingdom_name%'
     rank:
       description: '&6Change a players kingdom rank.'
       usage: /k admin rank <player> <rank>
@@ -1479,8 +1479,8 @@ command:
       no-kingdom: '&cThe specified player is not in a kingdom.'
       success: '&2Changed &6%name%''s &2rank from &6%previous_rank% &2to &6%rank%'
       same-rank: '{$e}That player already has that rank.'
-      success-king: '{$s}%kingdoms_name% {$p}kingdom''s new king is {$sep}: {$s}%name%'
-      cant-demote-king: '{$es}%player% {$e}is the king of {$es}%kingdoms_name% {$e}you need to set the king first.'
+      success-king: '{$s}%kingdoms_kingdom_name% {$p}kingdom''s new king is {$sep}: {$s}%name%'
+      cant-demote-king: '{$es}%player% {$e}is the king of {$es}%kingdoms_kingdom_name% {$e}you need to set the king first.'
     nexus:
       description: '&6Open a kingdoms nexus.'
       usage: /k admin nexus <kingdom>
@@ -1507,7 +1507,7 @@ command:
       usage: /k admin join <player> <kingdom>
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
       in-kingdom: |
-        &6%player% &2is already in a kingdom named &6%kingdoms_name%
+        &6%player% &2is already in a kingdom named &6%kingdoms_kingdom_name%
         &2If you'd like to continue do&8: &6/k admin join %player% confirm
       already-in-kingdom: '&6%player% &2is already a member of &6%kingdom%'
       success: '&6%player% &2is now a member of &6%kingdom%'
@@ -1536,8 +1536,8 @@ command:
     bank:
       description: '&6Add or take money from a kingdom bank.'
       usage: /k admin bank <kingdom> [set/add/remove] <amount>
-      done: '&6%kingdom%''s &2new bank&8: &6%kingdoms_fancy_bank%'
-      added: '&2Your new kingdoms bank&8: &6%kingdoms_fancy_bank%'
+      done: '&6%kingdom%''s &2new bank&8: &6%fancy@kingdoms_bank%'
+      added: '&2Your new kingdoms bank&8: &6%fancy@kingdoms_bank%'
       invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
     disband:
@@ -1801,7 +1801,7 @@ command:
       info: |
         &7| {$p}Name{$sep}: {$s}%player% {$sep}(hover:{&5%id%;{$p}Copy;|%id%}{$sep})
         &7| {$p}Admin{$sep}: %admin% &7| {$p}Spy{$sep}: %spy%
-        &7| {$p}Kingdom{$sep}: {$s}%kingdoms_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
+        &7| {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
         &7| {$p}Rank{$sep}: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         &7| {$p}National Rank{$sep}: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Chat Channel{$sep}: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| {$p}Using Markers{$sep}: %visualizer%
@@ -1813,7 +1813,7 @@ command:
         &7| {$p}Claims &7({$s}%kingdoms_claims%&7){$sep}: %claims%
         &7| {$p}Compressed Data{$sep}: {$s}%compressed%
       found: '{$p}Player {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}is in the following kingdoms{$sep}:'
-      kingdom: '{$sep}- {$p}%kingdoms_name% {$sep}({$s}%uuid%{$sep})'
+      kingdom: '{$sep}- {$p}%kingdoms_kingdom_name% {$sep}({$s}%uuid%{$sep})'
       no-duplicates: '{$e}This player''s kingdom is not duplicated.'
     entity:
       description: '{$s}Finds all the entities around the player.'
@@ -1908,9 +1908,9 @@ command:
     no-shield: '{$e}Your kingdom doesn''t have an active shield.'
     confirm: |
       {$e}If you disable your shield, you have to buy a new one.
-      Kingdom's shield time left{$sep}: {$es}%kingdoms_time_shield_time_left%
+      Kingdom's shield time left{$sep}: {$es}%time@kingdoms_shield_time_left%
       {$e}To continue do the command hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}to confirm.
-    deactivated: '{$es}%executor% {$e}has deactivated kingdom''s current shield which had {$es}%kingdoms_time_shield_time_left% {$e}time left.'
+    deactivated: '{$es}%executor% {$e}has deactivated kingdom''s current shield which had {$es}%time@kingdoms_shield_time_left% {$e}time left.'
   not-intended-for-direct-use: '{$e}This command isn''t intended to be used by players directly, so unless you''re seeing this without using the command yourself, this is a bug.'
   book:
     description: '{$s}A little handbook for your kingdom.'
@@ -1969,8 +1969,8 @@ command:
       get: '{$e}You don''t have permission to get invite code papers.'
       create: '{$e}You don''t have permission to create invite codes.'
     paper:
-      cost: '{$e}You need {$es}%fancy_invitecode-paper-cost% resource points {$e}to generate an invite code paper.'
-      give: '{$p}Bought an invite paper for {$s}%fancy_invitecode-paper-cost% resource point'
+      cost: '{$e}You need {$es}%fancy@invitecode-paper-cost% resource points {$e}to generate an invite code paper.'
+      give: '{$p}Bought an invite paper for {$s}%fancy@invitecode-paper-cost% resource point'
     max: '{$e}Kingdoms can only make up to {$es}%invitecodes-max% {$e}invite codes.'
     duration:
       enter: '{$p}Please enter the expiration duration of the invite code {$sep}({$s}e.g. 1day or just 0 to never expire{$sep}) {$cancel}'
@@ -1996,8 +1996,8 @@ command:
     yourself: '{$e}You can''t challenge your own kingdom... Or can you?'
     already-challenged: '{$e}Your kingdom has already challenged this kingdom.'
     not-invadable: '{$e}The kingdom you''re trying to challenge doesn''t have invade relationship attribute.'
-    challenged: '{$es}%player% {$e}from {$es}%kingdoms_name% {$e}kingdom has challenged your kingdom. Read the kingdom''s audit logs for more info.'
-    notify-self-members: '{$es}%player% {$e}has challenged {$es}%kingdoms_name%{$e}.'
+    challenged: '{$es}%player% {$e}from {$es}%kingdoms_kingdom_name% {$e}kingdom has challenged your kingdom. Read the kingdom''s audit logs for more info.'
+    notify-self-members: '{$es}%player% {$e}has challenged {$es}%kingdoms_kingdom_name%{$e}.'
   extractor:
     description: '{$s}Claim all the resourcr points from all the extractors in your kingdom.'
     collected: '{$p}Collected {$s}%rp% resource points {$p}from {$s}%extractors% extractors {$p}in your kingdom.'
@@ -2018,9 +2018,9 @@ command:
   rejectrelation:
     description: '{$s}Reject a relationship request sent to your kingdom.'
     usage: '&4Usage{$sep}: {$es}/k rejectrelation {$p}<kingdom>'
-    not-requested: '{$es}%kingdoms_name% {$e}has not requested any relationship.'
-    rejected: '{$e}Rejected the %relation% {$e}relationship request sent by {$es}%kingdoms_name%'
-    notification: '{$e}%kingdoms_name% {$es}has rejected your %relation% {$e}relationship request.'
+    not-requested: '{$es}%kingdoms_kingdom_name% {$e}has not requested any relationship.'
+    rejected: '{$e}Rejected the %relation% {$e}relationship request sent by {$es}%kingdoms_kingdom_name%'
+    notification: '{$e}%kingdoms_kingdom_name% {$es}has rejected your %relation% {$e}relationship request.'
   mute:
     description: '{$s}Mute a certain channel.'
     usage: '&4Usage{$sep}: {$es}/k mute {$p}<channel>'
@@ -2238,11 +2238,11 @@ siege-cannon:
   hit:
     unclaimed-land: '{$e}Cannon has hit an unclaimed land.'
     players-shield: '{$e}Your shield was hit by a siege cannon and was broken.'
-    no-shield: '{$p}Cannon has hit {$s}%kingdoms_name% {$p}kingdom. They didn''t have a shield.'
-    pacifist: '{$e}Cannon has hit {$es}%kingdoms_name% {$e}kingdom, but they''re a pacifist kingdom.'
-    destroyed-shield: '{$p}Cannon has hit {$s}%kingdoms_name% {$p}kingdom. Their shield has been destroyed.'
-    damaged-shield: '{$p}Cannon has hit {$s}%kingdoms_name% {$p}kingdom. Remaining shield{$sep}: {$s}%kingdoms_time_shield_time_left%'
-    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}kingdom has hit your land at {$es}%attacked-chunk%{$e}. Remaining shield{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    no-shield: '{$p}Cannon has hit {$s}%kingdoms_kingdom_name% {$p}kingdom. They didn''t have a shield.'
+    pacifist: '{$e}Cannon has hit {$es}%kingdoms_kingdom_name% {$e}kingdom, but they''re a pacifist kingdom.'
+    destroyed-shield: '{$p}Cannon has hit {$s}%kingdoms_kingdom_name% {$p}kingdom. Their shield has been destroyed.'
+    damaged-shield: '{$p}Cannon has hit {$s}%kingdoms_kingdom_name% {$p}kingdom. Remaining shield{$sep}: {$s}%time@kingdoms_shield_time_left%'
+    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}kingdom has hit your land at {$es}%attacked-chunk%{$e}. Remaining shield{$sep}: {$s}%time@kingdoms_shield_time_left%'
   friendly:
     fire: '{$e}Cannon has hit a friendly (no INVADE attribute) land which belongs to {$es}%kingdom%'
 lands:
@@ -2265,12 +2265,12 @@ guis:
 top-rewards:
   kingdom: |
     {$p}Your kingdom has been rewarded {$s}$%money% {$p}money and {$s}%rp% {$p}resource points for being rank {$sep}: &5%rank%
-    {$p}New Kingdom Balance{$sep}: {$s}$%kingdoms_fancy_bank%
-    {$p}New Kingdom Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
+    {$p}New Kingdom Balance{$sep}: {$s}$%fancy@kingdoms_bank%
+    {$p}New Kingdom Resource Points{$sep}: {$s}%fancy@kingdoms_resource_points%
   nation: |
     {$p}Your nation has been rewarded {$s}$%money% {$p}money and {$s}%rp% {$p}resource points for being rank {$sep}: &5%rank%
-    {$p}New Nation Balance{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    {$p}New Nation Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+    {$p}New Nation Balance{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    {$p}New Nation Resource Points{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 join-leave-messages:
   join:
     kingdom:
@@ -2298,7 +2298,7 @@ champion-type:
 misc:
   upgrades:
     alerts:
-      notify-members: '{$es}%player% {$e}from enemy kingdom {$es}%kingdoms_name% {$e}has entered your land at{$sep}: {$es}%world%&7, {$es}%x%&7, {$es}%y%&7, {$es}%z%'
+      notify-members: '{$es}%player% {$e}from enemy kingdom {$es}%kingdoms_kingdom_name% {$e}has entered your land at{$sep}: {$es}%world%&7, {$es}%x%&7, {$es}%y%&7, {$es}%z%'
 no-kingdom-reminder: '{$e}Reminder{$sep}: {$es}You haven''t joined a kingdom yet.'
 unlimited: '&5Unlimited'
 regulator:
@@ -2418,7 +2418,7 @@ mails:
   notifications:
     join: '{$p}You have {$s}%mails% {$p}new mails. Open your mailbox to read them.'
     receivers: |
-      &9%player% {$p}from &9%kingdoms_name% {$p}kingdom has sent you a mail{$sep}:
+      &9%player% {$p}from &9%kingdoms_kingdom_name% {$p}kingdom has sent you a mail{$sep}:
       hover:{&f%subject%;&9Click to read;/k mail open %id%}
   primary-none: '{$e}None'
   cc:

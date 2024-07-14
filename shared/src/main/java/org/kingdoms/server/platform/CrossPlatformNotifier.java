@@ -1,6 +1,6 @@
 package org.kingdoms.server.platform;
 
-import org.kingdoms.utils.Reflect;
+import org.kingdoms.utils.internal.reflection.Reflect;
 
 import java.util.ArrayList;
 import java.util.List;

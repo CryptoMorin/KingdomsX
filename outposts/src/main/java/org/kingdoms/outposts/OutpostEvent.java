@@ -1,5 +1,6 @@
 package org.kingdoms.outposts;
 
+import com.cryptomorin.xseries.XEntityType;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.FireworkEffect;
@@ -18,9 +19,10 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.data.Pair;
+import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.locale.SupportedLanguage;
 import org.kingdoms.locale.messenger.StaticMessenger;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.services.managers.ServiceHandler;
 import org.kingdoms.utils.XScoreboard;
@@ -55,7 +57,7 @@ public class OutpostEvent {
         scoreboard = new XScoreboard("main",
                 new StaticMessenger(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getManager().getString())
                         .getProvider(SupportedLanguage.EN).getMessage(),
-                new MessageBuilder());
+                new MessagePlaceholderProvider());
     }
 
     public static Map<UUID, OutpostEvent> getKingdomsInEvents() {
@@ -119,7 +121,7 @@ public class OutpostEvent {
 
                     if (bossBar != null) {
                         double left = (double) passed / time;
-                        bossBar.updateTitle(new MessageBuilder().raw("left", TimeFormatter.of(passed - time)));
+                        bossBar.updateTitle(new MessagePlaceholderProvider().raw("left", TimeFormatter.of(passed - time)));
                         bossBar.setProgress(left);
                     }
 
@@ -136,7 +138,7 @@ public class OutpostEvent {
                         for (Player member : kingdom.getOnlineMembers()) {
                             display(member);
                             if (member.getWorld().getName().equals(outpost.getSpawn().getWorld().getName())) {
-                                if (ServiceHandler.isInRegion(member.getLocation(), outpost.getRegion())) scored++;
+                                if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(member.getLocation(), outpost.getRegion())) scored++;
                             }
                         }
                         kingdoms.getValue().setScore(scored);
@@ -179,7 +181,7 @@ public class OutpostEvent {
             for (Player player : kingdom.getOnlineMembers()) {
                 if (lost) {
                     OutpostsLang.COMMAND_OUTPOST_JOIN_LOST.sendMessage(player, "outpost", outpost.getName());
-                    if (ServiceHandler.isInRegion(player.getLocation(), outpost.getRegion())) {
+                    if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(player.getLocation(), outpost.getRegion())) {
                         Bukkit.getScheduler().runTask(Kingdoms.get(),
                                 () -> player.teleport(outpost.getSpawn()));
                     }
@@ -200,7 +202,7 @@ public class OutpostEvent {
             @Override
             public void run() {
                 Location loc = outpost.getCenter().clone().add(random.nextDouble(-5, 5), random.nextDouble(-1, 3), random.nextDouble(-5, 5));
-                Firework firework = (Firework) loc.getWorld().spawnEntity(loc, EntityType.FIREWORK);
+                Firework firework = (Firework) loc.getWorld().spawnEntity(loc, XEntityType.FIREWORK_ROCKET.get());
                 FireworkMeta meta = firework.getFireworkMeta();
 
                 meta.setPower(0);

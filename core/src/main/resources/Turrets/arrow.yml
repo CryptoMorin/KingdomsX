@@ -1,3 +1,13 @@
+(import):
+  turret:
+    parameters:
+      <name>: arrow
+      <build-duration-factor>: '0'
+      <durability-factor>: 100
+      <skull-1>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTEyODQzNjhlYjg2NDllOTgwYmVkNmM2NjU2NWRlYTMxMmQyNjJjZjVhMjcxOTM1ZGUyNGRjMzYxMzM3ZDlkZSJ9fX0='
+      <skull-2>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTU0NjljZTJkYjE2OTAyYWFiNzhjM2E5NjM2NjRiOWY5Yjc4ZTU4NTM2YWQxOWRkM2I5YzJhYjRkNDA0NTZmIn19fQ=='
+      <skull-3>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMThlZTY3ZDdhNWI2NzViNTdkMWI3YzdhZTc5MjgwZDJjMTk4MjhlNTgyZjA3MzM5Y2ZiM2VkOWI5MGZmMTIzNiJ9fX0='
+
 # The name used in chats and when the item is dropped.
 name: "&7Arrow"
 # Type of the turret.
@@ -6,8 +16,6 @@ type: arrow
 # Resource points cost when buying this turret from the nexus.
 cost: 100
 sell: 50
-# Maximum level this turret can be upgraded to.
-max-level: 3
 
 # Useful when "hologram-update-ticks" in config.yml is enabled.
 # Used for optimization purposes.
@@ -15,22 +23,6 @@ dont-update-holograms: false
 
 # Hides the holograms from players who don't have CEASEFIRE relationship attribute.
 hide-holograms: false
-
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-
-sounds:
-  1:
-    place: ENTITY_ARROW_SHOOT
-    break: ENTITY_ITEM_BREAK
 
 # The blacklited and whitelisted entity types for each turret level.
 # Note that you cannot unblacklist entities that are blacklisted by the plugin.
@@ -42,42 +34,19 @@ sounds:
 
 # One of these messages will be chosen randomly.
 death-messages:
-  - "&e%player% &cwas shot by &e%kingdoms_other_kingdom_name% &ckingdom turret."
+  - "&e%player% &cwas shot by &e%other*kingdoms_kingdom_name% &ckingdom turret."
 
 dropped-exp:
   ZOMBIE: randInt(2, 4)
   SKELETON: randInt(2, 5)
   SLIME: randInt(1, 3)
 
-# The initial height for holograms is their distance from the turret.
-# For spaces between lines use "SPACE:" prefix and then after that a number. For example "SPACE: 1.25"
-hologram:
-  1:
-    lines:
-      - "&8[ &7Arrow &8]"
-    height: 1
-  2:
-    lines:
-      - "&8=[ &7Arrow &8]="
-    height: 1
-    compact: 0.5
-  3:
-    lines:
-      - "&8-=[ &7Arrow &8]=-"
-    height: 1
-    compact: 0.5
-placing:
-  whitelist: true
-  blocks:
-    - "REGEX:\\w+_FENCE$"
-    - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"
 range: 5 + lvl
 cooldown: 15 - lvl
 max-targets: 1
 max-ammo: lvl * 2000
 upgrade-cost: lvl * 50
 fire: 100 # From which level should the turret should shoot flame arrows
-particle: ~
 
 # From which level can this turret be controlled manually by players.
 manual: 3
@@ -96,27 +65,21 @@ biomes:
     #world_nether:
     # ...
 
-block:
-  1: PLAYER_HEAD
-skull:
-  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTEyODQzNjhlYjg2NDllOTgwYmVkNmM2NjU2NWRlYTMxMmQyNjJjZjVhMjcxOTM1ZGUyNGRjMzYxMzM3ZDlkZSJ9fX0="
-  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTU0NjljZTJkYjE2OTAyYWFiNzhjM2E5NjM2NjRiOWY5Yjc4ZTU4NTM2YWQxOWRkM2I5YzJhYjRkNDA0NTZmIn19fQ=="
-  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMThlZTY3ZDdhNWI2NzViNTdkMWI3YzdhZTc5MjgwZDJjMTk4MjhlNTgyZjA3MzM5Y2ZiM2VkOWI5MGZmMTIzNiJ9fX0="
 item:
   1:
     name: "&aArrow Turret"
     material: ARROW
-    flags: [ HIDE_POTION_EFFECTS ]
+    flags: [ ALL ]
     lore:
       - "&6A simple turret that shoots"
       - "arrows at mobs and enemies."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman_level%"
-      - "&7⚫ &2Ammo&8: &6%ammo%"
-      - "&7⚫ &2Range&8: &6%range%"
-      - "&7⚫ &2Max Targets&8: &6%max_targets%"
-      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
-      - "&7⚫ &2Cooldown&8: &6%cooldown%"
-      - "&7⚫ &2Speed&8: &6%speed%"
-      - "&7⚫ &2Damage&8: &6%damage%"
+      - "&9Attributes{$colon}"
+      - "{$dot} &2Level{$colon} &6%roman@level%"
+      - "{$dot} &2Ammo{$colon} &6%ammo%"
+      - "{$dot} &2Range{$colon} &6%range%"
+      - "{$dot} &2Max Targets{$colon} &6%max_targets%"
+      - "{$dot} &2Max Ammo{$colon} &6%max_ammo%"
+      - "{$dot} &2Cooldown{$colon} &6%cooldown%"
+      - "{$dot} &2Speed{$colon} &6%speed%"
+      - "{$dot} &2Damage{$colon} &6%damage%"

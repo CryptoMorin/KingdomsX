@@ -7,7 +7,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "3.0.1.6.2"
+version = "3.0.1.6.3"
 description = "An event similar to KoTH"
 
 buildscript {
@@ -18,8 +18,7 @@ buildscript {
 
 dependencies {
     compileOnly(project(":core"))
-    implementation(project(":core:service"))
-    compileOnly(project(":core:service:worldguard"))
-    compileOnly(project(":core:service:worldguard:v6"))
-    compileOnly(project(":core:service:worldguard:v7"))
+    compileOnly(project(":enginehub"))
+    compileOnly(project(":core:service"))
+    compileOnly(project(":enginehub"))
 }

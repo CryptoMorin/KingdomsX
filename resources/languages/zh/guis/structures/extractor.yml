@@ -13,14 +13,14 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}缺少燃料&9%extractor-last-collected-time-passed%&7-&9%fancy_extractor_collected_resource_points%"
+      name: "{$e}缺少燃料&9%extractor-last-collected-time-passed%&7-&9%fancy@extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
       name: "{$e}暂无资源点&7-&9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2收集&8:&9%extractor-last-collected-time-passed%&7-&9%fancy_extractor_collected_resource_points%"
+      name: "&2收集&8:&9%extractor-last-collected-time-passed%&7-&9%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
@@ -28,7 +28,7 @@ options:
       - "上次被{$sep}: {$p}%extractor-last-collector%{$s}收集。"
     slot: 0
   fuel:
-    name: "&2燃料&8: &6%fuel%&8/&6%fancy_max_fuel%"
+    name: "&2燃料&8: &6%fuel%&8/&6%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
@@ -43,16 +43,16 @@ options:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "{$sp}收集{$sep}: {$s}%level_roman%{$p}➛{$s}%next_level_roman%"
+      name: "{$sp}收集{$sep}: {$s}%roman@level%{$p}➛{$s}%roman@next_level%"
       material: NETHER_STAR
       lore:
         - "{$p}⚫ {$p}每次生成资源点时间{$sep}: {$s}%every%{$p}➔{$s}%next-every%"
         - "{$p}⚫ {$p}一次生成资源点数量{$sep}: {$s}%resource-points%{$p}➔{$s}%next-resource-points%"
         - ""
-        - "{$p}⚫ {$p}满级{$sep}: {$s}%max-level-roman%"
+        - "{$p}⚫ {$p}满级{$sep}: {$s}%roman@max_level%"
         - "{$p}⚫ {$p}价格{$sep}: {$s}%upgrade_cost%"
     maxxed:
-      name: "{$sp}等级{$sep}: {$s}%level_roman%"
+      name: "{$sp}等级{$sep}: {$s}%roman@level%"
       material: NETHER_STAR
       lore:
         - "{$p}⚫ {$p}每次生成资源点时间{$sep}: {$s}%every%"

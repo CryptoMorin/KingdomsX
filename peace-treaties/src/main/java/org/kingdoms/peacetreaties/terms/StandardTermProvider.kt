@@ -6,7 +6,7 @@ import org.kingdoms.locale.SimpleMessenger
 import org.kingdoms.locale.messenger.DefaultedMessenger
 import org.kingdoms.locale.messenger.LanguageEntryMessenger
 import org.kingdoms.locale.messenger.Messenger
-import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.managers.chat.ChatInputManager
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor
 import org.kingdoms.utils.MathUtils
@@ -56,9 +56,12 @@ open class StandardTermProvider(
 
             val min: Double? = config.getMathExpression("min").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
             val max: Double? = config.getMathExpression("max").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
-            val messenger = SimpleMessenger(editor.player, MessageBuilder().inheritPlaceholders(ctx))
+            val messenger = SimpleMessenger(
+                editor.player, MessagePlaceholderProvider()
+                    .inheritPlaceholders(ctx)
+            )
 
-            messenger.settings.raw("min", min).raw("max", max)
+            messenger.messageContext.raw("min", min).raw("max", max)
             messenger.sendMessage(lang("ENTER", KingdomsLang.VALUE_ENTER))
 
             return ChatInputManager.awaitInput(editor.player) { input: String ->

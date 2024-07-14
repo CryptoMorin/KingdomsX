@@ -1,9 +1,11 @@
 package org.kingdoms.services;
 
 public interface Service {
-    default boolean isAvailable() {
-        return true;
+    default Throwable checkAvailability() {
+        return null;
     }
+
+    default String getServiceName() {return this.getClass().getSimpleName();}
 
     default void enable() {}
 

@@ -1,3 +1,13 @@
+(import):
+  structure:
+    parameters:
+      <name>: outpost
+      <build-duration-factor>: '+1 minute'
+      <durability-factor>: 100
+      <material-1>: HAY_BLOCK
+      <material-2>: HAY_BLOCK
+      <material-3>: HAY_BLOCK
+
 name: "&eOutpost"
 default-name: 'Outpost'
 type: outpost
@@ -41,24 +51,13 @@ particles:
       particle: SPELL
       count: 70
       offset: 0.5, 0.5, 0.5
-sounds:
-  1:
-    place: BLOCK_BEACON_ACTIVATE
-    break: BLOCK_BEACON_DEACTIVATE
-hologram:
-  1:
-    lines:
-      - "&8-=( &eOutpost &8)=-"
-    height: 1
-block:
-  1: HAY_BLOCK
 cost: 500
 sell: 250
 item:
   1:
     name: "&9Outpost"
     material: HAY_BLOCK
-    flags: [ HIDE_POTION_EFFECTS ]
+    flags: [ ALL ]
     lore:
       - "&7The Outpost allows direct access to your Nexus."
       - "&7It enables you to access turrets, upgrades,"

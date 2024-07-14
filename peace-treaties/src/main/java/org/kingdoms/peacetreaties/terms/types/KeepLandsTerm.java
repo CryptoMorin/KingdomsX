@@ -18,7 +18,7 @@ import org.kingdoms.gui.GUIPagination;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.ReusableOptionHandler;
 import org.kingdoms.locale.KingdomsLang;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor;
@@ -82,7 +82,7 @@ public class KeepLandsTerm extends Term {
                             CompletableFuture<Term> completableFuture,
                             Set<SimpleChunkLocation> added, Set<LogKingdomInvader> addedLogs, boolean displayModeGrouped, int page) {
             InteractiveGUI gui = GUIAccessor.prepare(editor.getPlayer(), PeaceTreatyGUI.KEEP$LANDS);
-            gui.getSettings().raw("displaymode_grouped", displayModeGrouped);
+            gui.getMessageContext().raw("displaymode_grouped", displayModeGrouped);
 
             Kingdom kingdom = editor.getPeaceTreaty().getProposerKingdom();
 
@@ -99,7 +99,7 @@ public class KeepLandsTerm extends Term {
                         if (!addedLogs.remove(log)) addedLogs.add(log);
                         prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, page);
                     });
-                    log.addEdits(option.getSettings());
+                    log.addEdits(option.getMessageContext());
                     option.done();
                 }
             } else {
@@ -119,8 +119,8 @@ public class KeepLandsTerm extends Term {
                         if (!added.remove(invadedLand)) added.add(invadedLand);
                         prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, page);
                     });
-                    pair.getValue().addEdits(option.getSettings());
-                    LocationUtils.getChunkEdits(option.getSettings(), invadedLand, "");
+                    pair.getValue().addEdits(option.getMessageContext());
+                    LocationUtils.getChunkEdits(option.getMessageContext(), invadedLand, "");
                     option.done();
                 }
             }
@@ -189,7 +189,7 @@ public class KeepLandsTerm extends Term {
     }
 
     @Override
-    public void addEdits(MessageBuilder builder) {
+    public void addEdits(MessagePlaceholderProvider builder) {
         super.addEdits(builder);
         builder.raw("term_keep_lands_count", keptLands.size());
         builder.parse("term_keep_lands_kept_lands", "{$s}" + keptLands.stream()

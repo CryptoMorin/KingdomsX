@@ -6,7 +6,7 @@ import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter;
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.locale.messenger.Messenger;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor;
 import org.kingdoms.peacetreaties.terms.StandardTermProvider;
@@ -61,7 +61,7 @@ public class LimitClaimsTerm extends Term {
     }
 
     @Override
-    public void addEdits(MessageBuilder builder) {
+    public void addEdits(MessagePlaceholderProvider builder) {
         super.addEdits(builder);
         builder.raw("term_limit_claims_amount", maxClaims);
     }

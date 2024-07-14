@@ -10,7 +10,7 @@ import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.terms.TermRegistry;
 import org.kingdoms.utils.config.ConfigPath;
 import org.kingdoms.utils.config.adapters.YamlResource;
-import org.kingdoms.utils.string.StringUtils;
+import org.kingdoms.utils.string.Strings;
 
 public enum PeaceTreatyConfig implements EnumConfig {
     DURATION,
@@ -45,7 +45,7 @@ public enum PeaceTreatyConfig implements EnumConfig {
     private final ConfigPath option;
 
     PeaceTreatyConfig() {
-        this.option = new ConfigPath(StringUtils.configOption(this));
+        this.option = new ConfigPath(Strings.configOption(this));
     }
 
     PeaceTreatyConfig(int... grouped) {

@@ -4,6 +4,25 @@
 ---- Constraints are always non-null and cannot be explicitly defined.
 ---- Strict tables are only supported from 3.36+
 
+
+CREATE TABLE IF NOT EXISTS `{PREFIX}globals` (
+    `version` INT NOT NULL
+) STRICT;
+
+{{ NamespacedFlagsContainer
+    `flags` JSON NULL
+}}
+
+--Map<KingdomMetadataHandler, KingdomMetadata> metadata;
+--LinkedList<AuditLog> logs;
+--Statistics statistics;
+
+{{ KINGDOMS_OBJECT
+    `statistics` JSON NULL,
+    `logs` JSON NULL,
+    `metadata` JSON NULL
+}}
+
 ----------------------------------------------------------------------------------------------------
 ---------------------------------------   Players  -------------------------------------------------
 ----------------------------------------------------------------------------------------------------
@@ -19,11 +38,6 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}players` (
     `lastDonationTime` LONG NULL,
     `lastDonationAmount` LONG NULL,
     `totalDonations` LONG NULL,
-    `admin` BOOL NULL,
-    `pvp` BOOL NULL,
-    `spy` BOOL NULL,
-    `markers` BOOL NULL,
-    `sneakMode` BOOL NULL,
     `markersType` VARCHAR(50) NULL,
     `chatChannel` VARCHAR(50) NULL,
     `power` DOUBLE NULL,
@@ -34,7 +48,8 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}players` (
     `mutedChannels` JSON NULL,
     `invites` JSON NULL,
     SimpleChunkLocation(jailCell) NULL,
-    `metadata` JSON NULL,
+    [[NamespacedFlagsContainer]],
+    [[KINGDOMS_OBJECT]],
     CONSTRAINT `{PREFIX}players_pkey` PRIMARY KEY (`id`)
 ) STRICT;
 --CREATE TABLE IF NOT EXISTS `{PREFIX}players_readMails` (
@@ -75,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}lands` (
     `claimedBy` UUID NULL,
     `structures` JSON NULL, `turrets` JSON NULL, `protectedBlocks` JSON NULL,
     `since` LONG NOT NULL,
-    `metadata` JSON NULL,
+    [[KINGDOMS_OBJECT]],
     CONSTRAINT `{PREFIX}lands_pkey` PRIMARY KEY (`id_world`, `id_x`, `id_z`)
 ) STRICT;
 --CREATE TABLE `{PREFIX}lands_turrets` (
@@ -116,13 +131,13 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}lands` (
     `id` UUID NOT NULL,
   --owner UUID NOT NULL,
     `name` NVARCHAR(100) NOT NULL,
+    `level` INT NOT NULL,
     `tag` NVARCHAR(50) NULL,
-    `requiresInvite` BOOL NULL, `publicHome` BOOL NULL, `permanent` BOOL NULL, `hidden` BOOL NULL,
     `resourcePoints` LONG NOT NULL,
     `bank` DOUBLE NOT NULL,
-    `tax` VARCHAR(300),
+    -- `tax` VARCHAR(300),
+    `taxes` JSON NULL,
     `shieldSince` LONG NOT NULL, `shieldTime` LONG NOT NULL,
-    `publicHomeCost` DOUBLE NOT NULL,
     `since` LONG NOT NULL,
     `color` INT NULL,
     `flag` NVARCHAR(1000) NULL,
@@ -132,8 +147,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}lands` (
     `relationshipRequests` JSON NULL,
     `relations` JSON NULL,
     `attributes` JSON NULL,
-    `logs` JSON NULL,
-    `metadata` JSON NULL
+    [[NamespacedFlagsContainer]]
 }}
 
 ----------------------------------------------------------------------------------------------------
@@ -159,6 +173,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}kingdoms` (
     `mails` JSON NULL,
     `challenges` JSON NULL,
     `inviteCodes` JSON NULL,
+    [[KINGDOMS_OBJECT]],
     CONSTRAINT `{PREFIX}kingdoms_pkey` PRIMARY KEY (`id`)
 ) STRICT;
 
@@ -226,6 +241,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}nations` (
     [[GROUP]],
     `capital` UUID NOT NULL,
     `kingdoms` JSON NOT NULL,
+    [[KINGDOMS_OBJECT]],
     CONSTRAINT `{PREFIX}nations_pkey` PRIMARY KEY (`id`)
 ) STRICT;
 
@@ -242,7 +258,7 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}mails` (
     `subject` NVARCHAR(300) NOT NULL,
     `recipients` JSON NOT NULL,
     `message` JSON NOT NULL,
-    `metadata` JSON NULL,
+    [[KINGDOMS_OBJECT]],
     CONSTRAINT `{PREFIX}mails_pkey` PRIMARY KEY (`id`)
 ) STRICT;
 

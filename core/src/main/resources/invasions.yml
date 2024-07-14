@@ -10,9 +10,9 @@
 # person being enemy'd/invaded is the secondary context.
 # To disable, set this to "false"
 strength-comparison: |
-  (kingdoms_structures_total - kingdoms_other_structures_total > 50) ||
-  (kingdoms_turrets_total - kingdoms_other_turrets_total > 100) ||
-  (kingdoms_claims - kingdoms_other_claims > 50)
+  (kingdoms_structures_total - {other*kingdoms_structures_total} > 50) ||
+  (kingdoms_turrets_total - {other*kingdoms_turrets_total} > 100) ||
+  (kingdoms_claims - {other*kingdoms_claims} > 50)
 
 # By default, your kingdom can only invade one kingdom at a time.
 # 0 means no limit.
@@ -65,6 +65,37 @@ bonus:
   resource-points: "kingdoms_resource_points / 5"
   bank: "kingdoms_bank / 10"
 
+  item-rewards:
+    chance: 100
+    total: 3
+    chests:
+      common:
+        total: 5
+        title: "{$sep}-=( &2Common {$sep})=-"
+        chance: 100
+        particle: { }
+        content:
+          coal:
+            chance: 95
+            item:
+              amount: 32
+              material: COAL
+          iron:
+            chance: 70
+            item:
+              amount: 32
+              material: RAW_IRON
+          gold:
+            chance: 50
+            item:
+              amount: 5
+              material: RAW_GOLD
+          wood:
+            chance: 100
+            item:
+              amount: 64
+              material: DARK_OAK_LOG
+
 # Options for when a nexus land is invaded.
 on-nexus-loss:
   disband: false
@@ -88,6 +119,7 @@ costs:
   resource-points: 'eq(kingdoms_masswar_is_running, 1, 0, eq(ransack, 1, 40, 50))'
   money: 0
 
+# To set whether kingdoms are pacifist by default, go to "config.yml -> default-flags" option
 pacifism:
   # If pacifism system should work at all. Kingdoms that have this option
   # enabled, will keep it, but it'll not have any effects.
@@ -95,16 +127,16 @@ pacifism:
   # want to remove that as well.
   enabled: true
 
-  # If kingdoms should be pacifist by default.
-  # For turret related settings, go to turrets.yml
-  default: false
-
   # Disable PvP for pacifist kingdoms. This also protects against potion throwing.
   disable-pvp: true
 
-  # Cooldown before kingdoms can be a pacifist again after their last invasion.
+  # Cooldown before kingdoms can be a pacifist again.
   # Set to 0 to disable.
-  cooldown: 7days
+  # Note: These options check the kingdom audit logs, so make sure that the value you set
+  # here is lower than that specific log's expiry, or just increase the log expiration time.
+  cooldowns:
+    general: 10days
+    after-invasion: 30days
 
 shields:
   # You'll lose your kingdom shield if you invade and cannot invade at all if your nation has a shield active.
@@ -149,13 +181,13 @@ champions:
   death-messages:
     # Defaults are used when the death cause is not specified in this list.
     defaults:
-      - "&e%kingdoms_other_kingdom_name%'s &cchampion was brutally slashed."
+      - "&e%other*kingdoms_kingdom_name%'s &cchampion was brutally slashed."
     projectile:
-      - "&e%kingdoms_other_kingdom_name%'s &cchampion was shot to death by %player%"
+      - "&e%other*kingdoms_kingdom_name%'s &cchampion was shot to death by %player%"
     void:
-      - "&e%kingdoms_other_kingdom_name%'s &cchampion somehow managed to fall into the void!"
+      - "&e%other*kingdoms_kingdom_name%'s &cchampion somehow managed to fall into the void!"
     entity-attack:
-      - "&e%kingdoms_other_kingdom_name%'s &cchampion was slayed by &e%player%"
+      - "&e%other*kingdoms_kingdom_name%'s &cchampion was slayed by &e%player%"
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#Masswar
 masswar:
@@ -482,6 +514,11 @@ plunder:
   # and the invaders win, however the champion doesn't need to be killed if the defenders or attackers
   # get enough kills for the invasion to end.
   keep-champion: false
+
+  # Only works if "keep-champion" is enabled
+  # The only way to win the invasion would be to get enough scores
+  # in the plunder invasion and killing the champion has no effect.
+  continue-if-champion-dies: true
 
   # Whether killing these players during plunder invasions
   # increases the score of the other team and vice versa.

@@ -11,7 +11,7 @@ import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent
 import org.kingdoms.events.items.KingdomItemBreakEvent
-import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.main.KLogger
 import org.kingdoms.managers.PvPManager
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
@@ -46,7 +46,7 @@ class WarPointManager : Listener {
 
         if (!allowedRelationShip(attacker, defender)) return
 
-        val ctx = MessageBuilder().withContext(attacker).other(defender)
+        val ctx = MessagePlaceholderProvider().withContext(attacker).other(defender)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_INVADE.manager.mathExpression, ctx)
         val lost = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_INVADE.manager.mathExpression, ctx)
 
@@ -78,7 +78,7 @@ class WarPointManager : Listener {
 
         if (deadKingdom.hasAttribute(killerKingdom, StandardRelationAttribute.CEASEFIRE)) return
 
-        val ctx = MessageBuilder().withContext(killer).other(dead)
+        val ctx = MessagePlaceholderProvider().withContext(killer).other(dead)
         val gained = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_GAIN_KILL.manager.mathExpression, ctx)
         val lost = MathUtils.eval(PeaceTreatyConfig.WAR_POINTS_SCORES_LOSE_KILL.manager.mathExpression, ctx)
 
@@ -104,7 +104,7 @@ class WarPointManager : Listener {
 
         if (!allowedRelationShip(itemKingdom, playerKingdom)) return
 
-        val ctx = MessageBuilder().withContext(player.offlinePlayer).other(itemKingdom)
+        val ctx = MessagePlaceholderProvider().withContext(player.offlinePlayer).other(itemKingdom)
 
         val isTurret = item is Turret
         val gainedOpt =

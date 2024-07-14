@@ -1,18 +1,18 @@
+(import):
+  turret:
+    parameters:
+      <name>: inferno
+      <build-duration-factor>: '0'
+      <durability-factor>: 100
+      <skull-1>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzkxYTQwZTIxMmQ2MjBkZTYyYmFiZmFjNTQ4ODc0NmQwYWI0YzI4ZTdhOGMyMjYzNjYyMTYxNzIzNjc0Y2MyOCJ9fX0='
+      <skull-2>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODBjNDUyOGU2MjJiZDMxODcyMGQzOGUwZTQ1OTllNjliZjIzMzA4Zjg5NjkzOTIwZTBlNGVjYjU1ZDFjMGJhYyJ9fX0='
+      <skull-3>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMzMDUyZTZiN2E4NzkyM2JkYjg4Zjk0MTg1ZTg0YjU2MmRjNWI4NTRiN2JiMDFjYzAxN2YyMmM1YThhNCJ9fX0='
+
 name: "&0Inferno"
 type: inferno
 cost: 300
 sell: 150
 max-level: 3
-hologram:
-  1:
-    lines:
-      - "&8-=[ &0Inferno &8]=-"
-    height: 1
-placing:
-  whitelist: true
-  blocks:
-    - "REGEX:\\w+_FENCE$"
-    - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"
 particles:
   1:
     place:
@@ -44,12 +44,6 @@ damage-modifier: lvl / 3
 # on that target until they're dead.
 damage-modifier-phases: 3
 
-block:
-  1: PLAYER_HEAD
-skull:
-  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYWUyMjFiYjczMzE3MjIwNzMxNWFjZWRjYzVjOTk4MzZhNjM5ODYyYTM3MjdkYTZkNWRmMzZiODUxZmMxOTFjNCJ9fX0="
-  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODBjNDUyOGU2MjJiZDMxODcyMGQzOGUwZTQ1OTllNjliZjIzMzA4Zjg5NjkzOTIwZTBlNGVjYjU1ZDFjMGJhYyJ9fX0="
-  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzMzMDUyZTZiN2E4NzkyM2JkYjg4Zjk0MTg1ZTg0YjU2MmRjNWI4NTRiN2JiMDFjYzAxN2YyMmM1YThhNCJ9fX0="
 item:
   1:
     name: "&0Inferno Turret"
@@ -59,7 +53,7 @@ item:
       - "over time when targetting a specific entity."
       - ""
       - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman_level%"
+      - "&7⚫ &2Level&8: &6%roman@level%"
       - "&7⚫ &2Ammo&8: &6%ammo%"
       - "&7⚫ &2Range&8: &6%range%"
       - "&7⚫ &2Max Targets&8: &6%max_targets%"

@@ -18,12 +18,12 @@ public final class ServiceMythicMobFour implements ServiceMythicMobs {
     }
 
     @Override
-    public boolean isAvailable() {
+    public Throwable checkAvailability() {
         try {
             MythicMobs.inst().getAPIHelper();
-            return true;
+            return null;
         } catch (Throwable ex) {
-            return false;
+            return ex;
         }
     }
 }

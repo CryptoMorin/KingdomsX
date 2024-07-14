@@ -1,0 +1,42 @@
+(import):
+  building:
+    parameters:
+      <type>: turrets
+      <name>: <name>
+      <extra-holograms>: [ '{$$turrets.holograms.ammo}' ]
+      <block-1>:
+        material: PLAYER_HEAD
+        skull: <skull-1>
+      <block-2>:
+        material: PLAYER_HEAD
+        skull: <skull-2>
+      <block-3>:
+        material: PLAYER_HEAD
+        skull: <skull-3>
+
+### Shared turret settings ###
+(module):
+  description: 'Base settings for turrets.'
+  parameters:
+    <name>: str
+    <build-duration-factor>: str
+    <durability-factor>: int
+    <skull-1>: str
+    <skull-2>: str
+    <skull-3>: str
+
+schema:
+  1:
+    origin: [ 1, 1 ]
+    blocks:
+      -1: |
+        xxx
+        xFx
+        xxx
+    mappings:
+      F:
+        displayname: Fence
+        mismatch-message: '{$$building.schema.mismatch.fence}'
+        accepted-materials:
+          - "REGEX:\\w+_FENCE$"
+          - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"

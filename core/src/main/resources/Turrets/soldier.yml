@@ -1,13 +1,20 @@
+(import):
+  turret:
+    parameters:
+      <name>: soldier
+      <build-duration-factor>: '0'
+      <durability-factor>: 100
+
+      # https://minecraft-heads.com/custom-heads/search?searchword=knight
+      <skull-1>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTBkYTkyZDJmN2FkNmFkNGQ4MzQ0ZDNlY2M1YzUxYTExNWI3MzZlODU2ZGQ3Mjg2NTliMWJjYzlmOGRmODViYiJ9fX0='
+      <skull-2>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTkxOTBlMmQ2MTUwNjBiOTBhZmY3OTA1Yzk1MWUxMTljYWZjNzEwNzY0Nzk3ZTI0OGU3YjUxNTM1NmI4NmQ0ZiJ9fX0='
+      <skull-3>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjEwNzBkY2Q1NmU4MWUzNGM5ZDQ5NDY1ZjEzMDY0YTFjYzUyNDhmMGM5NTI3ODZhNzRmNGRlYjAxMzQ2Y2E0NiJ9fX0='
+
 name: "&5Soldier"
 type: soldier
 cost: 300
 sell: 150
 max-level: 3
-hologram:
-  1:
-    lines:
-      - "&8-=[ &5Soldier &8]=-"
-    height: 1
 particles:
   1:
     place:
@@ -22,11 +29,6 @@ sounds:
   1:
     place: ENTITY_HORSE_ARMOR
     break: ENTITY_ITEM_BREAK
-placing:
-  whitelist: true
-  blocks:
-    - "REGEX:\\w+_FENCE$"
-    - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"
 range: 7 + lvl
 cooldown: (60 - (lvl * 2)) * 20
 max-ammo: lvl * 2000
@@ -72,17 +74,11 @@ soldiers:
       name: "&6Nexus Butler"
       health: 20
 
-block:
-  1: PLAYER_HEAD
-skull: # https://minecraft-heads.com/custom-heads/search?searchword=knight
-  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTI5NjJhMGExMjhkMmRmNmZhM2Y1ODAwNmQxOWUxNzM4NjYzZDBhMGY0M2EwMTM5ZTAxZGFmZmUzNjA0ZTczMCJ9fX0="
-  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjNiNjNmODI1YTkzNGQ1NzNiZDFlOTc0ZTg5MDI5OGZkNmRhNDQ0MzRmMzc3MWFjNmI1YWNiZDIyYjE2ZTI2In19fQ=="
-  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTIzNGE1NDFjNTg2NzlmYjU1Y2NjYTNjM2EwYzYyNjAzZGVhODE2MDE2ZDE1OGFjYzJhMjJhNGVlMjA4NWRkNyJ9fX0="
 item:
   1:
     name: "&5Soldier Turret"
     material: ZOMBIE_HEAD
-    flags: [ HIDE_POTION_EFFECTS ]
+    flags: [ ALL ]
     lore:
       - "&7Spawns different mobs depending on"
       - "the turret's level when enemies get close to it."
@@ -91,7 +87,7 @@ item:
       - "they were unable to kill the player after &2a minute&7."
       - ""
       - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman_level%"
+      - "&7⚫ &2Level&8: &6%roman@level%"
       - "&7⚫ &2Ammo&8: &6%ammo%"
       - "&7⚫ &2Range&8: &6%range%"
       - "&7⚫ &2Max Ammo&8: &6%max_ammo%"

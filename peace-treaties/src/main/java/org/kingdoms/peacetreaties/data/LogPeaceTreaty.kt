@@ -10,7 +10,7 @@ import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter
-import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import java.time.Duration
 
@@ -45,7 +45,7 @@ abstract class LogPeaceTreaty() : AuditLog() {
         json.setLong("duration", peaceTreaty.duration.toMillis())
     }
 
-    override fun addEdits(builder: MessageBuilder) {
+    override fun addEdits(builder: MessagePlaceholderProvider) {
         super.addEdits(builder)
         builder.inheritPlaceholders(peaceTreaty!!.placeholderContextProvider)
     }

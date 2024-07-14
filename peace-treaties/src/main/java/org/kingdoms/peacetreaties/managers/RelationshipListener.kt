@@ -11,8 +11,8 @@ import org.kingdoms.events.general.GroupRelationshipChangeEvent
 import org.kingdoms.events.general.GroupRelationshipRequestEvent
 import org.kingdoms.events.general.KingdomDisbandEvent
 import org.kingdoms.events.members.KingdomLeaveEvent
-import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
-import org.kingdoms.locale.provider.MessageBuilder
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
+import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
@@ -47,7 +47,7 @@ class RelationshipListener : Listener {
                 .forEach { x ->
                     PeaceTreatyLang.NOTIFICATION_RECEIVERS.sendMessage(
                         player,
-                        x.getPlaceholderContextProvider(MessageBuilder()) as MessageBuilder
+                        x.getPlaceholderContextProvider(MessagePlaceholderProvider()) as MessagePlaceholderProvider
                     )
                 }
         }, 20L)
@@ -173,7 +173,7 @@ class RelationshipListener : Listener {
             to.dataKey,
             0,
             System.currentTimeMillis(),
-            Duration.ofMillis(durationMillis),
+            durationMillis,
             player.id
         )
         StandardPeaceTreatyEditor.fromContract(contract).open()

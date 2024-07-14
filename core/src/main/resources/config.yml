@@ -335,16 +335,17 @@ disabled-worlds: [ ]
 # This option is for security purposes.
 keep-admin-mode: false
 
-# The rate which the plugin updates holograms. These include turrets and structures.
-# The update is in ticks and is done asynchrously. This is useful for displaying turret
-# ammo, structure fuel, etc. i.e. information that are constantly updating.
-# You should consider keeping this value above one second.
-# A reasonable value would be 200 which means every 10 seconds.
-# Consider applying "dont-update-holograms: true" to turrets/structures that have no variable
-# in their holograms that needs updating to optimize this feature.
-# Set to 0 to disable.
-# Requires a restart to be applied.
-hologram-update-ticks: 200
+holograms:
+  # The rate which the plugin updates holograms. These include turrets and structures.
+  # The update is in ticks and is done asynchrously. This is useful for displaying turret
+  # ammo, structure fuel, etc. i.e. information that are constantly updating.
+  # You should consider keeping this value above one second.
+  # A reasonable value would be 200 which means every 10 seconds.
+  # Consider applying "dont-update-holograms: true" to turrets/structures that have no variable
+  # in their holograms that needs updating to optimize this feature.
+  # Set to 0 to disable.
+  # Requires a restart to be applied.
+  update: 1 sec
 
 # Disables integration service for one of the following plugins.
 # Requires a restart to take effect.
@@ -398,6 +399,10 @@ command:
   # the main name, some plugins might use it.
   name: kingdoms
   aliases: [ kingdom, xkingdoms, kingdomsx, k ]
+
+  # Since Minecraft command parser strips duplicated spaces, the following text
+  # is replaced in command arguments with spaces.
+  space-text: '(sp)'
 
 commands:
   ### Properties ###
@@ -466,6 +471,15 @@ kingdom-fly:
   # If you disable this, it'll only ignore the checks for performance improvements. If you like to disable the
   # command as well, refer to https://github.com/CryptoMorin/KingdomsX/wiki/FAQ#how-to-disable-a-command
   enabled: true
+
+  # The speed of the flight.
+  # You can use the special placeholder "speed" to
+  # configure a value relative to the normal player's speed.
+  speed: 0.5
+
+  # The usual flight speed which is set
+  # once the player goes out of /k fly mode.
+  normal-flight-speed: 1.0
 
   # Disable flight after taking damage.
   disable-on-damage: true
@@ -615,6 +629,20 @@ placeholders:
     sep: '&8' # separator
     ssep: '&7' # secondary separator
 
+    err-sign: "&8&l[&4&l!&8&l]"
+    info-sign: "&8&l[&9&l!&8&l]"
+
+    arrow: '&8➔'
+    point: '&8➤'
+    dot: '&7⚫'
+    colon: '&8:'
+
+    note: "{$info-sign} &9&lNote {$point}&7"
+    warning: "{$err-sign} &6&lWarning {$point}&7"
+
+    left-bracket: '&8{? level > 2 ? "-"}{? level > 1 ? "="}['
+    right-bracket: '&8]{? level > 1 ? "="}{? level > 2 ? "-"}'
+
     LightSalmon: '{#F97}'
     Maroon: '{#900}'
     Olive: '{#990}'
@@ -630,13 +658,13 @@ placeholders:
     # Please just be care not to use recursive variables or your servers console will blow up.
     channel: '&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]'
     kingdomPrefix:
-      kingdoms_has_kingdom: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_kingdom_color@hex%%kingdoms_kingdom_name%&8]&r '
+      kingdoms_has_kingdom: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %hex@kingdoms_kingdom_color%%kingdoms_kingdom_name%&8]&r '
       else: ''
     nationPrefix:
-      kingdoms_has_nation: '&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %kingdoms_nation_color@hex%%kingdoms_nation_name%&8]&7|'
+      kingdoms_has_nation: '&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %hex@kingdoms_nation_color%%kingdoms_nation_name%&8]&7|'
       else: ''
     spy:
-      kingdoms_other_is_spy: '{$channel}&7|'
+      "{other*kingdoms_is_spy}": '{$channel}&7|'
       else: ''
 
   # Default placeholders used when a player is not a kingdom or nation.
@@ -839,8 +867,10 @@ kingdom-lore: # /k lore
   remove-keywords: [ "remove", "none", "delete", "unset", "off" ]
   blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
 
-# Should kingdom homes be public by default?
-default-public-homes: false
+default-flags:
+  # Should kingdom homes be public by default?
+  public-home: false
+  # Other flags include "requires-invite", "permanent" and "hidden"
 
 audit-logs:
   # Disabled logs
@@ -966,7 +996,7 @@ daily-checks:
   # For information check: https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#elections
   elections:
     # Requires a restart.
-    enabled: true
+    enabled: false
 
     # The interval in days for election events.
     interval: 7
@@ -1552,3 +1582,8 @@ mails:
     # The amount of characters shown from the beginning of the mail
     # as a summary. This is seen in the mail editor and the mailbox.
     limit: 500
+
+# General settings related to turrets & structures.
+kingdom-items:
+  # The amount of time before the turret preview is removed automatically.
+  preview-duration: 1 min

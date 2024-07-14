@@ -160,24 +160,24 @@ tax:
     age: '&5Twoje królestwo nie zapłaciło podatków, ponieważ jest nowe.'
     paid: |
       {$p}Łącznie {$s}$%tax% {$p}podatków za królestwo zostało zapłacone.
-      Nowy stan konta Królestwa{$sep}: {$s}$%kingdoms_fancy_bank%
+      Nowy stan konta Królestwa{$sep}: {$s}$%fancy@kingdoms_bank%
     paid-nation: |
       {$p}Łącznie {$s}$%tax% {$p}podatków za królestwo zostało zapłacone do twojego narodu.
-      Nowy stan konta Królestwa{$sep}: {$s}$%kingdoms_fancy_bank%
-      {$p}Nowy stan konta Narodu{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    kicked: '{$es}%kingdoms_kingdom_name% {$e}królestwo zostało wyrzucone z narodu z powodu niemożności zapłacenia podatków{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+      Nowy stan konta Królestwa{$sep}: {$s}$%fancy@kingdoms_bank%
+      {$p}Nowy stan konta Narodu{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    kicked: '{$es}%kingdoms_kingdom_name% {$e}królestwo zostało wyrzucone z narodu z powodu niemożności zapłacenia podatków{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
     disbanded: '{$e}Twoje królestwo zostało rozwiązane z powodu niemożności zapłacenia podatków{$sep}: {$es}$%tax%'
-    disbanded-announce: '{$es}%kingdom% {$e}królestwo zostało rozwiązane z powodu niemożności zapłacenia podatków{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
-    kicked-announce: '{$es}%kingdoms_kingdom_name% {$e}królestwo zostało wyrzucone z {$es}%kingdoms_nation_name% {$e}nacji z powodu niemożności zapłacenia podatków{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%kingdom% {$e}królestwo zostało rozwiązane z powodu niemożności zapłacenia podatków{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
+    kicked-announce: '{$es}%kingdoms_kingdom_name% {$e}królestwo zostało wyrzucone z {$es}%kingdoms_nation_name% {$e}nacji z powodu niemożności zapłacenia podatków{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
   nation:
     age: '&5Twoja nacja nie zapłaciła podatków, ponieważ jest nowa.'
     paid: |
       {$p}Łącznie {$s}$%tax% {$p}podatków za nację zostało zapłacone.
-      Nowy stan konta Narodu{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+      Nowy stan konta Narodu{$sep}: {$s}$%fancy@kingdoms_nation_bank%
     disbanded: '{$e}Twoja nacja została rozwiązana z powodu niemożności zapłacenia podatków{$sep}: {$es}$%tax%'
-    disbanded-announce: '{$es}%nation% {$e}nacja została rozwiązana z powodu niemożności zapłacenia podatków{$sep}: {$es}%kingdoms_fancy_nation_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%nation% {$e}nacja została rozwiązana z powodu niemożności zapłacenia podatków{$sep}: {$es}%fancy@kingdoms_nation_bank% {$sep}< {$es}$%tax%'
   notifications: |
-    {$sep}[&4OSTRZEŻENIE{$sep}] {$e}Twoje królestwo nie ma wystarczająco środków &7({$es}%kingdoms_fancy_bank%&7) {$e}na opłacenie podatków na kolejny cykl rozliczeniowy{$sep}: {$es}%tax%
+    {$sep}[&4OSTRZEŻENIE{$sep}] {$e}Twoje królestwo nie ma wystarczająco środków &7({$es}%fancy@kingdoms_bank%&7) {$e}na opłacenie podatków na kolejny cykl rozliczeniowy{$sep}: {$es}%tax%
     {$e}Jeśli zebrane podatki od członków nie wystarczą, twoje królestwo zostanie rozwiązane.
   kick-announce: '{$es}%player% {$e}został wyrzucony z powodu niemożności zapłacenia podatków{$sep}: {$es}%tax%'
   member-paid: '{$s}$%tax% {$p}zostało pobrane z twojego konta na podatek za królestwo.'
@@ -239,8 +239,8 @@ siege-cannon:
     build-attribute: '{$p}Ale twoje królestwo ma atrybut BUILD z tym królestwem, więc żadne bloki nie zostaną zniszczone.'
     pacifist: '{$e}Działo trafiło w królestwo {$es}%kingdoms_kingdom_name% {$e}, ale są królestwem pokojowym.'
     destroyed-shield: '{$p}Działo trafiło w królestwo {$s}%kingdoms_kingdom_name% {$p}. Ich tarcza została zniszczona.'
-    damaged-shield: '{$p}Działo trafiło w królestwo {$s}%kingdoms_kingdom_name% {$p}. Pozostały czas tarczy{$sep}: {$s}%kingdoms_time_shield_time_left%'
-    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}królestwo trafiło twoją ziemię na {$es}%attacked-chunk%{$e}. Pozostały czas tarczy{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    damaged-shield: '{$p}Działo trafiło w królestwo {$s}%kingdoms_kingdom_name% {$p}. Pozostały czas tarczy{$sep}: {$s}%time@kingdoms_shield_time_left%'
+    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}królestwo trafiło twoją ziemię na {$es}%attacked-chunk%{$e}. Pozostały czas tarczy{$sep}: {$s}%time@kingdoms_shield_time_left%'
   friendly:
     fire: '{$e}Działo trafiło w przyjazną (bez atrybutu INVADE) ziemię, która należy do królestwa {$es}%kingdom%'
 lands:
@@ -258,34 +258,34 @@ lands:
       actionbar: '&8&l-=( &7&lNieprzejęty Teren &8&l)=-'
     no-kingdom:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*kingdoms_lore%'
     self:
       titles:
         title: '&a%kingdoms_kingdom_name%'
-        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+        subtitle: '%hex@kingdoms_kingdom_color%%kingdoms_lore%'
     neutral:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation:
       titles:
-        title: '&9%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&9%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Strefa Narodowa{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Strefa Narodowa{$sep}: %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     ally:
       titles:
-        title: '&6%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&6%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     truce:
       titles:
-        title: '&e%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&e%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     enemy:
       titles:
-        title: '&c%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&c%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
   grow-structure-error: '{$e}Nie możesz tego zrobić tutaj, ponieważ jest chroniony blok królestwa na pozycji  {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
   grow-structure-protected: '{$e}Nie możesz tego tutaj zrobić, ponieważ istnieje chroniony blok królestwa na pozycji {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
 other-kingdoms:
@@ -383,12 +383,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     {$p}Twoje królestwo zostało nagrodzone kwotą {$s}$%money% {$p}oraz punktami zasobów {$s}%rp% za zajęcie pozycji {$sep}: &5%rank%
-    {$p}Nowy Stan Konta Królestwa{$sep}: {$s}$%kingdoms_fancy_bank%
-    {$p}Nowe Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+    {$p}Nowy Stan Konta Królestwa{$sep}: {$s}$%fancy@kingdoms_bank%
+    {$p}Nowe Punkty Zasobów Królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
   nation: |
     {$p}Twoja nacja została nagrodzona kwotą {$s}$%money% {$p}oraz punktami zasobów {$s}%rp% za zajęcie pozycji {$sep}: &5%rank%
-    {$p}Nowy Stan Konta Nacji{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    {$p}Nowe Punkty Zasobów Nacji{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+    {$p}Nowy Stan Konta Nacji{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    {$p}Nowe Punkty Zasobów Nacji{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 join-leave-messages:
   join:
     kingdom:
@@ -570,10 +570,10 @@ nexus:
     disable: '{$s}Twoje królestwo teraz nie wymaga zaproszenia, aby dołączyć.'
   structure-inventory-full: '{$e}Twój inwentarz jest pełny!'
   turret-inventory-full: '{$e}Twój inwentarz jest pełny!'
-  structure-purchased: '{$p}Zakupiłeś {$s}%structure% {$p}za {$s}%fancy_cost% punktów zasobów'
+  structure-purchased: '{$p}Zakupiłeś {$s}%structure% {$p}za {$s}%fancy@cost% punktów zasobów'
   structure-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby kupić tę strukturę.'
   turret-resourcepoints: '{$e}Potrzebujesz {$es}%cost% {$e}punktów zasobów, aby kupić tę wieżę.'
-  turret-purchased: '{$p}Zakupiłeś {$s}%turret% {$p}za {$s}%fancy_cost% punktów zasobów'
+  turret-purchased: '{$p}Zakupiłeś {$s}%turret% {$p}za {$s}%fancy@cost% punktów zasobów'
   resource-points: '{$s}Całkowita liczba {$es}%amount% {$s}punktów zasobów została dodana.'
   rank-editor:
     enter-value: '{$s}Proszę wprowadź nową wartość w czacie lub wpisz hover:{{$e}Anuluj;{$e}Anuluj;/anuluj} {$s}aby anulować.'
@@ -643,7 +643,7 @@ shield:
     invasions:
       attacked: '{$e}Musisz poczekać {$es}%time% {$e}przed ponownym zakupem osłony. Ponieważ twoje królestwo najechało inne królestwo {$es}%last% {$e}temu.'
       defended: '{$e}Musisz poczekać {$es}%time% {$e}przed ponownym zakupem osłony. Ponieważ twoje królestwo zostało najechane przez inne królestwo {$es}%last% {$e}temu.'
-    shield-activated: '{$p}Osłona aktywowana na czas{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    shield-activated: '{$p}Osłona aktywowana na czas{$sep}: {$s}%time@kingdoms_shield_time_left%'
 nexus-resource-points-enter-value: '{$s}Proszę wprowadzić ilość punktów zasobów lub wpisać hover:{{$e}Cancel;{$e}Cancel;/cancel} {$s}aby anulować.'
 teleports:
   moved: '{$e}Teleportacja została anulowana, ponieważ się poruszyłeś.'
@@ -667,7 +667,7 @@ structure:
 outpost:
   not-enough-resource-points: '{$e}Nie masz wystarczająco punktów zasobów.'
   cooldown: '{$e}Nie możesz już kupić tego przedmiotu do{$sep}: {$es}%time_cooldown%'
-  purchased: '{$p}Zakupiono {$s}%amount%x %name% {$p}za {$s}%fancy_cost% punktów zasobów.'
+  purchased: '{$p}Zakupiono {$s}%amount%x %name% {$p}za {$s}%fancy@cost% punktów zasobów.'
 turret:
   ammo:
     not-enough-resource-points: '{$e}Nie masz wystarczająco punktów zasobów.'
@@ -905,14 +905,14 @@ command:
         kingdom:
           unknown-claim: '{$sep}⚫ {$e}Nieznane roszczenie do królestwa{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
           unknown-player: '{$sep}⚫ {$e}Nieznany gracz w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Gracz{$sep}: {$es}%player_id%'
-          unknown-relationship-request: '{$sep}⚫ {$e}Nieznane żądanie relacji między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other_kingdom_id%'
-          unknown-relationship: '{$sep}⚫ {$e}Nieznane relacje między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other_kingdom_id%'
-          relationship-both-requested: '{$sep}⚫ {$e}Dwa królestwa wysłały do siebie żądania relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
+          unknown-relationship-request: '{$sep}⚫ {$e}Nieznane żądanie relacji między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
+          unknown-relationship: '{$sep}⚫ {$e}Nieznane relacje między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
+          relationship-both-requested: '{$sep}⚫ {$e}Dwa królestwa wysłały do siebie żądania relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}Relacja{$sep}: {$es}%second_relation%'
-          relationship-mismatch: '{$sep}⚫ {$e}Niespójna relacja między królestwami{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
+          relationship-mismatch: '{$sep}⚫ {$e}Niespójna relacja między królestwami{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}Relacja{$sep}: {$es}%second_relation%'
           relationship-both-forms-exist: '{$sep}⚫ {$e}Między dwoma królestwami, jedno ma pewną relację z drugim królestwem, podczas gdy to drugie królestwo już wysłało żądanie relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}:
-            {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}Relacja{$sep}: {$es}%second_relation%'
+            {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}Relacja{$sep}: {$es}%second_relation%'
           no-members: '{$sep}⚫ {$e}Królestwo nie ma żadnych członków. Zostanie rozwiązane{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
           wrong-king: '{$sep}⚫ {$e}Król królestwa był zepsuty, zostanie zmieniony na innego losowego członka.{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Stary Król{$sep}: {$es}%old_king_id% {$sep}-> {$e}Nowy Król{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
           pacifism: '{$sep}⚫ {$e}Znaleziono królestwo pacyfistyczne, podczas gdy pacyfizm jest wyłączony{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
@@ -924,7 +924,7 @@ command:
           priority-misorder: '{$sep}⚫ {$e}Priorytet rangi nie jest uporządkowany{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Oczekiwany priorytet {$es}%expected_priority% {$sep}| {$e}Rzeczywisty priorytet {$es}%priority%'
           missing-pair: '{$sep}⚫ {$e}Mapa priorytetów rang nie ma odpowiadającego wpisu o węźle w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Priorytet {$es}%priority%'
           unsupported-material: '{$sep}⚫ {$e}Ranga ma nieobsługiwany materiał dla obecnej wersji serwera{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%rank% {$sep}| {$e}Materiał{$sep}: {$es}%material%'
-          different-instance: '{$sep}⚫ {$e}Mapy rang zawierają różne instancje w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Inna Ranga{$sep}: {$es}%other_rank%'
+          different-instance: '{$sep}⚫ {$e}Mapy rang zawierają różne instancje w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Inna Ranga{$sep}: {$es}%other*rank%'
           unknown: '{$sep}⚫ {$e}Gracz ma nieznaną rangę{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
           multiple-kings: '{$sep}⚫ {$e}Wiele królów dla{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
           kingdom-king: '{$sep}⚫ {$e}Król królestwa nie ma rangi króla.{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ranga{$sep}: {$es}%rank%'
@@ -1247,8 +1247,8 @@ command:
     bank:
       description: '{$s}Dodaj lub odejmij pieniądze z banku królestwa.'
       usage: '{$usage}admin bank {$p}<kingdom> &9[ustaw | dodaj | usuń] {$p}<ilość>'
-      done: '{$s}Nowy stan banku królestwa {$p}%kingdom%{$sep}: {$s}%kingdoms_fancy_bank%'
-      added: '{$p}Nowy stan banku Twojego królestwa{$sep}: {$s}%kingdoms_fancy_bank%'
+      done: '{$s}Nowy stan banku królestwa {$p}%kingdom%{$sep}: {$s}%fancy@kingdoms_bank%'
+      added: '{$p}Nowy stan banku Twojego królestwa{$sep}: {$s}%fancy@kingdoms_bank%'
       invalid-action: '{$e}Nieprawidłowa akcja {$es}%action%{$e}! Użyj{$sep}: {$es}dodaj/usuń/ustaw'
       name: bank
       aliases: vault
@@ -1528,8 +1528,8 @@ command:
       footer: '     {$sep}[hover:{{$s}←;{$s}Poprzednia Strona;/k nation top %previous_page%}{$sep}] {$sep}[hover:{{$s}→;{$s}Następna Strona;/k nation top %next_page%}{$sep}]'
       entry: |
         {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Członków{$sep}: {$s}%kingdoms_nation_kingdoms%
-        &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank%} &7- {$s}%kingdoms_fancy_nation_might%
+        &7♦ {$p}Resource Points{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        &7♦ {$p}Bank{$sep}: {$s}$%fancy@kingdoms_nation_bank%} &7- {$s}%fancy@kingdoms_nation_might%
       negative: '{$e}Nie można pokazać stron ujemnych.'
       loading: '{$s}Ładowanie danych...'
       no-more-pages: '{$e}Brak więcej stron do załadowania.'
@@ -1542,14 +1542,14 @@ command:
       deposit:
         success: |
           {$p}Wpłaciłeś {$s}%amount% {$p}pieniędzy do banku swojego narodu.
-          Twój nowy stan konta{$sep}: {$s}%fancy_balance%
-          {$p}Bank twojego narodu{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          Twój nowy stan konta{$sep}: {$s}%fancy@balance%
+          {$p}Bank twojego narodu{$sep}: {$s}%fancy@kingdoms_nation_bank%
         disabled: '{$e}Nie możesz wpłacać pieniędzy.'
       withdraw:
         success: |
           {$p}Wypłaciłeś {$s}%amount% {$p}pieniędzy z banku swojego narodu.
-          {$p}Twój nowy stan konta{$sep}: {$s}%fancy_balance%
-          {$p}Bank twojego narodu{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          {$p}Twój nowy stan konta{$sep}: {$s}%fancy@balance%
+          {$p}Bank twojego narodu{$sep}: {$s}%fancy@kingdoms_nation_bank%
         disabled: '{$e}Nie możesz wypłacać pieniędzy.'
       zero: '{$e}Nie możesz przelać nic.'
       usage: '{$usage}nation bank {$p}<wpłać/wypłać> <kwota>'
@@ -1603,7 +1603,7 @@ command:
       joined: '{$s}%kingdom% {$p}dołączyło do narodu.'
     capital:
       usage: '{$usage}nation capital {$p}<kingdom>'
-      already: '{$es}%kingdoms_other_kingdom_name% {$e}jest już stolicą narodu.'
+      already: '{$es}%other*kingdoms_kingdom_name% {$e}jest już stolicą narodu.'
       description: '{$s}Ustaw nową stolicę swojego narodu.'
       name: capital
       not-in-nation: '{$es}%kingdom% {$e}nie należy do twojego narodu.'
@@ -1741,10 +1741,10 @@ command:
         &7| {$p}Spawn{$sep}: {$s}%kingdoms_nation_spawn%
         &7| {$p}Nexus{$sep}: {$s}%kingdoms_nation_nexus%
         &7| {$p}Od{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Moc{$sep}: {$s}%kingdoms_fancy_nation_might%
-        &7| {$p}Tarcza{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Podatek{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
-        &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Moc{$sep}: {$s}%fancy@kingdoms_nation_might%
+        &7| {$p}Tarcza{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Bank{$sep}: {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Podatek{$sep}: {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
+        &7| {$p}Punkty Zasobów{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Królestwa{$sep}:
         %kingdoms%
@@ -1764,10 +1764,10 @@ command:
         &7| {$p}Król{$sep}: {$s}%king_status%
         &7| {$p}Nacja{$sep}: {$s}%kingdoms_nation_name%
         &7| {$p}Od{$sep}: {$s}%kingdoms_date_nation_since%
-        &7| {$p}Moc{$sep}: {$s}%kingdoms_fancy_might%
-        &7| {$p}Tarcza{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Bank{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Moc{$sep}: {$s}%fancy@kingdoms_might%
+        &7| {$p}Tarcza{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Bank{$sep}: {$s}%fancy@kingdoms_nation_bank%
+        &7| {$p}Punkty Zasobów{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Królestwa{$sep}:
         %kingdoms%
@@ -1811,8 +1811,8 @@ command:
       limit: '{$e}Bank twojego królestwa jest pełny. Limit wynosi {$es}%limit%'
       success: |
         {$p}Wpłaciłeś {$s}%amount% {$p}pieniędzy do banku swojego królestwa.
-        Twój nowy stan konta{$sep}: {$s}%fancy_balance%
-        {$p}Bank królestwa{$sep}: {$s}%kingdoms_fancy_bank%
+        Twój nowy stan konta{$sep}: {$s}%fancy@balance%
+        {$p}Bank królestwa{$sep}: {$s}%fancy@kingdoms_bank%
       disabled: '{$e}Nie możesz wpłacać pieniędzy.'
       min: '{$e}Musisz przynajmniej wpłacić {$es}$%min%'
     withdraw:
@@ -1820,8 +1820,8 @@ command:
       disabled: '{$e}Nie możesz wypłacać pieniędzy.'
       success: |
         {$p}Wypłaciłeś {$s}%amount% {$p}pieniędzy z banku swojego królestwa.
-        Twój nowy stan konta{$sep}: {$s}%fancy_balance%
-        {$p}Bank królestwa{$sep}: {$s}%kingdoms_fancy_bank%
+        Twój nowy stan konta{$sep}: {$s}%fancy@balance%
+        {$p}Bank królestwa{$sep}: {$s}%fancy@kingdoms_bank%
     aliases: money $
 
   rename:
@@ -1926,7 +1926,7 @@ command:
       success: |
         {$p}Pomyślnie wypłaciłeś {$s}%rp% {$p}punktów zasobów z twojego królestwa za {$s}$%worth%
         {$p}Twój nowy stan konta{$sep}: {$s}$%balance%
-        {$p}Punkty zasobów twojego królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+        {$p}Punkty zasobów twojego królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
     transfer:
       description: '{$s}Przesyłaj punkty zasobów między swoją nacją/królestwem.'
       kingdom:
@@ -1939,21 +1939,21 @@ command:
       success:
         nation: |
           {$p}Pomyślnie przeniesiono {$s}%amount% {$p}punktów zasobów z twojego królestwa do twojej nacji.
-          Punkty Zasobów Nacji{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Punkty Zasobów Nacji{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
         kingdom: |
           {$p}Pomyślnie przeniesiono {$s}%amount% {$p}punktów zasobów z twojej nacji do królestwa.
-          Punkty Zasobów Nacji{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Punkty Zasobów Nacji{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Punkty Zasobów Królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
     success:
       kingdom: |
         {$p}Pomyślnie przetransferowałeś {$s}%amount% {$p}punktów zasobów z twojej nacji do królestwa.
-        Punkty Zasobów Narodowych{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+        Punkty Zasobów Narodowych{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        {$p}Punkty Zasobów Królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
       nation: |
         {$p}Pomyślnie przetransferowałeś {$s}%amount% {$p}punktów zasobów z twojego królestwa do nacji.
-        Punkty Zasobów Narodowych{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        {$p}Punkty Zasobów Królestwa{$sep}: {$s}%kingdoms_fancy_resource_points%
+        Punkty Zasobów Narodowych{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        {$p}Punkty Zasobów Królestwa{$sep}: {$s}%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '{$e}Twoje królestwo nie ma {$es}%rp% {$e}punktów zasobów.'
       nation-resource-points: '{$e}Twoja nacja nie ma {$es}%rp% {$e}punktów zasobów.'
@@ -1972,11 +1972,11 @@ command:
       &7| {$p}Dom{$sep}: {$s}%kingdoms_kingdom_home%
       &7| {$p}Nexus{$sep}: {$s}%kingdoms_nexus%
       &7| {$p}Nacja{$sep}: {$s}%kingdoms_nation_name%
-      &7| {$p}Moc{$sep}: {$s}%kingdoms_fancy_might%
-      &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Podatek{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_kingdom_tax%
-      &7| {$p}Ziemie{$sep}: {$s}%kingdoms_fancy_claims%{$sep}/{$s}%kingdoms_fancy_max_claims%
-      &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7| {$p}Tarcza{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Moc{$sep}: {$s}%fancy@kingdoms_might%
+      &7| {$p}Bank{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Podatek{$sep}: {$s}$%fancy@kingdoms_tax% {$sep}- {$s}$%fancy@kingdoms_kingdom_tax%
+      &7| {$p}Ziemie{$sep}: {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
+      &7| {$p}Punkty Zasobów{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7| {$p}Tarcza{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Od{$sep}: {$s}%kingdoms_date_since%
       &7| {$p}Członkowie{$sep}: {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
@@ -1987,10 +1987,10 @@ command:
       &7| {$p}Nacja{$sep}: {$s}%kingdoms_nation_name%
       &7| {$p}Moc{$sep}: {$s}%kingdoms_might%
       &7| {$p}Od{$sep}: {$s}%kingdoms_date_since%
-      &7| {$p}Tarcza{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Tarcza{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Ziemie{$sep}: {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
-      &7| {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%
-      &7| {$p}Punkty Zasobów{$sep}: {$s}%kingdoms_fancy_resource_points%
+      &7| {$p}Bank{$sep}: {$s}$%fancy@kingdoms_bank%
+      &7| {$p}Punkty Zasobów{$sep}: {$s}%fancy@kingdoms_resource_points%
 
       &7| {$p}Członkowie{$sep}:
       %members%
@@ -2076,11 +2076,11 @@ command:
         permission: '{$e}Nie masz uprawnień do ustawiania automatycznego zajmowania dla innych.'
         on: '{$s}Automatyczne zajmowanie jest teraz &aWŁĄCZONE{$s}. Będziesz teraz zajmować tereny podczas chodzenia.'
         off: '{$s}Automatyczne zajmowanie jest teraz {$e}WYŁĄCZONE{$s}.'
-      need-rp: '{$e}Potrzebujesz {$es}%fancy_rp% {$e}punktów zasobów do zającia terenu!'
+      need-rp: '{$e}Potrzebujesz {$es}%fancy@rp% {$e}punktów zasobów do zającia terenu!'
       confirmation: |
-        {$e}Twoje królestwo musi zapłacić {$es}%fancy_rp% {$e}punktów zasobów i {$es}%fancy_money% {$e}pieniędzy.
+        {$e}Twoje królestwo musi zapłacić {$es}%fancy@rp% {$e}punktów zasobów i {$es}%fancy@money% {$e}pieniędzy.
         Czy na pewno chcesz kontynuować? Powtórz komendę.
-      need-money: '{$e}Twoje królestwo potrzebuje {$es}%fancy_money% {$e}pieniędzy, aby zająć teren! Wpłać pieniądze na konto swojego królestwa komendą {$es}/k bank deposit'
+      need-money: '{$e}Twoje królestwo potrzebuje {$es}%fancy@money% {$e}pieniędzy, aby zająć teren! Wpłać pieniądze na konto swojego królestwa komendą {$es}/k bank deposit'
       disallowed-biome: |
         {$e}Nie możesz zająć terenu w biotopach {$es}%biome% {$e}.
         Zazwyczaj cały chunk musi być zbudowany z tego typu biotopu.
@@ -2160,9 +2160,9 @@ command:
       no-shield: '{$e}Twoja nacja nie ma aktywnej tarczy.'
       confirm: |
         {$e}Jeśli dezaktywujesz swoją tarczę, musisz kupić nową.
-        Pozostały czas tarczy nacji{$sep}: {$es}%kingdoms_time_shield_time_left%
+        Pozostały czas tarczy nacji{$sep}: {$es}%time@kingdoms_shield_time_left%
         {$e}Aby kontynuować, użyj komendy hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}aby potwierdzić.
-      deactivated: '{$es}%executor% {$e}wyłączył obecną tarczę nacji, która miała {$es}%kingdoms_time_shield_time_left% {$e}czasu.'
+      deactivated: '{$es}%executor% {$e}wyłączył obecną tarczę nacji, która miała {$es}%time@kingdoms_shield_time_left% {$e}czasu.'
 
     sethome:
       description: '{$s}Ustawia dom królestwa na obecnej lokalizacji.'
@@ -2370,11 +2370,11 @@ command:
     aliases: invitescode codeinvite codesinvite codesinvites
     max: '{$e}Królestwa mogą tworzyć maksymalnie {$es}%invitecodes-max% {$e}kodów zaproszeniowych.'
     paper:
-      give: '{$p}Zakupiono papier z kodem zaproszeniowym za {$s}%fancy_invitecode-paper-cost% punktów zasobów'
-      cost: '{$e}Potrzebujesz {$es}%fancy_invitecode-paper-cost% punktów zasobów {$e}aby wygenerować papier z kodem zaproszeniowym.'
+      give: '{$p}Zakupiono papier z kodem zaproszeniowym za {$s}%fancy@invitecode-paper-cost% punktów zasobów'
+      cost: '{$e}Potrzebujesz {$es}%fancy@invitecode-paper-cost% punktów zasobów {$e}aby wygenerować papier z kodem zaproszeniowym.'
   paper:
-    cost: '{$e}Potrzebujesz {$es}%fancy_invitecode-paper-cost% punktów zasobów {$e}do wygenerowania zaproszenia.'
-    give: '{$p}Zakupiono papier zaproszenia za {$s}%fancy_invitecode-paper-cost% punktów zasobów'
+    cost: '{$e}Potrzebujesz {$es}%fancy@invitecode-paper-cost% punktów zasobów {$e}do wygenerowania zaproszenia.'
+    give: '{$p}Zakupiono papier zaproszenia za {$s}%fancy@invitecode-paper-cost% punktów zasobów'
   max: '{$e}Nacje mogą tworzyć maksymalnie {$es}%invitecodes-max% {$e}kodów zaproszeń.'
   duration:
     enter: '{$p}Proszę podać czas ważności kodu zaproszeniowego {$sep}({$s}np. 1dzień lub po prostu 0, aby nigdy nie wygasło{$sep}) {$cancel}'
@@ -2553,8 +2553,8 @@ command:
     entry: |
       {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_kingdom_name%;&7♦ {$p}Członkowie{$sep}: {$s}%kingdoms_members%
       &7♦ {$p}Ziemie{$sep}: {$s}%kingdoms_claims%&7/{$s}%kingdoms_max_claims%
-      &7♦ {$p}Punkty zasobów{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%kingdoms_fancy_might%
+      &7♦ {$p}Punkty zasobów{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7♦ {$p}Bank{$sep}: {$s}$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%fancy@kingdoms_might%
     name: top
 
   map:
@@ -2707,40 +2707,40 @@ command:
   ally:
     description: '{$s}Wysyła prośbę o sojusz do nacji.'
     usage: '{$usage}ally {$p}<kingdom>'
-    sender: '{$p}Wysłano prośbę o sojusz do {$s}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Wysłano prośbę o sojusz do {$s}%other*kingdoms_kingdom_name%'
     limit: '{$e}Nie możesz sojuszniczyć z więcej niż {$es}%max% {$e}nacjami.'
-    already: '{$e}Już jesteś sojusznikiem {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Już wysłałeś prośbę do {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Już jesteś sojusznikiem {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Już wysłałeś prośbę do {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Nie możesz uczynić swojej nacji sojusznikiem.'
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}chce być sojusznikiem. Akceptuj z hover:{{$s}/k ally %kingdoms_other_kingdom_name%;{$p}Akceptuj;/k ally %kingdoms_other_kingdom_name%}'
-    allies: '{$p}Jesteś teraz sojusznikiem z {$s}%kingdoms_other_kingdom_name%'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}chce być sojusznikiem. Akceptuj z hover:{{$s}/k ally %other*kingdoms_kingdom_name%;{$p}Akceptuj;/k ally %other*kingdoms_kingdom_name%}'
+    allies: '{$p}Jesteś teraz sojusznikiem z {$s}%other*kingdoms_kingdom_name%'
     name: ally
     aliases: alliance allies
   enemy:
     description: '{$s}Ustaw królestwo jako wroga.'
     usage: '{$usage}wrogi {$p}<kingdom>'
     limit: '{$e}Nie możesz być wrogi z więcej niż {$es}%max% {$e}królestwami.'
-    already: '{$e}Jesteś już wrogiem {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Już wysłałeś prośbę o wrogość do {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Jesteś już wrogiem {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Już wysłałeś prośbę o wrogość do {$es}%other*kingdoms_kingdom_name%'
     higher-strength: '{$e}Twoje królestwo jest znacznie silniejsze niż to królestwo. Nie możesz uczynić ich wrogami.'
-    notify: '{$es}%kingdoms_kingdom_name% {$e}ustanowiło wrogość z %kingdoms_other_kingdom_name%, a oba królestwa są waszymi sojusznikami.'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}ustanowiło wrogość z %other*kingdoms_kingdom_name%, a oba królestwa są waszymi sojusznikami.'
     self: '{$e}Nie możesz uczynić swojego własnego królestwa wrogiem...'
     cost: '{$e}Potrzebujesz {$es}%cost% punktów zasobów {$e}aby uczynić to królestwo wrogiem.'
-    enemies: '{$e}Teraz jesteś wrogiem {$es}%kingdoms_other_kingdom_name%'
+    enemies: '{$e}Teraz jesteś wrogiem {$es}%other*kingdoms_kingdom_name%'
     name: enemy
     aliases: enemies
   truce:
     description: '{$s}Wysyła prośbę o rozejm do królestwa.'
     usage: '{$usage}rozejm {$p}<kingdom>'
     limit: '{$e}Nie możesz zawrzeć rozejmu z więcej niż {$es}%max% {$e}królestwami.'
-    sender: '{$p}Wysłano prośbę o rozejm do {$s}%kingdoms_other_kingdom_name%'
-    already: '{$e}Jesteś już w rozejmie z {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Już wysłałeś prośbę do {$es}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Wysłano prośbę o rozejm do {$s}%other*kingdoms_kingdom_name%'
+    already: '{$e}Jesteś już w rozejmie z {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Już wysłałeś prośbę do {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Nie możesz zawrzeć rozejmu ze swoim własnym królestwem.'
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}chce zawrzeć rozejm z tobą. Akceptuj, najedź kursorem:{{$s}/k rozejm %kingdoms_other_kingdom_name%;{$p}Akceptuj;/k rozejm %kingdoms_other_kingdom_name%}'
-    rozejm: '{$p}Jesteś teraz w rozejmie z {$s}%kingdoms_other_kingdom_name%'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}chce zawrzeć rozejm z tobą. Akceptuj, najedź kursorem:{{$s}/k rozejm %other*kingdoms_kingdom_name%;{$p}Akceptuj;/k rozejm %other*kingdoms_kingdom_name%}'
+    rozejm: '{$p}Jesteś teraz w rozejmie z {$s}%other*kingdoms_kingdom_name%'
     name: rozejm
-    truces: '{$p}Jesteś teraz w zawieszeniu broni z {$s}%kingdoms_other_kingdom_name%'
+    truces: '{$p}Jesteś teraz w zawieszeniu broni z {$s}%other*kingdoms_kingdom_name%'
 
   rejectrelation:
     description: '{$s}Odrzuć prośbę o relacje wysłaną do twojego królestwa.'
@@ -2753,13 +2753,13 @@ command:
   revoke:
     description: '{$s}Unieważnij relacje z królestwem.'
     usage: '{$usage}uniewaznij {$p}<kingdom>'
-    sender: '{$e}Unieważniono relacje z {$es}%kingdoms_other_kingdom_name%'
-    no-relation: '{$e}Nie masz relacji z {$es}%kingdoms_other_kingdom_name%'
-    already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}jest już neutralne.'
+    sender: '{$e}Unieważniono relacje z {$es}%other*kingdoms_kingdom_name%'
+    no-relation: '{$e}Nie masz relacji z {$es}%other*kingdoms_kingdom_name%'
+    already-neutral: '{$es}%other*kingdoms_kingdom_name% {$e}jest już neutralne.'
     self: '{$e}Nie możesz mieć żadnych relacji ze swoim własnym królestwem...'
     specific-permission: '{$e}Nie masz uprawnień do unieważnienia relacji %relation% {$e}.'
     receiver: '{$es}%kingdoms_kingdom_name% {$e}unieważniło relacje z tobą. Jesteście teraz neutralni.'
-    request-sender: '{$p}Wysłano prośbę o pokój do {$s}%kingdoms_other_kingdom_name%'
+    request-sender: '{$p}Wysłano prośbę o pokój do {$s}%other*kingdoms_kingdom_name%'
     request-receiver: '{$s}%kingdoms_kingdom_name% {$p}chce nawiązać pokój z tobą. Akceptuj, najedź kursorem:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Akceptuj;/k neutral %kingdoms_kingdom_name%}'
     neutral: '{$p}Jesteś teraz neutralny z {$s}%kingdom%'
     name: uniewaznij
@@ -3030,8 +3030,8 @@ command:
     name: traktatpokojowy
     already-accepted: '{$e}Twoje królestwo już zaakceptowało ten kontrakt traktatu pokojowego.'
     no-contracts: '{$e}Twoje królestwo nie otrzymało żadnych kontraktów traktatu pokojowego.'
-    no-contract-from-kingdom: '{$e}Twoje królestwo nie otrzymało żadnych kontraktów od królestwa {$es}%kingdoms_name% {$e}.'
-    no-contract-to-kingdom: '{$e}Twoje królestwo nie ma żadnych kontraktów z królestwem {$es}%kingdoms_name% {$e}.'
+    no-contract-from-kingdom: '{$e}Twoje królestwo nie otrzymało żadnych kontraktów od królestwa {$es}%kingdoms_kingdom_name% {$e}.'
+    no-contract-to-kingdom: '{$e}Twoje królestwo nie ma żadnych kontraktów z królestwem {$es}%kingdoms_kingdom_name% {$e}.'
     aliases: traktatypokojowe tptp
     miscupgrades:
       description: '{$s}Zmienia różne ulepszenia królestwa objęte umową.'
@@ -3045,24 +3045,24 @@ command:
       description: '{$s}Przegląda wysłany kontrakt traktatu pokojowego, aby zdecydować, czy go zaakceptować czy nie.'
       name: przeglądaj
       aliases: wyświetl
-      header: '{$es}%kingdoms_other_kingdom_name% {$e}kontrakt traktatu pokojowego zawiera następujące warunki{$sep}:'
+      header: '{$es}%other*kingdoms_kingdom_name% {$e}kontrakt traktatu pokojowego zawiera następujące warunki{$sep}:'
       terms: '{$sep}⚫ %term_message%'
-      footer: '{$e}Możesz zaakceptować ten kontrakt, uruchamiając {$es}hover:{/k tptp akceptuj %kingdoms_other_kingdom_name%;&7Kliknij, aby zaakceptować;|/k tptp akceptuj %kingdoms_other_kingdom_name%}'
+      footer: '{$e}Możesz zaakceptować ten kontrakt, uruchamiając {$es}hover:{/k tptp akceptuj %other*kingdoms_kingdom_name%;&7Kliknij, aby zaakceptować;|/k tptp akceptuj %other*kingdoms_kingdom_name%}'
     accept:
       name: akceptuj
       description: '{$s}Akceptuje kontrakt traktatu pokojowego.'
       usage: '{$usage}tptp akceptuj {$p}<kingdom>'
       failed: '{$e}Twoje królestwo nie spełniło wszystkich wymagań kontraktu, aby go zaakceptować{$sep}:'
       accepted:
-        receiver: '{$p}Twoje królestwo zaakceptowało kontrakt traktatu pokojowego od {$s}%kingdoms_other_kingdom_name% {$p}królestwa.'
-        sender: '{$s}%kingdoms_name% {$p}zaakceptowało kontrakt traktatu pokojowego twojego królestwa.'
+        receiver: '{$p}Twoje królestwo zaakceptowało kontrakt traktatu pokojowego od {$s}%other*kingdoms_kingdom_name% {$p}królestwa.'
+        sender: '{$s}%kingdoms_kingdom_name% {$p}zaakceptowało kontrakt traktatu pokojowego twojego królestwa.'
     reject:
       description: '{$s}Odrzuca kontrakt traktatu pokojowego.'
       usage: '{$usage}tptp odrzuć {$p}<kingdom>'
       name: odrzuć
       notifications:
-        receiver: '{$e}Twoje królestwo odrzuciło traktat pokojowy z {$es}%kingdoms_other_kingdom_name% {$e}.'
-        sender: '{$es}%kingdoms_name% {$e}odrzuciło kontrakt traktatu pokojowego twojego królestwa.'
+        receiver: '{$e}Twoje królestwo odrzuciło traktat pokojowy z {$es}%other*kingdoms_kingdom_name% {$e}.'
+        sender: '{$es}%kingdoms_kingdom_name% {$e}odrzuciło kontrakt traktatu pokojowego twojego królestwa.'
   books:
     cant-move: '{$e}Nie możesz przenieść tej książki.'
     used-by-another-session: '{$e}Dane wejściowe do książki są używane przez inną sesję. Proszę najpierw ją zakończyć.'
@@ -3160,7 +3160,7 @@ command:
     not-connected: '{$e}Twoje ziemie muszą być połączone z innymi ziemiami Twojego królestwa.'
     nation-zone: '{$e}Te ziemie są częścią strefy narodowej {$es}%nation% {$e}i nie mogą być zajęte.'
     occupied-land: '{$e}Te ziemie są zajęte przez inne królestwo! Najpierw je najedź {$es}/k invade!'
-    need-rp: '{$e}Potrzebujesz {$es}%fancy_rp% {$e}punktów zasobów, aby zająć te ziemie!'
+    need-rp: '{$e}Potrzebujesz {$es}%fancy@rp% {$e}punktów zasobów, aby zająć te ziemie!'
     already-owned: '{$e}Twoje królestwo już posiada te ziemie!'
     success: '{$p}Zajęto {$s}%x%&7, {$s}%z% {$p}jako ziemię królestwa.'
     max-claims: '{$e}Twoje królestwo może jedynie zajmować {$s}%limit% {$e}ziemi. {$e}Dwa sposoby na zwiększenie tego limitu to zdobycie więcej członków lub ulepszenie maksymalnej ilości roszczeń w ulepszeniach różności w swoim nexusie.'
@@ -3198,7 +3198,7 @@ command:
         &7| {$p}Struktury{$sep}: {$s}%structures%
         &7| {$p}Wieżyczki{$sep}: {$s}%turrets%
       confirmation: |
-        {$e}Twoje królestwo musi zapłacić {$es}%fancy_rp% {$e}punkty zasobów i {$es}%fancy_money% {$e}pieniądze.
+        {$e}Twoje królestwo musi zapłacić {$es}%fancy@rp% {$e}punkty zasobów i {$es}%fancy@money% {$e}pieniądze.
         Czy na pewno chcesz kontynuować? Wykonaj komendę ponownie.
       exceeded-max: '{$e}Nie możesz zajmować więcej niż {$es}%max% {$e}terenów!'
       max-claims-player: '{$e}Twój rangi pozwala na zajmowanie tylko {$es}%limit% {$e}terenów.'
@@ -3216,16 +3216,16 @@ command:
       not-distanced: '{$e}Inne królestwo zajęło terytoria wokół miejsca, które próbujesz zająć.'
       in-region: '{$e}Nie możesz zajmować terenów w chronionych regionach.'
       cant-overclaim: '{$e}Nie możesz przejąć kontroli nad tym królestwem.'
-      need-money: '{$e}Twoje królestwo potrzebuje {$es}%fancy_money% {$e}pieniędzy, aby zająć ten teren! Wpłać pieniądze na konto królestwa używając komendy {$es}/k bank deposit'
+      need-money: '{$e}Twoje królestwo potrzebuje {$es}%fancy@money% {$e}pieniędzy, aby zająć ten teren! Wpłać pieniądze na konto królestwa używając komendy {$es}/k bank deposit'
       disabled-world: '{$e}Zajmowanie jest wyłączone na świecie {$s}%world%'
   shield:
     description: '{$s}Dezaktywuj swój tarczownik.'
     no-shield: '{$e}Twoje królestwo nie ma aktywnej tarczy.'
     confirm: |
       {$e}Jeśli wyłączysz tarczę, będziesz musiał kupić nową.
-      Pozostały czas tarczy królestwa{$sep}: {$es}%kingdoms_time_shield_time_left%
+      Pozostały czas tarczy królestwa{$sep}: {$es}%time@kingdoms_shield_time_left%
       {$e}Aby kontynuować, wykonaj komendę hover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}aby potwierdzić.
-    deactivated: '{$es}%executor% {$e}dezaktywował obecną tarczę królestwa, która miała {$es}%kingdoms_time_shield_time_left% {$e}czasu.'
+    deactivated: '{$es}%executor% {$e}dezaktywował obecną tarczę królestwa, która miała {$es}%time@kingdoms_shield_time_left% {$e}czasu.'
   home:
     description: '{$s}Teleportuj się do domu twojego królestwa.'
     permission: '{$e}Nie masz uprawnień do teleportacji do domów innych królestw.'
@@ -3304,8 +3304,8 @@ time:
     {$p}Przykłady{$sep}: {$s}2022/0/0 - 2023/2/2{$sep}, {$s}20dni - 10dni{$sep}, {$s}10dni (pokazuje logi z 10 dni temu)
   invalid: '{$e}Nieprawidłowy czas/data{$sep}: {$es}%input%'
 peacetreaties:
-  sent: '{$p}Twoje królestwo wysłało jedną umowę pokojową do {$s}%kingdoms_name% {$p}Sprawdź logi Twojego królestwa po więcej informacji.'
-  received: '{$p}Twoje królestwo otrzymało umowę pokojową od {$s}%kingdoms_other_kingdom_name% {$p}Sprawdź logi Twojego królestwa po więcej informacji.'
+  sent: '{$p}Twoje królestwo wysłało jedną umowę pokojową do {$s}%kingdoms_kingdom_name% {$p}Sprawdź logi Twojego królestwa po więcej informacji.'
+  received: '{$p}Twoje królestwo otrzymało umowę pokojową od {$s}%other*kingdoms_kingdom_name% {$p}Sprawdź logi Twojego królestwa po więcej informacji.'
 invasion:
   blocked:
     command: '{$e}Nie możesz używać tej komendy podczas inwazji.'
@@ -3379,12 +3379,12 @@ peace-treaties:
   terms:
     min: '{$e}Musisz określić co najmniej {$es}%terms_min% {$e}warunków.'
     take-money:
-      not-enough: '{$e}Twoje królestwo potrzebuje {$es}$%fancy_term_take_money_amount%'
+      not-enough: '{$e}Twoje królestwo potrzebuje {$es}$%fancy@term_take_money_amount%'
       enter: '{$p}Podaj kwotę pieniędzy, jaką chcesz zabrać.'
-      message: '{$e}Twoje królestwo musi zapłacić{$sep}: {$es}$%fancy_term_take_money_amount%'
+      message: '{$e}Twoje królestwo musi zapłacić{$sep}: {$es}$%fancy@term_take_money_amount%'
     take-resource-points:
-      message: '{$e}Twoje królestwo musi zapłacić{$sep}: {$es}%fancy_term_take_resource_points_amount% punktów zasobów.'
-      not-enough: '{$e}Twoje królestwo potrzebuje {$es}%fancy_term_take_resource_points_amount% punktów zasobów.'
+      message: '{$e}Twoje królestwo musi zapłacić{$sep}: {$es}%fancy@term_take_resource_points_amount% punktów zasobów.'
+      not-enough: '{$e}Twoje królestwo potrzebuje {$es}%fancy@term_take_resource_points_amount% punktów zasobów.'
     leave-nation:
       message: '{$e}Twoje królestwo musi opuścić naród i go rozwiązać, jeśli jesteś stolicą.'
       permanent: '{$e}Królestwo jest stolicą stałego narodu. Nie można rozwiązać stałego narodu.'
@@ -3417,12 +3417,12 @@ peace-treaties:
   war-points:
     gain:
       invade: '{$p}Twoje królestwo zdobyło {$s}%war_points% punktów wojennych {$p}za inwazję.'
-      kill: '{$p}Twoje królestwo zdobyło {$s}%war_points% punktów wojennych {$p}za zabicie {$s}%other_player% {$p}przez {$s}%player%.'
+      kill: '{$p}Twoje królestwo zdobyło {$s}%war_points% punktów wojennych {$p}za zabicie {$s}%other*player% {$p}przez {$s}%player%.'
       break-turret: '{$p}Twoje królestwo zdobyło {$s}%war_points% punktów wojennych {$p}za zniszczenie wieży {$es}%kingdoms_kingdom_name%''s %style% {$e}.'
       break-structure: '{$p}Twoje królestwo zdobyło {$s}%war_points% punktów wojennych {$p}za zniszczenie struktury {$es}%kingdoms_kingdom_name%''s %style% {$e}.'
     lost:
       invade: '{$e}Twoje królestwo straciło {$es}%war_points% punktów wojennych {$e}za przegraną inwazję.'
-      kill: '{$e}Twoje królestwo straciło {$es}%war_points% punktów wojennych {$p}za śmierć {$es}%other_player% {$e}przez {$es}%player%.'
+      kill: '{$e}Twoje królestwo straciło {$es}%war_points% punktów wojennych {$p}za śmierć {$es}%other*player% {$e}przez {$es}%player%.'
       break-turret: '{$e}Twoje królestwo straciło {$es}%war_points% punktów wojennych {$e}ponieważ {$es}%kingdoms_kingdom_name% {$e}zniszczyło twoją wieżę {$es}%style% {$e}.'
       break-structure: '{$e}Twoje królestwo straciło {$es}%war_points% punktów wojennych {$e}ponieważ {$es}%kingdoms_kingdom_name% {$e}zniszczyło twoją strukturę {$es}%style% {$e}.'
 audit-logs:
@@ -3440,8 +3440,8 @@ audit-logs:
     player:
       enter: '{$p}Proszę podać nazwę gracza, którego dzienniki chcesz zobaczyć.'
   peacetreaties:
-    received: '{$p}Twoje królestwo otrzymało traktat pokojowy od {$s}%kingdoms_other_kingdom_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
-    sent: '{$p}Twoje królestwo wysłało jeden traktat pokojowy do {$s}%kingdoms_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
+    received: '{$p}Twoje królestwo otrzymało traktat pokojowy od {$s}%other*kingdoms_kingdom_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
+    sent: '{$p}Twoje królestwo wysłało jeden traktat pokojowy do {$s}%kingdoms_kingdom_name% {$p}Sprawdź dzienniki królestwa dla więcej informacji.'
 books:
   used-by-another-session: '{$e}Wprowadzenie książki jest używane przez inną sesję. Proszę najpierw ją zakończyć.'
   cant-move: '{$e}Nie możesz przemieścić tej książki.'

@@ -1,7 +1,7 @@
 package org.kingdoms.peacetreaties.terms;
 
 import org.kingdoms.constants.namespace.Namespace;
-import org.kingdoms.constants.namespace.NamespaceRegistry;
+import org.kingdoms.constants.namespace.NamespacedRegistry;
 import org.kingdoms.constants.namespace.UnregistrableNamespaceRegistry;
 import org.kingdoms.data.Pair;
 import org.kingdoms.locale.LanguageEntry;
@@ -17,7 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public final class TermRegistry extends NamespaceRegistry<TermProvider> implements UnregistrableNamespaceRegistry<TermProvider> {
+public final class TermRegistry extends NamespacedRegistry<TermProvider> implements UnregistrableNamespaceRegistry<TermProvider> {
     private static final Map<String, TermGroupingOptions> TERM_GROUPINGS = new HashMap<>();
 
     @Override
@@ -44,7 +44,7 @@ public final class TermRegistry extends NamespaceRegistry<TermProvider> implemen
             if (conditionsSection != null) {
                 for (String condition : conditionsSection.getKeys()) {
                     String messagePath = conditionsSection.getString(condition);
-                    conditions.add(Pair.of(ConditionalCompiler.compile(condition).evaluate(), LanguageEntry.fromConfig(messagePath)));
+                    conditions.add(Pair.of(ConditionalCompiler.compile(condition).evaluate(), LanguageEntry.fromString(messagePath)));
                 }
             }
 

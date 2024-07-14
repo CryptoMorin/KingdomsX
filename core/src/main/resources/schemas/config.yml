@@ -82,7 +82,8 @@ disabled-worlds:
   (elements): World
 
 keep-admin-mode: bool
-hologram-update-ticks: int
+holograms:
+  update: Period
 
 integrations:
   (values): bool
@@ -91,6 +92,7 @@ command:
   enable-tab-colorization: bool
   name: str
   aliases: set
+  space-text: str
 
 commands:
   (optional): true
@@ -261,7 +263,9 @@ nation-name:
     (type): list
     (elements): str
 
-default-public-homes: bool
+default-flags:
+  (keys): str
+  (values): bool
 
 kingdom-fly:
   enabled: bool
@@ -454,8 +458,7 @@ nexus:
   claimed: bool
 
   break:
-    item:
-      material: Material
+    item: ItemMatcher
     creative: bool
     cost: int
 

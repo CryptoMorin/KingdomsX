@@ -5,14 +5,15 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.kingdoms.commands.admin.debugging.CommandAdminEvaluate;
 import org.kingdoms.commands.outposts.CommandOutpost;
+import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.gui.*;
 import org.kingdoms.locale.KingdomsLang;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.services.managers.ServiceHandler;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarEditor;
 import org.kingdoms.utils.compilers.MathCompiler;
-import org.kingdoms.utils.string.StringUtils;
+import org.kingdoms.utils.string.Strings;
 
 import java.util.Collection;
 import java.util.List;
@@ -27,8 +28,8 @@ public final class OutpostEditor {
         this.outpost = outpost;
     }
 
-    MessageBuilder getEdits() {
-        return new MessageBuilder()
+    MessagePlaceholderProvider getEdits() {
+        return new MessagePlaceholderProvider()
                 .withContext(player)
                 .raw("outpost-name", outpost.getName())
                 .raw("outpost-region", outpost.getRegion())
@@ -51,7 +52,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_NAME_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            if (!StringUtils.isEnglish(input)) {
+            if (!Strings.isEnglish(input)) {
                 context.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_NAME_INVALID);
                 return;
             }
@@ -61,7 +62,7 @@ public final class OutpostEditor {
             }
 
             outpost.setName(input);
-            context.getSettings().raw("outpost-new-name", input);
+            context.getMessageContext().raw("outpost-new-name", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_NAME_SET);
             openOutpostEditor();
         }).done();
@@ -72,15 +73,15 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REGION_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            if (!ServiceHandler.getWorldGuardService().hasRegion(player.getWorld(), input)) {
-                context.getSettings().raw("region", input);
+            if (!EngineHubAddon.INSTANCE.getWorldGuard().hasRegion(player.getWorld(), input)) {
+                context.getMessageContext().raw("region", input);
                 context.sendError(OutpostsLang.COMMAND_OUTPOST_CREATE_REGION_NOT_FOUND);
                 return;
             }
 
             outpost.setRegion(input);
             context.endConversation();
-            context.getSettings().raw("outpost-new-region", input);
+            context.getMessageContext().raw("outpost-new-region", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REGION_SET);
             openOutpostEditor();
         }).done();
@@ -105,7 +106,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_MAX_PARTICIPANTS_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            context.getSettings().raw("arg", input);
+            context.getMessageContext().raw("arg", input);
             int participants;
             try {
                 participants = Integer.parseInt(input);
@@ -120,7 +121,7 @@ public final class OutpostEditor {
 
             outpost.setMaxParticipants(participants);
             context.endConversation();
-            context.getSettings().raw("outpost-new-max-participants", input);
+            context.getMessageContext().raw("outpost-new-max-participants", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_MAX_PARTICIPANTS_SET);
             openOutpostEditor();
         }).done();
@@ -128,12 +129,12 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_MIN_ONLINE_MEMBERS_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            context.getSettings().raw("arg", input);
+            context.getMessageContext().raw("arg", input);
             int minOnlineMembers;
             try {
                 minOnlineMembers = Integer.parseInt(input);
             } catch (NumberFormatException ex) {
-                context.getSettings().raw("arg", input);
+                context.getMessageContext().raw("arg", input);
                 return;
             }
             if (minOnlineMembers <= 1) {
@@ -156,7 +157,7 @@ public final class OutpostEditor {
 
             outpost.setMoneyCost(compiled);
             context.endConversation();
-            context.getSettings().raw("outpost-new-entrance-money", input);
+            context.getMessageContext().raw("outpost-new-entrance-money", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_ENTRANCE_MONEY_SET);
             openOutpostEditor();
         }).done();
@@ -170,7 +171,7 @@ public final class OutpostEditor {
 
             outpost.setResourcePointsCost(compiled);
             context.endConversation();
-            context.getSettings().raw("outpost-new-entrance-resource-points-fee", input);
+            context.getMessageContext().raw("outpost-new-entrance-resource-points-fee", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_ENTRANCE_RESOURCE_POINTS_FEE_SET);
             openOutpostEditor();
         }).done();
@@ -178,6 +179,7 @@ public final class OutpostEditor {
         gui.push("rewards", this::openOutpostRewardsGUIEditor);
 
         gui.option("bossbar").onNormalClicks(context -> {
+            if (outpost.getBossBarSettings() == null) outpost.setDefaultBossBarSettings();
             BossBarEditor editor = new BossBarEditor(player, outpost.getBossBarSettings(), bossGUI -> {
                 bossGUI.option("back").onNormalClicks(player::closeInventory);
             });
@@ -267,7 +269,7 @@ public final class OutpostEditor {
             String cmd = commands.get(i);
             final int finalI = i;
 
-            cmdsOption.getSettings().raw("command", cmd);
+            cmdsOption.getMessageContext().raw("command", cmd);
             cmdsOption.on(ClickType.LEFT, (ctx) -> {
                 ctx.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REWARDS_COMMAND_ENTER);
                 ctx.startConversation();

@@ -1,21 +1,21 @@
 package org.kingdoms.peacetreaties.data
 
+import org.kingdoms.constants.KingdomsObject
 import org.kingdoms.constants.group.Group
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
 import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.metadata.KingdomMetadata
 import org.kingdoms.constants.metadata.KingdomMetadataHandler
-import org.kingdoms.constants.metadata.KingdomsObject
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
-import org.kingdoms.locale.compiler.placeholders.KingdomsPlaceholder
-import org.kingdoms.locale.compiler.placeholders.PlaceholderTranslator
+import org.kingdoms.locale.placeholders.KingdomsPlaceholderTranslator
+import org.kingdoms.locale.placeholders.PlaceholderTranslator
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
 import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.TermRegistry
-import org.kingdoms.utils.string.StringUtils
+import org.kingdoms.utils.string.Strings
 import java.time.Duration
 import java.util.*
 import java.util.function.Supplier
@@ -30,7 +30,7 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
             this.peaceTreaties = value as PeaceTreatyMap
         }
 
-    override fun toString(): String = "PeaceTreatyReceiverMeta[${StringUtils.associatedArrayMap(peaceTreaties)}]"
+    override fun toString(): String = "PeaceTreatyReceiverMeta[${Strings.associatedArrayMap(peaceTreaties)}]"
 
     override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         val provider = context.dataProvider
@@ -76,17 +76,13 @@ class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMeta
 
 @Suppress("unused")
 enum class PeaceTreatiesPlaceholder(default: Any, translator: PlaceholderTranslator) {
-    TOTAL_WAR_POINTS(0, KingdomsPlaceholder.ofKingdom { x -> x.getWarPoints().values.sum() }),
+    TOTAL_WAR_POINTS(0, KingdomsPlaceholderTranslator.ofKingdom { x -> x.getWarPoints().values.sum() }),
     WAR_POINTS(0, lambda@{ ctx ->
         val kingdom = ctx.getKingdom() ?: return@lambda null
         val otherKingdom = ctx.getOtherKingdom() ?: return@lambda null
         return@lambda kingdom.getWarPoints(otherKingdom)
     })
     ;
-
-    init {
-        KingdomsPlaceholder.of(this.name.lowercase(Locale.ENGLISH), default, translator)
-    }
 
     companion object {
         @JvmStatic

@@ -2,19 +2,25 @@ package org.kingdoms.constants.namespace;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.dataflow.qual.Pure;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.kingdoms.constants.DataStringRepresentation;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * A container that namespaces values for registration to avoid conflicts.
- * These values are usually registered inside of a {@link NamespaceRegistry}
+ * These values are usually registered inside of a {@link NamespacedRegistry}
  * <p>
- * Extending this class is usually not a good idea. The {@link NamespaceContainer} should be used instead.
+ * Extending this class is usually not a good idea. The {@link Namespaced} should be used instead.
  */
 @SuppressWarnings("PatternValidation")
-public class Namespace {
+public final class Namespace implements DataStringRepresentation {
     private final @NonNull String namespace, key;
+    private final int hashCode;
 
     // We shouldn't allow dashes because of possible math equations and config option name translations.
     private static final String ACCEPTED_KEYS = "[A-Z0-9_]{3,100}";
@@ -22,7 +28,8 @@ public class Namespace {
     private static final Pattern ACCEPTED_KEYS_PATTERN = Pattern.compile(ACCEPTED_KEYS);
     private static final Pattern ACCEPTED_NAMESPACES_PATTERN = Pattern.compile(ACCEPTED_NAMESPACES);
 
-    public static final String KINGDOMS = "kingdoms";
+    public static final String KINGDOMS = "Kingdoms";
+    public static final String MINECRAFT = "minecraft";
     private static final char SEPARATOR = ':';
 
     /**
@@ -38,6 +45,7 @@ public class Namespace {
 
         this.namespace = namespace;
         this.key = key;
+        this.hashCode = hashCode0(namespace, key);
     }
 
     @Pure
@@ -79,12 +87,21 @@ public class Namespace {
     }
 
     /**
-     * This method is only intended to be used by Kingdoms only.
+     * Official kingdom-related registries.
      */
     @NonNull
     @Pure
     public static Namespace kingdoms(@NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) String key) {
         return new Namespace(KINGDOMS, key);
+    }
+
+    /**
+     * Currently not in use.
+     */
+    @NonNull
+    @Pure
+    public static Namespace minecraft(@NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) String key) {
+        return new Namespace(MINECRAFT, key);
     }
 
     /**
@@ -108,8 +125,10 @@ public class Namespace {
      * Parses a string with the format of {@link #asNormalizedString()}
      */
     @NonNull
-    @Pure
     public static Namespace fromString(@NonNull String str) {
+        if (str == null || str.isEmpty())
+            throw new IllegalArgumentException("Cannot get namespace from null or empty string: '" + str + '\'');
+
         int separator = str.indexOf(SEPARATOR);
         if (separator == -1) return kingdoms(str);
 
@@ -119,8 +138,10 @@ public class Namespace {
         return new Namespace(namespace, key);
     }
 
-    @Pure
     public static Namespace fromConfigString(@NonNull String str) {
+        if (str == null || str.isEmpty())
+            throw new IllegalArgumentException("Cannot get namespace from null or empty string: '" + str + '\'');
+
         int separator = str.indexOf(SEPARATOR);
         if (separator == -1) return kingdoms(configOptionToEnum(str));
 
@@ -148,9 +169,13 @@ public class Namespace {
     @Override
     @Pure
     public final int hashCode() {
+        return hashCode;
+    }
+
+    private static int hashCode0(String namespace, String key) {
         int hash = 5;
-        hash = 47 * hash + this.namespace.hashCode();
-        hash = 47 * hash + this.key.hashCode();
+        hash = 47 * hash + namespace.hashCode();
+        hash = 47 * hash + key.hashCode();
         return hash;
     }
 
@@ -176,5 +201,15 @@ public class Namespace {
             else chars[i] = ((char) (ch | 0x20));
         }
         return new String(chars);
+    }
+
+    public static List<Namespace> path(String... keys) {
+        return Arrays.stream(keys).map(Namespace::kingdoms).collect(Collectors.toList());
+    }
+
+    @NotNull
+    @Override
+    public String asDataString() {
+        return asNormalizedString();
     }
 }

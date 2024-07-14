@@ -1,0 +1,203 @@
+### Shared turret settings ###
+(module):
+  description: 'Base settings for <type>.'
+  parameters:
+    <type>: str
+    <name>: str
+    <build-duration-factor>: str
+    <durability-factor>: int
+    <extra-holograms>: list
+    <block-1>: map
+    <block-2>: map
+    <block-3>: map
+
+# Maximum level this building can be upgraded to.
+max-level: 3
+
+# The amount of time for a specific type of building to be finished.
+build-duration:
+  # max() is used here just in case the duration factor is negative.
+  # opening: 'max(0, [1min] + [<build-duration-factor>])'
+  opening: '[10secs]'
+  #  upgrading: 'max(0, ([1min] + [<build-duration-factor>]) * level)'
+  upgrading: '[10 seconds]'
+  repairing: '[5sec] * (building_durability / building_max_durability)'
+  demolishing: 'building_region_blocks * [50ms]'
+
+# The durability of a building (used for things like siege cannons)
+durability: '<durability-factor> * level'
+
+preview:
+  1:
+    ok:
+      type: INFO
+      color: 0, 255, 0, 70
+      block:
+        material: GREEN_STAINED_GLASS_PANE
+    out-of-chunk:
+      type: ERROR
+      message: 'building.errors.out-of-chunk'
+      color: 250, 150, 0, 70
+      block:
+        material: ORANGE_STAINED_GLASS
+    not-owned:
+      type: ERROR
+      message: 'building.errors.not-owned'
+      color: 250, 150, 0, 70
+      block:
+        material: ORANGE_STAINED_GLASS
+    wrong-schema:
+      type: ERROR
+      message: 'building.errors.wrong-schema'
+      color: 0, 100, 250, 70
+      block:
+        material: BLUE_STAINED_GLASS
+    conflict:
+      type: ERROR
+      message: 'building.errors.conflict'
+      color: 200, 0, 0, 70
+      block:
+        material: RED_STAINED_GLASS_PANE
+
+building:
+  1:
+    # Uses the registered default.
+    # type: SINGLE_BLOCKED
+    schematic: '<type>/<name>/1'
+    functional-points: &fnPoints
+      '0, 0, 0':
+        - { type: activation, name: main }
+        - { type: interaction, name: main }
+        - { type: manual, name: main }
+    block: <block-1>
+    holograms: &holograms
+      main:
+        main:
+          background-color: 0, 0, 0, 150
+
+          # The line numbers must be specified here.
+          # If you want a custom spacing between lines,
+          # you'd have to make a new hologram.
+          lines:
+            - '{$$building.holograms.main}'
+            - '<extra-holograms>'
+
+          # The initial height for holograms is their distance from the building's origin.
+          # Offset does the same thing as height, but it also supports xyz axis.
+          # offset: 4, 0, 35.63
+          height: &height 1.5
+      opening:
+        main:
+          background-color: 0, 255, 255, 100
+          lines:
+            - '{$$building.holograms.main}'
+            - &progress1 '{$$building.holograms.progress.2}'
+            - &progress2 '{$$building.holograms.progress.3}'
+          height: *height
+      upgrading:
+        main:
+          background-color: 101, 0, 140, 100
+          lines:
+            - '{$$building.holograms.upgrading}'
+            - *progress1
+            - *progress2
+          height: *height
+      demolishing:
+        main:
+          background-color: 200, 0, 0, 100
+          lines:
+            - '{$$building.holograms.upgrading}'
+            - *progress1
+            - *progress2
+          height: *height
+      repairing:
+        main:
+          background-color: 128, 140, 0, 100
+          lines:
+            - '{$$building.holograms.repairing}'
+            - *progress1
+            - *progress2
+          height: *height
+  2:
+    schematic: '<type>/<name>/2'
+    functional-points: *fnPoints
+    block: <block-2>
+    holograms: *holograms
+  3:
+    schematic: '<type>/<name>/3'
+    functional-points: *fnPoints
+    block: <block-3>
+    holograms: *holograms
+
+sounds:
+  1:
+    opening:
+      started: ENTITY_ARROW_SHOOT
+      finished: BLOCK_ANVIL_USE
+      stopped: &stop-sound ENTITY_ITEM_BREAK
+    upgrading:
+      started: BLOCK_ANVIL_USE
+      finished: BLOCK_ANVIL_USE
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
+particles:
+  # Other entries:
+  # place-block: Particle for when a single block is placed.
+  1:
+    # This is displayed on the borders for the building.
+    opening:
+      progress:
+        particle: REDSTONE
+        color: 0, 255, 0
+        size: 2
+        count: 1
+      started: &basic-cloud
+        particle: CLOUD
+        count: 70
+        offset: 0.5, 0.5, 0.5
+      finished: *basic-cloud
+      stopped: *basic-cloud
+    upgrading:
+      started: *basic-cloud
+      stopped: *basic-cloud
+      finished: *basic-cloud
+      progress: &particle-2
+        particle: REDSTONE
+        color: 0, 0, 255
+        size: 2
+        count: 1
+    demolition:
+      started: *basic-cloud
+      stopped: *basic-cloud
+      finished: *basic-cloud
+      progress: *basic-cloud
+  2:
+    opening:
+      progress: *particle-2
+    upgrading:
+      progress: &particle-3
+        particle: REDSTONE
+        color: 255, 0, 0
+        size: 2
+        count: 1
+  3:
+    opening:
+      progress: *particle-3
+    upgrading:
+      progress: *particle-3
+
+markers:
+  1:
+    opening:
+      progress: 0, 255, 0, 70
+      paused: 0, 255, 0, 70
+    upgrading:
+      progress: 0, 255, 0, 70
+      paused: 0, 255, 0, 70
+    demolition:
+      progress: 0, 255, 0, 70
+      paused: 0, 255, 0, 70

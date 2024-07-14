@@ -5,13 +5,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Iterator;
 
 public class SharedSubIterable<E> implements Iterable<E> {
-    private final SubIterator<E> subIterable;
+    private final RangedIterator<E> subIterable;
 
     public SharedSubIterable(Iterable<E> iterable, int limit) {
-        this.subIterable = new SubIterator<>(iterable.iterator(), limit);
+        this.subIterable = new RangedIterator<>(iterable.iterator(), 0, limit);
     }
 
-    public SubIterator<E> getSharedIterator() {
+    public RangedIterator<E> getSharedIterator() {
         return subIterable;
     }
 

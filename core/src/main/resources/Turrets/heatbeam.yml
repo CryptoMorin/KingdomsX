@@ -1,18 +1,18 @@
+(import):
+  turret:
+    parameters:
+      <name>: heatbeam
+      <build-duration-factor>: '0'
+      <durability-factor>: 100
+      <skull-1>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzNhOGU0MDJkYWQxYjdkYWQ5YWFlNmY0MDE1OTMyMTgzNDI5Y2U4N2JiYmVjZWQzMTE5MDI2ZjgyOTYzMzZjMiJ9fX0='
+      <skull-2>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGE1Yzg2ODY0MTFkNDQ2YzkwYzE5MWM5M2Y4MGI5ZmZiMWNkMjQ3YWExMmEyMjZmODk3OTk4MWFkNDM4OGJlZSJ9fX0='
+      <skull-3>: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjRlNjNlNDViNDRjOGQ4OWZmM2UzM2U1YjYwMTY2Yjc5MWM3MDYwNjY2NDg1NzBiZDViODY0ODBiYTcxZjRiMSJ9fX0='
+
 name: "&9Heatbeam"
 type: arrow
 cost: 300
 sell: 100
 max-level: 3
-hologram:
-  1:
-    lines:
-      - "&8-=[ &9Heatbeam &8]=-"
-    height: 1
-placing:
-  whitelist: true
-  blocks:
-    - "REGEX:\\w+_FENCE$"
-    - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"
 particles:
   1:
     place:
@@ -47,24 +47,18 @@ speed: 1 + (lvl * 0.8)
 damage: lvl * 3
 armor-damage: lvl * 3
 
-block:
-  1: PLAYER_HEAD
-skull:
-  1: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjZlNjY5NmI2MzczOGJiY2M1ZmQ5NzM3MDllYTkwOTk3MjE1YjBjZmVlY2UyMGIyNjU5Y2I3YjM1ZjFiZjAifX19"
-  2: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjBiZmMyNTc3ZjZlMjZjNmM2ZjczNjVjMmM0MDc2YmNjZWU2NTMxMjQ5ODkzODJjZTkzYmNhNGZjOWUzOWIifX19"
-  3: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzI2OTc5Mjk0NjU5NTBjY2QzYTQ5MjNhNWU2ZWIxNWI0ZmUyYmEyYjI4NzE1ZjRhNzk5Njc4NWQ3MDYxNTgifX19"
 item:
   1:
     name: "&9Heatbeam Turret"
     material: MAGMA_CREAM
-    flags: [ HIDE_POTION_EFFECTS ]
+    flags: [ ALL ]
     lore:
       - "&6A turret that can target enemies"
       - "through walls with a high delay. It can also"
       - "give them negative effects depending on the level."
       - ""
       - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman_level%"
+      - "&7⚫ &2Level&8: &6%roman@level%"
       - "&7⚫ &2Ammo&8: &6%ammo%"
       - "&7⚫ &2Range&8: &6%range%"
       - "&7⚫ &2Max Targets&8: &6%max_targets%"

@@ -1,15 +1,15 @@
 package org.kingdoms.peacetreaties.data
 
+import org.kingdoms.constants.KingdomsObject
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
 import org.kingdoms.constants.land.abstraction.data.SerializationContext
 import org.kingdoms.constants.metadata.KingdomMetadata
 import org.kingdoms.constants.metadata.KingdomMetadataHandler
-import org.kingdoms.constants.metadata.KingdomsObject
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
-import org.kingdoms.locale.compiler.placeholders.PlaceholderContextBuilder
+import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.utils.MathUtils
 import java.util.*

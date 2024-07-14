@@ -61,9 +61,9 @@ tax:
       王国当前账户{$sep}: {$s}$%kingdom_fancy_bank%
     paid-nation: |
       {$p}共向邦联上缴了{$s}$%tax%{$p}的税款。
-      王国当前账户{$sep}: {$s}$%kingdoms_fancy_bank%
-      {$p}邦联当前账户{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    kicked: '&e%kingdom%{$e}王国无力缴纳邦联税款, 因此被移除{$sep}: &e%kingdoms_fancy_bank%{$sep}<$%tax%。'
+      王国当前账户{$sep}: {$s}$%fancy@kingdoms_bank%
+      {$p}邦联当前账户{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    kicked: '&e%kingdom%{$e}王国无力缴纳邦联税款, 因此被移除{$sep}: &e%fancy@kingdoms_bank%{$sep}<$%tax%。'
     disbanded: '{$e}你的邦联因为未缴纳{$sep}: &e$%tax%{$e}的税款而被解散了。'
     disbanded-announce: '&e%kingdom%{$e}王国因为无力缴税而解散了。'
     kicked-announce: '&e%kingdom%{$e}王国因为无力缴税从&e%nation%{$e}中被移除。'
@@ -71,10 +71,10 @@ tax:
     age: '&5你的邦联刚刚成立, 无需缴税。'
     paid: |
       {$p}总共上缴了{$s}$%tax%{$p}的税款。
-      邦联当前账户{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+      邦联当前账户{$sep}: {$s}$%fancy@kingdoms_nation_bank%
     disbanded: '{$e}你的邦联因为无力缴纳{$sep}: &e$%tax%{$e}的税款而被解散。'
-    disbanded-announce: '&e%nation%{$e}邦联因为无力缴纳税款而被解散了{$sep}: &e%kingdoms_fancy_nation_bank%{$sep}<&e$%tax%。'
-  notifications: '{$sep}[&4警告{$sep}]{$e}你的王国账户没有足够的金钱{$p}(&e%kingdoms_fancy_bank%{$p}){$e}支付下一次{$sep}: &e%tax%{$e}的税款。如果你的王国成员纳税不够, 你的王国将被解散。'
+    disbanded-announce: '&e%nation%{$e}邦联因为无力缴纳税款而被解散了{$sep}: &e%fancy@kingdoms_nation_bank%{$sep}<&e$%tax%。'
+  notifications: '{$sep}[&4警告{$sep}]{$e}你的王国账户没有足够的金钱{$p}(&e%fancy@kingdoms_bank%{$p}){$e}支付下一次{$sep}: &e%tax%{$e}的税款。如果你的王国成员纳税不够, 你的王国将被解散。'
   kick-announce: '&e%player%{$e}因为无力缴纳{$sep}: &e%tax%{$e}税款而从王国中被移除。'
   member-paid: '{$p}你缴纳了{$s}$%tax%{$p}资源点的税款。'
 in-claim-only:
@@ -96,11 +96,11 @@ siege-cannon:
   already-loaded: '{$e}攻城炮已装载完毕了。'
   hit:
     unclaimed-land: '{$e}不能向未占领的地块开炮。'
-    no-shield: '{$p}你不能向{$s}%kingdoms_name%{$p}王国开火, 他们没有护盾保护。'
-    pacifist: '{$e}已经向&e%kingdoms_name%{$e}王国开火, 但是他们是和平主义王国。'
-    destroyed-shield: '{$p}已经向{$s}%kingdoms_name%{$p}王国开火。他们的护盾已被摧毁。'
-    damaged-shield: '{$p}已经向{$s}%kingdoms_name%{$p}王国开火。他们的护盾还剩下{$sep}: {$s}%kingdoms_shield_time_left%{$p}的时间。'
-    damaged-shield-notify: '&e%attacker-kingdom%{$e}王国的攻城炮击中了你王国位于&e%attacked-chunk%{$e}的地块。剩余护盾时间{$sep}: {$s}%kingdoms_shield_time_left%{$sep}。'
+    no-shield: '{$p}你不能向{$s}%kingdoms_kingdom_name%{$p}王国开火, 他们没有护盾保护。'
+    pacifist: '{$e}已经向&e%kingdoms_kingdom_name%{$e}王国开火, 但是他们是和平主义王国。'
+    destroyed-shield: '{$p}已经向{$s}%kingdoms_kingdom_name%{$p}王国开火。他们的护盾已被摧毁。'
+    damaged-shield: '{$p}已经向{$s}%kingdoms_kingdom_name%{$p}王国开火。他们的护盾还剩下{$sep}: {$s}%time@kingdoms_shield_time_left%{$p}的时间。'
+    damaged-shield-notify: '&e%attacker-kingdom%{$e}王国的攻城炮击中了你王国位于&e%attacked-chunk%{$e}的地块。剩余护盾时间{$sep}: {$s}%time@kingdoms_shield_time_left%{$sep}。'
     players-shield: '{$e}你的护盾被攻城炮打破了。'
     build-attribute: '{$p}你的王国拥有此王国的建造权限, 因此没有方块被破坏。'
   not-ammo: '{$e}无效的弹药！'
@@ -207,12 +207,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     {$p}你的王国排名第&5%rank%{$p}, 收到了{$s}$%money%{$p}的金钱和{$s}%rp%{$p}资源点的奖励。
-    {$p}王国当前账户{$sep}: {$s}$%kingdoms_fancy_bank%{$p}。
-    {$p}王国当前资源点{$sep}: {$s}%kingdoms_fancy_resource_points%{$p}。
+    {$p}王国当前账户{$sep}: {$s}$%fancy@kingdoms_bank%{$p}。
+    {$p}王国当前资源点{$sep}: {$s}%fancy@kingdoms_resource_points%{$p}。
   nation: |
     {$p}你的邦联排名第&5%rank%{$p}, 收到了{$s}$%money%{$p}的金钱和{$s}%rp%{$p}资源点的奖励。
-    {$p}邦联当前账户{$sep}: {$s}$%kingdoms_fancy_nation_bank%{$p}。
-    {$p}邦联当前资源点{$sep}: {$s}%kingdoms_fancy_nation_resource_points%{$p}。
+    {$p}邦联当前账户{$sep}: {$s}$%fancy@kingdoms_nation_bank%{$p}。
+    {$p}邦联当前资源点{$sep}: {$s}%fancy@kingdoms_nation_resource_points%{$p}。
 upgrades:
   powerup-upgrade: '{$p}你把{$s}%powerup%{$p}升到了{$s}%level%{$p}级。'
   powerup-max: '{$e}你已将&e%powerup%{$e}升到满级。'
@@ -426,7 +426,7 @@ nexus:
       {$e}请输入有效的税率。
     shield-not-enough-resource-points: '{$e}你没有足够的资源点购买护盾。'
     shield-cooldown: '{$e}你还需要等待&e%time%{$e}才能购买护盾。'
-    shield-activated: '{$p}护盾剩余时间{$s}%kingdoms_shield_time_left%。'
+    shield-activated: '{$p}护盾剩余时间{$s}%time@kingdoms_shield_time_left%。'
     shield:
       not-enough-resource-points: '{$e}你的资源点不足。'
       cooldown:
@@ -670,14 +670,14 @@ command:
         success: |
           {$p}你把{$s}%amount%{$p}金钱存入了你的邦联银行。
           你的新账户为:{$s}%balance%
-          {$p}你邦联的新账户为{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          {$p}你邦联的新账户为{$sep}: {$s}%fancy@kingdoms_nation_bank%
         disabled: '{$e}你不能存入钱。'
       withdraw:
         disabled: '{$e}你不能支出钱。'
         success: |
           {$p}你把{$s}%amount%{$p}金钱从你的邦联银行中支出。
           你的新账户为:{$s}%balance%
-          {$p}你邦联的新账户为{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          {$p}你邦联的新账户为{$sep}: {$s}%fancy@kingdoms_nation_bank%
       negative: '{$e}你不能调度大小为负数的金钱。'
       zero: '{$e}你不能调度大小为零的金钱。'
       name: bank
@@ -694,21 +694,21 @@ command:
         {$p}| {$p}核心{$sep}: {$s}%kingdoms_nation_nexus%
         {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_nation_since%
         {$p}| {$p}势力{$sep}: {$s}%kingdoms_nation_might%
-        {$p}| {$p}护盾{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        {$p}| {$p}银行{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
+        {$p}| {$p}护盾{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Tax{$sep}: {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
         {$p}| {$p}资源点{$sep}: {$s}%kingdoms_nation_resource_points%
 
         {$p}| {$p}王国{$sep}: 
         %kingdoms%
       message: |
-        {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
+        {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
         {$p}| {$p}国王{$sep}: {$s}%king_status%
         {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
         {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_nation_since%
         {$p}| {$p}势力{$sep}: {$s}%kingdoms_might%
-        {$p}| {$p}护盾{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        {$p}| {$p}银行{$sep}: {$s}%kingdoms_fancy_nation_bank%
+        {$p}| {$p}护盾{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        {$p}| {$p}银行{$sep}: {$s}%fancy@kingdoms_nation_bank%
         {$p}| {$p}地块{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
         {$p}| {$p}资源点{$sep}: {$s}%kingdoms_resource_points%
 
@@ -724,10 +724,10 @@ command:
         {$p}| {$p}敌人{$sep}: 
         &e%enemies%
       kingdoms: |
-        hover:{{$s}%kingdoms_name%;&成员{$sep}: {$s}%kingdoms_members%
+        hover:{{$s}%kingdoms_kingdom_name%;&成员{$sep}: {$s}%kingdoms_members%
          {$p}国王{$sep}: {$s}%kingdoms_king%
          {$p}地块{$sep}: {$s}%kingdoms_lands%}
-      relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_name%。'
+      relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%。'
       name: show
       aliases: info who
       members-etc: '{$sep}... [{$p}and {$s}%remaining% {$p}more{$sep}]'
@@ -856,8 +856,8 @@ command:
       negative: '{$e}没有负数页。'
       entry: |
         {$sep}♦ {$p}%rank%.hover:{{$p}%kingdoms_nation%;{$p}♦ {$p}成员{$sep}: {$s}%kingdoms_nation_kingdoms%
-        {$p}♦ {$p}资源点{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        {$p}♦ {$p}银行{$sep}: {$s}$%kingdoms_fancy_nation_bank%} {$p}- {$s}%kingdoms_fancy_nation_might%
+        {$p}♦ {$p}资源点{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        {$p}♦ {$p}银行{$sep}: {$s}$%fancy@kingdoms_nation_bank%} {$p}- {$s}%fancy@kingdoms_nation_might%
       name: top
     kick:
       description: '{$s}把一个王国从你的邦联中移除。'
@@ -873,7 +873,7 @@ command:
       {$e}你的王国是邦联的中心, 不能离开邦联。
       你有两种选择: 输入/k nation disband以解散邦联, 
       {$e}或输入{$usage} nation capital 以更改中心。
-    leave-announce: '&e%kingdoms_name%{$e}王国离开了邦联！'
+    leave-announce: '&e%kingdoms_kingdom_name%{$e}王国离开了邦联！'
     broadcast-description: '{$s}向所有邦联成员广播一条消息。'
     broadcast-usage: '{$usage} nation broadcast {$p}<消息>'
     capital:
@@ -884,7 +884,7 @@ command:
       usage: '{$usage} nation capital {$p}<王国>'
       name: capital
       aliases: king
-      already: '{$es}%kingdoms_other_kingdom_name% {$e}已是邦联中心。'
+      already: '{$es}%other*kingdoms_kingdom_name% {$e}已是邦联中心。'
     ally:
       description: '{$s}向一个邦联发送一个结盟申请。'
       usage: '{$usage} nation ally {$p}<邦联>'
@@ -950,7 +950,7 @@ command:
     description: '{$s}展示可用的邦联指令。'
     broadcast-format: |
 
-      {$sep}[{$s}%kingdoms_nation%{$p}-{$s}%kingdoms_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%{$p}-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
+      {$sep}[{$s}%kingdoms_nation%{$p}-{$s}%kingdoms_kingdom_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%{$p}-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
     spawn-not-set-others: '&e%nation% {$e}未设置他们的家。'
     spawn-permission: '{$e}你缺少以下权限: 传送至其他邦联的家。'
     spawn-not-public: '&e%nation% {$e}邦联的家不是公共的。'
@@ -1057,19 +1057,19 @@ command:
       success: |
         {$p}你成功地用{$s}%rp%{$p}资源点换取了{$s}$%worth%金钱。
         {$p}你的新银行账户{$sep}: {$s}$%balance%
-        {$p}你的王国资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
+        {$p}你的王国资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
     transfer:
       description: '{$s}从你的王国/邦联中支出/存入资源点。'
       usage: '{$usage} rp transfer {$p}<王国|邦联> <资源点>'
       success:
         kingdom: |
           {$p}你成功地把{$s}%amount%{$p}资源点从你的邦联转入了你的王国。
-          邦联资源点{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}王国资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
+          邦联资源点{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}王国资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
         nation: |
           {$p}你成功地把{$s}%amount%{$p}资源点从你的王国转入了你的邦联。
-          邦联资源点{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}王国资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
+          邦联资源点{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}王国资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
       kingdom-usage: '{$usage} rp transfer kingdom {$p}<资源点>'
       nation-usage: '{$usage} rp transfer nation {$p}<资源点>'
       kingdom:
@@ -1101,7 +1101,7 @@ command:
       success: |
         {$p}你向你王国账户中存入了{$s}%amount%{$p}金钱。
         你的新账户为{$sep}: {$s}%balance%
-        {$p}王国银行账户{$sep}: {$s}%kingdoms_fancy_bank%
+        {$p}王国银行账户{$sep}: {$s}%fancy@kingdoms_bank%
       disabled: '{$e}你不能存入钱。'
       min: '{$e}你至少要存入&e$%min%。'
     withdraw:
@@ -1110,53 +1110,53 @@ command:
       success: |
         {$p}你从你王国账户中取出了{$s}%amount%{$p}金钱。
         你的新账户为{$sep}: {$s}%balance%
-        {$p}王国银行账户{$sep}: {$s}%kingdoms_fancy_bank%
+        {$p}王国银行账户{$sep}: {$s}%fancy@kingdoms_bank%
     aliases: money $
   show:
     description: '{$s}展示一个王国的信息。'
     usage: '{$usage} show {$sp}[player | kingdom | #PLAYER] {$p}<玩家|王国>'
     others-permission: '{$e}你缺少以下权限: 查看他人的信息。'
     message-admin: |
-      {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
+      {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}: {$s}%king_status%
       {$p}| {$p}家{$sep}: {$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}: {$s}%kingdoms_nexus%
       {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
-      {$p}| {$p}势力{$sep}: {$s}%kingdoms_fancy_might%
-      {$p}| {$p}银行{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
+      {$p}| {$p}势力{$sep}: {$s}%fancy@kingdoms_might%
+      {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Tax{$sep}: {$s}$%fancy@kingdoms_tax% {$sep}- {$s}$%fancy@kingdoms_server_kingdom_tax%
       {$p}| {$p}地块{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
-      {$p}| {$p}资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
-      {$p}| {$p}护盾{$sep}: {$s}%kingdoms_shield_time_left%
+      {$p}| {$p}资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
+      {$p}| {$p}护盾{$sep}: {$s}%time@kingdoms_shield_time_left%
       {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_since%
       {$p}| {$p}成员{$sep}: {$s}%kingdoms_members%{$p}/{$s}%kingdoms_max_members%
       %members%
     message: |
-      {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
+      {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}: {$s}%king_status%
       {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
       {$p}| {$p}势力{$sep}: {$s}%kingdoms_might%
       {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_since%
-      {$p}| {$p}护盾{$sep}: {$s}%kingdoms_shield_time_left%
+      {$p}| {$p}护盾{$sep}: {$s}%time@kingdoms_shield_time_left%
       {$p}| {$p}地块{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
-      {$p}| {$p}银行{$sep}: {$s}$%kingdoms_fancy_bank%
-      {$p}| {$p}资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
+      {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank%
+      {$p}| {$p}资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
 
       {$p}| {$p}成员{$sep}: 
       %members%
     message-console: |
-      {$sep}&m---------------=({$e}&l %kingdoms_name% {$sep}&m)=---------------
+      {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}: {$s}%king_status%
       {$p}| {$p}家{$sep}: {$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}: {$s}%kingdoms_nexus%
       {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
-      {$p}| {$p}势力{$sep}: {$s}%kingdoms_fancy_might%
-      {$p}| {$p}银行{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
+      {$p}| {$p}势力{$sep}: {$s}%fancy@kingdoms_might%
+      {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Tax{$sep}: {$s}$%fancy@kingdoms_tax% {$sep}- {$s}$%fancy@kingdoms_server_kingdom_tax%
       {$p}| {$p}地块{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
-      {$p}| {$p}资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
-      {$p}| {$p}护盾{$sep}: {$s}%kingdoms_shield_time_left%
+      {$p}| {$p}资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
+      {$p}| {$p}护盾{$sep}: {$s}%time@kingdoms_shield_time_left%
       {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_since%
       {$p}| {$p}成员{$sep}: {$s}%kingdoms_members%{$p}/{$s}%kingdoms_max_members% %members%
     allies: |
@@ -1174,7 +1174,7 @@ command:
        {$p}上次捐献{$sep}: {$s}%kingdoms_last_donation_time%
        {$p}权限组{$sep}: {$s}%kingdoms_rank_name%}
     offline-prefix: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%。'
-    relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_name%。'
+    relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%。'
     aliases: info who list
     members-etc: '{$sep}... hover:{[{$p}and {$s}%remaining% {$p}more{$sep}];Click to see in the GUI;/k gui structures/nexus/members}'
   claim:
@@ -1285,9 +1285,9 @@ command:
     no-shield: '{$e}你的王国目前没有盾。'
     confirm: |
       {$e}如果你禁用你的盾, 你需要买新的护盾。
-      剩余护盾时间{$sep}: &e%kingdoms_shield_time_left%
+      剩余护盾时间{$sep}: &e%time@kingdoms_shield_time_left%
       {$e}若要继续, 输入hover:{{$usage} shield confirm;/k shield confirm;/k shield confirm}{$e}以确定。
-    deactivated: '&e%executor%{$e}禁用了还有&e%kingdoms_shield_time_left%{$e}的王国护盾。'
+    deactivated: '&e%executor%{$e}禁用了还有&e%time@kingdoms_shield_time_left%{$e}的王国护盾。'
   unclaim:
     description: '{$s}放弃你脚下的地块。'
     success: '{$p}放弃了位于{$s}%x%{$p}, {$s}%z%的地块。'
@@ -1401,7 +1401,7 @@ command:
       所有成员将会被移除且全部地块都会被放弃。
       你确定要继续吗?
       再次输入{$usage} disband &4以确定。
-    announce: '&e%player%{$s}解散了他们的王国&e%kingdoms_name%。'
+    announce: '&e%player%{$s}解散了他们的王国&e%kingdoms_kingdom_name%。'
     aliases: delete dissolve
   about:
     description: '{$s}关于王国插件的一些信息。'
@@ -1574,7 +1574,7 @@ command:
       description: '{$s}为一个王国强制占领你脚下的地块。'
       usage: '{$usage} admin claim {$p}<王国>'
       success: '{$p}将{$s}%x%{$p}, {$s}%z% {$p}占领为王国地块。'
-      already-claimed: '{$e}这块地块已经被&e%kingdoms_name%{$e}占领了。'
+      already-claimed: '{$e}这块地块已经被&e%kingdoms_kingdom_name%{$e}占领了。'
       name: claim
     rank:
       description: '{$s}改变一个玩家在王国的权限组'
@@ -1654,8 +1654,8 @@ command:
     bank:
       description: '{$s}存入或取出一个王国账户里的钱'
       usage: '{$usage} admin bank {$p}<王国> {$sp}[set | add | remove] {$p}<数目>'
-      done: '{$s}%kingdom%{$p}的新银行账户为{$sep}: {$s}%kingdoms_fancy_bank%。'
-      added: '{$p}你王国的新银行账户为{$sep}: {$s}%kingdoms_fancy_bank%。'
+      done: '{$s}%kingdom%{$p}的新银行账户为{$sep}: {$s}%fancy@kingdoms_bank%。'
+      added: '{$p}你王国的新银行账户为{$sep}: {$s}%fancy@kingdoms_bank%。'
       invalid-action: '{$e}无效的行为&e%action%{$e}！可用的行为{$sep}: &eadd/remove/set'
       invalid-kingdom: '{$e}找不到王国&e%kingdom%。'
       name: bank
@@ -1683,7 +1683,7 @@ command:
       usage: '{$usage} admin join {$p}<玩家> <王国>'
       invalid-kingdom: '{$e}找不到王国&e%kingdom%。'
       in-kingdom: |
-        {$s}%player%{$p}已经在{$s}%kingdoms_name%{$p}王国里了。
+        {$s}%player%{$p}已经在{$s}%kingdoms_kingdom_name%{$p}王国里了。
         {$p}如果你要继续, {$sep}: hover:{{$s}/k admin join %player% %kingdom% confirm;{$p}点击此处以确定。;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '{$s}%player%{$p}已经在{$s}%kingdom%{$p}王国里了。'
       success: '{$s}%player%{$p}现在是{$s}%kingdom%的一员了。'
@@ -1741,7 +1741,7 @@ command:
       info: |
         {$p}| {$p}名字{$sep}: {$s}%player% {$sep}(hover:{&5%id%;{$p}点击复制;|%id%}{$sep})
         {$p}| {$p}管理{$sep}: %admin% {$p}| {$p}间谍{$sep}: %spy%
-        {$p}| {$p}王国{$sep}: {$s}%kingdoms_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
+        {$p}| {$p}王国{$sep}: {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
         {$p}| {$p}权限组{$sep}: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
         {$p}| {$p}邦联权限组{$sep}: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%{$p}| {$p}Chat Channel{$sep}: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         {$p}| {$p}使用的标记{$sep}: %visualizer%
@@ -1753,7 +1753,7 @@ command:
         {$p}| {$p}占领地块数{$p}({$s}%kingdoms_claims%{$p}){$sep}: %claims%
         {$p}| {$p}压缩数据{$sep}: {$s}%compressed%
       found: '{$p}玩家{$s}%name% {$sep}({$p}%uuid%{$sep}) {$p}在以下王国中{$sep}: '
-      kingdom: '{$sep}-{$p}%kingdoms_name%{$sep}({$s}%uuid%{$sep})'
+      kingdom: '{$sep}-{$p}%kingdoms_kingdom_name%{$sep}({$s}%uuid%{$sep})'
       no-duplicates: '{$e}这个玩家的王国并不重复。'
       name: player
       aliases: info
@@ -1945,18 +1945,18 @@ command:
       scanning: '{$p}正在加载并扫描全部数据文件……这会花费一点时间。'
       corruption:
         kingdom:
-          unknown-relationship-request: '{$sep}⚫ {$e}未知的王国外交关系请求{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_uuid%{$sep}) - {$e}对于王国{$sep}: {$es}%other_kingdom_uuid%'
+          unknown-relationship-request: '{$sep}⚫ {$e}未知的王国外交关系请求{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_uuid%{$sep}) - {$e}对于王国{$sep}: {$es}%other*kingdom_uuid%'
           nation: '{$sep}⚫ {$e}未知的王国邦联{$sep}: {$e}邦联{$sep}: {$es}%nation_id% {$sep}- {$e}王国{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
           wrong-king: '{$sep}⚫ {$e}王国国王的数据已损坏, 已将国王切换为另一位随机王国成员{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_uuid% {$sep}| {$e}旧国王{$sep}: {$es}%old_king_uuid% {$sep}-> {$e}新国王{$sep}: {$es}%player% {$sep}({$es}%new_king_uuid%{$sep})'
           unknown-player: '{$sep}⚫ {$e}未知的王国玩家{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_uuid%{$sep}) - {$e}玩家{$sep}: {$es}%player_uuid%'
-          unknown-relationship: '{$sep}⚫ {$e}未知的王国外交关系{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_uuid%{$sep}) - {$e}对于王国{$sep}: {$es}%other_kingdom_uuid%'
+          unknown-relationship: '{$sep}⚫ {$e}未知的王国外交关系{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_uuid%{$sep}) - {$e}对于王国{$sep}: {$es}%other*kingdom_uuid%'
           unknown-claim: '{$sep}⚫ {$e}未知的地块占领{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_uuid%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
           no-members: '{$sep}⚫ {$e}王国没有任何成员, 将会解散{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_uuid%'
-          relationship-mismatch: '{$sep}⚫ {$e}王国间不对等外交关系{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}外交关系{$sep}: {$es}%second_relation%'
-          relationship-both-forms-exist: '{$sep}⚫ {$e}两个王国之间, 其一对另一个王国有已确定的外交关系, 但后者对前者的外交关系申请仍存在{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
+          relationship-mismatch: '{$sep}⚫ {$e}王国间不对等外交关系{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}外交关系{$sep}: {$es}%second_relation%'
+          relationship-both-forms-exist: '{$sep}⚫ {$e}两个王国之间, 其一对另一个王国有已确定的外交关系, 但后者对前者的外交关系申请仍存在{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}外交关系{$sep}: {$es}%second_relation%'
           pacifism: '{$sep}⚫ {$e}和平模式已禁用, 但和平主义王国仍然存在{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
-          relationship-both-requested: '{$sep}⚫ {$e}两个王国向彼此发送了外交关系申请{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}外交关系{$sep}: {$es}%second_relation%'
+          relationship-both-requested: '{$sep}⚫ {$e}两个王国向彼此发送了外交关系申请{$sep}: {$e}王国1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}外交关系{$sep}: {$es}%first_relation% {$sep}- {$e}王国2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}外交关系{$sep}: {$es}%second_relation%'
         nation:
           wrong-capital: '{$sep}⚫ {$e}邦联中心的数据已损坏, 已将中心切换为另一位随机成员国。{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_uuid% {$sep}| {$e}旧中心{$sep}: {$es}%old_capital_uuid% {$sep}-> {$e}新中心{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%new_capital_uuid%{$sep})'
           kingdom: '{$sep}⚫ {$e}未知的成员国{$sep}: {$e}邦联{$sep}: {$es}%nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}王国{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
@@ -1978,7 +1978,7 @@ command:
           node-mistmatch: '{$sep}⚫ {$e}权限组节点匹配错误{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%node% {$sep}| {$e}编码节点{$es}%encoded_node%'
           missing-pair: '{$sep}⚫ {$e}权限组优先级映射在%mode%模式中没有对应编码{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%node% {$sep}| {$e}优先级{$es}%priority%'
           kingdom-king: '{$sep}⚫ {$e}王国国王没有国王权限组{$sep}: {$e}王国{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}玩家{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}权限组{$sep}: {$es}%rank%'
-          different-instance: '{$sep}⚫ {$e}权限组映射在%mode%模式下有不同实例{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}其他权限组{$sep}: {$es}%other_rank%'
+          different-instance: '{$sep}⚫ {$e}权限组映射在%mode%模式下有不同实例{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}其他权限组{$sep}: {$es}%other*rank%'
           priority-mistmatch: '{$sep}⚫ {$e}错误的权限组优先级匹配{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%node% {$sep}| {$e}编码优先级{$es}%encoded_priority% {$sep}| {$e}实例优先级{$es}%priority%'
           missing: '{$sep}⚫ {$e}仅有少于两个权限组{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}权限组{$sep}: {$es}%ranks%'
           unknown: '{$sep}⚫ {$e}未知的玩家权限组{$sep}: {$e}组{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}权限组{$sep}: {$es}%node% {$sep}| {$e}玩家{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
@@ -2199,10 +2199,10 @@ command:
     no-more-pages: '{$e}没有更多页了。'
     negative: '{$e}没有负数页。'
     entry: |
-      {$sep}♦ {$p}%rank%.hover:{{$p}%kingdoms_name%;{$p}♦ {$p}成员{$sep}: {$s}%kingdoms_members%
+      {$sep}♦ {$p}%rank%.hover:{{$p}%kingdoms_kingdom_name%;{$p}♦ {$p}成员{$sep}: {$s}%kingdoms_members%
       {$p}♦ {$p}地块{$sep}: {$s}%kingdoms_lands%{$p}/{$s}%kingdoms_max_lands%
-      {$p}♦ {$p}资源点{$sep}: {$s}%kingdoms_fancy_resource_points%
-      {$p}♦ {$p}银行{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_name%} {$p}- {$s}%kingdoms_fancy_might%
+      {$p}♦ {$p}资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
+      {$p}♦ {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} {$p}- {$s}%fancy@kingdoms_might%
     name: top
   map:
     description: '{$s}展示你附近王国和设施的地图。'
@@ -2256,7 +2256,7 @@ command:
     disabled:
       invader: '{$e}你不能投降。'
       defender: '{$e}你不能投降。'
-    defender-surrendered: '{$s}%kingdoms_name%{$p}的成员{$s}%player%{$p}投降了！这片地块的新主人是{$sep}: {$s}%kingdom%王国。'
+    defender-surrendered: '{$s}%kingdoms_kingdom_name%{$p}的成员{$s}%player%{$p}投降了！这片地块的新主人是{$sep}: {$s}%kingdom%王国。'
     defender-permission: '{$e}你缺少以下权限: 投降。'
     no-invasion: '{$e}你没有入侵其他王国, 也没有被入侵, 你投降干什么???'
     description: |
@@ -2370,7 +2370,7 @@ command:
     already: '{$e}你已经向&e%kingdom%{$e}王国宣战了。'
     self: '{$e}你不能向自己的王国宣战……(晃晃脑袋吧, 听听大海的声音~)'
     enemies: '{$e}你现在与&e%kingdom%{$e}处于敌对状态了。'
-    notify: '{$es}%kingdoms_name%{$e}向%kingdoms_other_name%宣战了。{$e}不幸的是, 这两个王国都是你的盟友。'
+    notify: '{$es}%kingdoms_kingdom_name%{$e}向%other*kingdoms_name%宣战了。{$e}不幸的是, 这两个王国都是你的盟友。'
     cost: '{$e}你需要{$es}%cost%资源点{$e}才能宣战。'
     name: enemy
     aliases: enemies
@@ -2417,8 +2417,8 @@ command:
     direct:
       message-missing: '{$e}你需要给&e%kingdom%{$e}王国直接发送一份消息。'
       message-self: '{$e}你不能给自己的王国发消息……'
-      message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]{$p}|{$sep}[{$sp}%kingdoms_name%{$sep}]{$p}->{$sep}[{$sp}%receiver-kingdom%{$sep}]%displayname%{$p}≫{$s}%message%'
-      message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]{$p}|{$sep}[{$sp}%kingdoms_name%{$sep}]%displayname%{$p}≫{$s}%message%。'
+      message-sender-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]{$p}|{$sep}[{$sp}%kingdoms_kingdom_name%{$sep}]{$p}->{$sep}[{$sp}%receiver-kingdom%{$sep}]%displayname%{$p}≫{$s}%message%'
+      message-receiver-format: '{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}]{$p}|{$sep}[{$sp}%kingdoms_kingdom_name%{$sep}]%displayname%{$p}≫{$s}%message%。'
     muted-channel: '{$e}你不能在屏蔽的频道里说话。输入 &ehover:{/k unmute %channel%;&e点击解除屏蔽;/k unmute %internal-name%} {$e}以解除屏蔽。'
     tab-completion-message: '[消息]'
     aliases: channel chan c
@@ -2426,7 +2426,7 @@ command:
     description: '{$s}给所有王国成员广播一条消息。'
     usage: '{$usage} broadcast {$p}<消息>'
     cooldown: '{$e}你需要等&e%time%{$e}之后才能再次广播消息。'
-    format: "\n{$sep}[{$s}%kingdoms_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% \n"
+    format: "\n{$sep}[{$s}%kingdoms_kingdom_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% \n"
     name: broadcast
     aliases: bc announce
   king:
@@ -2698,9 +2698,9 @@ command:
   rejectrelation:
     description: '{$s}拒绝一个发往你王国的外交关系申请。'
     usage: '{$usage} rejectrelation {$p}<王国>'
-    not-requested: '&e%kingdoms_name% {$e}没有申请任何关系。'
-    rejected: '{$e}拒绝了 &e%kingdoms_name%{$e} 王国发送的的 &e%relation% {$e}关系申请。'
-    notification: '{$e}%kingdoms_name% &e拒绝了你的 %relation% {$e}关系申请。'
+    not-requested: '&e%kingdoms_kingdom_name% {$e}没有申请任何关系。'
+    rejected: '{$e}拒绝了 &e%kingdoms_kingdom_name%{$e} 王国发送的的 &e%relation% {$e}关系申请。'
+    notification: '{$e}%kingdoms_kingdom_name% &e拒绝了你的 %relation% {$e}关系申请。'
   mute:
     description: '{$s}屏蔽一个频道。'
     usage: '{$usage} mute {$p}<频道>'
@@ -2726,8 +2726,8 @@ command:
     yourself: '{$e}你不能挑战你自己的王国……你可以吗?'
     already-challenged: '{$e}你的王国已经在挑战这个王国了。'
     not-invadable: '{$e}你要挑战的王国没有入侵关系属性。'
-    challenged: '&e%kingdoms_name% {$e}王国的 &e%player% {$e}挑战了你的王国。浏览王国编年史了解更多消息。'
-    notify-self-members: '&e%player% {$e}挑战了 &e%kingdoms_name% {$e}王国。'
+    challenged: '&e%kingdoms_kingdom_name% {$e}王国的 &e%player% {$e}挑战了你的王国。浏览王国编年史了解更多消息。'
+    notify-self-members: '&e%player% {$e}挑战了 &e%kingdoms_kingdom_name% {$e}王国。'
     name: challenge
   not-intended-for-direct-use: '{$e}此指令不应被玩家直接使用, 所以除非你没有使用指令而看见此消息, 这就是一个bug。'
   invitecodes:
@@ -2738,8 +2738,8 @@ command:
       get: '{$e}你缺少以下权限: 获取纸质邀请码。'
       create: '{$e}你缺少以下权限: 创建邀请码。'
     paper:
-      cost: '{$e}你需要{$es}%fancy_invitecode-paper-cost%{$e}资源点才能生成一张纸质邀请码。'
-      give: '{$p}花费{$s}%fancy_invitecode-paper-cost%{$p}资源点获取了一张纸质邀请码。'
+      cost: '{$e}你需要{$es}%fancy@invitecode-paper-cost%{$e}资源点才能生成一张纸质邀请码。'
+      give: '{$p}花费{$s}%fancy@invitecode-paper-cost%{$p}资源点获取了一张纸质邀请码。'
     max: '{$e}王国最多只能有{$es}%invitecodes-max%{$e}个邀请码。'
     duration:
       enter: '{$p}请输入邀请码的过期时间, {$sep}({$s}如 1day 或输入0表示永不过期, {$sep}){$p}{$cancel}{$p}取消。'
@@ -2771,8 +2771,8 @@ command:
     name: peacetreaty
     already-accepted: '{$e}你的王国已经接受了这份和平条约。'
     no-contracts: '{$e}你的王国未收到任何和平条约。'
-    no-contract-from-kingdom: '{$e}你的王国未收到任何来自{$es}%kingdoms_name%{$e}王国的和平条约。'
-    no-contract-to-kingdom: '{$e}你的王国与{$es}%kingdoms_name%{$e}王国没有任何条约。'
+    no-contract-from-kingdom: '{$e}你的王国未收到任何来自{$es}%kingdoms_kingdom_name%{$e}王国的和平条约。'
+    no-contract-to-kingdom: '{$e}你的王国与{$es}%kingdoms_kingdom_name%{$e}王国没有任何条约。'
     aliases: peacetreaties pt
     miscupgrades:
       description: '{$s}更改条约下的杂项升级。'
@@ -2786,23 +2786,23 @@ command:
       description: '{$s}查看一份和平条约以决定是否接受。'
       name: review
       aliases: view
-      header: '{$es}%kingdoms_other_name%{$e}的和平条约包含以下条款{$sep}: '
+      header: '{$es}%other*kingdoms_name%{$e}的和平条约包含以下条款{$sep}: '
       terms: '{$sep}⚫%term_message%'
-      footer: '{$e}你可以输入{$es}hover:{/k pt accept %kingdoms_other_name%;&7或点我;|/k pt accept %kingdoms_other_name%}{$e}以接受。'
+      footer: '{$e}你可以输入{$es}hover:{/k pt accept %other*kingdoms_name%;&7或点我;|/k pt accept %other*kingdoms_name%}{$e}以接受。'
     accept:
       name: accept
       description: '{$s}接受一份和平条约。'
       failed: '{$e}你的王国并未满足条约的全部条件, 因此无法接受{$sep}: '
       accepted:
-        receiver: '{$p}你的王国接受了{$s}%kingdoms_other_name%{$p}王国发送的和平条约。'
-        sender: '{$s}%kingdoms_name%{$p}接受了你的王国发送的和平条约。'
+        receiver: '{$p}你的王国接受了{$s}%other*kingdoms_name%{$p}王国发送的和平条约。'
+        sender: '{$s}%kingdoms_kingdom_name%{$p}接受了你的王国发送的和平条约。'
       usage: '{$usage}pt accept {$p}<王国>'
     reject:
       description: '{$s}拒绝一份和平条约。'
       name: reject
       notifications:
-        receiver: '{$p}你的王国拒绝了{$s}%kingdoms_other_name%{$p}王国发送的和平条约。'
-        sender: '{$s}%kingdoms_name%{$p}拒绝了你的王国发送的和平条约。'
+        receiver: '{$p}你的王国拒绝了{$s}%other*kingdoms_name%{$p}王国发送的和平条约。'
+        sender: '{$s}%kingdoms_kingdom_name%{$p}拒绝了你的王国发送的和平条约。'
       usage: '{$usage}pt reject {$p}<王国>'
   joinrequests:
     denied-self: '{$e}你拒绝了玩家{$es}%player%{$e}发送的加入王国请求。'
@@ -2911,36 +2911,36 @@ lands:
   visualizer:
     no-kingdom:
       titles:
-        title: '%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_lore%'
+        title: '%other*kingdoms_name%'
+        subtitle: '%other*kingdoms_lore%'
     neutral:
       titles:
-        title: '%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '%other*kingdoms_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     wilderness:
       actionbar: '{$sep}&l-=({$p}&l无主之地{$sep}&l)=-'
     self:
       titles:
         title: '&a%kingdoms_kingdom_name%'
-        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+        subtitle: '%hex@kingdoms_kingdom_color%%kingdoms_lore%'
     enemy:
       titles:
-        title: '&c%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&c%other*kingdoms_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     ally:
       titles:
-        title: '&6%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&6%other*kingdoms_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation:
       titles:
-        title: '&9%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&9%other*kingdoms_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%邦联区域{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%邦联区域{$sep}: %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     truce:
       titles:
-        title: '&e%kingdoms_other_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&e%other*kingdoms_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
   grow-structure-protected: '{$e}你不能在这里执行此操作, 这个地方有上锁的方块, 坐标 {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
   grow-structure-error: '{$e}你不能在这里执行此操作, 此操作会在以下坐标导致问题: {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
 guis:
@@ -3015,7 +3015,7 @@ mails:
   notifications:
     join: '{$p}你有{$s}%mails%{$p}封新邮件。打开邮箱以查看。'
     receivers: |
-      {$sp}%kingdoms_name% {$p}王国的 {$sp}%player% {$p}给你发送了一封邮件{$sep}: 
+      {$sp}%kingdoms_kingdom_name% {$p}王国的 {$sp}%player% {$p}给你发送了一封邮件{$sep}: 
     hover:{&f%subject%;{$sp}点击阅读;/k mail open %id%}:
   primary-none: '{$e}无'
   cc:
@@ -3082,7 +3082,7 @@ bossbar:
 misc:
   upgrades:
     alerts:
-      notify-members: '{$e}敌国{$es}%kingdoms_name%{$e}的玩家{$es}%player%{$e}进入了你王国的地块, 坐标{$sep}: {$es}%world%{$p}, {$es}%x%{$p}, {$es}%y%{$p}, {$es}%z%'
+      notify-members: '{$e}敌国{$es}%kingdoms_kingdom_name%{$e}的玩家{$es}%player%{$e}进入了你王国的地块, 坐标{$sep}: {$es}%world%{$p}, {$es}%x%{$p}, {$es}%y%{$p}, {$es}%z%'
 unlimited: '&5无限制'
 no-nation-other: '{$e}这个王国不在邦联中。'
 enabled: '{$p}✔'
@@ -3239,12 +3239,12 @@ peace-treaties:
   terms:
     min: '{$e}你需要指定至少{$es}%terms_min%{$e}项条款。'
     take-money:
-      not-enough: '{$e}你的王国需要{$es}$%fancy_term_take_money_amount%{$e}金钱。'
+      not-enough: '{$e}你的王国需要{$es}$%fancy@term_take_money_amount%{$e}金钱。'
       enter: '{$p}输入你希望对方支付的资源点数量。'
-      message: '{$e}你的王国必须支付{$sep}: {$es}$%fancy_term_take_money_amount%'
+      message: '{$e}你的王国必须支付{$sep}: {$es}$%fancy@term_take_money_amount%'
     take-resource-points:
-      message: '{$e}你的王国必须支付{$sep}: {$es}%fancy_term_take_resource_points_amount%{$e}资源点。'
-      not-enough: '{$e}你的王国需要{$es}%fancy_term_take_resource_points_amount%{$e}资源点。'
+      message: '{$e}你的王国必须支付{$sep}: {$es}%fancy@term_take_resource_points_amount%{$e}资源点。'
+      not-enough: '{$e}你的王国需要{$es}%fancy@term_take_resource_points_amount%{$e}资源点。'
     leave-nation:
       message: '{$e}你的王国必须离开邦联, 若为邦联中心则需解散邦联。'
       permanent: '{$e}王国是一个永久模式邦联的中心, 无法解散。'
@@ -3286,16 +3286,16 @@ peace-treaties:
       break-structure: '{$e}你的王国失去了{$es}%war_points%{$e}战争点。原因{$sep}: {$es}%kingdoms_kingdom_name%{$e}王国破坏了你王国的{$es}%style%{$e}设施。'
       invade: '{$e}你的王国失去了{$es}%war_points%{$e}战争点。原因{$sep}: {$e}入侵失败。'
       break-turret: '{$e}你的王国失去了{$es}%war_points%{$e}战争点。原因{$sep}: {$es}%kingdoms_kingdom_name%{$e}王国破坏了你王国的{$es}%style%{$e}防御塔。'
-      kill: '{$e}你的王国失去了{$es}%war_points%{$e}战争点。原因{$sep}: 成员{$es}%other_player%{$e}被玩家{$es}%player%{$e}击杀。'
+      kill: '{$e}你的王国失去了{$es}%war_points%{$e}战争点。原因{$sep}: 成员{$es}%other*player%{$e}被玩家{$es}%player%{$e}击杀。'
     gain:
       break-turret: '{$p}你的王国得到了{$es}%war_points%{$p}战争点。原因{$sep}: {$p}破坏了{$es}%kingdoms_kingdom_name%{$p}王国的{$es}%style%{$p}防御塔。'
-      kill: '{$p}你的王国得到了{$es}%war_points%{$p}战争点。原因{$sep}: {$p}玩家{$s}%player%{$p}击杀了玩家{$s}%other_player%{$p}。'
+      kill: '{$p}你的王国得到了{$es}%war_points%{$p}战争点。原因{$sep}: {$p}玩家{$s}%player%{$p}击杀了玩家{$s}%other*player%{$p}。'
       invade: '{$p}你的王国得到了{$es}%war_points%{$p}战争点。原因{$sep}: {$p}入侵成功。'
       break-structure: '{$p}你的王国得到了{$es}%war_points%{$p}战争点。原因{$sep}: {$p}破坏了{$es}%kingdoms_kingdom_name%{$p}王国的{$es}%style%{$p}设施。'
 audit-logs:
   peacetreaties:
-    sent: '{$p}你的王国向{$s}%kingdoms_name%{$p}王国发送了一份和平条约。查看你的王国编年史了解更多。'
-    received: '{$p}你的王国收到了一份来自{$s}%kingdoms_other_name%{$p}王国的和平条约。查看你的王国编年史了解更多。'
+    sent: '{$p}你的王国向{$s}%kingdoms_kingdom_name%{$p}王国发送了一份和平条约。查看你的王国编年史了解更多。'
+    received: '{$p}你的王国收到了一份来自{$s}%other*kingdoms_name%{$p}王国的和平条约。查看你的王国编年史了解更多。'
   filters:
     type:
       enter: '{$p}请输入你想查看的事件类型, {$cancel}'

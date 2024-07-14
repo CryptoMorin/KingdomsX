@@ -11,9 +11,25 @@ options:
     lore: [ '&6Go back to nexus menu.' ]
     skull: eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19
   light-blue-stained-glass-pane:
-    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
     material: LIGHT_BLUE_STAINED_GLASS_PANE
     name: ''
+  upgrade:
+    posx: 5
+    posy: 4
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "&9Upgrade&8: &6%roman@level% {$arrow} &6%roman@next_level%"
+      material: NETHER_STAR
+      lore: |
+        {$dot} {$p}Misc Upgrades{$sep}: {$s}1 {$arrow} {$s}2
+
+        {$dot} {$p}Max Level{$sep}: {$s}%roman@max_level%
+        {$dot} {$p}Cost{$sep}: {$s}%upgrade_cost%
+    maxxed:
+      name: "&9Level&8: &6%level%"
+      material: NETHER_STAR
   public-home:
     posx: 4
     posy: 1
@@ -22,7 +38,7 @@ options:
     lore: |
       &7When your home is public, anyone
       can teleport to it using
-      {$p}/k home %kingdoms_name%
+      {$p}/k home %kingdoms_kingdom_name%
   hidden:
     posx: 5
     posy: 1
@@ -43,9 +59,9 @@ options:
 
       &6Member Tax Equation&8:
       &2%tax_equation%
-      &6Your Personal Tax&8: &2$%kingdoms_fancy_tax%
+      &6Your Personal Tax&8: &2$%fancy@kingdoms_tax%
 
-      &6Kingdom Tax&8: &2$%kingdoms_fancy_kingdom_tax%
+      &6Kingdom Tax&8: &2$%fancy@kingdoms_kingdom_tax%
   blue-stained-glass-pane:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
     material: BLUE_STAINED_GLASS_PANE
@@ -100,12 +116,12 @@ options:
     lore: |
       &7When turned off, anyone can
       join this kingdom without needing
-      an invitation with {$p}/k join %kingdoms_name%
+      an invitation with {$p}/k join %kingdoms_kingdom_name%
   color:
     posx: 5
     posy: 5
     material: LIME_DYE
-    name: '&6Color&8: &c%r%&7, &2%g%&7, &9%b% &7(%kingdoms_kingdom_color@hex%%kingdoms_kingdom_color%&7)'
+    name: '&6Color&8: &c%r%&7, &2%g%&7, &9%b% &7(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%&7)'
     lore: |
       &7Set your kingdom marker
       color for chat and online land maps.
@@ -113,7 +129,7 @@ options:
     posx: 7
     posy: 5
     material: SHIELD
-    name: '&6Shield&8: &2%kingdoms_time_shield_time_left%'
+    name: '&6Shield&8: &2%time@kingdoms_shield_time_left%'
     lore: |
       &7Buy a shield for your
       kingdom to protect your kingdom

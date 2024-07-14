@@ -192,24 +192,24 @@ tax:
     age: '&5Ваше королівство не сплатило податки через те, що воно недавно засноване.'
     paid: |
       {$p}Всього сплачено {$s}$%tax% {$p}податку королівства.
-      Новий баланс королівства{$sep}: {$s}$%kingdoms_fancy_bank%
+      Новий баланс королівства{$sep}: {$s}$%fancy@kingdoms_bank%
     paid-nation: |
       {$p}Всього сплачено {$s}$%tax% {$p}податку королівства вашій нації.
-      Новий баланс королівства{$sep}: {$s}$%kingdoms_fancy_bank%
-      {$p}Новий баланс нації{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    kicked: '{$es}%kingdoms_kingdom_name% {$e}королівство вигнали з нації через неможливість сплати податків{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+      Новий баланс королівства{$sep}: {$s}$%fancy@kingdoms_bank%
+      {$p}Новий баланс нації{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    kicked: '{$es}%kingdoms_kingdom_name% {$e}королівство вигнали з нації через неможливість сплати податків{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
     disbanded: '{$e}Ваше королівство було розформовано через неможливість сплати податків{$sep}: {$es}$%tax%'
-    disbanded-announce: '{$es}%kingdom% {$e}королівство було розформовано через неможливість сплати податків{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
-    kicked-announce: '{$es}%kingdoms_kingdom_name% {$e}королівство було вигнано з {$es}%kingdoms_nation_name% {$e}нації через неможливість сплати податків{$sep}: {$es}%kingdoms_fancy_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%kingdom% {$e}королівство було розформовано через неможливість сплати податків{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
+    kicked-announce: '{$es}%kingdoms_kingdom_name% {$e}королівство було вигнано з {$es}%kingdoms_nation_name% {$e}нації через неможливість сплати податків{$sep}: {$es}%fancy@kingdoms_bank% {$sep}< {$es}$%tax%'
   nation:
     age: '&5Ваша нація не сплатила податки через те, що вона недавно заснована.'
     paid: |
       {$p}Всього сплачено {$s}$%tax% {$p}податку нації.
-      Новий баланс нації{$sep}: {$s}$%kingdoms_fancy_nation_bank%
+      Новий баланс нації{$sep}: {$s}$%fancy@kingdoms_nation_bank%
     disbanded: '{$e}Ваша нація була розформована через неможливість сплати податків{$sep}: {$es}$%tax%'
-    disbanded-announce: '{$es}%nation% {$e}нація була розформована через неможливість сплати податків{$sep}: {$es}%kingdoms_fancy_nation_bank% {$sep}< {$es}$%tax%'
+    disbanded-announce: '{$es}%nation% {$e}нація була розформована через неможливість сплати податків{$sep}: {$es}%fancy@kingdoms_nation_bank% {$sep}< {$es}$%tax%'
   notifications: |
-    {$sep}[&4ПОПЕРЕДЖЕННЯ{$sep}] {$e}Ваше королівство не має достатньо грошей &7({$es}%kingdoms_fancy_bank%&7) {$e}в банку для сплати податків на наступний білінговий цикл{$sep}: {$es}%tax%
+    {$sep}[&4ПОПЕРЕДЖЕННЯ{$sep}] {$e}Ваше королівство не має достатньо грошей &7({$es}%fancy@kingdoms_bank%&7) {$e}в банку для сплати податків на наступний білінговий цикл{$sep}: {$es}%tax%
     {$e}Якщо зібраних податків від учасників недостатньо, ваше королівство буде розформовано.
   kick-announce: '{$es}%player% {$e}було вигнано через неможливість сплатити податки{$sep}: {$es}%tax%'
   member-paid: '{$s}$%tax% {$p}було вилучено з вашого рахунку як податок королівства.'
@@ -271,8 +271,8 @@ siege-cannon:
     build-attribute: '{$p}Але ваше королівство має атрибут БУДІВНИЦТВО щодо цього королівства, тому блоки не будуть знищені.'
     pacifist: '{$e}Гармата вразила королівство {$es}%kingdoms_kingdom_name% {$e}, але вони є пацифістами.'
     destroyed-shield: '{$p}Гармата вразила королівство {$s}%kingdoms_kingdom_name% {$p}. Їхній щит було знищено'
-    damaged-shield: '{$p}Гармата вразила королівство {$s}%kingdoms_kingdom_name% {$p}. Залишилось{$sep}: {$s}%kingdoms_time_shield_time_left%'
-    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}королівство вразило вашу землю на чанку {$es}%attacked-chunk%{$e}. Залишилася часу щита{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    damaged-shield: '{$p}Гармата вразила королівство {$s}%kingdoms_kingdom_name% {$p}. Залишилось{$sep}: {$s}%time@kingdoms_shield_time_left%'
+    damaged-shield-notify: '{$es}%attacker-kingdom% {$e}королівство вразило вашу землю на чанку {$es}%attacked-chunk%{$e}. Залишилася часу щита{$sep}: {$s}%time@kingdoms_shield_time_left%'
   friendly:
     fire: '{$e}Гармата вразила дружню (без атрибуту ВТРАТА) землю, яка належить {$es}%kingdom%'
 lands:
@@ -290,34 +290,34 @@ lands:
       actionbar: '{$sep}&l-=( {$p}&lВільна Земля {$sep}&l)=-'
     no-kingdom:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*kingdoms_lore%'
     self:
       titles:
         title: '&a%kingdoms_kingdom_name%'
-        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+        subtitle: '%hex@kingdoms_kingdom_color%%kingdoms_lore%'
     neutral:
       titles:
-        title: '%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation:
       titles:
-        title: '&9%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&9%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Зона Нації{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Зона Нації{$sep}: %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     ally:
       titles:
-        title: '&6%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&6%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     truce:
       titles:
-        title: '&e%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&e%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     enemy:
       titles:
-        title: '&c%kingdoms_other_kingdom_name%'
-        subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
+        title: '&c%other*kingdoms_kingdom_name%'
+        subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
   grow-structure-error: '{$e}Ви не можете це зробити тут, оскільки це призводить до проблем на координатах {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z% {$sep}:'
   grow-structure-protected: '{$e}Ви не можете це зробити тут, оскільки тут є блок, захищений королівством, на координатах {$p}%x%{$sep}, {$p}%y%{$sep}, {$p}%z%'
 other-kingdoms:
@@ -415,12 +415,12 @@ protected-signs:
 top-rewards:
   kingdom: |
     {$p}Ваше королівство винагороджено {$s}$%money% {$p}грошима та {$s}%rp% {$p}ресурсними балами за ранг {$sep}: &5%rank%
-    {$p}Новий баланс королівства{$sep}: {$s}$%kingdoms_fancy_bank%
-    {$p}Нові ресурсні бали королівства{$sep}: {$s}%kingdoms_fancy_resource_points%
+    {$p}Новий баланс королівства{$sep}: {$s}$%fancy@kingdoms_bank%
+    {$p}Нові ресурсні бали королівства{$sep}: {$s}%fancy@kingdoms_resource_points%
   nation: |
     {$p}Ваша нація винагороджена {$s}$%money% {$p}грошима та {$s}%rp% {$p}ресурсними балами за ранг {$sep}: &5%rank%
-    {$p}Новий баланс нації{$sep}: {$s}$%kingdoms_fancy_nation_bank%
-    {$p}Нові ресурсні бали нації{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+    {$p}Новий баланс нації{$sep}: {$s}$%fancy@kingdoms_nation_bank%
+    {$p}Нові ресурсні бали нації{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 join-leave-messages:
   join:
     kingdom:
@@ -604,10 +604,10 @@ nexus:
     disable: '{$s}Ваше королівство тепер не вимагає запрошення для вступу.'
   structure-inventory-full: '{$e}Ваш інвентар заповнений!'
   turret-inventory-full: '{$e}Ваш інвентар заповнений!'
-  structure-purchased: '{$p}Ви придбали {$s}%structure% {$p}за {$s}%fancy_cost% ресурсних точок.'
+  structure-purchased: '{$p}Ви придбали {$s}%structure% {$p}за {$s}%fancy@cost% ресурсних точок.'
   structure-resourcepoints: '{$e}Вам потрібно {$es}%cost% {$e}ресурсних точок для покупки цієї структури.'
   turret-resourcepoints: '{$e}Вам потрібно {$es}%cost% {$e}ресурсних точок для покупки цього турелю.'
-  turret-purchased: '{$p}Ви придбали {$s}%turret% {$p}за {$s}%fancy_cost% ресурсних точок.'
+  turret-purchased: '{$p}Ви придбали {$s}%turret% {$p}за {$s}%fancy@cost% ресурсних точок.'
   resource-points: '{$s}Загальна кількість {$es}%amount% {$s}ресурсних точок була додана.'
   rank-editor:
     enter-value: '{$s}Будь ласка, введіть нове значення у чаті або введіть hover:{{$e}Скасувати;{$e}Скасувати;/cancel} {$s}для скасування.'
@@ -677,7 +677,7 @@ nexus:
         invasions:
           attacked: '{$e}Вам потрібно зачекати {$es}%time% {$e}перш ніж купити щит знову. Оскільки ваше королівство вторглося {$es}%last% {$e}тому.'
           defended: '{$e}Вам потрібно зачекати {$es}%time% {$e}перш ніж купити щит знову. Оскільки ваше королівство було вторгнуте {$es}%last% {$e}тому.'
-    shield-activated: '{$p}Щит активовано на{$sep}: {$s}%kingdoms_time_shield_time_left%'
+    shield-activated: '{$p}Щит активовано на{$sep}: {$s}%time@kingdoms_shield_time_left%'
 nexus-resource-points-enter-value: '{$s}Будь ласка, введіть кількість ресурсних точок або введіть hover:{{$e}Скасувати;{$e}Скасувати;/cancel} {$s}для скасування.'
 teleports:
   moved: '{$e}Телепортування скасовано через ваш рух.'
@@ -701,7 +701,7 @@ structure:
 outpost:
   not-enough-resource-points: '{$e}У вас недостатньо ресурсних точок.'
   cooldown: '{$e}Ви не можете купити цей предмет більше до{$sep}: {$es}%time_cooldown%'
-  purchased: '{$p}Ви придбали {$s}%amount%x %name% {$p}за {$s}%fancy_cost% ресурсних точок.'
+  purchased: '{$p}Ви придбали {$s}%amount%x %name% {$p}за {$s}%fancy@cost% ресурсних точок.'
 turret:
   ammo:
     not-enough-resource-points: '{$e}У вас недостатньо ресурсних точок.'
@@ -939,14 +939,14 @@ command:
         kingdom:
           unknown-claim: '{$sep}⚫ {$e}Невідома заявка для королівства{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
           unknown-player: '{$sep}⚫ {$e}Невідомий гравець в королівстві{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Гравець{$sep}: {$es}%player_id%'
-          unknown-relationship-request: '{$sep}⚫ {$e}Невідомий запит на встановлення відносин між королівствами{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}До королівства{$sep}: {$es}%other_kingdom_id%'
-          unknown-relationship: '{$sep}⚫ {$e}Невідомі відносини між королівствами{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}До королівства{$sep}: {$es}%other_kingdom_id%'
+          unknown-relationship-request: '{$sep}⚫ {$e}Невідомий запит на встановлення відносин між королівствами{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}До королівства{$sep}: {$es}%other*kingdom_id%'
+          unknown-relationship: '{$sep}⚫ {$e}Невідомі відносини між королівствами{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}До королівства{$sep}: {$es}%other*kingdom_id%'
           relationship-both-requested: '{$sep}⚫ {$e}Два королівства взаємно подали запити на встановлення відносин між собою{$sep}: {$e}Королівство 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Відносини{$sep}: {$es}%first_relation% {$sep}- {$e}Королівство 2{$sep}:
-            {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}Відносини{$sep}: {$es}%second_relation%'
-          relationship-mismatch: '{$sep}⚫ {$e}Неспільні відносини між королівствами{$sep}: {$e}Королівство 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Відносини{$sep}: {$es}%first_relation% {$sep}- {$e}Королівство 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
+            {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}Відносини{$sep}: {$es}%second_relation%'
+          relationship-mismatch: '{$sep}⚫ {$e}Неспільні відносини між королівствами{$sep}: {$e}Королівство 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Відносини{$sep}: {$es}%first_relation% {$sep}- {$e}Королівство 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}Відносини{$sep}: {$es}%second_relation%'
           relationship-both-forms-exist: '{$sep}⚫ {$e}Між двома королівствами одне має визначені відносини з іншим королівством, тоді як це інше королівство вже відправило запит на встановлення відносин{$sep}: {$e}Королівство 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}|
-            {$e}Відносини{$sep}: {$es}%first_relation% {$sep}- {$e}Королівство 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}Відносини{$sep}: {$es}%second_relation%'
+            {$e}Відносини{$sep}: {$es}%first_relation% {$sep}- {$e}Королівство 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}Відносини{$sep}: {$es}%second_relation%'
           no-members: '{$sep}⚫ {$e}Королівство не має жодних учасників. Воно буде розпущено{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
           wrong-king: '{$sep}⚫ {$e}Король королівства був пошкоджений, буде обрано іншого випадкового учасника.{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Старий Король{$sep}: {$es}%old_king_id% {$sep}-> {$e}Новий Король{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
           pacifism: '{$sep}⚫ {$e}Знайдено королівство пацифістів, коли пацифізм вимкнено{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
@@ -958,7 +958,7 @@ command:
           priority-misorder: '{$sep}⚫ {$e}Пріоритет рангу не впорядковано{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ранг{$sep}: {$es}%node% {$sep}| {$e}Очікуваний пріоритет {$es}%expected_priority% {$sep}| {$e}Реальний пріоритет {$es}%priority%'
           missing-pair: '{$sep}⚫ {$e}Рангова карта пріоритету не має відповідного вузла у %mode%{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ранг{$sep}: {$es}%node% {$sep}| {$e}Пріоритет {$es}%priority%'
           unsupported-material: '{$sep}⚫ {$e}Ранг має непідтримуваний матеріал для поточної версії сервера{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ранг{$sep}: {$es}%rank% {$sep}| {$e}Матеріал{$sep}: {$es}%material%'
-          different-instance: '{$sep}⚫ {$e}Мапи рангів містять різні екземпляри у %mode%{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ранг{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Інший Ранг{$sep}: {$es}%other_rank%'
+          different-instance: '{$sep}⚫ {$e}Мапи рангів містять різні екземпляри у %mode%{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ранг{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Інший Ранг{$sep}: {$es}%other*rank%'
           unknown: '{$sep}⚫ {$e}Гравець має невідомий ранг{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Ранг{$sep}: {$es}%node% {$sep}| {$e}Гравець{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
           multiple-kings: '{$sep}⚫ {$e}Декілька королів для{$sep}: {$e}Група{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
           kingdom-king: '{$sep}⚫ {$e}Король королівства не має рангу короля.{$sep}: {$e}Королівство{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) {$sep}| {$e}Гравець{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ранг{$sep}: {$es}%rank%'
@@ -1537,15 +1537,15 @@ command:
       deposit:
         success: |
           {$p}Ви внесли {$s}%amount% {$p}грошей до банку вашої нації.
-          Ваш новий баланс{$sep}: {$s}%fancy_balance%
-          {$p}Банк вашої нації{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          Ваш новий баланс{$sep}: {$s}%fancy@balance%
+          {$p}Банк вашої нації{$sep}: {$s}%fancy@kingdoms_nation_bank%
         disabled: '{$e}Ви не можете внести гроші.'
       withdraw:
         disabled: '{$e}Ви не можете зняти гроші.'
         success: |
           {$p}Ви зняли {$s}%amount% {$p}грошей з банку вашої нації.
-          {$p}Ваш новий баланс{$sep}: {$s}%fancy_balance%
-          {$p}Банк вашої нації{$sep}: {$s}%kingdoms_fancy_nation_bank%
+          {$p}Ваш новий баланс{$sep}: {$s}%fancy@balance%
+          {$p}Банк вашої нації{$sep}: {$s}%fancy@kingdoms_nation_bank%
       negative: '{$e}Ви не можете переміщувати від''ємні значення...'
       zero: '{$e}Ви не можете переміщувати нічого.'
       name: bank
@@ -1561,10 +1561,10 @@ command:
         &7| {$p}Спаун{$sep}: {$s}%kingdoms_nation_spawn%
         &7| {$p}Центр{$sep}: {$s}%kingdoms_nation_nexus%
         &7| {$p}З %kingdoms_date_nation_since%
-        &7| {$p}Могутність{$sep}: {$s}%kingdoms_fancy_nation_might%
-        &7| {$p}Щит{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Банк{$sep}: {$s}$%kingdoms_fancy_nation_bank% {$sep}| {$p}Податок{$sep}: {$s}$%kingdoms_fancy_nation_tax% {$sep}- {$s}$%kingdoms_fancy_server_nation_tax%
-        &7| {$p}Бали ресурсів{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Могутність{$sep}: {$s}%fancy@kingdoms_nation_might%
+        &7| {$p}Щит{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Банк{$sep}: {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Податок{$sep}: {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
+        &7| {$p}Бали ресурсів{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Королівства{$sep}:
         %kingdoms%
@@ -1574,10 +1574,10 @@ command:
         &7| {$p}Король{$sep}: {$s}%king_status%
         &7| {$p}Нація{$sep}: {$s}%kingdoms_nation_name%
         &7| {$p}З %kingdoms_date_nation_since%
-        &7| {$p}Могутність{$sep}: {$s}%kingdoms_fancy_might%
-        &7| {$p}Щит{$sep}: {$s}%kingdoms_nation_shield_time_left%
-        &7| {$p}Банк{$sep}: {$s}%kingdoms_fancy_nation_bank%
-        &7| {$p}Бали ресурсів{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
+        &7| {$p}Могутність{$sep}: {$s}%fancy@kingdoms_might%
+        &7| {$p}Щит{$sep}: {$s}%time@kingdoms_nation_shield_time_left%
+        &7| {$p}Банк{$sep}: {$s}%fancy@kingdoms_nation_bank%
+        &7| {$p}Бали ресурсів{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
 
         &7| {$p}Королівства{$sep}:
         %kingdoms%
@@ -1722,8 +1722,8 @@ command:
       negative: '{$e}Неможливо відображати від''ємні сторінки.'
       entry: |
         {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_nation_name%;&7♦ {$p}Учасники{$sep}: {$s}%kingdoms_nation_kingdoms%
-        &7♦ {$p}Бали Ресурсів{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-        &7♦ {$p}Банк{$sep}: {$s}$%kingdoms_fancy_nation_bank%} &7- {$s}%kingdoms_fancy_nation_might%
+        &7♦ {$p}Бали Ресурсів{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+        &7♦ {$p}Банк{$sep}: {$s}$%fancy@kingdoms_nation_bank%} &7- {$s}%fancy@kingdoms_nation_might%
       name: top
     kick:
       description: '{$s}Викидає королівство з вашої нації.'
@@ -1758,7 +1758,7 @@ command:
       only-king: '{$e}Лише король столиці може встановити нову столицю нації.'
       set: '{$s}%kingdoms_nation:capital get=name% {$p}тепер є столицею нації.'
       not-in-nation: '{$es}%kingdom% {$e}не є у вашій нації.'
-      already: '{$es}%kingdoms_other_kingdom_name% {$e}вже є столицею нації.'
+      already: '{$es}%other*kingdoms_kingdom_name% {$e}вже є столицею нації.'
       usage: '{$usage}nation capital {$p}<королівство>'
       name: capital
       aliases: king
@@ -1928,7 +1928,7 @@ command:
       success: |
         {$p}Ви успішно вивели {$s}%rp% {$p}балів ресурсів з вашого королівства на суму {$s}$%worth%
         {$p}Ваш новий баланс{$sep}: {$s}$%balance%
-        {$p}Бали ресурсів вашого королівства{$sep}: {$s}%kingdoms_fancy_resource_points%
+        {$p}Бали ресурсів вашого королівства{$sep}: {$s}%fancy@kingdoms_resource_points%
     transfer:
       description: '{$s}Передавайте бали ресурсів від вашої нації/королівства до вашої нації/королівства.'
       kingdom:
@@ -1941,12 +1941,12 @@ command:
       success:
         kingdom: |
           {$p}Ви успішно передали {$s}%amount% {$p}балів ресурсів від вашої нації до королівства.
-          Бали ресурсів нації{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Бали ресурсів королівства{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Бали ресурсів нації{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Бали ресурсів королівства{$sep}: {$s}%fancy@kingdoms_resource_points%
         nation: |
           {$p}Ви успішно передали {$s}%amount% {$p}балів ресурсів від вашого королівства до нації.
-          Бали ресурсів нації{$sep}: {$s}%kingdoms_fancy_nation_resource_points%
-          {$p}Бали ресурсів королівства{$sep}: {$s}%kingdoms_fancy_resource_points%
+          Бали ресурсів нації{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
+          {$p}Бали ресурсів королівства{$sep}: {$s}%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '{$e}Ваше королівство не має {$es}%rp% {$e}балів ресурсів.'
       nation-resource-points: '{$e}Ваша нація не має {$es}%rp% {$e}балів ресурсів.'
@@ -1967,8 +1967,8 @@ command:
       limit: '{$e}Банк вашого королівства заповнено. Ліміт: {$es}%limit%'
       success: |
         {$p}Ви внесли {$s}%amount% {$p}грошей до банку вашого королівства.
-        Ваш новий баланс{$sep}: {$s}%fancy_balance%
-        {$p}Банк вашого королівства{$sep}: {$s}%kingdoms_fancy_bank%
+        Ваш новий баланс{$sep}: {$s}%fancy@balance%
+        {$p}Банк вашого королівства{$sep}: {$s}%fancy@kingdoms_bank%
       disabled: '{$e}Ви не можете вносити гроші.'
       min: '{$e}Ви повинні внести принаймні {$es}$%min%'
     withdraw:
@@ -1976,8 +1976,8 @@ command:
       disabled: '{$e}Ви не можете знімати гроші.'
       success: |
         {$p}Ви успішно зняли {$s}%amount% {$p}грошей з банку вашого королівства.
-        Ваш новий баланс{$sep}: {$s}%fancy_balance%
-        {$p}Банк вашого королівства{$sep}: {$s}%kingdoms_fancy_bank%
+        Ваш новий баланс{$sep}: {$s}%fancy@balance%
+        {$p}Банк вашого королівства{$sep}: {$s}%fancy@kingdoms_bank%
     aliases: money $
   show:
     description: '{$s}Показує інформацію про королівство.'
@@ -1990,11 +1990,11 @@ command:
       &7| {$p}База{$sep}: {$s}%kingdoms_kingdom_home%
       &7| {$p}nexus{$sep}: {$s}%kingdoms_nexus%
       &7| {$p}Нація{$sep}: {$s}%kingdoms_nation_name%
-      &7| {$p}Могутність{$sep}: {$s}%kingdoms_fancy_might%
-      &7| {$p}Банк{$sep}: {$s}$%kingdoms_fancy_bank% {$sep}| {$p}Податок{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_kingdom_tax%
-      &7| {$p}Території{$sep}: {$s}%kingdoms_fancy_claims%{$sep}/{$s}%kingdoms_fancy_max_claims%
-      &7| {$p}Бали ресурсів{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7| {$p}Щит{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Могутність{$sep}: {$s}%fancy@kingdoms_might%
+      &7| {$p}Банк{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Податок{$sep}: {$s}$%fancy@kingdoms_tax% {$sep}- {$s}$%fancy@kingdoms_kingdom_tax%
+      &7| {$p}Території{$sep}: {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
+      &7| {$p}Бали ресурсів{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7| {$p}Щит{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Засноване{$sep}: {$s}%kingdoms_date_since%
       &7| {$p}Учасники{$sep}: {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
@@ -2005,10 +2005,10 @@ command:
       &7| {$p}Нация{$sep}: {$s}%kingdoms_nation_name%
       &7| {$p}Могутність{$sep}: {$s}%kingdoms_might%
       &7| {$p}Засноване{$sep}: {$s}%kingdoms_date_since%
-      &7| {$p}Щит{$sep}: {$s}%kingdoms_time_shield_time_left%
+      &7| {$p}Щит{$sep}: {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Території{$sep}: {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
-      &7| {$p}Банк{$sep}: {$s}$%kingdoms_fancy_bank%
-      &7| {$p}Бали ресурсів{$sep}: {$s}%kingdoms_fancy_resource_points%
+      &7| {$p}Банк{$sep}: {$s}$%fancy@kingdoms_bank%
+      &7| {$p}Бали ресурсів{$sep}: {$s}%fancy@kingdoms_resource_points%
 
       &7| {$p}Учасники{$sep}:
       %members%
@@ -2095,11 +2095,11 @@ command:
       permission: '{$e}У вас немає дозволу на автоматичну заявку для інших.'
       on: '{$s}Автоматична заява тепер &aУВІМКНЕНА{$s}. Тепер ви будете заявляти земельні ділянки, коли йдете.'
       off: '{$s}Автоматична заява тепер {$e}ВИМКНЕНА}{$s}.'
-    need-rp: '{$e}Вам потрібно {$es}%fancy_rp% {$e}ресурсних точок, щоб заявити землю!'
+    need-rp: '{$e}Вам потрібно {$es}%fancy@rp% {$e}ресурсних точок, щоб заявити землю!'
     confirmation: |
-      {$e}Ваше королівство повинно заплатити {$es}%fancy_rp% {$e}ресурсних точок і {$es}%fancy_money% {$e}грошей.
+      {$e}Ваше королівство повинно заплатити {$es}%fancy@rp% {$e}ресурсних точок і {$es}%fancy@money% {$e}грошей.
       Ви впевнені, що хочете продовжити? Виконайте команду ще раз.
-    need-money: '{$e}Вашому королівству потрібно {$es}%fancy_money% {$e}грошей, щоб заявити землю! Перерахуйте гроші на банк вашого королівства за допомогою {$es}%fancy_money% {$e}/k bank deposit'
+    need-money: '{$e}Вашому королівству потрібно {$es}%fancy@money% {$e}грошей, щоб заявити землю! Перерахуйте гроші на банк вашого королівства за допомогою {$es}%fancy@money% {$e}/k bank deposit'
     disallowed-biome: |
       {$e}Ви не можете заявити в біомах {$es}%biome% {$e}.
       Зверніть увагу, що, як правило, весь чанк повинен бути зроблений з цього типу біома.
@@ -2179,9 +2179,9 @@ command:
     no-shield: '{$e}В вашого королівства немає активного щита.'
     confirm: |
       {$e}Якщо ви вимкнете свій щит, вам доведеться купити новий.
-      Час щита королівства{$sep}: {$es}%kingdoms_time_shield_time_left%
+      Час щита королівства{$sep}: {$es}%time@kingdoms_shield_time_left%
       {$e}Для продовження виконайте командуhover:{{$es}/k shield confirm;/k shield confirm;/k shield confirm} {$e}для підтвердження.
-    deactivated: '{$es}%executor% {$e}вимкнув поточний щит королівства, на якому було {$es}%kingdoms_time_shield_time_left% {$e}часу.'
+    deactivated: '{$es}%executor% {$e}вимкнув поточний щит королівства, на якому було {$es}%time@kingdoms_shield_time_left% {$e}часу.'
   sethome:
     description: '{$s}Встановіть дім вашого королівства в поточному місцезнаходженні.'
     not-claimed: '{$e}Ви можете встановити дім свого королівства лише на заявлених землях.'
@@ -2347,8 +2347,8 @@ command:
       get: '{$e}У вас немає дозволу отримувати папір із інвайт-кодом.'
       create: '{$e}У вас немає дозволу створювати інвайт-коди.'
     paper:
-      cost: '{$e}Для створення паперу із інвайт-кодом вам потрібно {$es}%fancy_invitecode-paper-cost% ресурсних точок.'
-      give: '{$p}Куплено папір із інвайт-кодом за {$s}%fancy_invitecode-paper-cost% ресурсних точок'
+      cost: '{$e}Для створення паперу із інвайт-кодом вам потрібно {$es}%fancy@invitecode-paper-cost% ресурсних точок.'
+      give: '{$p}Куплено папір із інвайт-кодом за {$s}%fancy@invitecode-paper-cost% ресурсних точок'
     max: '{$e}Королівства можуть створювати лише до {$es}%invitecodes-max% {$e}інвайт-кодів.'
     duration:
       enter: '{$p}Будь ласка, введіть строк закінчення інвайт-коду {$sep}({$s}наприклад, 1день або просто 0, щоб не закінчувати{$sep}) {$cancel}'
@@ -2507,13 +2507,13 @@ command:
     aliases: enemies
     self: '{$e}You can''t make your own kingdom an enemy...'
     usage: '{$usage}enemy {$p}<kingdom>'
-    notify: '{$es}%kingdoms_kingdom_name% {$e}has enemied %kingdoms_other_kingdom_name% {$e}which both kingdoms are your allies.'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}has enemied %other*kingdoms_kingdom_name% {$e}which both kingdoms are your allies.'
     description: '{$s}Make a kingdom your enemy.'
-    already-requested: '{$e}You''ve already sent an enemy request to {$es}%kingdoms_other_kingdom_name%'
+    already-requested: '{$e}You''ve already sent an enemy request to {$es}%other*kingdoms_kingdom_name%'
     limit: '{$e}You can''t be enemies with more than {$es}%max% {$e}kingdoms.'
-    already: '{$e}You''re already enemies with {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}You''re already enemies with {$es}%other*kingdoms_kingdom_name%'
     higher-strength: '{$e}Your kingdom is much more stronger than this kingdom. You cannot enemy them.'
-    enemies: '{$e}You''re now enemies with {$es}%kingdoms_other_kingdom_name%'
+    enemies: '{$e}You''re now enemies with {$es}%other*kingdoms_kingdom_name%'
     name: enemy
     cost: '{$e}You need {$es}%cost% resource points {$e}to enemy this kingdom.'
   tradable:
@@ -2643,13 +2643,13 @@ command:
     aliases: alliance allies
     limit: '{$e}You can''t ally more than {$es}%max% {$e}kingdoms.'
     self: '{$e}You can''t make your own kingdom an ally.'
-    already: '{$e}You''re already allies with {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}You''re already allies with {$es}%other*kingdoms_kingdom_name%'
     name: ally
     usage: '{$usage}ally {$p}<kingdom>'
-    already-requested: '{$e}You''ve already sent a request to {$es}%kingdoms_other_kingdom_name%'
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}wishes to be allies with you. Accept with hover:{{$s}/k ally %kingdoms_other_kingdom_name%;{$p}Accept;/k ally %kingdoms_other_kingdom_name%}'
-    allies: '{$p}You''re now allies with {$s}%kingdoms_other_kingdom_name%'
-    sender: '{$p}Sent an alliance request to {$s}%kingdoms_other_kingdom_name%'
+    already-requested: '{$e}You''ve already sent a request to {$es}%other*kingdoms_kingdom_name%'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}wishes to be allies with you. Accept with hover:{{$s}/k ally %other*kingdoms_kingdom_name%;{$p}Accept;/k ally %other*kingdoms_kingdom_name%}'
+    allies: '{$p}You''re now allies with {$s}%other*kingdoms_kingdom_name%'
+    sender: '{$p}Sent an alliance request to {$s}%other*kingdoms_kingdom_name%'
     description: '{$s}Send an alliance request to a kingdom.'
   relations:
     name: relations
@@ -2705,17 +2705,17 @@ command:
     already-claimed: '{$s}The last land that was unclaimed is already claimed. {$s}%x%&7, {$s}%z%'
   revoke:
     description: '{$s}Revoke relationship with a kingdom.'
-    no-relation: '{$e}You have no relations with {$es}%kingdoms_other_kingdom_name%'
+    no-relation: '{$e}You have no relations with {$es}%other*kingdoms_kingdom_name%'
     neutrals: '{$p}You''re now neutral with {$s}%kingdom%'
     self: '{$e}You can''t have any relationship with your own kingdom...'
-    already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}is already a neutral.'
+    already-neutral: '{$es}%other*kingdoms_kingdom_name% {$e}is already a neutral.'
     request-receiver: '{$s}%kingdoms_kingdom_name% {$p}wishes to establish peace with you. Accept with hover:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Accept;/k neutral %kingdoms_kingdom_name%}'
-    sender: '{$e}You''ve revoked relations with {$es}%kingdoms_other_kingdom_name%'
+    sender: '{$e}You''ve revoked relations with {$es}%other*kingdoms_kingdom_name%'
     specific-permission: '{$e}You don''t have permission to revoke {$es}%relation% {$e}relationships.'
     name: revoke
     receiver: '{$es}%kingdoms_kingdom_name% {$e}has revoked their relationship with you. You''re now neutrals.'
     aliases: neutral
-    request-sender: '{$p}Sent a peace request to {$s}%kingdoms_other_kingdom_name%'
+    request-sender: '{$p}Sent a peace request to {$s}%other*kingdoms_kingdom_name%'
     usage: '{$usage}revoke {$p}<kingdom>'
   demote:
     not-in-kingdom: '{$es}%demoted% {$e}is not in your kingdom.'
@@ -2733,14 +2733,14 @@ command:
     aliases: s
     invalid: '{$e}The item you''re holding is not a kingdom item (a turret or a structure).'
   truce:
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}wishes to be truce with you. Accept with hover:{{$s}/k truce %kingdoms_other_kingdom_name%;{$p}Accept;/k truce %kingdoms_other_kingdom_name%}'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}wishes to be truce with you. Accept with hover:{{$s}/k truce %other*kingdoms_kingdom_name%;{$p}Accept;/k truce %other*kingdoms_kingdom_name%}'
     self: '{$e}You can''t make your own kingdom a truce.'
     name: truce
-    already: '{$e}You''re already truces with {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}You''ve already sent a request to {$es}%kingdoms_other_kingdom_name%'
-    sender: '{$p}Sent a truce request to {$s}%kingdoms_other_kingdom_name%'
+    already: '{$e}You''re already truces with {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}You''ve already sent a request to {$es}%other*kingdoms_kingdom_name%'
+    sender: '{$p}Sent a truce request to {$s}%other*kingdoms_kingdom_name%'
     usage: '{$usage}truce {$p}<kingdom>'
-    truces: '{$p}You''re now truce with {$s}%kingdoms_other_kingdom_name%'
+    truces: '{$p}You''re now truce with {$s}%other*kingdoms_kingdom_name%'
     description: '{$s}Send a truce request to a kingdom.'
     limit: '{$e}You can''t be truce with more than {$es}%max% {$e}kingdoms.'
   rejectrelation:
@@ -2791,8 +2791,8 @@ command:
     entry: |
       {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_kingdom_name%;&7♦ {$p}Members{$sep}: {$s}%kingdoms_members%
       &7♦ {$p}Lands{$sep}: {$s}%kingdoms_claims%&7/{$s}%kingdoms_max_claims%
-      &7♦ {$p}Resource Points{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7♦ {$p}Bank{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%kingdoms_fancy_might%
+      &7♦ {$p}Resource Points{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7♦ {$p}Bank{$sep}: {$s}$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%fancy@kingdoms_might%
     header: '{$sep}----------------------------------'
   item:
     aliases: customitem items
@@ -2914,8 +2914,8 @@ shield:
     entry: |
       {$sep}♦ &7%rank%. hover:{{$p}%kingdoms_kingdom_name%;&7♦ {$p}Члени{$sep}: {$s}%kingdoms_members%
       &7♦ {$p}Землі{$sep}: {$s}%kingdoms_claims%&7/{$s}%kingdoms_max_claims%
-      &7♦ {$p}Ресурсні бали{$sep}: {$s}%kingdoms_fancy_resource_points%
-      &7♦ {$p}Банк{$sep}: {$s}$%kingdoms_fancy_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%kingdoms_fancy_might%
+      &7♦ {$p}Ресурсні бали{$sep}: {$s}%fancy@kingdoms_resource_points%
+      &7♦ {$p}Банк{$sep}: {$s}$%fancy@kingdoms_bank%;/k show %kingdoms_kingdom_name%} &7- {$s}%fancy@kingdoms_might%
     name: top
   map:
     settings:
@@ -3054,38 +3054,38 @@ shield:
   ally:
     description: '{$s}Надіслати запит на союз іншому королівству.'
     usage: '{$usage}ally {$p}<королівство>'
-    sender: '{$p}Відправлено запит на союз королівству {$s}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Відправлено запит на союз королівству {$s}%other*kingdoms_kingdom_name%'
     limit: '{$e}Ви не можете мати більше, ніж {$es}%max% {$e}союзів з королівствами.'
-    already: '{$e}Ви вже в союзі з королівством {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Ви вже відправили запит до королівства {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Ви вже в союзі з королівством {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Ви вже відправили запит до королівства {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Ви не можете зробити своє власне королівство союзником.'
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}бажає бути союзником для вас. Прийміть за допомогою наведення курсору:{{$s}/k ally %kingdoms_other_kingdom_name%;{$p}Прийняти;/k ally %kingdoms_other_kingdom_name%}'
-    allies: '{$p}Тепер ви союзники з {$s}%kingdoms_other_kingdom_name%'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}бажає бути союзником для вас. Прийміть за допомогою наведення курсору:{{$s}/k ally %other*kingdoms_kingdom_name%;{$p}Прийняти;/k ally %other*kingdoms_kingdom_name%}'
+    allies: '{$p}Тепер ви союзники з {$s}%other*kingdoms_kingdom_name%'
     name: ally
     aliases: alliance allies
   enemy:
     description: '{$s}Зробіть інше королівство вашим ворогом.'
     usage: '{$usage}enemy {$p}<королівство>'
     limit: '{$e}Ви не можете бути ворогами більше, ніж з {$es}%max% {$e}королівствами.'
-    already: '{$e}Ви вже є ворогами королівства {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Ви вже відправили запит на ворожнечу до королівства {$es}%kingdoms_other_kingdom_name%'
+    already: '{$e}Ви вже є ворогами королівства {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Ви вже відправили запит на ворожнечу до королівства {$es}%other*kingdoms_kingdom_name%'
     higher-strength: '{$e}Ваше королівство набагато сильніше за це королівство. Ви не можете влаштувати ворожнечу.'
-    notify: '{$es}%kingdoms_kingdom_name% {$e}влаштувало ворожнечу з {$es}%kingdoms_other_kingdom_name%, які обидва є вашими союзниками.'
+    notify: '{$es}%kingdoms_kingdom_name% {$e}влаштувало ворожнечу з {$es}%other*kingdoms_kingdom_name%, які обидва є вашими союзниками.'
     self: '{$e}Ви не можете зробити своє королівство ворогом...'
     cost: '{$e}Для того, щоб зробити ворогами це королівство, вам потрібно {$es}%cost% ресурсних балів.'
-    enemies: '{$e}Тепер ви вороги з {$es}%kingdoms_other_kingdom_name%'
+    enemies: '{$e}Тепер ви вороги з {$es}%other*kingdoms_kingdom_name%'
     name: enemy
     aliases: enemies
   truce:
     description: '{$s}Надіслати запит на Перемир''я іншому королівству.'
     usage: '{$usage}truce {$p}<королівство>'
     limit: '{$e}Ви не можете мати більше, ніж {$es}%max% {$e}перемир''їв з королівствами.'
-    sender: '{$p}Відправлено запит на Перемир''я королівству {$s}%kingdoms_other_kingdom_name%'
-    already: '{$e}Ви вже в перемир''ї з королівством {$es}%kingdoms_other_kingdom_name%'
-    already-requested: '{$e}Ви вже відправили запит до королівства {$es}%kingdoms_other_kingdom_name%'
+    sender: '{$p}Відправлено запит на Перемир''я королівству {$s}%other*kingdoms_kingdom_name%'
+    already: '{$e}Ви вже в перемир''ї з королівством {$es}%other*kingdoms_kingdom_name%'
+    already-requested: '{$e}Ви вже відправили запит до королівства {$es}%other*kingdoms_kingdom_name%'
     self: '{$e}Ви не можете зробити своє власне королівство Перемир''ям.'
-    receiver: '{$s}%kingdoms_other_kingdom_name% {$p}бажає встановити Перемир''я з вами. Прийміть за допомогою наведення курсору:{{$s}/k truce %kingdoms_other_kingdom_name%;{$p}Прийняти;/k truce %kingdoms_other_kingdom_name%}'
-    truces: '{$p}Тепер ви в перемир''ї з {$s}%kingdoms_other_kingdom_name%'
+    receiver: '{$s}%other*kingdoms_kingdom_name% {$p}бажає встановити Перемир''я з вами. Прийміть за допомогою наведення курсору:{{$s}/k truce %other*kingdoms_kingdom_name%;{$p}Прийняти;/k truce %other*kingdoms_kingdom_name%}'
+    truces: '{$p}Тепер ви в перемир''ї з {$s}%other*kingdoms_kingdom_name%'
     name: truce
   rejectrelation:
     description: '{$s}Відхилити запит на встановлення відносин, відправлений вашому королівству.'
@@ -3096,14 +3096,14 @@ shield:
   revoke:
     description: '{$s}Скасувати відносини з королівством.'
     usage: '{$usage}revoke {$p}<королівство>'
-    sender: '{$e}Ви скасували відносини з {$es}%kingdoms_other_kingdom_name%'
-    no-relation: '{$e}Ви не маєте відносин з {$es}%kingdoms_other_kingdom_name%'
-    already-neutral: '{$es}%kingdoms_other_kingdom_name% {$e}вже є нейтральним.'
+    sender: '{$e}Ви скасували відносини з {$es}%other*kingdoms_kingdom_name%'
+    no-relation: '{$e}Ви не маєте відносин з {$es}%other*kingdoms_kingdom_name%'
+    already-neutral: '{$es}%other*kingdoms_kingdom_name% {$e}вже є нейтральним.'
     self: '{$e}Ви не можете мати жодних відносин із власним королівством...'
     specific-permission: '{$e}Ви не маєте права скасовувати відносини типу {$es}%relation%'
     receiver: '{$es}%kingdoms_kingdom_name% {$e}скасувало свої відносини з вами. Тепер ви нейтральні.'
-    request-sender: '{$p}Відправлено запит на мир {$s}%kingdoms_other_kingdom_name%'
-    request-receiver: '{$s}%kingdoms_other_kingdom_name% {$p}бажає встановити мир з вами. Прийміть за допомогою наведення курсору:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Прийняти;/k neutral %kingdoms_kingdom_name%}'
+    request-sender: '{$p}Відправлено запит на мир {$s}%other*kingdoms_kingdom_name%'
+    request-receiver: '{$s}%other*kingdoms_kingdom_name% {$p}бажає встановити мир з вами. Прийміть за допомогою наведення курсору:{{$s}/k neutral %kingdoms_kingdom_name%;{$p}Прийняти;/k neutral %kingdoms_kingdom_name%}'
     neutrals: '{$p}Тепер ви нейтральні з {$s}%kingdom%'
     name: revoke
     aliases: neutral

@@ -1,11 +1,11 @@
 package org.kingdoms.peacetreaties.terms;
 
-import org.kingdoms.constants.namespace.NamespaceContainer;
+import org.kingdoms.constants.namespace.Namespaced;
 import org.kingdoms.locale.messenger.LanguageEntryMessenger;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor;
-import org.kingdoms.utils.string.StringUtils;
+import org.kingdoms.utils.string.Strings;
 
 import java.util.concurrent.CompletionStage;
 
@@ -13,7 +13,7 @@ import java.util.concurrent.CompletionStage;
  * A {@link Term} provider which provides an instance of it usually used to serialize data
  * into the class.
  */
-public interface TermProvider extends NamespaceContainer {
+public interface TermProvider extends Namespaced {
     /**
      * A new instance of the term must be provided.
      * This is usually implemented by simply calling a nullary constructor of the class.
@@ -31,6 +31,6 @@ public interface TermProvider extends NamespaceContainer {
     }
 
     default Messenger getMessage() {
-        return new LanguageEntryMessenger("peace-treaties", "terms", StringUtils.configOption(getNamespace().getKey()), "message");
+        return new LanguageEntryMessenger("peace-treaties", "terms", Strings.configOption(getNamespace().getKey()), "message");
     }
 }

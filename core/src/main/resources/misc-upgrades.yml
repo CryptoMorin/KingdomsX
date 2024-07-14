@@ -19,7 +19,7 @@ invasion-teleportation:
     # This option can be used to make upgrade trees.
     #condition:
     # Makes "invasions" upgrade to be a requirement to be maxxed to upgrade this upgrade.
-    # The "miscupgrades.required.invasions" refers to a custom language entry inside your language files. (e.g. en.yml)
+  # The "miscupgrades.required.invasions" refers to a custom language entry inside your language files. (e.g. en.yml)
   # %kingdoms_kingdom_upgrade% is a functional placeholder: https://github.com/CryptoMorin/KingdomsX/wiki/Placeholders#placeholder-functions
   #"{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "miscupgrades.required.invasions"
 
@@ -89,7 +89,7 @@ nexus-guards:
   default-level: 0
   can-be-disabled: true
 
-  condition: 'kingdoms_kingdom_is_pacifist || kingdoms_other_kingdom_is_pacifist'
+  condition: 'kingdoms_kingdom_is_pacifist || {other*kingdoms_kingdom_is_pacifist}'
 
   levels:
     1:
@@ -150,7 +150,7 @@ guards:
   default-level: 0
   can-be-disabled: true
 
-  condition: 'kingdoms_kingdom_is_pacifist || kingdoms_other_kingdom_is_pacifist'
+  condition: 'kingdoms_kingdom_is_pacifist || {other*kingdoms_kingdom_is_pacifist}'
 
   levels:
     1:

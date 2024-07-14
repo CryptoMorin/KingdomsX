@@ -2,10 +2,7 @@ package org.kingdoms.commands.outposts;
 
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.kingdoms.commands.CommandContext;
-import org.kingdoms.commands.CommandTabContext;
-import org.kingdoms.commands.KingdomsCommand;
-import org.kingdoms.commands.KingdomsParentCommand;
+import org.kingdoms.commands.*;
 import org.kingdoms.outposts.Outpost;
 import org.kingdoms.outposts.OutpostEditor;
 
@@ -17,15 +14,16 @@ public class CommandOutpostEdit extends KingdomsCommand {
     }
 
     @Override
-    public void execute(CommandContext context) {
-        if (context.assertPlayer()) return;
-        if (context.requireArgs(1)) return;
+    public CommandResult execute(CommandContext context) {
+        if (context.assertPlayer()) return CommandResult.FAILED;
+        if (context.requireArgs(1)) return CommandResult.FAILED;
 
         Outpost outpost = CommandOutpost.getOutpost(context, 0);
-        if (outpost == null) return;
+        if (outpost == null) return CommandResult.FAILED;
 
         Player player = context.senderAsPlayer();
         new OutpostEditor(player, outpost).openOutpostEditor();
+        return CommandResult.SUCCESS;
     }
 
     @Override

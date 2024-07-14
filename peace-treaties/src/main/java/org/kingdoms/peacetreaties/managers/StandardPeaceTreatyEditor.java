@@ -10,9 +10,10 @@ import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
 import org.kingdoms.gui.GUIAccessor;
 import org.kingdoms.gui.InteractiveGUI;
+import org.kingdoms.gui.OptionCategory;
 import org.kingdoms.gui.OptionHandler;
 import org.kingdoms.locale.messenger.Messenger;
-import org.kingdoms.locale.provider.MessageBuilder;
+import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.main.KLogger;
 import org.kingdoms.managers.chat.ChatInputManager;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
@@ -107,7 +108,7 @@ public class StandardPeaceTreatyEditor {
             boolean remove = false;
             if (entry.getValue().contract.getVictimKingdomId().equals(kingdom.getId())) {
                 if (player != null)
-                    PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player, new MessageBuilder().withContext(kingdom));
+                    PeaceTreatyLang.EDITOR_VICTIM_KINGDOM_DISBANDED.sendError(player, new MessagePlaceholderProvider().withContext(kingdom));
                 remove = true;
             } else if (entry.getValue().contract.getProposerKingdomId().equals(kingdom.getId())) {
                 // No need to send a message, they're already notified when their kingdom gets disbanded.
@@ -135,24 +136,24 @@ public class StandardPeaceTreatyEditor {
 
     private InteractiveGUI prepareGUI(String path) {
         InteractiveGUI gui = GUIAccessor.prepare(player, path);
-        peaceTreaty.getPlaceholderContextProvider(gui.getSettings());
+        peaceTreaty.getPlaceholderContextProvider(gui.getMessageContext());
         return gui;
     }
 
     public void open() {
         this.gui = prepareGUI(PeaceTreatyGUI.EDITOR.getGUIPath());
 
-        for (Pair<String, OptionHandler> termOption : gui.getRemainingOptionsOf("term")) {
-            TermGroupingOptions grouping = TermRegistry.getTermGroupings().get(termOption.getKey());
+        for (OptionCategory termOption : gui.getOptions("term")) {
+            TermGroupingOptions grouping = TermRegistry.getTermGroupings().get(termOption.getName());
             if (grouping == null) {
-                KLogger.warn("Unknown peace treaty grouping term '" + termOption.getKey() + "' in GUI.");
+                KLogger.warn("Unknown peace treaty grouping term '" + termOption.getName() + "' in GUI.");
                 continue;
             }
 
-            termOption.getValue().getSettings().raw("war_points", grouping.getRequiredWarPoints(peaceTreaty));
+            termOption.getOption().getMessageContext().raw("war_points", grouping.getRequiredWarPoints(peaceTreaty));
             peaceTreaty.getTerms().values().forEach(group -> group.getTerms().values().forEach(term ->
-                    termOption.getValue().getSettings().inheritPlaceholders(term.getEdits())));
-            termOption.getValue().on(ClickType.LEFT, ctx -> {
+                    termOption.getOption().getMessageContext().inheritPlaceholders(term.getEdits())));
+            termOption.getOption().on(ClickType.LEFT, ctx -> {
                 Optional<Messenger> cantApply = grouping.getTerms().values().stream()
                         .map(x -> x.canApply(grouping, peaceTreaty))
                         .filter(Objects::nonNull)
@@ -165,7 +166,7 @@ public class StandardPeaceTreatyEditor {
 
                 double totalRequiredWarPoints = peaceTreaty.getTotalRequiredWarPoints() + grouping.getRequiredWarPoints(peaceTreaty);
                 double ownedWarPoints = WarPoint.getWarPoints(peaceTreaty.getProposerKingdom(), peaceTreaty.getVictimKingdom());
-                ctx.getSettings().raw("peacetreaty_war_points", totalRequiredWarPoints);
+                ctx.getMessageContext().raw("peacetreaty_war_points", totalRequiredWarPoints);
                 if (!isAdmin && totalRequiredWarPoints > ownedWarPoints) {
                     ctx.sendError(PeaceTreatyLang.TERM_INSUFFICIENT_WAR_POINTS);
                     return;
@@ -202,8 +203,8 @@ public class StandardPeaceTreatyEditor {
 
         AtomicBoolean wasSent = new AtomicBoolean();
         Consumer<OptionHandler> consumer = ctx -> {
-            int minTerms = (int) MathUtils.eval(PeaceTreatyConfig.MIN_TERMS.getManager().getMathExpression(), ctx.getSettings());
-            ctx.getSettings().raw("terms_min", minTerms);
+            int minTerms = (int) MathUtils.eval(PeaceTreatyConfig.MIN_TERMS.getManager().getMathExpression(), ctx.getMessageContext());
+            ctx.getMessageContext().raw("terms_min", minTerms);
 
             if (peaceTreaty.getTerms().size() < minTerms) {
                 ctx.sendError(PeaceTreatyLang.TERMS_MIN);
@@ -268,14 +269,14 @@ public class StandardPeaceTreatyEditor {
         isInsideNestedGUI.set(true);
         InteractiveGUI gui = prepareGUI(guiName);
 
-        for (Pair<String, OptionHandler> termEntry : gui.getRemainingOptionsOf("term")) {
-            TermProvider term = grouping.getTerms().get(Namespace.fromConfigString(termEntry.getKey()));
+        for (OptionCategory termEntry : gui.getOptions("term")) {
+            TermProvider term = grouping.getTerms().get(Namespace.fromConfigString(termEntry.getName()));
             if (term == null) {
-                KLogger.error("Unknown term '" + termEntry.getKey() + "' for GUI: " + guiName);
+                KLogger.error("Unknown term '" + termEntry.getName() + "' for GUI: " + guiName);
                 continue;
             }
 
-            OptionHandler option = termEntry.getValue();
+            OptionHandler option = termEntry.getOption();
             option.setSettings(peaceTreaty.getOrCreateTerm(grouping, term).getEdits());
 
             option.on(ClickType.LEFT, ctx -> {

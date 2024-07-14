@@ -18,5 +18,5 @@ repositories {
 
 dependencies {
     compileOnly(project(":core:service"))
-    compileOnly("fr.xephi:authme:5.6.0-SNAPSHOT") { isTransitive = false } // https://github.com/AuthMe/AuthMeReloaded
+    compileOnly("fr.xephi:authme:5.7.0-SNAPSHOT") { isTransitive = false } // https://github.com/AuthMe/AuthMeReloaded
 }

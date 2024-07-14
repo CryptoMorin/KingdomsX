@@ -51,15 +51,15 @@ options:
     material: PLAYER_HEAD
     accepted:
       condition: peacetreaty_accepted
-      name: '{$sep}[{$p}Zaakceptowano{$sep}] {$s}%kingdoms_name%'
+      name: '{$sep}[{$p}Zaakceptowano{$sep}] {$s}%kingdoms_kingdom_name%'
     else:
-      name: '{$sep}[{$e}Nie Zaakceptowano Jeszcze{$sep}] {$s}%kingdoms_name%'
+      name: '{$sep}[{$e}Nie Zaakceptowano Jeszcze{$sep}] {$s}%kingdoms_kingdom_name%'
     lore: |
       {$p}Czas Trwania Kontraktu{$sep}: {$s}%time_peacetreaty_duration%
       {$p}Wysłano{$sep}: {$s}%date_peacetreaty_requested_time%
       {$p}Warunki{$sep}: {$s}%peacetreaty_count_terms%
       
-      {$p}Twoje Punkty Wojenne{$sep}: {$s}%kingdoms_other_war_points%
+      {$p}Twoje Punkty Wojenne{$sep}: {$s}%other*kingdoms_war_points%
       {$p}Ich Punkty Wojenne{$sep}: {$s}%kingdoms_war_points%
       {$p}Punkty Wojenne Kontraktu{$sep}: {$s}%peacetreaty_war_points%
       
@@ -70,16 +70,16 @@ options:
     material: PLAYER_HEAD
     accepted:
       condition: peacetreaty_accepted
-      name: '{$sep}[{$p}Zaakceptowano{$sep}] {$s}%kingdoms_other_kingdom_name%'
+      name: '{$sep}[{$p}Zaakceptowano{$sep}] {$s}%other*kingdoms_kingdom_name%'
     else:
-      name: '{$sep}[{$e}Nie Zaakceptowano Jeszcze{$sep}] {$s}%kingdoms_other_kingdom_name%'
+      name: '{$sep}[{$e}Nie Zaakceptowano Jeszcze{$sep}] {$s}%other*kingdoms_kingdom_name%'
     lore: |
       {$p}Czas Trwania Kontraktu{$sep}: {$s}%time_peacetreaty_duration%
       {$p}Wysłano{$sep}: {$s}%date_peacetreaty_requested_time%
       {$p}Warunki{$sep}: {$s}%peacetreaty_count_terms%
       
       {$p}Twoje Punkty Wojenne{$sep}: {$s}%kingdoms_war_points%
-      {$p}Ich Punkty Wojenne{$sep}: {$s}%kingdoms_other_war_points%
+      {$p}Ich Punkty Wojenne{$sep}: {$s}%other*kingdoms_war_points%
       {$p}Punkty Wojenne Kontraktu{$sep}: {$s}%peacetreaty_war_points%
       
       {$p}Aby uzyskać więcej informacji kliknij

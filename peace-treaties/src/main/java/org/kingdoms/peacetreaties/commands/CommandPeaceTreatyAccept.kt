@@ -7,7 +7,7 @@ import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceT
 import org.kingdoms.peacetreaties.data.PeaceTreaty
 
 class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand("accept", parent) {
-    override fun executeX(context: CommandContext): CommandResult {
+    override fun execute(context: CommandContext): CommandResult {
         if (context.assertPlayer()) return CommandResult.FAILED
         if (context.assertHasKingdom()) return CommandResult.FAILED
         if (context.requireArgs(1)) return CommandResult.FAILED
@@ -19,7 +19,7 @@ class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand(
         }
 
         val targetKingdom = context.getKingdom(0) ?: return CommandResult.FAILED
-        context.settings.withContext(targetKingdom)
+        context.messageContext.withContext(targetKingdom)
 
         val contract: PeaceTreaty = kingdom.getReceivedPeaceTreaties()[targetKingdom.dataKey] ?: run {
             context.sendError(PeaceTreatyLang.COMMAND_PEACETREATY_NO_CONTRACT_FROM_KINGDOM)
@@ -31,13 +31,13 @@ class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand(
         val errors = arrayListOf<Messenger>()
         for (termGrouping in contract.terms.values) {
             for (term in termGrouping.terms.values) {
-                term.addEdits(context.settings)
+                term.addEdits(context.messageContext)
                 val canApply = term.canAccept(termGrouping.options, contract)
                 if (canApply != null) errors.add(canApply)
             }
         }
 
-        contract.getPlaceholderContextProvider(context.settings)
+        contract.getPlaceholderContextProvider(context.messageContext)
         return if (errors.isEmpty()) {
             if (contract.accept().isCancelled) return CommandResult.FAILED
 

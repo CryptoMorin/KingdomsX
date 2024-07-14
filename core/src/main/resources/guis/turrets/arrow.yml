@@ -4,7 +4,7 @@ sound: ITEM_ARMOR_EQUIP_DIAMOND
 
 options:
   ammo:
-    name: "&9Ammo&8: &2%ammo%"
+    name: "&9Ammo{$colon} &2%ammo%"
     material: ARROW
     ammo: 100
     cost: 10
@@ -16,30 +16,32 @@ options:
       &2for &6%fill-cost% &2resource points.
     slot: 0
   upgrade:
+    material: NETHER_STAR
     upgrade:
       condition: "level < max_level"
-      name: "&9Upgrade&8: &6%roman_level% &7➛ &6%roman_next_level%"
-      material: NETHER_STAR
-      lore:
-        - "&7⚫ &2Range&8: &6%range% &7➔ &6%next_range%"
-        - "&7⚫ &2Max Ammo&8: &6%max_ammo% &7➔ &6%next_max_ammo%"
-        - "&7⚫ &2Cooldown&8: &6%cooldown% &7➔ &6%next_cooldown%"
-        - "&7⚫ &2Max Targets&8: &6%max_targets% &7➔ &6%next_max_targets%"
-        - "&7⚫ &2Speed&8: &6%speed% &7➔ &6%next_speed%"
-        - "&7⚫ &2Damage&8: &6%damage% &7➔ &6%next_damage%"
-        - ""
-        - "&7⚫ &2Max Level&8: &6III"
-        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
+      name: "&9Upgrade{$colon} &6%roman@level% {$arrow} &6%roman@next_level%"
+      lore: |
+        {? building_is_under_construction ? "{$err-sign} &cYou currently can't upgrade this
+        turret because it's under construction.
+        "}
+        {$dot} &2Range{$colon} &6%range% &7➔ &6%next_range%
+        {$dot} &2Max Ammo{$colon} &6%max_ammo% &7➔ &6%next_max_ammo%
+        {$dot} &2Cooldown{$colon} &6%cooldown% &7➔ &6%next_cooldown%
+        {$dot} &2Max Targets{$colon} &6%max_targets% &7➔ &6%next_max_targets%
+        {$dot} &2Speed{$colon} &6%speed% &7➔ &6%next_speed%
+        {$dot} &2Damage{$colon} &6%damage% &7➔ &6%next_damage%
+
+        {$dot} &2Max Level{$colon} &6III
+        {$dot} &2Cost{$colon} &6%upgrade_cost%
     maxxed:
-      name: "&9Level&8: &6%roman_level%"
-      material: NETHER_STAR
-      lore:
-        - "&7⚫ &2Range&8: &6%range%"
-        - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
-        - "&7⚫ &2Cooldown&8: &6%cooldown%"
-        - "&7⚫ &2Max Targets&8: &6%max_targets%"
-        - "&7⚫ &2Speed&8: &6%speed%"
-        - "&7⚫ &2Damage&8: &6%damage%"
+      name: "&9Level{$colon} &6%roman@level%"
+      lore: |
+        {$dot} &2Range{$colon} &6%range%
+        {$dot} &2Max Ammo{$colon} &6%max_ammo%
+        {$dot} &2Cooldown{$colon} &6%cooldown%
+        {$dot} &2Max Targets{$colon} &6%max_targets%
+        {$dot} &2Speed{$colon} &6%speed%
+        {$dot} &2Damage{$colon} &6%damage%
     slot: 1
   manual:
     manual:
@@ -71,8 +73,16 @@ options:
   break:
     name: "&cBreak"
     material: REDSTONE_BLOCK
-    lore:
-      - "&4Breaks this turret."
+    under-construction:
+      condition: "building_is_under_construction"
+      lore: |
+        &4Breaks this turret.
+
+        {$err-sign} {$e}This turret is currently under
+        construction, breaking this turret
+        will revert all progress.
+    else:
+      lore: [ "&4Breaks this turret." ]
     slot: 3
   close:
     name: "&cClose"

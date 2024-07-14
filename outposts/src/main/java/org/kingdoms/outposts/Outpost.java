@@ -28,7 +28,7 @@ public class Outpost {
         this.spawn = spawn;
         this.center = center;
         this.rewards = new OutpostRewards("3000", "1000", new ArrayList<>(), new ArrayList<>());
-        this.bossBarSettings = new BossBarSettings("&8-=[ &6" + name + " &2Outpost Event &8]=-", BarColor.BLUE, BarStyle.SEGMENTED_6);
+        setDefaultBossBarSettings();
     }
 
     public Outpost(@NonNull String name, @NonNull String region, @NonNull Location spawn, @NonNull Location center,
@@ -121,6 +121,10 @@ public class Outpost {
 
     public @Nullable BossBarSettings getBossBarSettings() {
         return bossBarSettings;
+    }
+
+    public void setDefaultBossBarSettings() {
+        this.bossBarSettings = new BossBarSettings("&8-=[ &6" + name + " &2Outpost Event &8]=-", BarColor.BLUE, BarStyle.SEGMENTED_6);
     }
 
     public void setBossBarSettings(@Nullable BossBarSettings bossBarSettings) {
