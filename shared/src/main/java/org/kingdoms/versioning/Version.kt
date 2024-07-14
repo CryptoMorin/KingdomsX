@@ -45,6 +45,8 @@ interface VersionPart : VersionBase<VersionPart> {
             is Stage -> 1
             else -> 0
         }
+
+        override fun toString(): String = "VerPart.Numeric($number)"
     }
 
     class Unknown(val id: String) : VersionPart {
@@ -58,6 +60,8 @@ interface VersionPart : VersionBase<VersionPart> {
             is Unknown -> this.id.compareTo(other.id)
             else -> 0
         }
+
+        override fun toString(): String = "VerPart.Unknown($id)"
     }
 
     enum class PreReleaseType(val unstable: Boolean, vararg aliases: String) : Comparable<PreReleaseType> {
@@ -67,7 +71,7 @@ interface VersionPart : VersionBase<VersionPart> {
         // Stable releases
         RELEASE(false, "distribution", "dist", "stable");
 
-        val aliases: Set<String> = setOf(this.name.lowercase(Locale.ENGLISH)).plus(aliases.toSet())
+        val aliases: Set<String> = setOf(this.name).plus(aliases).map { it.lowercase(Locale.ENGLISH) }.toSet()
 
         companion object {
             @JvmField val MAPPING: Map<String, PreReleaseType> =
@@ -94,6 +98,8 @@ interface VersionPart : VersionBase<VersionPart> {
             is Stage -> this.type.compareTo(other.type)
             else -> 0
         }
+
+        override fun toString(): String = "VerPart.Stage(${type.name})"
     }
 }
 
@@ -138,7 +144,8 @@ open class AbstractVersion(private val originalString: String, private val parts
     override fun compareTo(other: Version): Int {
         val otherParts = other.getParts()
         val size = Math.min(parts.size, otherParts.size)
-        for (i in 0..size) {
+        System.out.println("min betwee $parts (${parts.size}) and $otherParts (${otherParts.size}) is $size")
+        for (i in 0..<size) {
             val part = parts[i]
             val otherPart = otherParts[i]
             val compareTo = part.compareTo(otherPart)
@@ -146,9 +153,9 @@ open class AbstractVersion(private val originalString: String, private val parts
         }
 
         val nextAfterFinal = if (parts.size > size) {
-            parts[size]
+            parts[Math.min(size, parts.size - 1)]
         } else {
-            otherParts[size]
+            otherParts[Math.min(size, otherParts.size - 1)]
         }
 
         return nextAfterFinal.compareWhenNotSpecified()
@@ -156,6 +163,7 @@ open class AbstractVersion(private val originalString: String, private val parts
 
     override fun canBeComparedTo(other: Version): Boolean = true
     override fun getOriginalString(): String = originalString
+    override fun toString(): String = "${this.javaClass.simpleName}(${getFriendlyString(false)} - ${getParts()})"
 
     override fun equals(other: Any?): Boolean {
         if (other !is Version) return false;
