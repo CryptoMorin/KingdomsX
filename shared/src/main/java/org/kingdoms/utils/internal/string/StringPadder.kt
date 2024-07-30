@@ -36,13 +36,18 @@ class StringPadder {
             }
             val maxLength = words.maxBy { it.length }.length
             for (sentence in sentences) {
-                val padded = sentence.words[i].padEnd(length = maxLength, padChar = ' ')
-                sentence.words[i] = padded
+                val word = sentence.words[i]
+                if (word.length < maxLength) {
+                    val padded = word.padEnd(length = maxLength, padChar = ' ')
+                    sentence.words[i] = padded
+                }
             }
         }
 
-        return this.sentences.map { it.words.joinToString(" ") }
+        return this.sentences.map { it.words.joinToString("") }
     }
+
+    fun getPaddedString(separator: String): String = getPadded().joinToString(separator)
 
     @Deprecated(
         message = "Use getPadded() instead",

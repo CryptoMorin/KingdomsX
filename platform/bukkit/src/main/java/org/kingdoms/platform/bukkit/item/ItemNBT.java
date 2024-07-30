@@ -51,11 +51,6 @@ public final class ItemNBT {
             throw new RuntimeException(e);
         }
 
-        MinecraftClassHandle TagParserClass = ofMinecraft()
-                .inPackage(MinecraftPackage.CB, "inventory")
-                .map(MinecraftMapping.MOJANG, "TagParser")
-                .map(MinecraftMapping.SPIGOT, "MojangsonParser");
-
         try {
             // 1.20.5 "components"
             Class<?> DataComponentsClass = XReflection.ofMinecraft().inPackage(MinecraftPackage.NMS, "core.component").named("DataComponents").reflect();

@@ -8,6 +8,7 @@ import org.kingdoms.utils.internal.string.ObjectPrettyStringFactory;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A simple mapping that associates {@link Namespace}s with {@link V}s
@@ -16,7 +17,15 @@ import java.util.Set;
  * @see NamespacedRegistry
  */
 public class NamespacedMap<V> implements Map<Namespace, V> {
-    protected final Map<Namespace, V> map = new NonNullMap<>();
+    protected final Map<Namespace, V> map;
+
+    public NamespacedMap() {
+        this.map = new NonNullMap<>();
+    }
+
+    public NamespacedMap(Map<Namespace, V> map) {
+        this.map = NonNullMap.of(map);
+    }
 
     @Override
     public int size() {

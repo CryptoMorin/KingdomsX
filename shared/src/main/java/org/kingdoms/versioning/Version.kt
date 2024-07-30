@@ -1,10 +1,9 @@
 package org.kingdoms.versioning
 
-import org.kingdoms.constants.DataStringRepresentation
 import org.kingdoms.utils.internal.enumeration.Enums
 import java.util.*
 
-interface VersionBase<T : VersionBase<T>> : Comparable<T>, DataStringRepresentation {
+interface VersionBase<T : VersionBase<T>> : Comparable<T> {
     fun supersedes(other: T): Boolean = compareTo(other) > 0
     fun precedes(other: T): Boolean = compareTo(other) < 0
     fun canBeComparedTo(other: T): Boolean
@@ -18,7 +17,6 @@ interface VersionPart : VersionBase<VersionPart> {
     override fun supersedes(other: VersionPart): Boolean = compareTo(other) > 0
     override fun precedes(other: VersionPart): Boolean = compareTo(other) < 0
     override fun canBeComparedTo(other: VersionPart): Boolean
-    override fun getFriendlyString(short: Boolean): String
 
     override fun hashCode(): Int
     override fun equals(other: Any?): Boolean
@@ -26,7 +24,6 @@ interface VersionPart : VersionBase<VersionPart> {
     class Numeric(val number: Int) : VersionPart {
         override fun canBeComparedTo(other: VersionPart): Boolean = other is Numeric
         override fun getFriendlyString(short: Boolean): String = number.toString()
-        override fun asDataString(): String = number.toString()
         override fun hashCode(): Int = number.hashCode()
         override fun equals(other: Any?): Boolean = other is Numeric && this.number == other.number
         override fun compareTo(other: VersionPart): Int = when (other) {
@@ -40,7 +37,6 @@ interface VersionPart : VersionBase<VersionPart> {
 
     class Unknown(val id: String) : VersionPart {
         override fun canBeComparedTo(other: VersionPart): Boolean = other is Unknown
-        override fun asDataString(): String = id
         override fun getFriendlyString(short: Boolean): String = id
         override fun hashCode(): Int = id.hashCode()
         override fun equals(other: Any?): Boolean = other is Unknown && this.id == other.id
@@ -76,10 +72,6 @@ interface VersionPart : VersionBase<VersionPart> {
 
         override fun hashCode(): Int = type.ordinal
         override fun equals(other: Any?): Boolean = other is Stage && this.type == other.type
-        override fun asDataString(): String = when (this.type) {
-            PreReleaseType.RELEASE -> ""
-            else -> this.type.aliases.min()
-        }
 
         override fun compareTo(other: VersionPart): Int = when (other) {
             is Stage -> this.type.compareTo(other.type)
@@ -97,11 +89,21 @@ interface Version : VersionBase<Version> {
     override fun canBeComparedTo(other: Version): Boolean
     override fun getFriendlyString(short: Boolean): String = asString(true, short)
     fun asString(prefix: Boolean, short: Boolean): String {
-        val str = getParts().joinToString { it.getFriendlyString(short) }
-        return if (prefix) "v$str" else str
+        var previousPart: VersionPart? = null
+        val str = StringBuilder()
+        for (part in getParts()) {
+            if (previousPart != null) {
+                when (part) {
+                    is VersionPart.Numeric -> str.append('.')
+                    is VersionPart.Unknown, is VersionPart.Stage -> str.append('-')
+                }
+            }
+            str.append(part.getFriendlyString(short))
+            previousPart = part
+        }
+        return if (prefix) "v$str" else str.toString()
     }
 
-    override fun asDataString(): String = getParts().joinToString { it.asDataString() }
     fun getOriginalString(): String
 
     override fun hashCode(): Int

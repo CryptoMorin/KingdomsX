@@ -18,6 +18,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.group.Kingdom;
+import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.locale.SupportedLanguage;
@@ -62,6 +63,14 @@ public class OutpostEvent {
 
     public static Map<UUID, OutpostEvent> getKingdomsInEvents() {
         return KINGDOMS_IN_EVENTS;
+    }
+
+    public static OutpostEvent getJoinedEvent(UUID player) {
+        KingdomPlayer kp = KingdomPlayer.getKingdomPlayer(player);
+        Kingdom kingdom = kp.getKingdom();
+
+        if (kingdom == null) return null;
+        return getJoinedEvent(kingdom);
     }
 
     public static OutpostEvent getJoinedEvent(Kingdom kingdom) {

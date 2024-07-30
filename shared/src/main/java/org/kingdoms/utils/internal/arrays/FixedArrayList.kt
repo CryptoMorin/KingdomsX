@@ -1,7 +1,7 @@
 package org.kingdoms.utils.internal.arrays
 
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNull
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNullElements
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNull
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNullElements
 
 @Suppress("UNCHECKED_CAST")
 class FixedArrayList<E>(size: Int) : AbstractList<E?>(), MutableList<E?>, RandomAccess, Cloneable,

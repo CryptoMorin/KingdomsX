@@ -3,7 +3,7 @@ package org.kingdoms.enginehub.worldguard.handlers;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard;
-import org.kingdoms.managers.PvPManager;
+import org.kingdoms.managers.pvp.PvPManager;
 
 public final class WorldGuradPvPHandler implements PvPManager.PvPHandler {
     private final ServiceWorldGuard worldGuard;

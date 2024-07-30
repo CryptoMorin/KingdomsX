@@ -52,7 +52,7 @@ class WorldEditBuildingConstruction(
     }
 
     object Arch : BuildingConstructionArchitect {
-        @JvmStatic val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_CONSTRUCTION")
+        @JvmField val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_CONSTRUCTION")
         override fun newBuilding(info: BuildingSchematic): WorldEditBuildingConstruction {
             val schemName = info.settings.schematic
             val schematic = SchematicManager.getSchematic(schemName)

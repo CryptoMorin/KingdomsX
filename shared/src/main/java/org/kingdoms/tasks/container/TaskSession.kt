@@ -15,8 +15,8 @@ class AbstractTaskSession : TaskSession {
     override val instances: MutableMap<Class<out LocalTaskSession>, LocalTaskSession> = IdentityHashMap()
 }
 
-interface LocalTaskSession : Closeable {
-    override fun close() {}
+interface LocalTaskSession {
+    fun close() {}
 }
 
 interface ConditionalLocalTaskSession<C : TaskContext> : LocalTaskSession {

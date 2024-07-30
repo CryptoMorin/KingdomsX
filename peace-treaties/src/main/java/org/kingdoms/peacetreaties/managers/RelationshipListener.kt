@@ -24,7 +24,6 @@ import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.types.AnnulTreatiesTerm
 import org.kingdoms.utils.KingdomsBukkitExtensions.asKingdom
 import org.kingdoms.utils.KingdomsBukkitExtensions.getKingdom
-import java.time.Duration
 
 class RelationshipListener : Listener {
     companion object {
@@ -137,12 +136,12 @@ class RelationshipListener : Listener {
         val player = event.getPlayer() ?: return
 
         // Check if a kingdom is under a contract for this relationship request
-        if (to.getReceivedPeaceTreaties().containsKey(from.dataKey)) {
+        if (to.getReceivedPeaceTreaties().containsKey(from.key)) {
             PeaceTreatyLang.UNDER_CONTRACT_TO.sendError(player.player)
             event.isCancelled = true
             return
         }
-        if (from.getReceivedPeaceTreaties().containsKey(to.dataKey)) {
+        if (from.getReceivedPeaceTreaties().containsKey(to.key)) {
             PeaceTreatyLang.UNDER_CONTRACT_FROM.sendError(player.player)
             event.isCancelled = true
             return
@@ -157,11 +156,11 @@ class RelationshipListener : Listener {
             return
         }
 
-        if (to.getReceivedPeaceTreaties().containsKey(from.dataKey)) {
+        if (to.getReceivedPeaceTreaties().containsKey(from.key)) {
             PeaceTreatyLang.COMMAND_REVOKE_PEACETREATY_ALREADY_SENT.sendError(player.player)
             return
         }
-        if (from.getReceivedPeaceTreaties().containsKey(to.dataKey)) {
+        if (from.getReceivedPeaceTreaties().containsKey(to.key)) {
             PeaceTreatyLang.COMMAND_REVOKE_PEACETREATY_ALREADY_RECEIVED.sendError(player.player)
             return
         }
@@ -169,8 +168,8 @@ class RelationshipListener : Listener {
         val settings = PlaceholderContextBuilder().withContext(from).other(to)
         val durationMillis = PeaceTreatyConfig.DURATION.manager.getTime(settings)
         val contract = PeaceTreaty(
-            from.dataKey,
-            to.dataKey,
+            from.key,
+            to.key,
             0,
             System.currentTimeMillis(),
             durationMillis,

@@ -13,7 +13,7 @@ import org.kingdoms.events.invasion.KingdomInvadeEndEvent
 import org.kingdoms.events.items.KingdomItemBreakEvent
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.main.KLogger
-import org.kingdoms.managers.PvPManager
+import org.kingdoms.managers.pvp.PvPManager
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.WarPoint.Companion.addWarPoints

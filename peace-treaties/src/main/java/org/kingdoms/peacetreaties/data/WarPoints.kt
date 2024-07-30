@@ -1,6 +1,6 @@
 package org.kingdoms.peacetreaties.data
 
-import org.kingdoms.constants.KingdomsObject
+import org.kingdoms.constants.base.KeyedKingdomsObject
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
 import org.kingdoms.constants.land.abstraction.data.SerializationContext
@@ -24,14 +24,14 @@ class WarPointsMeta(var warPoints: WarPoints) : KingdomMetadata {
             this.warPoints = value as WarPoints
         }
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         context.dataProvider.setMap(warPoints) { key, keyProvider, value ->
             keyProvider.setUUID(key)
             keyProvider.getValueProvider().setDouble(value)
         }
     }
 
-    override fun shouldSave(container: KingdomsObject<*>): Boolean = warPoints.isNotEmpty()
+    override fun shouldSave(container: KeyedKingdomsObject<*>): Boolean = warPoints.isNotEmpty()
 }
 
 class WarPoint {
@@ -49,7 +49,7 @@ class WarPoint {
         }
 
         @JvmStatic
-        fun Kingdom.getWarPoints(other: Kingdom): Double = getWarPoints()[other.dataKey] ?: 0.0
+        fun Kingdom.getWarPoints(other: Kingdom): Double = getWarPoints()[other.key] ?: 0.0
 
         @JvmStatic
         fun Kingdom.hasWarPoints(other: Kingdom, amount: Double): Boolean = getWarPoints(other) >= amount
@@ -60,7 +60,7 @@ class WarPoint {
         @JvmStatic
         fun Kingdom.setWarPoints(other: Kingdom, amount: Double) {
             val meta = getWarPoints()
-            meta[other.dataKey] = amount
+            meta[other.key] = amount
         }
 
         @JvmStatic
@@ -77,14 +77,14 @@ class WarPoint {
         @JvmStatic
         fun Kingdom.addWarPoints(other: Kingdom, amount: Double): Double {
             val maxWarPoints = getMaxWarPoints(other)
-            return getWarPoints().compute(other.dataKey) { _, v -> maxWarPoints.coerceAtMost(if (v == null) amount else v + amount) }!!
+            return getWarPoints().compute(other.key) { _, v -> maxWarPoints.coerceAtMost(if (v == null) amount else v + amount) }!!
         }
     }
 }
 
 class WarPointsMetaHandler private constructor() : KingdomMetadataHandler(Namespace("PeaceTreaties", "WAR_POINTS")) {
     override fun deserialize(
-        container: KingdomsObject<*>,
+        container: KeyedKingdomsObject<*>,
         context: DeserializationContext<SectionableDataGetter>,
     ): KingdomMetadata {
         return WarPointsMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->

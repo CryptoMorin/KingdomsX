@@ -33,7 +33,7 @@ class WorldEditBuilding(
     override fun getRegion(): Region = _region
 
     object Arch : BuildingArchitect {
-        @JvmStatic val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_FINISHED")
+        @JvmField val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_FINISHED")
         override fun getNamespace(): Namespace = NAMESPACE
         override fun deserialize(context: BuildingDeserializationContext<SectionableDataGetter>): Building {
             return context.dataProvider.run {

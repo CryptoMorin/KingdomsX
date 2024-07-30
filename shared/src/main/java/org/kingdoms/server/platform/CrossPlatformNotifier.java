@@ -19,10 +19,14 @@ public final class CrossPlatformNotifier {
 
     protected static boolean isRunningGeyser() {
         // https://github.com/GeyserMC/Geyser
-        String geyser = "org.geysermc";
+        String geyser = "org.geysermc.";
         return Stream.of("geyser.GeyserMain", "geyser.Constants", "connector.GeyserConnector",
                         "connector.network.session.GeyserSession", "api.Geyser", "api.connection.Connection")
                 .anyMatch(x -> Reflect.classExists(geyser + x));
+    }
+
+    protected static boolean isRunningFloodGate() {
+        return Reflect.classExists("org.geysermc.floodgate.api.FloodgateApi");
     }
 
     protected static boolean isRunningBukkit() {

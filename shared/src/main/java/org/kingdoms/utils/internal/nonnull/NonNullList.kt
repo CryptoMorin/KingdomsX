@@ -1,7 +1,7 @@
 package org.kingdoms.utils.internal.nonnull
 
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNull
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNullElements
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNull
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNullElements
 
 class NonNullList<V>(val list: MutableList<V>) : MutableList<V> by list {
     override val size: Int = list.size

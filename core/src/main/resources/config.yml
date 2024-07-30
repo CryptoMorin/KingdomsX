@@ -233,6 +233,7 @@ database:
     players: Players
     lands: Lands
     mails: Mails
+    globals: Globals
 
   # Define the address and port for the database.
   # - The standard DB engine port is used by default (MySQL & MariaDB: 3306, PostgreSQL: 5432, MongoDB: 27017)
@@ -1075,7 +1076,7 @@ tax:
       # they use an equation that gives an error, it'll reset back to this.
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 5% of the player's current balance"
-      default-equation: "(money * 5) / 100"
+      default-equation: "max(10, (money * 15) / 100)"
 
       # Kick kingdom members if they cannot pay taxes.
       kick-if-cant-pay: true
@@ -1101,7 +1102,7 @@ tax:
       # they use an equation that gives an error, it'll reset back to this.
       # All the math operations and functions and placeholders can be used.
       # This equation is basically saying, "Take 15% of the player's current balance"
-      default-equation: "(money * 15) / 100"
+      default-equation: "max(100, (money * 15) / 100)"
 
       use-resource-points: false
 

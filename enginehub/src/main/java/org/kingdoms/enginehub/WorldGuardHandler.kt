@@ -13,7 +13,7 @@ import org.kingdoms.enginehub.worldguard.handlers.WorldGuardKingdomsMapConstruct
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuardLandVisualizerPreparation
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuradPvPHandler
 import org.kingdoms.locale.KingdomsLang
-import org.kingdoms.managers.PvPManager
+import org.kingdoms.managers.pvp.PvPManager
 import org.kingdoms.managers.entity.KingdomEntityRegistry
 import org.kingdoms.managers.entity.types.KingdomChampionEntity
 import org.kingdoms.managers.land.LandChangeWatcher

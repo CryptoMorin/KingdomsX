@@ -27,7 +27,7 @@ import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.constants.land.location.SimpleLocation;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.locale.KingdomsLang;
-import org.kingdoms.main.permissions.KingdomsDefaultPluginPermission;
+import org.kingdoms.permissions.KingdomsDefaultPluginPermission;
 import org.kingdoms.services.Service;
 
 import java.io.File;

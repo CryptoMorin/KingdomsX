@@ -137,7 +137,7 @@ class TermManager : Listener {
         val accepted = kingdom.getProposedPeaceTreaties().values.filter { x -> x.isAccepted }
         for (contract in accepted) {
             val victim = contract.victimKingdom
-            victim.relations[otherKingdom.dataKey] = relation
+            victim.relations[otherKingdom.key] = relation
             victim.onlineMembers.forEach { PeaceTreatyLang.TERMS_MAX_STRUCTURES_SYNCHRONIZED.sendMessage(it); }
         }
     }

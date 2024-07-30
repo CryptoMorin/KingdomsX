@@ -4,6 +4,7 @@ import org.kingdoms.data.Pair
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.utils.fs.FolderRegistry
+import org.kingdoms.utils.internal.StackTraces
 import org.kingdoms.utils.string.Strings
 import java.net.URI
 import java.net.URISyntaxException
@@ -29,7 +30,7 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
     override fun handle(entry: Entry) {
         val schematicFile = entry.path
         val schematicName = entry.name
-        if (schematicName.contains("schematic")) Strings.printStackTrace()
+        if (schematicName.contains("schematic")) StackTraces.printStackTrace()
         val schematic = WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)
 
         if (SchematicManager.loaded.containsKey(schematicName)) {

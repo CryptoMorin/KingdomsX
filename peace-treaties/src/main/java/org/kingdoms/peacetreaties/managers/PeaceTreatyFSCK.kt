@@ -1,14 +1,14 @@
 package org.kingdoms.peacetreaties.managers
 
 import org.kingdoms.constants.group.Kingdom
-import org.kingdoms.managers.fsck.CheckupHandler
+import org.kingdoms.managers.fsck.HealthCheckupHandler
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaty
 import org.kingdoms.utils.KingdomsBukkitExtensions.asKingdom
 
-class PeaceTreatyFSCK : CheckupHandler() {
+class PeaceTreatyFSCK : HealthCheckupHandler() {
     init {
         addPredefinedHandlers(Kingdom::class.java) { kingdom, processor ->
             for (contract in kingdom.getReceivedPeaceTreaties().values.toTypedArray()) {

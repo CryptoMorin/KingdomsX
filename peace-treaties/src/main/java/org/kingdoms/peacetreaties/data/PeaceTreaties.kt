@@ -1,6 +1,6 @@
 package org.kingdoms.peacetreaties.data
 
-import org.kingdoms.constants.KingdomsObject
+import org.kingdoms.constants.base.KeyedKingdomsObject
 import org.kingdoms.constants.group.Group
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext
@@ -34,7 +34,7 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
 
     override fun toString(): String = "PeaceTreatyReceiverMeta[${Strings.associatedArrayMap(peaceTreaties)}]"
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         val provider = context.dataProvider
 
         provider.setMap(peaceTreaties) { proposerId, keyProvider, contract ->
@@ -58,7 +58,7 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
         }
     }
 
-    override fun shouldSave(container: KingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
+    override fun shouldSave(container: KeyedKingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
 }
 
 class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMetadata {
@@ -69,11 +69,11 @@ class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMeta
             peaceTreaties = value as MutableSet<UUID>
         }
 
-    override fun serialize(container: KingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
         context.dataProvider.setCollection(peaceTreaties) { elementProvider, id -> elementProvider.setUUID(id) }
     }
 
-    override fun shouldSave(container: KingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
+    override fun shouldSave(container: KeyedKingdomsObject<*>): Boolean = peaceTreaties.isNotEmpty()
 }
 
 @Suppress("unused")
@@ -150,7 +150,7 @@ class PeaceTreaties {
             while (iter.hasNext()) {
                 val uuid = iter.next()
                 val other = Kingdom.getKingdom(uuid) ?: continue
-                val realContract = other.getReceivedPeaceTreaties()[this.dataKey]
+                val realContract = other.getReceivedPeaceTreaties()[this.key]
                 if (realContract == null) {
                     iter.remove()
                     continue
@@ -173,12 +173,12 @@ class PeaceTreatyReceiverMetaHandler private constructor() :
     KingdomMetadataHandler(Namespace("PeaceTreaties", "RECEIVED")) {
     @Suppress("LABEL_NAME_CLASH")
     override fun deserialize(
-        container: KingdomsObject<*>,
+        container: KeyedKingdomsObject<*>,
         context: DeserializationContext<SectionableDataGetter>,
     ): KingdomMetadata {
         return PeaceTreatyReceiverMeta(context.dataProvider.asMap(hashMapOf()) { map, key, value ->
             val proposerID = key.asUUID()
-            val receiverID = (container as Group).dataKey
+            val receiverID = (container as Group).key
 
             val started = value["started"].asLong()
             val duration = Duration.ofMillis(value["duration"].asLong())
@@ -213,7 +213,7 @@ class PeaceTreatyReceiverMetaHandler private constructor() :
 class PeaceTreatyProposerMetaHandler private constructor() :
     KingdomMetadataHandler(Namespace("PeaceTreaties", "PROPOSED")) {
     override fun deserialize(
-        container: KingdomsObject<*>,
+        container: KeyedKingdomsObject<*>,
         context: DeserializationContext<SectionableDataGetter>,
     ): PeaceTreatyProposedMeta {
         return PeaceTreatyProposedMeta(context.dataProvider.asCollection(hashSetOf()) { c, x -> c.add(x.asUUID()!!) })

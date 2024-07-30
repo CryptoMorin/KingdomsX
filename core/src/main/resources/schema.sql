@@ -4,10 +4,10 @@
 ---- Constraints are always non-null and cannot be explicitly defined.
 ---- Strict tables are only supported from 3.36+
 
-
-CREATE TABLE IF NOT EXISTS `{PREFIX}globals` (
-    `version` INT NOT NULL
-) STRICT;
+{{ Singular
+    `id` BOOL NOT NULL,
+    CONSTRAINT `{PREFIX}globals_pkey` PRIMARY KEY (`id`)
+}}
 
 {{ NamespacedFlagsContainer
     `flags` JSON NULL
@@ -22,6 +22,19 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}globals` (
     `logs` JSON NULL,
     `metadata` JSON NULL
 }}
+
+CREATE TABLE IF NOT EXISTS `{PREFIX}globals` (
+    [[Singular]],
+    `version`             INT         NOT NULL,
+    `lastStart`           LONG        NOT NULL,
+    `lastDisable`         LONG        NOT NULL,
+    `lastServerVersion`   VARCHAR(30) NOT NULL,
+    `lastKingdomsVersion` VARCHAR(30) NOT NULL,
+    `installedAddons`     JSON        NOT NULL,
+    `stocks`              JSON        NOT NULL,
+    [[NamespacedFlagsContainer]],
+    [[KINGDOMS_OBJECT]]
+) STRICT;
 
 ----------------------------------------------------------------------------------------------------
 ---------------------------------------   Players  -------------------------------------------------
@@ -156,10 +169,9 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}lands` (
 
 CREATE TABLE IF NOT EXISTS `{PREFIX}kingdoms` (
     [[GROUP]],
-    `king` UUID NOT NULL,
+    `king` UUID NULL,
     `nation` UUID NULL,
     `lore` NVARCHAR(300) NULL,
-    `pacifist` BOOL NULL,
     `championType` VARCHAR(50) NULL,
     `maxLandsModifier` LONG NULL,
     `lastInvasion` LONG NULL,

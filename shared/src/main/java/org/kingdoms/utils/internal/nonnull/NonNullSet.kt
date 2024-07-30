@@ -1,7 +1,7 @@
 package org.kingdoms.utils.internal.nonnull
 
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNull
-import org.kingdoms.utils.internal.nonnull.NullabilityUtils.assertNonNullElements
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNull
+import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNullElements
 
 class NonNullSet<V>(val set: MutableSet<V>) : MutableSet<V> by set {
     override val size: Int = set.size
