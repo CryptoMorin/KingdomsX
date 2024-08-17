@@ -3,7 +3,7 @@ package org.kingdoms.utils.internal.nonnull
 import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNull
 import org.kingdoms.utils.internal.nonnull.Nullability.assertNonNullElements
 
-class NonNullSet<V>(val set: MutableSet<V>) : MutableSet<V> by set {
+class NonNullSet<V>(val set: MutableSet<V> = hashSetOf()) : MutableSet<V> by set {
     override val size: Int = set.size
 
     override fun addAll(elements: Collection<V>): Boolean = set.addAll(elements.assertNonNullElements())

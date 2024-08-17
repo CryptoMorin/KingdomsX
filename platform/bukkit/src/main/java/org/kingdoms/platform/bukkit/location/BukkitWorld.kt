@@ -6,18 +6,18 @@ import java.util.*
 import java.util.stream.Collectors
 
 class BukkitWorld(val world: org.bukkit.World) : World {
-    override fun getName() = world.name
-    override fun getId() = world.uid
-    override fun getMaxHeight(): Int = world.maxHeight
-    override fun getMinHeight(): Int = if (SUPPORTS_MIN_HEIGHT) world.minHeight else 0
+    override val name = world.name
+    override val id = world.uid
+    override val maxHeight: Int = world.maxHeight
+    override val minHeight: Int = if (SUPPORTS_MIN_HEIGHT) world.minHeight else 0
 
     override fun equals(other: Any?): Boolean {
         if (other !is World) return false
-        return this.getId() == other.getId()
+        return this.id == other.id
     }
 
-    override fun hashCode(): Int = getId().hashCode()
-    override fun toString(): String = "World(${getName()})"
+    override fun hashCode(): Int = id.hashCode()
+    override fun toString(): String = "BukkitWorld($id:$name})"
 
     companion object {
         private val SUPPORTS_MIN_HEIGHT: Boolean
@@ -42,7 +42,7 @@ class BukkitWorld(val world: org.bukkit.World) : World {
         @JvmStatic
         fun from(world: World): org.bukkit.World {
             if (world is BukkitWorld) return world.world
-            return getWorld(world.getId(), world)
+            return getWorld(world.id, world)
         }
 
         @JvmStatic

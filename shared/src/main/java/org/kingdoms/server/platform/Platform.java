@@ -1,12 +1,12 @@
 package org.kingdoms.server.platform;
 
 public enum Platform {
-    BUKKIT(CrossPlatformNotifier.isRunningBukkit()),
-    SPIGOT(CrossPlatformNotifier.isRunningSpigot()),
-    FOLIA(CrossPlatformNotifier.isRunningFolia()),
-    PAPER(CrossPlatformNotifier.isRunningPaper()),
-    FORGE(CrossPlatformNotifier.isRunningForge()),
-    BEDROCK(CrossPlatformNotifier.isRunningGeyser());
+    BUKKIT(CrossPlatformManager.isRunningBukkit()),
+    SPIGOT(CrossPlatformManager.isRunningSpigot()),
+    FOLIA(CrossPlatformManager.isRunningFolia()),
+    PAPER(CrossPlatformManager.isRunningPaper()),
+    FORGE(CrossPlatformManager.isRunningForge()),
+    BEDROCK(CrossPlatformManager.isRunningGeyser());
 
     private final boolean available;
 

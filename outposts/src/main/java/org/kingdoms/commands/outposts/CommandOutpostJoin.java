@@ -62,7 +62,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
             if (outpost.getResourcePointsCost() != null) {
                 rp = (long) MathUtils.eval(outpost.getResourcePointsCost(), settings);
                 context.var("cost", rp);
-                if (!kingdom.hasResourcePoints(rp)) {
+                if (!kingdom.getResourcePoints().has(rp)) {
                     return context.fail(OutpostsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_RESOURCE_POINTS);
                 }
             }
@@ -70,13 +70,13 @@ public class CommandOutpostJoin extends KingdomsCommand {
             if (outpost.getMoneyCost() != null) {
                 cost = MathUtils.eval(outpost.getMoneyCost(), settings);
                 context.var("cost", cost);
-                if (!kingdom.hasMoney(cost)) {
+                if (!kingdom.getBank().has(cost)) {
                     return context.fail(OutpostsLang.COMMAND_OUTPOST_JOIN_NOT_ENOUGH_MONEY);
                 }
             }
 
-            kingdom.addResourcePoints(-rp);
-            kingdom.addBank(-cost);
+            kingdom.getResourcePoints().add(-rp);
+            kingdom.getBank().add(-cost);
         }
 
         for (Player member : kingdom.getOnlineMembers()) {

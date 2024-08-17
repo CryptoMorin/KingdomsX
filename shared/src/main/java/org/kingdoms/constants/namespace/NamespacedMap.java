@@ -8,7 +8,6 @@ import org.kingdoms.utils.internal.string.ObjectPrettyStringFactory;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * A simple mapping that associates {@link Namespace}s with {@link V}s

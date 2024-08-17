@@ -171,7 +171,7 @@ open class AbstractVersion(private val originalString: String, private val parts
         val otherParts = other.getParts()
 
         if (parts.size != otherParts.size) return false
-        for (i in 0..parts.size) {
+        for (i in parts.indices) {
             val part = parts[i]
             val otherPart = otherParts[i]
             if (part != otherPart) return false

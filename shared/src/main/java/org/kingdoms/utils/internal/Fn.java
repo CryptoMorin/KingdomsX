@@ -65,6 +65,7 @@ public final class Fn {
     }
 
     private static final Predicate<?> TRUE_PREDICATE = x -> true;
+    private static final Predicate<?> FALSE_PREDICATE = x -> false;
     private static final Supplier<?> NULL_SUPPLIER = new ConstantSupplier<>(null);
 
     @SuppressWarnings("unchecked")
@@ -75,6 +76,11 @@ public final class Fn {
     @SuppressWarnings("unchecked")
     public static <T> Predicate<T> alwaysTrue() {
         return (Predicate<T>) TRUE_PREDICATE;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <T> Predicate<T> alwaysFalse() {
+        return (Predicate<T>) FALSE_PREDICATE;
     }
 
     private static final class ConstantSupplier<T> implements Supplier<T> {

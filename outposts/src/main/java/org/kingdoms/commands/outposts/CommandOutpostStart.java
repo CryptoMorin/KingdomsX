@@ -38,8 +38,8 @@ public class CommandOutpostStart extends KingdomsCommand {
             return CommandResult.FAILED;
         }
 
-        Long time = TimeUtils.parseTime(args[1], TimeUnit.MINUTES);
-        Long startsIn = TimeUtils.parseTime(args[2], TimeUnit.MINUTES);
+        Long time = TimeUtils.parseTime(args[1]);
+        Long startsIn = TimeUtils.parseTime(args[2]);
 
         if (time == null || time <= 0) {
             OutpostsLang.COMMAND_OUTPOST_START_INVALID_TIME.sendError(sender, "time", args[1]);

@@ -75,7 +75,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
     }
 
     override fun onEnable() {
-        if (!Kingdoms.isLoaded()) return
+        if (!isKingdomsEnabled) return
         Kingdoms.get().buildingArchitectRegistry.apply {
             register(WorldEditBuilding.Arch)
             register(WorldEditBuildingConstruction.Arch)
@@ -89,7 +89,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
     }
 
     override fun reloadAddon() {
-        if (!Kingdoms.isLoaded()) return
+        if (!isKingdomsEnabled) return
         Kingdoms.get().buildingArchitectRegistry.apply {
             defaultArchitect = WorldEditBuildingConstruction.Arch
         }

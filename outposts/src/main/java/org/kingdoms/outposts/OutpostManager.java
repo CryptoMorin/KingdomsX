@@ -55,7 +55,7 @@ public final class OutpostManager implements Listener {
         long rp = (long) MathUtils.eval(str, kingdom);
         if (rp <= 0) return;
 
-        kingdom.addResourcePoints(-rp);
+        kingdom.getResourcePoints().add(-rp);
         OutpostsLang.OUTPOST_EVENTS_DEATH.sendMessage(player, "rp", Strings.toFancyNumber(rp));
     }
 }

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
+import java.util.function.Predicate;
 
 /**
  * A class for reflecting on your behavior and morals of committing API evasion and using the dreaded NMS.
@@ -35,7 +36,7 @@ public final class Reflect {
         for (String name : names) {
             try {
                 /* 1.20.6-36 The fuck??????
-                 * Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Class.getName()" because "clazz" is null
+                 * Caused by: java.lang.NullPointerException: Cannot invoke "java.lang.Class.name()" because "clazz" is null
                  *         at io.papermc.paper.pluginremap.reflect.PaperReflection.mapDeclaredFieldName(PaperReflection.java:77) ~[paper-1.20.6.jar:git-Paper-36]
                  *         at io.papermc.reflectionrewriter.runtime.AbstractDefaultRulesReflectionProxy.getDeclaredField(AbstractDefaultRulesReflectionProxy.java:90) ~[reflection-rewriter-runtime-0.0.1.jar:?]
                  *         at io.papermc.paper.pluginremap.reflect.PaperReflectionHolder.getDeclaredField(Unknown Source) ~[paper-1.20.6.jar:git-Paper-36]

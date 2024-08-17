@@ -1,8 +1,8 @@
 package org.kingdoms.peacetreaties.config;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.kingdoms.config.Path;
-import org.kingdoms.config.RawPath;
+import org.kingdoms.config.annotations.Path;
+import org.kingdoms.config.annotations.RawPath;
 import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
@@ -60,6 +60,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     TERMS_MIN("{$e}You need to specify at least {$es}%terms_min% {$e}terms.", 1),
     TERMS_TAKE_MONEY_NOT_ENOUGH("{$e}Your kingdom needs {$es}$%fancy@term_take_money_amount%", 1, 3),
     TERMS_TAKE_MONEY_ENTER("{$p}Enter the amount of money you wish to take.", 1, 3),
+    TERMS_KING_CHANGE_NOT_APPLICALBE("{$e}The specified player is not a member of the proposer or the victim kingdom.", 1, 3),
 
     WAR_POINTS_GAIN_INVADE("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for the invasion.", 2, 3),
     WAR_POINTS_GAIN_KILL("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for killing {$s}%other*player% {$p}by {$s}%player%", 2, 3),

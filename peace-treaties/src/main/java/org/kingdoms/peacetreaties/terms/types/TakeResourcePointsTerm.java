@@ -59,8 +59,8 @@ public class TakeResourcePointsTerm extends Term {
     @Override
     public boolean apply(TermGroupingOptions config, PeaceTreaty peaceTreaty) {
         Kingdom kingdom = peaceTreaty.getVictimKingdom();
-        if (!kingdom.hasResourcePoints(amount)) return false;
-        kingdom.addResourcePoints(-amount);
+        if (!kingdom.getResourcePoints().has(amount)) return false;
+        kingdom.getResourcePoints().add(-amount);
         return true;
     }
 
@@ -73,7 +73,7 @@ public class TakeResourcePointsTerm extends Term {
     @Override
     public Messenger canAccept(TermGroupingOptions config, PeaceTreaty peaceTreaty) {
         Kingdom kingdom = peaceTreaty.getVictimKingdom();
-        if (!kingdom.hasResourcePoints(amount)) return PeaceTreatyLang.TERMS_TAKE_RESOURCE_POINTS_NOT_ENOUGH;
+        if (!kingdom.getResourcePoints().has(amount)) return PeaceTreatyLang.TERMS_TAKE_RESOURCE_POINTS_NOT_ENOUGH;
         return null;
     }
 }

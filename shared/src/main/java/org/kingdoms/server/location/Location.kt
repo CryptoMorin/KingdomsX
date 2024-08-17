@@ -29,6 +29,9 @@ class Location(
     fun subtract(other: BlockPoint3D) = subtract(other.x, other.y, other.z)
     fun subtract(x: Number, y: Number, z: Number) = simpleAdd(-x.toDouble(), -y.toDouble(), -z.toDouble())
 
+    fun toBlockVector() = BlockVector3.of(x.toInt(), y.toInt(), z.toInt())
+    fun toVector() = Vector3.of(x, y, z)
+
     private fun simpleAdd(x: Number, y: Number, z: Number) =
         Location.of(world, this.x + x.toDouble(), this.y + y.toDouble(), this.z + z.toDouble(), yaw, pitch)
 
@@ -74,4 +77,46 @@ private class AbstractDirectional(override val pitch: Float, override val yaw: F
 
 interface WorldContainer {
     val world: World
+}
+
+class Vector3Location(
+    override val world: World,
+    override val x: Double,
+    override val y: Double,
+    override val z: Double,
+) : WorldContainer, Point3D {
+    override fun hashCode(): Int = throw UnsupportedOperationException()
+    override fun equals(other: Any?): Boolean {
+        if (other !is Vector3Location) return false
+        return world == other.world &&
+                x == other.x && y == other.y && z == other.z
+    }
+
+    override fun toString(): String = "Vector3Location(world=$world, x=$x, y=$y, z=$z)"
+
+    fun add(x: Number, y: Number, z: Number): Vector3Location = simpleAdd(x, y, z)
+    fun add(other: BlockPoint3D): Vector3Location = add(other.x, other.y, other.z)
+    fun add(other: Point3D): Vector3Location = add(other.x, other.y, other.z)
+    fun subtract(other: BlockPoint3D) = subtract(other.x, other.y, other.z)
+    fun subtract(x: Number, y: Number, z: Number) = simpleAdd(-x.toDouble(), -y.toDouble(), -z.toDouble())
+
+    fun toBlockVector() = BlockVector3.of(x.toInt(), y.toInt(), z.toInt())
+    fun toVector() = Vector3.of(x, y, z)
+
+    private fun simpleAdd(x: Number, y: Number, z: Number) =
+        of(world, this.x + x.toDouble(), this.y + y.toDouble(), this.z + z.toDouble())
+
+    companion object {
+        @Suppress("NOTHING_TO_INLINE")
+        @JvmStatic
+        inline fun modify(): Nothing {
+            throw UnsupportedOperationException("Cannot modify immutable location")
+        }
+
+        @JvmStatic
+        fun of(
+            world: World,
+            x: Double, y: Double, z: Double
+        ): Vector3Location = Vector3Location(world, x, y, z)
+    }
 }

@@ -1,7 +1,7 @@
 package org.kingdoms.peacetreaties.config;
 
-import org.kingdoms.config.EnumConfig;
-import org.kingdoms.config.KeyedConfigAccessor;
+import org.kingdoms.config.accessor.EnumConfig;
+import org.kingdoms.config.accessor.KeyedConfigAccessor;
 import org.kingdoms.config.implementation.KeyedYamlConfigAccessor;
 import org.kingdoms.config.managers.ConfigManager;
 import org.kingdoms.config.managers.ConfigWatcher;

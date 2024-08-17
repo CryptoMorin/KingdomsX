@@ -13,6 +13,7 @@ import org.kingdoms.services.managers.ServiceHandler;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarEditor;
 import org.kingdoms.utils.compilers.MathCompiler;
+import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.string.Strings;
 
 import java.util.Collection;
@@ -152,7 +153,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_ENTRANCE_MONEY_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            MathCompiler.Expression compiled = CommandAdminEvaluate.compile(player, input);
+            MathExpression compiled = CommandAdminEvaluate.compile(player, input);
             if (compiled == null) return;
 
             outpost.setMoneyCost(compiled);
@@ -166,7 +167,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_ENTRANCE_RESOURCE_POINTS_FEE_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            MathCompiler.Expression compiled = CommandAdminEvaluate.compile(player, input);
+            MathExpression compiled = CommandAdminEvaluate.compile(player, input);
             if (compiled == null) return;
 
             outpost.setResourcePointsCost(compiled);
@@ -209,7 +210,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REWARDS_MONEY_ENTER);
             context.startConversation();
         }).setConversation((context, input) -> {
-            MathCompiler.Expression compiled = CommandAdminEvaluate.compile(player, input);
+            MathExpression compiled = CommandAdminEvaluate.compile(player, input);
             if (compiled == null) return;
 
             outpost.getRewards().setMoney(input);
@@ -222,7 +223,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REWARDS_RESOURCE_POINTS_ENTER);
             context.startConversation();
         }).setConversation((ctx, input) -> {
-            MathCompiler.Expression compiled = CommandAdminEvaluate.compile(player, input);
+            MathExpression compiled = CommandAdminEvaluate.compile(player, input);
             if (compiled == null) return;
 
             outpost.getRewards().setResourcePoints(input);

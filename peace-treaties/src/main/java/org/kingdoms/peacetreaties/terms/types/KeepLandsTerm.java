@@ -14,7 +14,7 @@ import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.gui.GUIAccessor;
-import org.kingdoms.gui.GUIPagination;
+import org.kingdoms.gui.pagination.GUIPagination;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.ReusableOptionHandler;
 import org.kingdoms.locale.KingdomsLang;
@@ -89,12 +89,12 @@ public class KeepLandsTerm extends Term {
             if (displayModeGrouped) {
                 List<LogKingdomInvader> invadedLands = getInvadedLandsSimple(kingdom, editor.getPeaceTreaty().getVictimKingdomId());
 
-                Pair<ReusableOptionHandler, Collection<LogKingdomInvader>> pagination =
+                GUIPagination<LogKingdomInvader> pagination =
                         GUIPagination.paginate(gui, invadedLands, "land", page,
                                 (newPage) -> prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, newPage));
 
-                ReusableOptionHandler option = pagination.getKey();
-                for (LogKingdomInvader log : pagination.getValue()) {
+                ReusableOptionHandler option = pagination.getOption();
+                for (LogKingdomInvader log : pagination.getPaginatedElements()) {
                     option.setEdits("added", addedLogs.contains(log)).onNormalClicks(() -> {
                         if (!addedLogs.remove(log)) addedLogs.add(log);
                         prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, page);
@@ -108,12 +108,12 @@ public class KeepLandsTerm extends Term {
                                 .entrySet().stream()
                                 .map(x -> Pair.of(x.getKey(), x.getValue()))
                                 .collect(Collectors.toList());
-                Pair<ReusableOptionHandler, Collection<Pair<SimpleChunkLocation, LogKingdomInvader>>> pagination =
+                GUIPagination<Pair<SimpleChunkLocation, LogKingdomInvader>> pagination =
                         GUIPagination.paginate(gui, invadedLands, "land", page,
                                 (newPage) -> prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, newPage));
 
-                ReusableOptionHandler option = pagination.getKey();
-                for (Pair<SimpleChunkLocation, LogKingdomInvader> pair : pagination.getValue()) {
+                ReusableOptionHandler option = pagination.getOption();
+                for (Pair<SimpleChunkLocation, LogKingdomInvader> pair : pagination.getPaginatedElements()) {
                     SimpleChunkLocation invadedLand = pair.getKey();
                     option.setEdits("added", added.contains(invadedLand)).onNormalClicks(() -> {
                         if (!added.remove(invadedLand)) added.add(invadedLand);

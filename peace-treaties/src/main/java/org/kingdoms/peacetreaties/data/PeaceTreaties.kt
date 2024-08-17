@@ -10,8 +10,7 @@ import org.kingdoms.constants.metadata.KingdomMetadataHandler
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
-import org.kingdoms.locale.placeholders.FunctionalPlaceholder
-import org.kingdoms.locale.placeholders.KingdomsPlaceholderTranslationContext
+import org.kingdoms.locale.placeholders.EnumKingdomsPlaceholderTranslator
 import org.kingdoms.locale.placeholders.KingdomsPlaceholderTranslator
 import org.kingdoms.locale.placeholders.PlaceholderTranslator
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon
@@ -34,7 +33,10 @@ class PeaceTreatyReceiverMeta(var peaceTreaties: PeaceTreatyMap) : KingdomMetada
 
     override fun toString(): String = "PeaceTreatyReceiverMeta[${Strings.associatedArrayMap(peaceTreaties)}]"
 
-    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(
+        container: KeyedKingdomsObject<*>,
+        context: SerializationContext<SectionCreatableDataSetter>
+    ) {
         val provider = context.dataProvider
 
         provider.setMap(peaceTreaties) { proposerId, keyProvider, contract ->
@@ -69,7 +71,10 @@ class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMeta
             peaceTreaties = value as MutableSet<UUID>
         }
 
-    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(
+        container: KeyedKingdomsObject<*>,
+        context: SerializationContext<SectionCreatableDataSetter>
+    ) {
         context.dataProvider.setCollection(peaceTreaties) { elementProvider, id -> elementProvider.setUUID(id) }
     }
 
@@ -77,7 +82,8 @@ class PeaceTreatyProposedMeta(var peaceTreaties: MutableSet<UUID>) : KingdomMeta
 }
 
 @Suppress("unused")
-enum class PeaceTreatiesPlaceholder(override val default: Any, val translator: PlaceholderTranslator) : KingdomsPlaceholderTranslator {
+enum class PeaceTreatiesPlaceholder(override val default: Any, override val translator: PlaceholderTranslator) :
+    EnumKingdomsPlaceholderTranslator {
     TOTAL_WAR_POINTS(0, KingdomsPlaceholderTranslator.ofKingdom { x -> x.getWarPoints().values.sum() }),
     WAR_POINTS(0, lambda@{ ctx ->
         val kingdom = ctx.getKingdom() ?: return@lambda null
@@ -87,10 +93,6 @@ enum class PeaceTreatiesPlaceholder(override val default: Any, val translator: P
     ;
 
     override var configuredDefaultValue: Any? = null
-
-    override fun translate(context: KingdomsPlaceholderTranslationContext): Any? = this.translator(context)
-    override fun getFunctions(): Map<String, FunctionalPlaceholder.CompiledFunction>? =
-        (this.translator as? FunctionalPlaceholder)?.functions
 
     init {
         KingdomsPlaceholderTranslator.register(this)

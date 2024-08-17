@@ -15,7 +15,7 @@ import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.managers.backup.FolderZipper
 import org.kingdoms.server.location.BlockVector3
-import org.kingdoms.utils.display.SelectionPreviewVisualizer
+import org.kingdoms.utils.display.visualizer.StructureVisualizer
 import org.kingdoms.utils.fs.FSUtil
 import java.awt.Color
 import java.time.Duration
@@ -53,15 +53,13 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
     }
 
     fun sendPreview(player: Player, before: BlockVector3, after: BlockVector3?) {
-        SelectionPreviewVisualizer(ORIGIN_NS_BEFORE, player, setOf(before)).apply {
+        StructureVisualizer(ORIGIN_NS_BEFORE, player, setOf(before), Duration.ofSeconds(15)).apply {
             color = Color.GRAY
-            duration = Duration.ofSeconds(15)
             start()
         }
         if (after != null) {
-            SelectionPreviewVisualizer(ORIGIN_NS_AFTER, player, setOf(after)).apply {
+            StructureVisualizer(ORIGIN_NS_AFTER, player, setOf(after), Duration.ofSeconds(15)).apply {
                 color = Color.GREEN
-                duration = Duration.ofSeconds(15)
                 start()
             }
         }
@@ -80,8 +78,8 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
                 sendPreview(player, before, null)
             } else {
                 context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_DISABLED)
-                SelectionPreviewVisualizer.stop(player, ORIGIN_NS_BEFORE)
-                SelectionPreviewVisualizer.stop(player, ORIGIN_NS_AFTER)
+                StructureVisualizer.stop(player, ORIGIN_NS_BEFORE)
+                StructureVisualizer.stop(player, ORIGIN_NS_AFTER)
                 ORIGIN_TOOL.remove(player.uniqueId)
             }
             return CommandResult.SUCCESS

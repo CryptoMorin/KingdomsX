@@ -22,7 +22,7 @@ enum class LatestMCVersion(val latestBuild: Int) {
     v1_18(388),
     v1_19(550),
     v1_20(148),
-    v1_21(81),
+    v1_21(14),
     ;
 
     private val minorNumber: Int = ordinal + 8
@@ -57,6 +57,9 @@ enum class LatestMCVersion(val latestBuild: Int) {
         @JvmField val CURRENT_MINOR_VERSION: LatestMCVersion? =
             LatestMCVersion.values().find { x -> XReflection.MINOR_NUMBER == x.minorNumber }
         @JvmStatic val ALLOWED_OUTDATED_VERSIONS: Set<SemVer> =
-            hashSetOf(SemVer.of(1, 20, 1), SemVer.of(1, 20, 2), SemVer.of(1, 20, 4))
+            hashSetOf(
+                SemVer.of(1, 21, 0),
+                SemVer.of(1, 20, 1), SemVer.of(1, 20, 2), SemVer.of(1, 20, 4)
+            )
     }
 }

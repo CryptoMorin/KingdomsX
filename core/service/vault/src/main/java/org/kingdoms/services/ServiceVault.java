@@ -72,6 +72,10 @@ public final class ServiceVault implements Service {
         getEconomy().withdrawPlayer(player, amount);
     }
 
+    public static VaultBalance getBalance(OfflinePlayer player) {
+        return new VaultBalance(player);
+    }
+
     public static String getGroup(Player player) {
         if (getPermission() == null) return "default";
         return getPermission().hasGroupSupport() ? getPermission().getPrimaryGroup(player) : "default";

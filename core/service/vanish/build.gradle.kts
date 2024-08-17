@@ -9,7 +9,7 @@ group = "org.kingdoms.services.vanish"
 version = "2.0.0"
 
 repositories {
-    //maven("https://repo.essentialsx.net/snapshots/")
+    // maven("https://repo.essentialsx.net/snapshots/")
     maven("https://repo.essentialsx.net/releases/")
 }
 

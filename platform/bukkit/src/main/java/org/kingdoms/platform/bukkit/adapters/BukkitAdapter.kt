@@ -14,6 +14,7 @@ import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
 import org.kingdoms.server.location.Vector3
 import org.kingdoms.utils.internal.Fn
+import kotlin.contracts.contract
 
 object BukkitAdapter {
     @JvmStatic fun adapt(direction: Direction): BlockFace = BlockFace.valueOf(direction.name)

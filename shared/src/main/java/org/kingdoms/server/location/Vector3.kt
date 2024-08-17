@@ -2,6 +2,7 @@ package org.kingdoms.server.location
 
 import org.kingdoms.constants.DataStringRepresentation
 import org.kingdoms.server.core.Server
+import org.kingdoms.utils.internal.numbers.NumberExtensions.squared
 import org.kingdoms.utils.internal.string.CommaDataSplitStrategy
 import kotlin.math.sqrt
 
@@ -33,6 +34,21 @@ interface BlockPoint3D : Comparable<BlockPoint3D> {
     val x: Int
     val y: Int
     val z: Int
+
+    /**
+     * A less efficient version of [distanceSquared] but gives the exact location.
+     */
+    fun distance(o: BlockPoint3D): Double {
+        return sqrt(this.distanceSquared(o))
+    }
+
+    /**
+     * Doesn't give the right location in terms of blocks, but it's more
+     * efficient than [distance], the caller must use the right number for
+     * comparison.
+     */
+    fun distanceSquared(o: BlockPoint3D): Double =
+        (this.x.toDouble() + o.x).squared() + (this.y + o.y).squared() + (this.z + o.z).squared()
 
     class AxisComparator(private val x: Boolean, private val y: Boolean, private val z: Boolean) :
         Comparator<BlockPoint3D> {
@@ -188,7 +204,7 @@ class Vector3(override val x: Double, override val y: Double, override val z: Do
 
 class BlockLocation3(override val world: World, override val x: Int, override val y: Int, override val z: Int) :
     BlockPoint3D, WorldContainer, DataStringRepresentation {
-    override fun asDataString(): String = CommaDataSplitStrategy.toString(world.getName(), x, y, z)
+    override fun asDataString(): String = CommaDataSplitStrategy.toString(world.name, x, y, z)
 
     fun add(x: Number, y: Number, z: Number) = of(world, this.x + x.toInt(), this.y + y.toInt(), this.z + z.toInt())
     fun subtract(x: Number, y: Number, z: Number) = add(-x.toInt(), -y.toInt(), -z.toInt())

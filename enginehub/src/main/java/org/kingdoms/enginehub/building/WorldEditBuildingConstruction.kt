@@ -130,6 +130,7 @@ class WorldEditBuildingConstruction(
 
     override fun demolish(filter: RegionFilter?): BuildingDemolition {
         prepareForDemolition()
+        stopTask()
         val demolition = WorldEditBuildingConstruction(
             schematic, getOrigin(),
             BuildingConstructionType.DEMOLISHING, BuildingConstructionState.NONE, filter,
@@ -186,6 +187,12 @@ class WorldEditBuildingConstruction(
 
     override fun finish() {
         super.finish()
+        stopTask()
+    }
+
+    override fun finishInstantly() {
+        super.finishInstantly()
+        while (!blockChangeTask!!.isCancelled()) blockChangeTask!!.run()
         stopTask()
     }
 
@@ -318,11 +325,6 @@ class WorldEditBuildingConstruction(
     override fun onChunkUnload(chunk: BlockVector2): Boolean {
         stopTask()
         return super.onChunkUnload(chunk)
-    }
-
-    override fun cancel(demolish: Boolean) {
-        super.cancel(demolish)
-        stopTask()
     }
 
     fun stopTask() {

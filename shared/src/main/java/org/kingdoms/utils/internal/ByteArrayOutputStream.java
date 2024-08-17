@@ -118,7 +118,7 @@ public class ByteArrayOutputStream extends OutputStream {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+        return "ByteArrayOutputStream(" + size + '/' + buf.length + ')';
     }
 
     @Override
@@ -138,7 +138,7 @@ public class ByteArrayOutputStream extends OutputStream {
         if (this == obj) return true;
 
         for (int i = 0; i < size; i++) {
-            if (buf[i] != obj.buf[i]) return false;
+            if (this.buf[i] != obj.buf[i]) return false;
         }
 
         return true;

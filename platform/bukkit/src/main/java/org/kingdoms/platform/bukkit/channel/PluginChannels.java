@@ -11,14 +11,16 @@ import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.kingdoms.server.location.BlockVector3;
 import org.kingdoms.utils.internal.jdk.RecordAccessor;
+import org.kingdoms.utils.internal.nonnull.NonNullMap;
 import org.kingdoms.utils.internal.reflection.Reflect;
 
 import java.awt.*;
 import java.lang.invoke.MethodHandle;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.Locale;
-import java.util.Objects;
+import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * https://wiki.vg/Plugin_channels
@@ -26,12 +28,22 @@ import java.util.Objects;
 public final class PluginChannels {
     private static final Color INVISIBLE_MARKER = new Color(0, 0, 0, 0);
     private static final Duration REMOVE_MARKER_DURATION = Duration.ofSeconds(1);
+    private static final int INVISIBLE_MARKER_ARGB = encodeARGB(INVISIBLE_MARKER);
 
     // Import with the same name because of papers remapper.
     private static final MethodHandle MINECRAFTKEY;
 
+    protected static final Map<UUID, Set<BlockMarkerPluginChannel>> MARKERS = NonNullMap.of(new ConcurrentHashMap<>());
+
+    private static int encodeARGB(Color color) {
+        return (0xFF & color.getAlpha()) << 24
+                | (0xFF & color.getRed()) << 16
+                | (0xFF & color.getGreen()) << 8
+                | (0xFF & color.getBlue());
+    }
+
     static {
-        if (Reflect.classExists("net.minecraft.resources.MinecraftKey")) {
+        if (Reflect.classExists("net.minecraft.resources.MinecraftKey") || Reflect.classExists("net.minecraft.resources.ResourceLocation")) {
             MINECRAFTKEY = XReflection.namespaced()
                     .imports("MinecraftKey", MinecraftKey.class).of(MinecraftKey.class)
                     .method("public static MinecraftKey fromNamespaceAndPath(String namespace, String key);")
@@ -94,13 +106,34 @@ public final class PluginChannels {
         sendPayload(player, DefaultChannel.DEBUG$GAME_TEST_CLEAR.getMinecraftKey(), Unpooled.EMPTY_BUFFER);
     }
 
-    public static void clearBlockMarkers(@NotNull final Player player, @NotNull BlockVector3 location) {
+    public static void clearBlockMarkers(@NotNull final Player player, @NotNull Collection<BlockMarkerPluginChannel> markers) {
         ensureSupported();
+
+        Set<BlockMarkerPluginChannel> handles = PluginChannels.MARKERS.get(player.getUniqueId());
 
         // Yes! This trick actually works.
         // It seems like the markers are overridden entirely, so any duration will work.
-        sendBlockMarker(player, location, INVISIBLE_MARKER, REMOVE_MARKER_DURATION);
+        List<Object> packets = new ArrayList<>(markers.stream().mapToInt(x -> x.getMarkers().size()).sum());
+        for (BlockMarkerPluginChannel marker : markers) {
+            if (handles == null || !handles.isEmpty()) {
+                if (!handles.remove(marker)) return;
+            }
+
+            for (Map.Entry<BlockVector3, BlockMarker> block : marker.getMarkers().entrySet()) {
+                BlockVector3 loc = block.getKey();
+                Object packet = RecordAccessor.createCustomPayload(
+                        loc.getX(), loc.getY(), loc.getZ(),
+                        INVISIBLE_MARKER_ARGB, "", REMOVE_MARKER_DURATION
+                );
+                packets.add(packet);
+            }
+        }
+
+        if (handles != null && handles.isEmpty()) PluginChannels.MARKERS.remove(player.getUniqueId());
+        // TODO re-show other markers that are still active in the overlapping locations.
+        MinecraftConnection.sendPacket(player, packets.toArray());
     }
+
     //
     // public static void sendBlockMarker(@NotNull final Player player, @NotNull BlockVector3 location, Color color, Duration duration) {
     //     Objects.requireNonNull(player, "player");
@@ -134,15 +167,29 @@ public final class PluginChannels {
     //     sendPayload(player, DefaultChannel.DEBUG$GAME_TEST_ADD_MARKER.getMinecraftKey(), packet);
     // }
 
-    public static void sendBlockMarker(@NotNull final Player player, @NotNull BlockVector3 location, Color color, Duration duration) {
-        // Encoded ARGB color
-        int argb = (0xFF & color.getAlpha()) << 24
-                | (0xFF & color.getRed()) << 16
-                | (0xFF & color.getGreen()) << 8
-                | (0xFF & color.getBlue());
+    public static void sendBlockMarker(@NotNull final Player player, Collection<BlockMarkerPluginChannel> markers) {
+        ensureSupported();
 
-        Object packet = RecordAccessor.createCustomPayload(location.getX(), location.getY(), location.getZ(), argb, duration);
-        MinecraftConnection.sendPacket(player, packet);
+        List<Object> packets = new ArrayList<>(markers.stream().mapToInt(x -> x.getMarkers().size()).sum());
+        Set<BlockMarkerPluginChannel> handles = PluginChannels.MARKERS
+                .computeIfAbsent(player.getUniqueId(), k -> Collections.newSetFromMap(new IdentityHashMap<>()));
+
+        for (BlockMarkerPluginChannel marker : markers) {
+            handles.add(marker);
+
+            for (Map.Entry<BlockVector3, BlockMarker> block : marker.getMarkers().entrySet()) {
+                BlockVector3 loc = block.getKey();
+                BlockMarker props = block.getValue();
+
+                Object packet = RecordAccessor.createCustomPayload(
+                        loc.getX(), loc.getY(), loc.getZ(),
+                        encodeARGB(props.color), props.title, props.duration
+                );
+                packets.add(packet);
+            }
+        }
+
+        MinecraftConnection.sendPacket(player, packets.toArray());
     }
 
     private static long toBlockPositionBit(int x, int y, int z) {

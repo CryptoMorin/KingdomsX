@@ -689,7 +689,26 @@ top-kingdoms:
   # Equation used for calculating a kingdoms might.
   # A kingdoms "might" determines a kingdom's rank in /k top
   # Higher "might" means higher rank.
-  might: "kingdoms_resource_points + kingdoms_members"
+  # * Note: Every item you add here will consume a significant amount of your RAM
+  #         depending on how many kingdoms your server has.
+  types:
+    default:
+      name: Might
+      equation: "kingdoms_resource_points + kingdoms_members"
+      filter: "!kingdoms_kingdom_is_pacifist"
+      description: "The default equation. Compares kingdoms based on their resource points and kingdoms. Excludes pacifist kingdoms."
+    resource-points:
+      name: Resource Points
+      equation: "kingdoms_resource_points"
+      description: "Compares kingdoms based on their resource points."
+    lands:
+      name: Lands
+      equation: "kingdoms_claims"
+      description: "Compares kingdoms based on the amount of claims they have."
+    members:
+      name: Members
+      equation: "kingdoms_members"
+      description: "Compares kingdoms based on the amount of members they have."
 
   # Updates top leaderboard
   update-interval: 30min
@@ -697,28 +716,37 @@ top-kingdoms:
   # The limit of kingdom entries shown on each /k top page
   amount: 10
 
-  # Show kingdoms that are pacifist in the list.
-  show-pacifists: false
-
+  # Rewards uses the "default" equation.
   rewards:
     # Set it to 0 to disable.
     top: 10
     resource-points: "10000 / rank"
     bank: "1000 / rank"
 
-# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
-# Used in /k nation top
+# Refer to "top-kingdoms" section above for more information.
 top-nations:
-  # Equation used for calculating a kingdoms might.
-  # A kingdoms "might" determines a kingdom's rank in /k top
-  # Higher "might" means higher rank.
-  might: "kingdoms_nation_resource_points + kingdoms_nation_kingdoms"
+  types:
+    default:
+      name: Might
+      equation: "kingdoms_nation_resource_points + kingdoms_nation_kingdoms"
+      description: "The default equation. Compares nations based on their resource points and kingdoms."
+    resource-points:
+      name: Resource Points
+      equation: "kingdoms_nation_resource_points"
+      description: "Compares nations based on their resource points."
+    lands:
+      name: Lands
+      equation: "{kingdoms_nation:sum of=claims}"
+      description: "Compares nations based on the total amount of claims their kingdom members have."
+    kingdoms:
+      name: Kingdoms
+      equation: "kingdoms_nation_kingdoms"
+      description: "Compares nations based on the amount of kingdoms they have."
 
-  # The limit of nation entries shown on each /k nation top page
+  update-interval: 30min
   amount: 10
 
   rewards:
-    # Set it to 0 to disable.
     top: 10
     resource-points: "10000 / rank"
     bank: "1000 / rank"
@@ -957,9 +985,12 @@ economy:
       nations: 100000000
 
   resource-points:
-    # Means that each resource point is worth $0.5
-    # So in order to get $2 you have to deposit 4 rp
-    worth: 0.5
+    worth:
+      # This means that buying 1 resource point, costs $5
+      buy: 5
+
+      # This means that selling 1 resource point, will give you $0.5.
+      sell: 0.5
 
     # Minimum amount of resource points that can be withdrawn.
     # This helps if your economy plugin doesn't support decimal currencies.
@@ -996,24 +1027,61 @@ daily-checks:
 
   # For information check: https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#elections
   elections:
-    # Requires a restart.
-    enabled: false
+    kingdoms:
+      # Requires a restart.
+      enabled: false
 
-    # The interval in days for election events.
-    interval: 7
+      # The interval in days for election events.
+      interval: 7
 
-    # The total voting percentage to consider election results.
-    # Meaning that more than 50% of kingdom members need to vote (for anyone)
-    # in order for a new king to be chosen.
-    vote-percentage: 50
+      candidate-requirements:
+        # How long should this member be a part of this kingdom?
+        member-for: 1 month
 
-    # The duration of election events before the results are evaluated.
-    duration: 24hrs
+        # The fee that the player has to pay to the kingdom to be a candidate.
+        fee: 5000
 
-    # This is to prevent abusing the voting system.
-    disallow:
-      joins: true
-      kicks: true
+        other-conditions: { }
+
+      # The total voting percentage to consider election results.
+      # Meaning that more than 50% of kingdom members need to vote (for anyone)
+      # in order for a new king to be chosen, otherwise the elections will be cancelled.
+      vote-percentage: 50
+
+      # How to sort the candidates in the elections GUI?
+      # When hiding the vote count, this reduces the players bias.
+      # * Available options:
+      #   - VOTES:             Sort by the amount of votes the candidates have from most to least.
+      #   - SHUFFLE:           Random order every time the GUI is opened.
+      #   - REGISTRATION_DATE: Sort by the time they registered as a candidate from old to recent.
+      sort-by: GROUP_VOTES
+
+      # The duration of election events before the results are evaluated.
+      duration: 24hrs
+
+      # This is to prevent abusing the voting system.
+      disallow:
+        joins: true
+        kicks: true
+    nations:
+      # The same rules of kingdom options above apply to the options below.
+      enabled: false
+      interval: 7
+      candidate-requirements:
+        # How long should this kingdom be a part of this nation?
+        member-for: 1 month
+
+        # The fee that the kingdom has to pay from their bank to the nation.
+        fee: 10000
+
+        other-conditions: { }
+      vote-percentage: 50
+      sort-by: VOTES
+      duration: 24hrs
+      only-allow-kings-to-vote: false
+      disallow:
+        joins: true
+        kicks: true
 
   # The time zone ID.
   # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
@@ -1204,6 +1272,8 @@ nexus:
   # The amount of resourcepoints taken from the kingdom that owns the nexus and given to the kingdom who broke the nexus.
   # Nothing will happen if they don't have any resource points.
   break:
+    enabled: true
+
     # Resource points only given if the nexus is broken with a certain item.
     item:
       material: DIAMOND_HOE
@@ -1319,17 +1389,28 @@ nexus:
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
 invitations:
-  # Allows members to invite offline players.
-  allow-offline-invites: true
+  allow:
+    # Allows members to invite offline players.
+    offline-invites: true
 
-  # Allow invitation from other kingdoms if the player is already in a kingdom.
-  # If the player accepts, then he'll be kicked from the previous kingdom and join the new one.
-  allow-from-other-kingdoms: false
+    # Allow invitation from other kingdoms if the player is already in a kingdom.
+    # If the player accepts, then he'll be kicked from the previous kingdom and join the new one.
+    from-other-kingdoms: false
 
-  # If a player is invited to multiple kingdoms then a GUI (invite.yml) will open
-  # with a list of kingdoms invitations. Otherwise, the last invite will be automatically
-  # declined and replaced with the new invite.
-  allow-multiple-invites: true
+    # If a player is invited to multiple kingdoms then a GUI (invite.yml) will open
+    # with a list of kingdoms invitations. Otherwise, the last invite will be automatically
+    # declined and replaced with the new invite.
+    multiple-invites: true
+
+    # Any other conditions that prevents someone from inviting a player.
+    # The primary context of these conditions is the inviter and the secondary is the
+    # person that's being invited.
+    # The key is the condition, the value is the message.
+    other-conditions:
+      # This default condition prevents people from inviting if their kingdom is already full.
+      # Even if this condition is removed, and the player is invited, they cannot accept the invite
+      # until the kingdom has free space.
+      'kingdoms_members >= kingdoms_max_members': '{$$command.invite.max-members}'
 
   # Automatically deny each invitation - in seconds. Set to 0 to disable (not recommended)
   # This is for online invitations.

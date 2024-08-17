@@ -65,36 +65,153 @@ bonus:
   resource-points: "kingdoms_resource_points / 5"
   bank: "kingdoms_bank / 10"
 
+  # Chests that randomly generate around the invasion area once the invaders win an invasion.
+  # Anyone can technically use these chests.
   item-rewards:
+    enabled: false
     chance: 100
     total: 3
     chests:
       common:
         total: 5
-        title: "{$sep}-=( &2Common {$sep})=-"
-        chance: 100
-        particle: { }
+        chance: 70
+        display-name: "&2Common"
+        hologram:
+          lines:
+            - "{$sep}( &2Common {$sep})"
         content:
           coal:
             chance: 95
+            tries: 5
             item:
               amount: 32
               material: COAL
           iron:
             chance: 70
+            tries: 3
             item:
               amount: 32
-              material: RAW_IRON
+              material: IRON_ORE
           gold:
             chance: 50
+            tries: 3
             item:
               amount: 5
-              material: RAW_GOLD
+              material: GOLD_ORE
           wood:
             chance: 100
+            tries: 1
             item:
               amount: 64
               material: DARK_OAK_LOG
+          string:
+            chance: 50
+            tries: 5
+            item:
+              amount: 10
+              material: STRING
+          dead-bush:
+            chance: 20
+            tries: 2
+            item:
+              amount: 4
+              material: DEAD_BUSH
+      rare:
+        total: 2
+        chance: 50
+        display-name: "&3Rare"
+        hologram:
+          lines:
+            - "{$sep}=( &3Rare {$sep})="
+        content:
+          night-vision-potion:
+            chance: 50
+            tries: 1
+            item:
+              amount: 1
+              material: POTION
+              effects:
+                - 'NIGHT_VISION, 600, 1'
+          crying-obsidian:
+            chance: 30
+            tries: 3
+            item:
+              amount: 10
+              material: CRYING_OBSIDIAN
+          emerald:
+            chance: 30
+            tries: 5
+            item:
+              amount: 10
+              material: EMERALD
+          diamond:
+            chance: 40
+            tries: 5
+            item:
+              amount: 10
+              material: DIAMOND
+          iron:
+            chance: 70
+            tries: 3
+            item:
+              amount: 50
+              material: RAW_IRON
+          gold:
+            chance: 50
+            tries: 3
+            item:
+              amount: 20
+              material: RAW_GOLD
+      epic:
+        total: 1
+        chance: 30
+        display-name: "&dEpic"
+        hologram:
+          lines:
+            - "{$sep}-=( &dEpic {$sep})=-"
+        content:
+          str-potion:
+            chance: 10
+            tries: 1
+            item:
+              amount: 1
+              material: POTION
+              effects:
+                - 'STRENGTH, 60, 2'
+          regen-potion:
+            chance: 5
+            tries: 1
+            item:
+              amount: 1
+              material: POTION
+              effects:
+                - 'REGENERATION, 60, 2'
+          emerald:
+            chance: 30
+            tries: 3
+            item:
+              amount: 30
+              material: EMERALD
+          diamond:
+            chance: 40
+            tries: 3
+            item:
+              amount: 30
+              material: DIAMOND
+          enchanted-book:
+            chances: 20
+            tries: 1
+            item:
+              amount: 1
+              material: ENCHANTED_BOOK
+              enchants:
+                MENDING: 1
+          enchanted-apple:
+            chances: 20
+            tries: 1
+            item:
+              amount: 3
+              material: ENCHANTED_GOLDEN_APPLE
 
 # Options for when a nexus land is invaded.
 on-nexus-loss:
@@ -196,6 +313,13 @@ masswar:
   # You can only invade during MassWar events.
   during-masswar-only: false
 
+  # Disable turrets during masswar.
+  disable-turrets: false
+
+  # Allow siege cannons to be used only during masswars.
+  # If false, this would prevent players from sitting on the cannon altogether.
+  allow-siege-cannons: false
+
   # Should misc upgrades be disabled during masswars?
   # The names are the same as the ones in misc-upgrades.yml (the config names, not the 'name' option)
   disable-misc-upgrades: [ anti-explosion ]
@@ -204,13 +328,6 @@ masswar:
   commands:
     whitelist: false
     list: [ 'k tpa' ]
-
-  # Disable turrets during masswar.
-  disable-turrets: false
-
-  # Allow siege cannons to be used only during masswars.
-  # If false, this would prevent players from sitting on the cannon altogether.
-  allow-siege-cannons: false
 
   allow-invading:
     # Allow invading pacifist kingdoms during Mass Wars.
@@ -300,8 +417,15 @@ nations:
   use-shield: true
 
   # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#nation-zones
-  # Set to zero to disable.
-  nation-zone-radius: 2
+  nation-zone:
+    enabled: true
+
+    # Should the nation zone only be around the capital kingdom's claims only or
+    # all kingdoms that are member of a nation.
+    capital-only: true
+
+    # The radius in chunks. (2 = 2 chunks around every claimed land, e.g. 1 chunk = 25 nation zone chunks)
+    radius: 2
 
   capital-protection:
     # The land radius around the capital kingdom's nexus to protect from
@@ -381,13 +505,24 @@ allow:
   # This will not break turrets, structures or protected chests.
   explosion: false
 
-  # Allow building during invasions.
-  # This only applies to the land that was invaded.
+  # Allow building in invading lands during invasions.
   # This does not allow interactions (such as opening chests)
-  building: false
+  # This only applies to the invader player (who did /k invade) only.
+  building:
+    enabled: false
+
+    # Allow players to place blocks, but only allow breaking blocks
+    # that the player placed themselves.
+    own-only: false
 
   # Disallow kingdoms to move their kingdom nexus when their nexus land is being invaded.
   moving-nexus: false
+
+  # List of blocks that the invader player (who did /k invade) can interact with during invasions.
+  interactable:
+    whitelist: true
+    blocks:
+      - "ENDS:DOOR"
 
 # Disallowed/allowed commands during invasions for the invader player and the kingdom that is being invaded.
 commands:
@@ -476,14 +611,25 @@ online-members:
   invader: 0
   defender: 0
 
+  # This option works by keeping track of online defenders of a kingdom.
+  # If for example, min online defenders is set to 2 and there are exactly 2
+  # defenders online and one of them logs out, the attackers can continue to
+  # invade the kingdom for 30 more minutes. Unless this requirement is met again
+  # with another defender logging in again which resets this timer.
+  session-duration: 30mins
+
 # Only stop invasion if the defending kingdom members die the amount of times.
 # The invaders will win by default.
 # This is not recommended as members in the defending kingdom can betray.
 # For plunders, This number is the amount of kills a kingdom has to get in order to win the battle.
 # Set to 0 to disable.
 player-deaths:
+  # Amount of attackers the defenders have to kill.
   defender: 0
-  attacker: 0 # This option has no effect for the standard invasion method.
+
+  # Amount of defenders the attackers have to kill.
+  # This option has no effect for the standard invasion method.
+  attacker: 0
 
   # Should the defender keep these when they die?
   # This works for both attackers and defenders for plunders.
@@ -492,7 +638,13 @@ player-deaths:
     # with these other options, so other plugins can handle them.
     enabled: false
 
-    inventory: false
+    inventory:
+      # The following options support conditions.
+      # E.g. if you wanted to only keep inventory if the player died in their own land,
+      # you could use the condition "{kingdoms_land:info name=relation_name} == 'SELF'"
+      defenders: false
+      attackers: false
+
     xp: false
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Mechanics#plunders

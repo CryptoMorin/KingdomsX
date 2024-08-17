@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public final class CrossPlatformNotifier {
+public final class CrossPlatformManager {
     /**
      * Tested with Magma, Mohist, and Geyser
      */

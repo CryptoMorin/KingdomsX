@@ -28,10 +28,11 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}globals` (
     `version`             INT         NOT NULL,
     `lastStart`           LONG        NOT NULL,
     `lastDisable`         LONG        NOT NULL,
+    `lastState`           VARCHAR(30) NOT NULL,
     `lastServerVersion`   VARCHAR(30) NOT NULL,
     `lastKingdomsVersion` VARCHAR(30) NOT NULL,
-    `installedAddons`     JSON        NOT NULL,
-    `stocks`              JSON        NOT NULL,
+    `installedAddons`     JSON        NULL,
+    `stocks`              JSON        NULL,
     [[NamespacedFlagsContainer]],
     [[KINGDOMS_OBJECT]]
 ) STRICT;
@@ -141,14 +142,14 @@ CREATE TABLE IF NOT EXISTS `{PREFIX}lands` (
 ----------------------------------------------------------------------------------------------------
 
 {{ GROUP
-    `id` UUID NOT NULL,
-  --owner UUID NOT NULL,
-    `name` NVARCHAR(100) NOT NULL,
-    `level` INT NOT NULL,
-    `tag` NVARCHAR(50) NULL,
-    `resourcePoints` LONG NOT NULL,
-    `bank` DOUBLE NOT NULL,
-    -- `tax` VARCHAR(300),
+    `id`             UUID          NOT NULL,
+  --`owner`          UUID          NOT NULL,
+    `name`           NVARCHAR(100) NOT NULL,
+    `level`          INT           NOT NULL,
+    `tag`            NVARCHAR(50)      NULL,
+    `resourcePoints` DOUBLE        NOT NULL,
+    `bank`           DOUBLE        NOT NULL,
+  --`tax` VARCHAR(300),
     `taxes` JSON NULL,
     `shieldSince` LONG NOT NULL, `shieldTime` LONG NOT NULL,
     `since` LONG NOT NULL,

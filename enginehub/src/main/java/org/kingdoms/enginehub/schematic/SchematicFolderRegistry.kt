@@ -5,7 +5,6 @@ import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.utils.fs.FolderRegistry
 import org.kingdoms.utils.internal.StackTraces
-import org.kingdoms.utils.string.Strings
 import java.net.URI
 import java.net.URISyntaxException
 import java.nio.file.Path
@@ -31,7 +30,17 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
         val schematicFile = entry.path
         val schematicName = entry.name
         if (schematicName.contains("schematic")) StackTraces.printStackTrace()
-        val schematic = WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)
+
+        val schematic = try {
+            WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)
+        } catch (ex: UnknownClipboardFormatException) {
+            KLogger.error(
+                "Unknown clipboard format for schematic ${ex.path.toAbsolutePath()}, this means that the file " +
+                        "you're trying to use is either corrupted, not a schematic file or not supported by your " +
+                        "current WorldEdit installation. Skipping this schematic..."
+            )
+            return
+        }
 
         if (SchematicManager.loaded.containsKey(schematicName)) {
             KLogger.error("Found two schematics with the same name: ${schematicFile.absolutePathString()}")

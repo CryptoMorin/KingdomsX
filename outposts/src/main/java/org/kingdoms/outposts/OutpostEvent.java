@@ -21,6 +21,7 @@ import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
+import org.kingdoms.locale.Language;
 import org.kingdoms.locale.SupportedLanguage;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
@@ -57,7 +58,7 @@ public class OutpostEvent {
 
         scoreboard = new XScoreboard("main",
                 new StaticMessenger(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getManager().getString())
-                        .getProvider(SupportedLanguage.EN).getMessage(),
+                        .getProvider(Language.getDefault()).getMessage(),
                 new MessagePlaceholderProvider());
     }
 
@@ -248,8 +249,8 @@ public class OutpostEvent {
         Kingdom kingdom = Kingdom.getKingdom(winner.getKey());
         if (reward) {
             OutpostRewards rewards = outpost.getRewards();
-            kingdom.addResourcePoints(rewards.getResourcePoints(level));
-            kingdom.addBank(rewards.getMoney(level));
+            kingdom.getResourcePoints().add(rewards.getResourcePoints(level));
+            kingdom.getBank().add(rewards.getMoney(level));
             rewards.performCommands(kingdom);
             List<ItemStack> items = rewards.getItems();
 

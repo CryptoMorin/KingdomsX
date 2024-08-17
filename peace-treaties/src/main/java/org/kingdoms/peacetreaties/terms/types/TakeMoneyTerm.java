@@ -65,15 +65,15 @@ public class TakeMoneyTerm extends Term {
     @Override
     public boolean apply(TermGroupingOptions config, PeaceTreaty peaceTreaty) {
         Kingdom kingdom = peaceTreaty.getVictimKingdom();
-        if (!kingdom.hasMoney(amount)) return false;
-        kingdom.addBank(-amount);
+        if (!kingdom.getBank().has(amount)) return false;
+        kingdom.getBank().add(-amount);
         return true;
     }
 
     @Override
     public Messenger canAccept(TermGroupingOptions config, PeaceTreaty peaceTreaty) {
         Kingdom kingdom = peaceTreaty.getVictimKingdom();
-        if (!kingdom.hasMoney(amount)) return PeaceTreatyLang.TERMS_TAKE_MONEY_NOT_ENOUGH;
+        if (!kingdom.getBank().has(amount)) return PeaceTreatyLang.TERMS_TAKE_MONEY_NOT_ENOUGH;
         return null;
     }
 }

@@ -68,7 +68,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         getLogger().info("Registering default terms...");
         Arrays.asList(TakeMoneyTerm.PROVIDER, LeaveDisbandNationTerm.PROVIDER, TakeResourcePointsTerm.PROVIDER,
                         ScutageTerm.PROVIDER, AnnulTreatiesTerm.PROVIDER, MiscUpgradesTerm.PROVIDER, KeepLandsTerm.PROVIDER,
-                        LimitTurretsTerm.PROVIDER, LimitStructuresTerm.PROVIDER, LimitClaimsTerm.PROVIDER)
+                        LimitTurretsTerm.PROVIDER, LimitStructuresTerm.PROVIDER, LimitClaimsTerm.PROVIDER, KingChangeTerm.PROVIDER)
                 .forEach(termRegistry::register);
 
         LanguageManager.registerMessenger(PeaceTreatyLang.class);

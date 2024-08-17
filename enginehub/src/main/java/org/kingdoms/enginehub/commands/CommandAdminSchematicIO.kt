@@ -1,7 +1,7 @@
 package org.kingdoms.enginehub.commands
 
 import org.kingdoms.commands.*
-import org.kingdoms.config.HoverMessage
+import org.kingdoms.locale.HoverMessage
 import org.kingdoms.data.Pair
 import org.kingdoms.enginehub.EngineHubLang
 import org.kingdoms.enginehub.building.WorldEditBuildingConstruction

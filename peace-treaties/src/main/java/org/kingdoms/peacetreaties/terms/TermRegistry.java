@@ -10,6 +10,8 @@ import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.utils.compilers.ConditionalCompiler;
 import org.kingdoms.utils.compilers.MathCompiler;
+import org.kingdoms.utils.compilers.expressions.ConditionalExpression;
+import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;
 
 import java.util.ArrayList;
@@ -36,10 +38,10 @@ public final class TermRegistry extends NamespacedRegistry<TermProvider> impleme
 
         for (Map.Entry<String, ConfigSection> term : terms.getSections().entrySet()) {
             ConfigSection section = term.getValue();
-            MathCompiler.Expression warPoints = section.getMathExpression("war-points");
+            MathExpression warPoints = section.getMathExpression("war-points");
 
             ConfigSection conditionsSection = section.getSection("conditions");
-            Collection<Pair<ConditionalCompiler.LogicalOperand, LanguageEntry>> conditions = new ArrayList<>();
+            Collection<Pair<ConditionalExpression, LanguageEntry>> conditions = new ArrayList<>();
 
             if (conditionsSection != null) {
                 for (String condition : conditionsSection.getKeys()) {

@@ -7,6 +7,8 @@ import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.compilers.ConditionalCompiler;
 import org.kingdoms.utils.compilers.MathCompiler;
+import org.kingdoms.utils.compilers.expressions.ConditionalExpression;
+import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;
 
 import java.util.Collection;
@@ -16,14 +18,14 @@ import java.util.Objects;
 
 public class TermGroupingOptions {
     private final ConfigSection config;
-    private final Collection<Pair<ConditionalCompiler.LogicalOperand, LanguageEntry>> conditions;
-    private final MathCompiler.Expression requiredWarPoints;
+    private final Collection<Pair<ConditionalExpression, LanguageEntry>> conditions;
+    private final MathExpression requiredWarPoints;
     private final Map<Namespace, TermProvider> terms;
     private final String name;
 
     public TermGroupingOptions(String name, ConfigSection config,
-                               Collection<Pair<ConditionalCompiler.LogicalOperand, LanguageEntry>> condition,
-                               MathCompiler.Expression requiredWarPoints,
+                               Collection<Pair<ConditionalExpression, LanguageEntry>> condition,
+                               MathExpression requiredWarPoints,
                                Map<Namespace, TermProvider> terms) {
         this.name = Objects.requireNonNull(name);
         this.config = config;
@@ -49,7 +51,7 @@ public class TermGroupingOptions {
         return config;
     }
 
-    public Collection<Pair<ConditionalCompiler.LogicalOperand, LanguageEntry>> getConditions() {
+    public Collection<Pair<ConditionalExpression, LanguageEntry>> getConditions() {
         return conditions;
     }
 

@@ -160,7 +160,7 @@ object WorldEditSchematicHandler {
 
         val format: ClipboardFormat = try {
             ClipboardFormats.findByFile(path.toFile())
-                ?: throw IllegalStateException("Unknown clipboard format for file: ${path.absolutePathString()}")
+                ?: throw UnknownClipboardFormatException(path, "Unknown clipboard format for file: ${path.absolutePathString()}")
         } catch (ex: NoClassDefFoundError) {
             getClipboardFormat(null)
         }

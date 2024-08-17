@@ -65,10 +65,16 @@ champions:
       (elements): str
 
 masswar:
+  enabled: bool
   during-masswar-only: bool
-  disable-misc-upgrades: list
   disable-turrets: bool
   allow-siege-cannons: bool
+  disable-misc-upgrades: set
+
+  commands:
+    whitelist: bool
+    list: set
+
   allow-invading:
     pacifists: bool
     shields: bool
@@ -160,7 +166,9 @@ allow:
   teleportation: bool
   elytra: bool
   explosion: bool
-  building: bool
+  building:
+    enabled: bool
+    own-only: bool
   moving-nexus: bool
 
 commands:
@@ -219,7 +227,9 @@ player-deaths:
 
   keep:
     enabled: bool
-    inventory: bool
+    inventory:
+      defenders: Condition
+      attackers: Condition
     xp: bool
 
 plunder:

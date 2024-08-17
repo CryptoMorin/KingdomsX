@@ -7,6 +7,7 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.utils.bossbars.BossBarSettings;
 import org.kingdoms.utils.compilers.MathCompiler;
+import org.kingdoms.utils.compilers.expressions.MathExpression;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +17,7 @@ public class Outpost {
     private static final Map<String, Outpost> OUTPOSTS = new HashMap<>();
 
     private @NonNull String name, region;
-    private MathCompiler.Expression resourcePointsCost, moneyCost;
+    private MathExpression resourcePointsCost, moneyCost;
     private int maxParticipants, minOnlineMembers;
     private @NonNull OutpostRewards rewards;
     private @NonNull Location spawn, center;
@@ -32,7 +33,7 @@ public class Outpost {
     }
 
     public Outpost(@NonNull String name, @NonNull String region, @NonNull Location spawn, @NonNull Location center,
-                   MathCompiler.Expression cost, MathCompiler.Expression resourcePointsCost,
+                   MathExpression cost, MathExpression resourcePointsCost,
                    int maxParticipants, int minOnlineMembers,
                    @Nullable BossBarSettings bossBarSettings, @NonNull OutpostRewards rewards) {
         this.name = name;
@@ -131,19 +132,19 @@ public class Outpost {
         this.bossBarSettings = bossBarSettings;
     }
 
-    public MathCompiler.Expression getResourcePointsCost() {
+    public MathExpression getResourcePointsCost() {
         return resourcePointsCost;
     }
 
-    public void setResourcePointsCost(MathCompiler.Expression resourcePointsCost) {
+    public void setResourcePointsCost(MathExpression resourcePointsCost) {
         this.resourcePointsCost = resourcePointsCost;
     }
 
-    public MathCompiler.Expression getMoneyCost() {
+    public MathExpression getMoneyCost() {
         return moneyCost;
     }
 
-    public void setMoneyCost(MathCompiler.Expression moneyCost) {
+    public void setMoneyCost(MathExpression moneyCost) {
         this.moneyCost = moneyCost;
     }
 
