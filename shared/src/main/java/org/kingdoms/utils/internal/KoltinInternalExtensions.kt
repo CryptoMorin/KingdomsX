@@ -2,6 +2,8 @@
 
 package org.kingdoms.utils.internal
 
+import org.kingdoms.utils.internal.functional.Fn
+
 inline fun <T> MutableList<T>.replaceLast(crossinline newValue: (T) -> T) {
     if (this.isEmpty()) throw IllegalStateException("Cannot replace last element in an empty list: $this")
     this[this.size - 1] = newValue(this[this.size - 1])

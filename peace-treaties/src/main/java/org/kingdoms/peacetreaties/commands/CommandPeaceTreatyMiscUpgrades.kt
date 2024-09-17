@@ -1,7 +1,7 @@
 package org.kingdoms.peacetreaties.commands
 
 import org.kingdoms.commands.*
-import org.kingdoms.managers.structures.NexusManager
+import org.kingdoms.managers.buildings.structures.NexusManager
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import org.kingdoms.peacetreaties.terms.types.MiscUpgradesTerm

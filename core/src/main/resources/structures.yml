@@ -17,7 +17,11 @@ remove-unclaimed: false
 # Should structures go directly to the player's inventory who broke the structure.
 to-inventory-on-break: false
 
-# The total amount of structures a single land can have.
-# This is different than individual structure limits.
-# Set to 0 to disable
-total-limit-per-land: 10
+# This is different than individual structure limits which can be configured
+# in their own config files.
+limit:
+  # Total amount of structures a kingdom can place.
+  total: 100
+
+  # Total amount of structures in a single chunk.
+  per-land: 10

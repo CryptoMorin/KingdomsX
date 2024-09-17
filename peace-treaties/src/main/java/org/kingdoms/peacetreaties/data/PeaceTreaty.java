@@ -20,7 +20,7 @@ import org.kingdoms.peacetreaties.terms.*;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.conditions.ConditionProcessor;
 import org.kingdoms.utils.config.NodeInterpreter;
-import org.kingdoms.utils.internal.Fn;
+import org.kingdoms.utils.internal.functional.Fn;
 
 import java.time.Duration;
 import java.util.*;

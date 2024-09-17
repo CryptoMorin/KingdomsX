@@ -74,7 +74,7 @@ new-rank:
 # The priority is based on the order of this list.
 # The first element has the highest priority. This should be always the king rank.
 # And the last element has the lowest priority. This is the default member rank when new players join.
-ranks:
+kingdom-ranks:
   king:
     color: "&c"
     symbol: "♚"
@@ -109,3 +109,64 @@ ranks:
     material: IRON_BLOCK
     max-claims: 0
     permissions: [ NEXUS, BUILD, HOME, INVADE, INTERACT, USE, READ_MAILS ]
+
+national-ranks:
+  emperor:
+    color: "&c"
+    symbol: "♚"
+    name: "Emperor"
+    material: EMERALD_BLOCK
+    max-claims: -1
+    permissions: [ ]
+
+  duke:
+    color: "&6"
+    symbol: "❇"
+    name: "Duke"
+    material: DIAMOND_BLOCK
+    max-claims: -1
+    permissions: [ NEXUS, BUILD, NEXUS_BUILD, HOME, INVADE, NEXUS_CHEST, UNCLAIM, CLAIM, TURRETS, INVITE, KICK, LORE, BROADCAST,
+                   STRUCTURES, SET_HOME, ALLIANCE, TRUCE, ENEMY, MANAGE_RANKS, FLY, WITHDRAW, INTERACT, USE, OUTPOST, NATION,
+                   UPGRADE, MANAGE_MAILS, READ_MAILS, INSTANT_TELEPORT, VIEW_LOGS ]
+  viscount:
+    name: "Viscount"
+    color: "&e"
+    symbol: "♜"
+    material: GOLD_BLOCK
+    max-claims: 10
+    permissions: [ NEXUS, BUILD, NEXUS_BUILD, HOME, INVADE, NEXUS_CHEST, UNCLAIM_OWNED, CLAIM, TURRETS, INVITE, WITHDRAW, FLY,
+                   INTERACT, USE, INSTANT_TELEPORT, READ_MAILS, INVSEE ]
+  member:
+    name: "Member"
+    color: "&2"
+    symbol: "♟"
+    material: IRON_BLOCK
+    max-claims: 0
+    permissions: [ NEXUS, BUILD, HOME, INVADE, INTERACT, USE, READ_MAILS ]
+
+# How permissions should be categorized in the ranks GUI
+# The names and how they're displayed is configured inside the GUI file, however
+# the permissions will appear in the order they're specified here.
+permission-categories:
+  building:
+    # The permissions that will be displayed in that category.
+    permissions: [ BUILD, NEXUS_BUILD, BUILD_OWNED ]
+
+    # The name of the GUI file to be used inside 'guis/structures/nexus|national-nexus/ranks/permissions/...'
+    # This is used to make things easier when multiple categories can be handled by the same GUI layout.
+    gui: 'permissions'
+  economy:
+    permissions: [ WITHDRAW, OUTPOST, UPGRADE ]
+    gui: 'permissions'
+  diplomacy:
+    permissions: [ NATION, ALLIANCE, TRUCE, ENEMY, RELATION_ATTRIBUTES, READ_MAILS, BROADCAST, LORE, NEXUS, SETTINGS, VIEW_LOGS, EDIT_RANKS, MANAGE_RANKS ]
+    gui: 'permissions'
+  land:
+    permissions: [ CLAIM, UNCLAIM, UNCLAIM_OWNED, TURRETS, STRUCTURES, INTERACT, USE, INVADE ]
+    gui: 'permissions'
+  members:
+    permissions: [ INVSEE, INVITE, KICK, EXCLUDE_TAX ]
+    gui: 'permissions'
+  others:
+    permissions: [ FLY, HOME, SET_HOME, NEXUS_CHEST, OUTPOST, PROTECTION_SIGNS, INSTANT_TELEPORT ]
+    gui: 'permissions'

@@ -99,6 +99,16 @@ channels:
 # Set to ~ (without quotes) to disable.
 direct-prefix: '@'
 
+# A way for players to show the item they're holding to other
+# players in the chat with a simple hover message.
+show-item:
+  # Currently only the main hand is supported.
+  main-hand:
+    replace:
+      '[i]': &show-item '{$sep}[%item_displayname%{? item_amount == 1 ? "" : " &9x%item_amount%"}{$sep}]'
+      '[item]': *show-item
+      '[show]': *show-item
+
 # The chat priority that kingdom handles. Note that changing this will not disable the chat in any way.
 # This is used when you're using another plugin that manages chat spams and other restrictions. You might want to increase the priorty in these cases.
 # This option requires a restart to work.

@@ -4,7 +4,7 @@ import org.kingdoms.data.Pair
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.utils.fs.FolderRegistry
-import org.kingdoms.utils.internal.StackTraces
+import org.kingdoms.utils.internal.stacktrace.StackTraces
 import java.net.URI
 import java.net.URISyntaxException
 import java.nio.file.Path

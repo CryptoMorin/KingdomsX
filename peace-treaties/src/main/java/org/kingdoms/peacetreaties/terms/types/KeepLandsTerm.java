@@ -1,6 +1,8 @@
 package org.kingdoms.peacetreaties.terms.types;
 
+import org.bukkit.Location;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.group.model.logs.lands.LogKingdomInvader;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
@@ -26,6 +28,7 @@ import org.kingdoms.peacetreaties.terms.StandardTermProvider;
 import org.kingdoms.peacetreaties.terms.Term;
 import org.kingdoms.peacetreaties.terms.TermGroupingOptions;
 import org.kingdoms.peacetreaties.terms.TermProvider;
+import org.kingdoms.platform.bukkit.adapters.BukkitAdapter;
 import org.kingdoms.utils.LocationUtils;
 
 import java.util.*;
@@ -86,6 +89,11 @@ public class KeepLandsTerm extends Term {
 
             Kingdom kingdom = editor.getPeaceTreaty().getProposerKingdom();
 
+            Location coreLocation;
+            if (kingdom.getNexus() != null) coreLocation = kingdom.getNexus().toBukkitLocation();
+            else if (kingdom.getHome() != null) coreLocation = BukkitAdapter.adapt(kingdom.getHome());
+            else coreLocation = null;
+
             if (displayModeGrouped) {
                 List<LogKingdomInvader> invadedLands = getInvadedLandsSimple(kingdom, editor.getPeaceTreaty().getVictimKingdomId());
 
@@ -100,6 +108,9 @@ public class KeepLandsTerm extends Term {
                         prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, page);
                     });
                     log.addEdits(option.getMessageContext());
+                    option.getMessageContext().raw("distance_from_core",
+                            coreLocation == null ? "???" : log.getStartLocation().distance(coreLocation)
+                    );
                     option.done();
                 }
             } else {
@@ -113,6 +124,7 @@ public class KeepLandsTerm extends Term {
                                 (newPage) -> prompt(editor, completableFuture, added, addedLogs, displayModeGrouped, newPage));
 
                 ReusableOptionHandler option = pagination.getOption();
+
                 for (Pair<SimpleChunkLocation, LogKingdomInvader> pair : pagination.getPaginatedElements()) {
                     SimpleChunkLocation invadedLand = pair.getKey();
                     option.setEdits("added", added.contains(invadedLand)).onNormalClicks(() -> {
@@ -121,6 +133,10 @@ public class KeepLandsTerm extends Term {
                     });
                     pair.getValue().addEdits(option.getMessageContext());
                     LocationUtils.getChunkEdits(option.getMessageContext(), invadedLand, "");
+
+                    option.getMessageContext().raw("distance_from_core",
+                            coreLocation == null ? "???" : pair.getValue().getStartLocation().distance(coreLocation)
+                    );
                     option.done();
                 }
             }

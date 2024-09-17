@@ -306,7 +306,8 @@ database:
 
   ssl:
     # Enable SSL connections. It's not recommended to disable it.
-    enabled: true
+    # Most people don't have a SSL connection setup, so this is disabled by default.
+    enabled: false
 
     # Whether invalid host names should be allowed.
     # Take care before setting this to false, as it makes the application susceptible to man-in-the-middle attacks.
@@ -417,6 +418,16 @@ commands:
   # disabled: false
   # cooldown: 0
   # disabled-worlds: []
+
+  # The default permission to assign to this command. Some commands have default permission that
+  # allows everyone to uses them, and removing the permission can be difficult at times using a
+  # permission plugin, so this option handles that.
+  # - Values:
+  #   * OP: Only opped players (/op) can use this command.
+  #   * NOT_OP: Only players that are not opped can use this command.
+  #   * EVERYONE: Everyone can use this command.
+  #   * NO_ONE: No one can use this command.
+  # permission-default: OP | NOT_OP | EVERYONE | NO_ONE
 
   # To edit the command names and aliases refer to your language file.
 
@@ -1538,7 +1549,16 @@ home:
   # If safe home is enabled, it'll set the home in the
   # center of the block without changing the rotation.
   # This option basically forces /k sethome centerAxis
-  safe: false
+  center: false
+
+  # If enabled, Checks if the kingdom home is safe before teleporting.
+  # If not it'll try to find a safe location to teleport to within
+  # 5 block radius.
+  # If there are no safe locations, it'll warn the player if they still
+  # want to teleport anyway.
+  check-safe:
+    self: true
+    others: true
 
   # Used to prevent players from escaping PvP in seconds.
   # Teleportation will be cancelled if the player gets damaged.

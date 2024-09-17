@@ -1,4 +1,4 @@
-package org.kingdoms.utils.internal;
+package org.kingdoms.utils.internal.functional;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;

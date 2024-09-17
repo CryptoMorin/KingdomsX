@@ -4,6 +4,8 @@ import com.earth2me.essentials.Essentials;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 // https://github.com/EssentialsX/Essentials/blob/2.x/Essentials/src/main/java/com/earth2me/essentials/User.java
 public final class ServiceEssentialsX implements ServiceCommons {
     private static final Essentials ESS = (Essentials) Bukkit.getPluginManager().getPlugin("Essentials");
@@ -19,7 +21,7 @@ public final class ServiceEssentialsX implements ServiceCommons {
     }
 
     @Override
-    public boolean isIgnoring(Player ignorant, Player ignoring) {
+    public boolean isIgnoring(Player ignorant, UUID ignoring) {
         return ESS.getUser(ignorant).isIgnoredPlayer(ESS.getUser(ignoring));
     }
 }

@@ -88,7 +88,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
         if (context.requireArgs(3)) return CommandResult.FAILED
 
         fun getCoord(index: Int): Int? {
-            return context.getNumber(index, true, false, null)?.toInt()
+            return context.getNumber(index, true, false, null)?.value?.toInt()
         }
 
         val x = getCoord(0) ?: return CommandResult.FAILED
@@ -104,7 +104,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
     }
 
     override fun tabComplete(context: CommandTabContext): MutableList<String> {
-        val str = when (context.argPosition) {
+        val str = when (context.parameterPosition) {
             1 -> "<x>"
             2 -> "<y>"
             3 -> "<z>"

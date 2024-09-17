@@ -1,7 +1,7 @@
 package org.kingdoms.utils.internal.string
 
 import org.kingdoms.constants.namespace.Namespace
-import org.kingdoms.utils.internal.Fn
+import org.kingdoms.utils.internal.functional.Fn
 import java.util.*
 
 fun interface PrettyString<T> {

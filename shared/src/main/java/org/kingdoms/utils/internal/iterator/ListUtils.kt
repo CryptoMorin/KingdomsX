@@ -1,4 +1,4 @@
-package org.kingdoms.utils.internal
+package org.kingdoms.utils.internal.iterator
 
 object ListUtils {
     @JvmStatic fun <T> List<T>.plusAt(index: Int, vararg elements: T): List<T> {

@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,16 +17,16 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.group.Kingdom;
+import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
+import org.kingdoms.locale.ContextualMessenger;
 import org.kingdoms.locale.Language;
-import org.kingdoms.locale.SupportedLanguage;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.services.managers.ServiceHandler;
-import org.kingdoms.utils.XScoreboard;
+import org.kingdoms.utils.display.scoreboard.XScoreboard;
 import org.kingdoms.utils.bossbars.BossBarSession;
 import org.kingdoms.utils.time.TimeFormatter;
 
@@ -35,6 +34,7 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class OutpostEvent {
+    private static final Namespace SCOREBOARD_ID = new Namespace("Outposts", "EVENT");
     protected static final Map<String, OutpostEvent> EVENTS = new HashMap<>();
     protected static final Map<UUID, OutpostEvent> KINGDOMS_IN_EVENTS = new HashMap<>();
 
@@ -43,9 +43,11 @@ public class OutpostEvent {
     private final long time;
     private final @NonNull Map<UUID, OutpostParticipant> participants = new HashMap<>();
     private final @Nullable BossBarSession bossBar;
-    private final @NonNull XScoreboard scoreboard;
     private long started;
     private @Nullable BukkitTask task;
+
+    private final @NonNull XScoreboard scoreboard;
+    private final Map<UUID, XScoreboard.Line> participantScores = new HashMap<>();
 
     private OutpostEvent(Outpost outpost, long time) {
         this.outpost = Objects.requireNonNull(outpost, "Cannot create outpust event from null outpost");
@@ -56,10 +58,9 @@ public class OutpostEvent {
             bossBar.setVisible(false);
         } else bossBar = null;
 
-        scoreboard = new XScoreboard("main",
-                new StaticMessenger(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getManager().getString())
-                        .getProvider(Language.getDefault()).getMessage(),
-                new MessagePlaceholderProvider());
+        scoreboard = new XScoreboard(SCOREBOARD_ID,
+                new StaticMessenger(KingdomsConfig.OUTPOST_EVENTS_SCOREBOARD_TITLE.getManager().getString()),
+                new MessagePlaceholderProvider()).useLineNumberAsScore(false);
     }
 
     public static Map<UUID, OutpostEvent> getKingdomsInEvents() {
@@ -119,8 +120,6 @@ public class OutpostEvent {
             started = System.currentTimeMillis();
 
             task = new BukkitRunnable() {
-                final Objective objective = scoreboard.getScoreboard().getObjective("main");
-
                 @Override
                 public void run() {
                     long passed = System.currentTimeMillis() - started;
@@ -151,17 +150,27 @@ public class OutpostEvent {
                                 if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(member.getLocation(), outpost.getRegion())) scored++;
                             }
                         }
-                        kingdoms.getValue().setScore(scored);
 
-                        if (objective != null) {
-                            Score score = objective.getScore(ChatColor.GREEN + kingdom.getName());
-                            score.setScore(scored);
-                        }
+                        kingdoms.getValue().setScore(scored);
+                        setScore(kingdom, scored);
                     }
                 }
             }.runTaskTimerAsynchronously(Kingdoms.get(), 0, 1);
             bossBar.setVisible(true);
         }, startTime);
+    }
+
+    private void setScore(Kingdom kingdom, int score) {
+        XScoreboard.Line kingdomScore = participantScores.get(kingdom.getId());
+        if (kingdomScore != null) {
+            kingdomScore.setScore(score);
+        } else {
+            XScoreboard.Line line = scoreboard.addLine(
+                    new StaticMessenger("&a%kingdoms_kingdom_name%"),
+                    new MessagePlaceholderProvider().withContext(kingdom)
+            );
+            participantScores.put(kingdom.getId(), line);
+        }
     }
 
     public boolean isFull() {
@@ -277,16 +286,13 @@ public class OutpostEvent {
         OutpostParticipant participant = new OutpostParticipant(requester.getUniqueId());
         participants.put(kingdom.getId(), participant);
         KINGDOMS_IN_EVENTS.put(kingdom.getId(), this);
-
-        Score score = scoreboard.getScoreboard().getObjective("main").getScore(ChatColor.GREEN + kingdom.getName());
-        score.setScore(0);
-
+        setScore(kingdom, 0);
         return participant;
     }
 
     public void display(Player player) {
         bossBar.addPlayer(player);
-        scoreboard.setForPlayer(player);
+        scoreboard.addPlayer(player);
     }
 
     public long getTime() {

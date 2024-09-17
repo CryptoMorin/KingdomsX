@@ -1,5 +1,6 @@
 package org.kingdoms.platform.bukkit.core;
 
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.platform.bukkit.adapters.BukkitNBTAdapter;
 import org.kingdoms.platform.bukkit.events.BukkitEventHandler;
@@ -44,6 +45,11 @@ public class BukkitServer implements Server {
     @Override
     public int getTicks() {
         return tickTracker.getTicks();
+    }
+
+    @Override
+    public boolean isMainThread() {
+        return Bukkit.isPrimaryThread();
     }
 
     @Override

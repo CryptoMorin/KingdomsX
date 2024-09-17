@@ -4,6 +4,8 @@ import com.Zrips.CMI.CMI;
 import com.Zrips.CMI.Containers.CMIUser;
 import org.bukkit.entity.Player;
 
+import java.util.UUID;
+
 public final class ServiceCMI implements ServiceCommons {
     @Override
     public boolean isVanished(Player player) {
@@ -33,8 +35,8 @@ public final class ServiceCMI implements ServiceCommons {
     }
 
     @Override
-    public boolean isIgnoring(Player ignorant, Player ignoring) {
+    public boolean isIgnoring(Player ignorant, UUID ignoring) {
         CMIUser user = getUser(ignorant);
-        return user != null && user.isIgnoring(ignoring.getUniqueId());
+        return user != null && user.isIgnoring(ignoring);
     }
 }

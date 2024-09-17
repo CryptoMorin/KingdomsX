@@ -8,12 +8,12 @@ options:
     material: BLACK_STAINED_GLASS_PANE
     name: ''
   cancel:
-    name: "{$e}Click to cancel"
+    name: "{$e}Cancel"
     posx: 1
     posy: 1
     material: BARRIER
   done:
-    name: "{$p}Click to buy"
+    name: "{$p}Buy"
     lore: "{$p}Price{$sep}: {$s}%fancy@cost%"
     material: GREEN_WOOL
     skull:
@@ -29,8 +29,10 @@ options:
         {$e}Minimum value reached{$sep}: {$es}%min%
     else:
       lore: |
-        &7Hold shift while clicking to
-        decrease by {$p}10
+        {$dot} {$p}Left-click{$colon} {$s}-1
+        {$dot} {$p}Right-click{$colon} {$s}-10
+        {$dot} {$p}Shift Right-click{$colon} {$s}-30
+        {$dot} {$p}Shift Left-click{$colon} {$s}set to %min%
     posx: 2
     posy: 2
     material: PLAYER_HEAD
@@ -48,9 +50,10 @@ options:
         {$e}Maximum value reached{$sep}: {$es}%max%
     else:
       lore: |
-        &7Hold shift while clicking to
-        increase by {$p}10
-        {$e}Maximum amount{$sep}: {$es}%max%
+        {$dot} {$p}Left-click{$colon} {$s}+1
+        {$dot} {$p}Right-click{$colon} {$s}+10
+        {$dot} {$p}Shift Right-click{$colon} {$s}+30
+        {$dot} {$p}Shift Left-click{$colon} {$s}set to %max%
     posx: 8
     posy: 2
     material: PLAYER_HEAD

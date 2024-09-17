@@ -16,14 +16,21 @@ abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
     abstract fun getCurrentTime(): Long
 
     final override fun start(): AbstractStopwatch {
-        checkStopped()
+        ensureRunning()
         resume()
         return this
     }
 
     final override fun stop(): AbstractStopwatch {
-        checkStopped()
+        ensureRunning()
         state = StopwatchState.STOPPED
+        return this
+    }
+
+    override fun reset(): Stopwatch {
+        ensureRunning()
+        passed = 0
+        lastCheckedTicks = getCurrentTime()
         return this
     }
 
@@ -36,13 +43,13 @@ abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
         this.lastCheckedTicks = currTicks
     }
 
-    private fun checkStopped() {
+    private fun ensureRunning() {
         if (state == StopwatchState.STOPPED) throw IllegalStateException("Counter has stopped")
         updateTicks()
     }
 
     final override fun resume(): AbstractStopwatch {
-        checkStopped()
+        ensureRunning()
         if (state == StopwatchState.TICKING) throw IllegalStateException("Already ticking")
         state = StopwatchState.TICKING
         this.lastCheckedTicks = getCurrentTime()
@@ -52,7 +59,7 @@ abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
     final override fun getState(): StopwatchState = state
 
     final override fun pause(): AbstractStopwatch {
-        checkStopped()
+        ensureRunning()
         if (state == StopwatchState.PAUSED) throw IllegalStateException("Already paused")
         state = StopwatchState.PAUSED
         updateTicks()

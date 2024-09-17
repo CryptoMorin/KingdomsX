@@ -215,7 +215,12 @@ bonus:
 
 # Options for when a nexus land is invaded.
 on-nexus-loss:
+  # Should the options below apply to the land that /k home is set in
+  # if no nexus is set?
+  alternate-to-home: true
+
   disband: false
+  unclaim-all: false
   drop-nexus-chest-items: false
 
   # Bonuses given to the invader
@@ -386,22 +391,31 @@ teleportation:
   # If the player should not take damage when teleporting to home.
   should-not-be-damaged: true
 
+# Should the bossbars/scoreboards be displayed only for nearby players around the champion/invasion area
+# or set to 0 for all the online members of the defender and attacker kingdoms.
+visual-range: 50
+
+# Scoreboard shown only when you're within the invasion area radius
+scoreboard:
+  enabled: false
+  update-rate: 5sec
+  title: "{$sep}-=( &9Invasion {$sep})=-"
+  lines:
+    - "{$p}Champion Health{$colon}"
+    - "{$sep}[{$s}%invasion_champion_health%{$sep}/{$s}%invasion_champion_max_health%{$sep}]"
+
 # The BossBar shown to nearby players for the chmapion.
 # This bossbar is also used for attackers during plunder invasions.
 # Multiple champions will show multiple bossbars of course.
 bossbar:
   enabled: true
 
-  # Should the bossbar be displayed only for nearby players around the champion/invasion area
-  # or set to 0 for all the online members of the defender and attacker kingdoms.
-  range: 50
-
   # For champion invasions if set to true, this will keep increasing the progress bar, and the champion is dead once the bar is full,
   # otherwise if set to false, the champion is dead once the progress bar is empty.
   # Same for plunder invasions, but for your opponent's lives.
   reverse-progress: true
 
-  title: "&2Champion Health &8[&6%health%&7/&6%max_health%&8]"
+  title: "&2Champion Health &8[&6%invasion_champion_health%&7/&6%invasion_champion_max_health%&8]"
   color: GREEN
   style: SEGMENTED_20
   flags: [ PLAY_BOSS_MUSIC ]
@@ -414,6 +428,8 @@ nations:
   # Force nation members (kingdoms) to use nation shields instead.
   # If this is enabled and a nation doesn't have a shield, but the kingdom does,
   # players will be still able to invade the kingdom.
+  # If this is false, kingdoms will use their own shield if they have one
+  # otherwise they will use the nations shield.
   use-shield: true
 
   # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#nation-zones
@@ -599,7 +615,7 @@ time-limit:
     enabled: true
 
     # Special placeholders are the same as the previous bossbar.
-    title: "&5⌛ &8[&d%time%&8] &5⌛"
+    title: "&5⌛ &8[&d%invasion_time_left%&8] &5⌛"
     color: PURPLE
     style: SOLID
 
@@ -700,6 +716,17 @@ plunder:
   capture-progress:
     increment: 0.1 # This happens every tick
     goal: 100 # after this, attackers win
+
+    # The defenders need to also participate in the capture progress.
+    # The attackers capture progress mechanics stay the same, however in this
+    # plunder, the capture progress has an initial progess (start-goal option) and this
+    # time, if the defenders outnumber the attackers, it doesn't just simply stop
+    # the attackers capture progress, but also decrements it backwards (defenders-decrement option).
+    # If the defenders manage to decrement the capture progress to zero, they win and keep their land.
+    tug-of-war:
+      enabled: false
+      initial-goal: 10
+      defenders-decrement: 0.1
 
     # Should the capture progress ratio consider kingdom guards
     # and soldiers of the defender?

@@ -71,6 +71,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
                         LimitTurretsTerm.PROVIDER, LimitStructuresTerm.PROVIDER, LimitClaimsTerm.PROVIDER, KingChangeTerm.PROVIDER)
                 .forEach(termRegistry::register);
 
+        PeaceTreatiesPlaceholder.init();
         LanguageManager.registerMessenger(PeaceTreatyLang.class);
         CustomConfigValidators.init();
         ConfigManager.registerAsMainConfig(PeaceTreatyConfig.PEACE_TREATIES);
@@ -91,8 +92,6 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
 
         new CommandPeaceTreaty();
 
-        PeaceTreatiesPlaceholder.init();
-
         // peace-treaties.yml
         ConfigWatcher.register(PeaceTreatyConfig.PEACE_TREATIES.getFile().toPath().getParent(), ConfigWatcher::handleNormalConfigs);
         ConfigManager.registerNormalWatcher("peace-treaties.yml", (event) -> {
@@ -101,7 +100,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
             TermRegistry.loadTermGroupings();
         });
 
-        GUIConfig.loadGUIs(this);
+        GUIConfig.loadInternalGUIs(this);
 
         registerAddon();
         HealthCheckupHandler.addCheckupHandler(new PeaceTreatyFSCK());

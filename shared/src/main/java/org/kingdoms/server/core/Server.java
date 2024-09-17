@@ -18,6 +18,8 @@ public interface Server {
 
     int getTicks();
 
+    boolean isMainThread();
+
     WorldRegistry getWorldRegistry();
 
     default void onStartup() {}

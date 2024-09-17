@@ -12,7 +12,7 @@ import org.kingdoms.nbt.NBTTagId;
 import org.kingdoms.nbt.tag.NBTTag;
 import org.kingdoms.nbt.tag.NBTTagCompound;
 import org.kingdoms.nbt.tag.NBTTagType;
-import org.kingdoms.utils.internal.Fn;
+import org.kingdoms.utils.internal.functional.Fn;
 
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
