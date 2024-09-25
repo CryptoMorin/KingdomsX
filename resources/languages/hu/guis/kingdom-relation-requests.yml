@@ -6,22 +6,22 @@ options:
     material: PLAYER_HEAD
     valid:
       condition: expired
-      name: "EXPIRED &8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+      name: "EXPIRED &8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
       lore: |
-        &2From Kingdom&8: &9%kingdoms_kingdom_name%
-        &2Sent&8: &6%timestamp%
-        &2Requested Relation&8: %relation-color%%relation-name%
+        {$p}From Kingdom{$colon} {$sp}%kingdoms_kingdom_name%
+        {$p}Sent{$colon} {$s}%timestamp%
+        {$p}Requested Relation{$colon} %relation-color%%relation-name%
         &cClick to delete
     else:
-      name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+      name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
       lore: |
-        &2From Kingdom&8: &9%kingdoms_kingdom_name%
-        &2Requested Relation&8: %relation-color%%relation-name%
-        &2Expires in&8: &6%time-left-to-accpet%
-        &2Sent&8: &6%timestamp%
-        &2Time Passed&8: &6%time-passed%
+        {$p}From Kingdom{$colon} {$sp}%kingdoms_kingdom_name%
+        {$p}Requested Relation{$colon} %relation-color%%relation-name%
+        {$p}Expires in{$colon} {$s}%time-left-to-accpet%
+        {$p}Sent{$colon} {$s}%timestamp%
+        {$p}Time Passed{$colon} {$s}%time-passed%
 
-        &2&lLeft-click to accept
+        {$p}&lLeft-click to accept
         &c&lRight-click to reject
     slots:
       - 10
@@ -69,12 +69,12 @@ options:
       - 52
       - 53
 #next-page:
-#name: '&6Next Page &7- &e%page%&8/&e%pages%'
+#name: '{$s}Next Page {$sep}- &e%page%&8/&e%pages%'
 #material: PLAYER_HEAD
 #skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
 #slot: 8
 #previous-page:
-#name: '&6Previous Page &7- &e%page%&8/&e%pages%'
+#name: '{$s}Previous Page {$sep}- &e%page%&8/&e%pages%'
 #material: PLAYER_HEAD
 #skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
 #slot: 0
