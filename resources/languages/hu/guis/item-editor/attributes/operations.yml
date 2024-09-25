@@ -49,7 +49,7 @@ options:
     material: NETHER_STAR
     name: '&eInfo'
     lore: |
-      &7A modifier's operation dictates
+      {$sep}A modifier's operation dictates
       how it modifies an attribute's base value
   add-number:
     posx: 2
@@ -67,11 +67,11 @@ options:
       else:
         name: '{$p}<x>'
     lore: |
-      &7Adds all of the modifiers' amounts to
+      {$sep}Adds all of the modifiers' amounts to
       the current value of the attribute.
       For example, modifying an attribute with
-      {$p}Amount 2 &7and {$p} Amount 4 &7with
-      a {$p}Base of 3 &7results in {$p}3 + 2 + 4 = 9
+      {$p}Amount 2 {$sep}and {$p} Amount 4 {$sep}with
+      a {$p}Base of 3 {$sep}results in {$p}3 + 2 + 4 = 9
   multiply-scalar-1:
     posx: 5
     posy: 2
@@ -87,16 +87,16 @@ options:
       else:
         name: '{$p}<x>'
     lore: |
-      &7For every modifier, multiplies the
-      current value of the attribute by {$p}(1 + x)&7,
+      {$sep}For every modifier, multiplies the
+      current value of the attribute by {$p}(1 + x){$sep},
       where x is the amount of the particular
       modifier. Functions the same as {$p}Add Scalar
-      &7if there is only a single modifier with
-      {$p}operation 1 or 2&7. However, for multiple
+      {$sep}if there is only a single modifier with
+      {$p}operation 1 or 2{$sep}. However, for multiple
       modifiers it multiplies the modifiers rather
       than adding them. For example, modifying an
-      attribute with {$p}Amount 2 &7and {$p}Amount 4
-      &7with a {$p}Base of 3 &7results in
+      attribute with {$p}Amount 2 {$sep}and {$p}Amount 4
+      {$sep}with a {$p}Base of 3 {$sep}results in
       {$p}3 * (1 + 2) * (1 + 4) = 45
   add-scalar:
     posx: 8
@@ -113,9 +113,9 @@ options:
       else:
         name: '{$p}<x>'
     lore: |
-      &7Multiplies the current value of the
-      attribute by {$p}1 + x&7, where x is the sum
+      {$sep}Multiplies the current value of the
+      attribute by {$p}1 + x{$sep}, where x is the sum
       of the modifiers' amounts. For example,
-      modifying an attribute with {$p}Amount 2&7
-      and {$p}Amount 4 with a {$p}Base of 3 &7results in
+      modifying an attribute with {$p}Amount 2{$sep}
+      and {$p}Amount 4 with a {$p}Base of 3 {$sep}results in
       {$p}3 * (1 + 2 + 4) = 21
