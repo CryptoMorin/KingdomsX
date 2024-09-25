@@ -1,4 +1,4 @@
-title: "&8-=( &2Addons &8)=-"
+title: "&8-=( {$p}Addons &8)=-"
 rows: 6
 options:
   decoration:
@@ -9,95 +9,95 @@ options:
     posx: 5
     posy: 1
     material: NETHER_STAR
-    name: '&9Info'
+    name: '{$sp}Info'
     lore: |
-      &7Addons are additional
+      {$sep}Addons are additional
       downloadable content that
       can be installed separately.
 
       The reason why addons exist in
       the first place, is because of
       {$p}performance{$sep}, {$p}modularization
-      &7and {$p}file size limits.
+      {$sep}and {$p}file size limits.
 
-      {$sep}[{$s}!{$sep}] &7In order to be
+      {$sep}[{$s}!{$sep}] {$sep}In order to be
       able to install addons, you need to
       have a internet connection that's
       able to connect to {$p}GitHub.com
-      {$sep}(&7not blocked by firewall,
+      {$sep}({$sep}not blocked by firewall,
       country censoreship and etc.{$sep})
   addons:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
     installing:
       condition: installing
-      name: '&8[&3Installing...&8] &9%addon-name%'
+      name: '&8[&3Installing...&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
+        {$p}Version{$colon} {$sp}%latest-version%
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] &9%addon-name%'
+      name: '&8[&5Pending Restart&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
+        {$p}Version{$colon} {$sp}%latest-version%
         &5The addon is downloaded. Waiting
         for the server to be restarted to
         enable the addon.
       material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[&2Up to date&8] &9%addon-name%'
+      name: '&8[{$p}Up to date&8] {$sp}%addon-name%'
       lore: |
         %description%
-        &2Version&8: &9%installed-version%
+        {$p}Version{$colon} {$sp}%installed-version%
         &4Right-click to uninstall
       material: GREEN_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Outdated&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%latest-version%
 
         {$sep}[{$e}!{$sep}] {$es}This version requires
         kingdoms {$p}v%supported-core-version% {$es}to work.
         Current version{$sep}: {$e}%current-core-version%
 
-        &2Left-click to update
+        {$p}Left-click to update
         &4Right-click to uninstall
       material: RED_WOOL
     not=installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
-      name: '&8[&4Outdated Core&8] &9%addon-name%'
+      name: '&8[&4Outdated Core&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &2Version&8: &9%latest-version%
+        {$p}Version{$colon} {$sp}%latest-version%
 
         {$warning}This version requires
-        kingdoms {$p}v%supported-core-version% &7to work.
+        kingdoms {$p}v%supported-core-version% {$sep}to work.
         Current version{$sep}: {$e}%current-core-version%
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] &9%addon-name%'
+      name: '&8[&4Outdated&8] {$sp}%addon-name%'
       lore: |
         %description%
-        &4Installed Version&8: &9%installed-version%
-        &2Latest Version&8: &9%latest-version%
-        &2Left-click to update
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%latest-version%
+        {$p}Left-click to update
         &4Right-click to uninstall
       material: RED_WOOL
     not-installed:
-      name: '&8[&6Not installed&8] &9%addon-name%'
+      name: '&8[{$s}Not installed&8] {$sp}%addon-name%'
       lore: |
         %description%
-        &2Version&8: &9%latest-version%
-        &2Left-click to install
+        {$p}Version{$colon} {$sp}%latest-version%
+        {$p}Left-click to install
       condition: '!installed'
       material: BLUE_WOOL

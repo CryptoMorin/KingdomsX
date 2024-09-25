@@ -39,22 +39,10 @@ limits:
   per-land: 3
   total: 30
 
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
 sounds:
   1:
-    place: BLOCK_BEACON_ACTIVATE
-    break: BLOCK_BEACON_DEACTIVATE
     teleport-sound: BLOCK_PORTAL_TRAVEL, 0.5, 1.0
-    fuel-fill: BLOCK_FIRE_EXTINGUISH
+    # fuel-fill: BLOCK_FIRE_EXTINGUISH
 
 cost: 2000
 sell: 1000
@@ -63,7 +51,7 @@ item:
     name: "&cWarpPad"
     material: END_PORTAL_FRAME
     lore:
-      - "&6Warp pads can be used to teleport"
+      - "{$s}Warp pads can be used to teleport"
       - "from a structure to another."
-      - "&7⚫ &2Name&8: &6%structure-custom-name%"
-      - "&7⚫ &2Fuel&8: &6%fuel%"
+      - "{$dot} {$p}Name{$colon} {$s}%structure-custom-name%"
+      - "{$dot} {$p}Fuel{$colon} {$s}%fuel%"

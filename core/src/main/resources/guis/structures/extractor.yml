@@ -1,4 +1,4 @@
-title: "&2Extractor"
+title: "{$p}Extractor"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
 
@@ -6,64 +6,64 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}Out of fuel &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "{$e}Out of fuel {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
-      name: "{$e}Nothing to collect &9%extractor-last-collected-time-passed%"
+      name: "{$e}Nothing to collect {$sp}%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Collect&8: &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "{$p}Collect{$colon} {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&6Collect all the generated"
+      - "{$s}Collect all the generated"
       - "resource points."
-      - "Last collected by&8: &2%extractor-last-collector%"
+      - "Last collected by{$colon} {$p}%extractor-last-collector%"
     slot: 0
   fuel:
-    name: "&2Fuel&8: &6%fancy@fuel%&8/&6%fancy@max_fuel%"
+    name: "{$p}Fuel{$colon} {$s}%fancy@fuel%&8/{$s}%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
     lore: |
-      &7To fill the fuel, simply drop
+      {$sep}To fill the fuel, simply drop
       one of the fuel items on the
       extractor block.
 
-      &7Additionally you can place a {$p}hopper
-      &7on north, south, east, west or top of
+      {$sep}Additionally you can place a {$p}hopper
+      {$sep}on north, south, east, west or top of
       the extractor with the following items.
       Note that this only works once the extractor's
       fuel is almost at zero.
 
-      &2Coal&8: &95
-      &2Charcoal&8: &93
-      &2Blaze Rods&8: &9100
+      {$p}Coal{$colon} {$sp}5
+      {$p}Charcoal{$colon} {$sp}3
+      {$p}Blaze Rods{$colon} {$sp}100
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Upgrade&8: &6%roman@level% &7➛ &6%roman@next_level%"
+      name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Every&8: &6%every% &7➔ &6%next-every%"
-        - "&7⚫ &2Resource Points&8: &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
-        - "&7⚫ &2Fuel Consumption&8: &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
+        - "{$dot} {$p}Every{$colon} {$s}%every% {$sep}➔ {$s}%next-every%"
+        - "{$dot} {$p}Resource Points{$colon} {$s}%fancy@resource-points% {$sep}➔ {$s}%fancy@next-resource-points%"
+        - "{$dot} {$p}Fuel Consumption{$colon} {$s}%extractor_needed_fuel% {$sep}➔ {$s}%next_extractor_needed_fuel%"
         - ""
-        - "&7⚫ &2Max Level&8: &6%roman@next_level%"
-        - "&7⚫ &2Cost&8: &6%upgrade_cost%"
+        - "{$dot} {$p}Max Level{$colon} {$s}%roman@next_level%"
+        - "{$dot} {$p}Cost{$colon} {$s}%upgrade_cost%"
     maxxed:
-      name: "&9Level&8: &6%roman@level%"
+      name: "{$sp}Level{$colon} {$s}%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Every&8: &6%every%"
-        - "&7⚫ &2Resource Points&8: &6%fancy@resource-points%"
-        - "&7⚫ &2Fuel Consumption&8: &6%extractor_needed_fuel%"
+        - "{$dot} {$p}Every{$colon} {$s}%every%"
+        - "{$dot} {$p}Resource Points{$colon} {$s}%fancy@resource-points%"
+        - "{$dot} {$p}Fuel Consumption{$colon} {$s}%extractor_needed_fuel%"
   break:
     name: "&4Break"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Breaks the structure."
+      - "{$s}Breaks the structure."
     slot: 4

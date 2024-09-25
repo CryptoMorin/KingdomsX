@@ -18,20 +18,22 @@ cooldown: 20 - lvl
 max-targets: 1
 max-ammo: lvl * 2000
 upgrade-cost: lvl * 100
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
+
 sounds:
   1:
-    place: ENTITY_CREEPER_PRIMED
-    break: ENTITY_CREEPER_DEATH
+    opening:
+      started: &start-sound ENTITY_CREEPER_PRIMED
+      finished: *start-sound
+      stopped: &stop-sound ENTITY_CREEPER_DEATH
+    upgrading:
+      started: *start-sound
+      finished: *start-sound
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
 fire: 2
 particle:
   1:
@@ -64,15 +66,15 @@ item:
     material: TRIPWIRE_HOOK
     flags: [ ALL ]
     lore:
-      - "&6Effects the enemies nearby."
+      - "{$s}Effects the enemies nearby."
       - "Higher levels add more effects."
       - "But never deals killing damage."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman@level%"
-      - "&7⚫ &2Ammo&8: &6%ammo%"
-      - "&7⚫ &2Range&8: &6%range%"
-      - "&7⚫ &2Max Targets&8: &6%max_targets%"
-      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
-      - "&7⚫ &2Cooldown&8: &6%cooldown%"
-      - "&7⚫ &2Knockback&8: &6%knockback%"
+      - "{$sp}Attributes{$colon}"
+      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
+      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
+      - "{$dot} {$p}Range{$colon} {$s}%range%"
+      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
+      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
+      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
+      - "{$dot} {$p}Knockback{$colon} {$s}%knockback%"

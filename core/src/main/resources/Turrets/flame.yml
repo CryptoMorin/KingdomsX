@@ -13,20 +13,22 @@ type: arrow
 cost: 300
 sell: 200
 max-level: 3
-particles:
-  1:
-    place:
-      particle: FLAME
-      count: 50
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: FLAME
-      count: 50
-      offset: 0.5, 0.5, 0.5
+
 sounds:
   1:
-    place: ITEM_FIRECHARGE_USE
-    break: BLOCK_FIRE_EXTINGUISH
+    opening:
+      started: &start-sound ITEM_FIRECHARGE_USE
+      finished: *start-sound
+      stopped: &stop-sound BLOCK_FIRE_EXTINGUISH
+    upgrading:
+      started: *start-sound
+      finished: *start-sound
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
 range: 7 + lvl
 cooldown: 10 - lvl
 max-targets: 1
@@ -48,16 +50,16 @@ item:
     material: SPECTRAL_ARROW
     flags: [ ALL ]
     lore:
-      - "&6A similar turret as arrow"
+      - "{$s}A similar turret as arrow"
       - "turret but shoots fired arrows with higher"
       - "damage and spectral arrow on max level."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman@level%"
-      - "&7⚫ &2Ammo&8: &6%ammo%"
-      - "&7⚫ &2Range&8: &6%range%"
-      - "&7⚫ &2Max Targets&8: &6%max_targets%"
-      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
-      - "&7⚫ &2Cooldown&8: &6%cooldown%"
-      - "&7⚫ &2Speed&8: &6%speed%"
-      - "&7⚫ &2Damage&8: &6%damage%"
+      - "{$sp}Attributes{$colon}"
+      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
+      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
+      - "{$dot} {$p}Range{$colon} {$s}%range%"
+      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
+      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
+      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
+      - "{$dot} {$p}Speed{$colon} {$s}%speed%"
+      - "{$dot} {$p}Damage{$colon} {$s}%damage%"

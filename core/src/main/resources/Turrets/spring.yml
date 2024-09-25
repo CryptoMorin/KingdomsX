@@ -6,7 +6,7 @@
       <durability-factor>: 100
       <material>: OAK_PRESSURE_PLATE
 
-name: "&7Spring"
+name: "{$sep}Spring"
 type: pressure_mine
 cost: 200
 sell: 100
@@ -14,26 +14,27 @@ sell: 100
 knockback: 1.5
 vertical-knockback: 2
 
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
 sounds:
   1:
-    place: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
-    break: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF
     activate: 'BLOCK_NOTE_BLOCK_BASEDRUM, 3, 0.1'
+    opening:
+      started: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+      finished: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+      stopped: &stop-sound BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF
+    upgrading:
+      started: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+      finished: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
 item:
   1:
-    name: "&7Spring"
+    name: "{$sep}Spring"
     material: OAK_PRESSURE_PLATE
     lore: |
-      {$s}Throws the player
+      {$s}Throws the player high up
       into the air.
-      {$sep}⚫ {$p}Durability{$sep}: {$s}%durability%
+      {$dot} {$p}Durability{$colon} {$s}%building_durability%

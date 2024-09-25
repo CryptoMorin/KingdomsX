@@ -39,9 +39,9 @@ public final class Namespace implements DataStringRepresentation {
     public Namespace(@NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_NAMESPACES) String namespace,
                      @NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) String key) {
         if (namespace == null || !ACCEPTED_NAMESPACES_PATTERN.matcher(namespace).matches())
-            throw new IllegalStateException("Namespace string '" + namespace + "' doesn't match: " + ACCEPTED_NAMESPACES);
+            throw new IllegalArgumentException("Namespace string '" + namespace + "' doesn't match: " + ACCEPTED_NAMESPACES);
         if (key == null || !isValidKey(key))
-            throw new IllegalStateException("Key string '" + key + "' doesn't match: " + ACCEPTED_KEYS);
+            throw new IllegalArgumentException("Key string '" + key + "' doesn't match: " + ACCEPTED_KEYS);
 
         this.namespace = namespace;
         this.key = key;

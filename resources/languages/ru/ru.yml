@@ -46,29 +46,29 @@ tax:
     age: '&7Ваше королевство не платило налоги так как оно было основано совсем недавно'
     paid: |
       &7Всего &e%tax% &7было уплачено за налоги королевства.
-      Баланс королевства&8: &e%fancy@kingdoms_bank%
+      Баланс королевства{$colon} &e%fancy@kingdoms_bank%
     paid-nation: |
       &7Всего &e%tax% &8было уплачено за налоги нации.
-      Баланс королевства&8: &e%fancy@kingdoms_bank%
-      &7Баланс нации&8: &e%fancy@kingdoms_nation_bank%
-    kicked: '&e%kingdom% &cбыло выгнано из нации за не уплату налогов&8: &e%fancy@kingdoms_bank% &8< %tax%'
-    disbanded: '&cВаше королевство было распущено за неуплату налогов&8: &e%tax%'
-    disbanded-announce: '&e%kingdom% &cВаше королевство было распущено поскольку не смогла уплатить налоги&8:
+      Баланс королевства{$colon} &e%fancy@kingdoms_bank%
+      &7Баланс нации{$colon} &e%fancy@kingdoms_nation_bank%
+    kicked: '&e%kingdom% &cбыло выгнано из нации за не уплату налогов{$colon} &e%fancy@kingdoms_bank% &8< %tax%'
+    disbanded: '&cВаше королевство было распущено за неуплату налогов{$colon} &e%tax%'
+    disbanded-announce: '&e%kingdom% &cВаше королевство было распущено поскольку не смогла уплатить налоги{$colon}
       &e%fancy@kingdoms_bank% &8< &e%tax%'
-    kicked-announce: '&e%kingdom% &cбыло изгнано из нации &e%nation% &cпоскольу не смогла уплатить налоги&8:
+    kicked-announce: '&e%kingdom% &cбыло изгнано из нации &e%nation% &cпоскольу не смогла уплатить налоги{$colon}
       &e%fancy@kingdoms_bank% &8< &e%tax%'
   nation:
     age: '&7Ваша нация не платила налоги поскольку она новая!'
     paid: |
       &7Всего было &e%tax% монет &7уплачено нацией за налоги
-      Баланс нации&8: &6%fancy@kingdoms_nation_bank% монет
-    disbanded: '&cВаша нация была распущена поскольку не смогла уплатить налоги&8: &e%tax%'
-    disbanded-announce: '&e%nation% &cВаша нация была распущена потому-что не смогла уплатить налоги&8:
+      Баланс нации{$colon} &6%fancy@kingdoms_nation_bank% монет
+    disbanded: '&cВаша нация была распущена поскольку не смогла уплатить налоги{$colon} &e%tax%'
+    disbanded-announce: '&e%nation% &cВаша нация была распущена потому-что не смогла уплатить налоги{$colon}
       &e%fancy@kingdoms_nation_bank% &8< &e%tax%'
   notifications: |
-    &8[&4Внимание&8] &cВашему королевству недостаточно монет &7(&e%fancy@kingdoms_bank%&7) &cдля оплаты налоги в следующем сборе налогов&8: &e%tax%
+    &8[&4Внимание&8] &cВашему королевству недостаточно монет &7(&e%fancy@kingdoms_bank%&7) &cдля оплаты налоги в следующем сборе налогов{$colon} &e%tax%
     &cЕсли собранных налогов с участников будет недостаточно, королевство будет распущено
-  kick-announce: '&e%player% &cбыл выгнан из королевства за не уплату налогов&8: &e%tax%'
+  kick-announce: '&e%player% &cбыл выгнан из королевства за не уплату налогов{$colon} &e%tax%'
   member-paid: '&7%tax% монет &7было оплачено за налоги'
 in-claim-only:
   placing:
@@ -99,9 +99,9 @@ siege-cannon:
     no-shield: '&7Пушка попала по &6%kingdoms_kingdom_name% &7которые не имеют щит!'
     pacifist: '&cПушка попала по &e%kingdoms_kingdom_name% &cно они мирное королевство'
     destroyed-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7, их щит был уничтожен!'
-    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа&8: &c%time@kingdoms_shield_time_left%'
+    damaged-shield: '&7Пушка поразила &6%kingdoms_kingdom_name% &7 и попала по щиту! Осталось ЩИТа{$colon} &c%time@kingdoms_shield_time_left%'
     damaged-shield-notify: '&7Королевство &e%attacker-kingdom% &7нанесло удар по вашей земле &e%attacked-chunk%&7.
-      Осталось ЩИТа&8: &c%time@kingdoms_shield_time_left%'
+      Осталось ЩИТа{$colon} &c%time@kingdoms_shield_time_left%'
   masswar-only: '&cВы можете использовать осадные пушки только во время массовых войн.'
 other-kingdoms:
   place: '&cВы не можете строить в чужом королевстве!'
@@ -137,7 +137,7 @@ guis:
   open-inventory-during-input: '&cВы не можете открывать инвентарь пока вводите значение!'
   command-during-input: '&cВы не можете использовать команды пока вводите значение!'
   pages:
-    next-page-not-available: '&cНет страниц. Макс.страниц&8: &e%pages%'
+    next-page-not-available: '&cНет страниц. Макс.страниц{$colon} &e%pages%'
     previous-page-not-available: '&cСтраницы отсутсвуют.'
 protected-signs:
   cant-modify: '&cВы не можете изменять настройки в защищёном блоке.'
@@ -160,13 +160,13 @@ protected-signs:
     error-429: '&cСлишком много неудачных попыток авторизации!'
     in-cooldown: |
       &cДанное хранилище требует пароль для доступа, однако у вас было очень много неудачных попыток авторизации,
-      По этому вы сможете повторить попытку через&8: &e%cooldown%
+      По этому вы сможете повторить попытку через{$colon} &e%cooldown%
     required: '&cДля открытия этого хранилища введите пароль, или нажмите hover:{&ecancel;&ecancel;cancel}
       &cчтобы отменить это действие.'
     ask: '&6Пожалуйста введите пароль или нажмите hover:{&cCancel;&cCancel;cancel} &6для отмены или наведитесь:
       hover:{&cRemove;&cRemove;remove} &6для удаления пароля'
     container-only: '&cВы можете установить пароль только для печек, сундоков и воронок и т.д'
-    length: '&cДлина пароля должна быть больше &e%min% &cи меньше чем &e%max% &cпоучилвшееся длина&8:
+    length: '&cДлина пароля должна быть больше &e%min% &cи меньше чем &e%max% &cпоучилвшееся длина{$colon}
       &e%length%'
     removed: '&7Пароль был снят с хранилища'
     set: '&7Пароль хранилища был изменён'
@@ -174,7 +174,7 @@ protected-signs:
   double-chest-protected: '&7Защита двойных сундуков'
   protection-type:
     already-using: '&cДанный блок уже использует этот тип защиты!'
-    changed: '&7Успешно изменён тип защиты блока на&8: &e%protection%'
+    changed: '&7Успешно изменён тип защиты блока на{$colon} &e%protection%'
   players:
     cleared: '&7Все участники удалены'
     removed: '&7Удалено &6%name% &7из группы'
@@ -209,13 +209,13 @@ protected-signs:
       not-found: '&cДанное королевство не найдено'
 top-rewards:
   kingdom: |
-    &7Ваше королевство вознаграждено &6%money% &7монет и &6%rp% &7очками ресурсов за новый уровень &8: &5%rank%
-    &7Баланс королевства&8: &6%fancy@kingdoms_bank% монет
-    &7Баланс очков ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
+    &7Ваше королевство вознаграждено &6%money% &7монет и &6%rp% &7очками ресурсов за новый уровень {$colon} &5%rank%
+    &7Баланс королевства{$colon} &6%fancy@kingdoms_bank% монет
+    &7Баланс очков ресурсов королевства{$colon} &6%fancy@kingdoms_resource_points%
   nation: |
-    &7Ваша нация вознаграждена &6%money% &7монет и &6%rp% &7 очков ресурсов, за новый ранг&8: &5%rank%
-    &7Баланс нации&8: &6%fancy@kingdoms_nation_bank% монет
-    &7Баланс очков ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
+    &7Ваша нация вознаграждена &6%money% &7монет и &6%rp% &7 очков ресурсов, за новый ранг{$colon} &5%rank%
+    &7Баланс нации{$colon} &6%fancy@kingdoms_nation_bank% монет
+    &7Баланс очков ресурсов нации{$colon} &6%fancy@kingdoms_nation_resource_points%
 upgrades:
   powerup-upgrade: '&7Вы улучшили &6%powerup% &7до уровня &6%level%'
   powerup-max: '&cВы уже улучшили &e%powerup% &cна максимальный уровень!'
@@ -253,7 +253,7 @@ fly:
     cant-afford-kingdom: '&cYour kingdom needs &e%amount% &cfor every &e%interval% seconds &cyou fly.'
   out:
     of-land: '&cYou can only use kingdoms fly in your own land. Your flight has been disabled.'
-no-kingdom-reminder: '&cНапоминание&8: &eВы всё ещё не присоединилсь к королевству!'
+no-kingdom-reminder: '&cНапоминание{$colon} &eВы всё ещё не присоединилсь к королевству!'
 regulator:
   attributes:
     add-self: '&cВы не можете добавить себя'
@@ -269,8 +269,8 @@ nexus:
   pacifism:
     enable: '&7Ваше королевство теперь &6нейтральное'
     disable: '&7Ваше королевство больше не &cнейтральное'
-    cooldown: '&cВаше королевство не может стать снова нейтральным пока не пройдет время&8: &e%cooldown%'
-    permanent: '&cYour kingdom can''t be pacifist for&8: &e%cooldown%'
+    cooldown: '&cВаше королевство не может стать снова нейтральным пока не пройдет время{$colon} &e%cooldown%'
+    permanent: '&cYour kingdom can''t be pacifist for{$colon} &e%cooldown%'
   home:
     public: '&7Теперь спавн вашего королевства &7публичный'
     not-public: '&7Спавн вашего королевства больше не &cпубличный'
@@ -305,7 +305,7 @@ nexus:
       symbol: '&cДлина символа не должна быть больше &e%limit%'
     node:
       already-exists: '&cУже есть ранг с таким узлом'
-    unknown-material: '&cТакого материала не существует&8: &e%material%'
+    unknown-material: '&cТакого материала не существует{$colon} &e%material%'
     invalid:
       material: '&cВы не можете использовать этот материал &e%material%'
       max-claims: '&cМаксимальное число захватываемых земель должно быть числом и быть больше 0'
@@ -319,7 +319,7 @@ nexus:
     others: '&cВы не можете изменять прочие улучшения чужого королевства!'
   members:
     others: '&cВы не можете управлять жителями чужого королевства!'
-    next-page-not-available: '&cСледующие страницы отсутсвуют. Всего страниц&8: &e%pages%'
+    next-page-not-available: '&cСледующие страницы отсутсвуют. Всего страниц{$colon} &e%pages%'
     previous-page-not-available: '&cПредыдущие страницы отсутствуют'
   settings:
     tax-enter-value: '&7Пожалуйста введите новое значение в чат или нажмите или введите hover:{&ccancel;&cCancel;cancel}
@@ -329,32 +329,32 @@ nexus:
         &7для отмены'
       current: Нажмите hover:{&7здесь;&7Чтобы открыть ссылку;url:%kingdoms_kingdom_flag%} &6чтобы открыть ваш
         флаг
-      wrong-url: '&cНеправильная ссылка&8: &e%flag%'
-      contains: '&cСсылка на флаг не может быть принята, потому-что содержит запрещённые слова&8: &e%flag%'
-      regex: '&cСсылка на флаг не может быть принята&8: &e%flag%'
+      wrong-url: '&cНеправильная ссылка{$colon} &e%flag%'
+      contains: '&cСсылка на флаг не может быть принята, потому-что содержит запрещённые слова{$colon} &e%flag%'
+      regex: '&cСсылка на флаг не может быть принята{$colon} &e%flag%'
       checking-size: '&7Проверка размера изображения'
       cooldown: '&cВам надо подождать &e%cooldown% &cпрежде чем изменить флаг'
       size-limit:
-        fail: '&cУказанная ссылка не является изображением или недоступна&8: &e%flag%'
-        height: '&cРазмер этого изображения выходит за рамки &e%limit% &cлимита по высоте&8: &e%height%'
-        width: '&cРазмер этого изображения выходит за рамки &e%limit% &cлимита по длине&8: &e%width%'
-      set: '&7Флаг вашего королевства изменён на&8: &6%flag%'
+        fail: '&cУказанная ссылка не является изображением или недоступна{$colon} &e%flag%'
+        height: '&cРазмер этого изображения выходит за рамки &e%limit% &cлимита по высоте{$colon} &e%height%'
+        width: '&cРазмер этого изображения выходит за рамки &e%limit% &cлимита по длине{$colon} &e%width%'
+      set: '&7Флаг вашего королевства изменён на{$colon} &6%flag%'
       validate: '&2Validating image...'
       removed: '&2Your kingdom''s flag image was removed.'
     color:
       enter-value: |
         &7Пожалуйста, введите тут HEX код. Или нажмите hover:{&cCancel;&cCancel;cancel} &7для отмены.
         Код можно взять вот hover:{&2тут;&2Нажмите, чтобы открыть;@https://htmlcolorcodes.com/}
-      wrong-hex: '&cНекорректный HEX код&8: &e%color%'
-      wrong-rgb: '&cНекорректный RGB код&8: &e%color%'
+      wrong-hex: '&cНекорректный HEX код{$colon} &e%color%'
+      wrong-rgb: '&cНекорректный RGB код{$colon} &e%color%'
       range-blacklisted: '&cЭтот цвет нельзя использовать.'
-      set: '&7Цвет изменён на&8: &d%color%'
+      set: '&7Цвет изменён на{$colon} &d%color%'
     tax-set: |
-      &7Уравнение для налога изменено на&8: &6%tax%
-      &7Примерный налог по уравнению&8: &6%test%
-    tax-illegal-variable: '&cИспользован неправильный плейсхолдер &e%index% &cв уравнении&8: &e%tax%'
+      &7Уравнение для налога изменено на{$colon} &6%tax%
+      &7Примерный налог по уравнению{$colon} &6%test%
+    tax-illegal-variable: '&cИспользован неправильный плейсхолдер &e%index% &cв уравнении{$colon} &e%tax%'
     tax-invalid: |
-      &cНе получилось использовать налоговое уравнение &e%tax%, по причине&8: &e%reason%
+      &cНе получилось использовать налоговое уравнение &e%tax%, по причине{$colon} &e%reason%
       &cВведите правильное уравнение.
     shield-not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
     shield-cooldown: '&cВам надо подождать &e%time% &cпрежде чем покупать щит снова'
@@ -371,7 +371,7 @@ warppad:
   low-fuel: |
     &cВам нужно &e%fuel-cost% топлива &cдля телепортации, эта точка телепортации использует в качестве топлива: &e%fuel%
     &cВы можете использовать в качестве топлива &eуголь
-  fuel-fill: '&7Топливо точки телепортации&8: &6%fuel%'
+  fuel-fill: '&7Топливо точки телепортации{$colon} &6%fuel%'
   success: '&7Телепортированы!'
   no-safe-location: '&cВокруг этой площадки нет безопасных мест для телепортации.'
 outpost:
@@ -417,10 +417,10 @@ not:
   number: '&cАргумент &e%arg% &cне содержит цифр!'
   boolean: '&cАругмент &e%arg% &cне является опцией. Пожалуйста используйте ''&7true&c'' или ''&4false&c''!'
 invalid:
-  amount: '&cНеверное количество&8: &e%amount%'
+  amount: '&cНеверное количество{$colon} &e%amount%'
 commands:
   insufficient-permission: '&cУ вас нет прав для выполнения этой команды!'
-  cooldown: '&cПодождите&8: &e%cooldown% &cпрежде чем снова использовать её!'
+  cooldown: '&cПодождите{$colon} &e%cooldown% &cпрежде чем снова использовать её!'
   disabled-world: '&cДанная команда не может быть использованна в этом мире'
   tags:
     players: '#PLAYER'
@@ -439,16 +439,16 @@ kingdom-item:
   craft: '&cКоролевские предметы нельзя использовать в крафте!'
   shoot: '&cНельзя стрелять из лука в предметы королевства.'
 auto-claim:
-  disabled-world: '&cПриват отключен в мире&8: &6%world%'
+  disabled-world: '&cПриват отключен в мире{$colon} &6%world%'
   in-region: '&cВы не можете захватывать земли в защищёном регионе!'
   actionbar:
-    enabled: '&7Авто-колонизация&8: &6Включена'
-    disabled: '&7Авто-колонизация&8: &cВыключена'
+    enabled: '&7Авто-колонизация{$colon} &6Включена'
+    disabled: '&7Авто-колонизация{$colon} &cВыключена'
   success: '&7Территория на координатах &6%x%&7, &6%z% &7, теперь принадлежит королевству!'
-  max-claims: '&cВам нельзя иметь больше&8: &e%max% &cтерриторий!'
+  max-claims: '&cВам нельзя иметь больше{$colon} &e%max% &cтерриторий!'
   kingdom-max-lands: '&cВаше королевство не может захватить больше &e%max% &cтерриторий!'
   already-owned: '&cЭта территория уже принадлежит королевству!'
-  occupied-land: '&4Вашу территорию оккупировало чужое королевство! Вторгнитесь и отбейте её обратно&8:
+  occupied-land: '&4Вашу территорию оккупировало чужое королевство! Вторгнитесь и отбейте её обратно{$colon}
     &e/k invade!'
   need-rp: '&cВам нужно &e%cost% &cочков ресурсов для захвата земли!'
   need-money: '&cВам нужно &e%cost% &cмонет чтобы захватить эту землю!'
@@ -460,10 +460,10 @@ auto:
     enabled: '&7Авто захват успешно &6ВКЛЮЧЕН'
     disabled: '&7Авто захват успешно &cВЫКЛЮЧЕН'
     actionbar:
-      enabled: '&7Авто-захват&8: &6Включен'
-      disabled: '&7Авто-захват&8: &cВыключен'
+      enabled: '&7Авто-захват{$colon} &6Включен'
+      disabled: '&7Авто-захват{$colon} &cВыключен'
     success: '&7Теперь территория на координатах: &6%x%&7, &6%z% &7принадлежит вашему королевству!'
-    occupied-land: '&cВашу территорию оккупировало чужое королевство! Вторгнитесь и отбейте её обратно&8:
+    occupied-land: '&cВашу территорию оккупировало чужое королевство! Вторгнитесь и отбейте её обратно{$colon}
       &e/k invade!'
     need-rp: '&cВам нужно &e%cost% &cочков ресурсов для захвата этой территории!'
 inactivity-announce:
@@ -473,7 +473,7 @@ command:
   updates-description: '&6Проверяет есть ли актуальные обновления для KingdomX'
   help:
     description: '&6Отображает все команды'
-    usage: '&7Использование&8: &e/k %command% &9[page]'
+    usage: '&7Использование{$colon} &e/k %command% &9[page]'
     grouped-header: '&8&m---------------=(&c&l %group% &8)=---------------'
     negative-pages: '&cЗдесь нет скрытых страниц'
     grouped-commands: 'hover:{&8/&7k %cmd% &7- %description%;&8/&7k %cmd%;|/k %cmd%}'
@@ -486,7 +486,7 @@ command:
     commands: 'hover:{&8/&7k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
   reload:
     description: '&6Перезагружает плагин'
-    usage: '&7Использование&8: &e/k reload &9[config]'
+    usage: '&7Использование{$colon} &e/k reload &9[config]'
     success: '&7Плагин успешно перезагружен!'
     commands: '&7Все команды были перезагружены!'
   create:
@@ -497,7 +497,7 @@ command:
     name-has-symbols: '&cНазвание королевства не может содержать символы, только буквы и цифры!'
     name-numbers: '&cКоролевство не может содержать цифры!'
     name-already-in-use: '&cКоролевство с таким названием уже существует!'
-    usage: '&7Использование&8: &e/k create &7<название>'
+    usage: '&7Использование{$colon} &e/k create &7<название>'
     already-in-kingdom: '&cВы уже состоите в королевстве! Покиньте его и попытайтесь ещё раз!'
     success: '&7Вы основали королевство &6%kingdom%&7!'
     pacifist: '&7Ваше королевство &6нейтральное &7королевство.'
@@ -513,7 +513,7 @@ command:
     name-english: '&cТег королевства может быть только на английском языке и состоять из цифр и букв'
     name-has-symbols: '&cТег королевства не может содержать символы, только буквы и цифры!'
     name-numbers: '&cТег королевства не может содержать цифры!'
-    usage: '&7Использование&8: &e/k tag <название>'
+    usage: '&7Использование{$colon} &e/k tag <название>'
     no-kingdom: '&cУ вас нет королевства!'
     cooldown: '&cВам нужно подождать &e%cooldown% &cпрежде чем переименовывать тег королевства'
     changed: '&7Тег вашего королевства изменён с &6%tag% &7на %kingdoms_kingdom_tag% &7игроком &6%player%'
@@ -527,7 +527,7 @@ command:
       name-has-symbols: '&cНазвание нации не может содержать символы, только цифры и буквы!'
       name-numbers: '&cНазвание нации не может содержать цифры, только буквы!'
       name-already-in-use: '&cДругая нация уже использует это название'
-      usage: '&7Использование&8: &e/k nation create <название>'
+      usage: '&7Использование{$colon} &e/k nation create <название>'
       already-in-nation: '&cВы уже состоите в нации, покиньте её прежде чем создавать свою! Покинуть нацию:
         &6hover:{&e/k nation leave;&cПокинуть нацию;/k nation leave}'
       success: '&7Вы основали нацию &6%nation% &7!'
@@ -541,12 +541,12 @@ command:
       name-numbers: '&cНазвание нации не может содержать цифры!'
       name-already-in-use: '&cДругая нация уже использует это название!'
       cooldown: '&cВам нужно подождать &e%cooldown% &cпрежде чем снова переименовывать нацию!'
-      usage: '&7Использование&8: &e/k nation rename &5<название>'
-      success: '&7Название нации изменено на&8: &6%name%'
+      usage: '&7Использование{$colon} &e/k nation rename &5<название>'
+      success: '&7Название нации изменено на{$colon} &6%name%'
       cost: '&cВашей нации нужно &e%cost% &cмонет чтобы переименовать её'
     bank:
       description: '&6Снять или положить деньги на баланс вашей нации'
-      usage: '&7Использование&8: &e/k nation bank &7<deposit/withdraw> <amount>'
+      usage: '&7Использование{$colon} &e/k nation bank &7<deposit/withdraw> <amount>'
       unknown-transaction: '&cНеизвестная операция &e%transaction%'
       not-enough:
         nation-money: '&cВ балансе вашей нации не хватает &e%amount% &cмонет!'
@@ -554,62 +554,62 @@ command:
       deposit:
         success: |
           &7Вы зачислили &6%amount% &7монет на баланс вашей нации!
-          Ваш баланс&8: &6%balance%
-          &7Баланс нации&8: &6%fancy@kingdoms_nation_bank%
+          Ваш баланс{$colon} &6%balance%
+          &7Баланс нации{$colon} &6%fancy@kingdoms_nation_bank%
         disabled: '&cВы не можете зачислять монеты!'
       withdraw:
         disabled: '&cВы не можете снимать монеты!'
         success: |
           &7Вы сняли &6%amount% &7монет с баланса вашей нации!
-          &7Ваш баланс&8: &6%balance%
-          &7Баланс нации&8: &6%fancy@kingdoms_nation_bank%
+          &7Ваш баланс{$colon} &6%balance%
+          &7Баланс нации{$colon} &6%fancy@kingdoms_nation_bank%
       negative: '&cВы не можете переводить отрицательные значения...'
       zero: '&cВы не можете перевести ничего!'
     show:
       description: '&6Показать информацию о вашей нации'
-      usage: '&7Использование&8: &e/k show &9[player | nation | #PLAYER | #NATION] &7<player | nation>'
+      usage: '&7Использование{$colon} &e/k show &9[player | nation | #PLAYER | #NATION] &7<player | nation>'
       others-permission: '&cУ вас недостаточно прав для просмотра остальной информации!'
       message-admin: |
         &8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
-        &7| &7Столица&8: &6%kingdoms_nation:capital get=name%
-        &7| &7Спавн&8: &6%kingdoms_nation_spawn%
-        &7| &7Нексус&8: &6%kingdoms_nation_nexus%
-        &7| &7Дата создания&8: &6%kingdoms_date_nation_since%
-        &7| &7Мощь&8: &6%kingdoms_nation_might%
-        &7| &7Щит&8: &6%time@kingdoms_nation_shield_time_left%
-        &7| &7Баланс&8: &6%fancy@kingdoms_nation_bank% монет &8| &7Tax&8: &6%fancy@kingdoms_nation_tax% &8- &6%fancy@kingdoms_server_nation_tax% монет
-        &7| &7Очки ресурсов&8: &6%kingdoms_nation_resource_points%
+        &7| &7Столица{$colon} &6%kingdoms_nation:capital get=name%
+        &7| &7Спавн{$colon} &6%kingdoms_nation_spawn%
+        &7| &7Нексус{$colon} &6%kingdoms_nation_nexus%
+        &7| &7Дата создания{$colon} &6%kingdoms_date_nation_since%
+        &7| &7Мощь{$colon} &6%kingdoms_nation_might%
+        &7| &7Щит{$colon} &6%time@kingdoms_nation_shield_time_left%
+        &7| &7Баланс{$colon} &6%fancy@kingdoms_nation_bank% монет &8| &7Tax{$colon} &6%fancy@kingdoms_nation_tax% &8- &6%fancy@kingdoms_server_nation_tax% монет
+        &7| &7Очки ресурсов{$colon} &6%kingdoms_nation_resource_points%
 
-        &7| &7Королевства&8:
+        &7| &7Королевства{$colon}
         %kingdoms%
       message: |
         &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
-        &7| &7Король&8: &6%king_status%
-        &7| &7Нация&8: &6%kingdoms_nation_name%
-        &7| &7Дата основания&8: &6%kingdoms_date_nation_since%
-        &7| &7Мощь&8: &6%kingdoms_might%
-        &7| &7Щит&8: &6%time@kingdoms_nation_shield_time_left%
-        &7| &7Баланс&8: &6%fancy@kingdoms_nation_bank%
-        &7| &7Земли&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-        &7| &7Очки ресурсов&8: &6%kingdoms_resource_points%
+        &7| &7Король{$colon} &6%king_status%
+        &7| &7Нация{$colon} &6%kingdoms_nation_name%
+        &7| &7Дата основания{$colon} &6%kingdoms_date_nation_since%
+        &7| &7Мощь{$colon} &6%kingdoms_might%
+        &7| &7Щит{$colon} &6%time@kingdoms_nation_shield_time_left%
+        &7| &7Баланс{$colon} &6%fancy@kingdoms_nation_bank%
+        &7| &7Земли{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
+        &7| &7Очки ресурсов{$colon} &6%kingdoms_resource_points%
 
-        &7| &7Королевства&8:
+        &7| &7Королевства{$colon}
         %kingdoms%
       allies: |
-        &7| &7Альянсы&8:
+        &7| &7Альянсы{$colon}
         &e%allies%
       truces: |
-        &7| &7Перемирия&8:
+        &7| &7Перемирия{$colon}
         %truces%
       enemies: |
-        &7| &7Враги&8:
+        &7| &7Враги{$colon}
         &e%enemies%
       kingdoms: |
-        hover:{&6%kingdoms_kingdom_name%;&7Участники&8: &6%kingdoms_members%
-        &7Король&8: &6%kingdoms_king%
-        &7Территории&8: &6%kingdoms_claims%}
+        hover:{&6%kingdoms_kingdom_name%;&7Участники{$colon} &6%kingdoms_members%
+        &7Король{$colon} &6%kingdoms_king%
+        &7Территории{$colon} &6%kingdoms_claims%}
       relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     not:
       in-nation: '&cВыбранное королевство/игрок не состоит в нации'
@@ -618,11 +618,11 @@ command:
       not-claimed: '&cВы можете установить спавн нации только на территории нации'
       others-land: '&cВы можете установить спавн нации только на территории столицы'
       nexus-land: '&cВы можете разместить спавн королевства только на земле вашего нексуса'
-      set: '&aСпавн нации установлен на&8: &6%x%&7, &6%x%&7, &6%z%'
+      set: '&aСпавн нации установлен на{$colon} &6%x%&7, &6%x%&7, &6%z%'
     unsetspawn:
       description: '&6Удаляет спавн нации'
       not-set: '&cСпавн вашей нации не установлен'
-      success: '&aСпавн нации удален с&8: &6%x%&7, &6%y%&7, &6%z%'
+      success: '&aСпавн нации удален с{$colon} &6%x%&7, &6%y%&7, &6%z%'
     spawn:
       description: '&6Телепортироватся на ваш спавн нации'
       already-teleporting: '&cВы уже телепортируетесь на спавн нации...'
@@ -636,8 +636,8 @@ command:
       help: |
         &7ПКМ по блоку на который вы хотите разместить нексус точку
         Чтобы отключить режим размещения наксесу введите или нажмите на hover:{&6/k nation nexus;&cВыключить режим размещения;/k nation nexus} &7снова.
-      actionbar-activated: '&6Режим размещения нексуса&8: &7Активировано!'
-      actionbar-deactivated: '&6Режим размещения нексуса&8: &cДеактивировано!'
+      actionbar-activated: '&6Режим размещения нексуса{$colon} &7Активировано!'
+      actionbar-deactivated: '&6Режим размещения нексуса{$colon} &cДеактивировано!'
       disabled: '&cРежим размещения нексуса отключен'
       open-nexus-permission: '&cУ вас недостаточно прав для того чтобы открыть нексус дистанционно'
       setting-kingdom: '&cВы уже размещаете нексус точку вашего королевства!'
@@ -662,7 +662,7 @@ command:
       announce: '&e%player% &6разрушил нацию &e%kingdoms_nation_name%!'
     invite:
       description: '&6Отправляет приглашение в нацию указанному королевствту'
-      usage: '&7Использование&8: &e/k nation invite &7<королевство> &9[expiration]'
+      usage: '&7Использование{$colon} &e/k nation invite &7<королевство> &9[expiration]'
       invited: |
         &6%inviter% &7пригласил вас в нацию &6%nation% &7
             hover:{&7Принять /k nation accept;&7Принять;/k nation accept}
@@ -689,7 +689,7 @@ command:
       multiple-invites: '&cУ вас есть несколько приглашений, выберите одно из них'
     join:
       description: '&6Присоеденится к нации в которой приглашение не обязательно'
-      usage: '&7Использование&8: &e/k nation join &7<nation>'
+      usage: '&7Использование{$colon} &e/k nation join &7<nation>'
       joined: '&6%kingdom% &7вступило в нацию'
       already-in-nation: '&cВаше королевство уже в нации!'
       nation-not-found: '&cНация &e%nation% &cне найдена!'
@@ -714,13 +714,13 @@ command:
       no-more-pages: '&cБольше нет страниц для загрузки'
       negative: '&cНельзя посмотреть страницы с отрицательным числом'
       entry: |
-        &8♦ &7%rank%. hover:{&7%kingdoms_nation_name%;&7♦ &7Участники&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &7Очки ресурсов&8: &6%fancy@kingdoms_nation_resource_points%
-        &7♦ &7Баланс&8: &6%fancy@kingdoms_nation_bank% монет} &7- &6%fancy@kingdoms_nation_might% монет
+        &8♦ &7%rank%. hover:{&7%kingdoms_nation_name%;&7♦ &7Участники{$colon} &6%kingdoms_nation_kingdoms%
+        &7♦ &7Очки ресурсов{$colon} &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &7Баланс{$colon} &6%fancy@kingdoms_nation_bank% монет} &7- &6%fancy@kingdoms_nation_might% монет
     kick:
       description: '&6Выгнать королевство из нации'
       person: '&cВаше королевство было выгнано из нации &e%nation% &cигроком &e%kicker%'
-      usage: '&7Использование&8: &e/k nation kick &7<королевство> &9[silent]'
+      usage: '&7Использование{$colon} &e/k nation kick &7<королевство> &9[silent]'
       announce: '&e%kingdom% &cбыло выгнано из нации игроком &e%kicker%'
       self: '&cВы не можете выгнать своё же королевство, чтобы выйти введите команду /k nation levae'
       not-in-kingdom: '&cВыбранное королевство не находится в вашей нации'
@@ -732,16 +732,16 @@ command:
       &cИли измените столицу нации &e/k nation capital
     leave-announce: '&e%kingdoms_kingdom_name% &cпокинуло нацию!'
     broadcast-description: '&6Отправить объявления всем участникам нации'
-    broadcast-usage: '&7Использование&8: &e/k nation broadcast &7<message>'
+    broadcast-usage: '&7Использование{$colon} &e/k nation broadcast &7<message>'
     capital:
       description: '&6Установить новую столицу нации'
       only-king: '&6Только король может изменить столицу нации!'
       set: '&6%kingdoms_nation:capital get=name% &7теперь новая столица!'
       not-in-nation: '&e%kingdom% &cне в вашей нации'
-      usage: '&7Использование&8: &e/k nation capital &7<королевство>'
+      usage: '&7Использование{$colon} &e/k nation capital &7<королевство>'
     ally:
       description: '&6Отправить запрос на союз'
-      usage: '&7Использование&8: &e/k nation ally &7<nation>'
+      usage: '&7Использование{$colon} &e/k nation ally &7<nation>'
       sender: '&7Вам предложили союз с нацией &6%nation%'
       limit: '&cУ вас в союзе не может быть больше &e%max% &cнаций!'
       already: '&cВы уже в союзе с нацией &e%nation%'
@@ -755,7 +755,7 @@ command:
       another-request: '&e%nation% &cотправил вам запрос на отношения %relation% &c'
     truce:
       description: '&6Предложить перемирие нации'
-      usage: '&7Использование&8: &e/k nation truce &7<nation>'
+      usage: '&7Использование{$colon} &e/k nation truce &7<nation>'
       sender: '&7Вам предлагают заключить перемирие с нацией &6%nation%'
       limit: '&cВы не можете заключить больше &e%max% &cперемирий с нациями.'
       already: '&cВы уже заключили перемирие с нацией &e%nation%'
@@ -769,7 +769,7 @@ command:
       another-request: '&e%nation% &cотправил вам запрос на отношения %relation% &c'
     enemy:
       description: '&6Объявить нацию врагом'
-      usage: '&7Использование&8: &e/k nation nation &7<nation>'
+      usage: '&7Использование{$colon} &e/k nation nation &7<nation>'
       limit: '&cВы не можете иметь больше &e%max% &cнаций-врагов'
       already: '&cВы уже враждуете с нацией &e%nation%'
       self: '&cВы не можете объявить свою же нацию врагом...'
@@ -778,7 +778,7 @@ command:
         &7Ваше королевство автоматически враждует с королевствами этой нации
     revoke:
       description: '&6Разорвать отношения с нацией.'
-      usage: '&7Использование&8: &e/k nation revoke &7<nation>'
+      usage: '&7Использование{$colon} &e/k nation revoke &7<nation>'
       sender: '&cВаша нация разорвала отношения с нацией &e%nation% \n&cВсе отноше\ ния с королевствами
         этой нации автоматически аннулированы\n'
       no-relation: '&cВы не имеете отношений с нацией &e%nation%'
@@ -792,14 +792,14 @@ command:
       not-in-kingdom: '&e%promoted% &cне состоит в вашей нации'
       cant-promote: '&cВы не можете продвинуть &e%promoted%'
       king: '&cЧтобы продвинуть игрока до короля используйте &e/k king'
-      usage: '&7Использование&8: &e/k nation promote &7<player>'
+      usage: '&7Использование{$colon} &e/k nation promote &7<player>'
     demote:
       description: '&6Понизить ранг игрока в нации'
       demoted: '&e%player% понизил ранг игрока&e%demoted% &cдо &9%rank%'
       not-in-kingdom: '&e%demoted% &cне находится в вашей нации'
       cant-demote: '&cВы не можете понизить &e%demoted%'
       member: '&cНиже ранга жителя понизить нельзя!'
-      usage: '&7Использование&8: &e/k nation demote &7<player>'
+      usage: '&7Использование{$colon} &e/k nation demote &7<player>'
     description: '&6Показывает основные команды нации'
     broadcast-format: |
 
@@ -812,48 +812,48 @@ command:
     name-already-in-use: '&cДругое королевство уже использует такое название!'
     name-numbers: '&cКоролевство не может содержать цифры!'
     cooldown: '&cВам нужно подождать &e%cooldown% секунд &cпрежде чем снова переименовывать'
-    usage: '&7Использование&8: &e/k rename <название>'
-    success: '&6%player% &7изменил название королевства на&8: &6%name%'
+    usage: '&7Использование{$colon} &e/k rename <название>'
+    success: '&6%player% &7изменил название королевства на{$colon} &6%name%'
     cost: '&cВашему королевству нужно &e%cost% &cмонет для того чтобы переименовать!'
   pvp:
     description: '&6Включает огонь по союзникам в королевстве'
     others-permission: '&cУ вас нет прав для того чтобы установить пвп режим'
     'on': '&6ПВП Режим:&7 Включен'
-    'off': '&6ПВП Режим&8: &cВыключен'
+    'off': '&6ПВП Режим{$colon} &cВыключен'
   glow:
     description: '&6Помогает найти участников королевства'
-    enabled: '&6Режим подсветки&8: &7Включен'
-    disabled: '&6Режим подсветки&8: &cВыключен'
+    enabled: '&6Режим подсветки{$colon} &7Включен'
+    disabled: '&6Режим подсветки{$colon} &cВыключен'
   resourcepoints:
     description: '&6Набор команд для управления очками ресурсов'
     converter:
       description: '&6Открывает конвертер очков ресурсов удаленно от нексуса'
     deposit:
       description: '&6Положить очки ресурсов на баланс королевства с помощью монет'
-      usage: '&7Использование&8: &e/k rp deposit &7<resource points>'
+      usage: '&7Использование{$colon} &e/k rp deposit &7<resource points>'
       success: |
         &7Вы успешно перевели &6%rp% очков ресурсов &7в своё королевство для &6%worth%
-        &7Ваш новый баланс&8: &6%balance% монет
+        &7Ваш новый баланс{$colon} &6%balance% монет
     withdraw:
       description: '&6Получить монеты за очки ресурсов королевства'
-      usage: '&7Использование&8: &e/k rp withdraw &7<resource points>'
+      usage: '&7Использование{$colon} &e/k rp withdraw &7<resource points>'
       min: '&cВам нужно минимум &e%min% очков ресурсов для того чтобы снять их&c.'
       success: |
         &7Вы успешно сняли &6%rp% &7очков ресурсов из королевства для &6%worth%
-        &7Ваш новый баланс&8: &6%balance% монет
-        &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
+        &7Ваш новый баланс{$colon} &6%balance% монет
+        &7Очки ресурсов королевства{$colon} &6%fancy@kingdoms_resource_points%
     transfer:
       description: '&6Перевести очки ресурсов из нации/королевства в королевство/нацию'
-      usage: '&7Использование&8: &e/k rp transfer &7<kingdom | nation> <resource points>'
+      usage: '&7Использование{$colon} &e/k rp transfer &7<kingdom | nation> <resource points>'
       success:
         kingdom: |
           &7Вы успешно перевели &6%amount% &7очков ресурсов из вашей нации в королевство.
-          Очки ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
-          &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
+          Очки ресурсов нации{$colon} &6%fancy@kingdoms_nation_resource_points%
+          &7Очки ресурсов королевства{$colon} &6%fancy@kingdoms_resource_points%
         nation: |
           &7Вы успешно перевели &6%amount% &7очков ресурсов из вашего королевства в нацию.
-          Очки ресурсов нации&8: &6%fancy@kingdoms_nation_resource_points%
-          &7Очки ресурсов королевства&8: &6%fancy@kingdoms_resource_points%
+          Очки ресурсов нации{$colon} &6%fancy@kingdoms_nation_resource_points%
+          &7Очки ресурсов королевства{$colon} &6%fancy@kingdoms_resource_points%
     not-enough:
       resource-points: '&cВаше королевство не имеет &e%rp% &cочков ресурсов.'
       money: '&e%rp% очков ресурсов &cнужно &e%worth%&c, но у вас только &e%balance% монет'
@@ -863,7 +863,7 @@ command:
     transfer-nation-description: '&6Перенесите очки ресурсов из вашей нации в вашу нацию.'
   bank:
     description: '&6Положить или снять монеты с баланса королевства'
-    usage: '&7Использование&8: &e/k bank &7<deposit/withdraw> <amount>'
+    usage: '&7Использование{$colon} &e/k bank &7<deposit/withdraw> <amount>'
     unknown-transaction: '&cНеизвестная операция &e%transaction%'
     negative: '&cВы не можете переводить отрицательные значения...'
     zero: '&cВы не можете перевести ничего!'
@@ -874,8 +874,8 @@ command:
       limit: '&cБаланс вашего королевства полон. Максимум: &e%limit%'
       success: |
         &7Вы зачислили &6%amount% &7монет на баланс вашего королевства.
-        Ваш новый баланс&8: &6%balance% монет
-        &7Баланс вашего королевства&8: &6%fancy@kingdoms_bank%
+        Ваш новый баланс{$colon} &6%balance% монет
+        &7Баланс вашего королевства{$colon} &6%fancy@kingdoms_bank%
       disabled: '&cВы не можете положить монеты на баланс королевства'
       min: '&cВам нужно как минимум &e%min% &cмонет'
     withdraw:
@@ -883,8 +883,8 @@ command:
       disabled: '&cВы не можете снять монеты с баланса королевства'
       success: |
         &7Вы сняли &6%amount% &7монет с баланса вашего королевства.
-        Ваш новый баланс&8: &6%balance%
-        &7Баланс вашего королевства&8: &6%fancy@kingdoms_bank%
+        Ваш новый баланс{$colon} &6%balance%
+        &7Баланс вашего королевства{$colon} &6%fancy@kingdoms_bank%
   show:
     description: '&6Показать информацию о вашем королевстве'
     usage: '&4Использование: &e/k show &9[player | kingdom | #PLAYER] &7<player | kingdom>'
@@ -892,54 +892,54 @@ command:
     message-admin: |
       &8&m---------------=(&9&l %kingdoms_kingdom_name% &8&m)=---------------
 
-      &8▪ &7Король&8: &e%king_status%
-      &8▪ &7Спавн&8: &2%kingdoms_kingdom_home%
-      &8▪ &7Нексус&8: &b%kingdoms_nexus%
-      &8▪ &7Нация&8: &6%kingdoms_nation_name%
-      &8▪ &7Сила&8: &c%fancy@kingdoms_might%
-      &8▪ &7Баланс&8: &e%fancy@kingdoms_bank% монет
-      &8▪ &7Налоги&8:
+      &8▪ &7Король{$colon} &e%king_status%
+      &8▪ &7Спавн{$colon} &2%kingdoms_kingdom_home%
+      &8▪ &7Нексус{$colon} &b%kingdoms_nexus%
+      &8▪ &7Нация{$colon} &6%kingdoms_nation_name%
+      &8▪ &7Сила{$colon} &c%fancy@kingdoms_might%
+      &8▪ &7Баланс{$colon} &e%fancy@kingdoms_bank% монет
+      &8▪ &7Налоги{$colon}
         &7Твой: &a%fancy@kingdoms_tax% монет
         &7Общий: &a%fancy@kingdoms_server_kingdom_tax% монет
-      &8▪ &7Земли&8: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
-      &8▪ &7Очков Ресурсов&8: &e%fancy@kingdoms_resource_points%
-      &8▪ &7Щит&8: &d%time@kingdoms_shield_time_left%
-      &8▪ &7Дата основания&8: &9%kingdoms_date_since%
-      &8▪ &7Участники&8: &b%kingdoms_members%&7/&3%kingdoms_max_members%
+      &8▪ &7Земли{$colon} &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
+      &8▪ &7Очков Ресурсов{$colon} &e%fancy@kingdoms_resource_points%
+      &8▪ &7Щит{$colon} &d%time@kingdoms_shield_time_left%
+      &8▪ &7Дата основания{$colon} &9%kingdoms_date_since%
+      &8▪ &7Участники{$colon} &b%kingdoms_members%&7/&3%kingdoms_max_members%
       %members%
     message: |
       &8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
-      &8▪ &7Король&8: &e%king_status%
-      &8▪ &7Нация&8: &2%kingdoms_nation_name%
-      &8▪ &7Сила&8: &c%kingdoms_might%
-      &8▪ &7Дата основания&8: &9%kingdoms_date_since%
-      &8▪ &7Щит&8: &d%time@kingdoms_shield_time_left%
-      &8▪ &7Земли&8: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
-      &8▪ &7Баланс&8: &e%fancy@kingdoms_bank% монет
-      &8▪ &7Очков Ресурсов&8: &e%fancy@kingdoms_resource_points%
+      &8▪ &7Король{$colon} &e%king_status%
+      &8▪ &7Нация{$colon} &2%kingdoms_nation_name%
+      &8▪ &7Сила{$colon} &c%kingdoms_might%
+      &8▪ &7Дата основания{$colon} &9%kingdoms_date_since%
+      &8▪ &7Щит{$colon} &d%time@kingdoms_shield_time_left%
+      &8▪ &7Земли{$colon} &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
+      &8▪ &7Баланс{$colon} &e%fancy@kingdoms_bank% монет
+      &8▪ &7Очков Ресурсов{$colon} &e%fancy@kingdoms_resource_points%
 
-      &8▪ &7Участники&8:
+      &8▪ &7Участники{$colon}
       %members%
     allies: |
-      &8▪ &7Союзники&8:
+      &8▪ &7Союзники{$colon}
       &e%allies%
     truces: |
-      &8▪ &7Перемирие&8:
+      &8▪ &7Перемирие{$colon}
       %truces%
     enemies: |
-      &8▪ &7Враги&8:
+      &8▪ &7Враги{$colon}
       &e%enemies%
     online-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&7Вступил&8: &6%kingdoms_date_joined%
-      &7Пожертвование&8: &6%kingdoms_total_donations%
-      &7Послд.пожертвование&8: &6%kingdoms_date_last_donation_time%
-      &7Должность&8: &6%kingdoms_rank_name%}
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&7Вступил{$colon} &6%kingdoms_date_joined%
+      &7Пожертвование{$colon} &6%kingdoms_total_donations%
+      &7Послд.пожертвование{$colon} &6%kingdoms_date_last_donation_time%
+      &7Должность{$colon} &6%kingdoms_rank_name%}
     offline-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&7Вступил&8: &6%kingdoms_date_joined%
-      &7Пожертвование&8: &6%kingdoms_total_donations%
-      &7Послд.пожертвование&8: &6%kingdoms_date_last_donation_time%
-      &7Должность&8: &6%kingdoms_rank_name%}
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&7Вступил{$colon} &6%kingdoms_date_joined%
+      &7Пожертвование{$colon} &6%kingdoms_total_donations%
+      &7Послд.пожертвование{$colon} &6%kingdoms_date_last_donation_time%
+      &7Должность{$colon} &6%kingdoms_rank_name%}
     # offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%'
     relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
@@ -953,10 +953,10 @@ command:
     success: '&7Объявлен &6%x%&7, &6%z% &7как земля королевства'
     fill:
       in-claimed-land: '&cВы не можете заполнить, потому что земля, на которой вы стоите, уже ваша'
-      failed: '&cНе получилось захватить землю в&8: &e%x%&7, &e%z%'
+      failed: '&cНе получилось захватить землю в{$colon} &e%x%&7, &e%z%'
       max-fails: '&cОстановлен процесс заполнения из-за большого количества неудачных попыток'
       max-claims: '&cВы достигли лимита захвата земель (&e%lands%&c)'
-      success: '&7Захвачена земля в&8: &6%x%&7, &6%z%'
+      success: '&7Захвачена земля в{$colon} &6%x%&7, &6%z%'
       permission: '&cУ вас нет разрешения на использование команды заполнения'
       description: '&2Захватите все земли внутри фигуры, отмеченной претензиями.'
       done: '&2Наведите hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2чтобы взять землю'
@@ -968,23 +968,23 @@ command:
     max-claims: '&cВаше королевство может захватывать только &6%limit% &cземель'
     square:
       description: '&2Захватите вокруг себя квадрат заданного радиуса.'
-      usage: '&7Использование&8: &e/k claim square &2<радиус>'
+      usage: '&7Использование{$colon} &e/k claim square &2<радиус>'
       radius:
-        invalid: '&cУказанный квадратный радиус недействителен&8: &e%radius%'
-        disallowed: '&cУказанный квадратный радиус должен быть не менее &e2 &cи меньше чем &e%max% &cесть&8:
+        invalid: '&cУказанный квадратный радиус недействителен{$colon} &e%radius%'
+        disallowed: '&cУказанный квадратный радиус должен быть не менее &e2 &cи меньше чем &e%max% &cесть{$colon}
           &e%radius%'
       done: '&2Наведите hover:{&6/k claim confirm;&2Execute;/k claim confirm} &2для взятия земли'
     chunk:
       invalid: '&cПожалуйста, укажите местоположение Z для чанка.'
       permission: '&cУ вас нет разрешения захватывать земли с координатами чанка.'
-      invalid-axis: '&cНеверный номер Z&8: &e%z%'
-      max-distance: '&cВы пытаетесь претендовать на землю, которая слишком далеко&8: &e%distance% &7>
+      invalid-axis: '&cНеверный номер Z{$colon} &e%z%'
+      max-distance: '&cВы пытаетесь претендовать на землю, которая слишком далеко{$colon} &e%distance% &7>
         &e%max%'
-      usage: '&7Использование&8: &e/k claim [x] <z>'
+      usage: '&7Использование{$colon} &e/k claim [x] <z>'
     auto:
       permission: '&cУ вас нет разрешения автоматически захватывать земли.'
       description: '&2Автоматически захватывайте земли во время ходьбы.'
-      usage: '&7Использование&8: &e/k claim auto &2<никнейм>'
+      usage: '&7Использование{$colon} &e/k claim auto &2<никнейм>'
       claim:
         'on': '&6Авто-Захват &aВключён&6. Теперь вы будете захватывать земли, пока идете.'
         'off': '&6Авто-Захват &cВыключен&6.'
@@ -996,17 +996,17 @@ command:
       Вы хотите продолжить? Это действие необратимо!.
     line:
       description: '&7Захватить земли по направлению линии'
-      usage: '&7Использование&8: &e/k claim line <distance>'
-      invalid-direction: '&cНеверное направление&8: &e%direction%'
+      usage: '&7Использование{$colon} &e/k claim line <distance>'
+      invalid-direction: '&cНеверное направление{$colon} &e%direction%'
       max-distance: '&cМаксимальная дистанция для захвата &e%max%'
       min-distance: '&cМинимальная дистанция для захвата &e%min%'
       done: '&7Нажмите на hover:{&6/k claim confirm;&7Подтвердить;/k claim confirm} &7для подтверждения
         захвата земель'
     clipboard:
       description: '&6Измените выбор захвата прежде чем подтвердить'
-      usage: '&7Использование&8: &e/k claim clipboard [add/remove | clear] <x> <z>'
-      different-world: '&cВаш буфер обмена находится только в&8: &e%world%'
-      unknown-action: '&cНеизвестное действие&8: &e%action%'
+      usage: '&7Использование{$colon} &e/k claim clipboard [add/remove | clear] <x> <z>'
+      different-world: '&cВаш буфер обмена находится только в{$colon} &e%world%'
+      unknown-action: '&cНеизвестное действие{$colon} &e%action%'
       empty: '&cВ вашем буфере обмена нету ничего'
       added: '&7Добавлен &6%x%&7, &6%z% &7в буфер обмена'
       already-added: '&e%x%&7, &e%z% &cуже в буфере обмена'
@@ -1021,18 +1021,18 @@ command:
       success: '&7Все земли из буфера обмена успешно захвачены!'
     corner:
       description: '&6Установите две позиции и захватите получившийся прямоугольник'
-      usage: '&7Использование&8: &e/k claim corner &9[pos1 &7| &9pos2]'
+      usage: '&7Использование{$colon} &e/k claim corner &9[pos1 &7| &9pos2]'
       max-claims: '&cМаксимальное число земель которое можно захватить с помощью этой команды &e%max%
-        &cвы собираетесь захватить&8: &e%claims%'
+        &cвы собираетесь захватить{$colon} &e%claims%'
       set:
-        pos1: '&7Первая позиция установлена на чанк&8: &6%chunkx%&7, &6%chunkz%'
-        pos2: '&7Вторая позиция установлена на чанк&8: &6%chunkx%&7, &6%chunkz%'
+        pos1: '&7Первая позиция установлена на чанк{$colon} &6%chunkx%&7, &6%chunkz%'
+        pos2: '&7Вторая позиция установлена на чанк{$colon} &6%chunkx%&7, &6%chunkz%'
   shield:
     description: '&6Deactivate your shield.'
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
+      Kingdom's shield time left{$colon} &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
     deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%time@kingdoms_shield_time_left%
       &ctime left.'
@@ -1040,7 +1040,7 @@ command:
     description: '&6Unclaim any lands.'
     success: '&7Вы успешно заприватили землю на &6%x%&7, &6%z%'
     not-claimed: '&cЭта земля не захвачена'
-    disconnection: '&cЗемля которую вы пытаетесь забросить отсоединит другую землю на&8: &e%x%&7, &e%z%'
+    disconnection: '&cЗемля которую вы пытаетесь забросить отсоединит другую землю на{$colon} &e%x%&7, &e%z%'
     cooldown: '&cВы можете забросить землю через &e%time%'
     cannot-remove-nexus: |
       &cВы не можете забросить землю с нексусом
@@ -1067,11 +1067,11 @@ command:
     not-claimed: '&cЗемля на которую вы хотите разместить спавн вашего королевства ничейная'
     others-land: '&cВы можете установить спавн только на землях вашего королевства!'
     nexus-land: '&cВы можете установить спавн только на землях вашего королевства без нексуса!'
-    set: '&aСпавн королевства теперь находится на координатах&8: &6%x%&7, &6%z%'
+    set: '&aСпавн королевства теперь находится на координатах{$colon} &6%x%&7, &6%z%'
   unsethome:
     description: '&6Удаляет спавн вашего королевства'
     not-set: '&cСпавн вашего королевства не установлен!'
-    success: '&aСпавн королевства был удалён с координат&8: &6%x%&7, &6%y%&7, &6%z%'
+    success: '&aСпавн королевства был удалён с координат{$colon} &6%x%&7, &6%y%&7, &6%z%'
   home:
     description: '&6Телепортироватся на спавн вашего королевства'
     changed: '&cСпавн королевства был изменён, телепортация отменена'
@@ -1097,8 +1097,8 @@ command:
     help: |
       &7Нажмите ПКМ по блоку на который хотите разместить нексус вашего королевства
       Чтобы отключить режим размещения нексуса, нажмите hover:{&6/k nexus;&cОтключить;/k nexus} &7или повторите команду
-    actionbar-activated: '&6Nexus Mode&8: &7Активирован'
-    actionbar-deactivated: '&6Nexus Mode&8: &cДеактивирован'
+    actionbar-activated: '&6Nexus Mode{$colon} &7Активирован'
+    actionbar-deactivated: '&6Nexus Mode{$colon} &cДеактивирован'
     disabled: '&cРежим размещения нексуса был отключен'
     disabled-world: '&cНексус в этом мире отключён'
     setting-nation: '&cВы не можете включить режим размещения нексуса, ибо у вас включен режим размещения
@@ -1127,32 +1127,32 @@ command:
     description: '&6Про плагин Kingdom'
   book:
     description: '&6Маленький справочник для вашего королевства'
-    chapter-not-found: '&cНе получается найти главу&8: &e%chapter%'
+    chapter-not-found: '&cНе получается найти главу{$colon} &e%chapter%'
     permission: '&cУ вас нет прав для модификации книжки!'
     rename:
       description: '&6Переименовать главу в книжке вашего королевства'
-      usage: '&7Использование&8: &e/k book rename &7<глава> <название>'
+      usage: '&7Использование{$colon} &e/k book rename &7<глава> <название>'
       same: '&cУ этой главы уже было такое название'
       duplicate: '&cУ вас уже есть глава с названием &e%chapter%'
       renamed: '&7Глава успешно переименована с &6%old_chapter% &7на &6%new_chapter%'
     open:
       description: '&6Прочитать справочник вашего королевства'
-      usage: '&7Использование&8: &e/k book open &9[глава]'
+      usage: '&7Использование{$colon} &e/k book open &9[глава]'
     preview:
       description: '&6Показать предпросмотр отредактированной главы'
       nothing-to-preview: '&cВы не можете редактировать главу во время предпросмотра!'
-      previewing: '&7Вы просматриваете главу&8: &6%chapter%'
+      previewing: '&7Вы просматриваете главу{$colon} &6%chapter%'
     discard:
       description: '&6Отменить все изменения в главе'
       nothing-to-discard: '&cВы ничего неизменяли для отмены'
       discarded: '&7Все изменения для главы &6%chapter% &7были отменены'
     remove:
       description: '&6Удалить главу из справочника вашего королевства'
-      usage: '&7Использование&8: &e/k book remove &7<глава>'
-      deleted: '&7Успешно удалена глава&8: &6%chapter%'
+      usage: '&7Использование{$colon} &e/k book remove &7<глава>'
+      deleted: '&7Успешно удалена глава{$colon} &6%chapter%'
     edit:
       description: '&6Изменить главу вашего справочника королевства'
-      usage: '&7Использование&8: &e/k book edit &7<глава>'
+      usage: '&7Использование{$colon} &e/k book edit &7<глава>'
       already-editing: '&cВы уже изменяете главу &e%chapter%'
       cant-move: '&cВы не можете перемещятся в редакторе глав'
       changed: '&7Изменено'
@@ -1163,7 +1163,7 @@ command:
       create-max-length: '&cДанная глава несуществует. Невозможно создать новую ибо её название больше
         &e%max% &cсимволов'
       modify: |
-        &7Модифицируемая глава&8: &6%chapter%
+        &7Модифицируемая глава{$colon} &6%chapter%
         &7Нажмите hover:{&6/k book discard;/k book discard;/k book discard} &7чтобы отменить изменения
   admin:
     item-description: '&6Custom resource point item related comamnds.'
@@ -1172,28 +1172,28 @@ command:
         the item.'
       resourcepoints:
         description: '&6Give a custom item defined in the config that contains rp.'
-        usage: '&7Использование&8: &e/k item give &7<название> &9[amount] [player]'
-        unknown-item: '&cUnknown custom item named&8: &e%item%'
-        invalid-amount: '&cInvalid amount&8: &e%amount%'
+        usage: '&7Использование{$colon} &e/k item give &7<название> &9[amount] [player]'
+        unknown-item: '&cUnknown custom item named{$colon} &e%item%'
+        invalid-amount: '&cInvalid amount{$colon} &e%amount%'
         done: '&7Successfully gave &6%amount% %item% &7worth of &6%rp% resource points &7to &6%target%'
       inject:
         description: '&6Permanently inject resource points into an item.'
-        usage: '&7Использование&8: &e/k item inject &7<resource points>'
+        usage: '&7Использование{$colon} &e/k item inject &7<resource points>'
         no-item: '&cYou''re not holding any item to inject resource points into.'
         done: '&7Successfully injected &6%rp% resource points &7to &6%item%'
       turret:
         description: '&6Directly get a turret item.'
-        usage: '&7Использование&8: &e/k item turret &7<style> &9[amount] [player]'
+        usage: '&7Использование{$colon} &e/k item turret &7<style> &9[amount] [player]'
         unknown-style: |
-          &cUnknown turret style&8: &e%style%
-          &cAvailable styles&8: &e%styles%
+          &cUnknown turret style{$colon} &e%style%
+          &cAvailable styles{$colon} &e%styles%
         done: '&7Successfully gave &6%amount% %item% &7to &6%target%'
       structure:
         description: '&6Directly get a structure item.'
-        usage: '&7Использование&8: &e/k item structure &7<style> &9[amount] [player]'
+        usage: '&7Использование{$colon} &e/k item structure &7<style> &9[amount] [player]'
         unknown-style: |
-          &cUnknown structure style&8: &e%style%
-          &cAvailable styles&8: &e%styles%
+          &cUnknown structure style{$colon} &e%style%
+          &cAvailable styles{$colon} &e%styles%
         done: '&7Successfully gave &6%amount% %item% &7to &6%target%'
     gui-description: '&6Open a container to automatically parse the contests within it as a GUI config.'
     gui-opened: '&7Parsing the container... Please wait.'
@@ -1205,30 +1205,30 @@ command:
       description: '&6Shows the available nation admin commands.'
       disband:
         description: '&6Disbands a nation.'
-        usage: '&7Использование&8: &e/k admin disband &7<nation> &9[silent]'
+        usage: '&7Использование{$colon} &e/k admin disband &7<nation> &9[silent]'
         success: '&6%nation% &7nation has been disbanded.'
         announce: '&e%nation% &6nation has been disbanded.'
     debug:
       description: '&6Debug'
     sound:
       description: '&6Test a sound string that you''re going to use in config.'
-      usage: '&7Использование&8: &e/k admin testsound &7<sound> &9[volume] [pitch]'
+      usage: '&7Использование{$colon} &e/k admin testsound &7<sound> &9[volume] [pitch]'
       playing: '&7Playing now...'
     test:
       description: '&6Test a string with hex color codes, complex messages, line breaks and placeholders.'
-      usage: '&cИспользование&8: &e/k admin test <message>'
+      usage: '&cИспользование{$colon} &e/k admin test <message>'
     execute:
       description: '&6Execute a command for all the members in a kingdom.'
-      usage: '&7Использование&8: &e/k admin execute &7<королевство> <executor> &9[filter] &9[/]&7<command>'
+      usage: '&7Использование{$colon} &e/k admin execute &7<королевство> <executor> &9[filter] &9[/]&7<command>'
       console-executor-permission: '&cYou don''t have permission to execute command as console.'
       unknown:
         executor: |
-          &cUnknown executor&8: &e%executor%
-          &cAvailable executors&8: &eself&7, &econsole&7, &emembers
+          &cUnknown executor{$colon} &e%executor%
+          &cAvailable executors{$colon} &eself&7, &econsole&7, &emembers
         filter: |
-          &cUnknown filter&8: &e%filter%
-          &cAvailable filters&8: &eonline&7, &eoffline
-        command: '&cUnknown command&8: &e%command%'
+          &cUnknown filter{$colon} &e%filter%
+          &cAvailable filters{$colon} &eonline&7, &eoffline
+        command: '&cUnknown command{$colon} &e%command%'
       members-offline: '&cCannot execute as kingdom members with offline filter. Offline players cannot
         execute commands.'
       members-no-filter: |
@@ -1238,67 +1238,67 @@ command:
         &7kingdom.'
     evaluate:
       description: '&6Evaluates an expression with placeholders and math functions.'
-      usage: '&cИспользование&8: &e/k admin evaluate <expression>'
+      usage: '&cИспользование{$colon} &e/k admin evaluate <expression>'
       failed: |
-        &cTranslated Expression&8: &6%translated%
-        &cError&8: &e%result%
+        &cTranslated Expression{$colon} &6%translated%
+        &cError{$colon} &e%result%
       evaluated: |
-        &7Translated Expression&8: &6%translated%
-        &7Evaluated Expression&8: &6%result%
+        &7Translated Expression{$colon} &6%translated%
+        &7Evaluated Expression{$colon} &6%result%
     claim:
       description: '&6Forcibly claim the land you are currently standing in for a kingdom.'
-      usage: '&7Использование&8: &e/k admin claim &7<королевство>'
+      usage: '&7Использование{$colon} &e/k admin claim &7<королевство>'
       success: '&7Claimed &6%x%&7, &6%z% &7as kingdom land.'
       already-claimed: '&cThis land is already claimed by &e%kingdoms_kingdom_name%'
     rank:
       description: '&6Change a players kingdom rank.'
-      usage: '&7Использование&8: &e/k admin rank &7<player> <rank>'
+      usage: '&7Использование{$colon} &e/k admin rank &7<player> <rank>'
       not-found: '&cRank not found.'
       no-kingdom: '&cThe specified player is not in a kingdom.'
       same-rank: '&cThat player already has that rank.'
       success: '&7Changed &6%name%''s &7rank from &6%previous_rank% &7to &6%rank%'
-      success-king: '&6%kingdom% &7kingdom''s new king is &8: &6%name%'
+      success-king: '&6%kingdom% &7kingdom''s new king is {$colon} &6%name%'
       cant-demote-king: '&e%player% &cis the king of &e%kingdom_name% &cyou need to set the king first.'
     turret:
       description: '&6Remove or change/update certain turrets.'
-      usage: '&7Использование&8: &e/k admin turret &7<change | remove> <style> &9[replacement style]'
+      usage: '&7Использование{$colon} &e/k admin turret &7<change | remove> <style> &9[replacement style]'
       unknown-style: |
-        &cUnknown turret style&8: &e%style%
+        &cUnknown turret style{$colon} &e%style%
         &cLook in your &eTurrets &cfolder to see all the turret style names.
       success: '&7A total of &6%amount% &7turrets have been processed.'
     nexus:
       description: '&6Open a kingdoms nexus.'
-      usage: '&7Использование&8: &e/k admin nexus &7<королевство>'
+      usage: '&7Использование{$colon} &e/k admin nexus &7<королевство>'
       tp-not-set: '&e%kingdom% &cdoesn''t have their nexus set.'
       tp: '&7Teleporting to &6%kingdom%''s &7nexus...'
     toggle:
       description: '&6Toggle admin mode for yourself.'
-      'on': '&6Admin mode is now&8: &7ON'
-      'off': '&6Admin mode is now&8: &cOFF'
+      'on': '&6Admin mode is now{$colon} &7ON'
+      'off': '&6Admin mode is now{$colon} &cOFF'
     spy:
       description: '&6Spy on kingdoms chat.'
-      'on': '&6Chat spy mode&8: &7ON'
-      'off': '&6Chat spy mode&8: &cOFF'
+      'on': '&6Chat spy mode{$colon} &7ON'
+      'off': '&6Chat spy mode{$colon} &cOFF'
     dynmap:
       description: '&6Perform different actions for Dynmap.'
       rendering: '&7Rendering...'
-      usage: '&cИспользование&8: &e/k admin dynmap <fullrender/update/remove>'
+      usage: '&cИспользование{$colon} &e/k admin dynmap <fullrender/update/remove>'
       dynmap-not-available: '&cCould not find Dynmap.'
       rendered: '&7Rendered a total of &6%lands% &7lands.'
       removed: '&7A total of &6%lands% &7has been removed.'
     masswar:
       description: '&6Manually start or end masswar.'
-      usage: '&7Использование&8: &c/k admin masswar <start/end>'
+      usage: '&7Использование{$colon} &c/k admin masswar <start/end>'
       running: '&cMasswar is already running.'
       not-running: '&cMasswar is not running.'
     dailychecks:
       description: '&6Manually begin the daily checks cycle.'
-      usage: '&7Использование&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      usage: '&7Использование{$colon} &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
       info: |
-        &7Next cycle in&8: &6%next%
-        &7Exact Time&8: &6%daily_checks%
-        &7Current time&8: &6%time%
-        &7State&8: %state%
+        &7Next cycle in{$colon} &6%next%
+        &7Exact Time{$colon} &6%daily_checks%
+        &7Current time{$colon} &6%time%
+        &7State{$colon} %state%
       run: '&7Running daily checks... Todays daily checks &6will not &7be skipped.'
       skip: '&7Skipping the next daily checks interval.'
       skipped: '&cThe next daily checks is already skipped.'
@@ -1306,106 +1306,106 @@ command:
       resumed: '&cDaily checks is not skipped.'
     resourcepoints:
       description: '&6Add or take resourcepoints from a kingdom.'
-      usage: '&7Использование&8: &e/k admin resourcepoints &7<королевство> &9[set | add | remove] &7<amount>'
+      usage: '&7Использование{$colon} &e/k admin resourcepoints &7<королевство> &9[set | add | remove] &7<amount>'
       player-no-kingdom: '&cThe specified player doesn''t have a kingdom.'
-      done: '&6%kingdom%''s &7new resource points&8: &6%rp%'
-      added: '&7Новое значение казны в виде очков ресурсов&8: &6%rp%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
+      done: '&6%kingdom%''s &7new resource points{$colon} &6%rp%'
+      added: '&7Новое значение казны в виде очков ресурсов{$colon} &6%rp%'
+      invalid-action: '&cInvalid action &e%action%&c! Use{$colon} &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
     bank:
       description: '&6Add or take money from a kingdom bank.'
-      usage: '&7Использование&8: &e/k admin bank &7<королевство> &9[set | add | remove] &7<amount>'
-      done: '&6%kingdom%''s &7new bank&8: &6%fancy@kingdoms_bank%'
-      added: '&7Новое значение казны&8: &6%fancy@kingdoms_bank%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
+      usage: '&7Использование{$colon} &e/k admin bank &7<королевство> &9[set | add | remove] &7<amount>'
+      done: '&6%kingdom%''s &7new bank{$colon} &6%fancy@kingdoms_bank%'
+      added: '&7Новое значение казны{$colon} &6%fancy@kingdoms_bank%'
+      invalid-action: '&cInvalid action &e%action%&c! Use{$colon} &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
     command:
       description: '&cGet all info related to a command.'
-      usage: '&7Использование&8: &e/k admin command &7<command>'
+      usage: '&7Использование{$colon} &e/k admin command &7<command>'
       bad-start: '&cYou don''t need slash or /k to get the command info.'
-      not-found: '&cCould not find any command matching&8: &e%command%'
+      not-found: '&cCould not find any command matching{$colon} &e%command%'
       info: |
         &8------------=( &7%main-name% &8)=------------
-        &7| &7Никнейм&8: &9%command-displayname%
-        &7| &7Алиасы&8: &9%aliases%
-        &7| &7Parent&8: &9%parent%
-        &7| &7Описание&8: &9%description%
-        &7| &7Использование&8: &9%usage%
-        &7| &7Право&8: &9hover:{%permission%;&7Click to copy;|%permission%}
-        &7| &7Default Permission Scope&8: &9%permission-scope%
-        &7| &7КД&8: &9%cooldown%
-        &7| &7Выкл.миры&8: &9%disabled-worlds%
+        &7| &7Никнейм{$colon} &9%command-displayname%
+        &7| &7Алиасы{$colon} &9%aliases%
+        &7| &7Parent{$colon} &9%parent%
+        &7| &7Описание{$colon} &9%description%
+        &7| &7Использование{$colon} &9%usage%
+        &7| &7Право{$colon} &9hover:{%permission%;&7Click to copy;|%permission%}
+        &7| &7Default Permission Scope{$colon} &9%permission-scope%
+        &7| &7КД{$colon} &9%cooldown%
+        &7| &7Выкл.миры{$colon} &9%disabled-worlds%
     join:
       description: '&6Make a user join another kingdom.'
-      usage: '&cИспользование&8: &e/k admin join &7<player> <kingdom>'
+      usage: '&cИспользование{$colon} &e/k admin join &7<player> <kingdom>'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
       in-kingdom: |
         &6%player% &7is already in a kingdom named &6%kingdoms_kingdom_name%
-        &7If you'd like to continue do&8: hover:{&6/k admin join %player% %kingdom% confirm;&7Click to confirm;/k admin join %player% %kingdom% confirm}
+        &7If you'd like to continue do{$colon} hover:{&6/k admin join %player% %kingdom% confirm;&7Click to confirm;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player% &7is already a member of &6%kingdom%'
       success: '&6%player% &7is now a member of &6%kingdom%'
     home:
       description: '&6Teleport to another kingdom''s home.'
-      usage: '&cИспользование&8: &e/k admin home <kingdom>'
+      usage: '&cИспользование{$colon} &e/k admin home <kingdom>'
       homeless: '&3%kingdom% &ckingdom doesn''t have a home set.'
       teleported: '&7You have been teleported to &6%kingdom% &7kingdom home.'
     create:
       description: '&6Create a kingdom for another player.'
-      usage: '&cИспользование&8: &e/k admin create &7<player &8| &7super> <название>'
-      already-exists: '&cThere is already a kingdom with the name&8: &e%kingdom%'
+      usage: '&cИспользование{$colon} &e/k admin create &7<player &8| &7super> <название>'
+      already-exists: '&cThere is already a kingdom with the name{$colon} &e%kingdom%'
       created: '&7Successfully created a kingdom named &6%kingdom% &7for player &6%player%'
     permanent:
       description: '&cEnable permanent mode for a kingdom.'
-      usage: '&cИспользование&8: &e/k admin permanent &7<королевство>'
+      usage: '&cИспользование{$colon} &e/k admin permanent &7<королевство>'
       'on': '&7Permanent mode &6enabled.'
       'off': '&7Permanent mode &cdisabled.'
     rename:
       description: '&6Rename a kingdom.'
-      usage: '&cИспользование&8: &e/k admin rename <королевство> <название>'
-      already-exists: '&cThere is already a kingdom with the name&8: &e%kingdom%'
+      usage: '&cИспользование{$colon} &e/k admin rename <королевство> <название>'
+      already-exists: '&cThere is already a kingdom with the name{$colon} &e%kingdom%'
       renamed: '&7Successfully renamed the kingdom &6%kingdom% &7to &6%name%'
     disband:
       description: '&6Disbands a kingdom.'
-      usage: '&cИспользование&8: &e/k admin disband <королевство> [silent]'
+      usage: '&cИспользование{$colon} &e/k admin disband <королевство> [silent]'
       success: '&6%kingdom% &7has been disbanded.'
       announce: '&e%kingdom% &6has been disbanded.'
     pacifism:
       description: '&6Changes the pacifism state of a kingdom.'
-      usage: '&cИспользование&8: &e/k admin pacifism &7<королевство> &8[&7true &7| &4false&8]'
-      enabled: '&6Pacifism for &7%kingdom% kingdom&8: &7Enabled'
-      disabled: '&6Pacifism for &7%kingdom% kingdom&8: &cDisabled'
+      usage: '&cИспользование{$colon} &e/k admin pacifism &7<королевство> &8[&7true &7| &4false&8]'
+      enabled: '&6Pacifism for &7%kingdom% kingdom{$colon} &7Enabled'
+      disabled: '&6Pacifism for &7%kingdom% kingdom{$colon} &cDisabled'
     land:
       description: '&6Teleport to a land at the given coordinates.'
-      usage: '&7Использование&8: &e/k admin land [world] <x> <z>'
-      teleported: '&7You''ve been teleported to land at&8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7,
+      usage: '&7Использование{$colon} &e/k admin land [world] <x> <z>'
+      teleported: '&7You''ve been teleported to land at{$colon} &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7,
         &5%y%&7, &5%z%&8)'
-      invalid-world: '&cCannot find world&8: &e%world%'
-      invalid-coordinates: '&cThe entered coordinates are invalid&8: &e%x%&7, &e%z%'
+      invalid-world: '&cCannot find world{$colon} &e%world%'
+      invalid-coordinates: '&cThe entered coordinates are invalid{$colon} &e%x%&7, &e%z%'
     player:
       description: '&6Отображение информации об игроке.'
-      usage: '&7Использование&8: &e/k admin player &7<никнейм>'
+      usage: '&7Использование{$colon} &e/k admin player &7<никнейм>'
       info: |
-        &8| &7Никнейм&8: &6%player% &8(hover:{&5%id%;&7Copy;|%id%}&8)
-        &8| &7Админ&8: %admin% &7| &7Spy&8: %spy%
-        &8| &7Королевство&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&7Copy;|%kingdom_id%}&8)
-        &8| &7Должность&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        &8| &7Нац.банк&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &7Чат&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
-        &8| &7Использует маркеры&8: %visualizer%
-        &8| &7Приглашений&8: &6%invites%
-        &8| &7Вступил в королевство&8: &6%kingdoms_date_joined%
-        &8| &7Авто-взятие терр.&8: %auto_claim% &7| &7Авто-карта&8: %auto_map%
-        &8| &7Размер карты&8: &6%map_width% &8- &6%map_height%
-        &8| &7Всего задонатил&8: &6%kingdoms_total_donations% &7| &7Последний раз донатил&8: &6%kingdoms_date_last_donation_time%
-        &8| &7Территорий &7(&6%kingdoms_player_claims%&7)&8: %claims%
-        &8| &7Сжатые данные&8: &6%compressed%
-      found: '&7Игрок &6%name% &8(&7%uuid%&8) &7находится в следующих королевствах&8:'
+        &8| &7Никнейм{$colon} &6%player% &8(hover:{&5%id%;&7Copy;|%id%}&8)
+        &8| &7Админ{$colon} %admin% &7| &7Spy{$colon} %spy%
+        &8| &7Королевство{$colon} &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&7Copy;|%kingdom_id%}&8)
+        &8| &7Должность{$colon} %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &8| &7Нац.банк{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &7Чат{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &8| &7Использует маркеры{$colon} %visualizer%
+        &8| &7Приглашений{$colon} &6%invites%
+        &8| &7Вступил в королевство{$colon} &6%kingdoms_date_joined%
+        &8| &7Авто-взятие терр.{$colon} %auto_claim% &7| &7Авто-карта{$colon} %auto_map%
+        &8| &7Размер карты{$colon} &6%map_width% &8- &6%map_height%
+        &8| &7Всего задонатил{$colon} &6%kingdoms_total_donations% &7| &7Последний раз донатил{$colon} &6%kingdoms_date_last_donation_time%
+        &8| &7Территорий &7(&6%kingdoms_player_claims%&7){$colon} %claims%
+        &8| &7Сжатые данные{$colon} &6%compressed%
+      found: '&7Игрок &6%name% &8(&7%uuid%&8) &7находится в следующих королевствах{$colon}'
       kingdom: '&8- &7%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&cКоролевство этого игрока не дублируется.'
     kick:
       description: '&6Kick a player out of a kingdom.'
-      usage: '&7Использование&8: &e/k admin kick &7<player>'
+      usage: '&7Использование{$colon} &e/k admin kick &7<player>'
       kicked: '&cИгрок &e%kicked% &cкикнут из королевства &e%kingdom%'
-      kicked-king: '&cИгрок &e%kicked% &cкикнут из количества &e%kingdom%. &cНовый король&8: &e%king%'
+      kicked-king: '&cИгрок &e%kicked% &cкикнут из количества &e%kingdom%. &cНовый король{$colon} &e%king%'
       kicked-disbanded: '&cDisbanded &e%kingdom% kingdom because &e%kicked% &cwas the only member in the
         kingdom.'
       not-in-kingdom: '&cThat player is not in a kingdom.'
@@ -1413,7 +1413,7 @@ command:
       the kingdom, or set a new king.'
     hologram:
       description: '&6Remove bugged holograms around you.'
-      usage: '&cИспользование&8: &e/k admin hologram <radius>'
+      usage: '&cИспользование{$colon} &e/k admin hologram <radius>'
       removed: '&7Removed a total of &6%removed% &7hologram(s).'
     entity:
       description: '&6Finds all the entities around the player.'
@@ -1423,20 +1423,20 @@ command:
       not-claimed: '&cThis land is not claimed.'
     maxlandmodifier:
       description: '&6Change the max lands modifier of a kingdom.'
-      usage: '&7Использование&8: &e/k admin maxLandModifier &7<королевство> &9[set | add | remove] &9<amount>'
+      usage: '&7Использование{$colon} &e/k admin maxLandModifier &7<королевство> &9[set | add | remove] &9<amount>'
       success: '&7Successfully changed max lands modifier for &6%kingdom% &7to &6%amount%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
+      invalid-action: '&cInvalid action &e%action%&c! Use{$colon} &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
     shield:
       description: '&6Change the shield duration for a kingdom.'
-      usage: '&7Использование&8: &e/k admin shield &7<королевство> &9[set | add | remove] &7<time>'
-      success: '&7Successfully changed shield duration for &6%kingdom% &7to&8: &6%amount%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
+      usage: '&7Использование{$colon} &e/k admin shield &7<королевство> &9[set | add | remove] &7<time>'
+      success: '&7Successfully changed shield duration for &6%kingdom% &7to{$colon} &6%amount%'
+      invalid-action: '&cInvalid action &e%action%&c! Use{$colon} &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
-      invalid-time: '&cInvalid time unit&8: &e%time%'
+      invalid-time: '&cInvalid time unit{$colon} &e%time%'
     toggles:
       description: '&6Show a list of players with admin mode enabled.'
-      header: '&2Players with admin mode enabled&8:'
+      header: '&2Players with admin mode enabled{$colon}'
       entry: '&8- &6%displayname%'
     commands:
       description: '&6Writes a list of commands with their permission in a file.'
@@ -1444,11 +1444,11 @@ command:
   sneak:
     description: '&6Отношения вашего королевства с другим игроком не отключит их полет'
     others-permission: '&cУ вас нет прав для установки режима крадущийся другим игрокам'
-    enabled: '&6Sneak mode&8: &7Активирован'
-    disabled: '&6Sneak mode&8: &cДеактивирован'
+    enabled: '&6Sneak mode{$colon} &7Активирован'
+    disabled: '&6Sneak mode{$colon} &cДеактивирован'
   inventory:
     description: '&6Посмотреть инвентарь любого жителя вашего королевства'
-    usage: '&7Использование&8: &e/k invsee &9[player]'
+    usage: '&7Использование{$colon} &e/k invsee &9[player]'
     not-in-kingdom: '&e%target% &cне является жителем вашего королевства!'
     permission: '&cУ вас нет прав для просмотра инвентаря жителей'
   vault:
@@ -1459,7 +1459,7 @@ command:
       &6%inviter% &7пригласил вас в королевство &6%kingdom%&7.
           hover:{&7Принять: /k accept;&7Принять;/k accept}
           hover:{&cОтклонить: /k decline;&cОтклонить;/k decline}
-    usage: '&7Использование&8: &e/k invite &7<player> <kingdom>'
+    usage: '&7Использование{$colon} &e/k invite &7<player> <kingdom>'
     announce: '&6%inviter% &7пригласил &6%invited% &7в королевсвто'
     already-joined: '&e%invited% &cуже в вашем королевстве'
     description: '&6Отправляет приглашение в ваше королевство указанному игроку'
@@ -1483,7 +1483,7 @@ command:
     multiple-invites: '&cУ вас есть несколько приглашений, выберите одно из них!'
   join:
     description: '&6Вступить в королевство'
-    usage: '&7Использование&8: &e/k join &7<королевство>'
+    usage: '&7Использование{$colon} &e/k join &7<королевство>'
     joined: '&6%player% &7вступил в королевсвто!'
     already-in-kingdom: '&cВы уже находитесь в королевстве!'
     max-members: '&cВ этом королевстве нет места!'
@@ -1513,8 +1513,8 @@ command:
     cancelled: '&cТелепортация отменена!'
   gui:
     description: '&6Открыть GUI'
-    usage: '&7Использование&8: &e/k gui &7<название>'
-    not-found: '&cНеизвестное GUI&8: &e%gui%'
+    usage: '&7Использование{$colon} &e/k gui &7<название>'
+    not-found: '&cНеизвестное GUI{$colon} &e%gui%'
   invade:
     description: '&6Вторгнутся в чьи либо владения'
     invading: '&7Вы вторгаетесь в &6%kingdom%&7. Чемпион появится через &65 секунд'
@@ -1546,18 +1546,18 @@ command:
         Чтобы вторгнутся вам нужно соединится границой с целью, чтобы втогрнутся в него
     shield:
       defender:
-        kingdom: '&cЭто королевство защищено щитом на&8: &e%shield%'
-        nation: '&cЭта нация защищена щитом на&8: &e%shield%'
+        kingdom: '&cЭто королевство защищено щитом на{$colon} &e%shield%'
+        nation: '&cЭта нация защищена щитом на{$colon} &e%shield%'
       invader:
         kingdom: |
-          &cЩит вашего королевства будет действовать ещё&8: &e%shield% &cВаш щит будет деактивирован если вы вторгнетесь в чужое королевсвто
+          &cЩит вашего королевства будет действовать ещё{$colon} &e%shield% &cВаш щит будет деактивирован если вы вторгнетесь в чужое королевсвто
           Для завершения повторите команду
         nation: |
-          &cЩит вашей нации будет действовать ещё&8: &e%shield% &cВаш щит будет деактивирован если вы вторгнетесь в чужую нацию
+          &cЩит вашей нации будет действовать ещё{$colon} &e%shield% &cВаш щит будет деактивирован если вы вторгнетесь в чужую нацию
           Для завершения повторите команду
-        kingdom-disabled: '&cВаше королевство потеряло щит на&8: &e%shield% &cибо &e%invader% &cвторгся
+        kingdom-disabled: '&cВаше королевство потеряло щит на{$colon} &e%shield% &cибо &e%invader% &cвторгся
           в &e%kingdom%'
-        nation-disabled: '&cВаша нация потеряла щит на&8: &e%shield% &cибо &e%invader% &cвторгся в &e%kingdom%'
+        nation-disabled: '&cВаша нация потеряла щит на{$colon} &e%shield% &cибо &e%invader% &cвторгся в &e%kingdom%'
     creative: '&cВы можете вторгатся только в режиме выживания'
     max-misc-upgrade: |
       &cВаше королевство достигла предел вторжений для вашего улучшения 'Разное'
@@ -1568,7 +1568,7 @@ command:
     ceasefire: '&cYou can''t invade this kingdom, because they''re &e%relation%'
     nation-capital: |
       &cYou can't invade the nation capital lands before you invade all the other nation's kingdom nexus lands.
-      The following kingdom nexus needs to be invaded&8:
+      The following kingdom nexus needs to be invaded{$colon}
       %kingdoms%
     powercell: '&cРядом есть силовая ячейка, вы должны сначала вторгнутся в неё прежде чем вторгатся в
       эту землю'
@@ -1582,13 +1582,13 @@ command:
     no-more-pages: '&cБольше нет страниц для загрузки'
     negative: '&cВы на самой первой странице!'
     entry: |
-      &8♦ &7%rank%. hover:{&7%kingdoms_kingdom_name%;&7♦ &7Участники&8: &6%kingdoms_members%
-      &7♦ &7Земли&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &7Очки ресурсов&8: &6%fancy@kingdoms_resource_points%
-      &7♦ &7Баланс&8: &6%fancy@kingdoms_bank% монет} &7- &6%fancy@kingdoms_might%
+      &8♦ &7%rank%. hover:{&7%kingdoms_kingdom_name%;&7♦ &7Участники{$colon} &6%kingdoms_members%
+      &7♦ &7Земли{$colon} &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
+      &7♦ &7Очки ресурсов{$colon} &6%fancy@kingdoms_resource_points%
+      &7♦ &7Баланс{$colon} &6%fancy@kingdoms_bank% монет} &7- &6%fancy@kingdoms_might%
   map:
     description: '&6Показывает карту королевств и ваших структур'
-    usage: '&7Использование&8: &e/k map &9[auto &8| &9height] [width]'
+    usage: '&7Использование{$colon} &e/k map &9[auto &8| &9height] [width]'
     kingdom-player-only: '&cТолько игроки с королевством могут использовать эту команду'
     invalid-height: '&cНеизвестная высота &e%height% &cБудет использована стандартная высота'
     invalid-width: '&cНеизвестная ширина &e%width% &cБудет использована стандартная ширина'
@@ -1600,16 +1600,16 @@ command:
       disabled: '&7Авто-карта была &cвыключена'
     size:
       permission: '&cУ вас нет прав для изменения размеров карты'
-      changed: '&7Размер краты изменён с &7(&6Высота&8: &9%kingdoms_map_height% &7| &6Ширина&8: &9%kingdoms_map_width%&7)
-        &7на &7(&6Высота&8: &9%new_height% &7| &6Ширина&8: &9%new_width%&7)'
+      changed: '&7Размер краты изменён с &7(&6Высота{$colon} &9%kingdoms_map_height% &7| &6Ширина{$colon} &9%kingdoms_map_width%&7)
+        &7на &7(&6Высота{$colon} &9%new_height% &7| &6Ширина{$colon} &9%new_width%&7)'
       reset: '&7Размеры вашей карты были восстановлены.'
     settings-description: '&6Change your &e/k map &6settings.'
   fly:
     description: '&6Enable flight in your own land.'
-    usage: '&7Использование&8: &e/k fly &9[player]'
+    usage: '&7Использование{$colon} &e/k fly &9[player]'
     others-permission: '&cYou don''t have permission to set others fly state.'
-    enabled: '&6Flight Mode&8: &7ON'
-    disabled: '&6Flight Mode&8: &4OFF'
+    enabled: '&6Flight Mode{$colon} &7ON'
+    disabled: '&6Flight Mode{$colon} &4OFF'
     not-allowed: '&cYou can''t fly in territory of &e%kingdom%'
     unclaimed: '&cYou can only fly in claimed lands that allow flying.'
     own-enemy-nearby: '&cYou can''t fly, there are enemies nearby.'
@@ -1618,7 +1618,7 @@ command:
   kick:
     person: '&cВы были выгнаны из &e%kingdom% &cигроком &e%kicker%'
     description: '&6Выгнать жителя вашего королевства'
-    usage: '&7Использование&8: &e/k kick &7<player> &9[silent]'
+    usage: '&7Использование{$colon} &e/k kick &7<player> &9[silent]'
     announce: '&e%kicked% &cбыл изгнан из королевства игроком &e%kicker%'
     self: '&cВы не можете выгнать сами себя... Используйте &6/k leave&c для выхода из королевства'
     not-in-kingdom: '&cЭтот игрок не находится в вашем королевстве'
@@ -1659,7 +1659,7 @@ command:
     no-history: '&cПоследнее время вы ничего не приватили/распривачивали'
   lore:
     description: '&6Установить описание королевства'
-    usage: '&7Использование&8: &e/k lore &7<текст>'
+    usage: '&7Использование{$colon} &e/k lore &7<текст>'
     blacklisted: '&cОписание вашего королевства содержит запрещённые слова'
     name-length: '&cОписание королевства не может быть длинее чем %limit%'
     name-english: '&cОписание королевства должна быть на английском языке, и содержать только буквы и
@@ -1674,7 +1674,7 @@ command:
     collect-others-permission: '&cВы не можете собирать очки ресурсов из экстракторов для других королевств'
   election:
     description: '&6'
-    no-ongoing-election: '&cВ настоящие время не проходят выборы. Следующие выборы&8: &e%next-election%'
+    no-ongoing-election: '&cВ настоящие время не проходят выборы. Следующие выборы{$colon} &e%next-election%'
     vote:
       description: '&6Проголосовать за кандидата.'
       voted: '&7Вы проголосовали за &6%player%'
@@ -1682,14 +1682,14 @@ command:
       voted-again: '&7Вы проголосовали за &6%player% &7Ваш прошлый голос был за &6%previous-candidate%'
     statement:
       description: '&6Выдвиньте своё заявление в качестве кандидата на выборах'
-      usage: '&7Использование&8: &e/k election statement &7<statement>'
-      set: '&7Ваше заявление установлено на&8: &r%statement%'
+      usage: '&7Использование{$colon} &e/k election statement &7<statement>'
+      set: '&7Ваше заявление установлено на{$colon} &r%statement%'
   mail:
     description: '&6Просмотреть письма в вашем королевстве'
     box-description: '&6Открыть ваш почтовый ящик в королевстве'
     send-description: '&6Отправить письмо вашему королевству'
-    send: '&6%player% &7прислал новое письмо&8: &6%message%'
-    send-usage: '&7Использование&8: &e/k mail send &7<message>'
+    send: '&6%player% &7прислал новое письмо{$colon} &6%message%'
+    send-usage: '&7Использование{$colon} &e/k mail send &7<message>'
     send-max: |
       &4Вы не можете отправить больше &6%mails% &7писем.
       Удалите ваши пиьсма &6/k mails clear &7или удалите одно из писем в своём почтовом ящике
@@ -1702,7 +1702,7 @@ command:
     no-requests: '&6Ваше королевство не имеет запросов'
   ally:
     description: '&6Отправить запрос королевству о создании/присоединении альянса'
-    usage: '&7Использование&8: &e/k ally &7<королевство>'
+    usage: '&7Использование{$colon} &e/k ally &7<королевство>'
     sender: '&7Отправил запрос на создание/присоединении альянса &6%kingdom%'
     kingdom-not-found: '&e%kingdom% &cкоролевство'
     limit: '&cВаш альянс не может иметь больше &e%max% &cкоролевств'
@@ -1715,7 +1715,7 @@ command:
     another-request: '&e%kingdom% &cприслал вам запрос %relation%'
   enemy:
     description: '&6Сделать королевство врагом'
-    usage: '&7Использование&8: &e/k enemy &7<королевство>'
+    usage: '&7Использование{$colon} &e/k enemy &7<королевство>'
     limit: '&cВы не можете одновременно воевать с &e%max% &cкоролевств!'
     kingdom-not-found: '&e%kingdom% &cкоролевство не найдено!'
     already: '&cВы уже враги с &e%kingdom%'
@@ -1723,7 +1723,7 @@ command:
     enemies: '&cТеперь вы воюете с &e%kingdom%&c!'
   truce:
     description: '&6Предложить мир королевству'
-    usage: '&7Использование&8: &e/k truce &7<королевство>'
+    usage: '&7Использование{$colon} &e/k truce &7<королевство>'
     limit: '&cУ вас не может быть одновременно заключено мирных договоров с &e%max% &cкоролевств'
     sender: '&7Отправил предложение о мире, королевству &6%kingdom%'
     kingdom-not-found: '&e%kingdom% &cкоролевство не найдено'
@@ -1736,7 +1736,7 @@ command:
     another-request: '&e%kingdom% &cприслал вам запрос %relation%'
   revoke:
     description: '&6Разорвать отношения с королевством'
-    usage: '&7Использование&8: &e/k revoke &7<королевство>'
+    usage: '&7Использование{$colon} &e/k revoke &7<королевство>'
     sender: '&cВы разорвали отношения с &e%kingdom%'
     kingdom-not-found: '&e%kingdom% &cне найдено'
     no-relation: '&cУ вас нету отношений с &e%kingdom%'
@@ -1744,9 +1744,9 @@ command:
     receiver: '&e%kingdom% &cразорвал отношения с вами!'
   chat:
     description: '&6Сменить чат'
-    usage: '&7Использование&8: &e/k chat &7<канал> &9[сообщение]'
+    usage: '&7Использование{$colon} &e/k chat &7<канал> &9[сообщение]'
     already-in-channel: '&cВы уже общаетесь в &6%channel%'
-    unknown-channel: '&cНеизвестный чат! Выберите чат&8: &fhover:{&7Королевский;&7Королевство;/k c k}&7,
+    unknown-channel: '&cНеизвестный чат! Выберите чат{$colon} &fhover:{&7Королевский;&7Королевство;/k c k}&7,
       &ahover:{&aАльянс;&aАльнс;/k c a}&7, &ehover:{&eПеремирие;&eПеремирие;/k c t} &7или &ehover:{&9Нация;&9Нация;/k
       c n}'
     changed: '&7Теперь вы общаетесь в %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
@@ -1759,7 +1759,7 @@ command:
         %displayname% &7≫ &6%message%'
   broadcast:
     description: '&6Создать объявление для всех участников королевства'
-    usage: '&7Использование&8: &e/k broadcast &7<сообщение>'
+    usage: '&7Использование{$colon} &e/k broadcast &7<сообщение>'
     cooldown: '&cВам нужно подождать &e%time% &cпрежде чем снова создать объявление'
     format: '&8[&6%kingdoms_kingdom_name% &lОбъявление&8]&7|&8[&c%player%&8] &7%message%'
   king:
@@ -1768,30 +1768,30 @@ command:
     set: '&6%king% &7новый король королевства!'
     not-in-kingdom: '&e%king% &cне находится в вашем королевстве'
     self: '&cВы передали корону самому себе'
-    usage: '&7Использование&8: &e/k king &7<player>'
+    usage: '&7Использование{$colon} &e/k king &7<player>'
   promote:
     description: '&6Повысить жителя вашего королевства'
     promoted: '&6%promoted% &7был повышен до &9%rank% &7игроком &6%player%'
     not-in-kingdom: '&e%promoted% &cне в вашем королевстве!'
     cant-promote: '&cВы не можете повысить &e%promoted%&c!'
     king: '&cЧтобы повысить игрока до короля, передайте ему корону командой &e/k king'
-    usage: '&7Использование&8: &e/k promote &7<player>'
+    usage: '&7Использование{$colon} &e/k promote &7<player>'
   demote:
     description: '&6Понизить жителя вашего королевства'
     demoted: '&e%demoted% &cбыл понижен до &9%rank% &cигроком &e%player%'
     not-in-kingdom: '&e%demoted% &cне в вашем королевстве!'
     cant-demote: '&cВы не можете понизить &e%demoted%&c!'
     member: '&cВы не можете понизить игрока с рангом житель!'
-    usage: '&7Использование&8: &e/k demote &7<player>'
+    usage: '&7Использование{$colon} &e/k demote &7<player>'
     cant-demote-king: '&cYou can''t demote the king &e%demoted%'
   visualize:
     description: '&6Установите постоянные индикаторы или отключите их'
-    usage: '&7Использование&8: &e/k visualize [permanent|toggle]'
+    usage: '&7Использование{$colon} &e/k visualize [permanent|toggle]'
     display: |
-      &7| &7Локация&8: &6%x%&7, &6%z%
-      &7| &7Королевство&8: &6%kingdom%
-    admin-display: '&7| &7Локация&8: &6%x%&7, &6%z%\n&7| &7Королевство&8: &6%kingdom%\n\&7| &7Структуры&8:
-      \n&6%structures%\n&7| &7Турели&8:\n%turrets%\n&7| &7Защищеные таблички&8:\n%protection-signs%'
+      &7| &7Локация{$colon} &6%x%&7, &6%z%
+      &7| &7Королевство{$colon} &6%kingdom%
+    admin-display: '&7| &7Локация{$colon} &6%x%&7, &6%z%\n&7| &7Королевство{$colon} &6%kingdom%\n\&7| &7Структуры{$colon}
+      \n&6%structures%\n&7| &7Турели{$colon}\n%turrets%\n&7| &7Защищеные таблички{$colon}\n%protection-signs%'
     toggle:
       description: '&6Включите/выключите индикаторы для земли (визуализаторы или маркеры)'
       enabled: '&7Индикаторы были &6включены'
@@ -1801,10 +1801,10 @@ command:
       showing: '&7Визуализация...'
     markers:
       description: '&6Измените тип марки для земли'
-      usage: '&7Использование&8: &e/k visualize markers <type>'
+      usage: '&7Использование{$colon} &e/k visualize markers <type>'
       already-using: '&cВы уже используете тип &e%markers% &c!'
       changed: '&7Тип маркеров земли изменены на &6%markers%'
-      invalid: '&cНевозможно найти выбранные маркеры для земли&8: &e%markers%'
+      invalid: '&cНевозможно найти выбранные маркеры для земли{$colon} &e%markers%'
     permanent:
       description: '&6Включите/выключите перманентные маркеры'
       enabled: '&7Перманентные маркеры &6включены'
@@ -1812,8 +1812,8 @@ command:
   tradable:
     description: '&6Показывает стоимость предметов в очках ресурсов'
     message: |
-      &7Предмет в вашей руке стоит&8: &6%amount% * %worth% = %total%
-      &6Специальные предметы&8:
+      &7Предмет в вашей руке стоит{$colon} &6%amount% * %worth% = %total%
+      &6Специальные предметы{$colon}
       %list%
     not-special: '&cне специальный'
     item: '&7%material%&7: &9%worth%'
@@ -1825,29 +1825,29 @@ command:
     description: '&6Показывает команды аванпоста'
     create:
       description: '&6Создает новый аванпост из региона WorldGuard'
-      usage: '&7Использование&8: &e/k outpost create <название> <region>'
+      usage: '&7Использование{$colon} &e/k outpost create <название> <region>'
       region-not-found: '&cНе получается найти регион WorldGuard с названием &e%region%'
       name-already-taken: '&cАванпост с таким именем уже есть &e%outpost%'
       created: '&7Вы создали аванпост &6%outpost% &7в регионе &6%region%'
     setspawn:
       description: '&6Изменяет локацию спавна на аванпосте'
-      usage: '&7Использование&8: &e/k outpost spawn <название>'
+      usage: '&7Использование{$colon} &e/k outpost spawn <название>'
       outpost-not-found: '&cНе получается найти аванпост с именем &e%outpost%'
       changed: '&7Вы изменили локацию спавна на аванпосте &6%outpost%'
     center:
       description: '&6Изменяет центр аванпоста'
-      usage: '&7Использование&8: &e/k outpost center <название>'
+      usage: '&7Использование{$colon} &e/k outpost center <название>'
       outpost-not-found: '&cНе получается найти аванпсот с именем &e%outpost%'
       changed: '&7Локация центра изменена на аванпосте &6%outpost%'
     remove:
       description: '&6Удаляет аванпост'
-      usage: '&7Использование&8: &e/k outpost remove <название>'
+      usage: '&7Использование{$colon} &e/k outpost remove <название>'
       outpost-not-found: '&cНе получается найти аванпост с именем &e%outpost%'
       outpost-is-running: '&e%outpost% &cсобытие аванпоста началось, вы не можете удалить его сейчас'
       removed: '&7Вы удалили аванпост &6%outpost%'
     join:
       description: '&6Вступить в событие аванпоста'
-      usage: '&7Использование&8: &e/k outpost join <outpost>'
+      usage: '&7Использование{$colon} &e/k outpost join <outpost>'
       outpost-not-found: '&cНе получается найти аванпост с именем &e%outpost%'
       event-not-started: '&cСобытие аванпоста &e%outpost% &cуже началось'
       event-full: '&e%outpost% &cместа в событии аванпоста закончились'
@@ -1868,16 +1868,16 @@ command:
       lost: '&cВаше королевство проиграло в событии!'
     start:
       description: '&6Начать событие аванпост'
-      usage: '&7Использование&8: &e/k outpost start <outpost> <time> <startIn>'
+      usage: '&7Использование{$colon} &e/k outpost start <outpost> <time> <startIn>'
       outpost-not-found: '&cНе получается найти аванпост под названием &e%outpost%'
       already-started: '&cСобытие аванпоста &e%outpost% &cуже началось'
-      invalid-start-time: '&cНеправильно время начала события&8: &e%time%'
-      invalid-time: '&cНеверное время события&8: &e%time%'
+      invalid-start-time: '&cНеправильно время начала события{$colon} &e%time%'
+      invalid-time: '&cНеверное время события{$colon} &e%time%'
       scheduled: \n\n&7Событие аванпоста &6%outpost% &7начнется через &6%start% \n\n
       started: \n\n&7Событие аванпоста &6%outpost% &7 началось, удачной игры! \n\n
     stop:
       description: '&6Останаливает запущенное событие аванпоста'
-      usage: '&7Использование&8: &e/k outpost stop <outpost>'
+      usage: '&7Использование{$colon} &e/k outpost stop <outpost>'
       outpost-not-found: '&cНе удалось найти аванпост под именем &e%outpost%'
       not-started: '&cСобытие аванпоста &e%outpost% &cне началось!'
       stopped: \n\n&cСобытие аванпоста &e%outpost% &cбыло остановлено! \n\n
@@ -1887,7 +1887,7 @@ command:
       teleported: '&7Вы переместились на аванпост'
   donate:
     description: '&6Пожертвовать очки ресурсов королевству'
-    usage: '&7Использование&8: &e/k donate <королевство> <amount>'
+    usage: '&7Использование{$colon} &e/k donate <королевство> <amount>'
     invalid-kingdom: '&cНе удалось найти королевство &e%kingdom%'
     dont-have: '&cУ вас нету &e%rp% &cочков ресурсов!'
     done: '&7Вы пожертвовали &6%rp% &7королевству &6%kingdom%'
@@ -1947,7 +1947,7 @@ structures:
   specific-limit: '&cВы можете иметь максимум &e%limit% %style% &cструктур на землю..'
   block-occupied: '&cНевозможно разместить структуры вместо &e%material% &cблока'
   enter-name: '&7Введите название вашей новой структуре'
-  name-set: '&7Новое название структуры&8: &6%name%'
+  name-set: '&7Новое название структуры{$colon} &6%name%'
   disabled-world: '&cВы не можете размещать структуры в отключенных мирах'
   upgrade:
     max-level: '&cЭта структура уже прокачана на максимальный уровень'
@@ -1958,7 +1958,7 @@ locations:
   normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%'
   chunk: '&6%world%&8, &6%x%&8, &6%z%'
 placeholders:
-  top-not-found: '&cНет лучших королевств&8: &e%position%'
+  top-not-found: '&cНет лучших королевств{$colon} &e%position%'
 lands:
   build-own-only: '&cВы можете строить только на землях вашего королевства!'
   portal-protection: '&cВаша телепортация через портал была отменена, ибо он ведёт в недружественное королевство'

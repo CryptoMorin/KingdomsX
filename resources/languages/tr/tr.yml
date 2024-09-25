@@ -47,24 +47,24 @@ tax:
     age: '&5Krallığınız yeni olduğu için vergileri ödemedi.'
     paid: |
       &2Toplam &6$%tax% &2krallık vergisi ödendi
-      Güncel Krallık Banka Bakiyesi&8: &6$%fancy@kingdoms_bank%
+      Güncel Krallık Banka Bakiyesi{$colon} &6$%fancy@kingdoms_bank%
     paid-nation: |
       &2Krallığınız toplam &6$%tax% &2ulus vergisi ödedi
-      Güncel Krallık Banka Bakiyesi&8: &6$%fancy@kingdoms_bank%
-    kicked: '&e%krallık% &ckrallığı vergileri ödeyemediği için ulustan atıldı&8: &e$%tax%'
-    disbanded: '&cKrallığın vergileri ödeyemediği için dağıtıldı&8: &e$%tax%'
+      Güncel Krallık Banka Bakiyesi{$colon} &6$%fancy@kingdoms_bank%
+    kicked: '&e%krallık% &ckrallığı vergileri ödeyemediği için ulustan atıldı{$colon} &e$%tax%'
+    disbanded: '&cKrallığın vergileri ödeyemediği için dağıtıldı{$colon} &e$%tax%'
     disbanded-announce: '&e%kingdom% &ckrallığı vergileri ödeyemediği için dağıtıldı.'
-    kicked-announce: '&e%kingdom% &ckrallığı, vergileri ödeyemediği için &e%nation% &cülkesinden atıldı&8:
+    kicked-announce: '&e%kingdom% &ckrallığı, vergileri ödeyemediği için &e%nation% &cülkesinden atıldı{$colon}
       &e$%tax%'
   nation:
     age: '&5Ulusunuz yeni olduğu için vergileri ödemedi.'
     paid: '&cKrallığınız vergileri ödeyemediği için ulustan atıldı.'
     disbanded: '&cKrallığınız vergileri ödeyemediği için ulustan atıldı.'
-    disbanded-announce: '&e%nation% &culus vergileri ödeyemediği için dağıtıldı&8: &e$%tax%'
+    disbanded-announce: '&e%nation% &culus vergileri ödeyemediği için dağıtıldı{$colon} &e$%tax%'
   notifications: |
     &8[&4UYARI&8] &cKrallığınızın bankasında bir sonraki faturalama döngüsü için vergileri karşılayacak kadar parası &7(&e$%fancy@kingdoms_bank% &7) &cparası yok.
     &cÜyelerden toplanan vergiler yeterli değilse, krallığınız dağılacak. &e$%tax%
-  kick-announce: '&e%player% &cvergileri ödeyemediği için atıldı&8: &e%tax%'
+  kick-announce: '&e%player% &cvergileri ödeyemediği için atıldı{$colon} &e%tax%'
   member-paid: '&6$%tax% &2krallık vergisi hesabından alındı.'
 place-in-claimed-only: '&cBunu sadece claimli alanlarına yapabilirsin.'
 break-in-claimed-only: '&cBunu sadece claimli alanlarına yapabilirsin.'
@@ -153,7 +153,7 @@ protected-signs:
     error-429: '&cÇok fazla başarısız girişim.'
     in-cooldown: |
       &cBu kapsayıcıya erişmek için bir parola gerekiyor, ancak çok fazla başarısız denemeniz oldu.
-      Şu süre içinde tekrar deneyebilirsiniz&8: &e%cooldown%
+      Şu süre içinde tekrar deneyebilirsiniz{$colon} &e%cooldown%
     required: '&cBu kapsayıcının açılması için bir parola gerekiyor. Parolayı girin veya eylemi iptal
       etmek için fareyle üzerine gelin hover:{&ecancel;&eCancel;cancel} &cyazın.'
     ask: '&6Lütfen şifreyi girin veya iptal etmek için üzerine gelin hover:{&cCancel;&cCancel;cancel}
@@ -201,7 +201,7 @@ fly:
       var.'
   out:
     of-land: '&cUçma komutunu sadece ait olduğun krallıkta kullanabilirsin. Uçuş modun kapatıldı.'
-no-kingdom-reminder: '&cHatırlatma&8: &eHenüz bir krallığa katılmadın.'
+no-kingdom-reminder: '&cHatırlatma{$colon} &eHenüz bir krallığa katılmadın.'
 structure-cant-break: '&cBu yapıyı kıramazsın'
 regulator:
   attributes:
@@ -219,7 +219,7 @@ nexus:
     enable: '&6Krallığın artık &2barışçıl.'
     disable: '&6Krallığın artık &cbarışçıl değil.'
     cooldown: '&cKrallığın &e%cooldown% olduğu için barışçıl olamaz.'
-    permanent: '&cKrallığınız şu nedenle barışçıl olamaz&8: &e%cooldown%'
+    permanent: '&cKrallığınız şu nedenle barışçıl olamaz{$colon} &e%cooldown%'
   home:
     public: '&6Krallığın artık &2herkese açık.'
     not-public: '&6Krallığın artık &cherkese açık değil.'
@@ -254,7 +254,7 @@ nexus:
       symbol: '&cSembol uzunluğu &e%limit% &climitinden uzun olamaz.'
     node:
       already-exists: '&cBu düğümde başka bir rütbe var.'
-    unknown-material: '&cBöyle bir materyal yok&8: &e%material%'
+    unknown-material: '&cBöyle bir materyal yok{$colon} &e%material%'
     invalid:
       material: '&cMateryali kullanamazsın &e%material%'
       max-claims: '&cMaksimum hak talebi bir sayı ve 0''dan büyük olmalıdır'
@@ -268,7 +268,7 @@ nexus:
     others: '&cDiğer krallıkların çeşitli yükseltmelerini değiştiremezsiniz.'
   members:
     others: '&cDiğer krallıkların üyelerini yönetemezsiniz.'
-    next-page-not-available: '&cDaha fazla sayfa yok. Max Sayfa&8: &e%pages%'
+    next-page-not-available: '&cDaha fazla sayfa yok. Max Sayfa{$colon} &e%pages%'
     previous-page-not-available: '&cDaha fazla önceki sayfa yok.'
   settings:
     tax-enter-value: Lütfen &6sohbette yeni değeri girin. Iptal etmek için &ecancel &6yazın.
@@ -276,16 +276,16 @@ nexus:
       enter-value: |
         &6Lütfen sohbette yeni bayrak URL''sini girin. Iptal etmek için &ecancel
         &6yazın.
-      wrong-url: '&cBayrak için geçersiz URL&8: &e%flag%'
-      contains: '&cKara listeye alınmış bir kelime içerdiği için bayrak URL''si kabul edilemez&8: &e%flag%'
-      regex: '&cBayrak URL''si kabul edilemez&8: &e%flag%'
+      wrong-url: '&cBayrak için geçersiz URL{$colon} &e%flag%'
+      contains: '&cKara listeye alınmış bir kelime içerdiği için bayrak URL''si kabul edilemez{$colon} &e%flag%'
+      regex: '&cBayrak URL''si kabul edilemez{$colon} &e%flag%'
       checking-size: '&2Görüntü boyutu kontrol ediliyor...'
       cooldown: '&cBayrağınızı değiştirmeden önce &e%cooldown% &cbeklemeniz gerekiyor.'
       size-limit:
-        fail: '&cBelirtilen URL ya bir resim değil ya da erişilemez&8: &e%flag%'
-        height: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cheight limit&8: &e%height%'
-        width: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cwidth limit&8: &e%width%'
-      set: '&2Krallığınızın bayrak resmi olarak değiştirildi&8: &6%flag%'
+        fail: '&cBelirtilen URL ya bir resim değil ya da erişilemez{$colon} &e%flag%'
+        height: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cheight limit{$colon} &e%height%'
+        width: '&cBelirtilen görüntü maksimum değeri aşıyor &e%limit% &cwidth limit{$colon} &e%width%'
+      set: '&2Krallığınızın bayrak resmi olarak değiştirildi{$colon} &6%flag%'
       current: Click hover:{&2here;&2Open Flag URL;@%kingdoms_kingdom_flag%} &6to open your current flag URL.
       validate: '&2Validating image...'
       removed: '&2Your kingdom''s flag image was removed.'
@@ -293,16 +293,16 @@ nexus:
       enter-value: |
         &6Lütfen sohbette yeni onaltılık renk kodunu girin. Iptal etmek için
         &ecancel &6Yazın.
-      wrong-hex: '&cGeçersiz Onaltılık Renk&8: &e%color%'
-      wrong-rgb: '&cGeçersiz RGB rengi&8: &e%color%'
+      wrong-hex: '&cGeçersiz Onaltılık Renk{$colon} &e%color%'
+      wrong-rgb: '&cGeçersiz RGB rengi{$colon} &e%color%'
       range-blacklisted: '&cSeçtiğiniz renk mevcut renkler arasında değil.'
-      set: '&2Krallığınızın rengi değiştirildi&8: &6%color%'
+      set: '&2Krallığınızın rengi değiştirildi{$colon} &6%color%'
     tax-set: |
-      &2Krallığınızın vergi denklemi şu şekilde ayarlandı:&8: &6%tax%
-      &2Size test edilmiş vergi&8: &6%test%
-    tax-illegal-variable: '&cDizinde geçersiz yer tutucu kullanıldı &e%index% &cin equation&8: &e%tax%'
+      &2Krallığınızın vergi denklemi şu şekilde ayarlandı:{$colon} &6%tax%
+      &2Size test edilmiş vergi{$colon} &6%test%
+    tax-illegal-variable: '&cDizinde geçersiz yer tutucu kullanıldı &e%index% &cin equation{$colon} &e%tax%'
     tax-invalid: |
-      &cSizin üzerinizde &e%tax% &cvergi denklemi test edilemedi&8: &e%reason%
+      &cSizin üzerinizde &e%tax% &cvergi denklemi test edilemedi{$colon} &e%reason%
       &cLütfen geçerli bir denklem girin.
     shield-not-enough-resource-points: '&cYeterli kaynak puanınız yok.'
     shield-activated: '&2Kalkan aktifleştirildi &6%time@kingdoms_shield_time_left%'
@@ -312,7 +312,7 @@ nexus-resource-points-enter-value: Lütfen &6kaynak puanı miktarını girin. &6
 extractor:
   not-enough-resource-points: '&cYeterli kaynak puanınız yok.'
 warppad-enter-name: '&2Lütfen Warp Pad''inizin yeni adını girin.'
-warppad-name-set: '&2Warp Pad''s adı ayarlandı&8: &6%name%'
+warppad-name-set: '&2Warp Pad''s adı ayarlandı{$colon} &6%name%'
 outpost:
   not-enough-resource-points: '&cYeterli kaynak puanınız yok.'
   purchased: '&6%cost% kaynak puanı için &6%amount%x %name% satın aldınız.'
@@ -352,7 +352,7 @@ not-number: '&e%arg% &cbir sayı değil.'
 insufficient-permission: '&cBunu yapma izniniz yok.'
 kingdom-name-blacklisted: '&cKrallığınızın adı uygunsuz kelimeler içeriyor.'
 kingdom-tag-blacklisted: '&cKrallığınızın etiketi uygunsuz kelimeler içeriyor.'
-commands-usage: '&4Kullanım&8: &e%cmd%'
+commands-usage: '&4Kullanım{$colon} &e%cmd%'
 unknown:
   command: '&cBilinmeyen komut!'
 negative-pages: '&cGizli sayfa yok.'
@@ -362,8 +362,8 @@ auto-claim:
   disabled-world: '&6%world% &cDünyası üzerinde otomatik-claim devre dışı bırakıldı.'
   in-region: '&cKorunan bölgelerde arazi talep edemezsiniz.'
   actionbar:
-    enabled: '&2Otomatik-claim&8: &6Aktif'
-    disabled: '&2Otomatik-claim&8: &cDe-aktif'
+    enabled: '&2Otomatik-claim{$colon} &6Aktif'
+    disabled: '&2Otomatik-claim{$colon} &cDe-aktif'
   success: '&2Sahiplendi &6%x%&7, &6%z% &2krallık arazisi olarak.'
   max-claims: '&e%max% &cSınırdan daha fazlasını talep edemezsiniz!'
   kingdom-max-lands: '&cKrallığınız &e%max% &ctopraklardan daha fazlasını talep edemez!'
@@ -380,8 +380,8 @@ auto:
     enabled: '&2Otomatik claim &6AKTIF'
     disabled: '&2Otomatik claim &cDE-AKTIF'
     actionbar:
-      enabled: '&2Otomatik claim&8: &6Aktif'
-      disabled: '&2Otomatik claim&8: &cDe-aktif'
+      enabled: '&2Otomatik claim{$colon} &6Aktif'
+      disabled: '&2Otomatik claim{$colon} &cDe-aktif'
     success: '&2Krallık toprağı olarak &6%x%&7, &6%z% &2claimlendi.'
     occupied-land: '&cBu topraklar başka bir krallık tarafından işgal edildi! &e/k invade &cyazarak işgal
       et!'
@@ -393,7 +393,7 @@ command:
   updates-description: '&6Krallıklar için herhangi bir güncelleme olup olmadığını kontrol eder.'
   help:
     description: '&6Tüm komutları gösterir'
-    usage: '&4Kullanım&8: &e/k help [sayfa]'
+    usage: '&4Kullanım{$colon} &e/k help [sayfa]'
     grouped-header: '&8&m---------------=( &c&l%group% &8)=---------------'
     grouped-commands: hover:{&8/&2k %cmd% &7- %description%;&8/&2k %cmd%;|/k %cmd%}
     footer: hover:{&6←;&6Önceki Sayfa;/k help %previous_page%} %pages%hover:{&6→;&6Sıradaki Sayfa;/k help
@@ -433,7 +433,7 @@ command:
     name-english: '&cKrallık etiketi(tagı) İngilizce olmalı ve yalnızca sayı ve harf içermelidir.'
     name-has-symbols: '&cKrallık etiketi(tagı) semboller içeremez. Yalnızca sayılar ve alfabeler.'
     name-numbers: '&cKingdom etiketi(tagı) sayı içeremez.'
-    usage: '&4Kullanım&8: &e/k tag <isim>'
+    usage: '&4Kullanım{$colon} &e/k tag <isim>'
     no-kingdom: '&cBir krallığın yok.'
     changed: '&2Krallığının etiketi(tagı) &6%tag% &2iken %kingdoms_kingdom_tag% %2olarak &6%player% &2tarafından
       değiştirildi.'
@@ -451,7 +451,7 @@ command:
       name-has-symbols: '&cUlus adı semboller içeremez. Yalnızca sayılar ve alfabeler.'
       name-numbers: '&cUlus isimleri sayı içeremez.'
       name-already-in-use: '&cZaten bu adı başka bir Ulus kullanıyor.'
-      usage: '&4Kullanım&8: &e/k nation create <isim>'
+      usage: '&4Kullanım{$colon} &e/k nation create <isim>'
       already-in-nation: COMPLEX:&cZaten bir ulusun içindesiniz. Ulusunu terk etmek için hover:{&e/k nation
         leave;&cAyrıl;/k nation leave} &cyazının üzerine gelin.
       success: '&6%nation% &2ulusuna başarıyla katıldın!'
@@ -467,7 +467,7 @@ command:
       name-already-in-use: '&cBaşka bir krallık zaten bu adı kullanıyor.'
       cooldown: '&cYeniden adlandırmadan önce &e%cooldown% saniye beklemeniz gerekiyor.'
       usage: /Krallık ismi <isim>
-      success: '&2Krallık ismi değiştirildi &8: &6%name%'
+      success: '&2Krallık ismi değiştirildi {$colon} &6%name%'
       cost: '&cUlusinizi yeniden adlandırmak için &e%cost% &cparaya ihtiyacınız var.'
       description: '&6Ulusunuzu yeniden adlandırır.'
     bank:
@@ -481,15 +481,15 @@ command:
       deposit:
         success: |
           &2Ülkenizin bankasına &6%amount% &2miktar para yatırdınız.
-          Yeni bakiyeniz&8: &6%balance%
-          &2Ülkenizin bankası&8: &6%fancy@kingdoms_nation_bank%
+          Yeni bakiyeniz{$colon} &6%balance%
+          &2Ülkenizin bankası{$colon} &6%fancy@kingdoms_nation_bank%
         disabled: '&cPara yatıramazsınız.'
       withdraw:
         disabled: '&cPara çekemezsiniz.'
         success: |
           &2Ülkenizin bankasından &6%amount% &2miktar para çektiniz.
-          &2Yeni bakiyeniz&8: &6%balance%
-          &2Ülke bankanız&8: &6%fancy@kingdoms_nation_bank%
+          &2Yeni bakiyeniz{$colon} &6%balance%
+          &2Ülke bankanız{$colon} &6%fancy@kingdoms_nation_bank%
       negative: '&cNegatif değerleri aktaramazsınız...'
       zero: '&cHiçbir şeyi aktaramazsın.'
     show:
@@ -499,44 +499,44 @@ command:
       message-admin: |
         COMPLEX:&8&m---------------=(&c&l %kingdoms_nation_name% &8&m)=---------------
 
-        &7| &2Başkent&8: &6%capital%
-        &7| &2Spawn&8: &6%kingdoms_nation_spawn%
-        &7| &2Nexus&8: &6%kingdoms_nation_nexus%
-        &7| &2İtibaren&8: &6%kingdoms_date_nation_since%
-        &7| &2Olabilir&8: &6%kingdoms_nation_might%
-        &7| &2Kalkan&8: &6%time@kingdoms_nation_shield_time_left%
-        &7| &2Banka&8: &6$%fancy@kingdoms_nation_bank% &8| &2Tax&8: &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
-        &7| &2Kaynak Puanları&8: &6%kingdoms_nation_resource_points%
+        &7| &2Başkent{$colon} &6%capital%
+        &7| &2Spawn{$colon} &6%kingdoms_nation_spawn%
+        &7| &2Nexus{$colon} &6%kingdoms_nation_nexus%
+        &7| &2İtibaren{$colon} &6%kingdoms_date_nation_since%
+        &7| &2Olabilir{$colon} &6%kingdoms_nation_might%
+        &7| &2Kalkan{$colon} &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Banka{$colon} &6$%fancy@kingdoms_nation_bank% &8| &2Tax{$colon} &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
+        &7| &2Kaynak Puanları{$colon} &6%kingdoms_nation_resource_points%
 
-        &7| &2Krallıklar&8:
+        &7| &2Krallıklar{$colon}
         %kingdoms%
       message: |
         COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
-        &7| &2Kral&8: &6%king_status%
-        &7| &2Ulus&8: &6%kingdoms_nation_name%
-        &7| &2İtibaren&8: &6%kingdoms_date_nation_since%
-        &7| &2Olabilir&8: &6%kingdoms_might%
-        &7| &2Kalkan&8: &6%time@kingdoms_nation_shield_time_left%
-        &7| &2Banka&8: &6%fancy@kingdoms_nation_bank%
-        &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-        &7| &2Kaynak Puanları&8: &6%kingdoms_resource_points%
+        &7| &2Kral{$colon} &6%king_status%
+        &7| &2Ulus{$colon} &6%kingdoms_nation_name%
+        &7| &2İtibaren{$colon} &6%kingdoms_date_nation_since%
+        &7| &2Olabilir{$colon} &6%kingdoms_might%
+        &7| &2Kalkan{$colon} &6%time@kingdoms_nation_shield_time_left%
+        &7| &2Banka{$colon} &6%fancy@kingdoms_nation_bank%
+        &7| &2Araziler{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
+        &7| &2Kaynak Puanları{$colon} &6%kingdoms_resource_points%
 
-        &7| &2Krallıklar&8:
+        &7| &2Krallıklar{$colon}
         %kingdoms%
       allies: |
-        COMPLEX:&7| &2Müttefikler&8:
+        COMPLEX:&7| &2Müttefikler{$colon}
         &e%allies%
       truces: |
-        COMPLEX:&7| &2Ateşkes&8:
+        COMPLEX:&7| &2Ateşkes{$colon}
         %truces%
       enemies: |
-        COMPLEX:&7| &2Düşmanlar&8:
+        COMPLEX:&7| &2Düşmanlar{$colon}
         &e%enemies%
       kingdoms: |
-        COMPLEX:hover:{&6%kingdoms_kingdom_name%;&2Üyeler&8: &6%kingdoms_members%
-        &2Kral&8: &6%kingdoms_king%
-        &2Araziler&8: &6%kingdoms_claims%}
+        COMPLEX:hover:{&6%kingdoms_kingdom_name%;&2Üyeler{$colon} &6%kingdoms_members%
+        &2Kral{$colon} &6%kingdoms_king%
+        &2Araziler{$colon} &6%kingdoms_claims%}
       relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%
     not:
       in-nation: '&cBelirtilen krallık/oyuncu ulusta değil.'
@@ -545,11 +545,11 @@ command:
       not-claimed: '&cUlusunuzu yalnızca claimli topraklarda belirleyebilirsin.'
       others-land: '&cUlusunu sadece başkentte belirleyebilirsin.'
       nexus-land: '&cKrallığınızı sadece nexus topraklarına yerleştirebilirsiniz'
-      set: '&aUlus spawn noktası ayarlandı&8: &6%x%&7, &6%x%&7, &6%z%'
+      set: '&aUlus spawn noktası ayarlandı{$colon} &6%x%&7, &6%x%&7, &6%z%'
     unsetspawn:
       description: '&6Ulusunun spawnını kaldırır.'
       not-set: '&cUlusun spawnı ayarlanmadı.'
-      success: '&aUlus spawnı kaldırıldı&8: &6%x%&7, &6%y%&7, &6%z%'
+      success: '&aUlus spawnı kaldırıldı{$colon} &6%x%&7, &6%y%&7, &6%z%'
     spawn:
       description: '&6Ulusunun spawnına ışınlan.'
       already-teleporting: '&cZaten ulusun spawnına ışınlanıyor...'
@@ -563,8 +563,8 @@ command:
       help: |
         COMPLEX:&2Yeni nexusu ayarlamak için bloğa sağ hover:
         Bağlantı noktası modunu devre dışı bırakmak için şunu yapın: hover:{&6/k nation nexus;&cDe-aktif;/k nation nexus} &2tekrar.
-      actionbar-activated: '&6Nexus Modu&8: &2Aktif'
-      actionbar-deactivated: '&6Nexus Modu&8: &cDe-aktif'
+      actionbar-activated: '&6Nexus Modu{$colon} &2Aktif'
+      actionbar-deactivated: '&6Nexus Modu{$colon} &cDe-aktif'
       disabled: '&cNexus modu de-aktif yapıldı.'
       open-nexus-permission: '&cNexus''u uzaktan açma izniniz yok.'
       setting-kingdom: '&cZaten krallığınızın nexusunu belirliyorsunuz.'
@@ -588,7 +588,7 @@ command:
       announce: '&e%player%, &e%kingdoms_nation_name% &2ulusunu dağıttı'
     invite:
       description: '&6Ulusa katılmaları için bir krallığa davetiye gönderir.'
-      usage: '&4Kullanım&8: &e/k nation invite <krallık> [süre sonu]'
+      usage: '&4Kullanım{$colon} &e/k nation invite <krallık> [süre sonu]'
       invited: |
         COMPLEX:&6%player% &2seni &6%nation% &2ulusuna davet etti.
             hover:{&2/k nation accept ile kabul et;&2Kabul Et;/k nation accept}
@@ -615,7 +615,7 @@ command:
       multiple-invites: '&cBirden fazla davetiniz var, lütfen katılmak istediğiniz ulusun adını belirtin.'
     join:
       description: '&6Katılmak için davetiye gerektirmeyen bir Ulusa katılın.'
-      usage: '&4Kullanım&8: &e/k nation join <ulus>'
+      usage: '&4Kullanım{$colon} &e/k nation join <ulus>'
       joined: '&6%kingdom% &2ulusa katıldı.'
       already-in-nation: '&cKrallığınız zaten bir ulusa sahip.'
       nation-not-found: '&e%nation% &cbulunamadı.'
@@ -640,9 +640,9 @@ command:
       no-more-pages: '&cYüklenecek başka sayfa yok.'
       negative: '&cNegatif sayfalar gösterilemez.'
       entry: |
-        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Üyeler&8: &6%kingdoms_nation_kingdoms%
-        &7♦ &2Kaynak Puanları&8: &6%fancy@kingdoms_nation_resource_points%
-        &7♦ &2Banka&8: &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
+        COMPLEX:&8♦ &7%rank%. hover:{&2%kingdoms_nation_name%;&7♦ &2Üyeler{$colon} &6%kingdoms_nation_kingdoms%
+        &7♦ &2Kaynak Puanları{$colon} &6%fancy@kingdoms_nation_resource_points%
+        &7♦ &2Banka{$colon} &6$%fancy@kingdoms_nation_bank%} &7- &6%fancy@kingdoms_nation_might%
     kick:
       description: '&6Ulusunuzdan bir krallığı atar.'
       person: '&cKrallığınız &e%kicker% &ctarafından &e%nation% &culustan atıldı'
@@ -672,21 +672,21 @@ command:
       not-in-kingdom: '&e%promoted% &csenin ulusunda değil.'
       cant-promote: '&e%promoted% &cterfi edilemez'
       king: '&cOyuncuyu kral yapmak için &e/k king &cyaz'
-      usage: '&4Kullanım&8: &e/k nation promote <oyuncu>'
+      usage: '&4Kullanım{$colon} &e/k nation promote <oyuncu>'
     demote:
       description: '&6Ulusunuzdaki bir üyenin rütbesini düşürür.'
       demoted: '&e%demoted% &culus için &e%player% &ctarafından &9%rank% &crütbesine düşürüldü.'
       not-in-kingdom: '&e%demoted% &csenin krallığında değil.'
       cant-demote: '&e%demoted% &c adlı oyuncunun rütbesini düşüremezsin'
       member: '&cBu oyuncunun üye rütbesi var.'
-      usage: '&4Kullanım&8: &e/k nation demote <isim>'
+      usage: '&4Kullanım{$colon} &e/k nation demote <isim>'
     description: '&6Kullanılabilir ulus komutlarını gösterir.'
     broadcast-format: |
 
       &8[&6%kingdoms_nation_name%&7-&6%kingdoms_kingdom_name% &lBroadcast&8]&7|&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&7-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% &c%player%&8] &6%message%
     ally:
       description: '&6Bir ulusa ittifak isteği gönderin.'
-      usage: '&4Kullanım&8: &e/k nation ally &2<nation>'
+      usage: '&4Kullanım{$colon} &e/k nation ally &2<nation>'
       sender: '&6%nation% &2için bir ittifak isteği gönderdi'
       limit: '&e%max% &culustan daha fazla müttefik olamazsın.'
       already: '&e%nation% &cile zaten müttefiksiniz'
@@ -700,7 +700,7 @@ command:
       another-request: '&e%nation% &csize bir &e%relation% &cilişki isteği gönderdi.'
     truce:
       description: '&6Bir ulusa ateşkes talebi gönderin.'
-      usage: '&4Kullanım&8: &e/k nation truce &2<nation>'
+      usage: '&4Kullanım{$colon} &e/k nation truce &2<nation>'
       sender: '&6%nation% &2adlı kişiye ateşkes isteği gönderdi'
       limit: '&e%max% &culustan fazla ateşkes yapamazsınız.'
       already: '&e%nation% &cile zaten ateşkesiniz var'
@@ -714,7 +714,7 @@ command:
       another-request: '&e%nation% &csize bir &e%relation% &cilişki isteği gönderdi.'
     enemy:
       description: '&6Bir ulusu düşman belirler'
-      usage: '&4Kullanım&8: &e/k nation nation &2<nation>'
+      usage: '&4Kullanım{$colon} &e/k nation nation &2<nation>'
       limit: '&e%max% &culustan fazla düşman olamazsın.'
       already: '&e%nation% &cile zaten düşmansınız'
       self: '&cKendi ulusunu düşman yapamazsınız.'
@@ -723,7 +723,7 @@ command:
         &2Senin krallığın, o ulustaki her krallığı otomatik olarak düşman etti.
     revoke:
       description: '&6Bir ulusla olan ilişkiyi iptal edin.'
-      usage: '&4Kullanım&8: &e/k nation revoke &2<nation>'
+      usage: '&4Kullanım{$colon} &e/k nation revoke &2<nation>'
       sender: |
         &cUlusunuz &e%nation% &cile olan ilişkilerinizi iptal etti Bu ulustaki krallıklardan herhangi biriyle olan tüm ilişkileriniz otomatik olarak iptal edildi.
       no-relation: '&e%nation% &cile hiçbir ilişkiniz yok'
@@ -744,53 +744,53 @@ command:
     name-numbers: '&cKrallık ismi rakam içeremez.'
     name-already-in-use: '&cBaşka bir krallık bu ismikullanıyor.'
     cooldown: '&cYeniden adlandırmak için &e%cooldown% &csaniye beklemelisin'
-    usage: '&4Kullanım&8: &e/k rename <isim>'
-    success: '&6%player% &2Krallı adı artık&8: &6%name%'
+    usage: '&4Kullanım{$colon} &e/k rename <isim>'
+    success: '&6%player% &2Krallı adı artık{$colon} &6%name%'
     cost: '&cKrallık adını değiştirmek için, krallık bankasının &e$%cost% &paraya ihtiyacı var.'
     description: '&6Krallığınızı yeniden adlandırın.'
   pvp:
     description: '&6Krallık müttefiği pvp ayarını belirle.'
-    'on': '&6PvP Modu&8: &2AKTIF'
-    'off': '&6PvP Modu&8: &cDE-AKTIF'
+    'on': '&6PvP Modu{$colon} &2AKTIF'
+    'off': '&6PvP Modu{$colon} &cDE-AKTIF'
     others-permission: '&cBaşkalarının pvp modunu ayarlama izniniz yok.'
   resourcepoints:
     description: '&6Krallığınızdan kaynak puanları yatırın veya çekin.'
-    usage: '&cKullanım&8: &e/Kingdoms rp <deposit/withdraw/transfer> [kingdom/nation] <miktar>'
+    usage: '&cKullanım{$colon} &e/Kingdoms rp <deposit/withdraw/transfer> [kingdom/nation] <miktar>'
     service-unavailable: '&cBanka hizmetleri şu anda kullanılamıyor.'
     unknown-transaction: '&cBilinmeyen işlem &e%transaction%'
     not-enough-resource-points: '&cKrallığında &e%amount% &ckaynak puanı yok.'
     not:
       enough-money: '&e$%amount% &ckadar paran yok.'
     cannot:
-      convert: '&cBir kaynak puanı için en az &e$%least% &8(&cDeğer&8: &e%worth%&8) &cyatırman gerek.'
+      convert: '&cBir kaynak puanı için en az &e$%least% &8(&cDeğer{$colon} &e%worth%&8) &cyatırman gerek.'
     deposit:
       success: |
         &6%amount% &2karşılığında &6$%translated% &2değerinde kaynak puanı yatırdın
-        &2Yeni bakiyeniz&8: &6%balance%
+        &2Yeni bakiyeniz{$colon} &6%balance%
       disabled: '&cKaynak puanı yatıramazsın.'
       description: '&6Paranızı kullanarak kaynak puanları alın.'
-      usage: '&4Kullanım&8: &e/k rp deposit &2<resource points>'
+      usage: '&4Kullanım{$colon} &e/k rp deposit &2<resource points>'
     withdraw:
       disabled: '&cKaynak puanını geri çekemezsin.'
       success: |
         &2Krallıktan &6%translated% &2karşılığında &6%amount% &2kaynak puanı çekildi
-        &2Yeni bakiyeniz&8: &6%balance%
+        &2Yeni bakiyeniz{$colon} &6%balance%
       description: '&6Krallığınızdan kaynak puanlarını geri alarak para kazanın.'
-      usage: '&4Usage&8: &e/k rp withdraw &2<resource points>'
+      usage: '&4Usage{$colon} &e/k rp withdraw &2<resource points>'
       min: '&cEn az &e%min% kaynak puanı &cçekmelisiniz.'
     transfer:
       disabled: '&cKaynak puanlarını aktaramazsınız.'
       success:
         kingdom: |
           &2Ulusunuzdan krallığınıza &6%amount% &2kaynak puanı aktardınız
-          Ulus kaynak puanı&8: &6%fancy@kingdoms_nation_resource_points%
-          &2Krallık kaynak puanı&8: &6%fancy@kingdoms_resource_points%
+          Ulus kaynak puanı{$colon} &6%fancy@kingdoms_nation_resource_points%
+          &2Krallık kaynak puanı{$colon} &6%fancy@kingdoms_resource_points%
         nation: |
           &2Krallığınızdan ulusunuza &6%amount% &2kaynak puanı aktardınız
-          Ulus kaynak puanı&8: &6%fancy@kingdoms_nation_resource_points%
-          &2Krallık kaynak puanı&8: &6%fancy@kingdoms_resource_points%
+          Ulus kaynak puanı{$colon} &6%fancy@kingdoms_nation_resource_points%
+          &2Krallık kaynak puanı{$colon} &6%fancy@kingdoms_resource_points%
       description: '&6Transfer resource points from/to your kingdom/nation.'
-      usage: '&4Kullanım&8: &e/k rp transfer &2<kingdom | nation> <resource points>'
+      usage: '&4Kullanım{$colon} &e/k rp transfer &2<kingdom | nation> <resource points>'
     negative: '&cNegatif kaynak puanları aktaramazsınız...'
     zero: '&cHiçbir şeyi aktaramazsın.'
     converter:
@@ -815,16 +815,16 @@ command:
       limit: '&cKrallığınızın bankası dolu. Sınır: &e%limit%'
       success: |
         &2Krallık bankasına &6$%amount% &2para yatırdın
-        Yeni Bakiyeniz&8: &6%balance%
-        &2Krallık Bankası&8: &6%fancy@kingdoms_bank%
+        Yeni Bakiyeniz{$colon} &6%balance%
+        &2Krallık Bankası{$colon} &6%fancy@kingdoms_bank%
       disabled: '&cPara yatıramazsınız.'
       min: '&cEn az &e$%min% &cyatırmanız gerekiyor'
     withdraw:
       disabled: '&cPara çekemezsin.'
       success: |
         &2Krallık bankasından &6$%amount% &2para çektin
-        Yeni bakiyeniz&8: &6%balance%
-        &2Krallık Bankası&8: &6%fancy@kingdoms_bank%
+        Yeni bakiyeniz{$colon} &6%balance%
+        &2Krallık Bankası{$colon} &6%fancy@kingdoms_bank%
       min: '&cEn az &e$%min% &cmiktar para çekebilirsiniz.'
   show:
     description: '&6Bir krallık hakkında bilgi gösterir.'
@@ -833,45 +833,45 @@ command:
     message-admin: |
       COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
-      &7| &2Kral&8: &6%king_status%
-      &7| &2Ev&8: &6%kingdoms_kingdom_home%
-      &7| &2Nexus&8: &6%kingdoms_nexus%
-      &7| &2Ulus&8: &6%kingdoms_nation_name%
-      &7| &2Olabilir&8: &6%fancy@kingdoms_might%
-      &7| &2Banka&8: &6$%fancy@kingdoms_bank% &8| &2Tax&8: &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
-      &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
-      &7| &2Kalkan&8: &6%time@kingdoms_shield_time_left%
-      &7| &2İtibaren&8: &6%kingdoms_date_since%
-      &7| &2Üyeler&8: &6%kingdoms_members%&7/&6%kingdoms_max_members%
+      &7| &2Kral{$colon} &6%king_status%
+      &7| &2Ev{$colon} &6%kingdoms_kingdom_home%
+      &7| &2Nexus{$colon} &6%kingdoms_nexus%
+      &7| &2Ulus{$colon} &6%kingdoms_nation_name%
+      &7| &2Olabilir{$colon} &6%fancy@kingdoms_might%
+      &7| &2Banka{$colon} &6$%fancy@kingdoms_bank% &8| &2Tax{$colon} &6$%fancy@kingdoms_tax% &8- &6$%fancy@kingdoms_server_kingdom_tax%
+      &7| &2Araziler{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
+      &7| &2Kaynak Puanları{$colon} &6%fancy@kingdoms_resource_points%
+      &7| &2Kalkan{$colon} &6%time@kingdoms_shield_time_left%
+      &7| &2İtibaren{$colon} &6%kingdoms_date_since%
+      &7| &2Üyeler{$colon} &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
       COMPLEX:&8&m---------------=(&c&l %kingdoms_kingdom_name% &8&m)=---------------
 
-      &7| &2Kral&8: &6%king_status%
-      &7| &2Ulus&8: &6%kingdoms_nation_name%
-      &7| &2Olabilir&8: &6%kingdoms_might%
-      &7| &2İtibaren&8: &6%kingdoms_date_since%
-      &7| &2Kalkan&8: &6%time@kingdoms_shield_time_left%
-      &7| &2Araziler&8: &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
-      &7| &2Kaynak Puanları&8: &6%kingdoms_resource_points%
+      &7| &2Kral{$colon} &6%king_status%
+      &7| &2Ulus{$colon} &6%kingdoms_nation_name%
+      &7| &2Olabilir{$colon} &6%kingdoms_might%
+      &7| &2İtibaren{$colon} &6%kingdoms_date_since%
+      &7| &2Kalkan{$colon} &6%time@kingdoms_shield_time_left%
+      &7| &2Araziler{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
+      &7| &2Kaynak Puanları{$colon} &6%kingdoms_resource_points%
 
-      &7| &2Üyeler&8:
+      &7| &2Üyeler{$colon}
       %members%
     allies: |
-      COMPLEX:&7| &2Müttefikler&8:
+      COMPLEX:&7| &2Müttefikler{$colon}
       &e%allies%
     truces: |
-      COMPLEX:&7| &2Ateşkes&8:
+      COMPLEX:&7| &2Ateşkes{$colon}
       %truces%
     enemies: |
-      COMPLEX:&7| &2Düşmanlar&8:
+      COMPLEX:&7| &2Düşmanlar{$colon}
       &e%enemies%
     online-prefix: |
-      COMPLEX:hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Katıldı&8: &6%kingdoms_date_joined%
-      &2Bağışlar&8: &6%kingdoms_total_donations%
-      &2Son Bağış&8: &6%kingdoms_date_last_donation_time%
-      &2Rütbe&8: &6%kingdoms_rank_name%}
+      COMPLEX:hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%name%;&2Katıldı{$colon} &6%kingdoms_date_joined%
+      &2Bağışlar{$colon} &6%kingdoms_total_donations%
+      &2Son Bağış{$colon} &6%kingdoms_date_last_donation_time%
+      &2Rütbe{$colon} &6%kingdoms_rank_name%}
     offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%name%'
     relation: COMPLEX:&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%
   claim:
@@ -884,10 +884,10 @@ command:
     success: '&6%x%&7, &6%z% &2artık krallık toprağı.'
     fill:
       in-claimed-land: '&cDolduramazsınız, çünkü içinde bulunduğunuz arazi claimli.'
-      failed: '&cClaimleme denemesi başarısız oldu&8: &e%x%&7, &e%z%'
+      failed: '&cClaimleme denemesi başarısız oldu{$colon} &e%x%&7, &e%z%'
       max-fails: '&cÇok fazla başarısızlık nedeniyle claim doldurma işlemini durdurdu.'
       max-claims: '&e%lands% &carazisini claimleyemezsin.'
-      success: '&2Claimlenen yer&8: &6%x%&7, &6%z%'
+      success: '&2Claimlenen yer{$colon} &6%x%&7, &6%z%'
       permission: '&cDoldurma komutunu kullanma izniniz yok.'
       description: '&2Taleplerle işaretlenmiş bir şekil içindeki tüm arazileri talep edin(claimleyin).'
       done: '&2Arazileri claimlemek için fareyle üzerine gelin hover:{&6/k claim confirm;&2Execute;/k
@@ -901,16 +901,16 @@ command:
     chunk:
       invalid: '&cChunk için geçerli bir Z rakamı gir.'
       permission: '&cChunk koordinatlı arazileri claimlemek için yetkin yok.'
-      invalid-axis: '&cBilinmeyen Z rakamı &8: &e%z%'
-      usage: '&4Kullanım&8: &e/k claim [x] <z>'
-      max-distance: '&cÇok uzaktaki bir araziyi claimlemeye çalışıyorsunuz&8: &e%distance% &7> &e%max%'
+      invalid-axis: '&cBilinmeyen Z rakamı {$colon} &e%z%'
+      usage: '&4Kullanım{$colon} &e/k claim [x] <z>'
+      max-distance: '&cÇok uzaktaki bir araziyi claimlemeye çalışıyorsunuz{$colon} &e%distance% &7> &e%max%'
     auto:
       permission: '&cOtomatik arazi claimleme yetkin yok.'
       claim:
         'on': '&6Oto claim &aAKTIF&6. Şimdi yürürken toprak claimleyeceksin.'
         'off': '&6Oto claim &cDE-AKTIF&6.'
       description: '&2Yürürken otomatik olarak arazi claimleyin.'
-      usage: '&4Kullanım&8: &e/k claim auto &2<player>'
+      usage: '&4Kullanım{$colon} &e/k claim auto &2<player>'
     need-rp: '&cArazi claimlemek için &e%cost% &ckaynak puanına ihtiyacın var!'
     confirmation: |
       &cKrallığınızın &e%rp% &ckaynak puanı ve &e%money% &cpara ödemesi gerekiyor.
@@ -921,26 +921,26 @@ command:
     cant-overclaim: '&cBu krallığı tekrardan sahiplenemezsin'
     square:
       description: '&2Çevrenizde belirli bir yarıçapa sahip bir kare claimleyin.'
-      usage: '&4Kullanım&8: &e/k claim square &2<radius>'
+      usage: '&4Kullanım{$colon} &e/k claim square &2<radius>'
       radius:
-        invalid: '&cBelirtilen kare yarıçap geçersiz&8: &e%radius%'
-        disallowed: '&cBelirtilen kare yarıçap en az &e2 &colmalı ve &e%max% &cdeğerinden küçük olmalıdır&8:
+        invalid: '&cBelirtilen kare yarıçap geçersiz{$colon} &e%radius%'
+        disallowed: '&cBelirtilen kare yarıçap en az &e2 &colmalı ve &e%max% &cdeğerinden küçük olmalıdır{$colon}
           &e%radius%'
       done: '&2Arazileri claimlemek için fareyle üzerine gelin hover:{&6/k claim confirm;&2Execute;/k
         claim confirm} .'
     line:
       description: '&2Bir yönde düz bir çizgi claimleyin.'
-      usage: '&4Kullanım&8: &e/k claim line <distance>'
-      invalid-direction: '&cGeçersiz yön&8: &e%direction%'
+      usage: '&4Kullanım{$colon} &e/k claim line <distance>'
+      invalid-direction: '&cGeçersiz yön{$colon} &e%direction%'
       max-distance: '&cMaksimum claim mesafesi: &e%max%'
       min-distance: '&cMinimum claim mesafesi: &e%min%'
       done: '&2Arazileri talep etmek için fareyle üzerine gelin hover:{&6/k claim confirm;&2Execute;/k
         claim confirm} .'
     clipboard:
       description: '&6Onaylamadan önce claim seçiminizi değiştirin.'
-      usage: '&4Kullanım&8: &e/k claim clipboard [add/remove | clear] <x> <z>'
-      different-world: '&cPanonuz şu dünyaya aittir:&8: &e%world%'
-      unknown-action: '&cBilinmeyen pano eylemi&8: &e%action%'
+      usage: '&4Kullanım{$colon} &e/k claim clipboard [add/remove | clear] <x> <z>'
+      different-world: '&cPanonuz şu dünyaya aittir:{$colon} &e%world%'
+      unknown-action: '&cBilinmeyen pano eylemi{$colon} &e%action%'
       empty: '&cPanoda hiçbir şey yok.'
       added: '&2Panoya &6%x%&7, &6%z% &2 eklendi.'
       already-added: '&e%x%&7, &e%z% &czaten panodaydı.'
@@ -955,15 +955,15 @@ command:
       success: '&2Tüm toprakları başarıyla claimlediniz.'
     corner:
       description: '&6Köşelerden iki konum belirleyin ve her şeyi bir dikdörtgen olarak claimleyin.'
-      usage: '&4Kullanım&8: &e/k claim corner &9[pos1 &7| &9pos2]'
-      max-claims: '&cBu komutla talep edilebilecek maksimum arazi miktarı &e%max% &cmevcut talep&8: e%claims%'
+      usage: '&4Kullanım{$colon} &e/k claim corner &9[pos1 &7| &9pos2]'
+      max-claims: '&cBu komutla talep edilebilecek maksimum arazi miktarı &e%max% &cmevcut talep{$colon} e%claims%'
       set:
-        pos1: '&2İlk köşe konumu chunk olarak belirlendi&8: &6%chunkx%&7, &6%chunkz%'
-        pos2: '&2İkinci köşe konumu chunk olarak belirlendi:&8: &6%chunkx%&7, &6%chunkz%'
+        pos1: '&2İlk köşe konumu chunk olarak belirlendi{$colon} &6%chunkx%&7, &6%chunkz%'
+        pos2: '&2İkinci köşe konumu chunk olarak belirlendi:{$colon} &6%chunkx%&7, &6%chunkz%'
   unclaim:
     description: '&6Üstünde durduğun arazinin claimini kaldır.'
     success: '&2Arazi claimi iptal edildi: &6%x%&7, &6%z%'
-    disconnection: '&cIptal etmek istediğiniz claimin bağlantısı şu lokasyonda kesilecektir&8: &e%x%&7,
+    disconnection: '&cIptal etmek istediğiniz claimin bağlantısı şu lokasyonda kesilecektir{$colon} &e%x%&7,
       &e%z%'
     not-claimed: '&cBu arazi claimlenmemiş.'
     cooldown: '&cBu arazinin claimini iptal etmek için &e%time% &ckadar bekle'
@@ -994,11 +994,11 @@ command:
     not-claimed: '&cKrallığınızı yalnızca sahip olunan topraklarda ev kurabilirsiniz.'
     others-land: '&cKrallığınızı yalnızca kendi toprağınıza yerleştirebilirsiniz!'
     nexus-land: '&cNexus arazisini sadece krallık evine koyabilirsin'
-    set: '&aKrallık evi ayarlandı &8: &6%x%&7, &6%z%'
+    set: '&aKrallık evi ayarlandı {$colon} &6%x%&7, &6%z%'
   unsethome:
     description: '&6Krallık evini kaldırır.'
     not-set: '&cKrallık evi belirlenmemiş.'
-    success: '&aKrallık evi kaldırıldı&8: &6%x%&7, &6%y%&7, &6%z%'
+    success: '&aKrallık evi kaldırıldı{$colon} &6%x%&7, &6%y%&7, &6%z%'
   home:
     description: '&6Krallık evine ışınlanır.'
     already-teleporting: '&cZaten eve ışınlanılıyor...'
@@ -1018,8 +1018,8 @@ command:
     help: |
       COMPLEX:&2Yeni nexusunu ayarlamak için bloğa sağ hover:.
       Nexusu devre dışı bırakmak için hover::{&6/k nexus;&cDe-aktif;/k nexus} &2tekrar.
-    actionbar-activated: '&6Nexus Modu&8: &2Aktif'
-    actionbar-deactivated: '&6Nexus Modu&8: &cDe-aktif'
+    actionbar-activated: '&6Nexus Modu{$colon} &2Aktif'
+    actionbar-deactivated: '&6Nexus Modu{$colon} &cDe-aktif'
     disabled: '&cNexus modu devre dışı bırakıldı.'
     setting-nation: '&cZaten nexus ayarlanıyor.'
     open-permission: '&cNexus''u uzaktan açma izniniz yok.'
@@ -1055,7 +1055,7 @@ command:
       COMPLEX:&6%player% &2sizi &6%kingdom% &2krallığına davet etti.
           hover::{&2Kabul Et/k accept;&2Accept;/k accept}
           hover::{&cReddet/k decline;&cDecline;/k decline}
-    usage: '&4Kullanım&8: &e/k invite <isim> <krallık>'
+    usage: '&4Kullanım{$colon} &e/k invite <isim> <krallık>'
     announce: '&6%inviter%, &2krallığa &6%invited% &2adlı oyuncuyu davet etti'
     already-joined: '&e%invited% &czaten krallığında.'
     description: '&6Bir oyuncuya krallığa katılma davetiyesi gönderir.'
@@ -1079,7 +1079,7 @@ command:
     multiple-invites: '&cBirden fazla davetiniz var, lütfen katılmak istediğiniz krallığın ismini belirtin.'
   join:
     description: '&6Katılmak için davet gerektirmeyen bir krallığa katılın.'
-    usage: '&4Kullanım&8: &e/k join <krallık>'
+    usage: '&4Kullanım{$colon} &e/k join <krallık>'
     joined: '&6%player% &2krallığa katıldı.'
     already-in-kingdom: '&cZaten bir krallığa üyesin.'
     kingdom-not-found: '&e%kingdom% &cbulunamadı.'
@@ -1132,18 +1132,18 @@ command:
       invaders-needed: '&cEn az &e%invaders% &cişgalcinin çevrimiçi olması gerek.'
     shield:
       defender:
-        kingdom: '&cBu krallık &e%shield% için bir kalkanla korunuyor&8: '
-        nation: '&cBu ulus şunun için bir kalkanla korunmaktadır&8: &e%shield%'
+        kingdom: '&cBu krallık &e%shield% için bir kalkanla korunuyor{$colon} '
+        nation: '&cBu ulus şunun için bir kalkanla korunmaktadır{$colon} &e%shield%'
       invader:
         kingdom: |
-          &cKrallığınız için aktif bir kalkan var:&8: &e%shield% &cİstila ederseniz kalkanınız devre dışı bırakılacak
+          &cKrallığınız için aktif bir kalkan var:{$colon} &e%shield% &cİstila ederseniz kalkanınız devre dışı bırakılacak
           Devam etmek için komutu tekrar yazın.
         nation: |
-          &cUlusunuzun &e%shield% için aktif bir kalkanı var&8: &cİstila edersen kalkanın devre dışı kalacak.
+          &cUlusunuzun &e%shield% için aktif bir kalkanı var{$colon} &cİstila edersen kalkanın devre dışı kalacak.
           Devam etmek için komutu tekrar yazın.
-        kingdom-disabled: '&cKrallığımızın kalkanı devre dışı bırakıldı. Bu süre&8: &e%invader%, &e%kingdom%
+        kingdom-disabled: '&cKrallığımızın kalkanı devre dışı bırakıldı. Bu süre{$colon} &e%invader%, &e%kingdom%
           &ckrallığını istila ettiği için &e%shield%'
-        nation-disabled: '&cUlusunuzun kalkanı devre dışı bırakıldı. Bu süre&8: &e%invader%, &e%kingdom%
+        nation-disabled: '&cUlusunuzun kalkanı devre dışı bırakıldı. Bu süre{$colon} &e%invader%, &e%kingdom%
           &ckrallığını istila ettiği için &e%shield%'
     creative: '&cSadece hayatta kalma modunda istila edebilirsiniz.'
     simuntanous: '&cKrallığınız aynı anda sadece %amount% krallığı işgal edebilir.'
@@ -1152,7 +1152,7 @@ command:
     ceasefire: '&cBu krallığı işgal edemezsin çünkü onlar &e%relation%'
     nation-capital: |
       &cDiğer ulusun tüm krallık nexus topraklarını işgal etmeden önce ulus başkent topraklarını istila edemezsiniz.
-      Aşağıdaki krallık nexuslarının işgal edilmesi gerekiyor&8:
+      Aşağıdaki krallık nexuslarının işgal edilmesi gerekiyor{$colon}
       %kingdoms%
     powercell: '&cbu toprakları işgal etmeden önce istila etmeniz gereken yakında bir güç hücresi var.'
     invading-defender-notify: '&e%invader% &ckrallığınızı istila etmeye başlıyor.'
@@ -1176,13 +1176,13 @@ command:
     no-more-pages: '&cYüklenecek başka sayfa yok.'
     negative: '&cNegatif sayfalar gösterilemez.'
     entry: |
-      COMPLEX:&8♦ &7%rank%. hover::{&2%kingdoms_kingdom_name%;&7♦ &2Üyeler&8: &6%kingdoms_members%
-      &7♦ &2Araziler&8: &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
-      &7♦ &2Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
-      &7♦ &2Banka&8: &6$%fancy@kingdoms_bank%} &7- &6%fancy@kingdoms_might%
+      COMPLEX:&8♦ &7%rank%. hover::{&2%kingdoms_kingdom_name%;&7♦ &2Üyeler{$colon} &6%kingdoms_members%
+      &7♦ &2Araziler{$colon} &6%kingdoms_claims%&7/&6%kingdoms_max_claims%
+      &7♦ &2Kaynak Puanları{$colon} &6%fancy@kingdoms_resource_points%
+      &7♦ &2Banka{$colon} &6$%fancy@kingdoms_bank%} &7- &6%fancy@kingdoms_might%
   map:
     description: '&6Çevrenizdeki krallıkların ve yapıların bir haritasını gösterir.'
-    usage: '&4Kullanım&8: &e/k map [auto/height] [width]'
+    usage: '&4Kullanım{$colon} &e/k map [auto/height] [width]'
     kingdom-player-only: '&cHaritayı sadece krallığı olan oyuncular kullanabilir.'
     invalid-height: '&cGeçersiz yükseklik numarası &e%height% &cVarsayılan ayar kullanılıyor.'
     invalid-width: '&cGeçersiz genişlik numarası &e%width% &cVarsayılan ayar kullanılıyor.'
@@ -1195,24 +1195,24 @@ command:
     size:
       reset: '&2Harita boyutunuz sıfırlandı.'
       permission: '&cHarita boyutunuzu değiştirme izniniz yok.'
-      changed: '&2Harita boyutunuz &7(&6Height&8: &9%kingdoms_map_height% &7| &6Width&8: &9%kingdoms_map_width%&7)
-        &2to &7(&6Height&8: &9%new_height% &7| &6Width&8: &9%new_width%&7) olarak değiştirildi'
+      changed: '&2Harita boyutunuz &7(&6Height{$colon} &9%kingdoms_map_height% &7| &6Width{$colon} &9%kingdoms_map_width%&7)
+        &2to &7(&6Height{$colon} &9%new_height% &7| &6Width{$colon} &9%new_width%&7) olarak değiştirildi'
     settings-description: '&e/k map &6ayarlarını değiştirin.'
   fly:
     description: '&6Kendi arazinizde uçuşu etkinleştirin.'
-    enabled: '&6Uçuş Modu&8: &2AKTIF'
-    disabled: '&6Uçuş Modu&8: &4DE-AKTIF'
+    enabled: '&6Uçuş Modu{$colon} &2AKTIF'
+    disabled: '&6Uçuş Modu{$colon} &4DE-AKTIF'
     not-allowed: '&e%kingdom% bölgesinde uçamazsınız'
     unclaimed: '&cSadece uçmaya izin veren topraklarda uçabilirsiniz.'
     own-enemy-nearby: '&cUçamazsın, yakınlarda düşmanlar var.'
-    usage: '&4Usage&8: &e/k fly &9[player]'
+    usage: '&4Usage{$colon} &e/k fly &9[player]'
     others-permission: '&cBaşkalarının uçuş durumunu ayarlama izniniz yok.'
     cant-afford: '&cUçuşu etkinleştirmek için &e$%money% &cparaya ihtiyacınız var.'
     cant-afford-kingdom: '&cKrallığınızın uçuşu etkinleştirmek için $%amount%''a ihtiyacı var.'
   kick:
     person: '&e%kicker% &ctarafından &e%kingdom% &ckrallığından atıldın'
     description: '&6Krallığınızdan bir üye atar.'
-    usage: '&4Kullanım&8: &e/k kick <isim> [silent]'
+    usage: '&4Kullanım{$colon} &e/k kick <isim> [silent]'
     announce: '&e%kicked%, &e%kicker% &2tarafından atıldı'
     self: '&cKendini atamazsın...'
     not-in-kingdom: '&cBelirtilen oyuncu krallığınızda değil.'
@@ -1265,7 +1265,7 @@ command:
     description: '&6Krallığınızdaki mail yönetin.'
     box-description: '&6Mevcut krallık mail kutunuzu açın.'
     send-description: '&6Krallığınız için bir mail bırakın.'
-    send: '&6%player% &2yeni bir posta gönderdi&8: &6%message%'
+    send: '&6%player% &2yeni bir posta gönderdi{$colon} &6%message%'
     send-usage: /k mail send <mesaj>
     send-max: |
       &6%mails% &2mailden fazla mail gönderemezsin.
@@ -1292,7 +1292,7 @@ command:
     limit: '&cYou can''t ally more than &e%max% &ckingdoms.'
   enemy:
     description: '&6Bir krallığı düşmanın yap.'
-    usage: '&4Kullanım&8: &e/k enemy <krallık>'
+    usage: '&4Kullanım{$colon} &e/k enemy <krallık>'
     kingdom-not-found: '&e%kingdom% &cbulunamadı.'
     already: '&e%kingdom% &cile zaten düşmansınız'
     self: '&cKendi krallığını düşman yapamazsın...'
@@ -1323,7 +1323,7 @@ command:
     description: '&6Krallık sohbet kanallarını değiştirin.'
     usage: /k chat <kanal>
     already-in-channel: '&cZaten &6%channel% &ckanalında sohbet ediyorsun '
-    unknown-channel: 'COMPLEX:&cBilinmeyen kanal! Lütfen seç&8: &fhover::{Global;Global;/k c g}&7, &2hover::{&2Kingdom;&2Kingdom;/k
+    unknown-channel: 'COMPLEX:&cBilinmeyen kanal! Lütfen seç{$colon} &fhover::{Global;Global;/k c g}&7, &2hover::{&2Kingdom;&2Kingdom;/k
       c k}&7, &ahover::{&aAlly;&aAlly;/k c a}&7, &ehover::{&eTruce;&eTruce;/k c t} &7or &ehover:{&9Nation;&9Nation;/k
       c n}'
     changed: '&2Şimdi konuşmadasın %kingdoms_chat_channel_color%%kingdoms_chat_channel%'
@@ -1353,28 +1353,28 @@ command:
     not-in-kingdom: '&e%promoted% &csenin krallığında değil.'
     cant-promote: '&e%promoted% &cterfi edilemez'
     king: '&cOyuncuyu kral yapmak için: &e/k king'
-    usage: '&4Kullanım&8: &e/k promote <isim>'
+    usage: '&4Kullanım{$colon} &e/k promote <isim>'
   demote:
     description: '&6Krallığınızdaki bir üyeyi rütbe düşürür.'
     demoted: '&e%demoted%, &e%player% &ctarafından &9%rank% &crütbesine indirildi'
     not-in-kingdom: '&e%demoted% &csenin krallığında değil.'
     cant-demote: '&e%demoted% &cAdlı kullanıcının rütbesini düşüremezsin '
     member: '&cBu oyuncu üye rütbesine sahip.'
-    usage: '&4Kullanım&8: &e/k demote <isim>'
+    usage: '&4Kullanım{$colon} &e/k demote <isim>'
     cant-demote-king: '&cYou can''t demote the king &e%demoted%'
   visualize:
     description: '&6Kalıcı göstergeler ayarlayın veya devre dışı bırakın.'
     usage: /k visualize [permanent|toggle]
     display: |
-      &7| &2Lokasyon&8: &6%x%&7, &6%z%
-      &7| &2Krallık&8: &6%kingdom%
+      &7| &2Lokasyon{$colon} &6%x%&7, &6%z%
+      &7| &2Krallık{$colon} &6%kingdom%
     admin-display: |
-      COMPLEX:&7| &2Lokasyon&8: &6%x%&7, &6%z%
-      &7| &2Kralıkk&8: &6%kingdom%
-      &7| &2Yapısı&8: &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Işınlanma;/tp %sx% %sy% %sz%}
-      &7| &2Taretler&8:
+      COMPLEX:&7| &2Lokasyon{$colon} &6%x%&7, &6%z%
+      &7| &2Kralıkk{$colon} &6%kingdom%
+      &7| &2Yapısı{$colon} &5%structure% &7- hover:{&6%sx%&7, &6%sy%&7, &6%sz%;&2Işınlanma;/tp %sx% %sy% %sz%}
+      &7| &2Taretler{$colon}
       %turrets%
-      &7| &2Koruma Tabelaları&8:
+      &7| &2Koruma Tabelaları{$colon}
       %protection-signs%
     toggle:
       description: '&6Arazi göstergelerini değiştirin (görselleştiriciler veya işaretçiler)'
@@ -1382,10 +1382,10 @@ command:
       disabled: '&2Göstergeler &cDE-AKTIF'
     markers:
       description: '&6Arazi işaretçilerinizin türünü değiştirin.'
-      usage: '&4Kullanım&8: &e/k visualize markers <tür>'
+      usage: '&4Kullanım{$colon} &e/k visualize markers <tür>'
       already-using: '&cZaten &e%markers% &cişaretleyici türünü kullanıyorsun.'
-      changed: '&2Arazi işaretleriniz şu şekilde değiştirildi&8: &6%markers%'
-      invalid: '&cBelirtilen arazi işaretçileri bulunamıyor&8: &e%markers%'
+      changed: '&2Arazi işaretleriniz şu şekilde değiştirildi{$colon} &6%markers%'
+      invalid: '&cBelirtilen arazi işaretçileri bulunamıyor{$colon} &e%markers%'
     permanent:
       description: '&6Arazi göstergesinin kalıcı olması gerekip gerekmediğini değiştirin.'
       enabled: '&2Kalıcı göstergeler &6AKTIF.'
@@ -1396,9 +1396,9 @@ command:
   tradable:
     description: '&6Kaynak puanlardaki eşyanın değerini gösterir.'
     message: |
-      &2Elindeki eşyanın değeri&8: &6%amount% * %worth% = %total%
+      &2Elindeki eşyanın değeri{$colon} &6%amount% * %worth% = %total%
 
-      &6Özel Eşyalar&8:
+      &6Özel Eşyalar{$colon}
       %list%
     item: '&2%material%&7: &9%worth%'
     not-special: '&cözel değil'
@@ -1413,7 +1413,7 @@ command:
       disband:
         announce: '&e%nation% &6ulusu dağıldı.'
         description: '&6Bir ulusu dağıtır.'
-        usage: '&4Kullanım&8: &e/k admin disband &2<nation> &9[silent]'
+        usage: '&4Kullanım{$colon} &e/k admin disband &2<nation> &9[silent]'
         success: '&6%nation% &2ulus dağıtıldı.'
     testsound:
       description: '&6Yapılandırmada kullanacağınız bir ses dizesini test edin.'
@@ -1422,16 +1422,16 @@ command:
     test:
       description: '&6Bir metni hex renk kodlarıyla, karmşaık mesajlarla, satır sonları ve placeholderlar
         ile test edin.'
-      usage: '&cKullanım&8: &e/k admin test <mesaj>'
+      usage: '&cKullanım{$colon} &e/k admin test <mesaj>'
     evaluate:
       description: '&6placeholderlar ve matematik işlevleriyle bir ifadeyi değerlendirir.'
-      usage: '&cKullanım&8: &e/k admin evaluate <ifade>'
+      usage: '&cKullanım{$colon} &e/k admin evaluate <ifade>'
       failed: |
-        &cÇevrilmiş İfade&8: &6%translated%
-        &cHata&8: &e%result%
+        &cÇevrilmiş İfade{$colon} &6%translated%
+        &cHata{$colon} &e%result%
       evaluated: |
-        &2Çevrilmiş İfade&8: &6%translated%
-        &2Değerlendirilmiş İfade&8: &6%result%
+        &2Çevrilmiş İfade{$colon} &6%translated%
+        &2Değerlendirilmiş İfade{$colon} &6%result%
     claim:
       description: '&6Şu anda bir krallık için bulunduğunuz ülkeyi zorla alın.'
       usage: /k admin claim <krallık>
@@ -1444,7 +1444,7 @@ command:
       no-kingdom: '&cBelirtilen kullanıcının krallığı yok.'
       success: '&6%name% adlı oyuncunun rütbesi &6%previous_rank%''den &6%rank% &2olarak değiştirildi'
       same-rank: '&cThat player already has that rank.'
-      success-king: '&6%kingdom% &2kingdom''s new king is &8: &6%name%'
+      success-king: '&6%kingdom% &2kingdom''s new king is {$colon} &6%name%'
       cant-demote-king: '&e%player% &cis the king of &e%kingdom_name% &cyou need to set the king first.'
     nexus:
       description: '&6Krallık Menüsünü Açar.'
@@ -1453,22 +1453,22 @@ command:
       tp: '&6%kingdom% krallığının &2nexusuna ışınlanıyor...'
     toggle:
       description: '&6Kendiniz için admin modunu değiştirin.'
-      'on': '&6Admin modu&8: &2AKTIF'
-      'off': '&6Admin modu&8: &cDE-AKTIF'
+      'on': '&6Admin modu{$colon} &2AKTIF'
+      'off': '&6Admin modu{$colon} &cDE-AKTIF'
     spy:
       description: '&6Krallık sohbetinde casusluk.'
-      'on': '&6Sohbet casus modu&8: &2AKTIF'
-      'off': '&6Sohbet casus modu&8: &cDE-AKTIF'
+      'on': '&6Sohbet casus modu{$colon} &2AKTIF'
+      'off': '&6Sohbet casus modu{$colon} &cDE-AKTIF'
     dynmap:
       description: '&6Dynmap için farklı eylemler gerçekleştirin.'
       rendering: '&2İşleniyor...'
-      usage: '&cKullanım&8: &e/k admin dynmap <fullrender/update/remove>'
+      usage: '&cKullanım{$colon} &e/k admin dynmap <fullrender/update/remove>'
       dynmap-not-available: '&cDynmap bulunamadı.'
       rendered: '&2Toplam &6%lands% &2arazi işlendi.'
       removed: '&2Toplam &6%lands% &2toprak kaldırıldı.'
     masswar:
       description: '&6Masswar''ı manuel olarak başlat veya bitir.'
-      usage: '&4Kullanım&8: &c/k admin masswar <start/end>'
+      usage: '&4Kullanım{$colon} &c/k admin masswar <start/end>'
       running: '&cMasswar zaten çalışıyor.'
       not-running: '&cMasswar çalışmıyor.'
     daily-checks:
@@ -1476,71 +1476,71 @@ command:
       run: '&6Günlük kontroller yapılıyor...'
     resourcepoints:
       description: '&6Bir krallığa kaynak noktası ekle veya al.'
-      usage: '&4Kullanım&8: &e/k admin resourcepoints <krallık> [set/add/remove] <miktar>'
+      usage: '&4Kullanım{$colon} &e/k admin resourcepoints <krallık> [set/add/remove] <miktar>'
       player-no-kingdom: '&cBelirtilen oyuncunun krallığı yok.'
-      done: '&6%kingdom% krallığının &2kaynak puanları&8: &6%rp%'
-      added: '&2Yeni krallık kaynak puanlarınız&8: &6%rp%'
-      invalid-action: '&cGeçersiz &e%action% &ceylem! Kullanım&8: &eadd/remove/set'
+      done: '&6%kingdom% krallığının &2kaynak puanları{$colon} &6%rp%'
+      added: '&2Yeni krallık kaynak puanlarınız{$colon} &6%rp%'
+      invalid-action: '&cGeçersiz &e%action% &ceylem! Kullanım{$colon} &eadd/remove/set'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım'
     bank:
       description: '&6Bir krallık bankasından para ekleyin veya alın.'
       usage: /k admin bank <krallık> [set/add/remove] <miktar>
-      done: '&6%kingdom% krallığının &2yeni bankası&8: &6%fancy@kingdoms_bank%'
-      added: '&2Yeni krallık bankanız&8: &6%fancy@kingdoms_bank%'
-      invalid-action: '&cGeçersiz &e%action% &ceylem! Kullanım&8: &eadd/remove/set'
+      done: '&6%kingdom% krallığının &2yeni bankası{$colon} &6%fancy@kingdoms_bank%'
+      added: '&2Yeni krallık bankanız{$colon} &6%fancy@kingdoms_bank%'
+      invalid-action: '&cGeçersiz &e%action% &ceylem! Kullanım{$colon} &eadd/remove/set'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım'
     join:
       description: '&6Bir kullanıcıyı başka bir krallığa katın'
-      usage: '&cKullanım&8: &e/k admin join <isim> <krallık>'
+      usage: '&cKullanım{$colon} &e/k admin join <isim> <krallık>'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım'
       in-kingdom: |
         COMPLEX:&6%player% &2zaten &6%kingdoms_kingdom_name% &2krallığından
-        &2Devam etmek istiyorsan&8: hover::{&6/k admin join %player% %kingdom% confirm;&2Onaylamak için hover:;/k admin join %player% %kingdom% confirm}
+        &2Devam etmek istiyorsan{$colon} hover::{&6/k admin join %player% %kingdom% confirm;&2Onaylamak için hover:;/k admin join %player% %kingdom% confirm}
       already-in-kingdom: '&6%player% &2zaten &6%kingdom% &2krallığından'
       success: '&6%player% &2artık &6%kingdom% &2krallığından'
     disband:
       announce: '&e%kingdom% &6dağıtıldı.'
       description: '&6Bir krallığı dağıtır.'
-      usage: '&cKullanım&8: &e/k admin disband <kingdom> [silent]'
+      usage: '&cKullanım{$colon} &e/k admin disband <kingdom> [silent]'
       success: '&6%kingdom% &2dağıtıldı.'
     player:
-      found: '&6%name% &8(&7%uuid%&8) &2aşağıdaki krallıklarda&8:'
+      found: '&6%name% &8(&7%uuid%&8) &2aşağıdaki krallıklarda{$colon}'
       kingdom: '&8- &2%kingdoms_kingdom_name% &8(&6%uuid%&8)'
       no-duplicates: '&cBu oyuncunun krallığı kopyalanmamış.'
       description: '&6Bir oyuncunun bilgilerini görüntüleyin.'
-      usage: '&4Usage&8: &e/k admin player &2<player>'
+      usage: '&4Usage{$colon} &e/k admin player &2<player>'
       info: |
-        &7| &2İsim&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
-        &7| &2Admin&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Krallık&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
-        &7| &2Rütbe&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        &7| &2Ulus Rütbesi&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
-        &7| &2İşaretleyicileri Kullanma&8: %visualizer%
-        &7| &2Davetler&8: &6%invites%
-        &7| &2Krallığa Katıldı&8: &6%kingdoms_date_joined%
-        &7| &2Otomatik Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
-        &7| &2Harita Boyutu&8: &6%map_width% &8- &6%map_height%
-        &7| &2Toplam Bağışlar&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_date_last_donation_time%
-        &7| &2Claimler &7(&6%kingdoms_player_claims%&7)&8: %claims%
-        &7| &2Sıkıştırılmış Veri&8: &6%compressed%
+        &7| &2İsim{$colon} &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
+        &7| &2Admin{$colon} %admin% &7| &2Spy{$colon} %spy%
+        &7| &2Krallık{$colon} &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Rütbe{$colon} %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2Ulus Rütbesi{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2İşaretleyicileri Kullanma{$colon} %visualizer%
+        &7| &2Davetler{$colon} &6%invites%
+        &7| &2Krallığa Katıldı{$colon} &6%kingdoms_date_joined%
+        &7| &2Otomatik Claim{$colon} %auto_claim% &7| &2Auto Map{$colon} %auto_map%
+        &7| &2Harita Boyutu{$colon} &6%map_width% &8- &6%map_height%
+        &7| &2Toplam Bağışlar{$colon} &6%kingdoms_total_donations% &7| &2Last Donation{$colon} &6%kingdoms_date_last_donation_time%
+        &7| &2Claimler &7(&6%kingdoms_player_claims%&7){$colon} %claims%
+        &7| &2Sıkıştırılmış Veri{$colon} &6%compressed%
     home:
       not-set: '&e%kingdom% &cbir başlangıç noktası yok.'
       description: '&6Başka bir krallığın evine ışınlan.'
-      usage: '&cKullanım&8: &e/k admin home <kingdom>'
+      usage: '&cKullanım{$colon} &e/k admin home <kingdom>'
       homeless: '&3%kingdom% &ckrallığının bir evi yok.'
       teleported: '&6%kingdom% &2krallığına ışınlandınız.'
     kick:
       not-in-kingdom: '&cO oyuncu bir krallıkta değil.'
       description: '&6Bir oyuncuyu krallıktan kov.'
-      usage: '&4Kullanım&8: &e/k admin kick &2<player>'
+      usage: '&4Kullanım{$colon} &e/k admin kick &2<player>'
       kicked: '&cKicked &e%kicked% &cfrom &e%kingdom%'
-      kicked-king: '&cKicked &e%kicked% &cfrom &e%kingdom% &cthe new king is now &8: &e%king%'
+      kicked-king: '&cKicked &e%kicked% &cfrom &e%kingdom% &cthe new king is now {$colon} &e%king%'
       kicked-disbanded: '&cDisbanded &e%kingdom% kingdom because &e%kicked% &cwas the only member in the
         kingdom.'
     kick-king: '&cAtmaya çalıştınız kişi krallığın kralıdır. Ya krallığı dağıtmalı ya da yeni bir kral
       belirlemelisin.'
     hologram:
-      usage: '&cKullanım&8: &e/k admin hologram <alan>'
+      usage: '&cKullanım{$colon} &e/k admin hologram <alan>'
       removed: '&2Toplam &6%removed% &2hologram kaldırıldı.'
       description: '&6Çevrenizdeki sorunlu hologramları kaldırın.'
     unclaim:
@@ -1551,43 +1551,43 @@ command:
       description: '&6Bir krallığın maksimum arazi değiştiricisini değiştirin.'
       usage: /k admin maxLandModifier <krallık> [set/add/remove] <miktar>
       success: '&6%kingdom% &2için maksimum arazi değiştirici başarıyla &6%amount% &2olarak değiştirildi'
-      invalid-action: '&cBilinmeyen &e%action% &ceylemi! Kullanım&8: &eadd/remove/set'
+      invalid-action: '&cBilinmeyen &e%action% &ceylemi! Kullanım{$colon} &eadd/remove/set'
       invalid-kingdom: '&e%kingdom% &ckrallığını bulamadım '
     shield:
       description: '&6Bir krallık için kalkan süresini değiştirin.'
       usage: /k admin shield <kingdokrallık> [set/add/remove] <zaman>
-      success: '&6%kingdom% &2için kalkan seviyesi şu şekilde değiştirildi&8: &6%amount%'
-      invalid-action: '&cGeçersiz &e%action% &ceylemi! Kullanım&8: &eadd/remove/set'
+      success: '&6%kingdom% &2için kalkan seviyesi şu şekilde değiştirildi{$colon} &6%amount%'
+      invalid-action: '&cGeçersiz &e%action% &ceylemi! Kullanım{$colon} &eadd/remove/set'
       invalid-kingdom: '&e%kingdom% &cbulunamadı'
-      invalid-time: '&cGeçersiz zaman birimi&8: &e%time%'
+      invalid-time: '&cGeçersiz zaman birimi{$colon} &e%time%'
     item-description: '&6Özel kaynak puanı öğesiyle ilgili komutlar.'
     item:
       needs-kingdom: '&cKrallık eşyaları, eşyayı inşa etmek için hedef oyuncunun bir krallığa sahip olmasını
         gerektirir.'
       resourcepoints:
         description: '&6kaynak puanı içeren yapılandırmada tanımlanan özel bir öğe verin.'
-        usage: '&4Kullanım&8: &e/k item give &2<name> &9[amount] [player]'
+        usage: '&4Kullanım{$colon} &e/k item give &2<name> &9[amount] [player]'
         unknown-item: '&cAdı bilinmeyen özel öğe'
-        invalid-amount: '&cGeçersiz miktar&8: &e%amount%'
+        invalid-amount: '&cGeçersiz miktar{$colon} &e%amount%'
         done: '&2%target% öğesine başarıyla &6%amount% %item% &2değerinde &6%rp% kaynak puanı &2verdi'
       inject:
         description: '&6Bir öğeye kalıcı olarak kaynak puanı enjekte edin.'
-        usage: '&4Kullanım&8: &e/k item inject &2<resource points>'
+        usage: '&4Kullanım{$colon} &e/k item inject &2<resource points>'
         no-item: '&cKaynak puanı enjekte etmek için herhangi bir öğeyi tutmuyorsunuz.'
         done: '&6%rp% &2kaynak puanları &6%item% &2öğesine başarıyla enjekte edildi'
       turret:
         description: '&6Doğrudan bir taret eşyası alın.'
-        usage: '&4Kullanım&8: &e/k item turret &2<style> &9[amount] [player]'
+        usage: '&4Kullanım{$colon} &e/k item turret &2<style> &9[amount] [player]'
         unknown-style: |
-          &cBilinmeyen taret stili&8: &e%style%
-          &cMevcut stiller&8: &e%styles%
+          &cBilinmeyen taret stili{$colon} &e%style%
+          &cMevcut stiller{$colon} &e%styles%
         done: '&6%target% &2öğesine &6%amount% %item% &2başarıyla verildi'
       structure:
         description: '&6Doğrudan bir yapı öğesi alın.'
-        usage: '&4Kullanım&8: &e/k item structure &2<style> &9[amount] [player]'
+        usage: '&4Kullanım{$colon} &e/k item structure &2<style> &9[amount] [player]'
         unknown-style: |
-          &cBilinmeyen yapı stili&8: &e%style%
-          &cMevcut stiller&8: &e%styles%
+          &cBilinmeyen yapı stili{$colon} &e%style%
+          &cMevcut stiller{$colon} &e%styles%
         done: '&6%target% &2öğesine &6%amount% %item% &2başarıyla verildi'
     gui-description: '&6Bir GUI yapılandırması olarak içindeki yarışmaları otomatik olarak ayrıştırmak
       için bir kapsayıcı açın.'
@@ -1599,20 +1599,20 @@ command:
       description: '&6Debug'
     sound:
       description: '&6config içinde kullanacağınız bir ses dizisini test edin.'
-      usage: '&4Kullanım&8: &e/k admin testsound &2<sound> &9[volume] [pitch]'
+      usage: '&4Kullanım{$colon} &e/k admin testsound &2<sound> &9[volume] [pitch]'
       playing: '&2Şimdi çalıyor...'
     execute:
       description: '&6Bir krallıktaki tüm üyeler için bir komut yürütün.'
-      usage: '&4Kullanım&8: &e/k admin execute &2<kingdom> <executor> &9[filter] &9[/]&2<command>'
+      usage: '&4Kullanım{$colon} &e/k admin execute &2<kingdom> <executor> &9[filter] &9[/]&2<command>'
       console-executor-permission: '&cKomutu konsol olarak çalıştırma izniniz yok.'
       unknown:
         executor: |
-          &cBilinmeyen yürütücü&8: &e%executor%
-          &cMevcut yürütücüler&8: &eself&7, &econsole&7, &emembers
+          &cBilinmeyen yürütücü{$colon} &e%executor%
+          &cMevcut yürütücüler{$colon} &eself&7, &econsole&7, &emembers
         filter: |
-          &cBilinmeyen filtre&8: &e%filter%
-          &cKullanılabilir filtreler&8: &eonline&7, &eoffline
-        command: '&cBilinmeyen komut&8: &e%command%'
+          &cBilinmeyen filtre{$colon} &e%filter%
+          &cKullanılabilir filtreler{$colon} &eonline&7, &eoffline
+        command: '&cBilinmeyen komut{$colon} &e%command%'
       members-offline: '&cÇevrimdışı filtre ile krallık üyesi olarak çalıştırılamaz. Çevrimdışı oyuncular
         komutları çalıştıramaz..'
       members-no-filter: |
@@ -1622,23 +1622,23 @@ command:
         yürütülüyor.'
     turret:
       description: '&6Belirli taretleri kaldırın veya değiştirin/güncelleyin.'
-      usage: '&4Kullanım&8: &e/k admin turret &2<change | remove> <style> &9[replacement style]'
+      usage: '&4Kullanım{$colon} &e/k admin turret &2<change | remove> <style> &9[replacement style]'
       unknown-style: |
-        &cBilinmeyen taret stili&8: &e%style%
+        &cBilinmeyen taret stili{$colon} &e%style%
         &cTüm taret stili adlarını görmek için &eTurrets &cklasörünüze bakın.
       success: '&2Toplam &6%amount% &2taret işlendi.'
     toggles:
       description: '&6Yönetici modu etkin olan oyuncuların listesini göster.'
-      header: '&2Yönetici modu etkin olan oyuncular&8:'
+      header: '&2Yönetici modu etkin olan oyuncular{$colon}'
       entry: '&8- &6%displayname%'
     dailychecks:
       description: '&6Günlük kontrol döngüsünü manuel olarak başlatın.'
-      usage: '&4Kullanım&8: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
+      usage: '&4Kullanım{$colon} &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
       info: |
-        &2Sonraki döngü&8: &6%next%
-        &2Tam zamanı&8: &6%daily_checks%
-        &2Şimdiki zaman&8: &6%time%
-        &2Durum&8: %state%
+        &2Sonraki döngü{$colon} &6%next%
+        &2Tam zamanı{$colon} &6%daily_checks%
+        &2Şimdiki zaman{$colon} &6%time%
+        &2Durum{$colon} %state%
       run: '&2Günlük kontroller yapılıyor... Bugünkü &6günlük &2kontroller atlanmayacak.'
       skip: '&2Bir sonraki günlük kontrol aralığını atlamak.'
       skipped: '&cSonraki günlük kontroller zaten atlandı.'
@@ -1649,84 +1649,84 @@ command:
       done: '&2Komut bilgilerini &6%output% &2içine yazdı. Kingdoms eklenti klasörünü kontrol edin.'
     command:
       description: '&cBir komutla ilgili tüm bilgileri alın.'
-      usage: '&4Kullanım&8: &e/k admin command &2<command>'
+      usage: '&4Kullanım{$colon} &e/k admin command &2<command>'
       bad-start: '&cKomut bilgisini almak için eğik çizgi veya /k komutuna ihtiyacınız yoktur.'
-      not-found: '&cEşleşen herhangi bir komut bulunamadı&8: &e%command%'
+      not-found: '&cEşleşen herhangi bir komut bulunamadı{$colon} &e%command%'
       info: |
         &8------------=( &2%main-name% &8)=------------
-        &7| &2DisplayName&8: &9%command-displayname%
-        &7| &2Aliases&8: &9%aliases%
-        &7| &2Parent&8: &9%parent%
-        &7| &2Tanım&8: &9%description%
-        &7| &2Kullanım&8: &9%usage%
-        &7| &2İzin&8: &9hover:{%permission%;&2Click to copy;|%permission%}
-        &7| &2Varsayılan İzin Kapsamı&8: &9%permission-scope%
-        &7| &2Bekleme Süresi&8: &9%cooldown%
-        &7| &2Engelli Dünyalar&8: &9%disabled-worlds%
+        &7| &2DisplayName{$colon} &9%command-displayname%
+        &7| &2Aliases{$colon} &9%aliases%
+        &7| &2Parent{$colon} &9%parent%
+        &7| &2Tanım{$colon} &9%description%
+        &7| &2Kullanım{$colon} &9%usage%
+        &7| &2İzin{$colon} &9hover:{%permission%;&2Click to copy;|%permission%}
+        &7| &2Varsayılan İzin Kapsamı{$colon} &9%permission-scope%
+        &7| &2Bekleme Süresi{$colon} &9%cooldown%
+        &7| &2Engelli Dünyalar{$colon} &9%disabled-worlds%
     create:
       description: '&6Başka bir oyuncu için bir krallık oluşturun.'
-      usage: '&cKullanım&8: &e/k admin create &2<player &8| &2super> <name>'
-      already-exists: '&cZaten şu isme sahip bir krallık var&8: &e%kingdom%'
+      usage: '&cKullanım{$colon} &e/k admin create &2<player &8| &2super> <name>'
+      already-exists: '&cZaten şu isme sahip bir krallık var{$colon} &e%kingdom%'
       created: '&6%player% &2oyuncusu için &6%kingdom% &2adlı bir krallık başarıyla oluşturuldu.'
       super-creating: '&2Creating a super kingdom...'
       any-no-player-found: '&cCould not find any player that doesn''t have a kingdom.'
     permanent:
       description: '&cBir krallık için kalıcı modu etkinleştir.'
-      usage: '&cKullanım&8: &e/k admin permanent &2<kingdom>'
+      usage: '&cKullanım{$colon} &e/k admin permanent &2<kingdom>'
       'on': '&2Kalıcı Mod &6Aktif.'
       'off': '&2Kalıcı Mod &cDe-aktif.'
     rename:
       description: '&6Bir krallığı yeniden adlandırın.'
-      usage: '&cKullanım&8: &e/k admin rename <kingdom> <name>'
-      already-exists: '&cZaten şu isme sahip bir krallık var&8: &e%kingdom%'
+      usage: '&cKullanım{$colon} &e/k admin rename <kingdom> <name>'
+      already-exists: '&cZaten şu isme sahip bir krallık var{$colon} &e%kingdom%'
       renamed: '&6%kingdom% &2krallığının adı başarıyla &6%name% &2olarak değiştirildi.'
     pacifism:
       description: '&6Bir krallığın barışçıl durumunu değiştirir.'
-      usage: '&cKullanım&8: &e/k admin pacifism &2<kingdom> &8[&2true &7| &4false&8]'
-      enabled: '&2%krallık% &6krallığı için pasifizm&8: &2Aktif'
-      disabled: '&2%krallık% &6krallığı için pasifizm&8: &2De-aktif'
+      usage: '&cKullanım{$colon} &e/k admin pacifism &2<kingdom> &8[&2true &7| &4false&8]'
+      enabled: '&2%krallık% &6krallığı için pasifizm{$colon} &2Aktif'
+      disabled: '&2%krallık% &6krallığı için pasifizm{$colon} &2De-aktif'
     land:
       description: '&6Verilen koordinatlarda bir karaya ışınlan.'
-      usage: '&4Kullanım&8: &e/k admin land [world] <x> <z>'
-      teleported: '&2Karaya ışınlandınız&8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7,
+      usage: '&4Kullanım{$colon} &e/k admin land [world] <x> <z>'
+      teleported: '&2Karaya ışınlandınız{$colon} &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7,
         &5%z%&8)'
-      invalid-world: '&cDünya bulunamıyor&8: &e%world%'
-      invalid-coordinates: '&cGirilen koordinatlar geçersiz&8: &e%x%&7, &e%z%'
+      invalid-world: '&cDünya bulunamıyor{$colon} &e%world%'
+      invalid-coordinates: '&cGirilen koordinatlar geçersiz{$colon} &e%x%&7, &e%z%'
     entity:
       description: '&6Finds all the entities around the player.'
     maxlandmodifier:
       description: '&6Change the max lands modifier of a kingdom.'
-      usage: '&4Usage&8: &e/k admin maxLandModifier &2<kingdom> &9[set | add | remove] &9<amount>'
+      usage: '&4Usage{$colon} &e/k admin maxLandModifier &2<kingdom> &9[set | add | remove] &9<amount>'
       success: '&2Successfully changed max lands modifier for &6%kingdom% &2to &6%amount%'
-      invalid-action: '&cInvalid action &e%action%&c! Use&8: &eadd/remove/set'
+      invalid-action: '&cInvalid action &e%action%&c! Use{$colon} &eadd/remove/set'
       invalid-kingdom: '&cCould not find the kingdom &e%kingdom%'
   outpost:
     description: '&6Kullanılabilir karakol komutlarını gösterir.'
     create:
       description: '&6WorldGuard bölgesinden yeni bir karakol oluşturur.'
-      usage: '&4Kullanım&8: &e/k outpost create <isim> <bölge>'
+      usage: '&4Kullanım{$colon} &e/k outpost create <isim> <bölge>'
       region-not-found: '&e%region% &cisminde worldguard bölgesi yok'
       name-already-taken: '&e%outpost% &czaten mevcut'
       created: '&6%region% &2bölgesinde &6%outpost% &2oluşturuldu.'
     spawn:
       description: '&6karakolun spawn noktasını değiştirir.'
-      usage: '&4Kullanım&8: &e/k outpost spawn <isim>'
+      usage: '&4Kullanım{$colon} &e/k outpost spawn <isim>'
       outpost-not-found: '&e%outpost% &cbulunamadı.'
       changed: '&6%outpost% &2için spawn noktası değiştirildi.'
     center:
       description: '&6karakol merkezi değiştirilir.'
-      usage: '&4Kullanım&8: &e/k outpost center <isim>'
+      usage: '&4Kullanım{$colon} &e/k outpost center <isim>'
       outpost-not-found: '&e%outpost% &cbulunamadı.'
       changed: '&6%outpost% &2merkezi değiştirildi.'
     remove:
       description: '&6Bir karakolu kaldırır.'
-      usage: '&4Kullanım&8: &e/k outpost remove <isim>'
+      usage: '&4Kullanım{$colon} &e/k outpost remove <isim>'
       outpost-not-found: '&e%outpost% &cbulunamadı.'
       outpost-is-running: '&e%outpost% &ckarakolu zaten başladı. Bunu kaldıramazsın.'
       removed: '&6%outpost% &2kaldırıldı.'
     join:
       description: '&6Aktif bir karakola katıl.'
-      usage: '&4Kullanım&8: &e/k outpost join <karakol>'
+      usage: '&4Kullanım{$colon} &e/k outpost join <karakol>'
       outpost-not-found: '&e%outpost% &cbulunamadı'
       event-not-started: '&cŞu anda &e%outpost% &ckarakolu için çalışan &cetkinlik yok.'
       event-full: '&e%outpost% &ckarakolu zaten dolu.'
@@ -1747,16 +1747,16 @@ command:
       already: '&cYour kingdom has already joined this event.'
     start:
       description: '&6Mevcut karakollardan bir karakol başlat.'
-      usage: '&4Kullanım&8: &e/k outpost start <karakol> <zaman> <başlangıç zamanı>'
+      usage: '&4Kullanım{$colon} &e/k outpost start <karakol> <zaman> <başlangıç zamanı>'
       outpost-not-found: '&e%outpost% &cbulunamadı'
       already-started: '&e%outpost% &ckarakolu zaten başladı'
-      invalid-start-time: '&cGeçersiz başlangıç zamanı&8: &e%time%'
-      invalid-time: '&cGeçersiz zaman&8: &e%time%'
+      invalid-start-time: '&cGeçersiz başlangıç zamanı{$colon} &e%time%'
+      invalid-time: '&cGeçersiz zaman{$colon} &e%time%'
       scheduled: "\n\n&6%outpost% &2karakolu &6%start% &2içinde başlayacak \n\n"
       started: "\n\n&6%outpost% &2karakolu başladı \n\n"
     stop:
       description: '&6Devam eden karakolu durdurur.'
-      usage: '&4Kullanım&8: &e/k outpost stop <karakol>'
+      usage: '&4Kullanım{$colon} &e/k outpost stop <karakol>'
       outpost-not-found: '&e%outpost% &cbulunamadı'
       not-started: '&e%outpost% &cbaşlatılamadı.'
       stopped: "\n\n&e%outpost% &ckarakolu durdu! \n\n"
@@ -1766,12 +1766,12 @@ command:
       teleported: '&2Bölgeden dışarı ışınlandı.'
     setspawn:
       description: '&6Changes the outpost spawn location.'
-      usage: '&4Usage&8: &e/k outpost spawn <name>'
+      usage: '&4Usage{$colon} &e/k outpost spawn <name>'
       outpost-not-found: '&cCould not find &e%outpost% &coutpost.'
       changed: '&2Changed the spawn location for &6%outpost% &2outpost.'
   donate:
     description: '&6Bir krallığa kaynak noktaları bağışlayın.'
-    usage: '&4Kullanım&8: &e/k donate <krallık> <miktar>'
+    usage: '&4Kullanım{$colon} &e/k donate <krallık> <miktar>'
     invalid-kingdom: '&c&e%kingdom% krallığı bulunamadı'
     dont-have: '&e%rp% &ckaynak puanınız yok.'
     done: '&6%kingdom% &2klanına &6%rp% &2kaynak puanı bağışladınız'
@@ -1779,45 +1779,45 @@ command:
     invalid: '&c%rp% kaynak puanı bağışlayamazsınız.'
   glow:
     description: '&6Easily find your kingdom members.'
-    enabled: '&6Glow mode&8: &2Enabled'
-    disabled: '&6Glow mode&8: &cDisabled'
+    enabled: '&6Glow mode{$colon} &2Enabled'
+    disabled: '&6Glow mode{$colon} &cDisabled'
   shield:
     description: '&6Deactivate your shield.'
     no-shield: '&cYour kingdom doesn''t have an active shield.'
     confirm: |
       &cIf you disable your shield, you have to buy a new one.
-      Kingdom's shield time left&8: &e%time@kingdoms_shield_time_left%
+      Kingdom's shield time left{$colon} &e%time@kingdoms_shield_time_left%
       &cTo continue do the command hover:{&e/k shield confirm;/k shield confirm;/k shield confirm} &cto confirm.
     deactivated: '&e%executor% &chas deactivated kingdom''s current shield which had &e%time@kingdoms_shield_time_left%
       &ctime left.'
   book:
     description: '&6A little handbook for your kingdom.'
-    chapter-not-found: '&cCould not find chapter&8: &e%chapter%'
+    chapter-not-found: '&cCould not find chapter{$colon} &e%chapter%'
     permission: '&cYou don''t have permission to modify books.'
     rename:
       description: '&6Rename a chapter in your kingdom book.'
-      usage: '&4Usage&8: &e/k book rename &2<chapter> <name>'
+      usage: '&4Usage{$colon} &e/k book rename &2<chapter> <name>'
       same: '&cThis chapter already had the same name.'
       duplicate: '&cThere''s another chapter with the name &e%chapter%'
       renamed: '&2Successfully renamed &6%old_chapter% &2to &6%new_chapter%'
     open:
       description: '&6Read your kingdom''s handbook.'
-      usage: '&4Usage&8: &e/k book open &9[chapter]'
+      usage: '&4Usage{$colon} &e/k book open &9[chapter]'
     preview:
       description: '&6Preview the formatted version of the chapter you''re editing.'
       nothing-to-preview: '&cYou''re not editing any chapters to preview.'
-      previewing: '&2You''re now previewing a formatted version of chapter&8: &6%chapter%'
+      previewing: '&2You''re now previewing a formatted version of chapter{$colon} &6%chapter%'
     discard:
       description: '&6Discards all the changes made to a chapter.'
       nothing-to-discard: '&cYou''re not editing any chapters to discard changes.'
       discarded: '&2All changes made to chapter &6%chapter% &2has been discarded.'
     remove:
       description: '&6Remove a chapter from your kingdom''s handbook.'
-      usage: '&4Usage&8: &e/k book remove &2<chapter>'
-      deleted: '&2Successfully removed chapter&8: &6%chapter%'
+      usage: '&4Usage{$colon} &e/k book remove &2<chapter>'
+      deleted: '&2Successfully removed chapter{$colon} &6%chapter%'
     edit:
       description: '&6Edit your kingdom''s handbook.'
-      usage: '&4Usage&8: &e/k book edit &2<chapter>'
+      usage: '&4Usage{$colon} &e/k book edit &2<chapter>'
       already-editing: '&cYou''re already editing chapter &e%chapter%'
       cant-move: '&cYou can''t move the handbook editor.'
       changed: '&2Changed'
@@ -1828,16 +1828,16 @@ command:
       create-max-length: '&cThat chapter didn''t exist. Cannot create a new chapter. Chapter titles must
         have maximum of &e%max% &ccharacters.'
       modify: |
-        &2You're now modifying chapter&8: &6%chapter%
+        &2You're now modifying chapter{$colon} &6%chapter%
         &2Do hover:{&6/k book discard;/k book discard;/k book discard} &2to discard any changes.
   sneak:
     description: '&6Your kingdom relationship with another player will not disable their fly.'
     others-permission: '&cYou don''t have permission to set others sneak mode.'
-    enabled: '&6Sneak mode&8: &2Activated'
-    disabled: '&6Sneak mode&8: &cDeactivated'
+    enabled: '&6Sneak mode{$colon} &2Activated'
+    disabled: '&6Sneak mode{$colon} &cDeactivated'
   inventory:
     description: '&6See the inventory of another member in your kingdom.'
-    usage: '&4Usage&8: &e/k invsee &9[player]'
+    usage: '&4Usage{$colon} &e/k invsee &9[player]'
     not-in-kingdom: '&e%target% &cis not in your kingdom.'
     permission: '&cYou don''t have the permission to use that command in your kingdom.'
   vault:
@@ -1845,8 +1845,8 @@ command:
     others-permission: '&cYou can''t access other kingdoms chest.'
   gui:
     description: '&6Directly open a GUI with its name.'
-    usage: '&4Usage&8: &e/k gui &2<name>'
-    not-found: '&cUnknown GUI&8: &e%gui%'
+    usage: '&4Usage{$colon} &e/k gui &2<name>'
+    not-found: '&cUnknown GUI{$colon} &e%gui%'
   extractor:
     description: '&6Claim all the resourcr points from all the extractors in your kingdom.'
     collected: '&2Collected &6%rp% resource points &2from &6%extractors% extractors &2in your kingdom.'
@@ -1855,7 +1855,7 @@ command:
     collect-others-permission: '&cYou can''t collect other kingdoms extractors.'
   election:
     description: '&6An election system with kingdom member candidates to determine the next king.'
-    no-ongoing-election: '&cThere''s currently no ongoing election. Next election in&8: &e%next-election%'
+    no-ongoing-election: '&cThere''s currently no ongoing election. Next election in{$colon} &e%next-election%'
     vote:
       description: '&6Vote for a candidate.'
       voted: '&2You''ve voted for &6%player%'
@@ -1863,8 +1863,8 @@ command:
       voted-again: '&2You''ve voted for &6%player% &2You previously voted for &6%previous-candidate%'
     statement:
       description: '&6Set your statement as the election candidate.'
-      usage: '&4Usage&8: &e/k election statement &2<statement>'
-      set: '&2Your new statement has been set to&8: &r%statement%'
+      usage: '&4Usage{$colon} &e/k election statement &2<statement>'
+      set: '&2Your new statement has been set to{$colon} &r%statement%'
 relations-disabled-commands: '&cO komutu bu bölgede kullanamazsınız.'
 invasion:
   blocked:
@@ -1919,29 +1919,29 @@ comamnd:
       success: '&6%kingdom% &2dağıtıldı.'
     land:
       description: '&6Verilen koordinatlarda bir karaya ışınlanın.'
-      usage: '&4Kullanım&8: &e/k admin land [dünya] <x> <z>'
-      teleported: '&2Işınlanılan toprak&8: &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7,
+      usage: '&4Kullanım{$colon} &e/k admin land [dünya] <x> <z>'
+      teleported: '&2Işınlanılan toprak{$colon} &6%world%&7, &6%chunk_x%&7, &6%chunk_z% &8(&5%x%&7, &5%y%&7,
         &5%z%&8)'
-      invalid-world: '&cDünyayı bulamıyorum&8: &e%world%'
-      invalid-coordinates: '&cGirilen koordinatlar geçersiz&8: &e%x%&7, &e%z%'
+      invalid-world: '&cDünyayı bulamıyorum{$colon} &e%world%'
+      invalid-coordinates: '&cGirilen koordinatlar geçersiz{$colon} &e%x%&7, &e%z%'
     player:
       description: '&6Bir oyuncunun bilgilerini görüntüleyin.'
-      usage: '&4Kullanım&8: &e/k admin player <isim>'
+      usage: '&4Kullanım{$colon} &e/k admin player <isim>'
       not-found: '&cBelirtilen oyuncu bulunamadı.'
       info: |
-        COMPLEX:&7| &2Isim&8: &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
-        &7| &2Yönetici&8: %admin% &7| &2Spy&8: %spy%
-        &7| &2Krallık&8: &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
-        &7| &2Rütbe&8: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        &7| &2Ulusal Sıra&8: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel&8: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
-        &7| &2İşaretçileri Kullanma&8: %visualizer%
-        &7| &2Davet&8: &6%invites%
-        &7| &2Krallığa katılma&8: &6%kingdoms_date_joined%
-        &7| &2Otomatik Claim&8: %auto_claim% &7| &2Auto Map&8: %auto_map%
-        &7| &2Harita boyutu&8: &6%map_width% &8- &6%map_height%
-        &7| &2Toplam Bağış&8: &6%kingdoms_total_donations% &7| &2Last Donation&8: &6%kingdoms_date_last_donation_time%
-        &7| &2Claimler &7(&6%kingdoms_player_claims%&7)&8: %claims%
-        &7| &2Sıkıştırılmış Veriler&8: &6%compressed%
+        COMPLEX:&7| &2Isim{$colon} &6%player% &8(hover:{&5%id%;&2Copy;|%id%}&8)
+        &7| &2Yönetici{$colon} %admin% &7| &2Spy{$colon} %spy%
+        &7| &2Krallık{$colon} &6%kingdoms_kingdom_name% &8(hover:{&5%kingdom_id%;&2Copy;|%kingdom_id%}&8)
+        &7| &2Rütbe{$colon} %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
+        &7| &2Ulusal Sıra{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        &7| &2İşaretçileri Kullanma{$colon} %visualizer%
+        &7| &2Davet{$colon} &6%invites%
+        &7| &2Krallığa katılma{$colon} &6%kingdoms_date_joined%
+        &7| &2Otomatik Claim{$colon} %auto_claim% &7| &2Auto Map{$colon} %auto_map%
+        &7| &2Harita boyutu{$colon} &6%map_width% &8- &6%map_height%
+        &7| &2Toplam Bağış{$colon} &6%kingdoms_total_donations% &7| &2Last Donation{$colon} &6%kingdoms_date_last_donation_time%
+        &7| &2Claimler &7(&6%kingdoms_player_claims%&7){$colon} %claims%
+        &7| &2Sıkıştırılmış Veriler{$colon} &6%compressed%
     nation:
       disband:
         description: '&6Bir ulusu dağıtır.'
@@ -1959,13 +1959,13 @@ comamnd:
       description: '&6Çevrenizdeki rahatsız edici hologramları kaldırın.'
 top-rewards:
   kingdom: |
-    &2Krallığınız, rütbe&8: &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
-    &2Yeni Krallık Bakiyesi&8: &6$%fancy@kingdoms_bank%
-    &2Yeni Krallık Kaynak Puanları&8: &6%fancy@kingdoms_resource_points%
+    &2Krallığınız, rütbe{$colon} &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
+    &2Yeni Krallık Bakiyesi{$colon} &6$%fancy@kingdoms_bank%
+    &2Yeni Krallık Kaynak Puanları{$colon} &6%fancy@kingdoms_resource_points%
   nation: |
-    &2Ülkeniz, rütbe&8: &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
-    &2Yeni Ulus Bakiyesi&8: &6$%fancy@kingdoms_nation_bank%
-    &2Yeni Ulus Kaynak Puanı&8: &6%fancy@kingdoms_nation_resource_points%
+    &2Ülkeniz, rütbe{$colon} &5%rank% &2olduğu için &6$%money% &2para ve &6%rp% &2kaynak puanı ile ödüllendirildi
+    &2Yeni Ulus Bakiyesi{$colon} &6$%fancy@kingdoms_nation_bank%
+    &2Yeni Ulus Kaynak Puanı{$colon} &6%fancy@kingdoms_nation_resource_points%
 kingdom-item:
   inventory: '&cBu envanterde krallık eşyası kullanılamaz.'
   craft: '&cZanaat yapmak için krallık eşyaları kullanılamaz.'
@@ -1987,7 +1987,7 @@ structures:
   specific-total-limit: '&cYalnızca &e%limit% %style% &cyapılarına sahip olabilirsiniz.'
   block-occupied: '&cYapıyı buraya yerleştiremezsiniz. Buraya bir &e%material% &cbloğu yerleştirilir.'
   enter-name: '&2Lütfen yapınızın yeni adını girin.'
-  name-set: '&2Yapının adı şu şekilde ayarlandı&8: &6%name%'
+  name-set: '&2Yapının adı şu şekilde ayarlandı{$colon} &6%name%'
   disabled-world: '&cEngellenen dünyalarda yapıları yerleştiremezsiniz.'
   upgrade:
     max-level: '&cBu yapı zaten maksimum seviyeye yükseltildi.'
@@ -1997,7 +1997,7 @@ locations:
   normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%'
   chunk: '&6%world%&8, &6%x%&8, &6%z%'
 placeholders:
-  top-not-found: '&cEn üst konumda krallık yok&8: &e%position%'
+  top-not-found: '&cEn üst konumda krallık yok{$colon} &e%position%'
 siege-cannon:
   ready-fire: '&2Top ateş etmeye hazır.'
   sit: '&2Artık topun üzerindesin. Ya kendiniz yükleyin ya da başkasının yapmasına izin verin.'
@@ -2010,9 +2010,9 @@ siege-cannon:
     no-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yoktu.'
     pacifist: '&cTop &e%kingdoms_kingdom_name% &ckrallığını vurdu, ama onlar barışçıl bir krallık.'
     destroyed-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalkanları yok edildi.'
-    damaged-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalan kalkan&8: &6%time@kingdoms_shield_time_left%'
+    damaged-shield: '&2Top, &6%kingdoms_kingdom_name% &2krallığına ulaştı. Kalan kalkan{$colon} &6%time@kingdoms_shield_time_left%'
     damaged-shield-notify: '&e%attacker-kingdom% &ckrallığı, topraklarınıza &e%attacked-chunk% &coranında
-      çarptı. Kalan kalkan&8: &6%time@kingdoms_shield_time_left%'
+      çarptı. Kalan kalkan{$colon} &6%time@kingdoms_shield_time_left%'
   friendly:
     fire: '&cTop, &e%kingdom% &ckrallığına ait bir dost (INVADE özelliği olmayan) bir araziyi vurdu.'
 lands:
@@ -2029,7 +2029,7 @@ guis:
   open-inventory-during-input: '&cKullanıcı girişleri esnasında envanter açamazsınız.'
   command-during-input: '&cKullanıcı girişleri sırasında komutları çalıştıramazsınız.'
   pages:
-    next-page-not-available: '&cBaşka sayfa yok. Maksimum sayfa&8: &e%pages%'
+    next-page-not-available: '&cBaşka sayfa yok. Maksimum sayfa{$colon} &e%pages%'
     previous-page-not-available: '&cArtık önceki sayfalar yok.'
   cant-open-during-invasion: '&cYou cannot open this GUI while your kingdom is being invaded.'
 join-leave-messages:
@@ -2047,7 +2047,7 @@ warppad:
   low-fuel: |
     &cIşınlanmak için &e%fuel-cost% &cyakıta ihtiyacınız var, bu Warp Pad''de yalnızca &e%fuel% &cvar.
     &cWarppad''e &ekömür &catarak yeniden doldurabilirsiniz.
-  fuel-fill: '&2WarPad Yakıt&8: &6%fuel%'
+  fuel-fill: '&2WarPad Yakıt{$colon} &6%fuel%'
   no-safe-location: '&cBu Warp Pad çevresinde ışınlanacak güvenli bir yer yok.'
   success: '&2Işınlandın!'
 players:
@@ -2061,10 +2061,10 @@ not:
   number: '&e%arg% &cbir sayı değil.'
   boolean: '&e%arg% geçerli bir seçenek değil. Lütfen ''&2true&c'' or ''&4false&c'' kullanın.'
 invalid:
-  amount: '&cGeçersiz miktar&8: &e%amount%'
+  amount: '&cGeçersiz miktar{$colon} &e%amount%'
 commands:
   insufficient-permission: '&cBunu yapmak için iznin yok.'
-  cooldown: '&cBu komut bekleme süresinde&8: &e%cooldown%'
+  cooldown: '&cBu komut bekleme süresinde{$colon} &e%cooldown%'
   disabled-world: '&cBu komut bu dünyada kullanılamaz.'
   tags:
     players: '#PLAYER'

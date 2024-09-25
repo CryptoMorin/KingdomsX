@@ -15,6 +15,11 @@ public final class CacheHandler {
         return Caffeine.newBuilder().executor(POOL);
     }
 
+    @SuppressWarnings("unchecked")
+    public static <K, V> Caffeine<K, V> typedBuilder() {
+        return (Caffeine<K, V>) newBuilder();
+    }
+
     public static ForkJoinPool getPool() {
         return POOL;
     }

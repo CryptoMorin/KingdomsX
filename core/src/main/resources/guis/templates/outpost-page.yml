@@ -13,8 +13,8 @@ sound: BLOCK_ANVIL_USE
 base: &base
   name: "&5%item_name%"
   lore: |
-    {$p}{? !buy_allowed ? "&m"}Buy{$colon} {$s}%fancy@buy% {$sep}(&9Left-click{$sep}){? buy_max_items != -1 ? " {$sep}(&9Max{$colon} &5%buy_max_items%{$sep})" }
-    {$p}Sell{$colon} {$s}%fancy@sell% {$sep}(&9Right-click{$sep})
+    {$p}{? !buy_allowed ? "&m"}Buy{$colon} {$s}%fancy@buy% {$sep}({$sp}Left-click{$sep}){? buy_max_items != -1 ? " {$sep}({$sp}Max{$colon} &5%buy_max_items%{$sep})" }
+    {$p}Sell{$colon} {$s}%fancy@sell% {$sep}({$sp}Right-click{$sep})
     {? !buy_allowed ? "
     {$e}You cannot buy this item
     {$e}until {$es}%time@buy_cooldown%"}
@@ -34,8 +34,8 @@ options:
       they sell that item, their buy price
       decreases.
 
-      {$note} &7You can {$p}Shift left-click
-      &7after buying the item once, to
+      {$note} {$sep}You can {$p}Shift left-click
+      {$sep}after buying the item once, to
       keep buying the same amount.
 
   break:
@@ -43,17 +43,17 @@ options:
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Breaks the structure."
+      - "{$s}Breaks the structure."
     slot: 53
   nexus:
-    name: "&2Open Nexus"
+    name: "{$p}Open Nexus"
     lore:
-      - "&6Resource Points&8: &2%fancy@kingdoms_resource_points%"
+      - "{$s}Resource Points{$colon} {$p}%fancy@kingdoms_resource_points%"
     material: NETHER_STAR
     posx: 5
     posy: 6
   close:
-    name: "&2Close"
+    name: "{$p}Close"
     material: BARRIER
     slot: 45
 

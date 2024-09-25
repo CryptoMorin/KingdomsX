@@ -13,16 +13,16 @@ options:
       name: "{$e}Nic do zebrania &9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Zbierz&8: &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "&2Zbierz{$colon} &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
       - "&6Zebranie wszystkich wygenerowanych"
       - "punktów zasobów."
-      - "Ostatnio zebrane przez&8: &2%extractor-last-collector%"
+      - "Ostatnio zebrane przez{$colon} &2%extractor-last-collector%"
     slot: 0
   fuel:
-    name: "&2Paliwo&8: &6%fancy@fuel%&8/&6%fancy@max_fuel%"
+    name: "&2Paliwo{$colon} &6%fancy@fuel%&8/&6%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
@@ -37,29 +37,29 @@ options:
       &7Zauważ, że to działa tylko wtedy, gdy paliwo
       &7w extractorze jest prawie na zerze.
 
-      &2Węgiel&8: &95
-      &2Węgiel drzewny&8: &93
-      &2Pałki Blaze&8: &9100
+      &2Węgiel{$colon} &95
+      &2Węgiel drzewny{$colon} &93
+      &2Pałki Blaze{$colon} &9100
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Ulepsz&8: &6%roman@level% &7➛ &6%roman@next_level%"
+      name: "&9Ulepsz{$colon} &6%roman@level% &7➛ &6%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Co&8: &6%every% &7➔ &6%next-every%"
-        - "&7⚫ &2Punkty Zasobów&8: &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
-        - "&7⚫ &2Zużycie Paliwa&8: &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
+        - "{$dot} &2Co{$colon} &6%every% &7➔ &6%next-every%"
+        - "{$dot} &2Punkty Zasobów{$colon} &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
+        - "{$dot} &2Zużycie Paliwa{$colon} &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
         - ""
-        - "&7⚫ &2Maksymalny Poziom&8: &6%roman@next_level%"
-        - "&7⚫ &2Koszt&8: &6%upgrade_cost%"
+        - "{$dot} &2Maksymalny Poziom{$colon} &6%roman@next_level%"
+        - "{$dot} &2Koszt{$colon} &6%upgrade_cost%"
     maxxed:
-      name: "&9Poziom&8: &6%roman@level%"
+      name: "&9Poziom{$colon} &6%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Co&8: &6%every%"
-        - "&7⚫ &2Punkty Zasobów&8: &6%fancy@resource-points%"
-        - "&7⚫ &2Zużycie Paliwa&8: &6%extractor_needed_fuel%"
+        - "{$dot} &2Co{$colon} &6%every%"
+        - "{$dot} &2Punkty Zasobów{$colon} &6%fancy@resource-points%"
+        - "{$dot} &2Zużycie Paliwa{$colon} &6%extractor_needed_fuel%"
   break:
     name: "&4Zniszcz"
     material: REDSTONE_BLOCK

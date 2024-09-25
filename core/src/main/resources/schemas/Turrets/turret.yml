@@ -7,8 +7,12 @@ dont-update-holograms: bool
 vertical-knockback: Math
 lingering: bool
 sounds:
+  (keys): int
   (values):
-    (values): Sound
+    (keys): [ opening, upgrading, demolition, activate ]
+    (values):
+      - 'Sound?'
+      - { (keys): [ started, finished, stopped ], (values): 'Sound' }
 death-messages: list
 dropped-exp:
   (values): Math

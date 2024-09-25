@@ -4,10 +4,11 @@ import com.github.benmanes.caffeine.cache.Cache
 import com.github.benmanes.caffeine.cache.Caffeine
 import com.github.benmanes.caffeine.cache.Policy
 import com.github.benmanes.caffeine.cache.stats.CacheStats
+import com.google.errorprone.annotations.CompatibleWith
 import java.util.concurrent.ConcurrentMap
 import java.util.function.Function
 
-class ExpirableMap<K, V> : Cache<K, V> {
+class ExpirableMap<K : Any, V : Any> : Cache<K, V> {
     val defaultExpirationStrategy: ExpirationStrategy?
     private val cache: Cache<K, ReferencedExpirableObject<V>>
 
@@ -44,11 +45,11 @@ class ExpirableMap<K, V> : Cache<K, V> {
 
     override fun policy(): Policy<K, V> = throw UnsupportedOperationException()
 
-    override fun invalidate(key: K) {
+    override fun invalidate(@CompatibleWith(value = "K") key: Any) {
         cache.invalidate(key)
     }
 
-    override fun invalidateAll(keys: MutableIterable<K>?) {
+    override fun invalidateAll(keys: MutableIterable<*>) {
         cache.invalidateAll(keys)
     }
 
@@ -64,25 +65,24 @@ class ExpirableMap<K, V> : Cache<K, V> {
         cache.put(key, ReferencedExpirableObject(value, assertDefaultStrategy))
     }
 
-    override fun getIfPresent(key: K): V? = cache.getIfPresent(key)?.reference
+    override fun getIfPresent(@CompatibleWith(value = "K") key: Any): V? = cache.getIfPresent(key)?.reference
 
     fun contains(key: K) = cache.getIfPresent(key) != null
 
     override fun get(key: K, mappingFunction: Function<in K, out V>): V {
-        return cache.get(key) { ReferencedExpirableObject(mappingFunction.apply(key), assertDefaultStrategy) }
-            .reference
+        return cache.get(key) { ReferencedExpirableObject(mappingFunction.apply(key), assertDefaultStrategy) }!!.reference
     }
 
-    override fun getAllPresent(keys: MutableIterable<K>?): MutableMap<K, V> {
+    override fun getAllPresent(keys: MutableIterable<*>): MutableMap<K, V> {
         return cache.getAllPresent(keys)?.asSequence()!!.associateTo(hashMapOf()) { it.key to it.value.reference }
     }
 
     override fun getAll(
-        keys: MutableIterable<K>?,
-        mappingFunction: Function<in MutableSet<out K>, out MutableMap<out K, out V>>?
+        keys: MutableIterable<K>,
+        mappingFunction: Function<MutableIterable<K>, MutableMap<K, V>>
     ): MutableMap<K, V> = throw UnsupportedOperationException()
 
-    override fun putAll(map: MutableMap<out K, out V>?) = throw UnsupportedOperationException()
+    override fun putAll(map: MutableMap<out K, out V>) = throw UnsupportedOperationException()
 
     override fun invalidateAll() {
         cache.invalidateAll()

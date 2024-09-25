@@ -23,14 +23,14 @@ options:
     else: { }
     slot: 1
   member:
-    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
     material: PLAYER_HEAD
     lore:
       - "%online%"
-      - "&2Joined&8: &6%kingdoms_date_joined%"
-      - "&2Donations&8: &6%kingdoms_total_donations%"
-      - "&2Last Donation&8: &6%kingdoms_date_last_donation_time%"
-      - "&2Rank&8: &6%kingdoms_rank_name%"
+      - "{$p}Joined{$colon} {$s}%kingdoms_date_joined%"
+      - "{$p}Donations{$colon} {$s}%kingdoms_total_donations%"
+      - "{$p}Last Donation{$colon} {$s}%kingdoms_date_last_donation_time%"
+      - "{$p}Rank{$colon} {$s}%kingdoms_rank_name%"
     slot: 2
   promote:
     name: '&aPromote'
@@ -43,8 +43,8 @@ options:
     else: { }
     slot: 3
   back:
-    name: "&2Back"
+    name: "{$p}Back"
     material: BARRIER
     lore:
-      - "&6Go back to members menu."
+      - "{$s}Go back to members menu."
     slot: 4

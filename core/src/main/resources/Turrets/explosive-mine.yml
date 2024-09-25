@@ -6,7 +6,7 @@
       <durability-factor>: 100
       <material>: HEAVY_WEIGHTED_PRESSURE_PLATE
 
-name: "&7Explosive Mine"
+name: "{$sep}Explosive Mine"
 type: pressure_mine
 cost: 200
 sell: 100
@@ -27,27 +27,28 @@ explosion:
   # The level of the explosion. Usually anything under 1 doesn't cause any block damage.
   power: 3
 
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
 sounds:
   1:
-    place: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
-    break: BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF
+    opening:
+      started: &start-sound BLOCK_WOODEN_PRESSURE_PLATE_CLICK_ON
+      finished: *start-sound
+      stopped: &stop-sound BLOCK_WOODEN_PRESSURE_PLATE_CLICK_OFF
+    upgrading:
+      started: *start-sound
+      finished: *start-sound
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
 item:
   1:
-    name: "&7Explosive Mine"
+    name: "{$sep}Explosive Mine"
     material: HEAVY_WEIGHTED_PRESSURE_PLATE
     lore:
-      - "&6Explodes when an enemy steps"
+      - "{$s}Explodes when an enemy steps"
       - "on the plate."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Damage&8: &6TNT"
+      - "{$dot} {$p}Durability{$colon} {$s}%building_durability%"
+      - "{$dot} {$p}Damage{$colon} {$s}TNT"

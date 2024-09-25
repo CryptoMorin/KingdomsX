@@ -20,13 +20,10 @@ particles:
 sounds:
   (keys): int
   (values):
-    place: str
-    break: str
-    # Needs unions to be fully implemented because a scalar option implies a material for all levels.
-#    block:
-#      (keys): int
-#      (required): [ '1' ]
-#      (values): Material
+    (keys): [ opening, upgrading, demolition, cooldown, empty, load, shoot, standup, sit, hit, teleport-sound ]
+    (values):
+      - 'Sound?'
+      - { (keys): [ started, finished, stopped ], (values): 'Sound' }
 hologram:
   (keys): int
   (values):

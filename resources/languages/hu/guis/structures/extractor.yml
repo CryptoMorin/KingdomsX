@@ -13,16 +13,16 @@ options:
       name: "{$e}Nincs mit begyűjteni &9%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Begyűjt&8: &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "&2Begyűjt{$colon} &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
       - "&6Beszedi az összes"
       - "generált Nexus pontot."
-      - "Utoljára begyűjtötte&8: &2%extractor-last-collector%"
+      - "Utoljára begyűjtötte{$colon} &2%extractor-last-collector%"
     slot: 0
   fuel:
-    name: "&2Üzemanyag&8: &6%fuel%&8/&6%fancy@max_fuel%"
+    name: "&2Üzemanyag{$colon} &6%fuel%&8/&6%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
@@ -38,29 +38,29 @@ options:
       felső részére a következő
       elemekkel.
 
-      &2Szén&8: &95
-      &2Faszén&8: &93
-      &2Őrlángrúd&8: &9100
+      &2Szén{$colon} &95
+      &2Faszén{$colon} &93
+      &2Őrlángrúd{$colon} &9100
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Fejlesztés&8: &6%roman@level% &7➛ &6%roman@next_level%"
+      name: "&9Fejlesztés{$colon} &6%roman@level% &7➛ &6%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Minden&8: &6%every% &7➔ &6%next-every%"
-        - "&7⚫ &2Nexus pont&8: &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
-        - "&7⚫ &2Üzemanyag-fogyasztás&8: &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
+        - "{$dot} &2Minden{$colon} &6%every% &7➔ &6%next-every%"
+        - "{$dot} &2Nexus pont{$colon} &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
+        - "{$dot} &2Üzemanyag-fogyasztás{$colon} &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
         - ""
-        - "&7⚫ &2Max szint&8: &6%roman@max_level%"
-        - "&7⚫ &2Költség&8: &6%upgrade_cost%"
+        - "{$dot} &2Max szint{$colon} &6%roman@max_level%"
+        - "{$dot} &2Költség{$colon} &6%upgrade_cost%"
     maxxed:
-      name: "&9Szint&8: &6%roman@level%"
+      name: "&9Szint{$colon} &6%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Minden&8: &6%every%"
-        - "&7⚫ &2Nexus pont&8: &6%fancy@resource-points%"
-        - "&7⚫ &2Üzemanyag-fogyasztás&8: &6%extractor_needed_fuel%"
+        - "{$dot} &2Minden{$colon} &6%every%"
+        - "{$dot} &2Nexus pont{$colon} &6%fancy@resource-points%"
+        - "{$dot} &2Üzemanyag-fogyasztás{$colon} &6%extractor_needed_fuel%"
   break:
     name: "&4Kiütés"
     material: REDSTONE_BLOCK

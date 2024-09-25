@@ -600,6 +600,9 @@ placeholders:
   # You can also use "%" for default options to retrieve their default values from
   # the option below.
   formats:
+    none:
+      normal: '%'
+      default: '{$$none}'
     brackets:
       normal: '[%]'
       default: ''
@@ -668,15 +671,15 @@ placeholders:
       else: '&r'
 
     # Please just be care not to use recursive variables or your servers console will blow up.
-    channel: '&8[&9%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]'
+    channel: '&8[{$sp}%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]'
     kingdomPrefix:
       kingdoms_has_kingdom: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %hex@kingdoms_kingdom_color%%kingdoms_kingdom_name%&8]&r '
       else: ''
     nationPrefix:
-      kingdoms_has_nation: '&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %hex@kingdoms_nation_color%%kingdoms_nation_name%&8]&7|'
+      kingdoms_has_nation: '&8[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%&8 %hex@kingdoms_nation_color%%kingdoms_nation_name%&8]{$sep}|'
       else: ''
     spy:
-      "{other*kingdoms_is_spy}": '{$channel}&7|'
+      "{other*kingdoms_is_spy}": '{$channel}{$sep}|'
       else: ''
 
   # Default placeholders used when a player is not a kingdom or nation.
@@ -968,7 +971,7 @@ outpost-events:
   death-resource-points-penalty: 100
 
   scoreboard:
-    title: "&8-=[ &2Outpost Event &8]=-"
+    title: "&8-=[ {$p}Outpost Event &8]=-"
 
 # /k resourcepoints <deposit/withdraw/transfer>
 # /k bank <deposit/withdraw>
@@ -1455,7 +1458,7 @@ invitations:
     # Resource points cost for generating a physcal invite code.
     paper:
       item:
-        name: "&2Invite Code"
+        name: "{$p}Invite Code"
         material: PAPER
         lore: |
           {$p}Code{$sep}: {$s}%invitecode-code%
@@ -1467,7 +1470,7 @@ invitations:
           {$sep}[{$e}!{$sep}] {$es}The expiration date is subject
           {$es}to change by the kingdom members.
 
-          &9Right-click to use the invite code.
+          {$sp}Right-click to use the invite code.
       cost:
         resource-points: 10
 
@@ -1651,30 +1654,30 @@ mails:
     money: 0
 
     item:
-      name: '&2Envelope'
+      name: '{$p}Envelope'
       material: WRITABLE_BOOK
       enchants:
         DURABILITY: 1
       flags: ALL
       lore: |
-        &2Subject&8: &6%subject%
-        &2To&8: &6%to%
-        &2CC&8: &6%cc%
+        {$p}Subject{$colon} {$s}%subject%
+        {$p}To{$colon} {$s}%to%
+        {$p}CC{$colon} {$s}%cc%
 
-        &7Right-click while sneaking to
+        {$sep}Right-click while sneaking to
         open special properties.
     reply-item:
-      name: '&8[&2RE&8] &2Envelope'
+      name: '&8[{$p}RE&8] {$p}Envelope'
       material: WRITABLE_BOOK
       enchants:
         DURABILITY: 1
       flags: ALL
       lore: |
-        &2Subject&8: &6%subject%
-        &2To&8: &6%to%
-        &2CC&8: &6%cc%
+        {$p}Subject{$colon} {$s}%subject%
+        {$p}To{$colon} {$s}%to%
+        {$p}CC{$colon} {$s}%cc%
 
-        &7Right-click while sneaking to
+        {$sep}Right-click while sneaking to
         open special properties.
   subject:
     limit: 50

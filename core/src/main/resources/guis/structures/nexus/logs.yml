@@ -6,32 +6,32 @@ rows: 6
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
-    name: '&2Player Joined{$sep}: &6%player%'
+    name: '{$p}Player Joined{$sep}: {$s}%player%'
     lore: |
       {$p}At{$sep}: {$s}%time%
-      &2Invited By{$sep}: &6%inviter%
+      {$p}Invited By{$sep}: {$s}%inviter%
   kingdom-kick:
     material: RED_WOOL
-    name: '&2Kicked Member{$sep}: &6%player%'
+    name: '{$p}Kicked Member{$sep}: {$s}%player%'
     lore: |
       {$p}At{$sep}: {$s}%time%
-      &2Kicker{$sep}: &6%kicker%
+      {$p}Kicker{$sep}: {$s}%kicker%
   kingdom-leave:
     material: RED_WOOL
-    name: '&2Player Left{$sep}: &6%player%'
+    name: '{$p}Player Left{$sep}: {$s}%player%'
     lore: |
-      &2At{$sep}: &6%time%
-      &2Reason{$sep}: &6%reason%
+      {$p}At{$sep}: {$s}%time%
+      {$p}Reason{$sep}: {$s}%reason%
   kingdom-challenge-challenger:
     material: GREEN_WOOL
-    name: '&2Challenged'
+    name: '{$p}Challenged'
     lore: |
       &e%player% &chas challenged
       &e%other*kingdoms_kingdom_name% &ckingdom.
       {$p}At{$sep}: {$s}%time%
 
-      &7You have until &c%start_time%
-      &7to prepare to attack.
+      {$sep}You have until &c%start_time%
+      {$sep}to prepare to attack.
   kingdom-challenge-challenged:
     material: RED_WOOL
     name: '&cChallenged'
@@ -40,11 +40,11 @@ rows: 6
       &cchallenged your kingdom.
       {$p}At{$sep}: {$s}%time%
 
-      &7You have until &c%start_time%
-      &7to prepare before they attack.
+      {$sep}You have until &c%start_time%
+      {$sep}to prepare before they attack.
   kingdom-claim:
     material: GRASS_BLOCK
-    name: '&2Claimed'
+    name: '{$p}Claimed'
     lore: |
       {$s}%player% {$p}has claimed
       the following lands{$sep}:
@@ -60,7 +60,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-invasion-invader:
     material: IRON_SWORD
-    name: '&2Invaded'
+    name: '{$p}Invaded'
     lore: |
       {$s}%player% {$p}has invaded{$sep}:
       {$s}%chunk%
@@ -84,7 +84,7 @@ rows: 6
       %affected-lands%
   kingdom-upgrade-misc:
     material: DIAMOND_HOE
-    name: '&9Misc Upgrade'
+    name: '{$sp}Misc Upgrade'
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}misc upgrade.
@@ -93,7 +93,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
-    name: '&9Champion Upgrade'
+    name: '{$sp}Champion Upgrade'
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}champion upgrade.
@@ -102,7 +102,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
-    name: '&9Powerup Upgrade'
+    name: '{$sp}Powerup Upgrade'
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}powerup.
@@ -220,7 +220,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
-    name: '&9Relationship Change'
+    name: '{$sp}Relationship Change'
     lore: |
       {$p}Kingdom's relationship has
       changed with {$s}%kingdoms_kingdom_name% {$p}kingdom{$sep}:
@@ -228,7 +228,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-invite:
     material: BOOK
-    name: '&9Invite'
+    name: '{$sp}Invite'
     lore: |
       {$s}%inviter% {$p}has invited {$s}%player%
       {$p}to the kingdom. They have {$s}%accept-time%
@@ -255,7 +255,7 @@ rows: 6
       name: '&cPlayer Demoted{$sep}: {$s}%player%'
   rank-create:
     material: BOOK
-    name: '&2Rank Created'
+    name: '{$p}Rank Created'
     lore: |
       {$p}A rank was created by {$s}%player%{$sep}:
       {$p}Node{$sep}: {$s}%rank_node%
@@ -277,7 +277,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-name:
     material: BOOK
-    name: '&9Rank Name Changed'
+    name: '{$sp}Rank Name Changed'
     lore: |
       {$p}The rank %rank%
       {$p}name was changed by {$s}%player%{$sep}:
@@ -285,7 +285,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-symbol:
     material: BOOK
-    name: '&9Rank Symbol Changed'
+    name: '{$sp}Rank Symbol Changed'
     lore: |
       {$p}The rank %rank%
       {$p}symbol was changed by {$s}%player%{$sep}:
@@ -293,7 +293,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-color:
     material: BOOK
-    name: '&9Rank Color Changed'
+    name: '{$sp}Rank Color Changed'
     lore: |
       {$p}The rank %rank%
       {$p}name was changed by {$s}%player%{$sep}:
@@ -301,7 +301,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-priority:
     material: BOOK
-    name: '&9Rank org.kingdoms.tasks.priority.Priority Changed'
+    name: '{$sp}Rank org.kingdoms.tasks.priority.Priority Changed'
     lore: |
       {$p}The rank %rank%
       {$p}priority was changed by {$s}%player%{$sep}:
@@ -309,7 +309,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-max-claims:
     material: BOOK
-    name: '&9Rank Max Claims Changed'
+    name: '{$sp}Rank Max Claims Changed'
     lore: |
       {$p}The rank %rank%
       {$p}max claims was changed by {$s}%player%{$sep}:
@@ -317,7 +317,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   rank-change-material:
     material: BOOK
-    name: '&9Rank Material Changed'
+    name: '{$sp}Rank Material Changed'
     lore: |
       {$p}The rank %rank%
       {$p}material was changed by {$s}%player%{$sep}:
@@ -325,7 +325,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   structures-nexus-move:
     material: BEACON
-    name: '&9Nexus Placed'
+    name: '{$sp}Nexus Placed'
     placed:
       condition: placed
       lore: |
@@ -341,14 +341,14 @@ rows: 6
         {$p}At{$sep}: {$s}%time%
   group-tax-server-pay:
     material: PAPER
-    name: "&9Server Tax"
+    name: "{$sp}Server Tax"
     lore: |
       {$p}Server taxes paid.
       {$p}Amount{$sep}: {$s}%fancy@amount%
       {$p}At{$sep}: {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
-    name: "&9Champion Change"
+    name: "{$sp}Champion Change"
     lore: |
       {$p}The champion was changed
       by {$s}%player%{$sep}:
@@ -356,7 +356,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-change-lore:
     material: PAPER
-    name: "&9Change Lore"
+    name: "{$sp}Change Lore"
     lore: |
       {$p}The kingdom's lore was changed
       by {$s}%player%{$sep}:
@@ -364,7 +364,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-rename:
     material: PAPER
-    name: "&9Rename"
+    name: "{$sp}Rename"
     lore: |
       {$p}The kingdom was renamed
       by {$s}%player%{$sep}:
@@ -372,7 +372,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-change-tag:
     material: PAPER
-    name: "&9Change Tag"
+    name: "{$sp}Change Tag"
     lore: |
       {$p}The kingdom's tag was changed
       by {$s}%player%{$sep}:
@@ -380,7 +380,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   kingdom-nation-join:
     material: BEACON
-    name: "&9Nation Join"
+    name: "{$sp}Nation Join"
     lore: |
       {$p}Your kingdom has joined
       {$s}%kingdoms_nation_name% {$p}nation.
@@ -402,7 +402,7 @@ rows: 6
       {$p}At{$sep}: {$s}%time%
   'PeaceTreaties:received':
     material: BOOK
-    name: "&9Received Peace Treaty"
+    name: "{$sp}Received Peace Treaty"
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
@@ -413,7 +413,7 @@ rows: 6
       {$s}/k pt review %other*kingdoms_kingdom_name%
   'PeaceTreaties:sent':
     material: BOOK
-    name: "&9Sent Peace Treaty"
+    name: "{$sp}Sent Peace Treaty"
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
@@ -440,22 +440,22 @@ options:
     name: "{$p}Filters & Sorting"
     lore: |
       {$p}Filters{$sep}:
-       {$sep}⚫ {$s}Player{$sep}: %bool_filters_player%
-       {$sep}⚫ {$s}Time{$sep}: %bool_filters_time%
-       {$sep}⚫ {$s}Type{$sep}: %bool_filters_type%
+       {$dot} {$s}Player{$sep}: %bool_filters_player%
+       {$dot} {$s}Time{$sep}: %bool_filters_time%
+       {$dot} {$s}Type{$sep}: %bool_filters_type%
 
       {$p}Sorting{$sep}:
-       {$sep}⚫ {$s}Ascending Time{$sep}: %bool_sorting_time_ascending%
-       {$sep}⚫ {$s}Descending Time{$sep}: %bool_sorting_time_descending%
-       {$sep}⚫ {$s}Type{$sep}: %bool_sorting_type%
+       {$dot} {$s}Ascending Time{$sep}: %bool_sorting_time_ascending%
+       {$dot} {$s}Descending Time{$sep}: %bool_sorting_time_descending%
+       {$dot} {$s}Type{$sep}: %bool_sorting_type%
 
   next-page:
-    name: '&6Next Page &7- &e%page%{$sep}/&e%pages%'
+    name: '{$s}Next Page {$sep}- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
     slot: 8
   previous-page:
-    name: '&6Previous Page &7- &e%page%{$sep}/&e%pages%'
+    name: '{$s}Previous Page {$sep}- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
     slot: 0

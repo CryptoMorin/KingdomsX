@@ -886,53 +886,53 @@ command:
       scanning: '{$p}Ładowanie i skanowanie wszystkich plików danych... To może chwilę potrwać.'
       corruption:
         mail:
-          no-connection: '{$sep}⚫ {$e}Poczta nie jest używana w żadnym królestwie{$sep}: {$e}Nacja{$sep}: {$es}%id% {$sep}| {$e}Temat{$sep}: {$es}%subject%'
-          unknown: '{$sep}⚫ {$e}Nieznana poczta w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}| {$e}Poczta{$sep}: {$es}%id%'
-          not-related: '{$sep}⚫ {$e}Niezwiązana poczta w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}| {$e}Poczta{$sep}: {$es}%id% {$sep}| {$e}Temat{$sep}: {$es}%subject%'
+          no-connection: '{$dot} {$e}Poczta nie jest używana w żadnym królestwie{$sep}: {$e}Nacja{$sep}: {$es}%id% {$sep}| {$e}Temat{$sep}: {$es}%subject%'
+          unknown: '{$dot} {$e}Nieznana poczta w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}| {$e}Poczta{$sep}: {$es}%id%'
+          not-related: '{$dot} {$e}Niezwiązana poczta w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}| {$e}Poczta{$sep}: {$es}%id% {$sep}| {$e}Temat{$sep}: {$es}%subject%'
         nation:
-          kingdom: '{$sep}⚫ {$e}Nieznane królestwo w nacji{$sep}: {$e}Nacja{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
-          no-members: '{$sep}⚫ {$e}Nacja nie ma żadnych członków. Zostanie rozwiązana{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
-          wrong-capital: '{$sep}⚫ {$e}Zepsuty stolicą nacji, zostanie zmieniona na inne losowe królestwo członkowskie.{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Stara Stolica{$sep}: {$es}%old_capital_id% {$sep}-> {$e}Nowa Stolica{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%new_capital_id%{$sep})'
+          kingdom: '{$dot} {$e}Nieznane królestwo w nacji{$sep}: {$e}Nacja{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Królestwo{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
+          no-members: '{$dot} {$e}Nacja nie ma żadnych członków. Zostanie rozwiązana{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
+          wrong-capital: '{$dot} {$e}Zepsuty stolicą nacji, zostanie zmieniona na inne losowe królestwo członkowskie.{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Stara Stolica{$sep}: {$es}%old_capital_id% {$sep}-> {$e}Nowa Stolica{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%new_capital_id%{$sep})'
         land:
-          unknown-world: '{$sep}⚫ {$e}Nieznany świat dla ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          unknown-kingdom: '{$sep}⚫ {$e}Nieznane królestwo dla ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Królestwo{$sep}: {$es}%kingdom_id%'
+          unknown-world: '{$dot} {$e}Nieznany świat dla ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          unknown-kingdom: '{$dot} {$e}Nieznane królestwo dla ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Królestwo{$sep}: {$es}%kingdom_id%'
           item-wrong-block:
-            removing: '{$sep}⚫ {$e}Zły blok dla przedmiotu królestwa.{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Oczekiwany Blok{$sep}: {$es}%expected_block% {$sep}| {$e}Aktualny Blok{$sep}: {$es}%actual_block%'
-            updating: '{$sep}⚫ {$e}Zły blok dla przedmiotu królestwa. Wymaga aktualizacji{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Oczekiwany Blok{$sep}: {$es}%expected_block% {$sep}| {$e}Aktualny Blok{$sep}: {$es}%actual_block%'
-          nexus-unclaimed: '{$sep}⚫ {$e}Znaleziono strukturę nexus w niezakupionej ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blok{$sep}: {$s}%block%'
-          national-nexus-in-nationless: '{$sep}⚫ {$e}Znaleziono strukturę narodowego nexusa w ziemi, która nie ma nacji{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blok{$sep}: {$s}%block%'
-          protection-sign: '{$sep}⚫ {$e}Brak bloku lub brakujący znak do znaku ochronnego{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Blok{$sep}: {$s}%block% {$sep}| {$p}Znak{$sep}: {$s}%sign% '
+            removing: '{$dot} {$e}Zły blok dla przedmiotu królestwa.{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Oczekiwany Blok{$sep}: {$es}%expected_block% {$sep}| {$e}Aktualny Blok{$sep}: {$es}%actual_block%'
+            updating: '{$dot} {$e}Zły blok dla przedmiotu królestwa. Wymaga aktualizacji{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Oczekiwany Blok{$sep}: {$es}%expected_block% {$sep}| {$e}Aktualny Blok{$sep}: {$es}%actual_block%'
+          nexus-unclaimed: '{$dot} {$e}Znaleziono strukturę nexus w niezakupionej ziemi{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blok{$sep}: {$s}%block%'
+          national-nexus-in-nationless: '{$dot} {$e}Znaleziono strukturę narodowego nexusa w ziemi, która nie ma nacji{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blok{$sep}: {$s}%block%'
+          protection-sign: '{$dot} {$e}Brak bloku lub brakujący znak do znaku ochronnego{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Blok{$sep}: {$s}%block% {$sep}| {$p}Znak{$sep}: {$s}%sign% '
         kingdom:
-          unknown-claim: '{$sep}⚫ {$e}Nieznane roszczenie do królestwa{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          unknown-player: '{$sep}⚫ {$e}Nieznany gracz w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Gracz{$sep}: {$es}%player_id%'
-          unknown-relationship-request: '{$sep}⚫ {$e}Nieznane żądanie relacji między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
-          unknown-relationship: '{$sep}⚫ {$e}Nieznane relacje między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
-          relationship-both-requested: '{$sep}⚫ {$e}Dwa królestwa wysłały do siebie żądania relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
+          unknown-claim: '{$dot} {$e}Nieznane roszczenie do królestwa{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          unknown-player: '{$dot} {$e}Nieznany gracz w królestwie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Gracz{$sep}: {$es}%player_id%'
+          unknown-relationship-request: '{$dot} {$e}Nieznane żądanie relacji między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
+          unknown-relationship: '{$dot} {$e}Nieznane relacje między królestwami{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Do królestwa{$sep}: {$es}%other*kingdom_id%'
+          relationship-both-requested: '{$dot} {$e}Dwa królestwa wysłały do siebie żądania relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}Relacja{$sep}: {$es}%second_relation%'
-          relationship-mismatch: '{$sep}⚫ {$e}Niespójna relacja między królestwami{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
+          relationship-mismatch: '{$dot} {$e}Niespójna relacja między królestwami{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}: {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
             {$e}Relacja{$sep}: {$es}%second_relation%'
-          relationship-both-forms-exist: '{$sep}⚫ {$e}Między dwoma królestwami, jedno ma pewną relację z drugim królestwem, podczas gdy to drugie królestwo już wysłało żądanie relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}:
+          relationship-both-forms-exist: '{$dot} {$e}Między dwoma królestwami, jedno ma pewną relację z drugim królestwem, podczas gdy to drugie królestwo już wysłało żądanie relacji{$sep}: {$e}Królestwo 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relacja{$sep}:
             {$es}%first_relation% {$sep}- {$e}Królestwo 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}Relacja{$sep}: {$es}%second_relation%'
-          no-members: '{$sep}⚫ {$e}Królestwo nie ma żadnych członków. Zostanie rozwiązane{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
-          wrong-king: '{$sep}⚫ {$e}Król królestwa był zepsuty, zostanie zmieniony na innego losowego członka.{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Stary Król{$sep}: {$es}%old_king_id% {$sep}-> {$e}Nowy Król{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
-          pacifism: '{$sep}⚫ {$e}Znaleziono królestwo pacyfistyczne, podczas gdy pacyfizm jest wyłączony{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
-          nation: '{$sep}⚫ {$e}Nieznana nacja dla królestwa{$sep}: {$e}Nacja{$sep}: {$es}%nation_id% {$sep}- {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+          no-members: '{$dot} {$e}Królestwo nie ma żadnych członków. Zostanie rozwiązane{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
+          wrong-king: '{$dot} {$e}Król królestwa był zepsuty, zostanie zmieniony na innego losowego członka.{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Stary Król{$sep}: {$es}%old_king_id% {$sep}-> {$e}Nowy Król{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
+          pacifism: '{$dot} {$e}Znaleziono królestwo pacyfistyczne, podczas gdy pacyfizm jest wyłączony{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+          nation: '{$dot} {$e}Nieznana nacja dla królestwa{$sep}: {$e}Nacja{$sep}: {$es}%nation_id% {$sep}- {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
         ranks:
-          node-mistmatch: '{$sep}⚫ {$e}Niezgodność priorytetów rang{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Zakodowany priorytet {$es}%encoded_node%'
-          priority-mistmatch: '{$sep}⚫ {$e}Niezgodność priorytetów rang{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Zakodowany priorytet {$es}%encoded_priority% {$sep}| {$e}Priorytet instancji {$es}%priority%'
-          missing: '{$sep}⚫ {$e}Mniej niż 2 rangi znalezione{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rangi{$sep}: {$es}%ranks%'
-          priority-misorder: '{$sep}⚫ {$e}Priorytet rangi nie jest uporządkowany{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Oczekiwany priorytet {$es}%expected_priority% {$sep}| {$e}Rzeczywisty priorytet {$es}%priority%'
-          missing-pair: '{$sep}⚫ {$e}Mapa priorytetów rang nie ma odpowiadającego wpisu o węźle w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Priorytet {$es}%priority%'
-          unsupported-material: '{$sep}⚫ {$e}Ranga ma nieobsługiwany materiał dla obecnej wersji serwera{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%rank% {$sep}| {$e}Materiał{$sep}: {$es}%material%'
-          different-instance: '{$sep}⚫ {$e}Mapy rang zawierają różne instancje w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Inna Ranga{$sep}: {$es}%other*rank%'
-          unknown: '{$sep}⚫ {$e}Gracz ma nieznaną rangę{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
-          multiple-kings: '{$sep}⚫ {$e}Wiele królów dla{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
-          kingdom-king: '{$sep}⚫ {$e}Król królestwa nie ma rangi króla.{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ranga{$sep}: {$es}%rank%'
-          nation-king: '{$sep}⚫ {$e}Król stolicy narodu nie ma rangi króla.{$sep}: {$e}Nacja{$sep}: {$es}%kingdoms_nation_name% {$sep}(%nation_id%{$sep}) {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ranga{$sep}: {$es}%rank%'
-        disabled-upgrade: '{$sep}⚫ {$e}Królestwo wyłączyło ulepszenie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Ulepszenie{$sep}: {$es}%upgrade% {$e}Lvl. {$es}%level%'
+          node-mistmatch: '{$dot} {$e}Niezgodność priorytetów rang{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Zakodowany priorytet {$es}%encoded_node%'
+          priority-mistmatch: '{$dot} {$e}Niezgodność priorytetów rang{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Zakodowany priorytet {$es}%encoded_priority% {$sep}| {$e}Priorytet instancji {$es}%priority%'
+          missing: '{$dot} {$e}Mniej niż 2 rangi znalezione{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rangi{$sep}: {$es}%ranks%'
+          priority-misorder: '{$dot} {$e}Priorytet rangi nie jest uporządkowany{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Oczekiwany priorytet {$es}%expected_priority% {$sep}| {$e}Rzeczywisty priorytet {$es}%priority%'
+          missing-pair: '{$dot} {$e}Mapa priorytetów rang nie ma odpowiadającego wpisu o węźle w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Priorytet {$es}%priority%'
+          unsupported-material: '{$dot} {$e}Ranga ma nieobsługiwany materiał dla obecnej wersji serwera{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%rank% {$sep}| {$e}Materiał{$sep}: {$es}%material%'
+          different-instance: '{$dot} {$e}Mapy rang zawierają różne instancje w %mode%{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranga{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Inna Ranga{$sep}: {$es}%other*rank%'
+          unknown: '{$dot} {$e}Gracz ma nieznaną rangę{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Ranga{$sep}: {$es}%node% {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
+          multiple-kings: '{$dot} {$e}Wiele królów dla{$sep}: {$e}Grupa{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
+          kingdom-king: '{$dot} {$e}Król królestwa nie ma rangi króla.{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ranga{$sep}: {$es}%rank%'
+          nation-king: '{$dot} {$e}Król stolicy narodu nie ma rangi króla.{$sep}: {$e}Nacja{$sep}: {$es}%kingdoms_nation_name% {$sep}(%nation_id%{$sep}) {$sep}| {$e}Gracz{$sep}: {$es}%player% {$sep}(%player_id%{$sep}) {$sep}| {$e}Ranga{$sep}: {$es}%rank%'
+        disabled-upgrade: '{$dot} {$e}Królestwo wyłączyło ulepszenie{$sep}: {$e}Królestwo{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Ulepszenie{$sep}: {$es}%upgrade% {$e}Lvl. {$es}%level%'
         player:
-          kingdom-unknown: '{$sep}⚫ {$e}Nieznane królestwo dla gracza{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
-          claim-unknown: '{$sep}⚫ {$e}Nieznane terytorium dla gracza{$sep}: {$es}%player% {$sep}- {$e}Ziemia{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Królestwo{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+          kingdom-unknown: '{$dot} {$e}Nieznane królestwo dla gracza{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
+          claim-unknown: '{$dot} {$e}Nieznane terytorium dla gracza{$sep}: {$es}%player% {$sep}- {$e}Ziemia{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Królestwo{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
       error: '{$e}Wystąpił błąd podczas skanowania plików danych królestwa, proszę sprawdzić konsolę.'
       hanging: '{$e}Wygląda na to, że {$es}%pending_tasks% {$e}zadań zajmuje zbyt dużo czasu na zakończenie. Sprawdź swoją konsolę dla więcej informacji.'
       may-take-awhile: '{$e}Wygląda na to, że masz dużo danych. To może potrwać kilka minut, zwłaszcza jeśli masz dużo zclaimed landów.'
@@ -1848,9 +1848,9 @@ command:
     aliases: lang langs languages
     usage: '{$usage}bank &9[language]'
     info: |
-      {$sep}⚫ {$p}Wybrany język Królestw{$sep}: &9%kingdoms_lang%
-      {$sep}⚫ {$p}Wykryty język klienta{$sep}: &9%client-locale%
-      {$sep}⚫ {$p}Lista obsługiwanych języków{$sep}: %langs%
+      {$dot} {$p}Wybrany język Królestw{$sep}: &9%kingdoms_lang%
+      {$dot} {$p}Wykryty język klienta{$sep}: &9%client-locale%
+      {$dot} {$p}Lista obsługiwanych języków{$sep}: %langs%
     supported-entry: '{$s}%lang% {$sep}({$s}%internal-name%{$sep})'
     unknown-language: '{$e}Nieznany język{$sep}: {$es}%chosen% &7({$s}Plugin prawdopodobnie go nie obsługuje&7)'
     already-set: '{$e}Twój język jest już ustawiony na {$es}%chosen%'
@@ -3046,7 +3046,7 @@ command:
       name: przeglądaj
       aliases: wyświetl
       header: '{$es}%other*kingdoms_kingdom_name% {$e}kontrakt traktatu pokojowego zawiera następujące warunki{$sep}:'
-      terms: '{$sep}⚫ %term_message%'
+      terms: '{$dot} %term_message%'
       footer: '{$e}Możesz zaakceptować ten kontrakt, uruchamiając {$es}hover:{/k tptp akceptuj %other*kingdoms_kingdom_name%;&7Kliknij, aby zaakceptować;|/k tptp akceptuj %other*kingdoms_kingdom_name%}'
     accept:
       name: akceptuj

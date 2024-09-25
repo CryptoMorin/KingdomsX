@@ -24,7 +24,7 @@ class ReferencedExpirableObject<T>(
     override val expirationStrategy: ExpirationStrategy
 ) : ExpirableObject
 
-class ExpirableObjectExpiry<K, V : ExpirableObject> : Expiry<K, V> {
+class ExpirableObjectExpiry<K : Any, V : ExpirableObject> : Expiry<K, V> {
     override fun expireAfterCreate(
         key: K,
         value: V,

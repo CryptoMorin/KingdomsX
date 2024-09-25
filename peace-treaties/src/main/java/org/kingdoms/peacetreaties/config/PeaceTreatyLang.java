@@ -38,7 +38,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     COMMAND_PEACETREATY_REVIEW_NAME("review", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_ALIASES("view", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_HEADER("{$es}%other*kingdoms_kingdom_name% {$e}peace treaty contains the following terms{$sep}:", 1, 2, 3),
-    COMMAND_PEACETREATY_REVIEW_TERMS("{$sep}⚫ %term_message%", 1, 2, 3),
+    COMMAND_PEACETREATY_REVIEW_TERMS("{$dot} %term_message%", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_FOOTER("{$e}You can accept this contract by running {$es}" +
             "hover:{/k pt accept %other*kingdoms_kingdom_name%;&7Click to accept;|/k pt accept %other*kingdoms_kingdom_name%}", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_NAME("accept", 1, 2, 3),

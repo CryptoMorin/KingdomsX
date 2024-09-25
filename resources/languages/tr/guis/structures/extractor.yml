@@ -11,33 +11,33 @@ options:
       - "&6Yapıyı bozar."
     slot: 0
   collect:
-    name: "&2Toplamak&8: &9%time% &7- &9%amount%"
+    name: "&2Toplamak{$colon} &9%time% &7- &9%amount%"
     material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     refresh: true
     lore:
       - "&6Oluşturulan tüm kaynak"
       - "puanlarını toplayın."
-      - "Son toplayan&8: &2%extractor-last-collector%"
+      - "Son toplayan{$colon} &2%extractor-last-collector%"
     slot: 1
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Yükseltme&8: &6%roman@level% &7➛ &6%roman@next_level%"
+      name: "&9Yükseltme{$colon} &6%roman@level% &7➛ &6%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Her&8: &6%every% &7➔ &6%next-every%"
-        - "&7⚫ &2Kaynak Puanı&8: &6%resource-points% &7➔ &6%next-resource-points%"
+        - "{$dot} &2Her{$colon} &6%every% &7➔ &6%next-every%"
+        - "{$dot} &2Kaynak Puanı{$colon} &6%resource-points% &7➔ &6%next-resource-points%"
         - ""
-        - "&7⚫ &2En Üst Seviye&8: &6%roman@next_level%"
-        - "&7⚫ &2Maliyet&8: &6%upgrade_cost%"
+        - "{$dot} &2En Üst Seviye{$colon} &6%roman@next_level%"
+        - "{$dot} &2Maliyet{$colon} &6%upgrade_cost%"
     maxxed:
-      name: "&9Seviye&8: &6%roman@level%"
+      name: "&9Seviye{$colon} &6%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&7⚫ &2Her&8: &6%every%"
-        - "&7⚫ &2Kaynak Puanı&8: &6%resource-points%"
+        - "{$dot} &2Her{$colon} &6%every%"
+        - "{$dot} &2Kaynak Puanı{$colon} &6%resource-points%"
   close:
     name: "&2Kapat"
     material: BARRIER

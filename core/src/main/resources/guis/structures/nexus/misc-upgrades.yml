@@ -37,7 +37,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &upgrade-cost "{$p}Upgrade Cost{$sep}: &6%cost%"
+        - &upgrade-cost "{$p}Upgrade Cost{$sep}: {$s}%cost%"
         - *lvl
         - *disable-upgrade
 
@@ -70,15 +70,15 @@ options:
   anti-trample:
     material: WHEAT_SEEDS
     <<: *fn-misc [ "&aAnti-Trample", [
-      "{$p}Level 1{$sep}: &6Your tilled soil cannot",
+      "{$p}Level 1{$sep}: {$s}Your tilled soil cannot",
       "be trampled by players.",
       '',
-      "{$p}Level 2{$sep}: &6Pistons placed outside of your",
+      "{$p}Level 2{$sep}: {$s}Pistons placed outside of your",
       "land to push blocks in/out of your kingdom will not work.",
       "This also prevents endermen from stealing blocks within",
       "your territory.",
       "",
-      "{$p}Level 3{$sep}: &6Protects certain animals from",
+      "{$p}Level 3{$sep}: {$s}Protects certain animals from",
       "being damaged in your lands.",
       "Also prevents enemy players from using",
       "ender pearls to teleport inside your land."
@@ -90,7 +90,7 @@ options:
     material: DIAMOND_AXE
 
     <<: *fn-misc [ "&4Nexus Guards", [
-      "&6When someone enters your",
+      "{$s}When someone enters your",
       "nexus land, spawns guards that",
       "are stronger than your normal guards."
     ], true ]
@@ -101,7 +101,7 @@ options:
     material: IRON_AXE
 
     <<: *fn-misc [ "&eGuards", [
-      "&6Guards will randomly spawn",
+      "{$s}Guards will randomly spawn",
       "to protect the kingdom if",
       "a non-ally entered the land."
     ], true ]
@@ -112,7 +112,7 @@ options:
     material: REDSTONE
 
     <<: *fn-misc [ "&cInsanity", [
-      "&7Defenders and Nexus guards",
+      "{$sep}Defenders and Nexus guards",
       "spawned on powercell land will have{$sep}:",
       "{$p}Level 1{$sep}: {$s}Strength I for 10 seconds.",
       "{$p}Level 2{$sep}: {$s}Strength II for 10 seconds.",
@@ -136,9 +136,9 @@ options:
     material: DIAMOND_SWORD
 
     <<: *fn-misc [ "&3Invasions", [
-      "{$p}Your kingdom can invade &6%invasion-limit% {$p}times",
-      "{$p}Used invasions{$sep}: &6%invasions%",
-      "{$p}Refresh Cooldown{$sep}: &6%invasion-refresh-cooldown%"
+      "{$p}Your kingdom can invade {$s}%invasion-limit% {$p}times",
+      "{$p}Used invasions{$sep}: {$s}%invasions%",
+      "{$p}Refresh Cooldown{$sep}: {$s}%invasion-refresh-cooldown%"
     ], true ]
 
     posx: 2
@@ -147,17 +147,17 @@ options:
     material: GUNPOWDER
 
     <<: *fn-misc [ "&5Anti-Explosion", [
-      "{$p}Level 1{$sep}: &7Prevents creepers from",
+      "{$p}Level 1{$sep}: {$sep}Prevents creepers from",
       "destroying blocks in your land.",
       "",
-      "{$p}Level 2{$sep}: &7Prevents TNTs from",
+      "{$p}Level 2{$sep}: {$sep}Prevents TNTs from",
       "destroying blocks in your land.",
       "",
-      "{$p}Level 3{$sep}: &7Protect your kingdom members,",
+      "{$p}Level 3{$sep}: {$sep}Protect your kingdom members,",
       "animals, and all the other trapped mobs",
       "within your lands from explosions.",
       "",
-      "&9Note that explosions will still break the",
+      "{$sp}Note that explosions will still break the",
       "blocks but they'll regenerate shortly after."
     ], false ]
 
@@ -168,10 +168,10 @@ options:
     material: MAP
 
     <<: *fn-misc-basic [ [
-      "&6Increase your maximum claims",
-      "by {$p}2 &6every upgrade.",
+      "{$s}Increase your maximum claims",
+      "by {$p}2 {$s}every upgrade.",
       "",
-      "{$p}Current Max Lands{$sep}: &6%kingdoms_max_claims%"
+      "{$p}Current Max Lands{$sep}: {$s}%kingdoms_max_claims%"
     ] ]
 
     posx: 8
@@ -181,10 +181,10 @@ options:
     material: ARROW
 
     <<: *fn-misc-basic [ [
-      "&7Increase your maximum turrets",
-      "per land by {$p}1 &7each upgrade.",
+      "{$sep}Increase your maximum turrets",
+      "per land by {$p}1 {$sep}each upgrade.",
       "",
-      "{$p}Current Max Turrets Per Land{$sep}: &6%max_turrets_per_land%",
+      "{$p}Current Max Turrets Per Land{$sep}: {$s}%max_turrets_per_land%",
     ] ]
 
     posx: 5
@@ -194,8 +194,8 @@ options:
     material: PLAYER_HEAD
 
     <<: *fn-misc-basic [ [
-      "&7Every upgrade allows you to",
-      "have {$p}3 &7more members.",
+      "{$sep}Every upgrade allows you to",
+      "have {$p}3 {$sep}more members.",
       "",
     ] ]
 
@@ -206,7 +206,7 @@ options:
     material: ENDER_CHEST
 
     <<: *fn-misc-basic [ [
-      "&6Increase you maximum nexus",
+      "{$s}Increase you maximum nexus",
       "chest size.",
       "",
     ] ]
@@ -218,7 +218,7 @@ options:
     name: "{$p}Back"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
-    lore: "&6Go back to nexus menu."
+    lore: "{$s}Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:

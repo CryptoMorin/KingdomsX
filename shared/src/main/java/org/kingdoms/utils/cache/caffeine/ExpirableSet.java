@@ -1,5 +1,8 @@
 package org.kingdoms.utils.cache.caffeine;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
+
 import java.time.Duration;
 import java.util.Objects;
 
@@ -13,10 +16,8 @@ public class ExpirableSet<K> {
         this.duration = map.getDefaultExpirationStrategy().getExpiryAfterCreate().toMillis();
     }
 
-    public boolean add(K key) {
-        boolean contained = contains(key);
+    public void add(K key) {
         this.map.put(key, System.currentTimeMillis());
-        return !contained;
     }
 
     public Duration getTimeLeft(K key) {

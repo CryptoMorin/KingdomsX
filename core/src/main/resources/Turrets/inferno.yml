@@ -13,20 +13,22 @@ type: inferno
 cost: 300
 sell: 150
 max-level: 3
-particles:
-  1:
-    place:
-      particle: LAVA
-      count: 100
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: LAVA
-      count: 100
-      offset: 0.5, 0.5, 0.5
+
 sounds:
   1:
-    place: ENTITY_ELDER_GUARDIAN_AMBIENT
-    break: ENTITY_ELDER_GUARDIAN_DEATH
+    opening:
+      started: &start-sound ENTITY_ELDER_GUARDIAN_AMBIENT
+      finished: *start-sound
+      stopped: &stop-sound ENTITY_ELDER_GUARDIAN_DEATH
+    upgrading:
+      started: *start-sound
+      finished: *start-sound
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
+
 range: 7 + lvl
 cooldown: 15 - lvl
 max-targets: 1
@@ -49,15 +51,15 @@ item:
     name: "&0Inferno Turret"
     material: END_ROD
     lore:
-      - "&6Turret that increases its damage"
+      - "{$s}Turret that increases its damage"
       - "over time when targetting a specific entity."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Level&8: &6%roman@level%"
-      - "&7⚫ &2Ammo&8: &6%ammo%"
-      - "&7⚫ &2Range&8: &6%range%"
-      - "&7⚫ &2Max Targets&8: &6%max_targets%"
-      - "&7⚫ &2Max Ammo&8: &6%max_ammo%"
-      - "&7⚫ &2Cooldown&8: &6%cooldown%"
-      - "&7⚫ &2Speed&8: &6%speed%"
-      - "&7⚫ &2Damage&8: &6%damage%"
+      - "{$sp}Attributes{$colon}"
+      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
+      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
+      - "{$dot} {$p}Range{$colon} {$s}%range%"
+      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
+      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
+      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
+      - "{$dot} {$p}Speed{$colon} {$s}%speed%"
+      - "{$dot} {$p}Damage{$colon} {$s}%damage%"

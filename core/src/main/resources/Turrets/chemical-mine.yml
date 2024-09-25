@@ -18,29 +18,30 @@ effects:
 lingering: true
 
 damage: 0
-particles:
-  1:
-    place:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
-    break:
-      particle: CLOUD
-      count: 70
-      offset: 0.5, 0.5, 0.5
+
 sounds:
   1:
-    place: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
-    break: BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF
+    opening:
+      started: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
+      finished: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
+      stopped: &stop-sound BLOCK_METAL_PRESSURE_PLATE_CLICK_OFF
+    upgrading:
+      started: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
+      finished: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
+      stopped: *stop-sound
+    demolition:
+      started: *stop-sound
+      finished: *stop-sound
+      stopped: *stop-sound
 item:
   1:
     name: "&8Chemical Mine"
     material: LIGHT_WEIGHTED_PRESSURE_PLATE
     lore:
-      - "&6Gives some debuffs to the player"
+      - "{$s}Gives some debuffs to the player"
       - "who stepped on the plate."
       - ""
-      - "&9Attributes&8:"
-      - "&7⚫ &2Effects&8:"
-      - "    &8- &6Blindness lvl 1 for 30 seconds"
-      - "    &8- &6Nausea lvl 1 for 30 seconds"
+      - "{$dot} {$p}Durability{$colon} {$s}%building_durability%"
+      - "{$dot} {$p}Effects{$colon}"
+      - "    &8- {$s}Blindness lvl 1 for 30 seconds"
+      - "    &8- {$s}Nausea lvl 1 for 30 seconds"

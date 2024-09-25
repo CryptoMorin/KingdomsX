@@ -4,71 +4,71 @@ sound: ITEM_ARMOR_EQUIP_DIAMOND
 
 options:
   ammo:
-    name: "&9Ammo{$colon} &2%ammo%"
+    name: "{$sp}Ammo{$colon} {$p}%ammo%"
     material: ARROW
     ammo: 100
     cost: 10
     # Set to 0 to disable.
     fill-cost: 'neededAmmo / 8'
     lore: |
-      &2Buy &6%ammo-buy-amount% &2ammo for &6%cost% &2resource points.
-      &2Fully fill ammo by &6shift clicking
-      &2for &6%fill-cost% &2resource points.
+      {$p}Buy {$s}%ammo-buy-amount% {$p}ammo for {$s}%cost% {$p}resource points.
+      {$p}Fully fill ammo by {$s}shift clicking
+      {$p}for {$s}%fill-cost% {$p}resource points.
     slot: 0
   upgrade:
     material: NETHER_STAR
     upgrade:
       condition: "level < max_level"
-      name: "&9Upgrade{$colon} &6%roman@level% {$arrow} &6%roman@next_level%"
+      name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
       lore: |
         {? building_is_under_construction ? "{$err-sign} &cYou currently can't upgrade this
         turret because it's under construction.
         "}
-        {$dot} &2Range{$colon} &6%range% &7➔ &6%next_range%
-        {$dot} &2Max Ammo{$colon} &6%max_ammo% &7➔ &6%next_max_ammo%
-        {$dot} &2Cooldown{$colon} &6%cooldown% &7➔ &6%next_cooldown%
-        {$dot} &2Max Targets{$colon} &6%max_targets% &7➔ &6%next_max_targets%
-        {$dot} &2Speed{$colon} &6%speed% &7➔ &6%next_speed%
-        {$dot} &2Damage{$colon} &6%damage% &7➔ &6%next_damage%
+        {$dot} {$p}Range{$colon} {$s}%range% {$sep}➔ {$s}%next_range%
+        {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo% {$sep}➔ {$s}%next_max_ammo%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next_cooldown%
+        {$dot} {$p}Max Targets{$colon} {$s}%max_targets% {$sep}➔ {$s}%next_max_targets%
+        {$dot} {$p}Speed{$colon} {$s}%speed% {$sep}➔ {$s}%next_speed%
+        {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next_damage%
 
-        {$dot} &2Max Level{$colon} &6III
-        {$dot} &2Cost{$colon} &6%upgrade_cost%
+        {$dot} {$p}Max Level{$colon} {$s}III
+        {$dot} {$p}Cost{$colon} {$s}%upgrade_cost%
     maxxed:
-      name: "&9Level{$colon} &6%roman@level%"
+      name: "{$sp}Level{$colon} {$s}%roman@level%"
       lore: |
-        {$dot} &2Range{$colon} &6%range%
-        {$dot} &2Max Ammo{$colon} &6%max_ammo%
-        {$dot} &2Cooldown{$colon} &6%cooldown%
-        {$dot} &2Max Targets{$colon} &6%max_targets%
-        {$dot} &2Speed{$colon} &6%speed%
-        {$dot} &2Damage{$colon} &6%damage%
+        {$dot} {$p}Range{$colon} {$s}%range%
+        {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+        {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
+        {$dot} {$p}Speed{$colon} {$s}%speed%
+        {$dot} {$p}Damage{$colon} {$s}%damage%
     slot: 1
   manual:
     manual:
       condition: "manual"
-      name: "&2Manual"
+      name: "{$p}Manual"
       material: LEVER
       lore: |
-        &7Manual mode allows you
+        {$sep}Manual mode allows you
         to disable turrets from
         activating automatically and
         you can take control of them instead.
 
-        &2Left-click to go into
-        &9automatic mode
+        {$p}Left-click to go into
+        {$sp}automatic mode
 
-        &2Right-click to start
+        {$p}Right-click to start
         operating the turret
     automatic:
-      name: "&9Automatic"
+      name: "{$sp}Automatic"
       material: COMPARATOR
       lore: |
-        &7Automatic mode will make
+        {$sep}Automatic mode will make
         turrets automatically detect
         nearby enemies and shoot at them.
 
-        &2Left-click to go into
-        &9manual mode
+        {$p}Left-click to go into
+        {$sp}manual mode
     slot: 2
   break:
     name: "&cBreak"
@@ -88,5 +88,5 @@ options:
     name: "&cClose"
     material: BARRIER
     lore:
-      - "&6Close the GUI"
+      - "{$s}Close the GUI"
     slot: 4

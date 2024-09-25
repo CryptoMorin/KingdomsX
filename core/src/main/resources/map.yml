@@ -17,19 +17,19 @@ limit:
 kingdom-member-only: false
 
 # Message shown before and after the map.
-header: "   &7&m&l-&6&l&m--=[&7&l&m--&r &2&l{$$maps.name}&r &7&l&m--&6&l&m]=--&7&l&m-&r"
-footer: "&7&m&l--&6&l&m-=[&c✦&6&l&m]=--&e&l&m--&6&l&m--=[&c✦&6&l&m]=-&7&l&m--"
+header: "   {$sep}&m&l-{$s}&l&m--=[{$sep}&l&m--&r {$p}&l{$$maps.name}&r {$sep}&l&m--{$s}&l&m]=--{$sep}&l&m-&r"
+footer: "{$sep}&m&l--{$s}&l&m-=[&c✦{$s}&l&m]=--&e&l&m--{$s}&l&m--=[&c✦{$s}&l&m]=-{$sep}&l&m--"
 
 # Space at the beginning of the map elements.
 begin: "      "
 # Distance between each map element.
 distance: ""
 # The direction shown in the map.
-compass: "   &9%compass%"
+compass: "   {$sp}%compass%"
 
 scoreboard:
   # Scoreboard text alignments usually tent to be weird, so separate messages are desirable.
-  header: "&7&m&l-&6&l&m--=[&7&l&m--&r &2&l{$$maps.name}&r &7&l&m--&6&l&m]=--&7&l&m-&r"
+  header: "{$sep}&m&l-{$s}&l&m--=[{$sep}&l&m--&r {$p}&l{$$maps.name}&r {$sep}&l&m--{$s}&l&m]=--{$sep}&l&m-&r"
   begin: "   "
 
 # You can get some symbols here https://coolsymbol.com/    -   https://unicode.org/charts/nameslist/n_25A0.html
@@ -47,30 +47,30 @@ elements:
     item:
       material: PURPLE_WOOL
   you:
-    icon: "&2◈"
-    hover: [ "&6You&8: &2%X%&7, &2%Z%" ]
+    icon: "{$p}◈"
+    hover: [ "{$s}You{$colon} {$p}%X%{$sep}, {$p}%Z%" ]
     item:
       material: COMPASS
   wilderness:
-    icon: "&7▩"
+    icon: "{$sep}▩"
     action: "/k claim %X% %Z%"
-    hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to claim." ]
+    hover: [ "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%", "{$sep}Click to claim." ]
     item:
       material: WHITE_WOOL
   clipboard:
     added:
       icon: "&5▩"
       action: "/k claim clipboard remove %X% %Z%"
-      hover: [ "&6Location&8: &2%X%&7, &2%Z%", "&7Click to remove from the clipboard." ]
+      hover: [ "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%", "{$sep}Click to remove from the clipboard." ]
       item:
         material: PINK_WOOL
     failed:
       icon: "&c▩"
       action: "/k claim clipboard remove %X% %Z%"
       hover:
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
         - ""
-        - "&7Failed to claim this land."
+        - "{$sep}Failed to claim this land."
         - "It's not necessary to remove it"
         - "from the clipboard."
         - ""
@@ -78,357 +78,357 @@ elements:
       item:
         material: RED_WOOL
     wilderness:
-      icon: "&7▩"
+      icon: "{$sep}▩"
       action: "/k claim clipboard add %X% %Z%"
       hover:
-        - "&6Location&8: &2%X%&7, &2%Z%"
-        - "&7Click to add to the clipboard."
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
+        - "{$sep}Click to add to the clipboard."
       item:
         material: WHITE_WOOL
   invasion:
     icon: "&4▩"
     hover:
-      - "&6Location&8: &2%X%&7, &2%Z%"
+      - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       - "&cOngoing invasion in &e%other*kingdoms_kingdom_name%'s &cland."
     item:
       material: RED_WOOL
   nation-zone:
     self:
-      icon: "&2◉"
+      icon: "{$p}◉"
       action: "/k claim %X% %Z%"
       hover:
         - "&a%kingdoms_nation_name%'s Nation Zone"
-        - "&6Location&8: &2%X%&7, &2%Z%"
-        - "&7Click to claim."
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
+        - "{$sep}Click to claim."
       item:
         material: GREEN_TERRACOTTA
     ally:
-      icon: "&6◉"
+      icon: "{$s}◉"
       hover:
-        - "&6%other*kingdoms_nation_name%'s Nation Zone"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_nation_name%'s Nation Zone"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: ORANGE_TERRACOTTA
     truce:
       icon: "&e◉"
       hover:
         - "&e%other*kingdoms_nation_name%'s Nation Zone"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: YELLOW_TERRACOTTA
     neutral:
       icon: "&f◉"
       hover:
         - "&f%other*kingdoms_nation_name%'s Nation Zone"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: GRAY_TERRACOTTA
     enemy:
       icon: "&c◉"
       hover:
         - "&c%other*kingdoms_nation_name%'s Nation Zone"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: RED_TERRACOTTA
 
   land:
     self:
-      icon: "&2▩"
+      icon: "{$p}▩"
       action: "/k unclaim %X% %Z%"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
-        - "&7Click to unclaim."
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
+        - "{$sep}Click to unclaim."
       item:
         material: GREEN_WOOL
     ally:
-      icon: "&6▩"
+      icon: "{$s}▩"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Land"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: ORANGE_WOOL
     truce:
       icon: "&e▩"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: YELLOW_WOOL
     neutral:
       icon: "&f▩"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: GRAY_WOOL
     enemy:
       icon: "&c▩"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: RED_WOOL
     nation:
-      icon: "&9▩"
+      icon: "{$sp}▩"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Land"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Land"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
       item:
         material: BLUE_WOOL
   nexus:
     priority: 2
     self:
-      icon: "&2▣"
+      icon: "{$p}▣"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▣"
+      icon: "{$s}▣"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Nexus"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▣"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▣"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▣"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▣"
+      icon: "{$sp}▣"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Nexus"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   national-nexus:
     priority: 1
     self:
-      icon: "&2▣"
+      icon: "{$p}▣"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▣"
+      icon: "{$s}▣"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s National Nexus"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▣"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▣"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▣"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▣"
+      icon: "{$sp}▣"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s National Nexus"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s National Nexus"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   powercell:
     priority: 3
     self:
-      icon: "&2⊠"
+      icon: "{$p}⊠"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6⊠"
+      icon: "{$s}⊠"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Powercell"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e⊠"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f⊠"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c⊠"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9⊠"
+      icon: "{$sp}⊠"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Powercell"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Powercell"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   extractor:
     priority: 5
     self:
-      icon: "&2▨"
+      icon: "{$p}▨"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▨"
+      icon: "{$s}▨"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Extractor"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▨"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▨"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▨"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▨"
+      icon: "{$sp}▨"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Extractor"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Extractor"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   outpost:
     priority: 7
     self:
-      icon: "&2▤"
+      icon: "{$p}▤"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▤"
+      icon: "{$s}▤"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Outpost"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▤"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▤"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▤"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▤"
+      icon: "{$sp}▤"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Outpost"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Outpost"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   warppad:
     priority: 5
     self:
-      icon: "&2▥"
+      icon: "{$p}▥"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▥"
+      icon: "{$s}▥"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Warppad"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▥"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▥"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▥"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▥"
+      icon: "{$sp}▥"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Warppad"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Warppad"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   regulator:
     priority: 4
     self:
-      icon: "&2▦"
+      icon: "{$p}▦"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▦"
+      icon: "{$s}▦"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Regulator"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▦"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▦"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▦"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▦"
+      icon: "{$sp}▦"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Regulator"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Regulator"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
   siege-cannon:
     priority: 8
     self:
-      icon: "&2▦"
+      icon: "{$p}▦"
       hover:
         - "&a%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     ally:
-      icon: "&6▦"
+      icon: "{$s}▦"
       hover:
-        - "&6%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}%other*kingdoms_kingdom_name%'s Siege Cannon"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     truce:
       icon: "&e▦"
       hover:
         - "&e%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     neutral:
       icon: "&f▦"
       hover:
         - "&f%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     enemy:
       icon: "&c▦"
       hover:
         - "&c%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"
     nation:
-      icon: "&9▦"
+      icon: "{$sp}▦"
       hover:
-        - "&9%other*kingdoms_kingdom_name%'s Siege Cannon"
-        - "&6Location&8: &2%X%&7, &2%Z%"
+        - "{$sp}%other*kingdoms_kingdom_name%'s Siege Cannon"
+        - "{$s}Location{$colon} {$p}%X%{$sep}, {$p}%Z%"

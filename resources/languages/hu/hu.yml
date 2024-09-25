@@ -1397,55 +1397,55 @@ command:
       name: FSCK
       corruption:
         nation:
-          kingdom: '{$sep}⚫ {$e}Ismeretlen királyság a nemzeten belül{$sep}: {$e}Nemzet{$sep}: {$es}%nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
-          no-members: '{$sep}⚫ {$e}A nemzetnek nincs tagsága, ezért fel lesz osztatva{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
-          wrong-capital: '{$sep}⚫ {$e}A nemzet főnemzete sérült, ezért lecserélésre került egy véletlenszerű másik tagkirályságra{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Régi főnemzet{$sep}: {$es}%old_capital_id% {$sep}-> {$e}Új főnemzet{$sep}: {$es}%kingdoms_kingdom_name%
+          kingdom: '{$dot} {$e}Ismeretlen királyság a nemzeten belül{$sep}: {$e}Nemzet{$sep}: {$es}%nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
+          no-members: '{$dot} {$e}A nemzetnek nincs tagsága, ezért fel lesz osztatva{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
+          wrong-capital: '{$dot} {$e}A nemzet főnemzete sérült, ezért lecserélésre került egy véletlenszerű másik tagkirályságra{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Régi főnemzet{$sep}: {$es}%old_capital_id% {$sep}-> {$e}Új főnemzet{$sep}: {$es}%kingdoms_kingdom_name%
             {$sep}({$es}%new_capital_id%{$sep})'
         player:
-          claim-unknown: '{$sep}⚫ {$e}Ismeretlen foglalás a játékos számára{$sep}: {$es}%player% {$sep}- {$e}Terület{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
-          kingdom-unknown: '{$sep}⚫ {$e}Ismeretlen királyságbeli játékos{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
+          claim-unknown: '{$dot} {$e}Ismeretlen foglalás a játékos számára{$sep}: {$es}%player% {$sep}- {$e}Terület{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+          kingdom-unknown: '{$dot} {$e}Ismeretlen királyságbeli játékos{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
         land:
-          unknown-world: '{$sep}⚫ {$e}Ismeretlen világ a területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          unknown-kingdom: '{$sep}⚫ {$e}Ismeretlen királyság a területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Kingdom{$sep}: {$es}%kingdom_id%'
+          unknown-world: '{$dot} {$e}Ismeretlen világ a területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          unknown-kingdom: '{$dot} {$e}Ismeretlen királyság a területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Kingdom{$sep}: {$es}%kingdom_id%'
           item-wrong-block:
-            removing: '{$sep}⚫ {$e}Rossz blokk a királyság tárgyámál{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Várt blokk{$sep}: {$es}%expected_block% {$sep}| {$e}Aktuális blokk{$sep}: {$es}%actual_block%'
-            updating: '{$sep}⚫ {$e}Rossz blokk a királyság tárgyámál. Frissítés szükséges{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Várt blokk{$sep}: {$es}%expected_block% {$sep}| {$e}AAktuális blokk{$sep}: {$es}%actual_block%'
-          protection-sign: '{$sep}⚫ {$e}Nincs blokk vagy hiányzó tábla a védelmi táblánál{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Blokk{$sep}: {$s}%block% {$sep}| {$p}Tábla{$sep}: {$s}%sign% '
-          national-nexus-in-nationless: '{$sep}⚫ {$e}Nemzeti nexus található egy olyan területen amin nincs nemzet{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$sep}: {$s}%block%'
-          nexus-unclaimed: '{$sep}⚫ {$e}Nexus struktúra található egy nem elfoglalt területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$sep}: {$s}%block%'
+            removing: '{$dot} {$e}Rossz blokk a királyság tárgyámál{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Várt blokk{$sep}: {$es}%expected_block% {$sep}| {$e}Aktuális blokk{$sep}: {$es}%actual_block%'
+            updating: '{$dot} {$e}Rossz blokk a királyság tárgyámál. Frissítés szükséges{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Várt blokk{$sep}: {$es}%expected_block% {$sep}| {$e}AAktuális blokk{$sep}: {$es}%actual_block%'
+          protection-sign: '{$dot} {$e}Nincs blokk vagy hiányzó tábla a védelmi táblánál{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Blokk{$sep}: {$s}%block% {$sep}| {$p}Tábla{$sep}: {$s}%sign% '
+          national-nexus-in-nationless: '{$dot} {$e}Nemzeti nexus található egy olyan területen amin nincs nemzet{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$sep}: {$s}%block%'
+          nexus-unclaimed: '{$dot} {$e}Nexus struktúra található egy nem elfoglalt területen{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$sep}: {$s}%block%'
         kingdom:
-          nation: '{$sep}⚫ {$e}Ismeretlen nemzet a királyság számára{$sep}: {$e}Nemzet{$sep}: {$es}%nation_id% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
-          relationship-both-forms-exist: '{$sep}⚫ {$e}Két királyság között az egyiknek van kapcsolata egy másik királysággal, míg a másik királyságnak van egy elküldött kapcsolati kérése{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}:
+          nation: '{$dot} {$e}Ismeretlen nemzet a királyság számára{$sep}: {$e}Nemzet{$sep}: {$es}%nation_id% {$sep}- {$e}Királyság{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+          relationship-both-forms-exist: '{$dot} {$e}Két királyság között az egyiknek van kapcsolata egy másik királysággal, míg a másik királyságnak van egy elküldött kapcsolati kérése{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}:
             {$es}%first_relation% {$sep}- {$e}Királyság 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%kingdom_other_id%{$sep}) {$e}Kapcsolat{$sep}: {$es}%second_relation%'
-          unknown-relationship-request: '{$sep}⚫ {$e}Ismeretlen kapcsolati kérelem a királyságok között{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Másik királyság{$sep}: {$es}%other*kingdom_id%'
-          unknown-claim: '{$sep}⚫ {$e}Ismeretlen foglalása a királyságnak{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          no-members: '{$sep}⚫ {$e}A királyságnak nincs tagsága, ezért fel lesz osztatca{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
-          unknown-relationship: '{$sep}⚫ {$e}Ismeretlen kapcsolat a királyságok között{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Másik királyság{$sep}: {$es}%other*kingdom_id%'
-          wrong-king: '{$sep}⚫ {$e}A királyság királya sérült, ezért lecserélésre került egy véletlenszerű másik tagra{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Régi király{$sep}: {$es}%old_king_id% {$sep}-> {$e}Új király{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
-          relationship-mismatch: '{$sep}⚫ {$e}Királyságok közötti ellentmondó kapcsolat{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}: {$es}%first_relation% {$sep}- {$e}Királyság 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%kingdom_other_id%{$sep})
+          unknown-relationship-request: '{$dot} {$e}Ismeretlen kapcsolati kérelem a királyságok között{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Másik királyság{$sep}: {$es}%other*kingdom_id%'
+          unknown-claim: '{$dot} {$e}Ismeretlen foglalása a királyságnak{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          no-members: '{$dot} {$e}A királyságnak nincs tagsága, ezért fel lesz osztatca{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
+          unknown-relationship: '{$dot} {$e}Ismeretlen kapcsolat a királyságok között{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Másik királyság{$sep}: {$es}%other*kingdom_id%'
+          wrong-king: '{$dot} {$e}A királyság királya sérült, ezért lecserélésre került egy véletlenszerű másik tagra{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Régi király{$sep}: {$es}%old_king_id% {$sep}-> {$e}Új király{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
+          relationship-mismatch: '{$dot} {$e}Királyságok közötti ellentmondó kapcsolat{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}: {$es}%first_relation% {$sep}- {$e}Királyság 2{$sep}: {$es}%other*kingdom_id% {$sep}({$es}%kingdom_other_id%{$sep})
             {$e}Kapcsolat{$sep}: {$es}%second_relation%'
-          pacifism: '{$sep}⚫ {$e}Találtunk egy békés királyságot, miközben a békés mód le van tiltva{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
-          unknown-player: '{$sep}⚫ {$e}Ismeretlen játékos a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Játékos{$sep}: {$es}%player_id%'
-          relationship-both-requested: '{$sep}⚫ {$e}Két királyságnak egymáshoz intézett kapcsolati kérései vannak{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}: {$es}%first_relation% {$sep}- {$e}Királyság 2{$sep}: {$es}%other*kingdom_id%
+          pacifism: '{$dot} {$e}Találtunk egy békés királyságot, miközben a békés mód le van tiltva{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+          unknown-player: '{$dot} {$e}Ismeretlen játékos a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Játékos{$sep}: {$es}%player_id%'
+          relationship-both-requested: '{$dot} {$e}Két királyságnak egymáshoz intézett kapcsolati kérései vannak{$sep}: {$e}Királyság 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Kapcsolat{$sep}: {$es}%first_relation% {$sep}- {$e}Királyság 2{$sep}: {$es}%other*kingdom_id%
             {$sep}({$es}%kingdom_other_id%{$sep}) {$e}Kapcsolat{$sep}: {$es}%second_relation%'
         ranks:
-          priority-misorder: '{$sep}⚫ {$e}A rang prioritása nem rendezett{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Várt prioritás {$es}%expected_priority% {$sep}| {$e}Valós prioritás {$es}%priority%'
-          multiple-kings: '{$sep}⚫ {$e}Többszörös királyok itt{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
-          priority-mistmatch: '{$sep}⚫ {$e}A rang prioritása különbözik{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Kódolt prioritás {$es}%encoded_priority% {$sep}| {$e}Példa prioritás {$es}%priority%'
-          unknown: '{$sep}⚫ {$e}A játékosnak ismeretlen a rangja{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
-          node-mistmatch: '{$sep}⚫ {$e}A csomópont prioritása különbözik{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Csomópont{$sep}: {$es}%node% {$sep}| {$e}Kódolt csomópont {$es}%encoded_node%'
-          different-instance: '{$sep}⚫ {$e}A rang prioritási térképei különböző példákat tartalmaznak{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$e}Valós prioritás {$es}%priority%'
-          missing-pair: '{$sep}⚫ {$e}A rang prioritási térképnek nincs megfelelő csomóponti bejegyzése{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Prioritás {$es}%priority%'
-          nation-king: '{$sep}⚫ {$e}A nemzet főnemzetének királyának nincs királyi rangja{$sep}: {$e}Nemzet{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rang{$sep}: {$es}%rank%'
-          unsupported-material: '{$sep}⚫ {$e}Nem támogatott ezen a szerververzión a ranghoz használt nyersanyag{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%rank% {$sep}| {$e}Nyersanyag{$sep}: {$es}%material%'
-          missing: '{$sep}⚫ {$e}Kevesebb mint 2 rang található{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%ranks%'
-          kingdom-king: '{$sep}⚫ {$e}A királyság királyának nincs királyi rangja{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rang{$sep}: {$es}%rank%'
-          node-mismatch: '{$sep}⚫ {$e}Rang csomópont eltérés{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Kódolt csomópont {$es}%encoded_node%'
+          priority-misorder: '{$dot} {$e}A rang prioritása nem rendezett{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Várt prioritás {$es}%expected_priority% {$sep}| {$e}Valós prioritás {$es}%priority%'
+          multiple-kings: '{$dot} {$e}Többszörös királyok itt{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
+          priority-mistmatch: '{$dot} {$e}A rang prioritása különbözik{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Kódolt prioritás {$es}%encoded_priority% {$sep}| {$e}Példa prioritás {$es}%priority%'
+          unknown: '{$dot} {$e}A játékosnak ismeretlen a rangja{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
+          node-mistmatch: '{$dot} {$e}A csomópont prioritása különbözik{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Csomópont{$sep}: {$es}%node% {$sep}| {$e}Kódolt csomópont {$es}%encoded_node%'
+          different-instance: '{$dot} {$e}A rang prioritási térképei különböző példákat tartalmaznak{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$e}Valós prioritás {$es}%priority%'
+          missing-pair: '{$dot} {$e}A rang prioritási térképnek nincs megfelelő csomóponti bejegyzése{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Prioritás {$es}%priority%'
+          nation-king: '{$dot} {$e}A nemzet főnemzetének királyának nincs királyi rangja{$sep}: {$e}Nemzet{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rang{$sep}: {$es}%rank%'
+          unsupported-material: '{$dot} {$e}Nem támogatott ezen a szerververzión a ranghoz használt nyersanyag{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%rank% {$sep}| {$e}Nyersanyag{$sep}: {$es}%material%'
+          missing: '{$dot} {$e}Kevesebb mint 2 rang található{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%ranks%'
+          kingdom-king: '{$dot} {$e}A királyság királyának nincs királyi rangja{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Játékos{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rang{$sep}: {$es}%rank%'
+          node-mismatch: '{$dot} {$e}Rang csomópont eltérés{$sep}: {$e}Csoport{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$sep}: {$es}%node% {$sep}| {$e}Kódolt csomópont {$es}%encoded_node%'
         mail:
-          not-related: '{$sep}⚫ {$e}Nem kapcsolódó levél a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}| {$e}LEvél{$sep}: {$es}%id% {$sep}| {$e}Tárgy{$sep}: {$es}%subject%'
-          no-connection: '{$sep}⚫ {$e}A levelezés nincs használva egy királyságban se{$sep}: {$e}Nemzet{$sep}: {$es}%id% {$sep}| {$e}Tárgy{$sep}: {$es}%subject%'
-          unknown: '{$sep}⚫ {$e}Ismeretlen levél a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}| {$e}Levél{$sep}: {$es}%id%'
-        disabled-upgrade: '{$sep}⚫ {$e}A Királyság letiltotta a fejlesztéseket{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Fejlesztés{$sep}: {$es}%upgrade% {$e}Szint {$es}%level%'
+          not-related: '{$dot} {$e}Nem kapcsolódó levél a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}| {$e}LEvél{$sep}: {$es}%id% {$sep}| {$e}Tárgy{$sep}: {$es}%subject%'
+          no-connection: '{$dot} {$e}A levelezés nincs használva egy királyságban se{$sep}: {$e}Nemzet{$sep}: {$es}%id% {$sep}| {$e}Tárgy{$sep}: {$es}%subject%'
+          unknown: '{$dot} {$e}Ismeretlen levél a királyságban{$sep}: {$e}Királyság{$sep}: {$es}%kingdom_id% {$sep}| {$e}Levél{$sep}: {$es}%id%'
+        disabled-upgrade: '{$dot} {$e}A Királyság letiltotta a fejlesztéseket{$sep}: {$e}Királyság{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Fejlesztés{$sep}: {$es}%upgrade% {$e}Szint {$es}%level%'
       description: 'Kísérletek a sérült adatok javítására'
       done:
         no-corruption: '{$p}Az átvizsgálás kész. Sérült adat nem található. Indítsd újra a szervert a teljesítményproblémák megelőzése érdekében.'
@@ -1874,9 +1874,9 @@ command:
     aliases: lang langs languages
     usage: '{$usage}language &9[nyelv]'
     info: |
-      {$sep}⚫ {$p}Királyságok választott nyelve{$sep}: &9%kingdoms_lang%
-      {$sep}⚫ {$p}Kliens detektált nyelve{$sep}: &9%client-locale%
-      {$sep}⚫ {$p}Támogatott nyelvek listája{$sep}: %langs%
+      {$dot} {$p}Királyságok választott nyelve{$sep}: &9%kingdoms_lang%
+      {$dot} {$p}Kliens detektált nyelve{$sep}: &9%client-locale%
+      {$dot} {$p}Támogatott nyelvek listája{$sep}: %langs%
     supported-entry: '{$s}%lang% {$sep}({$s}%internal-name%{$sep})'
     unknown-language: '{$e}Ismeretlen nyelv{$sep}: {$es}%chosen% &7({$s}A plugin valószínűleg nem támogatja&7)'
     already-set: '{$e}A nyelv már erre van állítva: {$es}%chosen% '
