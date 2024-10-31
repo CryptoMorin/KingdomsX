@@ -19,6 +19,7 @@ interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
     val isEven: Boolean get() = rem(TWO) == ZERO
     val isOdd: Boolean get() = !isEven
 
+    fun abs(): AnyNumber = if (this < ZERO) unaryMinus() else this
     operator fun unaryMinus(): AnyNumber
     operator fun unaryPlus(): AnyNumber
     operator fun inc(): AnyNumber

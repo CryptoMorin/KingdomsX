@@ -37,7 +37,7 @@ options:
         - "{$s}During masswar invasion is free."
         - "Masswar is currently {$p}running."
         - ""
-        - "{$p}Mass War ends in{$sep}: {$s}%kingdoms_time_masswar_time%"
+        - "{$p}Mass War ends in{$colon} {$s}%kingdoms_time_masswar_time%"
     else:
       name: "&4Masswar"
       material: RED_WOOL
@@ -45,7 +45,7 @@ options:
         - "{$s}During masswar invasion is free."
         - "Masswar is currently &cnot running."
         - ""
-        - "{$p}Next Mass War in{$sep}: {$s}%kingdoms_time_masswar_time%"
+        - "{$p}Next Mass War in{$colon} {$s}%kingdoms_time_masswar_time%"
     posx: 6
     posy: 3
   nexus-chest:
@@ -112,12 +112,20 @@ options:
     name: "&3Damage Reduction"
     material: DIAMOND_CHESTPLATE
     flags: [ ALL ]
+
+    powerup-conds: &pwrup-conds
+      - '{? level >= 20 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - '{? level >= 40 && kingdoms_kingdom_level < 4 ? "{$kingdom-lvl-IV}"}'
+      - '{? level >= 50 && kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
+
     lore:
       - "{$s}Each upgrade reduces damage"
       - "taken by &e1% {$s}when you're in"
       - "your own kingdom land."
       - ""
-      - "{$s}Level{$sep}: {$p}%level%{$sep}/{$p}%max_level%"
+      - <<: *pwrup-conds
+      - "{$s}Level{$colon} {$p}%level%{$sep}/{$p}%max_level%"
       - "{$s}Cost{$colon} {$p}%cost%"
     posx: 7
     posy: 4
@@ -130,7 +138,8 @@ options:
       - "damage by &e1% {$s}when you're in"
       - "your own kingdom land."
       - ""
-      - "{$s}Level{$sep}: {$p}%level%{$sep}/{$p}%max_level%"
+      - <<: *pwrup-conds
+      - "{$s}Level{$colon} {$p}%level%{$sep}/{$p}%max_level%"
       - "{$s}Cost{$colon} {$p}%cost%"
     posx: 3
     posy: 4
@@ -142,7 +151,8 @@ options:
       - "damage by &e1% {$s}when you're in"
       - "your own kingdom land."
       - ""
-      - "{$s}Level{$sep}: {$p}%level%{$sep}/{$p}%max_level%"
+      - <<: *pwrup-conds
+      - "{$s}Level{$colon} {$p}%level%{$sep}/{$p}%max_level%"
       - "{$s}Cost{$colon} {$p}%cost%"
     posx: 4
     posy: 4
@@ -156,7 +166,8 @@ options:
       - "itself. It only boosts your health regeneration"
       - "amount that you gained by eating food."
       - ""
-      - "{$s}Level{$sep}: {$p}%level%{$sep}/{$p}%max_level%"
+      - <<: *pwrup-conds
+      - "{$s}Level{$colon} {$p}%level%{$sep}/{$p}%max_level%"
       - "{$s}Cost{$colon} {$p}%cost%"
     posx: 6
     posy: 4

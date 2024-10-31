@@ -235,6 +235,9 @@ health:
   scaling: "min((lvl + 1) * 50, 2048)"
   max-level: 40
   cost: "(lvl + 1) * 100"
+  conditions:
+    'lvl >= 10 && kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+    'lvl >= 30 && kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
 resistance:
   enabled: true
   max-level: 10
@@ -256,11 +259,15 @@ throw:
   chance: "10 * lvl"
   scaling: "1 + (lvl / 10)"
   cost: "(lvl + 1) * 100"
+  conditions:
+    'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
 drag:
   enabled: true
   scaling: "10 - lvl"
   max-level: 3
   cost: "(lvl + 1) * 100"
+  conditions:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
 death-duel:
   enabled: true
   max-level: 1
@@ -272,12 +279,16 @@ damage-cap:
   scaling: "20 - lvl"
   max-level: 5
   cost: "(lvl + 1) * 100"
+  conditions:
+    'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
 thor:
   enabled: true
   scaling: "lvl"
   cooldown: '[15sec] - ([1sec] * lvl)'
   max-level: 5
   cost: "(lvl + 1) * 100"
+  conditions:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
 plow:
   enabled: true
   max-level: 1
@@ -298,8 +309,21 @@ reinforcements:
   max-level: 3
   scaling: "[3min] - ([15sec] * lvl)"
   cost: "(lvl + 1) * 100"
+  conditions:
+    'kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
 focus:
   enabled: true
   max-level: 3
   scaling: "lvl + 1"
   cost: "(lvl + 1) * 100"
+burst:
+  enabled: true
+  max-level: 3
+  cost: "(lvl + 1) * 200"
+  conditions:
+    'kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
+
+  range: "3 + lvl"
+  min-targets: '5 - lvl'
+  damage: '3 + lvl'
+  knockback: '1 + lvl'

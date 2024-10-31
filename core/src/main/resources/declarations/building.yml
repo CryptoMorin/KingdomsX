@@ -21,11 +21,35 @@ build-duration:
   opening: '[10secs]'
   #  upgrading: 'max(0, ([1min] + [<build-duration-factor>]) * level)'
   upgrading: '[10 seconds]'
-  repairing: '[5sec] * (building_durability / building_max_durability)'
+  repairing: '[1sec] * (building_max_durability - building_durability)'
   demolishing: 'building_region_blocks * [50ms]'
 
 # The durability of a building (used for things like siege cannons)
 durability: '<durability-factor> * level'
+
+repair:
+  # Resource points needed for a full repair.
+  cost: '(building_max_durability - building_durability) / 2'
+
+  # When turret durability is not max but isn't 0 either, you
+  # can use these items to repair it instantly.
+  # Players need to drop the item near the turret they want to fix.
+  materials:
+    iron:
+      # Amount of durability restored.
+      amount: 10
+
+      # https://github.com/CryptoMorin/KingdomsX/wiki/Config#item-matchers
+      item:
+        material: IRON_INGOT
+    gold:
+      amount: 15
+      item:
+        material: GOLD_INGOT
+    diamond:
+      amount: 50
+      item:
+        material: DIAMOND
 
 preview:
   1:
@@ -81,6 +105,7 @@ building:
           lines:
             - '{$$building.holograms.main}'
             - '<extra-holograms>'
+            - '{? building_durability <= 0 ? "{$sep}[{$es}!{$sep}] {$e}{$$building.holograms.progress.broken} {$sep}[{$es}!{$sep}]" ; building_durability != building_max_durability ? "{$p}{$$building.holograms.progress.durability}{$colon} {$s}%fancy@building_durability%{$sep}/{$s}%fancy@building_max_durability%"}'
 
           # The initial height for holograms is their distance from the building's origin.
           # Offset does the same thing as height, but it also supports xyz axis.
@@ -106,7 +131,7 @@ building:
         main:
           background-color: 200, 0, 0, 100
           lines:
-            - '{$$building.holograms.upgrading}'
+            - '{$$building.holograms.demolishing}'
             - *progress1
             - *progress2
           height: *height
@@ -131,11 +156,19 @@ building:
 
 sounds:
   1:
+    # damaged: BLOCK_ANVIL_USE
+    partial-repair: BLOCK_ANVIL_USE
+    broken: BLOCK_ANVIL_DESTROY
+
     opening:
       started: ENTITY_ARROW_SHOOT
       finished: BLOCK_ANVIL_USE
       stopped: &stop-sound ENTITY_ITEM_BREAK
     upgrading:
+      started: BLOCK_ANVIL_USE
+      finished: BLOCK_ANVIL_USE
+      stopped: *stop-sound
+    repairing:
       started: BLOCK_ANVIL_USE
       finished: BLOCK_ANVIL_USE
       stopped: *stop-sound
@@ -148,6 +181,12 @@ particles:
   # Other entries:
   # place-block: Particle for when a single block is placed.
   1:
+    broken:
+      particle: REDSTONE
+      color: 0, 0, 255
+      size: 2
+      count: 1
+
     # This is displayed on the borders for the building.
     opening:
       progress:
@@ -175,6 +214,15 @@ particles:
       stopped: *basic-cloud
       finished: *basic-cloud
       progress: *basic-cloud
+    repairing:
+      started: *basic-cloud
+      stopped: *basic-cloud
+      finished: *basic-cloud
+      progress:
+        particle: REDSTONE
+        color: 255, 255, 0
+        size: 2
+        count: 1
   2:
     opening:
       progress: *particle-2

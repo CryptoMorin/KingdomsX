@@ -1,5 +1,5 @@
 title: "&aArrow Turret"
-type: HOPPER
+rows: 3
 sound: ITEM_ARMOR_EQUIP_DIAMOND
 
 options:
@@ -14,7 +14,8 @@ options:
       {$p}Buy {$s}%ammo-buy-amount% {$p}ammo for {$s}%cost% {$p}resource points.
       {$p}Fully fill ammo by {$s}shift clicking
       {$p}for {$s}%fill-cost% {$p}resource points.
-    slot: 0
+    posx: 2
+    posy: 2
   upgrade:
     material: NETHER_STAR
     upgrade:
@@ -28,7 +29,7 @@ options:
         {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo% {$sep}➔ {$s}%next_max_ammo%
         {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next_cooldown%
         {$dot} {$p}Max Targets{$colon} {$s}%max_targets% {$sep}➔ {$s}%next_max_targets%
-        {$dot} {$p}Speed{$colon} {$s}%speed% {$sep}➔ {$s}%next_speed%
+        {$dot} {$p}Speed{$colon} {$s}%fancy@speed% {$sep}➔ {$s}%fancy@next_speed%
         {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next_damage%
 
         {$dot} {$p}Max Level{$colon} {$s}III
@@ -40,9 +41,10 @@ options:
         {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
         {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
         {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
-        {$dot} {$p}Speed{$colon} {$s}%speed%
+        {$dot} {$p}Speed{$colon} {$s}%fancy@speed%
         {$dot} {$p}Damage{$colon} {$s}%damage%
-    slot: 1
+    posx: 3
+    posy: 2
   manual:
     manual:
       condition: "manual"
@@ -69,7 +71,35 @@ options:
 
         {$p}Left-click to go into
         {$sp}manual mode
-    slot: 2
+    posx: 4
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}Repair"
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}Your current turret is completely
+        destroyed and needs a full repair
+        to fix it.
+
+        {$p}Cost{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Resource Points{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Money{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}You can repair your building by
+        throwing the following items at it{$colon}
+
+          {$dot} {$p}Iron{$colon} {$s}10
+          {$dot} {$p}Gold{$colon} {$s}15
+          {$dot} {$p}Diamonds{$colon} {$s}50
+
+        {$info-sign} &9If your building's durability hits {$e}0&9,
+        you'll have to do a full repair using
+        this button.
+    posx: 6
+    posy: 2
   break:
     name: "&cBreak"
     material: REDSTONE_BLOCK
@@ -82,11 +112,23 @@ options:
         construction, breaking this turret
         will revert all progress.
     else:
-      lore: [ "&4Breaks this turret." ]
-    slot: 3
+      lore: |
+        &4Breaks this turret.
+    posx: 7
+    posy: 2
   close:
     name: "&cClose"
     material: BARRIER
     lore:
       - "{$s}Close the GUI"
-    slot: 4
+    posx: 8
+    posy: 2
+
+  lime-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 13, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

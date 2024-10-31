@@ -6,29 +6,29 @@ rows: 6
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
-    name: '{$p}Player Joined{$sep}: {$s}%player%'
+    name: '{$p}Player Joined{$colon} {$s}%player%'
     lore: |
-      {$p}At{$sep}: {$s}%time%
-      {$p}Invited By{$sep}: {$s}%inviter%
+      {$p}At{$colon} {$s}%time%
+      {$p}Invited By{$colon} {$s}%inviter%
   kingdom-kick:
     material: RED_WOOL
-    name: '{$p}Kicked Member{$sep}: {$s}%player%'
+    name: '{$p}Kicked Member{$colon} {$s}%player%'
     lore: |
-      {$p}At{$sep}: {$s}%time%
-      {$p}Kicker{$sep}: {$s}%kicker%
+      {$p}At{$colon} {$s}%time%
+      {$p}Kicker{$colon} {$s}%kicker%
   kingdom-leave:
     material: RED_WOOL
-    name: '{$p}Player Left{$sep}: {$s}%player%'
+    name: '{$p}Player Left{$colon} {$s}%player%'
     lore: |
-      {$p}At{$sep}: {$s}%time%
-      {$p}Reason{$sep}: {$s}%reason%
+      {$p}At{$colon} {$s}%time%
+      {$p}Reason{$colon} {$s}%reason%
   kingdom-challenge-challenger:
     material: GREEN_WOOL
     name: '{$p}Challenged'
     lore: |
       &e%player% &chas challenged
       &e%other*kingdoms_kingdom_name% &ckingdom.
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
 
       {$sep}You have until &c%start_time%
       {$sep}to prepare to attack.
@@ -38,7 +38,7 @@ rows: 6
     lore: |
       &e%kingdoms_kingdom_name% &ckingdom has
       &cchallenged your kingdom.
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
 
       {$sep}You have until &c%start_time%
       {$sep}to prepare before they attack.
@@ -47,40 +47,40 @@ rows: 6
     name: '{$p}Claimed'
     lore: |
       {$s}%player% {$p}has claimed
-      the following lands{$sep}:
+      the following lands{$colon}
       %lands%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-unclaim:
     material: GRASS_BLOCK
     name: '&cUnclaimed'
     lore: |
       {$es}%player% {$e}has unclaimed
-      the following lands{$sep}:
+      the following lands{$colon}
       %lands%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-invasion-invader:
     material: IRON_SWORD
     name: '{$p}Invaded'
     lore: |
-      {$s}%player% {$p}has invaded{$sep}:
+      {$s}%player% {$p}has invaded{$colon}
       {$s}%chunk%
-      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Ransack Mode{$sep}: %ransack-mode%
-      {$p}Result{$sep}: {$s}%result%
-      {$p}At{$sep}: {$s}%time%
-      {$p}Affected Lands{$sep}:
+      {$p}Kingdom{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Ransack Mode{$colon} %ransack-mode%
+      {$p}Result{$colon} {$s}%result%
+      {$p}At{$colon} {$s}%time%
+      {$p}Affected Lands{$colon}
       %affected-lands%
   kingdom-invasion-invaded:
     material: GOLD_SWORD
     name: '&cGot Invaded'
     lore: |
-      {$s}%player% {$p}has invaded your kingdom at{$sep}:
+      {$s}%player% {$p}has invaded your kingdom at{$colon}
       {$s}%chunk%
-      {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Ransack Mode{$sep}: %ransack-mode%
-      {$p}Result{$sep}: {$s}%result%
-      {$p}At{$sep}: {$s}%time%
-      {$p}Affected Lands{$sep}:
+      {$p}Kingdom{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Ransack Mode{$colon} %ransack-mode%
+      {$p}Result{$colon} {$s}%result%
+      {$p}At{$colon} {$s}%time%
+      {$p}Affected Lands{$colon}
       %affected-lands%
   kingdom-upgrade-misc:
     material: DIAMOND_HOE
@@ -88,27 +88,27 @@ rows: 6
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}misc upgrade.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Level{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
     name: '{$sp}Champion Upgrade'
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}champion upgrade.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Level{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
     name: '{$sp}Powerup Upgrade'
     lore: |
       {$s}%player% {$p}has upgraded
       {$s}%upgrade% {$p}powerup.
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Level{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
     name: '&aStructure Upgrade'
@@ -116,25 +116,25 @@ rows: 6
       {$s}%player% {$p}has upgraded
       {$s}%item_style_display_name% {$p}structure at
       {$s}%location%
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Level{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
     name: '&aStructure Purchase'
     lore: |
       {$s}%player% {$p}has purchased {$s}%amount%
       {$s}%item_style_display_name% {$p}structures.
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
     name: '&aTurret Purchase'
     lore: |
       {$s}%player% {$p}has purchased {$s}%amount%
       {$s}%item_style_display_name% {$p}turrets.
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-turret-purchase-ammo:
     name: '&aTurret Ammo Purchase'
     material: EMERALD_BLOCK
@@ -142,8 +142,8 @@ rows: 6
       {$s}%player% {$p}has purchased ammo for
       {$s}%style% {$p}turret at {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
       {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
     name: '&aTurret Upgrade'
@@ -151,26 +151,26 @@ rows: 6
       {$s}%player% {$p}has upgraded
       {$s}%item_style_display_name% {$p}turret at
       {$s}%location%
-      {$p}Level{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Level{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   kingdom-resource-points-convert:
     material: HAY_BLOCK
     name: '&aResource Points Convert'
     lore: |
       {$s}%player% {$p}has changed
-      resource points{$sep}:
+      resource points{$colon}
       {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   extractor-collect:
     material: EMERALD_BLOCK
     name: '&aExtractor Collect'
     lore: |
       {$s}%player% {$p}has collected the
-      extractor located at{$sep}:
+      extractor located at{$colon}
       {$s}%location%
-      {$p}Collected Resource Points{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Collected Resource Points{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   warppad-teleport:
     material: END_PORTAL_FRAME
     name: '&3Warp Pad Teleport'
@@ -179,18 +179,18 @@ rows: 6
       using the Warp Pad located at
       {$s}%from_location% {$p}to
       {$s}%precise_location%
-      {$p}Fuel Cost{$sep}: {$s}%fancy@fuel_cost%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Fuel Cost{$colon} {$s}%fancy@fuel_cost%
+      {$p}At{$colon} {$s}%time%
   outpost-item-purchase:
     material: HAY_BLOCK
     name: '&eOutpost Item Purchase'
     lore: |
       {$s}%player% {$p}has purchased
       the following items from the
-      Outpost structure located at{$sep}:
+      Outpost structure located at{$colon}
       {$s}%location%
-      {$p}Total Resource Points{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Total Resource Points{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
       %purchases%
   kingdom-pacifism-change:
     material: NETHER_STAR
@@ -198,34 +198,34 @@ rows: 6
     lore: |
       {$s}%player% {$p}has changed the
       pacifism state of the kingdom.
-      {$p}Pacifist{$sep}: {$s}%bool_pacifist%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Pacifist{$colon} {$s}%bool_pacifist%
+      {$p}At{$colon} {$s}%time%
   shield-purchase:
     material: SHIELD
     name: '&5Shield Purchase'
     lore: |
       {$s}%player% {$p}has purchased
       a shield for the kingdom.
-      {$p}Purchased Shield Duration{$sep}: {$s}%purchased-shield-time%
-      {$p}Shield Duration{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Resource Points Cost{$sep}: {$s}%fancy@resource_points%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Purchased Shield Duration{$colon} {$s}%purchased-shield-time%
+      {$p}Shield Duration{$colon} {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+      {$p}Resource Points Cost{$colon} {$s}%fancy@resource_points%
+      {$p}At{$colon} {$s}%time%
   shield-deactivation:
     material: SHIELD
     name: '&5Shield Deactivation'
     lore: |
       {$s}%player% {$p}has deactivated the
       kingdom's shield.
-      {$p}Shield Duration{$sep}: {$s}%old-shield-time%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Shield Duration{$colon} {$s}%old-shield-time%
+      {$p}At{$colon} {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
     name: '{$sp}Relationship Change'
     lore: |
       {$p}Kingdom's relationship has
-      changed with {$s}%kingdoms_kingdom_name% {$p}kingdom{$sep}:
+      changed with {$s}%kingdoms_kingdom_name% {$p}kingdom{$colon}
       %old-relation% {$sep}➜ %new-relation%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-invite:
     material: BOOK
     name: '{$sp}Invite'
@@ -233,96 +233,96 @@ rows: 6
       {$s}%inviter% {$p}has invited {$s}%player%
       {$p}to the kingdom. They have {$s}%accept-time%
       {$p}to accept the request.
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-king-change:
     material: BOOK
     name: '&4King Change'
     lore: |
-      {$p}Kingdom's king has been changed{$sep}:
+      {$p}Kingdom's king has been changed{$colon}
       {$s}%old-king% {$sep}➜ {$s}%new-king%
-      {$p}Reason{$sep}: {$s}%reason%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Reason{$colon} {$s}%reason%
+      {$p}At{$colon} {$s}%time%
   player-rank-change:
     lore: |
       {$s}%old-rank% {$sep}➜ {$s}%new-rank%
-      {$p}By{$sep}: {$s}%by-player%
+      {$p}By{$colon} {$s}%by-player%
     promoted:
       condition: 'old_rank_priority > new_rank_priority' # It's the opposite
       material: GREEN_WOOL
-      name: '&aPlayer Promoted{$sep}: {$s}%player%'
+      name: '&aPlayer Promoted{$colon} {$s}%player%'
     else: # demoted
       material: RED_WOOL
-      name: '&cPlayer Demoted{$sep}: {$s}%player%'
+      name: '&cPlayer Demoted{$colon} {$s}%player%'
   rank-create:
     material: BOOK
     name: '{$p}Rank Created'
     lore: |
-      {$p}A rank was created by {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Display Name{$sep}: {$s}%rank_color%%rank_symbol% %rank_name%
-      {$p}Priority{$sep}: {$s}%rank_priority%
-      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
-      {$p}Material{$sep}: {$s}%rank_material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}A rank was created by {$s}%player%{$colon}
+      {$p}Node{$colon} {$s}%rank_node%
+      {$p}Display Name{$colon} {$s}%rank_color%%rank_symbol% %rank_name%
+      {$p}Priority{$colon} {$s}%rank_priority%
+      {$p}Max Claims{$colon} {$s}%rank_max_claims%
+      {$p}Material{$colon} {$s}%rank_material%
+      {$p}At{$colon} {$s}%time%
   rank-delete:
     material: BOOK
     name: '&cRank Deleted'
     lore: |
-      {$p}Rank was deleted by {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Display Name{$sep}: {$s}%rank_color% %rank_symbol% %rank_name%
-      {$p}Priority{$sep}: {$s}%rank_priority%
-      {$p}Max Claims{$sep}: {$s}%rank_max_claims%
-      {$p}Material{$sep}: {$s}%rank_material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Rank was deleted by {$s}%player%{$colon}
+      {$p}Node{$colon} {$s}%rank_node%
+      {$p}Display Name{$colon} {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Priority{$colon} {$s}%rank_priority%
+      {$p}Max Claims{$colon} {$s}%rank_max_claims%
+      {$p}Material{$colon} {$s}%rank_material%
+      {$p}At{$colon} {$s}%time%
   rank-change-name:
     material: BOOK
     name: '{$sp}Rank Name Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}name was changed by {$s}%player%{$sep}:
+      {$p}name was changed by {$s}%player%{$colon}
       {$s}%old-name% {$sep}➜ {$s}%new-name%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   rank-change-symbol:
     material: BOOK
     name: '{$sp}Rank Symbol Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}symbol was changed by {$s}%player%{$sep}:
+      {$p}symbol was changed by {$s}%player%{$colon}
       {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   rank-change-color:
     material: BOOK
     name: '{$sp}Rank Color Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}name was changed by {$s}%player%{$sep}:
+      {$p}name was changed by {$s}%player%{$colon}
       {$s}%old-color%color {$sep}➜ {$s}%new-color%color
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   rank-change-priority:
     material: BOOK
     name: '{$sp}Rank org.kingdoms.tasks.priority.Priority Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}priority was changed by {$s}%player%{$sep}:
+      {$p}priority was changed by {$s}%player%{$colon}
       {$s}%old-priority% {$sep}➜ {$s}%new-priority%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   rank-change-max-claims:
     material: BOOK
     name: '{$sp}Rank Max Claims Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}max claims was changed by {$s}%player%{$sep}:
+      {$p}max claims was changed by {$s}%player%{$colon}
       {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   rank-change-material:
     material: BOOK
     name: '{$sp}Rank Material Changed'
     lore: |
       {$p}The rank %rank%
-      {$p}material was changed by {$s}%player%{$sep}:
+      {$p}material was changed by {$s}%player%{$colon}
       {$s}%old-material% {$sep}➜ {$s}%new-material%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   structures-nexus-move:
     material: BEACON
     name: '{$sp}Nexus Placed'
@@ -330,86 +330,86 @@ rows: 6
       condition: placed
       lore: |
         {$p}The kingdom's nexus was
-        placed by {$s}%player%{$sep}:
+        placed by {$s}%player%{$colon}
         {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}At{$sep}: {$s}%time%
+        {$p}At{$colon} {$s}%time%
     else:
       lore: |
         {$p}The kingdom's nexus was
-        moved by {$s}%player%{$sep}:
+        moved by {$s}%player%{$colon}
         {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}At{$sep}: {$s}%time%
+        {$p}At{$colon} {$s}%time%
   group-tax-server-pay:
     material: PAPER
     name: "{$sp}Server Tax"
     lore: |
       {$p}Server taxes paid.
-      {$p}Amount{$sep}: {$s}%fancy@amount%
-      {$p}At{$sep}: {$s}%time%
+      {$p}Amount{$colon} {$s}%fancy@amount%
+      {$p}At{$colon} {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
     name: "{$sp}Champion Change"
     lore: |
       {$p}The champion was changed
-      by {$s}%player%{$sep}:
+      by {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-change-lore:
     material: PAPER
     name: "{$sp}Change Lore"
     lore: |
       {$p}The kingdom's lore was changed
-      by {$s}%player%{$sep}:
+      by {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-rename:
     material: PAPER
     name: "{$sp}Rename"
     lore: |
       {$p}The kingdom was renamed
-      by {$s}%player%{$sep}:
+      by {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-change-tag:
     material: PAPER
     name: "{$sp}Change Tag"
     lore: |
       {$p}The kingdom's tag was changed
-      by {$s}%player%{$sep}:
+      by {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-nation-join:
     material: BEACON
     name: "{$sp}Nation Join"
     lore: |
       {$p}Your kingdom has joined
       {$s}%kingdoms_nation_name% {$p}nation.
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-nation-leave:
     material: BEACON
     name: "&cNation Leave"
     lore: |
       {$p}Your kingdom has left
       {$s}%kingdoms_nation_name% {$p}nation.
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   kingdom-vault-item-move:
     material: PAPER
     name: "&cKingdom Vault Item Move"
     lore: |
-      {$p}Changes{$sep}:
+      {$p}Changes{$colon}
       %changes%
 
-      {$p}At{$sep}: {$s}%time%
+      {$p}At{$colon} {$s}%time%
   'PeaceTreaties:received':
     material: BOOK
     name: "{$sp}Received Peace Treaty"
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Proposer{$sep}: {$s}%other*kingdoms_kingdom_name%
-      {$p}Contract Duration{$sep}: {$s}%peacetreaty_duration%
+      {$p}Proposer{$colon} {$s}%other*kingdoms_kingdom_name%
+      {$p}Contract Duration{$colon} {$s}%peacetreaty_duration%
 
-      {$p}For more information do{$sep}:
+      {$p}For more information do{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
   'PeaceTreaties:sent':
     material: BOOK
@@ -417,14 +417,14 @@ rows: 6
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}To{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Contract Duration{$sep}: {$s}%peacetreaty_duration%
+      {$p}To{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Contract Duration{$colon} {$s}%peacetreaty_duration%
 
-      {$p}For more information do{$sep}:
+      {$p}For more information do{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
   '[else]':
     material: BARRIER
-    name: '{$e}Unknown log type{$sep}:'
+    name: '{$e}Unknown log type{$colon}'
     lore: '{$es}%type%'
 
 options:
@@ -439,15 +439,15 @@ options:
     material: BOOK
     name: "{$p}Filters & Sorting"
     lore: |
-      {$p}Filters{$sep}:
-       {$dot} {$s}Player{$sep}: %bool_filters_player%
-       {$dot} {$s}Time{$sep}: %bool_filters_time%
-       {$dot} {$s}Type{$sep}: %bool_filters_type%
+      {$p}Filters{$colon}
+       {$dot} {$s}Player{$colon} %bool_filters_player%
+       {$dot} {$s}Time{$colon} %bool_filters_time%
+       {$dot} {$s}Type{$colon} %bool_filters_type%
 
-      {$p}Sorting{$sep}:
-       {$dot} {$s}Ascending Time{$sep}: %bool_sorting_time_ascending%
-       {$dot} {$s}Descending Time{$sep}: %bool_sorting_time_descending%
-       {$dot} {$s}Type{$sep}: %bool_sorting_type%
+      {$p}Sorting{$colon}
+       {$dot} {$s}Ascending Time{$colon} %bool_sorting_time_ascending%
+       {$dot} {$s}Descending Time{$colon} %bool_sorting_time_descending%
+       {$dot} {$s}Type{$colon} %bool_sorting_type%
 
   next-page:
     name: '{$s}Next Page {$sep}- &e%page%{$sep}/&e%pages%'

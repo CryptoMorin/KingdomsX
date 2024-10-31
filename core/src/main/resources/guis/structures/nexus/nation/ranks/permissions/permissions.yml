@@ -1,0 +1,208 @@
+# %permission_category_name% is the item name used
+# for categories in categories.yml
+title: '{$sep}-=( {$p}%permission_category_name% {$sep})=-'
+rows: 6
+(import):
+  pagination: { }
+
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  alliance:
+    <<: *fn-std-perm [ "Alliance" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k ally {$sep}command.
+  broadcast:
+    <<: *fn-std-perm [ "Broadcast" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k nation broadcast {$sep}command.
+  build:
+    <<: *fn-perm [ 'Build', DIAMOND_PICKAXE ]
+    lore: |
+      {$sep}Permission to build anywhere
+      in the kingdom.
+
+      For the difference between this
+      and {$p}BUILD_OWNED {$sep}permission
+      refer to the other permission.
+  edit-ranks:
+    <<: *fn-std-perm [ "Edit Ranks" ]
+    lore: |
+      {$sep}Permission for creating, deleting
+      and modifying ranks including their
+      symbols, names and permissions.
+
+      They will not be able to modify
+      their own rank or a rank of
+      someone with higher priority.
+
+      This does not give them permission
+      to demote or promote other players.
+  enemy:
+    <<: *fn-std-perm [ "Enemy" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k enemy {$sep}command.
+  home:
+    <<: *fn-std-perm [ "Home" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k home {$sep}command.
+  invade:
+    <<: *fn-std-perm [ "Invade" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k invade {$sep}command.
+  invite:
+    <<: *fn-std-perm [ "Invite" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k invite {$sep}command and
+      for making invite codes from
+      {$s}/k invitecodes
+  kick:
+    <<: *fn-std-perm [ "Kick" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k kick {$sep}command.
+
+      {$sep}Players with this
+      permission will not be
+      able to kick players with
+      the same or higher ranks.
+  lore:
+    <<: *fn-std-perm [ "Lore" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k nation lore
+      {$s}/k nation rename
+  nexus:
+    <<: *fn-perm [ "Nexus", BEACON ]
+    lore: |
+      {$sep}Permission for moving the
+      national nexus using
+      {$s}/k nation nexus {$sep}command.
+  nexus-build:
+    <<: *fn-perm [ "Nexus Build", BEACON ]
+    lore: |
+      {$sep}Permission for building
+      in the nexus land
+  nexus-chest:
+    <<: *fn-perm [ "Nexus Chest", CHEST ]
+    lore: |
+      {$sep}Permission for modifying
+      the kingdom's nexus chest.
+  set-home:
+    <<: *fn-std-perm [ "Set Home" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k nation sethome {$sep}command.
+  upgrade:
+    <<: *fn-std-perm [ "Upgrade" ]
+    lore: |
+      {$sep}Permission for upgrading
+      anything that can be upgraded
+      inside the kingdom such as
+      misc-upgrades, champion upgrades,
+      powerups, turrets and structures.
+  truce:
+    <<: *fn-std-perm [ "Truce" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k truce {$sep}command.
+  manage-ranks:
+    <<: *fn-std-perm [ "Manage Ranks" ]
+    lore: |
+      {$sep}Permission for promoting
+      and demoting members with
+      lower rank than the player.
+
+      This does not give them
+      permission to modify rank
+      settings.
+  nation:
+    <<: *fn-perm [ "Nation", BLUE_WOOL ]
+    lore: |
+      {$sep}Permission for joining
+      or leaving nations.
+  exclude-tax:
+    <<: *fn-std-perm [ "Tax Exclusion" ]
+    lore: |
+      {$sep}Kings with this
+      permission are not required
+      to pay taxes to the nation.
+  relation-attributes:
+    <<: *fn-std-perm [ "Relationship Attributes" ]
+    lore: |
+      {$sep}Permission for editing
+      relationship attributes.
+  settings:
+    <<: *fn-std-perm [ "Settings" ]
+    lore: |
+      {$sep}Permission for editing general
+      kingdom settings located inside
+      nexus GUI.
+  view-logs:
+    <<: *fn-perm [ "View Logs", KNOWLEDGE_BOOK ]
+    lore: |
+      {$sep}View your nation audit logs
+      which can be accessed from
+      your nexus.
+  read-mails:
+    <<: *fn-perm [ "Read Mails", PLAYER_HEAD ]
+    lore: |
+      {$sep}Permission for reading
+      nation mails located inside
+      nexus GUI.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    <<: *fn-perm [ "Manage Mails", PLAYER_HEAD ]
+    lore: |
+      {$sep}Send new mails and reply.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  "[else]":
+    name: "&4Unknown: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # This is a special feature
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Back'

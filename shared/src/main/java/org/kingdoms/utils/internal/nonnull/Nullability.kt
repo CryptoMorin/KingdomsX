@@ -13,6 +13,12 @@ object Nullability {
     }
 
     @JvmStatic
+    inline fun <T> T?.assertNotNull(crossinline msg: () -> String): T {
+        if (this == null) throw NullPointerException(msg())
+        return this
+    }
+
+    @JvmStatic
     fun <T> T?.assertNotNull(msg: String): T {
         if (this == null) throw NullPointerException(msg)
         return this

@@ -9,7 +9,7 @@ lingering: bool
 sounds:
   (keys): int
   (values):
-    (keys): [ opening, upgrading, demolition, activate ]
+    (keys): [ opening, upgrading, demolition, repairing, activate, partial-repair, damaged, broken ]
     (values):
       - 'Sound?'
       - { (keys): [ started, finished, stopped ], (values): 'Sound' }
@@ -32,34 +32,31 @@ pass-through: Math
 upgrade-cost: Math
 fire: Math
 manual: Math
+
 explosion:
   level: int
   fire: int
   power: Math
+
 effects:
   (values): list
   (optional): true
+
 projectile:
   (required): [ '1' ]
   (keys): int
   (values): str
   (optional): true
+
 speed: Math
 damage: Math
+
 entities:
   whitelist: bool
   list:
     (type): set
     (elements): Enum<org.bukkit.entity.EntityType>
-block:
-  (required): [ '1' ]
-  (keys): int
-  (values): Material
 
-skull:
-  (required): [ '1' ]
-  (keys): int
-  (values): str
 item:
   (keys): int
   (values): ItemStack

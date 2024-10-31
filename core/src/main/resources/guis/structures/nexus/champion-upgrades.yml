@@ -21,6 +21,8 @@ options:
       - "by {$p}50 {$sep}every level."
       - "{$sep}Current champion's health{$colon} {$p}%scaling%"
       - ""
+      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
     posx: 4
@@ -35,6 +37,7 @@ options:
       - "nexus guards depending on the"
       - "misc upgrade."
       - ""
+      - "{$chk-kingdom-lvl-IV}"
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
     posx: 5
@@ -88,6 +91,7 @@ options:
       - "{$sep}to knock the player into the sky."
       - "{$sep}Each upgrade increases this chance by {$p}10%"
       - ""
+      - "{$chk-kingdom-lvl-II}"
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
     posx: 5
@@ -96,39 +100,98 @@ options:
     name: "&bDeath Duel"
     material: GOLDEN_SWORD
     flags: [ ALL ]
-    lore: |
+    lore:
+      - "&7All players except the invader will deal"
+      - "&250% &7less damage to the champion. The"
+      - "champion will also deal double damage"
+      - "to all players except the invaders."
+      - ""
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 3
   drag:
     name: "&bDrag"
     material: FISHING_ROD
-    lore: |
+    lore:
+      - "&7If the invading player is more than"
+      - "&2%scaling% &7blocks away from the champion, the"
+      - "player will be dragged to the champion."
+      - ""
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 3
-  damage-cap:
-    name: "&bDamage Cap"
-    material: DIAMOND_CHESTPLATE
-    flags: [ ALL ]
-    lore: |
-    posx: 4
-    posy: 4
   thor:
     name: "&bThor"
     material: DIAMOND_AXE
     flags: [ ALL ]
-    lore: |
+    lore:
+      - "&7Every {$p}%cooldown%&7, lightning"
+      - "&7strikes the invading player and all"
+      - "&7nearby non-allied players. Deals"
+      - "&7damage, and knocks the players back also."
+      - ""
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 3
+    posy: 4
+  damage-cap:
+    name: "&bDamage Cap"
+    material: DIAMOND_CHESTPLATE
+    flags: [ ALL ]
+    lore:
+      - "&7Your champion can only receive up to"
+      - "&2%scaling% &7damages on any attack."
+      - ""
+      - "{$chk-kingdom-lvl-II}"
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
+    posx: 4
+    posy: 4
+  burst:
+    name: "&bBurst"
+    material: WIND_CHARGE
+    flags: [ ALL ]
+    lore: |
+      {$desc}When a lot of enemies are around
+      the champion, a powerful burst causes all
+      unfriendly players (and their pets) to
+      take damage and get thrown back.
+
+      {$p}Range{$colon} {$s}%fancy@upgrade_range%
+      {$p}Minimum Targets{$colon} {$s}%fancy@upgrade_min_targets%
+      {$p}Damage{$colon} {$s}%fancy@upgrade_damage%
+      {$p}Knockback{$colon} {$s}%fancy@upgrade_knockback%
+
+      {$chk-kingdom-lvl-V}
+      {$p}Level{$colon} {$s}%level%
+      {$p}Cost{$colon} {$s}%cost%
+    posx: 5
     posy: 4
   plow:
     name: "&bPlow"
     material: COBWEB
     lore:
+      - "&7Your champion will try to clear"
+      - "lava and webs every {$p}%cooldown%"
+      - ""
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 6
     posy: 4
   fangs:
     name: "&bFangs"
     material: EVOKER_SPAWN_EGG
     lore:
+      - "&7Spawn fangs for the enemy"
+      - "players around the champion"
+      - "every {$p}%cooldown%"
+      - ""
+      - "&2Level&8: &6%level%"
+      - "&2Cost&8: &6%cost%"
     posx: 7
     posy: 4
 

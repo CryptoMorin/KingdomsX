@@ -27,8 +27,11 @@ class Vector2(override val x: Double, override val z: Double) : Point2D {
         return this.x == other.x && this.z == other.z
     }
 
-    override fun toString(): String {
-        return "Vector2($x, $z)"
+    override fun toString(): String = "Vector2($x, $z)"
+
+    companion object {
+        @JvmStatic
+        fun of(x: Double, z: Double): Vector2 = Vector2(x, z)
     }
 }
 

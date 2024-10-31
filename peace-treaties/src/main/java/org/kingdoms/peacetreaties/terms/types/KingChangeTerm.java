@@ -3,7 +3,6 @@ package org.kingdoms.peacetreaties.terms.types;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
 import org.kingdoms.constants.land.abstraction.data.SerializationContext;
 import org.kingdoms.constants.namespace.Namespace;
@@ -49,7 +48,7 @@ public class KingChangeTerm extends Term {
                 PeaceTreaty peaceTreaty = editor.getPeaceTreaty();
                 if (!peaceTreaty.getVictimKingdom().isMember(newKing) &&
                         !peaceTreaty.getProposerKingdom().isMember(newKing)) {
-                    PeaceTreatyLang.TERMS_KING_CHANGE_NOT_APPLICALBE.sendError(viewer);
+                    PeaceTreatyLang.TERMS_KING_CHANGE_NOT_APPLICABLE.sendError(viewer);
                     return null;
                 }
 
@@ -106,7 +105,7 @@ public class KingChangeTerm extends Term {
     public Messenger canAccept(TermGroupingOptions config, PeaceTreaty peaceTreaty) {
         if (!peaceTreaty.getVictimKingdom().isMember(newKing) &&
                 !peaceTreaty.getProposerKingdom().isMember(newKing)) {
-            return PeaceTreatyLang.TERMS_KING_CHANGE_NOT_APPLICALBE;
+            return PeaceTreatyLang.TERMS_KING_CHANGE_NOT_APPLICABLE;
         }
         return null;
     }

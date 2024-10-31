@@ -37,7 +37,7 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     COMMAND_PEACETREATY_REVIEW_DESCRIPTION("{$s}Review a sent peace treaty contract in order to decide to accept it or not.", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_NAME("review", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_ALIASES("view", 1, 2, 3),
-    COMMAND_PEACETREATY_REVIEW_HEADER("{$es}%other*kingdoms_kingdom_name% {$e}peace treaty contains the following terms{$sep}:", 1, 2, 3),
+    COMMAND_PEACETREATY_REVIEW_HEADER("{$es}%other*kingdoms_kingdom_name% {$e}peace treaty contains the following terms{$colon}", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_TERMS("{$dot} %term_message%", 1, 2, 3),
     COMMAND_PEACETREATY_REVIEW_FOOTER("{$e}You can accept this contract by running {$es}" +
             "hover:{/k pt accept %other*kingdoms_kingdom_name%;&7Click to accept;|/k pt accept %other*kingdoms_kingdom_name%}", 1, 2, 3),
@@ -49,18 +49,18 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     COMMAND_PEACETREATY_REJECT_NOTIFICATIONS_SENDER("{$es}%kingdoms_kingdom_name% {$e}has rejected your kingdom's peace treaty contract.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_ACCEPT_DESCRIPTION("{$s}Accepts a peace treaty contract.", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_USAGE("{$usage}pt accept {$p}<kingdom>", 1, 2, 3),
-    COMMAND_PEACETREATY_ACCEPT_FAILED("{$e}Your kingdom failed to meet all the contract's requirements to accept{$sep}:", 1, 2, 3),
+    COMMAND_PEACETREATY_ACCEPT_FAILED("{$e}Your kingdom failed to meet all the contract's requirements to accept{$colon}", 1, 2, 3),
     COMMAND_PEACETREATY_ACCEPT_ACCEPTED_RECEIVER("{$p}Your kingdom has accepted the peace treaty contract from {$s}%other*kingdoms_kingdom_name% {$p}kingdom.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_ACCEPT_ACCEPTED_SENDER("{$s}%kingdoms_kingdom_name% {$p}has accepted your peace treaty contract.", 1, 2, 3, 4),
     COMMAND_PEACETREATY_RESUME_NONE("{$e}You don't have any active peace treaties to edit.", 1, 2, 3),
     EDITOR_PAUSED("{$p}You can resume your editing by running {$s}hover:{/k peacetreaty resume;&7Click to resume;/k peacetreaty resume}", 1),
-    EDITOR_FORCE_FAILED("{$e}This contract cannot be enforced because the kingdom would receive the following errors{$sep}:", 1),
+    EDITOR_FORCE_FAILED("{$e}This contract cannot be enforced because the kingdom would receive the following errors{$colon}", 1),
     EDITOR_VICTIM_KINGDOM_DISBANDED("{$e}The kingdom you were proposing to {$sep}({$es}%kingdoms_kingdom_name%{$sep}) {$e}was disbanded.", 1),
     TERM_INSUFFICIENT_WAR_POINTS("{$e}You need {$es}%peacetreaty_war_points% {$e}total war points {$e}in order to use this term.", 1),
     TERMS_MIN("{$e}You need to specify at least {$es}%terms_min% {$e}terms.", 1),
     TERMS_TAKE_MONEY_NOT_ENOUGH("{$e}Your kingdom needs {$es}$%fancy@term_take_money_amount%", 1, 3),
     TERMS_TAKE_MONEY_ENTER("{$p}Enter the amount of money you wish to take.", 1, 3),
-    TERMS_KING_CHANGE_NOT_APPLICALBE("{$e}The specified player is not a member of the proposer or the victim kingdom.", 1, 3),
+    TERMS_KING_CHANGE_NOT_APPLICABLE("{$e}The specified player is not a member of the proposer or the victim kingdom.", 1, 3),
 
     WAR_POINTS_GAIN_INVADE("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for the invasion.", 2, 3),
     WAR_POINTS_GAIN_KILL("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for killing {$s}%other*player% {$p}by {$s}%player%", 2, 3),
@@ -72,21 +72,21 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     WAR_POINTS_LOST_BREAK_STRUCTURE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}structure.",
             2, 3),
 
-    TERMS_TAKE_RESOURCE_POINTS_MESSAGE("{$e}Your kingdom must pay{$sep}: {$es}%fancy@term_take_resource_points_amount% resource points.", 1, 4),
-    TERMS_TAKE_MONEY_MESSAGE("{$e}Your kingdom must pay{$sep}: {$es}$%fancy@term_take_money_amount%", 1, 3),
+    TERMS_TAKE_RESOURCE_POINTS_MESSAGE("{$e}Your kingdom must pay{$colon} {$es}%fancy@term_take_resource_points_amount% resource points.", 1, 4),
+    TERMS_TAKE_MONEY_MESSAGE("{$e}Your kingdom must pay{$colon} {$es}$%fancy@term_take_money_amount%", 1, 3),
     TERMS_LEAVE_NATION_MESSAGE("{$e}Your kingdom must leave the nation and disband it if you're the capital.", 1, 3),
     TERMS_MISC_UPGRADES_MESSAGE("{$e}You will not be able to disable/enable misc upgrades and the proposer kingdom will have full control of them.", 1, 3),
-    TERMS_KEEP_LANDS_MESSAGE("{$p}The following lands will be kept{$sep}:\n%term_keep_lands_kept_lands%", 1, 3),
+    TERMS_KEEP_LANDS_MESSAGE("{$p}The following lands will be kept{$colon}\n%term_keep_lands_kept_lands%", 1, 3),
     TERMS_SCUTAGE_MESSAGE("{$e}Your kingdom has to pay {$es}%term_scutage_percent%% {$e}from their bank as taxes.", 1, 2),
     TERMS_ANNUL_TREATIES_MESSAGE("{$e}All your relationships with other kingdoms will be synchronized with your overlord kingdom.", 1, 3),
-    TERMS_LIMIT_STRUCTURES_MESSAGE("{$e}Your total number of placed structures will be limited to{$sep}: {$es}%term_limit_structures_amount%", 1, 3),
-    TERMS_LIMIT_TURRETS_MESSAGE("{$e}Your total number of placed turrets will be limited to{$sep}: {$es}%term_limit_turrets_amount%", 1, 3),
-    TERMS_LIMIT_CLAIMS_MESSAGE("{$e}Your total number of claims will be limited to{$sep}: {$es}%term_limit_claims_amount%", 1, 3),
+    TERMS_LIMIT_STRUCTURES_MESSAGE("{$e}Your total number of placed structures will be limited to{$colon} {$es}%term_limit_structures_amount%", 1, 3),
+    TERMS_LIMIT_TURRETS_MESSAGE("{$e}Your total number of placed turrets will be limited to{$colon} {$es}%term_limit_turrets_amount%", 1, 3),
+    TERMS_LIMIT_CLAIMS_MESSAGE("{$e}Your total number of claims will be limited to{$colon} {$es}%term_limit_claims_amount%", 1, 3),
 
     @RawPath
-    COMMAND_ADMIN_FSCK_PEACETREATIES_KINGDOM_UNKNOWN("Peace treaty with unknown kingdoms found for{$sep}: " +
-            "\n  {$e}Proposer{$sep}: {$e}%proposer%" +
-            "\n  {$e}Victim{$sep}: {$e}%victim%", 1, 2, 3, 4, 5),
+    COMMAND_ADMIN_FSCK_PEACETREATIES_KINGDOM_UNKNOWN("Peace treaty with unknown kingdoms found for{$colon} " +
+            "\n  {$e}Proposer{$colon} {$e}%proposer%" +
+            "\n  {$e}Victim{$colon} {$e}%victim%", 1, 2, 3, 4, 5),
 
     TERMS_TAKE_RESOURCE_POINTS_NOT_ENOUGH("{$e}Your kingdom needs {$es}%fancy@term_take_resource_points_amount% resource points.", 1, 4),
     TERMS_LEAVE_NATION_PERMANENT("{$e}The kingdom is the capital of a nation that is permanent. Can't disband a permanent nation.", 1, 3),

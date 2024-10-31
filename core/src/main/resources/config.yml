@@ -11,7 +11,9 @@
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 
 # All the configuration files will be automatically reloaded after
-# they're reloaded without using /k reload
+# they're changed without needing to use /k reload, however some options
+# require /k reload manually or even a server restart (which is specified in
+# their comments section of they need that)
 
 # There are other configuration files other than this file.
 # This is the main configuration relating to most basic features.
@@ -399,6 +401,9 @@ command:
 
   # You should usually choose the most obvious yet concise name for
   # the main name, some plugins might use it.
+  # Note: Changing these does not affect the messages use these commands.
+  #       For example, hover messages use commands hover:{...;...;/k cmd ...}
+  #       which you'll need to change if you change the name.
   name: kingdoms
   aliases: [ kingdom, xkingdoms, kingdomsx, k ]
 
@@ -508,6 +513,8 @@ kingdom-fly:
   # Requires a restart to update.
   nearby-unfriendly-range: 30
 
+  # Charges do not apply to players who have /k fly
+  # enabled by don't have flight enabled (double jumping)
   charges:
     # Requires a restart to take effect.
     enabled: true
@@ -527,6 +534,7 @@ kingdom-fly:
       # This is great if you want to charge your members more than the required amount.
       pay-kingdom:
         enabled: true
+
         # false = kingdoms bank money
         resource-points: true
 
@@ -600,6 +608,12 @@ placeholders:
   # You can also use "%" for default options to retrieve their default values from
   # the option below.
   formats:
+    #    rp:
+    #      normal: '% rp'
+    #      default: '- rp'
+    currency:
+      normal: '$%'
+      default: '$-'
     none:
       normal: '%'
       default: '{$$none}'
@@ -647,9 +661,11 @@ placeholders:
     err-sign: "&8&l[&4&l!&8&l]"
     info-sign: "&8&l[&9&l!&8&l]"
 
+    lvlup: '↑'
     arrow: '&8➔'
     point: '&8➤'
-    dot: '&7⚫'
+    dot: '&7●'
+    sdot: '&7◆'
     colon: '&8:'
 
     note: "{$info-sign} &9&lNote {$point}&7"
@@ -769,8 +785,13 @@ top-nations:
 # You can increase this by upgrading your max-members misc upgrade
 # in the Nexus Misc Upgrades section.
 max-members:
-  kingdoms: 10
+  kingdoms: '10 - (kingdoms_kingdom_bankruptcy / 2)'
   nations: 30
+
+private-kingdoms:
+  enabled: true
+
+  items: [ CAMPFIRE ]
 
 # Kingdoms can change their flag URL for web maps via kingdoms settings.
 flag:
@@ -1015,6 +1036,8 @@ economy:
   # These use the bank money, not resource points.
   costs:
     # How much does creating the following elements cost?
+    # You can use "create_count" placeholder for the amount of
+    # times this specific player created a kingdom.
     create:
       kingdom: 0
       nation: 0
@@ -1075,8 +1098,13 @@ daily-checks:
 
       # This is to prevent abusing the voting system.
       disallow:
-        joins: true
+        joins: false
         kicks: true
+
+      # Instead of completely disallowing joins, you can specify
+      # how long should a player be a member of this kingdom before
+      # they're allowing to vote in elections.
+      voting-age: 7 days
     nations:
       # The same rules of kingdom options above apply to the options below.
       enabled: false
@@ -1145,8 +1173,21 @@ tax:
 
     use-resource-points: false
 
-    # Disband the kingdom if it cannot pay taxes.
-    disband-if-cant-pay: true
+    # What should happen if the kingdom cannot pay its taxes?
+    bankruptcy:
+      # If this option is disabled, only the "disband" option will work,
+      # and you cannot use %kingdoms_kingdom_bankruptcy% placeholder (It will give you 0)
+      # This mainly allows the kingdom balance to be negative as well.
+      enabled: true
+
+      # Used for calculating %kingdoms_kingdom_bankruptcy%
+      # "balace" is the total amount of tax money the kingdom couldn't pay.
+      factor: 'log2(balance)'
+
+      # Disband the kingdom if it cannot pay taxes.
+      # Set this to 'true' if you just want to disband the
+      # kingdom as soon as it can't pay the taxes.
+      disband: 'kingdoms_kingdom_bankruptcy >= 50'
 
     members:
       enabled: false
@@ -1461,11 +1502,11 @@ invitations:
         name: "{$p}Invite Code"
         material: PAPER
         lore: |
-          {$p}Code{$sep}: {$s}%invitecode-code%
-          {$p}Kingdom{$sep}: {$s}%kingdoms_kingdom_name%
-          {$p}Created By{$sep}: {$s}%invitecode-creator%
-          {$p}Created At{$sep}: {$s}%invitecode-createdAt%
-          {$p}Expires At{$sep}: {$s}%invitecode-expiration%
+          {$p}Code{$colon} {$s}%invitecode-code%
+          {$p}Kingdom{$colon} {$s}%kingdoms_kingdom_name%
+          {$p}Created By{$colon} {$s}%invitecode-creator%
+          {$p}Created At{$colon} {$s}%invitecode-createdAt%
+          {$p}Expires At{$colon} {$s}%invitecode-expiration%
 
           {$sep}[{$e}!{$sep}] {$es}The expiration date is subject
           {$es}to change by the kingdom members.

@@ -264,6 +264,12 @@ shields:
   # You'll lose your kingdom shield if you invade and cannot invade at all if your nation has a shield active.
   disallow-invasions: true
 
+  # Amount of resource points refunded for the shield.
+  # Here we convert the remaining time shield to 1 minute (since it's milliseconds by default)
+  # and then refund 2rp for every 1min the shield has left.
+  #                 ┗━━━━━━━━━━━━━┓
+  refund: '(time_left / [1min]) * 2'
+
   purchase-cooldown:
     # Requires a restart to update
     # Since the last time the kingdom was hit by a Siege cannon.
@@ -275,6 +281,11 @@ shields:
 
       # The last defended invasion only if it suceeded.
       defended: 6hrs
+
+  # Extra conditions that prevent kingdoms from
+  # buying shields other than the default ones configurable above.
+  extra-deny-conditions: { }
+  #   'kingdoms_since < [5 days]': '{$$shields.deny.age}'
 
   # Disable pvp for kingdoms with shields.
   disable-pvp: false
@@ -353,6 +364,20 @@ masswar:
   # The duration of the MassWar. The interval starts after this time has ended.
   time: 1hr
 
+  # A break time, as its name implies, are certain durings in the
+  # middle of masswar that behaves as if masswar isn't running.
+  # So all masswar related features during these periods are disabled.
+  # This is for players to prepare themselves for further conflicts.
+  break-times:
+    # You can add multiple break times like this.
+    first:
+      # When to start the break time?
+      # The time passed since MassWar started.
+      after: 30mins
+
+      # The duration of this break.
+      duration: 10mins
+
   bossbar:
     enabled: true
     title: "&4&lMasswar &8[{$s}%time%&8]"
@@ -365,8 +390,20 @@ masswar:
       fade-in: 20
       stay: 60
       fade-out: 20
+    pause:
+      title: "&4Masswar"
+      subtitle: "&eMasswar break time started!"
+      fade-in: 20
+      stay: 60
+      fade-out: 20
+    resume:
+      title: "&4Masswar"
+      subtitle: "&6Masswar break time started!"
+      fade-in: 20
+      stay: 60
+      fade-out: 20
     end:
-      title: "{$p}Masswar"
+      title: "&4Masswar"
       subtitle: "{$s}Masswar has ended!"
       fade-in: 20
       stay: 60
@@ -424,6 +461,10 @@ bossbar:
 nations:
   # If a kingodm is in a nation, it'll use the capital's champion for invasions.
   use-capital-champion: true
+
+  # If a kingdom is in a nation and they want to invade another kingdom,
+  # should all kingdoms in the attacker's nation be enemies with the other kingdom?
+  requires-national-enemyship: false
 
   # Force nation members (kingdoms) to use nation shields instead.
   # If this is enabled and a nation doesn't have a shield, but the kingdom does,
@@ -551,6 +592,7 @@ commands:
   # Note that subcommands cannot be detected as they're registered on the plugin, not on the server.
   smart-command: true
 
+  # Commands to block for the invader player during invasions.
   invader:
     # If the list below should act as a whitelist or blacklist.
     whitelist: false
@@ -565,6 +607,7 @@ commands:
     # You have to add all the aliases for that specific command or subcommand.
     # Note that "pluginname:command" is also a valid command unless you blocked those entirely.
     list:
+      # KingdomsX Commands #
       - k home
       - k spawn
       - kingdom home
@@ -573,17 +616,30 @@ commands:
       - kingdoms spawn
       - k nation spawn
       - k nation home
+      - k fly
+      - k pvp
+
+      # Vanilla Commands #
+      - gamemode
+
+      # RTP Commands #
+      - rtp
+      - randomtp
+      - randomteleport
+
+      # Essentials Commands #
+      - gmc
+      - gms
+      - fly
+      - god
+      - vanish
       - tp
       - tpa
       - tpaccept
       - tpahere
-      - rtp
-      - randomtp
-      - randomteleport
-      - k fly
-      - k pvp
 
-  # This applies to the whole kingdom.
+  # Commands to block for all members of a kingdom that's
+  # currently being invaded.
   defender:
     whitelist: false
     list: [ ]
@@ -716,6 +772,16 @@ plunder:
   capture-progress:
     increment: 0.1 # This happens every tick
     goal: 100 # after this, attackers win
+
+    # Instead of ending the invasion instantly after reaching the "goal"
+    # capture progress, the invasion continues until the timer runs out.
+    # At the end of the timer, if the attackers managed to keep their capture
+    # progress above the goal, they'll win.
+    endless-mode:
+      enabled: false
+
+      # The maximum capture progress that the attackers can keep.
+      max: 200
 
     # The defenders need to also participate in the capture progress.
     # The attackers capture progress mechanics stay the same, however in this

@@ -8,19 +8,24 @@ enum class StopwatchState {
     fun hasStarted() = this != NOT_STARTED
 }
 
+class StopwatchException(message: String) : RuntimeException(message)
+
 /**
  * A simple timer to keep track of the amount of time that has passed.
+ * Most methods may throw [StopwatchException] depending on their [state]
  */
 interface Stopwatch {
-    fun getState(): StopwatchState
+    val state: StopwatchState
 
     /**
-     * The amount of time passed.
+     * The amount of time passed. (Considering pauses)
      */
-    fun elapsed(): Duration
+    @Suppress("INAPPLICABLE_TARGET_ON_PROPERTY_WARNING")
+    val elapsed: Duration
+        @get:JvmName("elapsed") get
 
     /**
-     * Sets [elapsed] to zero.
+     * Sets [elapsed] to zero and [pause]s the timer.
      */
     fun reset(): Stopwatch
 

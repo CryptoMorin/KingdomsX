@@ -30,34 +30,34 @@ options:
     invading:
       condition: kingdoms_is_invading
       material: EMERALD_BLOCK
-      name: "{$p}你正在入侵{$sep}: "
+      name: "{$p}你正在入侵{$colon} "
       lore: &lore |
-        {$p}玩家{$sep}: {$s}%player%
-        {$p}地块{$sep}: {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
-        {$p}斗士{$sep}: {$s}%champion%{$sep}( {$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep} )
-        {$p}入侵开始时间{$sep}: {$s}%since%
-        {$p}入侵最大时间{$sep}: {$s}%duration%
-        {$p}入侵已过时间{$sep}: {$s}%passed%
-        {$p}总地块数{$sep}: {$s}%total_lands%
-        {$p}入侵方分数{$sep}: {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
-        {$p}防守方分数{$sep}: {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
+        {$p}玩家{$colon} {$s}%player%
+        {$p}地块{$colon} {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
+        {$p}斗士{$colon} {$s}%champion%{$sep}( {$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep} )
+        {$p}入侵开始时间{$colon} {$s}%since%
+        {$p}入侵最大时间{$colon} {$s}%duration%
+        {$p}入侵已过时间{$colon} {$s}%passed%
+        {$p}总地块数{$colon} {$s}%total_lands%
+        {$p}入侵方分数{$colon} {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
+        {$p}防守方分数{$colon} {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
     # These are for plunders only.
-    #        {$p}Attacker Score{$sep}: {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
-    #        {$p}Defender Score{$sep}: {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
+    #        {$p}Attacker Score{$colon} {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
+    #        {$p}Defender Score{$colon} {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
     # These are for plunders only.
-    #        {$p}Attacker Score{$sep}: {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
-    #        {$p}Defender Score{$sep}: {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
+    #        {$p}Attacker Score{$colon} {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
+    #        {$p}Defender Score{$colon} {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
     else:
       material: PURPLE_STAINED_GLASS_PANE
   attacking:
     slots: [ 10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39 ]
     material: PLAYER_HEAD
-    name: '{$p}防守方{$sep}: {$s}%other*kingdoms_name%'
+    name: '{$p}防守方{$colon} {$s}%other*kingdoms_name%'
     lore: *lore
   defending:
     slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
     material: PLAYER_HEAD
-    name: '{$e}入侵方{$sep}: {$es}%kingdoms_kingdom_name%'
+    name: '{$e}入侵方{$colon} {$es}%kingdoms_kingdom_name%'
     lore: *lore
   attacking-info:
     posx: 3

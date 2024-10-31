@@ -6,29 +6,29 @@ rows: 6
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
-    name: '&2Játékos csatlakozott{$sep}: &6%player%'
+    name: '&2Játékos csatlakozott{$colon} &6%player%'
     lore: |
-      {$p}Mikor{$sep}: {$s}%time%
-      &2Meghívta{$sep}: &6%inviter%
+      {$p}Mikor{$colon} {$s}%time%
+      &2Meghívta{$colon} &6%inviter%
   kingdom-kick:
     material: RED_WOOL
-    name: '&2Kirúgott tag{$sep}: &6%player%'
+    name: '&2Kirúgott tag{$colon} &6%player%'
     lore: |
-      {$p}Mikor{$sep}: {$s}%time%
-      &2Kirúgta{$sep}: &6%kicker%
+      {$p}Mikor{$colon} {$s}%time%
+      &2Kirúgta{$colon} &6%kicker%
   kingdom-leave:
     material: RED_WOOL
-    name: '&2Kilépő játékos{$sep}: &6%player%'
+    name: '&2Kilépő játékos{$colon} &6%player%'
     lore: |
-      &2Mikor{$sep}: &6%time%
-      &2Oka{$sep}: &6%reason%
+      &2Mikor{$colon} &6%time%
+      &2Oka{$colon} &6%reason%
   kingdom-challenge-challenger:
     material: GREEN_WOOL
     name: '&2Kihívott'
     lore: |
       &e%player% &ckihívta
       &e%other*kingdoms_kingdom_name% &ckirályságát.
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
 
       &7Még &c%start_time% időd van
       &7felkészülni a harcra.
@@ -38,7 +38,7 @@ rows: 6
     lore: |
       &e%kingdoms_kingdom_name% &ckirályság
       &ckihívta a királyságodat.
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
 
       &7Még &c%start_time% időd van
       &7felkészülni a támadásukra.
@@ -47,40 +47,40 @@ rows: 6
     name: '&2Elfoglalt'
     lore: |
       {$s}%player% {$p}elfoglalta
-      a következő területet{$sep}:
+      a következő területet{$colon}
       %lands%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-unclaim:
     material: GRASS_BLOCK
     name: '&cFelszabadította'
     lore: |
       {$es}%player% {$e}felszabadította
-      a következő területet{$sep}:
+      a következő területet{$colon}
       %lands%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-invasion-invader:
     material: IRON_SWORD
     name: '&2Ostrom'
     lore: |
-      {$s}%player% {$p}ostromolt{$sep}:
+      {$s}%player% {$p}ostromolt{$colon}
       {$s}%chunk%
-      {$p}Királyság{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Fosztogató mód{$sep}: %ransack-mode%
-      {$p}Eredmény{$sep}: {$s}%result%
-      {$p}Mikor{$sep}: {$s}%time%
-      {$p}Érintett területek{$sep}:
+      {$p}Királyság{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Fosztogató mód{$colon} %ransack-mode%
+      {$p}Eredmény{$colon} {$s}%result%
+      {$p}Mikor{$colon} {$s}%time%
+      {$p}Érintett területek{$colon}
       %affected-lands%
   kingdom-invasion-invaded:
     material: GOLD_SWORD
     name: '&cMegszálták'
     lore: |
-      {$s}%player% {$p}itt ostromolta a királyságodat{$sep}:
+      {$s}%player% {$p}itt ostromolta a királyságodat{$colon}
       {$s}%chunk%
-      {$p}Királyság{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Fosztogató mód{$sep}: %ransack-mode%
-      {$p}Eredmény{$sep}: {$s}%result%
-      {$p}Mikor{$sep}: {$s}%time%
-      {$p}Érintett területek{$sep}:
+      {$p}Királyság{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Fosztogató mód{$colon} %ransack-mode%
+      {$p}Eredmény{$colon} {$s}%result%
+      {$p}Mikor{$colon} {$s}%time%
+      {$p}Érintett területek{$colon}
       %affected-lands%
   kingdom-upgrade-misc:
     material: DIAMOND_HOE
@@ -88,89 +88,89 @@ rows: 6
     lore: |
       {$s}%player% {$p}felfejlesztette a
       {$s}%upgrade% {$p}nevű vegyes fejlesztést.
-      {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Szint{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
     name: '&9Bajnok fejlesztés'
     lore: |
       {$s}%player% {$p}felfejlesztette
       {$s}%upgrade% {$p}bajnok fejlesztést.
-      {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Szint{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
     name: '&9Erősítés fejlesztés'
     lore: |
       {$s}%player% {$p}felfejlesztette
       {$s}%upgrade% {$p}nevű erősítést.
-      {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Szint{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
     name: '&aStruktúra fejlesztés'
     lore: |
       {$s}%player% {$p}felfejlesztette a(z)
-      {$s}%item_style_display_name% {$p}struktúrát itt{$sep}:
+      {$s}%item_style_display_name% {$p}struktúrát itt{$colon}
       {$s}%location%
-      {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Szint{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
     name: '&aStruktúra vásárlása'
     lore: |
       {$s}%player% {$p}vásárolt {$s}%amount% {$s}db
       {$s}%item_style_display_name% {$p}struktúrát.
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
     name: '&aTorony vásárlása'
     lore: |
       {$s}%player% {$p}vásárolt {$s}%amount% {$s}db
       {$s}%item_style_display_name% {$p}tornyot.
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-turret-purchase-ammo:
     name: '&aToronylőszer vásárlás'
     material: EMERALD_BLOCK
     lore: |
       {$s}%player% {$p}lőszert vásárolt a
-      {$s}%style% {$p}toronynak itt{$sep}: {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
+      {$s}%style% {$p}toronynak itt{$colon} {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
       {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
-      {$p}Nexus pont költsége{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Nexus pont költsége{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-turret-upgrade:
     material: ARROW
     name: '&aTorony fejlesztés'
     lore: |
       {$s}%player% {$p}felfejlesztette
-      {$s}%item_style_display_name% {$p}tornyot itt{$sep}:
+      {$s}%item_style_display_name% {$p}tornyot itt{$colon}
       {$s}%location%
-      {$p}Szint{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Szint{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-resource-points-convert:
     material: HAY_BLOCK
     name: '&aNexus pont konverter'
     lore: |
       {$s}%player% {$p}megváltoztatta
-      a Nexus pontokat{$sep}:
+      a Nexus pontokat{$colon}
       {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   extractor-collect:
     material: EMERALD_BLOCK
     name: '&aFúrótól begyűjtés'
     lore: |
       {$s}%player% {$p}begyűjtött a fúró
-      területről itt{$sep}:
+      területről itt{$colon}
       {$s}%location%
-      {$p}Begyűjtött Nexus pontok{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Begyűjtött Nexus pontok{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   warppad-teleport:
     material: END_PORTAL_FRAME
     name: '&3Teleportpad'
@@ -179,18 +179,18 @@ rows: 6
       teleportpadot használva erről a
       területről {$s}%from_location% {$p}ide
       {$s}%precise_location%
-      {$p}Üzemanyagköltség{$sep}: {$s}%fancy@fuel_cost%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Üzemanyagköltség{$colon} {$s}%fancy@fuel_cost%
+      {$p}Mikor{$colon} {$s}%time%
   outpost-item-purchase:
     material: HAY_BLOCK
     name: '&eElőőrsből tárgyvásárlás'
     lore: |
       {$s}%player% {$p}megvásárolta a
       következő tárgyakat ezen a területen
-      található előőrsből{$sep}:
+      található előőrsből{$colon}
       {$s}%location%
-      {$p}Összes Nexus pont{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Összes Nexus pont{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
       %purchases%
   kingdom-pacifism-change:
     material: NETHER_STAR
@@ -198,26 +198,26 @@ rows: 6
     lore: |
       {$s}%player% {$p}megváltoztatta a
       királyságod pacifista állapotát.
-      {$p}Békés{$sep}: {$s}%bool_pacifist%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Békés{$colon} {$s}%bool_pacifist%
+      {$p}Mikor{$colon} {$s}%time%
   shield-purchase:
     material: SHIELD
     name: '&5Pajzs vásárlása'
     lore: |
       {$s}%player% {$p}pajzsot
       vásárolt a királyságnak.
-      {$p}Megvásárolt pajzs időtartama{$sep}: {$s}%purchased-shield-time%
-      {$p}Pajzs időtartama{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Nexus pont költség{$sep}: {$s}%fancy@resource_points%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Megvásárolt pajzs időtartama{$colon} {$s}%purchased-shield-time%
+      {$p}Pajzs időtartama{$colon} {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+      {$p}Nexus pont költség{$colon} {$s}%fancy@resource_points%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-relation-change:
     material: NETHER_STAR
     name: '&9Kapcsolat változás'
     lore: |
       {$p}Királyságod kapcsolata megváltozott
-      a(z) {$s}%kingdoms_kingdom_name% {$p}királysággal{$sep}:
+      a(z) {$s}%kingdoms_kingdom_name% {$p}királysággal{$colon}
       %old-relation% {$sep}➜ %new-relation%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-invite:
     material: BOOK
     name: '&9Meghívó'
@@ -225,96 +225,96 @@ rows: 6
       {$s}%inviter% {$p}meghívta {$s}%player% {$p}játékost
       a királyságba. Neki {$s}%accept-time%
       {$p}ideje van elfogadni a meghívást.
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-king-change:
     material: BOOK
     name: '&4Királycsere'
     lore: |
-      {$p}Királyságod királya lecserélődött{$sep}:
+      {$p}Királyságod királya lecserélődött{$colon}
       {$s}%old-king% {$sep}➜ {$s}%new-king%
-      {$p}Oka{$sep}: {$s}%reason%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Oka{$colon} {$s}%reason%
+      {$p}Mikor{$colon} {$s}%time%
   player-rank-change:
     lore: |
       {$s}%old-rank% {$sep}➜ {$s}%new-rank%
-      {$p}Adta{$sep}: {$s}%by-player%
+      {$p}Adta{$colon} {$s}%by-player%
     promoted:
       condition: 'old_rank_priority > new_rank_priority' # It's the opposite
       material: GREEN_WOOL
-      name: '&aKinevezett játékos{$sep}: {$s}%player%'
+      name: '&aKinevezett játékos{$colon} {$s}%player%'
     else: # demoted
       material: RED_WOOL
-      name: '&cLefokozott játékos{$sep}: {$s}%player%'
+      name: '&cLefokozott játékos{$colon} {$s}%player%'
   rank-create:
     material: BOOK
     name: '&2Rang létrehozása'
     lore: |
-      {$p}A rangot létrehozta {$s}%player%{$sep}:
-      {$p}Csomópont{$sep}: {$s}%rank_node%
-      {$p}Megjelenés neve{$sep}: {$s}%rank_color%%rank_symbol% %rank_name%
-      {$p}Piorítás{$sep}: {$s}%rank_priority%
-      {$p}Max foglalás{$sep}: {$s}%rank_max_claims%
-      {$p}Anyag{$sep}: {$s}%rank_material%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}A rangot létrehozta {$s}%player%{$colon}
+      {$p}Csomópont{$colon} {$s}%rank_node%
+      {$p}Megjelenés neve{$colon} {$s}%rank_color%%rank_symbol% %rank_name%
+      {$p}Piorítás{$colon} {$s}%rank_priority%
+      {$p}Max foglalás{$colon} {$s}%rank_max_claims%
+      {$p}Anyag{$colon} {$s}%rank_material%
+      {$p}Mikor{$colon} {$s}%time%
   rank-delete:
     material: BOOK
     name: '&cRang törlése'
     lore: |
-      {$p}Rangot törölte {$s}%player%{$sep}:
-      {$p}Csomópont{$sep}: {$s}%rank_node%
-      {$p}Megjelenési név{$sep}: {$s}%rank_color% %rank_symbol% %rank_name%
-      {$p}Piority{$sep}: {$s}%rank_priority%
-      {$p}Max foglalás{$sep}: {$s}%rank_max_claims%
-      {$p}Anyag{$sep}: {$s}%rank_material%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Rangot törölte {$s}%player%{$colon}
+      {$p}Csomópont{$colon} {$s}%rank_node%
+      {$p}Megjelenési név{$colon} {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Piority{$colon} {$s}%rank_priority%
+      {$p}Max foglalás{$colon} {$s}%rank_max_claims%
+      {$p}Anyag{$colon} {$s}%rank_material%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-name:
     material: BOOK
     name: '&9Rang nevének megváltozása'
     lore: |
       {$p}A rang %rank%
-      {$p}nevét megváltoztatta {$s}%player%{$sep}:
+      {$p}nevét megváltoztatta {$s}%player%{$colon}
       {$s}%old-name% {$sep}➜ {$s}%new-name%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-symbol:
     material: BOOK
     name: '&9Rang szimbolúm cseréje'
     lore: |
       {$p}A rang %rank%
-      {$p}szimbolúmát megváltoztatta {$s}%player%{$sep}:
+      {$p}szimbolúmát megváltoztatta {$s}%player%{$colon}
       {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-color:
     material: BOOK
     name: '&9Rang színének megváltozása'
     lore: |
       {$p}A rang %rank%
-      {$p}színét megváltoztatta {$s}%player%{$sep}:
+      {$p}színét megváltoztatta {$s}%player%{$colon}
       {$s}%old-color%color {$sep}➜ {$s}%new-color%color
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-priority:
     material: BOOK
     name: '&9Rang pioritásának megváltozása'
     lore: |
       {$p}A rang %rank%
-      {$p}pioritást megváltoztatta {$s}%player%{$sep}:
+      {$p}pioritást megváltoztatta {$s}%player%{$colon}
       {$s}%old-priority% {$sep}➜ {$s}%new-priority%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-max-claims:
     material: BOOK
     name: '&9Rang max foglalás változása'
     lore: |
       {$p}A rang %rank%
-      {$p}max foglalását megváltoztatta {$s}%player%{$sep}:
+      {$p}max foglalását megváltoztatta {$s}%player%{$colon}
       {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   rank-change-material:
     material: BOOK
     name: '&9Rang anyagának változása'
     lore: |
       {$p}A rang %rank%
-      {$p}anyagát megváltoztatta {$s}%player%{$sep}:
+      {$p}anyagát megváltoztatta {$s}%player%{$colon}
       {$s}%old-material% {$sep}➜ {$s}%new-material%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   structures-nexus-move:
     material: BEACON
     name: '&9Nexus helye'
@@ -322,78 +322,78 @@ rows: 6
       condition: placed
       lore: |
         {$s}%player% {$p}a királyság
-        nexusát itt helyezte el{$sep}:
+        nexusát itt helyezte el{$colon}
         {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}Mikor{$sep}: {$s}%time%
+        {$p}Mikor{$colon} {$s}%time%
     else:
       lore: |
         {$s}%player% {$p}a királyság
-        nexusát áthelyezte ide{$sep}:
+        nexusát áthelyezte ide{$colon}
         {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}Mikor{$sep}: {$s}%time%
+        {$p}Mikor{$colon} {$s}%time%
   group-tax-server-pay:
     material: PAPER
     name: "&9Kiszolgálóadó"
     lore: |
       {$p}Fizetett kiszolgálóadók.
-      {$p}Értéke{$sep}: {$s}%fancy@amount%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Értéke{$colon} {$s}%fancy@amount%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-champion-change:
     material: ZOMBIE_HEAD
     name: "&9Champion Change"
     lore: |
       {$s}%player% {$p}lecserélte
-      a bajnokot{$sep}:
+      a bajnokot{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-change-lore:
     material: PAPER
     name: "&9Change Lore"
     lore: |
       {$s}%player% {$p}lecserélte
-      a királyság történetét{$sep}:
+      a királyság történetét{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-rename:
     material: PAPER
     name: "&9Rename"
     lore: |
       {$s}%player% {$p}átnevezte
-      a királyságot{$sep}:
+      a királyságot{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-change-tag:
     material: PAPER
     name: "&9Change Tag"
     lore: |
       {$s}%player% {$p}megváltoztatta
-      a királyság címkéjét{$sep}:
+      a királyság címkéjét{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-nation-join:
     material: BEACON
     name: "&9Nation Join"
     lore: |
       {$p}Királyságod csatlakozott a(z)
       {$s}%kingdoms_nation_name% {$p}nemzethez.
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   kingdom-nation-leave:
     material: BEACON
     name: "&cNation Leave"
     lore: |
       {$p}Királyságod elhagyta a(z)
       {$s}%kingdoms_nation_name% {$p}nemzetet.
-      {$p}Mikor{$sep}: {$s}%time%
+      {$p}Mikor{$colon} {$s}%time%
   'PeaceTreaties:received':
     material: BOOK
     name: "&9Kapott békeszerződés"
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Felajánló{$sep}: {$s}%other*kingdoms_kingdom_name%
-      {$p}Szerződés időtartalma{$sep}: {$s}%peacetreaty_duration%
+      {$p}Felajánló{$colon} {$s}%other*kingdoms_kingdom_name%
+      {$p}Szerződés időtartalma{$colon} {$s}%peacetreaty_duration%
 
-      {$p}További információért használd ezt{$sep}:
+      {$p}További információért használd ezt{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
   'PeaceTreaties:sent':
     material: BOOK
@@ -401,14 +401,14 @@ rows: 6
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Kinek{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Szerződés időtartalma{$sep}: {$s}%peacetreaty_duration%
+      {$p}Kinek{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Szerződés időtartalma{$colon} {$s}%peacetreaty_duration%
 
-      {$p}További információért használd ezt{$sep}:
+      {$p}További információért használd ezt{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
   '[else]':
     material: BARRIER
-    name: '{$e}Ismeretlen naplótípus{$sep}:'
+    name: '{$e}Ismeretlen naplótípus{$colon}'
     lore: '{$es}%type%'
 
 options:
@@ -423,15 +423,15 @@ options:
     material: BOOK
     name: "{$p}Szűrés és rendezés"
     lore: |
-      {$p}Szűrők{$sep}:
-       {$dot} {$s}Játékos{$sep}: %bool_filters_player%
-       {$dot} {$s}Idő{$sep}: %bool_filters_time%
-       {$dot} {$s}Típus{$sep}: %bool_filters_type%
+      {$p}Szűrők{$colon}
+       {$dot} {$s}Játékos{$colon} %bool_filters_player%
+       {$dot} {$s}Idő{$colon} %bool_filters_time%
+       {$dot} {$s}Típus{$colon} %bool_filters_type%
 
-      {$p}Rendezés{$sep}:
-       {$dot} {$s}Emelkedő idő{$sep}: %bool_sorting_time_ascending%
-       {$dot} {$s}Csökkenő idő{$sep}: %bool_sorting_time_descending%
-       {$dot} {$s}Típus{$sep}: %bool_sorting_type%
+      {$p}Rendezés{$colon}
+       {$dot} {$s}Emelkedő idő{$colon} %bool_sorting_time_ascending%
+       {$dot} {$s}Csökkenő idő{$colon} %bool_sorting_time_descending%
+       {$dot} {$s}Típus{$colon} %bool_sorting_type%
 
   next-page:
     name: '&6Következő oldal &7- &e%page%{$sep}/&e%pages%'

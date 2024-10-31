@@ -11,7 +11,7 @@ import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.managers.pvp.PvPManager;
 import org.kingdoms.utils.MathUtils;
-import org.kingdoms.utils.string.Strings;
+import org.kingdoms.utils.internal.numbers.Numbers;
 
 public final class OutpostManager implements Listener {
     public OutpostManager() {
@@ -56,6 +56,6 @@ public final class OutpostManager implements Listener {
         if (rp <= 0) return;
 
         kingdom.getResourcePoints().add(-rp);
-        OutpostsLang.OUTPOST_EVENTS_DEATH.sendMessage(player, "rp", Strings.toFancyNumber(rp));
+        OutpostsLang.OUTPOST_EVENTS_DEATH.sendMessage(player, "rp", Numbers.toFancyNumber(rp));
     }
 }

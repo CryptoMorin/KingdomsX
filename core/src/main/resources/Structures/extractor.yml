@@ -3,6 +3,9 @@
     parameters:
       <name>: extractor
       <build-duration-factor>: '-45 seconds'
+      <extra-holograms>:
+        - "{$p}{$$words.resource-points}{$colon} {$s}%fancy@extractor_collected_resource_points%"
+        - "{$p}{$$words.fuel}{$colon} {$s}%fancy@fuel%{$sep}/{$s}%fancy@max_fuel%"
       <durability-factor>: 100
       <material-1>: GOLD_BLOCK
       <material-2>: DIAMOND_BLOCK
@@ -20,8 +23,15 @@ limits:
 
 cost: 2000
 sell: 1000
-
 capacity: 500
+
+conditions:
+  'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+
+sounds:
+  1:
+    teleport-sound: BLOCK_PORTAL_TRAVEL, 0.5, 1.0
+    fuel-fill: BLOCK_FIRE_EXTINGUISH
 
 fuel:
   enabled: true

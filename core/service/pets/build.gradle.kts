@@ -11,6 +11,10 @@ version = "1.0.0"
 repositories {
     maven { url = uri("https://repo.codemc.org/repository/nms/") }
     maven { url = uri("https://libraries.minecraft.net/") }
+    maven {
+        name = "BSRepository"
+        url = uri("https://repo.bsdevelopment.org/releases")
+    }
 }
 
 dependencies {
@@ -27,4 +31,9 @@ dependencies {
     // https://github.com/nulli0n/NexEngine-spigot/releases
     compileOnly(localDependency("CombatPets-1.0.30.jar"))
     compileOnly(localDependency("NexEngine-2.2.12-R2-Final.jar"))
+
+    // https://github.com/brainsynder-Dev/SimplePets
+    // https://www.spigotmc.org/resources/100106/
+    // https://repo.bsdevelopment.org/#/releases/simplepets/brainsynder/API
+    compileOnly("simplepets.brainsynder:API:5.0-BUILD-272") { isTransitive = false }
 }

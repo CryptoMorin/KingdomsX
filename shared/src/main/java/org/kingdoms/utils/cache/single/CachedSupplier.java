@@ -10,6 +10,10 @@ public class CachedSupplier<T> implements CacheableObject<T> {
     protected T cached;
     protected Boolean present;
 
+    /**
+     * This is intended for very micro-optimizaiton purposes where the checks of {@link #of(Supplier)}
+     * are known be useless.
+     */
     public CachedSupplier(Supplier<T> supplier) {
         this.supplier = Objects.requireNonNull(supplier);
     }

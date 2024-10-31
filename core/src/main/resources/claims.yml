@@ -75,6 +75,10 @@ distance: 0
 # Worlds that claiming is disabled in.
 disabled-worlds: [ world_nether, world_the_end ]
 
+# You will need to place an outpost if you want to claim in another world
+# if your nexus is not in that world.
+requires-outpost-for-other-worlds: true
+
 # Biomes that players can/cant claim in. This will not work reliably since it only checks a few blocks in the chunk.
 # You can get a list of biomes here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/Biome.html
 biomes:
@@ -170,7 +174,7 @@ unclaim-cooldown: 0
 max-claims:
   # Worlds can have different limits, "default" is used for any world name that is not specified here.
   #nether_world: "..."
-  default: "((kingdoms_members + kingdoms_nation_kingdoms) * 5) + kingdoms_max_lands_modifier + max_claims"
+  default: "((kingdoms_members + kingdoms_nation_kingdoms) * 5) + kingdoms_max_lands_modifier + max_claims - (kingdoms_kingdom_bankruptcy / 2)"
 
 # You can only build in claims that the relation attribute allows building.
 # This function can be disabled for specific worlds in config.yml "disabled-worlds" option.

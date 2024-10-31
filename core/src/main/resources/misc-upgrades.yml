@@ -16,16 +16,16 @@ invasions:
 invasion-teleportation:
   enabled: true
 
-    # This option can be used to make upgrade trees.
-  #condition:
+  # This option can be used to make upgrade trees.
+  # conditions:
   # Makes "invasions" upgrade to be a requirement to be maxxed to upgrade this upgrade.
   # The "miscupgrades.required.invasions" refers to a custom language entry inside your language files. (e.g. en.yml)
   # %kingdoms_kingdom_upgrade% is a functional placeholder: https://github.com/CryptoMorin/KingdomsX/wiki/Placeholders#placeholder-functions
-  #"{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "miscupgrades.required.invasions"
+  # "{kingdoms_kingdom_upgrade:level type=misc, of=INVASIONS} < 5": "{$$miscupgrades.required.invasions}"
 
   # If anti-explosion upgrade is upgraded, you won't be able to upgrade this and any other upgrade that depends on this.
   # You could block anti-explosion from being upgraded if this option is upgraded by doing the same thing.
-  #"{kingdoms_kingdom_upgrade:level type=misc, of=ANTI_EXPLOSION} > 0": "miscupgrades.tree.anti-explosion"
+  # "{kingdoms_kingdom_upgrade:level type=misc, of=ANTI_EXPLOSION} > 0": "{$$miscupgrades.tree.anti-explosion}"
 
   # This amount is reduced from invasions.yml -> teleportation -> teleport-delay
   scaling: lvl
@@ -38,6 +38,9 @@ anti-explosion:
   cost: "(lvl + 1) * 100"
   max-level: 3 # Increasing this doesn't change anything.
   default-level: 0
+
+  # Should regeneration work for wilderness?
+  wilderness: false
 
   # It'll throw the blocks in the air!
   fancy-explosions:
@@ -90,6 +93,8 @@ nexus-guards:
   can-be-disabled: true
 
   condition: 'kingdoms_kingdom_is_pacifist || {other*kingdoms_kingdom_is_pacifist}'
+  conditions:
+    'kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
 
   levels:
     1:
@@ -151,6 +156,8 @@ guards:
   can-be-disabled: true
 
   condition: 'kingdoms_kingdom_is_pacifist || {other*kingdoms_kingdom_is_pacifist}'
+  conditions:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
 
   levels:
     1:
@@ -179,6 +186,8 @@ insanity:
   enabled: true
   can-be-disabled: false
   cost: "(lvl + 1) * 500"
+  conditions:
+    'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
   effects:
     1: [ "STRENGTH, 10, 1" ]
     2: [ "STRENGTH, 10, 2" ]
@@ -191,6 +200,8 @@ glory:
   # This is currently not used.
   max-level: 3
   default-level: 0
+  conditions:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
   xp:
     # The player XP multiplier is protected by an anti-exploit system.
     # Killing the same player within 5 minutes will just yield the default XP.
@@ -240,7 +251,38 @@ max-turrets: # This works per land, it doesn't bypass per turret limits.
   scaling: 'lvl' # Used by "misc_upgrades_max_turrets" placeholder inside turrets.yml
   max-level: 5
   default-level: 0
+flight: # For /k fly
+  enabled: true
+  cost: "10000"
+  max-level: 1
+  default-level: 0
 
+  conditions:
+    'kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
+keep-inventory:
+  enabled: true
+  cost: "lvl * 50000"
+  max-level: 3
+  default-level: 0
+
+  conditions:
+    'lvl == 0 && kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+    'lvl == 1 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+    'lvl == 2 && kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
+
+  levels:
+    1:
+      armor: true
+      main-hand: true
+      off-hand: true
+      blacklisted-causes: [ SUFFOCATION, SUICIDE ]
+    2:
+      armor: true
+      main-hand: true
+      off-hand: true
+      hotbar: true
+    3:
+      items: [ '*' ]
 
 "[fn-add-permission]": &fn-add-permission
   args: [ "<<permission>>" ]

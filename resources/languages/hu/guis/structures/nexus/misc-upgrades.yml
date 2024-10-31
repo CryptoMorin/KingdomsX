@@ -21,7 +21,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &lvl "{$p}Szint{$sep}: &6%level%"
+        - &lvl "{$p}Szint{$colon} &6%level%"
         - "{$sep}[{$e}!{$sep}] {$es}Jobb klikk az engedélyezéshez"
     maxxed:
       condition: 'enabled && maxxed'
@@ -29,7 +29,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &lvl-maxxed "{$p}Szint{$sep}: {$s}%level% {$sep}({$s}Maximumon{$sep})"
+        - &lvl-maxxed "{$p}Szint{$colon} {$s}%level% {$sep}({$s}Maximumon{$sep})"
         - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb klikk a letíltásához"
     else:
       condition: enabled
@@ -37,7 +37,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &upgrade-cost "{$p}Fejlesztés ára{$sep}: &6%cost%"
+        - &upgrade-cost "{$p}Fejlesztés ára{$colon} &6%cost%"
         - *lvl
         - *disable-upgrade
 
@@ -60,9 +60,9 @@ options:
   glory:
     material: NETHER_STAR
     <<: *fn-misc [ "&3Dicsőség", [
-      "{$p}Szint 1{$sep}: &6Területeden a nem játékosok megölése",
+      "{$p}Szint 1{$colon} &6Területeden a nem játékosok megölése",
       "          &62x annyi tapasztalatot ér.",
-      "{$p}Szint 2{$sep}: &6Területeden játékosok megölése",
+      "{$p}Szint 2{$colon} &6Területeden játékosok megölése",
       "          4x annyi tapasztalatot ér."
     ], false ]
 
@@ -71,17 +71,17 @@ options:
   anti-trample:
     material: WHEAT_SEEDS
     <<: *fn-misc [ "&aLetaposásvédelem", [
-      "{$p}Szint 1{$sep}: &6A megművelt talajt a",
+      "{$p}Szint 1{$colon} &6A megművelt talajt a",
       "játékosok nem tudják kitaposni.",
       '',
-      "{$p}Szint 2{$sep}: &6Területeden kívül levő",
+      "{$p}Szint 2{$colon} &6Területeden kívül levő",
       "dugattyúk amelyek blokkokat tolnak",
       "be/ki a királyságodból, nem fognak",
       "működni. Ez azt is megakadályozza,",
       "hogy az Endermanok a területeden",
       "belül blokkokat lopjanak el.",
       "",
-      "{$p}Szint 3{$sep}: &6Megvéd bizonyos állatokat attól,",
+      "{$p}Szint 3{$colon} &6Megvéd bizonyos állatokat attól,",
       "hogy a területeden megsérüljenek.",
       "Megakadályozza azt is, hogy az ellenséges",
       "játékosok Véggyöngyöket használjanak",
@@ -117,10 +117,10 @@ options:
 
     <<: *fn-misc [ "&cŐrület", [
       "&7Védők és a Nexus őrzők jelennek meg",
-      "az erőtér területén a következő szerint{$sep}:",
-      "{$p}Szint 1{$sep}: {$s}Erő I 10 másodpercig.",
-      "{$p}Szint 2{$sep}: {$s}Erő II 10 másodpercig.",
-      "{$p}Szint 2{$sep}: {$s}Erő III 10 másodpercig."
+      "az erőtér területén a következő szerint{$colon}",
+      "{$p}Szint 1{$colon} {$s}Erő I 10 másodpercig.",
+      "{$p}Szint 2{$colon} {$s}Erő II 10 másodpercig.",
+      "{$p}Szint 2{$colon} {$s}Erő III 10 másodpercig."
     ], true ]
 
     posx: 7
@@ -141,8 +141,8 @@ options:
 
     <<: *fn-misc [ "&3Inváziók", [
       "{$p}Királyságod &6%invasion-limit% {$p}alkalommal ostromolhat",
-      "{$p}Elhasznált ostromok{$sep}: &6%invasions%",
-      "{$p}Visszatöltés ideje{$sep}: &6%invasion-refresh-cooldown%"
+      "{$p}Elhasznált ostromok{$colon} &6%invasions%",
+      "{$p}Visszatöltés ideje{$colon} &6%invasion-refresh-cooldown%"
     ], true ]
 
     posx: 2
@@ -151,13 +151,13 @@ options:
     material: GUNPOWDER
 
     <<: *fn-misc [ "&5Robbanásvédelem", [
-      "{$p}Szint 1{$sep}: &7A királyságod területén",
+      "{$p}Szint 1{$colon} &7A királyságod területén",
       "a creeper-ök nem tudnak rombolni.",
       "",
-      "{$p}Szint 2{$sep}: &7A királyságod területén",
+      "{$p}Szint 2{$colon} &7A királyságod területén",
       "a TNT-ék nem tudnak rombolni.",
       "",
-      "{$p}Szint 3{$sep}: &7Megvédi a királyságod",
+      "{$p}Szint 3{$colon} &7Megvédi a királyságod",
       "területén levő tagokat, állatokat",
       "és a csapdába esett szörnyeket",
       "a robbanásoktól."
@@ -173,7 +173,7 @@ options:
       "&6Minden fejlesztés {$p}2&6-vel növeli",
       "az elfoglalható területek számát.",
       "",
-      "{$p}Aktuális max terület{$sep}: &6%kingdoms_max_claims%"
+      "{$p}Aktuális max terület{$colon} &6%kingdoms_max_claims%"
     ] ]
 
     posx: 8
@@ -187,7 +187,7 @@ options:
       "növeli a maximálisan lerakható tornyok",
       "számát.",
       "",
-      "{$p}Területenkénti max tornyszám{$sep}: &6%max_turrets_per_land%",
+      "{$p}Területenkénti max tornyszám{$colon} &6%max_turrets_per_land%",
     ] ]
 
     posx: 5

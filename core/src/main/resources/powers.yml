@@ -20,18 +20,25 @@ powerups:
     scaling: "percentOf(lvl, damage)"
     max-level: 70
     own-land-only: true
+    conditions: &conditions
+      'lvl >= 20 && kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+      'lvl >= 30 && kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+      'lvl >= 40 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+      'lvl >= 50 && kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
   damage-reduction:
     enabled: true
     cost: "(lvl + 1) * 100"
     scaling: "percentOf(lvl, damage)"
     max-level: 70
     own-land-only: true
+    conditions: *conditions
   arrow-boost:
     enabled: true
     cost: "(lvl + 1) * 70"
     scaling: "percentOf(lvl, damage)"
     max-level: 70
     own-land-only: true
+    conditions: *conditions
   regeneration-boost:
     enabled: true
     cost: "(lvl + 1) * 70"
@@ -44,6 +51,7 @@ powerups:
     scaling: "percentOf(lvl, amount)"
     max-level: 100
     own-land-only: true
+    conditions: *conditions
 
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#

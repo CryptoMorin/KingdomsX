@@ -51,7 +51,18 @@ options:
       other players by default.
     material: CHEST
     slot: 3
-  back:
-    name: "&4Close the GUI"
-    material: BARRIER
+  automatic-state-toggle-duration:
+    name: "&5Automatic State Toggle Duration"
+    supported:
+      condition: 'openable'
+      lore: |
+        {$desc}Closes the door automatically after
+        it was opened.
+
+        {$p}Duration{$colon} {$s}%time@automatic_state_toggle_duration%
+    else:
+      lore: |
+        {$desc}The protected block doesn't support
+        this feature. Only works with doors.
+    material: COMPARATOR
     slot: 4

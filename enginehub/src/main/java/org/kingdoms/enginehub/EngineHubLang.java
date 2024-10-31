@@ -16,7 +16,7 @@ public enum EngineHubLang implements DefinedMessenger {
     COMMAND_ADMIN_SCHEMATIC_SAVE_ALREADY_EXISTS("{$e}A schematic with that name already exists. If you're sure that you want to override it, hover:{&7click here;&4Click to override;/k admin schematic save %schematic_name%}.\n" +
             "{$sep}[&c!{$sep}] &cWARNING {$point} &4This will cause issues if there is already a building with this schematic is placed in the world" +
             "from kingdoms. Please make sure to either remove all of them before overriding this file, or choose another name and change the settings to reflect the new name in the config.", 1, 2, 3, 4),
-    COMMAND_ADMIN_SCHEMATIC_SAVE_SAVED("{$p}Successfully saved this schematic to{$sep}: {$s}%schematic_file%", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_SAVE_SAVED("{$p}Successfully saved this schematic to{$colon} {$s}%schematic_file%", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_LOAD_DESCRIPTION("{$s}Loads a schematic from Kingdom's schematics folder into player's WorldEdit clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_LOAD_USAGE("{$usage}admin schematic load &2<schematic name>", 1, 2, 3, 4),
@@ -42,7 +42,8 @@ public enum EngineHubLang implements DefinedMessenger {
 
     COMMAND_ADMIN_SCHEMATIC_SETUP_DESCRIPTION("{$s}Prepares this addon for use. Changes the structure/turret configs in order to adjust holograms and functional points based on the schematics.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SETUP_DONE("{$p}Addon is ready. Restart to apply the changes.\n" +
-            "{$note} If you ever decided to remove the addon, you'd have to revert your building.yml settings manually.", 1, 2, 3, 4),
+            "{$note} If you ever decided to remove the addon, you'd have to revert your building.yml settings manually.\n" +
+            "{$warning} You cannot remove the addon unless all buildings placed down by this addon are removed.", 1, 2, 3, 4),
     ;
 
     private final LanguageEntry languageEntry;

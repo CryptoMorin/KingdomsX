@@ -6,31 +6,31 @@ rows: 6
 '[type]':
   kingdom-join:
     material: GREEN_WOOL
-    name: '&2Gracz dołączył{$sep}: &6%player%'
+    name: '&2Gracz dołączył{$colon} &6%player%'
     lore: |
-      {$p}O godzinie{$sep}: {$s}%time%
-      &2Zaproszony przez{$sep}: &6%inviter%
+      {$p}O godzinie{$colon} {$s}%time%
+      &2Zaproszony przez{$colon} &6%inviter%
 
   kingdom-kick:
     material: RED_WOOL
-    name: '&2Wyrzucony gracz{$sep}: &6%player%'
+    name: '&2Wyrzucony gracz{$colon} &6%player%'
     lore: |
-      {$p}O godzinie{$sep}: {$s}%time%
-      &2Wyrzucający{$sep}: &6%kicker%
+      {$p}O godzinie{$colon} {$s}%time%
+      &2Wyrzucający{$colon} &6%kicker%
 
   kingdom-leave:
     material: RED_WOOL
-    name: '&2Gracz odszedł{$sep}: &6%player%'
+    name: '&2Gracz odszedł{$colon} &6%player%'
     lore: |
-      &2O godzinie{$sep}: &6%time%
-      &2Powód{$sep}: &6%reason%
+      &2O godzinie{$colon} &6%time%
+      &2Powód{$colon} &6%reason%
 
   kingdom-challenge-challenger:
     material: GREEN_WOOL
     name: '&2Wyzwanie'
     lore: |
       &e%player% &cwyzywa twoje królestwo.
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
       &7Masz czas do &c%start_time%
       &7na przygotowanie się do ataku.
@@ -40,7 +40,7 @@ rows: 6
     name: '&cWyzwane'
     lore: |
       Królestwo &e%kingdoms_kingdom_name% &cwyzwało twoje królestwo.
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
       &7Masz czas do &c%start_time%
       &7na przygotowanie się przed atakiem.
@@ -50,43 +50,43 @@ rows: 6
     name: '&2Zajęte'
     lore: |
       {$s}%player% {$p}zajął
-      następujące obszary{$sep}:
+      następujące obszary{$colon}
       %lands%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-unclaim:
     material: GRASS_BLOCK
     name: '&cOdjęte'
     lore: |
       {$es}%player% {$e}odjął
-      następujące obszary{$sep}:
+      następujące obszary{$colon}
       %lands%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-invasion-invader:
     material: IRON_SWORD
     name: '&2Najechano'
     lore: |
-      {$s}%player% {$p}zaatakował{$sep}:
+      {$s}%player% {$p}zaatakował{$colon}
       {$s}%chunk%
-      {$p}Królestwo{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Tryb Rozrabiania{$sep}: %ransack-mode%
-      {$p}Wynik{$sep}: {$s}%result%
-      {$p}O godzinie{$sep}: {$s}%time%
-      {$p}Dotknięte Obszary{$sep}:
+      {$p}Królestwo{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Tryb Rozrabiania{$colon} %ransack-mode%
+      {$p}Wynik{$colon} {$s}%result%
+      {$p}O godzinie{$colon} {$s}%time%
+      {$p}Dotknięte Obszary{$colon}
       %affected-lands%
 
   kingdom-invasion-invaded:
     material: GOLD_SWORD
     name: '&cZaatakowane'
     lore: |
-      {$s}%player% {$p}zaatakował twoje królestwo w{$sep}:
+      {$s}%player% {$p}zaatakował twoje królestwo w{$colon}
       {$s}%chunk%
-      {$p}Królestwo{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Tryb Rozrabiania{$sep}: %ransack-mode%
-      {$p}Wynik{$sep}: {$s}%result%
-      {$p}O godzinie{$sep}: {$s}%time%
-      {$p}Dotknięte Obszary{$sep}:
+      {$p}Królestwo{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Tryb Rozrabiania{$colon} %ransack-mode%
+      {$p}Wynik{$colon} {$s}%result%
+      {$p}O godzinie{$colon} {$s}%time%
+      {$p}Dotknięte Obszary{$colon}
       %affected-lands%
 
   kingdom-upgrade-misc:
@@ -95,9 +95,9 @@ rows: 6
     lore: |
       {$s}%player% {$p}ulepszył
       {$s}%upgrade% {$p}różne ulepszenie.
-      {$p}Poziom{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Poziom{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-upgrade-champion:
     material: ZOMBIE_HEAD
@@ -105,9 +105,9 @@ rows: 6
     lore: |
       {$s}%player% {$p}ulepszył
       {$s}%upgrade% {$p}ulepszenie mistrza.
-      {$p}Poziom{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Poziom{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-upgrade-powerup:
     material: DIAMOND_SWORD
@@ -115,9 +115,9 @@ rows: 6
     lore: |
       {$s}%player% {$p}ulepszył
       {$s}%upgrade% {$p}powerup.
-      {$p}Poziom{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Poziom{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-structure-upgrade:
     material: EMERALD_BLOCK
@@ -126,9 +126,9 @@ rows: 6
       {$s}%player% {$p}ulepszył
       {$s}%item_style_display_name% {$p}strukturę na
       {$s}%location%
-      {$p}Poziom{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Poziom{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-structure-purchase:
     material: EMERALD_BLOCK
@@ -136,8 +136,8 @@ rows: 6
     lore: |
       {$s}%player% {$p}zakupił {$s}%amount%
       {$s}%item_style_display_name% {$p}struktur.
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-turret-purchase:
     material: EMERALD_BLOCK
@@ -145,8 +145,8 @@ rows: 6
     lore: |
       {$s}%player% {$p}zakupił {$s}%amount%
       {$s}%item_style_display_name% {$p}wież.
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-turret-purchase-ammo:
     name: '&aZakup Amunicji Wieży'
@@ -155,8 +155,8 @@ rows: 6
       {$s}%player% {$p}zakupił amunicję dla
       {$s}%style% {$p}wieży na {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
       {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-turret-upgrade:
     material: ARROW
@@ -165,28 +165,28 @@ rows: 6
       {$s}%player% {$p}ulepszył
       {$s}%item_style_display_name% {$p}wieżę na
       {$s}%location%
-      {$p}Poziom{$sep}: {$s}%old_level% {$sep}➜ {$s}%new_level%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Poziom{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-resource-points-convert:
     material: HAY_BLOCK
     name: '&aZamiana Punktów Zasobów'
     lore: |
       {$s}%player% {$p}zmienił
-      punkty zasobów{$sep}:
+      punkty zasobów{$colon}
       {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   extractor-collect:
     material: EMERALD_BLOCK
     name: '&aZbieranie Ekstraktora'
     lore: |
       {$s}%player% {$p}zgromadził
-      ekstraktor zlokalizowany na{$sep}:
+      ekstraktor zlokalizowany na{$colon}
       {$s}%location%
-      {$p}Zebrano Punkty Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Zebrano Punkty Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   warppad-teleport:
     material: END_PORTAL_FRAME
@@ -196,8 +196,8 @@ rows: 6
       korzystając z Płyty Teleportacyjnej zlokalizowanej na
       {$s}%from_location% {$p}do
       {$s}%precise_location%
-      {$p}Koszt Paliwa{$sep}: {$s}%fancy@fuel_cost%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Koszt Paliwa{$colon} {$s}%fancy@fuel_cost%
+      {$p}O godzinie{$colon} {$s}%time%
 
   outpost-item-purchase:
     material: HAY_BLOCK
@@ -205,10 +205,10 @@ rows: 6
     lore: |
       {$s}%player% {$p}zakupił
       następujące przedmioty z
-      Posterunku zlokalizowanego na{$sep}:
+      Posterunku zlokalizowanego na{$colon}
       {$s}%location%
-      {$p}Całkowity Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Całkowity Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
       %purchases%
 
   kingdom-pacifism-change:
@@ -217,8 +217,8 @@ rows: 6
     lore: |
       {$s}%player% {$p}zmienił stan
       pokojowej rezygnacji królestwa.
-      {$p}Pokojowy{$sep}: {$s}%bool_pacifist%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Pokojowy{$colon} {$s}%bool_pacifist%
+      {$p}O godzinie{$colon} {$s}%time%
 
   shield-purchase:
     material: SHIELD
@@ -226,19 +226,19 @@ rows: 6
     lore: |
       {$s}%player% {$p}zakupił
       tarczę dla królestwa.
-      {$p}Czas Trwania Zakupionej Tarczy{$sep}: {$s}%purchased-shield-time%
-      {$p}Czas Trwania Tarczy{$sep}: {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
-      {$p}Koszt Punktów Zasobów{$sep}: {$s}%fancy@resource_points%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Czas Trwania Zakupionej Tarczy{$colon} {$s}%purchased-shield-time%
+      {$p}Czas Trwania Tarczy{$colon} {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+      {$p}Koszt Punktów Zasobów{$colon} {$s}%fancy@resource_points%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-relation-change:
     material: NETHER_STAR
     name: '&9Zmiana Stosunków'
     lore: |
       {$p}Stosunki królestwa uległy zmianie
-      z {$s}%kingdoms_kingdom_name% {$p}królestwem{$sep}:
+      z {$s}%kingdoms_kingdom_name% {$p}królestwem{$colon}
       %old-relation% {$sep}➜ %new-relation%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-invite:
     material: BOOK
@@ -247,106 +247,106 @@ rows: 6
       {$s}%inviter% {$p}zaprosił {$s}%player%
       {$p}do królestwa. Mają {$s}%accept-time%
       {$p}na akceptację zaproszenia.
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-king-change:
     material: BOOK
     name: '&4Zmiana Króla'
     lore: |
-      {$p}Król królestwa został zmieniony{$sep}:
+      {$p}Król królestwa został zmieniony{$colon}
       {$s}%old-king% {$sep}➜ {$s}%new-king%
-      {$p}Powód{$sep}: {$s}%reason%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Powód{$colon} {$s}%reason%
+      {$p}O godzinie{$colon} {$s}%time%
 
   player-rank-change:
     lore: |
       {$s}%old-rank% {$sep}➜ {$s}%new-rank%
-      {$p}Przez{$sep}: {$s}%by-player%
+      {$p}Przez{$colon} {$s}%by-player%
     promoted:
       condition: 'old_rank_priority > new_rank_priority' # To jest odwrotnie
       material: GREEN_WOOL
-      name: '&aAwans Gracza{$sep}: {$s}%player%'
+      name: '&aAwans Gracza{$colon} {$s}%player%'
     else: # zdegradowany
       material: RED_WOOL
-      name: '&cDegradacja Gracza{$sep}: {$s}%player%'
+      name: '&cDegradacja Gracza{$colon} {$s}%player%'
 
   rank-create:
     material: BOOK
     name: '&2Utworzenie Rangi'
     lore: |
-      {$p}Ranga została utworzona przez {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Nazwa Wyświetlana{$sep}: {$s}%rank_color%%rank_symbol% %rank_name%
-      {$p}Priorytet{$sep}: {$s}%rank_priority%
-      {$p}Maksymalne Obszary{$sep}: {$s}%rank_max_claims%
-      {$p}Materiał{$sep}: {$s}%rank_material%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Ranga została utworzona przez {$s}%player%{$colon}
+      {$p}Node{$colon} {$s}%rank_node%
+      {$p}Nazwa Wyświetlana{$colon} {$s}%rank_color%%rank_symbol% %rank_name%
+      {$p}Priorytet{$colon} {$s}%rank_priority%
+      {$p}Maksymalne Obszary{$colon} {$s}%rank_max_claims%
+      {$p}Materiał{$colon} {$s}%rank_material%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-delete:
     material: BOOK
     name: '&cUsunięcie Rangi'
     lore: |
-      {$p}Ranga została usunięta przez {$s}%player%{$sep}:
-      {$p}Node{$sep}: {$s}%rank_node%
-      {$p}Nazwa Wyświetlana{$sep}: {$s}%rank_color% %rank_symbol% %rank_name%
-      {$p}Priorytet{$sep}: {$s}%rank_priority%
-      {$p}Maksymalne Obszary{$sep}: {$s}%rank_max_claims%
-      {$p}Materiał{$sep}: {$s}%rank_material%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Ranga została usunięta przez {$s}%player%{$colon}
+      {$p}Node{$colon} {$s}%rank_node%
+      {$p}Nazwa Wyświetlana{$colon} {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Priorytet{$colon} {$s}%rank_priority%
+      {$p}Maksymalne Obszary{$colon} {$s}%rank_max_claims%
+      {$p}Materiał{$colon} {$s}%rank_material%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-name:
     material: BOOK
     name: '&9Zmiana Nazwy Rangi'
     lore: |
       {$p}Nazwa rangi %rank%
-      {$p}została zmieniona przez {$s}%player%{$sep}:
+      {$p}została zmieniona przez {$s}%player%{$colon}
       {$s}%old-name% {$sep}➜ {$s}%new-name%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-symbol:
     material: BOOK
     name: '&9Zmiana Symbolu Rangi'
     lore: |
       {$p}Symbol rangi %rank%
-      {$p}został zmieniony przez {$s}%player%{$sep}:
+      {$p}został zmieniony przez {$s}%player%{$colon}
       {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-color:
     material: BOOK
     name: '&9Zmiana Koloru Rangi'
     lore: |
       {$p}Kolor rangi %rank%
-      {$p}został zmieniony przez {$s}%player%{$sep}:
+      {$p}został zmieniony przez {$s}%player%{$colon}
       {$s}%old-color%color {$sep}➜ {$s}%new-color%color
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-priority:
     material: BOOK
     name: '&9Zmiana Priorytetu Rangi'
     lore: |
       {$p}Priorytet rangi %rank%
-      {$p}został zmieniony przez {$s}%player%{$sep}:
+      {$p}został zmieniony przez {$s}%player%{$colon}
       {$s}%old-priority% {$sep}➜ {$s}%new-priority%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-max-claims:
     material: BOOK
     name: '&9Zmiana Maksymalnej Ilości Obszarów Rangi'
     lore: |
       {$p}Maksymalna ilość obszarów rangi %rank%
-      {$p}została zmieniona przez {$s}%player%{$sep}:
+      {$p}została zmieniona przez {$s}%player%{$colon}
       {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   rank-change-material:
     material: BOOK
     name: '&9Zmiana Materiału Rangi'
     lore: |
       {$p}Materiał rangi %rank%
-      {$p}został zmieniony przez {$s}%player%{$sep}:
+      {$p}został zmieniony przez {$s}%player%{$colon}
       {$s}%old-material% {$sep}➜ {$s}%new-material%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   structures-nexus-move:
     material: BEACON
@@ -355,59 +355,59 @@ rows: 6
       condition: placed
       lore: |
         {$p}Nexus królestwa został
-        postawiony przez {$s}%player%{$sep}:
+        postawiony przez {$s}%player%{$colon}
         {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}O godzinie{$sep}: {$s}%time%
+        {$p}O godzinie{$colon} {$s}%time%
     else:
       lore: |
         {$p}Nexus królestwa został
-        przeniesiony przez {$s}%player%{$sep}:
+        przeniesiony przez {$s}%player%{$colon}
         {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
-        {$p}O godzinie{$sep}: {$s}%time%
+        {$p}O godzinie{$colon} {$s}%time%
 
   group-tax-server-pay:
     material: PAPER
     name: "&9Podatek Serwerowy"
     lore: |
       {$p}Zapłacono podatki serwerowe.
-      {$p}Kwota{$sep}: {$s}%fancy@amount%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}Kwota{$colon} {$s}%fancy@amount%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-champion-change:
     material: ZOMBIE_HEAD
     name: "&9Zmiana Mistrza"
     lore: |
       {$p}Mistrz został zmieniony
-      przez {$s}%player%{$sep}:
+      przez {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-change-lore:
     material: PAPER
     name: "&9Zmiana Opisu Królestwa"
     lore: |
       {$p}Opis królestwa został zmieniony
-      przez {$s}%player%{$sep}:
+      przez {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-rename:
     material: PAPER
     name: "&9Zmiana Nazwy Królestwa"
     lore: |
       {$p}Nazwa królestwa została zmieniona
-      przez {$s}%player%{$sep}:
+      przez {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-change-tag:
     material: PAPER
     name: "&9Zmiana Tagu Królestwa"
     lore: |
       {$p}Tag królestwa został zmieniony
-      przez {$s}%player%{$sep}:
+      przez {$s}%player%{$colon}
       {$s}%old% {$sep}➜ {$s}%new%
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-nation-join:
     material: BEACON
@@ -415,7 +415,7 @@ rows: 6
     lore: |
       {$p}Twoje królestwo dołączyło
       do narodu {$s}%kingdoms_nation_name%.
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   kingdom-nation-leave:
     material: BEACON
@@ -423,7 +423,7 @@ rows: 6
     lore: |
       {$p}Twoje królestwo opuściło
       naród {$s}%kingdoms_nation_name%.
-      {$p}O godzinie{$sep}: {$s}%time%
+      {$p}O godzinie{$colon} {$s}%time%
 
   'PeaceTreaties:received':
     material: BOOK
@@ -431,10 +431,10 @@ rows: 6
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Zaproponowane przez{$sep}: {$s}%other*kingdoms_kingdom_name%
-      {$p}Czas trwania kontraktu{$sep}: {$s}%peacetreaty_duration%
+      {$p}Zaproponowane przez{$colon} {$s}%other*kingdoms_kingdom_name%
+      {$p}Czas trwania kontraktu{$colon} {$s}%peacetreaty_duration%
 
-      {$p}Aby uzyskać więcej informacji użyj{$sep}:
+      {$p}Aby uzyskać więcej informacji użyj{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
 
   'PeaceTreaties:sent':
@@ -443,15 +443,15 @@ rows: 6
     commands:
       - 'k pt review %other*kingdoms_kingdom_name%'
     lore: |
-      {$p}Do{$sep}: {$s}%kingdoms_kingdom_name%
-      {$p}Czas trwania kontraktu{$sep}: {$s}%peacetreaty_duration%
+      {$p}Do{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Czas trwania kontraktu{$colon} {$s}%peacetreaty_duration%
 
-      {$p}Aby uzyskać więcej informacji użyj{$sep}:
+      {$p}Aby uzyskać więcej informacji użyj{$colon}
       {$s}/k pt review %other*kingdoms_kingdom_name%
 
   '[else]':
     material: BARRIER
-    name: '{$e}Nieznany rodzaj logu{$sep}:'
+    name: '{$e}Nieznany rodzaj logu{$colon}'
     lore: '{$es}%type%'
 
 
@@ -467,15 +467,15 @@ options:
     material: BOOK
     name: "{$p}Filtry i Sortowanie"
     lore: |
-      {$p}Filtry{$sep}:
-      {$dot} {$s}Gracz{$sep}: %bool_filters_player%
-      {$dot} {$s}Czas{$sep}: %bool_filters_time%
-      {$dot} {$s}Typ{$sep}: %bool_filters_type%
+      {$p}Filtry{$colon}
+      {$dot} {$s}Gracz{$colon} %bool_filters_player%
+      {$dot} {$s}Czas{$colon} %bool_filters_time%
+      {$dot} {$s}Typ{$colon} %bool_filters_type%
 
-      {$p}Sortowanie{$sep}:
-      {$dot} {$s}Rosnąco według czasu{$sep}: %bool_sorting_time_ascending%
-      {$dot} {$s}Malejąco według czasu{$sep}: %bool_sorting_time_descending%
-      {$dot} {$s}Typ{$sep}: %bool_sorting_type%
+      {$p}Sortowanie{$colon}
+      {$dot} {$s}Rosnąco według czasu{$colon} %bool_sorting_time_ascending%
+      {$dot} {$s}Malejąco według czasu{$colon} %bool_sorting_time_descending%
+      {$dot} {$s}Typ{$colon} %bool_sorting_type%
 
 
   next-page:

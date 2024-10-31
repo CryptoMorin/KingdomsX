@@ -5,10 +5,7 @@ import org.checkerframework.common.value.qual.IntRange;
 import org.checkerframework.dataflow.qual.Pure;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Predicate;
 
 public final class ArrayUtils {
@@ -69,6 +66,18 @@ public final class ArrayUtils {
         Object[] result = new Object[array.length - 1];
         System.arraycopy(array, 1, result, 0, result.length);
         return result;
+    }
+
+    public static <T> void shuffle(T[] array) {
+        Random rnd = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int index = rnd.nextInt(i + 1);
+
+            // Simple swap
+            T a = array[index];
+            array[index] = array[i];
+            array[i] = a;
+        }
     }
 
     public static <T> ConditionalBuilder<T> when(boolean cond, T item) {

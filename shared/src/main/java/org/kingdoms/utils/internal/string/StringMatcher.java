@@ -14,10 +14,23 @@ import java.util.regex.Pattern;
 public interface StringMatcher {
     boolean matches(String string);
 
+    final class Constant implements StringMatcher {
+        private static final Constant TRUE = new Constant(true);
+        private static final Constant FALSE = new Constant(false);
+        private final boolean constant;
+
+        private Constant(boolean constant) {this.constant = constant;}
+
+        @Override
+        public boolean matches(String string) {
+            return constant;
+        }
+    }
+
     final class Exact implements StringMatcher {
         private final String exact;
 
-        public Exact(String exact) {this.exact = exact;}
+        private Exact(String exact) {this.exact = exact;}
 
         @Override
         public boolean matches(String string) {
@@ -28,7 +41,7 @@ public interface StringMatcher {
     final class Contains implements StringMatcher {
         private final String contains;
 
-        public Contains(String contains) {this.contains = contains;}
+        private Contains(String contains) {this.contains = contains;}
 
         @Override
         public boolean matches(String string) {
@@ -39,7 +52,7 @@ public interface StringMatcher {
     final class EndsWith implements StringMatcher {
         private final String endsWith;
 
-        public EndsWith(String endsWith) {this.endsWith = endsWith;}
+        private EndsWith(String endsWith) {this.endsWith = endsWith;}
 
         @Override
         public boolean matches(String string) {
@@ -50,7 +63,7 @@ public interface StringMatcher {
     final class StartsWith implements StringMatcher {
         private final String startsWith;
 
-        public StartsWith(String startsWith) {this.startsWith = startsWith;}
+        private StartsWith(String startsWith) {this.startsWith = startsWith;}
 
         @Override
         public boolean matches(String string) {
@@ -61,7 +74,7 @@ public interface StringMatcher {
     final class Regex implements StringMatcher {
         private final Pattern pattern;
 
-        public Regex(Pattern pattern) {this.pattern = pattern;}
+        private Regex(Pattern pattern) {this.pattern = pattern;}
 
         @Override
         public boolean matches(String string) {
@@ -72,7 +85,12 @@ public interface StringMatcher {
     final class Aggregate implements StringMatcher {
         private final StringMatcher[] matchers;
 
-        public Aggregate(StringMatcher[] matchers) {this.matchers = matchers;}
+        private Aggregate(StringMatcher[] matchers) {this.matchers = matchers;}
+
+        private static StringMatcher aggregate(StringMatcher[] matchers) {
+            if (matchers.length == 0) return Constant.FALSE;
+            return new Aggregate(matchers);
+        }
 
         @Override
         public boolean matches(String string) {
@@ -84,11 +102,18 @@ public interface StringMatcher {
     }
 
     static StringMatcher group(Collection<StringMatcher> matchers) {
-        return new Aggregate(matchers.toArray(new StringMatcher[0]));
+        return Aggregate.aggregate(matchers.toArray(new StringMatcher[0]));
+    }
+
+    static StringMatcher parseAndGroup(Collection<String> matchers) {
+        return Aggregate.aggregate(matchers.stream().map(StringMatcher::fromString).toArray(StringMatcher[]::new));
     }
 
     static StringMatcher fromString(String text) {
         Objects.requireNonNull(text, "Cannot construct checker from null text");
+
+        if (text.equals("*")) return Constant.TRUE;
+
         int handlerIndexEnd = text.indexOf(':');
         if (handlerIndexEnd == -1) return new Exact(text);
 

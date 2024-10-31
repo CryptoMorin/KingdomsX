@@ -22,19 +22,110 @@ options:
       condition: "level < max_level"
       name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
       material: NETHER_STAR
-      lore: |
-        {$dot} {$p}Misc Upgrades{$sep}: {$s}1 {$arrow} {$s}2
+      lvl-I:
+        condition: 'level == 1'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Insanity
 
-        {$dot} {$p}Max Level{$sep}: {$s}%roman@max_level%
-        {$dot} {$p}Cost{$sep}: {$s}%upgrade_cost%
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 30
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlock Throw
+            {$sdot} {$s}Unlock Damage Cap
+            {$sdot} {$s}Health{$colon} {$sp}{$lvlup} Lvl. 30
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Healing Turret
+            {$sdot} {$s}Unlock Flame Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock Powercell
+            {$sdot} {$s}Unlock Outpost
+
+          {$p}Max Level{$colon} {$s}%roman@max_level%
+          {$p}Cost{$colon} {$s}%fancy@upgrade_cost%
+      lvl-II:
+        condition: 'level == 2'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Guards
+            {$sdot} {$s}Unlock Glory
+            {$sdot} {$s}Unlock Keep Inventory
+
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 40
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlock Drag
+            {$sdot} {$s}Unlock Thor
+            {$sdot} {$s}Health{$colon} {$sp}{$lvlup} Lvl. 40
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Psionic Turret
+            {$sdot} {$s}Unlock HellFire Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock Extractor
+
+          {$p}Max Level{$colon} {$s}%roman@max_level%
+          {$p}Cost{$colon} {$s}%fancy@upgrade_cost%
+      lvl-III:
+        condition: 'level == 3'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Nexus Guards
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Lvl. 2
+
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 40
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlock Reinforcements
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 30
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Heatbeam Turret
+            {$sdot} {$s}Unlock Soldier Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock WarpPad Structure
+            {$sdot} {$s}Unlock Regulator Structure
+
+          {$p}Max Level{$colon} {$s}%roman@max_level%
+          {$p}Cost{$colon} {$s}%fancy@upgrade_cost%
+      lvl-IV:
+        condition: 'level == 4'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Flight
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Lvl. 3
+
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 70
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlocks Burst
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Inferno Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock Siege Cannon
+
+          {$p}Max Level{$colon} {$s}%roman@max_level%
+          {$p}Cost{$colon} {$s}%fancy@upgrade_cost%
+      else:
+        lore: [ "&cUnknown Kingdom Upgrade: %level%" ]
     maxxed:
-      name: "{$sp}Level{$colon} {$s}%level%"
+      name: "{$sp}Kingdom Level{$colon} {$s}%roman@level% {$sep}(&5Maxxed{$sep})"
       material: NETHER_STAR
   public-home:
     posx: 4
     posy: 1
     material: DARK_OAK_DOOR
-    name: "{$s}Public Home{$sep}: %kingdoms_bool_kingdom_home_is_public%"
+    name: "{$s}Public Home{$colon} %kingdoms_bool_kingdom_home_is_public%"
     lore: |
       {$sep}When your home is public, anyone
       can teleport to it using
@@ -54,7 +145,7 @@ options:
     posy: 1
     material: POTION
     color: 818595
-    name: "{$s}Hidden{$sep}: %kingdoms_bool_kingdom_is_hidden%"
+    name: "{$s}Hidden{$colon} %kingdoms_bool_kingdom_is_hidden%"
     lore: |
       {$sep}Hidden kingdoms aren't displayed
       in {$p}/k map {$sep}and online maps.

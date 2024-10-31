@@ -8,10 +8,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.kingdoms.constants.player.KingdomPlayer
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
-import org.kingdoms.enginehub.worldguard.handlers.WorldGuardClaimProcessorTask
-import org.kingdoms.enginehub.worldguard.handlers.WorldGuardKingdomsMapConstructor
-import org.kingdoms.enginehub.worldguard.handlers.WorldGuardLandVisualizerPreparation
-import org.kingdoms.enginehub.worldguard.handlers.WorldGuradPvPHandler
+import org.kingdoms.enginehub.worldguard.handlers.*
 import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.managers.pvp.PvPManager
 import org.kingdoms.managers.entity.KingdomEntityRegistry
@@ -34,7 +31,7 @@ class WorldGuardHandler(private val addon: EngineHubAddon) : Listener {
         val wg: ServiceWorldGuard = addon.worldGuard!!
         LandChangeWatcher.register(WorldGuardLandVisualizerPreparation(wg))
         PvPManager.registerHandler(WorldGuradPvPHandler(wg))
-        KingdomsMap.registerHandler(WorldGuardKingdomsMapConstructor(wg))
+        KingdomsMap.registerElement(WorldGuardKingdomsMapHandler(wg))
         ClaimProcessor.getTasks().register(WorldGuardClaimProcessorTask::class.java, ClaimProcessorHandler(wg))
         addon.server.pluginManager.registerEvents(this, addon)
     }

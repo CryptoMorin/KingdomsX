@@ -5,37 +5,42 @@ import java.time.Duration
 
 abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
     private var lastCheckedTicks: Long = 0L
-    private var state: StopwatchState = StopwatchState.NOT_STARTED
+    override var state: StopwatchState = StopwatchState.NOT_STARTED
 
-    override fun elapsed(): Duration {
-        if (state == StopwatchState.TICKING) updateTicks()
-        return Duration.ofMillis(this.passed)
-    }
+    @Suppress("INAPPLICABLE_TARGET_ON_PROPERTY_WARNING")
+    override val elapsed: Duration
+        @get:JvmName("elapsed")
+        get() {
+            if (state === StopwatchState.TICKING) updateTicks()
+            return Duration.ofMillis(this.passed)
+        }
 
     @OverrideOnly
     abstract fun getCurrentTime(): Long
 
     final override fun start(): AbstractStopwatch {
-        ensureRunning()
-        resume()
+        if (state !== StopwatchState.NOT_STARTED) exception("Cannot start in this state")
+        start0()
         return this
     }
 
     final override fun stop(): AbstractStopwatch {
-        ensureRunning()
+        if (state === StopwatchState.STOPPED) exception("Already stopped")
+        updateTicks()
         state = StopwatchState.STOPPED
         return this
     }
 
     override fun reset(): Stopwatch {
-        ensureRunning()
+        if (state === StopwatchState.STOPPED) exception("Stopwatch is stopped")
         passed = 0
-        lastCheckedTicks = getCurrentTime()
+        lastCheckedTicks = 0L
+        state = StopwatchState.NOT_STARTED
         return this
     }
 
     private fun updateTicks() {
-        if (state == StopwatchState.NOT_STARTED) return
+        if (state === StopwatchState.NOT_STARTED) return
 
         val currTicks = getCurrentTime()
         val ticksPassedSinceLastCheck = currTicks - lastCheckedTicks
@@ -43,26 +48,26 @@ abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
         this.lastCheckedTicks = currTicks
     }
 
-    private fun ensureRunning() {
-        if (state == StopwatchState.STOPPED) throw IllegalStateException("Counter has stopped")
-        updateTicks()
-    }
-
     final override fun resume(): AbstractStopwatch {
-        ensureRunning()
-        if (state == StopwatchState.TICKING) throw IllegalStateException("Already ticking")
-        state = StopwatchState.TICKING
-        this.lastCheckedTicks = getCurrentTime()
+        // Don't use ensureRunning here, it'll call updateTicks()
+        if (state !== StopwatchState.PAUSED) exception("Can't resume")
+        start0()
         return this
     }
 
-    final override fun getState(): StopwatchState = state
+    private fun exception(msg: String): Nothing = throw IllegalStateException("$msg: $this")
+
+    private fun start0() {
+        state = StopwatchState.TICKING
+        this.lastCheckedTicks = getCurrentTime()
+    }
 
     final override fun pause(): AbstractStopwatch {
-        ensureRunning()
-        if (state == StopwatchState.PAUSED) throw IllegalStateException("Already paused")
+        if (state !== StopwatchState.TICKING) exception("Can't pause")
         state = StopwatchState.PAUSED
         updateTicks()
         return this
     }
+
+    override fun toString(): String = "${javaClass.simpleName}($state | $elapsed)"
 }

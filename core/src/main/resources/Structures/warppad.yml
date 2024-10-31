@@ -4,6 +4,8 @@
       <name>: warppad
       <build-duration-factor>: '+5 minutes'
       <durability-factor>: 100
+      <extra-holograms>:
+        - "{$p}{$$words.fuel}{$colon} {$s}%fancy@fuel%{$sep}/{$s}%fancy@max_fuel%"
       <material-1>: END_PORTAL_FRAME
       <material-2>: END_PORTAL_FRAME
       <material-3>: END_PORTAL_FRAME
@@ -18,6 +20,9 @@ teleport-fuel-cost: 'distance / 2'
 # If the target location is in another world entirely,
 # this amount will be used for "distance" instead.
 other-world-distance-factor: 300
+
+conditions:
+  'kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
 
 fuel:
   enabled: true
@@ -42,7 +47,7 @@ limits:
 sounds:
   1:
     teleport-sound: BLOCK_PORTAL_TRAVEL, 0.5, 1.0
-    # fuel-fill: BLOCK_FIRE_EXTINGUISH
+    fuel-fill: BLOCK_FIRE_EXTINGUISH
 
 cost: 2000
 sell: 1000

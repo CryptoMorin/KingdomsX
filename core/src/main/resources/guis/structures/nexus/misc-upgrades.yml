@@ -21,7 +21,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &lvl "{$p}Level{$sep}: {$s}%level%{$sep}/{$s}%max_level%"
+        - &lvl "{$p}Level{$colon} {$s}%level%{$sep}/{$s}%max_level%"
         - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
     maxxed:
       condition: 'enabled && maxxed'
@@ -29,7 +29,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &lvl-maxxed "{$p}Level{$sep}: {$s}%level% {$sep}({$s}Maxxed{$sep})"
+        - &lvl-maxxed "{$p}Level{$colon} {$s}%level% {$sep}({$s}Maxxed{$sep})"
         - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"
     else:
       condition: enabled
@@ -37,7 +37,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - "<lore>"
         - ""
-        - &upgrade-cost "{$p}Upgrade Cost{$sep}: {$s}%cost%"
+        - &upgrade-cost "{$p}Upgrade Cost{$colon} {$s}%cost%"
         - *lvl
         - *disable-upgrade
 
@@ -60,9 +60,11 @@ options:
   glory:
     material: NETHER_STAR
     <<: *fn-misc [ "&3Glory", [
-      "{$p}Level 1{$sep}: {$s}Killing non-player mobs on your land\nyields {$p}5 {$s}more exp for each level.",
-      "{$p}Level 2{$sep}: {$s}Killing zombies and skeletons on your land\nyields {$p}x2 {$s}experience.",
-      "{$p}Level 3{$sep}: {$s}Killing player enemies on your land\nyields {$p}x1.5 {$s}experience."
+      "{$p}Level 1{$colon} {$s}Killing non-player mobs on your land\nyields {$p}5 {$s}more exp for each level.",
+      "{$p}Level 2{$colon} {$s}Killing zombies and skeletons on your land\nyields {$p}x2 {$s}experience.",
+      "{$p}Level 3{$colon} {$s}Killing player enemies on your land\nyields {$p}x1.5 {$s}experience.",
+      "",
+      "{$chk-kingdom-lvl-IV}"
     ], false ]
 
     posx: 3
@@ -70,15 +72,15 @@ options:
   anti-trample:
     material: WHEAT_SEEDS
     <<: *fn-misc [ "&aAnti-Trample", [
-      "{$p}Level 1{$sep}: {$s}Your tilled soil cannot",
+      "{$p}Level 1{$colon} {$s}Your tilled soil cannot",
       "be trampled by players.",
       '',
-      "{$p}Level 2{$sep}: {$s}Pistons placed outside of your",
+      "{$p}Level 2{$colon} {$s}Pistons placed outside of your",
       "land to push blocks in/out of your kingdom will not work.",
       "This also prevents endermen from stealing blocks within",
       "your territory.",
       "",
-      "{$p}Level 3{$sep}: {$s}Protects certain animals from",
+      "{$p}Level 3{$colon} {$s}Protects certain animals from",
       "being damaged in your lands.",
       "Also prevents enemy players from using",
       "ender pearls to teleport inside your land."
@@ -92,7 +94,9 @@ options:
     <<: *fn-misc [ "&4Nexus Guards", [
       "{$s}When someone enters your",
       "nexus land, spawns guards that",
-      "are stronger than your normal guards."
+      "are stronger than your normal guards.",
+      "",
+      "{$chk-kingdom-lvl-IV}"
     ], true ]
 
     posx: 5
@@ -103,7 +107,9 @@ options:
     <<: *fn-misc [ "&eGuards", [
       "{$s}Guards will randomly spawn",
       "to protect the kingdom if",
-      "a non-ally entered the land."
+      "a non-ally entered the land.",
+      "",
+      "{$chk-kingdom-lvl-III}"
     ], true ]
 
     posx: 6
@@ -113,10 +119,12 @@ options:
 
     <<: *fn-misc [ "&cInsanity", [
       "{$sep}Defenders and Nexus guards",
-      "spawned on powercell land will have{$sep}:",
-      "{$p}Level 1{$sep}: {$s}Strength I for 10 seconds.",
-      "{$p}Level 2{$sep}: {$s}Strength II for 10 seconds.",
-      "{$p}Level 3{$sep}: {$s}Strength III for 10 seconds."
+      "spawned on powercell land will have{$colon}",
+      "{$p}Level 1{$colon} {$s}Strength I for 10 seconds.",
+      "{$p}Level 2{$colon} {$s}Strength II for 10 seconds.",
+      "{$p}Level 3{$colon} {$s}Strength III for 10 seconds.",
+      "",
+      "{$chk-kingdom-lvl-II}"
     ], true ]
 
     posx: 7
@@ -137,8 +145,8 @@ options:
 
     <<: *fn-misc [ "&3Invasions", [
       "{$p}Your kingdom can invade {$s}%invasion-limit% {$p}times",
-      "{$p}Used invasions{$sep}: {$s}%invasions%",
-      "{$p}Refresh Cooldown{$sep}: {$s}%invasion-refresh-cooldown%"
+      "{$p}Used invasions{$colon} {$s}%invasions%",
+      "{$p}Refresh Cooldown{$colon} {$s}%invasion-refresh-cooldown%"
     ], true ]
 
     posx: 2
@@ -147,13 +155,13 @@ options:
     material: GUNPOWDER
 
     <<: *fn-misc [ "&5Anti-Explosion", [
-      "{$p}Level 1{$sep}: {$sep}Prevents creepers from",
+      "{$p}Level 1{$colon} {$sep}Prevents creepers from",
       "destroying blocks in your land.",
       "",
-      "{$p}Level 2{$sep}: {$sep}Prevents TNTs from",
+      "{$p}Level 2{$colon} {$sep}Prevents TNTs from",
       "destroying blocks in your land.",
       "",
-      "{$p}Level 3{$sep}: {$sep}Protect your kingdom members,",
+      "{$p}Level 3{$colon} {$sep}Protect your kingdom members,",
       "animals, and all the other trapped mobs",
       "within your lands from explosions.",
       "",
@@ -171,7 +179,7 @@ options:
       "{$s}Increase your maximum claims",
       "by {$p}2 {$s}every upgrade.",
       "",
-      "{$p}Current Max Lands{$sep}: {$s}%kingdoms_max_claims%"
+      "{$p}Current Max Lands{$colon} {$s}%kingdoms_max_claims%"
     ] ]
 
     posx: 8
@@ -184,7 +192,7 @@ options:
       "{$sep}Increase your maximum turrets",
       "per land by {$p}1 {$sep}each upgrade.",
       "",
-      "{$p}Current Max Turrets Per Land{$sep}: {$s}%max_turrets_per_land%",
+      "{$p}Current Max Turrets Per Land{$colon} {$s}%max_turrets_per_land%",
     ] ]
 
     posx: 5
@@ -213,6 +221,34 @@ options:
 
     posx: 7
     posy: 2
+  flight:
+    material: ELYTRA
+
+    <<: *fn-misc [ "&3Flight", [
+      "{$desc}Allows the use of {$p}/k fly",
+      "{$chk-kingdom-lvl-V}"
+    ], false ]
+
+    posx: 3
+    posy: 3
+  keep-inventory:
+    material: CHEST
+
+    <<: *fn-misc [ "&3Keep Inventory", [
+      "{$desc}Allows you to keep items in",
+      "your inventory after dying in your own kingdom.",
+      "",
+      "{$p}Level 1 {$sep}({$kingdom-lvl-II}{$sep}):",
+      "  {$s}Only keep armor and off-hand/main-hand items.",
+      "{$p}Level 2 {$sep}({$kingdom-lvl-IV}{$sep}):",
+      "  {$s}Only keep armor, and hotbar items.",
+      "{$p}Level 3 {$sep}({$kingdom-lvl-V}{$sep}):",
+      "  {$s}Keep all items."
+    ], false ]
+
+
+    posx: 7
+    posy: 3
 
   back:
     name: "{$p}Back"

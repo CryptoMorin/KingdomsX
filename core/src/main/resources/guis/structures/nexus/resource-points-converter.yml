@@ -17,10 +17,17 @@ options:
       - "from your kingdom to your balance."
   info:
     name: "{$s}Resource Points{$colon} {$p}%fancy@kingdoms_resource_points%"
-    lore:
-      - "{$s}Total Donations{$colon} {$p}%fancy@kingdoms_total_donations%"
-      - "{$s}Last Donation Time{$colon} {$p}%kingdoms_date_last_donation_time%"
-      - "{$s}Last Donation Amount{$colon} {$p}%fancy@kingdoms_last_donation_amount%"
+    lore: |
+      {$s}Total Donations{$colon} {$p}%fancy@kingdoms_total_donations%
+      {$s}Last Donation Time{$colon} {$p}%kingdoms_date_last_donation_time%
+      {$s}Last Donation Amount{$colon} {$p}%fancy@kingdoms_last_donation_amount%
+
+      {$p}Top Donations{$colon}
+      {? {kingdoms_kingdom_top_donations:has position=1} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=1, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=1, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=2} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=2, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=2, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=3} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=3, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=3, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=4} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=4, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=4, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=5} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=5, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=5, of=kingdoms_total_donations%"}
     material: NETHER_STAR
     posx: 5
     posy: 6
