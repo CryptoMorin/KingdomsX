@@ -52,17 +52,17 @@ options:
     invading:
       condition: kingdoms_is_invading
       material: EMERALD_BLOCK
-      name: "{$p}You are invading{$sep}:"
+      name: "{$p}You are invading{$colon}"
       lore: |
-        {$p}Land{$sep}: {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
-        {$p}Champion{$sep}: {$s}%champion% {$sep}({$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep})
-        {$p}Since{$sep}: {$s}%since%
-        {$p}Duration{$sep}: {$s}%duration%
-        {$p}Passed{$sep}: {$s}%passed%
-        {$p}Total Lands{$sep}: {$s}%total_lands%
+        {$p}Land{$colon} {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
+        {$p}Champion{$colon} {$s}%champion% {$sep}({$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep})
+        {$p}Since{$colon} {$s}%since%
+        {$p}Duration{$colon} {$s}%duration%
+        {$p}Passed{$colon} {$s}%passed%
+        {$p}Total Lands{$colon} {$s}%total_lands%
     #These are for plunders only.
-    #{$p}Attacker Score{$sep}: {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
-    #{$p}Defender Score{$sep}: {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
+    #{$p}Attacker Score{$colon} {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
+    #{$p}Defender Score{$colon} {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
     else:
       material: PURPLE_STAINED_GLASS_PANE
   attacking:
@@ -80,7 +80,7 @@ options:
       - 38
       - 39
     material: PLAYER_HEAD
-    name: '{$p}Defender{$sep}: {$s}%other*kingdoms_kingdom_name%'
+    name: '{$p}Defender{$colon} {$s}%other*kingdoms_kingdom_name%'
     lore: null
   defending:
     slots:
@@ -97,7 +97,7 @@ options:
       - 42
       - 43
     material: PLAYER_HEAD
-    name: '{$e}Invader{$sep}: {$es}%kingdoms_kingdom_name%'
+    name: '{$e}Invader{$colon} {$es}%kingdoms_kingdom_name%'
     lore: null
   attacking-info:
     posx: 3
