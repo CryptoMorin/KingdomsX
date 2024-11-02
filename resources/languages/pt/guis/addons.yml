@@ -1,4 +1,4 @@
-title: "&8-=( {$p}Addons &8)=-"
+title: "&8-=( {$p}Complementos &8)=-"
 rows: 6
 options:
   decoration:
@@ -34,23 +34,13 @@ options:
     posx: 5
     posy: 1
     material: NETHER_STAR
-    name: '{$sp}Info'
+    name: '{$sp}Informação'
     lore: |
-      {$sep}Addons are additional
-      downloadable content that
-      can be installed separately.
+      {$sep}Os complementos são conteúdos adicionais que podem ser baixados e instalados separadamente.
 
-      The reason why addons exist in
-      the first place, is because of
-      {$p}performance{$sep}, {$p}modularization
-      {$sep}and {$p}file size limits.
+      A razão pela qual os complementos existem em primeiro lugar é por causa de {$p}desempenho{$sep}, {$p}modularização{$sep} e {$p}limites de tamanho de arquivo.
 
-      {$sep}[{$s}!{$sep}] {$sep}In order to be
-      able to install addons, you need to
-      have a internet connection that's
-      able to connect to {$p}GitHub.com
-      {$sep}({$sep}not blocked by firewall,
-      country censoreship and etc.{$sep})
+      {$sep}[{$s}!{$sep}] {$sep}Para poder instalar complementos, você precisa ter uma conexão com a internet que consiga se conectar ao {$p}GitHub.com{$sep} ({$sep}não bloqueado por firewall, censura do país, etc.{$sep})
   addons:
     slots:
       - 10
@@ -83,74 +73,70 @@ options:
       - 43
     installing:
       condition: installing
-      name: '&8[&3Installing...&8] {$sp}%addon-name%'
+      name: '&8[&3Instalando...&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        {$p}Version{$colon} {$sp}%latest-version%
+        {$p}Versão{$colon} {$sp}%latest-version%
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] {$sp}%addon-name%'
+      name: '&8[&5Reinício Pendente&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        {$p}Version{$colon} {$sp}%latest-version%
-        &5The addon is downloaded. Waiting
-        for the server to be restarted to
-        enable the addon.
+        {$p}Versão{$colon} {$sp}%latest-version%  
+        &5O complemento foi baixado. Aguardando a reinicialização do servidor para ativar o complemento.
       material: PURPLE_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[{$p}Up to date&8] {$sp}%addon-name%'
+      name: '&8[&2Atualizado&8] {$sp}%addon-name%'
       lore: |
-        %description%
-        {$p}Version{$colon} {$sp}%installed-version%
-        &4Right-click to uninstall
+        %description% 
+        {$p}Versão{$colon} {$sp}%installed-version% 
+        &4Clique direito para desinstalar
       material: GREEN_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Outdated&8] {$sp}%addon-name%'
+      name: '&8[&4Desatualizado&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &4Installed Version{$colon} {$sp}%installed-version%
-        {$p}Latest Version{$colon} {$sp}%latest-version%
+        &4Versão Instalado{$colon} {$sp}%installed-version% 
+        {$p}Última Versão{$colon} {$sp}%latest-version% 
 
-        {$sep}[{$e}!{$sep}] {$es}This version requires
-        kingdoms {$p}v%supported-core-version% {$es}to work.
-        Current version{$colon} {$e}%current-core-version%
+        {$sep}[{$e}!{$sep}] {$es}Esta versão requer kingdoms {$p}v%supported-core-version% {$es}para funcionar. 
+        Versão atual{$colon} {$e}%current-core-version% 
 
-        {$p}Left-click to update
-        &4Right-click to uninstall
+        {$p}Clique esquerdo para atualizar 
+        &4Clique direito para desinstalar
       material: RED_WOOL
     not=installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
-      name: '&8[&4Outdated Core&8] {$sp}%addon-name%'
+      name: '&8[&4Core Desatualizado&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        {$p}Version{$colon} {$sp}%latest-version%
+        {$p}Versão{$colon} {$sp}%latest-version%  
 
-        {$warning}This version requires
-        kingdoms {$p}v%supported-core-version% {$sep}to work.
-        Current version{$colon} {$e}%current-core-version%
+        {$warning}Esta versão requer kingdoms {$p}v%supported-core-version% {$sep}para funcionar.  
+        Versão atual{$colon} {$e}%current-core-version%.
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] {$sp}%addon-name%'
+      name: '&8[&4Desatualizado&8] {$sp}%addon-name%'
       lore: |
-        %description%
-        &4Installed Version{$colon} {$sp}%installed-version%
-        {$p}Latest Version{$colon} {$sp}%latest-version%
-        {$p}Left-click to update
-        &4Right-click to uninstall
+        %description% 
+        &4Versão Instalado{$colon} {$sp}%installed-version% 
+        {$p}Última Versão{$colon} {$sp}%latest-version% 
+        {$p}Clique esquerdo para atualizar 
+        &4Clique direito para desinstalar
       material: RED_WOOL
     not-installed:
-      name: '&8[{$s}Not installed&8] {$sp}%addon-name%'
+      name: '&8[&6Não Instalado&8] {$sp}%addon-name%'
       lore: |
-        %description%
-        {$p}Version{$colon} {$sp}%latest-version%
-        {$p}Left-click to install
+        %description% 
+        {$p}Versão{$colon} {$sp}%latest-version% 
+        {$p}Clique esquerdo para instalar
       condition: '!installed'
       material: BLUE_WOOL
