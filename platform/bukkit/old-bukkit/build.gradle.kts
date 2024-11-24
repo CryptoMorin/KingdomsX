@@ -7,6 +7,15 @@ plugins {
 group = "org.kingdoms.platform.bukkit"
 version = "unspecified"
 
+repositories {
+    maven {
+        url = uri("https://repo.codemc.org/repository/nms/")
+        content {
+            includeGroup("org.spigotmc")
+        }
+    }
+}
+
 dependencies {
     compileOnly(project(":shared"))
     compileOnly(project(":nbt"))

@@ -2,7 +2,7 @@ plugins {
     commons
     shadowed
     sublibs
-    spigot
+    spigotapi
     addon
     buildFiles
 }

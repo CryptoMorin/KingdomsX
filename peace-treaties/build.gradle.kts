@@ -1,7 +1,7 @@
 plugins {
     commons
     shadowed
-    spigot
+    spigotapi
     kotlin
     sublibs
     addon

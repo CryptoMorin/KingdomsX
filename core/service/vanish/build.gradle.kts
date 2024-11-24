@@ -2,7 +2,7 @@ import org.kingdoms.gradle.KingdomsGradleCommons.localDependency
 
 plugins {
     commons
-    spigot
+    spigotapi
 }
 
 group = "org.kingdoms.services.vanish"

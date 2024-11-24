@@ -3,7 +3,7 @@ import org.kingdoms.gradle.KingdomsGradleCommons.localDependency
 plugins {
     java
     commons
-    spigot
+    spigotapi
     kotlin
 }
 

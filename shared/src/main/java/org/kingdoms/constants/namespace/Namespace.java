@@ -89,7 +89,7 @@ public final class Namespace implements DataStringRepresentation {
     /**
      * Official kingdom-related registries.
      */
-    @NonNull
+    @NotNull
     @Pure
     public static Namespace kingdoms(@NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) String key) {
         return new Namespace(KINGDOMS, key);

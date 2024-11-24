@@ -3,6 +3,7 @@ import org.kingdoms.gradle.KingdomsGradleCommons
 plugins {
     commons
     sublibs
+    spigot
 }
 
 group = "org.kingdoms.platform.bukkit"
@@ -14,6 +15,5 @@ dependencies {
     compileOnly(project(":java-higher-api:java14"))
     api(project(":platform:bukkit:old-bukkit"))
     api(project(":platform:bukkit:common"))
-    compileOnly(KingdomsGradleCommons.Spigot.LATEST)
     compileOnly(KingdomsGradleCommons.XSERIES)
 }

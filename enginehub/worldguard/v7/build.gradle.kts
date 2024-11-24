@@ -1,6 +1,6 @@
 plugins {
     commons
-    spigot
+    spigotapi
 }
 
 group = "org.kingdoms.services.worldguard"
