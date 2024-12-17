@@ -1,25 +1,25 @@
-# Read config.yml 'prefix' option for info.
+# Leia a opção 'prefix' no arquivo config.yml para informações.
 prefix: "&6[&lK&eingdoms&6] &2"
 chat-input:
-  # During chat inputs (mostly used in GUIs like asking for rank name, priority, etc)
-  # When the player writes this in the chat, it cancels the operation.
-  # The sustainable thing to use for hover messages is the '/cancel' command instead.
+  # Durante entradas de chat (principalmente usadas em GUIs como solicitação de nome de rank, prioridade, etc.)
+  # Quando o jogador escreve isso no chat, cancela a operação.
+  # O ideal é usar o comando '/cancel' para mensagens com hover.
 
-  # The reason this doesn't support multiple words is that it'll minimize the amount of
-  # inputs players can choose for all the chat inputs.
+  # O motivo de isso não suportar várias palavras é para minimizar
+  # o número de entradas que os jogadores podem escolher para todas as entradas de chat.
   cancel: cancel
 
-# Usually the %world% placeholder shows the raw name for internal purposes (such as hover messages)
-# But this is used for %translated-world% placeholder and places where messages cannot be directly translated.
+# Geralmente, o placeholder %world% mostra o nome bruto para fins internos (como mensagens com hover)
+# Mas isso é usado para o placeholder %translated-world% e em locais onde as mensagens não podem ser traduzidas diretamente.
 worlds:
   world: Overworld
   world_nether: The Nether
   world_the_end: The End
 
-# Usado para exibir sem limite.Atualmente usado apenas para códigos de convite.
+# Usado para exibir sem limite. Atualmente usado apenas para códigos de convite.
 unlimited: "&5Ilimitada"
 
-# Used for boolean placeholder modifier.
+# Usado para o modificador de placeholder booleano.
 enabled: "{$p}✔"
 disabled: "{$e}✗"
 
@@ -31,16 +31,16 @@ false: false
 # Por exemplo, um reino que enviou uma correspondência foi dissolvido.
 unknown: "&4Desconhecido"
 
-# Used where a defined message language entry
-# in a config isn't set in the language file.
+# Usado onde uma entrada de mensagem de idioma definida
+# em uma configuração não está definida no arquivo de idioma.
 unknown-message-entry: "{$e}Entrada de mensagem desconhecida"
 
-# Used for absence of a value.
+# Usado para ausência de um valor.
 none: "&4Nenhum"
 
-# Used for time-based placeholders.
-# The default time related placeholders like %kingdoms_shield_time% are shown as
-# random numbers if you use it just like that, you'd have to use the timer modifier:
+# Usado para placeholders baseados em tempo.
+# Os placeholders padrão relacionados ao tempo, como %kingdoms_shield_time%, são mostrados como
+# números aleatórios se usados diretamente. É necessário usar o modificador de timer:
 # %kingdoms_time_shield_time%
 time-formatter:
   seconds: 00:00:%ssaf%
@@ -50,16 +50,16 @@ time-formatter:
   weeks: "%wwwwa% semana(s), %dd% dia(s), %hhf%:%mmf%:%ssf%"
   months: "%MMA% mês(s), %wwww% semana(s), %dd% dia(s), %hhf%:%mmf%:%ssf%"
 
-# Used for date-based placeholders.
-# The default time related placeholders like %kingdoms_since% are shown as
-# random numbers if you use it just like that, you'd have to use the date modifier:
+# Usado para placeholders baseados em data.
+# Os placeholders padrão relacionados ao tempo, como %kingdoms_since%, são mostrados como
+# números aleatórios se usados diretamente. É necessário usar o modificador de data:
 # %kingdoms_date_since%
 
-# It uses Java's default date formatter syntax which can be found here:
+# Utiliza a sintaxe padrão do formatador de data do Java, que pode ser encontrada aqui:
 # https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
 date-formatter: "{$s}yyyy{$sep}/{$s}MM{$sep}/{$s}dd {$s}hh{$colon}{$s}mm{$colon}{$s}ss"
 
-# Used for /k map and /k claim line
+# Usado para /k map e linha de /k claim
 cardinal-directions:
   north: North
   east: East
@@ -70,7 +70,8 @@ cardinal-directions:
   south-east: South_East
   south-west: South_West
 
-# Used for {$name} variables inside other messages.
+# Usado para variáveis {$name} dentro de outras mensagens.
+
 variables:
   cancel: "&cou digite passar o mouse:{&ecancelar;&eClique para cancelar;/cancel} &ccancelar a ação."
   usage: "&4Uso{$colon} {$es}/k "
@@ -520,8 +521,9 @@ relations:
   no-requests: "{$e}Você não tem nenhuma solicitação de relacionamento enviada ao seu grupo."
   disabled-commands: "{$e}Você não pode usar esse comando neste território."
 
-  # Below names are also used for %kingdoms_relation_name%, but not for %kingdoms_land_relation%
-  # For the color of relations (%kingdoms_relation_color%), refer to relations.yml instead.
+  # Os nomes abaixo também são usados para %kingdoms_relation_name%, mas não para %kingdoms_land_relation%
+  # Para a cor das relações (%kingdoms_relation_color%), consulte o arquivo relations.yml.
+
   neutral:
     name: Neutral
   enemy:
@@ -536,7 +538,7 @@ relations:
     name: Self
   wilderness:
     name: Wilderness
-    # The color for this relation is special and is defined in language files instead of relations.yml
+    # A cor para esta relação é especial e é definida nos arquivos de idioma em vez de no relations.yml
     color: "&f"
 fly:
   enemies-nearby: "{$e}Existem inimigos próximos.Seu voo foi desativado."
@@ -554,7 +556,9 @@ fly:
     out-of-land:
       safe: "{$p}Você agora está seguro nesta terra."
       warn: "{$e}Seu voo está prestes a ser desativado em {$es}%counter% {$e}segundos devido a estar em uma terra onde você não pode voar!Volte imediatamente"
-# This message should usually refer to some kind of recruitment forum.
+
+# Esta mensagem geralmente deve se referir a algum tipo de fórum de recrutamento.
+
 no-kingdom-reminder: "{$e}Lembrete{$colon} {$es}Você ainda não se juntou a um reino."
 regulator:
   attributes:
@@ -582,7 +586,7 @@ nexus:
   hidden:
     enabled: "{$p}Seu grupo agora está oculto."
     disabled: "{$p}Seu grupo não está mais oculto."
-  cant-be-removed: Você não pode remover o nexo do seu reino.
+  cant-be-removed: "Você não pode remover o nexo do seu reino."
   shield:
     enable: "{$p}Escudo habilitado para o seu reino."
     disable: "{$e}Escudo desativado para o seu reino."
@@ -776,9 +780,9 @@ commands:
       players: "#PLAYER"
       kingdoms: "#KINGDOM"
       nations: "#NATION"
-    players: <player>
-    kingdoms: <kingdom>
-    nations: <nation>
+    players: "<player>"
+    kingdoms: "<kingdom>"
+    nations: "<nation>"
   players-only: "{$e}Somente jogadores podem usar este comando."
   unknown-command: "{$e}Comando desconhecido!"
 kingdom:
@@ -871,22 +875,22 @@ inactivity-announce:
 command:
   updates:
     description: "{$s}Verifica se há alguma atualização disponível para Reinos."
-    name: updates
-    aliases: update
+    name: "updates"
+    aliases: "update"
   help:
     description: "{$s}Exibe todos os comandos"
-    name: help
-    aliases: h ? --help /? -h
+    name: "help"
+    aliases: "h ? --help /? -h"
     usage: "{$usage}%command% &9[page]"
     grouped-header: "{$sep}&m---------------=({$e}&l %group% {$sep})=---------------"
     negative-pages: "{$e}Isto não é um edifício.Você não pode simplesmente ir para uma página negativa."
-    grouped-commands: hover:{{$sep}/{$p}k %cmd% &7- %description%;{$sep}/{$p}k %cmd%;|/k %cmd%}
-    footer: hover:{{$s}←;{$s}Página anterior;/k %command% %previous_page%} %pages%hover:{{$s}→;{$s}Próxima página;/k %command% %next_page%}
-    footer-page: hover:{{$sep}[{$p}%number%{$sep}];{$s}Vá para página {$p}%number%;/k %command% %number%}
-    footer-current-page: hover:{{$sep}[{$p}&l%number%{$sep}];{$p}Pagina atual}
+    grouped-commands: "hover:{{$sep}/{$p}k %cmd% &7- %description%;{$sep}/{$p}k %cmd%;|/k %cmd%}"
+    footer: "hover:{{$s}←;{$s}Página anterior;/k %command% %previous_page%} %pages%hover:{{$s}→;{$s}Próxima página;/k %command% %next_page%}"
+    footer-page: "hover:{{$sep}[{$p}%number%{$sep}];{$s}Vá para página {$p}%number%;/k %command% %number%}"
+    footer-current-page: "hover:{{$sep}[{$p}&l%number%{$sep}];{$p}Pagina atual}"
     header: "{$sep}&m---------------=({$e}&l Kingdoms {$s}%page%&7/{$s}%max_pages% {$sep}&m)=---------------"
     no-more-pages: "{$e}Não há mais páginas para carregar."
-    commands: hover:{{$sep}/{$p}k %cmd% &7- %description%;&5%usage%;|/k %cmd%}
+    commands: "hover:{{$sep}/{$p}k %cmd% &7- %description%;&5%usage%;|/k %cmd%}"
     bad-start: "{$e}Você não precisa de barra ou do principal /k command para obter as informações do comando."
     not-found: "{$e}Não foi possível encontrar nenhum comando correspondente{$colon} {$es}%command%"
     info: |
@@ -898,9 +902,9 @@ command:
       &7| {$p}Cooldown{$colon} &9%cooldown%
   admin:
     fsck:
-      description: Uma merda de magia negra que faz todos os seus problemas desaparecerem de repente.Tentativas de corrigir dados corrompidos.
-      name: FSCK
-      aliases: SFC CHKDSK
+      description: "Uma merda de magia negra que faz todos os seus problemas desaparecerem de repente.Tentativas de corrigir dados corrompidos."
+      name: "FSCK"
+      aliases: "SFC CHKDSK"
       scanning: "{$p}Carregando e verificando todos os arquivos de dados... Isso pode levar um minuto"
       corruption:
         mail:
@@ -1023,7 +1027,7 @@ command:
       description: "{$s}Cancelar a Claim de todas as terras."
       success: "{$p}Terra não Claimada em {$s}%x%&7, {$s}%z% {$p}de {$s}%kingdom%"
       not-claimed: "{$e}Esta terra não é Claimada."
-      name: unclaim
+      name: "unclaim"
     languagepack:
       description: "{$s}Mostra uma lista de pacotes de idiomas disponíveis para instalação e também para atualização."
       in-progress: "{$e}Você não pode fazer nada com pacotes de idiomas enquanto outro processo ainda estiver em andamento."
@@ -1054,8 +1058,8 @@ command:
           {$sep}| {$e}Falha no download dos arquivos após nova tentativa{$colon} {$es}%downloads_failed_retrying%
           {$sep}| {$e}Falha no download dos arquivos e não foi possível tentar novamente{$colon} {$es}%downloads_failed_critical%
       progress: "{$p}Baixando   {$s}%downloaded%{$sep}/{$s}%total%"
-      aliases: languagespack languagespacks languagepacks langpack langspack lang langs languages
-      name: languagepack
+      aliases: "languagespack languagespacks languagepacks langpack langspack lang langs languages"
+      name: "languagepack"
     addons:
       description: "{$s}Obtenha uma lista de todos os complementos verificados disponíveis para o plugin."
       indexing: "{$p}Aguarde enquanto as informações mais recentes do complemento estão sendo coletadas..."
@@ -1077,7 +1081,7 @@ command:
         %update%
 
         {$p}Você pode baixá-los acessando {$s}hover:{/k admin addons;&7Click to open;/k admin addons} {$p}GUI.
-      aliases: addon plugin plugins add-on add-ons
+      aliases: "addon plugin plugins add-on add-ons"
     gui:
       description: |
         {$s}Abra um contêiner para analisar automaticamente os concursos dentro dele como uma configuração da GUI.
@@ -1095,8 +1099,8 @@ command:
         usage: "{$usage}admin disband {$p}<nation> &9[silent]"
         success: "{$s}%nation% {$p}nação foi dissolvida."
         announce: "{$es}%nation% {$s}nação foi dissolvida."
-      name: nation
-      aliases: nations n
+      name: "nation"
+      aliases: "nations n"
     track:
       description: "{$s}Mostra o caminho das mensagens enviadas para você"
       enabled: "&9Modo de rastreamento{$colon} {$p}Habilitada {$sep}(&7Talvez você não consiga ver o caminho de todas as mensagens enviadas para você{$sep})"
@@ -1105,7 +1109,7 @@ command:
         {$p}A seguinte mensagem é enviada de {$s}hover:{%path%;&7Clique para abrir o arquivo;/k admin openfile %file%} {$p}at line {$s}%line%
         {$p}A mensagem crua{$colon} &fhover:{%raw%;cliqueParaCopiar;|%raw%}
       gui: "{$p}Esta GUI está em{$colon} {$s}hover:{%path%;&7Clique para abrir o arquivo;/k admin openfile %sanitized_path%}"
-      aliases: tracker
+      aliases: "tracker"
     migrate:
       description: "{$s}Comando usado para lidar com migrações de dados."
       database:
@@ -1149,13 +1153,13 @@ command:
       error: "{$e}Erro{$colon} ${es}%error%"
       usage: "{$usage}admin testsound {$p}<sound> &9[volume] [pitch]"
       playing: "{$p}Playing now..."
-      name: sound
-      aliases: testsound soundtest
+      name: "sound"
+      aliases: "testsound soundtest"
     test:
       description: "{$s}Teste uma string com códigos de cores hexadecimais, mensagens complexas, quebras de linha e placeholders."
       usage: "{$e}Use{$colon} {$es}/k admin test <message>"
-      name: test
-      aliases: msg
+      name: "test"
+      aliases: "msg"
     execute:
       description: "{$s}Execute um comando para todos os membros de um reino."
       usage: "{$usage}admin execute {$p}<kingdom> <executor> &9[filter] &9[/]{$p}<command>"
@@ -1172,7 +1176,7 @@ command:
         {$e}Não é possível executar como membros do reino sem filtro.
         Alguns membros do reino podem estar offline. Use o {$es}online {$e}parâmetro de filtro para corrigir isso.
       executed: "{$p}Executando o comando {$s}%command% {$p}do plug-in {$s}%plugin% {$p}para membros de {$s}%kingdom% {$p}reino."
-      aliases: exec
+      aliases: "exec"
     evaluate:
       description: "{$s}Avalia uma expressão com espaços reservados e funções matemáticas."
       usage: "{$e}Use{$colon} {$es}/k admin evaluate <expression>"
@@ -1189,14 +1193,14 @@ command:
         precedência e como as subexpressões são agrupadas.
         Talvez você não veja algumas operações, pois elas foram otimizadas.}
         {$p}Expressão Avaliada{$colon} {$s}%result%
-      name: evaluate
-      aliases: eval math
+      name: "evaluate"
+      aliases: "eval math"
     claim:
       description: "{$s}Reivindique à força a terra onde você está atualmente representando um reino."
       usage: "{$usage}admin claim {$p}<kingdom>"
       success: "{$p}Claimado {$s}%x%&7, {$s}%z% {$p}como terra do reino."
       already-claimed: "{$e}Esta terra já é reivindicada por {$es}%kingdoms_kingdom_name%"
-      name: claim
+      name: "claim"
     rank:
       description: "{$s}Altere a classificação do reino de um jogador."
       usage: "{$usage}admin rank {$p}<player> <rank>"
@@ -1206,7 +1210,7 @@ command:
       success: "{$p}Mudado {$s}%player%'s {$p}classificação de {$s}%previous_rank% {$p}para {$s}%rank%"
       success-king: "{$s}%kingdoms_kingdom_name% {$p}o novo rei do reino é{$colon} {$s}%name%"
       cant-demote-king: "{$es}%player% {$e}é o rei de{$es}%kingdoms_kingdom_name% {$e}você precisa definir o rei primeiro."
-      name: rank
+      name: "rank"
     turret:
       description: "{$s}Remover ou alterar/update certas torres."
       usage: "{$usage}admin turret {$p}<change | remove> <style> &9[replacement style]"
@@ -1219,13 +1223,13 @@ command:
       usage: "{$usage}admin nexus {$p}<kingdom>"
       tp-not-set: "{$es}%kingdom% {$e}não tem seu nexo definido."
       tp: "{$p}Teletransportando para {$s}%kingdom%'s {$p}nexo..."
-      name: nexus
+      name: "nexus"
     toggle:
       description: "{$s}Alterne o modo de administrador para você mesmo."
       on: "{$s}O modo de administrador agora é{$colon} {$p}ON"
       off: "{$s}O modo de administrador agora é{$colon} {$e}OFF"
-      name: toggle
-      aliases: admin bypass god godmode
+      name: "toggle"
+      aliases: "admin bypass god godmode"
     toggles:
       description: "{$s}Mostrar uma lista de jogadores com modo de administrador ativado."
       header: "{$p}Jogadores com modo de administrador ativado{$colon}"
@@ -1234,7 +1238,7 @@ command:
       description: "{$s}Espiar bate-papo de reinos."
       on: "{$s}Modo espião de bate-papo{$colon} {$p}ON"
       off: "{$s}Modo espião de bate-papo{$colon} {$e}OFF"
-      name: spy
+      name: "spy"
     dynmap:
       description: "{$s}Execute diferentes ações para Dynmap."
       rendering: "{$p}Renderização..."
@@ -1242,14 +1246,14 @@ command:
       not-available: "{$e}Todos os suportes de mapas parecem estar desativados."
       rendered: "{$p}Renderizou um total de {$s}%lands% {$p}seções de terra."
       removed: "{$p}Um total de {$s}%lands% {$p}foi removido."
-      name: dynmap
-      aliases: map bluemap squaremap Pl3xMap
+      name: "dynmap"
+      aliases: "map bluemap squaremap Pl3xMap"
     masswar:
       description: "{$s}Iniciar ou encerrar manualmente o masswar."
       usage: "&4Use{$colon} {$e}/k admin masswar <start/end>"
       running: "{$e}Masswar já está em execução."
       not-running: "{$e}Masswar não está funcionando."
-      name: masswar
+      name: "masswar"
     dailychecks:
       description: "{$s}Iniciar manualmente o ciclo de verificações diárias."
       usage: "{$usage}admin dailychecks &9[run &7| &9skip &7| &9resume]"
@@ -1263,8 +1267,8 @@ command:
       skipped: "{$e}As próximas verificações diárias já foram ignoradas."
       resume: "{$p}Retomando as verificações diárias..."
       resumed: "{$e}As verificações diárias não são ignoradas."
-      name: dailychecks
-      aliases: dailycheck
+      name: "dailychecks"
+      aliases: "dailycheck"
     resourcepoints:
       description: "{$s}Adicione ou retire pontos de recurso de um reino."
       usage: "{$usage}admin resourcepoints {$p}<kingdom> &9[set | add | remove] {$p}<amount>"
@@ -1272,21 +1276,21 @@ command:
       done: "{$s}%kingdom%'s {$p}novos pontos de recursos{$colon} {$s}%rp%"
       added: "{$p}Seus novos pontos de recursos de reinos{$colon} {$s}%rp%"
       invalid-action: "{$e}Ação inválida {$es}%action%{$e}! Use{$colon} {$es}add/remove/set"
-      name: resourcepoints
-      aliases: rp resourcepoint
+      name: "resourcepoints"
+      aliases: "rp resourcepoint"
     bank:
       description: "{$s}Adicione ou retire dinheiro de um banco do reino."
       usage: "{$usage}admin bank {$p}<kingdom> &9[set | add | remove] {$p}<amount>"
       done: "{$s}%kingdom%'s {$p}novo banco{$colon} {$s}%fancy@kingdoms_bank%"
       added: "{$p}Seu novo banco de reinos{$colon} {$s}%fancy@kingdoms_bank%"
       invalid-action: "{$e}Ação inválida {$es}%action%{$e}! Use{$colon} {$es}add/remove/set"
-      name: bank
-      aliases: vault
+      name: "bank"
+      aliases: "vault"
     commands:
       description: "{$s}Grava uma lista de comandos com sua permissão em um arquivo."
       done: "{$p}Escreveu informações de comando em {$s}%output%. {$p}Verifique a pasta do plugin Kingdomss."
-      name: commands
-      aliases: cmds
+      name: "commands"
+      aliases: "cmds"
     command:
       description: "{$e}Obtenha todas as informações relacionadas a um comando."
       usage: "{$usage}admin command {$p}<command>"
@@ -1301,8 +1305,8 @@ command:
         &7| {$p}Padrão Permission Scope{$colon} &9%permission-scope%
         &7| {$p}Cooldown{$colon} &9%cooldown%
         &7| {$p}Desabilitada Worlds{$colon} &9%disabled-worlds%
-      name: command
-      aliases: cmd
+      name: "command"
+      aliases: "cmd"
     join:
       description: "{$s}Faça um usuário ingressar em outro reino."
       usage: "{$e}Use{$colon} {$es}/k admin join {$p}<player> <kingdom>"
@@ -1313,13 +1317,13 @@ command:
       king: "{$es}%player% {$e}é o rei de {$es}%kingdoms_kingdom_name% {$e}Considere dissolver o reino ou mudar o rei primeiro."
       already-in-kingdom: "{$s}%player% {$p}já é membro {$s}%kingdoms_kingdom_name%"
       success: "{$s}%player% {$p}agora é membro do {$s}%kingdoms_kingdom_name%"
-      name: join
+      name: "join"
     home:
       description: "{$s}Teletransporte-se para a casa de outro reino."
       usage: "{$e}Use$sep}: {$es}/k admin home <kingdom>"
       homeless: "&3%kingdom% {$e}reino não tem um conjunto doméstico."
       teleported: "{$p}Você foi teletransportado para {$s}%kingdom% {$p}casa do reino."
-      aliases: h
+      aliases: "h"
     create:
       description: "{$s}Crie um reino para outro jogador."
       usage: "{$e}Use{$colon} {$es}/k admin create {$p}<player {$sep}| {$p}super> <name>"
@@ -1337,20 +1341,20 @@ command:
       usage: "{$e}Use{$colon} {$es}/k admin rename <reino> <nome>"
       already-exists: "{$e}Já existe um reino com o nome{$colon} {$es}%kingdom%"
       renamed: "{$p}O reino foi renomeado com sucesso {$s}%kingdom% {$p}parao {$s}%name%"
-      aliases: name
+      aliases: "name"
     disband:
       description: "{$s}Dissolve um reino."
       usage: "{$e}Usage{$colon} {$es}/k admin disband <reino> [silent]"
       success: "{$s}%kingdom% {$p}foi dissolvido."
       announce: "{$es}%kingdom% {$s}foi dissolvido."
-      name: disband
-      aliases: delete
+      name: "disband"
+      aliases: "delete"
     pacifism:
       description: "{$s}Muda o estado de pacifismo de um reino."
       usage: "{$e}Use{$colon} {$es}/k admin pacifism {$p}<reino> {$sep}[{$p}true &7| &4false{$sep}]"
       enabled: "{$s}Pacifismo para {$p}%kingdom% reino{$colon} {$p}Habilitado"
       disabled: "{$s}Pacifismo para {$p}%kingdom% reino{$colon} {$e}Desabilitado"
-      aliases: pacifist
+      aliases: "pacifist"
     land:
       description: "{$s}Teleporte-se para um terreno nas coordenadas fornecidas."
       usage: "{$usage}admin land [world] <x> <z>"
@@ -1358,8 +1362,8 @@ command:
       invalid-world: "{$e}Não é possível encontrar o mundo{$colon} {$es}%world%"
       invalid-coordinates: "{$e}As coordenadas inseridas são inválidas{$colon} {$es}%x%&7, {$es}%z%"
       preparing: "{$e}Preparando pedaços para teletransporte, isso pode levar um minuto."
-      name: land
-      aliases: tpland
+      name: "land"
+      aliases: "tpland"
     player:
       description: "{$s}Exibir as informações de um jogador."
       usage: "{$usage}admin player {$p}<player>"
@@ -1380,8 +1384,8 @@ command:
       found: "{$p}Player {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}está nos seguintes reinos{$colon}"
       kingdom: "{$sep}- {$p}%kingdoms_kingdom_name% {$sep}({$s}%uuid%{$sep})"
       no-duplicates: "{$e}O reino deste jogador não está duplicado."
-      name: player
-      aliases: info
+      name: "player"
+      aliases: "info"
     kick:
       description: "{$s}Expulse um jogador de um reino."
       usage: "{$usage}admin kick {$p}<player>"
@@ -1389,14 +1393,14 @@ command:
       kicked-king: "{$e}Chutada {$es}%kicked% {$e}de {$es}%kingdom% {$e}o novo rei é agora {$colon} {$es}%king%"
       kicked-disbanded: "{$e}reino {$es}%kingdom% Dissolvido porque {$es}%kicked% {$e}era o único membro do reino."
       not-in-kingdom: "{$e}Esse jogador não está em um reino."
-      name: kick
+      name: "kick"
     kick-king: "{$e}O jogador que você está tentando chutar é o rei do reino.Você precisa dissolver o reino ou definir um novo rei."
     hologram:
       description: "{$s}Remova hologramas bugados ao seu redor."
       usage: "{$e}Use{$colon} {$es}/k admin hologram <radius>"
       removed: "{$p}Removido um total de {$s}%removed% {$p}holograma(s)."
-      name: hologram
-      aliases: holograms holo
+      name: "hologram"
+      aliases: "holograms holo"
     entity:
       description: "{$s}Encontra todas as entidades ao redor do jogador."
     maxlandmodifier:
