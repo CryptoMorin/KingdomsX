@@ -2,6 +2,7 @@ package org.kingdoms.utils.cache.caffeine;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import org.checkerframework.checker.units.qual.K;
 
 import java.time.Duration;
 import java.util.Objects;
@@ -14,6 +15,11 @@ public class ExpirableSet<K> {
         Objects.requireNonNull(expirationStrategy, "Expiration etrategies cannot be null");
         this.map = new ExpirableMap<>(expirationStrategy);
         this.duration = map.getDefaultExpirationStrategy().getExpiryAfterCreate().toMillis();
+    }
+
+    public ExpirableSet(Caffeine<K, ReferencedExpirableObject<Long>> cache) {
+        this.map = new ExpirableMap<>(cache);
+        this.duration = 0;
     }
 
     public void add(K key) {

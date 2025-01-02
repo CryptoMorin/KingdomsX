@@ -5,8 +5,8 @@ rows: 6
 (import):
   pagination: { }
 
-# Don't remove "-NOSYNC" from below.
-# -NOSYNC
+# Don't remove "[NoSync]" from below.
+# [NoSync]
 '[fn-std-perm]': &fn-std-perm
   args: [ "<x>" ]
   return:
@@ -18,7 +18,7 @@ rows: 6
       name: "{$disabled} <x>"
       material: RED_WOOL
 
-# -NOSYNC
+# [NoSync]
 '[fn-perm]': &fn-perm
   args: [ "<x>", "<material>" ]
   return:
@@ -30,7 +30,7 @@ rows: 6
     else:
       name: "{$disabled} <x>"
 
-# -NOSYNC
+# [NoSync]
 '[permission]':
   alliance:
     <<: *fn-std-perm [ "Alliance" ]
@@ -102,6 +102,16 @@ rows: 6
       {$sep}Permission for using
       {$s}/k nation lore
       {$s}/k nation rename
+  withdraw:
+    <<: *fn-std-perm [ "Withdraw" ]
+    lore: |
+      {$sep}Permission for using
+      {$s}/k rp withdraw {$sep}command
+      and withdrawing resource points
+      in exchange for money by other
+      means like the option in
+      resource points converter inside
+      nexus GUI.
   nexus:
     <<: *fn-perm [ "Nexus", BEACON ]
     lore: |

@@ -108,19 +108,19 @@ public final class OutpostEditor {
             context.startConversation();
         }).setConversation((context, input) -> {
             context.getMessageContext().raw("arg", input);
-            int participants;
+            int maxParticipants;
             try {
-                participants = Integer.parseInt(input);
+                maxParticipants = Integer.parseInt(input);
             } catch (NumberFormatException ex) {
                 context.sendError(KingdomsLang.INVALID_NUMBER);
                 return;
             }
-            if (participants <= 2) {
+            if (maxParticipants <= 2) {
                 context.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_MAX_PARTICIPANTS_INVALID);
                 return;
             }
 
-            outpost.setMaxParticipants(participants);
+            outpost.setMaxParticipants(maxParticipants);
             context.endConversation();
             context.getMessageContext().raw("outpost-new-max-participants", input);
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_MAX_PARTICIPANTS_SET);

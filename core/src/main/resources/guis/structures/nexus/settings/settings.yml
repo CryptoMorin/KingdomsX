@@ -79,11 +79,10 @@ options:
             {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Lvl. 2
 
           {$dot} {$p}&lPowerups{$colon}
-            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 40
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 50
 
           {$dot} {$p}&lChampion Upgrades{$colon}
             {$sdot} {$s}Unlock Reinforcements
-            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 30
 
           {$dot} {$p}&lTurrets{$colon}
             {$sdot} {$s}Unlock Heatbeam Turret
@@ -207,8 +206,8 @@ options:
 
       If you invade a Kingdom, you cannot go
       back into pacifism mode for a week.
-
-      {$p}Cooldown{$colon} {$s}%pacifism_cooldown%
+      {? pacifism_left > 0 ? "
+      {$p}Cooldown{$colon} {$s}%pacifism_cooldown%" }
   invites:
     posx: 3
     posy: 5

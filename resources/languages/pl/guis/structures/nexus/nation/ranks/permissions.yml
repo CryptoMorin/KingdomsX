@@ -1,8 +1,8 @@
 title: '{$sep}-=( {$p}Permisje {$sep})=-'
 rows: 6
 
-# Don't remove "-NOSYNC" from below.
-# -NOSYNC
+# Don't remove "[NoSync]" from below.
+# [NoSync]
 '[fn-std-perm]': &fn-std-perm
   args: [ "<x>" ]
   return:
@@ -14,7 +14,7 @@ rows: 6
       name: "{$disabled} <x>"
       material: RED_WOOL
 
-# -NOSYNC
+# [NoSync]
 '[fn-perm]': &fn-perm
   args: [ "<x>", "<material>" ]
   return:
@@ -26,7 +26,7 @@ rows: 6
     else:
       name: "{$disabled} <x>"
 
-# -NOSYNC
+# [NoSync]
 '[permission]':
   broadcast:
     <<: *fn-std-perm [ "Broadcast" ]

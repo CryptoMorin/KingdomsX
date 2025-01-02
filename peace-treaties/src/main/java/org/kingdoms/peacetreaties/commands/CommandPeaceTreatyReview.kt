@@ -7,7 +7,7 @@ import org.kingdoms.commands.*
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.gui.GUIAccessor
 import org.kingdoms.gui.InteractiveGUI
-import org.kingdoms.locale.ContextualMessenger
+import org.kingdoms.locale.ContextualMessageSender
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
@@ -50,7 +50,7 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
             return gui
         }
 
-        fun showDetails(context: ContextualMessenger, contract: PeaceTreaty, showAcceptTip: Boolean) {
+        fun showDetails(context: ContextualMessageSender, contract: PeaceTreaty, showAcceptTip: Boolean) {
             contract.getPlaceholderContextProvider(context.messageContext)
             context.sendMessage(PeaceTreatyLang.COMMAND_PEACETREATY_REVIEW_HEADER)
 

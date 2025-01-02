@@ -32,10 +32,12 @@ public class Outpost {
         setDefaultBossBarSettings();
     }
 
-    public Outpost(@NonNull String name, @NonNull String region, @NonNull Location spawn, @NonNull Location center,
+    public Outpost(@NonNull String name, @NonNull String region,
+                   @NonNull Location spawn, @NonNull Location center,
                    MathExpression cost, MathExpression resourcePointsCost,
                    int maxParticipants, int minOnlineMembers,
-                   @Nullable BossBarSettings bossBarSettings, @NonNull OutpostRewards rewards) {
+                   @Nullable BossBarSettings bossBarSettings,
+                   @NonNull OutpostRewards rewards) {
         this.name = name;
         this.region = region;
         this.moneyCost = cost;

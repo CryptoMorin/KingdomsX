@@ -167,6 +167,15 @@ public final class PluginChannels {
     //     sendPayload(player, DefaultChannel.DEBUG$GAME_TEST_ADD_MARKER.getMinecraftKey(), packet);
     // }
 
+    public static void sendBlockMarker(@NotNull final Player player, Collection<BlockVector3> blocks, BlockMarker marker) {
+        Map<BlockVector3, BlockMarker> markers = new HashMap<>(blocks.size());
+
+        for (BlockVector3 block : blocks) markers.put(block, marker);
+
+        BlockMarkerPluginChannel channel = new BlockMarkerPluginChannel(markers);
+        sendBlockMarker(player, Collections.singleton(channel));
+    }
+
     public static void sendBlockMarker(@NotNull final Player player, Collection<BlockMarkerPluginChannel> markers) {
         ensureSupported();
 

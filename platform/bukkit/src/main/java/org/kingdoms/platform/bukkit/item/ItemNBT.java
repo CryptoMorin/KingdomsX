@@ -1,5 +1,6 @@
 package org.kingdoms.platform.bukkit.item;
 
+import com.cryptomorin.xseries.reflection.ReflectiveNamespace;
 import com.cryptomorin.xseries.reflection.XReflection;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftClassHandle;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
@@ -35,6 +36,7 @@ public final class ItemNBT {
         boolean supportsComponents = false;
 
         MethodHandles.Lookup lookup = MethodHandles.lookup();
+        ReflectiveNamespace ns = XReflection.namespaced();
         Class<?> crafItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.CB, "inventory").named("CraftItemStack").unreflect();
         Class<?> nmsItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.NMS, "world.item").named("ItemStack").unreflect();
         Class<?> CompoundTagClass = ofMinecraft()
@@ -64,8 +66,12 @@ public final class ItemNBT {
              *      return this.r.b(datacomponenttype, t0);
              * }
              */
-            setTag = lookup.findVirtual(nmsItemStack, XReflection.v(20, 5, "b").orElse("set"),
-                    MethodType.methodType(Object.class, DataComponentTypeClass, Object.class));
+            setTag = XReflection.of(nmsItemStack).method()
+                    .map(MinecraftMapping.MOJANG, "set")
+                    .map(MinecraftMapping.OBFUSCATED, "b")
+                    .returns(Object.class)
+                    .parameters(DataComponentTypeClass, Object.class)
+                    .reflect();
 
             /*
              * @Nullable
@@ -73,16 +79,23 @@ public final class ItemNBT {
              *      return this.a().a(var0);
              * }
              */
-            getTag = lookup.findVirtual(nmsItemStack, XReflection.v(20, 5, "a").orElse("get"),
-                    MethodType.methodType(Object.class, DataComponentTypeClass));
+            getTag = XReflection.of(nmsItemStack).method()
+                    .map(MinecraftMapping.MOJANG, "get")
+                    .map(MinecraftMapping.OBFUSCATED, "a")
+                    .returns(Object.class)
+                    .parameters(DataComponentTypeClass)
+                    .reflect();
 
             /*
              * public NBTTagCompound c() {
              *      return this.e.i();
              * }
              */
-            copyTag = lookup.findVirtual(CustomDataClass, XReflection.v(20, 5, "c").orElse("copyTag"),
-                    MethodType.methodType(CompoundTagClass));
+            copyTag = XReflection.of(CustomDataClass).method()
+                    .map(MinecraftMapping.MOJANG, "copyTag")
+                    .map(MinecraftMapping.OBFUSCATED, XReflection.v(21, 4, "d").orElse("c"))
+                    .returns(CompoundTagClass)
+                    .reflect();
 
             /*
              * private CustomData(NBTTagCompound var0) {
@@ -94,11 +107,14 @@ public final class ItemNBT {
             customDataCtor = lookup.unreflectConstructor(customDataCtorJvm);
 
             // net.minecraft.core.component.DataComponents#CUSTOM_DATA
-            Field typeField = DataComponentsClass.getDeclaredField(XReflection.v(20, 5, "b").orElse("CUSTOM_DATA"));
-            customDataType = typeField.get(null);
+            customDataType = XReflection.of(DataComponentsClass).field().asStatic().getter()
+                    .returns(DataComponentTypeClass)
+                    .map(MinecraftMapping.MOJANG, "CUSTOM_DATA")
+                    .map(MinecraftMapping.OBFUSCATED, "b")
+                    .reflect().invoke();
 
             supportsComponents = true;
-        } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException | ClassNotFoundException ex) {
+        } catch (Throwable ex) {
             try {
                 setTag = lookup.findVirtual(nmsItemStack,
                         XReflection.v(18, "c").orElse("setTag"), MethodType.methodType(void.class, CompoundTagClass));

@@ -1,12 +1,12 @@
 package org.kingdoms.enginehub.commands
 
 import org.kingdoms.commands.*
-import org.kingdoms.locale.HoverMessage
 import org.kingdoms.data.Pair
 import org.kingdoms.enginehub.EngineHubLang
 import org.kingdoms.enginehub.building.WorldEditBuildingConstruction
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.blocks.ClipboardBlockIterator
+import org.kingdoms.locale.HoverMessage
 import org.kingdoms.locale.compiler.MessageCompiler
 import org.kingdoms.locale.messenger.StaticMessenger
 import org.kingdoms.locale.provider.MessageProvider

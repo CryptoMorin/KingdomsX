@@ -34,7 +34,7 @@ allow-relations-between-nation-kingdoms: false
 #    that means player X is only protected if he is in his own claimed land (or an ally). Not when he's in an unclaimed land or a neutral, truce or enemy land.
 #    "Allies" in this context refers to any relation with ceasefire attribute.
 # relational - Allows you to configure the PvP mode of relations individually.
-# advanced - Use the "pvp-advanced" conditional option below instead.
+# conditional - Use the "pvp-advanced" conditional option below instead.
 # Note: When using the claimed/unclaimed options, if one player is a claimed land and the other is in an unclaimed land, they cannot PvP.
 # Note: If one of the players is invading any land this option acts like "normal"
 pvp: normal
@@ -42,6 +42,8 @@ pvp: normal
 # When the options above don't exactly satisfy your needs you
 # can always use a custom condition. However the option above
 # has more performance advantages over using this.
+# This also means that you need to define basic rules for relationships, like:
+# kingdoms_relation == ''
 # Primary Context: The attacker player.
 # Secondary Context: The victim player.
 pvp-advanced: ''

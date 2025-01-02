@@ -2,7 +2,6 @@ package org.kingdoms.outposts;
 
 import com.cryptomorin.xseries.XEntityType;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.FireworkEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Firework;
@@ -11,8 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
-import org.bukkit.scoreboard.Objective;
-import org.bukkit.scoreboard.Score;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.config.KingdomsConfig;
@@ -21,13 +18,12 @@ import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
-import org.kingdoms.locale.ContextualMessenger;
-import org.kingdoms.locale.Language;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.utils.display.scoreboard.XScoreboard;
+import org.kingdoms.scheduler.TaskThreadType;
 import org.kingdoms.utils.bossbars.BossBarSession;
+import org.kingdoms.utils.display.scoreboard.XScoreboard;
 import org.kingdoms.utils.time.TimeFormatter;
 
 import java.util.*;
@@ -147,7 +143,8 @@ public class OutpostEvent {
                         for (Player member : kingdom.getOnlineMembers()) {
                             display(member);
                             if (member.getWorld().getName().equals(outpost.getSpawn().getWorld().getName())) {
-                                if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(member.getLocation(), outpost.getRegion())) scored++;
+                                if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(member.getLocation(), outpost.getRegion()))
+                                    scored++;
                             }
                         }
 
@@ -291,8 +288,10 @@ public class OutpostEvent {
     }
 
     public void display(Player player) {
-        bossBar.addPlayer(player);
-        scoreboard.addPlayer(player);
+        Kingdoms.taskScheduler().run(TaskThreadType.SYNC, () -> {
+            bossBar.addPlayer(player);
+            scoreboard.addPlayer(player);
+        });
     }
 
     public long getTime() {

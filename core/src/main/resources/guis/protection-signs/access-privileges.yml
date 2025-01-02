@@ -1,0 +1,42 @@
+title: "&8-=[ &5Access Privileges &8]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  privilege-allowed:
+    name: "&aAllowed"
+    material: GREEN_WOOL
+    lore: |-
+      {$desc}Players are allowed to
+      open/use and put/take items from
+      this container without limitation.
+    slot: 1
+    enabled:
+      condition: selected
+      glow: true
+  privilege-disallowed:
+    name: "&cDisallowed"
+    material: RED_WOOL
+    lore: |-
+      {$desc}Players are now allowed
+      to interact or use this block
+      at all.
+    slot: 2
+    enabled:
+      condition: selected
+      glow: true
+  privilege-password:
+    name: "&9Password"
+    material: BLUE_WOOL
+    lore: |-
+      {$desc}Players are only allowed
+      to interact or use this block if
+      they enter the password for it.
+    slot: 3
+    enabled:
+      condition: selected
+      glow: true
+  back:
+    name: "&cBack"
+    material: BARRIER
+    slot: 0

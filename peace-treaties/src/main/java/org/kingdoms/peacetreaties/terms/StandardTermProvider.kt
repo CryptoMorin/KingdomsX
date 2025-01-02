@@ -2,7 +2,7 @@ package org.kingdoms.peacetreaties.terms
 
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.locale.KingdomsLang
-import org.kingdoms.locale.SimpleMessenger
+import org.kingdoms.locale.SimpleContextualMessageSender
 import org.kingdoms.locale.messenger.DefaultedMessenger
 import org.kingdoms.locale.messenger.LanguageEntryMessenger
 import org.kingdoms.locale.messenger.Messenger
@@ -56,7 +56,7 @@ open class StandardTermProvider(
 
             val min: Double? = config.getMathExpression("min").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
             val max: Double? = config.getMathExpression("max").nullIfDefault()?.let { MathUtils.eval(it, ctx) }
-            val messenger = SimpleMessenger(
+            val messenger = SimpleContextualMessageSender(
                 editor.player, MessagePlaceholderProvider()
                     .inheritPlaceholders(ctx)
             )

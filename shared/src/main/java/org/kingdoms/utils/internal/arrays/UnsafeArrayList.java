@@ -184,6 +184,16 @@ public final class UnsafeArrayList<E> extends AbstractCollection<E> implements L
         return true;
     }
 
+    public E getLast() {
+        if (isEmpty()) throw new NoSuchElementException("Array is empty");
+        return array[size - 1];
+    }
+
+    public void replaceLast(E element) {
+        if (isEmpty()) throw new NoSuchElementException("Array is empty");
+        array[size - 1] = element;
+    }
+
     public boolean batchRemove(Collection<?> c, boolean complement, int from, int end) {
         E[] array = this.array;
         for (; ; from++) {

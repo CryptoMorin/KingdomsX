@@ -38,10 +38,10 @@ public final class Namespace implements DataStringRepresentation {
     @Pure
     public Namespace(@NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_NAMESPACES) String namespace,
                      @NonNull @org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) String key) {
-        if (namespace == null || !ACCEPTED_NAMESPACES_PATTERN.matcher(namespace).matches())
-            throw new IllegalArgumentException("Namespace string '" + namespace + "' doesn't match: " + ACCEPTED_NAMESPACES);
+        if (namespace == null || !isValidGroup(namespace))
+            throw new InvalidNamespaceException(namespace + ':' + key, "Namespace string '" + namespace + "' doesn't match: " + ACCEPTED_NAMESPACES);
         if (key == null || !isValidKey(key))
-            throw new IllegalArgumentException("Key string '" + key + "' doesn't match: " + ACCEPTED_KEYS);
+            throw new InvalidNamespaceException(namespace + ':' + key, "Key string '" + key + "' doesn't match: " + ACCEPTED_KEYS);
 
         this.namespace = namespace;
         this.key = key;
@@ -49,7 +49,12 @@ public final class Namespace implements DataStringRepresentation {
     }
 
     @Pure
-    public static boolean isValidKey(String key) {
+    public static boolean isValidGroup(@org.intellij.lang.annotations.Pattern(ACCEPTED_NAMESPACES) @NotNull String namespace) {
+        return ACCEPTED_NAMESPACES_PATTERN.matcher(namespace).matches();
+    }
+
+    @Pure
+    public static boolean isValidKey(@org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) @NotNull String key) {
         return ACCEPTED_KEYS_PATTERN.matcher(key).matches();
     }
 
@@ -71,7 +76,7 @@ public final class Namespace implements DataStringRepresentation {
      */
     @NonNull
     @Pure
-    public final String asString() {
+    public String asString() {
         return namespace + SEPARATOR + key;
     }
 
@@ -81,7 +86,7 @@ public final class Namespace implements DataStringRepresentation {
      */
     @NonNull
     @Pure
-    public final String asNormalizedString() {
+    public String asNormalizedString() {
         if (isKingdoms()) return key;
         return asString();
     }
@@ -112,12 +117,12 @@ public final class Namespace implements DataStringRepresentation {
     }
 
     @Pure
-    public final @NonNull String getNamespace() {
+    public @NonNull String getNamespace() {
         return namespace;
     }
 
     @Pure
-    public final @NonNull String getKey() {
+    public @NonNull String getKey() {
         return key;
     }
 
@@ -125,9 +130,9 @@ public final class Namespace implements DataStringRepresentation {
      * Parses a string with the format of {@link #asNormalizedString()}
      */
     @NonNull
-    public static Namespace fromString(@NonNull String str) {
+    public static Namespace fromString(@NonNull String str) throws InvalidNamespaceException {
         if (str == null || str.isEmpty())
-            throw new IllegalArgumentException("Cannot get namespace from null or empty string: '" + str + '\'');
+            throw new InvalidNamespaceException(str, "Cannot get namespace from null or empty string: '" + str + '\'');
 
         int separator = str.indexOf(SEPARATOR);
         if (separator == -1) return kingdoms(str);
@@ -138,9 +143,9 @@ public final class Namespace implements DataStringRepresentation {
         return new Namespace(namespace, key);
     }
 
-    public static Namespace fromConfigString(@NonNull String str) {
+    public static Namespace fromConfigString(@NonNull String str) throws InvalidNamespaceException {
         if (str == null || str.isEmpty())
-            throw new IllegalArgumentException("Cannot get namespace from null or empty string: '" + str + '\'');
+            throw new InvalidNamespaceException(str, "Cannot get namespace from null or empty string: '" + str + '\'');
 
         int separator = str.indexOf(SEPARATOR);
         if (separator == -1) return kingdoms(configOptionToEnum(str));
@@ -159,7 +164,7 @@ public final class Namespace implements DataStringRepresentation {
 
     @Override
     @Pure
-    public final boolean equals(@Nullable Object obj) {
+    public boolean equals(@Nullable Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof Namespace)) return false;
         Namespace other = (Namespace) obj;
@@ -168,7 +173,7 @@ public final class Namespace implements DataStringRepresentation {
 
     @Override
     @Pure
-    public final int hashCode() {
+    public int hashCode() {
         return hashCode;
     }
 

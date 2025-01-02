@@ -1,5 +1,7 @@
 package org.kingdoms.utils.internal.iterator
 
+import org.kingdoms.utils.internal.iterator.ListUtils.moveElement
+
 object ListUtils {
     @JvmStatic fun <T> List<T>.plusAt(index: Int, vararg elements: T): List<T> {
         val result = ArrayList<T>()
@@ -18,6 +20,35 @@ object ListUtils {
         }
 
         return result
+    }
+
+    @JvmStatic fun <T> MutableList<T>.moveOneElementCloserToStart(element: T): Boolean {
+        return moveElement(element, -1)
+    }
+
+    @JvmStatic fun <T> MutableList<T>.moveOneElementCloserToEnd(element: T): Boolean {
+        return moveElement(element, +1)
+    }
+
+    @JvmStatic fun <T> MutableList<T>.replace(old: T, new: T) {
+        val elementIndex = this.indexOf(old)
+        if (elementIndex == -1) throw IllegalArgumentException("$old is not in $this")
+        this[elementIndex] = new
+    }
+
+    @JvmStatic fun <T> MutableList<T>.moveElement(element: T, relativeIndex: Int): Boolean {
+        val elementIndex = this.indexOf(element)
+        if (elementIndex == -1) throw IllegalArgumentException("$element is not in $this")
+
+        val targetIndex = elementIndex + relativeIndex
+        if (targetIndex < 0 || targetIndex >= this.size) return false
+
+        val replacingElement = this[targetIndex]
+        System.out.println("REPLACING $replacingElement with $element")
+        this[targetIndex] = element
+        this[elementIndex] = replacingElement
+
+        return true
     }
 }
 

@@ -4,6 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.locale.compiler.MessageCompiler;
+import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.outposts.Outpost;
 import org.kingdoms.outposts.OutpostsLang;
@@ -12,9 +13,9 @@ import org.kingdoms.services.managers.SoftService;
 public class CommandOutpost extends KingdomsParentCommand {
     public static boolean worldGuardMissing(CommandSender sender) {
         if (SoftService.WORLD_GUARD.isAvailable()) return false;
-        MessageCompiler.compile("&4You need to install &ehover:{&nWorldGuard;Click to open the download page;@https://dev.bukkit.org/projects/worldguard} " +
+        new StaticMessenger("&4You need to install &ehover:{&nWorldGuard;Click to open the download page;@https://dev.bukkit.org/projects/worldguard} " +
                 "&4plugin in order to use Outpost events."
-        ).getExtraProvider().err().send(sender, new MessagePlaceholderProvider().usePrefix());
+        ).sendError(sender, new MessagePlaceholderProvider().usePrefix());
         return true;
     }
 

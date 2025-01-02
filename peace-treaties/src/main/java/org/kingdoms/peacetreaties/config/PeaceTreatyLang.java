@@ -63,11 +63,11 @@ public enum PeaceTreatyLang implements DefinedMessenger {
     TERMS_KING_CHANGE_NOT_APPLICABLE("{$e}The specified player is not a member of the proposer or the victim kingdom.", 1, 3),
 
     WAR_POINTS_GAIN_INVADE("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for the invasion.", 2, 3),
-    WAR_POINTS_GAIN_KILL("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for killing {$s}%other*player% {$p}by {$s}%player%", 2, 3),
+    WAR_POINTS_GAIN_KILL("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for killing {$s}%player_other_name% {$p}by {$s}%player%", 2, 3),
     WAR_POINTS_GAIN_BREAK_TURRET("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for breaking {$es}%kingdoms_kingdom_name%'s %style% {$e}turret.", 2, 3),
     WAR_POINTS_GAIN_BREAK_STRUCTURE("{$p}Your kingdom has gained {$s}%war_points% war points {$p}for breaking {$es}%kingdoms_kingdom_name%'s %style% {$e}structure.", 2, 3),
     WAR_POINTS_LOST_INVADE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}for losing the invasion.", 2, 3),
-    WAR_POINTS_LOST_KILL("{$e}Your kingdom has lost {$es}%war_points% war points {$p}for death of {$es}%other*player% {$e}by {$es}%player%", 2, 3),
+    WAR_POINTS_LOST_KILL("{$e}Your kingdom has lost {$es}%war_points% war points {$p}for death of {$es}%player_other_name% {$e}by {$es}%player%", 2, 3),
     WAR_POINTS_LOST_BREAK_TURRET("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}turret.", 2, 3),
     WAR_POINTS_LOST_BREAK_STRUCTURE("{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}structure.",
             2, 3),

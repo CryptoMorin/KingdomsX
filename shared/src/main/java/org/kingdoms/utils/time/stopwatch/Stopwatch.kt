@@ -21,7 +21,7 @@ interface Stopwatch {
      * The amount of time passed. (Considering pauses)
      */
     @Suppress("INAPPLICABLE_TARGET_ON_PROPERTY_WARNING")
-    val elapsed: Duration
+    var elapsed: Duration
         @get:JvmName("elapsed") get
 
     /**
