@@ -1,8 +1,6 @@
 package org.kingdoms.utils.cache.caffeine;
 
-import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
-import org.checkerframework.checker.units.qual.K;
 
 import java.time.Duration;
 import java.util.Objects;

@@ -2,7 +2,6 @@ package org.kingdoms.tasks.container
 
 import org.kingdoms.constants.namespace.NamespacedMap
 import org.kingdoms.tasks.context.TaskContext
-import java.io.Closeable
 import java.util.*
 
 interface TaskSession {

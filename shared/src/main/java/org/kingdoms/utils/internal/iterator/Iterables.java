@@ -2,6 +2,7 @@ package org.kingdoms.utils.internal.iterator;
 
 import org.kingdoms.utils.internal.arrays.ArrayIterator;
 
+import java.util.Collections;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Stream;

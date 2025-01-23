@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.StringJoiner;
-import java.util.function.Predicate;
 
 /**
  * A class for reflecting on your behavior and morals of committing API evasion and using the dreaded NMS.

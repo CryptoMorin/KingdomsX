@@ -3,7 +3,6 @@ package org.kingdoms.commands.outposts;
 import org.bukkit.command.CommandSender;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
-import org.kingdoms.locale.compiler.MessageCompiler;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.outposts.Outpost;

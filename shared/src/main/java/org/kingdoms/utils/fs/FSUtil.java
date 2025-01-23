@@ -1,8 +1,8 @@
 package org.kingdoms.utils.fs;
 
 import com.google.common.base.Strings;
-import org.kingdoms.utils.internal.functional.Fn;
 import org.kingdoms.utils.internal.arrays.ArrayUtils;
+import org.kingdoms.utils.internal.functional.Fn;
 import org.kingdoms.utils.internal.runnables.IORunnable;
 
 import java.io.*;
@@ -11,6 +11,7 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.channels.WritableByteChannel;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
@@ -131,6 +132,20 @@ public final class FSUtil {
             if (isInvalidFileNameChar(ch)) return false;
         }
         return true;
+    }
+
+    /**
+     * If two {@link Path} are from different {@link FileSystem}s,
+     * then you can't use methods like {@link Path#resolve(Path)} and {@link Path#relativize(Path)}
+     * on them. This converts the given {@link Path} to the {@link FileSystem} which can be
+     * taken from {@link Path#getFileSystem()}.
+     */
+    public static Path transformPath(FileSystem fs, Path path) {
+        Path finalPath = fs.getPath(path.isAbsolute() ? fs.getSeparator() : "");
+        for (Path component : path) {
+            finalPath = finalPath.resolve(component.getFileName().toString());
+        }
+        return finalPath;
     }
 
     public static String removeInvalidFileChars(String name, String replaceWith) {

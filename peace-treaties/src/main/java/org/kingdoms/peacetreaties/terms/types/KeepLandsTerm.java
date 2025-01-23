@@ -2,7 +2,6 @@ package org.kingdoms.peacetreaties.terms.types;
 
 import org.bukkit.Location;
 import org.checkerframework.checker.nullness.qual.NonNull;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.group.model.logs.lands.LogKingdomInvader;
 import org.kingdoms.constants.land.abstraction.data.DeserializationContext;
@@ -16,9 +15,9 @@ import org.kingdoms.data.database.dataprovider.SectionableDataSetter;
 import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.gui.GUIAccessor;
-import org.kingdoms.gui.pagination.GUIPagination;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.ReusableOptionHandler;
+import org.kingdoms.gui.pagination.GUIPagination;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;

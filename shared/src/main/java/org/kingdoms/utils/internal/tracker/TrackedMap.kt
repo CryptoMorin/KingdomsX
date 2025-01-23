@@ -18,12 +18,19 @@ class TrackedMap<K, V>(
 
     companion object {
         @JvmStatic
-        fun <K, V2> backedBy(current: MutableMap<K, out V2>, original: MutableMap<K, V2>): MutableMap<K, out V2> {
+        fun <K, V2> backedBy(current: MutableMap<K, out V2>, original: MutableMap<K, V2>): TrackedMap<K, out V2> {
             //  public static <K, V2> Map<K, ? extends V2> ofSelf(Map<K, ? extends V2> current, Map<K, V2> original) {
             //         return new TrackedMap<>(current, new BackedMap<>(original, true), new BackedMap<>(original, false));
             //  }
             return TrackedMap(current, BackedMap(original, true), BackedMap(original, false))
         }
+    }
+
+    private var valueToKey: Function<V, K>? = null
+
+    fun valueToKey(transformer: Function<V, K>): TrackedMap<K, V> {
+        this.valueToKey = transformer
+        return this
     }
 
     override val entries: MutableSet<MutableMap.MutableEntry<K, V>>
@@ -40,15 +47,21 @@ class TrackedMap<K, V>(
 
     override val keys: MutableSet<K>
         get() = TrackedSet(original.keys,
-            { _ -> throw UnsupportedOperationException() },
-            { _ -> throw UnsupportedOperationException() }
+            onAdd = { throw UnsupportedOperationException("Cannot add to tracked map without knowing the value") },
+            onRemove = { key -> this.remove(key) !== null }
         )
 
-
+    // TODO maybe convert this into an entry collection?
     override val values: MutableCollection<V>
         get() = TrackedCollection(original.values,
-            onAdd = { _ -> throw UnsupportedOperationException() },
-            onRemove = { _ -> throw UnsupportedOperationException() }
+            onAdd = { value ->
+                if (valueToKey === null) throw UnsupportedOperationException("Cannot add to tracked map without knowing the key for value")
+                else this.put(valueToKey!!.apply(value), value) === null
+            },
+            onRemove = { value ->
+                if (valueToKey === null) throw UnsupportedOperationException("Cannot remove from tracked map without knowing the key for value")
+                else this.remove(valueToKey!!.apply(value)) !== null
+            }
         )
 
     override fun clear() {

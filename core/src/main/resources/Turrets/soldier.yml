@@ -17,7 +17,10 @@ sell: 150
 max-level: 3
 
 conditions:
-  'kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+  purchase:
+    'kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+  upgrade:
+    'level == 2 && kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
 
 sounds:
   1:

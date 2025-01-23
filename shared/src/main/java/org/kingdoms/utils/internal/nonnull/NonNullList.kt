@@ -26,4 +26,9 @@ class NonNullList<V>(val list: MutableList<V>) : MutableList<V> by list {
 
     override fun retainAll(elements: Collection<V>): Boolean = list.retainAll(elements.assertNonNullElements().toSet())
     override fun removeAll(elements: Collection<V>): Boolean = list.removeAll(elements.assertNonNullElements().toSet())
+
+    override fun hashCode(): Int =
+        throw UnsupportedOperationException("Hashcodes are not supported for this implementation")
+
+    override fun toString(): String = "${javaClass.simpleName}($list)"
 }

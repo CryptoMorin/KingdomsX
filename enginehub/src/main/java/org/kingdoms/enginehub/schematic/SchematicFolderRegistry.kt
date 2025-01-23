@@ -29,7 +29,8 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
     override fun handle(entry: Entry) {
         val schematicFile = entry.path
         val schematicName = entry.name
-        if (schematicName.contains("schematic")) StackTraces.printStackTrace()
+        if (schematicName.contains("schematic"))
+            StackTraces.printStackTrace("Found illegal schematic name at ${entry.name} -> ${entry.path}")
 
         val schematic = try {
             WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)

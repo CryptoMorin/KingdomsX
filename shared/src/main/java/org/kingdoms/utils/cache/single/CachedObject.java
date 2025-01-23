@@ -2,9 +2,6 @@ package org.kingdoms.utils.cache.single;
 
 import org.checkerframework.checker.nullness.qual.Nullable;
 
-import java.util.Objects;
-import java.util.function.Supplier;
-
 public class CachedObject<T> implements CacheableObject<T> {
     protected T cached;
     protected Boolean present;

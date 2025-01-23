@@ -22,5 +22,6 @@ import java.lang.annotation.*;
 @Documented
 public @interface Bookmark {
     BookmarkType[] value();
+
     String comment() default "";
 }

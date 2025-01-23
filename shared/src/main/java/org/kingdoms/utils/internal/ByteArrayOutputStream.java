@@ -54,11 +54,11 @@ public class ByteArrayOutputStream extends OutputStream {
      * at least the number of elements specified by the minimum
      * capacity argument.
      *
-     * @param  minCapacity the desired minimum capacity.
+     * @param minCapacity the desired minimum capacity.
      * @throws OutOfMemoryError if {@code minCapacity < 0} and
-     * {@code minCapacity - buf.length > 0}.  This is interpreted as a
-     * request for the unsatisfiably large capacity.
-     * {@code (long) Integer.MAX_VALUE + (minCapacity - Integer.MAX_VALUE)}.
+     *                          {@code minCapacity - buf.length > 0}.  This is interpreted as a
+     *                          request for the unsatisfiably large capacity.
+     *                          {@code (long) Integer.MAX_VALUE + (minCapacity - Integer.MAX_VALUE)}.
      */
     public void ensureCapacity(int minCapacity) {
         // overflow-conscious code
@@ -77,11 +77,16 @@ public class ByteArrayOutputStream extends OutputStream {
         size += 1;
     }
 
+    public void writeEnsuredCapacity(int b) {
+        buf[size] = (byte) b;
+        size += 1;
+    }
+
     /**
-     * @throws NullPointerException if {@code b} is {@code null}.
+     * @throws NullPointerException      if {@code b} is {@code null}.
      * @throws IndexOutOfBoundsException if {@code off} is negative,
-     * {@code len} is negative, or {@code len} is greater than
-     * {@code b.length - off}
+     *                                   {@code len} is negative, or {@code len} is greater than
+     *                                   {@code b.length - off}
      */
     @Override
     public void write(byte[] b, int off, int len) {
@@ -90,27 +95,34 @@ public class ByteArrayOutputStream extends OutputStream {
         size += len;
     }
 
+    public void writeEnsuredCapacity(byte[] b, int off, int len) {
+        System.arraycopy(b, off, buf, size, len);
+        size += len;
+    }
+
     /**
      * Writes the complete contents of the specified byte array
      * to this {@code ByteArrayOutputStream}.
      *
-     * @apiNote
-     * This method is equivalent to {@link #write(byte[], int, int)
-     * write(b, 0, b.length)}.
-     *
      * @throws NullPointerException if {@code b} is {@code null}.
+     * @apiNote This method is equivalent to {@link #write(byte[], int, int)
+     * write(b, 0, b.length)}.
      * @since 11
      */
     public void writeBytes(byte[] b) {
         write(b, 0, b.length);
     }
 
+    public void writeBytesEnsuredCapacity(byte[] b) {
+        writeEnsuredCapacity(b, 0, b.length);
+    }
+
     /**
      * Returns the current size of the buffer.
      *
      * @return the value of the {@code count} field, which is the number
-     *          of valid bytes in this output stream.
-     * @see     ByteArrayOutputStream#size
+     * of valid bytes in this output stream.
+     * @see ByteArrayOutputStream#size
      */
     public int size() {
         return size;
@@ -118,7 +130,7 @@ public class ByteArrayOutputStream extends OutputStream {
 
     @Override
     public String toString() {
-        return "ByteArrayOutputStream(" + size + '/' + buf.length + ')';
+        return "ByteArrayOutputStream(" + buf.length + '/' + size + ')';
     }
 
     @Override
@@ -136,6 +148,12 @@ public class ByteArrayOutputStream extends OutputStream {
 
         if (this.size != obj.size) return false;
         if (this == obj) return true;
+        if (size > 1_000) {
+            // Jankenpon algorithm
+            if (this.buf[size / 3] != obj.buf[size / 3] ||
+                    this.buf[size / 2] != obj.buf[size / 2] ||
+                    this.buf[size - 10] != obj.buf[size - 10]) return false;
+        }
 
         for (int i = 0; i < size; i++) {
             if (this.buf[i] != obj.buf[i]) return false;

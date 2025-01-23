@@ -15,9 +15,6 @@ default-name: 'Cannon'
 upgrade-cost: lvl * 4000
 max-level: 3
 
-conditions:
-  'kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
-
 # The texture of the skulls that make the cannon's tube.
 tube-textures:
   1: [ "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIyYWJkNjY5MzlmNGNiNzI1N2E4OGNmNTJmYmM2ZmRjZWVjMTQzM2VjMmE2ZWYxNmQ2MmUzNGY2MjM4NzgxIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmIyYWJkNjY5MzlmNGNiNzI1N2E4OGNmNTJmYmM2ZmRjZWVjMTQzM2VjMmE2ZWYxNmQ2MmUzNGY2MjM4NzgxIn19fQ==", "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWYzYThjMTY4MWRkMjgzN2UyYjIyMzMxMGNjM2NjNjY1NWVlZDQ0NzRiYjZhNjNiZjJkZjViODc0MjlkZWJlMSJ9fX0=" ]
@@ -61,6 +58,13 @@ actionbar:
 # Supports math equations.
 # If you want to completely remove their shield, use 'kingdoms_shield_time_left'
 attacker-shield-damage: 0
+
+conditions:
+  purchase:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.II}'
+  upgrade:
+    'level == 1 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+    'level == 2 && kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
 
 # Below values are added to the main value.
 # The "item" sections follow this format: https://github.com/CryptoMorin/KingdomsX/wiki/Config#item-matchers

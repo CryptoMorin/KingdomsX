@@ -35,6 +35,7 @@ public interface CacheableObject<T> extends Supplier<T> {
      * <p><blockquote><pre>
      *     get() == null
      * </pre></blockquote>
+     *
      * @see #isPresent()
      */
     default boolean isNull() {
@@ -46,6 +47,7 @@ public interface CacheableObject<T> extends Supplier<T> {
      * <p><blockquote><pre>
      *     get() != null
      * </pre></blockquote>
+     *
      * @see #isNull()
      */
     default boolean isPresent() {

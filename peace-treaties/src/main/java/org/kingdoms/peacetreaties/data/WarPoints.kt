@@ -24,7 +24,10 @@ class WarPointsMeta(var warPoints: WarPoints) : KingdomMetadata {
             this.warPoints = value as WarPoints
         }
 
-    override fun serialize(container: KeyedKingdomsObject<*>, context: SerializationContext<SectionCreatableDataSetter>) {
+    override fun serialize(
+        container: KeyedKingdomsObject<*>,
+        context: SerializationContext<SectionCreatableDataSetter>
+    ) {
         context.dataProvider.setMap(warPoints) { key, keyProvider, value ->
             keyProvider.setUUID(key)
             keyProvider.getValueProvider().setDouble(value)

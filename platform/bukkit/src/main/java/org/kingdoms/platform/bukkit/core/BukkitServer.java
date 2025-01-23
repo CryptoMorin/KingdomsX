@@ -14,6 +14,7 @@ public class BukkitServer implements Server {
     private final WorldRegistry worldRegistry;
     private final JavaPlugin plugin;
     private final TickTracker tickTracker;
+    private boolean isReady;
 
     public BukkitServer(JavaPlugin plugin) {
         this.plugin = plugin;
@@ -40,6 +41,19 @@ public class BukkitServer implements Server {
     public void onEnable() {
         tickTracker.start(plugin);
         this.eventHandler.onLoad();
+
+        Bukkit.getScheduler().runTask(plugin, this::onReady);
+    }
+
+    @Override
+    public void onReady() {
+        if (isReady) throw new IllegalStateException("Server was already ready");
+        this.isReady = true;
+    }
+
+    @Override
+    public boolean isReady() {
+        return isReady;
     }
 
     @Override

@@ -16,7 +16,10 @@ upgrade-cost: 10000
 dont-update-holograms: true
 
 conditions:
-  'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+  purchase:
+    'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+  upgrade:
+    'level == 1 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
 
 cost: 1000
 sell: 500

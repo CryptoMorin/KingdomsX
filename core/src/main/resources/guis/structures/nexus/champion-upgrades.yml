@@ -8,7 +8,7 @@ options:
     material: DIAMOND_SWORD
     flags: [ ALL ]
     lore:
-      - "{$sep}Change your champion's settings"
+      - "{$desc}Change your champion's settings"
       - "such as upgrading its equipment or"
       - "changing your champion type."
     posx: 3
@@ -17,9 +17,9 @@ options:
     name: "&bChampion Health"
     material: MELON_SLICE
     lore:
-      - "{$sep}Increases champion's health"
+      - "{$desc}Increases the champion's health"
       - "by {$p}50 {$sep}every level."
-      - "{$sep}Current champion's health{$colon} {$p}%scaling%"
+      - "{$desc}Current champion's health{$colon} {$p}%scaling%"
       - ""
       - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
       - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
@@ -31,11 +31,9 @@ options:
     name: "&bReinforcements"
     material: ZOMBIE_HEAD
     lore:
-      - "{$sep}Spawns nexus guardian every {$p}3 {$sep}minutes."
-      - "Each upgrade will reduce the time by {$p}15 seconds{$sep}."
-      - "The spawned guards exactly match your"
-      - "nexus guards depending on the"
-      - "misc upgrade."
+      - "{$desc}Spawns nexus guardians every {$p}3 {$sep}minutes."
+      - "Each upgrade will reduce the spawn cooldown by {$p}15 seconds{$sep}."
+      - "These guards have the same stats as your nexus guards."
       - ""
       - "{$chk-kingdom-lvl-IV}"
       - "{$p}Level{$colon} {$s}%level%"
@@ -46,9 +44,10 @@ options:
     name: "&bResistance"
     material: BRICK
     lore:
-      - "{$sep}Each upgrade adds {$p}%scaling%% {$sep}chance that the"
-      - "Champion won't be knocked back by an attack."
+      - "{$desc}Each upgrade adds {$p}10% {$sep}chance that the"
+      - "champion won't take knockback."
       - ""
+      - "{$p}Resistance{$colon} {$s}%scaling%"
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
     posx: 6
@@ -56,16 +55,22 @@ options:
   speed:
     name: "&bSpeed"
     material: POTION
-    lore: "{$sep}Increases champion's Speed when\nits health is lower than {$p}20%\n\n{$p}Level{$colon} {$s}%level%\n{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Increases the champion's speed when
+      its health is lower than {$p}20%
+
+      {$p}Level{$colon} {$s}%level%
+      {$p}Cost{$colon} {$s}%cost%
     posx: 7
     posy: 2
   focus:
     name: "&bFocus"
     material: ENDER_EYE
     lore:
-      - "{$sep}Players hit by the champion will"
+      - "{$desc}Players hit by the champion will"
       - "have {$p}%scaling% {$sep}second removed from all"
       - "their active potion effects."
+      - "Each upgrade increases the time removed by 1 second. "
       - ""
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
@@ -75,9 +80,8 @@ options:
     name: "&bStrength"
     material: ANVIL
     lore:
-      - "{$sep}Strength potion will be"
-      - "added to the champion"
-      - "{$sep}and will be amplified each level."
+      - "{$desc}Applies strength to the champion."
+      - "Potency is scaled according to this upgrade's level."
       - ""
       - "{$p}Level{$colon} {$s}%level%"
       - "{$p}Cost{$colon} {$s}%cost%"
@@ -87,9 +91,9 @@ options:
     name: "&bThrow"
     material: COOKED_PORKCHOP
     lore:
-      - "{$sep}Every attack, there will be a chance"
-      - "{$sep}to knock the player into the sky."
-      - "{$sep}Each upgrade increases this chance by {$p}10%"
+      - "{$desc}Every attack, there will be a chance"
+      - "{$desc}to knock the player into the sky."
+      - "{$desc}Each upgrade increases this chance by {$p}10%{$desc}."
       - ""
       - "{$chk-kingdom-lvl-II}"
       - "{$p}Level{$colon} {$s}%level%"
@@ -104,7 +108,7 @@ options:
       - "&7All players except the invader will deal"
       - "&250% &7less damage to the champion. The"
       - "champion will also deal double damage"
-      - "to all players except the invaders."
+      - "to all players except the invader."
       - ""
       - "&2Level&8: &6%level%"
       - "&2Cost&8: &6%cost%"
@@ -128,10 +132,11 @@ options:
     material: DIAMOND_AXE
     flags: [ ALL ]
     lore:
-      - "&7Every {$p}%cooldown%&7, lightning"
-      - "&7strikes the invading player and all"
-      - "&7nearby non-allied players. Deals"
-      - "&7damage, and knocks the players back also."
+      - "{$desc}Every {$p}%cooldown%{$desc}, lightning"
+      - "strikes the invading player and all"
+      - "nearby non-allied players. Deals"
+      - "damage, and knocks the players back also."
+      - "Each upgrade decreases the cooldown by 1 second."
       - ""
       - "{$chk-kingdom-lvl-III}"
       - "&2Level&8: &6%level%"
@@ -144,7 +149,8 @@ options:
     flags: [ ALL ]
     lore:
       - "&7Your champion can only receive up to"
-      - "&2%scaling% &7damages on any attack."
+      - "&2%scaling% &7damage on any attack."
+      - "Each upgrade decreases the damage cap by 1."
       - ""
       - "{$chk-kingdom-lvl-II}"
       - "&2Level&8: &6%level%"
@@ -188,7 +194,9 @@ options:
     lore:
       - "&7Spawn fangs for the enemy"
       - "players around the champion"
-      - "every {$p}%cooldown%"
+      - "every {$p}%cooldown%{$desc}."
+      - "Each upgrade increases the damage"
+      - "and radius of the attack by {$p}1{$desc}."
       - ""
       - "&2Level&8: &6%level%"
       - "&2Cost&8: &6%cost%"

@@ -1,7 +1,5 @@
 package org.kingdoms.utils.internal.iterator
 
-import org.kingdoms.utils.internal.iterator.ListUtils.moveElement
-
 object ListUtils {
     @JvmStatic fun <T> List<T>.plusAt(index: Int, vararg elements: T): List<T> {
         val result = ArrayList<T>()
@@ -44,7 +42,6 @@ object ListUtils {
         if (targetIndex < 0 || targetIndex >= this.size) return false
 
         val replacingElement = this[targetIndex]
-        System.out.println("REPLACING $replacingElement with $element")
         this[targetIndex] = element
         this[elementIndex] = replacingElement
 

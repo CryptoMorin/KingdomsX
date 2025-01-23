@@ -1,8 +1,8 @@
 package org.kingdoms.utils.internal.string;
 
-import java.util.Collection;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Different ways to filter strings. A matcher doesn't need to necessarily search
@@ -13,6 +13,16 @@ import java.util.regex.Pattern;
  */
 public interface StringMatcher {
     boolean matches(String string);
+
+    String asString();
+
+    default Collection<StringMatcher> unwrap() {
+        if (this instanceof Aggregate) {
+            return Arrays.asList(((Aggregate) this).matchers);
+        } else {
+            return Collections.singletonList(this);
+        }
+    }
 
     final class Constant implements StringMatcher {
         private static final Constant TRUE = new Constant(true);
@@ -25,6 +35,11 @@ public interface StringMatcher {
         public boolean matches(String string) {
             return constant;
         }
+
+        @Override
+        public String asString() {
+            return "CONSTANT::" + constant;
+        }
     }
 
     final class Exact implements StringMatcher {
@@ -35,6 +50,27 @@ public interface StringMatcher {
         @Override
         public boolean matches(String string) {
             return exact.equals(string);
+        }
+
+        @Override
+        public String asString() {
+            return exact;
+        }
+    }
+
+    final class ExactCaseInsensitive implements StringMatcher {
+        private final String exact;
+
+        private ExactCaseInsensitive(String exact) {this.exact = exact;}
+
+        @Override
+        public boolean matches(String string) {
+            return exact.equalsIgnoreCase(string);
+        }
+
+        @Override
+        public String asString() {
+            return "CI:" + exact;
         }
     }
 
@@ -47,6 +83,11 @@ public interface StringMatcher {
         public boolean matches(String string) {
             return string.contains(contains);
         }
+
+        @Override
+        public String asString() {
+            return "CONTAINS:" + contains;
+        }
     }
 
     final class EndsWith implements StringMatcher {
@@ -58,6 +99,11 @@ public interface StringMatcher {
         public boolean matches(String string) {
             return string.endsWith(endsWith);
         }
+
+        @Override
+        public String asString() {
+            return "ENDS:" + endsWith;
+        }
     }
 
     final class StartsWith implements StringMatcher {
@@ -67,7 +113,12 @@ public interface StringMatcher {
 
         @Override
         public boolean matches(String string) {
-            return string.endsWith(startsWith);
+            return string.startsWith(startsWith);
+        }
+
+        @Override
+        public String asString() {
+            return "STARTS:" + startsWith;
         }
     }
 
@@ -80,6 +131,43 @@ public interface StringMatcher {
         public boolean matches(String string) {
             return pattern.matcher(string).matches();
         }
+
+        @Override
+        public String asString() {
+            return "REGEX" + (((pattern.flags() & Pattern.CASE_INSENSITIVE) != 0) ? "-CI" : "") + ':' + pattern.pattern();
+        }
+    }
+
+    final class Hashed implements StringMatcher {
+        private final Set<String> hashed;
+
+        public Hashed(Set<String> hashed) {this.hashed = hashed;}
+
+        @Override
+        public boolean matches(String string) {
+            return hashed.contains(string);
+        }
+
+        @Override
+        public String asString() {
+            return "Hashed:" + hashed;
+        }
+    }
+
+    final class HashedCaseInsensitive implements StringMatcher {
+        private final Set<String> hashed;
+
+        public HashedCaseInsensitive(Set<String> hashed) {this.hashed = hashed;}
+
+        @Override
+        public boolean matches(String string) {
+            return hashed.contains(string.toLowerCase(Locale.ENGLISH));
+        }
+
+        @Override
+        public String asString() {
+            return "HashedCaseInsensitive:" + hashed;
+        }
     }
 
     final class Aggregate implements StringMatcher {
@@ -87,9 +175,11 @@ public interface StringMatcher {
 
         private Aggregate(StringMatcher[] matchers) {this.matchers = matchers;}
 
-        private static StringMatcher aggregate(StringMatcher[] matchers) {
-            if (matchers.length == 0) return Constant.FALSE;
-            return new Aggregate(matchers);
+        private static StringMatcher aggregate(Collection<StringMatcher> matchers) {
+            int size = matchers.size();
+            if (size == 0) return Constant.FALSE;
+            if (size == 1) return matchers.iterator().next();
+            return new Aggregate(matchers.toArray(new StringMatcher[0]));
         }
 
         @Override
@@ -99,14 +189,85 @@ public interface StringMatcher {
             }
             return false;
         }
+
+        @Override
+        public String asString() {
+            return "Aggregate:" + Arrays.stream(matchers).map(StringMatcher::asString).collect(Collectors.toList());
+        }
+    }
+
+    static StringMatcher optimize(Collection<StringMatcher> matchers) {
+        int size = matchers.size();
+        if (size == 0) return Constant.FALSE;
+        if (size == 1) return matchers.iterator().next();
+
+        List<StringMatcher> finalized = new ArrayList<>();
+
+        // Check constants
+        for (StringMatcher matcher : matchers) {
+            finalized.add(matcher);
+            if (matcher instanceof Constant) break;
+        }
+
+        { // Optimize exact matches into a HashSet
+            int countExact = (int) finalized.stream().filter(x -> x instanceof Exact).count();
+            if (countExact > 3) {
+                // The order might improve performance
+                int index = 0;
+                int startIndex = -1;
+
+                Set<String> hashed = new HashSet<>(countExact);
+                Iterator<StringMatcher> iter = finalized.iterator();
+                while (iter.hasNext()) {
+                    StringMatcher matcher = iter.next();
+                    if (matcher instanceof Exact) {
+                        iter.remove();
+                        startIndex = index;
+                        hashed.add(((Exact) matcher).exact);
+                    }
+                    index++;
+                }
+
+                finalized.add(startIndex, new Hashed(hashed));
+            }
+        }
+
+        { // Optimize case-insensitive exact matches into a HashSet
+            int countExact = (int) finalized.stream().filter(x -> x instanceof ExactCaseInsensitive).count();
+            if (countExact > 3) {
+                // The order might improve performance
+                int index = 0;
+                int startIndex = -1;
+
+                Set<String> hashed = new HashSet<>(countExact);
+                Iterator<StringMatcher> iter = finalized.iterator();
+                while (iter.hasNext()) {
+                    StringMatcher matcher = iter.next();
+                    if (matcher instanceof ExactCaseInsensitive) {
+                        iter.remove();
+                        startIndex = index;
+                        hashed.add(((ExactCaseInsensitive) matcher).exact.toLowerCase(Locale.ENGLISH));
+                    }
+                    index++;
+                }
+
+                finalized.add(startIndex, new HashedCaseInsensitive(hashed));
+            }
+        }
+
+        return Aggregate.aggregate(finalized);
     }
 
     static StringMatcher group(Collection<StringMatcher> matchers) {
-        return Aggregate.aggregate(matchers.toArray(new StringMatcher[0]));
+        return optimize(matchers);
     }
 
     static StringMatcher parseAndGroup(Collection<String> matchers) {
-        return Aggregate.aggregate(matchers.stream().map(StringMatcher::fromString).toArray(StringMatcher[]::new));
+        return optimize(matchers.stream().map(StringMatcher::fromString).collect(Collectors.toList()));
+    }
+
+    static Collection<StringMatcher> parse(Collection<String> matchers) {
+        return matchers.stream().map(StringMatcher::fromString).collect(Collectors.toList());
     }
 
     static StringMatcher fromString(String text) {
@@ -120,12 +281,15 @@ public interface StringMatcher {
         String handlerName = text.substring(0, handlerIndexEnd);
         String realText = text.substring(handlerIndexEnd + 1);
 
+        // TODO Add the "@CI" option for all of them.
         // @formatter:off
         switch (handlerName) {
-            case "CONTAINS": return new Contains  (realText);
-            case "STARTS"  : return new StartsWith(realText);
-            case "ENDS"    : return new EndsWith  (realText);
-            case "REGEX"   : return new Regex     (Pattern.compile(realText));
+            case "CI"       : return new ExactCaseInsensitive(realText);
+            case "CONTAINS" : return new Contains  (realText);
+            case "STARTS"   : return new StartsWith(realText);
+            case "ENDS"     : return new EndsWith  (realText);
+            case "REGEX"    : return new Regex     (Pattern.compile(realText));
+            case "REGEX@CI" : return new Regex     (Pattern.compile(realText, Pattern.CASE_INSENSITIVE));
         }
         // @formatter:on
 

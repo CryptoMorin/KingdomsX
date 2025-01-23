@@ -70,7 +70,12 @@ class ExpirableMap<K : Any, V : Any> : Cache<K, V> {
     fun contains(key: K) = cache.getIfPresent(key) != null
 
     override fun get(key: K, mappingFunction: Function<in K, out V>): V {
-        return cache.get(key) { ReferencedExpirableObject(mappingFunction.apply(key), assertDefaultStrategy) }!!.reference
+        return cache.get(key) {
+            ReferencedExpirableObject(
+                mappingFunction.apply(key),
+                assertDefaultStrategy
+            )
+        }!!.reference
     }
 
     override fun getAllPresent(keys: MutableIterable<*>): MutableMap<K, V> {

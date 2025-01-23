@@ -33,16 +33,36 @@ public class NamespacedRegistry<V extends Namespaced> {
      * @throws IllegalArgumentException if this namespace has already been registered before.
      */
     public void register(@NonNull V value) {
+        register(value, false);
+    }
+
+    private void register(@NonNull V value, boolean replace) {
         Namespace namespace = value.getNamespace();
         Objects.requireNonNull(namespace, "Cannot register object with null namespace");
         Objects.requireNonNull(value, "Cannot register null object");
 
-        V prev = registry.putIfAbsent(namespace, value);
-        if (prev != null) throw new IllegalArgumentException(namespace + " was already registered");
+        if (replace) {
+            registry.put(namespace, value);
+        } else {
+            V prev = registry.putIfAbsent(namespace, value);
+            if (prev != null) throw new IllegalArgumentException(namespace + " was already registered");
+        }
+    }
+
+    public void replace(V value) {
+        register(value, true);
     }
 
     public V getRegistered(@NonNull Namespace namespace) {
         return registry.get(namespace);
+    }
+
+    public V getRegistered(@NonNull V namespaced) {
+        return registry.get(namespaced.getNamespace());
+    }
+
+    public boolean isRegisetered(@NonNull V namespaced) {
+        return registry.containsKey(namespaced.getNamespace());
     }
 
     public boolean isRegisetered(@NonNull Namespace namespace) {

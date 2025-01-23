@@ -5,7 +5,6 @@ import org.jetbrains.annotations.TestOnly;
 import org.kingdoms.utils.paper.asyncchunks.AsyncChunks;
 
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
 public final class PaperLib {
     private static AsyncChunks asyncChunks;

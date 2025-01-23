@@ -5,8 +5,6 @@ import org.kingdoms.data.Pair;
 import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.peacetreaties.data.PeaceTreaty;
 import org.kingdoms.utils.MathUtils;
-import org.kingdoms.utils.compilers.ConditionalCompiler;
-import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.ConditionalExpression;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;

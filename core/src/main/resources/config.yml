@@ -128,6 +128,23 @@ lang: en
 # Disables language detection for new players and uses the language specified above.
 force-lang: false
 
+# Same as nexus levels.
+group-levels:
+  kingdoms:
+
+    # Forces this value as the level for kingdoms no matter what
+    # a kingdom's current level is or how many times they're going
+    # to upgrade it after this.
+    # This is useful for disabling levels altogether. Currently, the
+    # max level is 5, so putting 5 here would technically disable kingdom
+    # levels altogether since everything is unlocked by default.
+    # [*] Use -1 to not force any values.
+    # [*] This doesn't actually change the level from a data standpoint, if
+    #     you ever decided to disable this later, the levels will revert back.
+    force: -1
+  nations:
+    force: -1
+
 # Most of the options require a restart to be changed.
 # Kingdom backups are taken with the best possible compression method available in the system. (speed < file size)
 # The files are saved with the name as the current date in a "zip" extension
@@ -354,32 +371,15 @@ holograms:
 # Disables integration service for one of the following plugins.
 # Requires a restart to take effect.
 # https://github.com/CryptoMorin/KingdomsX/wiki/Installation#compatibility
-integrations:
-  citizens: true # Unused
-  placeholderapi: true
-  mvdwplaceholderapi: true
-
-  # Map Viewer Addon
-  bluemap: true
-  dynmap: true
-  squaremap: true
-  pl3xmap: true
-
-  luckperms: true
-  vault: true
-
-  world-guard: true
-  world-edit: true
-
-  essentials: true
-  cmi: true
-
-  mythic-mobs: true
-  my-pet: true
-  auth-me: true
-  discordsrv: true
-  slimefun: true
-  project-korra: true
+# Available options to use:
+# PlaceholderAPI, MVDWPlaceholderAPI
+# BlueMap, Dynmap, SquareMap, Pl3xMap
+# LuckPerms, Vault
+# WorldGuard, WorldEdit
+# Essentials, CMI
+# MythicMobs, MyPet, SimplePets, CombatPets, MCPets
+# AuthMe, DiscordSRV, Slimefun, ProjectKorra, Nova
+disabled-integrations: [ DiscordSRV, combatpets, world-guard ]
 
 #|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
 #|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
@@ -492,6 +492,10 @@ kingdom-fly:
   # The speed of the flight.
   # You can use the special placeholder "speed" to
   # configure a value relative to the normal player's speed.
+  # You can also use special permissions to control the default
+  # speed of individual players and what speed they can choose:
+  #   * kingdoms.command.fly.speed.default.<number> - The default flying speed.
+  #   * kingdoms.command.fly.speed.<number matcher> - The speed that the player can choose with "/k fly <speed>"
   speed: 0.5
 
   # The usual flight speed which is set
@@ -883,9 +887,16 @@ kingdom-name:
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
 tags:
   # Plugin will attempt to automatically make a tag for this kingdom based on its name.
-  # For example "TheGreatPheonix" will be tagged as "TGP"
-  # and "Apothicas" will be tagged as "Apoth"
-  attempt-automatic-setting: true
+  # For example, using this default value, the following will happen:
+  #  - "TheGreatPheonix" -> "TGP"
+  #  - "Good_Will45" -> "GW45"
+  #  - "Apothicas" -> "Apoth"
+  attempt-automatic-setting:
+    captialized:
+      regex: '([A-Z0-9])'
+      count: '3 <= x <= 5'
+    cut-text:
+      regex: '(.{5})'
 
   max-length: 16
   min-length: 3
@@ -1128,7 +1139,7 @@ daily-checks:
   # The time zone ID.
   # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   # You should copy and paste one of the names under the "TZ database name" column.
-  # By default this is "local". A special keyword that will automatically use your server's timezone.
+  # By default, this is "local". A special keyword that will automatically use your server's timezone.
   # To get the current UTC time just Google "UTC time"
   # This is purely for convenience, otherwise you could adjust the time option above
   # with a correct offset to get the time you want, but this also considers holidays and all the other exceptions.
@@ -1334,7 +1345,7 @@ nexus:
       material: DIAMOND_HOE
 
     # This was first inteded to be an anti-cheat for isntamine/fastbreak hacks
-    # because some anti-cheat plugins don't detect this for some reasons.
+    # because some anti-cheat plugins don't detect this for some reason.
     # The default breaking time for a beacon is 4.5seconds for all tools.
     cooldown: 10 seconds
 
@@ -1632,23 +1643,24 @@ book:
 
 # The color range used for kingdom color settings which can be changed in nexus settings.
 color-range:
-  enabled: true
+  main:
+    enabled: true
 
-  # While settings this option to false means it's a whitelist, it still functions the way
-  # you see https://nycdoe-cs4all.github.io/images/lessons/unit_1/3.2/circle.png this wheel.
-  # So you technically have to use a whitelist to block an angle range backwards.
-  blacklist: false
+    # While settings this option to false means it's a whitelist, it still functions the way
+    # you see https://nycdoe-cs4all.github.io/images/lessons/unit_1/3.2/circle.png this wheel.
+    # So you technically have to use a whitelist to block an angle range backwards.
+    blacklist: false
 
-  # This list uses hue angle since it's easier to block angles.
-  # The entry name can be anything.
-  # https://en.wikipedia.org/wiki/Hue
-  # If the hue of the chosen colors is between the two angles specified below.
-  # The saturation is restricted to above 40% and brightness to above 20% and cannot be changed.
-  # Anything below that range will be allowed.
-  colors:
-    # Each entry must have only 2 angles.
-    # The first angle must be the smaller one.
-    red: [ 30, 330 ]
+    # This list uses hue angle since it's easier to block angles.
+    # The entry name can be anything.
+    # https://en.wikipedia.org/wiki/Hue
+    # If the hue of the chosen colors is between the two angles specified below.
+    # The saturation is restricted to above 40% and brightness to above 20% and cannot be changed.
+    # Anything below that range will be allowed.
+    colors:
+      # Each entry must have only 2 angles.
+      # The first angle must be the smaller one.
+      red: [ 30, 330 ]
 
 # Should players be teleported back to spawn when they're kicked from their kingdom?
 # The spawn's location is the current world's spawn point that the player is in.

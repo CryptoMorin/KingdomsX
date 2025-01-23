@@ -5,7 +5,6 @@ import org.kingdoms.constants.DataStringRepresentation
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.constants.namespace.Namespaced
 import org.kingdoms.constants.namespace.NamespacedRegistry
-import org.kingdoms.utils.internal.numbers.AnyNumber
 
 object EconomyRegistry : NamespacedRegistry<Economy>()
 
@@ -35,6 +34,7 @@ interface Balance : Comparable<Number>, DataStringRepresentation {
         subtract(amount)
         to.add(amount)
     }
+
     fun has(amount: Number) = get() >= amount.toDouble()
     fun isEmpty() = !has(1)
     fun add(amount: Number): Double = set(get() + amount.toDouble())

@@ -2,6 +2,7 @@ package org.kingdoms.platform.bukkit.location
 
 import org.bukkit.Bukkit
 import org.kingdoms.server.location.World
+import org.kingdoms.server.location.WorldRegistry
 import java.util.*
 import java.util.stream.Collectors
 
@@ -35,7 +36,7 @@ class BukkitWorld(val world: org.bukkit.World) : World {
 
         @JvmStatic
         fun getWorld(world: String, id: Any): org.bukkit.World {
-            val bukkitWorld = Bukkit.getWorld(world) ?: cantFindWorld(world, id)
+            val bukkitWorld = Bukkit.getWorld(WorldRegistry.remap(world)) ?: cantFindWorld(world, id)
             return bukkitWorld
         }
 

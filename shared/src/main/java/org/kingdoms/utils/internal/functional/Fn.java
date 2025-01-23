@@ -64,6 +64,7 @@ public final class Fn {
         }
     }
 
+    public static final Runnable EMPTY_RUNNABLE = () -> {};
     private static final Predicate<?> TRUE_PREDICATE = x -> true;
     private static final Predicate<?> FALSE_PREDICATE = x -> false;
     private static final Supplier<?> NULL_SUPPLIER = new ConstantSupplier<>(null);

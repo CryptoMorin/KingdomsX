@@ -204,4 +204,14 @@ public final class NonNullMap<K, V> implements Map<K, V> {
         assertNonNullKey(key);
         return map.merge(key, value, remappingFunction);
     }
+
+    @Override
+    public int hashCode() {
+        throw new UnsupportedOperationException("Hashcodes are not supported for this implementation");
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + '(' + this.map.toString() + ')';
+    }
 }

@@ -20,7 +20,11 @@ max-ammo: lvl * 2000
 upgrade-cost: lvl * 100
 
 conditions:
-  'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+  purchase:
+    'kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+  upgrade:
+    'level == 1 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
+    'level == 2 && kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
 
 sounds:
   1:
@@ -69,9 +73,9 @@ item:
     material: TRIPWIRE_HOOK
     flags: [ ALL ]
     lore:
-      - "{$s}Effects the enemies nearby."
+      - "{$s}Affects the enemies nearby."
       - "Higher levels add more effects."
-      - "But never deals killing damage."
+      - "Never deals killing damage."
       - ""
       - "{$sp}Attributes{$colon}"
       - "{$dot} {$p}Level{$colon} {$s}%roman@level%"

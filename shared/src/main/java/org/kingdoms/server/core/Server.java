@@ -22,6 +22,8 @@ public interface Server {
 
     WorldRegistry getWorldRegistry();
 
+    boolean isReady();
+
     default void onStartup() {}
 
     default void onReady() {}

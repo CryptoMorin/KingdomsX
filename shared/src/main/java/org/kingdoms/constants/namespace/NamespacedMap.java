@@ -52,6 +52,11 @@ public class NamespacedMap<V> implements Map<Namespace, V> {
     }
 
     @Nullable
+    public V get(@NotNull Namespaced namespaced) {
+        return get(namespaced.getNamespace());
+    }
+
+    @Nullable
     @Override
     public V put(Namespace key, V value) {
         return map.put(key, value);

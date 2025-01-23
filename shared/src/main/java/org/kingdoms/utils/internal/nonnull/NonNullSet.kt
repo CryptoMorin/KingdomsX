@@ -15,4 +15,9 @@ class NonNullSet<V>(val set: MutableSet<V> = hashSetOf()) : MutableSet<V> by set
 
     override fun retainAll(elements: Collection<V>): Boolean = set.retainAll(elements.assertNonNullElements().toSet())
     override fun removeAll(elements: Collection<V>): Boolean = set.removeAll(elements.assertNonNullElements().toSet())
+
+    override fun hashCode(): Int =
+        throw UnsupportedOperationException("Hashcodes are not supported for this implementation")
+
+    override fun toString(): String = "${javaClass.simpleName}($set)"
 }

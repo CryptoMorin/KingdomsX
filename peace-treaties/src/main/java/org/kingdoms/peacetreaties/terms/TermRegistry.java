@@ -9,7 +9,6 @@ import org.kingdoms.main.KLogger;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.utils.compilers.ConditionalCompiler;
-import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.ConditionalExpression;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;

@@ -119,14 +119,11 @@ public class FileTreeWalker implements Closeable, FileWalkerController {
     /**
      * Creates a {@code FileTreeWalker}.
      *
-     * @throws IllegalArgumentException
-     *          if {@code maxDepth} is negative
-     * @throws ClassCastException
-     *          if {@code options} contains an element that is not a
-     *          {@code FileVisitOption}
-     * @throws NullPointerException
-     *          if {@code options} is {@code null} or the options
-     *          array contains a {@code null} element
+     * @throws IllegalArgumentException if {@code maxDepth} is negative
+     * @throws ClassCastException       if {@code options} contains an element that is not a
+     *                                  {@code FileVisitOption}
+     * @throws NullPointerException     if {@code options} is {@code null} or the options
+     *                                  array contains a {@code null} element
      */
     FileTreeWalker(Collection<FileVisitOption> options, int maxDepth) {
         boolean fl = false;
@@ -199,12 +196,12 @@ public class FileTreeWalker implements Closeable, FileWalkerController {
     /**
      * Visits the given file, returning the {@code Event} corresponding to that
      * visit.
-     *
+     * <p>
      * The {@code ignoreSecurityException} parameter determines whether
      * any SecurityException should be ignored or not. If a SecurityException
      * is thrown, and is ignored, then this method returns {@code null} to
      * mean that there is no event corresponding to a visit to the file.
-     *
+     * <p>
      * The {@code canUseCached} parameter determines whether cached attributes
      * for the file can be used or not.
      */

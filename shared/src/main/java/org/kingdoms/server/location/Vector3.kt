@@ -219,7 +219,12 @@ class BlockLocation3(override val world: World, override val x: Int, override va
 
         @JvmStatic
         fun fromString(str: String): BlockLocation3 = CommaDataSplitStrategy(str, 4).run {
-            BlockLocation3(Server.get().worldRegistry.getWorld(nextString())!!, nextInt(), nextInt(), nextInt())
+            val worldName = nextString()
+            BlockLocation3(
+                Server.get().worldRegistry.getWorld(worldName)
+                    ?: throw IllegalArgumentException("Cannot find world $worldName in string '$str'"),
+                nextInt(), nextInt(), nextInt()
+            )
         }
     }
 

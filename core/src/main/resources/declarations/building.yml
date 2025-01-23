@@ -249,3 +249,77 @@ markers:
     demolition:
       progress: 0, 255, 0, 70
       paused: 0, 255, 0, 70
+
+# Things that damage (decrease the durability), paralyze, hypnotize, etc... the turret.
+# If an arrow or a splash potion has multiple effects, all of them will apply.
+#
+# All custom effects mentioned here, except 'hypnotize' have no effect when accidentally
+# (or even intentionally) done by an ally to a friendly turret.
+#
+# If two conflicting effects are applied, e.g. a 10sec paralysis and a 5sec paralysis,
+# the newer one will override the last one regardless of how strong the older one is.
+#
+# Siege cannon damages are separatedly configured by their ammo type.
+# Note: Only the "damage" setting works on structures, others have no effect.
+# ----------------------------
+# Effects:
+#   * damage: Decreases the durability of the turret.
+#   * paralyze: Prevents the turret from automatically shooting at any targets temporarily.
+#               However, the cooldown does not persist between restarts. This effect will
+#               override the hypnotize effect and prevents the turret from shooting altogether.
+#   * hypnotize: Makes the turret attack the members of the kingdom that the turret was placed
+#                in, but not their allies. Has no effect when an ally uses this.
+#   * slowness: Makes the turret work slower. Specified in ticks. The "cooldown" placeholder can be used
+#               for these effects.
+#   * weakness: Makes the turret damage less. The number specified will be subtracted from the final damage.
+#               The "damage" placeholder can be used for these effects which is the current damage.
+damaging-factors:
+  SNOWBALL:
+    paralyze: 2s
+  SPECTRAL_ARROW:
+    hypnotize: 10s
+  ARROW:
+    # The following are the potion effect of the arrows.
+    # The "effect_lvl" (starting from 1) placeholder can be used as well.
+    # The "force" variable (from 0 to 3.0) is used for how hard the player
+    # charged the bow before releasing it.
+    normal:
+      damage: 0.1 * force
+    POISON:
+      paralyze: '[10s] * effect_level'
+    INSTANT_DAMAGE:
+      damage: 7 * effect_lvl
+    WEAKNESS:
+      weakness:
+        damage-reduction: 5 * effect_lvl
+        duration: effect_duration
+    SLOWNESS:
+      slowness:
+        delay: 10 * effect_lvl
+        duration: effect_duration
+  POTION:
+    # the "effect_lvl" (starting from 1) and "effect_duration" (in ticks) placeholder can be used as well.
+    INSTANT_DAMAGE:
+      damage: 10 * effect_lvl
+    WEAKNESS:
+      weakness:
+        damage-reduction: 5 * effect_lvl
+        duration: effect_duration
+    SLOWNESS:
+      slowness:
+        delay: cooldown * effect_lvl
+        duration: effect_duration
+    POISON:
+      paralyze: '[10s] * effect_lvl'
+  WIND_CHARGE:
+    damage: 20
+    paralyze: 20s
+  TRIDENT:
+    damage: 1
+    paralyze: 1s
+    weakness:
+      damage-reduction: damage / 5
+      duration: 2s
+    slowness:
+      delay: cooldown / 5
+      duration: 2s

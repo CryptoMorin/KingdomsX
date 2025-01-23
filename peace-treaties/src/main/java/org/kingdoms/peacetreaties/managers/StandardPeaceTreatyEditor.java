@@ -7,7 +7,6 @@ import org.bukkit.scheduler.BukkitTask;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.data.Pair;
 import org.kingdoms.gui.GUIAccessor;
 import org.kingdoms.gui.InteractiveGUI;
 import org.kingdoms.gui.OptionCategory;

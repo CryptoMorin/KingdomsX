@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 
 /**
  * An {@code Iterator} to iterate over the nodes of a file tree.
- *
+ * <p>
  * {@snippet lang = java:
  *     try (FileTreeIterator iterator = new FileTreeIterator(start, maxDepth, options)) {
  *         while (iterator.hasNext()) {
@@ -32,15 +32,11 @@ class FileTreeIterator implements Iterator<PathVisit>, Closeable, FileWalkerCont
     /**
      * Creates a new iterator to walk the file tree starting at the given file.
      *
-     * @throws IllegalArgumentException
-     *          if {@code maxDepth} is negative
-     * @throws IOException
-     *          if an I/O errors occurs opening the starting file
-     * @throws SecurityException
-     *          if the security manager denies access to the starting file
-     * @throws NullPointerException
-     *          if {@code start} or {@code options} is {@code null} or
-     *          the options array contains a {@code null} element
+     * @throws IllegalArgumentException if {@code maxDepth} is negative
+     * @throws IOException              if an I/O errors occurs opening the starting file
+     * @throws SecurityException        if the security manager denies access to the starting file
+     * @throws NullPointerException     if {@code start} or {@code options} is {@code null} or
+     *                                  the options array contains a {@code null} element
      */
     FileTreeIterator(Path start, int maxDepth, FileVisitOption... options) throws IOException {
         this.walker = new FileTreeWalker(Arrays.asList(options), maxDepth);

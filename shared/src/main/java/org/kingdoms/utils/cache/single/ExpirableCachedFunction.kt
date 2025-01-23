@@ -2,7 +2,6 @@ package org.kingdoms.utils.cache.single
 
 import java.time.Duration
 import java.util.function.Function
-import java.util.function.Supplier
 
 open class ExpirableCachedFunction<I, O>(
     private val cacheTime: Duration,
@@ -27,6 +26,7 @@ open class ExpirableCachedFunction<I, O>(
     }
 
     companion object {
-        @JvmStatic fun <I, O> of(cacheTime: Duration, function: Function<I, O>) = ExpirableCachedFunction(cacheTime, function)
+        @JvmStatic fun <I, O> of(cacheTime: Duration, function: Function<I, O>) =
+            ExpirableCachedFunction(cacheTime, function)
     }
 }

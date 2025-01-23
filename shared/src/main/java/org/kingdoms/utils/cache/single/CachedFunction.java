@@ -2,7 +2,6 @@ package org.kingdoms.utils.cache.single;
 
 import java.util.Objects;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 public class CachedFunction<I, O> extends CachedObject<O> implements Function<I, O> {
     protected final Function<I, O> function;

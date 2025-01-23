@@ -20,7 +20,11 @@ max-ammo: lvl * 2000
 upgrade-cost: lvl * 60
 
 conditions:
-  'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+  purchase:
+    'kingdoms_kingdom_level < 2': '{$$kingdom-levels.II}'
+  upgrade:
+    'level == 1 && kingdoms_kingdom_level < 3': '{$$kingdom-levels.III}'
+    'level == 2 && kingdoms_kingdom_level < 4': '{$$kingdom-levels.IV}'
 
 whitelist: true
 entities:

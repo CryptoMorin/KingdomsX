@@ -6,7 +6,6 @@ import org.bukkit.boss.BarStyle;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.utils.bossbars.BossBarSettings;
-import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
 
 import java.util.ArrayList;
