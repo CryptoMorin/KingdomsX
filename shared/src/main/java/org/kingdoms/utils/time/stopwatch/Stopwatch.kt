@@ -20,9 +20,7 @@ interface Stopwatch {
     /**
      * The amount of time passed. (Considering pauses)
      */
-    @Suppress("INAPPLICABLE_TARGET_ON_PROPERTY_WARNING")
     var elapsed: Duration
-        @get:JvmName("elapsed") get
 
     /**
      * Sets [elapsed] to zero and [pause]s the timer.

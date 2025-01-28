@@ -1,6 +1,5 @@
 package org.kingdoms.platform.bukkit.adapters
 
-import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.block.Block
@@ -14,6 +13,7 @@ import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
 import org.kingdoms.server.location.Vector3
 import org.kingdoms.utils.internal.functional.Fn
+import java.awt.Color
 
 object BukkitAdapter {
     @JvmStatic fun adapt(direction: Direction): BlockFace = BlockFace.valueOf(direction.name)
@@ -28,7 +28,7 @@ object BukkitAdapter {
         return converter.toNBT(nbt)!!
     }
 
-    @JvmStatic fun adapt(color: java.awt.Color): Color = Color.fromARGB(color.alpha, color.red, color.green, color.blue)
+    @JvmStatic fun adapt(color: java.awt.Color): org.bukkit.Color = org.bukkit.Color.fromARGB(color.alpha, color.red, color.green, color.blue)
 
     @JvmStatic fun adapt(world: World): org.kingdoms.server.location.World = BukkitWorld(world)
     @JvmStatic fun adapt(world: org.kingdoms.server.location.World): World = (world as BukkitWorld).world

@@ -5,6 +5,7 @@ import java.util.*
 interface WorldRegistry {
     fun getWorld(name: String): World?
     fun getWorld(id: UUID): World?
+    val worlds: List<World>
 
     companion object {
         @JvmField val WORLD_REMAPPER: Map<String, String> = hashMapOf(
@@ -15,7 +16,7 @@ interface WorldRegistry {
 
         @Suppress("NOTHING_TO_INLINE")
         @JvmStatic inline fun remap(world: String): String {
-            return world
+            return world // WORLD_REMAPPER.getOrDefault(world, world)
         }
     }
 }

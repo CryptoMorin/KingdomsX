@@ -5,24 +5,36 @@ import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.kingdoms.commands.admin.debugging.CommandAdminEvaluate;
 import org.kingdoms.commands.outposts.CommandOutpost;
+import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.gui.*;
 import org.kingdoms.locale.KingdomsLang;
+import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
+import org.kingdoms.outposts.settings.OutpostArenaMob;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.utils.LocationUtils;
+import org.kingdoms.utils.ProcessToMessage;
 import org.kingdoms.utils.bossbars.BossBarEditor;
+import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
+import org.kingdoms.utils.internal.numbers.AnyNumber;
+import org.kingdoms.utils.internal.numbers.NumberConstraint;
+import org.kingdoms.utils.internal.numbers.NumberProcessor;
 import org.kingdoms.utils.string.Strings;
+import org.kingdoms.utils.time.TimeUtils;
 
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public final class OutpostEditor {
     private final Player player;
-    private final Outpost outpost;
+    private final OutpostEventSettings outpost;
 
-    public OutpostEditor(Player player, Outpost outpost) {
+    public OutpostEditor(Player player, OutpostEventSettings outpost) {
         this.player = player;
         this.outpost = outpost;
     }
@@ -55,7 +67,7 @@ public final class OutpostEditor {
                 context.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_NAME_INVALID);
                 return;
             }
-            if (Outpost.getOutpost(input) != null) {
+            if (OutpostEventSettings.getOutpost(input) != null) {
                 context.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_NAME_ALREADY_IN_USE);
                 return;
             }
@@ -100,6 +112,8 @@ public final class OutpostEditor {
             player.teleport(outpost.getSpawn());
             ctx.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_SPAWN_TELEPORTED);
         }).done();
+
+        gui.push("arena-mobs", this::openArenaMobs);
 
         gui.option("max-participants").onNormalClicks(context -> {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_MAX_PARTICIPANTS_ENTER);
@@ -192,11 +206,125 @@ public final class OutpostEditor {
                 return;
             }
 
-            Outpost.getOutposts().remove(outpost.getName());
+            OutpostEventSettings.getOutposts().remove(outpost.getName());
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_REMOVE_REMOVED);
             player.closeInventory();
         }).done();
 
+        gui.open();
+        return gui;
+    }
+
+    public InteractiveGUI openArenaMobs() {
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.ARENA$MOBS, getEdits());
+        if (gui == null) return null;
+
+        ReusableOptionHandler arenaMobOpt = gui.getReusableOption("arena-mobs");
+        for (OutpostArenaMob arenaMob : outpost.getArenaMobs()) {
+            if (!arenaMobOpt.hasNext()) break;
+            arenaMobOpt
+                    .editMessageContext(arenaMob::addMessageContextEdits)
+                    .on(ClickType.LEFT, () -> openArenaMob(arenaMob))
+                    .on(ClickType.RIGHT, () -> {
+                        outpost.getArenaMobs().remove(arenaMob);
+                        openArenaMobs();
+                    })
+                    .done();
+        }
+
+        gui.push("add", () -> {
+            OutpostArenaMob arenaMob = new OutpostArenaMob(null, null, 0, null, null, null);
+            outpost.getArenaMobs().add(arenaMob);
+            openArenaMob(arenaMob);
+        });
+
+
+        gui.push("back", this::openOutpostEditor);
+        gui.open();
+        return gui;
+    }
+
+    public InteractiveGUI openArenaMob(OutpostArenaMob arenaMob) {
+        MessagePlaceholderProvider edits = getEdits();
+        arenaMob.addMessageContextEdits(edits);
+        InteractiveGUI gui = GUIAccessor.prepare(player, OutpostGUI.ARENA$MOB, edits);
+        if (gui == null) return null;
+
+        gui.option("label").onNormalClicks(ctx -> {
+            OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_MAX_SPAWN_COUNT.sendMessage(player);
+            ctx.startConversation();
+        }).setConversation((ctx, input) -> {
+            arenaMob.setLabel(input);
+            ctx.endConversation();
+            openArenaMob(arenaMob);
+        }).done();
+
+        gui.option("max-spawn-count").onNormalClicks(ctx -> {
+            OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_MAX_SPAWN_COUNT.sendMessage(player);
+            ctx.startConversation();
+        }).setConversation((ctx, input) -> {
+            NumberProcessor processor = new NumberProcessor(input);
+            processor.withAllDecorators().withConstraints(NumberConstraint.POSITIVE, NumberConstraint.INTEGER_ONLY);
+            Pair<AnyNumber, Messenger> processed = ProcessToMessage.getNumber(processor);
+            if (processed.isValuePresent()) {
+                ctx.sendError(processed.getValue());
+                return;
+            }
+
+            arenaMob.setMaxSpawnCount(processed.getKey().getValue().intValue());
+            ctx.endConversation();
+            openArenaMob(arenaMob);
+        }).done();
+
+        gui.option("spawn-interval").onNormalClicks(ctx -> {
+            OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_SPAWN_INTERVAL.sendMessage(player);
+            ctx.startConversation();
+        }).setConversation((ctx, input) -> {
+            Long time = TimeUtils.parseTime(input);
+            if (time == null) {
+                ctx.sendMessage(KingdomsLang.INVALID_TIME, "time", input);
+                return;
+            }
+
+            arenaMob.setSpawnInterval(Duration.ofMillis(time));
+            ctx.endConversation();
+            openArenaMob(arenaMob);
+        }).done();
+
+        gui.option("spawn-location").onNormalClicks(ctx -> {
+            OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_SPAWN_LOCATION.sendMessage(player);
+            ctx.startConversation();
+        }).setConversation((ctx, input) -> {
+            arenaMob.setSpawnLocation(player.getLocation());
+            ctx.endConversation();
+            openArenaMob(arenaMob);
+        }).done();
+
+        gui.option("damage-bonus").onNormalClicks(ctx -> {
+            OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_ENTER.sendMessage(player);
+            ctx.startConversation();
+        }).setConversation((ctx, input) -> {
+            MathExpression compiled;
+            try {
+                compiled = MathCompiler.compile(input);
+            } catch (Exception ex) {
+                ctx.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_WRONG_MATH, "eqn", input);
+                return;
+            }
+            Set<String> vars =compiled.getVariables();
+            for (String var : vars) {
+                if (!var.equals("dmg")) {
+                    ctx.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_UNKNOWN_VARIABLE, "eqn", input, "variable", var);
+                    return;
+                }
+            }
+
+            arenaMob.setDamageBonus(compiled);
+            ctx.endConversation();
+            openArenaMob(arenaMob);
+        }).done();
+
+        gui.push("back", this::openArenaMobs);
         gui.open();
         return gui;
     }

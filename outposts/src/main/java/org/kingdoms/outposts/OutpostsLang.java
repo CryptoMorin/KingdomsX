@@ -44,6 +44,13 @@ public enum OutpostsLang implements DefinedMessenger {
     COMMAND_OUTPOST_EDIT_NAME_SET("{$p}Changed the outpost's name to{$colon} {$s}%outpost-new-name%", 1, 2, 3, 4),
     COMMAND_OUTPOST_EDIT_REMOVE_OUTPOST_IS_RUNNING("{$es}%outpost-name% {$e}outpost event has already started. You can't remove it right now.", 1, 2, 3, 4),
     COMMAND_OUTPOST_EDIT_REMOVE_REMOVED("{$p}Removed {$s}%outpost-name% {$p}outpost.", 1, 2, 3, 4),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_LABEL("{$s}Please enter the new label of this mob in chat {$cancel}", 1, 3, 5),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_MAX_SPAWN_COUNT("{$s}Please enter the max spawn count of this mob in chat {$cancel}", 1, 3, 5),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_SPAWN_INTERVAL("{$s}Please enter the spawn interval of this mob in chat {$cancel}", 1, 3, 5),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_SPAWN_LOCATION("{$s}Please stand on the block that you want the mob to spawn at and then enter any message in the chat {$cancel}", 1, 3, 5),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_ENTER("{$s}Please enter the damage bonus in the chat {$cancel}", 1, 3, 5, 7),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_WRONG_MATH("{$e}The math equation you entered is wrong{$colon} {$es}%eqn%", 1, 3, 5, 7),
+    COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_UNKNOWN_VARIABLE("{$e}The math equation you entered contains unknown {$es}%variable% {$e}variable, you can only use the &ldmg {$e}variable{$colon} {$es}%eqn%", 1, 3, 5, 7),
 
     COMMAND_OUTPOST_JOIN_DESCRIPTION("{$s}Join a running outpost event.", 1, 2, 3),
     COMMAND_OUTPOST_JOIN_USAGE("{$usage}outpost join <outpost>", 1, 2, 3),

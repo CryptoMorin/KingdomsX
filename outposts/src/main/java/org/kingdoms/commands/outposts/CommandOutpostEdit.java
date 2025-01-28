@@ -3,7 +3,7 @@ package org.kingdoms.commands.outposts;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
-import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEditor;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class CommandOutpostEdit extends KingdomsCommand {
         if (context.assertPlayer()) return CommandResult.FAILED;
         if (context.requireArgs(1)) return CommandResult.FAILED;
 
-        Outpost outpost = CommandOutpost.getOutpost(context, 0);
+        OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return CommandResult.FAILED;
 
         Player player = context.senderAsPlayer();
@@ -28,7 +28,7 @@ public class CommandOutpostEdit extends KingdomsCommand {
 
     @Override
     public @NonNull List<String> tabComplete(CommandTabContext context) {
-        if (context.isAtArg(0)) return KingdomsCommand.tabComplete(Outpost.getOutposts().keySet());
+        if (context.isAtArg(0)) return KingdomsCommand.tabComplete(OutpostEventSettings.getOutposts().keySet());
         return KingdomsCommand.emptyTab();
     }
 }

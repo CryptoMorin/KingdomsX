@@ -26,6 +26,30 @@ internal class _Int(override val value: Int) : AbstractAnyNumber() {
     override fun compareTo(other: AnyNumber) = value.compareTo(other.convert)
 }
 
+internal class _Long(override val value: Long) : AbstractAnyNumber() {
+    override val type = NumberType.LONG
+
+    override val isNegative: Boolean get() = value < 0L
+    override val isPositive: Boolean get() = value > 0L
+    override val isZero: Boolean get() = value == 0L
+
+    private inline val AnyNumber.convert: Long get() = this.value.toLong()
+    override fun constructNew(value: Number): AnyNumber = _Long(value.toLong())
+
+    override fun unaryMinus() = constructNew(-value)
+    override fun unaryPlus() = constructNew(+value)
+    override fun inc() = constructNew(value + 1L)
+    override fun dec() = constructNew(value - 1L)
+
+    override fun plus(other: AnyNumber) = constructNew(value + other.convert)
+    override fun minus(other: AnyNumber) = constructNew(value - other.convert)
+    override fun times(other: AnyNumber) = constructNew(value * other.convert)
+    override fun div(other: AnyNumber) = constructNew(value / other.convert)
+    override fun rem(other: AnyNumber) = constructNew(value % other.convert)
+
+    override fun compareTo(other: AnyNumber) = value.compareTo(other.convert)
+}
+
 internal class _Float(override val value: Float) : AbstractFloatingPointNumber() {
     override val type = NumberType.FLOAT
 

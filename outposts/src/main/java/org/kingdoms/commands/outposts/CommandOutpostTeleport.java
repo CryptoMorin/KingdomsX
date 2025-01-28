@@ -9,7 +9,7 @@ import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.LocationLocale;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.utils.PaperUtils;
@@ -27,7 +27,7 @@ public class CommandOutpostTeleport extends KingdomsCommand {
         if (context.requireArgs(1)) return CommandResult.FAILED;
         if (context.assertHasKingdom()) return CommandResult.FAILED;
 
-        Outpost outpost = CommandOutpost.getOutpost(context, 0);
+        OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return CommandResult.FAILED;
         context.var("outpost", outpost.getName()).var("min", outpost.getMinOnlineMembers());
 

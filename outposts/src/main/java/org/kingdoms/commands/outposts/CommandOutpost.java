@@ -5,7 +5,7 @@ import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
-import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.services.managers.SoftService;
 
@@ -18,9 +18,9 @@ public class CommandOutpost extends KingdomsParentCommand {
         return true;
     }
 
-    protected static Outpost getOutpost(CommandContext context, int index) {
+    protected static OutpostEventSettings getOutpost(CommandContext context, int index) {
         String outpostName = context.arg(index);
-        Outpost outpost = Outpost.getOutpost(outpostName);
+        OutpostEventSettings outpost = OutpostEventSettings.getOutpost(outpostName);
         if (outpost == null) context.sendError(OutpostsLang.COMMAND_OUTPOST_NOT_FOUND, "outpost", outpostName);
         return outpost;
     }

@@ -5,7 +5,8 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
 import org.kingdoms.enginehub.EngineHubAddon;
-import org.kingdoms.outposts.Outpost;
+import org.kingdoms.main.KLogger;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostDataHandler;
 import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.services.managers.SoftService;
@@ -28,7 +29,7 @@ public class CommandOutpostCreate extends KingdomsCommand {
         CommandSender sender = context.getMessageReceiver();
 
         String outpostName = args[0];
-        if (Outpost.getOutpost(outpostName) != null) {
+        if (OutpostEventSettings.getOutpost(outpostName) != null) {
             OutpostsLang.COMMAND_OUTPOST_CREATE_NAME_ALREADY_TAKEN.sendMessage(sender, "outpost", outpostName);
             return CommandResult.FAILED;
         }
@@ -40,8 +41,8 @@ public class CommandOutpostCreate extends KingdomsCommand {
             return CommandResult.FAILED;
         }
 
-        Outpost outpost = new Outpost(outpostName, region, player.getLocation(), player.getLocation());
-        Outpost.registerOutpost(outpost);
+        OutpostEventSettings outpost = new OutpostEventSettings(outpostName, region, player.getLocation(), player.getLocation());
+        OutpostEventSettings.registerOutpost(outpost);
         OutpostDataHandler.saveOutposts();
         OutpostsLang.COMMAND_OUTPOST_CREATE_CREATED.sendMessage(sender, "outpost", outpostName, "region", region);
         return CommandResult.SUCCESS;
@@ -50,10 +51,10 @@ public class CommandOutpostCreate extends KingdomsCommand {
     @Override
     public @NonNull
     List<String> tabComplete(@NonNull CommandTabContext context) {
-        if (context.isAtArg(0)) return KingdomsCommand.tabComplete("<name>");
-        if (context instanceof Player && context.isAtArg(1) && SoftService.WORLD_GUARD.isAvailable()) {
-            return KingdomsCommand.tabComplete(EngineHubAddon.INSTANCE.getWorldGuard().getRegions(((Player) context).getWorld()));
+        if (context.isAtArg(0)) return context.tabComplete("<name>");
+        if (context.isPlayer() && context.isAtArg(1) && SoftService.WORLD_GUARD.isAvailable()) {
+            return context.tabComplete(EngineHubAddon.INSTANCE.getWorldGuard().getRegions(context.senderAsPlayer().getWorld()));
         }
-        return KingdomsCommand.emptyTab();
+        return context.emptyTab();
     }
 }

@@ -47,7 +47,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
     override fun onLoad() {
         initWorldGuard()
         LanguageManager.registerMessenger(EngineHubLang::class.java)
-        SoftService.WORLD_GUARD.hook()
+        SoftService.WORLD_GUARD.hook(true)
     }
 
     private fun initWorldGuard() {

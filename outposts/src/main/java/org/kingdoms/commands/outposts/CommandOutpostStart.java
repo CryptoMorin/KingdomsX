@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
-import org.kingdoms.outposts.Outpost;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.utils.time.TimeFormatter;
@@ -30,7 +30,7 @@ public class CommandOutpostStart extends KingdomsCommand {
         String[] args = context.args;
         CommandSender sender = context.getMessageReceiver();
 
-        Outpost outpost = CommandOutpost.getOutpost(context, 0);
+        OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return CommandResult.FAILED;
 
         if (OutpostEvent.isEventRunning(outpost.getName())) {
@@ -64,7 +64,7 @@ public class CommandOutpostStart extends KingdomsCommand {
     @Override
     public @NonNull
     List<String> tabComplete(@NonNull CommandTabContext context) {
-        if (context.isAtArg(0)) return new ArrayList<>(Outpost.getOutposts().keySet());
+        if (context.isAtArg(0)) return new ArrayList<>(OutpostEventSettings.getOutposts().keySet());
         if (context.isAtArg(1)) return Collections.singletonList("<time>");
         if (context.isAtArg(2)) return Collections.singletonList("<start time>");
         return KingdomsCommand.emptyTab();

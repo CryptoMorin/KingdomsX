@@ -5,13 +5,19 @@ import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
 import org.kingdoms.locale.MessageHandler;
 import org.kingdoms.main.Kingdoms;
+import org.kingdoms.outposts.settings.OutpostArenaMob;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
+import org.kingdoms.outposts.settings.OutpostRewards;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarSettings;
 import org.kingdoms.utils.compilers.MathCompiler;
+import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;
+import org.kingdoms.utils.config.NodeInterpreter;
 import org.kingdoms.utils.config.adapters.YamlFile;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,13 +27,14 @@ public final class OutpostDataHandler {
     public static void saveOutposts() {
         ConfigSection config = DATA.getConfig();
 
-        for (Outpost outpost : Outpost.getOutposts().values()) {
+        for (OutpostEventSettings outpost : OutpostEventSettings.getOutposts().values()) {
             ConfigSection section = config.createSection(outpost.getName());
             section.set("region", outpost.getRegion());
             section.set("spawn", LocationUtils.toString(outpost.getSpawn()));
             section.set("center", LocationUtils.toString(outpost.getCenter()));
-            section.set("cost", outpost.getMoneyCost());
-            section.set("resource-points-cost", outpost.getResourcePointsCost());
+            if (outpost.getMoneyCost() != null) section.set("cost", outpost.getMoneyCost().getOriginalString());
+            if (outpost.getResourcePointsCost() != null)
+                section.set("resource-points-cost", outpost.getResourcePointsCost().getOriginalString());
             section.set("max-participants", outpost.getMaxParticipants());
             section.set("min-online-members", outpost.getMinOnlineMembers());
             BossBarSettings bossbar = outpost.getBossBarSettings();
@@ -51,6 +58,19 @@ public final class OutpostDataHandler {
                     i++;
                 }
             }
+
+            int num = 0;
+            ConfigSection arenaMobsSection = section.createSection("arena-mobs");
+            for (OutpostArenaMob arenaMob : outpost.getArenaMobs()) {
+                ConfigSection arenaMobSection = arenaMobsSection.createSection(String.valueOf(num++));
+
+                if (arenaMob.getLabel() != null) arenaMobSection.set("label", arenaMob.getLabel());
+                if (arenaMob.getMaxSpawnCount() != 0) arenaMobSection.set("max-spawn-count", arenaMob.getMaxSpawnCount());
+                if (arenaMob.getSpawnInterval() != null) arenaMobSection.set("spawn-interval", arenaMob.getSpawnInterval().getSeconds() + "s");
+                if (arenaMob.getSpawnLocation() != null) arenaMobSection.set("spawn-location", LocationUtils.toString(arenaMob.getSpawnLocation()));
+                if (arenaMob.getDamageBonus() != null) arenaMobSection.set("damage-bonus", arenaMob.getDamageBonus().getOriginalString());
+                if (arenaMob.getEntitySettings() != null) arenaMobSection.set("entity", arenaMob.getEntitySettings());
+            }
         }
         DATA.saveConfig();
     }
@@ -58,7 +78,7 @@ public final class OutpostDataHandler {
     public static void loadOutposts() {
         OutpostAddon.get().getLogger().info("Loading outposts...");
 
-        Outpost.getOutposts().clear();
+        OutpostEventSettings.getOutposts().clear();
         ConfigSection config = DATA.getConfig();
         if (config == null) return;
 
@@ -85,11 +105,33 @@ public final class OutpostDataHandler {
             Location center = LocationUtils.fromString(section.getString("center"));
             OutpostRewards rewards = new OutpostRewards(rewardSection.getString("resource-points"), rewardSection.getString("money"), commands, itemRewards);
 
-            Outpost outpost = new Outpost(name, section.getString("region"), spawn, center,
-                    MathCompiler.compile(section.getString("cost")), MathCompiler.compile(section.getString("resource-points-cost")),
-                    section.getInt("max-participants"), section.getInt("min-online-members"), bossbar, rewards);
+            MathCompiler.Expression cost = MathCompiler.compile(section.getString("cost"));
+            MathCompiler.Expression rp = MathCompiler.compile(section.getString("resource-points-cost"));
 
-            Outpost.getOutposts().put(name, outpost);
+            List<OutpostArenaMob> arenaMobs = new ArrayList<>();
+            ConfigSection arenaMobsSection = section.getSection("arena-mobs");
+            if (arenaMobsSection != null) {
+                for (ConfigSection arenaMobSection : arenaMobsSection.getSections().values()) {
+                    String label = arenaMobSection.getString("label");
+                    int maxSpawnCount = arenaMobSection.getInt("max-spawn-count");
+                    Duration spawnInterval = arenaMobSection.getTime("spawn-interval");
+
+                    String mobLoc = arenaMobSection.getString("spawn-location");
+                    Location spawnLocation = mobLoc == null ? null : LocationUtils.fromString(mobLoc);
+
+                    MathExpression damageBonus = MathCompiler.compile(arenaMobSection.getString("damage-bonus")).nullIfDefault();
+                    ConfigSection entity = arenaMobSection.getSection("entity");
+                    arenaMobs.add(new OutpostArenaMob(label, entity, maxSpawnCount, spawnInterval, spawnLocation, damageBonus));
+                }
+            }
+
+            OutpostEventSettings outpost = new OutpostEventSettings(name, section.getString("region"), spawn, center,
+                    cost.isDefault() ? null : cost, rp.isDefault() ? null : rp,
+                    section.getInt("max-participants"), section.getInt("min-online-members"),
+                    arenaMobs,
+                    bossbar, rewards);
+
+            OutpostEventSettings.getOutposts().put(name, outpost);
         }
     }
 }

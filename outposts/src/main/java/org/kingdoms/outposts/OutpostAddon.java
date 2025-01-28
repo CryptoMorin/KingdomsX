@@ -6,6 +6,7 @@ import org.kingdoms.addons.Addon;
 import org.kingdoms.commands.outposts.CommandOutpost;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPermission;
+import org.kingdoms.gui.GUIConfig;
 import org.kingdoms.locale.LanguageManager;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.services.managers.SoftService;
@@ -61,6 +62,7 @@ public final class OutpostAddon extends JavaPlugin implements Addon {
 
         reloadAddon();
         registerAddon();
+        GUIConfig.loadInternalGUIs(this);
         loaded = true;
     }
 

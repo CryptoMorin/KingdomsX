@@ -1,4 +1,4 @@
-package org.kingdoms.outposts;
+package org.kingdoms.outposts.settings;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;

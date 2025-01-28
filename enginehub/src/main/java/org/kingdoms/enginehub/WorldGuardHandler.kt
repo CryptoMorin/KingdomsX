@@ -50,7 +50,7 @@ class WorldGuardHandler(private val addon: EngineHubAddon) : Listener {
         val attackerKp: KingdomPlayer = KingdomPlayer.getKingdomPlayer(damager)
         if (attackerKp.isAdmin) return
 
-        if (addon.worldGuard!!.canDamageChampion(damager)) {
+        if (!addon.worldGuard!!.canDamageChampion(damager)) {
             KingdomsLang.INVASION_BLOCKED_DAMAING_CHAMPION_IN_PROTECTED_REGION.sendError(damager)
             event.isCancelled = true
             return

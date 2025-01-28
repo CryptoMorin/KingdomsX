@@ -1,7 +1,7 @@
 # Read config.yml 'prefix' option for info.
 prefix: '&6[&lK&eingdoms&6] &2'
 chat-input:
-  
+
   # During chat inputs (mostly used in GUIs like asking for rank name, priority, etc)
   # When the player writes this in the chat, it cancels the operation.
   # The sustainable thing to use for hover messages is the '/cancel' command instead.
@@ -163,17 +163,17 @@ plugin-permission-scope:
   not-op: '&6Не OP'
 tags:
   tagged:
-    
+
     message: hover:{{$s}&l@%tag%;{$p}Вас позначили}
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
   others: hover:{&l@%tag%;&9Позначка}
   offline: hover:{{$es}@%tag%;{$e}Офлайн}
   unknown-player: hover:{{$e}@%tag%;&4Невідомий гравець}
 tips:
-  
+
   # Поради, які відображаються в консолі на основі сервера.
   message:
-    header: '&8----------------=( &cПоради &8)=----------------'
+    header: '&8----------------=( &cПоради {$sep})=----------------'
     entry: '&8- %description%'
     footer: '&8----------------=------------=----------------'
   disable-crops-physics: '&2Вам слід розглянути можливість увімкнення параметра "disable-crops-physics" у файлі claims.yml, але це має побічні ефекти. Щоб ігнорувати цей совіт, використовуйте команду &c/k admin tip ignore DISABLE_CROPS_PHYSICS'
@@ -531,7 +531,7 @@ relations:
   no-permission: '{$e}У вас немає дозволу керувати відносинами.'
   no-requests: '{$e}Ви не маєте запитів на встановлення відносин від вашої групи.'
   disabled-commands: '{$e}Ви не можете використовувати цю команду на цій території.'
-  
+
   # Нижче назви також використовуються для %kingdoms_relation_name%, але не для %kingdoms_land_relation%
   # Щодо кольору відносин (%kingdoms_relation_color%), дивіться файл relations.yml, а не language files.
   neutral:
@@ -2763,7 +2763,7 @@ command:
     format:
       message: |
 
-        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% 
+        {$sep}[{$s}%kingdoms_kingdom_name% &lBroadcast{$sep}]&7|{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
       sound: ENTITY_EXPERIENCE_ORB_PICKUP
     description: '{$s}Broadcasts a message to all the kingdom members.'
   mute:
@@ -3140,7 +3140,7 @@ shield:
     format:
       message: |
 
-        {$sep}[{$s}%kingdoms_kingdom_name% &lТрансляція{$sep}]&7|{$sep}[&9%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message% 
+        {$sep}[{$s}%kingdoms_kingdom_name% &lТрансляція{$sep}]&7|{$sep}[&9%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
       sound: ENTITY_EXPERIENCE_ORB_PICKUP
     name: broadcast
     aliases: bc announce

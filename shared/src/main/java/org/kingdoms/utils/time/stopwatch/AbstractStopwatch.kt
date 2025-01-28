@@ -7,13 +7,12 @@ abstract class AbstractStopwatch(var passed: Long = 0) : Stopwatch {
     private var lastCheckedTicks: Long = 0L
     override var state: StopwatchState = StopwatchState.NOT_STARTED
 
-    @Suppress("INAPPLICABLE_TARGET_ON_PROPERTY_WARNING")
     override var elapsed: Duration
         set(value) {
             if (state === StopwatchState.TICKING) updateTicks()
             this.passed = value.toMillis()
         }
-        @get:JvmName("elapsed") get() {
+        get() {
             if (state === StopwatchState.TICKING) updateTicks()
             return Duration.ofMillis(this.passed)
         }

@@ -8,6 +8,7 @@ import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.outposts.*;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.utils.MathUtils;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class CommandOutpostJoin extends KingdomsCommand {
         if (context.requireArgs(1)) return CommandResult.FAILED;
         if (context.assertHasKingdom()) return CommandResult.FAILED;
 
-        Outpost outpost = CommandOutpost.getOutpost(context, 0);
+        OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return CommandResult.FAILED;
         context.var("outpost", outpost.getName()).var("min", outpost.getMinOnlineMembers());
 
