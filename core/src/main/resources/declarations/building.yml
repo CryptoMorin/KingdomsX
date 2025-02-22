@@ -17,10 +17,8 @@ max-level: 3
 # The amount of time for a specific type of building to be finished.
 build-duration:
   # max() is used here just in case the duration factor is negative.
-  # opening: 'max(0, [1min] + [<build-duration-factor>])'
-  opening: '[10secs]'
-  #  upgrading: 'max(0, ([1min] + [<build-duration-factor>]) * level)'
-  upgrading: '[10 seconds]'
+  opening: 'max(0, [1min] + [<build-duration-factor>])'
+  upgrading: 'max(0, ([1min] + [<build-duration-factor>]) * level)'
   repairing: '[1sec] * (building_max_durability - building_durability)'
   demolishing: 'building_region_blocks * [50ms]'
 

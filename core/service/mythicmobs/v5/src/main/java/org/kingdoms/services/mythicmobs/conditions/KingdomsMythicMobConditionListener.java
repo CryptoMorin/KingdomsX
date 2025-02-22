@@ -12,7 +12,7 @@ import java.util.Map;
 public final class KingdomsMythicMobConditionListener implements Listener {
     protected static final Map<String, ISkillCondition> CONDITIONS = new HashMap<>();
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onConditionLoad(MythicConditionLoadEvent event) {
         String conditionName = event.getConditionName().toLowerCase(Locale.ENGLISH);
         ISkillCondition condition = CONDITIONS.get(conditionName);

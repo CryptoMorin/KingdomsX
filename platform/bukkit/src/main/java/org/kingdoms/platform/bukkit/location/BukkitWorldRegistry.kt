@@ -11,5 +11,5 @@ class BukkitWorldRegistry : WorldRegistry {
 
     override fun getWorld(id: UUID) = Bukkit.getWorld(id)?.let { BukkitWorld(it) }
 
-    override val worlds: List<World> = Bukkit.getWorlds().map { BukkitWorld(it) }
+    override val worlds: List<World> get() = Bukkit.getWorlds().map { BukkitWorld(it) }
 }

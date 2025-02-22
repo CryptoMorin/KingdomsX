@@ -28,9 +28,13 @@ public class TickedCache<T> implements CacheableObject<T> {
         return !hasExpired();
     }
 
+    public boolean hasValue() {
+        return value != null;
+    }
+
     @Override
     public void invalidate() {
-        set(null);
+        this.value = null;
     }
 
     @Override
@@ -42,6 +46,16 @@ public class TickedCache<T> implements CacheableObject<T> {
     @Override
     public void set(T value) {
         this.value = value;
+        update();
+    }
+
+    public void update() {
+        if (this.value == null) throw new IllegalStateException("Cannot update cache when no value is set: " + this);
         this.lastUpdateTicks = Server.get().getTicks();
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + '(' + expirationTicks + " | " + value + ')';
     }
 }

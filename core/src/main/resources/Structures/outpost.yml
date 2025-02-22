@@ -44,11 +44,11 @@ stocks:
     # item that is held by the server-wide stock and can be used to adjust prices.
     # Note: Other options below use the *fn-base function which basically repeats this
     # equation for easier configuration.
-    buy: 'percentOf(10, 60 * (initial / stock)) + (60 * (initial / stock))'
+    buy: 'percentOf(10, 50 * (initial / stock)) + (60 * (initial / stock))'
 
     # The amount of resource points used for selling this item to the structure.
     # Supports "stock" placeholder just like the buy option.
-    sell: '60 * (initial / stock)'
+    sell: '50 * (initial / stock)'
 
     # Settings for the "stock" variable used for buy/sell options
     # This is a server-wide variable shared between all outpost structures.
@@ -87,20 +87,20 @@ stocks:
       # is going to be more than this limit.
       max-cooldown: 6hrs # %outpost_max_cooldown%
 
-  emerald: *fn-base [ 70, EMERALD ]
-  gold-ingot: *fn-base [ 50, GOLD_INGOT ]
-  iron-ingot: *fn-base [ 40, IRON_INGOT ]
+  emerald: *fn-base [ 60, EMERALD ]
+  gold-ingot: *fn-base [ 40, GOLD_INGOT ]
+  iron-ingot: *fn-base [ 30, IRON_INGOT ]
   nether-brick: *fn-base [ 30, NETHER_BRICK ]
   brick: *fn-base [ 20, BRICK ]
-  lapis-lazuli: *fn-base [ 15, LAPIS_LAZULI ]
-  coal: *fn-base [ 3, COAL ]
-  charcoal: *fn-base [ 2, CHARCOAL ]
+  lapis-lazuli: *fn-base [ 10, LAPIS_LAZULI ]
+  coal: *fn-base [ 2, COAL ]
+  charcoal: *fn-base [ 1, CHARCOAL ]
 
   ender-eye: *fn-base [ 1000, ENDER_EYE ]
   ender-pearl: *fn-base [ 100, ENDER_PEARL ]
   dragon-breath: *fn-base [ 3000, DRAGON_BREATH ]
-  blaze-rod: *fn-base [ 20, BLAZE_ROD ]
-  blaze-powder: *fn-base [ 30, BLAZE_POWDER ]
+  blaze-rod: *fn-base [ 40, BLAZE_ROD ]
+  blaze-powder: *fn-base [ 20, BLAZE_POWDER ]
   prismarine-crystals: *fn-base [ 20, PRISMARINE_CRYSTALS ]
 
   golden-carrot: *fn-base [ 50, GOLDEN_CARROT ]

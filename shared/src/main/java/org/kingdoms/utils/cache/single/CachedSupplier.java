@@ -27,4 +27,9 @@ public class CachedSupplier<T> extends CachedObject<T> {
         }
         return cached;
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + '(' + supplier + ')';
+    }
 }

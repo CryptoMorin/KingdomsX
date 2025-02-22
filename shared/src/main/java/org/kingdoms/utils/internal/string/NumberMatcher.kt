@@ -14,28 +14,28 @@ interface NumberMatcher {
 
     class LessThan(private val lessThan: AnyNumber) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = number > this.lessThan
-        override val asString: String get() = ">$lessThan"
+        override val asString: String get() = ">${lessThan.value}"
     }
 
     class LessThanOrEqual(private val lessThan: AnyNumber) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = number >= this.lessThan
-        override val asString: String get() = ">=$lessThan"
+        override val asString: String get() = ">=${lessThan.value}"
     }
 
     class GreaterThan(private val greaterThan: AnyNumber) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = number < this.greaterThan
-        override val asString: String get() = "<$greaterThan"
+        override val asString: String get() = "<${greaterThan.value}"
         override fun toString(): String = "GreaterThan($greaterThan)"
     }
 
     class GreaterThanOrEqual(private val greaterThan: AnyNumber) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = number <= this.greaterThan
-        override val asString: String get() = "<=$greaterThan"
+        override val asString: String get() = "<=${greaterThan.value}"
     }
 
     class Range(private val first: NumberMatcher, private val second: NumberMatcher) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = first.matches(number) && second.matches(number)
-        override val asString: String get() = "$first && $second"
+        override val asString: String get() = "($first && $second)"
         override fun toString(): String = "NumberMatcher::Range($first && $second)"
     }
 
@@ -48,7 +48,8 @@ interface NumberMatcher {
             return false
         }
 
-        override val asString: String get() = "Multiple${Arrays.toString(list)}"
+        override val asString: String get() = "[" + list.joinToString(", ") { it.value.toString() } + "]"
+        override fun toString(): String = "NumberMatcher::Multiple(${list.contentToString()})"
     }
 
     private class Parser(val value: String) {

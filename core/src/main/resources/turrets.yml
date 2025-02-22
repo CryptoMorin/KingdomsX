@@ -11,10 +11,18 @@
 # Needs a restart to work.
 enabled: true
 
-# Amount of turrets limited per land/chunk.
+# Amount of turrets limited per land/kingdom.
 # Set to 0 for no limit.
 # misc_upgrades_max_turrets here is for the misc upgrade.
-limit: 'misc_upgrades_max_turrets + 5'
+# - The same options can be added to any turret config inside Turrets
+#   folder to make the limit specific to that one turret.
+#   Individual limits will override the limits set here.
+limits:
+  # Total amount of structures a kingdom can place.
+  total: 0
+
+  # Total amount of structures in a single chunk.
+  per-land: 'misc_upgrades_max_turrets + 5'
 
 # Don't open the GUI when shift right-clicking (useful for placing blocks)
 disable-shift-click: true
@@ -127,7 +135,7 @@ effects:
 # shoot the playr for another 5 seconds until its surroundings are updated.
 # - Other delayed scenarios include changing the turret settings, adding ammo,
 #   spawning mobs, killed players, etc.
-# - This approach will also increase memory usage depending on how many turrets you have.
+# - This approach will also slightly increase memory usage depending on how many turrets you have.
 # * Requires a restart to update.
 accuracy: 20
 

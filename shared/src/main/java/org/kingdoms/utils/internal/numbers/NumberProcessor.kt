@@ -14,13 +14,9 @@ class NumberProcessor(val string: String) {
     val failedConstraints: MutableSet<NumberFailReason> = hashSetOf()
     private var constraints: Set<NumberConstraint> = hashSetOf()
     private var decorators: Set<NumberDecorator> = hashSetOf()
-    private lateinit var _number: AnyNumber
+    private var _number: AnyNumber? = null
     private var processed = false
-    val number: AnyNumber
-        get() {
-            require(failedConstraints.isEmpty()) { "Number processor has failed" }
-            return _number
-        }
+    val number: AnyNumber? get() = _number
 
     fun withConstraints(vararg constraints: NumberConstraint): NumberProcessor {
         this.constraints = constraints.toSet()
@@ -89,7 +85,7 @@ class NumberProcessor(val string: String) {
             fail(NumberFailReason.INTEGER_ONLY)
         }
 
-        if (_number <= of(_number.type.minValue) || _number >= of(_number.type.maxValue)) fail(NumberFailReason.OUT_OF_BOUNDS)
+        if (_number <= _number.type.minValue.abstractNumber || _number >= _number.type.maxValue.abstractNumber) fail(NumberFailReason.OUT_OF_BOUNDS)
         if (constraints.contains(NumberConstraint.POSITIVE) && _number <= of(0)) fail(NumberFailReason.POSITIVE)
         if (constraints.contains(NumberConstraint.ZERO_OR_POSITIVE) && _number < of(0)) fail(NumberFailReason.ZERO_OR_POSITIVE)
     }

@@ -17,9 +17,13 @@ remove-unclaimed: false
 # Should structures go directly to the player's inventory who broke the structure.
 to-inventory-on-break: false
 
-# This is different than individual structure limits which can be configured
-# in their own config files.
-limit:
+# Amount of turrets limited per land/kingdom.
+# Set to 0 for no limit.
+# misc_upgrades_max_turrets here is for the misc upgrade.
+# - The same options can be added to any structure config inside
+#   "Structures" folder to make the limit specific to that one turret.
+#   Individual limits will override the limits set here.
+limits:
   # Total amount of structures a kingdom can place.
   total: 100
 

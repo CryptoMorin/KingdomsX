@@ -278,6 +278,8 @@ public interface StringMatcher {
         int handlerIndexEnd = text.indexOf(':');
         if (handlerIndexEnd == -1) return new Exact(text);
 
+        // TODO Add Negation for StringMatcher
+        //      if (text.charAt(0) == '!')
         String handlerName = text.substring(0, handlerIndexEnd);
         String realText = text.substring(handlerIndexEnd + 1);
 

@@ -492,15 +492,20 @@ kingdom-fly:
   # The speed of the flight.
   # You can use the special placeholder "speed" to
   # configure a value relative to the normal player's speed.
-  # You can also use special permissions to control the default
-  # speed of individual players and what speed they can choose:
-  #   * kingdoms.command.fly.speed.default.<number> - The default flying speed.
-  #   * kingdoms.command.fly.speed.<number matcher> - The speed that the player can choose with "/k fly <speed>"
-  speed: 0.5
+  # - The fly speed can be between -1.0 and +1.0
+  # - Negative values indicate reverse directions.
+  # - Value 0 means the player can only float in air, but they can't move at all.
+  #   In some older versions, you can only move vertically with this value.
+  # - You can also use special permissions to control the default
+  #   speed of individual players and what speed they can choose:
+  #     * kingdoms.flight.speed.default.<number> - The default flying speed.
+  #     * kingdoms.flight.speed.<number matcher> - The speed that the player can choose with "/k fly <speed>"
+  speed: 0.15
 
   # The usual flight speed which is set
   # once the player goes out of /k fly mode.
-  normal-flight-speed: 1.0
+  # Read the option above for more info about the values.
+  normal-flight-speed: 0.2
 
   # Disable flight after taking damage.
   disable-on-damage: true
@@ -709,19 +714,24 @@ placeholders:
       else: ''
 
   # Default placeholders used when a player is not a kingdom or nation.
-  # Requires /k reload to be reloaded.
-  # You can add any placeholder to this list. Instead of _ use - and don't include "kingdoms_" prefix.
-  # There are also default placeholders for when placeholders here are not defined.
-  # All the text placeholders default to an empty text and all the number placeholders default to 0
+  # Or generally, when the context required for the placeholder to obtain
+  # the needed data isn't present.
+  #
+  # * You cannot use just any placeholder in this list, only basic ones.
+  #   So modifiers/targets/functional placeholders aren't supported.
+  #
+  # * There are also default placeholders for when placeholders here are not defined.
+  #   All the text placeholders default to an empty text and all the number placeholders default to 0
   defaults:
+    # Used for %kingdoms_distance_from_core% when the "core" (nexus or home)
+    # and the player aren't in the same world. 'value'
     distance-from-core-other-world: 'value * 100'
-    kingdom_name: ''
-    lore: ''
-    nation_name: '&cNo Nation'
-    members: 0
-    # Green
-    kingdom_color: '00ff00'
-    nation_color: '00ff00'
+
+    '%kingdoms_kingdom_name%': ''
+    '%kingdoms_lore%': ''
+    '%kingdoms_nation_name%': '&cNo Nation'
+    '%kingdoms_kingdom_color%': '00ff00' # Green
+    '%kingdoms_nation_color%': '00ff00' # Green
 
 # https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#might
 # Used in /k top
@@ -1143,8 +1153,8 @@ daily-checks:
         kicks: true
 
   # The time zone ID.
-  # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  # You should copy and paste one of the names under the "TZ database name" column.
+  # You can find yours here: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List:~:text=TZ%20identifier
+  # You should copy and paste one of the names under the "TZ identifier" column.
   # By default, this is "local". A special keyword that will automatically use your server's timezone.
   # To get the current UTC time just Google "UTC time"
   # This is purely for convenience, otherwise you could adjust the time option above

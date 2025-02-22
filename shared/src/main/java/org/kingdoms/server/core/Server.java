@@ -16,6 +16,9 @@ public interface Server {
 
     EventHandler getEventHandler();
 
+    /**
+     * Amount of ticks passed since the server start.
+     */
     int getTicks();
 
     boolean isMainThread();

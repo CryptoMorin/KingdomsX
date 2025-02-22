@@ -52,6 +52,10 @@ interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
         @JvmStatic fun of(int: Int): AnyNumber = _Int(int)
         @JvmStatic fun of(double: Double): AnyNumber = _Double(double)
         @JvmStatic fun of(string: String): AnyNumber? {
+            if (string.contains('.')) {
+                return NumberType.DOUBLE.parseString(string)
+            }
+
             for (type in arrayOf(NumberType.INT, NumberType.LONG, NumberType.DOUBLE)) {
                 type.parseString(string)?.let { return it }
             }

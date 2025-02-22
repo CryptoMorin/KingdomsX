@@ -25,6 +25,9 @@ open class ExpirableCachedSupplier<T>(
         return cached!!
     }
 
+    override fun toString(): String =
+        this.javaClass.simpleName + "($cacheTime | $supplier)"
+
     companion object {
         @JvmStatic fun <T> of(cacheTime: Duration, getter: Supplier<T>) = ExpirableCachedSupplier(cacheTime, getter)
     }

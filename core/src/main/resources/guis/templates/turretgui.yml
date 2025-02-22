@@ -1,0 +1,140 @@
+### Shared outpost page settings ###
+(module):
+  description: 'Base settings for turret GUIs.'
+  parameters:
+    <name>: str
+
+title: "&a<name> Turret"
+rows: 3
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "{$sp}Ammo{$colon} {$p}%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    # Set to 0 to disable.
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      {$p}Buy {$s}%ammo-buy-amount% {$p}ammo for {$s}%cost% {$p}resource points.
+      {$p}Fully fill ammo by {$s}shift clicking
+      {$p}for {$s}%fill-cost% {$p}resource points.
+    posx: 2
+    posy: 2
+  upgrade:
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      lore: |
+        {? building_is_under_construction ? "{$err-sign} &cYou currently can't upgrade this
+        turret because it's under construction.
+        "}
+        {$dot} {$p}Range{$colon} {$s}%range% {$sep}➔ {$s}%next_range%
+        {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo% {$sep}➔ {$s}%next_max_ammo%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next_cooldown%
+        {$dot} {$p}Max Targets{$colon} {$s}%max_targets% {$sep}➔ {$s}%next_max_targets%
+        {$dot} {$p}Speed{$colon} {$s}%fancy@speed% {$sep}➔ {$s}%fancy@next_speed%
+        {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next_damage%
+
+        {$dot} {$p}Max Level{$colon} {$s}III
+        {$dot} {$p}Cost{$colon} {$s}%upgrade_cost%
+    maxxed:
+      name: "{$sp}Level{$colon} {$s}%roman@level%"
+      lore: |
+        {$dot} {$p}Range{$colon} {$s}%range%
+        {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+        {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
+        {$dot} {$p}Speed{$colon} {$s}%fancy@speed%
+        {$dot} {$p}Damage{$colon} {$s}%damage%
+    posx: 3
+    posy: 2
+  manual:
+    manual:
+      condition: "manual"
+      name: "{$p}Manual"
+      material: LEVER
+      lore: |
+        {$sep}Manual mode allows you
+        to disable turrets from
+        activating automatically and
+        you can take control of them instead.
+
+        {$p}Left-click to go into
+        {$sp}automatic mode
+
+        {$p}Right-click to start
+        operating the turret
+    automatic:
+      name: "{$sp}Automatic"
+      material: COMPARATOR
+      lore: |
+        {$sep}Automatic mode will make
+        turrets automatically detect
+        nearby enemies and shoot at them.
+
+        {$p}Left-click to go into
+        {$sp}manual mode
+    posx: 4
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}Repair"
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}Your current turret is completely
+        destroyed and needs a full repair
+        to fix it.
+
+        {$p}Cost{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Resource Points{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Money{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}You can repair your building by
+        throwing the following items at it{$colon}
+
+          {$dot} {$p}Iron{$colon} {$s}10
+          {$dot} {$p}Gold{$colon} {$s}15
+          {$dot} {$p}Diamonds{$colon} {$s}50
+
+        {$info-sign} &9If your building's durability hits {$e}0&9,
+        you'll have to do a full repair using
+        this button.
+    posx: 6
+    posy: 2
+  break:
+    name: "&cBreak"
+    material: REDSTONE_BLOCK
+    under-construction:
+      condition: "building_is_under_construction"
+      lore: |
+        &4Breaks this turret.
+
+        {$err-sign} {$e}This turret is currently under
+        construction, breaking this turret
+        will revert all progress.
+    else:
+      lore: |
+        &4Breaks this turret.
+    posx: 7
+    posy: 2
+  close:
+    name: "&cClose"
+    material: BARRIER
+    lore:
+      - "{$s}Close the GUI"
+    posx: 8
+    posy: 2
+
+  lime-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 13, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
