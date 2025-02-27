@@ -6,6 +6,10 @@ plugins {
 group = "org.kingdoms.services.mythicmobs"
 version = "1.0.0"
 
+repositories {
+    maven("https://mvn.lumine.io/repository/maven-public/")
+}
+
 dependencies {
     compileOnly(project(":core:service"))
     compileOnly(project(":core:service:mythicmobs"))

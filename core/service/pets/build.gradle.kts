@@ -15,6 +15,10 @@ repositories {
         name = "BSRepository"
         url = uri("https://repo.bsdevelopment.org/releases")
     }
+    maven {
+        name = "NightExpress's Repository"
+        url = uri("https://repo.nightexpressdev.com/releases")
+    }
 }
 
 dependencies {
@@ -29,7 +33,11 @@ dependencies {
     // https://discord.com/channels/903053383475277844/1203319394499829770/1206931275060084767
     // Not using NexEngine will result in compile errors: error: cannot access AbstractManager
     // https://github.com/nulli0n/NexEngine-spigot/releases
-    compileOnly(localDependency("CombatPets-1.0.30.jar"))
+    compileOnly(localDependency("CombatPets-2.3.2.jar"))
+    // https://nightexpressdev.com/nightcore/developer-api/
+    // https://repo.nightexpressdev.com/#/releases/su/nightexpress/nightcore/nightcore
+    compileOnly("su.nightexpress.nightcore:nightcore:2.7.4")
+
     compileOnly(localDependency("NexEngine-2.2.12-R2-Final.jar"))
 
     // https://github.com/brainsynder-Dev/SimplePets

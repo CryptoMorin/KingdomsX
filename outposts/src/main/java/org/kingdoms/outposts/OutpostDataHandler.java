@@ -3,17 +3,16 @@ package org.kingdoms.outposts;
 import com.cryptomorin.xseries.XItemStack;
 import org.bukkit.Location;
 import org.bukkit.inventory.ItemStack;
-import org.kingdoms.locale.MessageHandler;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.outposts.settings.OutpostArenaMob;
 import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.settings.OutpostRewards;
+import org.kingdoms.utils.KingdomsItemDeserializer;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.bossbars.BossBarSettings;
 import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;
-import org.kingdoms.utils.config.NodeInterpreter;
 import org.kingdoms.utils.config.adapters.YamlFile;
 
 import java.io.File;
@@ -65,10 +64,14 @@ public final class OutpostDataHandler {
                 ConfigSection arenaMobSection = arenaMobsSection.createSection(String.valueOf(num++));
 
                 if (arenaMob.getLabel() != null) arenaMobSection.set("label", arenaMob.getLabel());
-                if (arenaMob.getMaxSpawnCount() != 0) arenaMobSection.set("max-spawn-count", arenaMob.getMaxSpawnCount());
-                if (arenaMob.getSpawnInterval() != null) arenaMobSection.set("spawn-interval", arenaMob.getSpawnInterval().getSeconds() + "s");
-                if (arenaMob.getSpawnLocation() != null) arenaMobSection.set("spawn-location", LocationUtils.toString(arenaMob.getSpawnLocation()));
-                if (arenaMob.getDamageBonus() != null) arenaMobSection.set("damage-bonus", arenaMob.getDamageBonus().getOriginalString());
+                if (arenaMob.getMaxSpawnCount() != 0)
+                    arenaMobSection.set("max-spawn-count", arenaMob.getMaxSpawnCount());
+                if (arenaMob.getSpawnInterval() != null)
+                    arenaMobSection.set("spawn-interval", arenaMob.getSpawnInterval().getSeconds() + "s");
+                if (arenaMob.getSpawnLocation() != null)
+                    arenaMobSection.set("spawn-location", LocationUtils.toString(arenaMob.getSpawnLocation()));
+                if (arenaMob.getDamageBonus() != null)
+                    arenaMobSection.set("damage-bonus", arenaMob.getDamageBonus().getOriginalString());
                 if (arenaMob.getEntitySettings() != null) arenaMobSection.set("entity", arenaMob.getEntitySettings());
             }
         }
@@ -89,10 +92,11 @@ public final class OutpostDataHandler {
             List<ItemStack> itemRewards = new ArrayList<>();
 
             if (itemsSection != null) {
-                for (String item : itemsSection.getKeys()) {
-                    ItemStack itemStack = XItemStack.deserialize(itemsSection.getSection(item).toBukkitConfigurationSection(),
-                            MessageHandler::colorize);
-                    itemRewards.add(itemStack);
+                for (String itemName : itemsSection.getKeys()) {
+                    ItemStack rewardItem = new KingdomsItemDeserializer()
+                            .withSection(itemsSection.getSection(itemName))
+                            .deserialize();
+                    itemRewards.add(rewardItem);
                 }
             }
 

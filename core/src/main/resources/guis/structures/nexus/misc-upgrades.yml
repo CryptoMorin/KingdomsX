@@ -4,14 +4,14 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
 
 # [NoSync]
 '[fn-misc]': &fn-misc
-  args: [ "<name>", "<lore>", "<disallowPacifists>" ]
+  args: [ <name>, <lore>, <disallowPacifists> ]
   return:
     pacifist:
       condition: '<disallowPacifists> && kingdoms_pacifist'
       name: "<name>"
       perform-action: false
       lore:
-        - "<lore>"
+        - <lore>
         - ""
         - "&cYour kingdom is pacifist"
         - "and cannot use this upgrade."
@@ -19,7 +19,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       condition: '!enabled'
       name: "{$disabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
         - &lvl "{$p}Level{$colon} {$s}%level%{$sep}/{$s}%max_level%"
         - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
@@ -27,7 +27,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       condition: 'enabled && maxxed'
       name: "{$enabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
         - &lvl-maxxed "{$p}Level{$colon} {$s}%level% {$sep}({$s}Maxxed{$sep})"
         - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"
@@ -35,7 +35,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       condition: enabled
       name: "{$enabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
         - &upgrade-cost "{$p}Upgrade Cost{$colon} {$s}%cost%"
         - *lvl
@@ -43,7 +43,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
 
 # [NoSync]
 '[fn-misc-basic]': &fn-misc-basic
-  args: [ "<lore>" ]
+  args: [ <lore> ]
   return:
     maxxed:
       condition: 'enabled && maxxed'
@@ -59,201 +59,216 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
 options:
   glory:
     material: NETHER_STAR
-    <<: *fn-misc [ "&3Glory", [
-      "{$p}Level 1{$colon} {$s}Killing non-player mobs on your land\nyields {$p}5 {$s}more exp for each level.",
-      "{$p}Level 2{$colon} {$s}Killing zombies and skeletons on your land\nyields {$p}x2 {$s}experience.",
-      "{$p}Level 3{$colon} {$s}Killing player enemies on your land\nyields {$p}x1.5 {$s}experience.",
-      "",
-      "{$chk-kingdom-lvl-IV}"
-    ], false ]
-
     posx: 3
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Glory'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Level 1{$colon} {$desc}Killing non-player mobs on your land
+                 yields {$p}5 {$desc}more exp for each level.
+        {$p}Level 2{$colon} {$desc}Killing zombies and skeletons on your land
+                 yields {$p}x2 {$desc}experience.
+        {$p}Level 3{$colon} {$desc}Killing player enemies on your land
+                 yields {$p}x1.5 {$desc}experience.
+
+        {$chk-kingdom-lvl-IV}
   anti-trample:
     material: WHEAT_SEEDS
-    <<: *fn-misc [ "&aAnti-Trample", [
-      "{$p}Level 1{$colon} {$s}Your tilled soil cannot",
-      "be trampled by players.",
-      '',
-      "{$p}Level 2{$colon} {$s}Pistons placed outside of your",
-      "land to push blocks in/out of your kingdom will not work.",
-      "This also prevents endermen from stealing blocks within",
-      "your territory.",
-      "",
-      "{$p}Level 3{$colon} {$s}Protects certain animals from",
-      "being damaged in your lands.",
-      "Also prevents enemy players from using",
-      "ender pearls to teleport into your land."
-    ], false ]
-
     posx: 4
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&aAnti-Trample'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Level 1{$colon} {$desc}Your tilled soil cannot
+        be trampled by players.
+
+        {$p}Level 2{$colon} {$desc}Pistons placed outside of your
+        land to push blocks in/out of your kingdom will not work
+        This also prevents endermen from stealing blocks within
+        your territory
+
+        {$p}Level 3{$colon} {$desc}Protects certain animals from
+        being damaged in your lands.
+        Also prevents enemy players from using
+        ender pearls to teleport into your land
   nexus-guards:
     material: DIAMOND_AXE
-
-    <<: *fn-misc [ "&4Nexus Guards", [
-      "{$s}Spawns guards that are",
-      "stronger than your normal guards",
-      " when someone enters your nexus land.",
-      "",
-      "{$chk-kingdom-lvl-IV}"
-    ], true ]
-
     posx: 5
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&4Nexus Guards'
+      <disallowPacifists>: false
+      <lore>: |
+        {$s}Spawns guards that are
+        stronger than your normal guards
+        when someone enters your nexus land.
+
+        {$chk-kingdom-lvl-IV}
   guards:
     material: IRON_AXE
-
-    <<: *fn-misc [ "&eGuards", [
-      "{$s}Guards will randomly spawn",
-      "to protect the kingdom when",
-      "a non-ally enters your land.",
-      "",
-      "{$chk-kingdom-lvl-III}"
-    ], true ]
-
     posx: 6
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cGuards'
+      <disallowPacifists>: true
+      <lore>: |
+        {$s}Guards will randomly spawn
+        to protect the kingdom when
+        a non-ally enters your land.
+
+        {$chk-kingdom-lvl-III}
   insanity:
     material: REDSTONE
-
-    <<: *fn-misc [ "&cInsanity", [
-      "{$sep}Defenders and Nexus guards",
-      "spawned on powercell land will have{$colon}",
-      "{$p}Level 1{$colon} {$s}Strength I for 10 seconds.",
-      "{$p}Level 2{$colon} {$s}Strength II for 10 seconds.",
-      "{$p}Level 3{$colon} {$s}Strength III for 10 seconds.",
-      "",
-      "{$chk-kingdom-lvl-II}"
-    ], true ]
-
     posx: 7
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cInsanity'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Normal guards, nexus guards and
+        reinforcements spawned by the champion
+        on powercell lands will have{$colon}
 
+        {$p}Level 1{$colon} {$s}Strength I for 10 seconds.
+        {$p}Level 2{$colon} {$s}Strength II for 10 seconds.
+        {$p}Level 3{$colon} {$s}Strength III for 10 seconds.
+
+        {$chk-kingdom-lvl-II}
   invasion-teleportation:
     material: ENDER_PEARL
-
-    <<: *fn-misc [ "&3Invasion Teleportation", [
-      "{$p}Decreases your teleportation delay",
-      "for &e/k tp {$p}after every upgrade."
-    ], true ]
-
     posx: 3
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Invasion Teleportation'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Decreases your teleportation delay
+        for {$p}/k tp {$desc}after every upgrade.
+
+        {$chk-kingdom-lvl-II}
   invasions:
     material: DIAMOND_SWORD
-
-    <<: *fn-misc [ "&3Invasions", [
-      "{$p}Your kingdom can invade {$s}%invasion-limit% {$p}times.",
-      "{$p}Used invasions{$colon} {$s}%invasions%",
-      "{$p}Refresh Cooldown{$colon} {$s}%invasion-refresh-cooldown%"
-    ], true ]
-
     posx: 2
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Invasions'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Your kingdom can invade {$s}%invasion-limit% {$desc}times.
+        {$p}Used invasions{$colon} {$s}%invasions%
+        {$p}Refresh Cooldown{$colon} {$s}%invasion-refresh-cooldown%
   anti-explosion:
     material: GUNPOWDER
-
-    <<: *fn-misc [ "&5Anti-Explosion", [
-      "{$p}Level 1{$colon} {$sep}Prevents creepers from",
-      "destroying blocks in your land.",
-      "",
-      "{$p}Level 2{$colon} {$sep}Prevents TNT from",
-      "destroying blocks in your land.",
-      "",
-      "{$p}Level 3{$colon} {$sep}Protects your kingdom members,",
-      "animals, and all other animals (but not hostile mobs)",
-      "within your lands from explosions.",
-      "",
-      "{$sp}Note that explosions will still break the",
-      "blocks but they'll regenerate shortly after."
-    ], false ]
-
     posx: 4
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&5Anti-Explosion'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Level 1{$colon} {$desc}Prevents creepers from
+        destroying blocks in your land.
+
+        {$p}Level 2{$colon} {$desc}Prevents TNT from
+        destroying blocks in your land.
+
+        {$p}Level 3{$colon} {$desc}Protects your kingdom members,
+        animals, and all other animals (but not hostile mobs)
+        within your lands from explosions.
+
+        {$note} Explosions will still break the
+        blocks but they'll regenerate shortly after.
+
+        {$chk-kingdom-lvl-IV}
   max-claims:
     name: "&3Max Claims"
     material: MAP
-
-    <<: *fn-misc-basic [ [
-      "{$s}Increases your maximum claims",
-      "by {$p}2 {$s}each upgrade.",
-      "",
-      "{$p}Current Max Lands{$colon} {$s}%kingdoms_max_claims%"
-    ] ]
-
     posx: 8
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Increases your maximum claims
+        by {$p}2 {$desc}each upgrade.
+
+        {$p}Current Max Lands{$colon} {$s}%kingdoms_max_claims%
   max-turrets:
     name: "&3Max Turrets"
     material: ARROW
-
-    <<: *fn-misc-basic [ [
-      "{$sep}Increases your maximum turrets",
-      "per land by {$p}1 {$sep}each upgrade.",
-      "",
-      "{$p}Current Max Turrets Per Land{$colon} {$s}%max_turrets_per_land%",
-    ] ]
-
     posx: 5
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Increases your maximum turrets
+        per land by {$p}1 {$desc}each upgrade.
+
+        {$p}Current Max Turrets Per Land{$colon} {$s}%max_turrets_per_land%
   max-members:
     name: "&3Max Players"
     material: PLAYER_HEAD
-
-    <<: *fn-misc-basic [ [
-      "{$sep}Every upgrade allows you to",
-      "have {$p}3 {$sep}more members.",
-      "",
-    ] ]
-
     posx: 6
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Every upgrade allows you to
+        have {$p}3 {$desc}more members.
+
   chest-size:
     name: "&3Nexus Chest Size"
     material: ENDER_CHEST
-
-    <<: *fn-misc-basic [ [
-      "{$s}Increases your nexus chest size.",
-      "",
-    ] ]
-
     posx: 7
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Increases your nexus chest size.
+
   flight:
     material: ELYTRA
-
-    <<: *fn-misc [ "&3Flight", [
-      "{$desc}Allows the use of {$p}/k fly",
-      "{$chk-kingdom-lvl-V}"
-    ], false ]
-
     posx: 3
     posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Flight'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Allows the use of {$p}/k fly
+
+        {$chk-kingdom-lvl-V}
   keep-inventory:
     material: CHEST
-
-    <<: *fn-misc [ "&3Keep Inventory", [
-      "{$desc}Allows you to keep items in",
-      "your inventory after dying in your own kingdom.",
-      "",
-      "{$p}Level 1 {$sep}({$kingdom-lvl-II}{$sep}):",
-      "  {$s}Only keep armor and off-hand/main-hand items.",
-      "{$p}Level 2 {$sep}({$kingdom-lvl-IV}{$sep}):",
-      "  {$s}Only keep armor, and hotbar items.",
-      "{$p}Level 3 {$sep}({$kingdom-lvl-V}{$sep}):",
-      "  {$s}Keep all items."
-    ], false ]
-
-
     posx: 7
     posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Keep Inventory'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Allows you to keep items in
+        your inventory after dying in your own kingdom.
 
+        {$p}Level 1 {$sep}({$kingdom-lvl-II}{$sep}):
+          {$desc}Only keep armor and off-hand/main-hand items.
+        {$p}Level 2 {$sep}({$kingdom-lvl-IV}{$sep}):
+          {$desc}Only keep armor, and hotbar items.
+        {$p}Level 3 {$sep}({$kingdom-lvl-V}{$sep}):
+          {$desc}Keep all items.
   back:
     name: "{$p}Back"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
-    lore: "{$s}Go back to nexus menu."
+    lore: "{$desc}Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:

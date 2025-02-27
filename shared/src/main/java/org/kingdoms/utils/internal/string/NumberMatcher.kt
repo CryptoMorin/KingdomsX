@@ -9,7 +9,7 @@ interface NumberMatcher {
 
     class Exact(private val number: AnyNumber) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = this.number == number
-        override val asString: String get() = "Exact:$number"
+        override val asString: String get() = number.value.toString()
     }
 
     class LessThan(private val lessThan: AnyNumber) : NumberMatcher {
@@ -33,9 +33,10 @@ interface NumberMatcher {
         override val asString: String get() = "<=${greaterThan.value}"
     }
 
-    class Range(private val first: NumberMatcher, private val second: NumberMatcher) : NumberMatcher {
+    class Range(private val originalString: String,
+                private val first: NumberMatcher, private val second: NumberMatcher) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = first.matches(number) && second.matches(number)
-        override val asString: String get() = "($first && $second)"
+        override val asString: String get() = originalString
         override fun toString(): String = "NumberMatcher::Range($first && $second)"
     }
 
@@ -65,6 +66,7 @@ interface NumberMatcher {
                 return symbolToMatcher(symbol, num, Side.RIGHT_HAND)
             }
 
+            val startRange = i
             val number = checkNumber()
             if (number !== null) {
                 if (chars[i] == ',') {
@@ -85,8 +87,11 @@ interface NumberMatcher {
 
                     val secNum = checkNumber()
                     if (secNum === null) throw IllegalArgumentException("Cant find end number for ternary number comparison in $value")
+                    val endRange = i
 
                     return Range(
+                        // Not really original, because we trim it.
+                        originalString = String(chars, startRange, endRange - startRange),
                         first = symbolToMatcher(firstSym, number, Side.LEFT_HAND),
                         second = symbolToMatcher(secSym, secNum, Side.RIGHT_HAND)
                     )

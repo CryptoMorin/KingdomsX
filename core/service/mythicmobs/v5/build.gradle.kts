@@ -8,10 +8,15 @@ plugins {
 group = "org.kingdoms.services.mythicmobs"
 version = "1.0.0"
 
+repositories {
+    maven("https://mvn.lumine.io/repository/maven-public/")
+}
+
 dependencies {
     compileOnly(project(":core:service"))
     compileOnly(project(":core:service:mythicmobs"))
-    compileOnly(
-        localDependency("MythicMobs-5.6.2.jar")
-    ) // They didn't upload v5.0.0 to the repo
+
+    // https://git.mythiccraft.io/mythiccraft/MythicMobs/-/wikis/API
+    // https://mvn.lumine.io/service/rest/repository/browse/maven-public/io/lumine/Mythic-Dist/
+    compileOnly("io.lumine:Mythic-Dist:5.8.0")
 }

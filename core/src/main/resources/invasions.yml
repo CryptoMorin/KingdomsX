@@ -10,10 +10,12 @@
 # person being enemy'd/invaded is the secondary context.
 # To disable, set this to "false"
 # If this condition evaluates to true, you cannot invade.
-strength-comparison: |
-  (kingdoms_structures_total - {other*kingdoms_structures_total} > 50) ||
-  (kingdoms_turrets_total - {other*kingdoms_turrets_total} > 100) ||
-  (kingdoms_claims - {other*kingdoms_claims} > 50)
+# A good strategy would be the following:
+#strength-comparison: |
+#  (kingdoms_structures_total - {other*kingdoms_structures_total} > 50) ||
+#  (kingdoms_turrets_total - {other*kingdoms_turrets_total} > 100) ||
+#  (kingdoms_claims - {other*kingdoms_claims} > 50)
+strength-comparison: false
 
 # By default, your kingdom can only invade one kingdom at a time.
 # 0 means no limit.

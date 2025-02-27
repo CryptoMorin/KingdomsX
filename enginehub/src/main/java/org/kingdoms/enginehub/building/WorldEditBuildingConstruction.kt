@@ -191,9 +191,12 @@ class WorldEditBuildingConstruction(
     }
 
     override fun finishInstantly() {
-        super.finishInstantly()
-        while (!blockChangeTask!!.isCancelled()) blockChangeTask!!.run()
-        stopTask()
+        super.prefinishInstantly()
+
+        // The task cancels itself and calls finish() we don't need to do anything else.
+        // Should we be worried about concurrent run() from here and the scheduled task?
+        val task = blockChangeTask!!
+        while (!task.isCancelled()) task.run()
     }
 
     override fun onTimerFinish(): Boolean = this.isInstant()
@@ -283,12 +286,16 @@ class WorldEditBuildingConstruction(
             blocks.iterator(),
             Math.max(0, blockIndex)
         )
+        var isDone = false
 
         private fun done() {
             this@WorldEditBuildingConstruction.finish()
+            isDone = true
         }
 
         override fun run() {
+            if (isDone) return
+
             // Just here to prevent unexpected errors.
             if (!indexedBlocks.hasNext()) {
                 done()

@@ -67,10 +67,15 @@ interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
 interface FloatingPointNumber : AnyNumber
 
 internal abstract class AbstractAnyNumber : AnyNumber {
-    final override fun equals(other: Any?): Boolean {
+    override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other !is AnyNumber) return false
-        return this.value == other.value
+        if (this.type === other.type) return this.value == other.value
+
+        // Use double value, because if object wrappers for nubmers
+        // do equality test, it'll only succeed if the numbers are the same type.
+        // Note that this will stop working if we ever use the "BigNumber" classes.
+        return this.value.toLong() == other.value.toLong()
     }
 
     final override fun hashCode(): Int = value.hashCode()
@@ -79,8 +84,21 @@ internal abstract class AbstractAnyNumber : AnyNumber {
     final override fun toString(): String = this.type.name + "($value)"
 }
 
+@Suppress("EqualsOrHashCode")
 internal abstract class AbstractFloatingPointNumber : AbstractAnyNumber(), FloatingPointNumber {
     protected inline fun requireFinite(requirement: Boolean, lazyMessage: () -> String) {
         if (!requirement) throw NonFiniteNumberException(lazyMessage())
+    }
+
+    final override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is AnyNumber) return false
+        if (this.type === other.type) return this.value == other.value
+
+        // 0.1f != 0.1D
+        // Devs seem to suggest that using BigDecimal is recommended.
+        // But do we really need it for this?
+        return this.value.toDouble() == other.value.toDouble() ||
+                this.value.toString() == other.value.toString()
     }
 }

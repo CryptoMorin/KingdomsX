@@ -497,15 +497,29 @@ kingdom-fly:
   # - Value 0 means the player can only float in air, but they can't move at all.
   #   In some older versions, you can only move vertically with this value.
   # - You can also use special permissions to control the default
-  #   speed of individual players and what speed they can choose:
-  #     * kingdoms.flight.speed.default.<number> - The default flying speed.
-  #     * kingdoms.flight.speed.<number matcher> - The speed that the player can choose with "/k fly <speed>"
+  #   speed of individual players. If multiple of them are present,
+  #   the selected permission is implementation-dependent.
+  #     * kingdoms.flight.speed.default.<number>
   speed: 0.15
 
   # The usual flight speed which is set
   # once the player goes out of /k fly mode.
-  # Read the option above for more info about the values.
+  # Read the option above for more w  w/info about the values.
+
   normal-flight-speed: 0.2
+
+  # The speed that the player can choose with "/k fly <speed>"
+  #
+  # This option supports number ranges:
+  # https://github.com/CryptoMorin/KingdomsX/wiki/Config#number-matchers
+  #
+  # You can also use special permissions to control the range of
+  # allowed speeds for individual players. You can use multiple:
+  #     * kingdoms.flight.speed.range.<number matcher>
+  #
+  # This value will only be used if the player has no "kingdoms.flight.speed.range..."
+  # permissions, otherwise it'll only consider the permissions to calculate the range.
+  allowed-speed: -0.5 < x < 0.5
 
   # Disable flight after taking damage.
   disable-on-damage: true
@@ -616,11 +630,14 @@ placeholders:
   # is not needed to be used (depending on the situation) or "default" otherwise.
   # You can also use "%" for default options to retrieve their default values from
   # the option below.
+  # You can also use the "apply" list to make the modifier automatically apply extra
+  # modifiers as well (applied in order) only if the "normal" value is used.
   formats:
     #    rp:
     #      normal: '% rp'
     #      default: '- rp'
     currency:
+      apply: [ fancy ]
       normal: '$%'
       default: '$-'
     none:
@@ -834,7 +851,7 @@ flag:
     blacklist: true
     # If the URL contains one of these strings.
     # It's possible to detect links wrongly, but it happens rarely.
-    contains: [ 'jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion' ]
+    contains: [ 'jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion', 'logger' ]
     # Only use if you know how RegEx works. You can use this site: https://regexr.com/
     # If the URL contains any RegEx below then it'll not be allowed.
     regex: [ ]
