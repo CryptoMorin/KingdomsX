@@ -35,7 +35,6 @@ public final class Numbers {
      *
      * @param str the string to check the numbers.
      * @return true if the string contains any number, otherwise false.
-     * @see #isEnglish(CharSequence)
      * @since 1.0.0
      */
     public static boolean containsNumber(@Nullable CharSequence str) {

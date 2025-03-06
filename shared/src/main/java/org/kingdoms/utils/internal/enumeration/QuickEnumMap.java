@@ -110,7 +110,7 @@ public class QuickEnumMap<K extends Enum<K>, V> implements Map<K, V> {
     /**
      * {@inheritDoc}
      *
-     * @implSpec This implementation returns {@code size() == 0}.
+     * This implementation returns {@code size() == 0}.
      */
     @Override
     public boolean isEmpty() {

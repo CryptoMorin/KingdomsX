@@ -103,10 +103,9 @@ public class ByteArrayOutputStream extends OutputStream {
     /**
      * Writes the complete contents of the specified byte array
      * to this {@code ByteArrayOutputStream}.
+     * This method is equivalent to {@link #write(byte[], int, int)}
      *
      * @throws NullPointerException if {@code b} is {@code null}.
-     * @apiNote This method is equivalent to {@link #write(byte[], int, int)
-     * write(b, 0, b.length)}.
      * @since 11
      */
     public void writeBytes(byte[] b) {

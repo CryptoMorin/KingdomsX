@@ -62,7 +62,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     /**
-     * Constructs an empty <tt>HashMap</tt> with the specified initial
+     * Constructs an empty <code>HashMap</code> with the specified initial
      * capacity and the default load factor (0.75).
      *
      * @param initialCapacity the initial capacity.
@@ -73,7 +73,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     /**
-     * Constructs an empty <tt>HashMap</tt> with the default initial capacity
+     * Constructs an empty <code>HashMap</code> with the default initial capacity
      * (16) and the default load factor (0.75).
      */
     public UnsafeHashMap() {
@@ -81,10 +81,10 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     /**
-     * Constructs a new <tt>HashMap</tt> with the same mappings as the
-     * specified <tt>Map</tt>.  The <tt>HashMap</tt> is created with
+     * Constructs a new <code>HashMap</code> with the same mappings as the
+     * specified <code>Map</code>.  The <code>HashMap</code> is created with
      * default load factor (0.75) and an initial capacity sufficient to
-     * hold the mappings in the specified <tt>Map</tt>.
+     * hold the mappings in the specified <code>Map</code>.
      *
      * @param m the map whose mappings are to be placed in this map
      * @throws NullPointerException if the specified map is null
@@ -442,11 +442,11 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     /**
-     * Returns <tt>true</tt> if this map maps one or more keys to the
+     * Returns <code>true</code> if this map maps one or more keys to the
      * specified value.
      *
      * @param value value whose presence in this map is to be tested
-     * @return <tt>true</tt> if this map maps one or more keys to the
+     * @return <code>true</code> if this map maps one or more keys to the
      * specified value
      */
     public boolean containsValue(@NonNull Object value) {
@@ -725,7 +725,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     /**
-     * Returns a shallow copy of this <tt>HashMap</tt> instance: the keys and
+     * Returns a shallow copy of this <code>HashMap</code> instance: the keys and
      * values themselves are not cloned.
      *
      * @return a shallow copy of this map

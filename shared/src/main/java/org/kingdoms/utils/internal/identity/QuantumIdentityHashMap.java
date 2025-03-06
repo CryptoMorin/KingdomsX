@@ -120,9 +120,9 @@ import java.util.function.Consumer;
  * <p>This class is a member of the
  * <a href="{@docRoot}/java.base/java/util/package-summary.html#CollectionsFramework">
  * Java Collections Framework</a>.
+ * <p>This is a simple <i>linear-probe</i> hash table,
  *
  * @author Doug Lea and Josh Bloch
- * @implNote <p>This is a simple <i>linear-probe</i> hash table,
  * as described for example in texts by Sedgewick and Knuth.  The array
  * contains alternating keys and values, with keys at even indexes and values
  * at odd indexes. (This arrangement has better locality for large
