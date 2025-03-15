@@ -1,4 +1,4 @@
-title: "{$sep}-=( {$p}Operações de Atributo {$sep})=-"
+title: "{$desc}-=( {$p}Attribute Operations {$desc})=-"
 rows: 3
 op:
   args:
@@ -6,7 +6,7 @@ op:
   return:
     enabled:
       condition: enabled
-      name: "{$sep}[{$p}Ativo{$sep}] {$p}<x>"
+      name: "{$desc}[{$p}Active{$desc}] {$p}<x>"
       glow: true
     else:
       name: "{$p}<x>"
@@ -14,7 +14,6 @@ options:
   back:
     posx: 1
     posy: 1
-    material: PLAYER_HEAD
     skull: "{$gui-back}"
     name: '{$p}Voltar'
   decoration:
@@ -49,53 +48,70 @@ options:
     material: NETHER_STAR
     name: '&eInformação'
     lore: |
-      {$sep}A operação de um modificador dita como ele modifica o valor base de um atributo
+      {$desc}A modifier's operation dictates
+      how it modifies an attribute's base value
   add-number:
     posx: 2
     posy: 2
-    material: PLAYER_HEAD
     glow: true
-    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZGQ4YjcxNzNkODQxZjI1NjNlYzEwODg4OGIwZjc5NzkxN2VmYzE4YmUyNzg2MWYwYTY3NjFhYTNlZDkxY2UifX19'
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjM3MjgxNzhhMTMzOTQzMGFhYzQ4NGZmMjI1NzNmOGVlNzRlZmY1ZGJkNGFlOTVkYjhmMmRmY2ZjMzUzYzEzMiJ9fX0='
     args:
       - <x>
     return:
       enabled:
         condition: enabled
-        name: '{$sep}[{$p}Ativo{$sep}] {$p}<x>'
+        name: '{$desc}[{$p}Active{$desc}] {$p}<x>'
         glow: true
       else:
         name: '{$p}<x>'
     lore: |
-      {$sep}Adiciona todos os valores dos modificadores ao valor atual do atributo. Por exemplo, modificar um atributo com {$p}Valor 2 {$sep}e {$p} Valor 4 {$sep}com um {$p}Base de 3 {$sep}resulta em {$p}3 + 2 + 4 = 9
+      {$desc}Adds all of the modifiers' amounts to
+      the current value of the attribute.
+      For example, modifying an attribute with
+      {$p}Amount 2 {$desc}and {$p} Amount 4 {$desc}with
+      a {$p}Base of 3 {$desc}results in {$p}3 + 2 + 4 = 9
   multiply-scalar-1:
     posx: 5
     posy: 2
-    material: PLAYER_HEAD
-    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTljZGI5YWYzOGNmNDFkYWE1M2JjOGNkYTc2NjVjNTA5NjMyZDE0ZTY3OGYwZjE5ZjI2M2Y0NmU1NDFkOGEzMCJ9fX0='
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDZhZTIxMWI0NDAzYjg5NjNjNjc0NWYzYzk4ZWJlNzNhMmI0ZTk3YzQwYTc4YjJmZDQwM2EwOWMwZmNhZDZkIn19fQ=='
     args:
       - <x>
     return:
       enabled:
         condition: enabled
-        name: '{$sep}[{$p}Ativo{$sep}] {$p}<x>'
+        name: '{$desc}[{$p}Active{$desc}] {$p}<x>'
         glow: true
       else:
         name: '{$p}<x>'
     lore: |
-      {$sep}Para cada modificador, multiplica o valor atual do atributo por {$p}(1 + x){$sep}, onde x é a quantidade do modificador específico. Funciona da mesma forma que {$p}Adicionar Escalar{$sep} se houver apenas um único modificador com {$p}operação 1 ou 2{$sep}. No entanto, para múltiplos modificadores, multiplica os modificadores em vez de somá-los. Por exemplo, modificar um atributo com {$p}Valor 2 {$sep}e {$p}Valor 4 {$sep}com um {$p}Base de 3 {$sep}resulta em {$p}3 * (1 + 2) * (1 + 4) = 45
+      {$desc}For every modifier, multiplies the
+      current value of the attribute by {$p}(1 + x){$desc},
+      where x is the amount of the particular
+      modifier. Functions the same as {$p}Add Scalar
+      {$desc}if there is only a single modifier with
+      {$p}operation 1 or 2{$desc}. However, for multiple
+      modifiers it multiplies the modifiers rather
+      than adding them. For example, modifying an
+      attribute with {$p}Amount 2 {$desc}and {$p}Amount 4
+      {$desc}with a {$p}Base of 3 {$desc}results in
+      {$p}3 * (1 + 2) * (1 + 4) = 45
   add-scalar:
     posx: 8
     posy: 2
-    material: PLAYER_HEAD
-    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmQ4NmRiOWExNGQ1ODc5ZmEyODExZDMwMWNjYmQ1MjY5OTRmODcxMjQ3YjYyZjJkOWE0ODE4M2U5NjQxYWQ2OSJ9fX0='
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTc3YmI2NmZjNzNhOTdjZWZjYjNhNGJmZGNjYjEyMjgxZjQ0ZGQzMjZjY2QwZmYzOWQ0N2U5ODViZmVmZjM0MyJ9fX0='
     args:
       - <x>
     return:
       enabled:
         condition: enabled
-        name: '{$sep}[{$p}Ativo{$sep}] {$p}<x>'
+        name: '{$desc}[{$p}Active{$desc}] {$p}<x>'
         glow: true
       else:
         name: '{$p}<x>'
     lore: |
-      {$sep}Multiplica o valor atual do atributo por {$p}1 + x{$sep}, onde x é a soma dos valores dos modificadores. Por exemplo, modificar um atributo com {$p}Valor 2{$sep} e {$p}Valor 4{$sep} com um {$p}Base de 3 {$sep}resulta em {$p}3 * (1 + 2 + 4) = 21
+      {$desc}Multiplies the current value of the
+      attribute by {$p}1 + x{$desc}, where x is the sum
+      of the modifiers' amounts. For example,
+      modifying an attribute with {$p}Amount 2{$desc}
+      and {$p}Amount 4 with a {$p}Base of 3 {$desc}results in
+      {$p}3 * (1 + 2 + 4) = 21
