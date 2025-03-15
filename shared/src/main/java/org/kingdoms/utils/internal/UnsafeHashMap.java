@@ -35,7 +35,8 @@ import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
+@SuppressWarnings("all")
+public final class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     public static final int DEFAULT_INITIAL_CAPACITY = 1 << 4; // aka 16
     public static final int MAXIMUM_CAPACITY = 1 << 30;
     public static final float DEFAULT_LOAD_FACTOR = 0.75f;
@@ -95,6 +96,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     @SafeVarargs
+    @SuppressWarnings("varargs")
     public static <K, V> UnsafeHashMap<K, V> of(Map.Entry<? extends K, ? extends V>... entries) {
         UnsafeHashMap<K, V> map = new UnsafeHashMap<>();
         map.putEntries(false, entries);
@@ -144,7 +146,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
     }
 
-    public final void putMapEntries(Map<? extends K, ? extends V> m, boolean evict) {
+    public void putMapEntries(Map<? extends K, ? extends V> m, boolean evict) {
         putMapEntries(m, false, evict);
     }
 
@@ -155,7 +157,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
      * @param evict false when initially constructing this map, else
      *              true (relayed to method afterNodeInsertion).
      */
-    public final void putMapEntries(Map<? extends K, ? extends V> m, boolean ifAbsent, boolean evict) {
+    public void putMapEntries(Map<? extends K, ? extends V> m, boolean ifAbsent, boolean evict) {
         int s = m.size();
         if (s > 0) {
             if (table == null) { // pre-size
@@ -236,7 +238,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         return putVal(hash(key), key, value, false, true);
     }
 
-    public final V putVal(int hash, @NonNull K key, @Nullable V value, boolean onlyIfAbsent, boolean evict) {
+    public V putVal(int hash, @NonNull K key, @Nullable V value, boolean onlyIfAbsent, boolean evict) {
         Node<K, V>[] tab = table;
         int n;
         if (tab == null || (n = tab.length) == 0) n = (tab = resize()).length;
@@ -301,7 +303,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
                     (int) ft : Integer.MAX_VALUE);
         }
         threshold = newThr;
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         Node<K, V>[] newTab = (Node<K, V>[]) new Node[newCap];
         table = newTab;
         if (oldTab != null) {
@@ -388,7 +390,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
      * @return the node, or null if none
      */
     @Nullable
-    public final Node<K, V> removeNode(int hash, @NonNull Object key, @Nullable Object value, boolean matchValue, boolean movable) {
+    public Node<K, V> removeNode(int hash, @NonNull Object key, @Nullable Object value, boolean matchValue, boolean movable) {
         if (table == null || table.length == 0) return null;
 
         int index = (table.length - 1) & hash;
@@ -432,6 +434,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
      * Removes all of the mappings from this map.
      * The map will be empty after this call returns.
      */
+    @SuppressWarnings("ExplicitArrayFilling")
     public void clear() {
         modCount++;
         if (table != null && size > 0) {
@@ -746,7 +749,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         return result;
     }
 
-    public final int capacity() {
+    public int capacity() {
         return table != null
                 ? table.length : threshold > 0
                 ? threshold : DEFAULT_INITIAL_CAPACITY;
@@ -1236,6 +1239,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
             }
         }
 
+        @SuppressWarnings("ConstantValue")
         public static <K, V> TreeNode<K, V> balanceDeletion(TreeNode<K, V> root, TreeNode<K, V> x) {
             for (TreeNode<K, V> xp, xpl, xpr; ; ) {
                 if (x == null || x == root)
@@ -1347,7 +1351,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         /**
          * Returns root of tree containing this node.
          */
-        public final TreeNode<K, V> root() {
+        public TreeNode<K, V> root() {
             for (TreeNode<K, V> r = this, p; ; ) {
                 if ((p = r.parent) == null) return r;
                 r = p;
@@ -1359,7 +1363,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * The kc argument caches comparableClassFor(key) upon first use
          * comparing keys.
          */
-        public final TreeNode<K, V> find(int h, Object k, Class<?> kc) {
+        public TreeNode<K, V> find(int h, Object k, Class<?> kc) {
             TreeNode<K, V> p = this;
             do {
                 int ph, dir;
@@ -1390,7 +1394,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         /**
          * Calls find for root node.
          */
-        public final TreeNode<K, V> getTreeNode(int h, Object k) {
+        public TreeNode<K, V> getTreeNode(int h, Object k) {
             return ((parent != null) ? root() : this).find(h, k, null);
         }
 
@@ -1401,7 +1405,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * Forms tree of the nodes linked from this node.
          * return root of tree
          */
-        public final void treeify(Node<K, V>[] tab) {
+        public void treeify(Node<K, V>[] tab) {
             TreeNode<K, V> root = null;
             for (TreeNode<K, V> x = this, next; x != null; x = next) {
                 next = (TreeNode<K, V>) x.next;
@@ -1446,7 +1450,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * Returns a list of non-TreeNodes replacing those linked from
          * this node.
          */
-        public final Node<K, V> untreeify(UnsafeHashMap<K, V> map) {
+        public Node<K, V> untreeify(UnsafeHashMap<K, V> map) {
             Node<K, V> hd = null, tl = null;
             for (Node<K, V> q = this; q != null; q = q.next) {
                 Node<K, V> p = map.replacementNode(q, null);
@@ -1461,7 +1465,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * Tree version of putVal.
          */
         @Nullable
-        public final TreeNode<K, V> putTreeVal(@NonNull UnsafeHashMap<K, V> map, @NonNull Node<K, V>[] tab, int h, @NonNull K k, @Nullable V v) {
+        public TreeNode<K, V> putTreeVal(@NonNull UnsafeHashMap<K, V> map, @NonNull Node<K, V>[] tab, int h, @NonNull K k, @Nullable V v) {
             Class<?> kc = null;
             boolean searched = false;
             TreeNode<K, V> root = (parent != null) ? root() : this;
@@ -1513,7 +1517,8 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * the bin is converted back to a plain bin. (The test triggers
          * somewhere between 2 and 6 nodes, depending on tree structure).
          */
-        public final void removeTreeNode(UnsafeHashMap<K, V> map, Node<K, V>[] tab, boolean movable) {
+        @SuppressWarnings("ConstantValue")
+        public void removeTreeNode(UnsafeHashMap<K, V> map, Node<K, V>[] tab, boolean movable) {
             if (tab == null || tab.length == 0) return;
 
             int index = (tab.length - 1) & hash;
@@ -1614,7 +1619,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
          * @param index the index of the table being split
          * @param bit   the bit of hash to split on
          */
-        public final void split(UnsafeHashMap<K, V> map, Node<K, V>[] tab, int index, int bit) {
+        public void split(UnsafeHashMap<K, V> map, Node<K, V>[] tab, int index, int bit) {
             TreeNode<K, V> b = this;
             // Relink into lo and hi lists, preserving order
             TreeNode<K, V> loHead = null, loTail = null;
@@ -1660,31 +1665,31 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     public final class KeySet extends AbstractSet<K> {
-        public final int size() {
+        public int size() {
             return size;
         }
 
-        public final void clear() {
+        public void clear() {
             UnsafeHashMap.this.clear();
         }
 
-        public final Iterator<K> iterator() {
+        public Iterator<K> iterator() {
             return new KeyIterator();
         }
 
-        public final boolean contains(Object o) {
+        public boolean contains(Object o) {
             return containsKey(o);
         }
 
-        public final boolean remove(Object key) {
+        public boolean remove(Object key) {
             return removeNode(hash(key), key, null, false, true) != null;
         }
 
-        public final Spliterator<K> spliterator() {
+        public Spliterator<K> spliterator() {
             return new KeySpliterator<>(UnsafeHashMap.this, 0, -1, 0, 0);
         }
 
-        public final void forEach(Consumer<? super K> action) {
+        public void forEach(Consumer<? super K> action) {
             if (action == null) throw new NullPointerException();
             if (size > 0 && table != null) {
                 Node<K, V>[] tab = table;
@@ -1698,27 +1703,28 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     private final class Values extends AbstractCollection<V> {
-        public final int size() {
+        public int size() {
             return size;
         }
 
-        public final void clear() {
+        public void clear() {
             UnsafeHashMap.this.clear();
         }
 
-        public final Iterator<V> iterator() {
+        @SuppressWarnings("ReturnOfInnerClass")
+        public Iterator<V> iterator() {
             return new ValueIterator();
         }
 
-        public final boolean contains(Object o) {
+        public boolean contains(Object o) {
             return containsValue(o);
         }
 
-        public final Spliterator<V> spliterator() {
+        public Spliterator<V> spliterator() {
             return new ValueSpliterator<>(UnsafeHashMap.this, 0, -1, 0, 0);
         }
 
-        public final void forEach(Consumer<? super V> action) {
+        public void forEach(Consumer<? super V> action) {
             if (action == null) throw new NullPointerException();
             if (size > 0 && table != null) {
                 Node<K, V>[] tab = table;
@@ -1732,19 +1738,19 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     private final class EntrySet extends AbstractSet<Map.Entry<K, V>> {
-        public final int size() {
+        public int size() {
             return size;
         }
 
-        public final void clear() {
+        public void clear() {
             UnsafeHashMap.this.clear();
         }
 
-        public final Iterator<Map.Entry<K, V>> iterator() {
+        public Iterator<Map.Entry<K, V>> iterator() {
             return new EntryIterator();
         }
 
-        public final boolean contains(Object o) {
+        public boolean contains(Object o) {
             if (!(o instanceof Map.Entry)) return false;
             Map.Entry<?, ?> e = (Map.Entry<?, ?>) o;
             Object key = e.getKey();
@@ -1752,7 +1758,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
             return e.equals(candidate);
         }
 
-        public final boolean remove(Object o) {
+        public boolean remove(Object o) {
             if (o instanceof Map.Entry) {
                 Map.Entry<?, ?> e = (Map.Entry<?, ?>) o;
                 Object key = e.getKey();
@@ -1762,11 +1768,11 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
             return false;
         }
 
-        public final Spliterator<Map.Entry<K, V>> spliterator() {
+        public Spliterator<Map.Entry<K, V>> spliterator() {
             return new EntrySpliterator<>(UnsafeHashMap.this, 0, -1, 0, 0);
         }
 
-        public final void forEach(Consumer<? super Map.Entry<K, V>> action) {
+        public void forEach(Consumer<? super Map.Entry<K, V>> action) {
             if (action == null) throw new NullPointerException();
             if (size > 0 && table != null) {
                 Node<K, V>[] tab = table;
@@ -1785,6 +1791,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
         public int expectedModCount;  // for fast-fail
         public int index;             // current slot
 
+        @SuppressWarnings("StatementWithEmptyBody")
         public HashIterator() {
             expectedModCount = modCount;
             current = next = null;
@@ -1800,6 +1807,7 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
             return next != null;
         }
 
+        @SuppressWarnings("StatementWithEmptyBody")
         public final Node<K, V> nextNode() {
             if (modCount != expectedModCount) throw new ConcurrentModificationException();
             if (next == null) throw new NoSuchElementException();
@@ -1825,19 +1833,19 @@ public class UnsafeHashMap<K, V> implements Map<K, V>, Cloneable {
     }
 
     public final class KeyIterator extends HashIterator implements Iterator<K> {
-        public final K next() {
+        public K next() {
             return nextNode().key;
         }
     }
 
     public final class ValueIterator extends HashIterator implements Iterator<V> {
-        public final V next() {
+        public V next() {
             return nextNode().value;
         }
     }
 
     public final class EntryIterator extends HashIterator implements Iterator<Map.Entry<K, V>> {
-        public final Map.Entry<K, V> next() {
+        public Map.Entry<K, V> next() {
             return nextNode();
         }
     }

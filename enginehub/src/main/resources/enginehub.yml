@@ -1,0 +1,37 @@
+worldedit:
+  # Should WorldEdit schematics be used for buildings instead of single blocks?
+  # Disabling this will not reverse changes done by "/k admin schematic setup"
+  # you'd have to reset your building configs.
+  # * Requires a restart to change.
+  use-schematics: true
+
+  # Some server owners give players access to WorldEdit,
+  # should the plugin prevent players from editing in unauthorized claimed lands?
+  # The players will be notified of the blocks that couldn't be changed. If a single
+  # session changed multiple chunks, the allowed chunks will have their blocks changed.
+  # * You can bypass this using this permission: kingdoms.worldedit.bypass.edit-protection
+  # * Requires a restar to change.
+  edit-protection: true
+
+worldguard:
+  # Should the plugin register WorldGuard flags?
+  # * Requires a restart to change.
+  register-flags: true
+
+  # Should claiming in any WorldGuard regions be prevented?
+  # * Permission to bypass: kingdoms.worldguard.bypass.claim-protection
+  region-claim-protection: true
+
+  # The radius that players aren't allowd to claim lands in that are protected by WorldGuard.
+  # Note that this feature is still experimental and only works for single claims (not bulk claims like clipboards)
+  # High numbers might cause lag spikes.
+  # The number specified here is based on lands, not blocks.
+  protected-region-radius: 3
+
+  # Wilderness regions that are protected will not have indicators.
+  # * Requires a restart to change.
+  indicator-ignore-regions: true
+
+  # Should WorldGuard regions be shown on /k map?
+  # * Requires a restart to change.
+  map-markers: true

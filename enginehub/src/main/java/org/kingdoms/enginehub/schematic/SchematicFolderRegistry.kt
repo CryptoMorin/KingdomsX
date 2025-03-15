@@ -1,6 +1,9 @@
 package org.kingdoms.enginehub.schematic
 
+import org.kingdoms.config.managers.ConfigManager
 import org.kingdoms.data.Pair
+import org.kingdoms.enginehub.EngineHubAddon
+import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.utils.fs.FolderRegistry
@@ -14,6 +17,7 @@ import kotlin.io.path.name
 
 class SchematicFolderRegistry(displayName: String, private val folderName: String) :
     FolderRegistry(displayName, Kingdoms.getPath(folderName)) {
+
     override fun getDefaultsURI(): Pair<String, URI> {
         val uri: URI
         try {

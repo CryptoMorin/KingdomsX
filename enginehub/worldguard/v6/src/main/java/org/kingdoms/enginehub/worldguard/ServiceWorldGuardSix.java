@@ -44,7 +44,7 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
             if (manager == null) return false;
 
             // Object pt1 = getToBlockPoint.invoke(location.getX(), location.getY(), location.getZ());
-            com.sk89q.worldguard.protection.ApplicableRegionSet regions = (ApplicableRegionSet) manager.getApplicableRegions(location);
+            com.sk89q.worldguard.protection.ApplicableRegionSet regions = manager.getApplicableRegions(location);
             for (ProtectedRegion region : regions.getRegions()) {
                 if (region.getId().equals(regionName)) return false;
             }

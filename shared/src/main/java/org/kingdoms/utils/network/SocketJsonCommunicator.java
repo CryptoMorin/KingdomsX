@@ -24,6 +24,7 @@ public abstract class SocketJsonCommunicator {
         this(null, port, logger); // Localhost
     }
 
+    @SuppressWarnings("this-escape")
     public SocketJsonCommunicator(InetAddress ip, int port, Logger logger) {
         this.logger = logger;
         try {

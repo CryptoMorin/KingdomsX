@@ -2,7 +2,6 @@ package org.kingdoms.enginehub.worldguard.handlers;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kingdoms.config.KingdomsConfig;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard;
 import org.kingdoms.events.lands.LandChangeEvent;
@@ -17,10 +16,8 @@ public class WorldGuardLandVisualizerPreparation implements LandIndicatorPrepara
     @Nullable
     @Override
     public LandVisualizer prepare(@NotNull LandChangeEvent event, @NotNull LandVisualizer visualizer) {
-        if (KingdomsConfig.Claims.INDICATOR_IGNORE_WORLDGUARD_REGIONS.getManager().getBoolean()) {
-            SimpleChunkLocation toChunk = event.getToChunk();
-            if (worldGuard.isChunkInRegion(toChunk.getBukkitWorld(), toChunk.getX(), toChunk.getZ(), 0)) return null;
-        }
+        SimpleChunkLocation toChunk = event.getToChunk();
+        if (worldGuard.isChunkInRegion(toChunk.getBukkitWorld(), toChunk.getX(), toChunk.getZ(), 0)) return null;
         return visualizer;
     }
 }

@@ -61,9 +61,9 @@ public final class Reflect {
             classes.add(lastUpperClass);
         }
 
-        if (classes.isEmpty()) return new Class[]{clazz};
+        if (classes.isEmpty()) return new Class<?>[]{clazz};
 
-        Class<?>[] reversed = classes.toArray(new Class[0]);
+        Class<?>[] reversed = classes.toArray(new Class<?>[0]);
         return ArrayUtils.reverse(reversed);
     }
 

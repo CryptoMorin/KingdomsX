@@ -44,7 +44,7 @@ class WorldEditBuildingConstruction(
     facing: Direction,
     timePassed: Duration
 ) : AbstractBuildingConstruction(origin, type, state, regionFilter, facing, timePassed), IWorldEditBuilding {
-
+    var finishedBuilding = false
     override fun getArchitect(): BuildingArchitect = Arch
 
     private object Debugger : DebugNS {
@@ -199,7 +199,7 @@ class WorldEditBuildingConstruction(
         while (!task.isCancelled()) task.run()
     }
 
-    override fun onTimerFinish(): Boolean = this.isInstant()
+    override fun onTimerFinish(): Boolean = finishedBuilding
 
     override fun asFinishedBuilding(): Building {
         prepareAsFinished()
@@ -231,17 +231,25 @@ class WorldEditBuildingConstruction(
             return world.getBlockAt(bukkitLoc)
         }
 
-    private inner class BlockPlaceTask : Runnable {
+    private abstract inner class BlockTask : Runnable {
+        var done = false
+
+        fun done() {
+            this@WorldEditBuildingConstruction.finishedBuilding = true
+            this@WorldEditBuildingConstruction.finish()
+            this.done = true
+        }
+    }
+
+    private inner class BlockPlaceTask : BlockTask() {
         val indexedBlocks: Iterator<FunctionalWorldEditExtentBlock> = RangedIterator.skipped(
             ClipboardBlockCopyIterator(transformedClipboard, getOrigin(), sortingStrategy, true, true),
             Math.max(0, blockIndex)
         )
 
-        private fun done() {
-            this@WorldEditBuildingConstruction.finish()
-        }
-
         override fun run() {
+            if (done) return
+
             // Just here to prevent unexpected errors.
             if (!indexedBlocks.hasNext()) {
                 done()
@@ -281,20 +289,14 @@ class WorldEditBuildingConstruction(
         }
     }
 
-    private inner class BlockBreakTask : Runnable {
+    private inner class BlockBreakTask : BlockTask() {
         val indexedBlocks: Iterator<Map.Entry<BlockVector3, WorldEditExtentBlock>> = RangedIterator.skipped(
             blocks.iterator(),
             Math.max(0, blockIndex)
         )
-        var isDone = false
-
-        private fun done() {
-            this@WorldEditBuildingConstruction.finish()
-            isDone = true
-        }
 
         override fun run() {
-            if (isDone) return
+            if (done) return
 
             // Just here to prevent unexpected errors.
             if (!indexedBlocks.hasNext()) {
@@ -348,6 +350,7 @@ class WorldEditBuildingConstruction(
             val blockBuildTask =
                 if (this.getType() == BuildingConstructionType.DEMOLISHING) BlockBreakTask() else BlockPlaceTask()
             this.blockChangeTask = scheduler.repeating(timeBetweenBlocks, timeBetweenBlocks, blockBuildTask)
+
             if (instant) {
                 val task = this.blockChangeTask!!
                 while (!task.isCancelled()) task.run()

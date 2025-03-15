@@ -111,7 +111,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
             else -> null
         }
 
-        return if (str == null) emptyTab() else tabComplete(str)
+        return if (str == null) context.emptyTab() else context.tabComplete(str)
     }
 }
 

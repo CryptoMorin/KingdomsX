@@ -4,6 +4,7 @@ import com.google.common.base.Preconditions;
 import org.jetbrains.annotations.NotNull;
 import org.w3c.dom.events.EventException;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.concurrent.ConcurrentHashMap;
@@ -11,7 +12,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.function.Function;
 
 public interface EventExecutor {
-    public void execute(@NotNull Listener listener, @NotNull Event event) throws EventException;
+    void execute(@NotNull Listener listener, @NotNull Event event) throws EventException;
 
     // Paper start
     ConcurrentMap<Method, Class<? extends EventExecutor>> eventExecutorMap = new ConcurrentHashMap<Method, Class<? extends EventExecutor>>() {
@@ -34,7 +35,7 @@ public interface EventExecutor {
     };
 
     @NotNull
-    public static EventExecutor create(@NotNull Method m, @NotNull Class<? extends Event> eventClass) {
+    static EventExecutor create(@NotNull Method m, @NotNull Class<? extends Event> eventClass) {
         Preconditions.checkNotNull(m, "Null method");
         Preconditions.checkArgument(m.getParameterCount() != 0, "Incorrect number of arguments %s", m.getParameterCount());
         Preconditions.checkArgument(m.getParameterTypes()[0] == eventClass, "First parameter %s doesn't match event class %s", m.getParameterTypes()[0], eventClass);
@@ -50,7 +51,7 @@ public interface EventExecutor {
             });
 
             try {
-                EventExecutor asmExecutor = executorClass.newInstance();
+                EventExecutor asmExecutor = executorClass.getConstructor().newInstance();
                 // Define a wrapper to conform to bukkit stupidity (passing in events that don't match and wrapper exception)
                 return (listener, event) -> {
                     if (!eventClass.isInstance(event)) return;
@@ -58,6 +59,8 @@ public interface EventExecutor {
                 };
             } catch (InstantiationException | IllegalAccessException e) {
                 throw new AssertionError("Unable to initialize generated event executor", e);
+            } catch (InvocationTargetException | NoSuchMethodException e) {
+                throw new RuntimeException(e);
             }
         } else {
             return new MethodHandleEventExecutor(eventClass, m);

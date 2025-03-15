@@ -25,11 +25,13 @@ public final class UnsafeArrayList<E> extends AbstractCollection<E> implements L
     }
 
     @SafeVarargs
+    @SuppressWarnings("varargs")
     public static <E> UnsafeArrayList<E> of(E... elements) {
         return new UnsafeArrayList<>(elements);
     }
 
     @SafeVarargs
+    @SuppressWarnings("varargs")
     public static <E> UnsafeArrayList<E> copyOf(E... elements) {
         return new UnsafeArrayList<>(Arrays.copyOf(elements, elements.length));
     }

@@ -54,5 +54,6 @@ class StringPadder {
         replaceWith = ReplaceWith("getPadded()"),
         level = DeprecationLevel.ERROR
     )
+    // How the hell do we suppress: "Deprecations and opt-ins on a method overridden from 'Any' may not be reported."
     override fun toString() = throw UnsupportedOperationException("Use getPadded() instead")
 }

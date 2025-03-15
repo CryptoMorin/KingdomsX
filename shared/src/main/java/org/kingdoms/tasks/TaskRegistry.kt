@@ -107,7 +107,10 @@ class TaskRegistry<C : TaskContext, T : Task<C>>(private val parentTask: ParentT
     fun register(container: Class<out LocalTaskSession>, constructor: TaskSessionConstructor<C>) {
         val delegateConstructor = DefinedTaskSessionConstructor(constructor)
         val tasks: List<Task<C>> = TaskAnnotationProcessor(container, delegateConstructor).generate()
-        tasks.forEach { register(it as T) }
+        tasks.forEach {
+            @Suppress("UNCHECKED_CAST")
+            register(it as T)
+        }
     }
 }
 

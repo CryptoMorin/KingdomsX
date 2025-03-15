@@ -99,6 +99,7 @@ class TaskAnnotationProcessor<C : TaskContext> @JvmOverloads constructor(
             }
             val settings = processAnnotation(AnnotationContainer.of(innerClass))
             if (settings != null) {
+                @Suppress("UNCHECKED_CAST")
                 val genericClass = innerClass as Class<ConditionalLocalTaskSession<C>>
                 val constructor = DefaultTaskSessionConstructor<C>(genericClass)
                 val parentTask = ReflectionParentTask(constructor, settings, parentTask)
@@ -128,10 +129,10 @@ class TaskAnnotationProcessor<C : TaskContext> @JvmOverloads constructor(
             var lastOutput: Any? = null
             subTasks.executeDefinedTasks(context as IOTaskContext<Any, Any>) { lastOutput = it }
 
-            if (lastOutput != null) {
-                if (context is OutputTaskContext<*>) {
+            if (lastOutput !== null) {
+                // if (context is OutputTaskContext<*>) {
                     (context as OutputTaskContext<Any>).output = lastOutput
-                }
+                // }
             }
         }
     }

@@ -1,5 +1,6 @@
 plugins {
     commons
+    id("java-library")
     sublibs
     // antlr
 }

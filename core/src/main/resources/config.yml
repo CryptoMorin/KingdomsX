@@ -865,6 +865,7 @@ kingdom-name:
   renaming-cooldown: 1day
 
   # Maximum kingdom name length.
+  # * Note: The hard limit is 100 characters
   max-length: 16
 
   # Minimum kingdom name length.
@@ -931,6 +932,7 @@ tags:
     cut-text:
       regex: '(.{5})'
 
+  # * Note: The hard limit is 50 characters
   max-length: 16
   min-length: 3
   ignore-colors: true
@@ -967,7 +969,12 @@ kingdom-lore: # /k lore
     fade-out: 10
 
   allow-colors: true
+
+  # Consider that this must fit as the title
+  # on the player's screen.
+  # * Note: The hard limit is 300 characters
   max-length: 30
+
   ignore-colors: true
   renaming-cooldown: 0
   allow-non-english: true

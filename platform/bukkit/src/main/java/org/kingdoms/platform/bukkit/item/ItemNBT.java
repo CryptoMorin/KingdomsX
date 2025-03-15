@@ -136,10 +136,9 @@ public final class ItemNBT {
         SUPPORTS_COMPONENTS = supportsComponents;
     }
 
-    private ItemNBT() {
-    }
+    private ItemNBT() {}
 
-    private static Object asNMSCopy(ItemStack item) {
+    public static Object asNMSCopy(ItemStack item) {
         try {
             return AS_NMS_COPY.invoke(item);
         } catch (Throwable throwable) {
@@ -153,7 +152,7 @@ public final class ItemNBT {
      * @param nmsItem The NMS item to convert
      * @return The converted Item
      */
-    private static ItemStack asBukkitCopy(Object nmsItem) {
+    public static ItemStack asBukkitCopy(Object nmsItem) {
         try {
             return (ItemStack) AS_BUKKIT_COPY.invoke(nmsItem);
         } catch (Throwable throwable) {

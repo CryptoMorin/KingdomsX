@@ -6,8 +6,15 @@ import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
 public enum EngineHubLang implements DefinedMessenger {
+    COMMAND_CLAIM_IN_REGION("{$e}You cannot claim lands in protected regions.", 1, 2),
+    COMMAND_CLAIM_NEAR_REGION("{$e}You cannot claim lands near protected regions.", 1, 2),
+
     COMMAND_ADMIN_SCHEMATIC_TIPS_SIDE_EFFECTS("{$sep}[&9!{$sep}] &9Note {$point} &7You can use &2hover:{/k admin schematic origin;&7Click to copy;|/k admin schematic origin}" +
             " &7command to change the origin of the schematic for accurate placement of the building for Kingdoms.", 1, 2, 3, 4),
+
+    INVASION_BLOCKED_DAMAING_CHAMPION_IN_PROTECTED_REGION("{$e}You cannot damage the champion in this region.", 1, 2),
+
+    WORLDEDIT_EXCLUDED("{$e}A total of {$es}%blocks% {$e}were excluded from WorldEdit since they weren't in your kingdoms land.", 1),
 
     COMMAND_ADMIN_SCHEMATIC_SAVE_DESCRIPTION("{$s}Saves a schematic from the current player's WorldEdit selection clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_USAGE("{$usage}admin schematic save &2<schematic name>", 1, 2, 3, 4),

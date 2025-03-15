@@ -43,10 +43,10 @@ import java.util.UUID;
  */
 public final class FastUUID {
     /**
-     * OpenJDK 14 and newer use a fancy native approach to converting UUIDs to strings and we're better off using
+     * OpenJDK 14 and newer use a fancy native approach to converting UUIDs to strings, and we're better off using
      * that if it's available.
      * <p>
-     * Java 11+ use Long.fastUUID which for some reasons is faster.
+     * Java 11+ use Long.fastUUID which for some reason is faster.
      */
     private static final boolean USE_JDK_UUID_TO_STRING;
     private static final int UUID_STRING_LENGTH = 36;
@@ -111,7 +111,7 @@ public final class FastUUID {
         randomBytes[6] &= 0x0f;  /* clear version        */
         randomBytes[6] |= 0x40;  /* set to version 4     */
         randomBytes[8] &= 0x3f;  /* clear variant        */
-        randomBytes[8] |= 0x80;  /* set to IETF variant  */
+        randomBytes[8] |= (byte) 0x80;  /* set to IETF variant  */
         return bytesToUUID(randomBytes);
     }
 

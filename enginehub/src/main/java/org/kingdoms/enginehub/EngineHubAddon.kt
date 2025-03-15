@@ -45,8 +45,10 @@ class EngineHubAddon : JavaPlugin(), Addon {
     }
 
     override fun onLoad() {
-        initWorldGuard()
         LanguageManager.registerMessenger(EngineHubLang::class.java)
+        EngineHubConfig.register(this)
+
+        initWorldGuard()
         SoftService.WORLD_GUARD.hook(true)
     }
 
@@ -64,26 +66,34 @@ class EngineHubAddon : JavaPlugin(), Addon {
                 return
             }
 
-            var successful = true
-            try {
-                logger.info("Registering WorldGuard flags...")
-                worldGuard!!.registerFlags();
-            } catch (ex: Throwable) {
-                ex.printStackTrace()
-                successful = false
+            if (EngineHubConfig.WORLDGUARD_REGISTER_FLAGS.manager.boolean) {
+                var successful = true
+                try {
+                    logger.info("Registering WorldGuard flags...")
+                    worldGuard!!.registerFlags()
+                } catch (ex: Throwable) {
+                    ex.printStackTrace()
+                    successful = false
+                }
+                if (successful) Kingdoms.get().logger.info("Successfully registered WorldGuard flags.")
             }
-            if (successful) Kingdoms.get().logger.info("Successfully registered WorldGuard flags.")
         }
     }
 
     override fun onEnable() {
         if (!isKingdomsEnabled) return
-        Kingdoms.get().buildingArchitectRegistry.apply {
-            register(WorldEditBuilding.Arch)
-            register(WorldEditBuildingConstruction.Arch)
+
+        if (EngineHubConfig.WORLDEDIT_USE_SCHEMATICS.manager.boolean) {
+            Kingdoms.get().buildingArchitectRegistry.apply {
+                register(WorldEditBuilding.Arch)
+                register(WorldEditBuildingConstruction.Arch)
+            }
         }
 
-        ServiceWorldEditSessionProtection().enable()
+        if (EngineHubConfig.WORLDEDIT_EDIT_PROTECTION.manager.boolean) {
+            ServiceWorldEditSessionProtection().enable()
+        }
+
         reloadAddon()
 
         if (hasWorldGuard()) WorldGuardHandler(this)
@@ -97,6 +107,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
         }
 
         SchematicManager.loadAll()
+        SchematicManager.setup()
         CommandAdminSchematic(CommandAdmin.getInstance())
     }
 

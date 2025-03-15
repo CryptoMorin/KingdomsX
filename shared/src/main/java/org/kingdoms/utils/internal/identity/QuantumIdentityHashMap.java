@@ -138,7 +138,7 @@ import java.util.function.Consumer;
  * @since 1.4
  */
 
-public class QuantumIdentityHashMap<K, V> implements Map<K, V>, java.io.Serializable, Cloneable {
+public final class QuantumIdentityHashMap<K, V> implements Map<K, V>, java.io.Serializable, Cloneable {
     /**
      * The initial capacity used by the no-args constructor.
      * MUST be a power of two.  The value 32 corresponds to the

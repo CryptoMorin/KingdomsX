@@ -25,14 +25,11 @@ import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.land.location.SimpleChunkLocation;
-import org.kingdoms.constants.land.location.SimpleLocation;
 import org.kingdoms.constants.player.KingdomPlayer;
-import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.permissions.KingdomsDefaultPluginPermission;
 import org.kingdoms.platform.bukkit.channel.BlockMarker;
 import org.kingdoms.platform.bukkit.channel.PluginChannels;
 import org.kingdoms.services.Service;
-import org.kingdoms.utils.cache.caffeine.CacheHandler;
 
 import java.awt.*;
 import java.io.File;
@@ -44,13 +41,15 @@ import java.util.Objects;
 import java.util.Set;
 
 public final class ServiceWorldEditSessionProtection implements Service {
-    private static final Cache<KingdomsProtectionExtent, Boolean> EXTENT_NOTIFICATION =
-            CacheHandler.newBuilder().weakKeys().build();
-
     @Override
     public void enable() {
         // https://worldedit.enginehub.org/en/latest/api/concepts/edit-sessions/
         WorldEdit.getInstance().getEventBus().register(this);
+    }
+
+    @Override
+    public void disable() {
+        WorldEdit.getInstance().getEventBus().unregister(this);
     }
 
     private static final class KingdomsProtectionExtent extends AbstractDelegateExtent {
@@ -88,7 +87,7 @@ public final class ServiceWorldEditSessionProtection implements Service {
                 beforeChange = false;
             } else {
                 if (!excluded.isEmpty()) {
-                    KingdomsLang.WORLD_EDIT_EXCLUDED.sendError(actor, "blocks", excluded.size());
+                    EngineHubLang.WORLDEDIT_EXCLUDED.sendError(actor, "blocks", excluded.size());
                     if (PluginChannels.isSupported()) {
                         PluginChannels.sendBlockMarker(actor, excluded,
                                 new BlockMarker(Duration.ofSeconds(10), Color.RED, ""));
@@ -97,25 +96,6 @@ public final class ServiceWorldEditSessionProtection implements Service {
             }
 
             return super.commitBefore();
-        }
-    }
-
-    private static void paste0(File file, SimpleLocation location) throws IOException, WorldEditException {
-        // https://worldedit.enginehub.org/en/latest/api/examples/clipboard/
-        ClipboardFormat format = ClipboardFormats.findByFile(file);
-        try (ClipboardReader reader = format.getReader(Files.newInputStream(file.toPath()))) {
-            Clipboard clipboard = reader.read();
-
-            com.sk89q.worldedit.world.World world = BukkitAdapter.adapt(location.getBukkitWorld());
-            // For newer versions WorldEdit.getInstance().newEditSession(world)
-            try (EditSession editSession = WorldEdit.getInstance().getEditSessionFactory().getEditSession(world, -1)) {
-                Operation operation = new ClipboardHolder(clipboard)
-                        .createPaste(editSession)
-                        .to(BlockVector3.at(location.getX(), location.getY(), location.getZ()))
-                        .ignoreAirBlocks(false)
-                        .build();
-                Operations.complete(operation);
-            }
         }
     }
 

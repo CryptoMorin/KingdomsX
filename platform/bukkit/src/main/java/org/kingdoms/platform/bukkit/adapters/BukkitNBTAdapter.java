@@ -340,13 +340,13 @@ public final class BukkitNBTAdapter {
     private static final class NBTTagList<T extends NBTTag<?>> implements NBTConverter<org.kingdoms.nbt.tag.NBTTagList<T>, Object> {
         private static final MethodHandle CONSTRUCTOR;
         private static final MethodHandle GET_DATA, SET_DATA;
-        private static final MethodHandle GET_TYPE_ID;
+        private static final MethodHandle GET_TYPE_ID, SET_TYPE_ID;
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.LIST);
             Class<?> nbtBase = getNBTBaseClass();
             MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, getData = null, setData = null, getTypeId = null;
+            MethodHandle handler = null, getData = null, setData = null, getTypeId = null, setTypeId = null;
 
             try {
                 Field field = getDeclaredField(clazz, "c", "list");
@@ -365,7 +365,15 @@ public final class BukkitNBTAdapter {
                 getTypeId = lookup.findVirtual(nbtBase,
                         XReflection.v(19, "b").v(18, "a").orElse("getTypeId"),
                         MethodType.methodType(byte.class));
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
+
+                // Obfuscated:
+                //   * v1.8 - v1.12 : d
+                //   * v1.13        : h
+                //   * v1.14        : g
+                //   * v1.15        : h
+                // From v1.15+ there's a constructor we can use instead.
+                setTypeId = XReflection.of(clazz).field("private byte type").setter().reflect();
+            } catch (ReflectiveOperationException e) {
                 e.printStackTrace();
             }
 
@@ -373,6 +381,7 @@ public final class BukkitNBTAdapter {
             GET_DATA = getData;
             SET_DATA = setData;
             GET_TYPE_ID = getTypeId;
+            SET_TYPE_ID = setTypeId;
         }
 
         @NotNull
@@ -407,12 +416,15 @@ public final class BukkitNBTAdapter {
                 List<Object> array = new ArrayList<>(tag.value().size());
                 for (T base : tag.value()) array.add(BukkitAdapter.adapt(base));
 
+                // If the list id is not set correctly, there are list methods that may
+                // ignore the list completely and return an empty list.
                 if (XReflection.supports(15)) {
                     byte typeId = array.isEmpty() ? 0 : (byte) GET_TYPE_ID.invoke(array.get(0));
                     return CONSTRUCTOR.invoke(array, typeId);
                 } else {
                     Object nbtList = CONSTRUCTOR.invoke();
                     SET_DATA.invoke(nbtList, array);
+                    SET_TYPE_ID.invoke(nbtList, (byte) tag.elementType().id().id());
                     return nbtList;
                 }
             } catch (Throwable throwable) {

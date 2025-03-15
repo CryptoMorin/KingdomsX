@@ -16,6 +16,7 @@ public class BukkitServer implements Server {
     private final TickTracker tickTracker;
     private boolean isReady;
 
+    @SuppressWarnings("this-escape")
     public BukkitServer(JavaPlugin plugin) {
         this.plugin = plugin;
         this.worldRegistry = new BukkitWorldRegistry();

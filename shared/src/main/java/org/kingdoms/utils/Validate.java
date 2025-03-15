@@ -255,7 +255,7 @@ public final class Validate {
      * @param collection the collection to check
      * @throws IllegalArgumentException if the collection is empty
      */
-    public static void notEmpty(Collection collection) {
+    public static void notEmpty(Collection<?> collection) {
         notEmpty(collection, "The validated collection is empty");
     }
 
@@ -273,7 +273,7 @@ public final class Validate {
      * @param message the exception message if invalid
      * @throws IllegalArgumentException if the map is empty
      */
-    public static void notEmpty(Map map, String message) {
+    public static void notEmpty(Map<?, ?> map, String message) {
         if (map == null || map.isEmpty()) {
             throw new IllegalArgumentException(message);
         }
@@ -292,7 +292,7 @@ public final class Validate {
      * @throws IllegalArgumentException if the map is empty
      * @see #notEmpty(Map, String)
      */
-    public static void notEmpty(Map map) {
+    public static void notEmpty(Map<?, ?> map) {
         notEmpty(map, "The validated map is empty");
     }
 
@@ -354,8 +354,8 @@ public final class Validate {
      */
     public static void noNullElements(Object[] array, String message) {
         Validate.notNull(array);
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null) {
+        for (Object object : array) {
+            if (object == null) {
                 throw new IllegalArgumentException(message);
             }
         }
@@ -433,10 +433,10 @@ public final class Validate {
      * @throws IllegalArgumentException if the collection is <code>null</code> or
      *                                  an element in the collection is <code>null</code>
      */
-    public static void noNullElements(Collection collection) {
+    public static void noNullElements(Collection<?> collection) {
         Validate.notNull(collection);
         int i = 0;
-        for (Iterator it = collection.iterator(); it.hasNext(); i++) {
+        for (Iterator<?> it = collection.iterator(); it.hasNext(); i++) {
             if (it.next() == null) {
                 throw new IllegalArgumentException("The validated collection contains null element at index: " + i);
             }
@@ -457,11 +457,11 @@ public final class Validate {
      * @param message    the exception message if the <code>Collection</code> has elements not of type <code>clazz</code>
      * @since 2.1
      */
-    public static void allElementsOfType(Collection collection, Class clazz, String message) {
+    public static <E> void allElementsOfType(Collection<E> collection, Class<E> clazz, String message) {
         Validate.notNull(collection);
         Validate.notNull(clazz);
-        for (Object o : collection) {
-            if (!clazz.isInstance(o)) {
+        for (E element : collection) {
+            if (!clazz.isInstance(element)) {
                 throw new IllegalArgumentException(message);
             }
         }
@@ -485,11 +485,11 @@ public final class Validate {
      * @param clazz      the <code>Class</code> which the collection's elements are expected to be, not null
      * @since 2.1
      */
-    public static void allElementsOfType(Collection collection, Class clazz) {
+    public static <E> void allElementsOfType(Collection<E> collection, Class<E> clazz) {
         Validate.notNull(collection);
         Validate.notNull(clazz);
         int i = 0;
-        for (Iterator it = collection.iterator(); it.hasNext(); i++) {
+        for (Iterator<E> it = collection.iterator(); it.hasNext(); i++) {
             if (!clazz.isInstance(it.next())) {
                 throw new IllegalArgumentException("The validated collection contains an element not of type "
                         + clazz.getName() + " at index: " + i);

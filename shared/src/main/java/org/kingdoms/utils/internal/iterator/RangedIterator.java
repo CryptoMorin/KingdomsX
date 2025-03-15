@@ -3,7 +3,7 @@ package org.kingdoms.utils.internal.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class RangedIterator<E> implements Iterator<E> {
+public final class RangedIterator<E> implements Iterator<E> {
     private final Iterator<E> iterator;
     private final int limit;
     private int totalSkip;

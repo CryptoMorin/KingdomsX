@@ -2,6 +2,9 @@ package org.kingdoms.enginehub.schematic
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.bukkit.entity.Player
+import org.kingdoms.config.managers.ConfigManager
+import org.kingdoms.enginehub.EngineHubAddon
+import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.locale.MessageHandler
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.server.location.BlockVector3
@@ -20,6 +23,21 @@ object SchematicManager {
         loaded.clear()
         SchematicFolderRegistry("Schematic", folder.name).useDefaults(true).copyDefaults(true).register()
         MessageHandler.sendConsolePluginMessage("&2Loaded a total of &6${loaded.size} &2schematics. from ${folder.name}");
+    }
+
+    @JvmStatic
+    fun setup() {
+        val globals = ConfigManager.getGlobals()
+        val enginehub = globals.createSection("enginehub")
+        val setupVersion = enginehub.getInt("setup-version")
+        if (setupVersion == 0) {
+            EngineHubAddon.INSTANCE.logger.info("No setup version detected. Setting up and changing the building configs...")
+            CommandAdminSchematicSetup.setup()
+            enginehub.set("setup-version", 1)
+            ConfigManager.getGlobalsAdapter().saveConfig()
+        } else {
+            EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion")
+        }
     }
 
     @JvmStatic

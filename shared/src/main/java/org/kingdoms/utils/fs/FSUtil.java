@@ -25,6 +25,38 @@ public final class FSUtil {
     public static final StandardOpenOption[] STD_WRITER = {StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING};
     private static final int DEFAULT_BUFFER_SIZE = 8192;
 
+    private FSUtil() {}
+
+    public static boolean isDirectAncestorOf(final Path parent, final Path child) {
+        final Path absoluteParent = parent.toAbsolutePath().normalize();
+        final Path absoluteChild = child.toAbsolutePath().normalize();
+        return isSameFileAs(absoluteParent, absoluteChild.getParent());
+    }
+
+    public static boolean isAncestorOf(final Path parent, final Path child) {
+        final Path absoluteParent = parent.toAbsolutePath().normalize();
+        final Path absoluteChild = child.toAbsolutePath().normalize();
+
+        if (absoluteParent.getNameCount() >= absoluteChild.getNameCount()) {
+            return false;
+        }
+
+        final Path immediateParent = absoluteChild.getParent();
+        if (immediateParent == null) {
+            return false;
+        }
+
+        return isSameFileAs(absoluteParent, immediateParent) || isAncestorOf(absoluteParent, immediateParent);
+    }
+
+    private static boolean isSameFileAs(final Path path, final Path path2) {
+        try {
+            return Files.isSameFile(path, path2);
+        } catch (final IOException ioe) {
+            return path.toAbsolutePath().normalize().equals(path2.toAbsolutePath().normalize());
+        }
+    }
+
     /**
      * There's no better way in Java. We're bound by this stupid encapsulation of Java.
      */
@@ -83,6 +115,7 @@ public final class FSUtil {
      * <p>
      * Mainly designed to
      */
+    @SuppressWarnings("unused")
     public void lockBeforeCopy(Path from, OutputStream to, Runnable beforeWrite) throws IOException {
         try (FileChannel fileChannel = FileChannel.open(from, StandardOpenOption.READ)) {
             try (FileLock lock = fileChannel.lock(0, Long.MAX_VALUE, true)) {
@@ -267,6 +300,7 @@ public final class FSUtil {
      *
      * @param beforeTransfer must be present. This method is useless without it.
      */
+    @SuppressWarnings("unused")
     public static void lockAndTransfer(Path file, OutputStream transferTo, IORunnable beforeTransfer) throws IOException {
         try (FileChannel fileChannel = FileChannel.open(file, StandardOpenOption.READ);
              FileLock lock = fileChannel.lock(0, Long.MAX_VALUE, true)) {

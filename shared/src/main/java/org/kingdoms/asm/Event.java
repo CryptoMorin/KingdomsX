@@ -1,4 +1,4 @@
 package org.kingdoms.asm;
 
-class Event {
+public class Event {
 }
