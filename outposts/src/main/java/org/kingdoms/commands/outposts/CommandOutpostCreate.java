@@ -5,10 +5,9 @@ import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
 import org.kingdoms.enginehub.EngineHubAddon;
-import org.kingdoms.main.KLogger;
-import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostDataHandler;
 import org.kingdoms.outposts.OutpostsLang;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.services.managers.SoftService;
 
 import java.util.List;
@@ -20,8 +19,8 @@ public class CommandOutpostCreate extends KingdomsCommand {
 
     @Override
     public CommandResult execute(CommandContext context) {
-        if (context.assertPlayer()) return CommandResult.FAILED;
-        if (context.requireArgs(2)) return CommandResult.FAILED;
+        context.assertPlayer();
+        context.requireArgs(2);
         if (CommandOutpost.worldGuardMissing(context.getMessageReceiver())) return CommandResult.FAILED;
 
         // TODO fix thess

@@ -10,15 +10,17 @@ options:
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ ALL ]
-    lore:
-      - "{$s}Lands surrounded by a powercell cannot"
-      - "be invaded until the powercell"
-      - "land is invaded first."
-      - "The protection radius is {$p}3x3 {$s}for level 1"
-      - "and {$p}5x5 {$s}for level 2."
-      - ""
-      - "{$chk-kingdom-lvl-II}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}Lands surrounded by a powercell cannot
+      be invaded until the powercell
+      land is invaded first.
+      The protection radius is {$p}3x3 {$s}for level 1
+      and {$p}5x5 {$s}for level 2.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Cost{$colon} {$s}%fancy@cost%
+      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Your kingdom is a pacifist kingdom
+      {$desc}and this structure will have no use for your kingdom."}
     posx: 3
     posy: 2
   extractor:
@@ -26,13 +28,13 @@ options:
     material: MUSIC_DISC_CAT
     sound: BLOCK_ANVIL_LAND
     flags: [ ALL ]
-    lore:
-      - "{$s}Extractors produce resource points."
-      - "{$s}You can collect the resource points"
-      - "at any time."
-      - ""
-      - "{$chk-kingdom-lvl-III}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}Extractors produce resource points.
+      {$s}You can collect the resource points
+      at any time.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   outpost:
@@ -40,17 +42,17 @@ options:
     material: MUSIC_DISC_13
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ ALL ]
-    lore:
-      - "{$s}The global stock market"
-      - "of kingdoms. Buy and sell"
-      - "various items that affects"
-      - "the prices of these items globally"
-      - "across all outposts."
-      - "This structure also gives you the"
-      - "ability to open your nexus remotely."
-      - ""
-      - "{$chk-kingdom-lvl-II}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}The global stock market
+      of kingdoms. Buy and sell
+      various items that affects
+      the prices of these items globally
+      across all outposts.
+      This structure also gives you the
+      ability to open your nexus remotely.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   warppad:
@@ -58,12 +60,12 @@ options:
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ ALL ]
-    lore:
-      - "{$s}Warp pads can be used to teleport"
-      - "from a structure to another."
-      - ""
-      - "{$chk-kingdom-lvl-IV}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}Warp pads can be used to teleport
+      from a structure to another.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   regulator:
@@ -71,14 +73,14 @@ options:
     material: MUSIC_DISC_WARD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "{$s}Manages player attributes such as building,"
-      - "turret ceasefire, etc."
-      - "Controls mob/animal spawning,"
-      - "turrets (such as auto-refilling ammo) and explosions."
-      - ""
-      - "{$chk-kingdom-lvl-IV}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}Manages player attributes such as building,
+      turret ceasefire, etc.
+      Controls mob/animal spawning,
+      turrets (such as auto-refilling ammo) and explosions.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   siege-cannon:
@@ -86,22 +88,21 @@ options:
     material: MUSIC_DISC_STRAD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "{$s}Cannon used to break a kingdom's"
-      - "shield."
-      - ""
-      - "{$chk-kingdom-lvl-V}"
-      - "{$p}Cost{$colon} {$s}%fancy@cost%"
+    lore: |
+      {$s}Cannon used to break a kingdom's
+      shield.
+
+      {$chk-kingdom-lvl-V}
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 1
-
   back:
     name: "{$p}Back"
     material: PLAYER_HEAD
     # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
     skull: "{$gui-back}"
-    lore:
-      - "{$s}Go back to nexus menu."
+    lore: |
+      {$s}Go back to nexus menu.
     posx: 5
     posy: 3
   cyan-glass:

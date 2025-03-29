@@ -85,8 +85,9 @@ keep-admin-mode: bool
 holograms:
   update: Period
 
-integrations:
-  (values): bool
+disabled-integrations:
+  (type): set
+  (elements): str
 
 command:
   enable-tab-colorization: bool
@@ -161,10 +162,16 @@ guis:
 join-leave-messages: bool
 
 top-kingdoms:
-  might: Math
+  types:
+    (keys): str
+    (values):
+      name: str
+      equation: Math
+      filter: Condition
+      description: str
+
   update-interval: Period
   amount: int
-  show-pacifists: bool
 
   rewards:
     top: int
@@ -268,7 +275,9 @@ nation-name:
 
 default-flags:
   (keys): str
-  (values): bool
+  (values):
+    (keys): str
+    (values): bool
 
 kingdom-fly:
   enabled: bool

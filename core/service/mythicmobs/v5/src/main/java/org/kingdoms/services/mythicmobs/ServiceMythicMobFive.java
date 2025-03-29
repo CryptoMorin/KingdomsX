@@ -24,10 +24,16 @@ public final class ServiceMythicMobFive implements ServiceMythicMobs {
         return activeMob.getEntity().getBukkitEntity();
     }
 
+    @SuppressWarnings("resource")
     @Override
     public Throwable checkAvailability() {
+        // We can't check this properly because:
+        // MythicProvider.get().getMobManager();
+        // java.lang.IllegalStateException: The Mythic plugin hasn't finished starting up yet, or failed to load!
+        //   io.lumine.mythic.api.MythicProvider.get(MythicProvider.java:9)
+
         try {
-            MythicProvider.get().getMobManager();
+            MythicBukkit.inst().getAPIHelper();
             return null;
         } catch (Throwable ex) {
             return ex;

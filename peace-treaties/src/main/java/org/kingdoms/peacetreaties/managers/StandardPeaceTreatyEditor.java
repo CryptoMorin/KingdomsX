@@ -88,6 +88,7 @@ public class StandardPeaceTreatyEditor {
         PENDING_CONTRACTS.put(player.getUniqueId(), new PendingContract(peaceTreaty, remind));
     }
 
+    @SuppressWarnings("this-escape")
     public StandardPeaceTreatyEditor(Player player, PeaceTreaty peaceTreaty) {
         this.player = player;
         this.peaceTreaty = peaceTreaty;

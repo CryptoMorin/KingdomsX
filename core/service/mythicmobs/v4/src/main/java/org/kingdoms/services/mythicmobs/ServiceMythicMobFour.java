@@ -8,6 +8,7 @@ import org.kingdoms.services.ServiceMythicMobs;
 import org.kingdoms.services.UnknownMythicMobException;
 
 public final class ServiceMythicMobFour implements ServiceMythicMobs {
+    @SuppressWarnings("resource")
     @Override
     public Entity spawnMythicMob(Location location, String mob, int level) {
         try {
@@ -17,6 +18,7 @@ public final class ServiceMythicMobFour implements ServiceMythicMobs {
         }
     }
 
+    @SuppressWarnings("resource")
     @Override
     public Throwable checkAvailability() {
         try {

@@ -1,5 +1,3 @@
-import org.kingdoms.gradle.KingdomsGradleCommons.localDependency
-
 plugins {
     commons
     spigotapi

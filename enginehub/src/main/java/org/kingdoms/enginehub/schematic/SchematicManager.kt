@@ -2,11 +2,11 @@ package org.kingdoms.enginehub.schematic
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.bukkit.entity.Player
-import org.kingdoms.config.managers.ConfigManager
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.locale.MessageHandler
 import org.kingdoms.main.Kingdoms
+import org.kingdoms.main.KingdomsGlobalsCenter
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
 import java.nio.file.Files
@@ -27,14 +27,14 @@ object SchematicManager {
 
     @JvmStatic
     fun setup() {
-        val globals = ConfigManager.getGlobals()
+        val globals = KingdomsGlobalsCenter.get()
         val enginehub = globals.createSection("enginehub")
         val setupVersion = enginehub.getInt("setup-version")
         if (setupVersion == 0) {
             EngineHubAddon.INSTANCE.logger.info("No setup version detected. Setting up and changing the building configs...")
             CommandAdminSchematicSetup.setup()
-            enginehub.set("setup-version", 1)
-            ConfigManager.getGlobalsAdapter().saveConfig()
+            enginehub.set("setup-version", 2)
+            KingdomsGlobalsCenter.adapter().saveConfig()
         } else {
             EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion")
         }
@@ -57,7 +57,7 @@ object SchematicManager {
 
     @JvmStatic
     fun saveSchematic(name: String, player: Player): Path {
-        val path = folder.resolve(Paths.get(name + WorldEditSchematicHandler.FILE_EXTENSION))
+        val path = folder.resolve(Paths.get(name + WorldEditSchematicHandler.getUsedFileExtension().extension))
         Files.createDirectories(path.parent)
 
         val schematic = WorldEditSchematicHandler.savePlayerClipboard(player, path, name)

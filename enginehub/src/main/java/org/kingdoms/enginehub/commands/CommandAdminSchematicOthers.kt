@@ -12,8 +12,8 @@ import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.enginehub.EngineHubLang
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
-import org.kingdoms.main.Kingdoms
 import org.kingdoms.managers.backup.FolderZipper
+import org.kingdoms.managers.backup.KingdomsBackup
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.utils.display.visualizer.StructureVisualizer
 import org.kingdoms.utils.fs.FSUtil
@@ -66,7 +66,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
     }
 
     override fun execute(context: CommandContext): CommandResult {
-        if (context.assertPlayer()) return CommandResult.FAILED
+        context.assertPlayer()
         val player = context.senderAsPlayer()
 
         CommandAdminSchematicSave.hasClipboard(context)?.let { return it }
@@ -85,7 +85,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
             return CommandResult.SUCCESS
         }
 
-        if (context.requireArgs(3)) return CommandResult.FAILED
+        context.requireArgs(3)
 
         fun getCoord(index: Int): Int? {
             return context.getNumber(index, true, false, null)?.value?.toInt()
@@ -117,7 +117,8 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
 
 class CommandAdminSchematicConvertAll(parent: KingdomsParentCommand) : KingdomsCommand("convertAll", parent) {
     override fun execute(context: CommandContext): CommandResult {
-        CommandAdminSchematic.handleBasics(context).let { if (it != CommandResult.SUCCESS) return it }
+        context.requireArgs(1)
+
         val formatName = context.arg(0)
         context.`var`("format", formatName)
         val format = ClipboardFormats.getAll().find { it.name == formatName }
@@ -126,10 +127,14 @@ class CommandAdminSchematicConvertAll(parent: KingdomsParentCommand) : KingdomsC
             return context.fail(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_CONVERTALL_UNKNOWN_FORMAT)
         }
 
+        val zipTo = FSUtil.findSlotForCounterFile(
+            KingdomsBackup.BACKUPS_FOLDER,
+            "schematics-before-conversion-${FSUtil.removeInvalidFileChars(format.name, "ERR")}", "zip"
+        )
         FolderZipper.zip(
-            "schematics-before-conversion-${FSUtil.removeInvalidFileChars(format.name, "ERR")}",
+            null,
             SchematicManager.folder,
-            Kingdoms.getFolder()
+            zipTo
         )
 
         val stats: MutableMap<String, Int> = IdentityHashMap()
@@ -146,6 +151,7 @@ class CommandAdminSchematicConvertAll(parent: KingdomsParentCommand) : KingdomsC
             }
         }
 
+        FSUtil.deleteFolder(SchematicManager.folder)
         SchematicManager.loadAll()
         context.`var`("converted", stats.values.sum())
         context.messageContext.parse("stats", stats.map { "\n  &8| &2${it.key} &7-> &6${it.value}" }.joinToString(""))

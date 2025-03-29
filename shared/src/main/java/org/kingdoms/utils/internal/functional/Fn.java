@@ -52,8 +52,11 @@ public final class Fn {
         return (T) obj;
     }
 
+    /**
+     * Same as {@link Class#cast(Object)}, but returns {@code null} instead of throwing {@link ClassCastException}.
+     */
     @SuppressWarnings("unchecked")
-    public static <T> @Nullable T safeCast(@NonNull Object object, Class<T> clazz) {
+    public static <T> @Nullable T nullableCast(@NonNull Object object, Class<T> clazz) {
         Objects.requireNonNull(object, "Cannot safely cast null to generic type");
         // We can't simply just catch ClassCastException, that won't work.
         if (clazz.isInstance(object)) {

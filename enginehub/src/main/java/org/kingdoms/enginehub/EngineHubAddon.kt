@@ -8,6 +8,7 @@ import org.kingdoms.enginehub.building.WorldEditBuilding
 import org.kingdoms.enginehub.building.WorldEditBuildingConstruction
 import org.kingdoms.enginehub.commands.CommandAdminSchematic
 import org.kingdoms.enginehub.schematic.SchematicManager
+import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSeven
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSix
@@ -47,6 +48,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
     override fun onLoad() {
         LanguageManager.registerMessenger(EngineHubLang::class.java)
         EngineHubConfig.register(this)
+        EngineHubConfig.ENGINE_HUB.reloadHandle { SchematicManager.loadAll() }
 
         initWorldGuard()
         SoftService.WORLD_GUARD.hook(true)
@@ -83,7 +85,7 @@ class EngineHubAddon : JavaPlugin(), Addon {
     override fun onEnable() {
         if (!isKingdomsEnabled) return
 
-        if (EngineHubConfig.WORLDEDIT_USE_SCHEMATICS.manager.boolean) {
+        if (EngineHubConfig.WORLDEDIT_SCHEMATICS_ENABLED.manager.boolean) {
             Kingdoms.get().buildingArchitectRegistry.apply {
                 register(WorldEditBuilding.Arch)
                 register(WorldEditBuildingConstruction.Arch)
@@ -92,6 +94,13 @@ class EngineHubAddon : JavaPlugin(), Addon {
 
         if (EngineHubConfig.WORLDEDIT_EDIT_PROTECTION.manager.boolean) {
             ServiceWorldEditSessionProtection().enable()
+        }
+
+        if (WorldEditSchematicHandler.isUsingFAWE()) {
+            logger.warning(
+                "It seems like you're using FastAsyncWorldEdit instead of normal WorldEdit, " +
+                        "there are known issues with FAWE and this addon might not work propperly, specially when loading schematics."
+            )
         }
 
         reloadAddon()
@@ -117,5 +126,5 @@ class EngineHubAddon : JavaPlugin(), Addon {
     }
 
     override fun getFile(): File = super.getFile()
-    override fun getAddonName(): String = "EngineHub"
+    override fun getAddonName(): String = "enginehub"
 }

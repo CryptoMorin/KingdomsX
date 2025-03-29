@@ -8,9 +8,9 @@ import org.kingdoms.peacetreaties.data.PeaceTreaty
 
 class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand("accept", parent) {
     override fun execute(context: CommandContext): CommandResult {
-        if (context.assertPlayer()) return CommandResult.FAILED
+        context.assertPlayer()
         if (context.assertHasKingdom()) return CommandResult.FAILED
-        if (context.requireArgs(1)) return CommandResult.FAILED
+        context.requireArgs(1)
         val kingdom = context.kingdom
 
         if (kingdom.getReceivedPeaceTreaties().isEmpty()) {

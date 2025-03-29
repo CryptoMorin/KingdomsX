@@ -5,14 +5,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
-import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.utils.time.TimeFormatter;
 import org.kingdoms.utils.time.TimeUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -23,7 +21,7 @@ public class CommandOutpostStart extends KingdomsCommand {
 
     @Override
     public CommandResult execute(CommandContext context) {
-        if (context.requireArgs(3)) return CommandResult.FAILED;
+        context.requireArgs(3);
         if (CommandOutpost.worldGuardMissing(context.getMessageReceiver())) return CommandResult.FAILED;
 
         // TODO fix thess
@@ -64,9 +62,10 @@ public class CommandOutpostStart extends KingdomsCommand {
     @Override
     public @NonNull
     List<String> tabComplete(@NonNull CommandTabContext context) {
-        if (context.isAtArg(0)) return new ArrayList<>(OutpostEventSettings.getOutposts().keySet());
-        if (context.isAtArg(1)) return Collections.singletonList("<time>");
-        if (context.isAtArg(2)) return Collections.singletonList("<start time>");
-        return KingdomsCommand.emptyTab();
+        return context
+                .completeNext(() -> OutpostEventSettings.getOutposts().keySet())
+                .then(() -> context.tabComplete("<time>"))
+                .then(() -> context.tabComplete("<start time>"))
+                .build();
     }
 }

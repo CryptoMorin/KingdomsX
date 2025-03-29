@@ -189,24 +189,11 @@ public final class BukkitNBTAdapter {
         private static final MethodHandle NBT_DATA;
 
         static {
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
             Class<?> clazz = getNBTClass(NBTTagId.STRING);
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, String.class, "k", "A");
 
-            try {
-                if (XReflection.supports(15))
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, String.class));
-                else handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, String.class));
-
-                Field field = getDeclaredField(clazz, "A", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
         @NotNull
@@ -232,6 +219,53 @@ public final class BukkitNBTAdapter {
             } catch (Throwable throwable) {
                 throw new RuntimeException(throwable);
             }
+        }
+    }
+
+    private static @NotNull PrimitiveReflectData valueMethodOf(Class<?> clazz, Class<?> type, String obfuscated, String legacy) {
+        MethodHandle constructor, value;
+
+        try {
+            if (XReflection.supports(1, 21, 5)) {
+                value = XReflection.of(clazz)
+                        .method()
+                        .returns(type)
+                        .map(MinecraftMapping.MOJANG, "value")
+                        .map(MinecraftMapping.OBFUSCATED, obfuscated)
+                        .reflect();
+            } else {
+                value = XReflection.of(clazz)
+                        .field().getter().makeAccessible().returns(type)
+                        .map(MinecraftMapping.MOJANG, "data")
+                        .map(MinecraftMapping.OBFUSCATED, legacy)
+                        .reflect();
+            }
+
+            if (XReflection.supports(15)) {
+                constructor = XReflection.of(clazz)
+                        .method().asStatic()
+                        .map(MinecraftMapping.MOJANG, "valueOf")
+                        .map(MinecraftMapping.OBFUSCATED, "a")
+                        .returns(clazz).parameters(type)
+                        .reflect();
+            } else {
+                constructor = XReflection.of(clazz).constructor(String.class).reflect();
+            }
+        } catch (ReflectiveOperationException ex) {
+            ex.printStackTrace();
+            constructor = null;
+            value = null;
+        }
+
+        return new PrimitiveReflectData(constructor, value);
+    }
+
+    private static final class PrimitiveReflectData {
+        private final MethodHandle constructor, value;
+
+        private PrimitiveReflectData(MethodHandle constructor, MethodHandle value) {
+            this.constructor = constructor;
+            this.value = value;
         }
     }
 
@@ -338,50 +372,65 @@ public final class BukkitNBTAdapter {
     }
 
     private static final class NBTTagList<T extends NBTTag<?>> implements NBTConverter<org.kingdoms.nbt.tag.NBTTagList<T>, Object> {
-        private static final MethodHandle CONSTRUCTOR;
-        private static final MethodHandle GET_DATA, SET_DATA;
-        private static final MethodHandle GET_TYPE_ID, SET_TYPE_ID;
+        private static final MethodHandle ListTag_init;
+        private static final MethodHandle GET_DATA, ListTag_data;
+        private static final MethodHandle Tag_getTypeId, ListTag_type;
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.LIST);
-            Class<?> nbtBase = getNBTBaseClass();
             MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, getData = null, setData = null, getTypeId = null, setTypeId = null;
+            MethodHandle handler = null, getData = null, setData = null, getTypeId = null, listtag_type = null;
+            boolean isTypeDynamic = false;
 
             try {
-                Field field = getDeclaredField(clazz, "c", "list");
+                Field field = getDeclaredField(clazz, "list", "c");
                 field.setAccessible(true);
                 getData = lookup.unreflectGetter(field);
 
-                if (XReflection.supports(15)) {
-                    Constructor<?> ctor = clazz.getDeclaredConstructor(List.class, byte.class);
-                    ctor.setAccessible(true);
-                    handler = lookup.unreflectConstructor(ctor);
+                if (XReflection.supports(1, 21, 5)) {
+                    handler = XReflection.of(clazz).constructor(List.class).reflect();
+                    isTypeDynamic = true;
+                } else if (XReflection.supports(15)) {
+                    handler = XReflection.of(clazz).constructor(List.class, byte.class).reflect();
                 } else {
-                    handler = lookup.findConstructor(clazz, MethodType.methodType(void.class));
+                    handler = XReflection.of(clazz).constructor().reflect();
                     setData = lookup.unreflectSetter(field);
+
+                    // Obfuscated:
+                    //   * v1.8 - v1.12 : d
+                    //   * v1.13        : h
+                    //   * v1.14        : g
+                    //   * v1.15        : h
+                    // From v1.15+ there's a constructor we can use instead.
+                    listtag_type = XReflection.of(clazz).field("private byte type").setter().reflect();
                 }
 
-                getTypeId = lookup.findVirtual(nbtBase,
-                        XReflection.v(19, "b").v(18, "a").orElse("getTypeId"),
-                        MethodType.methodType(byte.class));
+                if (!isTypeDynamic) {
+                    // Note: getId/getType/getTypeId is an extension of the base Tag class and do not refer to list type.
+                    // getTypeId = XReflection.of(clazz).method()
+                    //         .returns(byte.class)
+                    //         .map(MinecraftMapping.MOJANG, "getElementType")
+                    //         .map(MinecraftMapping.OBFUSCATED, XReflection.v(19, "f").v(17, "e").v(16, "d_").v(14, "a_").orElse("getElementType"))
+                    //         .reflect();
 
-                // Obfuscated:
-                //   * v1.8 - v1.12 : d
-                //   * v1.13        : h
-                //   * v1.14        : g
-                //   * v1.15        : h
-                // From v1.15+ there's a constructor we can use instead.
-                setTypeId = XReflection.of(clazz).field("private byte type").setter().reflect();
+                    // We want the byte type id of the NBT tag for older versions so we can get the first element in the list
+                    // to use as the list type.
+                    getTypeId = XReflection.of(getNBTBaseClass()).method()
+                            .returns(byte.class)
+                            .map(MinecraftMapping.MOJANG, "getId") // From v1.14+
+                            .map(MinecraftMapping.SPIGOT, "getTypeId") // Stopped since v1.18
+                            .map(MinecraftMapping.OBFUSCATED, XReflection.v(19, 3, "b").orElse("a"))
+                            .reflect();
+                }
             } catch (ReflectiveOperationException e) {
                 e.printStackTrace();
             }
 
-            CONSTRUCTOR = handler;
+            ListTag_init = handler;
             GET_DATA = getData;
-            SET_DATA = setData;
-            GET_TYPE_ID = getTypeId;
-            SET_TYPE_ID = setTypeId;
+            ListTag_data = setData;
+            Tag_getTypeId = getTypeId;
+            ListTag_type = listtag_type;
         }
 
         @NotNull
@@ -410,6 +459,17 @@ public final class BukkitNBTAdapter {
             return org.kingdoms.nbt.tag.NBTTagList.of(type, converted);
         }
 
+        private static byte safeListType(List<Object> nmsAdapted, org.kingdoms.nbt.tag.NBTTagList<?> tag) {
+            if (!nmsAdapted.isEmpty()) {
+                try {
+                    return (byte) Tag_getTypeId.invoke(nmsAdapted.get(0));
+                } catch (Throwable ignored) {
+                }
+            }
+
+            return (byte) tag.elementType().id().id();
+        }
+
         @Override
         public Object toNBT(@NotNull org.kingdoms.nbt.tag.NBTTagList<T> tag) {
             try {
@@ -418,13 +478,14 @@ public final class BukkitNBTAdapter {
 
                 // If the list id is not set correctly, there are list methods that may
                 // ignore the list completely and return an empty list.
-                if (XReflection.supports(15)) {
-                    byte typeId = array.isEmpty() ? 0 : (byte) GET_TYPE_ID.invoke(array.get(0));
-                    return CONSTRUCTOR.invoke(array, typeId);
+                if (XReflection.supports(1, 21, 5)) {
+                    return ListTag_init.invoke(array);
+                } else if (XReflection.supports(15)) {
+                    return ListTag_init.invoke(array, safeListType(array, tag));
                 } else {
-                    Object nbtList = CONSTRUCTOR.invoke();
-                    SET_DATA.invoke(nbtList, array);
-                    SET_TYPE_ID.invoke(nbtList, (byte) tag.elementType().id().id());
+                    Object nbtList = ListTag_init.invoke();
+                    ListTag_data.invoke(nbtList, array);
+                    ListTag_type.invoke(nbtList, safeListType(array, tag));
                     return nbtList;
                 }
             } catch (Throwable throwable) {
@@ -439,23 +500,10 @@ public final class BukkitNBTAdapter {
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.DOUBLE);
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, double.class, "n", "w");
 
-            try {
-                if (XReflection.supports(15))
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, double.class));
-                else handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, double.class));
-
-                Field field = getDeclaredField(clazz, "w", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
         @NotNull
@@ -490,25 +538,10 @@ public final class BukkitNBTAdapter {
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.INT);
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, int.class, "n", "c");
 
-            try {
-                if (XReflection.supports(15)) {
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, int.class));
-                } else {
-                    handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, int.class));
-                }
-
-                Field field = getDeclaredField(clazz, "c", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
         @NotNull
@@ -543,27 +576,11 @@ public final class BukkitNBTAdapter {
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.BYTE);
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, byte.class, "n", "x");
 
-            try {
-                if (XReflection.supports(15)) {
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, byte.class));
-                } else {
-                    handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, byte.class));
-                }
-
-                Field field = getDeclaredField(clazz, "x", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
-
 
         @NotNull
         @Override
@@ -649,26 +666,11 @@ public final class BukkitNBTAdapter {
         private static final MethodHandle NBT_DATA;
 
         static {
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
             Class<?> clazz = getNBTClass(NBTTagId.SHORT);
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, short.class, "n", "c");
 
-            try {
-                if (XReflection.supports(15)) {
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, short.class));
-                } else {
-                    handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, short.class));
-                }
-
-                Field field = getDeclaredField(clazz, "c", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
         @NotNull
@@ -702,24 +704,11 @@ public final class BukkitNBTAdapter {
         private static final MethodHandle NBT_DATA;
 
         static {
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
             Class<?> clazz = getNBTClass(NBTTagId.LONG);
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, long.class, "n", "c");
 
-            try {
-                if (XReflection.supports(15))
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, long.class));
-                else handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, long.class));
-
-                Field field = getDeclaredField(clazz, "c", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
 
@@ -755,23 +744,10 @@ public final class BukkitNBTAdapter {
 
         static {
             Class<?> clazz = getNBTClass(NBTTagId.FLOAT);
-            MethodHandles.Lookup lookup = MethodHandles.lookup();
-            MethodHandle handler = null, data = null;
+            PrimitiveReflectData data = valueMethodOf(clazz, float.class, "n", "w");
 
-            try {
-                if (XReflection.supports(15))
-                    handler = lookup.findStatic(clazz, "a", MethodType.methodType(clazz, float.class));
-                else handler = lookup.findConstructor(clazz, MethodType.methodType(void.class, float.class));
-
-                Field field = getDeclaredField(clazz, "w", "data");
-                field.setAccessible(true);
-                data = lookup.unreflectGetter(field);
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            CONSTRUCTOR = handler;
-            NBT_DATA = data;
+            CONSTRUCTOR = data.constructor;
+            NBT_DATA = data.value;
         }
 
         @NotNull

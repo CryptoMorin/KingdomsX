@@ -3,8 +3,6 @@ package org.kingdoms.peacetreaties;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.addons.Addon;
-import org.kingdoms.config.managers.ConfigManager;
-import org.kingdoms.config.managers.ConfigWatcher;
 import org.kingdoms.constants.metadata.KingdomMetadataHandler;
 import org.kingdoms.constants.metadata.KingdomMetadataRegistry;
 import org.kingdoms.gui.GUIConfig;
@@ -74,7 +72,7 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         PeaceTreatiesPlaceholder.init();
         LanguageManager.registerMessenger(PeaceTreatyLang.class);
         CustomConfigValidators.init();
-        ConfigManager.registerAsMainConfig(PeaceTreatyConfig.PEACE_TREATIES);
+        PeaceTreatyConfig.init();
     }
 
     @Override
@@ -91,14 +89,6 @@ public final class PeaceTreatiesAddon extends JavaPlugin implements Addon {
         Bukkit.getPluginManager().registerEvents(new TermManager(), this);
 
         new CommandPeaceTreaty();
-
-        // peace-treaties.yml
-        ConfigWatcher.register(PeaceTreatyConfig.PEACE_TREATIES.getFile().toPath().getParent(), ConfigWatcher::handleNormalConfigs);
-        ConfigManager.registerNormalWatcher("peace-treaties.yml", (event) -> {
-            ConfigWatcher.reload(PeaceTreatyConfig.PEACE_TREATIES, "peace-treaties.yml");
-            getLogger().info("Reloading terms...");
-            TermRegistry.loadTermGroupings();
-        });
 
         GUIConfig.loadInternalGUIs(this);
 

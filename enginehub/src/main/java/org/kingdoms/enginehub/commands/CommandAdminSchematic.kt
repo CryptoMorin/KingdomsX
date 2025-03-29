@@ -1,7 +1,6 @@
 package org.kingdoms.enginehub.commands
 
 import org.kingdoms.commands.CommandContext
-import org.kingdoms.commands.CommandResult
 import org.kingdoms.commands.CommandTabContext
 import org.kingdoms.commands.KingdomsParentCommand
 import org.kingdoms.enginehub.EngineHubLang
@@ -32,19 +31,6 @@ class CommandAdminSchematic(parent: KingdomsParentCommand) : KingdomsParentComma
                     context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_TIPS_SIDE_EFFECTS)
                 }
             }
-        }
-
-        @JvmStatic
-        fun handleBasics(context: CommandContext): CommandResult {
-            if (context.requireArgs(1)) return CommandResult.FAILED
-            if (context.assertPlayer()) return CommandResult.FAILED
-            // if (!SoftService.WORLD_EDIT.isAvailable) {
-            //     return context.fail(KingdomsLang.SERVICES_WORLDEDIT)
-            // }
-
-            val schemName = context.arg(0)
-            context.`var`("schematic_name", schemName)
-            return CommandResult.SUCCESS
         }
 
         @JvmStatic

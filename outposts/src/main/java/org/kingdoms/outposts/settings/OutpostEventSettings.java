@@ -25,6 +25,7 @@ public class OutpostEventSettings {
     private @NonNull Location spawn, center;
     private @Nullable BossBarSettings bossBarSettings;
 
+    @SuppressWarnings("this-escape")
     public OutpostEventSettings(@NonNull String name, @NonNull String region, @NonNull Location spawn, @NonNull Location center) {
         this.name = name;
         this.region = region;
@@ -39,7 +40,7 @@ public class OutpostEventSettings {
                                 @NonNull Location spawn, @NonNull Location center,
                                 MathExpression cost, MathExpression resourcePointsCost,
                                 int maxParticipants, int minOnlineMembers,
-                                @NonNull  List<OutpostArenaMob> arenaMobs,
+                                @NonNull List<OutpostArenaMob> arenaMobs,
                                 @Nullable BossBarSettings bossBarSettings,
                                 @NonNull OutpostRewards rewards) {
         this.name = name;

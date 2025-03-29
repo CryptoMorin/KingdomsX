@@ -104,6 +104,14 @@ public final class ClipboardBlockCopyIterator implements Iterator<FunctionalWorl
 
         @Override
         public boolean apply(BlockVector3 position) throws WorldEditException {
+            // FAWE (FastAsyncWorldEdit-Paper-2.13.1-SNAPSHOT-1065.jar) bug:
+            // java.lang.NullPointerException: Cannot invoke "org.enginehub.linbus.tree.LinTag.value()" because "rotTag" is null
+            // 	at com.sk89q.worldedit.function.block.ExtentBlockCopy.transformNbtData(ExtentBlockCopy.java:95)
+            // 	at com.sk89q.worldedit.function.block.ExtentBlockCopy.apply(ExtentBlockCopy.java:77)
+            //
+            // FAWE: https://github.com/IntellectualSites/FastAsyncWorldEdit/blob/cca3b719162246b0ca018cffb55dcaaab67426f3/worldedit-core/src/main/java/com/sk89q/worldedit/function/block/ExtentBlockCopy.java#L94-L95
+            // WorldEdit: https://github.com/EngineHub/WorldEdit/blob/2be1150d8ce06484577f21629e0a1421a58d46f6/worldedit-core/src/main/java/com/sk89q/worldedit/function/block/ExtentBlockCopy.java#L94-L95
+
             boolean applied = main.apply(position);
             Operations.completeBlindly(editSession.commit());
             return applied;

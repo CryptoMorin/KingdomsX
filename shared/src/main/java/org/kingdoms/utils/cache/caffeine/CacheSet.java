@@ -49,4 +49,9 @@ public class CacheSet<K> extends AbstractSet<K> {
     public boolean isEmpty() {
         return map.asMap().isEmpty();
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + '(' + this.map.asMap().keySet() + ')';
+    }
 }

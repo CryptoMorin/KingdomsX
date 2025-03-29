@@ -13,6 +13,7 @@ package org.kingdoms.utils.internal.string
 class StringPadder {
     private val sentences: MutableList<Sentence> = mutableListOf()
     private var expectedSentenceWordCount: Int = -1
+    private var defaultValue: String? = null
 
     private class Sentence(var words: MutableList<String>)
 
@@ -26,8 +27,35 @@ class StringPadder {
         return this
     }
 
+    fun pad(rows: List<Map<*, *>>): StringPadder {
+        rows.forEach { row ->
+            val elements = mutableListOf<String>()
+            row.forEach { column ->
+                elements.apply {
+                    add(column.key.toString())
+                    if (column.value !== null && column.value.toString().isNotEmpty()) {
+                        add(": " + column.value.toString())
+                    } else {
+                        add("")
+                    }
+                    add(" | ")
+                }
+            }
+
+            elements.removeLast() // Remove the last " | "
+            pad(*elements.toTypedArray())
+        }
+        return this
+    }
+
+    fun padIfEmpty(string: String): StringPadder {
+        this.defaultValue = string
+        return this
+    }
+
     fun getPadded(): List<String> {
-        require(this.expectedSentenceWordCount != -1) { "No sentences added to pad ($sentences)" }
+        if (expectedSentenceWordCount == -1 && defaultValue !== null) return arrayListOf(defaultValue!!)
+        require(expectedSentenceWordCount != -1) { "No sentences added to pad ($sentences)" }
 
         for (i in 0..<expectedSentenceWordCount) {
             val words = ArrayList<String>(this.sentences.size)

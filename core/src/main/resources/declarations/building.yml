@@ -85,7 +85,6 @@ building:
   1:
     # Uses the registered default.
     # type: SINGLE_BLOCKED
-    schematic: '<type>/<name>/1'
     functional-points: &fnPoints
       '0, 0, 0':
         - { type: activation, name: main }
@@ -142,12 +141,10 @@ building:
             - *progress2
           height: *height
   2:
-    schematic: '<type>/<name>/2'
     functional-points: *fnPoints
     block: <block-2>
     holograms: *holograms
   3:
-    schematic: '<type>/<name>/3'
     functional-points: *fnPoints
     block: <block-3>
     holograms: *holograms
@@ -296,18 +293,31 @@ damaging-factors:
         delay: 10 * effect_lvl
         duration: effect_duration
   POTION:
-    # the "effect_lvl" (starting from 1) and "effect_duration" (in ticks) placeholder can be used as well.
+    # * The "effect_lvl" (starting from 1) and "effect_duration" (in ticks) placeholder can be used as well.
+    #
+    # * The "effect_distance" determines the distance between the building and the splash potion.
+    #   This distance starts from 0 and can only go up to 10 blocks (even though Vanilla Minecraft distances are lower)
+    #   and you can control the values based on this value. Note that when using EngineHub add-on where buildings
+    #   have multiple blocks, it'll calculate this distance based on the closest block to the potion's location.
+    #
+    # * "allowed-range" option can be used to determine the minimum distance this splash potion must be close
+    #   in order to apply the effects. So "allowed-range: [ 2, 2, 2 ]" means that this splash potion must be at least
+    #   2 blocks (in any direction x,y,z) near the building for it to work.
     INSTANT_DAMAGE:
+      allowed-range: &splash-range [ 5, 4, 5 ]
       damage: 10 * effect_lvl
     WEAKNESS:
+      allowed-range: *splash-range
       weakness:
         damage-reduction: 5 * effect_lvl
         duration: effect_duration
     SLOWNESS:
+      allowed-range: *splash-range
       slowness:
         delay: cooldown * effect_lvl
         duration: effect_duration
     POISON:
+      allowed-range: *splash-range
       paralyze: '[10s] * effect_lvl'
   WIND_CHARGE:
     damage: 20

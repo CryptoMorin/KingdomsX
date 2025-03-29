@@ -96,10 +96,10 @@ class WarPointManager : Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     fun onKingdomItemBreak(event: KingdomItemBreakEvent<*>) {
         event.getMetadata<SiegeCannon>(SiegeCannon.NS) ?: return
-        val item = event.getKingdomItem()!!
+        val item = event.getKingdomBlock()!!
 
         val player = event.getPlayer() ?: return // Not caused by a player
-        val itemKingdom = item.getLand()!!.kingdom!!
+        val itemKingdom = item.land!!.kingdom!!
         val playerKingdom = player.kingdom!!
 
         if (!allowedRelationShip(itemKingdom, playerKingdom)) return

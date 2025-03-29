@@ -405,7 +405,13 @@ command:
   #       For example, hover messages use commands hover:{...;...;/k cmd ...}
   #       which you'll need to change if you change the name.
   name: kingdoms
-  aliases: [ kingdom, xkingdoms, kingdomsx, k ]
+  aliases: [ k, kingdom, xkingdoms, kingdomsx ]
+
+  # This is not an actual config option, it's placed here for convenience.
+  # (Not to say that changing this option doesn't change anything)
+  # This gets registered as {$cmd} macro which is used for some hardcoded
+  # values and in places where a kingdom command is expected to be used.
+  display-name: &macro-cmd '/k'
 
   # Since Minecraft command parser strips duplicated spaces, the following text
   # is replaced in command arguments with spaces.
@@ -687,6 +693,7 @@ placeholders:
     err-sign: "&8&l[&4&l!&8&l]"
     info-sign: "&8&l[&9&l!&8&l]"
 
+    cmd: *macro-cmd
     lvlup: '↑'
     arrow: '&8➔'
     point: '&8➤'
@@ -914,8 +921,13 @@ kingdom-name:
   # If the name matches any RegEx below then it'll not be allowed.
   # To only allow a certain language, use "[^A-z]" where A is the first alphabet in that language and z is the last (lowercase if available)
   # alphabet in that language. The "[^A-z]" expression itself indicates that only English alphabets are allowed.
-  blacklisted-names: [ "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?",
-                       cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch ]
+  blacklisted-names: &bad-words [
+    "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?",
+    fuck, anus, anal, cock, dick, suck, twat, shit,
+    labbe, vagina, clit, cunt, bitch, whore, slut,
+    faggot, retard, porn, rape, rapist, molest, wanker,
+    cracker
+  ]
 
 # Settings for /k tag
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
@@ -942,7 +954,7 @@ tags:
   allow-non-english: false
   allow-symbols: false
 
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
+  blacklisted-names: *bad-words
 
 # Settings for /k nation create and /k nation rename
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
@@ -959,7 +971,7 @@ nation-name:
   allow-symbols: false
   allow-duplicate-names: false
   case-sensitive: false
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
+  blacklisted-names: *bad-words
 
 # All the option explanations are the same as "kingdom-name" option. Please refer to the section above.
 kingdom-lore: # /k lore
@@ -980,12 +992,32 @@ kingdom-lore: # /k lore
   allow-non-english: true
   allow-symbols: false
   remove-keywords: [ "remove", "none", "delete", "unset", "off" ]
-  blacklisted-names: [ black, white, cunt, motherfuck, motherfucker, whore, anus, anal, cock, dick, suck, twat, shit, labbe, faggot, clit, bitch, "nigg(?:a|er)", "tit(?:s|z|ies)?", "boob(?:s|z|ies)?", "butt|ass(?:hole)?", "^fag$" ]
+  blacklisted-names: *bad-words
 
 default-flags:
-  # Should kingdom homes be public by default?
-  public-home: false
-  # Other flags include "requires-invite", "permanent" and "hidden"
+  players:
+    # admin: /k admin mode
+    # pvp: /k pvp
+    # spy: /k admin spy
+    # markers: /k visualize toggle
+    sneak-mode: false # /k admin sneak
+  kingdoms:
+    # Can anyone (including foreigners) use /k home <kingdom> for this kingdom?
+    public-home: false
+
+    # Does this kingdom require an invitation (/k invite) to join (/k join)?
+    open: false
+
+    # Is this kingdom immune to inactivity disbands? Usually Kingless server-managed kingdoms.
+    permanent: false
+
+    # Should this kingdom be hidden in online maps and /k map?
+    hidden: false
+  nations:
+    public-home: false
+    open: true
+    permanent: false
+    hidden: false
 
 audit-logs:
   # Disabled logs
@@ -1637,8 +1669,8 @@ home:
   unset-if:
     # Unset kingdom home of the land that has the home set in it is unclaimed.
     unclaimed: true
-    # Unset kingdom home if the land that has the home set in it is invaded.
-    # Invaded lands are technically not "unclaimed"
+
+    # Unset kingdom home if the land that has the home set in it is successfully invaded.
     invaded: false
 
   # If safe home is enabled, it'll set the home in the

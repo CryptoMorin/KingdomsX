@@ -5,14 +5,17 @@ import org.kingdoms.config.accessor.EnumConfig;
 import org.kingdoms.config.accessor.KeyedConfigAccessor;
 import org.kingdoms.config.implementation.KeyedYamlConfigAccessor;
 import org.kingdoms.config.managers.ConfigManager;
-import org.kingdoms.config.managers.ConfigWatcher;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.utils.config.ConfigPath;
 import org.kingdoms.utils.config.adapters.YamlResource;
 import org.kingdoms.utils.string.Strings;
 
 public enum EngineHubConfig implements EnumConfig {
-    WORLDEDIT_USE_SCHEMATICS(1),
+    WORLDEDIT_SCHEMATICS_ENABLED(1, 2),
+    WORLDEDIT_SCHEMATICS_FORCE_EXTENSION(1, 2),
+    WORLDEDIT_SCHEMATICS_DEFAULT_SAVE_FORMAT(1, 2),
+    WORLDEDIT_SCHEMATICS_LOADING_MECHANISM_FORCED_FORMAT(1, 2, 4),
+    WORLDEDIT_SCHEMATICS_LOADING_MECHANISM_BYPASS_FAWE_EXTENSION_CHECK(1, 2, 4),
     WORLDEDIT_EDIT_PROTECTION(1),
 
     WORLDGUARD_REGISTER_FLAGS(1),

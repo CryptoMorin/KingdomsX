@@ -67,11 +67,11 @@ class CommandPeaceTreatyReview(parent: KingdomsParentCommand) : KingdomsCommand(
     }
 
     override fun execute(context: CommandContext): CommandResult {
-        if (context.assertPlayer()) return CommandResult.FAILED
+        context.assertPlayer()
         if (context.assertHasKingdom()) return CommandResult.FAILED
         val kingdom = context.kingdom
 
-        if (!context.assertArgs(1)) {
+        if (!context.hasArgs(1)) {
             openGUI(context.senderAsPlayer(), kingdom)
             return CommandResult.SUCCESS
         }

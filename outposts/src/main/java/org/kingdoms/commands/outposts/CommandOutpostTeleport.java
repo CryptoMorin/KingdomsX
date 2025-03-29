@@ -9,9 +9,9 @@ import org.kingdoms.constants.land.location.SimpleChunkLocation;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.LocationLocale;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.utils.PaperUtils;
 
 import java.util.List;
@@ -23,8 +23,8 @@ public class CommandOutpostTeleport extends KingdomsCommand {
 
     @Override
     public CommandResult execute(CommandContext context) {
-        if (context.assertPlayer()) return CommandResult.FAILED;
-        if (context.requireArgs(1)) return CommandResult.FAILED;
+        context.assertPlayer();
+        context.requireArgs(1);
         if (context.assertHasKingdom()) return CommandResult.FAILED;
 
         OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
@@ -52,6 +52,6 @@ public class CommandOutpostTeleport extends KingdomsCommand {
 
     @Override
     public @NonNull List<String> tabComplete(@NonNull CommandTabContext context) {
-        return context.isAtArg(0) ? context.suggest(0, OutpostEvent.getEvents().keySet()) : emptyTab();
+        return context.isAtArg(0) ? context.suggest(0, OutpostEvent.getEvents().keySet()) : context.emptyTab();
     }
 }

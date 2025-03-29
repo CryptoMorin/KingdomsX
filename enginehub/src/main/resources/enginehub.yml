@@ -1,9 +1,55 @@
 worldedit:
-  # Should WorldEdit schematics be used for buildings instead of single blocks?
-  # Disabling this will not reverse changes done by "/k admin schematic setup"
-  # you'd have to reset your building configs.
-  # * Requires a restart to change.
-  use-schematics: true
+  schematics:
+    # Should WorldEdit schematics be used for buildings instead of single blocks?
+    # Disabling this will not reverse changes done by "/k admin schematic setup"
+    # you'd have to reset your building configs.
+    # * Requires a restart to change.
+    enabled: true
+
+    # Default format used for "/k admin schematic save"
+    # If set to ~, it uses the newest/best format supported
+    # by your current WorldEdit installation.
+    #
+    # - Possible Available Formats:
+    #  * MCEDIT_SCHEMATIC    (mcedit, mce, schematic)
+    #  * SPONGE_V1_SCHEMATIC (sponge.1)
+    #  * SPONGE_V2_SCHEMATIC (sponge.2, slow.2, safe.2)
+    #  * SPONGE_V3_SCHEMATIC (sponge.3, slow,   safe)
+    #  ------------------------------------------------
+    #  * FAST_V3             (fawe,   fast,   schem)   [FAWE Only]
+    #  * FAST_V2             (fawe.2, fast.2, schem.2) [FAWE Only]
+    #  * PNG                 (image)                   [FAWE Only]
+    #  * MINECRAFT_STRUCTURE (structure)               [FAWE Only]
+    #  * BROKENENTITY        (brokenentity)            [FAWE Only]
+    default-save-format: ~
+
+    loading-mechanism:
+      # Should a certain format be forced to be used while loading
+      # all schematics or should we let the WorldEdit implementation
+      # decide what format the file uses? This is mostly for debugging
+      # purposes.
+      # * Uses the same names as 'default-save-format' option.
+      forced-format: ~
+
+      # FastAsyncWorldEdit (FAWE) additionally checks the file's
+      # extension before checking the file format and may ignore
+      # the file completely, this check doesn't exist in WorldEdit
+      # and is problematic.
+      bypass-fawe-extension-check: true
+
+    # The default built-in schematics shipped with this addon are made
+    # using the old original "MCEDIT_SCHEMATIC" (.mcedit) format so
+    # that both old and newer versions support these schematics.
+    #
+    # However, for some reason, FastAsyncWorldEdit (FAWE) doesn't
+    # recognize files with ".schematic" extension as any valid schematic format.
+    # They require ".schem" instead without even checking the file content.
+    # It even accepts random extensions that don't even exist,
+    # but it's not okay with .schematic which doesn't make sense.
+    # This option renames all schematics in the "Kingdoms/schematics" folder
+    # to have this extension before being loaded.
+    # If set to ~, then the plugin will automatically apply fixes when needed.
+    force-extension: ~
 
   # Some server owners give players access to WorldEdit,
   # should the plugin prevent players from editing in unauthorized claimed lands?

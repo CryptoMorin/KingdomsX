@@ -19,4 +19,4 @@ inline fun <T : Comparable<T>> T.coerceAtLeastIf(condition: Boolean, crossinline
 
 inline fun <T> Any?.cast(): T = Fn.cast(this)
 
-inline fun <T> Any.safeCast(clazz: Class<T>): T? = Fn.safeCast(this, clazz)
+inline fun <T> Any.safeCast(clazz: Class<T>): T? = Fn.nullableCast(this, clazz)

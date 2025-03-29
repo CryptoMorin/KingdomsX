@@ -76,8 +76,12 @@ public final class Reflect {
     }
 
     public static String toString(Object obj) {
+        return toString(obj, false);
+    }
+
+    public static String toString(Object obj, boolean direct) {
         Class<?> clazz = obj.getClass();
-        List<Field> fields = getFields(clazz);
+        List<Field> fields = direct ? Arrays.asList(clazz.getDeclaredFields()) : getFields(clazz);
         StringBuilder string = new StringBuilder(clazz.getSimpleName()).append('{');
         StringJoiner joiner = new StringJoiner(", ");
 

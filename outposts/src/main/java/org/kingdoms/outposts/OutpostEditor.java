@@ -311,7 +311,7 @@ public final class OutpostEditor {
                 ctx.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_WRONG_MATH, "eqn", input);
                 return;
             }
-            Set<String> vars =compiled.getVariables();
+            Set<String> vars = compiled.getVariables();
             for (String var : vars) {
                 if (!var.equals("dmg")) {
                     ctx.sendError(OutpostsLang.COMMAND_OUTPOST_EDIT_ARENA_MOBS_DAMAGE_BONUS_UNKNOWN_VARIABLE, "eqn", input, "variable", var);

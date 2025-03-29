@@ -23,7 +23,6 @@ import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
-import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.managers.entity.KingdomEntityBuilder;
 import org.kingdoms.outposts.settings.OutpostArenaMob;

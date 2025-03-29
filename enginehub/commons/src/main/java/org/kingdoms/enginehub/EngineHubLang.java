@@ -32,6 +32,14 @@ public enum EngineHubLang implements DefinedMessenger {
             "{$p}You can hover:{{$s}click here;&7Click to override;/k admin schematic save %schematic_name%} {$p}to override the saved file once you're done.", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_LIST_DESCRIPTION("{$s}Lists all the available schematics.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_LIST_ENTRY("hover:{%schematic_name%;&7Click to load\n\n" +
+            "{$p}Format{$colon} {$s}%schematic_format%\n" +
+            "{$p}File Size{$colon} {$s}%schematic_size%\n" +
+            "{$p}Dimensions{$colon} {$s}%schematic_dimensions%\n" +
+            "{$p}Blocks{$colon} {$s}%schematic_blocks%\n" +
+            "{$p}Entities{$colon} {$s}%schematic_entities%\n" +
+            "{$p}&2Biomes{$colon} {$s}%schematic_has_biomes%" +
+            ";/k admin schematic load %schematic_path%}", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_ORIGIN_DESCRIPTION("{$s}Changes the copy origin of the current WorldEdit clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_ORIGIN_USAGE("{$usage}admin schematic origin &2<x> <y> <z>", 1, 2, 3, 4),

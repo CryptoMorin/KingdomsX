@@ -4,7 +4,6 @@ import org.kingdoms.config.accessor.EnumConfig;
 import org.kingdoms.config.accessor.KeyedConfigAccessor;
 import org.kingdoms.config.implementation.KeyedYamlConfigAccessor;
 import org.kingdoms.config.managers.ConfigManager;
-import org.kingdoms.config.managers.ConfigWatcher;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.terms.TermRegistry;
@@ -30,17 +29,23 @@ public enum PeaceTreatyConfig implements EnumConfig {
     WAR_POINTS_SCORES_LOSE_INVADE(2, 3, 4),
     ;
 
-    public static final YamlResource PEACE_TREATIES =
-            new YamlResource(PeaceTreatiesAddon.get(),
-                    Kingdoms.getPath("peace-treaties.yml").toFile(), "peace-treaties.yml").load();
+    private static final YamlResource PEACE_TREATIES =
+            new YamlResource(
+                    PeaceTreatiesAddon.get(),
+                    Kingdoms.getPath("peace-treaties.yml").toFile(),
+                    "peace-treaties.yml"
+            ).load();
 
     static {
-        ConfigWatcher.register(PEACE_TREATIES.getFile().toPath().getParent(), ConfigWatcher::handleNormalConfigs);
-        ConfigManager.registerNormalWatcher("peace-treaties", (event) -> {
-            ConfigWatcher.reload(PEACE_TREATIES, "peace-treaties.yml");
+        ConfigManager.registerAsMainConfig(PeaceTreatyConfig.PEACE_TREATIES);
+        PEACE_TREATIES.reloadHandle(() -> {
+            PeaceTreatiesAddon.get().getLogger().info("Reloading terms...");
             TermRegistry.loadTermGroupings();
         });
+        ConfigManager.watch(PEACE_TREATIES);
     }
+
+    public static void init() {}
 
     private final ConfigPath option;
 

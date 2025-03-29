@@ -66,10 +66,10 @@ class TermManager : Listener {
 
     @EventHandler(ignoreCancelled = true)
     fun onKingdomItemPlace(event: KingdomItemPlaceEvent<*>) {
-        val kingdom = event.getKingdomItem().getLand()?.kingdom ?: return
+        val kingdom = event.getKingdomBlock().land?.kingdom ?: return
         val contract = kingdom.getAcceptedPeaceTreaty() ?: return
 
-        if (event.getKingdomItem() is Turret) {
+        if (event.getKingdomBlock() is Turret) {
             val term = contract.getSubTerm(LimitTurretsTerm.PROVIDER) as? LimitTurretsTerm
                 ?: return
             val settings = term.edits
@@ -78,7 +78,7 @@ class TermManager : Listener {
                 event.isCancelled = true
                 event.getPlayer()?.player?.let { PeaceTreatyLang.TERMS_MAX_TURRETS_LIMITED.sendMessage(it, settings) }
             }
-        } else if (event.getKingdomItem() is Structure) {
+        } else if (event.getKingdomBlock() is Structure) {
             val term = contract.getSubTerm(LimitTurretsTerm.PROVIDER) as? LimitTurretsTerm
                 ?: return
             val settings = term.edits

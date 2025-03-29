@@ -5,8 +5,8 @@ import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
-import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostsLang;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.services.managers.SoftService;
 
 public class CommandOutpost extends KingdomsParentCommand {
@@ -14,7 +14,7 @@ public class CommandOutpost extends KingdomsParentCommand {
         if (SoftService.WORLD_GUARD.isAvailable()) return false;
         new StaticMessenger("&4You need to install &ehover:{&nWorldGuard;Click to open the download page;@https://dev.bukkit.org/projects/worldguard} " +
                 "&4plugin in order to use Outpost events."
-        ).sendError(sender, new MessagePlaceholderProvider().usePrefix());
+        ).sendError(sender, new MessagePlaceholderProvider().usePrefix(true));
         return true;
     }
 
@@ -25,6 +25,7 @@ public class CommandOutpost extends KingdomsParentCommand {
         return outpost;
     }
 
+    @SuppressWarnings("this-escape")
     public CommandOutpost() {
         super("outpost");
         if (isDisabled()) return;

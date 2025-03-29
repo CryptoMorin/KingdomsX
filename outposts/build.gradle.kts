@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "3.1.0"
+version = "3.1.1"
 description = "An event similar to KoTH"
 
 kingdomsAddon {

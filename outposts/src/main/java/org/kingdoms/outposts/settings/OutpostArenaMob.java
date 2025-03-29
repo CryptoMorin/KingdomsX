@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.locale.provider.CascadingMessageContextProvider;
-import org.kingdoms.main.KLogger;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
 import org.kingdoms.utils.config.ConfigSection;
 

@@ -4,9 +4,9 @@ import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.commands.*;
-import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
+import org.kingdoms.outposts.settings.OutpostEventSettings;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class CommandOutpostStop extends KingdomsCommand {
 
     @Override
     public CommandResult execute(CommandContext context) {
-        if (context.requireArgs(1)) return CommandResult.FAILED;
+        context.requireArgs(1);
 
         OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
         if (outpost == null) return CommandResult.FAILED;
@@ -41,6 +41,6 @@ public class CommandOutpostStop extends KingdomsCommand {
     public @NonNull
     List<String> tabComplete(@NonNull CommandTabContext context) {
         if (context.isAtArg(0)) return new ArrayList<>(OutpostEventSettings.getOutposts().keySet());
-        return KingdomsCommand.emptyTab();
+        return context.emptyTab();
     }
 }

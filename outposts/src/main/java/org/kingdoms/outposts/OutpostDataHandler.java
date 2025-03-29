@@ -23,6 +23,10 @@ import java.util.List;
 public final class OutpostDataHandler {
     protected static final YamlFile DATA = new YamlFile(new File(Kingdoms.getFolder().toFile(), "outposts.yml")).load();
 
+    static {
+        DATA.reloadHandle(OutpostDataHandler::loadOutposts);
+    }
+
     public static void saveOutposts() {
         ConfigSection config = DATA.getConfig();
 
@@ -87,6 +91,11 @@ public final class OutpostDataHandler {
 
         for (String name : config.getKeys()) {
             ConfigSection section = config.getSection(name);
+            if (section == null) {
+                OutpostAddon.get().getLogger().warning('\'' + name + "' is not an outpost settings section in outposts.yml, ignoring...");
+                continue;
+            }
+
             ConfigSection rewardSection = section.getSection("rewards");
             ConfigSection itemsSection = rewardSection.getSection("items");
             List<ItemStack> itemRewards = new ArrayList<>();

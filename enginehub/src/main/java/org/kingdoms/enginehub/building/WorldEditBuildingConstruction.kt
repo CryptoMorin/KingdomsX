@@ -35,6 +35,9 @@ import org.kingdoms.utils.debugging.DebugNS
 import org.kingdoms.utils.internal.iterator.RangedIterator
 import java.time.Duration
 
+val BuildingSettings.schematic: String
+    get() = this.settings.getString("schematic") ?: error("No schematic is set for $this")
+
 class WorldEditBuildingConstruction(
     override val schematic: WorldEditSchematic,
     origin: BlockLocation3,
@@ -48,7 +51,7 @@ class WorldEditBuildingConstruction(
     override fun getArchitect(): BuildingArchitect = Arch
 
     private object Debugger : DebugNS {
-        override fun namespace(): String = "WORLD_EDIT_FUNCTION"
+        override fun namespace(): String = "ENGINEHUB_WORLDEDIT_BUILDING"
     }
 
     object Arch : BuildingConstructionArchitect {

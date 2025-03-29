@@ -3,10 +3,10 @@ sound: ITEM_BOOK_PAGE_TURN
 rows: 6
 
 '[color]': &color
-  allowed:
-    condition: 'color_allowed'
   disallowed:
+    condition: '!color_allowed'
     lore: "{$warning} &eYou cannot pick this color."
+    sound: BLOCK_NOTE_BLOCK_BASS
 
 # https://minecraft.fandom.com/wiki/Formatting_codes
 options:
@@ -44,17 +44,14 @@ options:
     posx: 2
     posy: 3
     material: REDSTONE_BLOCK
-    sound: BLOCK_NOTE_BLOCK_BASS
-    name: '&4Dark Red #FF5555'
-    color: '#FF5555'
+    name: '&4Dark Red #AA0000'
+    color: '#AA0000'
     <<: *color
   color-red:
     posx: 2
     posy: 4
     material: RED_WOOL
     name: '&cRed #FF5555'
-    lore: "&8[&c!&8] &eYou cannot pick this color."
-    sound: BLOCK_NOTE_BLOCK_BASS
     color: '#FF5555'
     <<: *color
   color-dark-blue:

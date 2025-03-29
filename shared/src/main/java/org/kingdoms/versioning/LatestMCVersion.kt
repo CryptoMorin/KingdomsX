@@ -22,7 +22,7 @@ enum class LatestMCVersion(val latestBuild: Int) {
     v1_18(388),
     v1_19(550),
     v1_20(151),
-    v1_21(72),
+    v1_21(212),
     ;
 
     private val minorNumber: Int = ordinal + 8

@@ -1,5 +1,8 @@
 package org.kingdoms.utils.internal;
 
+import org.kingdoms.ide.Bookmark;
+import org.kingdoms.ide.BookmarkType;
+
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;
@@ -7,7 +10,7 @@ import java.util.Arrays;
 /**
  * A simpler, thread-unsafe, public ensureCapacity, non-copying, internal copy of Java's {@link java.io.ByteArrayOutputStream}.
  */
-public class ByteArrayOutputStream extends OutputStream {
+public class FastByteArrayOutputStream extends OutputStream {
     /**
      * The number of valid bytes in the buffer.
      */
@@ -22,7 +25,7 @@ public class ByteArrayOutputStream extends OutputStream {
      * Creates a new {@code ByteArrayOutputStream}, with a buffer capacity of
      * the specified size, in bytes.
      */
-    public ByteArrayOutputStream(int size) {
+    public FastByteArrayOutputStream(int size) {
         buf = new byte[size];
     }
 
@@ -121,7 +124,7 @@ public class ByteArrayOutputStream extends OutputStream {
      *
      * @return the value of the {@code count} field, which is the number
      * of valid bytes in this output stream.
-     * @see ByteArrayOutputStream#size
+     * @see FastByteArrayOutputStream#size
      */
     public int size() {
         return size;
@@ -142,7 +145,7 @@ public class ByteArrayOutputStream extends OutputStream {
         return Arrays.copyOf(buf, size);
     }
 
-    public boolean equals(ByteArrayOutputStream obj) {
+    public boolean equals(FastByteArrayOutputStream obj) {
         // Don't use Arrays.equals() it has a stupid mismatch checker...
 
         if (this.size != obj.size) return false;

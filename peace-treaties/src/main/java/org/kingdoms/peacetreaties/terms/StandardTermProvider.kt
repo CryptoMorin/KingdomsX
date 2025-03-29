@@ -15,7 +15,7 @@ import java.util.concurrent.CompletionStage
 
 open class StandardTermProvider(
     private val namespace: Namespace,
-    private inline val constructor: () -> Term,
+    private val constructor: () -> Term,
     private val requiresData: Boolean = false,
     private val longTerm: Boolean = false,
 ) : TermProvider {

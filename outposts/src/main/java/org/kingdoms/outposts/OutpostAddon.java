@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.addons.Addon;
 import org.kingdoms.commands.outposts.CommandOutpost;
+import org.kingdoms.config.managers.ConfigManager;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPermission;
 import org.kingdoms.gui.GUIConfig;
@@ -42,6 +43,7 @@ public final class OutpostAddon extends JavaPlugin implements Addon {
         Kingdoms.get().getPermissionRegistery().register(OUTPOST_JOIN_PERMISSION);
         Kingdoms.get().getAuditLogRegistry().register(LogKingdomOutpostJoin.PROVIDER);
         LanguageManager.registerMessenger(OutpostsLang.class);
+        ConfigManager.watch(OutpostDataHandler.DATA);
     }
 
     @Override

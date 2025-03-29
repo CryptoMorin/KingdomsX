@@ -8,9 +8,9 @@ import org.kingdoms.peacetreaties.terms.types.MiscUpgradesTerm
 
 class CommandPeaceTreatyMiscUpgrades(parent: KingdomsParentCommand) : KingdomsCommand("miscUpgrades", parent) {
     override fun execute(context: CommandContext): CommandResult {
-        if (context.assertPlayer()) return CommandResult.FAILED
+        context.assertPlayer()
         if (context.assertHasKingdom()) return CommandResult.FAILED
-        if (context.requireArgs(1)) return CommandResult.FAILED
+        context.requireArgs(1)
 
         val target = context.getKingdom(0) ?: return CommandResult.FAILED
         val kingdom = context.kingdom

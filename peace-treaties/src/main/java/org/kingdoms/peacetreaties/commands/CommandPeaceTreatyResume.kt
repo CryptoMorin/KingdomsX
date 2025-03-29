@@ -6,7 +6,7 @@ import org.kingdoms.peacetreaties.managers.StandardPeaceTreatyEditor
 
 class CommandPeaceTreatyResume(parent: KingdomsParentCommand) : KingdomsCommand("resume", parent) {
     override fun execute(context: CommandContext): CommandResult {
-        if (context.assertPlayer()) return CommandResult.FAILED
+        context.assertPlayer()
         if (context.assertHasKingdom()) return CommandResult.FAILED
 
         val resumed = StandardPeaceTreatyEditor.resume(context.senderAsPlayer())
