@@ -102,14 +102,15 @@ options:
       lore: |
         %description%
 
-        &4Versão Instalado{$colon} {$sp}%installed-version% 
-        {$p}Última Versão{$colon} {$sp}%latest-version% 
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%latest-version%
 
-        {$sep}[{$e}!{$sep}] {$es}Esta versão requer kingdoms {$p}v%supported-core-version% {$es}para funcionar. 
-        Versão atual{$colon} {$e}%current-core-version% 
+        {$warning} {$desc}This version requires
+        kingdoms {$p}v%supported-core-version% {$desc}to work.
+        Current version{$colon} {$e}%current-core-version%
 
-        {$p}Clique esquerdo para atualizar 
-        &4Clique direito para desinstalar
+        {$p}Left-click to update
+        &4Right-click to uninstall
       material: RED_WOOL
     not=installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
@@ -117,10 +118,11 @@ options:
       lore: |
         %description%
 
-        {$p}Versão{$colon} {$sp}%latest-version%  
+        {$p}Version{$colon} {$sp}%latest-version%
 
-        {$warning}Esta versão requer kingdoms {$p}v%supported-core-version% {$sep}para funcionar.  
-        Versão atual{$colon} {$e}%current-core-version%.
+        {$warning} {$desc}This version requires
+        kingdoms {$p}v%supported-core-version% {$desc}to work.
+        Current version{$colon} {$e}%current-core-version%
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
