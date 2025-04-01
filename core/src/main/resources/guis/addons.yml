@@ -30,7 +30,7 @@ options:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
     installing:
       condition: installing
-      name: '&8[&3Installing...&8] {$sp}%addon-name%'
+      name: '{$sep}[&3Installing...{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -38,7 +38,7 @@ options:
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Pending Restart&8] {$sp}%addon-name%'
+      name: '{$sep}[&5Pending Restart{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -47,9 +47,23 @@ options:
         for the server to be restarted to
         enable the addon.
       material: PURPLE_WOOL
+    failed-to-load:
+      condition: 'installed && failed_to_load'
+      name: '{$sep}[&4Failed to load{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &cThis addon failed to load. Check your
+        console for errors.
+
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%latest-version%
+        {$p}Left-click to update
+        &4Right-click to uninstall
+      material: RED_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[{$p}Up to date&8] {$sp}%addon-name%'
+      name: '{$sep}[{$p}Up to date{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
         {$p}Version{$colon} {$sp}%installed-version%
@@ -57,7 +71,7 @@ options:
       material: GREEN_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Outdated&8] {$sp}%addon-name%'
+      name: '{$sep}[&4Outdated{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -73,7 +87,7 @@ options:
       material: RED_WOOL
     not=installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
-      name: '&8[&4Outdated Core&8] {$sp}%addon-name%'
+      name: '{$sep}[&4Outdated Core{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -85,19 +99,19 @@ options:
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Outdated&8] {$sp}%addon-name%'
+      name: '{$sep}[&6Outdated{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
         &4Installed Version{$colon} {$sp}%installed-version%
         {$p}Latest Version{$colon} {$sp}%latest-version%
         {$p}Left-click to update
         &4Right-click to uninstall
-      material: RED_WOOL
+      material: ORANGE_WOOL
     not-installed:
-      name: '&8[{$s}Not installed&8] {$sp}%addon-name%'
+      name: '{$sep}[&7Not installed{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
         {$p}Version{$colon} {$sp}%latest-version%
         {$p}Left-click to install
       condition: '!installed'
-      material: BLUE_WOOL
+      material: GRAY_WOOL

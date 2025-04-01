@@ -41,6 +41,7 @@ public final class BukkitNBTAdapter {
         MinecraftClassHandle base = XReflection.ofMinecraft()
                 .inPackage(MinecraftPackage.NMS, "nbt")
                 .map(MinecraftMapping.SPIGOT, "NBTBase");
+
         if (XReflection.SUPPORTED_MAPPINGS.contains(MinecraftMapping.MOJANG)) {
             base.map(MinecraftMapping.MOJANG, "Tag");
         }
@@ -48,17 +49,18 @@ public final class BukkitNBTAdapter {
         return base.unreflect();
     }
 
-    @Nullable
+    @NotNull
     private static Class<?> getNBTClass(NBTTagId type) {
         // Capitalize
         String typeName = Arrays.stream(type.name().split("_"))
                 .map(t -> t.charAt(0) + t.substring(1).toLowerCase())
                 .collect(Collectors.joining(""));
+
         return XReflection.ofMinecraft()
                 .inPackage(MinecraftPackage.NMS, "nbt")
                 .map(MinecraftMapping.MOJANG, typeName + "Tag")
                 .map(MinecraftMapping.SPIGOT, "NBTTag" + typeName)
-                .reflectOrNull();
+                .unreflect();
     }
 
     private static final class BukkitNBTCompound implements NBTConverter<NBTTagCompound, Object> {

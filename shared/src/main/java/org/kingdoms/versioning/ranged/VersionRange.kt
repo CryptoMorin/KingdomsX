@@ -102,12 +102,12 @@ class ExactVersionRange(val version: Version) : AbstractVersionRange(version.get
 }
 
 /**
- * Inclusive version range.
+ * Version range consisting of an inclusive [least] and an exclusive [most].
  */
 class EnclosedVersionRange(val least: Version, val most: Version, originalString: String) :
     AbstractVersionRange(originalString) {
 
-    override fun isIncluded(version: Version): Boolean = version in least..most
+    override fun isIncluded(version: Version): Boolean = version in least..<most
 
     /**
      * - `1.17.2 ... 1.17.6` **<=>** `1.17.2 ... 1.17.6` **->** 0
@@ -128,7 +128,7 @@ class EnclosedVersionRange(val least: Version, val most: Version, originalString
 
             is LessThanVersionRange -> {
                 if (this.most == other.version) {
-                    if (other.orEqual) 0 else -1
+                    if (other.orEqual) -1 else 0
                 } else if (this.most < other.version) -1
                 else if (this.most > other.version) +1
                 else if (this.least < other.version) -1
