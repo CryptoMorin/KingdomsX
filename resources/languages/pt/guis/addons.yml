@@ -73,7 +73,7 @@ options:
       - 43
     installing:
       condition: installing
-      name: '&8[&3Instalando...&8] {$sp}%addon-name%'
+      name: '{$sep}[&3Installing...{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -81,16 +81,30 @@ options:
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Reinício Pendente&8] {$sp}%addon-name%'
+      name: '{$sep}[&5Pending Restart{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
         {$p}Versão{$colon} {$sp}%latest-version%  
         &5O complemento foi baixado. Aguardando a reinicialização do servidor para ativar o complemento.
       material: PURPLE_WOOL
+    failed-to-load:
+      condition: 'installed && failed_to_load'
+      name: '{$sep}[&4Failed to load{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &cThis addon failed to load. Check your
+        console for errors.
+
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%latest-version%
+        {$p}Left-click to update
+        &4Right-click to uninstall
+      material: RED_WOOL
     updated:
       condition: 'installed && !outdated'
-      name: '&8[&2Atualizado&8] {$sp}%addon-name%'
+      name: '{$sep}[{$p}Up to date{$sep}] {$sp}%addon-name%'
       lore: |
         %description% 
         {$p}Versão{$colon} {$sp}%installed-version% 
@@ -98,7 +112,7 @@ options:
       material: GREEN_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Desatualizado&8] {$sp}%addon-name%'
+      name: '{$sep}[&4Outdated{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -114,7 +128,7 @@ options:
       material: RED_WOOL
     not=installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
-      name: '&8[&4Core Desatualizado&8] {$sp}%addon-name%'
+      name: '{$sep}[&4Outdated Core{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -126,19 +140,19 @@ options:
       material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Desatualizado&8] {$sp}%addon-name%'
+      name: '{$sep}[&6Outdated{$sep}] {$sp}%addon-name%'
       lore: |
         %description% 
         &4Versão Instalado{$colon} {$sp}%installed-version% 
         {$p}Última Versão{$colon} {$sp}%latest-version% 
         {$p}Clique esquerdo para atualizar 
         &4Clique direito para desinstalar
-      material: RED_WOOL
+      material: ORANGE_WOOL
     not-installed:
-      name: '&8[&6Não Instalado&8] {$sp}%addon-name%'
+      name: '{$sep}[&7Not installed{$sep}] {$sp}%addon-name%'
       lore: |
         %description% 
         {$p}Versão{$colon} {$sp}%latest-version% 
         {$p}Clique esquerdo para instalar
       condition: '!installed'
-      material: BLUE_WOOL
+      material: GRAY_WOOL
