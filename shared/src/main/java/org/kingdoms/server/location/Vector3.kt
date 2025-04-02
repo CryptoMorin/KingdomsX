@@ -91,8 +91,7 @@ interface BlockPoint3D : Comparable<BlockPoint3D> {
 }
 
 class Vector3(override val x: Double, override val y: Double, override val z: Double) : Point3D {
-    fun toBlockVector(): BlockVector3 =
-        BlockVector3.of(LocationUtils.toBlock(x), LocationUtils.toBlock(y), LocationUtils.toBlock(z))
+    fun toBlockVector() = BlockVector3.of(LocationUtils.toBlock(x), LocationUtils.toBlock(y), LocationUtils.toBlock(z))
 
     fun add(x: Double, y: Double, z: Double): Vector3 = of(this.x + x, this.y + y, this.z + z)
     fun add(other: BlockPoint3D): Vector3 = add(other.x.toDouble(), other.y.toDouble(), other.z.toDouble())

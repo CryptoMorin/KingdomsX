@@ -251,7 +251,7 @@ public final class BukkitNBTAdapter {
                         .returns(clazz).parameters(type)
                         .reflect();
             } else {
-                constructor = XReflection.of(clazz).constructor(String.class).reflect();
+                constructor = XReflection.of(clazz).constructor(type).reflect();
             }
         } catch (ReflectiveOperationException ex) {
             ex.printStackTrace();
@@ -389,13 +389,14 @@ public final class BukkitNBTAdapter {
                 field.setAccessible(true);
                 getData = lookup.unreflectGetter(field);
 
+                // The constructor is private in some versions.
                 if (XReflection.supports(1, 21, 5)) {
-                    handler = XReflection.of(clazz).constructor(List.class).reflect();
+                    handler = XReflection.of(clazz).constructor(List.class).makeAccessible().reflect();
                     isTypeDynamic = true;
                 } else if (XReflection.supports(15)) {
-                    handler = XReflection.of(clazz).constructor(List.class, byte.class).reflect();
+                    handler = XReflection.of(clazz).constructor(List.class, byte.class).makeAccessible().reflect();
                 } else {
-                    handler = XReflection.of(clazz).constructor().reflect();
+                    handler = XReflection.of(clazz).constructor().makeAccessible().reflect();
                     setData = lookup.unreflectSetter(field);
 
                     // Obfuscated:
