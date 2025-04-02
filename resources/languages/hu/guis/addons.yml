@@ -114,7 +114,23 @@ options:
         {$p}Left-click to update
         &4Right-click to uninstall
       material: RED_WOOL
-    updated:
+    outdated-and-outdated-core-version:
+      condition: 'installed && max_outdated_core_version'
+      name: '{$sep}[&eOutdated Core Version{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &4Installed Version{$colon} {$sp}%installed-version%
+        {$p}Latest Version{$colon} {$sp}%max_version%
+
+        {$warning} {$desc}This update requires
+        kingdoms {$p}v%max_supported-core-version% {$desc}to work.
+        Current version{$colon} {$e}%current-core-version%
+
+        {$p}Left-click to update
+        &4Right-click to uninstall
+      material: YELLOW_WOOL
+    up-to-date:
       condition: 'installed && !outdated'
       name: '{$sep}[{$p}Up to date{$sep}] {$sp}%addon-name%'
       lore: |
@@ -122,34 +138,6 @@ options:
         {$p}Version{$colon} {$sp}%installed-version%
         &4Right-click to uninstall
       material: GREEN_WOOL
-    outdated-and-outdated-core-version:
-      condition: 'installed && outdated && outdated_core_version'
-      name: '{$sep}[&4Outdated{$sep}] {$sp}%addon-name%'
-      lore: |
-        %description%
-
-        &4Installed Version{$colon} {$sp}%installed-version%
-        {$p}Latest Version{$colon} {$sp}%latest-version%
-
-        {$warning} {$desc}This version requires
-        kingdoms {$p}v%supported-core-version% {$desc}to work.
-        Current version{$colon} {$e}%current-core-version%
-
-        {$p}Left-click to update
-        &4Right-click to uninstall
-      material: RED_WOOL
-    not=installed-outdated-core-version:
-      condition: '!installed && outdated_core_version'
-      name: '{$sep}[&4Outdated Core{$sep}] {$sp}%addon-name%'
-      lore: |
-        %description%
-
-        {$p}Version{$colon} {$sp}%latest-version%
-
-        {$warning} {$desc}This version requires
-        kingdoms {$p}v%supported-core-version% {$desc}to work.
-        Current version{$colon} {$e}%current-core-version%
-      material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
       name: '{$sep}[&6Outdated{$sep}] {$sp}%addon-name%'
@@ -160,6 +148,18 @@ options:
         {$p}Left-click to update
         &4Right-click to uninstall
       material: ORANGE_WOOL
+    not-installed-outdated-core-version:
+      condition: '!installed && outdated_core_version'
+      name: '{$sep}[&4Outdated Core{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Version{$colon} {$sp}%min_version%
+
+        {$warning} {$desc}This addon requires at least
+        kingdoms {$p}v%min_supported-core-version% {$desc}to work.
+        Current version{$colon} {$e}%current-core-version%
+      material: GRAY_WOOL
     not-installed:
       name: '{$sep}[&7Not installed{$sep}] {$sp}%addon-name%'
       lore: |
