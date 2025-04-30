@@ -6,7 +6,7 @@ public enum Platform {
     FOLIA(CrossPlatformManager.isRunningFolia()),
     PAPER(CrossPlatformManager.isRunningPaper()),
     FORGE(CrossPlatformManager.isRunningForge()),
-    BEDROCK(CrossPlatformManager.isRunningGeyser());
+    BEDROCK(CrossPlatformManager.isRunningBedrock());
 
     private final boolean available;
 

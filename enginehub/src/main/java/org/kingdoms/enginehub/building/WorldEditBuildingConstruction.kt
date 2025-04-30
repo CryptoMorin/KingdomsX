@@ -15,6 +15,7 @@ import org.kingdoms.constants.land.building.info.block.BlockDataBlockInfo
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter
+import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.schematic.CalculatedBlocks
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.WorldEditSchematic
@@ -245,6 +246,7 @@ class WorldEditBuildingConstruction(
     }
 
     private inner class BlockPlaceTask : BlockTask() {
+        var failed = !SchematicManager.IS_SUPPORTED_VERSION
         val indexedBlocks: Iterator<FunctionalWorldEditExtentBlock> = RangedIterator.skipped(
             ClipboardBlockCopyIterator(transformedClipboard, getOrigin(), sortingStrategy, true, true),
             Math.max(0, blockIndex)
@@ -259,9 +261,25 @@ class WorldEditBuildingConstruction(
                 return
             }
 
+            if (failed) return
+
             this@WorldEditBuildingConstruction.blockIndex++
             val next = indexedBlocks.next()
-            if (!next.applyFunction()) {
+            val appliedSuccessfully = try {
+                next.applyFunction()
+            } catch (ex: Throwable) {
+                if (SchematicManager.isUnsupportedVersionError(ex)) {
+                    SchematicManager.warnUnsupported(ex)
+                } else {
+                    EngineHubAddon.INSTANCE.logger.severe("Failed to place building for: ${getType()}->${getState()} at origin ${getOrigin()}")
+                    ex.printStackTrace()
+                }
+
+                failed = true
+                return
+            }
+
+            if (!appliedSuccessfully) {
                 // The docs say the return value may be inaccurate... WHAT?
                 // https://github.com/EngineHub/WorldEdit/blob/f31c2e65ea7429b8812c0aca5297e2b575740119/worldedit-core/src/main/java/com/sk89q/worldedit/extent/OutputExtent.java#L43-L48
                 KLogger.debug(Debugger, "Failed to place block ${next.block} for ${this@WorldEditBuildingConstruction}")
@@ -293,6 +311,7 @@ class WorldEditBuildingConstruction(
     }
 
     private inner class BlockBreakTask : BlockTask() {
+        var failed = false
         val indexedBlocks: Iterator<Map.Entry<BlockVector3, WorldEditExtentBlock>> = RangedIterator.skipped(
             blocks.iterator(),
             Math.max(0, blockIndex)
@@ -306,6 +325,7 @@ class WorldEditBuildingConstruction(
                 done()
                 return
             }
+            if (failed) return
 
             this@WorldEditBuildingConstruction.blockIndex++
             val next = indexedBlocks.next().key
@@ -314,8 +334,10 @@ class WorldEditBuildingConstruction(
                 try {
                     it.onBlockChange(bukkitBlock)
                 } catch (ex: Throwable) {
-                    KLogger.error("An error occurred while calling onBlockChange for $it -> ${this@WorldEditBuildingConstruction}")
+                    EngineHubAddon.INSTANCE.logger.severe("An error occurred while calling onBlockChange for $it -> ${this@WorldEditBuildingConstruction}")
                     ex.printStackTrace()
+                    failed = true
+                    return
                 }
             }
             bukkitBlock.type = Material.AIR

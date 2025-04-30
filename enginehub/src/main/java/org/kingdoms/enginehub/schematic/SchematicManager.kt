@@ -1,22 +1,46 @@
 package org.kingdoms.enginehub.schematic
 
+import com.sk89q.worldedit.bukkit.adapter.UnsupportedVersionEditException
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.bukkit.entity.Player
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.locale.MessageHandler
+import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.main.KingdomsGlobalsCenter
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
+import org.kingdoms.utils.internal.reflection.Reflect
+import org.kingdoms.utils.internal.stacktrace.StackTraces
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.Paths
 import kotlin.io.path.name
 
 object SchematicManager {
+    // We can't really directly check this.
+    // Also, this option can influence this:
+    // WorldEditPlugin.getInstance().getLocalConfiguration().unsupportedVersionEditing
+    var IS_SUPPORTED_VERSION = true
+    private val UnsupportedVersionEditException_exists =
+        Reflect.classExists("com.sk89q.worldedit.bukkit.adapter.UnsupportedVersionEditException")
+
     val folder: Path = Kingdoms.getPath("schematics")
     internal val loaded: MutableMap<String, WorldEditSchematic> = java.util.concurrent.ConcurrentHashMap()
+
+    fun isUnsupportedVersionError(exception: Throwable): Boolean {
+        return UnsupportedVersionEditException_exists &&
+                StackTraces.findCause(exception) { it is UnsupportedVersionEditException } !== null
+    }
+
+    fun warnUnsupported(exception: Throwable) {
+        IS_SUPPORTED_VERSION = false
+        EngineHubAddon.INSTANCE.logger.severe("-------------------------------------------------------------------")
+        EngineHubAddon.INSTANCE.logger.severe("The current WorldEdit you're using doesn't support your server version. Buildings will not be built properly.")
+        EngineHubAddon.INSTANCE.logger.severe("-------------------------------------------------------------------")
+        if (KLogger.isDebugging()) exception.printStackTrace()
+    }
 
     @JvmStatic
     fun loadAll() {

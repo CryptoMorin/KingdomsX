@@ -69,7 +69,7 @@ new-rank:
   material: RANDOM
   # If the first element of this list is "@MEMBER" it'll copy the permissions from member rank.
   # For nations, this list is empty if "@MEMBER" is used.
-  permissions: [ '@MEMBER' ]
+  permissions: &member-perms [ NEXUS, BUILD, HOME, INVADE, INTERACT, USE, READ_MAILS ]
 
 # The priority is based on the order of this list.
 # The first element has the highest priority. This should be always the king rank.
@@ -142,7 +142,7 @@ national-ranks:
     symbol: "♟"
     material: IRON_BLOCK
     max-claims: 0
-    permissions: [ NEXUS, BUILD, HOME, INVADE, INTERACT, USE, READ_MAILS ]
+    permissions: *member-perms
 
 # How permissions should be categorized in the ranks GUI
 # The names and how they're displayed is configured inside the GUI file, however

@@ -8,21 +8,24 @@ import java.util.stream.Stream;
 
 public final class CrossPlatformManager {
     /**
-     * Tested with Magma, Mohist, and Geyser
+     * Detects Magma and Mohist
      */
     protected static boolean isRunningForge() {
         // https://github.com/MinecraftForge/MinecraftForge/blob/1.19.x/fmlloader/src/main/java/net/minecraftforge/fml/server/ServerMain.java
         String fml = "net.minecraftforge.fml.";
-        return Stream.of("common.Mod", "common.Loader", "common.FMLContainer", "ModLoader", "client.FMLClientHandler", "server.ServerMain")
-                .anyMatch(x -> Reflect.classExists(fml + x));
+        return Stream.of(
+                "common.Mod", "common.Loader", "common.FMLContainer", "ModLoader",
+                "client.FMLClientHandler", "server.ServerMain"
+        ).anyMatch(x -> Reflect.classExists(fml + x));
     }
 
-    protected static boolean isRunningGeyser() {
+    protected static boolean isRunningBedrock() {
         // https://github.com/GeyserMC/Geyser
         String geyser = "org.geysermc.";
-        return Stream.of("geyser.GeyserMain", "geyser.Constants", "connector.GeyserConnector",
-                        "connector.network.session.GeyserSession", "api.Geyser", "api.connection.Connection")
-                .anyMatch(x -> Reflect.classExists(geyser + x));
+        return Reflect.classExists("org.geysermc.floodgate.api.FloodgateApi") || Stream.of(
+                "geyser.GeyserMain", "geyser.Constants", "connector.GeyserConnector",
+                "connector.network.session.GeyserSession", "api.Geyser", "api.connection.Connection"
+        ).anyMatch(x -> Reflect.classExists(geyser + x));
     }
 
     protected static boolean isRunningFloodGate() {
@@ -34,10 +37,10 @@ public final class CrossPlatformManager {
     }
 
     protected static boolean isRunningPaper() {
-        return Reflect.classExists("com.destroystokyo.paper.PaperConfig") || Reflect.classExists("io.papermc.paper.configuration.Configuration");
+        return Reflect.classExists("com.destroystokyo.paper.PaperConfig") ||
+                Reflect.classExists("io.papermc.paper.configuration.Configuration");
     }
 
-    @SuppressWarnings("JavaReflectionMemberAccess")
     public static boolean isRunningFolia() {
         // https://github.com/PaperMC/Folia/blob/master/patches/api/0004-Add-RegionizedServerInitEvent.patch
         if (Reflect.classExists("io.papermc.paper.threadedregions.RegionizedServerInitEvent")) {

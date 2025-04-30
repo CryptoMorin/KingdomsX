@@ -3,7 +3,9 @@ package org.kingdoms.utils.fs;
 import com.google.common.base.Strings;
 import org.kingdoms.utils.internal.arrays.ArrayUtils;
 import org.kingdoms.utils.internal.functional.Fn;
+import org.kingdoms.utils.internal.jdk.Java9;
 import org.kingdoms.utils.internal.runnables.IORunnable;
+import org.kingdoms.versioning.JavaVersion;
 
 import java.io.*;
 import java.nio.channels.Channels;
@@ -24,6 +26,7 @@ import java.util.stream.StreamSupport;
 public final class FSUtil {
     public static final StandardOpenOption[] STD_WRITER = {StandardOpenOption.CREATE, StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING};
     private static final int DEFAULT_BUFFER_SIZE = 8192;
+    private static final int MAX_BUFFER_SIZE = Integer.MAX_VALUE - 8;
 
     private FSUtil() {}
 
@@ -275,6 +278,11 @@ public final class FSUtil {
     }
 
     public static void transfer(InputStream in, OutputStream out) throws IOException {
+        if (JavaVersion.supports(9)) {
+            Java9.transferTo(in, out);
+            return;
+        }
+
         Objects.requireNonNull(in, "in");
         Objects.requireNonNull(out, "out");
 
@@ -283,6 +291,77 @@ public final class FSUtil {
         while ((read = in.read(buffer, 0, DEFAULT_BUFFER_SIZE)) >= 0) {
             out.write(buffer, 0, read);
         }
+    }
+
+    /**
+     * Copied from {@link InputStream#readAllBytes()}
+     */
+    public static byte[] readAllBytes(InputStream input) throws IOException {
+        if (JavaVersion.supports(9)) return Java9.readAllBytes(input);
+
+        int len = MAX_BUFFER_SIZE;
+
+        if (len < 0) {
+            throw new IllegalArgumentException("len < 0");
+        }
+
+        List<byte[]> bufs = null;
+        byte[] result = null;
+        int total = 0;
+        int remaining = len;
+        int n;
+        do {
+            byte[] buf = new byte[Math.min(remaining, DEFAULT_BUFFER_SIZE)];
+            int nread = 0;
+
+            // read to EOF which may read more or less than buffer size
+            while ((n = input.read(buf, nread,
+                    Math.min(buf.length - nread, remaining))) > 0) {
+                nread += n;
+                remaining -= n;
+            }
+
+            if (nread > 0) {
+                if (MAX_BUFFER_SIZE - total < nread) {
+                    throw new OutOfMemoryError("Required array size too large");
+                }
+                if (nread < buf.length) {
+                    buf = Arrays.copyOfRange(buf, 0, nread);
+                }
+                total += nread;
+                if (result == null) {
+                    result = buf;
+                } else {
+                    if (bufs == null) {
+                        bufs = new ArrayList<>();
+                        bufs.add(result);
+                    }
+                    bufs.add(buf);
+                }
+            }
+            // if the last call to read returned -1 or the number of bytes
+            // requested have been read then break
+        } while (n >= 0 && remaining > 0);
+
+        if (bufs == null) {
+            if (result == null) {
+                return new byte[0];
+            }
+            return result.length == total ?
+                    result : Arrays.copyOf(result, total);
+        }
+
+        result = new byte[total];
+        int offset = 0;
+        remaining = total;
+        for (byte[] b : bufs) {
+            int count = Math.min(b.length, remaining);
+            System.arraycopy(b, 0, result, offset, count);
+            offset += count;
+            remaining -= count;
+        }
+
+        return result;
     }
 
     public static void copyFolder(Path source, Path destination) {

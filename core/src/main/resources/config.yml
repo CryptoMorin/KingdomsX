@@ -489,6 +489,20 @@ help:
   # 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12
   footer-pages: 5
 
+# Should the plugin validate player names before actually searching for them?
+# This means that if someone uses a text that cannot exist as a Minecraft username,
+# such as "#Hel%$#oo" in a command like "/k invite", then the plugin will stop immediatelly and this can improve
+# performance a little as well as make things more apparent for players.
+# However, there are times when some server software like Geyser force special usernames
+# for usernames (like Bedrock usernames being forced a dot in front of their name) and
+# this can cause issues.
+# - Values:
+#   * "true": Standard Minecraft username protocol which is "[A-Za-z0-9_]{1,16}" (automatically supports Geyser when present too)
+#   * "false": Performs no validation.
+#   * Any other text: A RegEx pattern defining the allowed username.
+# - Requires a restart to change.
+username-validation: true
+
 # /k fly
 kingdom-fly:
   # If you disable this, it'll only ignore the checks for performance improvements. If you like to disable the
@@ -832,9 +846,14 @@ max-members:
   kingdoms: '10 - (kingdoms_kingdom_bankruptcy / 2)'
   nations: 30
 
+# Read here info about private kingdoms:
+# https://github.com/CryptoMorin/KingdomsX/wiki/Introduction#private-kingdoms
 private-kingdoms:
-  enabled: true
+  enabled: false
 
+  # Item used instead of the nexus.
+  # When these items are placed down, the plugin will ask the player whether
+  # they intend to set up a camp or not.
   items: [ CAMPFIRE ]
 
 # Kingdoms can change their flag URL for web maps via kingdoms settings.

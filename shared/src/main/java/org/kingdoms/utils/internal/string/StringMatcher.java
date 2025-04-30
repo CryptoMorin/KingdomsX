@@ -1,5 +1,7 @@
 package org.kingdoms.utils.internal.string;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -12,8 +14,9 @@ import java.util.stream.Collectors;
  * avoid the performance penalty of RegEx.
  */
 public interface StringMatcher {
-    boolean matches(String string);
+    boolean matches(@NotNull String string);
 
+    @NotNull
     String asString();
 
     default Collection<StringMatcher> unwrap() {
@@ -45,7 +48,7 @@ public interface StringMatcher {
     final class Exact implements StringMatcher {
         private final String exact;
 
-        private Exact(String exact) {this.exact = exact;}
+        public Exact(String exact) {this.exact = exact;}
 
         @Override
         public boolean matches(String string) {
@@ -61,7 +64,7 @@ public interface StringMatcher {
     final class ExactCaseInsensitive implements StringMatcher {
         private final String exact;
 
-        private ExactCaseInsensitive(String exact) {this.exact = exact;}
+        public ExactCaseInsensitive(String exact) {this.exact = exact;}
 
         @Override
         public boolean matches(String string) {
@@ -77,7 +80,7 @@ public interface StringMatcher {
     final class Contains implements StringMatcher {
         private final String contains;
 
-        private Contains(String contains) {this.contains = contains;}
+        public Contains(String contains) {this.contains = contains;}
 
         @Override
         public boolean matches(String string) {
@@ -93,7 +96,7 @@ public interface StringMatcher {
     final class EndsWith implements StringMatcher {
         private final String endsWith;
 
-        private EndsWith(String endsWith) {this.endsWith = endsWith;}
+        public EndsWith(String endsWith) {this.endsWith = endsWith;}
 
         @Override
         public boolean matches(String string) {
@@ -109,7 +112,7 @@ public interface StringMatcher {
     final class StartsWith implements StringMatcher {
         private final String startsWith;
 
-        private StartsWith(String startsWith) {this.startsWith = startsWith;}
+        public StartsWith(String startsWith) {this.startsWith = startsWith;}
 
         @Override
         public boolean matches(String string) {
@@ -125,7 +128,7 @@ public interface StringMatcher {
     final class Regex implements StringMatcher {
         private final Pattern pattern;
 
-        private Regex(Pattern pattern) {this.pattern = pattern;}
+        public Regex(Pattern pattern) {this.pattern = pattern;}
 
         @Override
         public boolean matches(String string) {
@@ -173,7 +176,7 @@ public interface StringMatcher {
     final class Aggregate implements StringMatcher {
         private final StringMatcher[] matchers;
 
-        private Aggregate(StringMatcher[] matchers) {this.matchers = matchers;}
+        public Aggregate(StringMatcher[] matchers) {this.matchers = matchers;}
 
         private static StringMatcher aggregate(Collection<StringMatcher> matchers) {
             int size = matchers.size();
@@ -258,18 +261,25 @@ public interface StringMatcher {
         return Aggregate.aggregate(finalized);
     }
 
-    static StringMatcher group(Collection<StringMatcher> matchers) {
+    @NotNull
+    static StringMatcher group(@NotNull Collection<StringMatcher> matchers) {
         return optimize(matchers);
     }
 
-    static StringMatcher parseAndGroup(Collection<String> matchers) {
+    @NotNull
+    static StringMatcher parseAndGroup(@NotNull Collection<String> matchers) {
         return optimize(matchers.stream().map(StringMatcher::fromString).collect(Collectors.toList()));
     }
 
-    static Collection<StringMatcher> parse(Collection<String> matchers) {
+    @NotNull
+    static Collection<StringMatcher> parse(@NotNull Collection<String> matchers) {
         return matchers.stream().map(StringMatcher::fromString).collect(Collectors.toList());
     }
 
+    StringMatcher ALWAYS_FALSE = Constant.FALSE;
+    StringMatcher ALWAYS_TRUE = Constant.TRUE;
+
+    @NotNull
     static StringMatcher fromString(String text) {
         Objects.requireNonNull(text, "Cannot construct checker from null text");
 

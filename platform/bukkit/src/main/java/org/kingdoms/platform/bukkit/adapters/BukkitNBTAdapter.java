@@ -53,7 +53,7 @@ public final class BukkitNBTAdapter {
     private static Class<?> getNBTClass(NBTTagId type) {
         // Capitalize
         String typeName = Arrays.stream(type.name().split("_"))
-                .map(t -> t.charAt(0) + t.substring(1).toLowerCase())
+                .map(t -> t.charAt(0) + t.substring(1).toLowerCase(Locale.ENGLISH))
                 .collect(Collectors.joining(""));
 
         return XReflection.ofMinecraft()
