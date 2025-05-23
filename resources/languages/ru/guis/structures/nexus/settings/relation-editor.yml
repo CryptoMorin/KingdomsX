@@ -1,161 +1,159 @@
-title: "&9Редактор отношений"
-rows: 1
+title: "{$sep}-=( {$sep}Редактор отдела отношений {$sep})=-"
+rows: 5
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
-  #  fly:
-  #   Включено:
-  #     condition: "enabled"
-  #     name: "&2Fly{$colon} &2Включено"
-  #     material: ELYTRA
-  #     flags: [ HIDE_ENCHANTS ]
-  #     enchants:
-  #       DURABILITY: 1
-  #     lore:
-  #       - "&7Allow kingdom flight in"
-  #       - "your land."
-  #   else:
-  #     name: "&2Fly{$colon} &cВыключено"
-  #     material: ELYTRA
-  #     lore:
-  #       - "&7Allow kingdom flight in"
-  #       - "your land."
-  #   posx: 1
-  #   posy: 1
-  build:
-    Включено:
-      condition: "enabled"
-      name: "&2Строительство{$colon} &2Включено"
-      material: IRON_PICKAXE
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Разрешает строить на вашей территории"
-    else:
-      name: "&2Строительство{$colon} &cВыключено"
-      material: DIAMOND_PICKAXE
-      lore:
-        - "&7Разрешает строить на вашей территории"
-    posx: 3
-    posy: 1
-  ceasefire:
-    Включено:
-      condition: "enabled"
-      name: "&2Прекращение огня{$colon} &2Включено"
-      material: IRON_SWORD
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Отключить дружественный огонь."
-    else:
-      name: "&2Прекращение огня{$colon} &cВыключено"
-      material: IRON_SWORD
-      lore:
-        - "&7Отключить дружественный огонь"
-    posx: 4
-    posy: 1
-  interact:
-    Включено:
-      condition: "enabled"
-      name: "&2Взаимодействие{$colon} &2Включено"
-      material: CAULDRON
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Разрешить блокировать взаимодействие"
-        - "для открытия контейнеров"
-    else:
-      name: "&2Взаимодействие{$colon} &cВыключено"
-      material: CAULDRON
-      lore:
-        - "&7Разрешить блокировать взаимодействие"
-        - "для открытия контейнеров"
-    posx: 5
-    posy: 1
-  use:
-    Включено:
-      condition: "enabled"
-      name: "&2Использование{$colon} &2Включено"
-      material: LEVER
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Разрешить использование блоков"
-        - "Такие как двери, уровни и кнопки"
-    else:
-      name: "&2Использование{$colon} &cВыключено"
-      material: LEVER
-      lore:
-        - "&7Разрешить использование блоков"
-        - "Такие как двери, уровни и кнопки"
-    posx: 6
-    posy: 1
-  #  turret-ceasefire:
-  #    Включено:
-  #      condition: "enabled"
-  #      name: "&2Turret Ceasefire{$colon} &2Включено"
-  #      material: SPECTRAL_ARROW
-  #      flags: [ HIDE_ENCHANTS ]
-  #      enchants:
-  #        DURABILITY: 1
-  #      lore:
-  #        - "&7Disable friendly fire for turrets."
-  #    else:
-  #      name: "&2Turret Ceasefire{$colon} &cВыключено"
-  #      material: SPECTRAL_ARROW
-  #      lore:
-  #        - "&7Disable friendly fire for turrets."
-  #    posx: 8
-  #    posy: 1
-  #  manage-turrets:
-  #    Включено:
-  #      condition: "enabled"
-  #      name: "&2Manage Turrets{$colon} &2Включено"
-  #      material: ARROW
-  #      flags: [ HIDE_ENCHANTS ]
-  #      enchants:
-  #        DURABILITY: 1
-  #      lore:
-  #        - "&7Allow breaking, placing and"
-  #        - "interacting with turrets."
-  #    else:
-  #      name: "&2Manage Turrets{$colon} &cВыключено"
-  #      material: ARROW
-  #      lore:
-  #        - "&7Allow breaking, placing and"
-  #        - "interacting with turrets."
-  #    posx: 9
-  #    posy: 1
-  manage-structures:
-    Включено:
-      condition: "enabled"
-      name: "&2Работа со структурами{$colon} &2Включено"
-      material: REDSTONE_LAMP
-      flags: [ HIDE_ENCHANTS ]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "&7Разрешить ломать, размещать"
-        - "и взаимодействовать со структурами."
-    else:
-      name: "&2Работа со структурами{$colon} &cВыключено"
-      material: REDSTONE_LAMP
-      lore:
-        - "&7Разрешить ломать, размещать"
-        - "и взаимодействовать со структурами."
-    posx: 7
-    posy: 1
-
+  green-stained-glass-pane:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44 ]
+    material: GREEN_STAINED_GLASS_PANE
+    name: ''
   back:
-    name: "&cНазад"
+    name: "{$p}Назад"
     material: PLAYER_HEAD
-    sound: default
     skull: "{$gui-back}"
     lore:
-      - ""
-    posx: 9
+      - "{$s}Вернитесь в меню nexus."
+    posx: 1
     posy: 1
+  fly:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Полет"
+      material: ELYTRA
+      glow: true
+    else:
+      name: "{$disabled} Полет"
+      material: ELYTRA
+    lore:
+      - "{$sep}Позволить королевству лететь в"
+      - "твою землю."
+    posx: 4
+    posy: 2
+  build:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Строить"
+      material: DIAMOND_PICKAXE
+      glow: true
+    else:
+      name: "{$disabled} Строить"
+      material: DIAMOND_PICKAXE
+    lore:
+      - "{$sep}Разрешите строительство на вашей земле."
+    posx: 5
+    posy: 2
+  ceasefire:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Прекращение огня"
+      material: DIAMOND_SWORD
+      glow: true
+    else:
+      name: "{$disabled} Прекращение огня"
+      material: DIAMOND_SWORD
+    lore:
+      - "{$sep}Отключить дружественный огонь."
+    posx: 6
+    posy: 2
+  interact:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Взаимодействовать"
+      material: CAULDRON
+      glow: true
+    else:
+      name: "{$disabled} Взаимодействовать"
+      material: CAULDRON
+    lore:
+      - "{$sep}Разрешить блокировать взаимодействие"
+      - "для вскрытия контейнеров"
+    posx: 4
+    posy: 3
+  use:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Использовать"
+      material: LEVER
+      glow: true
+    else:
+      name: "{$disabled} Использовать"
+      material: LEVER
+    lore:
+      - "{$sep}Разрешить использование блоков."
+      - "Такие как двери, уровни и кнопки."
+    posx: 5
+    posy: 3
+  turret-ceasefire:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Перемирие по башне"
+      material: SPECTRAL_ARROW
+      glow: true
+      lore:
+        - "{$sep}Отключить дружественный огонь для башен."
+    else:
+      name: "{$disabled} Перемирие по башне"
+      material: SPECTRAL_ARROW
+    lore:
+      - "{$sep}Отключить дружественный огонь для башен."
+    posx: 6
+    posy: 3
+  manage-turrets:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Управление башнями"
+      material: ARROW
+      glow: true
+    else:
+      name: "{$disabled} Управление башнями"
+      material: ARROW
+    lore:
+      - "{$sep}Разрешить ломать, размещать и"
+      - "взаимодействовать с турелями."
+    posx: 4
+    posy: 4
+  manage-structures:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Управление структурами"
+      material: REDSTONE_LAMP
+      glow: true
+    else:
+      name: "{$disabled} Управление структурами"
+      material: REDSTONE_LAMP
+    lore:
+      - "{$sep}Разрешить ломать, размещать и взаимодействовать с конструкциями."
+    posx: 5
+    posy: 4
+  show-holograms:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Показать голограммы"
+      material: PAPER
+      glow: true
+    else:
+      name: "{$disabled} Показать голограммы"
+      material: PAPER
+    lore: |
+      {$sep}Показывает голограммы
+      предметов королевства членам
+      королевства.
+    posx: 6
+    posy: 4
+  home:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Используйте общественные дома"
+      material: DARK_OAK_DOOR
+      glow: true
+    else:
+      name: "{$disabled} Используйте общественные дома"
+      material: PAPER
+    lore: |
+      {$sep}Возможность телепортироваться друг
+      к другу {$p}/k home 
+
+      {$note} Вам нужно сделать свой дом
+      публичным в настройках nexus.
+    posx: 5
+    posy: 5

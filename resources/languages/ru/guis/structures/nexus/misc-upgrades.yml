@@ -1,202 +1,275 @@
-title: "&bПрочие обновления"
+title: "{$sep}-=( &3Различные обновления {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
+# [NoSync]
+'[fn-misc]': &fn-misc
+  args: [ <name>, <lore>, <disallowPacifists> ]
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - <lore>
+        - ""
+        - "&cВаше королевство - пацифистское"
+        - "и не может использовать это улучшение."
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - <lore>
+        - ""
+        - &lvl "{$p}Level{$colon} {$s}%level%{$sep}/{$s}%max_level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Right-click to enable"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - <lore>
+        - ""
+        - &lvl-maxxed "{$p}Level{$colon} {$s}%level% {$sep}({$s}Maxxed{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Right-click to disable"
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - <lore>
+        - ""
+        - &upgrade-cost "{$p}Upgrade Cost{$colon} {$s}%cost%"
+        - *lvl
+        - *disable-upgrade
+
+# [NoSync]
+'[fn-misc-basic]': &fn-misc-basic
+  args: [ <lore> ]
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - *lvl-maxxed
+    else:
+      lore:
+        - "<lore>"
+        - *lvl
+        - *upgrade-cost
+
 options:
   glory:
-    name: "&3Слава"
     material: NETHER_STAR
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8▪ &bУровень 1 &7Убийство неигроков на"
-      - "  вашей земле/пустошах дает &aх2 опыта"
-      - "&8▪ &bУровень 2 &7Убийство неигроков на"
-      - "  вашей земле/пустошах дает &aх4 опыта"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 3
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Glory'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Level 1{$colon} {$desc}Убийство неигровых мобов на вашей земле
+        приносит на {$p}5 {$desc}больше опыта за каждый уровень.
+        {$p}Level 2{$colon} {$desc}Убийство неигровых мобов на вашей земле
+        приносит {$p}x1.5 {$desc}опыта.
+        {$p}Level 3{$colon} {$desc}Убийство неигровых мобов на вашей земле
+        приносит {$p}x2 {$desc}опыта.
+
+        {$chk-kingdom-lvl-IV}
   anti-trample:
-    name: "&aЗащита от топтания"
     material: WHEAT_SEEDS
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8▪ &bУровень 1 &7Ваша возделанная"
-      - " земля не может"
-      - " быть растоптана игроками."
-      - ''
-      - "&8▪ &bУровень 2 &7Поршни, размещенные"
-      - " за пределами вашей территории, и направленные"
-      - " в её сторону - больше не будут работать."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 4
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&aAnti-Trample'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Уровень 1{$colon} {$desc}Ваша вспаханная земля не может быть
+        вытаптываема игроками.
+
+        {$p}Уровень 2{$colon} {$desc}Поршни, размещенные за
+        пределами вашей
+        земли, чтобы толкать блоки в/из вашего королевства, не будут работать
+        Это также не позволяет эндерменам красть блоки на вашей территории
+
+        {$p}Уровень 3{$colon} {$desc}Защищает определенных животных от
+        повреждения на ваших землях.
+        Также не позволяет вражеским игрокам использовать
+        жемчужины эндера для телепортации на вашу землю
   nexus-guards:
-    name: "&4Стражи нексуса"
-    material: GOLD_AXE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Когда кто-то входит в вашу страну нексуса"
-      - "появляются охранники, которые"
-      - "сильнее ваших обычных охранников."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
+    material: DIAMOND_AXE
     posx: 5
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&4Стражи Нексуса'
+      <disallowPacifists>: false
+      <lore>: |
+        {$s}Создает охранников, которые
+        сильнее ваших обычных охранников,
+        когда кто-то входит в вашу территорию нексуса.
+
+        {$chk-kingdom-lvl-IV}
   guards:
-    name: "&eСтражи"
     material: IRON_AXE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Стражи будут случайным "
-      - "образом появляться, чтобы"
-      - "защитить королевство, если на землю"
-      - "войдет не союзник."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 6
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cОхранники'
+      <disallowPacifists>: true
+      <lore>: |
+        {$s}Стражи будут появляться случайным образом
+        для защиты королевства, когда
+        не союзник войдет в вашу землю.
+
+        {$chk-kingdom-lvl-III}
   insanity:
-    name: "&cБезумие"
     material: REDSTONE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Защитники и охранники Нексуса"
-      - " созданные в силовой клетке, будут обладать"
-      - "силой I в течение 10 секунд."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 7
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cБезумие'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Обычные стражи, стражи нексуса и
+        подкрепления, созданные чемпионом
+        на землях с ячейками питания, будут иметь{$colon}
 
+        {$p}Уровень 1{$colon} {$s}Сила I в течение 10 секунд.
+        {$p}Уровень 2{$colon} {$s}Сила II в течение 10 секунд.
+        {$p}Уровень 3{$colon} {$s}Сила III в течение 10 секунд.
+
+        {$chk-kingdom-lvl-II}
   invasion-teleportation:
-    name: "&3Телепорты при вторжении"
-    material: ender_chest
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Уменьшает задержку телепортации"
-      - "для &e/k tp &8− &7после каждого обновления."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
+    material: ENDER_PEARL
     posx: 3
     posy: 2
-  invasions:
-    name: "&3Вторжения"
-    material: IRON_SWORD
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Вторжение Телепортация'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Уменьшает задержку телепортации
+        на {$p}/k tp {$desc}после каждого улучшения.
 
-    lore:
-      - "&8− &7Ваше королевство может вторгнуться &b%invasion-limit% &7раз"
-      - "&7Используемые вторжения{$colon} &a%invasions%"
-      - "&7Обновление КД{$colon} &d%invasion-refresh-cooldown%"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost%"
-      - "&8▪ &7Уровень &8» &b%level%"
+        {$chk-kingdom-lvl-II}
+  invasions:
+    material: DIAMOND_SWORD
     posx: 2
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Вторжения'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Ваше королевство может вторгнуться {$s}%invasion-limit% {$desc}раз.
+        {$p}Использованные вторжения{$colon} {$s}%invasions%
+        {$p}Обновить кулдаун{$colon} {$s}%invasion-refresh-cooldown%
   anti-explosion:
-    name: "&5Анти-взрывы"
     material: GUNPOWDER
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8▪ &bУровень 1 &7Если крипер взорвется "
-      - "на вашей земле он не нанесет "
-      - "никакого урона блокам и"
-      - "вашим жителям"
-      - ""
-      - "&8▪ &bУровень 2 &7TNT больше не может"
-      - "нанести ущерб вашей земле,"
-      - "но ранит ваших врагов и не союзников"
-      - ""
-      - "&8▪ &bУровень 3 &7Защитите членов вашего"
-      - "королевства, ивотных и всех"
-      - "других мобов на вашей земле"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 4
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&5Анти-взрыв'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Уровень 1{$colon} {$desc}Не позволяет криперам
+        разрушать блоки на вашей земле.
+
+        {$p}Уровень 2{$colon} {$desc}Не позволяет TNT
+        уничтожать блоки на вашей земле.
+
+        {$p}Уровень 3{$colon} {$desc}Защищает членов вашего королевства,
+        животных и всех других животных (но не враждебных мобов)
+        на ваших землях от взрывов.
+
+        {$note} Взрывы все равно будут разрушать блоки,
+        но вскоре они восстановятся.
+
+        {$chk-kingdom-lvl-IV}
   max-claims:
-    name: "&3Территории"
+    name: "&3Макс. претензии"
     material: MAP
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Увеличение лимита чанков,"
-      - "которые вы можете взять на"
-      - "&8− &a2 &8− &7каждый новый уровень"
-      - ""
-      - "&8▪ &7У вас{$colon} &a%kingdoms_max_claims%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
+    posx: 8
+    posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Увеличивает максимальное количество заявок
+        на {$p}25 {$desc}каждое улучшение.
+
+        {$p}CТекущие макс. земли{$colon} {$s}%kingdoms_max_claims%
+  max-turrets:
+    name: "&3Макс. количество турелей"
+    material: ARROW
     posx: 5
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Увеличивает максимальное количество башен
+        на землю на {$p}3 {$desc}каждое улучшение.
+
+        {$p}Текущее максимальное количество башен на землю{$colon} {$s}%max_turrets_per_land%
+        {$p}Общее количество башен (Constant limit){$colon} {$s}%max_turrets_total%
   max-members:
-    name: "&3Макс.жителей"
+    name: "&3Макс. количество игроков"
     material: PLAYER_HEAD
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Добавляет 3 слота с каждым уровнем"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
-    posx: 7
-    posy: 2
-  chest-size:
-    name: "&3Размер сундука нексуса"
-    material: CHEST
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Увеличивает размер сундука"
-      - "в нексусе"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-      - "&8▪ &7Уровень &8» &b%level%"
     posx: 6
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Каждое обновление позволяет вам
+        иметь на {$p}3 {$desc}больше участников.
 
+  chest-size:
+    name: "&3Nexus Chest Size"
+    material: ENDER_CHEST
+    posx: 7
+    posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Увеличивает размер вашего сундука нексуса.
+
+  flight:
+    material: ELYTRA
+    posx: 3
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Flight'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Позволяет использовать {$p}/k fly
+
+        {$chk-kingdom-lvl-V}
+  keep-inventory:
+    material: CHEST
+    posx: 7
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Keep Inventory'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Позволяет вам сохранять предметы в
+        вашем инвентаре после смерти в вашем собственном королевстве.
+
+        {$p}Level 1 {$sep}({$kingdom-lvl-II}{$sep}):
+          {$desc}Оставьте только броню и предметы для левой/правой руки.
+        {$p}Level 2 {$sep}({$kingdom-lvl-IV}{$sep}):
+          {$desc}Оставьте только броню и предметы на панели.
+        {$p}Level 3 {$sep}({$kingdom-lvl-V}{$sep}):
+          {$desc}Сохранить все предметы.
   back:
-    name: "&8− &7Назад"
+    name: "{$p}Back"
     material: PLAYER_HEAD
-    sound: default
     skull: "{$gui-back}"
-    lore:
-      - ""
+    lore: "{$desc}Go back to nexus menu."
     posx: 5
     posy: 3
   cyan-glass:

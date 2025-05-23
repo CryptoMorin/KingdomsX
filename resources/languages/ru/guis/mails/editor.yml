@@ -1,0 +1,36 @@
+title: "{$sep}-=( {$p}Почта {$sep})=-"
+type: HOPPER
+
+options:
+  subject:
+    slot: 0
+    material: NAME_TAG
+    name: '{$p}Предмет{$colon}'
+    lore: '&f%subject%'
+  recipients:
+    slot: 1
+    material: BOOK
+    name: '{$p}Получатели{$colon}'
+    lore: |
+      {$s}К{$colon} {$sp}%to%
+      {$s}CC{$colon} {$sp}%cc%
+  summary:
+    slot: 2
+    material: PAPER
+    name: '{$p}Краткое содержание{$colon}'
+    lore: '&f%summary%'
+  reset:
+    slot: 3
+    material: RED_WOOL
+    name: '&cСброс'
+    lore: |
+      {$sep}Сбрасывает все свойства почты,
+      такие как тема, получатели
+      и содержимое.
+  preview:
+    slot: 4
+    material: WRITTEN_BOOK
+    name: '{$sp}Предварительный просмотр'
+    lore: |
+      {$sep}Показывает, как будет выглядеть
+      это письмо, когда его прочитают.

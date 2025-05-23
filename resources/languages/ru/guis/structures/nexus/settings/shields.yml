@@ -1,67 +1,92 @@
-title: "&8Щит"
-type: HOPPER
+title: "{$sep}-=( {$p}Щиты {$sep})=-"
+rows: 3
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   shield-6hr:
-    name: "&21 часовой щит"
+    name: "{$p}6-часовой щит"
+    lore: "{$s}Цена{$colon} {$p}%cost%"
     material: SHIELD
     cost: 1000
-    time: 1hr
+    time: 6hr
     flags: [ ALL ]
     patterns:
       BASE: BLACK
-    lore:
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    slot: 0
+    posx: 2
+    posy: 2
   shield-12hr:
-    name: "&23 часовой щит"
+    name: "{$p}12-часовой щит"
+    lore: "{$s}Цена{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 2000
-    time: 3hr
+    cost: 1900
+    time: 12hr
     patterns:
       BASE: BLACK
       BORDER: RED
-    lore:
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    slot: 1
+    posx: 3
+    posy: 2
   shield-1day:
-    name: "&26 часовой щит"
+    name: "{$p}1 день щита"
+    lore: "{$s}Цена{$colon} {$p}%cost%"
     material: SHIELD
-    cost: 4000
-    time: 6hr
+    cost: 4500
+    time: 1day
     flags: [ ALL ]
     patterns:
       BASE: BLACK
       BORDER: RED
       CIRCULE_MIDDLE: RED
-    lore:
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    slot: 2
+    posx: 4
+    posy: 2
   shield-1week:
-    name: "&23 дневный щит"
+    name: "{$p}1 неделя щита"
+    lore: "{$s}Цена{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 40000
-    time: 3days
+    cost: 50000
+    time: 7days
     patterns:
       BASE: BLACK
       BORDER: RED
       CROSS: RED
-    lore:
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    slot: 3
+    posx: 5
+    posy: 2
   shield-1month:
-    name: "&210 дневный щит"
+    name: "{$p}1 месяц щита"
+    lore: "{$s}Цена{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 50000
-    time: 6days
+    cost: 100000
+    time: 30days
     patterns:
       BASE: BLACK
       BORDER: RED
       MOJANG: RED
-    lore:
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    slot: 4
+    posx: 6
+    posy: 2
+  refund:
+    name: '&5Возвращать деньги'
+    can-refund:
+      condition: 'refund != 0'
+      lore: |
+        {$desc}Деактивирует все ваши щиты,
+        но вернет очки ресурсов обратно.
+
+        {$p}Щит{$colon} {$s}%time@kingdoms_shield_time_left%
+        {$p}Возврат{$colon} {$s}%fancy@refund%
+    else:
+      lore: |
+        {$desc}У вас нет щита для возврата средств.
+    material: PAPER
+    posx: 8
+    posy: 2
+
+  red-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 15, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

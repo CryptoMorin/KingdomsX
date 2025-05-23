@@ -1,233 +1,212 @@
-title: "&8Улучшения защитника"
+title: "{$sep}-=( {$p}Улучшения чемпиона {$sep})=-"
 rows: 6
 sound: ITEM_ARMOR_EQUIP_DIAMOND
 
 options:
   settings:
     name: "&bНастройки"
-    material: IRON_SWORD
+    material: DIAMOND_SWORD
     flags: [ ALL ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&7Настройки вашего защитника"
+      - "{$desc}Измените настройки вашего чемпиона"
+      - "например, улучшите его снаряжение или"
+      - "измените тип вашего чемпиона".
     posx: 3
     posy: 2
   health:
-    name: "&bЗдоровье защитника"
+    name: "&bЗдоровье чемпиона"
     material: MELON_SLICE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Повышает макс.здоровье"
-      - "на &950 &7каждый уровень"
-      - "&7Текущее здоровье защитника{$colon} &9%scaling%"
+      - "{$desc}Увеличивает здоровье чемпиона"
+      - "на {$p}50 {$desc}каждый уровень."
+      - "{$desc}Текущее здоровье чемпиона{$colon} {$p}%scaling%"
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Цена{$colon} {$s}%cost%"
     posx: 4
     posy: 2
   reinforcements:
     name: "&bПодкрепления"
     material: ZOMBIE_HEAD
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Каждое обновление будет создавать"
-      - "доп.стража нексуса каждые &930 секунд"
+      - "{$desc}Создает стражей нексуса каждые {$p}3 {$desc}минуты."
+      - "Каждое улучшение сократит время восстановления на {$p}15 секунд{$desc}."
+      - "Эти стражи имеют те же характеристики, что и ваши стражи нексуса."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$chk-kingdom-lvl-IV}"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Расходы{$colon} {$s}%cost%"
     posx: 5
     posy: 2
   resistance:
     name: "&bСопротивление"
     material: BRICK
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Каждое обновление добавляет &9%scaling%% &7шанс"
-      - "что защитник не будет отброшен атакой"
+      - "{$desc}Каждое улучшение добавляет {$p}10% {$desc}шанса, что"
+      - "чемпион не получит отбрасывания."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$p}Сопротивление{$colon} {$s}%scaling%"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Стоимость{$colon} {$s}%cost%"
     posx: 6
     posy: 2
   speed:
     name: "&bСкорость"
     material: POTION
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Увеличивает скорость чемпиона,"
-      - "когда его здоровье ниже &920%"
-      - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$desc}Увеличивает скорость чемпиона, когда
+      его здоровье ниже {$p}20%
+
+      {$p}Уровень{$colon} {$s}%level%
+      {$p}Стоимость{$colon} {$s}%cost%
     posx: 7
     posy: 2
   focus:
     name: "&bФокус"
     material: ENDER_EYE
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Игроки, пораженные чемпионом,"
-      - "будут на &9%scaling% секунд"
-      - "&7лишены всех своих эффектов"
+      - "{$desc}Игроки, пораженные чемпионом,"
+      - "будут иметь {$p}%scaling% {$desc}секунду, удаленную от всех"
+      - "их активных эффектов зелий."
+      - "Каждое улучшение увеличивает удаленное время на 1 секунду."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Стоимость{$colon} {$s}%cost%"
     posx: 3
     posy: 3
   strength:
     name: "&bСила"
     material: ANVIL
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Зелье силы будет "
-      - "добавлено к чемпиону"
-      - "&7и будет усиливаться с каждым уровнем."
+      - "{$desc}Придает силу чемпиону."
+      - "Мощь масштабируется в соответствии с уровнем этого улучшения."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Стоимость{$colon} {$s}%cost%"
     posx: 4
     posy: 3
   throw:
-    name: "&bБросок"
+    name: "&bБросать"
     material: COOKED_PORKCHOP
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7При каждой атаке будет шанс подбросить"
-      - "&7грока в небо. Каждое улучшение"
-      - "&7увеличивает этот шанс на &910%"
+      - "{$desc}Каждая атака, будет шанс"
+      - "{$desc}подбросить игрока в небо."
+      - "{$desc}Каждое улучшение увеличивает этот шанс на {$p}10%{$desc}."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$chk-kingdom-lvl-II}"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Стоимость{$colon} {$s}%cost%"
     posx: 5
     posy: 3
   death-duel:
     name: "&bСмертельная дуэль"
     material: GOLDEN_SWORD
     flags: [ ALL ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Все игроки, кроме захватчика, будут наносить"
-      - "чемпиону на &950% меньше &7урона."
-      - "Чемпион также будет наносить двойной урон"
-      - "всем игрокам, кроме захватчиков."
+      - "&7Все игроки, кроме захватчика, нанесут"
+      - "на&250% &7меньше урона чемпиону. Чемпион"
+      - "также нанесет двойной урон"
+      - "всем игрокам, кроме захватчика".
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$p}Уровень{$colon} {$s}%level%"
+      - "{$p}Стоимость{$colon} {$s}%cost%"
     posx: 6
     posy: 3
   drag:
-    name: "&bУдочка"
+    name: "&bТащить"
     material: FISHING_ROD
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Если вторгшийся игрок находится более чем"
-      - "в &9%scaling% блоков &7от чемпиона,"
+      - "&7Если вторгшийся игрок находится более чем"
+      - "&2%scaling% &7блоков от чемпиона,"
       - "игрок будет перетащен к чемпиону."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Уровень&8: &6%level%"
+      - "&2Стоимость&8: &6%cost%"
     posx: 7
     posy: 3
-  damage-cap:
-    name: "&bМаксимальный урон"
-    material: IRON_CHESTPLATE
-    flags: [ ALL ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&8− &7Ваш чемпион может получить только"
-      - "до &9%scaling% урона &7при любой атаке."
-      - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
-    posx: 4
-    posy: 4
   thor:
     name: "&bТор"
-    material: IRON_AXE
+    material: DIAMOND_AXE
     flags: [ ALL ]
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Каждые &93 секунды&7, молния "
-      - "поражает вторгшегося игрока и всех"
-      - "&7ближайших несоюзных игроков."
-      - "&7Наносит урон, а также отбрасывает игроков назад."
+      - "{$desc}Каждый {$p}%cooldown%{$desc}, молния"
+      - "бьет по вторгшемуся игроку и всем"
+      - "ближайшим не союзным игрокам. Наносит"
+      - "урон и отбрасывает игроков назад".
+      - "Каждое улучшение уменьшает время восстановления на 1 секунду."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Уровень&8: &6%level%"
+      - "&2Стоимость&8: &6%cost%"
     posx: 3
     posy: 4
-  plow:
-    name: "&bОчистка"
-    material: COBWEB
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+  damage-cap:
+    name: "&bПредел ущерба"
+    material: DIAMOND_CHESTPLATE
+    flags: [ ALL ]
     lore:
-      - "&8− &7Ваш чемпион попытается очистить"
-      - "лаву и паутину"
+      - "&7Ваш чемпион может получить только до"
+      - "&2%scaling% &7урон при любой атаке."
+      - "Каждое улучшение уменьшает предел урона на 1."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "{$chk-kingdom-lvl-II}"
+      - "&2Уровень&8: &6%level%"
+      - "&2Стоимость&8: &6%cost%"
+    posx: 4
+    posy: 4
+  burst:
+    name: "&bЛопаться"
+    material: WIND_CHARGE
+    flags: [ ALL ]
+    lore: |
+      {$desc}Когда вокруг чемпиона много врагов, мощный взрыв
+      заставляет всех
+      недружелюбных игроков (и их питомцев)
+      получить урон и отбросить их назад.
+
+      {$p}Диапазон{$colon} {$s}%fancy@upgrade_range%
+      {$p}Минимальные цели{$colon} {$s}%fancy@upgrade_min_targets%
+      {$p}Урон{$colon} {$s}%fancy@upgrade_damage%
+      {$p}Отбрасывание{$colon} {$s}%fancy@upgrade_knockback%
+
+      {$chk-kingdom-lvl-V}
+      {$p}Уровень{$colon} {$s}%level%
+      {$p}Стоимость{$colon} {$s}%cost%
+    posx: 5
+    posy: 4
+  plow:
+    name: "&bПлуг"
+    material: COBWEB
+    lore:
+      - "&7Ваш чемпион попытается очистить"
+      - "лаву и паутину каждые {$p}%кулдаун%"
+      - ""
+      - "&2Уровень&8: &6%level%"
+      - "&2Стоимость&8: &6%cost%"
     posx: 6
     posy: 4
   fangs:
     name: "&bКлыки"
     material: EVOKER_SPAWN_EGG
-    sounds:
-      max-%level%: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&8− &7Создайте клыки для вражеских"
+      - "&7Создать клыки для врага"
       - "игроков вокруг чемпиона"
+      - "каждые {$p}%cooldown%{$desc}."
+      - "Каждое улучшение увеличивает урон"
+      - "и радиус атаки на {$p}1{$desc}."
       - ""
-      - "&8▪ &7Уровень &8» &b%level%"
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+      - "&2Уровень&8: &6%level%"
+      - "&2Стоимость&8: &6%cost%"
     posx: 7
     posy: 4
 
   back:
-    name: "&cНазад"
+    name: "{$p}Назад"
     material: BARRIER
     lore:
-      - ""
     posx: 5
     posy: 6
   purple-glass:

@@ -1,7 +1,27 @@
-title: "&cMap Settings"
+title: "&cНастройки карты"
 type: HOPPER
 
 options:
+  scoreboard:
+    slot: 0
+    material: PAPER
+    lore: |
+      {$sep}Показывает карту королевства в виде табло,
+      что гораздо удобнее, чем режим автоматической карты,
+      и обновляется автоматически.
+
+      Недостаток в том, что
+      он занимает огромную часть экрана,
+      и вам нужно запомнить символы и
+      цвета и их значение.
+
+      Эта опция сбрасывается, если вы выходите.
+    enabled:
+      condition: scoreboard_enabled
+      name: "{$enabled} Переключить табло"
+      glow: true
+    else:
+      name: "{$disabled} Переключить табло"
   reset:
     slot: 1
     material: PLAYER_HEAD
@@ -12,27 +32,37 @@ options:
   resize:
     slot: 2
     material: PLAYER_HEAD
-    name: '&2Изменить размер'
+    name: '{$p}Изменить размер'
     lore:
-      - "&7Изменяет размеры вашей карты &aв ширину &7и &aвысоту"
-      - "&7Ваш текущий размер{$colon} &2%kingdoms_map_width%&7, &2%kingdoms_map_height%"
-
+      - "{$sep}Измените размер своей карты &width {$sep}и &aheight"
+      - "{$sep}Ваш текущий размер{$colon} {$p}%kingdoms_map_width%{$sep}, {$p}%kingdoms_map_height%"
     # https://minecraft-heads.com/custom-heads/decoration/49973-globe
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODc5ZTU0Y2JlODc4NjdkMTRiMmZiZGYzZjE4NzA4OTQzNTIwNDhkZmVjZDk2Mjg0NmRlYTg5M2IyMTU0Yzg1In19fQ=='
   auto:
     slot: 3
     material: PLAYER_HEAD
-    name: '&2Чат-карта'
     lore:
-      - "&7Карта продолжает появляться автоматически"
-      - "когда вы идете по разным землям."
+      - "{$sep}Карта продолжает появляться автоматически"
+      - "по мере того, как вы идете в разные земли."
 
     enabled:
       condition: 'auto_map_enabled'
-      name: "{$enabled} Auto"
+      name: "{$enabled} Авто"
       # https://minecraft-heads.com/custom-heads/alphabet/21774-green-checkmark
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDMxMmNhNDYzMmRlZjVmZmFmMmViMGQ5ZDdjYzdiNTVhNTBjNGUzOTIwZDkwMzcyYWFiMTQwNzgxZjVkZmJjNCJ9fX0='
     else:
-      name: "{$disabled} Auto"
+      name: "{$disabled} Авто"
       # https://minecraft-heads.com/custom-heads/miscellaneous/44761-x
       skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDdhY2ZmNThjMjExZTQ2ODA2ZDRhYzlhNzczMjBiZjU3MjUwZWQ4YmY3OTMzZWE0M2FjOGVmMmZkNzBkZWZkYyJ9fX0='
+  gui:
+    slot: 4
+    material: CHEST
+    name: "{$p}Посмотрите карту в GUI"
+    lore: |
+      {$sep}Преимуществами были бы лучшее
+      поведение при нажатии и более понятные
+      значки для разных земель.
+
+      Недостатки были бы
+      ограничение размера инвентаря GUI
+      и ограничение вашей мобильности.

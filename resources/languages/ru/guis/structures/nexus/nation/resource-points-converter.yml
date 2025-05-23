@@ -1,32 +1,36 @@
 title: "&aКонвертер очков ресурсов"
 rows: 6
 sound: BLOCK_BELL_USE
-interactable: [ 999 ]
+interactable: empty
 disallow-creative: true
 
+# "refresh" option below is used to update %fancy@total_worth% placeholders when
+# players change the items in the GUI.
 options:
   info:
-    name: "&6Очки ресурсов{$colon} &e%fancy@kingdoms_nation_resource_points% оч.ресурсов"
+    name: "{$s}Ресурсные очки{$colon} {$p}%fancy@kingdoms_nation_resource_points%"
     material: NETHER_STAR
     posx: 5
     posy: 6
   apply:
-    name: "&2Применить"
+    name: "{$p}Применять"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDMxMmNhNDYzMmRlZjVmZmFmMmViMGQ5ZDdjYzdiNTVhNTBjNGUzOTIwZDkwMzcyYWFiMTQwNzgxZjVkZmJjNCJ9fX0="
-    sound: default
+    refresh: true
     lore:
-      - "&8▪ &7Преобразуйте текущие предметы"
-      - "в очки ресурсов"
+      - "{$s}Преобразовать текущие элементы"
+      - "в ресурсные точки."
+      - "{$p}Текущее значение{$colon} &e%fancy@total_worth%"
     posx: 9
     posy: 6
   back:
     name: "&cНазад"
     material: PLAYER_HEAD
-    sound: default
     skull: "{$gui-back}"
     lore:
-      - ""
+      - "{$s}Вернуться в меню nexus."
+      - "это отменит"
+      - "конвертацию очков ресурсов."
     posx: 1
     posy: 6
   lime-glass:

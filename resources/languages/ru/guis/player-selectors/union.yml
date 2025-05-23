@@ -1,0 +1,61 @@
+title: "&0-=( {$s}Выбор игроков &0)=-"
+rows: 3
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  elements:
+    name: "{$p}%player_selector_name%"
+    material: BOOK
+    lore: |
+      {$p}Щелкните левой кнопкой мыши{$colon} {$desc}Изменить текущие настройки записи доступа.
+      {$p}Отпустить {$sep}(&5Q{$sep}){$colon} {$desc}Удалить запись доступа полностью.
+      {$p}ShiftЩелкните левой кнопкой мыши{$colon} {$desc}Увеличить приоритет этой записи доступа на {$p}+1.
+      {$p}ShiftЩелкните правой кнопкой мыши{$colon} {$desc}Уменьшить приоритет этой записи доступа на {$e}-1.
+
+      %player_selector_info%
+    slots: [ 10, 11, 12, 13, 14, 15, 16 ]
+  back:
+    name: '&cНазад &7| &cОтмена'
+    material: BARRIER
+    lore: |
+      {$p}Левый клик{$colon} {$s}Сохранить и вернуться
+      {$e}Правый клик{$colon} {$es}Отменить и вернуться назад
+    posx: 1
+    posy: 1
+  add:
+    name: '&aДобавить'
+    material: PLAYER_HEAD
+    skull: '{$gui-add}'
+    lore: |
+      {$desc}Добавьте новое условие.
+
+      {$desc}Вы можете объединить несколько селекторов игроков,
+      используя объединение.
+    posx: 9
+    posy: 1
+  logic-toggle:
+    name: '&9Логика Переключение'
+    material: PLAYER_HEAD
+    or-mode:
+      condition: 'ИЛИмод'
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NhOTNjN2JjOGUzOGRkZGZhNDRjZDY4Y2I2ZTQ0Yjc1NWM1ZThhY2FlMmI5YzYzZjgzMjQ1NGIyYWUzYmI2In19fQ=='
+    else:
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdlZjI4ZGU4ZTJhY2NkY2IyM2IwOTQyZjU2MjRmNDE0OWE1YWE0OTBlYzE5ZjdkYzQ5OTFhODUwYjY1ZjQwIn19fQ=='
+    lore: |
+      {$p}Текущий режим{$colon} {$s}%mode%
+
+      {$desc}Вы можете настроить объединение так, чтобы
+      выбирать игрока только на основе
+      результата селекторов дочерних игроков{$colon}
+
+      {$dot} {$s}И Режим{$colon} {$p}Выбирать игрока только если &nвсе
+      {$p}селекторы игроков выбирают этого игрока.
+
+      {$dot} {$s}ИЛИ Режим{$colon} {$p}Выбирать игрока, если &nлюбые
+      {$p}селекторы игроков выбирают этого игрока.
+    posx: 5
+    posy: 1
+  decoration:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]

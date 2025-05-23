@@ -1,106 +1,237 @@
-title: "&8Настройка"
-rows: 1
+title: "{$sep}-=( {$sep}Настройки {$sep})=-"
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
-  pacifism:
-    name: "&6Пацифизм{$colon} %pacifism%"
-    material: END_CRYSTAL
-    lore:
-      - "&8▪ &7Когда вы находитесь в режиме"
-      - "пацифизма, ваше королевство не может"
-      - "вторгнуться и не может быть"
-      - "захвачено другими королевствами"
-      - ""
-      - "&4&l! &cЕсли вы вторглись в королевство, вы не сможете"
-      - "вернуться в режим пацифизма в течение недели."
-      - ""
-      - "&8▪ &9КУЛДАУН{$colon} &b%pacifism_cooldown%"
+  back:
     posx: 1
     posy: 1
-  shields:
-    name: "&6Щит{$colon} &b%time@kingdoms_shield_time_left%"
-    material: SHIELD
-    lore:
-      - "&8▪ &7Купите щит для своего"
-      - "королевства чтобы защитить"
-      - "его от вторжений"
-    posx: 2
-    posy: 1
-  invites:
-    name: "&6Приглашения{$colon} %invites%"
-    material: BOOK
-    lore:
-      - "&8▪ &7Если этот параметр отключен, любой может"
-      - "присоединиться к этому королевству без"
-      - "приглашения с помощью &e/k join %kingdoms_kingdom_name%"
-    posx: 3
-    posy: 1
-  relations:
-    name: "&6Отношения"
-    material: WRITABLE_BOOK
-    lore:
-      - "&8▪ &7Измените свои атрибуты отношений"
-      - "для других королевств"
+    material: PLAYER_HEAD
+    name: '{$p}Назад'
+    lore: [ '{$s}Вернитесь в меню nexus.' ]
+    skull: "{$gui-back}"
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  upgrade:
+    posx: 5
+    posy: 4
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Обновление{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lvl-I:
+        condition: 'level == 1'
+        lore: |
+          {$dot} {$p}&lРазные улучшения{$colon}
+            {$sdot} {$s}Открыть безумие
+
+          {$dot} {$p}&lУсиления{$colon}
+            {$sdot} {$s}Все улучшения{$colon} {$sp}{$lvlup} Ур. 30
+
+          {$dot} {$p}&lУлучшения чемпиона{$colon}
+            {$sdot} {$s}Открыть бросок
+            {$sdot} {$s}Открыть ограничение урона
+            {$sdot} {$s}Здоровье{$colon} {$sp}{$lvlup} Ур. 30
+
+          {$dot} {$p}&lБашни{$colon}
+            {$sdot} {$s}Открыть лечебную башню
+            {$sdot} {$s}Открыть огненную башню
+
+          {$dot} {$p}&lСтруктуры{$colon}
+            {$sdot} {$s}Открыть ячейку питания
+            {$sdot} {$s}Открыть аванпост
+
+          {$p}Максимальный уровень{$colon} {$s}%roman@max_level%
+          {$p}Стоимость{$colon} {$s}%fancy@upgrade_cost%
+      lvl-II:
+        condition: 'level == 2'
+        lore: |
+          {$dot} {$p}&lРазные улучшения{$colon}
+            {$sdot} {$s}Разблокировать стражей
+            {$sdot} {$s}Разблокировать славу
+            {$sdot} {$s}Разблокировать сохранение инвентаря
+
+          {$dot} {$p}&lУсиления{$colon}
+            {$sdot} {$s}Все улучшения{$colon} {$sp}{$lvlup} Ур. 40
+
+          {$dot} {$p}&lУлучшения чемпиона{$colon}
+            {$sdot} {$s}Разблокировать перетаскивание
+            {$sdot} {$s}Разблокировать Тора
+            {$sdot} {$s}Здоровье{$colon} {$sp}{$lvlup} Ур. 40
+
+          {$dot} {$p}&lТурели{$colon}
+            {$sdot} {$s}Открыть Псионическую турель
+            {$sdot} {$s}Открыть Турель Адского Огня
+
+          {$dot} {$p}&lСтруктуры{$colon}
+            {$sdot} {$s}Открыть Экстрактор
+
+          {$p}Максимальный уровень{$colon} {$s}%roman@max_level%
+          {$p}Стоимость{$colon} {$s}%fancy@upgrade_cost%
+      lvl-III:
+        condition: 'level == 3'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Nexus Guards
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Lvl. 2
+
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 50
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlock Reinforcements
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Heatbeam Turret
+            {$sdot} {$s}Unlock Soldier Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock WarpPad Structure
+            {$sdot} {$s}Unlock Regulator Structure
+
+          {$p}Максимальный уровень{$colon} {$s}%roman@max_level%
+          {$p}Стоимость{$colon} {$s}%fancy@upgrade_cost%
+      lvl-IV:
+        condition: 'level == 4'
+        lore: |
+          {$dot} {$p}&lMisc Upgrades{$colon}
+            {$sdot} {$s}Unlock Flight
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Lvl. 3
+
+          {$dot} {$p}&lPowerups{$colon}
+            {$sdot} {$s}All Upgrades{$colon} {$sp}{$lvlup} Lvl. 70
+
+          {$dot} {$p}&lChampion Upgrades{$colon}
+            {$sdot} {$s}Unlocks Burst
+
+          {$dot} {$p}&lTurrets{$colon}
+            {$sdot} {$s}Unlock Inferno Turret
+
+          {$dot} {$p}&lStructures{$colon}
+            {$sdot} {$s}Unlock Siege Cannon
+
+          {$p}Максимальный уровень{$colon} {$s}%roman@max_level%
+          {$p}Стоимость{$colon} {$s}%fancy@upgrade_cost%
+      else:
+        lore: [ "&cUnknown Kingdom Upgrade: %level%" ]
+    maxxed:
+      name: "{$sp}Уровень королевства{$colon} {$s}%roman@level% {$sep}(&5Maxxed{$sep})"
+      material: NETHER_STAR
+  public-home:
     posx: 4
     posy: 1
-  tax:
-    name: "&6Налоги"
-    material: PAPER
-    lore:
-      - "&8▪ &7Измените уравление налогов "
-      - "для ваших жителей"
-      - ""
-      - "&8▪ &7Твой налог{$colon} &e%fancy@kingdoms_tax% монет"
-      - "&8▪ &dУравнение{$colon} &9%tax_equation%"
-      - ""
-      - "&8▪ &7Налог для вашего королевства{$colon} "
-      - " &e%fancy@kingdoms_kingdom_tax% монет"
-      - ""
-      - " &bНажмите, чтобы установить &dуравнение&7"
-      - " "
-      - "  Пример: &e(money) * 5 / 100&7 ->"
-      - "   забрать &a5%&7 из баланса игрока"
-      - " "
-      - "  &8(&bmoney&7 это баланс игрока&8)"
+    material: DARK_OAK_DOOR
+    name: "{$s}Общественный дом{$colon} %kingdoms_bool_kingdom_home_is_public%"
+    lore: |
+      {$sep}When your home is public, anyone
+      can teleport to it using
+      {$p}/k home %kingdoms_kingdom_name%
+
+      {$p}Left-click {$sep}to toggle public homes.
+      {$p}Right-click {$sep}to set public home cost.
+      This cost is only for people outside of your
+      kingdom.
+      {$p}Current Home Tax{$colon} {$s}%kingdoms_kingdom_taxes_home%
+
+      {$note} Both kingdoms need to have
+      the HOME relationship attribute for
+      your relationship for this to work.
+  hidden:
     posx: 5
     posy: 1
-  public-home:
-    name: "&6Публичность{$colon} &2%public_home%"
-    material: DARK_OAK_DOOR
-    lore:
-      - "&8▪ &7Вы можете сделать свой дом"
-      - "общедоступным, чтобы"
-      - "другие игроки могли "
-      - "посещать его с помощью"
-      - "&e/k home %kingdoms_kingdom_name%"
+    material: POTION
+    color: 818595
+    name: "{$s}Hidden{$colon} %kingdoms_bool_kingdom_is_hidden%"
+    lore: |
+      {$sep}Hidden kingdoms aren't displayed
+      in {$p}/k map {$sep}and online maps.
+  tax:
     posx: 6
     posy: 1
-  flag:
-    name: "&6Знамя"
-    material: BLACK_BANNER
-    lore:
-      - "&8▪ &7Изменить своё знамя на онлайн-карте"
-      - "Нажмите и вставьте URL-ссылку"
-      - "Это не обновит карту мгновенно"
-    posx: 7
-    posy: 1
-  color:
-    name: "&6Цвет{$colon} &c%r%&7, &2%g%&7, &9%b% &8[&aHEX: &d%hex%&8]"
-    material: BLACK_DYE
-    lore:
-      - "&8▪ &7Установите цвет маркера "
-      - "вашего королевства для онлайн-карты."
-      - "Это не обновит карту мгновенно"
-    posx: 8
-    posy: 1
+    material: PAPER
+    name: '{$s}Налог'
+    lore: |
+      {$sep}Измените налоги королевства
+      для участников.
 
-  back:
-    name: "&cНазад"
-    material: PLAYER_HEAD
-    sound: default
-    skull: "{$gui-back}"
-    lore:
-      - ""
-    posx: 9
-    posy: 1
+      {$s}Уравнение налога участника{$colon}
+      {$p}%tax_equation%
+      {$s}Ваш личный налог{$colon} {$p}$%fancy@kingdoms_tax%
+
+      {$s}Налог королевства{$colon} {$p}$%fancy@kingdoms_kingdom_tax%
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  relations:
+    posx: 3
+    posy: 3
+    material: WRITABLE_BOOK
+    name: '{$s}Отношения'
+    lore: |
+      {$sep}Измените атрибуты отношений
+      для других королевств.
+
+      {$sep}[&e!{$sep}] {$es}In order for some attributes
+      to work, both kingdoms need to have the
+      attribute enabled for the relationship.
+
+      For example, if you have {$e}BUILD {$es}attribute
+      enabled for allies, but you're trying to
+      build in an ally's land that doesn't
+      have {$e}BUILD {$es}attribute enabled for allies,
+      this won't work. They won't be able to
+      build in your land either.
+  banners:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '{$s}Flags & Banners'
+    lore: |
+      {$sep}Установите флаг и баннер вашего королевства
+      для онлайн-карт, значков, и они могут
+      также появляться в других местах как декоративные
+      блоки и символ вашего королевства.
+  pacifism:
+    posx: 7
+    posy: 3
+    material: END_CRYSTAL
+    name: '{$s}Пацифист{$colon} %kingdoms_bool_kingdom_is_pacifist%'
+    lore: |
+      {$sep}Когда вы находитесь в режиме пацифизма,
+      ваше королевство не может вторгнуться
+      и не может быть захвачено другими королевствами.
+
+      Если вы вторгнетесь в королевство, вы не сможете вернуться
+      в режим пацифизма в течение недели.
+      {? pacifism_left > 0 ? "
+      {$p}Перезарядка{$colon} {$s}%pacifism_cooldown%" }
+  invites:
+    posx: 3
+    posy: 5
+    material: BOOK
+    name: '{$s}Требуется приглашение{$colon} %kingdoms_bool_kingdom_requires_invite%'
+    lore: |
+      {$sep}Если выключено, любой может
+      присоединиться к этому королевству без необходимости
+      приглашения с {$p}/k присоединиться к %kingdoms_kingdom_name%
+  color:
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '{$s}Цвет{$colon} &c%r%{$sep}, {$p}%g%{$sep}, {$sp}%b% {$sep}(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%{$sep})'
+    lore: |
+      {$sep}Установите цвет маркера вашего
+      королевства для чата и онлайн-карт.
+  shields:
+    posx: 7
+    posy: 5
+    material: SHIELD
+    name: '{$s}Щит{$colon} {$p}%time@kingdoms_shield_time_left%'
+    lore: |
+      {$sep}Купите щит для своего
+      королевства, чтобы защитить свое королевство
+      от вторжений.

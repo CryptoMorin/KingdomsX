@@ -1,0 +1,139 @@
+title: '{$sep}-=( {$p}Мирный договор {$sep})=-'
+rows: 6
+
+options:
+  pause:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/miscellaneous/2299-stop
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTYxMzlmZDFjNTY1NGU1NmU5ZTRlMmM4YmU3ZWIyYmQ1YjQ5OWQ2MzM2MTY2NjNmZWVlOTliNzQzNTJhZDY0In19fQ=='
+    name: '{$e}Пауза'
+    lore: |
+      &7Приостанавливает текущий сеанс редактирования
+      контракта. Вы можете возобновить его позже с
+      помощью команды {$p}/k peacetreaty resume
+      &7,но она истекает после того, как
+      сервер отключается.
+  cancel:
+    material: BARRIER
+    name: "{$e}Отмена"
+    posx: 5
+    posy: 1
+  lime-stained-glass-pane:
+    slots: [ 1, 2, 6, 7, 9, 10, 12, 13, 14, 16, 17, 18, 21, 22, 23, 26, 28, 29, 30, 32, 33, 34, 36, 39, 40, 41, 44, 46, 48, 50, 52 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  blue-stained-glass-pane:
+    slots: [ 3, 5, 11, 15, 19, 25, 27, 35, 37, 43, 45, 47, 49, 51, 53 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  send:
+    posx: 9
+    posy: 1
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/alphabet/21778-blue-checkmark
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTZmNDQzMWU5ODNiM2M4NTQwNDRiYzAwYjdjNTQ4MDAyNDNjZDdkYmY5NGRlMzM5YjhjMmY3YjI1NjZhNTIwMSJ9fX0='
+    name: '{$p}Отправлять'
+    can-force-accpet:
+      condition: peacetreaty_can_enforce_acceptance
+      lore: |
+        &7Отправляет предложение в другое
+        царство. Вам придется подождать,
+        чтобы рассмотреть и принять его.
+        
+        {$p}Использованные очки войны{$colon} {$s}%peacetreaty_war_points%
+        {$p}Очки войны{$colon} {$s}%other*kingdoms_war_points%
+        
+        {$p}Ваше королевство может навязать
+        контракт этому королевству. Щелкните правой кнопкой мыши, чтобы 
+        навязать мирный договор другому королевству. 
+        Это займет {$s}%peacetreaty_force_acceptance_war_points% {$p}очков войны.
+    else:
+      lore: |
+        &7Отправляет предложение в другое
+        царство. Вам придется подождать,
+        чтобы рассмотреть и принять его.
+
+        {$p}Использованные очки войны{$colon} {$s}%peacetreaty_war_points%
+        {$p}Очки войны{$colon} {$s}%other*kingdoms_war_points%
+  term-take-rp:
+    posx: 3
+    posy: 3
+    material: DIAMOND
+    name: '%bool_term_take_rp% {$p}Возьмите очки ресурсов'
+    enabled:
+      condition: term_take_rp
+      lore: |
+        &7Требуется определенное количество
+        ресурсных очков, которые будут взяты из
+        королевства и переданы в ваше королевство.
+
+        {$p}Сумма{$colon} {$s}%fancy@term_take_resource_points_amount%
+        {$p}Очки войны{$colon} {$s}%war_points%
+    else:
+      lore: |
+        &7Требуется определенное количество
+        ресурсных очков, которые будут взяты из
+        королевства и переданы в ваше королевство.
+
+        {$p}Очки войны{$colon} {$s}%war_points%
+  term-war-reparation:
+    posx: 7
+    posy: 3
+    material: EMERALD
+    name: '%bool_term_war_reparation% {$p}Военные репарации'
+    enabled:
+      condition: term_war_reparation
+      lore: |
+        &7Потребуйте, чтобы определенная
+        сумма денег была взята из банка королевства
+        и переведена в ваше королевство.
+
+        {$p}Сумма{$colon} {$s}%fancy@term_take_money_amount%
+        {$p}Очки войны{$colon} {$s}%war_points%
+    else:
+      lore: |
+        &7Потребуйте, чтобы определенная
+        сумма денег была взята из банка
+        королевства и переведена в ваше королевство.
+
+        {$p}Очки войны{$colon} {$s}%war_points%
+  term-vassalization:
+    posx: 5
+    posy: 4
+    material: WRITABLE_BOOK
+    name: '%bool_term_vassalization% &cвассализация'
+    lore: |
+      &7Наложите определенные ограничения/правила на
+      ваше вассальное королевство как королевство-сюзерен
+      такие как отношения, различные улучшения и т. д.
+
+      {$p}Очки войны{$colon} {$s}%war_points%
+  term-leave-nation:
+    posx: 3
+    posy: 5
+    material: IRON_DOOR
+    name: '%bool_term_leave_nation% {$p}Покинуть страну'
+    lore: |
+      &7Потребовать от королевства покинуть страну, в которой они
+      находятся в настоящее время, или
+      расформировать ее, если
+      они являются столицей страны.
+
+      Это также лишает их возможности
+      присоединяться к каким-либо странам
+      до окончания срока действия мирного договора.
+
+      {$p}Очки войны{$colon} {$s}%war_points%
+  term-keep-lands:
+    posx: 7
+    posy: 5
+    material: GRASS_BLOCK
+    name: '%bool_term_keep_lands% {$p}Сохраняйте земли'
+    lore: |
+      &7Сохраните определенные земли, которые вы
+      захватили у этого королевства, а
+      остальные верните королевству.
+
+      {$p}Очки войны{$colon} {$s}%war_points%

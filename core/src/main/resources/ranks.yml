@@ -63,10 +63,24 @@ new-rank:
   name: "name"
   color: '&f'
   symbol: '♟'
+
   # Set to -1 to copy member rank's max claims.
   max-claims: -1
+
   # If this option is set to "RANDOM" the plugin will try to pick a random color.
   material: RANDOM
+
+  # The "ranks" variable can be used here which is the amount of ranks this kingdom has.
+  # Whatever priority this option evaluates to, it will replace the rank at that
+  # specific position and push all ranks with lower priority down by 1 (increases their priority number)
+  #
+  # The default equation makes sure that all new ranks are just one level above the member rank.
+  # (King's priority = 0, member rank priority = last priority i.e. "ranks" variable)
+  # King - General - Knight - Member
+  #                         ^ New
+  # King - General - Knight - New - Member
+  priority: ranks - 1
+
   # If the first element of this list is "@MEMBER" it'll copy the permissions from member rank.
   # For nations, this list is empty if "@MEMBER" is used.
   permissions: &member-perms [ NEXUS, BUILD, HOME, INVADE, INTERACT, USE, READ_MAILS ]

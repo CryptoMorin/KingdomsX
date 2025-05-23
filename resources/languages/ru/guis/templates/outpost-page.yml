@@ -1,0 +1,67 @@
+### Shared outpost page settings ###
+(module):
+  description: 'Базовые настройки для страниц аванпостов.'
+  parameters: { }
+
+(import):
+  pagination: { }
+
+title: "&eФорпост"
+rows: 6
+sound: BLOCK_ANVIL_USE
+
+# Used in imported configs.
+base: &base
+  name: "&5%item_name%"
+  lore: |
+    {$p}{? !buy_allowed ? "&m"}Купить{$colon} {$s}%fancy@buy% {$sep}({$sp}Щелкните левой кнопкой мыши{$sep}){? buy_max_items != -1 ? " {$sep}({$sp}Макс{$colon} &5%buy_max_items%{$sep})" }
+    {$p}Продать{$colon} {$s}%fancy@sell% {$sep}({$sp}Щелкните правой кнопкой мыши{$sep})
+    {? !buy_allowed ? "
+    {$e}Вы не можете купить этот предмет
+    {$e}до {$es}%time@buy_cooldown%"}
+
+options:
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '{$e}Инфо'
+    lore: |
+      &eВсе цены на товары меняются на сервере
+      на основе принципов спроса и предложения.
+      Чем больше людей покупают один и тот же товар,
+      цены растут, и чем больше
+      они продают этот товар,
+
+      {$note} {$sep}Вы можете {$p}Shift-клик левой кнопкой мыши
+      {$sep}после покупки товара один раз, чтобы
+      продолжать покупать то же количество.
+
+  break:
+    name: "&4Сломать"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "{$s}Ломает структуры"
+    slot: 53
+  nexus:
+    name: "{$p}Открыть нексус"
+    lore:
+      - "{$s}Ресурсные очки{$colon} {$p}%fancy@kingdoms_resource_points%"
+    material: NETHER_STAR
+    posx: 5
+    posy: 6
+  close:
+    name: "{$p}Закрыть"
+    material: BARRIER
+    slot: 45
+
+  black-glass:
+    name: ''
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 46, 47, 48, 50, 51, 52 ]
+  brown-stained-glass-pane:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44 ]

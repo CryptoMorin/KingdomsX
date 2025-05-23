@@ -1,0 +1,41 @@
+title: "{$sep}-=[ &5Привилегии доступа {$sep}]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  privilege-allowed:
+    name: "&aДопустимый"
+    material: GREEN_WOOL
+    lore: |-
+      {$desc}Игрокам разрешено
+      открывать/использовать и класть/брать
+      предметы из этого контейнера без ограничений.
+    slot: 1
+    enabled:
+      condition: selected
+      glow: true
+  privilege-disallowed:
+    name: "&cЗапрещено"
+    material: RED_WOOL
+    lore: |-
+      {$desc}Игрокам теперь разрешено взаимодействовать
+      или использовать этот блок вообще.
+    slot: 2
+    enabled:
+      condition: selected
+      glow: true
+  privilege-password:
+    name: "&9Пароль"
+    material: BLUE_WOOL
+    lore: |-
+      {$desc}Игрокам разрешено взаимодействовать или использовать
+      этот блок, только если
+      они введут пароль для него.
+    slot: 3
+    enabled:
+      condition: selected
+      glow: true
+  back:
+    name: "&cНазад"
+    material: BARRIER
+    slot: 0

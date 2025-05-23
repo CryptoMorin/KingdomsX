@@ -1,46 +1,67 @@
-title: "&8Экстрактор"
+title: "{$p}Экстрактор"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
 
 options:
-  break:
-    name: "&cСломать"
-    material: REDSTONE_BLOCK
-    sound: ENTITY_ITEM_BREAK
-    lore:
-      - "&7Сломать структуру"
-    slot: 0
   collect:
-    name: "&7Собрать{$colon} &b%time% &8- &e%amount% очков ресурсов"
-    material: GREEN_WOOL
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Нет топлива {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Нечего собирать {$sp}%extractor-last-collected-time-passed%"
+      material: RED_WOOL
+    else:
+      name: "{$p}Собирать{$colon} {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
+      material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
-    refresh: true
     lore:
-      - "&7Собрать все созданные"
-      - "очки ресурсов"
-      - "&aПоследний раз сбор{$colon} &d%extractor-last-collector%"
+      - "{$s}Собрать все сгенерированные"
+      - "очки ресурсов."
+      - "Последний раз собрано {$colon} {$p}%extractor-last-collector%"
+    slot: 0
+  fuel:
+    name: "{$p}Топливо{$colon} {$s}%fancy@fuel%&8/{$s}%fancy@max_fuel%"
+    material: COAL
+    refresh: true
     slot: 1
+    lore: |
+      {$sep}Чтобы заправить топливо, просто поместите
+      один из топливных элементов на блок экстрактора.
+
+      {$sep}Кроме того, вы можете разместить {$p}варонку
+      {$sep}лицом к экстрактору со следующими предметами.
+      {$note} Это работает только тогда, когда топливо экстрактора
+      почти на нуле.
+
+      {$p}Уголь{$colon} {$sp}5
+      {$p}Древесный уголь{$colon} {$sp}3
+      {$p}Пламенные стержни{$colon} {$sp}100
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&7Обновление{$colon} &b%roman@level% уровень &8➛ &b%roman@next_level% уровень"
+      name: "{$sp}Прокачка{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&8⚫ &7Каждые{$colon} &c%every% &8➔ &a%next-every%"
-        - "&8⚫ &7Очки ресурсов{$colon} &e%resource-points% &7➔ &6%next-resource-points%"
+        - "{$dot} {$p}Каждый{$colon} {$s}%every% {$sep}➔ {$s}%next-every%"
+        - "{$dot} {$p}Ресурсные очки{$colon} {$s}%fancy@resource-points% {$sep}➔ {$s}%fancy@next-resource-points%"
+        - "{$dot} {$p}Расход топлива{$colon} {$s}%extractor_needed_fuel% {$sep}➔ {$s}%next_extractor_needed_fuel%"
         - ""
-        - "&8⚫ &7Макс.уровень{$colon} &a%roman@next_level%"
-        - "&8⚫ &7Стоимость{$colon} &e%upgrade_cost% очков ресурсов"
+        - "{$dot} {$p}Макс.Уровень{$colon} {$s}%roman@max_level%"
+        - "{$dot} {$p}Цена{$colon} {$s}%upgrade_cost%"
     maxxed:
-      name: "&7Уровень{$colon} &b%roman@level%"
+      name: "{$sp}Level{$colon} {$s}%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&8⚫ &7Каждые{$colon} &b%every%"
-        - "&8⚫ &7Очки ресурсов{$colon} &e%resource-points%"
-  close:
-    name: "&cЗакрыть"
-    material: BARRIER
+        - "{$dot} {$p}Каждый{$colon} {$s}%every%"
+        - "{$dot} {$p}Ресурсные очки{$colon} {$s}%fancy@resource-points%"
+        - "{$dot} {$p}Расход топлива{$colon} {$s}%extractor_needed_fuel%"
+  break:
+    name: "&4Сломать"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
     lore:
-      - ""
+      - "{$s}Ломает структуры"
     slot: 4

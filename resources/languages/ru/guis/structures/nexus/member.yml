@@ -4,33 +4,47 @@ sound: ENTITY_EXPERIENCE_ORB_PICKUP
 
 options:
   kick:
-    name: "&4Исключить из города"
+    name: "&cКикнуть"
     material: RED_WOOL
+    cantKick:
+      condition: '!can_kick'
+      lore: |
+        &cВы не можете исключить этого участника.
+    else: { }
     slot: 0
   demote:
-    name: '&cПонизить игрока &8[&9-&8]'
+    name: '&eПонижать'
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM4NTJiZjYxNmYzMWVkNjdjMzdkZTRiMGJhYTJjNWY4ZDhmY2E4MmU3MmRiY2FmY2JhNjY5NTZhODFjNCJ9fX0="
+    cantDemote:
+      condition: '!can_demote'
+      lore: |
+        &cВы не можете понизить этого участника.
+    else: { }
     slot: 1
   member:
-    name: "%kingdoms_rank_color%%kingdoms_rank_symbol% %player%"
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
     material: PLAYER_HEAD
     lore:
-      - ""
-      - "&8▪ &7Статус %online%"
-      - "&8▪ &7Вступил &8» &9%kingdoms_date_joined%"
-      - "&8▪ &7Пожертвовал &8» &e%kingdoms_total_donations%"
-      - "&8▪ &7Посл.время пожертвования &8» &5%kingdoms_date_last_donation_time%"
-      - "&8▪ &7Ранг &8» %kingdoms_rank_color%%kingdoms_rank_name%"
+      - "%online%"
+      - "{$p}Присоединился{$colon} {$s}%kingdoms_date_joined%"
+      - "{$p}Пожертвования{$colon} {$s}%kingdoms_total_donations%"
+      - "{$p}Последнее пожертвование{$colon} {$s}%kingdoms_date_last_donation_time%"
+      - "{$p}Классифицировать{$colon} {$s}%kingdoms_rank_name%"
     slot: 2
   promote:
-    name: '&aПовысить игрока &8[&a+&8]'
+    name: '&aПродвигать'
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjIyMWRhNDQxOGJkM2JmYjQyZWI2NGQyYWI0MjljNjFkZWNiOGY0YmY3ZDRjZmI3N2ExNjJiZTNkY2IwYjkyNyJ9fX0="
+    canPromote:
+      condition: '!can_promote'
+      lore: |
+        &cВы не можете повысить этого участника.
+    else: { }
     slot: 3
   back:
-    name: "&7Назад"
+    name: "{$p}Назад"
     material: BARRIER
     lore:
-      - ""
+      - "{$s}Вернуться в меню участников."
     slot: 4

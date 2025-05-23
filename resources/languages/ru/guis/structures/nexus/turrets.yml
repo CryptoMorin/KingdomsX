@@ -1,107 +1,145 @@
-title: "{$sep}-=( &9Турели {$sep})=-"
+title: "{$sep}-=( {$sp}Башни {$sep})=-"
 rows: 4
 sound: ITEM_FIRECHARGE_USE
 
 options:
   arrow:
-    name: "&2Стрелочная турель"
+    name: "{$p}Стрелка"
     material: ARROW
     sound: ENTITY_ARROW_SHOOT
-    lore:
-      - "&6Простая турель, стреляющая"
-      - "стрелами во врагов с умеренной скоростью."
+    lore: |
+      {$s}Простая башня, которая стреляет простыми
+      стрелами по врагам с умеренной скоростью.
+
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 2
     posy: 2
   flame:
-    name: "&3Огненная турель"
+    name: "&3Пламя"
     material: SPECTRAL_ARROW
     sound: ITEM_FLINTANDSTEEL_USE
     flags: [ ALL ]
-    lore:
-      - "&6Быстро стреляющая турель"
-      - "поджигающая цель."
+    lore: |
+      {$s}Скорострельная турель, которая поджигает
+      цели.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 3
     posy: 2
   healing:
-    name: "&dЛечащая турель"
+    name: "&dВыздоровление"
     material: TIPPED_ARROW
     sound: ENTITY_ZOMBIE_VILLAGER_CURE
     flags: [ ALL ]
-    lore:
-      - "&6Лечит ближайших членов и союзников."
+    lore: |
+      {$s}Лечит ближайших участников и союзников.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   psionic:
-    name: "&aПсионическая турель"
+    name: "&aПсионический"
     material: TRIPWIRE_HOOK
     sound: ENTITY_PLAYER_HURT_ON_FIRE
     flags: [ ALL ]
-    lore:
-      - "&6Накладывает различные эффекты врагам."
-      - "Более высокий уровень даёт больше эффектов."
-      - "Но никогда не наносит урона."
+    lore: |
+      {$s}Влияет на врагов поблизости.
+      Более высокие уровни добавляют больше эффектов.
+      Но никогда не наносит смертельный урон.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   hellfire:
-    name: "&cАдская турель"
+    name: "&cАдский огонь"
     material: FIRE_CHARGE
     sound: ITEM_FIRECHARGE_USE
-    lore:
-      - "&6Мощная турель, высокий урон с"
-      - "высокой скорострельностью."
+    lore: |
+      {$s}Мощная турель, которая стреляет быстро
+      с большим уроном.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   soldier:
-    name: "&5Призывающая турель"
+    name: "&5Солдат"
     sound: ENTITY_ZOMBIE_VILLAGER_CONVERTED
     material: ZOMBIE_HEAD
-    lore:
-      - "&6Вызывает стражей, что бы убить"
-      - "врага."
+    lore: |
+      {$s}Создает охранников, чтобы убить
+      целевого игрока.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   heatbeam:
-    name: "&3Нагревающая турель"
+    name: "&3Тепловой луч"
     sound: ENTITY_GUARDIAN_ATTACK
     material: MAGMA_CREAM
-    lore:
-      - "&6Наносит мобу/игроку"
-      - "высокий урон."
+    lore: |
+      {$s}Нацеливается на отдельные цели и наносит
+      большой урон.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 8
     posy: 2
   inferno:
-    name: "&4Испепеляющая турель"
+    name: "&4Инферно"
     material: END_CRYSTAL
     sound: ENTITY_ELDER_GUARDIAN_CURSE
-    lore:
-      - "&6Похожа на нагревающую турель."
+    lore: |
+      {$s}Аналогично Тепловой луч.
+
+      {$chk-kingdom-lvl-V}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
+    posx: 5
+    posy: 1
+  spring:
+    name: "{$sep}Весна"
+    material: OAK_PRESSURE_PLATE
+    sound: BLOCK_STONE_PRESSURE_PLATE_CLICK_ON
+    lore: |
+      {$s}Мина, которая
+      подбрасывает игрока в воздух,
+      когда на него наступают.
+
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 3
   explosive-mine:
-    name: "&7Взрывная мина"
+    name: "{$sep}Взрывоопасная мина"
     material: HEAVY_WEIGHTED_PRESSURE_PLATE
     sound: BLOCK_STONE_PRESSURE_PLATE_CLICK_ON
-    lore:
-      - "&6Мина, которая взрывается"
-      - "когда кто нибудь наступит на неё."
+    lore: |
+      {$s}Мина, которая взрывается,
+      если на нее наступить.
+
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 3
   chemical-mine:
-    name: "&8Химическая мина"
+    name: "&8Химическая шахта"
     material: LIGHT_WEIGHTED_PRESSURE_PLATE
     sound: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
-    lore:
-      - "&6Мина, которая накладывает"
-      - "негативные эффекты на наступившего."
+    lore: |
+      {$s}Мина, которая дает игроку дебаффы,
+      когда на него наступают.
+
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 3
-
   back:
-    name: "&2Вернуться"
+    name: "{$p}Назад"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
-    lore:
-      - "&6Вернуться в меню Нексуса."
+    lore: |
+      {$s}Вернуться в меню nexus.
     posx: 5
     posy: 4
   Cyan-Glass:

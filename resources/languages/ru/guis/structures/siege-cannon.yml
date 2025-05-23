@@ -5,45 +5,58 @@ interactable: [ 2 ] # The ammo slot
 
 options:
   sit:
-    name: "&2Сесть"
+    name: "{$p}Сидеть"
     lore:
-      - "&7Сесть за пушку"
-      - "чтобы начать стрелять"
+      - "{$sep}Сядь на пушку"
+      - "чтобы начать стрелять."
     material: BRICK_STAIRS
     slot: 0
   ammo:
     name: "&4-------->"
     material: RED_STAINED_GLASS_PANE
     lore:
-      - "&7Вот сюда положить"
-      - "заряд в виде &cогненного заряда"
+      - "{$p}Поместите огненный заряд в это"
+      - "слот для заряжания пушки."
+      - ""
+      - "&8[&4&l!&8] {$sep}Загруженные снаряды исчезнут"
+      - "после перезапуска сервера."
+      - ""
+      - "{$p}Железные блоки{$colon} {$sp}Уровень I"
+      - "{$p}Золотые блоки{$colon} {$sp}Уровень II"
+      - "{$p}Огненные заряды{$colon} {$sp}Уровень III"
     slot: 1
   upgrade:
     slot: 3
     upgrade:
       condition: "level < max_level"
-      name: "&9Прокачка{$colon} &6%roman@level% &b➛ &6%roman@next_level%"
+      name: "{$sp}Прокачка{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "&8⚫ &7Урон ЩИТу{$colon} &6%shield-damage% &b➔ &6%next-shield-damage%"
-        - "&8⚫ &7Кулдаун{$colon} &6%cooldown% &b➔ &6%next-cooldown%"
-        - "&8⚫ &7Урон{$colon} &6%damage% &b➔ &6%next-damage%"
-        - "&8⚫ &7Отбрасывание{$colon} &6%knockback% &b➔ &6%next-knockback%"
+        - "{$dot} {$p}Урон щитом{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%"
+        - "{$dot} {$p}Перезарядка{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%"
+        - "{$dot} {$p}Урон{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%"
+        - "{$dot} {$p}Отдача{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%"
+        - "{$dot} {$p}Радиус взрыва{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%"
         - ""
-        - "&8⚫ &7Макс.уровень{$colon} &6%roman@next_level%"
-        - "&8⚫ &7Стоимость{$colon} &6%upgrade_cost%"
+        - "&8[&4&l!&8] {$sep}Значения, показанные здесь, могут"
+        - "отличаться в зависимости от снаряда, который вы"
+        - "использовали для зарядки пушки".
+        - ""
+        - "{$dot} {$p}Макс.Уровень{$colon} {$s}%roman@next_level%"
+        - "{$dot} {$p}Цена{$colon} {$s}%upgrade_cost%"
     maxxed:
-      name: "&9Уровень{$colon} &6%roman@level%"
+      name: "{$sp}Уровень{$colon} {$s}%roman@level%"
       material: NETHER_STAR
       lore:
-        - "&8⚫ &7Урон ЩИТу{$colon} &6%shield-damage%"
-        - "&8⚫ &7Кулдаун{$colon} &6%cooldown%"
-        - "&8⚫ &7Урон{$colon} &6%damage%"
-        - "&8⚫ &7Отбрасывание{$colon} &6%knockback%"
+        - "{$dot} {$p}Урон щитом{$colon} {$s}%shield-damage%"
+        - "{$dot} {$p}Перезарядка{$colon} {$s}%cooldown%"
+        - "{$dot} {$p}Урон{$colon} {$s}%damage%"
+        - "{$dot} {$p}Отдача{$colon} {$s}%knockback%"
+        - "{$dot} {$p}Радиус взрыва{$colon} {$s}%explosion-radius%"
   break:
     name: "&4Сломать"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Сломать эту структуру"
+      - "{$s}Ломает структуры"
     slot: 4

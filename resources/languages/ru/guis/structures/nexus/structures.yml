@@ -6,17 +6,21 @@ sound: BLOCK_CONDUIT_ACTIVATE
 # remove the disc's name from the lore...
 options:
   powercell:
-    name: "&4Силовая ячейка"
+    name: "&4Powercell"
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ ALL ]
-    lore:
-      - "&8− &7Все земли, окруженные силовой ячейкой"
-      - "(9x9) не могут быть захвачены до "
-      - "тех пор, пока сначала"
-      - "не будут захвачены земли самой ячейки"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Земли, окруженные энергоячейкой, не могут быть захвачены,
+      пока земля энергоячейки
+      не будет захвачена первой.
+      Радиус защиты составляет {$p}3x3 {$s}для уровня 1
+      и {$p}5x5 {$s}для уровня 2.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
+      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Ваше королевство является пацифистским королевством
+      {$desc}и эта структура не будет полезна вашему королевству."}
     posx: 3
     posy: 2
   extractor:
@@ -24,36 +28,44 @@ options:
     material: MUSIC_DISC_CAT
     sound: BLOCK_ANVIL_LAND
     flags: [ ALL ]
-    lore:
-      - "&8− &7Экстракторы будут производить очки ресурсов."
-      - "&8− &7Вы можете собирать очки ресурсов "
-      - "в любое время."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Экстракторы производят ресурсные очки.
+      {$s}Вы можете собирать ресурсные очки
+      в любое время.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   outpost:
-    name: "&eАванпост"
+    name: "&eФорпост"
     material: MUSIC_DISC_13
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ ALL ]
-    lore:
-      - "&8− &7Вы можете получить бутылки опыта с"
-      - "аванпостов, используя очки ресурсов"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Глобальный фондовый рынок
+      королевств. Покупайте и продавайте
+      различные предметы, которые влияют
+      на цены этих предметов по всему миру
+      во всех аванпостах.
+      Эта структура также дает вам
+      возможность открывать свой нексус удаленно.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   warppad:
-    name: "&cТочка телепортации"
+    name: "&cВарп-подушка"
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ ALL ]
-    lore:
-      - "&8− &7Можно использовать для телепортации"
-      - "из одной структуры в другую."
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Для телепортации из одной структуры в
+      другую можно использовать варп-площадки.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   regulator:
@@ -61,15 +73,14 @@ options:
     material: MUSIC_DISC_WARD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "&8− &7Управляйте правами игрока, "
-      - "такими как строить/ломать, "
-      - "ВКЛ/ВЫКЛ огонь и т.д..."
-      - "Измените, какой игрок может "
-      - "взаимодействовать с каким блоком."
-      - "Отключите появление мобов или животных"
-      - ""
-      - "&8▪ &7Стоимость &8» &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Управляет атрибутами игрока, такими как строительство,
+      прекращение огня турелей и т. д.
+      Управляет появлением мобов/животных,
+      турелями (например, автопополнением боеприпасов) и взрывами.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   siege-cannon:
@@ -77,20 +88,21 @@ options:
     material: MUSIC_DISC_STRAD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "&8− &7Пушкой можно уничтожать"
-      - "ЩИТы королевств"
-      - "&7Стоимость{$colon} &e%cost% оч.ресурсов"
+    lore: |
+      {$s}Пушка, используемая для разрушения щита
+      королевства.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Стоимость{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 1
-
   back:
-    name: "&2Назад"
+    name: "{$p}Назад"
     material: PLAYER_HEAD
     # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
     skull: "{$gui-back}"
-    lore:
-      - "&6"
+    lore: |
+      {$s}Вернитесь в меню nexus.
     posx: 5
     posy: 3
   cyan-glass:

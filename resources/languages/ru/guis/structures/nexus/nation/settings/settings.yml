@@ -1,57 +1,93 @@
-title: "&8Настройки"
-rows: 1
+title: "{$sep}-=( {$sep}Настройки {$sep})=-"
+rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
-  shields:
-    name: "&6Щит{$colon} &b%time@kingdoms_shield_time_left%"
-    material: SHIELD
-    lore:
-      - "&8▪ &7Купите щит для своей"
-      - "нации чтобы защитить"
-      - "её от вторжений"
+  back:
     posx: 1
     posy: 1
-  invites:
-    name: "&6Приглашения{$colon} %invites%"
-    material: BOOK
-    lore:
-      - "&8▪ &7Если этот параметр отключен, любой может"
-      - "присоединиться к этой нации без"
-      - "приглашения с помощью &e/k nation join %kingdoms_nation_name%"
-    posx: 2
-    posy: 1
-  relations:
-    name: "&6Отношения"
-    material: WRITABLE_BOOK
-    lore:
-      - "&8▪ &7Измените свои атрибуты отношений"
-      - "для других королевств"
-    posx: 3
-    posy: 1
-  tax:
-    name: "&6Налоги"
-    material: PAPER
-    lore:
-      - "&8▪ &7Измените уравление"
-      - "национальных налогов для королевств."
-      - ""
-      - "&8▪ &7Налог{$colon} &e%fancy@kingdoms_nation_tax% монет"
-      - "&8▪ &7Уравнение{$colon} &9%tax_equation%"
-      - ""
-      - "&8▪ &7Налог для выставления счетов{$colon} &b%fancy@kingdoms_server_nation_tax% монет"
-      - ""
-      - " &bНажмите, чтобы установить &aуравнение&7"
-      - "  (пример: (money) * 5 / 100)"
-    posx: 4
-    posy: 1
-
-  back:
-    name: "&cНазад"
     material: PLAYER_HEAD
-    sound: default
+    name: '{$p}Назад'
+    lore: [ '{$s}Settings' ]
     skull: "{$gui-back}"
-    lore:
-      - ""
-    posx: 9
-    posy: 1
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
+    posx: 3
+    posy: 5
+    material: DARK_OAK_DOOR
+    name: "{$s}Общественный дом{$colon} %kingdoms_bool_nation_home_is_public%"
+    lore: |
+      {$sep}Когда ваш дом публичный, любой
+      может телепортироваться в него, используя
+      {$p}/k nation home %kingdoms_nation_name%
+  tax:
+    posx: 7
+    posy: 5
+    material: PAPER
+    name: '{$s}Налог'
+    lore: |
+      {$sep}Измените налоги вашей страны
+      для участников.
+
+      {$s}Уравнение налога на членство{$colon}
+      {$p}%tax_equation%
+      {$s}Ваш членский налог{$colon} {$p}$%fancy@kingdoms_nation_tax%
+
+      {$s}Национальный серверный налог{$colon} {$p}$%fancy@kingdoms_nation_tax%
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  relations:
+    posx: 3
+    posy: 3
+    material: WRITABLE_BOOK
+    name: '{$s}Отношения'
+    lore: |
+      {$sep}Измените атрибуты вашего отношения
+      для других наций.
+
+      {$sep}[&e!{$sep}] {$es}In order for some attributes
+      to work, both kingdoms need to have the
+      attribute enabled for the relationship.
+
+      For example, if you have the {$e}BUILD {$es}attribute
+      enabled for allies, and then try to
+      build in an ally's land that doesn't also
+      have the same attribute enabled for allies,
+      it won't work. Said ally won't be able to
+      build in your land either.
+  banners:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '{$s}Флаг'
+    lore: |
+      {$sep}Установите флаг своей страны для онлайн-карт.
+      Щелкните, чтобы увидеть URL-адрес вашего флага.
+      Это не обновит карту мгновенно.
+  color:
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '{$s}Цвет{$colon} &c%r%{$sep}, {$p}%g%{$sep}, {$sp}%b% {$sep}(%hex@kingdoms_nation_color%%kingdoms_nation_color%{$sep})'
+    lore: |
+      {$sep}Установите цвет маркера
+      страны для чата и онлайн-карт местности.
+  shields:
+    posx: 7
+    posy: 3
+    material: SHIELD
+    name: '{$s}Щит{$colon} {$p}%time@kingdoms_nation_shield_time_left%'
+    lore: |
+      {$sep}Купите щит для своей
+      нации, чтобы защитить свое королевство
+      от вторжений.
+
+      Члены королевства, которые
+      вторгаются, когда включены
+      щиты нации, временно
+      потеряют доступ к щиту нации.

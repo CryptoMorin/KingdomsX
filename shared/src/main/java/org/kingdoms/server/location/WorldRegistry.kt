@@ -9,14 +9,13 @@ interface WorldRegistry {
 
     companion object {
         @JvmField val WORLD_REMAPPER: Map<String, String> = hashMapOf(
-            "new" to "world",
-            "next" to "world",
-            "Builders" to "world"
+            "Midgard" to "world",
         )
 
         @Suppress("NOTHING_TO_INLINE")
         @JvmStatic inline fun remap(world: String): String {
-            return world // WORLD_REMAPPER.getOrDefault(world, world)
+            // return WORLD_REMAPPER.getOrDefault(world, world)
+            return world
         }
     }
 }

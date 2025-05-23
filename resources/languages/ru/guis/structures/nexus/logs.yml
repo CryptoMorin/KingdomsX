@@ -1,0 +1,471 @@
+title: "{$sep}-=[ &4Журналы аудита {$sep}]=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 6
+
+# [NoSync] Don't remove this comment
+'[type]':
+  kingdom-join:
+    material: GREEN_WOOL
+    name: '{$p}Игрок присоединился{$colon} {$s}%player%'
+    lore: |
+      {$p}В{$colon} {$s}%time%
+      {$p}Приглашенный{$colon} {$s}%inviter%
+  kingdom-kick:
+    material: RED_WOOL
+    name: '{$p}Выгнанный участник{$colon} {$s}%player%'
+    lore: |
+      {$p}В{$colon} {$s}%time%
+      {$p}Кикер{$colon} {$s}%kicker%
+  kingdom-leave:
+    material: RED_WOOL
+    name: '{$p}Игрок слева{$colon} {$s}%player%'
+    lore: |
+      {$p}В{$colon} {$s}%time%
+      {$p}Причина{$colon} {$s}%reason%
+  kingdom-challenge-challenger:
+    material: GREEN_WOOL
+    name: '{$p}Вызов'
+    lore: |
+      &e%player% &cбросил вызов
+      &e%other*kingdoms_kingdom_name% &ckingdom.
+      {$p}В{$colon} {$s}%time%
+
+      {$sep}У вас есть время до &c%start_time%
+      {$sep}чтобы подготовиться к атаке.
+  kingdom-challenge-challenged:
+    material: RED_WOOL
+    name: '&cChallenged'
+    lore: |
+      &e%kingdoms_kingdom_name% &cкоролевство имеет
+      &cбросил вызов вашему королевству.
+      {$p}В{$colon} {$s}%time%
+
+      {$sep}У вас есть время до &c%start_time%
+      {$sep}, чтобы подготовиться, прежде чем они нападут.
+  kingdom-claim:
+    material: GRASS_BLOCK
+    name: '{$p}Заявлено'
+    lore: |
+      {$s}%player% {$p}захватил
+      следующие земли{$colon}
+      %lands%
+      {$p}В{$colon} {$s}%time%
+  kingdom-unclaim:
+    material: GRASS_BLOCK
+    name: '&cНевостребованный'
+    lore: |
+      {$es}%player% {$e}отменил
+      следующие земли{$colon}
+      %lands%
+      {$p}В{$colon} {$s}%time%
+  kingdom-invasion-invader:
+    material: IRON_SWORD
+    name: '{$p}Вторглись'
+    lore: |
+      {$s}%player% {$p}вторгся{$colon}
+      {$s}%chunk%
+      {$p}Королевство{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Режим разграбления{$colon} %ransack-mode%
+      {$p}Результат{$colon} {$s}%result%
+      {$p}В{$colon} {$s}%time%
+      {$p}Затронутые земли{$colon}
+      %affected-lands%
+  kingdom-invasion-invaded:
+    material: GOLD_SWORD
+    name: '&cВторжение'
+    lore: |
+      {$s}%player% {$p}вторгся в ваше королевство в{$colon}
+      {$s}%chunk%
+      {$p}Королевство{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Режим разграбления{$colon} %ransack-mode%
+      {$p}Результат{$colon} {$s}%result%
+      {$p}В{$colon} {$s}%time%
+      {$p}Затронутые земли{$colon}
+      %affected-lands%
+  kingdom-upgrade-misc:
+    material: DIAMOND_HOE
+    name: '{$sp}Разное Обновление'
+    lore: |
+      {$s}%player% {$p}обновил
+      {$s}%upgrade% {$p}разные улучшения.
+      {$p}Уровень{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%время%
+  kingdom-upgrade-champion:
+    material: ZOMBIE_HEAD
+    name: '{$sp}Улучшение чемпиона'
+    lore: |
+      {$s}%player% {$p}обновил
+      {$s}%upgrade% {$p}разные улучшения.
+      {$p}Уровень{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%время%
+  kingdom-upgrade-powerup:
+    material: DIAMOND_SWORD
+    name: '{$sp}Улучшение мощности'
+    lore: |
+      {$s}%player% {$p}обновил
+      {$s}%upgrade% {$p}разные улучшения.
+      {$p}Уровень{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%время%
+  kingdom-structure-upgrade:
+    material: EMERALD_BLOCK
+    name: '&aМодернизация структуры'
+    lore: |
+      {$s}%player% {$p}улучшил
+      {$s}%item_style_display_name% {$p}структуру в
+      {$s}%location%
+      {$p}Уровень{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  kingdom-structure-purchase:
+    material: EMERALD_BLOCK
+    name: '&aСтруктура покупки'
+    lore: |
+      {$s}%player% {$p}приобрел {$s}%amount%
+      {$s}%item_style_display_name% {$p}структур.
+      {$p}Очки ресурсов Стоимость{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  kingdom-turret-purchase:
+    material: EMERALD_BLOCK
+    name: '&aПокупка башни'
+    lore: |
+      {$s}%player% {$p}приобрел {$s}%amount%
+      {$s}%item_style_display_name% {$p}турелей.
+      {$p}Очки ресурсов Стоимость{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  kingdom-turret-purchase-ammo:
+    name: '&aПокупка боеприпасов для башни'
+    material: EMERALD_BLOCK
+    lore: |
+      {$s}%player% {$p}приобрел боеприпасы для
+      {$s}%style% {$p}turret в {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
+      {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  kingdom-turret-upgrade:
+    material: ARROW
+    name: '&aМодернизация башни'
+    lore: |
+      {$s}%player% {$p}улучшил
+      {$s}%item_style_display_name% {$p}башню в
+      {$s}%location%
+      {$p}Уровень{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  kingdom-resource-points-convert:
+    material: HAY_BLOCK
+    name: '&aКонвертировать Ресурсные Очки'
+    lore: |
+      {$s}%player% {$p}изменил
+      очки ресурсов{$colon}
+      {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
+      {$p}В{$colon} {$s}%time%
+  extractor-collect:
+    material: EMERALD_BLOCK
+    name: '&aЭкстрактор Собрать'
+    lore: |
+      {$s}%player% {$p}собрал
+      экстрактор, расположенный в {$colon}
+      {$s}%location%
+      {$p}Собранные очки ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  warppad-teleport:
+    material: END_PORTAL_FRAME
+    name: '&3Телепорт Warp Pad'
+    lore: |
+      {$s}%player% {$p}телепортировался
+      используя Warp Pad, расположенный в
+      {$s}%from_location% {$p}to
+      {$s}%precise_location%
+      {$p}Стоимость топлива{$colon} {$s}%fancy@fuel_cost%
+      {$p}В{$colon} {$s}%time%
+  outpost-item-purchase:
+    material: HAY_BLOCK
+    name: '&eПокупка предметов аванпоста'
+    lore: |
+      {$s}%player% {$p}купил
+      следующие элементы из
+      Структура аванпоста, расположенная в{$colon}
+      {$s}%location%
+      {$p}Общее количество очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+      %purchases%
+  kingdom-pacifism-change:
+    material: NETHER_STAR
+    name: '&5Пацифизм Изменение'
+    lore: |
+      {$s}%player% {$p}изменил
+      пацифистское состояние королевства.
+      {$p}Пацифист{$colon} {$s}%bool_pacifist%
+      {$p}В{$colon} {$s}%time%
+  shield-purchase:
+    material: SHIELD
+    name: '&5Покупка щита'
+    lore: |
+      {$s}%player% {$p}купил
+      щит для королевства.
+      {$p}Продолжительность действия купленного щита{$colon} {$s}%purchased-shield-time%
+      {$p}Продолжительность действия щита{$colon} {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+      {$p}Стоимость очков ресурсов{$colon} {$s}%fancy@resource_points%
+      {$p}В{$colon} {$s}%time%
+  shield-deactivation:
+    material: SHIELD
+    name: '&5Деактивация щита'
+    lore: |
+      {$s}%player% {$p}отключил
+      щит королевства.
+      {$p}Длительность щита{$colon} {$s}%old-shield-time%
+      {$p}В{$colon} {$s}%time%
+  kingdom-relation-change:
+    material: NETHER_STAR
+    name: '{$sp}Изменение отношений'
+    lore: |
+      {$p}Отношения Королевства имеют
+      изменено с {$s}%kingdoms_kingdom_name% {$p}kingdom{$colon}
+      %old-relation% {$sep}➜ %new-relation%
+      {$p}В{$colon} {$s}%time%
+  kingdom-invite:
+    material: BOOK
+    name: '{$sp}Приглашать'
+    lore: |
+      {$s}%inviter% {$p}пригласил {$s}%player%
+      {$p}в королевство. У них есть {$s}%accept-time%
+      {$p}чтобы принять запрос.
+      {$p}В{$colon} {$s}%time%
+  kingdom-king-change:
+    material: BOOK
+    name: '&4Изменение короля'
+    lore: |
+      {$p}Король королевства был изменен.{$colon}
+      {$s}%old-king% {$sep}➜ {$s}%new-king%
+      {$p}Причина{$colon} {$s}%reason%
+      {$p}В{$colon} {$s}%time%
+  player-rank-change:
+    lore: |
+      {$s}%old-rank% {$sep}➜ {$s}%new-rank%
+      {$p}По{$colon} {$s}%by-player%
+    promoted:
+      condition: 'old_rank_priority > new_rank_priority' # It's the opposite
+      material: GREEN_WOOL
+      name: '&aИгрок повышен{$colon} {$s}%player%'
+    else: # demoted
+      material: RED_WOOL
+      name: '&cИгрок понижен{$colon} {$s}%player%'
+  rank-create:
+    material: BOOK
+    name: '{$p}Ранг Создано'
+    lore: |
+      {$p}Ранг был создан {$s}%player%{$colon}
+      {$p}Узел{$colon} {$s}%rank_node%
+      {$p}Отображаемое имя{$colon} {$s}%rank_color%%rank_symbol% ​​%rank_name%
+      {$p}Приоритет{$colon} {$s}%rank_priority%
+      {$p}Максимальное кол-во заявок{$colon} {$s}%rank_max_claims%
+      {$p}Материал{$colon} {$s}%rank_material%
+      {$p}В{$colon} {$s}%time%
+  rank-delete:
+    material: BOOK
+    name: '&cРанг удален'
+    lore: |
+      {$p}Ранг был удален {$s}%player%{$colon}
+      {$p}Узел{$colon} {$s}%rank_node%
+      {$p}Отображаемое имя{$colon} {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Приоритет{$colon} {$s}%rank_priority%
+      {$p}Макс. претензии{$colon} {$s}%rank_max_claims%
+      {$p}Материал{$colon} {$s}%rank_material%
+      {$p}В{$colon} {$s}%time%
+  rank-change-name:
+    material: BOOK
+    name: '{$sp}Название ранга изменено'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}имя было изменено {$s}%player%{$colon}
+      {$s}%old-name% {$sep}➜ {$s}%new-name%
+      {$p}В{$colon} {$s}%time%
+  rank-change-symbol:
+    material: BOOK
+    name: '{$sp}Символ ранга изменен'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}символ был изменен {$s}%player%{$colon}
+      {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
+      {$p}В{$colon} {$s}%time%
+  rank-change-color:
+    material: BOOK
+    name: '{$sp}Цвет ранга изменен'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}имя было изменено {$s}%player%{$colon}
+      {$s}%old-color%color {$sep}➜ {$s}%new-color%color
+      {$p}В{$colon} {$s}%time%
+  rank-change-priority:
+    material: BOOK
+    name: '{$sp}Rank priority Changed'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}приоритет был изменен {$s}%player%{$colon}
+      {$s}%old-priority% {$sep}➜ {$s}%new-priority%
+      {$p}В{$colon} {$s}%time%
+  rank-change-max-claims:
+    material: BOOK
+    name: '{$sp}Рейтинг Макс. Заявления изменены'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}макс. претензии были изменены {$s}%player%{$colon}
+      {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
+      {$p}В{$colon} {$s}%time%
+  rank-change-material:
+    material: BOOK
+    name: '{$sp}Ранг Материала Изменен'
+    lore: |
+      {$p}Ранг %rank%
+      {$p}материал был изменен {$s}%player%{$colon}
+      {$s}%old-material% {$sep}➜ {$s}%new-material%
+      {$p}В{$colon} {$s}%time%
+  structures-nexus-move:
+    material: BEACON
+    name: '{$sp}Нексус Размещен'
+    placed:
+      condition: placed
+      lore: |
+        {$p}Нексус королевства был
+        размещен {$s}%player%{$colon}
+        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}В{$colon} {$s}%time%
+    else:
+      lore: |
+        {$p}Нексус королевства был
+        перемещён {$s}%player%{$colon}
+        {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}В{$colon} {$s}%time%
+  group-tax-server-pay:
+    material: PAPER
+    name: "{$sp}Налог на сервер"
+    lore: |
+      {$p}Налоги на сервер оплачены.
+      {$p}Кол-во{$colon} {$s}%fancy@amount%
+      {$p}В{$colon} {$s}%time%
+  kingdom-champion-change:
+    material: ZOMBIE_HEAD
+    name: "{$sp}Смена чемпиона"
+    lore: |
+      {$p}Чемпион был изменен.
+      {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}В{$colon} {$s}%time%
+  kingdom-change-lore:
+    material: PAPER
+    name: "{$sp}Изменить лор"
+    lore: |
+      {$p}История королевства была изменена
+      {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}В{$colon} {$s}%time%
+  kingdom-rename:
+    material: PAPER
+    name: "{$sp}Переименовать"
+    lore: |
+      {$p}Королевство было переименовано
+      {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}В{$colon} {$s}%time%
+  kingdom-change-tag:
+    material: PAPER
+    name: "{$sp}Изменить тег"
+    lore: |
+      {$p}Тег королевства был изменен
+      {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}В{$colon} {$s}%time%
+  kingdom-nation-join:
+    material: BEACON
+    name: "{$sp}Присоединяйтесь к стране"
+    lore: |
+      {$p}Ваше королевство присоединилось
+      {$s}%kingdoms_nation_name% {$p}nation.
+      {$p}В{$colon} {$s}%time%
+  kingdom-nation-leave:
+    material: BEACON
+    name: "&cВыход из страны"
+    lore: |
+      {$p}Ваше королевство покинуло
+      {$s}%kingdoms_nation_name% {$p}nation.
+      {$p}В{$colon} {$s}%time%
+  kingdom-vault-item-move:
+    material: PAPER
+    name: "&cПеремещение предметов из хранилища королевства"
+    lore: |
+      {$p}Изменения{$colon}
+      %changes%
+
+      {$p}В{$colon} {$s}%time%
+  'PeaceTreaties:received':
+    material: BOOK
+    name: "{$sp}Получен мирный договор"
+    commands:
+      - 'k pt review %other*kingdoms_kingdom_name%'
+    lore: |
+      {$p}Предлагающий{$colon} {$s}%other*kingdoms_kingdom_name%
+      {$p}Продолжительность контракта{$colon} {$s}%peacetreaty_duration%
+
+      {$p}Для получения более подробной информации посетите{$colon}
+      {$s}/k pt review %other*kingdoms_kingdom_name%
+  'PeaceTreaties:sent':
+    material: BOOK
+    name: "{$sp}Послал мирный договор"
+    commands:
+      - 'k pt review %other*kingdoms_kingdom_name%'
+    lore: |
+      {$p}К{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Продолжительность контракта{$colon} {$s}%peacetreaty_duration%
+
+      {$p}Для получения более подробной информации посетите{$colon}
+      {$s}/k pt review %other*kingdoms_kingdom_name%
+  '[else]':
+    material: BARRIER
+    name: '{$e}Неизвестный тип журнала{$colon}'
+    lore: '{$es}%type%'
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+
+  filters-and-sorting:
+    posx: 5
+    posy: 1
+    material: BOOK
+    name: "{$p}Фильтры и сортировка"
+    lore: |
+      {$p}Фильтры{$colon}
+       {$dot} {$s}Игрок{$colon} %bool_filters_player%
+       {$dot} {$s}Время{$colon} %bool_filters_time%
+       {$dot} {$s}Тип{$colon} %bool_filters_type%
+
+      {$p}Sorting{$colon}
+       {$dot} {$s}Возрастание времени{$colon} %bool_sorting_time_ascending%
+       {$dot} {$s}Время по убыванию{$colon} %bool_sorting_time_descending%
+       {$dot} {$s}Тип{$colon} %bool_sorting_type%
+
+  next-page:
+    name: '{$s}Следующая страница {$sep}- &e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$s}Предыдущая страница {$sep}- &e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  entry:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    '[switch]': type
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '&cНазад'
