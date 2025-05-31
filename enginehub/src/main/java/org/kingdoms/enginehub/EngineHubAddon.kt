@@ -13,6 +13,7 @@ import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSeven
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSix
 import org.kingdoms.locale.LanguageManager
+import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.services.managers.SoftService
 import java.io.File
@@ -111,8 +112,11 @@ class EngineHubAddon : JavaPlugin(), Addon {
 
     override fun reloadAddon() {
         if (!isKingdomsEnabled) return
-        Kingdoms.get().buildingArchitectRegistry.apply {
-            defaultArchitect = WorldEditBuildingConstruction.Arch
+
+        if (EngineHubConfig.WORLDEDIT_SCHEMATICS_ENABLED.manager.boolean) {
+            Kingdoms.get().buildingArchitectRegistry.apply {
+                defaultArchitect = WorldEditBuildingConstruction.Arch
+            }
         }
 
         SchematicManager.loadAll()

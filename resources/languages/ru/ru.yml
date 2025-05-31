@@ -65,6 +65,7 @@ tax:
     disbanded: '&cВаше королевство было распущено за неуплату налогов: &e%tax%'
     disbanded-announce: '&e%kingdom% &cВаше королевство было распущено поскольку не смогла уплатить налоги: &e%fancy@kingdoms_bank% &8< &e%tax%'
     kicked-announce: '&e%kingdom% &cбыло изгнано из страны &e%nation% &cпоскольу не смогла уплатить налоги: &e%fancy@kingdoms_bank% &8< &e%tax%'
+    bankruptcy: '{$e}Your kingdom failed to pay tax of {$es}$%tax% {$e}and is now bankrupt. Your kingdom bank has a negative balance and your features are limited.'
   nation:
     age: '&7Ваша страна не платила налоги поскольку она новая!'
     paid: |
@@ -110,6 +111,8 @@ siege-cannon:
   masswar-only: '&cВы можете использовать осадные пушки только во время массовых войн.'
   pacifist:
     cant-use: '{$e}Эта пушка находится на территории пацифистского королевства и не может быть использована.'
+    cant-use-person: '{$e}You cannot use cannons since you''re a pacifist kingdom.'
+  ammo-special-item: '{$e}This is a special item and cannot be used as ammo.'
 other-kingdoms:
   place: '&cВы не можете строить в чужом королевстве!'
   break: '&cВы не можете ломать в чужом королевстве!'
@@ -121,6 +124,7 @@ other-kingdoms:
     interact: '&cВы не можете взаимодействовать со структурами чужих королевств!'
     break: '&cВы не можете убирать структуры чужих королевств!'
     can-take: '&cВы можете взять эту структуры так как оно не принадлежит никакому королевству!'
+    nexus-break-with-permission: '{$e}You can''t break another kingdom''s nexus even with {$es}MANAGE_STRUCTURE {$e}relationship attribute.'
   nexus:
     break: '&7Вы ограбили чужой нексус и получили за это &e%rp% &7очков ресурсов!'
     break-wrong-item: '{$e}Вы можете получить очки ресурсов, только разрушив нексус с помощью {$es}алмазной мотыги{$e}.'
@@ -136,7 +140,12 @@ nation:
   zone-break: '&cВы не можете разрушать блоки на территории &e%nation%!'
   zone-interact: '&cВы не можете взаимодействовать с чем-либо на территории &e%nation%'
 turrets:
-  limit: '&cВы можете разместить только &e%limit% &cтурелей на участке!'
+  limit:
+    total: '{$e}You can only have a total of {$es}%building_limit_total% {$e}turrets in your kingdom.'
+    total-style-per-land: '{$e}You can only have a total of {$es}%building_limit_total_style_per_land% %style_displayname% {$e}turrets per land.'
+    removed-extra: '{$e}The land you claimed at {$es}%chunk% {$e}had some turrets on it which were broken due to a limit.'
+    total-style: '{$e}You can only have a total of {$es}%building_limit_total_style% %style_displayname% {$e}turrets in your kingdom.'
+    total-per-land: '{$e}You can only have a total of {$es}%building_limit_total_per_land% {$e}turrets per land.'
   already-placed: '&cТут уже установлена турель!'
   cant-place: '&cЭта турель не может быть размещена на этом блоке, установите её на &eзабор &cили &eна блоке стен!'
   disabled-world: '&cВы не можете размещать турели в отключенных мирах!'
@@ -144,6 +153,22 @@ turrets:
   manual-operating: '{$p}Ручной режим{$sep}: {$p}Указывайте направление на врага, удерживая любой предмет, и &9щелкните левой кнопкой мыши.'
   cant-place-in-biome: '{$e}Эту турель нельзя разместить в этом биоме.'
   not-manual: '{$e}Эта турель не в ручном режиме. Сначала активируйте ее.'
+  block-disabled-world: '{$e}This turret cannot be placed in this world.'
+  building:
+    under:
+      construction: '{$e}You can''t do that while the turret is under construction!'
+    upgraded: '{$p}The {$s}%name% {$p}turret at {$s}%location% {$p}has been upgraded{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%'
+    finished: '{$p}The {$s}%name% {$p}turret at {$s}%location% {$p}is built.'
+    repaired: '{$p}The {$s}%name% {$p}turret at {$s}%location% {$p}has been fully repaired.'
+  effects:
+    slowness: '&9Slowness{$colon} {$es}%delay% {$sep}| {$es}%time@duration%'
+    paralysis: '&3Paralysis{$colon} {$es}%time@duration%'
+    damage: '&cDamaged{$colon} {$es}-%fancy@amount%'
+    hypnosis: '&6Hypnosis{$colon} {$es}%time@duration%'
+    weakness: '&5Weakness{$colon} {$es}%damage_reduction% {$sep}| {$es}%time@duration%'
+  confirm-remove: '{$e}There''s a kingdom turret placed here, would you like to remove it? hover:{{$yes};&7Remove the building;/k building remove}'
+  holograms:
+    ammo: '{? ammo == 0 ? "{$e}Out of ammo" : "{$p}Ammo{$colon} {$s}%fancy@ammo%"}'
 guis:
   creative: '&cВы не можете открывать это меню в режиме креатива!'
   open-inventory-during-input: '&cВы не можете открывать инвентарь пока вводите значение!'
@@ -180,6 +205,7 @@ protected-signs:
     removed: '&7Пароль был снят с хранилища'
     set: '&7Пароль хранилища был изменён'
     not-set: '&cДля этого защищенного блока пароль не установлен.'
+    required-no-password: '{$e}This container requires a password to be opened. However, no password is set.'
   double-chest-protected: '&7Защита двойных сундуков'
   protection-type:
     already-using: '&cДанный блок уже использует этот тип защиты!'
@@ -217,6 +243,18 @@ protected-signs:
       not-found: '&cДанное королевство не найдено'
   unclaimed-interact: '{$p}Этот блок защищен, но вы можете получить к нему доступ, поскольку он находится на невостребованной территории.'
   invalid-sign-block: '{$e}You can''t protect from this side of the block because there''s a {$es}%block% {$e}placed here.'
+  auto-state-change-duration:
+    set: "{$s}Please enter the duration {$cancel} and \nhover:{{$e}remove;{$e}Remove;remove} {$s}to remove the password."
+    unsupported: '{$e}This block doesn''t support this feature. Currently only doors can use this.'
+  access-entry:
+    limit: '{$e}You can''t have more than {$es}%limit% {$e}access entries.'
+    privileges:
+      owner: '&2Owner'
+      disallowed: '&cDisallowed'
+      allowed: '&aAllowed'
+      password: '&9Password'
+  cant-protect-double-chest-permission: '{$e}Only the owner of the chest can make this a double chest.'
+  gui-invalid: '{$e}The protection sign that you were viewing was broken.'
 top-rewards:
   kingdom: |
     &7Ваше королевство вознаграждено &6%money% &7монет и &6%rp% &7очками ресурсов за новый уровень : &5%rank%
@@ -272,6 +310,8 @@ upgrades:
       name: Предел ущерба
     reinforcements:
       name: Подкрепления
+    burst:
+      name: Burst
   misc:
     insanity:
       name: Безумие
@@ -336,6 +376,7 @@ fly:
     cant-afford-kingdom: '&cYour kingdom needs &e%amount% &cfor every &e%interval% seconds &cyou fly.'
   out:
     of-land: '&cВы можете использовать Kingdoms Fly только на своей земле. Ваш полет был отключен.'
+  disable-charges: '{$p}You paid a total of {$s}%currency@player_charges%{? kingdom_charges_rp > 0 || kingdom_charges_bank > 0 ? " {$p}and your kingdom paid a total of {$s}%fancy@kingdom_charges_rp% {$p}resource points and {$s}%fancy@kingdom_charges_bank%"}'
 no-kingdom-reminder: '&cНапоминание: &eВы всё ещё не присоединилсь к королевству!'
 regulator:
   attributes:
@@ -449,9 +490,24 @@ nexus:
           attacked: '{$e}You need to wait {$es}%time% {$e}before buying a shield again. Since your kingdom invaded {$es}%last% {$e}ago.'
         siege-cannon: '{$e}You need to wait {$es}%time% {$e}before buying a shield again. Since you were attacked by a siege cannon {$es}%last% {$e}ago.'
       not-enough-resource-points: '{$e}You don''t have enough resource points.'
+      nothing-to-refund: '{$e}You have no shield to refund it.'
+      refunded: '{$p}Refunded {$s}%fancy@rp% {$p}resource points for the shield.'
+    tax:
+      illegal-variable: '{$e}Illegal placeholder used at index {$es}%index% {$e}in equation{$colon} {$es}%tax%'
+      set: |
+        {$p}Tax equation has been set to{$colon} {$s}%tax%
+        {$p}Tested tax on you{$colon} {$s}%test%
+      invalid: |
+        {$e}Could not test {$es}%tax% {$e}tax equation on you{$colon} {$es}%reason%
+        {$e}Please enter a valid equation.
+    banner:
+      set: '{$p}Your kingdom''s banner was changed.'
+      removed: '{$p}Your kingdom''s banner was removed.'
   hidden:
     disabled: '{$p}Your group is no longer hidden.'
     enabled: '{$p}Your group is now hidden.'
+  turret-cost: '{$e}You need {$es}{? rp > 0 ? "%fancy@rp% resource points"}{? rp > 0 && money > 0 ? " {$e}&{$es} "}{? money > 0 ? "$%fancy@money%"} {$e}to buy this turret.'
+  structure-cost: '{$e}You need {$es}{? rp > 0 ? "%fancy@rp% resource points"}{? rp > 0 && money > 0 ? " {$e}&{$es} "}{? money > 0 ? "$%fancy@money%"} {$e}to buy this structure.'
 nexus-resource-points-enter-value: '&6Введите кол-во очков ресурсов или нажмите на hover:{&cОтмена;&cОтмена;cancel} &6для отмены'
 extractor:
   not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
@@ -474,6 +530,8 @@ outpost:
   not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
   purchased: '&7Вы купили &6%amount%x %name% &7за &6%cost% &7очков ресурсов'
   cooldown: '{$e}Вы больше не сможете купить этот товар, пока{$sep}: {$es}%time_cooldown%'
+  sold: '{$p}You''ve sold {$s}%amount%x %name% {$p}for {$s}%fancy@cost% resource points.'
+  mismatched-item: '{$p}The item you''re trying to sell is not exactly the same as the one outpost is selling.'
 turret:
   ammo:
     not-enough-resource-points: '&cУ вас недостаточно очков ресурсов'
@@ -483,6 +541,7 @@ turret:
     max-level: '&cЭта турель уже улучшена до максимального уровня.'
   upgrade-not-enough-resource-points: '&cYou don''t have enough resource points to upgrade.'
   upgrade-upgraded: '&7Upgraded turret to level &6%level%'
+  upgrade-upgrading: '{$p}Upgrading {$s}%building_displayname%{$colon} {$s}%roman@building_level% {$arrow} {$s}%roman@building_next_level%'
 disabled-world: '&cКоролевства отключены в &6%мире%'
 not-found:
   kingdom: '&cУказанное королевство не найдено'
@@ -494,6 +553,7 @@ not-found:
   player-no-nation: '{$e}The specified player''s kingdom isn''t a part of a nation.'
   in-your-kingdom: '{$e}That player isn''t in your kingdom.'
   nation-kingdom-player: '{$e}No nation, kingdom or player was found by that name{$sep}: {$es}%arg%'
+  relation: '{$e}The specified kingdom relation was not found.'
 masswar:
   started: |
 
@@ -511,6 +571,7 @@ no-kingdom:
   target: '&cУказанный игрок не имеет королевство!'
   structures-use: '&cВам нужно вступить в королевство чтобы использовать структуры'
   turrets-use: '&cYou need to join a kingdom to use turrets.'
+  private: '{$e}Your kingdom is private.'
 no-nation: '&cВаше королевство не состоит в страны!'
 unclaimed:
   place-structures: '&cВы не можете размещать структуры в пустошах!'
@@ -528,6 +589,8 @@ invalid:
   boolean: '{$es}%arg% {$e}is not a valid option. Please either use ''&2true{$e}'' or ''&4false{$e}'''
   number: '{$es}%arg% {$e}is not a number.'
   uuid: '{$es}%arg% {$e}недопустимый &nhover:{UUID;&7Нажмите, чтобы открыть страницу Википедии;@https://en.wikipedia.org/wiki/Universally_unique_identifier#Format}'
+  path: '{$es}%arg% {$e}is not a valid path.'''
+  username: '{$e}Invalid player username{$colon} {$es}%name%'
 commands:
   insufficient-permission: '&cУ вас нет прав для выполнения этой команды!'
   cooldown: '&cПодождите: &e%cooldown% &cпрежде чем снова использовать её!'
@@ -542,6 +605,10 @@ commands:
       kingdoms: '#KINGDOM'
   players-only: '&cТолько игроки могут использовать эту команду!'
   unknown-command: '&cНеверная команда!'
+  mapped-arguments-missing: '{$e}Argument {$es}%argument_name% {$e}is missing.'
+  error: '{$e}An error occurred while performing this command. If you''re a player, please inform the server admins. If you''re an admin, please check your console logs.'
+  tabs:
+    error: '{$e}An error occurred during tab completion of this command. If you''re a player, please inform the server admins. If you''re an admin, please check your console logs.'
 kingdom:
   name-blacklisted: '&cНазвание вашего королевства содержит запрещённые слова'
   tag-blacklisted: '&cТэг вашего королевства содержит запрещённые слова'
@@ -597,10 +664,15 @@ command:
     grouped-header: '&8&m---------------=(&c&l %group% {$sep})=---------------'
     negative-pages: '&cЗдесь нет скрытых страниц'
     grouped-commands: 'hover:{&8/&7k %cmd% &7- %description%;&8/&7k %cmd%;|/k %cmd%}'
-    footer: 'hover:{&6←;&6Предыдущяя страница;/k %command% %previous_page%} %pages%hover:{&6→;&6Следущяя страница;/k %command% %next_page%}'
+    footer:
+      page: hover:{{$sep}[{$p}%number%{$sep}];{$s}Go to page {$p}%number%;/k %command% %number%}
+      current-page: hover:{{$sep}[{$p}&l%number%{$sep}];{$p}Current Page}
+      main: hover:{{$s}←;{$s}Previous Page;/k %command% %previous_page%} %pages%hover:{{$s}→;{$s}Next Page;/k %command% %next_page%}
     footer-page: 'hover:{&8[&7%number%&8];&6Переместится на страницу &7%number%;/k %command% %number%}'
     footer-current-page: 'hover:{&8[&7&l%number%&8];&7Страница}'
-    header: '&8&m---------------=(&e&l Королевства &6%page%&7/&6%max_pages% &8&m)=---------------'
+    header:
+      unpaginated: NOPREFIX|{$sep}&m---------------=({$e}&l %group% {$sep}&m)=---------------
+      paginated: NOPREFIX|{$sep}&m---------------=({$e}&l %group% {$s}%page%&7/{$s}%max_pages% {$sep}&m)=---------------
     no-more-pages: '&cБольше нету страниц для загрузки'
     commands: 'hover:{&8/&7k %cmd% &7- %description%;&5%usage%;|/k %cmd%}'
     name: help
@@ -614,6 +686,7 @@ command:
       &7| {$p}Перезарядка{$sep}: &9%cooldown%
     bad-start: '{$e}Для получения информации о команде вам не нужен слэш или основная команда /k.'
     aliases: h ? --help /? -h
+    group: Kingdoms
   reload:
     description: '&6Перезагружает плагин'
     usage: 'Использование: &e/k reload &9[config]'
@@ -639,6 +712,12 @@ command:
       &cВам нужно заплатить &e%cost% &cмонет чтобы основать королевствы.
       Вы уверены в своём решении? Напишите команду ещё раз чтобы подтвердить.
     aliases: new make
+    private:
+      created: '{$p}Created a private kingdom here.'
+      not-possible: '{$e}You can''t create a private kingdom inside this land.'
+      confirm: '{$p}Do you want to create a private kingdom here? {$yes}'
+    tab-completion:
+      name: <name>
   tag:
     description: '&6Изменить тег вашего королевства'
     name-length: '&cДлина тега не должна превышаь &e%max% &cили быть меньше чем &e%min%'
@@ -667,6 +746,8 @@ command:
       name: create
       king-only: '{$e}Only the kingdom''s king can create a new nation.'
       aliases: new make
+      tab:
+        completion-name: <name>
     rename:
       description: '&6Переименовать страну'
       no-kingdom: '&cВы не состоите в страны!'
@@ -879,6 +960,14 @@ command:
         &7♦ &7Очки ресурсов: &6%fancy@kingdoms_nation_resource_points%
         &7♦ &7Баланс: &6%fancy@kingdoms_nation_bank% монет} &7- &6%fancy@kingdoms_nation_might% монет
       name: top
+      type-selected: hover:{{$sep}&l[{$p}&l%top_displayname%{$sep}&l];&7%top_description%
+
+
+        &5&lAlready selected.}
+      type-select: hover:{{$sep}[{$p}%top_displayname%{$sep}];&7%top_description%
+
+
+        &5Click to show.;/k nation top %page% %top_name%}
     kick:
       description: '&6Выгнать королевство из страны'
       person: '&cВаше королевство было выгнано из страны &e%nation% &cигроком &e%kicker%'
@@ -1002,6 +1091,31 @@ command:
     aliases: community civilization civil
     spawn-cant-use-public-home: '{$e}You can''t use {$es}%nation% {$e}Nation''s public home.'
     name: nation
+    election:
+      vote:
+        description: '{$s}Vote for a candidate.'
+        voted: '{$p}You''ve voted for {$s}%kingdoms_kingdom_name%'
+        already-voted: '{$e}You''ve already voted for {$es}%kingdoms_kingdom_name%'
+      king:
+        only: '{$e}Only kings of kingdoms can manage national elections.'
+      register:
+        usage: '{$usage}nation election register {$p}<statement>'
+        requirements-confirm: |
+          {$p}To declare your candidacy, you need to meet the following requirements{$colon}
+          {$dot} &9Pay {$s}$%candidacy_fee% &9to your nation from your kingdom bank.
+          {$dot} &9Be a member of this nation for at least {$s}%time@candidacy_member_for%
+
+          {$p}Are you sure you want to register? {$yes}
+        description: '{$s}Declare your candidacy for the current kingdom elections.'
+      vote-voted-again: '{$p}You''ve voted for {$s}%kingdoms_kingdom_name% {$p}You previously voted for {$s}%previous-candidate%'
+      statement:
+        description: '{$s}Set your statement as the election candidate.'
+        not-registered: '{$e}You''re not a registered candidate. Please register with {$es}hover:{/k nation election register;&7Click;|/k nation election register}'
+    showplayers:
+      entry: |
+        {$dot} %hex@kingdoms_kingdom_color%%kingdoms_kingdom_name% {$sep}({$p}%kingdoms_online_members%{$sep}/{$p}%kingdoms_members%{$sep}){$colon}
+        %members%
+      description: '{$s}Shows all the players that are in the kingdoms of the nation.'
   rename:
     description: '&6Переименовывает ваше королевство'
     no-kingdom: '&cУ вас нет королевства!'
@@ -1070,6 +1184,8 @@ command:
     transfer-kingdom-description: '&6Перенесите очки ресурсов из вашей страны в ваше королевство.'
     transfer-nation-description: '&6Перенесите очки ресурсов из вашей страны в вашу страну.'
     aliases: rp resourcepoint
+    tab-completion:
+      resource-points: <resource points>
   bank:
     description: '&6Положить или снять монеты с баланса королевства'
     usage: 'Использование: &e/k bank &7<deposit/withdraw> <amount>'
@@ -1087,6 +1203,8 @@ command:
         &7Баланс вашего королевства: &6%fancy@kingdoms_bank%
       disabled: '&cВы не можете положить монеты на баланс королевства'
       min: '&cВам нужно как минимум &e%min% &cмонет'
+      description: '{$s}Deposit money from your kingdom''s bank.'
+      usage: '{$usage}bank deposit {$p}<amount>'
     withdraw:
       min: '&cВам нужно как минимум &e%min% &cмонет'
       disabled: '&cВы не можете снять монеты с баланса королевства'
@@ -1094,6 +1212,8 @@ command:
         &7Вы сняли &6%amount% &7монет с баланса вашего королевства.
         Ваш новый баланс: &6%balance%
         &7Баланс вашего королевства: &6%fancy@kingdoms_bank%
+      usage: '{$usage}bank withdraw {$p}<amount>'
+      description: '{$s}Withdraw money from your kingdom''s bank.'
     aliases: money $
   show:
     description: '&6Показать информацию о вашем королевстве'
@@ -1154,6 +1274,7 @@ command:
     relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     aliases: info who list
     members-etc: '{$sep}... hover:{[{$p}and {$s}%remaining% {$p}more{$sep}];Click to see in the GUI;/k gui structures/nexus/members kingdom=%kingdoms_kingdom_name%}'
+    no-king: '&4None'
   claim:
     description: '&6Захватить землю, на которой вы сейчас находитесь.'
     disabled-world: '&cЗахват отключен в &6%world%'
@@ -1232,6 +1353,7 @@ command:
       empty: '&cБуфер обмена пуст, вам нечего подтверждать'
       fail: '&cНевозможно захватить &e%x%&7, &e%z% &cв связи с последними изменениями'
       success: '&7Все земли из буфера обмена успешно захвачены!'
+      nothing-claimed: '{$p}No lands were claimed.'
     corner:
       description: '&6Установите две позиции и захватите получившийся прямоугольник'
       usage: 'Использование: &e/k claim corner &9[pos1 &7| &9pos2]'
@@ -1258,11 +1380,14 @@ command:
 
         &7Click to teleport to the
         center of the land.
+      others-permission: '{$e}You don''t have permission to see other kingdom''s claims.'
     no-claims-player: '{$e}Your rank is not allowed to claim any lands.'
     disallowed-biome: |
       {$e}You can't claim in {$es}%biome% {$e}biomes.
       Note that usually the entire chunk needs to be made out of this type of biome.
     name: claim
+    occupied-friendly-land: '{$e}This land is occupied by another friendly kingdom.'
+    requires-outpost: '{$e}You need to place an outpost to claim in worlds where your nexus is not in.'
   shield:
     description: '&6Отключите свой щит.'
     no-shield: '&cУ вашего королевства нет активного щита.'
@@ -1306,6 +1431,9 @@ command:
         Do hover:{{$s}/k unclaim confirm;{$p}Execute;/k unclaim confirm} {$p}to unclaim the lands.
       usage: '{$usage}unclaim line {$s}[distance]'
       description: '{$p}Unclaim a straight line in a direction. If no direction is specified, it''ll be the direction that the player is facing.'
+    occupied-friendly-land: '{$e}This land is occupied by another friendly kingdom.'
+    chunk:
+      permission: '{$e}You don''t have permission to unclaim lands with chunk coordinates.'
   unclaimall:
     description: '&6Распривачивает все земли вашего королевства.'
     success: '&7Всего распривачено &6%lands% &7земель!'
@@ -1343,6 +1471,15 @@ command:
     success: '&7Вы успешно телепортированы!'
     usage: '{$usage}home {$s}[kingdom]'
     aliases: spawn
+    unsafe: '{$e}This home is unsafe, are you still sure you want to teleport? {$yes}'
+    tax:
+      paid: |
+        {$p}Home tax{$colon} {$s}%fancy@home_tax%
+        {$p}New balance{$colon} {$s}%fancy@balance%
+      not-enough: '{$e}This kingdom requires you to pay {$es}$%fancy@home_tax% {$e}to use their home, you don''t have enough money.'
+      confirm: |
+        {$e}This kingdom requires you to pay {$es}$%fancy@home_tax% {$e}to use their home. Once you pay this amount, you can teleport for free for 30 seconds. Do you want to continue?
+               {$yes}
   nexus:
     description: '&6Установить нексус'
     open:
@@ -1577,6 +1714,20 @@ command:
       tp-not-set: '&e%kingdom% &cdoesn''t have their nexus set.'
       tp: '&7Teleporting to &6%kingdom%''s &7nexus...'
       name: nexus
+      teleport:
+        not-set: '{$es}%kingdom% {$e}doesn''t have their nexus set.'
+        teleporting: '{$p}Teleporting to {$s}%kingdom%''s {$p}nexus...'
+        description: '{$s}Teleport to a kingdom''s nexus.'
+        usage: '{$usage}admin nexus teleport {$p}<kingdom>'
+        aliases: tp
+      place:
+        usage: '{$usage}admin nexus place {$p}<kingdom>'
+        description: '{$s}Places the nexus of a kingdom.'
+      level:
+        description: '{$s}Changes the level of a kingdom.'
+        usage: '{$usage}admin nexus level {$p}<kingdom> <level>'
+        already-level: '{$e}This kingdom is already at level {$es}%level%'
+        cant-downgrade: '{$e}Downgrading is not supported.'
     toggle:
       description: '&6Toggle admin mode for yourself.'
       'on': '&6Admin mode is now: &7ON'
@@ -1604,6 +1755,8 @@ command:
       running: '&cMasswar is already running.'
       not-running: '&cMasswar is not running.'
       name: masswar
+      already-paused: '{$e}Masswar is already paused.'
+      not-paused: '{$e}Masswar is not paused.'
     dailychecks:
       description: '&6Запустите цикл ежедневных проверок вручную.'
       usage: 'Использование: &e/k admin dailychecks &9[run &7| &9skip &7| &9resume]'
@@ -1680,6 +1833,22 @@ command:
       created: '&7Successfully created a kingdom named &6%kingdom% &7for player &6%player%'
       super-creating: '{$p}Creating a super kingdom...'
       any-no-player-found: '{$e}Could not find any player that doesn''t have a kingdom.'
+      kingless:
+        description: '{$s}Create a server-managed kingdom. A kingdom with no specific player as king.'
+        usage: '{$e}Usage{$colon} {$es}/k admin create kingless {$p}<name>'
+      simple:
+        description: '{$s}Create a normal kingdom for another player.'
+        usage: '{$e}Usage{$colon} {$es}/k admin create simple {$p}<name> {$p}<player>'
+      any:
+        usage: '{$e}Usage{$colon} {$es}/k admin create any {$p}<name>'
+        description: '{$s}Create a normal kingdom for any players that can be randomly found without a kingdom. This is usually useful for testing without getting two accounts online.'
+        no-player-found: '{$e}Could not find any player that doesn''t have a kingdom.'
+      super:
+        description: '{$s}Create a kingdom for yourself with upgrades randomly upgraded and get initial resource points and bank money.'
+        usage: '{$e}Usage{$colon} {$es}/k admin create super {$p}<name>'
+        creating: '{$p}Creating a super kingdom...'
+      kingless-created: '{$p}Successfully created a server-managed kingdom named {$s}%kingdom%'
+      already-in-kingdom: '{$e}Player {$es}%target% {$e}is already in a kingdom.'
     permanent:
       description: '&cВключить постоянный режим для королевства.'
       usage: 'Использование: &e/k admin permanent &7<королевство>'
@@ -1788,54 +1957,62 @@ command:
       aliases: cmds
     fsck:
       corruption:
-        ranks:
-          unknown: '{$sep}⚫ {$e}Player has unknown rank{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) | {$e}Rank{$sep}: {$es}%node% {$sep}| {$e}Player{$sep}: {$es}%player% {$sep}(%player_id%{$sep})'
-          multiple-kings: '{$sep}⚫ {$e}Multiple kings for{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) | %players%'
-          unsupported-material: '{$sep}⚫ {$e}Rank has an unsupported material for the current server version{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%rank% {$sep}| {$e}Material{$sep}: {$es}%material%'
-          priority-mistmatch: '{$sep}⚫ {$e}Rank priority mismatch{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%node% {$sep}| {$e}Encoded priority {$es}%encoded_priority% {$sep}| {$e}Instance priority {$es}%priority%'
-          missing-pair: '{$sep}⚫ {$e}Rank priority map doesn''t have a corresponding node entry in %mode%{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%node% {$sep}| {$e}Priority {$es}%priority%'
-          missing: '{$sep}⚫ {$e}Less than 2 ranks found{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranks{$sep}: {$es}%ranks%'
-          kingdom-king: '{$sep}⚫ {$e}Kingdom''s king doesn''t have the king rank.{$sep}: {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Player{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rank{$sep}: {$es}%rank%'
-          priority-misorder: '{$sep}⚫ {$e}Rank priority not ordered{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%node% {$sep}| {$e}Expected priority {$es}%expected_priority% {$sep}| {$e}Real priority {$es}%priority%'
-          different-instance: '{$sep}⚫ {$e}Rank maps contain different instances in %mode%{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Other Rank{$sep}: {$es}%other_rank%'
-          nation-king: '{$sep}⚫ {$e}Nation''s capital kingdom''s king doesn''t have the king rank.{$sep}: {$e}Nation{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) {$sep}| {$e}Player{$sep}: {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rank{$sep}: {$es}%rank%'
-          node-mismatch: '{$sep}⚫ {$e}Rank node mismatch{$sep}: {$e}Group{$sep}: {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$sep}: {$es}%node% {$sep}| {$e}Encoded node {$es}%encoded_node%'
-        nation:
-          kingdom: '{$sep}⚫ {$e}Unknown kingdom inside nation{$sep}: {$e}Nation{$sep}: {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Kingdom{$sep}: {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
-          no-members: '{$sep}⚫ {$e}Nation doesn''t have any members. It will be disbanded{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
-          wrong-capital: '{$sep}⚫ {$e}Nation''s capital was corrupted, will change to another random member kingdom.{$sep}: {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Old Capital{$sep}: {$es}%old_capital_id% {$sep}-> {$e}New Capital{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%new_capital_id%{$sep})'
-        kingdom:
-          pacifism: '{$sep}⚫ {$e}Pacifist kingdom found while pacifism is disabled{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
-          unknown-relationship-request: '{$sep}⚫ {$e}Unknown relationship request between kingdoms{$sep}: {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}To kingdom{$sep}: {$es}%other_kingdom_id%'
-          unknown-player: '{$sep}⚫ {$e}Unknown player in kingdom{$sep}: {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Player{$sep}: {$es}%player_id%'
-          nation: '{$sep}⚫ {$e}Unknown nation for kingdom{$sep}: {$e}Nation{$sep}: {$es}%nation_id% {$sep}- {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
-          unknown-claim: '{$sep}⚫ {$e}Unknown claim for kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          relationship-mismatch: '{$sep}⚫ {$e}Inconsistent relationship between kingdoms{$sep}: {$e}Kingdom 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$sep}: {$es}%first_relation% {$sep}- {$e}Kingdom 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
-            {$e}Relation{$sep}: {$es}%second_relation%'
-          relationship-both-requested: '{$sep}⚫ {$e}Two kingdoms have relationship requests to each other{$sep}: {$e}Kingdom 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$sep}: {$es}%first_relation% {$sep}- {$e}Kingdom 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep})
-            {$e}Relation{$sep}: {$es}%second_relation%'
-          relationship-both-forms-exist: '{$sep}⚫ {$e}Between two kingdoms, one has a definite relationship with another kingdom, while that other kingdom already has a relationship request sent{$sep}: {$e}Kingdom 1{$sep}: {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$sep}:
-            {$es}%first_relation% {$sep}- {$e}Kingdom 2{$sep}: {$es}%other_kingdom_id% {$sep}({$es}%other_kingdom_id%{$sep}) {$e}Relation{$sep}: {$es}%second_relation%'
-          no-members: '{$sep}⚫ {$e}kingdom doesn''t have any members. It will be disbanded{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
-          wrong-king: '{$sep}⚫ {$e}Kingdom''s king was corrupted, will change to another random member.{$sep}: {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Old King{$sep}: {$es}%old_king_id% {$sep}-> {$e}New King{$sep}: {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
-          unknown-relationship: '{$sep}⚫ {$e}Unknown relationship between kingdoms{$sep}: {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}To kingdom{$sep}: {$es}%other_kingdom_id%'
+        expired-data: '{$dot} {$e}Kingdom object that''s expired is still in use{$colon} {$es}%data%'
         mail:
-          no-connection: '{$sep}⚫ {$e}Mail is not used in any kingdom{$sep}: {$e}Nation{$sep}: {$es}%id% {$sep}| {$e}Subject{$sep}: {$es}%subject%'
-          unknown: '{$sep}⚫ {$e}Unknown mail in kingdom{$sep}: {$e}Kingdom{$sep}: {$es}%kingdom_id% {$sep}| {$e}Mail{$sep}: {$es}%id%'
-          not-related: '{$sep}⚫ {$e}Unrelated mail in kingdom{$sep}: {$e}Kingdom{$sep}: {$es}%kingdom_id% {$sep}| {$e}Mail{$sep}: {$es}%id% {$sep}| {$e}Subject{$sep}: {$es}%subject%'
-        disabled-upgrade: '{$sep}⚫ {$e}Kingdom has disabled upgrade{$sep}: {$e}Kingdom{$sep}: {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Upgrade{$sep}: {$es}%upgrade% {$e}Lvl. {$es}%level%'
-        player:
-          kingdom-unknown: '{$sep}⚫ {$e}Unknown kingdom for player{$sep}: {$es}%player% {$sep}- {$e}UUID{$sep}: {$es}%uuid%'
-          claim-unknown: '{$sep}⚫ {$e}Unknown claim for player{$sep}: {$es}%player% {$sep}- {$e}Land{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Kingdom{$sep}: {$es}%kingdom_name% {$sep}({$s}%kingdom_name%{$sep})'
+          no-connection: '{$dot} {$e}Mail is not used in any kingdom{$colon} {$e}Nation{$colon} {$es}%id% {$sep}| {$e}Subject{$colon} {$es}%subject%'
+          unknown: '{$dot} {$e}Unknown mail in kingdom{$colon} {$e}Kingdom{$colon} {$es}%kingdom_id% {$sep}| {$e}Mail{$colon} {$es}%id%'
+          not-related: '{$dot} {$e}Unrelated mail in kingdom{$colon} {$e}Kingdom{$colon} {$es}%kingdom_id% {$sep}| {$e}Mail{$colon} {$es}%id% {$sep}| {$e}Subject{$colon} {$es}%subject%'
+        nation:
+          kingdom: '{$dot} {$e}Unknown kingdom inside nation{$colon} {$e}Nation{$colon} {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) - {$e}Kingdom{$colon} {$es}%kingdom_id% {$sep}({$s}%kingdom_name%{$sep})'
+          no-members: '{$dot} {$e}Nation doesn''t have any members. It will be disbanded{$colon} {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id%'
+          wrong-capital: '{$dot} {$e}Nation''s capital was corrupted, will change to another random member kingdom.{$colon} {$es}%kingdoms_nation_name%{$sep}, {$es}%nation_id% {$sep}| {$e}Old Capital{$colon} {$es}%old_capital_id% {$sep}-> {$e}New Capital{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%new_capital_id%{$sep})'
         land:
+          unknown-world: '{$dot} {$e}Unknown world for land{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          unknown-kingdom: '{$dot} {$e}Unknown kingdom for land{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Kingdom{$colon} {$es}%kingdom_id%'
+          kingdom-doesnt-include: '{$dot} {$e}Land not marked as claimed in kingdom{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Kingdom{$colon} {$es}%kingdom_id%'
           item-wrong-block:
-            removing: '{$sep}⚫ {$e}Wrong block for kingdom item.{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Expected Block{$sep}: {$es}%expected_block% {$sep}| {$e}Actual Block{$sep}: {$es}%actual_block%'
-            updating: '{$sep}⚫ {$e}Wrong block for kingdom item. Needs updating{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Expected Block{$sep}: {$es}%expected_block% {$sep}| {$e}Actual Block{$sep}: {$es}%actual_block%'
-          protection-sign: '{$sep}⚫ {$e}No block or missing sign for protection sign{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Block{$sep}: {$s}%block% {$sep}| {$p}Sign{$sep}: {$s}%sign% '
-          nexus-unclaimed: '{$sep}⚫ {$e}Found a nexus structure in unclaimed land{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Block{$sep}: {$s}%block%'
-          unknown-kingdom: '{$sep}⚫ {$e}Unknown kingdom for land{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}| {$e}Kingdom{$sep}: {$es}%kingdom_id%'
-          unknown-world: '{$sep}⚫ {$e}Unknown world for land{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
-          national-nexus-in-nationless: '{$sep}⚫ {$e}Found a national nexus structure in land that doesn''t have a nation{$sep}: {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Block{$sep}: {$s}%block%'
+            removing: '{$dot} {$e}Wrong block for kingdom item.{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Expected Block{$colon} {$es}%expected_block% {$sep}| {$e}Actual Block{$colon} {$es}%actual_block%'
+            updating: '{$dot} {$e}Wrong block for kingdom item. Needs updating{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$e}Expected Block{$colon} {$es}%expected_block% {$sep}| {$e}Actual Block{$colon} {$es}%actual_block%'
+          nexus-unclaimed: '{$dot} {$e}Found a nexus structure in unclaimed land{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Block{$colon} {$s}%block%'
+          national-nexus-in-nationless: '{$dot} {$e}Found a national nexus structure in land that doesn''t have a nation{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Block{$colon} {$s}%block%'
+          protection-sign: '{$dot} {$e}No block or missing sign for protection sign{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Block{$colon} {$s}%block% {$sep}| {$p}Sign{$colon} {$s}%sign% '
+        kingdom:
+          unknown-claim: '{$dot} {$e}Unknown claim for kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
+          unknown-player: '{$dot} {$e}Unknown player in kingdom{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Player{$colon} {$es}%player_id%'
+          unknown-champion-type: '{$dot} {$e}Kingdom''s champion type doesn''t exist{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) {$sep}| {$e}Champion Type{$colon} {$es}%champion%'
+          relationship-self: '{$dot} {$e}Kingdom has relationship with itself{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep})'
+          unknown-relationship-request: '{$dot} {$e}Unknown relationship request between kingdoms{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}To kingdom{$colon} {$es}%other*kingdom_id%'
+          unknown-relationship: '{$dot} {$e}Unknown relationship between kingdoms{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}To kingdom{$colon} {$es}%other*kingdom_id%'
+          relationship-both-requested: '{$dot} {$e}Two kingdoms have relationship requests to each other{$colon} {$e}Kingdom 1{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$colon} {$es}%first_relation% {$sep}- {$e}Kingdom 2{$colon} {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
+            {$e}Relation{$colon} {$es}%second_relation%'
+          relationship-mismatch: '{$dot} {$e}Inconsistent relationship between kingdoms{$colon} {$e}Kingdom 1{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$colon} {$es}%first_relation% {$sep}- {$e}Kingdom 2{$colon} {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep})
+            {$e}Relation{$colon} {$es}%second_relation%'
+          relationship-both-forms-exist: '{$dot} {$e}Between two kingdoms, one has a definite relationship with another kingdom, while that other kingdom already has a relationship request sent{$colon} {$e}Kingdom 1{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Relation{$colon}
+            {$es}%first_relation% {$sep}- {$e}Kingdom 2{$colon} {$es}%other*kingdom_id% {$sep}({$es}%other*kingdom_id%{$sep}) {$e}Relation{$colon} {$es}%second_relation%'
+          no-members: '{$dot} {$e}kingdom doesn''t have any members. It will be disbanded{$colon} {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id%'
+          wrong-king: '{$dot} {$e}Kingdom''s king was corrupted, will change to another random member.{$colon} {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Old King{$colon} {$es}%old_king_id% {$sep}-> {$e}New King{$colon} {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
+          pacifism: '{$dot} {$e}Pacifist kingdom found while pacifism is disabled{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+          nation: '{$dot} {$e}Unknown nation for kingdom{$colon} {$e}Nation{$colon} {$es}%nation_id% {$sep}- {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+        ranks:
+          node-mismatch: '{$dot} {$e}Rank node mismatch{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%node% {$sep}| {$e}Encoded node {$es}%encoded_node%'
+          priority-mistmatch: '{$dot} {$e}Rank priority mismatch{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%node% {$sep}| {$e}Encoded priority {$es}%encoded_priority% {$sep}| {$e}Instance priority {$es}%priority%'
+          missing: '{$dot} {$e}Less than 2 ranks found{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Ranks{$colon} {$es}%ranks%'
+          priority-misorder: '{$dot} {$e}Rank priority not ordered{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%node% {$sep}| {$e}Expected priority {$es}%expected_priority% {$sep}| {$e}Real priority {$es}%priority%'
+          missing-pair: '{$dot} {$e}Rank priority map doesn''t have a corresponding node entry in %mode%{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%node% {$sep}| {$e}priority{$colon} {$es}%priority%'
+          unsupported-material: '{$dot} {$e}Rank has an unsupported material for the current server version{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%rank% {$sep}| {$e}Material{$colon} {$es}%material%'
+          different-instance: '{$dot} {$e}Rank maps contain different instances in %mode%{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rank{$colon} {$es}%node% {$sep}- {$es}%priority% {$sep}| {$e}Other Rank{$colon} {$es}%other*rank%'
+          unknown: '{$dot} {$e}Player has unknown rank{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) | {$e}Rank{$colon} {$es}%node% {$sep}| {$e}Player{$colon} {$es}%player% {$sep}(%player_id%{$sep})'
+          multiple-kings: '{$dot} {$e}Multiple kings for{$colon} {$e}Group{$colon} {$es}%name% {$sep}(%id%{$sep}) | %players%'
+          kingdom-king: '{$dot} {$e}Kingdom''s king doesn''t have the king rank.{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) {$sep}| {$e}Player{$colon} {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rank{$colon} {$es}%rank%'
+          nation-king: '{$dot} {$e}Nation''s capital kingdom''s king doesn''t have the king rank.{$colon} {$e}Nation{$colon} {$es}%kingdoms_nation_name% {$sep}({$es}%nation_id%{$sep}) {$sep}| {$e}Player{$colon} {$es}%player% {$sep}({$es}%player_id%{$sep}) {$sep}| {$e}Rank{$colon} {$es}%rank%'
+        upgrade:
+          disabled: '{$dot} {$e}Kingdom has disabled upgrade{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Upgrade{$colon} {$es}%upgrade% {$e}Lvl. {$es}%level%'
+          max-level-exceeded: '{$dot} {$e}Kingdom upgrade exceeded max level{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Upgrade{$colon} {$es}%upgrade% {$e}Lvl. {$es}%level% {$sep}> {$es}%max_level%'
+        player:
+          unknown: '{$dot} {$e}Unknown player with no name{$colon} {$es}''%player_name%'' {$sep}- {$e}UUID{$colon} {$es}%player_uuid% {$e}Has Played Before{$colon} {$es}%hasPlayedBefore% {$e}All of this players data will be removed.'
+          kingdom-unknown: '{$dot} {$e}Unknown kingdom for player{$colon} {$es}%player% {$sep}- {$e}UUID{$colon} {$es}%uuid%'
+          claim-unknown: '{$dot} {$e}Unknown claim for player{$colon} {$es}%player% {$sep}- {$e}Land{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z% {$sep}- {$e}Kingdom{$colon} {$es}%kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+      error: '{$e}An error occurred while scanning kingdom data files, please check your console.'
       done:
         no-corruption: '{$p}Scan done. Found no corrupted data. Took {$s}%time%ms{$p}. Please restart your server to prevent performance issues.'
         corrupted-fixed: '{$e}Done. Took {$es}%time%ms{$e}. Fixed a total of {$es}%corrupted% {$e}corrupted data. &lPlease restart your server with /stop now to save all data.'
@@ -1846,9 +2023,11 @@ command:
       name: FSCK
       aliases: SFC CHKDSK
       progress: '{$p}Pending tasks{$sep}: {$s}%pending_tasks%'
-      error: '{$e}An error occurred while scanning kingdom data files, please check your console.'
       may-take-awhile: '{$e}It seems like you have a lot of data. This may take several minutes, specially if you have a lot of claimed lands.'
       scanning: '{$p}Loading and scanning all data files... This might take a minute'
+      peacetreaties:
+        kingdom:
+          unknown: "Peace treaty with unknown kingdoms found for{$colon} \n  {$e}Proposer{$colon} {$e}%proposer%\n  {$e}Victim{$colon} {$e}%victim%"
     gui:
       usage: '{$usage}admin gui &9[gui path]'
       disabled: '{$p}GUI mode is now {$e}disabled{$p}.'
@@ -1896,6 +2075,22 @@ command:
       uninstalling: '{$e}Uninstalling {$es}%lang% {$e}language.'
       all-done: '{$p}All languages has been downloaded and are up to date.'
       name: languagepack
+      uninstall:
+        default-language: '{$e}Cannot uninstall the English language.'
+        not-installed: '{$es}%lang% {$e}is not installed.'
+        uninstalling: '{$e}Uninstalling {$es}%lang% {$e}language.'
+        description: '{$s}Uninstall a language pack.'
+        usage: '{$usage}admin languagepacks uninstall {$p}<language>'
+      update:
+        usage: '{$usage}admin languagepacks update {$p}<language>'
+        description: '{$s}Update a language pack.'
+      unknown-languagepack: '{$e}Unknown language pack{$colon} {$es}%language_pack%'
+      not-installed: '{$e}This language pack is not installed.'
+      install:
+        description: '{$s}Install a language pack.'
+        usage: '{$usage}admin languagepacks install {$p}<language>'
+      progress-bar: '{$p}Downloading {$s}%language_pack% {$p}language pack{$colon} {$sep}[%progress%{$sep}]'
+      already-installed: '{$e}This language pack is already installed.'
     info:
       player:
         usage: '{$usage}admin player {$p}<player>'
@@ -1925,6 +2120,7 @@ command:
       no-language-packs-installed: '{$e}Your server doesn''t have any language packs installed.'
       description: '{$s}For debugging purposes. Writes a list of all the GUI files that the installed language packs are missing.'
       done: '{$p}The file tree has been written to {$s}hover:{%output%;&7Click to open;/k admin openfile %sanitized_output%}'
+      no-missing-guis: '{$e}No missing GUIs was found.'
     aliases: administrator administration
     addons:
       finish-updating: '{$p}Please restart the server to finish updating the addon. It''s recommended to do this as soon as possible to prevent issues.'
@@ -1950,6 +2146,21 @@ command:
       downloading: '{$p}Downloading the latest version of the addon...'
       indexing: '{$p}Please wait while the latest addon information is being gathered...'
       uninstalling-done: '{$p}Finished uninstalling. Please restart the server to apply changes. It''s recommended to do this as soon as possible to prevent issues.'
+      uninstall:
+        not-installed: '{$es}%addon_name% {$e}addon is not installed.'
+        usage: '{$usage}admin addons uninstall {$p}<addon>'
+        description: '{$s}Uninstall an addon.'
+      already-installing: '{$e}This addon is already being downloaded. Please wait.'
+      update:
+        description: '{$s}Update an addon.'
+        usage: '{$usage}admin addons update {$p}<addon>'
+      already:
+        installed: '{$es}%addon_name% {$e}addon is already installed.'
+      install:
+        usage: '{$usage}admin addons install {$p}<addon>'
+        description: '{$s}Install an addon.'
+      pending-restart: '{$e}This addon is already downloaded, you need to restart the server to finish installing it.'
+      unknown-addon: '{$e}Unknown addon{$colon} {$es}%addon_name%'
     searchconfig:
       description: '{$s}Searches all the main configs excluding GUI files and the language file for a certain option. The given parameter supports RegEx patterns.'
       entry: '{$p}In file {$s}%path%{$sep}:'
@@ -2001,6 +2212,128 @@ command:
     files:
       description: '{$s}For debugging purposes. Writes a list of all the files inside Kingdoms folder to a file.'
       done: '{$p}The file tree has been written to {$s}hover:{%output%;&7Click to open;/k admin openfile %sanitized_output%}'
+    schematic:
+      origin:
+        description: '{$s}Changes the copy origin of the current WorldEdit clipboard.'
+        tool:
+          disabled: '{$e}Origin tool is now disabled.'
+          enabled: |
+            {$p}Origin tool is now enabled. Hit a block on the schematic to make it the origin.
+            &7Gray {$point} &7Previous origin.
+            &2Green {$point} &2New origin.
+        changed: '{$p}Successfully changed the origin of the clipboard.'
+        usage: '{$usage}admin schematic origin &2<x> <y> <z>'
+      list:
+        description: '{$s}Lists all the available schematics.'
+        entry: hover:{%schematic_name%;&7Click to load
+
+
+          {$p}Format{$colon} {$s}%schematic_format%
+
+          {$p}File Size{$colon} {$s}%schematic_size%
+
+          {$p}Dimensions{$colon} {$s}%schematic_dimensions%
+
+          {$p}Blocks{$colon} {$s}%schematic_blocks%
+
+          {$p}Entities{$colon} {$s}%schematic_entities%
+
+          {$p}&2Biomes{$colon} {$s}%schematic_has_biomes%;/k admin schematic load %schematic_path%}
+      tips:
+        side-effects: '{$sep}[&9!{$sep}] &9Note {$point} &7You can use &2hover:{/k admin schematic origin;&7Click to copy;|/k admin schematic origin} &7command to change the origin of the schematic for accurate placement of the building for Kingdoms.'
+      setup:
+        done: |
+          {$p}Addon is ready. Restart to apply the changes.
+          {$note} If you ever decided to remove the addon, you'd have to revert your building.yml settings manually.
+          {$warning} You cannot remove the addon unless all buildings placed down by this addon are removed.
+        description: '{$s}Prepares this addon for use. Changes the structure/turret configs in order to adjust holograms and functional points based on the schematics.'
+      save:
+        empty-clipboard: '{$e}You need to copy your selection with the {$es}hover:{//copy;&7Click to run;//copy} {$e}command.'
+        empty-selection: |
+          {$e}You need to make a selection first using {$es}hover:{WorldEdit;&7Click here to get
+          the selection tool;//wand} {$e}and copying it using the {$es}hover:{//copy;&7Click to run;//copy} {$e}command.
+        usage: '{$usage}admin schematic save &2<schematic name>'
+        description: '{$s}Saves a schematic from the current player''s WorldEdit selection clipboard.'
+        already-exists: |
+          {$e}A schematic with that name already exists. If you're sure that you want to override it, hover:{&7click here;&4Click to override;/k admin schematic save %schematic_name%}.
+          {$sep}[&c!{$sep}] &cWARNING {$point} &4This will cause issues if there is already a building with this schematic is placed in the worldfrom kingdoms. Please make sure to either remove all of them before overriding this file, or choose another name and change the settings to reflect the new name in the config.
+        saved: '{$p}Successfully saved this schematic to{$colon} {$s}%schematic_file%'
+      convertall:
+        convert-error: '{$e}Error while converting {$es}%file%{$colon} {$es}%error%'
+        usage: '{$usage}admin schematic convertAll &2<format>'
+        converted: |
+          {$p}Converted a total of {$s}%converted% {$p}schematics.
+          Stats{$colon} {$s}%stats%
+        description: '{$s}Converts all the schematics in the Kingdoms folder to the specified format.'
+        unknown-format: '{$e}Unknown schematic format{$colon} {$es}%format%'
+      load:
+        doesnt-exists: '{$e}Schematic {$es}%schematic_name% {$e}doesn''t exists in Kingdoms schematic folder.'
+        usage: '{$usage}admin schematic load &2<schematic name>'
+        description: '{$s}Loads a schematic from Kingdom''s schematics folder into player''s WorldEdit clipboard.'
+        loaded: |
+          {$p}Successfully loaded the schematic into your clipboard. You can paste it with hover:{{$s}//paste;&7Click to paste;//paste}
+          {$p}You can hover:{{$s}click here;&7Click to override;/k admin schematic save %schematic_name%} {$p}to override the saved file once you're done.
+    backup:
+      take:
+        description: '{$s}Manually takes a backup to the Backups folder with the given name.'
+        usage: '{$usage}admin backup take {$s}<name>'
+        error: '{$e}Error while taking a backup to {$es}%backup_path%{$e}, please check your console for more info.'
+        success: '{$p}Successfully took a backup to {$s}hover:{%backup_path%;&7Click to open;/k admin openfile %backup_path%}'
+        taking: '{$p}Taking a backup... This might take a minute.'
+        name-taken: '{$e}A backup file in {$es}%backup_path% {$e}already exists. Please choose a different name.'
+      restore:
+        description: '{$p}Restores a backup. This will kick all players and locks down the server. The backup name must be specified. This is simply the file name inside the Backups folder.'
+        shutting-down: '{$p}Successfully restored the backup, restarting the server...'
+        doesnt-exist: '{$e}The specified backup {$es}''%backup_path%'' {$e}doesn''t exist.'
+        restoring: '{$p}Restoring this backup... It might take a minute'
+        warning: '{$warning} Since you want to restore the backup directly to your server, running this command will automatically restar tthe server and it will also override your current configs/data. If you want to Are you sure you want to continue?  {$yes}'
+        usage: '{$usage}admin backup restore {$s}<name>'
+        restored: '{$p}Backup has been restored to{$colon} {$s}%destination%'
+      busy: '{$e}The backup system is currently busy, please try again in a few seconds.'
+      description: '{$s}Commands relating to kingdom backups.'
+    silent:
+      description: |
+        {$s}Runs KingdomsX commands without showing any messages.
+        This is mostly intended to be used when the command is used within other plugins that can run commands.
+        Some commands don't support this feature.
+        &cIt's not recommended to use &dNONE &clogging level as it hides errors.
+      unknown-logging-level: '{$e}Unknown logging level{$colon} {$es}%logging_level%'
+      usage: '{$usage}admin backup take {$s}<logging level> <command...>'
+    elections:
+      resume:
+        already-resumed: '{$e}The next elections is already resumed.'
+        description: '{$s}Resume a skipped election.'
+        resumed: '{$p}The next elections have been resumed.'
+      description: '{$s}Admin related commands for managing elections.'
+      end:
+        ended: '{$p}Elections have been concluded.'
+        description: '{$s}End and conclude elections immediately.'
+      skip:
+        skipped: '{$p}The next elections have been skipped.'
+        description: '{$s}Skip the next elections (doesn''t persist between restarts)'
+        already-skipped: '{$e}The next elections is already skipped.'
+      start:
+        description: '{$s}Start elections immediately.'
+        already-started: '{$p}Elections are already running.'
+        started: '{$p}Elections have been started.'
+    relationship:
+      unknown-relation: '{$e}Unknown relation name{$colon} {$es}%relation%'
+      aliases: relation relations relationships
+      usage: '{$usage}relationship &2<firstKingdom> <secondKingdom> &9[newRelation]'
+      description: '{$s}Changes the relationship between two kingdoms.'
+      already-set: '{$e}Relation between {$es}%kingdoms_kingdom_name% {$e}and {$es}%other*kingdoms_kingdom_name% {$e} is already{$colon} %kingdoms_relation_color%%kingdoms_relation_name%'
+      info: '{$p}Relation between {$s}%kingdoms_kingdom_name% {$p}and {$s}%other*kingdoms_kingdom_name%{$colon} %kingdoms_relation_color%%kingdoms_relation_name%'
+      set: '{$p}Changed relation between {$s}%kingdoms_kingdom_name% {$p}and {$s}%other*kingdoms_kingdom_name%{$colon} %old-relation-color%%old-relation-name% {$sep}-> %kingdoms_relation_color%%kingdoms_relation_name%'
+    chat:
+      already-in-channel: '{$es}%player% {$e}is already in %channel_color%%channel_name%'
+      usage: '{$usage}admin chat {$p}<player> <channel>'
+      description: '{$s}Force switch kingdom chat channels for a player.'
+      switched: '{$p}Changed {$s}%player% {$p}channel to{$colon} %channel_color%%channel_name%'
+    skull:
+      description: '{$s}Get a player head with a custom texture based on base64, Minecraft textures URL or player name.'
+      usage: '{$usage}admin skull {$p}<value>'
+    timings:
+      description: '{$s}Performance monitor for different kingdom mechanisms.'
   sneak:
     description: '&6Отношения вашего королевства с другим игроком не отключит их полет'
     others-permission: '&cУ вас нет прав для установки режима крадущийся другим игрокам'
@@ -2035,6 +2368,8 @@ command:
     tab:
       expiration: '{$sep}[{$p}expiration{$sep}]'
     name: invite
+    cannot-invite-offline-player: '{$es}You can only invite players that are online.'
+    already-invited-by-other-kingdom: '{$e}This player is already invited to another kingdom.'
   accept:
     description: '&6Принять приглашение в королевство'
     already-in-kingdom: '&7Вы уже находитесь в королевстве'
@@ -2165,6 +2500,8 @@ command:
     challenge-not-started-opponent: '{$e}Ваш противник бросил вызов вашему королевству, но битва еще не началась. Оставшееся время{$sep}: {$es}%remaining-time%'
     aliases: invasion
     no-claim-permission: '{$e}Для вторжения вам необходимо получить разрешение.'
+    nations:
+      requires-national-enemyship: '{$e}All the other kingdoms in your nation needs to enemy that kingdom to be able to invade it.'
   top:
     description: '&6Показывает топ королевств'
     loading: '&6Загрузка данных...'
@@ -2178,6 +2515,16 @@ command:
       &7♦ &7Очки ресурсов: &6%fancy@kingdoms_resource_points%
       &7♦ &7Баланс: &6%fancy@kingdoms_bank% монет} &7- &6%fancy@kingdoms_might%
     name: top
+    type:
+      select: hover:{{$sep}[{$p}%top_displayname%{$sep}];&7%top_description%
+
+
+        &5Click to show.;/k top %page% %top_name%}
+    unknown-type: '{$e}Unknown kingdom top type{$colon} {$es}%top_type%'
+    type-selected: hover:{{$sep}&l[{$p}&l%top_displayname%{$sep}&l];&7%top_description%
+
+
+      &5&lAlready selected.}
   map:
     description: '&6Показывает карту королевств и ваших структур'
     usage: 'Использование: &e/k map &9[auto &8| &9height] [width]'
@@ -2214,6 +2561,10 @@ command:
     cant-afford-kingdom: '&cYour kingdom needs &e%amount% монет &cto activate flight.'
     name: fly
     aliases: flight
+    restricted-speed: '{$e}You are only allowed to choose from the following speed levels{$colon}{$s} %allowed_speeds%'
+    not-upgraded: '{$e}You need to buy the misc-upgrade to use {$es}/k fly'
+    invalid-speed: '{$e}Flight speed can only be between {$es}-1.0 {$e}and {$es}+1.0'
+    changed-speed: '{$p}Changed flying speed to{$colon} {$s}%speed%'
   kick:
     person: '&cВы были выгнаны из &e%kingdom% &cигроком &e%kicker%'
     description: '&6Выгнать жителя вашего королевства'
@@ -2289,10 +2640,27 @@ command:
       voted: '&7Вы проголосовали за &6%player%'
       already-voted: '&cВы уже проголосовали за &e%player%'
       voted-again: '&7Вы проголосовали за &6%player% &7Ваш прошлый голос был за &6%previous-candidate%'
+      voting-age: '{$e}You need to be a member of this kingdom for at least {$es}%time@voting_age% {$e}to be able to vote.'
     statement:
       description: '&6Выдвиньте своё заявление в качестве кандидата на выборах'
       usage: 'Использование: &e/k election statement &7<statement>'
       set: '&7Ваше заявление установлено на: &r%statement%'
+      not-registered: '{$e}You''re not a registered candidate. Please register with {$es}hover:{/k election register;&7Click;|/k election register}'
+    register:
+      requirements:
+        member-for: '{$e}You need to be a member of this kingdom for at least {$es}%time@candidacy_member_for% {$e}to register.'
+        fee: '{$e}You need {$es}$%candidacy_fee% {$e}to register.'
+        confirm: |
+          {$p}To declare your candidacy, you need to meet the following requirements{$colon}
+          {$dot} &9Pay {$s}$%candidacy_fee% &9to your kingdom.
+          {$dot} &9Be a member of this kingdom for at least {$s}%time@candidacy_member_for%
+
+          {$p}Are you sure you want to register? {$yes}
+      usage: '{$usage}election register {$p}<statement>'
+      already-registered: '{$e}You''re already a registered candidate.'
+      description: '{$s}Declare your candidacy for the current kingdom elections.'
+      registered: '{$p}You are now registered as a candidate for this election.'
+    disabled-for-kingdom: '{$e}Elections are disabled for your kingdom.'
   mail:
     description: '&6Просмотреть письма в вашем королевстве'
     box-description: '&6Открыть ваш почтовый ящик в королевстве'
@@ -2343,13 +2711,17 @@ command:
     kingdom-not-found: '&e%kingdom% &cкоролевство не найдено!'
     already: '&cВы уже враги с &e%kingdom%'
     self: '&cВы не можете объявить войну сами себе'
-    enemies: '&cТеперь вы воюете с &e%kingdom%&c!'
+    enemies:
+      sender: '{$e}Your kingdom has declared to be enemies with {$es}%other*kingdoms_kingdom_name%'
+      receiver: '{$es}%other*kingdoms_kingdom_name% {$e}has declared to be enemies with your kingdom.'
     already-requested: '{$e}You''ve already sent an enemy request to {$es}%kingdoms_other_kingdom_name%'
     name: enemy
     cost: '{$e}You need {$es}%cost% resource points {$e}to enemy this kingdom.'
     aliases: enemies
     notify: '{$es}%kingdoms_kingdom_name% {$e}has enemied %kingdoms_other_kingdom_name% {$e}which both kingdoms are your allies.'
     higher-strength: '{$e}Your kingdom is much more stronger than this kingdom. You cannot enemy them.'
+    national:
+      automation: '{$s}%other*kingdoms_kingdom_name% {$p}was inside a nation and all the kingdoms in that nation were automatically enemied.'
   truce:
     description: '&6Предложить мир королевству'
     usage: 'Использование: &e/k truce &7<королевство>'
@@ -2378,6 +2750,9 @@ command:
     aliases: neutral
     specific-permission: '{$e}You don''t have permission to revoke {$es}%relation% {$e}relationships.'
     request-sender: '{$p}Sent a peace request to {$s}%kingdoms_other_kingdom_name%'
+    peacetreaty:
+      already-received: '{$e}Your kingdom has already received a peace treaty to that kingdom.'
+      already-sent: '{$e}Your kingdom has already sent a peace treaty to that kingdom.'
   chat:
     description: '&6Сменить чат'
     usage: 'Использование: &e/k chat &7<канал> &9[сообщение]'
@@ -2526,6 +2901,53 @@ command:
       description: '&6Переместится в арену аванпоста'
       not-in-event: '&cВаше королевство не участвует не в одном событии аванпоста'
       teleported: '&7Вы переместились на аванпост'
+      usage: '{$usage}outpost teleport &2<outpost>'
+    edit:
+      rewards:
+        money-set: '{$p}Outpost moeny rewards to{$colon} {$s}%outpost-rewards-money%'
+        resource-points:
+          enter: '{$p}Enter the new outpost resource points reward equation {$cancel}'
+          set: '{$p}Outpost resource points rewards to{$colon} {$s}%outpost-rewards-resource-points%'
+        money:
+          enter: '{$p}Enter the new outpost moeny reward equation {$cancel}'
+        command:
+          enter: '{$p}Enter a command (without slash) {$cancel}'
+      max-participants:
+        set: '{$p}Maximum outpost participants set to %outpost-new-max-participants%'
+        enter: '{$p}Enter the outpost''s max participants number {$cancel}'
+        invalid: '{$e}Maximum participants cannot be lower than 2'
+      name:
+        enter: '{$p}Enter the new outpost name {$cancel}'
+        set: '{$p}Changed the outpost''s name to{$colon} {$s}%outpost-new-name%'
+        already-in-use: '{$es}%input% {$e}name is already being used by another outpost'
+        invalid: '{$es}%input% {$e}is an invalid name for outposts. It must only consist of English alphanumerics.'
+      region:
+        enter: '{$p}Enter the new outpost region name {$cancel}'
+        set: '{$p}Changed the outpost''s name to{$colon} {$s}%outpost-new-region%'
+      min-online-members:
+        enter: '{$p}Enter the outpost''s minimum kingdom online members number {$cancel}'
+        invalid: '{$e}Minimum kingdon online members cannot be lower than 1'
+      remove:
+        removed: '{$p}Removed {$s}%outpost-name% {$p}outpost.'
+        outpost-is-running: '{$es}%outpost-name% {$e}outpost event has already started. You can''t remove it right now.'
+      spawn:
+        set: '{$p}Changed the outpost''s spawn location to your current location.'
+        teleported: '{$p}Teleported you to this outpost''s spawn location.'
+      entrance-money:
+        enter: '{$p}Enter the outpost''s money entrance fee {$cancel}'
+        set: '{$p}Outpost money entrace fee set to{$colon} {$s}%outpost-new-entrance-money%'
+      usage: '{$usage}outpost edit {$p}<name>'
+      center:
+        set: '{$p}Changed the outpost''s center location to your current location.'
+        teleported: '{$p}Teleported you to this outpost''s central location.'
+      entrance-resource-points-fee:
+        set: '{$p}Outpost money entrace fee set to{$colon} {$s}%outpost-new-entrance-resource-points-fee%'
+        enter: '{$p}Enter the outpost''s entrance resource points fee {$cancel}'
+      description: '{$s}Modify outpost settings.'
+    name: outpost
+    not:
+      found: '{$e}Could not find {$es}%outpost% {$e}outpost.'
+    aliases: outposts koth kingofthehill
   donate:
     description: '&6Пожертвовать очки ресурсов королевству'
     usage: 'Использование: &e/k donate <королевство> <amount>'
@@ -2689,6 +3111,9 @@ command:
     tab-complete:
       rgb: red green blue
       hex: '#<hex color code>'
+    tab-completion:
+      hex: '#<hex color code>'
+      rgb: red green blue
   tpaccept:
     name: tpaccept
   ransack:
@@ -2704,6 +3129,77 @@ command:
     name: tpreject
   item:
     aliases: customitem items
+  peacetreaty:
+    accept:
+      failed: '{$e}Your kingdom failed to meet all the contract''s requirements to accept{$colon}'
+      name: accept
+      description: '{$s}Accepts a peace treaty contract.'
+      accepted:
+        receiver: '{$p}Your kingdom has accepted the peace treaty contract from {$s}%other*kingdoms_kingdom_name% {$p}kingdom.'
+        sender: '{$s}%kingdoms_kingdom_name% {$p}has accepted your peace treaty contract.'
+      usage: '{$usage}pt accept {$p}<kingdom>'
+    no-contract-from-kingdom: '{$e}Your kingdom didn''t receive any contracts from {$es}%kingdoms_kingdom_name% {$e}kingdom.'
+    resume:
+      none: '{$e}You don''t have any active peace treaties to edit.'
+      description: '{$s}Resumes a paused peace treaty contract from the editor.'
+      name: resume
+    reject:
+      name: reject
+      description: '{$s}Rejects a peace treaty contract.'
+      usage: '{$usage}pt reject {$p}<kingdom>'
+      notifications:
+        receiver: '{$e}Your kingdom has rejected {$es}%other*kingdoms_kingdom_name% {$e}peace treaty.'
+        sender: '{$es}%kingdoms_kingdom_name% {$e}has rejected your kingdom''s peace treaty contract.'
+    miscupgrades:
+      description: '{$s}Change misc upgrades of a kingdom under contract.'
+      usage: '{$usage}pt miscUpgrades {$p}<kingdom>'
+      doesnt-have-term: '{$e}The contract with the specified kingdom doesn''t include misc upgrades.'
+    aliases: peacetreaties pt
+    review:
+      name: review
+      aliases: view
+      terms: '{$dot} %term_message%'
+      footer: '{$e}You can accept this contract by running {$es}hover:{/k pt accept %other*kingdoms_kingdom_name%;&7Click to accept;|/k pt accept %other*kingdoms_kingdom_name%}'
+      header: '{$es}%other*kingdoms_kingdom_name% {$e}peace treaty contains the following terms{$colon}'
+      description: '{$s}Review a sent peace treaty contract in order to decide to accept it or not.'
+    no-contract-to-kingdom: '{$e}Your kingdom doesn''t have any contracts with {$es}%kingdoms_kingdom_name% {$e}kingdom.'
+    description: '{$s}Commands related to peace treaties.'
+    no-contracts: '{$e}Your kingdom didn''t receive any peace treaty contracts.'
+    name: peacetreaty
+    already-accepted: '{$e}Your kingdom has already accepted this peace treaty contract.'
+  outpost-edit:
+    arena-mobs:
+      damage-bonus:
+        enter: '{$s}Please enter the damage bonus in the chat {$cancel}'
+        wrong-math: '{$e}The math equation you entered is wrong{$colon} {$es}%eqn%'
+        unknown-variable: '{$e}The math equation you entered contains unknown {$es}%variable% {$e}variable, you can only use the &ldmg {$e}variable{$colon} {$es}%eqn%'
+      spawn-location: '{$s}Please stand on the block that you want the mob to spawn at and then enter any message in the chat {$cancel}'
+      label: '{$s}Please enter the new label of this mob in chat {$cancel}'
+      spawn-interval: '{$s}Please enter the spawn interval of this mob in chat {$cancel}'
+      max-spawn-count: '{$s}Please enter the max spawn count of this mob in chat {$cancel}'
+  building:
+    preview:
+      previewing: '{$p}Currently previewing{$colon} {$s}%building%'
+      enabled: '{$p}Preview mode has been enabled. Instead of placing turrets/structures you''ll now see a preview of them.'
+      disabled: '{$e}Preview mode disabled.'
+      description: '{$s}When enabled, after right-clicking with a turret/structure in hand, it will show a preview of the building for it and any conflicting blocks.'
+    description: '{$s}Commands related to kingdom building such as turrets and structures.'
+    no-target: '{$s}No target building was selected. Please select it by breaking one of the buildings blocks or looking at the blocks.'
+    finish:
+      description: '{$s}Instantly finishes a building''s construction.'
+      finished: '{$p}Building is now being finished instantly.'
+      not-under-construction: '{$e}This building is not under construction.'
+    remove:
+      description: '{$s}Removes the targetted building.'
+      removed: '{$p}Removed the building.'
+    expired: '{$s}The last targetted building has expired. Please select it again.'
+  statistics:
+    description: '{$s}Shows kingdom statistics.'
+    nothing: '{$e}No stats to show.'
+  session:
+    description: '{$s}This command is used for internal plugin purposes and should not be used directly.'
+    usage: '{$e}This command should not be used directly. If you''re seeing this message without using the command directly, it''s an error and you should contact your server admins.'
+    expired: '{$e}Expired. Please repeat the action again.'
 relations-disabled-commands: '&cВы не можете использовать команду на этой территории'
 invasion:
   blocked:
@@ -2738,6 +3234,10 @@ invasion:
       attacker-death-limit: '&cЧлены &6%kingdom% &7слишком много раз умерли во время атаки'
   home:
     moved: '&cВ результате предыдущего вторжения дом вашего королевства был перемещен в &e%new-home% &cas.'
+  bonuses:
+    chest:
+      spawned: '{$p}Bonus chests spawned for your kingdom to claim{$colon}'
+      entry: '  {$dot} {$s}%chest_displayname% Chest {$arrow} %chest_location%'
 elections:
   default-statement: |
     &7Нажмите, чтобы проголосовать за
@@ -2746,10 +3246,17 @@ elections:
   begin: '&7Выборы начались, выберите больше всего понравившегося вам кандидата &6hover:{/k election vote;&7Нажмите чтобы проголосовать;/k election vote}'
   join-notify: '&7Идут выборы, вберите больше всего понравившегося кандидата с помощью &6hover:{/k election vote;&7Нажмите чтобы проголосовать;/k election vote}'
   not-enough-data: '&cНовый король не был избран, из-за того что проголосовало меньше &e50% &cнаселения вашего королевства'
+  nations:
+    join-notify: '{$p}There''s an ongoing national election. Vote for your favorite candidate with {$s}hover:{/k nation election vote;{$p}Click to vote;/k nation election vote}'
 outpost-events:
   death: '&cВы умерли и ваше королевство потеряло &e%rp% очков ресурсов'
 structures:
-  limit: '&cВы можете иметь максимум &e%limit% &cструктур на землю'
+  limit:
+    removed-extra: '{$e}The land you claimed at {$es}%chunk% {$e}had some structures on it which were broken due to a structure limit.'
+    total: '{$e}You can only have a total of {$es}%building_limit_total% {$e}structures in your kingdom.'
+    total-style: '{$e}You can only have a total of {$es}%building_limit_total_style% %style_displayname% {$e}structures in your kingdom.'
+    total-per-land: '{$e}You can only have a total of {$es}%building_limit_total_per_land% {$e}structures per land.'
+    total-style-per-land: '{$e}You can only have a total of {$es}%building_limit_total_style_per_land% %style_displayname% {$e}structures per land. You currently have {$es}%building_current_total_style_per_land%'
   specific-limit: '&cВы можете иметь максимум &e%limit% %style% &cструктур на землю..'
   block-occupied: '&cНевозможно разместить структуры вместо &e%material% &cблока'
   enter-name: '&7Введите название вашей новой структуре'
@@ -2761,9 +3268,20 @@ structures:
   upgrade-upgraded: '&7Структура прокачана до уровня &6%level%'
   specific-total-limit: '&cУ вас лимит по структурам - &e%limit% %style%'
   cant-place-in-biome: '{$e}Эту структуру нельзя разместить в этом биоме.'
+  confirm-remove: '{$e}There''s a kingdom structure placed here, would you like to remove it? {$yes}'
+  building:
+    finished: '{$p}The {$s}%name% {$p}structure at {$s}%location% {$p}is built.'
+    upgraded: '{$p}The {$s}%name% {$p}structure at {$s}%location% {$p}has been upgraded{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%'
+    repaired: '{$p}The {$s}%name% {$p}structure at {$s}%location% {$p}has been fully repaired.'
+    under:
+      construction: '{$e}You can''t do that while the structure is under construction!'
+  break-central-point: '{$e}Breaking this structure will cause the lands marked in the map below (Total: %will_unclaim%) to automatically get unclaimed since they have no other central points (nexus or outpost) holding them. If you''re sure you want to continue, break the structure again.'
+  block-disabled-world: '{$e}This structure cannot be placed in this world.'
+  upgrade-upgrading: '{$p}Upgrading {$s}%building_displayname%{$colon} {$s}%roman@building_level% {$arrow} {$s}%roman@building_next_level%'
 locations:
   normal: '&6%world%&8, &6%x%&8, &6%y%&8, &6%z%'
   chunk: '&6%world%&8, &6%x%&8, &6%z%'
+  normal-worldless: '{$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
 placeholders:
   top-not-found: '&cНет лучших королевств: &e%position%'
 lands:
@@ -2786,7 +3304,7 @@ lands:
         title: '&9%kingdoms_other_kingdom_name%'
         subtitle: '%kingdoms_other_kingdom_color@hex%%kingdoms_other_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$sep}: %kingdoms_nation_zone:info name=nation_color@hex%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$sep}: %kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     neutral:
       titles:
         title: '%kingdoms_other_kingdom_name%'
@@ -2804,7 +3322,7 @@ lands:
     self:
       titles:
         title: '&a%kingdoms_kingdom_name%'
-        subtitle: '%kingdoms_kingdom_color@hex%%kingdoms_lore%'
+        subtitle: '%kingdoms_kingdom_color%%kingdoms_lore%'
     no-kingdom:
       titles:
         title: '%kingdoms_other_kingdom_name%'
@@ -2825,6 +3343,7 @@ tags:
   others: hover:{&l@%tag%;&9Tag}
   offline: hover:{&e@%tag%;&cOffline}
   unknown-player: hover:{&c@%tag%;&4Unknown Player}
+  tagged-ignored: hover:{{$s}&l@%tag%;{$p}You have been tagged}
 join:
   invites: '{$p}You have {$s}%invites% {$p}invites. Check them with {$s}hover:{/k invites;&9Click to open;/k invites}'
   unread-mails: '{$p}You have {$s}%unread-mails% {$p}unread kingdom mails.'
@@ -2983,6 +3502,9 @@ audit-logs:
       invalid: '{$e}Unknown log type{$sep}: {$es}%type%'
     player:
       enter: '{$p}Please enter the player''s name you wish to see.'
+  peacetreaties:
+    received: '{$p}Your kingdom has receieved a peace treaty from {$s}%other*kingdoms_kingdom_name% {$p}Check your kingdom logs for more info.'
+    sent: '{$p}Your kingdom has sent one peace treaty to {$s}%kingdoms_kingdom_name% {$p}Check your kingdom logs for more info.'
 no-nation-other: '{$e}The specified kingdom is not in a nation.'
 
 # Usually the %world% placeholder shows the raw name for internal purposes (such as hover messages)
@@ -3055,6 +3577,7 @@ time-formatter:
   hours: '%hhaf%:%mmf%:%ssf%'
   minutes: 00:%mmaf%:%ssf%
   months: '%MMA% мес(s), %wwww% нед(s), %dd% д(s), %hhf%:%mmf%:%ssf%'
+  millis: '%millis% milliseconds'
 
 # Used for date-based placeholders.
 # The default time related placeholders like %kingdoms_since% are shown as
@@ -3075,6 +3598,17 @@ variables:
   enabled: '&8[&aВключено&8]&2'
   cancel: '&cor type hover:{&ecancel;&eНажмите для отмены;/cancel} &cдля отмены действия.'
   currency-symbol: $
+  chk-kingdom-lvl-IV: '{? kingdoms_kingdom_level < 4 ? "{$kingdom-lvl-IV}"}'
+  chk-kingdom-lvl-V: '{? kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
+  no: hover:{&8[&cNo&8];&7Click;/k session %command_namespace% %command_session_id% NO}
+  yes: hover:{&8[&2Yes&8];&7Click;/k session %command_namespace% %command_session_id% YES}
+  chk-kingdom-lvl-II: '{? kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+  kingdom-lvl-III: '&cRequires Kingdom Level &eIII'
+  chk-kingdom-lvl-III: '{? kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+  kingdom-lvl-V: '&cRequires Kingdom Level &eV'
+  kingdom-lvl-II: '&cRequires Kingdom Level &eII'
+  kingdom-lvl-IV: '&cRequires Kingdom Level &eIV'
+  ok: hover:{&8[&9Ok&8];&7Click;/k session %command_namespace% %command_session_id% OK}
 world-edit:
   excluded: '{$e}A total of {$es}%blocks% {$e}were excluded from WorldEdit since they weren''t in your land.'
 misc:
@@ -3089,6 +3623,7 @@ books:
   no-empty-slot: '{$e}You don''t have an empty slot available in your hotbar.'
   cant-move: '{$e}You can''t move this book.'
   used-by-another-session: '{$e}Book input is being used by another session. Please complete that first.'
+  removed: '{$p}The chapter book has been removed.'
 
 # Used for absence of a value.
 none: '&4None'
@@ -3115,3 +3650,204 @@ structure:
 
 # Used for command input that require a yes/no.
 true: true
+player-selectors:
+  kingdom:
+    prompt: '{$p}Please enter the kingdom''s name {$cancel}'
+    info: '{$p}Kingdom{$colon} {$s}%kingdoms_kingdom_name%'
+    name: '{$p}All Kingdom Members'
+  union:
+    info: |
+      {$p}Union {$sep}(&5{? ORmode ? "OR" : "AND" }{$sep}){$colon}
+      %elements%
+    name: Union
+  rank:
+    info: '{$p}Rank{$colon} {$s}%rank_node%'
+    prompt: '{$p}Please enter the rank''s node {$cancel}'
+    name: '{$p}By Rank'
+  relation:
+    name: '{$p}By Relation'
+    prompt: '{$p}Please enter the relation''s name {$cancel}'
+    info: '{$p}Relation{$colon} {$s}%relation_color%%relation_name%'
+  nation:
+    name: '{$p}All Nation Members'
+    prompt: '{$p}Please enter the nation''s name {$cancel}'
+    info: '{$p}Nation{$colon} {$s}%kingdoms_nation_name%'
+  username:
+    info: '{$p}Username{$colon} {$s}%target_name%'
+    name: '{$p}Username'
+    prompt: '{$p}Please enter the username of the player {$cancel}'
+building:
+  errors:
+    out-of-chunk: '{$e}Placing this building here would split it into multiple lands, which is currently not supported{$sep} {$es}%locations%'
+    conflict: '{$e}There''s a block placed{$sep} {$es}%locations%'
+    not-owned: '{$e}Placing this building here would split it into a land that you can''t use{$sep} {$es}%locations%'
+  holograms:
+    upgrading: '{$left-bracket} %building_displayname% &9%roman@level% {$arrow} &9%roman@next_level% {$right-bracket}'
+    main: '{$left-bracket} %building_displayname% &9%roman@level% {$right-bracket}'
+    demolishing: '{$left-bracket} %building_displayname% &cDemolishing {$right-bracket}'
+    progress:
+      3: '%building_progress_bar%'
+      durability: Durability
+      broken: Broken
+      2: '&2%time@building_time_remaining%'
+    repairing: '{$left-bracket} %building_displayname% &9%roman@level% &eRepairing... {$right-bracket}'
+    durability: '{$p}Durability{$colon} {$s}%fancy@durability%'
+  repairs:
+    maxxed: '{$p}Building Durability{$colon} {$s}%old-durability% &7+ {$s}%added-durability% &7= {$s}%building_durability% {$sep}({$s}Fully repaired{$sep})'
+    insufficient-funds: '{$e}You need {$es}{? rp > 0 ? "%fancy@rp% resource points"}{? rp > 0 && money > 0 ? " {$e}&{$es} "}{? money > 0 ? "$%fancy@money%"} to repair this building.'
+    requires-full-repair: '{$e}This building requires a full repair {$sep}({$e}from its GUI{$sep}) {$e}because its durability has reached zero.'
+    started: '{$p}Started repairing this building...'
+    fill: '{$p}Building Durability{$colon} {$s}%old-durability% &7+ {$s}%added-durability% &7= {$s}%building_durability%'
+    doesnt-need: '{$e}This building doesn''t need to be repaired. {$sep}({$es}%fancy@building_durability%{$sep}/{$es}%fancy@building_max_durability%{$sep})'
+  already-placed: '{$e}Another kingdom building is already placed here.'
+  already-being-demolished: '{$e}This building is already in the process of being destroyed.'
+  already-placed-corrupted: '{$e}Another kingdom building is supposed to be already placed here, but this block is empty. Report this to the server admins, but you can fix this by placing the building again.'
+  schema:
+    mismatch:
+      fence: '{$sep}[{$s}%location%{$sep}] {$e}Needed a {$es}%schema_displayname% {$e}but got {$es}%block%'
+  errors-main: '{$e}You can''t place this building here{$colon}'
+group-banner:
+  url:
+    prompt: '{$p}Please enter the banner URL {$cancel}'
+    description: '{$p}URL Banner{$colon} {$s}%url%'
+  minecraft:
+    banner-description: |
+      {$p}Minecraft Banner{$colon}
+      {$s}%patterns%
+    banner-prompt: '{$p}Please hold the banner item in your hand and type {$s}ok {$cancel}'
+    banner-not:
+      a-banner: '{$e}The item you''re holding is not a banner.'
+peace-treaties:
+  terms:
+    min: '{$e}You need to specify at least {$es}%terms_min% {$e}terms.'
+    scutage:
+      message: '{$e}Your kingdom has to pay {$es}%term_scutage_percent%% {$e}from their bank as taxes.'
+    limit-turrets:
+      message: '{$e}Your total number of placed turrets will be limited to{$colon} {$es}%term_limit_turrets_amount%'
+    limit-claims:
+      message: '{$e}Your total number of claims will be limited to{$colon} {$es}%term_limit_claims_amount%'
+    max-structures:
+      synchronized: '{$e}Your kingdom''s relationship was updated due to a change in your overlord kingdom.'
+      restricted: '{$e}Your kingdom is under a peace treaty contract that forbids you from changing your relationships with other kingdoms.'
+      limited: '{$e}Your kingdom is under a peace treaty contract that limits your max amount of structures placed to {$es}%term_max_structures_amount%.'
+    take-money:
+      message: '{$e}Your kingdom must pay{$colon} {$es}$%fancy@term_take_money_amount%'
+      enter: '{$p}Enter the amount of money you wish to take.'
+      not-enough: '{$e}Your kingdom needs {$es}$%fancy@term_take_money_amount%'
+    max-claims:
+      limited: '{$e}Your kingdom is under a peace treaty contract that limits your max claims to {$es}%term_max_claims_amount%.'
+    keep-lands:
+      message: |
+        {$p}The following lands will be kept{$colon}
+        %term_keep_lands_kept_lands%
+    limit-structures:
+      message: '{$e}Your total number of placed structures will be limited to{$colon} {$es}%term_limit_structures_amount%'
+    misc-upgrades:
+      restrictied: '{$e}Your kingdom is under a peace treaty contract that forbids you from toggling your misc upgrades.'
+      message: '{$e}You will not be able to disable/enable misc upgrades and the proposer kingdom will have full control of them.'
+    leave-nation:
+      cant-join: '{$e}Your kingdom is under a peace treaty contract that forbids you from joining nations.'
+      message: '{$e}Your kingdom must leave the nation and disband it if you''re the capital.'
+      permanent: '{$e}The kingdom is the capital of a nation that is permanent. Can''t disband a permanent nation.'
+    king-change:
+      not-applicable: '{$e}The specified player is not a member of the proposer or the victim kingdom.'
+    annul-treaties:
+      message: '{$e}All your relationships with other kingdoms will be synchronized with your overlord kingdom.'
+    take-resource-points:
+      not-enough: '{$e}Your kingdom needs {$es}%fancy@term_take_resource_points_amount% resource points.'
+      message: '{$e}Your kingdom must pay{$colon} {$es}%fancy@term_take_resource_points_amount% resource points.'
+    max-turrets:
+      limited: '{$e}Your kingdom is under a peace treaty contract that limits your max amount of turrets placed to {$es}%term_max_turrets_amount%.'
+  editor:
+    paused: '{$p}You can resume your editing by running {$s}hover:{/k peacetreaty resume;&7Click to resume;/k peacetreaty resume}'
+    cancelled: '{$e}Cancelled peace treaty.'
+    force-failed: '{$e}This contract cannot be enforced because the kingdom would receive the following errors{$colon}'
+    victim-kingdom-disbanded: '{$e}The kingdom you were proposing to {$sep}({$es}%kingdoms_kingdom_name%{$sep}) {$e}was disbanded.'
+    unfinished: '{$p}You have an unfinished peace treaty contract. Edit it with {$s}hover:{/k peacetreaty resume;&7Click to resume;/k peacetreaty resume}'
+  war-points:
+    gain:
+      break-structure: '{$p}Your kingdom has gained {$s}%war_points% war points {$p}for breaking {$es}%kingdoms_kingdom_name%''s %style% {$e}structure.'
+      kill: '{$p}Your kingdom has gained {$s}%war_points% war points {$p}for killing {$s}%player_other_name% {$p}by {$s}%player%'
+      break-turret: '{$p}Your kingdom has gained {$s}%war_points% war points {$p}for breaking {$es}%kingdoms_kingdom_name%''s %style% {$e}turret.'
+      invade: '{$p}Your kingdom has gained {$s}%war_points% war points {$p}for the invasion.'
+    lost:
+      invade: '{$e}Your kingdom has lost {$es}%war_points% war points {$e}for losing the invasion.'
+      break-structure: '{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}structure.'
+      break-turret: '{$e}Your kingdom has lost {$es}%war_points% war points {$e}because {$es}%kingdoms_kingdom_name% {$e}broke your {$es}%style% {$e}turret.'
+      kill: '{$e}Your kingdom has lost {$es}%war_points% war points {$p}for death of {$es}%player_other_name% {$e}by {$es}%player%'
+  notification:
+    receivers: |
+      {$e}The kingdom {$es}%kingdoms_kingdom_name% {$e}has sent you a peace treaty proposal.
+      It can be viewed from {$es}hover:{/k peacetreaty review;&7Click to view;/k peacetreaty review} {$e}command.
+    senders: |
+      {$s}%peacetreaty_requester_player% {$p}has sent a peace treaty proposal to {$s}%kingdoms_kingdom_name%
+      {$p}It can be viewed from {$es}hover:{/k peacetreaty review;&7Click to view;/k peacetreaty review} {$p}command.
+  under-contract:
+    enemies: '{$e}Your kingdom is under a peace treaty contract with {$es}%kingdoms_kingdom_name% {$e}and you cannot be enemies.'
+    annul-treaties:
+      from: '{$e}Your kingdom is under a peace treaty contract with {$es}%kingdoms_kingdom_name% {$e}that controls your relationships and you cannot change them.'
+      to: '{$e}That kingdom is under a peace treaty contract that controls their relationship.'
+    from: '{$e}Your kingdom is under a peace treaty contract with that kingdom.'
+    to: '{$e}Your kingdom has a peace treaty contract with that kingdom.'
+  term:
+    insufficient-war-points: '{$e}You need {$es}%peacetreaty_war_points% {$e}total war points {$e}in order to use this term.'
+themes:
+  wrong-rgb: '{$e}Invalid RGB color{$colon} {$es}%color%'
+  main:
+    description: All colors that are not set will reset back to this color.
+
+      You may see other colors here from addons that can set specific colors.
+    displayname: '&2Main Theme'
+  disallowed: '{$e}The color you''ve chosen is not in the range of available colors.'
+  wrong-hex: '{$e}Invalid hex color{$colon} {$es}%color%'
+  prompt: |
+    {$s}Please enter the new hex color code in chat. {$cancel}
+    You can get the hex code for colors from hover:{{$p}here;{$p}Click to Open;@https://htmlcolorcodes.com/}
+  map-viewers:
+    outline:
+      displayname: '&2Map Viewers Outline Color'
+      description: The color used as the online map outline color for land borders.
+    fill:
+      displayname: '&2Map Viewers Fill Color'
+    fill-color:
+      description: The color used as the online map fill color for lands.
+  unknown-theme: '{$e}Unknown theme{$colon} {$es}%theme%'
+  set: '{$p}Your kingdom''s color was changed to{$colon} {$s}%color%'
+inventory:
+  log:
+    move: '{$dot} &9Moved &6%item% &9from &7%fromSlot% {$arrow} {$sep}(&5%toSlot_x%{$sep}, &5%toSlot_y%{$sep})'
+    put: '{$dot} &2Put &6%item% &2in {$sep}(&5%slot_x%{$sep}, &5%slot_y%{$sep})'
+    swap: '{$dot} &3Swapped &6%oldItem% {$arrow} &6%newItem% {$sep}(&5%slot_x%{$sep}, &5%slot_y%{$sep})'
+    take: '{$dot} &cTook &6%item% &cfrom {$sep}(&5%slot_x%{$sep}, &5%slot_y%{$sep})'
+
+# Used for words when they're configured outside of language files.
+words:
+  resource-points: Resource Points
+  fuel: Fuel
+unsupported: '&4Unsupported'
+kingdom-upgrade:
+  not-enough-resource-points: '{$e}You need {$es}%upgrade_cost% {$e}resource points to upgrade your kingdom.'
+  max-level: '{$e}Your kingdom is already upgraded to max level.'
+  upgraded: '{$p}Upgraded kingdom{$sep} {$s}%roman@level% {$arrow} {$s}%roman@next_level%'
+worldedit:
+  excluded: '{$e}A total of {$es}%blocks% {$e}were excluded from WorldEdit since they weren''t in your kingdoms land.'
+outposts:
+  outpost-events:
+    death: '{$e}You died and your kingdom lost {$es}%rp% resource points'
+setters:
+  
+  # Used for commands that support numbers which are relative to something else.
+  type:
+    add: add increase plus +
+    subtract: remove decrease subtract minus -
+    unknown: '{$e}Unknown setter type{$colon} {$es}%setter_type%'
+    set: set =
+kingdom-levels:
+  V: '{$e}You need to upgrade your kingdom to level {$es}5 {$e}for that.'
+  III: '{$e}You need to upgrade your kingdom to level {$es}3 {$e}for that.'
+  IV: '{$e}You need to upgrade your kingdom to level {$es}4 {$e}for that.'
+  II: '{$e}You need to upgrade your kingdom to level {$es}2 {$e}for that.'
+
+# Messages mostly used for /k map
+maps:
+  name: Map

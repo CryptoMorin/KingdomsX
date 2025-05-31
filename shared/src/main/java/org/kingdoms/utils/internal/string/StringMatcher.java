@@ -185,6 +185,39 @@ public interface StringMatcher {
             return new Aggregate(matchers.toArray(new StringMatcher[0]));
         }
 
+        private static void groupMatchers(Collection<StringMatcher> matchers, List<StringMatcher> finalized, boolean caseSensitive) {
+            Class<? extends StringMatcher> targetClass = caseSensitive ? Exact.class : ExactCaseInsensitive.class;
+            int countExact = (int) finalized.stream().filter(x -> x.getClass() == targetClass).count();
+            if (countExact <= 3) return;
+
+            // The order might improve performance. Remove the exact matchers
+            // and then replace the first exact matcher with the hashed version.
+            int index = 0;
+            int firstIndex = -1;
+
+            Set<String> hashed = new HashSet<>(countExact);
+            Iterator<StringMatcher> iter = finalized.iterator();
+            while (iter.hasNext()) {
+                StringMatcher matcher = iter.next();
+                if (matcher.getClass() == targetClass) {
+                    if (firstIndex == -1) firstIndex = index;
+                    else iter.remove();
+
+                    if (caseSensitive) hashed.add(((Exact) matcher).exact);
+                    else hashed.add(((ExactCaseInsensitive) matcher).exact.toLowerCase(Locale.ENGLISH));
+                }
+                index++;
+            }
+
+            if (firstIndex == -1)
+                throw new IllegalStateException("Exact matcher not found: " + matchers + " | Hashed: " + hashed);
+
+            finalized.add(firstIndex, caseSensitive ?
+                    new Hashed(hashed) :
+                    new HashedCaseInsensitive(hashed)
+            );
+        }
+
         @Override
         public boolean matches(String string) {
             for (StringMatcher matcher : matchers) {
@@ -212,51 +245,9 @@ public interface StringMatcher {
             if (matcher instanceof Constant) break;
         }
 
-        { // Optimize exact matches into a HashSet
-            int countExact = (int) finalized.stream().filter(x -> x instanceof Exact).count();
-            if (countExact > 3) {
-                // The order might improve performance
-                int index = 0;
-                int startIndex = -1;
-
-                Set<String> hashed = new HashSet<>(countExact);
-                Iterator<StringMatcher> iter = finalized.iterator();
-                while (iter.hasNext()) {
-                    StringMatcher matcher = iter.next();
-                    if (matcher instanceof Exact) {
-                        iter.remove();
-                        startIndex = index;
-                        hashed.add(((Exact) matcher).exact);
-                    }
-                    index++;
-                }
-
-                finalized.add(startIndex, new Hashed(hashed));
-            }
-        }
-
-        { // Optimize case-insensitive exact matches into a HashSet
-            int countExact = (int) finalized.stream().filter(x -> x instanceof ExactCaseInsensitive).count();
-            if (countExact > 3) {
-                // The order might improve performance
-                int index = 0;
-                int startIndex = -1;
-
-                Set<String> hashed = new HashSet<>(countExact);
-                Iterator<StringMatcher> iter = finalized.iterator();
-                while (iter.hasNext()) {
-                    StringMatcher matcher = iter.next();
-                    if (matcher instanceof ExactCaseInsensitive) {
-                        iter.remove();
-                        startIndex = index;
-                        hashed.add(((ExactCaseInsensitive) matcher).exact.toLowerCase(Locale.ENGLISH));
-                    }
-                    index++;
-                }
-
-                finalized.add(startIndex, new HashedCaseInsensitive(hashed));
-            }
-        }
+        // Optimize exact matches into a HashSet
+        Aggregate.groupMatchers(matchers, finalized, true);
+        Aggregate.groupMatchers(matchers, finalized, false);
 
         return Aggregate.aggregate(finalized);
     }
