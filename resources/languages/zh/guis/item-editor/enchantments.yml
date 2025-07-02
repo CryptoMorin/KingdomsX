@@ -1,9 +1,9 @@
-title: "{$sep}-=({ $p}附魔{$sep} )=-"
+title: "{$sep}-=({$p}附魔{$sep} )=-"
 rows: 6
 
 # What the hell is this: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
 '[fn-enchant]': &fn-enchant
-  args: [ "<x>" ]
+  args: ["<x>"]
   return:
     not-supported:
       condition: "!supported"
@@ -12,784 +12,220 @@ rows: 6
         {$e}此附魔在当前服务器版本不支持。
     enabled:
       condition: enabled
-      name: "{$enabled} <x>{$colon} {$s}%roman@level% {$sep}( {$s}%level%{$sep} )"
+      name: "{$enabled} <x>{$colon} {$s}%roman@level% {$sep}({$s}%level%{$sep})"
       glow: true
       lore: |
-        &7左键更改附魔等级
-        &7右键移除附魔
+        {$sep}左键设置附魔等级
+        {$sep}右键移除附魔
     else:
       name: "{$disabled} <x>"
       lore: |
-        &7左键添加附魔
+        {$sep}左键添加附魔
 options:
-  water-worker:
+  enchant-water-worker:
     posx: 1
     posy: 1
     material: WATER_BUCKET
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}水下速掘"
-      lore: |
-        {$e}此附魔在当前服务器版本不支持。
-    enabled:
-      condition: enabled
-      name: "{$enabled}水下速掘{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}水下速掘"
-      lore: |
-        {$p}左键以添加附魔
-  depth-strider:
+    <<: *fn-enchant ["水下速掘"]
+  enchant-depth-strider:
     posx: 2
     posy: 1
     material: WATER_BUCKET
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}深海探索者"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}深海探索者{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}深海探索者"
-      lore: |
-        {$p}左键以添加附魔
-  impaling:
+    <<: *fn-enchant ["深海探索者"]
+  enchant-impaling:
     posx: 3
     posy: 1
     material: WATER_BUCKET
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}穿刺"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}穿刺{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}穿刺"
-      lore: |
-        {$p}左键以添加附魔
-  oxygen:
+    <<: *fn-enchant ["穿刺"]
+  enchant-oxygen:
     posx: 4
     posy: 1
     material: WATER_BUCKET
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}水下呼吸"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}水下呼吸{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}水下呼吸"
-      lore: |
-        {$p}左键以添加附魔
-  damage-all:
+    <<: *fn-enchant ["水下呼吸"]
+  enchant-damage-all:
     posx: 5
     posy: 1
     material: DIAMOND_SWORD
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}锋利"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}锋利{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}锋利"
-      lore: |
-        {$p}左键以添加附魔
-  knockback:
+    <<: *fn-enchant ["锋利"]
+  enchant-knockback:
     posx: 6
     posy: 1
     material: GOLDEN_SWORD
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}击退"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}击退{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}击退"
-      lore: |
-        {$p}左键以添加附魔
-  dig-speed:
+    <<: *fn-enchant ["击退"]
+  enchant-dig-speed:
     posx: 7
     posy: 1
     material: DIAMOND_PICKAXE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}效率"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}效率{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}效率"
-      lore: |
-        {$p}左键以添加附魔
-  frost-walker:
+    <<: *fn-enchant ["效率"]
+  enchant-frost-walker:
     posx: 8
     posy: 1
     material: BLUE_ICE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}冰霜行者"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}冰霜行者{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}冰霜行者"
-      lore: |
-        {$p}左键以添加附魔
-  swift-sneak:
+    <<: *fn-enchant ["冰霜行者"]
+  enchant-swift-sneak:
     posx: 9
     posy: 1
     material: DIAMOND_LEGGINGS
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}迅捷潜行"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}迅捷潜行{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}迅捷潜行"
-      lore: |
-        {$p}左键以添加附魔
-  arrow-damage:
+    <<: *fn-enchant ["迅捷潜行"]
+  enchant-arrow-damage:
     posx: 1
     posy: 2
     material: ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}力量"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}力量{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}力量"
-      lore: |
-        {$p}左键以添加附魔
-  arrow-knockback:
+    <<: *fn-enchant ["力量"]
+  enchant-arrow-knockback:
     posx: 2
     posy: 2
     material: ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}冲击"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}冲击{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}冲击"
-      lore: |
-        {$p}左键以添加附魔
-  arrow-fire:
+    <<: *fn-enchant ["冲击"]
+  enchant-arrow-fire:
     posx: 3
     posy: 2
     material: ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}火矢"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}火矢{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}火矢"
-      lore: |
-        {$p}左键以添加附魔
-  multishot:
+    <<: *fn-enchant ["火矢"]
+  enchant-multishot:
     posx: 4
     posy: 2
     material: ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}多重射击"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}多重射击{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}多重射击"
-      lore: |
-        {$p}左键以添加附魔
-  piercing:
+    <<: *fn-enchant ["多重射击"]
+  enchant-piercing:
     posx: 5
     posy: 2
     material: ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}穿透"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}穿透{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}穿透"
-      lore: |
-        {$p}左键以添加附魔
-  arrow-infinite:
+    <<: *fn-enchant ["穿透"]
+  enchant-arrow-infinite:
     posx: 6
     posy: 2
     material: SPECTRAL_ARROW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}无限"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}无限{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}无限"
-      lore: |
-        {$p}左键以添加附魔
-  quick-charge:
+    <<: *fn-enchant ["无限"]
+  enchant-quick-charge:
     posx: 7
     posy: 2
     material: CROSSBOW
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}快速装填"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}快速装填{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}快速装填"
-      lore: |
-        {$p}左键以添加附魔
-  mending:
+    <<: *fn-enchant ["快速装填"]
+  enchant-mending:
     posx: 8
     posy: 2
     material: EXPERIENCE_BOTTLE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}经验修补"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}经验修补{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}经验修补"
-      lore: |
-        {$p}左键以添加附魔
-  durability:
+    <<: *fn-enchant ["经验修补"]
+  enchant-durability:
     posx: 9
     posy: 2
     material: OBSIDIAN
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}耐久"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}耐久{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}耐久"
-      lore: |
-        {$p}左键以添加附魔
-  fire-aspect:
+    <<: *fn-enchant ["耐久"]
+  enchant-fire-aspect:
     posx: 1
     posy: 3
     material: FIRE_CHARGE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}火焰附加"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}火焰附加{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}火焰附加"
-      lore: |
-        {$p}左键以添加附魔
-  channeling:
+    <<: *fn-enchant ["火焰附加"]
+  enchant-channeling:
     posx: 2
     posy: 3
     material: TRIDENT
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}引雷"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}引雷{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}引雷"
-      lore: |
-        {$p}左键以添加附魔
-  loyalty:
+    <<: *fn-enchant ["引雷"]
+  enchant-loyalty:
     posx: 3
     posy: 3
     material: TRIDENT
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}忠诚"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}忠诚{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}忠诚"
-      lore: |
-        {$p}左键以添加附魔
-  riptide:
+    <<: *fn-enchant ["忠诚"]
+  enchant-riptide:
     posx: 4
     posy: 3
     material: TRIDENT
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}激流"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}激流{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}激流"
-      lore: |
-        {$p}左键以添加附魔
-  protection-environmental:
+    <<: *fn-enchant ["激流"]
+  enchant-protection-environmental:
     posx: 5
     posy: 3
     material: DIAMOND_CHESTPLATE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}保护"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}保护{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}保护"
-      lore: |
-        {$p}左键以添加附魔
-  protection-projectile:
+    <<: *fn-enchant ["保护"]
+  enchant-protection-projectile:
     posx: 6
     posy: 3
     material: GOLDEN_CHESTPLATE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}弹射物保护"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}弹射物保护{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}弹射物保护"
-      lore: |
-        {$p}左键以添加附魔
-  protection-explosions:
+    <<: *fn-enchant ["弹射物保护"]
+  enchant-protection-explosions:
     posx: 7
     posy: 3
     material: TNT
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}爆炸保护"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}爆炸保护{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}爆炸保护"
-      lore: |
-        {$p}左键以添加附魔
-  protection-fire:
+    <<: *fn-enchant ["爆炸保护"]
+  enchant-protection-fire:
     posx: 8
     posy: 3
     material: LAVA_BUCKET
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}火焰保护"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}火焰保护{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}火焰保护"
-      lore: |
-        {$p}左键以添加附魔
-  thorns:
+    <<: *fn-enchant ["火焰保护"]
+  enchant-thorns:
     posx: 9
     posy: 3
     material: ROSE_BUSH
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}荆棘"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}荆棘{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}荆棘"
-      lore: |
-        {$p}左键以添加附魔
-  damage-undead:
+    <<: *fn-enchant ["荆棘"]
+  enchant-damage-undead:
     posx: 1
     posy: 4
     material: ZOMBIE_HEAD
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}亡灵杀手"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}亡灵杀手{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}亡灵杀手"
-      lore: |
-        {$p}左键以添加附魔
-  damage-arthropods:
+    <<: *fn-enchant ["亡灵杀手"]
+  enchant-damage-arthropods:
     posx: 2
     posy: 4
     material: SPIDER_SPAWN_EGG
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}节肢杀手"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}节肢杀手{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}节肢杀手"
-      lore: |
-        {$p}左键以添加附魔
-  soul-speed:
+    <<: *fn-enchant ["节肢杀手"]
+  enchant-soul-speed:
     posx: 3
     posy: 4
     material: SOUL_SAND
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}灵魂疾行"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}灵魂疾行{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}灵魂疾行"
-      lore: |
-        {$p}左键以添加附魔
-  vanishing-curse:
+    <<: *fn-enchant ["灵魂疾行"]
+  enchant-vanishing-curse:
     posx: 4
     posy: 4
     material: ENDER_EYE
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}消失诅咒"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}消失诅咒{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}消失诅咒"
-      lore: |
-        {$p}左键以添加附魔
-  binding-curse:
+    <<: *fn-enchant ["消失诅咒"]
+  enchant-binding-curse:
     posx: 5
     posy: 4
     material: ENDER_PEARL
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}绑定诅咒"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}绑定诅咒{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}绑定诅咒"
-      lore: |
-        {$p}左键以添加附魔
-  loot-bonus-mobs:
+    <<: *fn-enchant ["绑定诅咒"]
+  enchant-wind-burst:
+    posx: 6
+    posy: 4
+    material: WIND_CHARGE
+    <<: *fn-enchant ["风爆"]
+  enchant-loot-bonus-mobs:
     posx: 7
     posy: 4
     material: ENCHANTED_BOOK
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}抢夺"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}抢夺{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}抢夺"
-      lore: |
-        {$p}左键以添加附魔
-  loot-bonus-blocks:
+    <<: *fn-enchant ["抢夺"]
+  enchant-loot-bonus-blocks:
     posx: 8
     posy: 4
     material: ENCHANTED_BOOK
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}时运"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}时运{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}时运"
-      lore: |
-        {$p}左键以添加附魔
-  silk-touch:
+    <<: *fn-enchant ["时运"]
+  enchant-silk-touch:
     posx: 9
     posy: 4
     material: ENCHANTED_BOOK
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}精准采集"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}精准采集{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}精准采集"
-      lore: |
-        {$p}左键以添加附魔
-  luck:
+    <<: *fn-enchant ["精准采集"]
+  enchant-luck:
     posx: 1
     posy: 5
     material: FISHING_ROD
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}海之眷顾"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}海之眷顾{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}海之眷顾"
-      lore: |
-        {$p}左键以添加附魔
-  lure:
+    <<: *fn-enchant ["海之眷顾"]
+  enchant-lure:
     posx: 2
     posy: 5
     material: FISHING_ROD
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}饵钓"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}饵钓{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}饵钓"
-      lore: |
-        {$p}左键以添加附魔
-  protection-fall:
+    <<: *fn-enchant ["饵钓"]
+  enchant-protection-fall:
     posx: 3
     posy: 5
     material: FEATHER
-    not-supported:
-      condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}摔落保护"
-      lore: |
-        {$e}当前服务器版本不支持此附魔。
-    enabled:
-      condition: enabled
-      name: "{$enabled}摔落保护{$colon} {$s}%roman@level%{$sep}( {$s}%level%{$sep} )"
-      glow: true
-      lore: |
-        {$p}左键以更改附魔等级
-        {$p}右键以移除附魔
-    else:
-      name: "{$disabled}摔落保护"
-      lore: |
-        {$p}左键以添加附魔
+    <<: *fn-enchant ["摔落保护"]
+  
   back:
     posx: 1
     posy: 6
     material: PLAYER_HEAD
-    skull: "{$gui-back}"
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     name: '{$p}返回'
   decoration:
-    slots: [ 46, 47, 48, 50, 51, 52 ]
+    slots: [46, 47, 48, 49, 50, 51, 52]
     material: BLACK_STAINED_GLASS_PANE
     name: ''
   remove-all:

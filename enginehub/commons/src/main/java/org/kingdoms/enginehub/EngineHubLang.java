@@ -10,7 +10,9 @@ public enum EngineHubLang implements DefinedMessenger {
     COMMAND_CLAIM_NEAR_REGION("{$e}You cannot claim lands near protected regions.", 1, 2),
 
     COMMAND_ADMIN_SCHEMATIC_TIPS_SIDE_EFFECTS("{$sep}[&9!{$sep}] &9Note {$point} &7You can use &2hover:{/k admin schematic origin;&7Click to copy;|/k admin schematic origin}" +
-            " &7command to change the origin of the schematic for accurate placement of the building for Kingdoms.", 1, 2, 3, 4),
+            " &7command to change the origin of the schematic for accurate placement of the building for Kingdoms.\n" +
+            "Even if your schematic is placed with the offset you expect, you should try breaking it to see if all" +
+            "the blocks get removed or not. If not, that means your origin is wrong.", 1, 2, 3, 4),
 
     INVASION_BLOCKED_DAMAING_CHAMPION_IN_PROTECTED_REGION("{$e}You cannot damage the champion in this region.", 1, 2),
 
@@ -24,6 +26,7 @@ public enum EngineHubLang implements DefinedMessenger {
             "{$sep}[&c!{$sep}] &cWARNING {$point} &4This will cause issues if there is already a building with this schematic is placed in the world" +
             "from kingdoms. Please make sure to either remove all of them before overriding this file, or choose another name and change the settings to reflect the new name in the config.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_SAVED("{$p}Successfully saved this schematic to{$colon} {$s}%schematic_file%", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_EXTENSION("{$e}You must not provide a file extension for the schematic file{$colon} {$es}%schematic_file%", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_LOAD_DESCRIPTION("{$s}Loads a schematic from Kingdom's schematics folder into player's WorldEdit clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_LOAD_USAGE("{$usage}admin schematic load &2<schematic name>", 1, 2, 3, 4),
@@ -43,8 +46,12 @@ public enum EngineHubLang implements DefinedMessenger {
 
     COMMAND_ADMIN_SCHEMATIC_ORIGIN_DESCRIPTION("{$s}Changes the copy origin of the current WorldEdit clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_ORIGIN_USAGE("{$usage}admin schematic origin &2<x> <y> <z>", 1, 2, 3, 4),
-    COMMAND_ADMIN_SCHEMATIC_ORIGIN_CHANGED("{$p}Successfully changed the origin of the clipboard.", 1, 2, 3, 4),
-    COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_ENABLED("{$p}Origin tool is now enabled. Hit a block on the schematic to make it the origin.\n" +
+    COMMAND_ADMIN_SCHEMATIC_ORIGIN_CHANGED("{$p}Clipboard Origin{$colon} {$s}%origin%", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_ORIGIN_SAME("{$e}Origin didn't change.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_ENABLED("{$p}Origin tool is now enabled.\n" +
+            "{$dot} {$s}Hit a block on the schematic to make it the origin.\n" +
+            "{$dot} {$s}Sneak to shift the origin 1 block down.\n" +
+            "{$dot} {$s}Right-click to shift the origin 1 block up.\n\n" +
             "&7Gray {$point} &7Previous origin.\n" +
             "&2Green {$point} &2New origin.", 1, 2, 3, 4, 5),
     COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_DISABLED("{$e}Origin tool is now disabled.", 1, 2, 3, 4, 5),

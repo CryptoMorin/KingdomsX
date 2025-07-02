@@ -1,17 +1,17 @@
-title: "{$sep}-=( &3Vegyes fejlesztések {$sep})=-"
+title: "{$sep}-=( &3Vegyesfejlesztések {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
 # [NoSync]
 '[fn-misc]': &fn-misc
-  args: [ "<name>", "<lore>", "<disallowPacifists>" ]
+  args: [ <name>, <lore>, <disallowPacifists> ]
   return:
     pacifist:
       condition: '<disallowPacifists> && kingdoms_pacifist'
       name: "<name>"
       perform-action: false
       lore:
-        - "<lore>"
+        - <lore>
         - ""
         - "&cKirályságod békés és nem"
         - "tudja használni ezt a frissítést."
@@ -19,31 +19,31 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       condition: '!enabled'
       name: "{$disabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
-        - &lvl "{$p}Szint{$colon} &6%level%"
-        - "{$sep}[{$e}!{$sep}] {$es}Jobb klikk az engedélyezéshez"
+        - &lvl "{$p}Szint{$colon} {$s}%level%{$sep}/{$s}%max_level%"
+        - "{$sep}[{$e}!{$sep}] {$es}Jobb-klikk az engedélyezéshez"
     maxxed:
       condition: 'enabled && maxxed'
       name: "{$enabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
-        - &lvl-maxxed "{$p}Szint{$colon} {$s}%level% {$sep}({$s}Maximumon{$sep})"
-        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb klikk a letíltásához"
+        - &lvl-maxxed "{$p}Szint{$colon} {$s}%level% {$sep}({$s}Maxxed{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}Jobb-klikk a letíltásához"
     else:
       condition: enabled
       name: "{$enabled} <name>"
       lore:
-        - "<lore>"
+        - <lore>
         - ""
-        - &upgrade-cost "{$p}Fejlesztés ára{$colon} &6%cost%"
+        - &upgrade-cost "{$p}Fejlesztés ára{$colon} {$s}%cost%"
         - *lvl
         - *disable-upgrade
 
 # [NoSync]
 '[fn-misc-basic]': &fn-misc-basic
-  args: [ "<lore>" ]
+  args: [ <lore> ]
   return:
     maxxed:
       condition: 'enabled && maxxed'
@@ -59,169 +59,223 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
 options:
   glory:
     material: NETHER_STAR
-    <<: *fn-misc [ "&3Dicsőség", [
-      "{$p}Szint 1{$colon} &6Területeden a nem játékosok megölése",
-      "          &62x annyi tapasztalatot ér.",
-      "{$p}Szint 2{$colon} &6Területeden játékosok megölése",
-      "          4x annyi tapasztalatot ér."
-    ], false ]
-
     posx: 3
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Dicsőség'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Szint 1{$colon} {$desc}A területeden a nem játékos szörnyek
+                  megölése szintenként {$p}5{$desc}-tel több tapasztalatot ér.
+        {$p}Szint 2{$colon} {$desc}A területeden a Zombik és csontvázak
+                  megőlése {$p}x2 {$desc}tapasztalatot ér.
+        {$p}Szint 3{$colon} {$desc}A területeden az ellenséges játékosok
+                  megölése {$p}x1.5 {$desc}tapasztalatot ér.
+
+        {$chk-kingdom-lvl-IV}
   anti-trample:
     material: WHEAT_SEEDS
-    <<: *fn-misc [ "&aLetaposásvédelem", [
-      "{$p}Szint 1{$colon} &6A megművelt talajt a",
-      "játékosok nem tudják kitaposni.",
-      '',
-      "{$p}Szint 2{$colon} &6Területeden kívül levő",
-      "dugattyúk amelyek blokkokat tolnak",
-      "be/ki a királyságodból, nem fognak",
-      "működni. Ez azt is megakadályozza,",
-      "hogy az Endermanok a területeden",
-      "belül blokkokat lopjanak el.",
-      "",
-      "{$p}Szint 3{$colon} &6Megvéd bizonyos állatokat attól,",
-      "hogy a területeden megsérüljenek.",
-      "Megakadályozza azt is, hogy az ellenséges",
-      "játékosok Véggyöngyöket használjanak",
-      "a területed belsejébe való teleportálásra."
-    ], false ]
-
     posx: 4
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&aLetaposásvédelem'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Szint 1{$colon} {$desc}A megművelt talajt a
+        játékosok nem tudják kitaposni.
+
+        {$p}Szint 2{$colon} {$desc}Területeden kívül levő
+        dugattyúk amelyek blokkokat tolnak
+        be/ki a királyságodból, nem fognak
+        működni. Ez azt is megakadályozza,
+        hogy az Endermanok a területeden
+        belül blokkokat lopjanak el.
+
+        {$p}Szint 3{$colon} {$desc}Megvéd bizonyos állatokat attól,
+        hogy a területeden megsérüljenek.
+        Megakadályozza azt is, hogy az ellenséges
+        játékosok Véggyöngyöket használjanak
+        a területed belsejébe való teleportálásra.
   nexus-guards:
     material: DIAMOND_AXE
-
-    <<: *fn-misc [ "&4Nexus Őrzők", [
-      "&6Amikor valaki belép a Nexusod",
-      "területére, akkor a normál őröknél",
-      "erősebbek jelennek meg."
-    ], true ]
-
     posx: 5
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&4Nexus Őrzők'
+      <disallowPacifists>: false
+      <lore>: |
+        {$s}Amikor valaki belép a nexusod
+        területére, akkor a normál őröknél
+        erősebbek jelennek meg.
+
+        {$chk-kingdom-lvl-IV}
   guards:
     material: IRON_AXE
-
-    <<: *fn-misc [ "&eŐrök", [
-      "&6Az Őrök véletlenszerűen jelennek",
-      "meg, hogy megvédjék a királyságot",
-      "a nem szövetséges belépőktől."
-    ], true ]
-
     posx: 6
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cŐrök'
+      <disallowPacifists>: true
+      <lore>: |
+        {$s}Az Őrök véletlenszerűen jelennek
+        meg, hogy megvédjék a királyságot
+        a nem szövetséges belépőktől.
+
+        {$chk-kingdom-lvl-III}
   insanity:
     material: REDSTONE
-
-    <<: *fn-misc [ "&cŐrület", [
-      "&7Védők és a Nexus őrzők jelennek meg",
-      "az erőtér területén a következő szerint{$colon}",
-      "{$p}Szint 1{$colon} {$s}Erő I 10 másodpercig.",
-      "{$p}Szint 2{$colon} {$s}Erő II 10 másodpercig.",
-      "{$p}Szint 2{$colon} {$s}Erő III 10 másodpercig."
-    ], true ]
-
     posx: 7
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&cŐrület'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Őrök és a Nexus Őrzők jelennek meg",
+        az erőtér területén a következő szerint{$colon}
 
+        {$p}Szint 1{$colon} {$s}Erő I 10 másodpercig.
+        {$p}Szint 2{$colon} {$s}Erő II 10 másodpercig.
+        {$p}Szint 3{$colon} {$s}Erő III 10 másodpercig.
+
+        {$chk-kingdom-lvl-II}
   invasion-teleportation:
     material: ENDER_PEARL
-
-    <<: *fn-misc [ "&3Inváziós teleport", [
-      "{$p}Minden fejlesztés után csökkent a",
-      "&e/k tp &2teleportáció késleltetési ideje."
-    ], true ]
-
     posx: 3
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Inváziós teleport'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Minden fejlesztés után csökken a
+        {$p}/k tp {$desc}teleportáció késltetési ideje.
+
+        {$chk-kingdom-lvl-II}
   invasions:
     material: DIAMOND_SWORD
-
-    <<: *fn-misc [ "&3Inváziók", [
-      "{$p}Királyságod &6%invasion-limit% {$p}alkalommal ostromolhat",
-      "{$p}Elhasznált ostromok{$colon} &6%invasions%",
-      "{$p}Visszatöltés ideje{$colon} &6%invasion-refresh-cooldown%"
-    ], true ]
-
     posx: 2
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Inváziók'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}Királyságod {$s}%invasion-limit% {$desc}alkalommal ostromolhat.
+        {$p}Elhasznált ostromok{$colon} {$s}%invasions%
+        {$p}Visszatöltés ideje{$colon} {$s}%invasion-refresh-cooldown%
   anti-explosion:
     material: GUNPOWDER
-
-    <<: *fn-misc [ "&5Robbanásvédelem", [
-      "{$p}Szint 1{$colon} &7A királyságod területén",
-      "a creeper-ök nem tudnak rombolni.",
-      "",
-      "{$p}Szint 2{$colon} &7A királyságod területén",
-      "a TNT-ék nem tudnak rombolni.",
-      "",
-      "{$p}Szint 3{$colon} &7Megvédi a királyságod",
-      "területén levő tagokat, állatokat",
-      "és a csapdába esett szörnyeket",
-      "a robbanásoktól."
-    ], false ]
-
     posx: 4
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&5Robbanásvédelem'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}Szint 1{$colon} {$desc}A királyságod területén
+        a creeper-ök nem tudnak rombolni.
+        
+        {$p}Szint 2{$colon} {$desc}A királyságod területén
+        a TNT-ék nem tudnak rombolni.
+        
+        {$p}Szint 3{$colon} {$desc}Megvédi a robbanásoktól a
+        királyságod területén levő tagokak
+        és mindenfajta állatot, de a
+        szörnyeket nem.
+        
+        {$note} A robbanások továbbra
+        is kiütik a blokkokat, de azok rövid
+        időn belül regenerálódnak.
+        
+        {$chk-kingdom-lvl-IV}
   max-claims:
     name: "&3Max foglalások"
     material: MAP
-
-    <<: *fn-misc-basic [ [
-      "&6Minden fejlesztés {$p}2&6-vel növeli",
-      "az elfoglalható területek számát.",
-      "",
-      "{$p}Aktuális max terület{$colon} &6%kingdoms_max_claims%"
-    ] ]
-
     posx: 8
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Minden fejlesztés {$p}2{$desc}-vel növeli az
+        elfoglalható területek számát.
+
+        {$p}Aktuális max terület{$colon} {$s}%kingdoms_max_claims%
   max-turrets:
     name: "&3Max toronyok"
     material: ARROW
-
-    <<: *fn-misc-basic [ [
-      "&7Területenként minden fejlesztés {$p}1&7-gyel",
-      "növeli a maximálisan lerakható tornyok",
-      "számát.",
-      "",
-      "{$p}Területenkénti max tornyszám{$colon} &6%max_turrets_per_land%",
-    ] ]
-
     posx: 5
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic    
+      <lore>: |
+        {$desc}Minden fejlesztés {$p}1{$desc}-el növeli a
+        területenként lerakható tornyok számát.
+
+        {$p}Területenkénti max tornyszám{$colon} {$s}%max_turrets_per_land%
+        {$p}Tornyok száma összesen (Constant limit){$colon} {$s}%max_turrets_total%
   max-members:
-    name: "&3Max tagság"
+    name: "&3Max Játékos"
     material: PLAYER_HEAD
-
-    <<: *fn-misc-basic [ [
-      "&7Minden fejlesztés {$p}3&7-al",
-      "több tagot engedélyez.",
-      "",
-    ] ]
-
     posx: 6
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Minden fejlesztés {$p}3{$desc}-al
+        több tagot engedélyez.
+
   chest-size:
     name: "&3Nexus láda mérete"
     material: ENDER_CHEST
-
-    <<: *fn-misc-basic [ [
-      "&6Megnöveli a Nexus láda",
-      "maximális méretét.",
-      "",
-    ] ]
-
     posx: 7
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}Megnöveli a nexus láda méretét.
 
+  flight:
+    material: ELYTRA
+    posx: 3
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Repülés'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Engedélyezi a {$p}/k fly {$desc}parancsot.
+
+        {$chk-kingdom-lvl-V}
+  keep-inventory:
+    material: CHEST
+    posx: 7
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3Keep Inventory'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}Lehetővé teszi a királyságodban történt
+        halál után az eszköztárad megtartását.
+        
+        {$p}Szint 1 {$sep}({$kingdom-lvl-II}{$sep}):
+           {$desc}Csak a páncél és a kézben levő tárgyak
+                  maradnak meg.
+        {$p}Szint 2 {$sep}({$kingdom-lvl-IV}{$sep}):
+          {$desc}Csak a páncél és gyorstárban levő tárgyak
+                  maradnak meg.
+        {$p}Szint 3 {$sep}({$kingdom-lvl-V}{$sep}):
+          {$desc}Minden megmarad.
   back:
     name: "{$p}Vissza"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
-    lore: "&6Vissza a nexus menübe."
+    lore: "{$desc}Vissza a nexus menübe."
     posx: 5
     posy: 3
   cyan-glass:

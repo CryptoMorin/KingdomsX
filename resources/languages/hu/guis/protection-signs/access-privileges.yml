@@ -1,0 +1,43 @@
+title: "{$sep}-=[ &5Hozzáférési jog {$sep}]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  privilege-allowed:
+    name: "&aEngedélyezett"
+    material: GREEN_WOOL
+    lore: |-
+      {$desc}A játékosok korlátozás nélkül
+      kinyithatják/használhatják és
+      kivehetik/betehetik a tárgyakat
+      ebből a tárolóból.
+    slot: 1
+    enabled:
+      condition: selected
+      glow: true
+  privilege-disallowed:
+    name: "&cTiltott"
+    material: RED_WOOL
+    lore: |-
+      {$desc}Játékosok számára tiltott
+      a blokkal az interakció vagy a
+      blokk használata.
+    slot: 2
+    enabled:
+      condition: selected
+      glow: true
+  privilege-password:
+    name: "&9Jelszó"
+    material: BLUE_WOOL
+    lore: |-
+      {$desc}Játékosok csak jelszó megadása
+      után léphetnek interakcióba vagy
+      használhatják ezt a blokkot.
+    slot: 3
+    enabled:
+      condition: selected
+      glow: true
+  back:
+    name: "&cVissza"
+    material: BARRIER
+    slot: 0

@@ -1,0 +1,158 @@
+title: "{$sep}-=( {$p}颜&4色{$sp}选&e择&1器 {$sep})=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 6
+
+'[color]': &color
+  allowed:
+    condition: 'color_allowed'
+  disallowed:
+    lore: "{$warning} &e此颜色无法选择。"
+
+# https://minecraft.fandom.com/wiki/Formatting_codes
+options:
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '{$p}信息'
+    lore: |
+      {$desc}选择颜色是为了显示{$p}%color_displayname%{$colon}
+
+      {$s}%color_description%
+
+      {$p}当前颜色{$colon} &r%color_value%%color_value_name%
+
+  # Only options starting with "color" will be interpreted as predefined colors.
+  # You can add your own colors, just don't forget the "color" option AND the GUI option entry name itself
+  # must begin with the word "color"
+  separator:
+    slots: [ 0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+    material: GRAY_STAINED_GLASS_PANE
+  back:
+    posx: 4
+    posy: 1
+    material: BARRIER
+    name: '&c返回'
+  hex-picker:
+    posx: 6
+    posy: 1
+    material: PAPER
+    name: '{$p}输入十六进制颜色代码'
+  color-dark-red:
+    posx: 2
+    posy: 3
+    material: REDSTONE_BLOCK
+    sound: BLOCK_NOTE_BLOCK_BASS
+    name: '&4深红 #FF5555'
+    color: '#FF5555'
+    <<: *color
+  color-red:
+    posx: 2
+    posy: 4
+    material: RED_WOOL
+    name: '&cRed #FF5555'
+    lore: "&8[&c!&8] &e此颜色无法选择。"
+    sound: BLOCK_NOTE_BLOCK_BASS
+    color: '#FF5555'
+    <<: *color
+  color-dark-blue:
+    posx: 3
+    posy: 3
+    material: LAPIS_BLOCK
+    name: '&1深蓝#0000AA'
+    <<: *color
+    color: '#0000AA'
+    <<: *color
+  color-light-blue:
+    posx: 3
+    posy: 4
+    material: BLUE_WOOL
+    name: '{$sp}浅蓝#5555FF'
+    <<: *color
+    color: '#5555FF'
+    <<: *color
+  color-black:
+    posx: 5
+    posy: 4
+    material: BLACK_WOOL
+    name: '&0黑色#000000'
+    <<: *color
+    color: '#000000'
+  color-gray:
+    posx: 6
+    posy: 4
+    material: GRAY_WOOL
+    name: '&8灰色#555555'
+    <<: *color
+    color: '#555555'
+  color-purple:
+    posx: 7
+    posy: 4
+    material: PURPLE_WOOL
+    name: '&5暗紫#AA00AA'
+    <<: *color
+    color: '#AA00AA'
+  color-dark-green:
+    posx: 8
+    posy: 4
+    material: GREEN_WOOL
+    name: '{$p}深绿#00AA00'
+    <<: *color
+    color: '#00AA00'
+  color-orange:
+    posx: 2
+    posy: 5
+    material: ORANGE_WOOL
+    name: '{$s}Mine币金#DDD605'
+    <<: *color
+    color: '#DDD605'
+  color-dark-aqua:
+    posx: 3
+    posy: 5
+    material: CYAN_WOOL
+    name: '&3暗青#00AAAA'
+    <<: *color
+    color: '#00AAAA'
+  color-white:
+    posx: 5
+    posy: 5
+    material: WHITE_WOOL
+    name: '&f白色#FFFFFF'
+    <<: *color
+    color: '#FFFFFF'
+  color-light-gray:
+    posx: 6
+    posy: 5
+    material: LIGHT_GRAY_WOOL
+    name: '{$sep}浅灰#AAAAAA'
+    <<: *color
+    color: '#AAAAAA'
+  color-light-purple:
+    posx: 7
+    posy: 5
+    material: MAGENTA_WOOL
+    name: '&d亮紫#FF55FF'
+    <<: *color
+    color: '#FF55FF'
+  color-green:
+    posx: 8
+    posy: 5
+    material: LIME_WOOL
+    name: '&a绿色#55FF55'
+    <<: *color
+    color: '#55FF55'
+  color-yellow:
+    posx: 2
+    posy: 6
+    material: YELLOW_WOOL
+    name: '&e黄色#FFFF55'
+    <<: *color
+    color: '#FFFF55'
+  color-aqua:
+    posx: 3
+    posy: 6
+    material: LIGHT_BLUE_WOOL
+    name: '&b青色#55FFFF'
+    <<: *color
+    color: '#55FFFF'

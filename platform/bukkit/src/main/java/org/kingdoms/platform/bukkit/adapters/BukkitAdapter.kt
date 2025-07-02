@@ -50,6 +50,10 @@ object BukkitAdapter {
         Location(adapt(world), x, y, z, yaw, pitch)
     }
 
+    @JvmStatic fun adaptLocation(location: BlockLocation3): Location = location.run {
+        Location(adapt(world), x.toDouble(), y.toDouble(), z.toDouble())
+    }
+
     @JvmStatic fun adapt(location: BlockLocation3): Location = location.run {
         Location(adapt(world), x.toDouble(), y.toDouble(), z.toDouble(), 0f, 0f)
     }

@@ -1,0 +1,64 @@
+title: "{$sep}-=[ {$p}角斗场怪物 {$sep}]=-"
+rows: 3
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  label:
+    name: "{$p}标签{$colon} {$s}%arenamob_label%"
+    material: NAME_TAG
+    lore: |
+      {$desc}在配置上能与其他怪物区分的特性。.
+    posx: 2
+    posy: 2
+  spawn-interval:
+    name: "{$p}生成间隔{$colon} {$s}%time@arenamob_spawn_interval%"
+    material: CLOCK
+    lore: |
+      {$desc}设置本怪物的生成间隔。
+      与已生成数量与在场怪物数量无关。
+    posx: 3
+    posy: 2
+  max-spawn-count:
+    name: "{$p}最大生成量{$colon} {$s}%fancy@arenamob_max_spawn_count%"
+    material: PAPER
+    lore: |
+      {$desc}本怪物全场的最大总生成量。
+      设为{$p}&l0{$desc}表示无限制。
+    posx: 4
+    posy: 2
+  spawn-location:
+    name: "{$p}生成位置{$colon} {$s}%none@arenamob_spawn_location%"
+    material: COMPASS
+    lore: |
+      {$desc}怪物生成的坐标。
+    posx: 6
+    posy: 2
+  damage-bonus:
+    name: "{$p}伤害奖励{$colon} {$s}%arenamob_damage_bonus%"
+    material: DIAMOND_SWORD
+    lore: |
+      {$desc}当玩家攻击此怪物，他们会为王国加额外的分数。
+
+      这会使用一个关于{$p}&ldmg
+      {$desc}变量的方程计算玩家对怪物造成的伤害。
+      伤害由物品，药水效果，与怪物护甲决定。
+    posx: 7
+    posy: 2
+  mob-settings:
+    name: "{$p}怪物设置"
+    material: SPAWNER
+    lore: |
+      {$desc}直接配置怪物极端复杂。
+      你需要直接编辑前哨文件来更改怪物设置。.
+    posx: 8
+    posy: 2
+  back:
+    name: "{$e}返回"
+    lore: '{$desc}返回至角斗场怪物界面。'
+    material: PLAYER_HEAD
+    skull: "{$gui-back}"
+    posx: 1
+    posy: 1

@@ -6,10 +6,10 @@ options:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
-    skull: "{$gui-back}"
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
     name: '&c返回'
   decoration:
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    slots: [1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26]
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   info:
@@ -119,29 +119,20 @@ options:
       condition: enabled
       name: '{$enabled}隐藏可放置方块'
       glow: true
-      lore: |
-        {$p}这仅用于极少数物品, 且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时, 
-        限制物品能否放置在特定方块上的属性。
     else:
       name: '{$disabled}隐藏可放置方块'
-      lore: |
-        {$p}这仅用于极少数物品, 且在
-        大多数服务器里完全没用。这会隐藏
-        一个当玩家处于冒险模式时, 
-        限制物品能否放置在特定方块上的属性。
-
-        {$p}可以放在:
-        {$sep}石头
-  flag-hide-potion-effects:
+    lore: |
+      {$sep}仅适用于较为罕见的物品, 即
+      隐藏在冒险模式下, 此方块仅能放置在
+      特定方块上的特性。
+  flag-hide-additional-tooltip:
     posx: 7
     posy: 2
     material: POTION
-    effects: [ "BLINDNESS, 1, 10" ]
+    effects: ["BLINDNESS, 1, 10"]
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}]{$es}隐藏药水效果"
+      name: "{$sep}[{$e}不支持{$sep}] {$es}Hide Potion Effects"
     enabled:
       condition: enabled
       name: '{$enabled}隐藏药水效果'
@@ -149,14 +140,14 @@ options:
     else:
       name: '{$disabled}隐藏药水效果'
     lore: |
-      {$p}这是Minecraft奇怪的特性之一。
-      此旗标具有多重作用。它会隐藏{$colon} 
-      {$p}⚫ {$s}药水效果
-      {$p}⚫ {$s}书籍信息(如作者)
-      {$p}⚫ {$s}烟花信息
-      {$p}⚫ {$s}地图信息
-      {$p}⚫ {$s}旗帜图案
-      {$p}⚫ {$s}附魔书的附魔等级
+      {$sep}由于Minecraft的奇怪特性, 
+      此项有多重功能, 包括{$sep}:
+      {$dot} {$s}药水效果
+      {$dot} {$s}成书信息
+      {$dot} {$s}烟花信息
+      {$dot} {$s}地图信息
+      {$dot} {$s}旗帜图案
+      {$dot} {$s}附魔种类
   flag-hide-unbreakable:
     posx: 8
     posy: 2

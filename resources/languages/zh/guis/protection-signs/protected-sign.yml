@@ -1,24 +1,16 @@
 title: "{$sep}-=[ &5保护 {$sep}]=-"
-type: HOPPER
+rows: 3
 sound: BLOCK_CHEST_OPEN
 
 options:
-  players:
-    name: "{$p}管理玩家"
-    lore: |
-      {$s}添加或移除能编辑此方块的玩家。
-
-      玩家设置的权限高于王国设置, 也就是说即使玩家的王国被移除或不在列表上, 玩家仍可使用方块。
+  access-entries:
+    name: "{$p}访问权限项"
+    lore: |-
+      {$s}基于筛选器为不同玩家设置不同特权。
     material: PLAYER_HEAD
     skull: '%owner%'
-    slot: 0
-  kingdoms:
-    name: "{$p}管理王国"
-    lore: |
-      {$s}添加或移除能编辑此方块的王国成员。
-    material: RED_BANNER
-    sound: BLOCK_NOTE_BLOCK_BASS
-    slot: 1
+    posx: 3
+    posy: 2
   info:
     name: "&5保护告示牌"
     lore: |
@@ -31,14 +23,26 @@ options:
       {$p}点击这里以给这个方块输入密码。
       只有在容器方块(如箱子)被保护时才生效。
     material: NETHER_STAR
-    slot: 2
+    posx: 4
+    posy: 2
   protection-type:
-    name: "{$p}保护方式{$colon} {$sp}%protection_type%"
+    name: "{$p}保护方式{$sep}: {$sp}%protection_type%"
     lore: |
       {$s}更改默认的从其他玩家的手中的保护方式。
     material: CHEST
-    slot: 3
-  back:
-    name: "&4关闭界面"
-    material: BARRIER
-    slot: 4
+    posx: 6
+    posy: 2
+  automatic-state-toggle-duration:
+    name: "&5状态自动改变时间"
+    supported:
+      condition: 'openable'
+      lore: |
+        {$desc}开门后自动关门。
+
+        {$p}持续时间{$colon} {$s}%time@automatic_state_toggle_duration%
+    else:
+      lore: |
+        {$desc}此方块锁不支持此功能, 当前仅支持门的方块锁。
+    material: COMPARATOR
+    posx: 7
+    posy: 2

@@ -18,8 +18,8 @@ options:
     fill-cost: 'neededAmmo / 8'
     lore: |
       {$p}Buy {$s}%ammo-buy-amount% {$p}ammo for {$s}%cost% {$p}resource points.
-      {$p}Fully fill ammo by {$s}shift clicking
-      {$p}for {$s}%fill-cost% {$p}resource points.
+      {? {fill-cost} > 0 ? "{$p}Fully fill ammo by {$s}shift clicking
+      {$p}for {$s}%fill-cost% {$p}resource points." }
     posx: 2
     posy: 2
   upgrade:

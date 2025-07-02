@@ -14,6 +14,10 @@ public interface InventorySlot {
         return slots[0];
     }
 
+    default boolean isIncluded(int slot) {
+        return Arrays.stream(getSlots()).anyMatch(x -> x == slot);
+    }
+
     static int[] inherit(InventorySlot... slots) {
         return Arrays.stream(slots).flatMapToInt(x -> Arrays.stream(x.getSlots())).toArray();
     }
@@ -40,8 +44,6 @@ public interface InventorySlot {
         OFFHAND(40);
 
         private final int[] slots;
-
-        Player(int[] slots) {this.slots = slots;}
 
         Player(Player... slots) {
             this.slots = inherit(slots);

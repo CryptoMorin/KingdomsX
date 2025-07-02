@@ -6,7 +6,7 @@ options:
   settings:
     name: "&b设置"
     material: DIAMOND_SWORD
-    flags: [ ALL ]
+    flags: [ALL]
     lore:
       - "{$p}更改你斗士的设置, "
       - "如升级他的装备"
@@ -21,6 +21,8 @@ options:
       - "斗士增加{$p}50{$p}生命。"
       - "{$p}当前斗士生命值{$colon} {$p}%scaling%"
       - ""
+      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 4
@@ -32,6 +34,7 @@ options:
       - "{$p}每升一级, 便会每{$p}30{$p}秒内"
       - "多生成一个核心守卫者。"
       - ""
+      - "{$chk-kingdom-lvl-IV}"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 5
@@ -43,6 +46,7 @@ options:
       - "{$p}每升一级都会增加{$p}%scaling%%{$p}"
       - "斗士不会被击退的几率。"
       - ""
+      - "{$p}击退抗性{$colon} {$s}%scaling%"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 6
@@ -88,6 +92,7 @@ options:
       - "{$p}把玩家击飞到空中。"
       - "{$p}每次升级会增加{$p}10%{$p}的几率。"
       - ""
+      - "{$chk-kingdom-lvl-II}"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 5
@@ -95,7 +100,7 @@ options:
   death-duel:
     name: "&b决一死战"
     material: GOLDEN_SWORD
-    flags: [ ALL ]
+    flags: [ALL]
     lore:
       - "{$p}所有除入侵者(即输入/k invade的玩家)以外的玩家, "
       - "对斗士造成的伤害都会减少{$p}50%{$p}。"
@@ -112,6 +117,7 @@ options:
       - "{$p}如果入侵者与斗士距离大于"
       - "{$p}%scaling%{$p}个方块, 玩家将会被拖拽至斗士身旁。"
       - ""
+      - "{$chk-kingdom-lvl-III}"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 7
@@ -119,24 +125,44 @@ options:
   damage-cap:
     name: "&b伤害封顶"
     material: DIAMOND_CHESTPLATE
-    flags: [ ALL ]
+    flags: [ALL]
     lore:
       - "{$p}你的斗士单次只能受到最高"
       - "{$p}%scaling%{$p}点伤害, 无视伤害类型。"
       - ""
+      - "{$chk-kingdom-lvl-II}"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 4
     posy: 4
+  burst:
+    name: "&b爆发"
+    material: WIND_CHARGE
+    flags: [ALL]
+    lore: |
+      {$desc}当斗士周围敌人过多时，爆发一道冲击波, 
+      将所有敌方单位(包括宠物)击飞并造成伤害。
+
+      {$p}范围{$colon} {$s}%fancy@upgrade_range%
+      {$p}最少目标数{$colon} {$s}%fancy@upgrade_min_targets%
+      {$p}伤害{$colon} {$s}%fancy@upgrade_damage%
+      {$p}击退{$colon} {$s}%fancy@upgrade_knockback%
+
+      {$chk-kingdom-lvl-V}
+      {$p}等级{$colon} {$s}%level%
+      {$p}伤害{$colon} {$s}%cost%
+    posx: 5
+    posy: 4
   thor:
     name: "&b雷神之力"
     material: DIAMOND_AXE
-    flags: [ ALL ]
+    flags: [ALL]
     lore:
       - "{$p}每{$p}3{$p}秒, 闪电会"
       - "{$p}击中入侵者和附近所有非盟友玩家。"
       - "{$p}闪电会造成伤害, 且击退玩家。"
       - ""
+      - "{$chk-kingdom-lvl-III}"
       - "{$p}等级{$colon} {$s}%level%"
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 3
@@ -160,7 +186,7 @@ options:
       - "{$p}价格{$colon} {$s}%cost%"
     posx: 7
     posy: 4
-
+  
   back:
     name: "{$p}返回"
     material: BARRIER
@@ -171,12 +197,12 @@ options:
   purple-glass:
     name: ""
     material: PURPLE_STAINED_GLASS_PANE
-    slots: [ 0, 2, 6, 8, 18, 26, 27, 35, 45, 47, 51, 53 ]
+    slots: [0, 2, 6, 8, 18, 26, 27, 35, 45, 47, 51, 53]
   black-glass:
     name: ""
     material: BLACK_STAINED_GLASS_PANE
-    slots: [ 1, 7, 9, 17, 36, 44, 46, 52 ]
+    slots: [1, 7, 9, 17, 36, 44, 46, 52]
   magenta-glass:
     name: ""
     material: MAGENTA_STAINED_GLASS_PANE
-    slots: [ 10, 16, 37, 43 ]
+    slots: [10, 16, 37, 43]

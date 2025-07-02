@@ -5,12 +5,14 @@ import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.bukkit.entity.Player
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
+import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler.getClipboardFormat
 import org.kingdoms.locale.MessageHandler
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.main.KingdomsGlobalsCenter
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
+import org.kingdoms.utils.config.ConfigSection
 import org.kingdoms.utils.internal.reflection.Reflect
 import org.kingdoms.utils.internal.stacktrace.StackTraces
 import java.nio.file.Files
@@ -36,9 +38,11 @@ object SchematicManager {
 
     fun warnUnsupported(exception: Throwable) {
         IS_SUPPORTED_VERSION = false
-        EngineHubAddon.INSTANCE.logger.severe("-------------------------------------------------------------------")
-        EngineHubAddon.INSTANCE.logger.severe("The current WorldEdit you're using doesn't support your server version. Buildings will not be built properly.")
-        EngineHubAddon.INSTANCE.logger.severe("-------------------------------------------------------------------")
+        val logger = EngineHubAddon.INSTANCE.logger
+        logger.severe("-------------------------------------------------------------------")
+        logger.severe("The current WorldEdit you're using doesn't support your server version. Buildings will not be built properly.")
+        logger.severe("WorldEdit: " + exception.message)
+        logger.severe("-------------------------------------------------------------------")
         if (KLogger.isDebugging()) exception.printStackTrace()
     }
 
@@ -54,14 +58,23 @@ object SchematicManager {
         val globals = KingdomsGlobalsCenter.get()
         val enginehub = globals.createSection("enginehub")
         val setupVersion = enginehub.getInt("setup-version")
+
         if (setupVersion == 0) {
-            EngineHubAddon.INSTANCE.logger.info("No setup version detected. Setting up and changing the building configs...")
-            CommandAdminSchematicSetup.setup()
-            enginehub.set("setup-version", 2)
-            KingdomsGlobalsCenter.adapter().saveConfig()
+            setupLatest(enginehub, "No setup version detected. Setting up and changing the building configs...")
         } else {
-            EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion")
+            if (setupVersion < 2) {
+                setupLatest(enginehub, "Outdated setup version $setupVersion, updating your building configs...")
+            } else {
+                EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion")
+            }
         }
+    }
+
+    private fun setupLatest(enginehub: ConfigSection, msg: String) {
+        EngineHubAddon.INSTANCE.logger.info(msg)
+        CommandAdminSchematicSetup.setup()
+        enginehub.set("setup-version", 2)
+        KingdomsGlobalsCenter.adapter().saveConfig()
     }
 
     @JvmStatic
@@ -81,10 +94,13 @@ object SchematicManager {
 
     @JvmStatic
     fun saveSchematic(name: String, player: Player): Path {
-        val path = folder.resolve(Paths.get(name + WorldEditSchematicHandler.getUsedFileExtension().extension))
+        val clipboardFormat = getClipboardFormat(null)
+        val extension = WorldEditSchematicHandler.getUsedFileExtension(clipboardFormat).extension
+
+        val path = folder.resolve(Paths.get(name + extension))
         Files.createDirectories(path.parent)
 
-        val schematic = WorldEditSchematicHandler.savePlayerClipboard(player, path, name)
+        val schematic = WorldEditSchematicHandler.savePlayerClipboard(player, path, name, clipboardFormat)
         loaded[schematic.name] = schematic
         return path
     }

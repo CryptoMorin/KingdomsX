@@ -1,57 +1,66 @@
 title: "{$sep}-=[ &5Védelem {$sep}]=-"
-type: HOPPER
+rows: 3
 sound: BLOCK_CHEST_OPEN
 
 options:
-  players:
-    name: "&2Játékosok kezelése"
+  access-entries:
+    name: "{$p}Hozzáférési bejegyzések"
     lore: |-
-      &6Játékos felvétele vagy kizárása
-      ennek a blokknak az eléréséből.
-
-      A játékos beállítások felülírják a királyság
-      beállításait. Ez azt jelenti, ha egy játékos
-      egy benne levő vagy kizárt királyságban van
-      akkor is használhatja a blokktot, ha a királyság
-      ki van zárva, illetve akkor se használhatja
-      ha a királyságnak meg van engedve.
+      {$s}Különböző jogosultságok hozzáadása
+      a szűrő szerinti kiválaszott
+      játékosoknak.
     material: PLAYER_HEAD
     skull: '%owner%'
-    slot: 0
-  kingdoms:
-    name: "&2Királyság kezelése "
-    lore: |-
-      &6Királyságok belefoglalása vagy kizárása a
-      blokkhoz való hozzáférésből, ami a királyság
-      tagjaira is érvényes lesz.
-    material: RED_BANNER
-    sound: BLOCK_NOTE_BLOCK_BASS
-    slot: 1
+    posx: 3
+    posy: 2
   info:
     name: "&5Védelmi táblák"
     lore: |-
-      &6A védett blokkok védve lesznek a
-      vandalizmus ellen és engedély nélkül
-      a játékosok sem használhatják.
+      {$s}A védett blokkok védve lesznek a  vandalizmus
+      ellen és engedély nélkül a játékosok sem tudják
+      használni.
 
       Ha egy játékosnak hozzáférése van a blokkhoz,
-      nem tudja megváltoztatni a tábla beállításait
-      vagy kiütni a táblát vagy a blokkot.
+      attól még nem tudja megváltoztatni a tábla
+      beállításait vagy kiütni a táblát vagy a blokkot.
 
-      &7Klikk ide a blokk jelszavának beállításához.
+      {$sep}Klikk ide a blokk jelszavának beállításához.
       Ez csak akkor működik, ha a blokk amit védetté
       teszünk egy konténer, mint pl. a láda.
     material: NETHER_STAR
-    slot: 2
+    posx: 4
+    posy: 2
   protection-type:
-    name: "&2Védelem típusa{$colon} &9%protection_type%"
+    name: "{$p}Védelem típusa{$colon} {$sp}%protection_type%"
     lore: |-
-      &6Ennek a blokknak az alapértelmezett
+      {$s}Ennek a blokknak az alapértelmezett
       védelmi módszerének megváltoztatása
       a többi játékossal szemben.
     material: CHEST
-    slot: 3
-  back:
-    name: "&4GUI bezárása"
-    material: BARRIER
-    slot: 4
+    posx: 6
+    posy: 2
+  automatic-state-toggle-duration:
+    name: "&5Automatikus állapotváltás Időtartama"
+    supported:
+      condition: 'openable'
+      lore: |
+        {$desc}Ajtó automatikus bezárása
+        miután kinyitották.
+
+        {$p}Időtartam{$colon} {$s}%time@automatic_state_toggle_duration%
+    else:
+      lore: |
+        {$desc}Védett blokk nem támogatja ezt a
+        funkciót, csak ajtókkal működik.
+    material: COMPARATOR
+    posx: 7
+    posy: 2
+
+  decoration-light-blue:
+    slots: [ 0, 4, 8, 18, 22, 26 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  decoration-blue:
+    slots: [ 1, 7, 9, 13, 17, 19, 25 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''

@@ -1276,12 +1276,22 @@ tax:
 
       # Used for calculating %kingdoms_kingdom_bankruptcy%
       # "balace" is the total amount of tax money the kingdom couldn't pay.
+      # The default log2() function is great for wanting high restrictions
+      # from the start and wanting gradual small restricter rules for
+      # more bankrupt kingdoms.
+      #  * log2(100,000) = 16
+      #  * log2(10,000)  = 13
+      #  * log2(1,000)   = 10
+      #  * log2(100)     = 6
+      #  * log2(10)      = 3
+      # If you change this algorithm, you must make sure to change all equations
+      # that use this placeholder based on your new algorithm.
       factor: 'log2(balance)'
 
       # Disband the kingdom if it cannot pay taxes.
       # Set this to 'true' if you just want to disband the
       # kingdom as soon as it can't pay the taxes.
-      disband: 'kingdoms_kingdom_bankruptcy >= 50'
+      disband: 'kingdoms_kingdom_bankruptcy >= 10'
 
     members:
       enabled: false

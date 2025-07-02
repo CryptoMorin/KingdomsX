@@ -1,0 +1,139 @@
+### Shared outpost page settings ###
+(module):
+  description: 'Alapbeállítások a torony GUI felületeihez.'
+  parameters:
+    <name>: str
+
+title: "&a<name>torony"
+rows: 3
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "{$sp}Lőszer{$colon} {$p}%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    # Set to 0 to disable.
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      {$p}Vásárolj {$s}%ammo-buy-amount% {$p}lőszert {$s}%cost% {$p}Nexus pontért.
+      {$p}Teljesen feltölteni a {$s}shift clicking
+      {$p}használatával lehet {$s}%fill-cost% {$p}Nexus pontért.
+    posx: 2
+    posy: 2
+  upgrade:
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Fejlesztés{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      lore: |
+        {? building_is_under_construction ? "{$err-sign} &cEzt a tornyot
+        nem lehet fejleszteni, mert építés alatt áll.
+        "}
+        {$dot} {$p}Hatótávolság{$colon} {$s}%range% {$sep}➔ {$s}%next_range%
+        {$dot} {$p}Max lőszer{$colon} {$s}%max_ammo% {$sep}➔ {$s}%next_max_ammo%
+        {$dot} {$p}Késleltetési idő{$colon} {$s}%cooldown% {$sep}➔ {$s}%next_cooldown%
+        {$dot} {$p}Max célpontok száma{$colon} {$s}%max_targets% {$sep}➔ {$s}%next_max_targets%
+        {$dot} {$p}Sebesség{$colon} {$s}%fancy@speed% {$sep}➔ {$s}%fancy@next_speed%
+        {$dot} {$p}Sebzés{$colon} {$s}%damage% {$sep}➔ {$s}%next_damage%
+
+        {$dot} {$p}Max Szint{$colon} {$s}III
+        {$dot} {$p}Költség{$colon} {$s}%upgrade_cost%
+    maxxed:
+      name: "{$sp}Szint{$colon} {$s}%roman@level%"
+      lore: |
+        {$dot} {$p}Hatótávolság{$colon} {$s}%range%
+        {$dot} {$p}Max lőszer{$colon} {$s}%max_ammo%
+        {$dot} {$p}Késleltetési idő{$colon} {$s}%cooldown%
+        {$dot} {$p}Max célpontok száma{$colon} {$s}%max_targets%
+        {$dot} {$p}Sebesség{$colon} {$s}%fancy@speed%
+        {$dot} {$p}Sebzés{$colon} {$s}%damage%
+    posx: 3
+    posy: 2
+  manual:
+    manual:
+      condition: "manual"
+      name: "{$p}Kézi"
+      material: LEVER
+      lore: |
+        {$sep}A kézi mód lehetővé teszi, hogy
+        letiltsd a lövegtornyok automatikus
+        aktiválódását, helyette átveheted 
+        felettük az irányítást.
+
+        {$p}Bal-klikkel belépés az
+        {$sp}automatikus módba.
+
+        {$p}Jobb-klikkel kezdődhet
+        a torony működtetése.
+    automatic:
+      name: "{$sp}Automatikus"
+      material: COMPARATOR
+      lore: |
+        {$sep}Automatikus üzemmódban a tornyok 
+        automatikusan észlelik a közeli
+        ellenségeket és lőnek rájuk.
+
+        {$p}Bal-klikkel belépés a
+        {$sp}kézi módba
+    posx: 4
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}Javítás"
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}Az aktuális tornyod teljesen
+        megsemisült és teljes javításra szorul.
+
+        {$p}Költség{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Nexus Pont{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Pénz{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}Az épületet a következő tárgyak
+        bedobásával javíthatod meg{$colon}
+
+          {$dot} {$p}Vas{$colon} {$s}10
+          {$dot} {$p}Arany{$colon} {$s}15
+          {$dot} {$p}Gyémánt{$colon} {$s}50
+
+        {$info-sign} &9Ha az épület élettartama eléri a {$e}0&9
+        értéket, akkor ezzel a gombbal teljes
+        javítást kell végezned.
+    posx: 6
+    posy: 2
+  break:
+    name: "&cKiütés"
+    material: REDSTONE_BLOCK
+    under-construction:
+      condition: "building_is_under_construction"
+      lore: |
+        &4Torony kiütése.
+
+        {$err-sign} {$e}Ez a torony építés alatt
+        van, kiütése megszakít minden megkezdett
+        folyamatot.
+    else:
+      lore: |
+        &4Torony kiütése.
+    posx: 7
+    posy: 2
+  close:
+    name: "&cBezár"
+    material: BARRIER
+    lore:
+      - "{$s}GUI bezárása."
+    posx: 8
+    posy: 2
+
+  lime-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 13, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

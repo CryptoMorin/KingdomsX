@@ -1,4 +1,4 @@
-title: "&2Fúró"
+title: "{$p}Fúró"
 type: HOPPER
 sound: BLOCK_ANVIL_USE
 
@@ -6,65 +6,66 @@ options:
   collect:
     outOfFuel:
       condition: 'fuel <= 0'
-      name: "{$e}Kifogyott: &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "{$e}Kifogyott {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:
       condition: 'amount <= 0'
-      name: "{$e}Nincs mit begyűjteni &9%extractor-last-collected-time-passed%"
+      name: "{$e}Nincs mit begyűjteni {$sp}%extractor-last-collected-time-passed%"
       material: RED_WOOL
     else:
-      name: "&2Begyűjt{$colon} &9%extractor-last-collected-time-passed% &7- &9%fancy@extractor_collected_resource_points%"
+      name: "{$p}Begyűjt{$colon} {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
       material: GREEN_WOOL
     sound: ENTITY_EXPERIENCE_ORB_PICKUP
     lore:
-      - "&6Beszedi az összes"
+      - "{$s}Beszedi az összes"
       - "generált Nexus pontot."
-      - "Utoljára begyűjtötte{$colon} &2%extractor-last-collector%"
+      - "Utoljára begyűjtötte{$colon} {$p}%extractor-last-collector%"
     slot: 0
   fuel:
-    name: "&2Üzemanyag{$colon} &6%fuel%&8/&6%fancy@max_fuel%"
+    name: "{$p}Üzemanyag{$colon} {$s}%fancy@fuel%&8/{$s}%fancy@max_fuel%"
     material: COAL
     refresh: true
     slot: 1
     lore: |
-      &7Az üzemanyag feltöltéséhez
+      {$sep}Az üzemanyag feltöltéséhez
       egyszerűen dobd az egyik
       üzemanyagtárgyat a fúró
       blokkjára.
-
-      &7Ezen kívül elhelyezhetsz
-      egy tölcsért a furó északi,
-      déli, keleti, nyugati vagy
-      felső részére a következő
-      elemekkel.
-
-      &2Szén{$colon} &95
-      &2Faszén{$colon} &93
-      &2Őrlángrúd{$colon} &9100
+      
+      {$sep}Ezenkívül elhelyezhetsz egy
+      {$p}tölcsért {$sep}is a fúrón.
+      {$note} Ez csak akkor működik, ha a fúró
+      üzemanyaga teljesen kifogyott.
+      
+      {$sep}A következő tárgyakkal lehet tölteni{$colon}
+      
+      {$p}Szén{$colon} {$sp}5
+      {$p}Faszén{$colon} {$sp}3
+      {$p}Őrlángrúd{$colon} {$sp}100
   upgrade:
     slot: 3
     upgrade:
       condition: level < max_level
-      name: "&9Fejlesztés{$colon} &6%roman@level% &7➛ &6%roman@next_level%"
+      name: "{$sp}Fejlesztés{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
       material: NETHER_STAR
       lore:
-        - "{$dot} &2Minden{$colon} &6%every% &7➔ &6%next-every%"
-        - "{$dot} &2Nexus pont{$colon} &6%fancy@resource-points% &7➔ &6%fancy@next-resource-points%"
-        - "{$dot} &2Üzemanyag-fogyasztás{$colon} &6%extractor_needed_fuel% &7➔ &6%next_extractor_needed_fuel%"
+        - "{$dot} {$p}Minden{$colon} {$s}%every% {$sep}➔ {$s}%next-every%"
+        - "{$dot} {$p}Nexus Pont{$colon} {$s}%fancy@resource-points% {$sep}➔ {$s}%fancy@next-resource-points%"
+        - "{$dot} {$p}Üzemanyag-fogyasztás{$colon} {$s}%extractor_needed_fuel% {$sep}➔ {$s}%next_extractor_needed_fuel%"
         - ""
-        - "{$dot} &2Max szint{$colon} &6%roman@max_level%"
-        - "{$dot} &2Költség{$colon} &6%upgrade_cost%"
+        - "{$dot} {$p}Max szint{$colon} {$s}%roman@max_level%"
+        - "{$dot} {$p}Költség{$colon} {$s}%upgrade_cost%"
     maxxed:
-      name: "&9Szint{$colon} &6%roman@level%"
+      name: "{$sp}Szint{$colon} {$s}%roman@level%"
       material: NETHER_STAR
       lore:
-        - "{$dot} &2Minden{$colon} &6%every%"
-        - "{$dot} &2Nexus pont{$colon} &6%fancy@resource-points%"
-        - "{$dot} &2Üzemanyag-fogyasztás{$colon} &6%extractor_needed_fuel%"
+        - "{$dot} {$p}Minden{$colon} {$s}%every%"
+        - "{$dot} {$p}Nexus pont{$colon} {$s}%fancy@resource-points%"
+        - "{$dot} {$p}Üzemanyag-fogyasztás{$colon} {$s}%extractor_needed_fuel%"
   break:
     name: "&4Kiütés"
     material: REDSTONE_BLOCK
     sound: ENTITY_ITEM_BREAK
     lore:
-      - "&6Kiüti a struktúrát."
+      - "{$s}Struktúra kiütése."
     slot: 4

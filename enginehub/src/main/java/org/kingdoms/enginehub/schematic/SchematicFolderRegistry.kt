@@ -13,11 +13,15 @@ import kotlin.io.path.*
 
 class SchematicFolderRegistry(displayName: String, private val folderName: String) :
     FolderRegistry(displayName, Kingdoms.getPath(folderName)) {
-    val extension: String
+    val extension: String?
 
     init {
-        val usedExtension = WorldEditSchematicHandler.getUsedFileExtension()
-        this.extension = usedExtension.extension
+        val usedExtension = WorldEditSchematicHandler.getUsedFileExtension(null)
+        if (usedExtension.reason !== WorldEditSchematicHandler.UsedExtension.Reason.DEFAULT) {
+            this.extension = usedExtension.extension
+        } else {
+            this.extension = null
+        }
 
         val msg: String? = when (usedExtension.reason) {
             WorldEditSchematicHandler.UsedExtension.Reason.FORCED -> "it's explicitly set in enginehub.yml"
@@ -39,13 +43,21 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
         return Pair.of(folderName, uri)
     }
 
-    override fun filter(path: Path): Boolean = !path.name.endsWith(".yml")
+    override fun filter(path: Path): Boolean = true
 
     override fun handle(entry: Entry) {
         var schematicFile = entry.path
         val schematicName = entry.name
         if (schematicName.contains("schematic"))
-            StackTraces.printStackTrace("Found illegal schematic name at ${entry.name} -> ${entry.path}")
+            StackTraces.printStackTrace("Found illegal duplicated .schematic extension for ${entry.name} -> ${entry.path}")
+
+        var schematic: WorldEditSchematic? = null
+        val extension = if (this.extension === null) {
+            schematic = loadSchem(schematicName, schematicFile) ?: return
+            WorldEditSchematicHandler.getUsedFileExtension(schematic.clipboardFormat).extension
+        } else {
+            this.extension
+        }
 
         if (extension.substringAfter('.') != schematicFile.extension) {
             val rename = schematicFile.parent.resolve(schematicFile.nameWithoutExtension + extension)
@@ -56,19 +68,14 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
             // Looks like moving a file will automatically copy attributes regardless?
             schematicFile.moveTo(rename)
             schematicFile = rename
+            if (schematic !== null) {
+                schematic = schematic.apply { WorldEditSchematic(name, schematicFile, clipboard, clipboardFormat) }
+            }
         }
 
-        val schematic = try {
-            WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)
-        } catch (ex: UnknownClipboardFormatException) {
-            KLogger.error(
-                "Unknown clipboard format for schematic ${ex.path.toAbsolutePath()}, this means that the file " +
-                        "you're trying to use is either corrupted, not a schematic file or not supported by your " +
-                        "current WorldEdit installation. Skipping this schematic: " + ex.message
-            )
-            return
+        if (schematic === null) {
+            schematic = loadSchem(schematicName, schematicFile) ?: return
         }
-
         if (SchematicManager.loaded.containsKey(schematicName)) {
             KLogger.error("Found two schematics with the same name: ${schematicFile.absolutePathString()}")
         }
@@ -76,6 +83,23 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
             KLogger.warn("Schematic file names should not contain space: ${schematicFile.absolutePathString()}")
         }
         SchematicManager.loaded[schematicName] = schematic
+    }
+
+    private fun loadSchem(schematicName: String, schematicFile: Path): WorldEditSchematic? {
+        return try {
+            WorldEditSchematicHandler.loadSchematic(schematicFile, withName = schematicName)
+        } catch (ex: UnknownClipboardFormatException) {
+            KLogger.error(
+                "Unknown clipboard format for schematic ${ex.path.toAbsolutePath()}, this means that the file " +
+                        "you're trying to use is either corrupted, not a schematic file or not supported by your " +
+                        "current WorldEdit installation. Skipping this schematic: " + ex.message
+            )
+            return null
+        } catch (ex: Throwable) {
+            KLogger.error("Failed to load schematic: $schematicFile")
+            ex.printStackTrace()
+            return null
+        }
     }
 
     override fun register() {

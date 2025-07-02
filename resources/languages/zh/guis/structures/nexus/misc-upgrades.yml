@@ -2,206 +2,252 @@ title: "{$sep}-=( &3杂项升级{$sep} )=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
+# [NoSync]
+'[fn-misc]': &fn-misc
+  args: [<name>, <lore>, <disallowPacifists>]
+  return:
+    pacifist:
+      condition: '<disallowPacifists> && kingdoms_pacifist'
+      name: "<name>"
+      perform-action: false
+      lore:
+        - "<lore>"
+        - ""
+        - "&c和平主义王国"
+        - "无法使用此升级。"
+    disabled:
+      condition: '!enabled'
+      name: "{$disabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl "{$p}等级{$sep}: {$s}%level%{$sep}/{$s}%max_level%"
+        - "{$sep}[{$e}!{$sep}] {$es}右键以启用"
+    maxxed:
+      condition: 'enabled && maxxed'
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &lvl-maxxed "{$p}等级{$sep}: {$s}%level% {$sep}({$s}已满级{$sep})"
+        - &disable-upgrade "{$sep}[{$e}!{$sep}] {$es}右键以禁用"
+    else:
+      condition: enabled
+      name: "{$enabled} <name>"
+      lore:
+        - "<lore>"
+        - ""
+        - &upgrade-cost "{$p}升级花费{$sep}: {$s}%cost%"
+        - *lvl
+        - *disable-upgrade
+
+# [NoSync]
+'[fn-misc-basic]': &fn-misc-basic
+  args: [<lore>]
+  return:
+    maxxed:
+      condition: 'enabled && maxxed'
+      lore:
+        - "<lore>"
+        - *lvl-maxxed
+    else:
+      lore:
+        - "<lore>"
+        - *lvl
+        - *upgrade-cost
+
 options:
   glory:
-    name: "&3荣耀"
     material: NETHER_STAR
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$p}一级{$colon} {$s}在你的地块上杀死非玩家实体掉落经验*2。"
-      - "{$p}二级{$colon} {$s}在你的地块上杀死非玩家实体掉落经验*2。"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
-
+    
     posx: 3
     posy: 1
-  anti-trample:
-    name: "&a地块防踩踏"
-    material: WHEAT_SEEDS
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$p}一级{$colon} {$s}你王国里的耕地不会被玩家踩坏。"
-      - ''
-      - "{$p}二级{$colon} {$s}在你王国地块外面的活塞会失效。"
-      - ""
-      - "{$p}三级{$colon} {$s}防止特定动物在王国地块中受伤。"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3荣耀'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}一级{$colon} {$desc}每升一级, 在王国领土上杀死非玩家实体掉落经验+5。
+        {$p}二级{$colon} {$desc}在王国领土上杀死僵尸, 骷髅掉落{$p}2{$s}倍经验。
+        {$p}三级{$colon} {$desc}在王国领土上杀死敌对玩家掉落{$p}x1.5{$s}倍经验。
 
+        {$chk-kingdom-lvl-IV}
+  anti-trample:
+    material: WHEAT_SEEDS
+    
     posx: 4
     posy: 1
-  nexus-guards:
-    name: "&4核心守卫"
-    material: DIAMOND_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &c你的王国是和平主义王国, 
-        无法使用此升级。
-    else:
-      lore:
-        - "&6当有人进入核心所在地块, "
-        - "生成比普通守卫更强壮的核心守卫。"
-        - ""
-        - &lvl "{$p}等级{$colon} &6%level%"
-        - &disable-upgrade "{$sep}[{$e}!{$sep}]{$es}右键以禁用"
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&a防踩踏'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}一级{$colon} {$desc}王国里的耕地不会被玩家踩坏。
 
+        {$p}二级{$colon} {$desc}在王国领土外面的活塞将无法拉出领土内方块或将方块推入领土内。
+
+        {$p}三级{$colon} {$desc}防止特定动物在王国领土中受到伤害, ", "并禁止敌人使用末影珍珠进入领土。
+  nexus-guards:
+    material: DIAMOND_AXE
+    
     posx: 5
     posy: 1
-  guards:
-    name: "&e守卫"
-    material: IRON_AXE
-    pacifist:
-      condition: kingdoms_pacifist
-      perform-action: false
-      lore: |
-        &c你的王国是和平主义王国, 
-        无法使用此升级。
-    else:
-      lore:
-        - "&6若一个非盟友进入地块, "
-        - "王国守卫会随机生成以保护王国。"
-        - ""
-        - &lvl "{$p}等级{$colon} &6%level%"
-        - &disable-upgrade "{$sep}[{$e}!{$sep}]{$es}右键以禁用"
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&4核心守护者'
+      <disallowPacifists>: false
+      <lore>: |
+        {$s}当有人进入核心所在领土, ", "生成较普通守卫更强大的核心守护者。
 
+        {$chk-kingdom-lvl-IV}
+  guards:
+    material: IRON_AXE
+    
     posx: 6
     posy: 1
-  insanity:
-    name: "{$e}疯狂"
-    material: REDSTONE
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$s}在发电站所在的地块上"
-      - "生成的保卫者和核心守卫"
-      - "会有10秒钟的力量1"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&c守卫'
+      <disallowPacifists>: true
+      <lore>: |
+        {$s}若非盟友玩家进入领土, 王国守卫会随机生成以保护王国。
 
+        {$chk-kingdom-lvl-III}
+  insanity:
+    material: REDSTONE
+    
     posx: 7
     posy: 1
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&c疯狂'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}&7在发电站&核心所在领土上", "生成的守卫/守护者将拥有以下效果&7在发电站&核心所在领土上", "生成的守卫/守护者将拥有以下效果{$sep}:{$colon}
 
+        {$p}一级{$colon} {$s}力量I 10s
+        {$p}二级{$colon} {$s}力量II 10s
+        {$p}三级{$colon} {$s}力量III 10s
+
+        {$chk-kingdom-lvl-II}
   invasion-teleportation:
-    name: "&3入侵传送"
     material: ENDER_PEARL
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$p}减少你输入/k tp的传送延迟时间"
-      - "等级越高减少越多"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
-
+    
     posx: 3
     posy: 2
-  invasions:
-    name: "&3入侵"
-    material: DIAMOND_SWORD
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "&2你的王国可以入侵&6%invasion-limit%&2次。"
-      - "&2已使用次数{$colon} &6%invasions%"
-      - "&2刷新冷却{$colon} &6%invasion-refresh-cooldown%"
-      - ""
-      - "&2价格{$colon} &6%cost%"
-      - "&2等级{$colon} &6%level%"
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3入侵传送'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}减少/k tp的传送延迟时间, 减幅随升级增大。
 
+        {$chk-kingdom-lvl-II}
+  invasions:
+    material: DIAMOND_SWORD
+    
     posx: 2
     posy: 2
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3入侵'
+      <disallowPacifists>: true
+      <lore>: |
+        {$desc}你的王国可以入侵{$s}%invasion-limit%&2次。
+        {$desc}已使用次数&8: {$s}%invasions%
+        {$desc}刷新冷却&8: {$s}%invasion-refresh-cooldown%
   anti-explosion:
-    name: "&5防爆"
     material: GUNPOWDER
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$p}一级{$colon} {$p}苦力怕爆炸不会破坏方块或造成伤害。"
-      - ""
-      - "{$p}二级{$colon} {$p}TNT爆炸不会破坏方块, 但会对非盟友玩家造成伤害。"
-      - ""
-      - "{$p}三级{$colon} {$p}保护你的王国成员, 动物, 和其他被困住的怪物"
-      - "免于爆炸伤害。"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
-
+    
     posx: 4
     posy: 2
-  max-claims:
-    name: "&3最大地块数"
-    material: MAP
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$s}每升一级增大{$p}2{$s}最大占领量"
-      - ""
-      - "{$p}当前最大地块量{$colon} {$s}%kingdoms_max_lands%"
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&5防爆'
+      <disallowPacifists>: false
+      <lore>: |
+        {$p}一级{$colon} {$desc}防止苦力怕爆炸破坏方块
 
+        {$p}二级{$colon} {$desc}防止TNT爆炸破坏方块。
+
+        {$p}三级{$colon} {$desc}防止任何爆炸对领土内的王国成员, 动物, 以及被困住的怪物造成伤害。
+
+        {$note} 方块会被爆炸短暂破坏, 随后再重新生成。
+
+        {$chk-kingdom-lvl-IV}
+  max-claims:
+    name: "&3领土扩增"
+    material: MAP
+    
     posx: 8
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}每升一级, 王国最大领土数增加{$p}2{$desc}。
+        
+        {$p}当前最大领土数{$sep}: {$s}%kingdoms_max_claims%"
+  max-turrets:
+    name: "&3炮塔扩增"
+    material: ARROW
+    posx: 5
+    posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}每升一级, 王国每块领土最大炮塔数增加{$p}1{$desc}。
+        
+        {$p}当前每块领土最多炮塔数{$colon} {$s}%max_turrets_per_land%
+        {$p}总最大炮塔数(定值){$colon} {$s}%max_turrets_total%
   max-members:
-    name: "&3最大玩家量"
+    name: "&3成员扩增"
     material: PLAYER_HEAD
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$s}每升一级增加3最大玩家量。"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
-
+    
     posx: 6
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}每升一级, 王国最大玩家数增加{$p}3{$desc}。
   chest-size:
-    name: "&3国库容量"
+    name: "&3国库扩增"
     material: ENDER_CHEST
-    sounds:
-      max-level: BLOCK_NOTE_BLOCK_BASS
-      not-enough-resource-points: BLOCK_NOTE_BLOCK_BASS
-      upgraded: ENTITY_EXPERIENCE_ORB_PICKUP
-    lore:
-      - "{$s}增加你王国核心箱子的最大容量。"
-      - ""
-      - "{$p}价格{$colon} {$s}%cost%"
-      - "{$p}等级{$colon} {$s}%level%"
-
+    
     posx: 7
     posy: 2
+    <<:
+      '[fn]': *fn-misc-basic
+      <lore>: |
+        {$desc}提升核心宝库容量。
+  flight:
+    material: ELYTRA
+    posx: 3
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3飞行'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}{$desc}使用{$p}/k fly{$desc}指令权限。
+        
+        {$chk-kingdom-lvl-V}
+  keep-inventory:
+    material: CHEST
+    posx: 7
+    posy: 3
+    <<:
+      '[fn]': *fn-misc
+      <name>: '&3保留物品栏'
+      <disallowPacifists>: false
+      <lore>: |
+        {$desc}允许你在王国领土上死亡后保留物品栏。
 
+        {$p}Level 1 {$sep}({$kingdom-lvl-II}{$sep}):
+          {$desc}仅保留护甲与主副手物品。
+        {$p}Level 2 {$sep}({$kingdom-lvl-IV}{$sep}):
+          {$desc}仅保留护甲与快捷栏物品。
+        {$p}Level 3 {$sep}({$kingdom-lvl-V}{$sep}):
+          {$desc}保留全部物品。
   back:
     name: "{$p}返回"
     material: PLAYER_HEAD
@@ -213,8 +259,8 @@ options:
   cyan-glass:
     name: ''
     material: CYAN_STAINED_GLASS_PANE
-    slots: [ 1, 7, 9, 17, 19, 25 ]
+    slots: [1, 7, 9, 17, 19, 25]
   light-blue-glass:
     name: ''
     material: LIGHT_BLUE_STAINED_GLASS_PANE
-    slots: [ 0, 8, 18, 26 ]
+    slots: [0, 8, 18, 26]

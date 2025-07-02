@@ -1,17 +1,17 @@
-title: "{$sep}-=( &9Tornyok {$sep})=-"
+title: "{$sep}-=( {$sp}Tornyok {$sep})=-"
 rows: 4
 sound: ITEM_FIRECHARGE_USE
 
 options:
   arrow:
-    name: "&2Nyílvessző"
+    name: "{$p}Nyílvessző"
     material: ARROW
     sound: ENTITY_ARROW_SHOOT
-    lore:
-      - "&6Egyszerű torony ami mérségelt sebességgel"
-      - "sima nyilakat lő ki az ellenségre."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Egyszerű torony ami mérségelt sebességgel
+      sima nyilakat lő ki az ellenségre.
+
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 2
     posy: 2
   flame:
@@ -19,11 +19,12 @@ options:
     material: SPECTRAL_ARROW
     sound: ITEM_FLINTANDSTEEL_USE
     flags: [ ALL ]
-    lore:
-      - "&6Gyorstűzelő torony ami a"
-      - "célpontot lángba borítja."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Gyorstűzelő torony ami a
+      célpontot lángba borítja."
+
+      {$chk-kingdom-lvl-II}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 3
     posy: 2
   healing:
@@ -31,10 +32,11 @@ options:
     material: TIPPED_ARROW
     sound: ENTITY_ZOMBIE_VILLAGER_CURE
     flags: [ ALL ]
-    lore:
-      - "&6A közei tagokat és szövetségesek gyógyítja."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}A közei tagokat és szövetségesek gyógyítja.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   psionic:
@@ -42,98 +44,102 @@ options:
     material: TRIPWIRE_HOOK
     sound: ENTITY_PLAYER_HURT_ON_FIRE
     flags: [ ALL ]
-    lore:
-      - "&6A közeli ellenfelekre van hatással."
-      - "Magasabb szinten nagyobb a hatás is,"
-      - "de soha nem okoz halálos sebzést."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}A közeli ellenfelekre van hatással.
+      Magasabb szinten nagyobb a hatás is,
+      de soha nem okoz halálos sebzést.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   hellfire:
     name: "&cPokoltűz"
     material: FIRE_CHARGE
     sound: ITEM_FIRECHARGE_USE
-    lore:
-      - "&6Erőteljes torony gyors tűzeléssel"
-      - "és magas sebzéssel."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Erőteljes torony gyors tűzeléssel
+      és magas sebzéssel.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   soldier:
     name: "&5Katona"
     sound: ENTITY_ZOMBIE_VILLAGER_CONVERTED
     material: ZOMBIE_HEAD
-    lore:
-      - "&6Örzök megidézése a célpont"
-      - "játékos megölésére."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Örök idézése a célpont
+      játékos megölésére.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   heatbeam:
     name: "&3Hősugár"
     sound: ENTITY_GUARDIAN_ATTACK
     material: MAGMA_CREAM
-    lore:
-      - "&6Egyedüli cépontjának nagy"
-      - "sebzést okoz."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Egyedüli cépontjának nagy
+      sebzést okoz.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 8
     posy: 2
   inferno:
     name: "&4Infernó"
     material: END_CRYSTAL
     sound: ENTITY_ELDER_GUARDIAN_CURSE
-    lore:
-      - "&6Hasonló mint a hősugár."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Hasonló mint a hősugár.
+
+      {$chk-kingdom-lvl-V}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 1
   spring:
-    name: "&7Rugó"
+    name: "{$sep}Rugó"
     material: OAK_PRESSURE_PLATE
     sound: BLOCK_STONE_PRESSURE_PLATE_CLICK_ON
-    lore:
-      - "&6Egy akna, amely a"
-      - "levegőbe dobja a"
-      - "játékost amikor rálép."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Egy akna, amely a
+      levegőbe dobja a
+      játékost amikor rálép.
+
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 3
   explosive-mine:
-    name: "&7Robbanó akna"
+    name: "{$sep}Robbanó akna"
     material: HEAVY_WEIGHTED_PRESSURE_PLATE
     sound: BLOCK_STONE_PRESSURE_PLATE_CLICK_ON
-    lore:
-      - "&6Akna ami felrobban amikor"
-      - "rálépnek."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Akna ami felrobban amikor
+      rálépnek.
+
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 3
   chemical-mine:
     name: "&8Vegyi akna"
     material: LIGHT_WEIGHTED_PRESSURE_PLATE
     sound: BLOCK_METAL_PRESSURE_PLATE_CLICK_ON
-    lore:
-      - "&6Akna ami gyengítő hatásokat add"
-      - "amikor rálápnek."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Akna ami gyengítő hatásokat add
+      amikor rálápnek.
+
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 3
-
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
-    lore:
-      - "&6Vissza a Nexus menübe"
+    lore: |
+      {$s}Vissza a nexus menübe.
     posx: 5
     posy: 4
   Cyan-Glass:

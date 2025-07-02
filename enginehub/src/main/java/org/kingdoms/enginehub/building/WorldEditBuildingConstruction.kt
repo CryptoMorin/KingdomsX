@@ -34,10 +34,17 @@ import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
 import org.kingdoms.utils.debugging.DebugNS
 import org.kingdoms.utils.internal.iterator.RangedIterator
+import org.kingdoms.utils.string.ConfigPrinter
 import java.time.Duration
 
-val BuildingSettings.schematic: String
-    get() = this.settings.getString("schematic") ?: error("No schematic is set for $this")
+private val BuildingSettings.schematic: String
+    get() {
+        val schem = this.settings.getString("schematic")
+        if (schem !== null) return schem
+
+        ConfigPrinter.printConfig(this.settings)
+        error("No schematic is set for the settings above")
+    }
 
 class WorldEditBuildingConstruction(
     override val schematic: WorldEditSchematic,
@@ -74,7 +81,7 @@ class WorldEditBuildingConstruction(
         }
 
         override fun isSupported(info: BuildingSchematic): Boolean {
-            return SchematicManager.getSchematic(info.settings.schematic) != null
+            return SchematicManager.getSchematic(info.settings.schematic) !== null
         }
 
         override fun getNamespace(): Namespace = NAMESPACE

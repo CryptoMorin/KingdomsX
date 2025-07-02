@@ -8,49 +8,56 @@ disallow-creative: true
 # players change the items in the GUI.
 options:
   withdraw:
-    name: "&2Kivétel"
+    name: "{$p}Kivétel"
     material: PAPER
     posx: 4
     posy: 6
-    lore:
-      - "&6Nexus pontok kivétele a királyságból és"
-      - "átrakása az egyenlegedbe (pénzé alakítása)."
+    lore: |
+      {$s}Nexus pontok kivétele a királyságból és
+      átrakása az egyenlegedbe (pénzé alakítása).
   info:
-    name: "&6Nexus pontok{$colon} &2%fancy@kingdoms_resource_points%"
-    lore:
-      - "&6Összes adomány{$colon} &2%fancy@kingdoms_total_donations%"
-      - "&6Utolsó adomány ideje{$colon} &2%kingdoms_date_last_donation_time%"
-      - "&6Utolsó adomány mennyisége{$colon} &2%kingdoms_last_donation_amount%"
+    name: "{$s}Nexus pontok{$colon} {$p}%fancy@kingdoms_resource_points%"
+    lore: |
+      {$s}Összes adomány{$colon} {$p}%fancy@kingdoms_total_donations%
+      {$s}Utolsó adomány ideje{$colon} {$p}%kingdoms_date_last_donation_time%
+      {$s}Utolsó adomány mennyisége{$colon} {$p}%fancy@kingdoms_last_donation_amount%
+
+      {$p}Top adományozók{$colon}
+      {? {kingdoms_kingdom_top_donations:has position=1} ? " {$sep}1. &9%kingdoms_kingdom_top_donations:at pos=1, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=1, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=2} ? " {$sep}2. &9%kingdoms_kingdom_top_donations:at pos=2, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=2, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=3} ? " {$sep}3. &9%kingdoms_kingdom_top_donations:at pos=3, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=3, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=4} ? " {$sep}4. &9%kingdoms_kingdom_top_donations:at pos=4, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=4, of=kingdoms_total_donations%"}
+      {? {kingdoms_kingdom_top_donations:has position=5} ? " {$sep}5. &9%kingdoms_kingdom_top_donations:at pos=5, of=player_name% {$sep}– &9%fancy@kingdoms_kingdom_top_donations:at pos=5, of=kingdoms_total_donations%"}
     material: NETHER_STAR
     posx: 5
     posy: 6
   deposit:
-    name: "&2Betétel"
+    name: "{$p}Betétel"
     material: PAPER
     posx: 6
     posy: 6
-    lore:
-      - "&6Nexus pontok betétele a királyságodba az"
-      - "egyenlegedből (pénz Nexus pontá alakítása)."
+    lore: |
+      {$s}Nexus pontok betétele a királyságodba az
+      egyenlegedből (pénz Nexus pontá alakítása).
   apply:
-    name: "&2Felhasznál"
+    name: "{$p}Alkalmaz"
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDMxMmNhNDYzMmRlZjVmZmFmMmViMGQ5ZDdjYzdiNTVhNTBjNGUzOTIwZDkwMzcyYWFiMTQwNzgxZjVkZmJjNCJ9fX0="
     refresh: true
-    lore:
-      - "&6Aktuális tárgy Nexus pontoká"
-      - "való konvertálása."
-      - "&2Jelenlegi érték{$colon} &e%fancy@total_worth%"
+    lore: |
+      {$s}Aktuális tárgy Nexus pontoká
+      való konvertálása.
+      {$p}Aktuális érték{$colon} &e%fancy@total_worth%
     posx: 9
     posy: 6
   back:
     name: "&cVissza"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
-    lore:
-      - "&6Vissza a Nexus menübe."
-      - "Ez megszakítja a Nexus"
-      - "pont konverziót."
+    lore: |
+      {$s}Vissza a nexus menübe.
+      Ez megszakítja a Nexus
+      pont konverziót.
     posx: 1
     posy: 6
   lime-glass:

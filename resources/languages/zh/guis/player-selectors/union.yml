@@ -1,0 +1,59 @@
+title: "&0-=( {$s}玩家筛选器 &0)=-"
+rows: 3
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  elements:
+    name: "{$p}%player_selector_name%"
+    material: BOOK
+    lore: |
+      {$p}左键{$colon} {$desc}更改当前的访问权限项。
+      {$p}丢弃{$sep}(&5Q{$sep}){$colon} {$desc}完全移除此访问权限项。
+      {$p}Shift+左键{$colon} {$desc}将此访问权限项优先级{$p}+1.
+      {$p}Shift+右键{$colon} {$desc}将此访问权限项优先级{$e}-1.
+
+      %player_selector_info%
+    slots: [ 10, 11, 12, 13, 14, 15, 16 ]
+  back:
+    name: '&c返回 &7| &c取消'
+    material: BARRIER
+    lore: |
+      {$p}左键{$colon} {$s}保存并返回
+      {$e}右键{$colon} {$es}撤销并返回
+    posx: 1
+    posy: 1
+  add:
+    name: '&a新建'
+    material: PLAYER_HEAD
+    skull: '{$gui-add}'
+    lore: |
+      {$desc}新建一个新条件。
+
+      {$desc}你可以通过联合筛选合并多个筛选条件。
+    posx: 9
+    posy: 1
+  logic-toggle:
+    name: '&9逻辑切换'
+    material: PLAYER_HEAD
+    or-mode:
+      condition: 'ORmode'
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NhOTNjN2JjOGUzOGRkZGZhNDRjZDY4Y2I2ZTQ0Yjc1NWM1ZThhY2FlMmI5YzYzZjgzMjQ1NGIyYWUzYmI2In19fQ=='
+    else:
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdlZjI4ZGU4ZTJhY2NkY2IyM2IwOTQyZjU2MjRmNDE0OWE1YWE0OTBlYzE5ZjdkYzQ5OTFhODUwYjY1ZjQwIn19fQ=='
+    lore: |
+      {$p}当前模式{$colon} {$s}%mode%
+
+      {$desc}你可以联合多个筛选器进行筛选。
+      你可以通过配置选取多个子筛选器叠加的结果。{$colon}
+
+      {$dot} {$s}交模式{$colon} {$p}对目标结果取交集，即
+      仅显示满足&nall&r{$p}筛选器结果的玩家。
+
+      {$dot} {$s}并模式{$colon} {$p}对目标结果取并集，即
+      显示满足&n任意&r{$p}筛选器结果的玩家。
+    posx: 5
+    posy: 1
+  decoration:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]

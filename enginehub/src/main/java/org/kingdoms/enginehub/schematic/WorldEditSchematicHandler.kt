@@ -51,17 +51,18 @@ object WorldEditSchematicHandler {
     @JvmStatic
     fun isUsingFAWE(): Boolean = Reflect.classExists("com.fastasyncworldedit.bukkit.FaweBukkit")
 
-    class UsedExtension(val extension: String, val reason: Reason) {
-        enum class Reason { FORCED, USING_FAWE, NORMAL }
+    class UsedExtension(val extension: String, val reason: Reason, val clipboardFormat: ClipboardFormat?) {
+        enum class Reason { FORCED, USING_FAWE, PREFERRED_FORMAT_EXTENSION, DEFAULT }
     }
 
     @JvmStatic
-    fun getUsedFileExtension(): UsedExtension {
+    fun getUsedFileExtension(clipboardFormat: ClipboardFormat?): UsedExtension {
         val forced = EngineHubConfig.WORLDEDIT_SCHEMATICS_FORCE_EXTENSION.manager.string
-        if (forced !== null && forced.isNotBlank()) return UsedExtension(forced, UsedExtension.Reason.FORCED)
+        if (forced !== null && forced.isNotBlank()) return UsedExtension(forced, UsedExtension.Reason.FORCED, clipboardFormat)
 
-        return if (isUsingFAWE()) UsedExtension(".schem", UsedExtension.Reason.USING_FAWE)
-        else UsedExtension(".schematic", UsedExtension.Reason.NORMAL)
+        if (clipboardFormat !== null) UsedExtension(clipboardFormat.primaryFileExtension, UsedExtension.Reason.PREFERRED_FORMAT_EXTENSION, clipboardFormat)
+        return if (isUsingFAWE()) UsedExtension(".schem", UsedExtension.Reason.USING_FAWE, clipboardFormat)
+        else UsedExtension(".schematic", UsedExtension.Reason.DEFAULT, clipboardFormat)
     }
 
     @JvmStatic
@@ -116,20 +117,13 @@ object WorldEditSchematicHandler {
     }
 
     @JvmStatic
-    fun saveSchematic(schematic: WorldEditSchematic, format: ClipboardFormat? = null): WorldEditSchematic {
-        val finalFormat = getClipboardFormat(format)
-        var path = schematic.storedFile
-        val preferredExtension = finalFormat.primaryFileExtension
+    fun saveSchematic(schematic: WorldEditSchematic): WorldEditSchematic {
+        val path = schematic.storedFile
 
-        if (path.extension !== preferredExtension) {
-            path.deleteIfExists()
-            path = path.parent.resolve(path.nameWithoutExtension + "." + preferredExtension)
-        }
-
-        KLogger.debug(Debugger) { "Saving schematic '$path' using format '${finalFormat.name}'" }
-        finalFormat.getWriter(path.outputStream(*openOptions)).use { writer ->
+        KLogger.debug(Debugger) { "Saving schematic '$path' using format '${schematic.clipboardFormat.name}'" }
+        schematic.clipboardFormat.getWriter(path.outputStream(*openOptions)).use { writer ->
             writer.write(schematic.clipboard)
-            return WorldEditSchematic(schematic.name, path, schematic.clipboard)
+            return WorldEditSchematic(schematic.name, path, schematic.clipboard, schematic.clipboardFormat)
         }
     }
 
@@ -210,12 +204,11 @@ object WorldEditSchematicHandler {
     }
 
     @JvmStatic
-    fun savePlayerClipboard(player: Player, schematicFile: Path, schematicName: String): WorldEditSchematic {
+    fun savePlayerClipboard(player: Player, schematicFile: Path, schematicName: String, clipboardFormat: ClipboardFormat): WorldEditSchematic {
         val clipboard = getCurrentClipboard(player) ?: throw IllegalStateException("Player has no clipboard")
-        val schematic = WorldEditSchematic(schematicName, schematicFile, clipboard)
+        val schematic = WorldEditSchematic(schematicName, schematicFile, clipboard, clipboardFormat)
 
-        saveSchematic(schematic)
-        return schematic
+        return saveSchematic(schematic)
     }
 
     @JvmStatic
@@ -251,7 +244,7 @@ object WorldEditSchematicHandler {
         KLogger.debug(Debugger) { "Loading schematic '$path' using format '${format.name}'" }
         format.getReader(path.inputStream(StandardOpenOption.READ)).use { reader ->
             val cb = reader.read()
-            return WorldEditSchematic(withName ?: path.nameWithoutExtension, path, cb)
+            return WorldEditSchematic(withName ?: path.nameWithoutExtension, path, cb, format)
         }
     }
 

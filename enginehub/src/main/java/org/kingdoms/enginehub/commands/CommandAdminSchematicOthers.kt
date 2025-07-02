@@ -7,59 +7,109 @@ import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerToggleSneakEvent
+import org.bukkit.inventory.EquipmentSlot
 import org.kingdoms.commands.*
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.enginehub.EngineHubLang
+import org.kingdoms.enginehub.schematic.SchematicFolderRegistry
 import org.kingdoms.enginehub.schematic.SchematicManager
+import org.kingdoms.enginehub.schematic.WorldEditSchematic
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
 import org.kingdoms.managers.backup.FolderZipper
 import org.kingdoms.managers.backup.KingdomsBackup
+import org.kingdoms.platform.bukkit.adapters.BukkitAdapter
 import org.kingdoms.server.location.BlockVector3
+import org.kingdoms.utils.LocationUtils
 import org.kingdoms.utils.display.visualizer.StructureVisualizer
 import org.kingdoms.utils.fs.FSUtil
+import org.kingdoms.utils.hash.EntityHashSet
 import java.awt.Color
 import java.time.Duration
 import java.util.*
 
 class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsCommand("origin", parent), Listener {
     companion object {
-        @JvmField val ORIGIN_TOOL: MutableSet<UUID> = hashSetOf()
-        @JvmField val ORIGIN_NS_BEFORE = Namespace.kingdoms("ORIGIN_BEFORE")
-        @JvmField val ORIGIN_NS_AFTER = Namespace.kingdoms("ORIGIN_AFTER")
+        private val ORIGIN_TOOL: MutableSet<Player> = EntityHashSet
+            .weakBuilder(Player::class.java)
+            .onLeave { set, player -> set.remove(player) }
+            .build()
+
+        private val ORIGIN_NS_BEFORE: Namespace = Namespace.kingdoms("ORIGIN_BEFORE")
+        private val ORIGIN_NS_AFTER: Namespace = Namespace.kingdoms("ORIGIN_AFTER")
     }
 
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOW)
-    fun onClick(event: PlayerInteractEvent) {
-        if (event.action == Action.RIGHT_CLICK_BLOCK) return
-        val block = event.clickedBlock ?: return
-        val player = event.player
-
-        if (!ORIGIN_TOOL.contains(player.uniqueId)) return
+    private fun shiftOrigin(player: Player, absolute: Boolean, newOrigin: BlockVector3): Boolean {
+        if (!ORIGIN_TOOL.contains(player)) return false
         if (!SchematicManager.hasClipboard(player)) {
-            return if (SchematicManager.hasSelection(player)) {
+            if (SchematicManager.hasSelection(player)) {
                 EngineHubLang.COMMAND_ADMIN_SCHEMATIC_SAVE_EMPTY_CLIPBOARD.sendError(player)
             } else {
                 EngineHubLang.COMMAND_ADMIN_SCHEMATIC_SAVE_EMPTY_SELECTION.sendError(player)
             }
+            return true
         }
 
         val before = WorldEditSchematicHandler.getOriginOfClipboard(player)
-        val after =
-            WorldEditSchematicHandler.changeClipboardOrigin(player, true, BlockVector3.of(block.x, block.y, block.z))
+        val finalOrigin = if (absolute) newOrigin else before.add(newOrigin)
+        if (before == finalOrigin) {
+            EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_SAME.sendError(player)
+            return true
+        }
 
-        EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_CHANGED.sendMessage(player)
-        event.isCancelled = true
+        val after = WorldEditSchematicHandler.changeClipboardOrigin(player, true, finalOrigin)
+
+        EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_CHANGED.sendMessage(
+            player,
+            "origin", LocationUtils.locationMessenger(after)
+        )
         sendPreview(player, before, after)
+        return true
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOW)
+    fun onClick(event: PlayerInteractEvent) {
+        if (event.hand === EquipmentSlot.OFF_HAND) return
+        val block = event.clickedBlock ?: return
+
+        val cancel: Boolean = when (event.action) {
+            Action.RIGHT_CLICK_BLOCK, Action.RIGHT_CLICK_AIR -> {
+                shiftOrigin(event.player, false, BlockVector3.of(0, +1, 0))
+            }
+
+            Action.LEFT_CLICK_BLOCK -> {
+                shiftOrigin(event.player, true, BukkitAdapter.adaptLocation(block).toVector())
+            }
+
+            else -> false
+        }
+
+        if (cancel) event.isCancelled = true
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.LOW)
+    fun onShiftDown(event: PlayerToggleSneakEvent) {
+        if (!event.isSneaking) return
+        shiftOrigin(event.player, false, BlockVector3.of(0, -1, 0))
+        // No point in cancelling this.
     }
 
     fun sendPreview(player: Player, before: BlockVector3, after: BlockVector3?) {
+        // We stop both first to prevent one visualizer from overriding the other if before and after are switched.
+        StructureVisualizer.stop(player, ORIGIN_NS_BEFORE)
+        StructureVisualizer.stop(player, ORIGIN_NS_AFTER)
+
         StructureVisualizer(ORIGIN_NS_BEFORE, player, setOf(before), Duration.ofSeconds(15)).apply {
             color = Color.GRAY
+            blockMarkers()
+            particles()
             start()
         }
-        if (after != null) {
+        if (after !== null) {
             StructureVisualizer(ORIGIN_NS_AFTER, player, setOf(after), Duration.ofSeconds(15)).apply {
                 color = Color.GREEN
+                blockMarkers()
+                particles()
                 start()
             }
         }
@@ -68,11 +118,12 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
     override fun execute(context: CommandContext): CommandResult {
         context.assertPlayer()
         val player = context.senderAsPlayer()
+        CommandAdminSchematic.RECEIVED_TIPS.add(player.uniqueId)
 
         CommandAdminSchematicSave.hasClipboard(context)?.let { return it }
 
         if (context.args.isEmpty()) {
-            if (ORIGIN_TOOL.add(player.uniqueId)) {
+            if (ORIGIN_TOOL.add(player)) {
                 context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_ENABLED)
                 val before = WorldEditSchematicHandler.getOriginOfClipboard(player)
                 sendPreview(player, before, null)
@@ -80,7 +131,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
                 context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_TOOL_DISABLED)
                 StructureVisualizer.stop(player, ORIGIN_NS_BEFORE)
                 StructureVisualizer.stop(player, ORIGIN_NS_AFTER)
-                ORIGIN_TOOL.remove(player.uniqueId)
+                ORIGIN_TOOL.remove(player)
             }
             return CommandResult.SUCCESS
         }
@@ -98,6 +149,7 @@ class CommandAdminSchematicOrigin(parent: KingdomsParentCommand) : KingdomsComma
         val before = WorldEditSchematicHandler.getOriginOfClipboard(player)
         val after = WorldEditSchematicHandler.changeClipboardOrigin(player, false, BlockVector3.of(x, y, z))
 
+        context.`var`("origin", LocationUtils.locationMessenger(after))
         context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_ORIGIN_CHANGED)
         sendPreview(player, before, after)
         return CommandResult.SUCCESS
@@ -143,7 +195,11 @@ class CommandAdminSchematicConvertAll(parent: KingdomsParentCommand) : KingdomsC
             stats.compute(storedFormat?.name ?: "Unknown") { _, v: Int? -> v?.plus(1) ?: 1 }
 
             try {
-                WorldEditSchematicHandler.saveSchematic(schematic, format)
+                val newSchematic = schematic.apply {
+                    WorldEditSchematic(name, storedFile, clipboard, format)
+                }
+                WorldEditSchematicHandler.saveSchematic(newSchematic)
+                SchematicManager.loadAll()
             } catch (ex: Throwable) {
                 context.`var`("file", schematic.storedFile)
                 context.`var`("error", ex.message)

@@ -1,4 +1,4 @@
-title: "{$sep}-=( &2Kiegészítők {$sep})=-"
+title: "{$sep}-=( {$p}Kiegészítők {$sep})=-"
 rows: 6
 options:
   decoration:
@@ -9,75 +9,109 @@ options:
     posx: 5
     posy: 1
     material: NETHER_STAR
-    name: '&9Információ'
+    name: '{$sp}Információ'
     lore: |
-      &7A kiegészítők letölthető
+      {$sep}A kiegészítők letölthető
       tartalmak, amelyek külön
       telepíthetőek.
 
       A kiegészítők a {$p}teljesítmény{$sep},
-      {$p}modularizáció &7és a {$p}fájlméret
+      {$p}modularizáció {$sep}és a {$p}fájlméret
       korlátok miatt léteznek.
 
-      {$sep}[{$s}!{$sep}] &7Ahhoz, hogy a kiegészítőket
+      {$sep}[{$s}!{$sep}] {$sep}Ahhoz, hogy a kiegészítőket
       telepíteni lehessen, olyan
       internetkapcsolattal kell
       rendelkezned, amely képes
       csatlakozni a {$p}GitHub.com
-      &7címhez (ne blokkolja tűzfal,
+      {$sep}címhez (ne blokkolja tűzfal,
       országcenzúra stb.).
   addons:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    installing:
+      condition: installing
+      name: '{$sep}[&3Telepítés...{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Verzió{$colon} {$sp}%latest-version%
+      material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '&8[&5Várakozás az újraindításra&8] &9%addon-name%'
+      name: '{$sep}[&5Várakozás az újraindításra{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &2Verzió8: &9%latest-version%
-        &5A kiegészítő letöltésre került.
-        Várakozás a szerver újraindítására,
-        hogy a kiegészítő engedélyezve legyen.
+        {$p}Verzió{$colon} {$sp}%latest-version%
+        &5A kiegészítő letöltésre került. 
+        Várakozás a szerver újraindítására, 
+        hogy a kiegészítő bekapcsolásra kerüljön.
       material: PURPLE_WOOL
-    updated:
-      condition: 'installed && !outdated'
-      name: '&8[&2Naprakész&8] &9%addon-name%'
-      lore: |
-        %description%
-        &2Verzió{$colon} &9%installed-version%
-        &4Jobb klikk az eltávolításhoz
-      material: GREEN_WOOL
-    outdated-core-version:
-      condition: 'installed && outdated && outdated_core_version'
-      name: '&8[&4Elavult&8] &9%addon-name%'
+    failed-to-load:
+      condition: 'installed && failed_to_load'
+      name: '{$sep}[&4Sikertelen betöltés{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &4Telepített verzió{$colon} &9%installed-version%
-        &2Legfrisebb verzió{$colon} &9%latest-version%
+        &cNem sikerült a kiegészítőt betölteni.
+        Ellenőrizd a konzolon a hibákat.
 
-        {$sep}[{$e}!{$sep}] {$es}Ennek a verziónak a
-        működéséhez a Kindoms {$p}v%supported-core-version% {$es}szükséges.
+        &4Telepített verzió{$colon} {$sp}%installed-version%
+        {$p}Legfrisebb verzió{$colon} {$sp}%latest-version%
+        {$p}Bal-klikk a frissítéshez
+        &4Jobb-klikk az eltávolításhoz
+      material: RED_WOOL
+    outdated-and-outdated-core-version:
+      condition: 'installed && max_outdated_core_version'
+      name: '{$sep}[&eElavul magváltozat{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &4Telepített verzió{$colon} {$sp}%installed-version%
+        {$p}Utolsó verzió{$colon} {$sp}%max_version%
+
+        {$warning} {$desc}A műkődéséhez ez a királysági
+        frissítés szükséges{$colon} {$p}v%max_supported-core-version%
         Aktuális verzió{$colon} {$e}%current-core-version%
 
-        &2Bal klikk a frissítéshez
-        &4Jobb klikk az eltávolításhoz
-      material: RED_WOOL
+        {$p}Bal-klikk a frissítéshez
+        &4Jobb-klikk az eltávolításhoz
+      material: YELLOW_WOOL
+    up-to-date:
+      condition: 'installed && !outdated'
+      name: '{$sep}[{$p}Naprakész{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+        {$p}Verzió{$colon} {$sp}%installed-version%
+        &4Jobb-klikk az eltávolításhoz
+      material: GREEN_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '&8[&4Elavult&8] &9%addon-name%'
+      name: '{$sep}[&6Elavult{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
-        &4Telepített verzió{$colon} &9%installed-version%
-        &2Legújabb verzió{$colon} &9%latest-version%
-        &2Bal klikk a frissítéshez
-        &4Jobb klikk az eltávolításhoz
-      material: RED_WOOL
+        &4Telepített verzió{$colon} {$sp}%installed-version%
+        {$p}Legfrisebb verzió{$colon} {$sp}%latest-version%
+        {$p}Bal-klikk a frissítéshez
+        &4Jobb-klikk az eltávolításhoz
+      material: ORANGE_WOOL
+    not-installed-outdated-core-version:
+      condition: '!installed && outdated_core_version'
+      name: '{$sep}[&4Elavult mag{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Verzió{$colon} {$sp}%min_version%
+
+        {$warning} {$desc}A műkődéséhez legalább ez a királysági
+        frissítés szükséges{$colon} {$p}v%min_supported-core-version%
+        Aktuális verzió{$colon} {$e}%current-core-version%
+      material: GRAY_WOOL
     not-installed:
-      name: '&8[&6Nincs telepítve&8] &9%addon-name%'
+      name: '{$sep}[&7Nincs telepítve{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
-        &2Verzió{$colon} &9%latest-version%
-        &2Bal klikk a telepítéshez
+        {$p}Verzió{$colon} {$sp}%latest-version%
+        {$p}Bal-klikk a telepítéshez
       condition: '!installed'
-      material: BLUE_WOOL
+      material: GRAY_WOOL

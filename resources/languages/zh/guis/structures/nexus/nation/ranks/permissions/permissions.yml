@@ -1,0 +1,178 @@
+# %permission_category_name% is the item name used
+# for categories in categories.yml
+title: '{$sep}-=( {$p}%permission_category_name% {$sep})=-'
+rows: 6
+(import):
+  pagination: {}
+
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
+'[fn-std-perm]': &fn-std-perm
+  args: ["<x>"]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# -NOSYNC
+'[fn-perm]': &fn-perm
+  args: ["<x>", "<material>"]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# -NOSYNC
+'[permission]':
+  alliance:
+    <<: *fn-std-perm [ "结盟" ]
+    lore: |
+      {$s}/k ally {$sep}指令权限。
+  broadcast:
+    <<: *fn-std-perm [ "广播" ]
+    lore: |
+      {$s}/k broadcast {$sep}指令权限。
+  build:
+    <<: *fn-perm [ '建造', DIAMOND_PICKAXE ]
+    lore: |
+      {$sep}王国任意领土建造权限。
+
+      与{$p}自占领土建造{$sep}权限的区别
+      详见{$p}自占领土建造{$sep}权限
+  edit-ranks:
+    <<: *fn-std-perm [ "编辑权限组" ]
+    lore: |
+      &7创建, 删除, 和更改权限组, 包括
+      更改其符号, 名称, 与权限的权限。
+
+      此权限不允许成员更改自身或更高权限组。
+
+      此权限不包括晋升/降职成员权限。
+  enemy:
+    <<: *fn-std-perm [ "宣战" ]
+    lore: |
+      {$s}/k enemy {$sep}指令权限。
+  home:
+    <<: *fn-std-perm [ "家" ]
+    lore: |
+      {$s}/k home {$sep}指令权限。
+  invade:
+    <<: *fn-std-perm [ "入侵" ]
+    lore: |
+      {$s}/k invade {$sep}指令权限。
+  invite:
+    <<: *fn-std-perm [ "邀请" ]
+    lore: |
+      {$s}/k invite {$sep}指令权限。
+      {$s}/k invitecodes {$sep}指令权限。
+  kick:
+    <<: *fn-std-perm [ "踢出" ]
+    lore: |
+      {$s}/k kick {$sep}指令权限。
+
+      {$sep}此权限不允许成员踢出自身或更高权限组成员。
+  lore:
+    <<: *fn-std-perm [ "介绍" ]
+    lore: |
+      {$s}/k lore {$sep}指令权限。
+      {$s}/k rename {$sep}指令权限。
+      {$s}/k book edit {$sep}指令权限。
+      {$s}/k tag {$sep}指令权限。
+  nexus:
+    <<: *fn-perm [ "核心", BEACON ]
+    lore: |
+      {$s}/k nexus {$sep}指令权限。
+  nexus-build:
+    <<: *fn-perm [ "核心领土建造", BEACON ]
+    lore: |
+      {$sep}王国核心领土建造权限。
+  nexus-chest:
+    <<: *fn-perm [ "核心宝库", CHEST ]
+    lore: |
+      {$sep}访问核心宝库权限。
+  set-home:
+    <<: *fn-std-perm [ "设置家" ]
+    lore: |
+      {$s}/k sethome {$sep}指令权限。
+  upgrade:
+    <<: *fn-std-perm [ "升级" ]
+    lore: |
+      {$sep}使用王国升级选项权限。
+      
+      &7包括杂项升级, 斗士升级, 属性升级, 
+      炮塔升级, 结构升级。
+  truce:
+    <<: *fn-std-perm [ "停战" ]
+    lore: |
+      {$s}/k truce {$sep}指令权限。
+  manage-ranks:
+    <<: *fn-std-perm [ "管理权限组" ]
+    lore: |
+      {$sep}晋升/降职成员权限。
+      
+      {$sep}此权限不允许成员将他人晋升至
+      高于自身的权限组或降职高于自身权限组的成员。
+
+      {$sep}此权限不允许成员编辑权限组。
+  withdraw:
+    <<: *fn-std-perm [ "取款" ]
+    lore: |
+      {$s}/k rp withdraw {$sep}指令权限。
+  nation:
+    <<: *fn-perm ["邦联", BLUE_WOOL]
+    lore: |
+      {$sep}加入/离开邦联的权限。
+  exclude-tax:
+    <<: *fn-std-perm [ "免税" ]
+    lore: |
+      {$sep}拥有此权限的成员无需缴税。
+  relation-attributes:
+    <<: *fn-std-perm [ "外交政策" ]
+    lore: |
+      {$sep}编辑外交政策权限。
+  settings:
+    <<: *fn-std-perm [ "设置" ]
+    lore: |
+      {$sep}更改核心设置权限。
+  view-logs:
+    <<: *fn-perm [ "查看编年史", KNOWLEDGE_BOOK ]
+    lore: |
+      {$sep}通过核心查看王国编年史权限。
+  read-mails:
+    <<: *fn-perm [ "查看邮件", PLAYER_HEAD ]
+    lore: |
+      {$sep}通过核心查看王国邮件权限。
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    <<: *fn-perm [ "管理邮件", PLAYER_HEAD ]
+    lore: |
+      {$sep}发送/回复邮件权限。
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  "[else]":
+    name: "&4未知的权限: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  
+  permissions:
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+    # This is a special feature
+    '[switch]': permission
+  
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}返回'

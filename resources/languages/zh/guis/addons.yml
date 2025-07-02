@@ -2,7 +2,7 @@ title: "{$sep}-=( {$p}附属{$sep} )=-"
 rows: 6
 options:
   decoration:
-    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    slots: [0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
     material: PURPLE_STAINED_GLASS_PANE
     name: ''
   info:
@@ -13,23 +13,31 @@ options:
     lore: |
       {$p}附属是附加的可下载内容, 
       它们可被独立安装。
-      
+
       附属存在的根本原因, 是
       {$p}性能问题{$sep}, {$p}模组化
       {$p}和{$p}文件大小限制。
-      
+
       {$sep}[{$s}!{$sep}] {$p}如要安装附属, 
       你需要有能够连接到{$p}github.com{$p}的网络连接, 
       {$sep}( {$p}且不被防火墙, 
       国家审查等屏蔽。{$sep} )
   addons:
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
+    installing:
+      condition: installing
+      name: '&8[&3Installing...&8] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Version{$colon} {$sp}%latest-version%
+      material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
       name: '{$sep}[&5等待重启{$sep}]{$sp}%addon-name%'
       lore: |
         %description%
-        
+
         {$p}版本{$colon} {$sp}%latest-version%
         &5此附属已下载完毕。
         正在等待服务器重启以启用此附属。
@@ -42,6 +50,34 @@ options:
         {$p}版本{$colon} {$sp}%installed-version%
         &4右键以删除。
       material: GREEN_WOOL
+    outdated-and-outdated-core-version:
+      condition: 'installed && outdated && outdated_core_version'
+      name: '&8[&4已过期&8]{$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &4当前版本{$colon} {$sp}%installed-version%
+        {$p}最新版本{$colon} {$sp}%latest-version%
+
+        {$warning}{$es}此版本需要KingdomsX
+        {$p}v%supported-core-version%{$es}版本运作。
+        当前版本{$sep}: {$e}%current-core-version%
+
+        {$p}左键以更新
+        &4右键以卸载
+      material: RED_WOOL
+    not=installed-outdated-core-version:
+      condition: '!installed && outdated_core_version'
+      name: '&8[&4核心已过期&8]{$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}版本{$colon} {$sp}%latest-version%
+
+        {$warning}{$es}此版本需要KingdomsX
+        {$p}v%supported-core-version%{$es}版本运作。
+        当前版本{$sep}: {$e}%current-core-version%
+      material: RED_WOOL
     outdated:
       condition: 'installed && outdated'
       name: '{$sep}[&4已过期{$sep}]{$sp}%addon-name%'

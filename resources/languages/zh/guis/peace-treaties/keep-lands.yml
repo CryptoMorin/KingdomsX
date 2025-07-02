@@ -1,21 +1,77 @@
-title: '{$sep}-=( {$p}保留地块{$sep} )=-'
+title: '{$sep}-=( {$p}保留领土{$sep} )=-'
 rows: 6
 
 options:
-  back:
-    posx: 5
+  next-page:
+    name: '{$p}下一页{$sep}-{$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$p}上一页{$sep}-{$s}%page%{$sep}/{$s}%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+  cancel:
+    posx: 4
     posy: 1
     material: BARRIER
     name: '{$e}返回'
+  done:
+    posx: 6
+    posy: 1
+    material: GREEN_WOOL
+    name: '{$p}完成'
   magenta-stained-glass-pane:
-    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    slots: [1, 2, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
     material: MAGENTA_STAINED_GLASS_PANE
     name: ''
-  land:
-    name: "%bool_added%{$p}%translated_world%{$sep}, {$p}%x%{$sep}, {$p}%z%"
-    added:
-      condition: added
-      material: GREEN_WOOL
+  display-mode:
+    posx: 5
+    posy: 1
+    grouped:
+      condition: displaymode_grouped
+      name: '{$p}分组'
+      material: BOOK
+      lore: |
+        {$sep}将已入侵的领土将分组显示。
     else:
-      material: RED_WOOL
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+      material: PAPER
+      name: '{$p}独立'
+      lore: |
+        {$sep}已入侵的领土将会逐块显示。
+  land:
+    displaymode-grouped:
+      added:
+        condition: added
+        material: GREEN_WOOL
+      else:
+        material: RED_WOOL
+      condition: displaymode_grouped
+      name: "%bool_added%"
+      lore: |
+        {$p}玩家{$sep}: {$s}%player%
+        {$p}王国{$sep}: {$s}%kingdoms_kingdom_name%
+        {$p}劫掠模式{$sep}: %ransack-mode%
+        {$p}入侵结果{$sep}: {$s}%result%
+        {$p}入侵时间{$sep}: {$s}%time%
+        {$p}受影响的领土{$sep}:
+        %affected-lands%
+
+        {$sp}此次入侵距王国的中心(核心或家){$p}%distance_from_core%{$sp}格远。
+    else:
+      added:
+        condition: added
+        material: GREEN_WOOL
+      else:
+        material: RED_WOOL
+      name: "%bool_added% {$p}%translated-world%{$sep}, {$p}%x%{$sep}, {$p}%z%"
+      lore: |
+        {$p}玩家{$sep}: {$s}%player%
+        {$p}王国{$sep}: {$s}%kingdoms_kingdom_name%
+        {$p}劫掠模式{$sep}: %ransack-mode%
+        {$p}入侵结果{$sep}: {$s}%result%
+        {$p}入侵时间{$sep}: {$s}%time%
+
+        {$sp}此次入侵距王国的中心(核心或家){$p}%distance_from_core%{$sp}格远。
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]

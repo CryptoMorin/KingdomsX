@@ -1,6 +1,7 @@
 package org.kingdoms.enginehub.schematic
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
+import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
 import com.sk89q.worldedit.math.transform.AffineTransform
 import org.kingdoms.enginehub.schematic.blocks.ClipboardBlockIterator
 import org.kingdoms.enginehub.schematic.blocks.ClipboardTransformBaker
@@ -15,13 +16,13 @@ typealias CalculatedBlocks = MutableMap<BlockVector3, WorldEditExtentBlock>
 class WorldEditSchematic(
     val name: String,
     val storedFile: Path,
-    internal val clipboard: Clipboard
+    internal val clipboard: Clipboard,
+    val clipboardFormat: ClipboardFormat
 ) {
-    override fun toString() = "WorldEditSchematic(name='$name', storedFile=$storedFile)"
+    override fun toString() = "${this.javaClass.simpleName}(name='$name', storedFile=$storedFile)"
     override fun hashCode() = this.name.hashCode()
     override fun equals(other: Any?): Boolean {
-        if (other !is WorldEditSchematic) return false
-        return this.name == other.name
+        return other is WorldEditSchematic && this.name == other.name
     }
 
     fun populate(

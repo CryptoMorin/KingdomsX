@@ -1,67 +1,92 @@
-title: "{$sep}-=( &8Pajzsok {$sep})=-"
-type: HOPPER
+title: "{$sep}-=( {$p}Shields {$sep})=-"
+rows: 3
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   shield-6hr:
-    name: "&26 órás pajzs"
+    name: "{$p}6 órás pajzs"
+    lore: "{$s}Ár{$colon} {$p}%cost%"
     material: SHIELD
-    cost: 5000
+    cost: 1000
     time: 6hr
     flags: [ ALL ]
     patterns:
       BASE: BLACK
-    lore:
-      - "&6Ára{$colon} &25000"
-    slot: 0
+    posx: 2
+    posy: 2
   shield-12hr:
-    name: "&212 órás pajzs"
+    name: "{$p}12 órás pajzs"
+    lore: "{$s}Ár{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 8000
+    cost: 1900
     time: 12hr
     patterns:
       BASE: BLACK
       BORDER: RED
-    lore:
-      - "&6Ára{$colon} &28000"
-    slot: 1
+    posx: 3
+    posy: 2
   shield-1day:
-    name: "&21 napos pajzs"
+    name: "{$p}1 napos pajzs"
+    lore: "{$s}Ár{$colon} {$p}%cost%"
     material: SHIELD
-    cost: 15000
+    cost: 4500
     time: 1day
     flags: [ ALL ]
     patterns:
       BASE: BLACK
       BORDER: RED
       CIRCULE_MIDDLE: RED
-    lore:
-      - "&6Ára{$colon} &215000"
-    slot: 2
+    posx: 4
+    posy: 2
   shield-1week:
-    name: "&21 hetes pajzs"
+    name: "{$p}1 hetes pajzs"
+    lore: "{$s}Ár{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 70000
+    cost: 50000
     time: 7days
     patterns:
       BASE: BLACK
       BORDER: RED
       CROSS: RED
-    lore:
-      - "&6Ára{$colon} &270000"
-    slot: 3
+    posx: 5
+    posy: 2
   shield-1month:
-    name: "&21 hónapos pajzs"
+    name: "{$p}1 hónapos pajzs"
+    lore: "{$s}Ár{$colon} {$p}%cost%"
     material: SHIELD
     flags: [ ALL ]
-    cost: 150000
+    cost: 100000
     time: 30days
     patterns:
       BASE: BLACK
       BORDER: RED
       MOJANG: RED
-    lore:
-      - "&6Ára{$colon} &2150000"
-    slot: 4
+    posx: 6
+    posy: 2
+  refund:
+    name: '&5Visszatérítés'
+    can-refund:
+      condition: 'refund != 0'
+      lore: |
+        {$desc}Kikapcsolja az összes pajzsodat,
+        de visszatéríti a Nexus pontokat.
+
+        {$p}Pajzs{$colon} {$s}%time@kingdoms_shield_time_left%
+        {$p}Visszatérítés{$colon} {$s}%fancy@refund%
+    else:
+      lore: |
+        {$desc}Nincs pajzsod amit visszatéríthetnél.
+    material: PAPER
+    posx: 8
+    posy: 2
+
+  red-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 15, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

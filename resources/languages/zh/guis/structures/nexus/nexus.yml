@@ -2,6 +2,44 @@ title: "{$p}&l%kingdoms_kingdom_name%{$s}&l的王国核心"
 rows: 6
 sound: BLOCK_BEACON_ACTIVATE, 0.3
 
+forms:
+  title: 'Title'
+  icon: "https://www.sonatype.com/hubfs/Company%20Logo/SON_logo_profilepict@2x%20(1).png"
+  type: CUSTOM
+  options:
+    settings:
+      component-type: LABEL
+      text: "&5设置"
+    some-button:
+      component-type: BUTTON
+      text: "一个按钮!"
+    some-toggle:
+      component-type: TOGGLE
+      text: "一个设置!"
+      default-value: true
+    some-slider:
+      component-type: SLIDER
+      text: "一个滑块!"
+      min: 5
+      max: 110
+      step: 3
+      default-value: 25
+    some-step-slider:
+      component-type: STEP_SLIDER
+      text: "一个步进滑块!"
+      steps: ["一我", "二你", "三我们"]
+      default-value: 2
+    some-dropdown:
+      component-type: DROPDOWN
+      text: "一个下拉菜单!"
+      steps: ["拉我", "拉你", "拉我们"]
+      default-value: 1
+    some-input:
+      component-type: INPUT
+      text: "一个输入栏!!"
+      placeholder: "替换我!"
+      default-value: "请删掉我"
+
 options:
   settings:
     name: "{$p}设置"
@@ -48,7 +86,7 @@ options:
     material: SPECTRAL_ARROW
     lore:
       - "{$s}你可以花费资源点购买炮塔, "
-      - "并把它们放在你的王国地块上。"
+      - "并把它们放在你的王国领土上。"
       - "他们会自动攻击怪物和入侵者。"
     posx: 3
     posy: 3
@@ -57,7 +95,7 @@ options:
     material: REDSTONE_LAMP
     lore:
       - "{$s}不同设施可以起不同作用。"
-      - "一块地块上最多有一个设施。"
+      - "一块领土上最多有一个设施。"
       - "注意！核心本身属于一个设施！"
       - "设施可以花费资源点购买。"
     posx: 4
@@ -75,7 +113,7 @@ options:
     material: KNOWLEDGE_BOOK
     lore:
       - "{$s}浏览王国活动, 包括"
-      - "入侵, 占领地块, 放弃地块, "
+      - "入侵, 占领领土, 放弃领土, "
       - "和其他成员活动。"
     posx: 8
     posy: 3
@@ -90,7 +128,14 @@ options:
   damage-reduction:
     name: "&3伤害降低"
     material: DIAMOND_CHESTPLATE
-    flags: [ ALL ]
+    flags: [ALL]
+    
+    powerup-conds: &pwrup-conds
+      - '{? level >= 20 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - '{? level >= 40 && kingdoms_kingdom_level < 4 ? "{$kingdom-lvl-IV}"}'
+      - '{? level >= 50 && kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
+    
     lore:
       - "{$s}每升一级减少受到的&e1%{$s}伤害。"
       - ""
@@ -101,7 +146,7 @@ options:
   damage-boost:
     name: "&3近战伤害增幅"
     material: DIAMOND_SWORD
-    flags: [ ALL ]
+    flags: [ALL]
     lore:
       - "{$s}每升一级增加造成的&e1%{$s}近战伤害。"
       - ""
@@ -124,7 +169,7 @@ options:
     name: "&d生命回复增幅"
     material: GOLDEN_APPLE
     lore:
-      - "{$s}在你的王国地块上, 每升一级增加&e1%{$s}的回血速度。"
+      - "{$s}在你的王国领土上, 每升一级增加&e1%{$s}的回血速度。"
       - ""
       - "{$s}等级{$colon} {$p}%level%"
       - "{$s}价格{$colon} {$p}%cost%"
@@ -155,12 +200,12 @@ options:
       {$p}总共邮件数{$colon} {$s}%kingdoms_mails_total%
     posx: 5
     posy: 4
-
+  
   red-glass:
     name: ""
     material: RED_STAINED_GLASS_PANE
-    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+    slots: [1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52]
   black-glass:
     name: ""
     material: BLACK_STAINED_GLASS_PANE
-    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]
+    slots: [0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53]

@@ -82,16 +82,23 @@ requires-outpost-for-other-worlds: true
 # Biomes that players can/cant claim in. This will not work reliably since it only checks a few blocks in the chunk.
 # You can get a list of biomes here: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/Biome.html
 biomes:
-  world_nether:
+  # All the biome and world names here support String Matchers.
+  # You can define multiple settings.
+  default: # This name can be anything
+    # List of worlds that this set of settings apply to.
+    worlds: [ world ]
+
+    # List of biomes that cannot/can be claimed.
     whitelist: false
     biomes: [ CRIMSON_FOREST ]
 
-    # Gives %biome_cost_factor% placeholder
+    # Gives %biome_cost_factor% placeholder, however do note
+    # that this placeholder isn't used by default in the cost equation.
+    # You can add it for this to start working.
+    # (Cost equation is located in this file at "resource-points -> claims")
     cost-factor:
       BADLANDS: 10
       NETHER_WASTES: 50
-  #world_the_end:
-  #...
 
 # Claims the lands around the player once the player created a kingdom if possible.
 # Set to 0 to only claim the land that the player is standing in.

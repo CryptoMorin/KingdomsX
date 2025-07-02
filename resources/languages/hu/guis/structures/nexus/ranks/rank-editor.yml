@@ -9,10 +9,10 @@ options:
     name: ''
 
   node:
-    name: "&2Csomópont{$colon} &2%rank_node%"
+    name: "{$p}Csomópont{$colon} {$p}%rank_node%"
     material: EMERALD
     lore:
-      - "&6A csomópont alapvetően a"
+      - "{$s}A csomópont alapvetően a"
       - "rangnak a neve, de nem"
       - "tartalmazhat színeket vagy"
       - "speciális karaktereket."
@@ -23,32 +23,33 @@ options:
     posx: 2
     posy: 3
   name:
-    name: "&5Név{$colon} &2%rank_name%"
+    name: "&5Név{$colon} {$p}%rank_name%"
     material: DIAMOND
     lore:
-      - "&6Ennek a rangnak a neve."
+      - "{$s}Ennek a rangnak a neve."
       - "Bármilyen 20 karakternél"
       - "nem hosszabb név lehet és"
       - "tartalmazhat színkódokat."
     posx: 3
     posy: 3
   material:
-    name: "&eNyersanyag{$colon} &2%rank_material%"
+    name: "&eNyersanyag{$colon} {$p}%rank_material%"
     material: STONE # Gets replaced by the material that the player picked, don't change.
     lore:
-      - "&6A rangok GUI felületen való"
-      - "megjelenítéséhez használt"
+      - "{$s}A rangok GUI felületen való"
+      - "megjelenítéséhez használt" 
       - "nyersanyag."
-      - "Mindig a legújabb neveket kell"
-      - "használni, akkor is ha régebbi"
-      - "MC verzió fut a szerveren."
+      - "Mindig a legújabb (angol)"
+      - "neveket kell használni,"
+      - "akkor is ha régebbi MC"
+      - "verzió fut a szerveren."
     posx: 4
     posy: 3
   symbol:
-    name: "&dSzimbólum{$colon} &2%rank_symbol%"
+    name: "&dSzimbólum{$colon} {$p}%rank_symbol%"
     material: IRON_INGOT
     lore:
-      - "&6A rang szimbóluma."
+      - "{$s}A rang szimbóluma."
       - "Csak 5 karakter hosszú"
       - "lehet, de támogatottak"
       - "a színek is."
@@ -58,40 +59,41 @@ options:
     name: "%rank_color%Szín"
     material: COAL
     lore:
-      - "&6A rang színe a csevegésben."
+      - "{$s}A rang színe a csevegésben."
       - "Legfeljebb 5 karakter lehet."
     posx: 6
     posy: 3
   priority:
-    name: "&aPioritás{$colon} &2%rank_priority%"
+    name: "&aPioritás{$colon} {$p}%rank_priority%"
     material: PAPER
     lore:
-      - "&6A rangnak a pioritása. Az alacsonyabb"
-      - "számok jelentik a magasabb pioritást."
-      - "A király rangjának a pioritása nem"
-      - "változtatható meg."
+      - "{$s}Ennek a rangnak a pioritása. Az"
+      - "alacsonyabb számok jelentik a"
+      - "magasabb pioritást."
+      - "A király rangjának a pioritása"
+      - "nem változtatható meg."
     posx: 7
     posy: 3
   max-claims:
-    name: "&7Max foglalás{$colon} &2%rank_max_claims%"
+    name: "{$sep}Max foglalás{$colon} {$p}%rank_max_claims%"
     material: BOOK
     lore: |
-      &7Az ezzel a ranggal rendelkező játékosok
-      nem foglalhatnak a megadott értéknél
-      több területet.
-
+      {$sep}Ezzel a ranggal rendelkező játékosok
+      nem foglalhatnak le a megadott
+      értéknél több területet.
+      
       Ha több területet akarnak foglalni,
-      akkor azokat a területeket kell
+      akkor azokat a területeket kell 
       feloldaniuk, amelyeket ők maguk
       foglaltak, nem pedig azokat,
-      amelyeket más tagok foglaltak.
+      amelyeket más tagok foglaltak le.
     posx: 8
     posy: 3
   copy:
     name: "&1Rang másolása"
     material: WRITABLE_BOOK
     lore:
-      - "&6A tulajdonságok átmásolása egy"
+      - "{$s}A tulajdonságok átmásolása egy"
       - "másik rangból ebbe a rangba."
     posx: 5
     posy: 1
@@ -99,7 +101,7 @@ options:
     posx: 5
     posy: 4
     material: ENCHANTED_BOOK
-    name: '{$p}Jogosultság'
+    name: '{$p}Jogosultságok'
 
   delete:
     posx: 9
@@ -107,7 +109,7 @@ options:
     material: BARRIER
     name: '{$p}&4Törlés'
     lore:
-      - "&6Rangnak a törlése."
+      - "&6Ennek a rangnak a törlése."
       - "Az összes játékos akinek ez volt a"
       - "rangja alattvalóvá lesz lefokozva,"
       - "hacsak nem hozol létre egy új"
@@ -115,10 +117,10 @@ options:
       - "véletlenszerű időn belül."
 
   back:
-    name: "&2Vissza"
+    name: "{$p}vissza"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
     lore:
-      - "&6Vissza a rangok menübe."
+      - "{$s}Vissza a rangok menübe."
     posx: 1
     posy: 1

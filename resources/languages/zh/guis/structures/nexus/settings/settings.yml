@@ -39,6 +39,14 @@ options:
       - "{$p}改变你与其他王国的外交关系。"
     posx: 3
     posy: 3
+  banners:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '{$s}旗帜'
+    lore: |
+      {$sep}为在线网络地图设置旗帜和图标。
+      它们也可能作为装饰方块等出现，代表着你的王国。
   tax:
     name: "{$s}赋税"
     material: PAPER
@@ -52,7 +60,7 @@ options:
     posx: 6
     posy: 1
   blue-stained-glass-pane:
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52]
     material: BLUE_STAINED_GLASS_PANE
     name: ''
   public-home:
@@ -72,25 +80,16 @@ options:
     name: "{$s}隐藏{$colon} %kingdoms_bool_kingdom_is_hidden%"
     lore: |
       &7隐藏王国在{$p}/k map&7地图上和服务器卫星地图上会被隐藏。
-  flag:
-    name: "{$s}旗帜"
-    material: BLACK_BANNER
-    lore:
-      - "{$p}设置你的王国在Dynmap(一个能与王国联动的插件)上"
-      - "显示的位置。点击这里查看当前的旗帜URL。"
-      - "这不会使地图立即更新。"
-    posx: 5
-    posy: 3
   color:
     name: "&6颜色{$colon} &c%r%&7, &2%g%&7, &9%b% &7(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%&7)"
     material: LIME_DYE
     lore:
       - "{$p}设置你的王国在Dynmap(一个能与王国联动的插件)上"
-      - "显示的地块颜色。"
+      - "显示的领土颜色。"
       - "这不会使地图立即更新。"
     posx: 5
     posy: 5
-
+  
   back:
     name: "{$p}返回"
     material: PLAYER_HEAD
@@ -100,6 +99,113 @@ options:
     posx: 1
     posy: 1
   light-blue-stained-glass-pane:
-    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    slots: [1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 32, 33, 35, 36, 39, 41, 44, 45, 53]
     material: LIGHT_BLUE_STAINED_GLASS_PANE
     name: ''
+  upgrade:
+    posx: 5
+    posy: 4
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}升级{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lvl-I:
+        condition: 'level == 1'
+        lore: |
+          {$dot} {$p}&l杂项升级{$colon}
+            {$sdot} {$s}解锁&c疯狂
+
+          {$dot} {$p}&l属性升级{$colon}
+            {$sdot} {$s}全部升级{$colon} {$sp}{$lvlup} Lvl.30
+
+          {$dot} {$p}&l斗士升级{$colon}
+            {$sdot} {$s}解锁&b抛掷
+            {$sdot} {$s}解锁&b伤害封顶
+            {$sdot} {$s}生命值{$colon} {$sp}{$lvlup} Lvl.30
+
+          {$dot} {$p}&l炮塔{$colon}
+            {$sdot} {$s}解锁&d疗愈
+            {$sdot} {$s}解锁&3焰镞
+
+          {$dot} {$p}&l结构{$colon}
+            {$sdot} {$s}解锁&4发电站
+            {$sdot} {$s}解锁&e前哨
+
+          {$p}满级{$colon} {$s}%roman@max_level%
+          {$p}价格{$colon} {$s}%fancy@upgrade_cost%
+      lvl-II:
+        condition: 'level == 2'
+        lore: |
+          {$dot} {$p}&l杂项升级{$colon}
+            {$sdot} {$s}解锁&e守卫
+            {$sdot} {$s}解锁&3荣耀
+            {$sdot} {$s}解锁&3保留物品栏
+
+          {$dot} {$p}&l属性升级{$colon}
+            {$sdot} {$s}全部升级{$colon} {$sp}{$lvlup} Lvl.40
+
+          {$dot} {$p}&l斗士升级{$colon}
+            {$sdot} {$s}解锁&b拖拽
+            {$sdot} {$s}解锁&b雷神之力
+            {$sdot} {$s}生命值{$colon} {$sp}{$lvlup} Lvl.40
+
+          {$dot} {$p}&l炮塔{$colon}
+            {$sdot} {$s}解锁&a辐射
+            {$sdot} {$s}解锁&c流焱
+
+          {$dot} {$p}&l结构{$colon}
+            {$sdot} {$s}解锁&a提取器
+
+          {$p}满级{$colon} {$s}%roman@max_level%
+          {$p}价格{$colon} {$s}%fancy@upgrade_cost%
+      lvl-III:
+        condition: 'level == 3'
+        lore: |
+          {$dot} {$p}&l杂项升级{$colon}
+            {$sdot} {$s}解锁&4核心守护者
+            {$sdot} {$s}&3保留物品栏{$colon}: {$sp}{$lvlup} Lvl.2
+
+          {$dot} {$p}&l属性升级{$colon}
+            {$sdot} {$s}全部升级{$colon} {$sp}{$lvlup} Lvl.40
+
+          {$dot} {$p}&l斗士升级{$colon}
+            {$sdot} {$s}解锁&b呼叫支援
+            {$sdot} {$s}全部升级{$colon} {$sp}{$lvlup} Lvl.30
+
+          {$dot} {$p}&l炮塔{$colon}
+            {$sdot} {$s}解锁&3炽束
+            {$sdot} {$s}解锁&7强援
+
+          {$dot} {$p}&l结构{$colon}
+            {$sdot} {$s}解锁&c传送板
+            {$sdot} {$s}解锁&3控制器
+
+          {$p}满级{$colon} {$s}%roman@max_level%
+          {$p}价格{$colon} {$s}%fancy@upgrade_cost%
+      lvl-IV:
+        condition: 'level == 4'
+        lore: |
+          {$dot} {$p}&l杂项升级{$colon}
+            {$sdot} {$s}解锁&3飞行
+            {$sdot} {$s}&3保留物品栏{$colon}: {$sp}{$lvlup} Lvl.3
+
+          {$dot} {$p}&l属性升级{$colon}
+            {$sdot} {$s}全部升级{$colon} {$sp}{$lvlup} Lvl.70
+
+          {$dot} {$p}&l斗士升级{$colon}
+            {$sdot} {$s}解锁&b爆发
+
+          {$dot} {$p}&l炮塔{$colon}
+            {$sdot} {$s}解锁&4炼狱
+
+          {$dot} {$p}&l结构{$colon}
+            {$sdot} {$s}解锁&3攻城炮
+
+          {$p}满级{$colon} {$s}%roman@max_level%
+          {$p}价格{$colon} {$s}%fancy@upgrade_cost%
+      else:
+        lore: ["&c未知的等级: %level%"]
+    maxxed:
+      name: "{$sp}等级{$colon} {$s}%roman@level% {$sep}(&5已满级{$sep})"
+      material: NETHER_STAR

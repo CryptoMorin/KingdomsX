@@ -10,14 +10,17 @@ options:
     material: MUSIC_DISC_CHIRP
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ ALL ]
-    lore:
-      - "&6Az erőtér meletti chunk-okat nem"
-      - "lehet addig ostromolni, amíg az"
-      - "erőtér területét nem ostromolták meg."
-      - "A védelem rádiusza &23x3 &6az 1. szinten"
-      - "és &25x5 &6a 2. szinten."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Az erőtér meletti chunk-okat nem
+      lehet addig ostromolni, amíg az
+      erőtér területét nem ostromolták meg.
+      A védelem rádiusza {$p}3x3 {$s}az 1. szinten,
+      és {$p}5x5 {$s}a 2. szinten.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Költség{$colon} {$s}%fancy@cost%
+      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Királyságod békés királyság,
+      ezért ennek a struktúrának semmi haszna nem lesz a királyságodban."}
     posx: 3
     posy: 2
   extractor:
@@ -25,12 +28,13 @@ options:
     material: MUSIC_DISC_CAT
     sound: BLOCK_ANVIL_LAND
     flags: [ ALL ]
-    lore:
-      - "&fA fúró Nexusz pontokat termel."
-      - "Ezek a pontok bármikor"
-      - "begyűjthetőek."
-      - ""
-      - "&2Költségt{$colon} &6%cost%"
+    lore: |
+      {$s}A fúró Nexusz pontokat termel.
+      Ezek a pontok bármikor
+      begyűjthetőek."
+
+      {$chk-kingdom-lvl-III}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   outpost:
@@ -38,11 +42,16 @@ options:
     material: MUSIC_DISC_13
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ ALL ]
-    lore:
-      - "&6Az előőrsből Nexus pontokért"
-      - "Varázslat Palackját lehet szerezni."
-      - ""
-      - "&2Költsége{$colon} &6%cost%"
+    lore: |
+      {$s}Királyságok globális árupiaca.
+      Vásárolj és adj el különböző tárgyakat,
+      ami globálisan befolyásolja az értéküket
+      az összes előőrsön.
+      Ez a struktúra lehetővé teszi a nexusod 
+      távoli elérését is.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   warppad:
@@ -50,11 +59,12 @@ options:
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ ALL ]
-    lore:
-      - "&6Teleportpadot használva lehet az egyik"
-      - "struktúráról egy másikra teleportálni."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Teleportpadot használva lehet az egyik
+      struktúráról egy másikra teleportálni.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   regulator:
@@ -62,16 +72,15 @@ options:
     material: MUSIC_DISC_WARD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "&6Játékos attribútumainak kezelése mint"
-      - "az építések, toronnyal tűzszünet, stb."
-      - "A játékos blokkal való inerakciójának"
-      - "módosítása. Letíltása a szörnyek vagy "
-      - "állatok megjelenésének. Robbanás"
-      - "engedélyezése. Tornyok lőszerrel"
-      - "való automatikus töltése."
-      - ""
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Játékos attribútumainak kezelése mint
+      az építések, toronnyal tűzszünet, stb.
+      Állatok/szörnyek megjelenésének, tornyok
+      (pl lőszerrel való automatikus töltés) és
+      robbanások szabályzása.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   siege-cannon:
@@ -79,20 +88,21 @@ options:
     material: MUSIC_DISC_STRAD
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
-    lore:
-      - "&6Az ágyút használva lehet egy királyság"
-      - "pajzsát áttörni."
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$s}Az ágyút használva lehet egy királyság
+      pajzsát áttörni.
+
+      {$chk-kingdom-lvl-V}
+      {$p}Költség{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 1
-
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: PLAYER_HEAD
     # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
     skull: "{$gui-back}"
-    lore:
-      - "&6Vissza a Nexus menübe."
+    lore: |
+      {$s}Vissza a nexus menübe.
     posx: 5
     posy: 3
   cyan-glass:

@@ -18,12 +18,12 @@ options:
     posx: 2
     posy: 1
     material: BLACK_BANNER
-    name: '{$p}Zászló'
+    name: '{$p}Zászlók'
     lore: |
-      &7Klikk a módosításhoz
+      {$sep}Klikk a módosításhoz
       {$dot} {$p}Rejtett attribútumok{$colon} %item_flag_hide_attributes%
       {$dot} {$p}Rejtett megsemmisítések{$colon} %item_flag_hide_destroys%
-      {$dot} {$p}Rejtett festék{$colon} %item_flag_hide_dye%
+      {$dot} {$p}Rejtett festések{$colon} %item_flag_hide_dye%
       {$dot} {$p}Rejtett bűvölések{$colon} %item_flag_hide_enchants%
       {$dot} {$p}Rejtett ráhelyezés{$colon} %item_flag_hide_placed_on%
       {$dot} {$p}Rejtett törhetetlenség{$colon} %item_flag_hide_unbreakable%
@@ -46,21 +46,21 @@ options:
     posx: 2
     posy: 2
     material: ENCHANTED_BOOK
-    name: '{$p}Bűbájok'
-    lore: [ "&7Klikk a módosításhoz" ] # The lore is modified by the plugin to add set enchants
+    name: '{$p}Büvőlések'
+    lore: [ "{$sep}Klikk a módosításhoz" ] # The lore is modified by the plugin to add set enchants
   unbreakable:
     isUnbreakable:
       condition: item_unbreakable
-      name: '{$p}Törhetetlen'
+      name: '{$p}Törhetetlenség'
       glow: true
     else:
-      name: '{$e}Törhető'
+      name: '{$e}Törékeny'
     posx: 3
     posy: 2
     material: BEDROCK
     lore: |
-      &7Ha egy tárgy törhetetlen,
-      akkor nem csökken a tartóssága,
+      {$sep}Ha egy tárgy törhetetlen,
+      akkor nem csökken az élettartama,
       amikor használod.
   nbt:
     posx: 4
@@ -73,11 +73,11 @@ options:
     material: SLIME_BALL
     name: '{$p}Mennyiség{$colon} {$s}%item_amount%'
     lore: |
-      &7Maximálisan {$p}64 &7lehet ez az
-      összeg, de technikailag beállítható
-      {$p}127 &7is, ami ritka helyzetekben okozhat
+      {$sep}Maximálisan {$p}64 {$sep}lehet ez az
+      összeg, de technikailag beállítható 
+      {$p}127 {$sep}is, ami ritka helyzetekben okozhat
       problémákat. Például a GUI nem tudja
-      megjeleníteni ezt a változást, és
+      megjeleníteni ezt a változást, és 
       amikor a leltárba kerül, előfordulhat,
       hogy nem tartja meg az összeget.
   custom-model-data:
@@ -86,9 +86,9 @@ options:
     material: FIREWORK_STAR
     name: '{$p}Egyéni modelladat{$colon} {$s}%item_custom_model_data%'
     lore: |
-      &7Ez az 1.14+ verzióhoz készült
+      {$sep}Ez az 1.14+ verzióhoz készült
       erőforrás csomagoknál van használva,
-      amelyek új tárgyakat adnak a játékhoz.
+      amelyek új tárgyakat adnak a játékhoz
       Ez alapvetően csak az azonos típusú
       tárgyak újbóli kinézetét jelenti. Ezt
       használják az olyan pluginek, mint az

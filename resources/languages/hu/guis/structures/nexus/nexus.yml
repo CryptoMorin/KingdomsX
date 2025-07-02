@@ -1,29 +1,60 @@
-title: "&2&l%kingdoms_kingdom_name% &6&lnexusa"
+title: "{$p}&l%kingdoms_kingdom_name% {$s}&lnexusa"
 rows: 6
 sound: BLOCK_BEACON_ACTIVATE, 0.3
-icon: "https://upload.wikimedia.org/wikipedia/commons/a/a0/Nexus-Logo.png"
-form-type: CUSTOM
-form-options:
-  settings:
-    component-type: LABEL
-    text: "&5Beállítások"
+
+forms:
+  title: 'Cím'
+  icon: "https://www.sonatype.com/hubfs/Company%20Logo/SON_logo_profilepict@2x%20(1).png"
+  type: CUSTOM
+  options:
+    settings:
+      component-type: LABEL
+      text: "&5Beállítások"
+    some-button:
+      component-type: BUTTON
+      text: "Egy gomb!"
+    some-toggle:
+      component-type: TOGGLE
+      text: "Egy kapcsoló!"
+      default-value: true
+    some-slider:
+      component-type: SLIDER
+      text: "Egy csúszka!"
+      min: 5
+      max: 110
+      step: 3
+      default-value: 25
+    some-step-slider:
+      component-type: STEP_SLIDER
+      text: "A step-slider!"
+      steps: [ "Egy nekem", "Kettő neked", "Három nekünk" ]
+      default-value: 2
+    some-dropdown:
+      component-type: DROPDOWN
+      text: "Egy legördűlő menü!"
+      steps: [ "Dobj nekem", "Dobd neked", "Dobj nekünk" ]
+      default-value: 1
+    some-input:
+      component-type: INPUT
+      text: "Egy bevitel!!"
+      placeholder: "Cserélj le!"
+      default-value: "Törölj"
 
 options:
   settings:
-  settings:
-    name: "&7Beállítások"
+    name: "{$sep}Beállítások"
     material: NETHER_STAR
-    lore:
-      - "&6A királyság beállításainak megváltoztatása."
+    lore: |
+      {$s}A királyság beállításainak megváltoztatása.
     posx: 5
     posy: 2
   members:
-    name: "&2Tagok"
+    name: "{$p}Tagok"
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
-    lore:
-      - "&6A királyság tagjainak kezelése."
-      - "&6Kinevezésük vagy lefokozásuk."
+    lore: |
+      {$s}A királyság tagjainak kezelése.
+      Kinevezésük vagy lefokozásuk.
     posx: 5
     posy: 3
   masswar:
@@ -31,158 +62,169 @@ options:
       condition: kingdoms_masswar_is_running
       name: "&4Háború"
       material: CLOCK
-      lore:
-        - "&6A háború alatt az ostromok ingyenesek."
-        - "Jelenleg háburú &2van."
-        - ""
-        - "{$p}A háború befejeződik{$colon} {$s}%kingdoms_time_masswar_time%"
+      lore: |
+        {$s}A háború alatt az ostromok ingyenesek.
+        Jelenleg háburú {$p}van.
+
+        {$p}A háború befejeződik{$colon} {$s}%kingdoms_time_masswar_time%
     else:
       name: "&4Háború"
       material: RED_WOOL
-      lore:
-        - "&6A háború alatt az ostromok ingyenesek."
-        - "Jelenleg &cnincs &6háború."
-        - ""
-        - "{$p}Következő háború{$colon} {$s}%kingdoms_time_masswar_time%"
+      lore: |
+        {$s}A háború alatt az ostromok ingyenesek.
+        Jelenleg &cnincs {$s}háború.
+
+        {$p}Következő háború{$colon} {$s}%kingdoms_time_masswar_time%
     posx: 6
     posy: 3
   nexus-chest:
     name: "&eNexus láda"
     material: CHEST
-    lore:
-      - "&6Tárgyak belehelyezése a királyságod"
-      - "&6ládájába, amiket mindenki használhat."
+    lore: |
+      {$s}Tárgyak belehelyezése a királyságod
+      ládájába, amiket mindenki használhat.
     posx: 7
     posy: 3
   turrets:
-    name: "&9Tornyok"
+    name: "{$sp}Tornyok"
     material: SPECTRAL_ARROW
-    lore:
-      - "&6Tornyokat vásárolhatsz Nexus"
-      - "pontokért amiket el tudsz helyezni"
-      - "a területeden. Ezek megvédenek a "
-      - "szörnyektől és az ostromlóktól."
+    lore: |
+      {$s}Tornyokat vásárolhatsz Nexus
+      pontokért amiket el tudsz helyezni
+      a területeden. Ezek megvédenek a
+      szörnyektől és az ostromlóktól.
     posx: 3
     posy: 3
   structures:
     name: "&5Struktúrák"
     material: REDSTONE_LAMP
-    lore:
-      - "&6A struktúrák különböző dolgokat tudnak."
-      - "Területenként csak egy struktúra lehet."
-      - "Megjegyzés, hogy a Nexus is egy struktúra."
-      - "A struktúrák Nexus pontokért vehetőek."
+    lore: |
+      {$s}A struktúrák különböző dolgokat tudnak.
+      Területenként csak egy struktúra lehet.
+      Megjegyzés, hogy a Nexus is egy struktúra.
+      A struktúrák Nexus pontokért vásárolhatóak.
     posx: 4
     posy: 3
   misc-upgrades:
-    name: "&bVegyes fejlesztések"
+    name: "&bVegyesfejlesztések"
     material: ENCHANTING_TABLE
-    lore:
-      - "&6Különböző szempontok szerinti"
-      - "egyéb vegyes fejlesztések a"
-      - "királyságod tökéletesítéséhez."
+    lore: |
+      {$s}Különböző szempontok szerinti
+      vegyesfejlesztések a királyságod
+      tökéletesítéséhez.
     posx: 2
     posy: 3
   logs:
     name: "&aEllenőrzési naplók"
     material: KNOWLEDGE_BOOK
-    lore:
-      - "&6Királyság naplójának megtekintése"
-      - "az ostromok, foglalások, visszaadások,"
-      - "és az egyéb tagi aktivitások nyomkövetéséhez."
-      - ""
-      - "&7A legtöbb ilyen napló 30 napig"
-      - "marad meg azután, hogy törölték őket."
-      - "Néhány kevésbé fontos hamarabb is"
-      - "törlődhet."
+    lore: |
+      {$s}Királyság naplójának megtekintése
+      az ostromok, foglalások, felszabadítások,
+      és az egyéb tagi aktivitások nyomkövetéséhez.
+
+      {$sep}A legtöbb bejegyzés a létrehozásuk
+      után 30 napig érhető el.
+      Néhány kevésbé fontos rövidebb ideig
+      marad meg.
     posx: 8
     posy: 3
   resource-points:
     name: "&eNexus pont átalakító"
     material: HAY_BLOCK
-    lore:
-      - "&6Tárgyaid átalakítása"
-      - "Nexus pontokká."
-      - "Királyságodnak &e%fancy@kingdoms_resource_points% &6Nexus pontja van."
+    lore: |
+      {$s}Tárgyaid átalakítása
+      Nexus pontokká.
+      Királyságodnak &e%fancy@kingdoms_resource_points% {$s}Nexus pontja van.
     posx: 4
     posy: 5
   damage-reduction:
     name: "&3Sebzéscsökkentés"
     material: DIAMOND_CHESTPLATE
     flags: [ ALL ]
+
+    powerup-conds: &pwrup-conds
+      - '{? level >= 20 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - '{? level >= 40 && kingdoms_kingdom_level < 4 ? "{$kingdom-lvl-IV}"}'
+      - '{? level >= 50 && kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
+
     lore:
-      - "&6Minden fejlesztés &e1 %&6-kal"
+      - "{$s}Minden fejlesztés &e1%{$s}-kal"
       - "csökkenti az elszenvedett sebzést"
       - "a királyságod területén."
       - ""
-      - "&6Szint{$colon} &2%level%"
-      - "&6Költség{$colon} &2%cost%"
+      - <<: *pwrup-conds
+      - "{$s}Szint{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Költség{$colon} {$p}%cost%"
     posx: 7
     posy: 4
   damage-boost:
-    name: "&3Sebzés erősítése"
+    name: "&3Sebzés fokozása"
     material: DIAMOND_SWORD
     flags: [ ALL ]
     lore:
-      - "&6Minden fejlesztés megnöveli"
-      - "a sebzésedet &e1 %&6-kal a"
+      - "{$s}Minden fejlesztés megnöveli"
+      - "a sebzésedet &e1%{$s}-kal a"
       - "királyságod területén."
       - ""
-      - "&6Szint{$colon} &2%level%"
-      - "&6Költség{$colon} &2%cost%"
+      - <<: *pwrup-conds
+      - "{$s}Szint{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Költség{$colon} {$p}%cost%"
     posx: 3
     posy: 4
   arrow-boost:
-    name: "&7Nyílvessző erősítése"
+    name: "{$sep}Nyílvessző fokozása"
     material: BOW
     lore:
-      - "&6Minden fejlesztés megnöveli"
-      - "az íj sebzését &e1 %&6-kal a"
+      - "{$s}Minden fejlesztés megnöveli"
+      - "a nyílvessző sebzését &e1%{$s}-kal a"
       - "királyságod területén."
       - ""
-      - "&6Szint{$colon} &2%level%"
-      - "&6Költség{$colon} &2%cost%"
+      - <<: *pwrup-conds
+      - "{$s}Szint{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Költség{$colon} {$p}%cost%"
     posx: 4
     posy: 4
   regeneration-boost:
-    name: "&dRegeneráció erősítése"
+    name: "&dRegeneráció fokozása"
     material: GOLDEN_APPLE
     lore:
-      - "&6Minden fejlesztés &e1%&6-kal növeli a"
+      - "{$s}Minden fejlesztés &e1%{$s}-kal növeli a"
       - "területeden a regeneráció mértékét."
       - "Ez a fejlesztés önmagában nem végez"
       - "regenerációt, csak az ételek evése utáni"
       - "gyógyulás mértékét gyorsítja meg."
       - ""
-      - "&6Szint{$colon} &2%level%"
-      - "&6Költség{$colon} &2%cost%"
+      - <<: *pwrup-conds
+      - "{$s}Szint{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Költség{$colon} {$p}%cost%"
     posx: 6
     posy: 4
   ranks:
     name: "&5Rangok és jogosultságok"
     material: BOOKSHELF
     lore:
-      - "&6A rangok és jogosultságok"
+      - "{$s}A rangok és jogosultságok"
       - "módosítása a királyságodban."
     posx: 6
     posy: 5
   champion-upgrades:
-    name: "&2Bajnok fejlesztései"
+    name: "{$p}Bajnok fejlesztései"
     material: ZOMBIE_HEAD
     lore:
-      - "&6A Bajnok fejlesztése, hogy erősebb"
-      - "védelmet adjon az ostromlókkal szemben."
+      - "{$s}A Bajnok fejlesztése, hogy erősebb"
+      - "védelme legyen az ostromlókkal szemben."
     posx: 5
     posy: 5
   mailbox:
-    name: "&2Postaláda"
+    name: "{$p}Postaláda"
     material: PLAYER_HEAD
     # https://minecraft-heads.com/custom-heads/decoration/18054-mailbox-green
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
     lore: |
-      &7Küldj és fogadj leveleket
+      {$sep}Levelek küldése és fogadása 
       más királyságokból.
-      &2Összes levél{$colon} &6%kingdoms_mails_total%
+      {$p}Összes levél{$colon} {$s}%kingdoms_mails_total%
     posx: 5
     posy: 4
 

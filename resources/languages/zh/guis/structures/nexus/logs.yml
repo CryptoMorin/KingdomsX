@@ -44,43 +44,43 @@ rows: 6
       &7准备防守。
   kingdom-claim:
     material: GRASS_BLOCK
-    name: '&2占领地块'
+    name: '&2占领领土'
     lore: |
       {$p}玩家{$s}%player%
-      {$p}占领了以下地块{$colon}
+      {$p}占领了以下领土{$colon}
       %lands%
       {$p}占领时间{$colon}{$s}%time%
   kingdom-unclaim:
     material: GRASS_BLOCK
-    name: '&c放弃地块'
+    name: '&c放弃领土'
     lore: |
       {$p}玩家{$s}%player%
-      {$p}放弃了以下地块{$colon}
+      {$p}放弃了以下领土{$colon}
       %lands%
       {$p}时间{$colon}{$s}%time%
   kingdom-invasion-invader:
     material: IRON_SWORD
-    name: '&2入侵地块'
+    name: '&2入侵领土'
     lore: |
-      {$p}玩家{$s}%player%{$p}入侵了地块{$colon}
+      {$p}玩家{$s}%player%{$p}入侵了领土{$colon}
       {$s}%chunk%
       {$p}入侵王国{$colon}{$s}%kingdoms_kingdom_name%
       {$p}劫掠模式{$colon}%ransack-mode%
       {$p}入侵结果{$colon}{$s}%result%
       {$p}入侵时间{$colon}{$s}%time%
-      {$p}受影响地块{$colon}
+      {$p}受影响领土{$colon}
       %affected-lands%
   kingdom-invasion-invaded:
     material: GOLD_SWORD
-    name: '&c地块被入侵'
+    name: '&c领土被入侵'
     lore: |
-      {$p}玩家{$s}%player%{$p}入侵了你王国的地块{$colon}
+      {$p}玩家{$s}%player%{$p}入侵了你王国的领土{$colon}
       {$s}%chunk%
       {$p}入侵王国{$colon}{$s}%kingdoms_kingdom_name%
       {$p}劫掠模式{$colon}%ransack-mode%
       {$p}入侵结果{$colon}{$s}%result%
       {$p}入侵时间{$colon}{$s}%time%
-      {$p}受影响地块{$colon}
+      {$p}受影响领土{$colon}
       %affected-lands%
   kingdom-upgrade-misc:
     material: DIAMOND_HOE
@@ -220,7 +220,8 @@ rows: 6
   player-rank-change:
     lore: "{$s}%old-rank%{$sep}➜{$s}%new-rank%"
     promoted:
-      condition: 'old_rank_priority > new_rank_priority' # It's the opposite
+      condition: 'old_rank_priority > new_rank_priority'
+      # It's the opposite
       material: GREEN_WOOL
       name: '&a玩家晋升{$colon}{$s}%player%'
     else: # demoted
@@ -282,10 +283,10 @@ rows: 6
       {$p}更改时间{$colon}{$s}%time%
   rank-change-max-claims:
     material: BOOK
-    name: '&9权限组最大地块占领数更改'
+    name: '&9权限组最大领土占领数更改'
     lore: |
       {$p}玩家{$s}%player%{$p}更改了权限组{$colon}
-      %rank%{$p}的最大地块占领数{$colon}
+      %rank%{$p}的最大领土占领数{$colon}
       {$s}%old-max-claims%{$sep}➜{$s}%new-max-claims%
       {$p}更改时间{$colon}{$s}%time%
   rank-change-material:
@@ -386,9 +387,25 @@ rows: 6
 
 options:
   decoration:
-    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
     material: RED_STAINED_GLASS_PANE
     name: ''
+  
+  filters-and-sorting:
+    posx: 5
+    posy: 1
+    material: BOOK
+    name: "{$p}Filters & Sorting"
+    lore: |
+      {$p}Filters{$colon}
+       {$dot} {$s}Player{$colon} %bool_filters_player%
+       {$dot} {$s}Time{$colon} %bool_filters_time%
+       {$dot} {$s}Type{$colon} %bool_filters_type%
+
+      {$p}Sorting{$colon}
+       {$dot} {$s}Ascending Time{$colon} %bool_sorting_time_ascending%
+       {$dot} {$s}Descending Time{$colon} %bool_sorting_time_descending%
+       {$dot} {$s}Type{$colon} %bool_sorting_type%
   next-page:
     name: '{$s}下一页 {$p}- &e%page%{$sep}/&e%pages%'
     material: PLAYER_HEAD
@@ -399,11 +416,11 @@ options:
     material: PLAYER_HEAD
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
     slot: 0
-
+  
   entry:
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
     '[switch]': type
-
+  
   back:
     posx: 5
     posy: 6

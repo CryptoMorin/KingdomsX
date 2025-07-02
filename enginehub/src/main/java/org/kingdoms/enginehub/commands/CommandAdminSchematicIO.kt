@@ -34,6 +34,10 @@ class CommandAdminSchematicSave(parent: KingdomsParentCommand) : KingdomsCommand
         val schemName = context.arg(0)
         context.`var`("schematic_name", schemName)
 
+        if (schemName.contains('.')) {
+            return context.fail(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_EXTENSION)
+        }
+
         hasClipboard(context)?.let { return it }
 
         if (SchematicManager.schematicExists(schemName)) {
@@ -141,7 +145,9 @@ class CommandAdminSchematicList(parent: KingdomsParentCommand) : KingdomsCommand
             )
         }.sortedBy { it.key }, null)
 
-        val style = DefaultStringTreeSettings.generateTreeStyle(flatten = true, maxColumns = 10)
+        val style = DefaultStringTreeSettings.generateTreeStyle(flatten = true, maxColumns = 10).apply {
+            columizeFromLevel = 2
+        }
         for (line in TreeBuilder(pathBuilder).parse(style).print().lines) {
             val entryPhContainer = MessagePlaceholderProvider().addChild("entry") { ph -> entryMap[ph.toInt()] }
 

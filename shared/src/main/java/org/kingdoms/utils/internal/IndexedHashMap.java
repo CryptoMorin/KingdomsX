@@ -3,6 +3,7 @@ package org.kingdoms.utils.internal;
 import org.kingdoms.utils.internal.arrays.UnsafeArrayList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -11,7 +12,7 @@ import java.util.function.Function;
  * A mix of {@link Map} with {@link List} that provides low-level, unsafe operations for performance.
  */
 public class IndexedHashMap<K, V> {
-    private final Map<K, V> map = new UnsafeHashMap<>();
+    private final Map<K, V> map = new HashMap<>();
     private final UnsafeArrayList<K> list;
 
     public IndexedHashMap(K[] sample) {

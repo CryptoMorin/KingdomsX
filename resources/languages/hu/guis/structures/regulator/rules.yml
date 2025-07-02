@@ -16,8 +16,8 @@ options:
   disable-mob-spawning:
     material: ZOMBIE_SPAWN_EGG
     lore: |
-      &7Letiltja az összes {$p}természetes
-      &7szörny (mob) megjelenését. Az
+      {$sep}Letiltja az összes {$p}természetes
+      {$sep}szörny (mob) megjelenését. Az
       állatok továbbra is megidéződnek.
     enabled:
       condition: enabled
@@ -30,8 +30,8 @@ options:
   disable-animal-spawning:
     material: SHEEP_SPAWN_EGG
     lore: |
-      &7Letiltja az összes {$p}természetes
-      &7állat megjelenését.
+      {$sep}Letiltja az összes {$p}természetes
+      {$sep}állat megjelenését.
     enabled:
       condition: enabled
       name: "{$enabled} Állatok megjelenésének tiltása"
@@ -43,9 +43,9 @@ options:
   disable-turrets:
     material: ARROW
     lore: |
-      &7Megakadályozza az összes
-      torony lövését, amelyek ezen
-      a területen vannak elhelyezve.
+      {$sep}Megakadályozza ezen a
+      területen elhelyezett összes
+      torony aktiválását.
     enabled:
       condition: enabled
       name: "{$enabled} Torony letiltása"
@@ -57,16 +57,16 @@ options:
   auto-fill-turrets:
     material: SPECTRAL_ARROW
     lore: |
-      &7Automatikusan tölti lőszerrel
+      {$sep}Automatikusan tölti lőszerrel
       ezen a területen lévő tornyokat.
-      {$p}Feltételek{$colon}
+      {$p}FEltételek{$colon}
       {$dot} {$s}A toronyból teljesen ki
         kell fogynia a lőszernek.
       {$dot} {$s}A toronynak egy területen
         kell lennie a szabályozóval.
       {$dot} {$s}A királyságodnak elég Nexus
         ponttal kell rendelkeznie az
-        újratöltéshez
+        újratöltéshez.
     enabled:
       condition: enabled
       name: "{$enabled} Torony automatikus töltése"
@@ -78,9 +78,12 @@ options:
   allow-explosions:
     material: TNT
     lore: |
-      &7Engedélyezi, hogy az összes
+      {$sep}Engedélyezi, hogy az összes
       fajta robbanás kárt tegyen
       ezen a területen.
+      Csak akkor működik, ha már
+      fejlesztetted a {$p}Robbanásvédelem
+      {$sep}nevű vegyesfejlesztést.
     enabled:
       condition: enabled
       name: "{$enabled} Robbanások engedélyezése"
@@ -94,9 +97,9 @@ options:
     posy: 3
     material: FIRE_CHARGE
     lore: |
-      &7Engedélyezi az összes fajta
-      tűzkárt ezen a területen.
-      Beleértve a tűzterjedést,
+      {$sep}Engedélyezi az összes fajta
+      tűzkárt ezen a területen,
+      beleértve a tűzterjedést,
       a blokkégést, stb.
     enabled:
       condition: enabled

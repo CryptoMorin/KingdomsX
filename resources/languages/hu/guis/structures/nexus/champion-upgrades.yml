@@ -1,4 +1,4 @@
-title: "{$sep}-=( &2Bajnok fejlesztései {$sep})=-"
+title: "{$sep}-=( {$p}Bajnok fejlesztései {$sep})=-"
 rows: 6
 sound: ITEM_ARMOR_EQUIP_DIAMOND
 
@@ -8,7 +8,7 @@ options:
     material: DIAMOND_SWORD
     flags: [ ALL ]
     lore:
-      - "&7A Bajnok beállításainak módosítása,"
+      - "{$desc}A Bajnok beállításainak módosítása,"
       - "úgymint a felszerelés fejlesztése"
       - "vagy a Bajnok típusának cserélése."
     posx: 3
@@ -17,86 +17,92 @@ options:
     name: "&bBajnok életereje"
     material: MELON_SLICE
     lore:
-      - "&7Szintenként &250 &7életerőt"
+      - "{$desc}Szintenként {$p}50 {$desc}életerőt"
       - "add a Bajnok életerejéhez"
-      - "&7A Bajnok jelenlegi életereje{$colon} &2%scaling%"
+      - "{$desc}Current champion's health{$colon} {$p}%scaling%"
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 4
     posy: 2
   reinforcements:
-    name: "&bErősítések"
+    name: "&bUtánpótlás"
     material: ZOMBIE_HEAD
     lore:
-      - "&7Minden fejlesztés &230 &7másodpercenként"
-      - "további Nexus Őrzőket idéz le."
-      - "A megjelenő őrök megegyeznek"
-      - "a nexus őrökkel az egyéb"
-      - "fejlesztésektől függően."
+      - "{$p}3 {$desc}percenként Nexus őrök idéződnek."
+      - "Minden fejlesztés {$p}15 másodperccel {$desc}csökkenti"
+      - "a megjelenések között eltelt időt."
+      - "A megjelenő őrők értékei megegyeznek"
+      - "a Nexus őrzőkkel."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$chk-kingdom-lvl-IV}"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 5
     posy: 2
   resistance:
     name: "&bEllenállás"
     material: BRICK
     lore:
-      - "&7Minden fejlesztés növeli az esélyt, hogy"
-      - "a Bajnok ne löködjön hátra ha megtámadják."
-      - "Aktuális szint{$colon} &2%scaling%%&7"
+      - "{$desc}Minden fejlesztés {$p}10% {$desc}esélyt"
+      - "ad arra, hogy a Bajnok ne lökődjön hátra."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Ellenállás{$colon} {$s}%scaling%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 6
     posy: 2
   speed:
     name: "&bSebesség"
     material: POTION
-    lore:
-      - "&7Megnöveli a Bajnok sebességét amikor"
-      - "az életereje &220%&7-nál kevesebb."
-      - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+    lore: |
+      {$desc}Megnöveli a Bajnok sebességét amikor
+      az életereje kevesebb mint {$p}20%{$desc}-ék.
+
+      {$p}Szint{$colon} {$s}%level%
+      {$p}Költség{$colon} {$s}%cost%
     posx: 7
     posy: 2
   focus:
     name: "&bFókusz"
     material: ENDER_EYE
     lore:
-      - "&7A játékonsak akit a Bajnok"
-      - "megüt &2%scaling% &7másodpercre"
+      - "{$desc}A Bajnok által eltalált"
+      - "játékosoknak {$p}%scaling% {$desc}másodpercre"
       - "megszűnik az összes aktív"
-      - "bájítal hatása."
+      - "bájital hatása."
+      - "Minden fejlesztés 1 másodperccel"
+      - "növeli ezt az időt."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 3
     posy: 3
   strength:
     name: "&bErő"
     material: ANVIL
     lore:
-      - "&7A Bajnok erő bájítal hatása"
-      - "alá kerül amihez minden szinent"
-      - "&7tovább erősödik."
+      - "{$desc}Erőt ad a Bajnoknak."
+      - "Az erő a fejlesztés szintjének"
+      - "megfelelően skálázódik."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 4
     posy: 3
   throw:
     name: "&bDobás"
     material: COOKED_PORKCHOP
     lore:
-      - "&7Minden támadásnak esélye lesz a játékosok"
-      - "&7levegőbe dobására. Minden fejlesztés"
-      - "&210%&7-al növeli ennek az esélyét."
+      - "{$desc}Minden támadásnak esélye lesz a"
+      - "játékosokat felütni az levegőbe."
+      - "{$desc}Minden fejlesztés ad {$p}10% {$desc}esélyt erre."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$chk-kingdom-lvl-II}"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 5
     posy: 3
   death-duel:
@@ -104,83 +110,111 @@ options:
     material: GOLDEN_SWORD
     flags: [ ALL ]
     lore:
-      - "&7Minden játékos az ostromló kivételével"
-      - "&250%&7-kal kevesebbet sebez a Bajnokon."
-      - "A Bajnok viszont dupla annyi sebzést okoz"
+      - "{$desc}Minden játékos az ostromló kivételével"
+      - "{$p}50%{$desc}-kal kevesebbet sebez a Bajnokon."
+      - "A Bajnok{$desc} viszont dupla annyi sebzést okoz"
       - "minden játékosnak, kivéve az ostromlónak."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 6
     posy: 3
   drag:
     name: "&bHúzás"
     material: FISHING_ROD
     lore:
-      - "&7Ha az ostromló játékos több mint &2%scaling%"
-      - "&7blokkra van a Bajnoktól, akkor a Bajnok"
+      - "{$desc}Ha az ostromló játékos több mint {$p}%scaling% "
+      - "{$desc}blokkra van a Bajnoktól, akkor a Bajnok"
       - "a játékost magához húzza."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$chk-kingdom-lvl-III}"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 7
     posy: 3
-  damage-cap:
-    name: "&bSapka"
-    material: DIAMOND_HELMET
-    flags: [ ALL ]
-    lore:
-      - "&7A Bajnok legfeljebb &2%scaling%"
-      - "&7sebzést kaphat támadásonként."
-      - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
-    posx: 4
-    posy: 4
   thor:
     name: "&bThor"
     material: DIAMOND_AXE
     flags: [ ALL ]
     lore:
-      - "&7Minden {$p}%cooldown% &7elteltével villámcsapást"
-      - "&7kapnak az ostromlók és a közelben levő"
-      - "&7nem szövetséges játékosok. A villámok"
-      - "&7sebzést és hátralökést okoznak."
+      - "{$p}%cooldown% {$desc}másodpercenként villámcsapás"
+      - "éri az ostromlót és a közelben levő" 
+      - "nem szövetséges játékosokat. A villám"
+      - "sebzést és hátralökést okoz."
+      - "Minden fejlesztés 1 másodperccel csökkenti"
+      - "a villámok között eltelt időt."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$chk-kingdom-lvl-III}"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 3
+    posy: 4
+  damage-cap:
+    name: "&bSapka"
+    material: DIAMOND_CHESTPLATE
+    flags: [ ALL ]
+    lore:
+      - "{$desc}A Bajnok legfeljebb {$p}%scaling% "
+      - "{$desc}sebzést kaphat támadásonként."
+      - "Minden fejlesztés 1-el csökkenti a sebzést."
+      - ""
+      - "{$chk-kingdom-lvl-II}"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
+    posx: 4
+    posy: 4
+  burst:
+    name: "&bKitörés"
+    material: WIND_CHARGE
+    flags: [ ALL ]
+    lore: |
+      {$desc}Amikor sok ellenség van a Bajnok
+      körül, egy erőteljes kitörés hatására
+      minden barátságtalan játékos (állataikkal)
+      sebződik és hátralökődik.
+
+      {$p}Terület{$colon} {$s}%fancy@upgrade_range%
+      {$p}Minimum célpont{$colon} {$s}%fancy@upgrade_min_targets%
+      {$p}Sebzés{$colon} {$s}%fancy@upgrade_damage%
+      {$p}Hátralökés{$colon} {$s}%fancy@upgrade_knockback%
+
+      {$chk-kingdom-lvl-V}
+      {$p}Szint{$colon} {$s}%level%
+      {$p}Költség{$colon} {$s}%cost%
+    posx: 5
     posy: 4
   plow:
     name: "&bSzántás"
     material: COBWEB
     lore:
-      - "&7A Bajnokod megpróbálja megtisztítani"
+      - "{$desc}A Bajnokod megpróbálja megtisztítani" 
       - "a területedet a lávától és a pókhálótól"
       - "ennyi időnként{$colon} {$p}%cooldown%"
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 6
     posy: 4
   fangs:
     name: "&bAgyarak"
     material: EVOKER_SPAWN_EGG
     lore:
-      - "&7Az ellenséges játékosokra, a"
-      - "Bajnok körül minden {$p}%cooldown%"
-      - "&7elteltével agyarak idéződnek"
+      - "{$desc}A Bajnok körül az ellenséges"
+      - "játékosokra {$p}%cooldown% {$desc}másodpercenként"
+      - "agyarak idéződnek"
+      - "Minden fejlesztés {$p}1{$desc}-el növeli a"
+      - "sebzést és a támadás sugarát."
       - ""
-      - "&2Szint{$colon} &6%level%"
-      - "&2Költség{$colon} &6%cost%"
+      - "{$p}Szint{$colon} {$s}%level%"
+      - "{$p}Költség{$colon} {$s}%cost%"
     posx: 7
     posy: 4
 
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: BARRIER
     lore:
-      - "&6Vissza a nexus menübe."
+      - "&6Vissza az előző menübe."
     posx: 5
     posy: 6
   purple-glass:

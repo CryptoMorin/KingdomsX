@@ -23,14 +23,14 @@ options:
     else: { }
     slot: 1
   member:
-    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &2%player%"
+    name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
     material: PLAYER_HEAD
     lore:
       - "%online%"
-      - "&2Csatlakozott{$colon} &6%kingdoms_date_joined%"
-      - "&2Adományok{$colon} &6%kingdoms_total_donations%"
-      - "&2Utolsó adomány{$colon} &6%kingdoms_date_last_donation_time%"
-      - "&2Rang{$colon} &6%kingdoms_rank_name%"
+      - "{$p}Csatlakozott{$colon} {$s}%kingdoms_date_joined%"
+      - "{$p}Adományok{$colon} {$s}%kingdoms_total_donations%"
+      - "{$p}Utolsó adomány{$colon} {$s}%kingdoms_date_last_donation_time%"
+      - "{$p}Rang{$colon} {$s}%kingdoms_rank_name%"
     slot: 2
   promote:
     name: '&aKinevezés'
@@ -39,12 +39,12 @@ options:
     canPromote:
       condition: '!can_promote'
       lore: |
-        &cNem tudod kinevezni ezt a tagot.
+        &cem tudod kinevezni ezt a tagot.
     else: { }
     slot: 3
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: BARRIER
     lore:
-      - "&6Vissza a tagok menübe."
+      - "{$s}Vissza a tagok menübe."
     slot: 4

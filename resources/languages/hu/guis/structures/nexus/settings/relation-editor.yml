@@ -1,18 +1,18 @@
-title: "{$sep}-=( &7Kapcsolatok kezelése {$sep})=-"
+﻿title: "{$sep}-=( {$p}Kapcsolatok kezelése {$sep})=-"
 rows: 5
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
   green-stained-glass-pane:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44 ]
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44 ]
     material: GREEN_STAINED_GLASS_PANE
     name: ''
   back:
-    name: "&2Vissza"
+    name: "{$p}Vissza"
     material: PLAYER_HEAD
     skull: "{$gui-back}"
     lore:
-      - "&6Vissza a Nexus menübe."
+      - "{$s}Vissza a nexus menübe."
     posx: 1
     posy: 1
   fly:
@@ -25,7 +25,7 @@ options:
       name: "{$disabled} Repülés"
       material: ELYTRA
     lore:
-      - "&7Engedélyezi a királyság"
+      - "{$sep}Engedélyezi a királyság"
       - "repülését a területeden."
     posx: 4
     posy: 2
@@ -39,7 +39,7 @@ options:
       name: "{$disabled} Építés"
       material: DIAMOND_PICKAXE
     lore:
-      - "&7Engedélyezi az építést a területeden."
+      - "{$sep}Engedélyezi az építést a területeden."
     posx: 5
     posy: 2
   ceasefire:
@@ -52,7 +52,7 @@ options:
       name: "{$disabled} Tűzszünet"
       material: DIAMOND_SWORD
     lore:
-      - "&7Tiltja a baráti tüzet."
+      - "{$sep}Tiltja a baráti tüzet."
     posx: 6
     posy: 2
   interact:
@@ -65,7 +65,7 @@ options:
       name: "{$disabled} Interakció"
       material: CAULDRON
     lore:
-      - "&7Engedélyezi a blokkal való"
+      - "{$sep}Engedélyezi a blokkal való"
       - "interakciót a tárolók kinyitásakor."
     posx: 4
     posy: 3
@@ -79,8 +79,8 @@ options:
       name: "{$disabled} Használat"
       material: LEVER
     lore:
-      - "&7Engedéyezi a blokkok használatát."
-      - "Mint pl. az ajtók, karok és gombok."
+      - "{$sep}Engedéyezi a blokkok használatát,"
+      - "mint pl. az ajtók, karok és gombok."
     posx: 5
     posy: 3
   turret-ceasefire:
@@ -90,12 +90,12 @@ options:
       material: SPECTRAL_ARROW
       glow: true
       lore:
-        - "&7Tiltja a baráti tűzet a tornyoknál."
+        - "{$sep}Tiltja a baráti tűzet a tornyoknál."
     else:
       name: "{$disabled} Torony tűzszünet"
       material: SPECTRAL_ARROW
     lore:
-      - "&7Tiltja a baráti tűzet a tornyoknál."
+      - "{$sep}Tiltja a baráti tűzet a tornyoknál."
     posx: 6
     posy: 3
   manage-turrets:
@@ -108,7 +108,7 @@ options:
       name: "{$disabled} Toronyok kezelése"
       material: ARROW
     lore:
-      - "&7Engedélyezi a tornyok kiütést,"
+      - "{$sep}Engedélyezi a tornyok kiütést,"
       - "áthelyezését és azzokkal az interakciót."
     posx: 4
     posy: 4
@@ -122,7 +122,7 @@ options:
       name: "{$disabled} Struktúrák kezelése"
       material: REDSTONE_LAMP
     lore:
-      - "&7Engedélyezi a struktúrák kiütést,"
+      - "{$sep}Engedélyezi a struktúrák kiütést,"
       - "áthelyezését és azzokkal az interakciót."
     posx: 5
     posy: 4
@@ -136,8 +136,25 @@ options:
       name: "{$disabled} Hologramok megjelenítése"
       material: PAPER
     lore: |
-      &7Megmutatja a királyság
+      {$sep}Megmutatja a királyság
       tárgyainak hologramjait
       a királyság tagjainak.
     posx: 6
     posy: 4
+  home:
+    enabled:
+      condition: enabled
+      name: "{$enabled} Nyilvános otthon használata"
+      material: DARK_OAK_DOOR
+      glow: true
+    else:
+      name: "{$disabled} Nyilvános otthon használata"
+      material: PAPER
+    lore: |
+      {$sep}Lehetővé teszti egymáshoz a
+      teleportot {$p}/k home
+      
+      {$note} Nyilvánosnak kell beállítani az
+      otthonodat a nexus beállításaiban.
+    posx: 5
+    posy: 5

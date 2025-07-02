@@ -1,0 +1,127 @@
+### Shared outpost page settings ###
+(module):
+  description: 'Base settings for turret GUIs.'
+  parameters:
+    <name>: str
+
+title: "&a<name>"
+rows: 3
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "{$sp}弹药{$colon} {$p}%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    # Set to 0 to disable.
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      {$p}- '{$p}花费{$s}%cost%{$p}资源点购买{$s}%ammo-buy-amount%{$p}弹药。'
+      {$p}- '{$p}按住{$s}shift{$p}点击以花费{$s}%fill-cost%{$p}资源点填满弹药。'
+    posx: 2
+    posy: 2
+  upgrade:
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}升级{$sep}: {$s}%roman@level%{$p}➛{$s}%roman@next_level%"
+      lore: |
+        {? building_is_under_construction ? "{$err-sign} &c炮塔正在建设中，无法升级。
+        "}
+        {$s}- "{$dot} {$p}射程{$sep}: {$s}%range%{$p}➔{$s}%next_range%"
+        - "{$dot} {$p}弹药容量{$sep}: {$s}%max_ammo%{$p}➔{$s}%next_max_ammo%"
+        - "{$dot} {$p}冷却{$sep}: {$s}%cooldown%{$p}➔{$s}%next_cooldown%"
+        - "{$dot} {$p}最大目标数{$sep}: {$s}%max_targets%{$p}➔{$s}%next_max_targets%"
+        - "{$dot} {$p}射速{$sep}: {$s}%fancy@speed%{$p}➔{$s}%fancy@next_speed%"
+        - "{$dot} {$p}伤害{$sep}: {$s}%damage%{$p}➔{$s}%next_damage%"
+        - ""
+        - "{$dot} {$p}满级{$sep}: {$s}III"
+        - "{$dot} {$p}价格{$sep}: {$s}%upgrade_cost%"
+    maxxed:
+      name: "{$sp}等级{$sep}: {$s}%roman@level%"
+      lore: |
+        {$s}- "{$dot} {$p}射程{$sep}: {$s}%range%"
+        - "{$dot} {$p}弹药容量{$sep}: {$s}%max_ammo%"
+        - "{$dot} {$p}冷却{$sep}: {$s}%cooldown%"
+        - "{$dot} {$p}最大目标数{$sep}: {$s}%max_targets%"
+        - "{$dot} {$p}射速{$sep}: {$s}%fancy@speed%"
+        - "{$dot} {$p}伤害{$sep}: {$s}%damage%"
+    posx: 3
+    posy: 2
+  manual:
+    manual:
+      condition: "manual"
+      name: "{$p}手动模式"
+      material: LEVER
+      lore: |
+        {$p}人工模式禁用了炮塔自动激活, 
+        你可以自己操控炮塔。
+
+        {$p}左键以切换至{$sp}自动模式。
+
+        {$p}右键开始操控炮塔。
+    automatic:
+      name: "{$sp}自动模式"
+      material: COMPARATOR
+      lore: |
+        {$p}自动模式会自动检测附近的敌人, 
+        并向其开火。
+
+        {$p}左键以切换至{$sp}手动模式。
+    posx: 4
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}修复"
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}此炮塔已被完全损坏, 需要完全修复。
+
+        {$p}价格{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}资源点{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}金钱{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}你可以向此炮塔扔出以下物品修复炮塔{$colon}
+
+          {$dot} {$p}铁锭{$colon} {$s}10
+          {$dot} {$p}金锭{$colon} {$s}15
+          {$dot} {$p}钻石{$colon} {$s}50
+
+        {$info-sign} &9如果炮塔的耐久度降至{$e}0&9,
+        炮塔将需要使用此按钮完全修复。
+    posx: 6
+    posy: 2
+  break:
+    name: "{$e}破坏"
+    material: REDSTONE_BLOCK
+    under-construction:
+      condition: "building_is_under_construction"
+      lore: |
+        &4破坏此炮塔。
+
+        {$err-sign} {$e}此炮塔正在建设中, 
+        破坏它将会撤销全部进展。
+    else:
+      lore: |
+        &4破坏此炮塔。
+    posx: 7
+    posy: 2
+  close:
+    name: "{$e}关闭"
+    material: BARRIER
+    lore:
+      - "{$s}关闭此界面。"
+    posx: 8
+    posy: 2
+  
+  lime-stained-glass-pane:
+    slots: [0, 2, 4, 6, 8, 18, 20, 22, 24, 26]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [1, 3, 5, 7, 9, 13, 17, 19, 21, 23, 25]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

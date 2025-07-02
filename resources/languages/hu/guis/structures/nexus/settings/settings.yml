@@ -1,4 +1,4 @@
-title: "{$sep}-=( &7Beállítások {$sep})=-"
+title: "{$sep}-=( {$sep}Beállítások {$sep})=-"
 rows: 6
 sound: ITEM_BOOK_PAGE_TURN
 
@@ -7,23 +7,137 @@ options:
     posx: 1
     posy: 1
     material: PLAYER_HEAD
-    name: '&2Vissza'
-    lore: [ '&6Vissza a nexus menübe.' ]
+    name: '{$p}Vissza'
+    lore: [ '{$s}Vissza a nexus menübe' ]
     skull: "{$gui-back}"
   light-blue-stained-glass-pane:
-    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    slots: [ 1, 2, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
     material: LIGHT_BLUE_STAINED_GLASS_PANE
     name: ''
+  upgrade:
+    posx: 5
+    posy: 4
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Fejlesztés{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lvl-I:
+        condition: 'level == 1'
+        lore: |
+          {$dot} {$p}&lEgyéb fejlesztések{$colon}
+            {$sdot} {$s}Örület feloldása
+
+          {$dot} {$p}&lErősítések{$colon}
+            {$sdot} {$s}Összes fejlesztése{$colon} {$sp}{$lvlup} Szint 30
+
+          {$dot} {$p}&lBajnok fejlesztése{$colon}
+            {$sdot} {$s}Dobás feloldása
+            {$sdot} {$s}Sapka feloldása
+            {$sdot} {$s}Életerő$colon} {$sp}{$lvlup} Szint 30
+
+          {$dot} {$p}&lTornyok{$colon}
+            {$sdot} {$s}Gyógyító torony feloldása
+            {$sdot} {$s}Lángtorony feloldása
+
+          {$dot} {$p}&lStruktúrák{$colon}
+            {$sdot} {$s}Erőtér feloldása
+            {$sdot} {$s}Előőrs feloldása
+
+          {$p}Max szint{$colon} {$s}%roman@max_level%
+          {$p}Költség{$colon} {$s}%fancy@upgrade_cost%
+      lvl-II:
+        condition: 'level == 2'
+        lore: |
+          {$dot} {$p}&lEgyéb fejlesztések{$colon}
+            {$sdot} {$s}Örők feloldása
+            {$sdot} {$s}Dicsőség feloldása
+            {$sdot} {$s}"Keep Inventory" feloldása
+
+          {$dot} {$p}&lErősítések{$colon}
+            {$sdot} {$s}Összes fejlesztése{$colon} {$sp}{$lvlup} Szint 40
+
+          {$dot} {$p}&lBajnok fejlesztése{$colon}
+            {$sdot} {$s}Húzásd feloldása
+            {$sdot} {$s}Thor feloldása
+            {$sdot} {$s}Életerő{$colon} {$sp}{$lvlup} Szint 40
+
+          {$dot} {$p}&lTornyok{$colon}
+            {$sdot} {$s}Pszionikustorony feloldása
+            {$sdot} {$s}Pokoltűztorony feloldása
+
+          {$dot} {$p}&lStruktúrák{$colon}
+            {$sdot} {$s}Fúró feloldása
+
+          {$p}Max szint{$colon} {$s}%roman@max_level%
+          {$p}Költség{$colon} {$s}%fancy@upgrade_cost%
+      lvl-III:
+        condition: 'level == 3'
+        lore: |
+          {$dot} {$p}&lEgyéb fejlesztések{$colon}
+            {$sdot} {$s}Nexus-örzők feloldása
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Szint 2
+
+          {$dot} {$p}&lErősítések{$colon}
+            {$sdot} {$s}Összes fejlesztése{$colon} {$sp}{$lvlup} Lvl. 50
+
+          {$dot} {$p}&lBajnok fejlesztése{$colon}
+            {$sdot} {$s}Erősítések feloldása
+
+          {$dot} {$p}&lTornyok{$colon}
+            {$sdot} {$s}Hősugártorony feloldása
+            {$sdot} {$s}KAtonatorony feloldása
+
+          {$dot} {$p}&lStruktúrák{$colon}
+            {$sdot} {$s}Teleportpad feloldása
+            {$sdot} {$s}Szabályzó feloldása
+
+          {$p}Max szint{$colon} {$s}%roman@max_level%
+          {$p}Költség{$colon} {$s}%fancy@upgrade_cost%
+      lvl-IV:
+        condition: 'level == 4'
+        lore: |
+          {$dot} {$p}&lEgyéb fejlesztések{$colon}
+            {$sdot} {$s}Repülés feloldása
+            {$sdot} {$s}Keep Inventory{$colon}: {$sp}{$lvlup} Szint 3
+
+          {$dot} {$p}&lErősítések{$colon}
+            {$sdot} {$s}Összes fejlesztése{$colon} {$sp}{$lvlup} Lvl. 70
+
+          {$dot} {$p}&lBajnok fejlesztése{$colon}
+            {$sdot} {$s}Kitörés feloldása
+
+          {$dot} {$p}&lTornyok{$colon}
+            {$sdot} {$s}Infernótorony feloldása
+
+          {$dot} {$p}&lStruktúrák{$colon}
+            {$sdot} {$s}Ostromágyú feloldása
+
+          {$p}Max Level{$colon} {$s}%roman@max_level%
+          {$p}Költség{$colon} {$s}%fancy@upgrade_cost%
+      else:
+        lore: [ "&cIsmeretlen királysági fejlesztés: %level%" ]
+    maxxed:
+      name: "{$sp}Királysági szint{$colon} {$s}%roman@level% {$sep}(&5Maxxed{$sep})"
+      material: NETHER_STAR
   public-home:
     posx: 4
     posy: 1
     material: DARK_OAK_DOOR
     name: "{$s}Nyilvános otthon{$colon} %kingdoms_bool_kingdom_home_is_public%"
     lore: |
-      &7Amikor nyilvános az otthonod,
+      {$sep}Amikor nyilvános az otthonod,
       bárki odateleportálhat használva
-      a {$p}/k home %kingdoms_kingdom_name%
-      &7parancsot.
+      a {$p}/k home %kingdoms_name% {$sep}parancsot.
+
+      {$p}Bal-klikk {$sep}átvált nyilvános otthonra.
+      {$p}Jobb-klikk {$sep}beállítja a nyilvános otthon költségét.
+      Ez a költség csak a királyságodon kívüli emberekre vonatkozik.
+      {$p}Aktuális Otthon adója{$colon} {$s}%kingdoms_kingdom_taxes_home%
+
+      {$note} Mindkét királyságnak rendelkeznie
+      kell a HOME kapcsolati attribútummal,
+      hogy ez működjön.
   hidden:
     posx: 5
     posy: 1
@@ -31,24 +145,24 @@ options:
     color: 818595
     name: "{$s}Rejtett{$colon} %kingdoms_bool_kingdom_is_hidden%"
     lore: |
-      &7Rejtett királyság nem látszódik
-      a {$p}/k map &7parancsnál és az
+      {$sep}Rejtett királyság nem látszódik
+      a {$p}/k map {$sep}parancsnál és az
       online térképeken.
   tax:
     posx: 6
     posy: 1
     material: PAPER
-    name: '&6Adó'
+    name: '{$s}Adó'
     lore: |
-      &7Királyságod adóinak
+      {$sep}Királyságod adóinak
       változtatása a tagok
       számára.
 
-      &6Tagság adóegyenlete{$colon}
-      &2%tax_equation%
-      &6Tagjaidnak adója{$colon} &2$%fancy@kingdoms_tax%
+      {$s}Tagság adóegyenlete{$colon}
+      {$p}%tax_equation%
+      {$s}Személyes adód{$colon} {$p}$%fancy@kingdoms_tax%
 
-      &6Királyság kiszólgáló adó{$colon} &2$%fancy@kingdoms_kingdom_tax%
+      {$s}Királysági adó{$colon} {$p}$%fancy@kingdoms_kingdom_tax%
   blue-stained-glass-pane:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
     material: BLUE_STAINED_GLASS_PANE
@@ -57,77 +171,78 @@ options:
     posx: 3
     posy: 3
     material: WRITABLE_BOOK
-    name: '&6Kapcsolatok'
+    name: '{$s}Kapcsolatok'
     lore: |
-      &7Királyságodnak a kapcsolati
+      {$sep}Királyságodnak a kapcsolati
       attribútumainak változtatása
       más királyságok számára.
 
       {$sep}[&e!{$sep}] {$es}Egyes attribútumok működéséhez
-      mindkét királyságban szükséges
+      mindkét királyságban szükséges 
       engedélyezni az attribútumokat
       a kapcsolathoz.
-
-      Például ha a {$e}BUILD {$es}attribútum
+      
+      Például ha a {$e}ÉPÍTÉS {$es}attribútum
       engedélyezve van a szövetségesek
       számára, de egy olyan szövetséges
       földjére próbálsz építeni, akinél
-      nincs engedélyezve a {$e}BUILD
+      nincs engedélyezve az {$e}ÉPÍTÉS
       {$es}attribútum a szövetségeseinek,
       ez nem fog működni. Nem fognak tudni
       a területeden építeni.
-  flag:
+  banners:
     posx: 5
     posy: 3
     material: BLACK_BANNER
-    name: '&6Zászló'
+    name: '{$s}Lobogók és zászlók'
     lore: |
-      &7Állítsd be a királyságod zászlóját
-      az online térképekhez. Klikk a zászló
-      URL-jének megtekintéséhez.
-      Ez nem frissíti azonnal a térképet.
+      {$sep}Királyságod lobogójának és zászlójának
+      beállítása az online webes térképekhez,
+      ikonokhoz, amik megjelenhetnek egyéb
+      helyeken díszítőblokként és a
+      királyságod szimbólumaként.
   pacifism:
     posx: 7
     posy: 3
     material: END_CRYSTAL
-    name: '&6Békés{$colon} %kingdoms_bool_kingdom_is_pacifist%'
+    name: '{$s}Békés{$colon} %kingdoms_bool_kingdom_is_pacifist%'
     lore: |
-      &7Amikor békés módban vagy, a
+      {$sep}Amikor békés módban vagy, a
       királyságod nem támadhat és
       nem is támadhatják meg más
       királyságok.
-
+      
       Ha megostromolsz egy királyságot,
       akkor egy hétig nem válthatsz
       vissza békés módba.
-
-      &2Hátralévő idő{$colon} &6%pacifism_cooldown%
+      {? pacifism_left > 0 ? "
+      {$p}Hátralévő idő{$colon} {$s}%pacifism_cooldown%" }
   invites:
     posx: 3
     posy: 5
     material: BOOK
-    name: '&6Meghívás szükséges{$colon} %kingdoms_bool_kingdom_requires_invite%'
+    name: '{$s}Meghívás szükséges{$colon} %kingdoms_bool_kingdom_requires_invite%'
     lore: |
-      &7Amikor ki van kapcsolva akkor bárki
+      {$sep}Amikor ki van kapcsolva akkor bárki
       meghívás nélkül is tud csatlakozni
-      ehhez a királyságodhoz, használva a
-      {$p}/k join %kingdoms_kingdom_name%
-      &7parancsot.
+      ehhez a királyságodhoz, használva a 
+      {$p}/k join %kingdoms_name%
+      {$sep}parancsot.
   color:
     posx: 5
     posy: 5
     material: LIME_DYE
-    name: '&6Szín{$colon} &c%r%&7, &2%g%&7, &9%b% &7(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%&7)'
+    name: '{$s}Szín{$colon} &c%r%{$sep}, {$p}%g%{$sep}, {$sp}%b% {$sep}(%hex@kingdoms_kingdom_color%%kingdoms_kingdom_color%{$sep})'
     lore: |
-      &7Állítsd be a királyságod
+      {$sep}Állítsd be a királyságod
       jelölőszínét a csevegéshez
-      és az online földtérképekhez.
+      és az online területtérképhez..
   shields:
     posx: 7
     posy: 5
     material: SHIELD
-    name: '&6Pajzs{$colon} &2%time@kingdoms_shield_time_left%'
+    name: '{$s}Pajzs{$colon} {$p}%time@kingdoms_shield_time_left%'
     lore: |
-      &7Vásárolj pajzsot a
-      királyságodnak, hogy
+      {$sep}Vásárolj pajzsot a
+      királyságodnak, hogy 
       megvédd az ostromok ellen.

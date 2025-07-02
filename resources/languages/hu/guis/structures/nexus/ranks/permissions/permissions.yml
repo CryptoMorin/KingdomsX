@@ -1,5 +1,9 @@
-title: '{$sep}-=( {$p}Permissions {$sep})=-'
+﻿    # %permission_category_name% is the item name used
+# for categories in categories.yml
+title: '{$sep}-=( {$p}%permission_category_name% {$sep})=-'
 rows: 6
+(import):
+  pagination: { }
 
 # Don't remove "[NoSync]" from below.
 # [NoSync]
@@ -31,252 +35,249 @@ rows: 6
   alliance:
     <<: *fn-std-perm [ "Szövetség" ]
     lore: |
-      &7Engedély a {$s}/k ally &7
-      {$s}parancs használatához.
+      {$desc}Engedély a {$s}/k ally{$desc}
+      parancs használatához..
   broadcast:
     <<: *fn-std-perm [ "Broadcast" ]
     lore: |
-      &7Engedély a {$s}/k broadcast
-      &7parancs használatához.
+      {$desc}Engedély a {$s}/k broadcast{$desc}
+      parancs használatához.
   build:
     <<: *fn-perm [ 'Építés', DIAMOND_PICKAXE ]
     lore: |
-      &7Engedély az építésre a királyság
+      {$desc}Engedély az építésre a királyság
       bármelyik területén.
-
+      
       A különbség ez és az {$p}ÉPÍTÉS_SAJÁTON
-      &7engedélye  között a másik engedélynél
+      {$desc}engedélye között a másik engedélynél
       található.
   build-owned:
     <<: *fn-perm [ "Építés sajáton", GOLD_PICKAXE ]
-    lore:
-      - "&7Az &2ÉPÍTÉS &7és az &2ÉPÍTÉS_SAJÁTON"
-      - "&7között a különbség, hogy az &2ÉPÍTÉS"
-      - "&7engedélyezi bárhol az építést a"
-      - "királyságodban (kivéve a Nexus területet,"
-      - "oda &2NEXUS_ÉPÍTÉS &7engedély szükséges),"
-      - "míg az &2ÉPÍTÉS_SAJÁTON &7csak olyan"
-      - "területen, amit saját magad foglaltál el."
-      - ""
-      - "Például ha valahol kiadod a &6/k claim"
-      - "&7parancsot, akkor más játékosok az"
-      - "&2ÉPÍTÉS_MAGADNAK &7engedéllyel nem"
-      - "építhetnek oda, csak Te vagy azok"
-      - "akiknek van &2ÉPÍTÉS &7engedélyük."
+    lore: |
+      {$desc}Az {$p}ÉPÍTÉS {$desc} és az {$p}ÉPÍTÉS_SAJÁTON 
+      {$desc}között a különbség, hogy az {$p}ÉPÍTÉS {$desc}
+      engedélyezi bárhol az építést a királyságodban (kivéve
+      a Nexus területet, oda {$p}NEXUS_ÉPÍTÉS {$desc}engedély
+      szükséges), míg az {$p}ÉPÍTÉS_SAJÁTON {$desc}csak olyan
+      területen, amit saját maga folglalt el.
+      
+      Például ha valahol kiadod a {$s}/k claim {$desc}parancsot,
+      akkor más játékosok az {$p}ÉPÍTÉS_SAJÁTON {$desc}engedéllyel
+      nem építhetnek oda, csak Te vagy azok, akiknek van {$p}ÉPÍTÉS {$desc}
+      engedélyük.
   edit-ranks:
     <<: *fn-std-perm [ "Rang szerkesztése" ]
     lore: |
-      &7Jogosultság a rangok létrehozására,
+      {$desc}Jogosultság a rangok létrehozására,
       törlésére és módosítására, beleértve
-      azok szimbólumait, nevét és jogosultságait.
-
+      azok szimbólumait, neveit és jogosultságait.
+      
       Nem módosíthatják saját rangjukat vagy
       egy magasabb prioritású személy rangját.
-
-      Ez nem ad engedélyt más játékosok
+      
+      Ez nem ad engedélyt más játékosok 
       lefokozására vagy előléptetésére.
   enemy:
     <<: *fn-std-perm [ "Ellenség" ]
     lore: |
-      &7Engedély a {$s}/k enemy
-      &7parancs használatára.
+      {$desc}Engedély a {$s}/k enemy
+      {$desc}parancs használatára
   home:
     <<: *fn-std-perm [ "Otthon" ]
     lore: |
-      &7Engedély a {$s}/k home
-      &7parancs használatára.
+      {$desc}Engedély a {$s}/k home 
+      {$desc}parancs használatára.
   invade:
     <<: *fn-std-perm [ "Ostrom" ]
     lore: |
-      &7Engedély {$s}/k invade
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k invade 
+      {$desc}parancs használatára.
   invite:
     <<: *fn-std-perm [ "Meghívás" ]
     lore: |
-      &7Engedély a {$s}/k invite
-      &7parancs használatára és a
-      {$s}/k invitecodes &7paranccsal
+      {$desc}Engedély a {$s}/k invite 
+      {$desc}parancs használatára és a
+      {$s}/k invitecodes {$desc}paranccsal
       meghívókódok létrehozására.
   kick:
     <<: *fn-std-perm [ "Kirúgás" ]
     lore: |
-      &7Engedély {$s}/k kick
-      &7parancs használatára.
-
-      &7Az ezzel a jogosultsággal
-      rendelkező játékosok nem
-      rúghatnak ki azonos vagy
-      magasabb rangú játékosokat.
+      {$desc}Engedély {$s}/k kick 
+      {$desc}parancs használatára.
+      
+      Ezzel az engedéllyel 
+      rendelkező játékosok nem 
+      rúghatnak ki azonos vagy 
+      magasabb rangú játékosokat
   lore:
     <<: *fn-std-perm [ "Történet" ]
     lore: |
-      &7Engedély a {$s}/k lore{$sep}&7,
-      a {$s}/k rename {$sep}&7, a
-      {$s}/k book edit &7és a {$s}/k tag
-      &7parancs használatára.
+      {$desc}Engedély a {$s}/k lore{$desc}, 
+      a {$s}/k rename{$desc}, a 
+      {$s}/k book edit {$desc}és a {$s}/k tag 
+      {$desc}parancs használatára.
   nexus:
     <<: *fn-perm [ "Nexus", BEACON ]
     lore: |
-      &7Engedély a királyság nexusának
-      mozgatására a {$s}/k nexus &7parancs
+      {$desc}Engedély a királyság nexusának
+      mozgatására a {$s}/k nexus {$desc}parancs
       használatával.
   nexus-build:
-    <<: *fn-perm [ "Nexus Építés", BEACON ]
+    <<: *fn-perm [ "Nexus építés", BEACON ]
     lore: |
-      &7Engedély a nexus földjén
-      való építkezésre
+      {$desc}Engedély a nexus területén 
+      való építkezésre.
   nexus-chest:
     <<: *fn-perm [ "Nexus láda", CHEST ]
     lore: |
-      &7Engedély a királyság nexus
+      {$desc}Engedély a királyság nexus 
       ládájának módosítására.
   outpost:
     <<: *fn-perm [ "Előőrs", HAY_BLOCK ]
     lore: |
-      &7Engedély tárgyak vásárlására
-      az előőrs struktúrájából.
+      {$desc}Engedély tárgyak vásárlására
+      az előőrs struktúráiból.
   protection-signs:
     <<: *fn-perm [ "Védelmi táblák megkerülése", OAK_SIGN ]
     lore: |
-      &7Engedély a királyság területén
+      {$desc}Engedély a királyság területén
       belüli védett blokkok megkerülésére.
   set-home:
     <<: *fn-std-perm [ "Otthon beállítása" ]
     lore: |
-      &7Engedély {$s}/k sethome
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k sethome
+      {$desc}parancs használatára.
   invsee:
     <<: *fn-std-perm [ "Eszköztár" ]
     lore: |
-      &7Engedély {$s}/k invsee
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k invsee
+      {$desc}parancs használatára.
   structures:
     <<: *fn-perm [ "Struktúrák", REDSTONE_LAMP ]
     lore: |
-      &7Engedély az építmények megvásárlására,
+      {$desc}Engedély az építmények megvásárlására,
       kiütésére és módosítására.
   use:
     <<: *fn-perm [ "Használat", FURNACE ]
     lore: |
-      &7Engedély bizonyos blokkok használatára
+      {$desc}Engedély bizonyos blokkok használatára
       a királyság területén belül.
   interact:
     <<: *fn-perm [ "Interakció", OAK_DOOR ]
     lore: |
-      &7Engedély bizonyos blokkokkal, például
+      {$desc}Engedély bizonyos blokkokkal, például
       ajtókkal és gombokkal való interakcióra
       a királyság területén belül.
   upgrade:
     <<: *fn-std-perm [ "Fejlesztés" ]
     lore: |
-      &7Engedély a királyságon belül minden
-      fejleszthető dologok fejlesztésére,
-      például vegyes fejlesztések, bajnok
+      {$desc}Engedély a királyságon belül minden
+      fejleszthető dolog fejlesztésére.
+      Például{$colon} {$desc}vegyesfejlesztések, bajnok
       fejlesztései, erősítések, tornyok és
       építmények fejlesztései.
   truce:
     <<: *fn-std-perm [ "Fegyverszünet" ]
     lore: |
-      &7Engedély {$s}/k truce
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k truce
+      {$desc}parancs használatára.
   turrets:
     <<: *fn-perm [ "Tornyok", ARROW ]
     lore: |
-      &7Engedély a tornyok vásárlására,
+      {$desc}Engedély a tornyok vásárlására,
       kitörésére és módosítására.
   unclaim:
-    <<: *fn-std-perm [ "Felszabadít" ]
+    <<: *fn-std-perm [ "Felszabadítás" ]
     lore: |
-      &7Engedély {$s}/k unclaim
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k unclaim 
+      {$desc}parancs használatára.
   manage-ranks:
     <<: *fn-std-perm [ "Rangok kezelése" ]
     lore: |
-      &7Engedély a játékosnál
+      {$desc}Engedély a játékosnál
       alacsonyabb rangú tagok
       kinevezésére és lefokozására.
-
+      
       Nem ad engedélyt a rangok
       beállításainak módosítására.
   withdraw:
-    <<: *fn-std-perm [ "Felvétel" ]
+    <<: *fn-std-perm [ "Kivesz" ]
     lore: |
-      &7Engedély a {$s}/k rp withdraw &7parancs
+      {$desc}Engedély a {$s}/k rp withdraw {$desc}parancs
       használatára és a Nexus pontok
-      pénzre történő cseréjére hasonlóan
+      pénzre történő cseréjére, hasonlóan
       mint például a nexus GUI felületén
       belüli Nexus pont átalakító opciója.
   fly:
     <<: *fn-perm [ "Repülés", ELYTRA ]
     lore: |
-      &7Engedély {$s}/k fly
-      &7parancs használatára.
+      {$desc}Engedély {$s}/k fly 
+      {$desc}parancs használatára.
   nation:
     <<: *fn-perm [ "Nemzet", BLUE_WOOL ]
     lore: |
-      &7Engedély a nemzetekhez való
-      csatlakozásra vagy azok elhagyására
-  exclude-tax:
+      {$desc}Engedély a nemzetekhez való
+      csatlakozásra vagy azok elhagyására.
     <<: *fn-std-perm [ "Adózásból kizárás" ]
     lore: |
-      &7Ezzel az engedéllyel rendelkező
-      királyságtagok nem kötelesek
-      adót fizetni a királyságnak.
+      {$desc}Ezzel az engedélyel rendlekező
+      királysági tagoknak nem szükséges adót
+      fizetniük a királyságnak.
   relation-attributes:
     <<: *fn-std-perm [ "Kapcsolati attribútumok" ]
     lore: |
-      &7Engedély a kapcsolati
+      {$desc}Engedély a kapcsolati
       attribútumok szerkesztésére.
   settings:
     <<: *fn-std-perm [ "Beállítások" ]
     lore: |
-      &7A nexus GUI felületében található
-      általános királysági beállítások
-      szerkesztésének engedélye.
+      {$desc}Engedély a nexus GUI felületén
+      található általános királysági
+      beállítások szerkesztéséhez.
   claim:
     <<: *fn-std-perm [ "Foglalás" ]
     lore: |
-      &7Engedély {$s}/k claim
-      &7commands.
+      {$desc}Engedély a {$s}/k claim{$desc} 
+      parancs használatára.
   unclaim-owned:
     <<: *fn-std-perm [ "Saját felszabadítása" ]
     lore: |
-      &7Lehetővé teszi, hogy csak azokat a
-      földeket szabadítsd fel, amelyeket
-      te foglaltál.
+      Lehetővé teszi, hogy csak azokat a
+      területeket szabadítsd fel, amelyeket
+      saját magad foglaltál el.
   instant-teleport:
     <<: *fn-std-perm [ "Azonali teleportálás" ]
     lore: |
-      &7Azonnali teleportálás a tagjaidhoz a
-      &2/k tpa &7parancs használatával.
+      {$desc}Azonnali teleportálás a tagjaidhoz a
+      &2/k tpa {$desc}parancs használatával. 
       Máskülönben meg kell várnod, hogy
       elfogadják a kérést.
-
-      A teleportálás előtt megmarad a
-      teleportálás visszaszámlálása.
+      
+      A teleportálás visszaszámlálása nem változik,
+      az megmarad.
   view-logs:
     <<: *fn-perm [ "Napló megtekintése", KNOWLEDGE_BOOK ]
     lore: |
-      &7Megnézheted a királyságod
+      {$desc}Megnézheted a királyságod
       ellenőrzési naplóját, amely
       a nexusodból érhető el.
   read-mails:
     <<: *fn-perm [ "Levelek olvasása", PLAYER_HEAD ]
     lore: |
-      &7Engedély a nexus GUI felületében
+      {$desc}Engedély a nexus GUI felületében
       található királysági levelek
       olvasására.
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
   manage-mails:
     <<: *fn-perm [ "Levelek kezelése", PLAYER_HEAD ]
     lore: |
-      &7Új levelek küldése és válaszadás
+      {$desc}Új levelek küldése és megválaszolása.
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
-  'Outposts:join':
-    <<: *fn-std-perm [ "Csatlakozás előőrs eseményéhez" ]
+  'outposts:join':
+    <<: *fn-std-perm [ "Csatlakozás előőrs eseményeihez" ]
     lore: |
-      &7Engedély a {$s}/k outposts join
-      &7parancs használatára.
+      {$desc}Engedély a {$s}/k outposts join 
+      {$desc}parancs használatára.
   "[else]":
     name: "&4Ismeretlen: %permission%"
     material: BARRIER
@@ -286,17 +287,6 @@ options:
     slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
     material: BLACK_STAINED_GLASS_PANE
     name: ''
-
-  next-page:
-    name: '&6Következő oldal &7- &e%page%&8/&e%pages%'
-    material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
-    slot: 8
-  previous-page:
-    name: '&6Előző oldal &7- &e%page%&8/&e%pages%'
-    material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
-    slot: 0
 
   permissions:
     slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]

@@ -1,0 +1,61 @@
+title: "&0-=( {$s}Játékosválasztók &0)=-"
+rows: 3
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  elements:
+    name: "{$p}%player_selector_name%"
+    material: BOOK
+    lore: |
+      {$p}Bal-klikk{$colon} {$desc}Aktuális hozzáférési bejegyzés módosítása.
+      {$p}Eldob {$sep}(&5Q{$sep}){$colon} {$desc}Hozzáférési bejegyzés végleges eltávolítása.
+      {$p}Shift Bal-klikk{$colon} {$p}+1{$desc}-el növeli a hozzáférési bejegyzés prioritását.
+      {$p}Shift Jobb-klikk{$colon} {$e}-1{$desc}-el csökkenti a hozzáférési bejegyzés prioritását.
+
+      %player_selector_info%
+    slots: [ 10, 11, 12, 13, 14, 15, 16 ]
+  back:
+    name: '&cVissza &7| &cMEgszakítás'
+    material: BARRIER
+    lore: |
+      {$p}Bal-klikk{$colon} {$s}Mentés és vissza
+      {$e}Jobb-klikk{$colon} {$es}Elvetés és vissza
+    posx: 1
+    posy: 1
+  add:
+    name: '&aHozzáadás'
+    material: PLAYER_HEAD
+    skull: '{$gui-add}'
+    lore: |
+      {$desc}Új feltétel hozzáadása.
+
+      {$desc}Unió használatával kobinálhatsz
+      több játékosválasztót is.
+    posx: 9
+    posy: 1
+  logic-toggle:
+    name: '&9Logikai kapcsoló'
+    material: PLAYER_HEAD
+    or-mode:
+      condition: 'ORmode'
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NhOTNjN2JjOGUzOGRkZGZhNDRjZDY4Y2I2ZTQ0Yjc1NWM1ZThhY2FlMmI5YzYzZjgzMjQ1NGIyYWUzYmI2In19fQ=='
+    else:
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdlZjI4ZGU4ZTJhY2NkY2IyM2IwOTQyZjU2MjRmNDE0OWE1YWE0OTBlYzE5ZjdkYzQ5OTFhODUwYjY1ZjQwIn19fQ=='
+    lore: |
+      {$p}Aktuális mód{$colon} {$s}%mode%
+
+      {$desc}Az uniót úgy állíthatod be, hogy csak
+      a gyermek játékosválasztók eredménye
+      alapján válassza ki a játékost{$colon}
+
+      {$dot} {$s}AND Mode{$colon} {$p}Csak akkor válassza a játékost,
+      ha &nminden{$p} játékosválasztó kiválasztotta.
+
+      {$dot} {$s}OR Mode{$colon} {$p}Akkor válassza a játékost,
+      ha &nbármelyik {$p}játékosválasztó kiválasztotta.
+    posx: 5
+    posy: 1
+  decoration:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
