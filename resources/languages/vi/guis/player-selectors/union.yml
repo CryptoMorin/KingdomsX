@@ -1,0 +1,61 @@
+title: "&0-=( {$s}Bộ chọn Người chơi &0)=-"
+rows: 3
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  elements:
+    name: "{$p}%player_selector_name%"
+    material: BOOK
+    lore: |
+      {$p}Nhấp chuột trái{$colon} {$desc}Thay đổi cài đặt mục truy cập hiện tại.
+      {$p}Thả {$sep}(&5Q{$sep}){$colon} {$desc}Xóa hoàn toàn mục truy cập.
+      {$p}Shift + Nhấp chuột trái{$colon} {$desc}Tăng độ ưu tiên của mục truy cập này thêm {$p}+1.
+      {$p}Shift + Nhấp chuột phải{$colon} {$desc}Giảm độ ưu tiên của mục truy cập này đi {$e}-1.
+
+      %player_selector_info%
+    slots: [ 10, 11, 12, 13, 14, 15, 16 ]
+  back:
+    name: '&cQuay lại &7| &cHủy'
+    material: BARRIER
+    lore: |
+      {$p}Nhấp chuột trái{$colon} {$s}Lưu và quay lại
+      {$e}Nhấp chuột phải{$colon} {$es}Hủy bỏ và quay lại
+    posx: 1
+    posy: 1
+  add:
+    name: '&aThêm'
+    material: PLAYER_HEAD
+    skull: '{$gui-add}'
+    lore: |
+      {$desc}Thêm một điều kiện mới.
+
+      {$desc}Bạn có thể kết hợp nhiều bộ chọn người chơi
+      bằng cách sử dụng một liên hiệp.
+    posx: 9
+    posy: 1
+  logic-toggle:
+    name: '&9Chuyển đổi Logic'
+    material: PLAYER_HEAD
+    or-mode:
+      condition: 'ORmode'
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2NhOTNjN2JjOGUzOGRkZGZhNDRjZDY4Y2I2ZTQ0Yjc1NWM1ZThhY2FlMmI5YzYzZjgzMjQ1NGIyYWUzYmI2In19fQ=='
+    else:
+      skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdlZjI4ZGU4ZTJhY2NkY2IyM2IwOTQyZjU2MjRmNDE0OWE1YWE0OTBlYzE5ZjdkYzQ5OTFhODUwYjY1ZjQwIn19fQ=='
+    lore: |
+      {$p}Chế độ hiện tại{$colon} {$s}%mode%
+
+      {$desc}Bạn có thể cấu hình liên hiệp để
+      chỉ chọn người chơi dựa trên kết quả
+      của các bộ chọn người chơi con{$colon}
+
+      {$dot} {$s}Chế độ VÀ{$colon} {$p}Chỉ chọn người chơi nếu &ntất cả
+      {$p}các bộ chọn người chơi đều chọn người chơi đó.
+
+      {$dot} {$s}Chế độ HOẶC{$colon} {$p}Chọn người chơi nếu &nbất kỳ
+      {$p}bộ chọn người chơi nào chọn người chơi đó.
+    posx: 5
+    posy: 1
+  decoration:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]

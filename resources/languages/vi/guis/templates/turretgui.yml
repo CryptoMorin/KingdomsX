@@ -1,0 +1,140 @@
+### Cài đặt chung cho GUI tháp pháo ###
+(module):
+  description: 'Cài đặt cơ bản cho GUI tháp pháo.'
+  parameters:
+    <name>: str
+
+title: "&aTháp pháo <name>"
+rows: 3
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  ammo:
+    name: "{$sp}Đạn{$colon} {$p}%ammo%"
+    material: ARROW
+    ammo: 100
+    cost: 10
+    # Đặt thành 0 để vô hiệu hóa.
+    fill-cost: 'neededAmmo / 8'
+    lore: |
+      {$p}Mua {$s}%ammo-buy-amount% {$p}đạn với giá {$s}%cost% {$p}điểm tài nguyên.
+      {? {fill-cost} > 0 ? "{$p}Bấm Shift để đổ đầy đạn
+      {$p}với giá {$s}%fill-cost% {$p}điểm tài nguyên." }
+    posx: 2
+    posy: 2
+  upgrade:
+    material: NETHER_STAR
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Nâng cấp{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%"
+      lore: |
+        {? building_is_under_construction ? "{$err-sign} &cBạn hiện không thể nâng cấp
+        tháp pháo này vì nó đang được xây dựng.
+        "}
+        {$dot} {$p}Phạm vi{$colon} {$s}%range% {$sep}➔ {$s}%next_range%
+        {$dot} {$p}Số đạn tối đa{$colon} {$s}%max_ammo% {$sep}➔ {$s}%next_max_ammo%
+        {$dot} {$p}Thời gian hồi chiêu{$colon} {$s}%cooldown% {$sep}➔ {$s}%next_cooldown%
+        {$dot} {$p}Số mục tiêu tối đa{$colon} {$s}%max_targets% {$sep}➔ {$s}%next_max_targets%
+        {$dot} {$p}Tốc độ{$colon} {$s}%fancy@speed% {$sep}➔ {$s}%fancy@next_speed%
+        {$dot} {$p}Sát thương{$colon} {$s}%damage% {$sep}➔ {$s}%next_damage%
+
+        {$dot} {$p}Cấp độ tối đa{$colon} {$s}III
+        {$dot} {$p}Chi phí{$colon} {$s}%upgrade_cost%
+    maxxed:
+      name: "{$sp}Cấp độ{$colon} {$s}%roman@level%"
+      lore: |
+        {$dot} {$p}Phạm vi{$colon} {$s}%range%
+        {$dot} {$p}Số đạn tối đa{$colon} {$s}%max_ammo%
+        {$dot} {$p}Thời gian hồi chiêu{$colon} {$s}%cooldown%
+        {$dot} {$p}Số mục tiêu tối đa{$colon} {$s}%max_targets%
+        {$dot} {$p}Tốc độ{$colon} {$s}%fancy@speed%
+        {$dot} {$p}Sát thương{$colon} {$s}%damage%
+    posx: 3
+    posy: 2
+  manual:
+    manual:
+      condition: "manual"
+      name: "{$p}Thủ công"
+      material: LEVER
+      lore: |
+        {$sep}Chế độ thủ công cho phép bạn
+        vô hiệu hóa tháp pháo khỏi
+        tự động kích hoạt và
+        bạn có thể điều khiển chúng.
+
+        {$p}Nhấp chuột trái để chuyển sang
+        {$sp}chế độ tự động
+
+        {$p}Nhấp chuột phải để bắt đầu
+        vận hành tháp pháo
+    automatic:
+      name: "{$sp}Tự động"
+      material: COMPARATOR
+      lore: |
+        {$sep}Chế độ tự động sẽ khiến
+        tháp pháo tự động phát hiện
+        kẻ thù gần đó và bắn vào chúng.
+
+        {$p}Nhấp chuột trái để chuyển sang
+        {$sp}chế độ thủ công
+    posx: 4
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}Sửa chữa"
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}Tháp pháo hiện tại của bạn đã bị
+        phá hủy hoàn toàn và cần được sửa chữa hoàn chỉnh
+        để khắc phục.
+
+        {$p}Chi phí{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Điểm tài nguyên{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Tiền{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}Bạn có thể sửa chữa tòa nhà của mình bằng cách
+        ném các vật phẩm sau vào nó{$colon}
+
+          {$dot} {$p}Sắt{$colon} {$s}10
+          {$dot} {$p}Vàng{$colon} {$s}15
+          {$dot} {$p}Kim cương{$colon} {$s}50
+
+        {$info-sign} &9Nếu độ bền tòa nhà của bạn đạt {$e}0&9,
+        bạn sẽ phải sửa chữa hoàn chỉnh bằng
+        nút này.
+    posx: 6
+    posy: 2
+  break:
+    name: "&cPhá hủy"
+    material: REDSTONE_BLOCK
+    under-construction:
+      condition: "building_is_under_construction"
+      lore: |
+        &4Phá hủy tháp pháo này.
+
+        {$err-sign} {$e}Tháp pháo này hiện đang được
+        xây dựng, phá hủy tháp pháo này
+        sẽ hoàn tác tất cả tiến độ.
+    else:
+      lore: |
+        &4Phá hủy tháp pháo này.
+    posx: 7
+    posy: 2
+  close:
+    name: "&cĐóng"
+    material: BARRIER
+    lore:
+      - "{$s}Đóng GUI"
+    posx: 8
+    posy: 2
+
+  lime-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: LIME_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 13, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

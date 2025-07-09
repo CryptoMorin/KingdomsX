@@ -793,7 +793,7 @@ command:
         &7| &7Столица: &6%kingdoms_nation:capital get=name%
         &7| &7Спавн: &6%kingdoms_nation_spawn%
         &7| &7Нексус: &6%kingdoms_nation_nexus%
-        &7| &7Дата создания: &6%kingdoms_date_nation_since%
+        &7| &7Дата создания: &6%date@kingdoms_nation_since%
         &7| &7Мощь: &6%kingdoms_nation_might%
         &7| &7Щит: &6%time@kingdoms_nation_shield_time_left%
         &7| &7Баланс: &6%fancy@kingdoms_nation_bank% монет &8| &7Tax: &6%fancy@kingdoms_nation_tax% &8- &6%fancy@kingdoms_server_nation_tax% монет
@@ -806,7 +806,7 @@ command:
 
         &7| &7Король: &6%king_status%
         &7| &7Нация: &6%kingdoms_nation_name%
-        &7| &7Дата основания: &6%kingdoms_date_nation_since%
+        &7| &7Дата основания: &6%date@kingdoms_nation_since%
         &7| &7Мощь: &6%kingdoms_might%
         &7| &7Щит: &6%time@kingdoms_nation_shield_time_left%
         &7| &7Баланс: &6%fancy@kingdoms_nation_bank%
@@ -1234,7 +1234,7 @@ command:
       &8▪ &7Земли: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
       &8▪ &7Очков Ресурсов: &e%fancy@kingdoms_resource_points%
       &8▪ &7Щит: &d%time@kingdoms_shield_time_left%
-      &8▪ &7Дата основания: &9%kingdoms_date_since%
+      &8▪ &7Дата основания: &9%date@kingdoms_since%
       &8▪ &7Участники: &b%kingdoms_members%&7/&3%kingdoms_max_members%
       %members%
     message: |
@@ -1243,7 +1243,7 @@ command:
       &8▪ &7Король: &e%king_status%
       &8▪ &7Нация: &2%kingdoms_nation_name%
       &8▪ &7Сила: &c%kingdoms_might%
-      &8▪ &7Дата основания: &9%kingdoms_date_since%
+      &8▪ &7Дата основания: &9%date@kingdoms_since%
       &8▪ &7Щит: &d%time@kingdoms_shield_time_left%
       &8▪ &7Земли: &a%kingdoms_claims%&8/&2%kingdoms_max_claims%
       &8▪ &7Баланс: &e%fancy@kingdoms_bank% монет
@@ -1261,14 +1261,14 @@ command:
       &8▪ &7Враги:
       &e%enemies%
     online-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&7Вступил: &6%kingdoms_date_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&7Вступил: &6%date@kingdoms_joined%
       &7Пожертвование: &6%kingdoms_total_donations%
-      &7Послд.пожертвование: &6%kingdoms_date_last_donation_time%
+      &7Послд.пожертвование: &6%date@kingdoms_last_donation_time%
       &7Должность: &6%kingdoms_rank_name%}
     offline-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&7Вступил: &6%kingdoms_date_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&7Вступил: &6%date@kingdoms_joined%
       &7Пожертвование: &6%kingdoms_total_donations%
-      &7Послд.пожертвование: &6%kingdoms_date_last_donation_time%
+      &7Послд.пожертвование: &6%date@kingdoms_last_donation_time%
       &7Должность: &6%kingdoms_rank_name%}
     # offline-prefix: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%'
     relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
@@ -1893,10 +1893,10 @@ command:
         &8| &7Нац.банк: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &7Чат: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &8| &7Использует маркеры: %visualizer%
         &8| &7Приглашений: &6%invites%
-        &8| &7Вступил в королевство: &6%kingdoms_date_joined%
+        &8| &7Вступил в королевство: &6%date@kingdoms_joined%
         &8| &7Авто-взятие терр.: %auto_claim% &7| &7Авто-карта: %auto_map%
         &8| &7Размер карты: &6%map_width% &8- &6%map_height%
-        &8| &7Всего задонатил: &6%kingdoms_total_donations% &7| &7Последний раз донатил: &6%kingdoms_date_last_donation_time%
+        &8| &7Всего задонатил: &6%kingdoms_total_donations% &7| &7Последний раз донатил: &6%date@kingdoms_last_donation_time%
         &8| &7Территорий &7(&6%kingdoms_player_claims%&7): %claims%
         &8| &7Сжатые данные: &6%compressed%
       found: '&7Игрок &6%name% &8(&7%uuid%&8) &7находится в следующих королевствах:'
@@ -3582,7 +3582,7 @@ time-formatter:
 # Used for date-based placeholders.
 # The default time related placeholders like %kingdoms_since% are shown as
 # random numbers if you use it just like that, you'd have to use the date modifier:
-# %kingdoms_date_since%
+# %date@kingdoms_since%
 
 # It uses Java's default date formatter syntax which can be found here:
 # https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns

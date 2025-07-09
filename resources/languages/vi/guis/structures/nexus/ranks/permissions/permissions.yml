@@ -1,0 +1,304 @@
+# %permission_category_name% là tên vật phẩm được sử dụng
+# cho các danh mục trong categories.yml
+title: '{$sep}-=( {$p}%permission_category_name% {$sep})=-'
+rows: 6
+(import):
+  pagination: {}
+
+# Đừng xóa "[NoSync]" bên dưới.
+# [NoSync]
+'[fn-std-perm]': &fn-std-perm
+  args: [ "<x>" ]
+  return:
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      material: GREEN_WOOL
+    else:
+      name: "{$disabled} <x>"
+      material: RED_WOOL
+
+# [NoSync]
+'[fn-perm]': &fn-perm
+  args: [ "<x>", "<material>" ]
+  return:
+    material: <material>
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>"
+      glow: true
+    else:
+      name: "{$disabled} <x>"
+
+# [NoSync]
+'[permission]':
+  alliance:
+    <<: *fn-std-perm [ "Liên minh" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k ally{$desc}.
+  broadcast:
+    <<: *fn-std-perm [ "Phát sóng" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k broadcast{$desc}.
+  build:
+    <<: *fn-perm [ 'Xây dựng', DIAMOND_PICKAXE ]
+    lore: |
+      {$desc}Quyền xây dựng bất cứ đâu
+      trong vương quốc.
+
+      Để biết sự khác biệt giữa quyền này
+      và quyền {$p}BUILD_OWNED {$desc},
+      hãy tham khảo quyền khác.
+  build-owned:
+    <<: *fn-perm [ "Tự xây dựng", GOLD_PICKAXE ]
+    lore: |
+      {$desc}Sự khác biệt giữa {$p}BUILD {$desc}và
+      {$p}BUILD_OWNED {$desc}là, {$p}BUILD {$desc}cho phép
+      bạn xây dựng bất cứ đâu trong vương quốc của bạn
+      (trừ vùng đất nexus cần
+      {$p}NEXUS_BUILD{$desc}.)
+
+      {$p}BUILD_OWNED {$desc}chỉ cho phép bạn xây dựng
+      trên các vùng đất mà bạn tự chiếm.
+      Ví dụ, nếu bạn {$s}/k claim {$desc}ở đâu đó,
+      những người khác có quyền {$p}BUILD_OWNED {$desc}không thể
+      xây dựng ở đó, nhưng bạn hoặc những người có
+      quyền {$p}BUILD {$desc}có thể.
+  edit-ranks:
+    <<: *fn-std-perm [ "Chỉnh sửa cấp bậc" ]
+    lore: |
+      {$desc}Quyền tạo, xóa
+      và sửa đổi cấp bậc bao gồm
+      biểu tượng, tên và quyền hạn của chúng.
+
+      Họ sẽ không thể sửa đổi
+      cấp bậc của chính họ hoặc cấp bậc của
+      người có độ ưu tiên cao hơn.
+
+      Điều này không cấp cho họ quyền
+      giáng cấp hoặc thăng chức người chơi khác.
+  enemy:
+    <<: *fn-std-perm [ "Kẻ thù" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k enemy{$desc}.
+  home:
+    <<: *fn-std-perm [ "Nhà" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k home{$desc}.
+  invade:
+    <<: *fn-std-perm [ "Xâm lược" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k invade{$desc}.
+  invite:
+    <<: *fn-std-perm [ "Mời" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      lệnh {$s}/k invite {$desc}và
+      tạo mã mời từ
+      {$s}/k invitecodes
+  kick:
+    <<: *fn-std-perm [ "Đuổi" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k kick{$desc}.
+
+      {$desc}Người chơi có quyền này
+      sẽ không thể đuổi người chơi có
+      cấp bậc tương đương hoặc cao hơn.
+  lore:
+    <<: *fn-std-perm [ "Lore" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k lore{$desc}, {$s}/k rename{$desc},
+      {$s}/k book edit {$desc}và {$s}/k tag{$desc}.
+  nexus:
+    <<: *fn-perm [ "Nexus", BEACON ]
+    lore: |
+      {$desc}Quyền di chuyển
+      nexus vương quốc bằng cách sử dụng
+      {$s}/k nexus{$desc}.
+  nexus-build:
+    <<: *fn-perm [ "Xây dựng Nexus", BEACON ]
+    lore: |
+      {$desc}Quyền xây dựng
+      trên vùng đất nexus
+  nexus-chest:
+    <<: *fn-perm [ "Rương Nexus", CHEST ]
+    lore: |
+      {$desc}Quyền sửa đổi
+      rương nexus của vương quốc.
+  outpost:
+    <<: *fn-perm [ "Tiền đồn", HAY_BLOCK ]
+    lore: |
+      {$desc}Quyền mua
+      vật phẩm từ các cấu trúc tiền đồn.
+  protection-signs:
+    <<: *fn-perm [ "Bỏ qua Biển bảo vệ", OAK_SIGN ]
+    lore: |
+      {$desc}Quyền bỏ qua
+      các khối được bảo vệ bằng biển hiệu bên trong
+      các vùng đất vương quốc.
+  set-home:
+    <<: *fn-std-perm [ "Đặt nhà" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k sethome{$desc}.
+  invsee:
+    <<: *fn-std-perm [ "Xem kho đồ" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k invsee{$desc}.
+  structures:
+    <<: *fn-perm [ "Cấu trúc", REDSTONE_LAMP ]
+    lore: |
+      {$desc}Quyền mua, đặt
+      phá hủy và sửa đổi cấu trúc.
+  use:
+    <<: *fn-perm [ "Sử dụng", FURNACE ]
+    lore: |
+      {$desc}Quyền sử dụng một số
+      khối nhất định trong vương quốc.
+  interact:
+    <<: *fn-perm [ "Tương tác", OAK_DOOR ]
+    lore: |
+      {$desc}Quyền tương tác
+      với một số khối nhất định như
+      cửa và nút bên trong
+      các vùng đất vương quốc.
+  upgrade:
+    <<: *fn-std-perm [ "Nâng cấp" ]
+    lore: |
+      {$desc}Quyền nâng cấp
+      bất cứ thứ gì có thể nâng cấp
+      trong vương quốc như
+      nâng cấp linh tinh, nâng cấp nhà vô địch,
+      powerups, tháp pháo và cấu trúc.
+  truce:
+    <<: *fn-std-perm [ "Đình chiến" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k truce{$desc}.
+  turrets:
+    <<: *fn-perm [ "Tháp pháo", ARROW ]
+    lore: |
+      {$desc}Quyền mua, đặt
+      phá hủy và sửa đổi tháp pháo.
+  unclaim:
+    <<: *fn-std-perm [ "Hủy chiếm" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k unclaim{$desc}.
+  manage-ranks:
+    <<: *fn-std-perm [ "Quản lý cấp bậc" ]
+    lore: |
+      {$desc}Quyền thăng chức
+      và giáng cấp thành viên có
+      cấp bậc thấp hơn người chơi.
+
+      Điều này không cấp cho họ
+      quyền sửa đổi cài đặt cấp bậc.
+  withdraw:
+    <<: *fn-std-perm [ "Rút tiền" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k rp withdraw {$desc}và {$s}/k bank withdraw
+      {$desc}và rút điểm tài nguyên
+      để đổi lấy tiền bằng các phương tiện
+      khác, chẳng hạn như tùy chọn trong
+      bộ chuyển đổi điểm tài nguyên trong
+      GUI nexus.
+  fly:
+    <<: *fn-perm [ "Bay", ELYTRA ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k fly{$desc}.
+  nation:
+    <<: *fn-perm [ "Quốc gia", BLUE_WOOL ]
+    lore: |
+      {$desc}Quyền tham gia
+      hoặc rời khỏi các quốc gia.
+  exclude-tax:
+    <<: *fn-std-perm [ "Miễn thuế" ]
+    lore: |
+      {$desc}Thành viên vương quốc có quyền này
+      không bắt buộc
+      phải nộp thuế cho vương quốc.
+  relation-attributes:
+    <<: *fn-std-perm [ "Thuộc tính quan hệ" ]
+    lore: |
+      {$desc}Quyền chỉnh sửa
+      thuộc tính quan hệ.
+  settings:
+    <<: *fn-std-perm [ "Cài đặt" ]
+    lore: |
+      {$desc}Quyền chỉnh sửa cài đặt chung
+      của vương quốc nằm trong
+      GUI nexus.
+  claim:
+    <<: *fn-std-perm [ "Yêu cầu" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k claim{$desc}.
+  unclaim-owned:
+    <<: *fn-std-perm [ "Hủy chiếm của riêng" ]
+    lore: |
+      {$desc}Cho phép bạn chỉ hủy chiếm
+      các vùng đất mà bạn tự chiếm.
+  instant-teleport:
+    <<: *fn-std-perm [ "Dịch chuyển tức thời" ]
+    lore: |
+      {$desc}Dịch chuyển tức thời đến
+      các thành viên của bạn khi sử dụng {$p}/k tpa
+      {$desc}. Nếu không, bạn sẽ phải
+      đợi họ chấp nhận yêu cầu.
+
+      Bạn vẫn sẽ có thời gian đếm ngược dịch chuyển
+      trước khi dịch chuyển.
+  view-logs:
+    <<: *fn-perm [ "Xem nhật ký", KNOWLEDGE_BOOK ]
+    lore: |
+      {$desc}Xem nhật ký kiểm toán vương quốc của bạn
+      có thể truy cập từ
+      nexus của bạn.
+  read-mails:
+    <<: *fn-perm [ "Đọc thư", PLAYER_HEAD ]
+    lore: |
+      {$desc}Quyền đọc
+      thư vương quốc nằm trong
+      GUI nexus.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  manage-mails:
+    <<: *fn-perm [ "Quản lý thư", PLAYER_HEAD ]
+    lore: |
+      {$desc}Gửi thư mới và trả lời.
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+  'outposts:join':
+    <<: *fn-std-perm [ "Tham gia sự kiện tiền đồn" ]
+    lore: |
+      {$desc}Quyền sử dụng
+      {$s}/k outposts join{$desc}.
+  "[else]":
+    name: "&4Không xác định: %permission%"
+    material: BARRIER
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  permissions:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    # Đây là một tính năng đặc biệt
+    '[switch]': permission
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '{$p}Quay lại'

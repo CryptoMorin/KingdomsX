@@ -46,6 +46,22 @@ prefix: false
 # Requires a restart to apply.
 debug: false
 
+# Some parts of the plugin create something somewhere that have to be
+# used in many different places or to be used for future tasks, and if
+# an error occurs because of something that's related to these objects,
+# it's hard to pinpoint where they even originated from.
+# So the plugin attaches the origin's information which helps identify
+# the source of an object. However, these sources can be expensive for
+# both the CPU to create and the RAM to keep. If your server is relatively
+# big, you might benefit from disabling debug traces.
+# However, beaware that you might not receive support for an error you
+# receive if this debug traces are disabled.
+#
+# So only disable it after consulting with your developers and knowing
+# that your server is struggling specifically because of debug traces.
+# * Requires a restart to apply changes.
+disable-debug-tracing: false
+
 updates:
   # Check for plugin updates from Spigot when server starts
   # and when players with kingdoms.updates permission join the server.
@@ -116,7 +132,7 @@ updates:
 # Standard way of naming this is to follow IETF language tags.
 # from IETF (https://en.wikipedia.org/wiki/IETF_language_tag)
 # All the language files are made by the community, they're not guaranteed to be 100% accurate and complete.
-# For technical info see: https://www.w3.org/International/articles/language-tags/   and   https://www.rfc-editor.org/rfc/rfc5646.html#page-5
+# For technical info see: https://www.w3.org/International/articles/language-tags/ and https://www.rfc-editor.org/rfc/rfc5646.html#page-5
 # Please refer to https://github.com/CryptoMorin/KingdomsX/wiki/Config#language-file if you want to translate the plugin.
 # If you translated the plugin you can contact me, and I'll add it to the plugin.
 # If you translated a language that wasn't supported in the plugin before, In order for the international

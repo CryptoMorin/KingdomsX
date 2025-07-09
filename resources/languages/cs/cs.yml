@@ -658,7 +658,7 @@ command:
         &7| &2Capital{$colon} &6%kingdoms_nation:capital get=name%
         &7| &2Spawn{$colon} &6%kingdoms_nation_spawn%
         &7| &2Nexus{$colon} &6%kingdoms_nation_nexus%
-        &7| &2Since{$colon} &6%kingdoms_date_nation_since%
+        &7| &2Since{$colon} &6%date@kingdoms_nation_since%
         &7| &2Might{$colon} &6%kingdoms_nation_might%
         &7| &2Shield{$colon} &6%time@kingdoms_nation_shield_time_left%
         &7| &2Bank{$colon} &6$%fancy@kingdoms_nation_bank% &8| &2Tax{$colon} &6$%fancy@kingdoms_nation_tax% &8- &6$%fancy@kingdoms_server_nation_tax%
@@ -671,7 +671,7 @@ command:
 
         &7| &2King{$colon} &6%king_status%
         &7| &2Nation{$colon} &6%kingdoms_nation_name%
-        &7| &2Since{$colon} &6%kingdoms_date_nation_since%
+        &7| &2Since{$colon} &6%date@kingdoms_nation_since%
         &7| &2Might{$colon} &6%kingdoms_might%
         &7| &2Shield{$colon} &6%time@kingdoms_nation_shield_time_left%
         &7| &2Bank{$colon} &6%fancy@kingdoms_nation_bank%
@@ -1024,7 +1024,7 @@ command:
       &7| &2Lands{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
       &7| &2Resource Points{$colon} &6%fancy@kingdoms_resource_points%
       &7| &2Shield{$colon} &6%time@kingdoms_shield_time_left%
-      &7| &2Since{$colon} &6%kingdoms_date_since%
+      &7| &2Since{$colon} &6%date@kingdoms_since%
       &7| &2Members{$colon} &6%kingdoms_members%&7/&6%kingdoms_max_members%
       %members%
     message: |
@@ -1033,7 +1033,7 @@ command:
       &7| &2King{$colon} &6%king_status%
       &7| &2Nation{$colon} &6%kingdoms_nation_name%
       &7| &2Might{$colon} &6%kingdoms_might%
-      &7| &2Since{$colon} &6%kingdoms_date_since%
+      &7| &2Since{$colon} &6%date@kingdoms_since%
       &7| &2Shield{$colon} &6%time@kingdoms_shield_time_left%
       &7| &2Lands{$colon} &6%kingdoms_claims%&8/&6%kingdoms_max_claims%
       &7| &2Bank{$colon} &6$%fancy@kingdoms_bank%
@@ -1051,14 +1051,14 @@ command:
       &7| &2Enemies{$colon}
       &e%enemies%
     online-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&2Joined{$colon} &6%kingdoms_date_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &a%player%;&2Joined{$colon} &6%date@kingdoms_joined%
       &2Donations{$colon} &6%kingdoms_total_donations%
-      &2Last Donation{$colon} &6%kingdoms_date_last_donation_time%
+      &2Last Donation{$colon} &6%date@kingdoms_last_donation_time%
       &2Rank{$colon} &6%kingdoms_rank_name%}
     offline-prefix: |
-      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&2Joined{$colon} &6%kingdoms_date_joined%
+      hover:{&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] &c%player%;&2Joined{$colon} &6%date@kingdoms_joined%
       &2Donations{$colon} &6%kingdoms_total_donations%
-      &2Last Donation{$colon} &6%kingdoms_date_last_donation_time%
+      &2Last Donation{$colon} &6%date@kingdoms_last_donation_time%
       &2Rank{$colon} &6%kingdoms_rank_name%}
     relation: '&8◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
   claim:
@@ -1417,10 +1417,10 @@ command:
         &7| &2National Rank{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| &2Chat Channel{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| &2Using Markers{$colon} %visualizer%
         &7| &2Invites{$colon} &6%invites%
-        &7| &2Joined Kingdom At{$colon} &6%kingdoms_date_joined%
+        &7| &2Joined Kingdom At{$colon} &6%date@kingdoms_joined%
         &7| &2Auto Claim{$colon} %auto_claim% &7| &2Auto Map{$colon} %auto_map%
         &7| &2Map Size{$colon} &6%map_width% &8- &6%map_height%
-        &7| &2Total Donations{$colon} &6%kingdoms_total_donations% &7| &2Last Donation{$colon} &6%kingdoms_date_last_donation_time%
+        &7| &2Total Donations{$colon} &6%kingdoms_total_donations% &7| &2Last Donation{$colon} &6%date@kingdoms_last_donation_time%
         &7| &2Claims &7(&6%kingdoms_player_claims%&7){$colon} %claims%
         &7| &2Compressed Data{$colon} &6%compressed%
       found: '&2Obcan &6%name% &8(&7%uuid%&8) &2je ve State{$colon}'

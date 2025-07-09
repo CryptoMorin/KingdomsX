@@ -24,4 +24,9 @@ public class CachedObject<T> implements CacheableObject<T> {
     public void set(@Nullable T cache) {
         this.cached = cache;
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + '(' + cached + ')';
+    }
 }

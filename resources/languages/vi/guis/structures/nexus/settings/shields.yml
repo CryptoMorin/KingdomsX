@@ -1,0 +1,92 @@
+title: "{$sep}-=( {$p}Lá chắn {$sep})=-"
+rows: 3
+sound: ITEM_BOOK_PAGE_TURN
+
+options:
+  shield-6hr:
+    name: "{$p}Lá chắn 6 giờ"
+    lore: "{$s}Chi phí{$colon} {$p}%cost%"
+    material: SHIELD
+    cost: 1000
+    time: 6hr
+    flags: [ ALL ]
+    patterns:
+      BASE: BLACK
+    posx: 2
+    posy: 2
+  shield-12hr:
+    name: "{$p}Lá chắn 12 giờ"
+    lore: "{$s}Chi phí{$colon} {$p}%cost%"
+    material: SHIELD
+    flags: [ ALL ]
+    cost: 1900
+    time: 12hr
+    patterns:
+      BASE: BLACK
+      BORDER: RED
+    posx: 3
+    posy: 2
+  shield-1day:
+    name: "{$p}Lá chắn 1 ngày"
+    lore: "{$s}Chi phí{$colon} {$p}%cost%"
+    material: SHIELD
+    cost: 4500
+    time: 1day
+    flags: [ ALL ]
+    patterns:
+      BASE: BLACK
+      BORDER: RED
+      CIRCULE_MIDDLE: RED
+    posx: 4
+    posy: 2
+  shield-1week:
+    name: "{$p}Lá chắn 1 tuần"
+    lore: "{$s}Chi phí{$colon} {$p}%cost%"
+    material: SHIELD
+    flags: [ ALL ]
+    cost: 50000
+    time: 7days
+    patterns:
+      BASE: BLACK
+      BORDER: RED
+      CROSS: RED
+    posx: 5
+    posy: 2
+  shield-1month:
+    name: "{$p}Lá chắn 1 tháng"
+    lore: "{$s}Chi phí{$colon} {$p}%cost%"
+    material: SHIELD
+    flags: [ ALL ]
+    cost: 100000
+    time: 30days
+    patterns:
+      BASE: BLACK
+      BORDER: RED
+      MOJANG: RED
+    posx: 6
+    posy: 2
+  refund:
+    name: '&5Hoàn tiền'
+    can-refund:
+      condition: 'refund != 0'
+      lore: |
+        {$desc}Hủy kích hoạt tất cả lá chắn của bạn
+        nhưng sẽ hoàn lại điểm tài nguyên.
+
+        {$p}Lá chắn{$colon} {$s}%time@kingdoms_shield_time_left%
+        {$p}Hoàn tiền{$colon} {$s}%fancy@refund%
+    else:
+      lore: |
+        {$desc}Bạn không có lá chắn để hoàn tiền.
+    material: PAPER
+    posx: 8
+    posy: 2
+
+  red-stained-glass-pane:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 1, 3, 5, 7, 9, 15, 17, 19, 21, 23, 25 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''

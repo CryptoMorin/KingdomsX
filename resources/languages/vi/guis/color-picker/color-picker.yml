@@ -1,0 +1,156 @@
+title: "{$sep}-=( {$p}Bộ chọn &4màu {$sep})=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 6
+
+'[color]': &color
+  disallowed:
+    condition: '!color_allowed'
+    lore: "{$warning} &eBạn không thể chọn màu này."
+    sound: BLOCK_NOTE_BLOCK_BASS
+
+# https://minecraft.fandom.com/wiki/Formatting_codes
+options:
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '{$p}Thông tin'
+    lore: |
+      {$desc}Bạn hiện đang thay đổi
+      màu cho {$p}%color_displayname%{$colon}
+
+      {$s}%color_description%
+
+      {$p}Màu hiện tại{$colon} &r%color_value%%color_value_name%
+
+  # Chỉ các tùy chọn bắt đầu bằng "color" mới được hiểu là màu được xác định trước.
+  # Bạn có thể thêm màu của riêng mình, chỉ cần đừng quên tùy chọn "color" VÀ tên mục tùy chọn GUI đó
+  # phải bắt đầu bằng từ "color"
+  separator:
+    slots: [ 0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+    material: GRAY_STAINED_GLASS_PANE
+  back:
+    posx: 4
+    posy: 1
+    material: BARRIER
+    name: '&cQuay lại'
+  hex-picker:
+    posx: 6
+    posy: 1
+    material: PAPER
+    name: '{$p}Nhập màu hex'
+  color-dark-red:
+    posx: 2
+    posy: 3
+    material: REDSTONE_BLOCK
+    name: '&4Đỏ Đậm #AA0000'
+    color: '#AA0000'
+    <<: *color
+  color-red:
+    posx: 2
+    posy: 4
+    material: RED_WOOL
+    name: '&cĐỏ #FF5555'
+    color: '#FF5555'
+    <<: *color
+  color-dark-blue:
+    posx: 3
+    posy: 3
+    material: LAPIS_BLOCK
+    name: '&1Xanh Dương Đậm #0000AA'
+    <<: *color
+    color: '#0000AA'
+    <<: *color
+  color-light-blue:
+    posx: 3
+    posy: 4
+    material: BLUE_WOOL
+    name: '{$sp}Xanh Dương Nhạt #5555FF'
+    <<: *color
+    color: '#5555FF'
+    <<: *color
+  color-black:
+    posx: 5
+    posy: 4
+    material: BLACK_WOOL
+    name: '&0Đen #000000'
+    <<: *color
+    color: '#000000'
+  color-gray:
+    posx: 6
+    posy: 4
+    material: GRAY_WOOL
+    name: '&8Xám #555555'
+    <<: *color
+    color: '#555555'
+  color-purple:
+    posx: 7
+    posy: 4
+    material: PURPLE_WOOL
+    name: '&5Tím Đậm #AA00AA'
+    <<: *color
+    color: '#AA00AA'
+  color-dark-green:
+    posx: 8
+    posy: 4
+    material: GREEN_WOOL
+    name: '{$p}Xanh Lục Đậm #00AA00'
+    <<: *color
+    color: '#00AA00'
+  color-orange:
+    posx: 2
+    posy: 5
+    material: ORANGE_WOOL
+    name: '{$s}Minecoin Vàng #DDD605'
+    <<: *color
+    color: '#DDD605'
+  color-dark-aqua:
+    posx: 3
+    posy: 5
+    material: CYAN_WOOL
+    name: '&3Xanh Lam Đậm #00AAAA'
+    <<: *color
+    color: '#00AAAA'
+  color-white:
+    posx: 5
+    posy: 5
+    material: WHITE_WOOL
+    name: '&fTrắng #FFFFFF'
+    <<: *color
+    color: '#FFFFFF'
+  color-light-gray:
+    posx: 6
+    posy: 5
+    material: LIGHT_GRAY_WOOL
+    name: '{$sep}Xám Nhạt #AAAAAA'
+    <<: *color
+    color: '#AAAAAA'
+  color-light-purple:
+    posx: 7
+    posy: 5
+    material: MAGENTA_WOOL
+    name: '&dTím Nhạt #FF55FF'
+    <<: *color
+    color: '#FF55FF'
+  color-green:
+    posx: 8
+    posy: 5
+    material: LIME_WOOL
+    name: '&aXanh Lục #55FF55'
+    <<: *color
+    color: '#55FF55'
+  color-yellow:
+    posx: 2
+    posy: 6
+    material: YELLOW_WOOL
+    name: '&eVàng #FFFF55'
+    <<: *color
+    color: '#FFFF55'
+  color-aqua:
+    posx: 3
+    posy: 6
+    material: LIGHT_BLUE_WOOL
+    name: '&bAqua #55FFFF'
+    <<: *color
+    color: '#55FFFF'

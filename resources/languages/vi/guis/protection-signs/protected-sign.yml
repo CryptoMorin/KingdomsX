@@ -1,0 +1,65 @@
+title: "{$sep}-=[ &5Bảo vệ {$sep}]=-"
+rows: 3
+sound: BLOCK_CHEST_OPEN
+
+options:
+  access-entries:
+    name: "{$p}Mục Truy Cập"
+    lore: |-
+      {$s}Thêm các đặc quyền khác nhau cho
+      những người chơi nhất định dựa trên bộ lọc.
+    material: PLAYER_HEAD
+    skull: '%owner%'
+    posx: 3
+    posy: 2
+  info:
+    name: "&5Biển Bảo vệ"
+    lore: |-
+      {$s}Các khối được bảo vệ
+      chống lại phá hoại và không người chơi nào có thể sử dụng chúng
+      mà không có sự cho phép.
+
+      Nếu một người chơi có quyền truy cập vào khối này,
+      họ vẫn không thể thay đổi cài đặt biển
+      hoặc phá biển hay khối.
+
+      {$sep}Nhấp vào đây để đặt mật khẩu cho khối.
+      Điều này chỉ hoạt động nếu khối được bảo vệ
+      là một thùng chứa như rương.
+    material: NETHER_STAR
+    posx: 4
+    posy: 2
+  protection-type:
+    name: "{$p}Loại Bảo vệ{$colon} {$sp}%protection_type%"
+    lore: |-
+      {$s}Thay đổi phương thức bảo vệ
+      khối này khỏi những người chơi khác
+      theo mặc định.
+    material: CHEST
+    posx: 6
+    posy: 2
+  automatic-state-toggle-duration:
+    name: "&5Thời lượng Chuyển đổi Trạng thái Tự động"
+    supported:
+      condition: 'openable'
+      lore: |
+        {$desc}Tự động đóng cửa sau khi
+        nó được mở.
+
+        {$p}Thời lượng{$colon} {$s}%time@automatic_state_toggle_duration%
+    else:
+      lore: |
+        {$desc}Khối được bảo vệ không hỗ trợ
+        tính năng này. Chỉ hoạt động với cửa.
+    material: COMPARATOR
+    posx: 7
+    posy: 2
+
+  decoration-light-blue:
+    slots: [ 0, 4, 8, 18, 22, 26 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  decoration-blue:
+    slots: [ 1, 7, 9, 13, 17, 19, 25 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''

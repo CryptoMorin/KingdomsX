@@ -1,0 +1,115 @@
+title: "{$sep}-=( &5Cấu trúc {$sep})=-"
+rows: 3
+sound: BLOCK_CONDUIT_ACTIVATE
+
+# Rõ ràng cờ vật phẩm HIDE_POTION_EFFECTS sẽ
+# loại bỏ tên đĩa khỏi lore...
+options:
+  powercell:
+    name: "&4Powercell"
+    material: MUSIC_DISC_CHIRP
+    sound: BLOCK_REDSTONE_TORCH_BURNOUT
+    flags: [ ALL ]
+    lore: |
+      {$s}Vùng đất được bao quanh bởi một powercell không thể
+      bị xâm lược cho đến khi vùng đất powercell
+      bị xâm lược trước.
+      Bán kính bảo vệ là {$p}3x3 {$s}cho cấp 1
+      và {$p}5x5 {$s}cho cấp 2.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Vương quốc của bạn là vương quốc hòa bình
+      {$desc}và cấu trúc này sẽ không có tác dụng gì cho vương quốc của bạn."}
+    posx: 3
+    posy: 2
+  extractor:
+    name: "&aExtractor"
+    material: MUSIC_DISC_CAT
+    sound: BLOCK_ANVIL_LAND
+    flags: [ ALL ]
+    lore: |
+      {$s}Máy khai thác tạo ra điểm tài nguyên.
+      {$s}Bạn có thể thu thập điểm tài nguyên
+      bất cứ lúc nào.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+    posx: 4
+    posy: 2
+  outpost:
+    name: "&eTiền đồn"
+    material: MUSIC_DISC_13
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
+    flags: [ ALL ]
+    lore: |
+      {$s}Thị trường chứng khoán toàn cầu
+      của các vương quốc. Mua và bán
+      các mặt hàng khác nhau ảnh hưởng
+      giá của các mặt hàng này trên toàn cầu
+      trên tất cả các tiền đồn.
+      Cấu trúc này cũng cung cấp cho bạn khả năng
+      mở nexus của bạn từ xa.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+    posx: 5
+    posy: 2
+  warppad:
+    name: "&cBệ Dịch Chuyển"
+    material: MUSIC_DISC_BLOCKS
+    sound: ENTITY_ENDERMAN_TELEPORT
+    flags: [ ALL ]
+    lore: |
+      {$s}Bệ dịch chuyển có thể được sử dụng để dịch chuyển
+      từ một cấu trúc này sang cấu trúc khác.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+    posx: 6
+    posy: 2
+  regulator:
+    name: "&3Bộ điều chỉnh"
+    material: MUSIC_DISC_WARD
+    sound: ENTITY_VILLAGER_AMBIENT
+    flags: [ ALL ]
+    lore: |
+      {$s}Quản lý các thuộc tính của người chơi như xây dựng,
+      đình chiến tháp pháo, v.v.
+      Kiểm soát việc sinh sản của mob/động vật,
+      tháp pháo (chẳng hạn như tự động nạp đạn) và vụ nổ.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+    posx: 7
+    posy: 2
+  siege-cannon:
+    name: "&3Pháo Công Thành"
+    material: MUSIC_DISC_STRAD
+    sound: ENTITY_VILLAGER_AMBIENT
+    flags: [ ALL ]
+    lore: |
+      {$s}Pháo được sử dụng để phá vỡ
+      lá chắn của một vương quốc.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Chi phí{$colon} {$s}%fancy@cost%
+    posx: 5
+    posy: 1
+  back:
+    name: "{$p}Quay lại"
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/alphabet/10299-gray-backward
+    skull: "{$gui-back}"
+    lore: |
+      {$s}Quay lại menu nexus.
+    posx: 5
+    posy: 3
+  cyan-glass:
+    name: ""
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 1, 7, 9, 17, 19, 25 ]
+  light-blue-glass:
+    name: ""
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    slots: [ 0, 8, 18, 26 ]

@@ -1,0 +1,222 @@
+title: "{$sep}-=( {$p}Nâng cấp Nhà vô địch {$sep})=-"
+rows: 6
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+
+options:
+  settings:
+    name: "&bCài đặt"
+    material: DIAMOND_SWORD
+    flags: [ ALL ]
+    lore:
+      - "{$desc}Thay đổi cài đặt của nhà vô địch của bạn"
+      - "như nâng cấp trang bị hoặc"
+      - "thay đổi loại nhà vô địch của bạn."
+    posx: 3
+    posy: 2
+  health:
+    name: "&bMáu Nhà vô địch"
+    material: MELON_SLICE
+    lore:
+      - "{$desc}Tăng máu của nhà vô địch"
+      - "thêm {$p}50 {$desc}mỗi cấp độ."
+      - "{$desc}Máu hiện tại của nhà vô địch{$colon} {$p}%scaling%"
+      - ""
+      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 4
+    posy: 2
+  reinforcements:
+    name: "&bGia cố"
+    material: ZOMBIE_HEAD
+    lore:
+      - "{$desc}Triệu hồi lính canh nexus mỗi {$p}3 {$desc}phút."
+      - "Mỗi lần nâng cấp sẽ giảm thời gian hồi chiêu triệu hồi đi {$p}15 giây{$desc}."
+      - "Những lính canh này có cùng chỉ số với lính canh nexus của bạn."
+      - ""
+      - "{$chk-kingdom-lvl-IV}"
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 5
+    posy: 2
+  resistance:
+    name: "&bKháng cự"
+    material: BRICK
+    lore:
+      - "{$desc}Mỗi lần nâng cấp thêm {$p}10% {$desc}cơ hội mà"
+      - "nhà vô địch sẽ không bị đẩy lùi."
+      - ""
+      - "{$p}Kháng cự{$colon} {$s}%scaling%"
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 6
+    posy: 2
+  speed:
+    name: "&bTốc độ"
+    material: POTION
+    lore: |
+      {$desc}Tăng tốc độ của nhà vô địch khi
+      máu của nó thấp hơn {$p}20%
+
+      {$p}Cấp độ{$colon} {$s}%level%
+      {$p}Chi phí{$colon} {$s}%cost%
+    posx: 7
+    posy: 2
+  focus:
+    name: "&bTập trung"
+    material: ENDER_EYE
+    lore:
+      - "{$desc}Người chơi bị nhà vô địch đánh trúng sẽ"
+      - "bị loại bỏ {$p}%scaling% {$desc}giây khỏi tất cả"
+      - "các hiệu ứng thuốc đang hoạt động của họ."
+      - "Mỗi lần nâng cấp tăng thời gian bị loại bỏ thêm 1 giây. "
+      - ""
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 3
+    posy: 3
+  strength:
+    name: "&bSức mạnh"
+    material: ANVIL
+    lore:
+      - "{$desc}Áp dụng sức mạnh cho nhà vô địch."
+      - "Sức mạnh được điều chỉnh theo cấp độ nâng cấp này."
+      - ""
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 4
+    posy: 3
+  throw:
+    name: "&bNém"
+    material: COOKED_PORKCHOP
+    lore:
+      - "{$desc}Mỗi đòn tấn công, sẽ có cơ hội"
+      - "{$desc}đẩy người chơi bay lên trời."
+      - "{$desc}Mỗi lần nâng cấp tăng cơ hội này thêm {$p}10%{$desc}."
+      - ""
+      - "{$chk-kingdom-lvl-II}"
+      - "{$p}Cấp độ{$colon} {$s}%level%"
+      - "{$p}Chi phí{$colon} {$s}%cost%"
+    posx: 5
+    posy: 3
+  death-duel:
+    name: "&bĐấu tử"
+    material: GOLDEN_SWORD
+    flags: [ ALL ]
+    lore:
+      - "&7Tất cả người chơi trừ kẻ xâm lược sẽ gây"
+      - "&250% &7sát thương ít hơn cho nhà vô địch. Nhà vô địch"
+      - "cũng sẽ gây sát thương gấp đôi"
+      - "cho tất cả người chơi trừ kẻ xâm lược."
+      - ""
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 6
+    posy: 3
+  drag:
+    name: "&bKéo"
+    material: FISHING_ROD
+    lore:
+      - "&7Nếu người chơi xâm lược cách nhà vô địch hơn"
+      - "&2%scaling% &7khối, người chơi sẽ bị kéo về phía nhà vô địch."
+      - ""
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 7
+    posy: 3
+  thor:
+    name: "&bThor"
+    material: DIAMOND_AXE
+    flags: [ ALL ]
+    lore:
+      - "{$desc}Mỗi {$p}%cooldown%{$desc}, sét đánh"
+      - "vào người chơi xâm lược và tất cả"
+      - "người chơi không liên minh ở gần. Gây"
+      - "sát thương, và cũng đẩy người chơi lùi lại."
+      - "Mỗi lần nâng cấp giảm thời gian hồi chiêu đi 1 giây."
+      - ""
+      - "{$chk-kingdom-lvl-III}"
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 3
+    posy: 4
+  damage-cap:
+    name: "&bGiới hạn sát thương"
+    material: DIAMOND_CHESTPLATE
+    flags: [ ALL ]
+    lore:
+      - "&7Nhà vô địch của bạn chỉ có thể nhận tối đa"
+      - "&2%scaling% &7sát thương từ bất kỳ đòn tấn công nào."
+      - "Mỗi lần nâng cấp giảm giới hạn sát thương đi 1."
+      - ""
+      - "{$chk-kingdom-lvl-II}"
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 4
+    posy: 4
+  burst:
+    name: "&bPhát nổ"
+    material: WIND_CHARGE
+    flags: [ ALL ]
+    lore: |
+      {$desc}Khi có nhiều kẻ thù xung quanh
+      nhà vô địch, một vụ nổ mạnh mẽ sẽ khiến tất cả
+      người chơi không thân thiện (và thú cưng của họ)
+      nhận sát thương và bị đẩy lùi.
+
+      {$p}Phạm vi{$colon} {$s}%fancy@upgrade_range%
+      {$p}Số mục tiêu tối thiểu{$colon} {$s}%fancy@upgrade_min_targets%
+      {$p}Sát thương{$colon} {$s}%fancy@upgrade_damage%
+      {$p}Lực đẩy lùi{$colon} {$s}%fancy@upgrade_knockback%
+
+      {$chk-kingdom-lvl-V}
+      {$p}Cấp độ{$colon} {$s}%level%
+      {$p}Chi phí{$colon} {$s}%cost%
+    posx: 5
+    posy: 4
+  plow:
+    name: "&bCày"
+    material: COBWEB
+    lore:
+      - "&7Nhà vô địch của bạn sẽ cố gắng dọn sạch"
+      - "dung nham và mạng nhện mỗi {$p}%cooldown%"
+      - ""
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 6
+    posy: 4
+  fangs:
+    name: "&bNanh"
+    material: EVOKER_SPAWN_EGG
+    lore:
+      - "&7Triệu hồi nanh cho người chơi kẻ thù"
+      - "xung quanh nhà vô địch"
+      - "mỗi {$p}%cooldown%{$desc}."
+      - "Mỗi lần nâng cấp tăng sát thương"
+      - "và bán kính tấn công thêm {$p}1{$desc}."
+      - ""
+      - "&2Cấp độ&8: &6%level%"
+      - "&2Chi phí&8: &6%cost%"
+    posx: 7
+    posy: 4
+
+  back:
+    name: "{$p}Quay lại"
+    material: BARRIER
+    lore:
+    posx: 5
+    posy: 6
+  purple-glass:
+    name: ""
+    material: PURPLE_STAINED_GLASS_PANE
+    slots: [ 0, 2, 6, 8, 18, 26, 27, 35, 45, 47, 51, 53 ]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 1, 7, 9, 17, 36, 44, 46, 52 ]
+  magenta-glass:
+    name: ""
+    material: MAGENTA_STAINED_GLASS_PANE
+    slots: [ 10, 16, 37, 43 ]

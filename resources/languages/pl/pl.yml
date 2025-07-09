@@ -1353,7 +1353,7 @@ command:
         &7| {$p}Narodowa Ranga{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Kanał Czatu{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| {$p}Używanie Markerów{$colon} %visualizer%
         &7| {$p}Zaproszenia{$colon} {$s}%invites%
-        &7| {$p}Dołączył do Królestwa{$colon} {$s}%kingdoms_date_joined%
+        &7| {$p}Dołączył do Królestwa{$colon} {$s}%date@kingdoms_joined%
         &7| {$p}Auto Zajmowanie{$colon} %auto_claim% &7| {$p}Auto Mapa{$colon} %auto_map%
         &7| {$p}Wielkość Mapy{$colon} {$s}%map_width% {$sep}- {$s}%map_height%
         &7| {$p}Całkowite Dotacje{$colon} {$s}%kingdoms_total_donations% &7| {$p}Ostatnia Dotacja{$colon} {$s}%kingdoms_last_donation_time%
@@ -1740,7 +1740,7 @@ command:
         &7| {$p}Stolica{$colon} {$s}%kingdoms_nation:capital get=name%
         &7| {$p}Spawn{$colon} {$s}%kingdoms_nation_spawn%
         &7| {$p}Nexus{$colon} {$s}%kingdoms_nation_nexus%
-        &7| {$p}Od{$colon} {$s}%kingdoms_date_nation_since%
+        &7| {$p}Od{$colon} {$s}%date@kingdoms_nation_since%
         &7| {$p}Moc{$colon} {$s}%fancy@kingdoms_nation_might%
         &7| {$p}Tarcza{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Bank{$colon} {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Podatek{$colon} {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
@@ -1763,7 +1763,7 @@ command:
 
         &7| {$p}Król{$colon} {$s}%king_status%
         &7| {$p}Nacja{$colon} {$s}%kingdoms_nation_name%
-        &7| {$p}Od{$colon} {$s}%kingdoms_date_nation_since%
+        &7| {$p}Od{$colon} {$s}%date@kingdoms_nation_since%
         &7| {$p}Moc{$colon} {$s}%fancy@kingdoms_might%
         &7| {$p}Tarcza{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Bank{$colon} {$s}%fancy@kingdoms_nation_bank%
@@ -1977,7 +1977,7 @@ command:
       &7| {$p}Ziemie{$colon} {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
       &7| {$p}Punkty Zasobów{$colon} {$s}%fancy@kingdoms_resource_points%
       &7| {$p}Tarcza{$colon} {$s}%time@kingdoms_shield_time_left%
-      &7| {$p}Od{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Od{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Członkowie{$colon} {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -1986,7 +1986,7 @@ command:
       &7| {$p}Król{$colon} {$s}%king_status%
       &7| {$p}Nacja{$colon} {$s}%kingdoms_nation_name%
       &7| {$p}Moc{$colon} {$s}%kingdoms_might%
-      &7| {$p}Od{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Od{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Tarcza{$colon} {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Ziemie{$colon} {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
       &7| {$p}Bank{$colon} {$s}$%fancy@kingdoms_bank%
@@ -2005,12 +2005,12 @@ command:
       {$es}%enemies%
     members-etc: '{$sep}... hover:{[{$p}i {$s}%remaining% {$p}innych{$sep}];Click to see in the GUI;/k gui structures/nexus/members kingdom=%kingdoms_kingdom_name%}'
     online-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Dołączył{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Dołączył{$colon} {$s}%date@kingdoms_joined%
       {$p}Dotacje{$colon} {$s}%kingdoms_total_donations%
       {$p}Ostatnia Dotacja{$colon} {$s}%kingdoms_last_donation_time%
       {$p}Ranga{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     offline-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Dołączył{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Dołączył{$colon} {$s}%date@kingdoms_joined%
       {$p}Dotacje{$colon} {$s}%kingdoms_total_donations%
       {$p}Ostatnia Dotacja{$colon} {$s}%kingdoms_last_donation_time%
       {$p}Ranga{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}

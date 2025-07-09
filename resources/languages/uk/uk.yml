@@ -53,7 +53,7 @@ time-formatter:
 # Used for date-based placeholders.
 # The default time related placeholders like %kingdoms_since% are shown as
 # random numbers if you use it just like that, you'd have to use the date modifier:
-# %kingdoms_date_since%
+# %date@kingdoms_since%
 
 # It uses Java's default date formatter syntax which can be found here:
 # https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
@@ -1381,10 +1381,10 @@ command:
         &7| {$p}Національний ранг{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Канал чату{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| {$p}Використання маркерів{$colon} %visualizer%
         &7| {$p}Запрошення{$colon} {$s}%invites%
-        &7| {$p}Приєднався до королівства{$colon} {$s}%kingdoms_date_joined%
+        &7| {$p}Приєднався до королівства{$colon} {$s}%date@kingdoms_joined%
         &7| {$p}Автопривласнення{$colon} %auto_claim% &7| {$p}Автокарта{$colon} %auto_map%
         &7| {$p}Розмір карти{$colon} {$s}%map_width% {$sep}- {$s}%map_height%
-        &7| {$p}Загальні пожертвування{$colon} {$s}%kingdoms_total_donations% &7| {$p}Останнє пожертвування{$colon} {$s}%kingdoms_date_last_donation_time%
+        &7| {$p}Загальні пожертвування{$colon} {$s}%kingdoms_total_donations% &7| {$p}Останнє пожертвування{$colon} {$s}%date@kingdoms_last_donation_time%
         &7| {$p}Позиції &7({$s}%kingdoms_player_claims%&7){$colon} %claims%
         &7| {$p}Зжаті дані{$colon} {$s}%compressed%
       name: player
@@ -1560,7 +1560,7 @@ command:
         &7| {$p}Столиця{$colon} {$s}%kingdoms_nation:capital get=name%
         &7| {$p}Спаун{$colon} {$s}%kingdoms_nation_spawn%
         &7| {$p}Центр{$colon} {$s}%kingdoms_nation_nexus%
-        &7| {$p}З %kingdoms_date_nation_since%
+        &7| {$p}З %date@kingdoms_nation_since%
         &7| {$p}Могутність{$colon} {$s}%fancy@kingdoms_nation_might%
         &7| {$p}Щит{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Банк{$colon} {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Податок{$colon} {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
@@ -1573,7 +1573,7 @@ command:
 
         &7| {$p}Король{$colon} {$s}%king_status%
         &7| {$p}Нація{$colon} {$s}%kingdoms_nation_name%
-        &7| {$p}З %kingdoms_date_nation_since%
+        &7| {$p}З %date@kingdoms_nation_since%
         &7| {$p}Могутність{$colon} {$s}%fancy@kingdoms_might%
         &7| {$p}Щит{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Банк{$colon} {$s}%fancy@kingdoms_nation_bank%
@@ -1995,7 +1995,7 @@ command:
       &7| {$p}Території{$colon} {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
       &7| {$p}Бали ресурсів{$colon} {$s}%fancy@kingdoms_resource_points%
       &7| {$p}Щит{$colon} {$s}%time@kingdoms_shield_time_left%
-      &7| {$p}Засноване{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Засноване{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Учасники{$colon} {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -2004,7 +2004,7 @@ command:
       &7| {$p}Король{$colon} {$s}%king_status%
       &7| {$p}Нация{$colon} {$s}%kingdoms_nation_name%
       &7| {$p}Могутність{$colon} {$s}%kingdoms_might%
-      &7| {$p}Засноване{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Засноване{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Щит{$colon} {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Території{$colon} {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
       &7| {$p}Банк{$colon} {$s}$%fancy@kingdoms_bank%
@@ -2023,14 +2023,14 @@ command:
       {$es}%enemies%
     members-etc: '{$sep}... hover:{[{$p}і ще {$s}%remaining% {$p}членів{$sep}];Клікніть, щоб переглянути в GUI;/k gui structures/nexus/members королівство=%kingdoms_kingdom_name%}'
     online-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Приєднався{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Приєднався{$colon} {$s}%date@kingdoms_joined%
       {$p}Пожертви{$colon} {$s}%kingdoms_total_donations%
-      {$p}Остання пожертва{$colon} {$s}%kingdoms_date_last_donation_time%
+      {$p}Остання пожертва{$colon} {$s}%date@kingdoms_last_donation_time%
       {$p}Ранг{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     offline-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Приєднався{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Приєднався{$colon} {$s}%date@kingdoms_joined%
       {$p}Пожертви{$colon} {$s}%kingdoms_total_donations%
-      {$p}Остання пожертва{$colon} {$s}%kingdoms_date_last_donation_time%
+      {$p}Остання пожертва{$colon} {$s}%date@kingdoms_last_donation_time%
       {$p}Ранг{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     aliases: info who list

@@ -54,7 +54,7 @@ time-formatter:
 # Used for date-based placeholders.
 # The default time related placeholders like %kingdoms_since% are shown as
 # random numbers if you use it just like that, you''d have to use the date modifier:
-# %kingdoms_date_since%
+# %date@kingdoms_since%
 
 # It uses Java''s default date formatter syntax which can be found here:
 # https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
@@ -1297,10 +1297,10 @@ command:
         &7| {$p}Rango nazionale{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Chat Channel{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| {$p}Marcatore usato{$colon} %visualizer%
         &7| {$p}Invito{$colon} {$s}%invites%
-        &7| {$p}Entrato nel regno il{$colon} {$s}%kingdoms_date_joined%
+        &7| {$p}Entrato nel regno il{$colon} {$s}%date@kingdoms_joined%
         &7| {$p}Auto Claim{$colon} %auto_claim% &7| {$p}Auto Map{$colon} %auto_map%
         &7| {$p}Dimensione mappa{$colon} {$s}%map_width% {$sep}- {$s}%map_height%
-        &7| {$p}Donazioni totali{$colon} {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$colon} {$s}%kingdoms_date_last_donation_time%
+        &7| {$p}Donazioni totali{$colon} {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$colon} {$s}%date@kingdoms_last_donation_time%
         &7| {$p}Claims &7({$s}%kingdoms_player_claims%&7){$colon} %claims%
         &7| {$p}Dati compressi{$colon} {$s}%compressed%
       found: '{$p}Giocatore {$s}%name% {$sep}(&7%uuid%{$sep}) {$p}e'' nel seguente regno{$colon}'
@@ -1467,7 +1467,7 @@ command:
         &7| {$p}Capitale{$colon} {$s}%kingdoms_nation:capital get=name%
         &7| {$p}Spawn{$colon} {$s}%kingdoms_nation_spawn%
         &7| {$p}Nexus{$colon} {$s}%kingdoms_nation_nexus%
-        &7| {$p}Da{$colon} {$s}%kingdoms_date_nation_since%
+        &7| {$p}Da{$colon} {$s}%date@kingdoms_nation_since%
         &7| {$p}Might{$colon} {$s}%fancy@kingdoms_nation_might%
         &7| {$p}Scudo{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Banca{$colon} {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Tax{$colon} {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
@@ -1480,7 +1480,7 @@ command:
 
         &7| {$p}Re{$colon} {$s}%king_status%
         &7| {$p}Stato{$colon} {$s}%kingdoms_nation_name%
-        &7| {$p}Da{$colon} {$s}%kingdoms_date_nation_since%
+        &7| {$p}Da{$colon} {$s}%date@kingdoms_nation_since%
         &7| {$p}Might{$colon} {$s}%fancy@kingdoms_might%
         &7| {$p}Scudo{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Banca{$colon} {$s}%fancy@kingdoms_nation_bank%
@@ -1901,7 +1901,7 @@ command:
       &7| {$p}Terreni{$colon} {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
       &7| {$p}Punti risorsa{$colon} {$s}%fancy@kingdoms_resource_points%
       &7| {$p}Scudo{$colon} {$s}%time@kingdoms_shield_time_left%
-      &7| {$p}Fondato{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Fondato{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Membri{$colon} {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -1910,7 +1910,7 @@ command:
       &7| {$p}Re{$colon} {$s}%king_status%
       &7| {$p}Stato{$colon} {$s}%kingdoms_nation_name%
       &7| {$p}Potere{$colon} {$s}%kingdoms_might%
-      &7| {$p}Fondato{$colon} {$s}%kingdoms_date_since%
+      &7| {$p}Fondato{$colon} {$s}%date@kingdoms_since%
       &7| {$p}Scudo{$colon} {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Terreni{$colon} {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
       &7| {$p}Banca{$colon} {$s}$%fancy@kingdoms_bank%
@@ -1928,14 +1928,14 @@ command:
       &7| {$p}Nemici{$colon}
       {$es}%enemies%
     online-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Joined{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Joined{$colon} {$s}%date@kingdoms_joined%
       {$p}Donazioni{$colon} {$s}%kingdoms_total_donations%
-      {$p}Ultima donazione{$colon} {$s}%kingdoms_date_last_donation_time%
+      {$p}Ultima donazione{$colon} {$s}%date@kingdoms_last_donation_time%
       {$p}Rango{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     offline-prefix: |
-      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Joined{$colon} {$s}%kingdoms_date_joined%
+      hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Joined{$colon} {$s}%date@kingdoms_joined%
       {$p}Donazioni{$colon} {$s}%kingdoms_total_donations%
-      {$p}Ultima donazione{$colon} {$s}%kingdoms_date_last_donation_time%
+      {$p}Ultima donazione{$colon} {$s}%date@kingdoms_last_donation_time%
       {$p}Rango{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
     aliases: info who list

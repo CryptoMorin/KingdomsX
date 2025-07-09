@@ -1,0 +1,63 @@
+title: "{$sep}-=[ &5Loại Bảo vệ {$sep}]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  protected:
+    enabled:
+      condition: enabled
+      name: "{$p}%protection%"
+      lore: |-
+        {$sep}Khối này sẽ được bảo vệ
+        khỏi tất cả người chơi trừ khi họ
+        được thêm thủ công để truy cập khối.
+      material: OAK_SIGN
+      glow: true
+    else:
+      name: "&4%protection%"
+      material: OAK_SIGN
+      lore: |-
+        {$sep}Khối này sẽ được bảo vệ
+        khỏi tất cả người chơi trừ khi họ
+        được thêm thủ công để truy cập khối.
+    slot: 1
+  everyone-in-kingdom:
+    enabled:
+      condition: enabled
+      name: "{$p}%protection%"
+      lore: |-
+        {$sep}Khối này sẽ được bảo vệ
+        khỏi tất cả người chơi không
+        có trong vương quốc của bạn trừ khi họ
+        được thêm thủ công để truy cập khối.
+      material: SPRUCE_SIGN
+      glow: true
+    else:
+      name: "{$p}%protection%"
+      material: SPRUCE_SIGN
+      lore: |-
+        {$sep}Khối này sẽ được bảo vệ
+        khỏi tất cả người chơi không
+        có trong vương quốc của bạn trừ khi họ
+        được thêm thủ công để truy cập khối.
+    slot: 2
+  everyone:
+    enabled:
+      condition: enabled
+      name: "{$p}%protection%"
+      lore: |-
+        {$sep}Khối này có thể được truy cập
+        bởi mọi người, bên ngoài hoặc bên trong
+        vương quốc của bạn trừ khi họ được thêm thủ công
+        để không có quyền truy cập vào khối này.
+      material: DARK_OAK_SIGN
+      glow: true
+    else:
+      name: "{$p}%protection%"
+      material: DARK_OAK_SIGN
+      lore: |-
+        {$sep}Khối này có thể được truy cập
+        bởi mọi người, bên ngoài hoặc bên trong
+        vương quốc của bạn trừ khi họ được thêm thủ công
+        để không có quyền truy cập vào khối này.
+    slot: 3

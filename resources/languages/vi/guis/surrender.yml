@@ -1,0 +1,67 @@
+title: '{$sep}-=( {$e}Đầu Hàng {$sep})=-'
+rows: 6
+
+options:
+  purple-stained-glass-pane:
+    slots: [ 1, 2, 3, 5, 6, 7, 45, 46, 48, 49, 50, 52, 53 ]
+    material: PURPLE_STAINED_GLASS_PANE
+    name: ''
+  black-stained-glass-pane:
+    slots: [ 9, 13, 17, 18, 22, 26, 27, 31, 35, 36, 40, 44 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+
+  next-page:
+    name: '{$s}Trang Tiếp Theo {$sep}- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    sound: ITEM_BOOK_PAGE_TURN
+    slot: 8
+  previous-page:
+    name: '{$s}Trang Trước {$sep}- &e%page%&8/&e%pages%'
+    material: PLAYER_HEAD
+    sound: ITEM_BOOK_PAGE_TURN
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  invasion:
+    posx: 5
+    posy: 1
+    invading:
+      condition: kingdoms_is_invading
+      material: EMERALD_BLOCK
+      name: "{$p}Bạn đang xâm lược{$colon}"
+      lore: &lore |
+        {$p}Vùng đất{$colon} {$s}%world%{$sep}, {$s}%x%{$sep}, {$s}%z%
+        {$p}Nhà vô địch{$colon} {$s}%champion% {$sep}({$s}%champion_x%{$sep}, {$s}%champion_y%{$sep}, {$s}%champion_z%{$sep})
+        {$p}Kể từ{$colon} {$s}%since%
+        {$p}Thời lượng{$colon} {$s}%duration%
+        {$p}Đã trôi qua{$colon} {$s}%passed%
+        {$p}Tổng số vùng đất{$colon} {$s}%total_lands%
+    # These are for plunders only.
+    #       {$p}Điểm tấn công{$colon} {$s}%invasion_attacker_score%{$sep}/{$s}%invasion_defender_death_limit%
+    #       {$p}Điểm phòng thủ{$colon} {$s}%invasion_defender_score%{$sep}/{$s}%invasion_attacker_death_limit%
+    else:
+      material: PURPLE_STAINED_GLASS_PANE
+  attacking:
+    slots: [ 10, 11, 12, 19, 20, 21, 28, 29, 30, 37, 38, 39 ]
+    material: PLAYER_HEAD
+    name: '{$p}Người phòng thủ{$colon} {$s}%other*kingdoms_kingdom_name%'
+    lore: *lore
+  defending:
+    slots: [ 14, 15, 16, 23, 24, 25, 32, 33, 34, 41, 42, 43 ]
+    material: PLAYER_HEAD
+    name: '{$e}Kẻ xâm lược{$colon} {$es}%kingdoms_kingdom_name%'
+    lore: *lore
+  attacking-info:
+    posx: 3
+    posy: 6
+    material: PLAYER_HEAD
+    name: '{$p}Các vùng đất vương quốc của bạn đang tấn công'
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhMDI3NDc3MTk3YzZmZDdhZDMzMDE0NTQ2ZGUzOTJiNGE1MWM2MzRlYTY4YzhiN2JjYzAxMzFjODNlM2YifX19'
+  defending-info:
+    posx: 7
+    posy: 6
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMmQ5Mjg3NjE2MzQzZDgzM2U5ZTczMTcxNTljYWEyY2IzZTU5NzQ1MTEzOTYyYzEzNzkwNTJjZTQ3ODg4NGZhIn19fQ=='
+    name: '{$es}Các vùng đất vương quốc của bạn đang bị tấn công'

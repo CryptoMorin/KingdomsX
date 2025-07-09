@@ -1,0 +1,68 @@
+# Cài đặt cơ bản cho các trang tiền đồn.
+(module):
+  description: 'Cài đặt cơ bản cho các trang tiền đồn.'
+  parameters: {}
+
+(import):
+  pagination: {}
+
+title: "&eTiền đồn"
+rows: 6
+sound: BLOCK_ANVIL_USE
+
+# Được sử dụng trong các cấu hình đã nhập.
+base: &base
+  name: "&5%item_name%"
+  lore: |
+    {$p}{? !buy_allowed ? "&m"}Mua{$colon} {$s}%fancy@buy% {$sep}({$sp}Nhấp chuột trái{$sep}){? buy_max_items != -1 ? " {$sep}({$sp}Tối đa{$colon} &5%buy_max_items%{$sep})" }
+    {$p}Bán{$colon} {$s}%fancy@sell% {$sep}({$sp}Nhấp chuột phải{$sep})
+    {? !buy_allowed ? "
+    {$e}Bạn không thể mua vật phẩm này
+    {$e}cho đến khi {$es}%time@buy_cooldown%"}
+
+options:
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '{$e}Thông tin'
+    lore: |
+      &eTất cả giá vật phẩm đều bị ảnh hưởng trên toàn máy chủ
+      dựa trên nguyên tắc cung và cầu.
+      Càng nhiều người mua cùng một vật phẩm,
+      giá càng tăng và càng nhiều
+      họ bán vật phẩm đó, giá mua của họ
+      giảm.
+
+      {$note} {$sep}Bạn có thể {$p}Shift + nhấp chuột trái
+      {$sep}sau khi mua vật phẩm một lần, để
+      tiếp tục mua cùng số lượng.
+
+  break:
+    name: "&4Phá hủy"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "{$s}Phá hủy cấu trúc."
+    slot: 53
+  nexus:
+    name: "{$p}Mở Nexus"
+    lore:
+      - "{$s}Điểm tài nguyên{$colon} {$p}%fancy@kingdoms_resource_points%"
+    material: NETHER_STAR
+    posx: 5
+    posy: 6
+  close:
+    name: "{$p}Đóng"
+    material: BARRIER
+    slot: 45
+
+  black-glass:
+    name: ''
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 46, 47, 48, 50, 51, 52 ]
+  brown-stained-glass-pane:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44 ]

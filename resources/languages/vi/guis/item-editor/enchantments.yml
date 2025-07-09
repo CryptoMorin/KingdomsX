@@ -1,0 +1,239 @@
+title: "{$sep}-=( {$p}Phù phép {$sep})=-"
+rows: 6
+
+# Cái quái gì đây: https://github.com/CryptoMorin/KingdomsX/wiki/Config#yaml
+'[fn-enchant]': &fn-enchant
+  args: [ "<x>" ]
+  return:
+    not-supported:
+      condition: "!supported"
+      name: "{$sep}[{$e}Không hỗ trợ{$sep}] {$es}<x>"
+      sound: BLOCK_NOTE_BLOCK_BASS
+      lore: |
+        {$e}Phù phép này không
+        được hỗ trợ trong phiên bản
+        máy chủ hiện tại của bạn.
+    enabled:
+      condition: enabled
+      name: "{$enabled} <x>{$colon} {$s}%roman@level% {$sep}({$s}%level%{$sep})"
+      glow: true
+      lore: |
+        {$sep}Nhấp chuột trái để thay đổi cấp độ
+        {$sep}Nhấp chuột phải để xóa
+    else:
+      name: "{$disabled} <x>"
+      lore: |
+        {$sep}Nhấp chuột trái để thêm phù phép
+
+options:
+  enchant-water-worker:
+    posx: 1
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Aqua Infinity" ]
+  enchant-depth-strider:
+    posx: 2
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Depth Strider" ]
+  enchant-impaling:
+    posx: 3
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Impaling" ]
+  enchant-oxygen:
+    posx: 4
+    posy: 1
+    material: WATER_BUCKET
+    <<: *fn-enchant [ "Respiration" ]
+  enchant-damage-all:
+    posx: 5
+    posy: 1
+    material: DIAMOND_SWORD
+    <<: *fn-enchant [ "Sharpness" ]
+  enchant-knockback:
+    posx: 6
+    posy: 1
+    material: GOLDEN_SWORD
+    <<: *fn-enchant [ "Knockback" ]
+  enchant-dig-speed:
+    posx: 7
+    posy: 1
+    material: DIAMOND_PICKAXE
+    <<: *fn-enchant [ "Efficiency" ]
+  enchant-frost-walker:
+    posx: 8
+    posy: 1
+    material: BLUE_ICE
+    <<: *fn-enchant [ "Frost Walker" ]
+  enchant-swift-sneak:
+    posx: 9
+    posy: 1
+    material: DIAMOND_LEGGINGS
+    <<: *fn-enchant [ "Swift Sneak" ]
+  enchant-arrow-damage:
+    posx: 1
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Power" ]
+  enchant-arrow-knockback:
+    posx: 2
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Punch" ]
+  enchant-arrow-fire:
+    posx: 3
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Flame" ]
+  enchant-multishot:
+    posx: 4
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "MultiShot" ]
+  enchant-piercing:
+    posx: 5
+    posy: 2
+    material: ARROW
+    <<: *fn-enchant [ "Piercing" ]
+  enchant-arrow-infinite:
+    posx: 6
+    posy: 2
+    material: SPECTRAL_ARROW
+    <<: *fn-enchant [ "Infinity" ]
+  enchant-quick-charge:
+    posx: 7
+    posy: 2
+    material: CROSSBOW
+    <<: *fn-enchant [ "Quick Charge" ]
+  enchant-mending:
+    posx: 8
+    posy: 2
+    material: EXPERIENCE_BOTTLE
+    <<: *fn-enchant [ "Mending" ]
+  enchant-durability:
+    posx: 9
+    posy: 2
+    material: OBSIDIAN
+    <<: *fn-enchant [ "Unbreaking" ]
+  enchant-fire-aspect:
+    posx: 1
+    posy: 3
+    material: FIRE_CHARGE
+    <<: *fn-enchant [ "Fire Aspect" ]
+  enchant-channeling:
+    posx: 2
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Channeling" ]
+  enchant-loyalty:
+    posx: 3
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Loyalty" ]
+  enchant-riptide:
+    posx: 4
+    posy: 3
+    material: TRIDENT
+    <<: *fn-enchant [ "Riptide" ]
+  enchant-protection-environmental:
+    posx: 5
+    posy: 3
+    material: DIAMOND_CHESTPLATE
+    <<: *fn-enchant [ "Protection" ]
+  enchant-protection-projectile:
+    posx: 6
+    posy: 3
+    material: GOLDEN_CHESTPLATE
+    <<: *fn-enchant [ "Projectile Protection" ]
+  enchant-protection-explosions:
+    posx: 7
+    posy: 3
+    material: TNT
+    <<: *fn-enchant [ "Blast Protection" ]
+  enchant-protection-fire:
+    posx: 8
+    posy: 3
+    material: LAVA_BUCKET
+    <<: *fn-enchant [ "Fire Protection" ]
+  enchant-thorns:
+    posx: 9
+    posy: 3
+    material: ROSE_BUSH
+    <<: *fn-enchant [ "Thorns" ]
+  enchant-damage-undead:
+    posx: 1
+    posy: 4
+    material: ZOMBIE_HEAD
+    <<: *fn-enchant [ "Smite" ]
+  enchant-damage-arthropods:
+    posx: 2
+    posy: 4
+    material: SPIDER_SPAWN_EGG
+    <<: *fn-enchant [ "Bane Of Arthropods" ]
+  enchant-soul-speed:
+    posx: 3
+    posy: 4
+    material: SOUL_SAND
+    <<: *fn-enchant [ "Soul Speed" ]
+  enchant-vanishing-curse:
+    posx: 4
+    posy: 4
+    material: ENDER_EYE
+    <<: *fn-enchant [ "Curse Of Vanishing" ]
+  enchant-binding-curse:
+    posx: 5
+    posy: 4
+    material: ENDER_PEARL
+    <<: *fn-enchant [ "Curse Of Binding" ]
+  enchant-wind-burst:
+    posx: 6
+    posy: 4
+    material: WIND_CHARGE
+    <<: *fn-enchant [ "Wind Burst" ]
+  enchant-loot-bonus-mobs:
+    posx: 7
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Looting" ]
+  enchant-loot-bonus-blocks:
+    posx: 8
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Fortune" ]
+  enchant-silk-touch:
+    posx: 9
+    posy: 4
+    material: ENCHANTED_BOOK
+    <<: *fn-enchant [ "Silk Touch" ]
+  enchant-luck:
+    posx: 1
+    posy: 5
+    material: FISHING_ROD
+    <<: *fn-enchant [ "Luck Of The Sea" ]
+  enchant-lure:
+    posx: 2
+    posy: 5
+    material: FISHING_ROD
+    <<: *fn-enchant [ "Lure" ]
+  enchant-protection-fall:
+    posx: 3
+    posy: 5
+    material: FEATHER
+    <<: *fn-enchant [ "Feather Falling" ]
+
+  back:
+    posx: 1
+    posy: 6
+    material: PLAYER_HEAD
+    skull: "{$gui-back}"
+    name: '{$p}Quay lại'
+  decoration:
+    slots: [ 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  remove-all:
+    posx: 9
+    posy: 6
+    material: RED_WOOL
+    name: '{$e}Xóa tất cả Phù phép'

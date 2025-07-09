@@ -1,0 +1,42 @@
+title: "{$sep}-=[ &5Đặc quyền Truy cập {$sep}]=-"
+type: HOPPER
+sound: BLOCK_CHEST_OPEN
+
+options:
+  privilege-allowed:
+    name: "&aĐược phép"
+    material: GREEN_WOOL
+    lore: |-
+      {$desc}Người chơi được phép
+      mở/sử dụng và đặt/lấy vật phẩm từ
+      container này mà không bị giới hạn.
+    slot: 1
+    enabled:
+      condition: selected
+      glow: true
+  privilege-disallowed:
+    name: "&cKhông được phép"
+    material: RED_WOOL
+    lore: |-
+      {$desc}Người chơi không được phép
+      tương tác hoặc sử dụng khối này
+      dưới bất kỳ hình thức nào.
+    slot: 2
+    enabled:
+      condition: selected
+      glow: true
+  privilege-password:
+    name: "&9Mật khẩu"
+    material: BLUE_WOOL
+    lore: |-
+      {$desc}Người chơi chỉ được phép
+      tương tác hoặc sử dụng khối này nếu
+      họ nhập đúng mật khẩu.
+    slot: 3
+    enabled:
+      condition: selected
+      glow: true
+  back:
+    name: "&cQuay lại"
+    material: BARRIER
+    slot: 0

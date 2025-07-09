@@ -1,0 +1,114 @@
+title: "%rank_color%%rank_symbol% %rank_name%"
+rows: 5
+sound: ITEM_BOOK_PAGE_TURN
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 26, 27, 28, 29, 30, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+
+  node:
+    name: "{$p}Node{$colon} {$p}%rank_node%"
+    material: EMERALD
+    lore:
+      - "{$s}Node là tên của cấp bậc,"
+      - "nhưng không có màu sắc hay ký tự đặc biệt nào."
+      - "Điều này được dùng khi bạn sử dụng lệnh thăng/giáng cấp."
+      - "Không thể chứa số và tối đa 15 ký tự."
+    posx: 2
+    posy: 3
+  name:
+    name: "&5Tên{$colon} {$p}%rank_name%"
+    material: DIAMOND
+    lore:
+      - "{$s}Tên của cấp bậc này."
+      - "Có thể chứa bất kỳ ký tự nào nhưng tối đa"
+      - "20 ký tự."
+      - "Cũng có thể chứa mã màu."
+    posx: 3
+    posy: 3
+  material:
+    name: "&eVật liệu{$colon} {$p}%rank_material%"
+    material: STONE # Vật liệu mẫu. Sẽ được thay thế
+    lore:
+      - "{$s}Vật liệu dùng để hiển thị"
+      - "cấp bậc này trong GUI."
+      - "Bạn nên dùng tên vật liệu mới nhất"
+      - "ngay cả khi máy chủ đang chạy phiên bản cũ."
+    posx: 4
+    posy: 3
+  symbol:
+    name: "&dBiểu tượng{$colon} {$p}%rank_symbol%"
+    material: IRON_INGOT
+    lore:
+      - "{$s}Biểu tượng cho cấp bậc này."
+      - "Chỉ có thể dài 5 ký tự."
+      - "Cũng hỗ trợ màu sắc."
+    posx: 5
+    posy: 3
+  color:
+    name: "%rank_color%Màu sắc"
+    material: COAL
+    lore:
+      - "{$s}Màu chat cho cấp bậc này."
+      - "Chỉ có thể dài 5 ký tự."
+    posx: 6
+    posy: 3
+  priority:
+    name: "&aƯu tiên{$colon} {$p}%rank_priority%"
+    material: PAPER
+    lore:
+      - "{$s}Độ ưu tiên cho cấp bậc này."
+      - "{$note} Số nhỏ hơn có nghĩa là độ ưu tiên cao hơn."
+      - "Bạn không thể thay đổi độ ưu tiên của cấp bậc vua."
+    posx: 7
+    posy: 3
+  max-claims:
+    name: "&dSố vùng đất chiếm tối đa{$colon} {$p}%rank_max_claims%"
+    material: BOOK
+    lore: |
+      {$desc}Số vùng đất tối đa mà một
+      người chơi có cấp bậc này có thể chiếm
+      nếu họ có quyền chiếm đất.
+
+      Nó sẽ chỉ giải phóng thêm vùng đất khi
+      người chơi hoặc người khác {$p}/k unclaim
+      {$desc}vùng đất mà họ đã chiếm.
+    posx: 8
+    posy: 3
+  copy:
+    name: "&1Sao chép cấp bậc"
+    material: WRITABLE_BOOK
+    lore:
+      - "{$s}Sao chép thuộc tính của một cấp bậc khác"
+      - "sang cấp bậc này."
+    posx: 5
+    posy: 1
+  permissions:
+    posx: 5
+    posy: 4
+    material: ENCHANTED_BOOK
+    name: '{$p}Quyền hạn'
+
+  delete:
+    posx: 9
+    posy: 1
+    material: BARRIER
+    name: '{$p}&4Xóa'
+    lore:
+      - '{$s}Xóa cấp bậc này.'
+      - Tất cả người chơi có cấp bậc này
+      - sẽ bị giáng cấp xuống thành viên
+      - trừ khi bạn tạo một cấp bậc khác
+      - có cùng nút lại trong
+      - một khoảng thời gian ngẫu nhiên.
+
+  back:
+    name: "{$p}Quay lại"
+    material: PLAYER_HEAD
+    skull: "{$gui-back}"
+    lore:
+      - "{$s}Quay lại menu cấp bậc."
+    posx: 1
+    posy: 1

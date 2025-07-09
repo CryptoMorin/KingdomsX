@@ -1,0 +1,117 @@
+title: "{$sep}-=( {$p}Tiện ích bổ sung {$sep})=-"
+rows: 6
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+    material: PURPLE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: NETHER_STAR
+    name: '{$sp}Thông tin'
+    lore: |
+      {$sep}Các tiện ích bổ sung là nội dung
+      có thể tải xuống thêm mà
+      có thể được cài đặt riêng biệt.
+
+      Lý do các tiện ích bổ sung tồn tại
+      ngay từ đầu là vì
+      {$p}hiệu suất{$sep}, {$p}tính mô-đun
+      {$sep}và {$p}giới hạn kích thước tệp.
+
+      {$sep}[{$s}!{$sep}] {$sep}Để có thể
+      cài đặt tiện ích bổ sung, bạn cần
+      có kết nối internet có thể
+      kết nối với {$p}GitHub.com
+      {$sep}({$sep}không bị chặn bởi tường lửa,
+      kiểm duyệt quốc gia và v.v.{$sep})
+  addons:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    installing:
+      condition: installing
+      name: '{$sep}[&3Đang cài đặt...{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Phiên bản{$colon} {$sp}%latest-version%
+      material: CYAN_WOOL
+    pending-restart:
+      condition: waiting_to_restart
+      name: '{$sep}[&5Chờ khởi động lại{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Phiên bản{$colon} {$sp}%latest-version%
+        &5Tiện ích bổ sung đã được tải xuống. Đang chờ
+        máy chủ khởi động lại để
+        kích hoạt tiện ích bổ sung.
+      material: PURPLE_WOOL
+    failed-to-load:
+      condition: 'installed && failed_to_load'
+      name: '{$sep}[&4Không tải được{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &cTiện ích bổ sung này không tải được. Kiểm tra
+        console để biết lỗi.
+
+        &4Phiên bản đã cài đặt{$colon} {$sp}%installed-version%
+        {$p}Phiên bản mới nhất{$colon} {$sp}%latest-version%
+        {$p}Nhấp chuột trái để cập nhật
+        &4Nhấp chuột phải để gỡ cài đặt
+      material: RED_WOOL
+    outdated-and-outdated-core-version:
+      condition: 'installed && max_outdated_core_version'
+      name: '{$sep}[&eOutdated Core Version{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        &4Phiên bản đã cài đặt{$colon} {$sp}%installed-version%
+        {$p}Phiên bản mới nhất{$colon} {$sp}%max_version%
+
+        {$warning} {$desc}Bản cập nhật này yêu cầu
+        kingdoms {$p}v%max_supported-core-version% {$desc}để hoạt động.
+        Phiên bản hiện tại{$colon} {$e}%current-core-version%
+
+        {$p}Nhấp chuột trái để cập nhật
+        &4Nhấp chuột phải để gỡ cài đặt
+      material: YELLOW_WOOL
+    up-to-date:
+      condition: 'installed && !outdated'
+      name: '{$sep}[{$p}Đã cập nhật{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+        {$p}Phiên bản{$colon} {$sp}%installed-version%
+        &4Nhấp chuột phải để gỡ cài đặt
+      material: GREEN_WOOL
+    outdated:
+      condition: 'installed && outdated'
+      name: '{$sep}[&6Lỗi thời{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+        &4Phiên bản đã cài đặt{$colon} {$sp}%installed-version%
+        {$p}Phiên bản mới nhất{$colon} {$sp}%latest-version%
+        {$p}Nhấp chuột trái để cập nhật
+        &4Nhấp chuột phải để gỡ cài đặt
+      material: ORANGE_WOOL
+    not-installed-outdated-core-version:
+      condition: '!installed && outdated_core_version'
+      name: '{$sep}[&4Core lỗi thời{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}Phiên bản{$colon} {$sp}%min_version%
+
+        {$warning} {$desc}Tiện ích bổ sung này yêu cầu ít nhất
+        kingdoms {$p}v%min_supported-core-version% {$desc}để hoạt động.
+        Phiên bản hiện tại{$colon} {$e}%current-core-version%
+      material: GRAY_WOOL
+    not-installed:
+      name: '{$sep}[&7Chưa cài đặt{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+        {$p}Phiên bản{$colon} {$sp}%latest-version%
+        {$p}Nhấp chuột trái để cài đặt
+      condition: '!installed'
+      material: GRAY_WOOL

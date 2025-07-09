@@ -1,0 +1,73 @@
+title: "{$sep}-=( {$sp}Gói Ngôn Ngữ {$sep})=-"
+rows: 6
+
+options:
+  decoration:
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '{$p}Ngôn Ngữ Có Sẵn Để Tải Xuống'
+    lore: |
+      {$sep}Tất cả đều dưới {$p}500kb
+      {$sep}lưu ý rằng luôn tải xuống phiên bản mới nhất,
+      vì vậy nếu một GUI/tin nhắn bị
+      đổi tên, di chuyển hoặc xóa, điều hiếm khi
+      xảy ra, plugin &c sẽ không thể
+      hiển thị chúng.
+
+      {$p}Tiếng Anh {$sep}luôn được cài đặt và
+      &c không thể gỡ cài đặt {$sep}vì đây là
+      ngôn ngữ 'tham chiếu'.
+
+      {$sep}Tất cả các gói ngôn ngữ đã tải xuống được lưu
+      trong một thư mục tên là {$p}repository{$sep}. Thư mục đó
+      không bao giờ được chỉnh sửa thủ công.
+      Đó là thư mục tham chiếu.
+
+      Nếu bạn muốn sửa đổi các ngôn ngữ đã tải xuống,
+      bạn nên thực hiện trong thư mục {$p}languages {$sep}thay thế.
+      Ngay cả việc xóa chúng cũng không sao, plugin sẽ tạo lại
+      chúng mà không cần tải lại.
+  download-all:
+    posx: 5
+    posy: 6
+    name: "{$p}Tải Xuống & Cập Nhật Tất Cả"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmFmZWMzYzdmYWIyYTM3MjkwNWZhM2ZjMWZiMjI4ZTc4M2JiOTNhNTNlNmQzMmU0NWViZGI0YTAyMThmY2NhIn19fQ=='
+    lore: |
+      {$sep}Tùy chọn này tải xuống tất cả
+      các ngôn ngữ chưa được
+      tải xuống và cập nhật tất cả
+      các ngôn ngữ khác đã được
+      tải xuống nhưng đã lỗi thời.
+  languages:
+    # The skull skin textures are used for "languages" GUI
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    material: PLAYER_HEAD
+    name: '{$p}%native-name% &8({$sp}%lang%&8)'
+    up-to-date:
+      condition: installed && updated
+      lore: |
+        {$p}Đã cập nhật
+        &4Nhấp chuột phải để gỡ cài đặt.
+    outdated:
+      condition: installed
+      lore: |
+        &eĐã lỗi thời. Nhấp chuột trái để cập nhật.
+        &8(&4!&8) &eCập nhật sẽ ghi đè tất cả
+        các tệp cần cập nhật. Chỉ các
+        tệp hiển thị bên dưới sẽ được tải lại.
+        &4Nhấp chuột phải để gỡ cài đặt
+        {$sp}Nhấp chuột giữa để xem danh sách đầy đủ các
+        tệp đã cập nhật.
+
+        &cTóm tắt các tệp đã cập nhật{$colon}
+    not-installed:
+      lore: |
+        &4Chưa cài đặt
+        Nhấp chuột trái để tải xuống

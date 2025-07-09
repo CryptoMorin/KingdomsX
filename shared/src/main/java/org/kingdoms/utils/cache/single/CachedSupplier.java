@@ -30,6 +30,6 @@ public class CachedSupplier<T> extends CachedObject<T> {
 
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + '(' + supplier + ')';
+        return this.getClass().getSimpleName() + "Supplier: " + supplier + ", Cache: " + cached + ')';
     }
 }

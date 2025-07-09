@@ -1,0 +1,92 @@
+title: '{$sep}-=( {$p}Trình xem NBT {$sep})=-'
+rows: 6
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    skull: "{$gui-back}"
+    name: '{$p}Quay lại'
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: ORANGE_STAINED_GLASS_PANE
+    name: ''
+  info:
+    posx: 5
+    posy: 1
+    name: "&eThông tin"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    lore: |
+      {$sep}NBT {$sep}({$sep}Thẻ Nhị phân được đặt tên{$sep}) {$sep}là một cách
+      để Minecraft lưu trữ dữ liệu cho các thứ khác nhau
+      trong trò chơi như vật phẩm, thực thể
+      và các khối nói chung.
+
+      Mọi thứ bạn thấy trên một vật phẩm, chẳng hạn
+      như tên, lore, phù phép, v.v. đều
+      được lưu trữ dưới dạng dữ liệu NBT. Bạn hầu như
+      sẽ và không nên sửa đổi dữ liệu NBT
+      trực tiếp vì chúng cực kỳ khó
+      làm việc.
+
+      Điều này chủ yếu dành cho mục đích gỡ lỗi
+      để xem điều gì đang thực sự diễn ra bên dưới.
+  path:
+    posx: 9
+    posy: 1
+    material: PAPER
+    name: '{$p}Đường dẫn hiện tại{$colon}'
+    lore: '%path%'
+  add-nbt:
+    name: "{$p}Thêm thẻ"
+    material: PLAYER_HEAD
+    skull: '{$gui-add}'
+    lore: |
+      {$sep}Thêm một thẻ mới vào
+      hợp chất hiện tại.
+
+      {$sep}Bạn cũng có thể {$p}nhấp chuột trái
+      {$sep}để chỉnh sửa một thẻ hiện có hoặc
+      {$p}nhấp chuột phải {$sep}để xóa một thẻ.
+    posx: 5
+    posy: 6
+  tag:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    compound:
+      condition: "tag == 'compound'"
+      name: '{$sep}[{$s}Hợp chất{$sep}] {$p}%key%'
+      material: WHITE_WOOL
+    strings:
+      condition: "tag == 'string'"
+      name: '{$sep}[{$p}Chuỗi{$sep}] {$p}%key%'
+      material: GREEN_WOOL
+    byte:
+      condition: "tag == 'byte'"
+      name: '{$sep}[&aByte{$sep}] {$p}%key%'
+      material: LIME_WOOL
+    short:
+      condition: "tag == 'short'"
+      name: '{$sep}[&eShort{$sep}] {$p}%key%'
+      material: YELLOW_WOOL
+    integers:
+      condition: "tag == 'int'"
+      name: '{$sep}[{$sp}Số nguyên{$sep}] {$p}%key%'
+      material: BLUE_WOOL
+    long:
+      condition: "tag == 'long'"
+      name: '{$sep}[&5Long{$sep}] {$p}%key%'
+      material: PURPLE_WOOL
+    double:
+      condition: "tag == 'double'"
+      name: '{$sep}[&3Double{$sep}] {$p}%key%'
+      material: CYAN_WOOL
+    list:
+      condition: "tag == 'list'"
+      name: '{$sep}[{$sep}List{$sep}] {$p}%key%'
+      material: GRAY_WOOL
+    else:
+      name: "{$sep}[{$e}%nbt%{$colon} {$s}%tag%{$sep}] {$p}%key%"
+      material: RED_WOOL
+    # Lore là giá trị được plugin tự động đặt

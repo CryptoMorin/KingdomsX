@@ -1,0 +1,50 @@
+title: "&0-=( &aYêu Cầu Quan Hệ &0)=-"
+rows: 6
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  request:
+    material: PLAYER_HEAD
+
+    valid:
+      condition: expired
+      name: "ĐÃ HẾT HẠN &8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
+      lore: |
+        {$p}Từ Vương quốc{$colon} {$sp}%kingdoms_kingdom_name%
+        {$p}Đã gửi{$colon} {$s}%timestamp%
+        {$p}Quan hệ yêu cầu{$colon} %relation-color%%relation-name%
+        &cNhấp để xóa
+    else:
+      name: "&8[%kingdoms_rank_color%%kingdoms_rank_symbol%&8] {$p}%player%"
+      lore: |
+        {$p}Từ Vương quốc{$colon} {$sp}%kingdoms_kingdom_name%
+        {$p}Quan hệ yêu cầu{$colon} %relation-color%%relation-name%
+        {$p}Hết hạn trong{$colon} {$s}%time-left-to-accpet%
+        {$p}Đã gửi{$colon} {$s}%timestamp%
+        {$p}Thời gian đã trôi qua{$colon} {$s}%time-passed%
+
+        {$p}&lNhấp chuột trái để chấp nhận
+        &c&lNhấp chuột phải để từ chối
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20 ]
+  decline-all:
+    name: "&cTừ Chối Tất Cả"
+    material: RED_WOOL
+    lore: "&4Từ chối tất cả lời mời"
+    posx: 5
+    posy: 1
+  blue-glass:
+    name: ''
+    material: BLUE_STAINED_GLASS_PANE
+    slots: [ 0, 1, 2, 3, 5, 6, 7, 8, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]
+
+# Các mục trang tiếp theo/trang trước đã được chú thích trong cấu hình gốc, nên chúng tôi giữ nguyên trạng thái này.
+# next-page:
+#   name: '{$s}Trang Tiếp Theo {$sep}- &e%page%&8/&e%pages%'
+#   material: PLAYER_HEAD
+#   skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+#   slot: 8
+# previous-page:
+#   name: '{$s}Trang Trước {$sep}- &e%page%&8/&e%pages%'
+#   material: PLAYER_HEAD
+#   skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+#   slot: 0

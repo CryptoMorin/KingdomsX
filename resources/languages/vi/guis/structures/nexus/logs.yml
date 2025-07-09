@@ -1,0 +1,471 @@
+title: "{$sep}-=[ &4Nhật ký Kiểm toán {$sep}]=-"
+sound: ITEM_BOOK_PAGE_TURN
+rows: 6
+
+# [NoSync] Don't remove this comment
+'[type]':
+  kingdom-join:
+    material: GREEN_WOOL
+    name: '{$p}Người chơi tham gia{$colon} {$s}%player%'
+    lore: |
+      {$p}Vào lúc{$colon} {$s}%time%
+      {$p}Được mời bởi{$colon} {$s}%inviter%
+  kingdom-kick:
+    material: RED_WOOL
+    name: '{$p}Đã đuổi thành viên{$colon} {$s}%player%'
+    lore: |
+      {$p}Vào lúc{$colon} {$s}%time%
+      {$p}Người đuổi{$colon} {$s}%kicker%
+  kingdom-leave:
+    material: RED_WOOL
+    name: '{$p}Người chơi đã rời{$colon} {$s}%player%'
+    lore: |
+      {$p}Vào lúc{$colon} {$s}%time%
+      {$p}Lý do{$colon} {$s}%reason%
+  kingdom-challenge-challenger:
+    material: GREEN_WOOL
+    name: '{$p}Đã thách đấu'
+    lore: |
+      &e%player% &cđã thách đấu
+      vương quốc &e%other*kingdoms_kingdom_name% &c.
+      {$p}Vào lúc{$colon} {$s}%time%
+
+      {$sep}Bạn có đến &c%start_time%
+      {$sep}để chuẩn bị tấn công.
+  kingdom-challenge-challenged:
+    material: RED_WOOL
+    name: '&cĐã bị thách đấu'
+    lore: |
+      Vương quốc &e%kingdoms_kingdom_name% &cđã
+      thách đấu vương quốc của bạn.
+      {$p}Vào lúc{$colon} {$s}%time%
+
+      {$sep}Bạn có đến &c%start_time%
+      {$sep}để chuẩn bị trước khi họ tấn công.
+  kingdom-claim:
+    material: GRASS_BLOCK
+    name: '{$p}Đã chiếm'
+    lore: |
+      {$s}%player% {$p}đã chiếm
+      các vùng đất sau{$colon}
+      %lands%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-unclaim:
+    material: GRASS_BLOCK
+    name: '&cĐã hủy chiếm'
+    lore: |
+      {$es}%player% {$e}đã hủy chiếm
+      các vùng đất sau{$colon}
+      %lands%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-invasion-invader:
+    material: IRON_SWORD
+    name: '{$p}Đã xâm lược'
+    lore: |
+      {$s}%player% {$p}đã xâm lược{$colon}
+      {$s}%chunk%
+      {$p}Vương quốc{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Chế độ cướp bóc{$colon} %ransack-mode%
+      {$p}Kết quả{$colon} {$s}%result%
+      {$p}Vào lúc{$colon} {$s}%time%
+      {$p}Các vùng đất bị ảnh hưởng{$colon}
+      %affected-lands%
+  kingdom-invasion-invaded:
+    material: GOLD_SWORD
+    name: '&cĐã bị xâm lược'
+    lore: |
+      {$s}%player% {$p}đã xâm lược vương quốc của bạn tại{$colon}
+      {$s}%chunk%
+      {$p}Vương quốc{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Chế độ cướp bóc{$colon} %ransack-mode%
+      {$p}Kết quả{$colon} {$s}%result%
+      {$p}Vào lúc{$colon} {$s}%time%
+      {$p}Các vùng đất bị ảnh hưởng{$colon}
+      %affected-lands%
+  kingdom-upgrade-misc:
+    material: DIAMOND_HOE
+    name: '{$sp}Nâng cấp linh tinh'
+    lore: |
+      {$s}%player% {$p}đã nâng cấp
+      nâng cấp linh tinh {$s}%upgrade% {$p}.
+      {$p}Cấp độ{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-upgrade-champion:
+    material: ZOMBIE_HEAD
+    name: '{$sp}Nâng cấp Nhà vô địch'
+    lore: |
+      {$s}%player% {$p}đã nâng cấp
+      nâng cấp nhà vô địch {$s}%upgrade% {$p}.
+      {$p}Cấp độ{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-upgrade-powerup:
+    material: DIAMOND_SWORD
+    name: '{$sp}Nâng cấp Powerup'
+    lore: |
+      {$s}%player% {$p}đã nâng cấp
+      powerup {$s}%upgrade% {$p}.
+      {$p}Cấp độ{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-structure-upgrade:
+    material: EMERALD_BLOCK
+    name: '&aNâng cấp cấu trúc'
+    lore: |
+      {$s}%player% {$p}đã nâng cấp
+      cấu trúc {$s}%item_style_display_name% {$p}tại
+      {$s}%location%
+      {$p}Cấp độ{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-structure-purchase:
+    material: EMERALD_BLOCK
+    name: '&aMua cấu trúc'
+    lore: |
+      {$s}%player% {$p}đã mua {$s}%amount%
+      cấu trúc {$s}%item_style_display_name% {$p}.
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-turret-purchase:
+    material: EMERALD_BLOCK
+    name: '&aMua tháp pháo'
+    lore: |
+      {$s}%player% {$p}đã mua {$s}%amount%
+      tháp pháo {$s}%item_style_display_name% {$p}.
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-turret-purchase-ammo:
+    name: '&aMua đạn tháp pháo'
+    material: EMERALD_BLOCK
+    lore: |
+      {$s}%player% {$p}đã mua đạn cho
+      tháp pháo {$s}%style% {$p}tại {$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%
+      {$s}%fancy@old_amount% {$sep}➜ {$s}%fancy@new_amount%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-turret-upgrade:
+    material: ARROW
+    name: '&aNâng cấp tháp pháo'
+    lore: |
+      {$s}%player% {$p}đã nâng cấp
+      tháp pháo {$s}%item_style_display_name% {$p}tại
+      {$s}%location%
+      {$p}Cấp độ{$colon} {$s}%old_level% {$sep}➜ {$s}%new_level%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-resource-points-convert:
+    material: HAY_BLOCK
+    name: '&aChuyển đổi điểm tài nguyên'
+    lore: |
+      {$s}%player% {$p}đã thay đổi
+      điểm tài nguyên{$colon}
+      {$s}%fancy@amount-before% {$sep}➜ {$s}%fancy@amount-after%
+      {$p}Vào lúc{$colon} {$s}%time%
+  extractor-collect:
+    material: EMERALD_BLOCK
+    name: '&aThu thập máy khai thác'
+    lore: |
+      {$s}%player% {$p}đã thu thập
+      máy khai thác nằm tại{$colon}
+      {$s}%location%
+      {$p}Điểm tài nguyên đã thu thập{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  warppad-teleport:
+    material: END_PORTAL_FRAME
+    name: '&3Dịch chuyển Warp Pad'
+    lore: |
+      {$s}%player% {$p}đã dịch chuyển
+      bằng Warp Pad nằm tại
+      {$s}%from_location% {$p}đến
+      {$s}%precise_location%
+      {$p}Chi phí nhiên liệu{$colon} {$s}%fancy@fuel_cost%
+      {$p}Vào lúc{$colon} {$s}%time%
+  outpost-item-purchase:
+    material: HAY_BLOCK
+    name: '&eMua vật phẩm Tiền đồn'
+    lore: |
+      {$s}%player% {$p}đã mua
+      các vật phẩm sau từ
+      cấu trúc Tiền đồn nằm tại{$colon}
+      {$s}%location%
+      {$p}Tổng điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+      %purchases%
+  kingdom-pacifism-change:
+    material: NETHER_STAR
+    name: '&5Thay đổi Hòa bình'
+    lore: |
+      {$s}%player% {$p}đã thay đổi
+      trạng thái hòa bình của vương quốc.
+      {$p}Hòa bình{$colon} {$s}%bool_pacifist%
+      {$p}Vào lúc{$colon} {$s}%time%
+  shield-purchase:
+    material: SHIELD
+    name: '&5Mua lá chắn'
+    lore: |
+      {$s}%player% {$p}đã mua
+      một lá chắn cho vương quốc.
+      {$p}Thời lượng lá chắn đã mua{$colon} {$s}%purchased-shield-time%
+      {$p}Thời lượng lá chắn{$colon} {$s}%old-shield-time% {$sep}➜ {$s}%new-shield-time%
+      {$p}Chi phí điểm tài nguyên{$colon} {$s}%fancy@resource_points%
+      {$p}Vào lúc{$colon} {$s}%time%
+  shield-deactivation:
+    material: SHIELD
+    name: '&5Hủy kích hoạt lá chắn'
+    lore: |
+      {$s}%player% {$p}đã hủy kích hoạt
+      lá chắn của vương quốc.
+      {$p}Thời lượng lá chắn{$colon} {$s}%old-shield-time%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-relation-change:
+    material: NETHER_STAR
+    name: '{$sp}Thay đổi quan hệ'
+    lore: |
+      {$p}Quan hệ của vương quốc đã
+      thay đổi với vương quốc {$s}%kingdoms_kingdom_name% {$p}{$colon}
+      %old-relation% {$sep}➜ %new-relation%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-invite:
+    material: BOOK
+    name: '{$sp}Mời'
+    lore: |
+      {$s}%inviter% {$p}đã mời {$s}%player%
+      {$p}vào vương quốc. Họ có {$s}%accept-time%
+      {$p}để chấp nhận yêu cầu.
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-king-change:
+    material: BOOK
+    name: '&4Thay đổi Vua'
+    lore: |
+      {$p}Vua của vương quốc đã được thay đổi{$colon}
+      {$s}%old-king% {$sep}➜ {$s}%new-king%
+      {$p}Lý do{$colon} {$s}%reason%
+      {$p}Vào lúc{$colon} {$s}%time%
+  player-rank-change:
+    lore: |
+      {$s}%old-rank% {$sep}➜ {$s}%new-rank%
+      {$p}Bởi{$colon} {$s}%by-player%
+    promoted:
+      condition: 'old_rank_priority > new_rank_priority' # It's the opposite
+      material: GREEN_WOOL
+      name: '&aNgười chơi được thăng chức{$colon} {$s}%player%'
+    else: # demoted
+      material: RED_WOOL
+      name: '&cNgười chơi bị giáng chức{$colon} {$s}%player%'
+  rank-create:
+    material: BOOK
+    name: '{$p}Cấp bậc đã tạo'
+    lore: |
+      {$p}Một cấp bậc đã được tạo bởi {$s}%player%{$colon}
+      {$p}Nút{$colon} {$s}%rank_node%
+      {$p}Tên hiển thị{$colon} {$s}%rank_color%%rank_symbol% %rank_name%
+      {$p}Ưu tiên{$colon} {$s}%rank_priority%
+      {$p}Số lượng chiếm đất tối đa{$colon} {$s}%rank_max_claims%
+      {$p}Vật liệu{$colon} {$s}%rank_material%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-delete:
+    material: BOOK
+    name: '&cCấp bậc đã xóa'
+    lore: |
+      {$p}Cấp bậc đã được xóa bởi {$s}%player%{$colon}
+      {$p}Nút{$colon} {$s}%rank_node%
+      {$p}Tên hiển thị{$colon} {$s}%rank_color% %rank_symbol% %rank_name%
+      {$p}Ưu tiên{$colon} {$s}%rank_priority%
+      {$p}Số lượng chiếm đất tối đa{$colon} {$s}%rank_max_claims%
+      {$p}Vật liệu{$colon} {$s}%rank_material%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-name:
+    material: BOOK
+    name: '{$sp}Đã thay đổi tên cấp bậc'
+    lore: |
+      {$p}Tên cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-name% {$sep}➜ {$s}%new-name%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-symbol:
+    material: BOOK
+    name: '{$sp}Đã thay đổi biểu tượng cấp bậc'
+    lore: |
+      {$p}Biểu tượng cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-symbol% {$sep}➜ {$s}%new-symbol%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-color:
+    material: BOOK
+    name: '{$sp}Đã thay đổi màu cấp bậc'
+    lore: |
+      {$p}Màu cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-color%color {$sep}➜ {$s}%new-color%color
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-priority:
+    material: BOOK
+    name: '{$sp}Đã thay đổi ưu tiên cấp bậc'
+    lore: |
+      {$p}Ưu tiên cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-priority% {$sep}➜ {$s}%new-priority%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-max-claims:
+    material: BOOK
+    name: '{$sp}Đã thay đổi số lượng chiếm đất tối đa của cấp bậc'
+    lore: |
+      {$p}Số lượng chiếm đất tối đa của cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-max-claims% {$sep}➜ {$s}%new-max-claims%
+      {$p}Vào lúc{$colon} {$s}%time%
+  rank-change-material:
+    material: BOOK
+    name: '{$sp}Đã thay đổi vật liệu cấp bậc'
+    lore: |
+      {$p}Vật liệu cấp bậc %rank%
+      {$p}đã được thay đổi bởi {$s}%player%{$colon}
+      {$s}%old-material% {$sep}➜ {$s}%new-material%
+      {$p}Vào lúc{$colon} {$s}%time%
+  structures-nexus-move:
+    material: BEACON
+    name: '{$sp}Nexus đã đặt'
+    placed:
+      condition: placed
+      lore: |
+        {$p}Nexus của vương quốc đã
+        được đặt bởi {$s}%player%{$colon}
+        {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}Vào lúc{$colon} {$s}%time%
+    else:
+      lore: |
+        {$p}Nexus của vương quốc đã
+        được di chuyển bởi {$s}%player%{$colon}
+        {$s}%from_translated-world%{$sep}, {$s}%from_x%{$sep}, {$s}%from_y%{$sep}, {$s}%from_z% {$sep}➜ {$s}%to_translated-world%{$sep}, {$s}%to_x%{$sep}, {$s}%to_y%{$sep}, {$s}%to_z%
+        {$p}Vào lúc{$colon} {$s}%time%
+  group-tax-server-pay:
+    material: PAPER
+    name: "{$sp}Thuế máy chủ"
+    lore: |
+      {$p}Đã nộp thuế máy chủ.
+      {$p}Số lượng{$colon} {$s}%fancy@amount%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-champion-change:
+    material: ZOMBIE_HEAD
+    name: "{$sp}Thay đổi Nhà vô địch"
+    lore: |
+      {$p}Nhà vô địch đã được thay đổi
+      bởi {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-change-lore:
+    material: PAPER
+    name: "{$sp}Thay đổi truyền thuyết"
+    lore: |
+      {$p}Truyền thuyết của vương quốc đã được thay đổi
+      bởi {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-rename:
+    material: PAPER
+    name: "{$sp}Đổi tên"
+    lore: |
+      {$p}Vương quốc đã được đổi tên
+      bởi {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-change-tag:
+    material: PAPER
+    name: "{$sp}Thay đổi thẻ"
+    lore: |
+      {$p}Thẻ của vương quốc đã được thay đổi
+      bởi {$s}%player%{$colon}
+      {$s}%old% {$sep}➜ {$s}%new%
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-nation-join:
+    material: BEACON
+    name: "{$sp}Tham gia Quốc gia"
+    lore: |
+      {$p}Vương quốc của bạn đã tham gia
+      quốc gia {$s}%kingdoms_nation_name% {$p}.
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-nation-leave:
+    material: BEACON
+    name: "&cRời Quốc gia"
+    lore: |
+      {$p}Vương quốc của bạn đã rời
+      quốc gia {$s}%kingdoms_nation_name% {$p}.
+      {$p}Vào lúc{$colon} {$s}%time%
+  kingdom-vault-inventory-change:
+    material: PAPER
+    name: "&cThay đổi Kho tiền Vương quốc"
+    lore: |
+      {$p}Thay đổi{$colon}
+      %changes%
+
+      {$p}Vào lúc{$colon} {$s}%time%
+  'PeaceTreaties:received':
+    material: BOOK
+    name: "{$sp}Đã nhận Hiệp ước Hòa bình"
+    commands:
+      - 'k pt review %other*kingdoms_kingdom_name%'
+    lore: |
+      {$p}Bên đề xuất{$colon} {$s}%other*kingdoms_kingdom_name%
+      {$p}Thời hạn hợp đồng{$colon} {$s}%peacetreaty_duration%
+
+      {$p}Để biết thêm thông tin, hãy thực hiện{$colon}
+      {$s}/k pt review %other*kingdoms_kingdom_name%
+  'PeaceTreaties:sent':
+    material: BOOK
+    name: "{$sp}Đã gửi Hiệp ước Hòa bình"
+    commands:
+      - 'k pt review %other*kingdoms_kingdom_name%'
+    lore: |
+      {$p}Đến{$colon} {$s}%kingdoms_kingdom_name%
+      {$p}Thời hạn hợp đồng{$colon} {$s}%peacetreaty_duration%
+
+      {$p}Để biết thêm thông tin, hãy thực hiện{$colon}
+      {$s}/k pt review %other*kingdoms_kingdom_name%
+  '[else]':
+    material: BARRIER
+    name: '{$e}Loại nhật ký không xác định{$colon}'
+    lore: '{$es}%type%'
+
+options:
+  decoration:
+    slots: [ 1, 2, 3, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+
+  filters-and-sorting:
+    posx: 5
+    posy: 1
+    material: BOOK
+    name: "{$p}Bộ lọc & Sắp xếp"
+    lore: |
+      {$p}Bộ lọc{$colon}
+        {$dot} {$s}Người chơi{$colon} %bool_filters_player%
+        {$dot} {$s}Thời gian{$colon} %bool_filters_time%
+        {$dot} {$s}Loại{$colon} %bool_filters_type%
+
+      {$p}Sắp xếp{$colon}
+        {$dot} {$s}Thời gian tăng dần{$colon} %bool_sorting_time_ascending%
+        {$dot} {$s}Thời gian giảm dần{$colon} %bool_sorting_time_descending%
+        {$dot} {$s}Loại{$colon} %bool_sorting_type%
+
+  next-page:
+    name: '{$s}Trang Tiếp Theo {$sep}- &e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNjgyYWQxYjljYjRkZDIxMjU5YzBkNzVhYTMxNWZmMzg5YzNjZWY3NTJiZTM5NDkzMzgxNjRiYWM4NGE5NmUifX19"
+    slot: 8
+  previous-page:
+    name: '{$s}Trang Trước {$sep}- &e%page%{$sep}/&e%pages%'
+    material: PLAYER_HEAD
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzdhZWU5YTc1YmYwZGY3ODk3MTgzMDE1Y2NhMGIyYTdkNzU1YzYzMzg4ZmYwMTc1MmQ1ZjQ0MTlmYzY0NSJ9fX0="
+    slot: 0
+
+  entry:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    '[switch]': type
+
+  back:
+    posx: 5
+    posy: 6
+    material: BARRIER
+    name: '&cQuay lại'

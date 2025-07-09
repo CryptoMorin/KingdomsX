@@ -1,0 +1,93 @@
+title: "{$sep}-=( {$sep}Cài đặt {$sep})=-"
+rows: 6
+sound: ITEM_BOOK_PAGE_TURN
+
+options:
+  back:
+    posx: 1
+    posy: 1
+    material: PLAYER_HEAD
+    name: '{$p}Quay lại'
+    lore: [ '{$s}Quay lại menu nexus.' ]
+    skull: "{$gui-back}"
+  light-blue-stained-glass-pane:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 21, 23, 26, 27, 29, 30, 31, 32, 33, 35, 36, 39, 41, 44, 45, 53 ]
+    material: LIGHT_BLUE_STAINED_GLASS_PANE
+    name: ''
+  public-home:
+    posx: 3
+    posy: 5
+    material: DARK_OAK_DOOR
+    name: "{$s}Nhà công khai{$colon} %bool@kingdoms_nation_home_is_public%"
+    lore: |
+      {$sep}Khi nhà của bạn là công khai, bất kỳ ai
+      cũng có thể dịch chuyển đến đó bằng
+      {$p}/k nation home %kingdoms_nation_name%
+  tax:
+    posx: 7
+    posy: 5
+    material: PAPER
+    name: '{$s}Thuế'
+    lore: |
+      {$sep}Thay đổi thuế quốc gia của bạn
+      đối với thành viên.
+
+      {$s}Phương trình thuế thành viên{$colon}
+      {$p}%tax_equation%
+      {$s}Thuế thành viên của bạn{$colon} {$p}$%fancy@kingdoms_nation_tax%
+
+      {$s}Thuế máy chủ quốc gia{$colon} {$p}$%fancy@kingdoms_nation_tax%
+  blue-stained-glass-pane:
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 25, 28, 34, 37, 43, 46, 47, 48, 49, 50, 51, 52 ]
+    material: BLUE_STAINED_GLASS_PANE
+    name: ''
+  relations:
+    posx: 3
+    posy: 3
+    material: WRITABLE_BOOK
+    name: '{$s}Quan hệ'
+    lore: |
+      {$sep}Thay đổi các thuộc tính quan hệ của bạn
+      cho các quốc gia khác.
+
+      {$sep}[&e!{$sep}] {$es}Để một số thuộc tính hoạt động,
+      cả hai vương quốc cần phải có
+      thuộc tính đó được bật cho mối quan hệ.
+
+      Ví dụ, nếu bạn có thuộc tính {$e}BUILD {$es}được bật
+      cho đồng minh, và sau đó cố gắng
+      xây dựng trên đất của đồng minh mà không
+      có thuộc tính tương tự được bật cho đồng minh,
+      nó sẽ không hoạt động. Đồng minh đó cũng sẽ không thể
+      xây dựng trên đất của bạn.
+  banners:
+    posx: 5
+    posy: 3
+    material: BLACK_BANNER
+    name: '{$s}Cờ hiệu'
+    lore: |
+      {$sep}Đặt cờ hiệu quốc gia của bạn cho bản đồ trực tuyến.
+      Nhấp để xem URL cờ hiệu của bạn.
+      Điều này sẽ không cập nhật bản đồ ngay lập tức.
+  color:
+    posx: 5
+    posy: 5
+    material: LIME_DYE
+    name: '{$s}Màu sắc{$colon} &c%r%{$sep}, {$p}%g%{$sep}, {$sp}%b% {$sep}(%hex@kingdoms_nation_color%%kingdoms_nation_color%{$sep})'
+    lore: |
+      {$sep}Đặt màu đánh dấu quốc gia của bạn
+      cho trò chuyện và bản đồ đất trực tuyến.
+  shields:
+    posx: 7
+    posy: 3
+    material: SHIELD
+    name: '{$s}Lá chắn{$colon} {$p}%time@kingdoms_nation_shield_time_left%'
+    lore: |
+      {$sep}Mua một lá chắn cho
+      quốc gia của bạn để bảo vệ vương quốc của bạn
+      chống lại các cuộc xâm lược.
+
+      Các thành viên vương quốc xâm lược khi
+      lá chắn quốc gia được bật, sẽ
+      tạm thời mất quyền truy cập vào lá chắn
+      của quốc gia.

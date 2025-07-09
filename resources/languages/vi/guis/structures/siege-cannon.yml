@@ -1,0 +1,62 @@
+title: "&3Pháo Công Thành"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+interactable: [ 2 ] # Ô đạn
+
+options:
+  sit:
+    name: "{$p}Ngồi"
+    lore:
+      - "{$sep}Ngồi lên pháo"
+      - "để bắt đầu bắn."
+    material: BRICK_STAIRS
+    slot: 0
+  ammo:
+    name: "&4-------->"
+    material: RED_STAINED_GLASS_PANE
+    lore:
+      - "{$p}Đặt một quả cầu lửa vào ô này"
+      - "để nạp pháo."
+      - ""
+      - "&8[&4&l!&8] {$sep}Đạn đã nạp sẽ biến mất"
+      - "một khi máy chủ khởi động lại."
+      - ""
+      - "{$p}Khối Sắt{$colon} {$sp}Bậc I"
+      - "{$p}Khối Vàng{$colon} {$sp}Bậc II"
+      - "{$p}Quả Cầu Lửa{$colon} {$sp}Bậc III"
+    slot: 1
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Nâng cấp{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lore:
+        - "{$dot} {$p}Sát thương Lá chắn{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%"
+        - "{$dot} {$p}Thời gian hồi chiêu{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%"
+        - "{$dot} {$p}Sát thương{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%"
+        - "{$dot} {$p}Lực đẩy lùi{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%"
+        - "{$dot} {$p}Bán kính nổ{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%"
+        - ""
+        - "&8[&4&l!&8] {$sep}Các giá trị hiển thị ở đây có thể"
+        - "khác nhau tùy thuộc vào loại đạn mà bạn"
+        - "đã dùng để nạp pháo."
+        - ""
+        - "{$dot} {$p}Cấp độ tối đa{$colon} {$s}%roman@next_level%"
+        - "{$dot} {$p}Chi phí{$colon} {$s}%upgrade_cost%"
+    maxxed:
+      name: "{$sp}Cấp độ{$colon} {$s}%roman@level%"
+      material: NETHER_STAR
+      lore:
+        - "{$dot} {$p}Sát thương Lá chắn{$colon} {$s}%shield-damage%"
+        - "{$dot} {$p}Thời gian hồi chiêu{$colon} {$s}%cooldown%"
+        - "{$dot} {$p}Sát thương{$colon} {$s}%damage%"
+        - "{$dot} {$p}Lực đẩy lùi{$colon} {$s}%knockback%"
+        - "{$dot} {$p}Bán kính nổ{$colon} {$s}%explosion-radius%"
+  break:
+    name: "&4Phá hủy"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "{$s}Phá hủy cấu trúc."
+    slot: 4

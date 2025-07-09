@@ -1,0 +1,68 @@
+title: "{$p}Máy khai thác"
+type: HOPPER
+sound: BLOCK_ANVIL_USE
+
+options:
+  collect:
+    outOfFuel:
+      condition: 'fuel <= 0'
+      name: "{$e}Hết nhiên liệu {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
+      material: RED_WOOL
+    nothing-to-collect:
+      condition: 'amount <= 0'
+      name: "{$e}Không có gì để thu thập {$sp}%extractor-last-collected-time-passed%"
+      material: RED_WOOL
+    else:
+      name: "{$p}Thu thập{$colon} {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
+      material: GREEN_WOOL
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    lore:
+      - "{$s}Thu thập tất cả các điểm tài nguyên"
+      - "đã tạo ra."
+      - "Lần cuối thu thập bởi{$colon} {$p}%extractor-last-collector%"
+    slot: 0
+  fuel:
+    name: "{$p}Nhiên liệu{$colon} {$s}%fancy@fuel%&8/{$s}%fancy@max_fuel%"
+    material: COAL
+    refresh: true
+    slot: 1
+    lore: |
+      {$sep}Để đổ đầy nhiên liệu, chỉ cần thả
+      một trong các vật phẩm nhiên liệu lên
+      khối máy khai thác.
+
+      {$sep}Ngoài ra, bạn có thể đặt một {$p}phễu
+      {$sep}hướng vào máy khai thác với các vật phẩm sau.
+      {$note} Điều này chỉ hoạt động khi nhiên liệu của máy khai thác
+      gần hết.
+
+      {$p}Than đá{$colon} {$sp}5
+      {$p}Than củi{$colon} {$sp}3
+      {$p}Que lửa địa ngục{$colon} {$sp}100
+  upgrade:
+    slot: 3
+    upgrade:
+      condition: level < max_level
+      name: "{$sp}Nâng cấp{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lore:
+        - "{$dot} {$p}Mỗi{$colon} {$s}%every% {$sep}➔ {$s}%next-every%"
+        - "{$dot} {$p}Điểm tài nguyên{$colon} {$s}%fancy@resource-points% {$sep}➔ {$s}%fancy@next-resource-points%"
+        - "{$dot} {$p}Tiêu thụ nhiên liệu{$colon} {$s}%extractor_needed_fuel% {$sep}➔ {$s}%next_extractor_needed_fuel%"
+        - ""
+        - "{$dot} {$p}Cấp độ tối đa{$colon} {$s}%roman@max_level%"
+        - "{$dot} {$p}Chi phí{$colon} {$s}%upgrade_cost%"
+    maxxed:
+      name: "{$sp}Cấp độ{$colon} {$s}%roman@level%"
+      material: NETHER_STAR
+      lore:
+        - "{$dot} {$p}Mỗi{$colon} {$s}%every%"
+        - "{$dot} {$p}Điểm tài nguyên{$colon} {$s}%fancy@resource-points%"
+        - "{$dot} {$p}Tiêu thụ nhiên liệu{$colon} {$s}%extractor_needed_fuel%"
+  break:
+    name: "&4Phá hủy"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
+    lore:
+      - "{$s}Phá hủy cấu trúc."
+    slot: 4

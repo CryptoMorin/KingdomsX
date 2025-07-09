@@ -1,0 +1,62 @@
+title: "{$sep}-=[ &5Mục Truy Cập {$sep}]=-"
+rows: 6
+sound: BLOCK_CHEST_OPEN
+
+options:
+  info:
+    posx: 5
+    posy: 1
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0='
+    name: '&eThông tin'
+    lore: |
+      {$p}Nhấp chuột trái{$colon} {$desc}Thay đổi cài đặt mục truy cập hiện tại.
+      {$p}Thả {$sep}(&5Q{$sep}){$colon} {$desc}Xóa hoàn toàn mục truy cập.
+      {$p}Shift + Nhấp chuột trái{$colon} {$desc}Tăng độ ưu tiên của mục truy cập này thêm {$p}+1.
+      {$p}Shift + Nhấp chuột phải{$colon} {$desc}Giảm độ ưu tiên của mục truy cập này đi {$e}-1.
+  add:
+    name: "{$p}Thêm"
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/head/10209-green-plus
+    skull: '{$gui-add}'
+    lore: |
+      {$desc}Thêm một mục truy cập mới
+      dựa trên bộ chọn người chơi và
+      đặc quyền truy cập.
+    posx: 9
+    posy: 1
+  clear:
+    name: "&4Xóa sạch"
+    material: WRITABLE_BOOK
+    lore: |
+      {$desc}Xóa tất cả các mục truy cập
+      hiện có.
+    posx: 8
+    posy: 1
+  back:
+    name: "&4Quay lại"
+    material: PLAYER_HEAD
+    skull: '{$gui-back}'
+    posx: 1
+    posy: 1
+  entries:
+    name: "{$p}Đặc quyền{$colon} {$s}%access_entry_privilege_displayname%"
+
+    allowed:
+      condition: "access_entry_privilege == 'ALLOWED'"
+      material: GREEN_WOOL
+    disallowed:
+      condition: "access_entry_privilege == 'DISALLOWED'"
+      material: RED_WOOL
+    password:
+      condition: "access_entry_privilege == 'PASSWORD'"
+      material: BLUE_WOOL
+    else:
+      material: BOOK
+
+    lore: '%access_entry_player_selector%'
+    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+  decoration:
+    name: ''
+    material: CYAN_STAINED_GLASS_PANE
+    slots: [ 1, 2, 3, 5, 6, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53 ]

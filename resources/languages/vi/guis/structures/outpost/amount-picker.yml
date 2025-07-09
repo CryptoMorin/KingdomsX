@@ -1,0 +1,61 @@
+title: "{$sep}-=( &aAmount Picker {$sep})=-"
+rows: 3
+sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+options:
+  black-stained-glass-pane:
+    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 11, 12, 14, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26 ]
+    material: BLACK_STAINED_GLASS_PANE
+    name: ''
+  cancel:
+    name: "{$e}Cancel"
+    posx: 1
+    posy: 1
+    material: BARRIER
+  done:
+    name: "{$p}Buy"
+    lore: "{$p}Price{$colon} {$s}%fancy@cost%"
+    material: GREEN_WOOL
+    skull:
+    posx: 9
+    posy: 1
+  decrease:
+    name: '{$e}Decrease'
+    cantDecrease:
+      condition: '!can_decrease'
+      perform-action: false
+      sound: BLOCK_NOTE_BLOCK_BASS
+      lore: |
+        {$e}Minimum value reached{$colon} {$es}%min%
+    else:
+      lore: |
+        {$dot} {$p}Left-click{$colon} {$s}-1
+        {$dot} {$p}Right-click{$colon} {$s}-10
+        {$dot} {$p}Shift Right-click{$colon} {$s}-30
+        {$dot} {$p}Shift Left-click{$colon} {$s}set to %min%
+    posx: 2
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYTM4NTJiZjYxNmYzMWVkNjdjMzdkZTRiMGJhYTJjNWY4ZDhmY2E4MmU3MmRiY2FmY2JhNjY5NTZhODFjNCJ9fX0='
+  item: # Template item, don't change
+    posx: 5
+    posy: 2
+    material: GRASS_BLOCK
+  increase:
+    cantIncrease:
+      condition: '!can_increase'
+      perform-action: false
+      sound: BLOCK_NOTE_BLOCK_BASS
+      lore: |
+        {$e}Maximum value reached{$colon} {$es}%max%
+    else:
+      lore: |
+        {$dot} {$p}Left-click{$colon} {$s}+1
+        {$dot} {$p}Right-click{$colon} {$s}+10
+        {$dot} {$p}Shift Right-click{$colon} {$s}+30
+        {$dot} {$p}Shift Left-click{$colon} {$s}set to %max%
+    posx: 8
+    posy: 2
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWRhMDI3NDc3MTk3YzZmZDdhZDMzMDE0NTQ2ZGUzOTJiNGE1MWM2MzRlYTY4YzhiN2JjYzAxMzFjODNlM2YifX19'
+    name: '{$p}Increase'

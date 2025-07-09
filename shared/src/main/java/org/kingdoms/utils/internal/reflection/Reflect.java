@@ -85,6 +85,8 @@ public final class Reflect {
         StringBuilder string = new StringBuilder(clazz.getSimpleName()).append('{');
         StringJoiner joiner = new StringJoiner(", ");
 
+        if (fields.isEmpty()) return clazz.getSimpleName();
+
         for (Field field : fields) {
             if (java.lang.reflect.Modifier.isStatic(field.getModifiers())) continue;
             field.setAccessible(true);

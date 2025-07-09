@@ -1,0 +1,238 @@
+title: "{$p}&lNexus của %kingdoms_kingdom_name% {$s}&lNexus"
+rows: 6
+sound: BLOCK_BEACON_ACTIVATE, 0.3
+
+forms:
+  title: 'Tiêu đề'
+  icon: "https://www.sonatype.com/hubfs/Company%20Logo/SON_logo_profilepict@2x%20(1).png"
+  type: CUSTOM
+  options:
+    settings:
+      component-type: LABEL
+      text: "&5Cài đặt"
+    some-button:
+      component-type: BUTTON
+      text: "Một nút!"
+    some-toggle:
+      component-type: TOGGLE
+      text: "Một công tắc!"
+      default-value: true
+    some-slider:
+      component-type: SLIDER
+      text: "Một thanh trượt!"
+      min: 5
+      max: 110
+      step: 3
+      default-value: 25
+    some-step-slider:
+      component-type: STEP_SLIDER
+      text: "Một thanh trượt bước!"
+      steps: [ "Một tôi", "Hai bạn", "Ba chúng ta" ]
+      default-value: 2
+    some-dropdown:
+      component-type: DROPDOWN
+      text: "Một menu thả xuống!"
+      steps: [ "Thả tôi", "Thả bạn", "Thả chúng ta" ]
+      default-value: 1
+    some-input:
+      component-type: INPUT
+      text: "Một đầu vào!!"
+      placeholder: "Thay thế tôi!"
+      default-value: "Vui lòng xóa tôi"
+
+options:
+  settings:
+    name: "{$sep}Cài đặt"
+    material: NETHER_STAR
+    lore: |
+      {$s}Thay đổi cài đặt vương quốc của bạn.
+    posx: 5
+    posy: 2
+  members:
+    name: "{$p}Thành viên"
+    material: PLAYER_HEAD
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
+    lore: |
+      {$s}Quản lý thành viên vương quốc của bạn.
+      {$s}Thăng chức hoặc giáng chức họ.
+    posx: 5
+    posy: 3
+  masswar:
+    running:
+      condition: kingdoms_masswar_is_running
+      name: "&4Masswar"
+      material: CLOCK
+      lore: |
+        {$s}Trong thời gian MassWar, các cuộc xâm lược là miễn phí.
+        Masswar hiện đang {$p}diễn ra.
+
+        {$p}Mass War kết thúc trong{$colon} {$s}%time@kingdoms_masswar_time%
+    else:
+      name: "&4Masswar"
+      material: RED_WOOL
+      lore: |
+        {$s}Trong thời gian MassWar, các cuộc xâm lược là miễn phí.
+        Masswar hiện &c không diễn ra.
+
+        {$p}Mass War tiếp theo trong{$colon} {$s}%time@kingdoms_masswar_time%
+    posx: 6
+    posy: 3
+  nexus-chest:
+    name: "&eRương Nexus"
+    material: CHEST
+    lore: |
+      {$s}Đặt vật phẩm vào rương vương quốc của bạn
+      {$s}để mọi người sử dụng.
+    posx: 7
+    posy: 3
+  turrets:
+    name: "{$sp}Tháp pháo"
+    material: SPECTRAL_ARROW
+    lore: |
+      {$s}Bạn có thể mua tháp pháo bằng
+      điểm tài nguyên để đặt chúng
+      trên đất của bạn. Nó bảo vệ chống lại
+      quái vật và kẻ xâm lược.
+    posx: 3
+    posy: 3
+  structures:
+    name: "&5Cấu trúc"
+    material: REDSTONE_LAMP
+    lore: |
+      {$s}Cấu trúc có thể làm nhiều điều khác nhau.
+      Bạn chỉ có thể có một cấu trúc trên mỗi vùng đất.
+      Lưu ý rằng nexus tự nó là một cấu trúc.
+      Bạn có thể mua cấu trúc bằng điểm tài nguyên.
+    posx: 4
+    posy: 3
+  misc-upgrades:
+    name: "&bNâng cấp linh tinh"
+    material: ENCHANTING_TABLE
+    lore: |
+      {$s}Các nâng cấp linh tinh bổ sung
+      để cải thiện vương quốc của bạn
+      ở các khía cạnh khác nhau.
+    posx: 2
+    posy: 3
+  logs:
+    name: "&aNhật ký kiểm toán"
+    material: KNOWLEDGE_BOOK
+    lore: |
+      {$s}Xem nhật ký vương quốc bao gồm
+      các cuộc xâm lược, yêu cầu, hủy yêu cầu,
+      và các hoạt động thành viên khác.
+
+      {$sep}Hầu hết các nhật ký này tồn tại trong
+      30 ngày sau khi chúng được tạo.
+      Một số có thể tồn tại trong thời gian ngắn hơn
+      nếu chúng ít quan trọng hơn.
+    posx: 8
+    posy: 3
+  resource-points:
+    name: "&eBộ chuyển đổi điểm tài nguyên"
+    material: HAY_BLOCK
+    lore: |
+      {$s}Chuyển đổi vật phẩm của bạn thành
+      điểm tài nguyên.
+      Vương quốc của bạn có &e%fancy@kingdoms_resource_points% {$s}điểm tài nguyên.
+    posx: 4
+    posy: 5
+  damage-reduction:
+    name: "&3Giảm sát thương"
+    material: DIAMOND_CHESTPLATE
+    flags: [ ALL ]
+
+    powerup-conds: &pwrup-conds
+      - '{? level >= 20 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
+      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
+      - '{? level >= 40 && kingdoms_kingdom_level < 4 ? "{$kingdom-lvl-IV}"}'
+      - '{? level >= 50 && kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
+
+    lore:
+      - "{$s}Mỗi lần nâng cấp giảm sát thương"
+      - "nhận vào &e1% {$s}khi bạn ở trong"
+      - "vùng đất vương quốc của mình."
+      - ""
+      - <<: *pwrup-conds
+      - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Chi phí{$colon} {$p}%cost%"
+    posx: 7
+    posy: 4
+  damage-boost:
+    name: "&3Tăng sát thương"
+    material: DIAMOND_SWORD
+    flags: [ ALL ]
+    lore:
+      - "{$s}Mỗi lần nâng cấp tăng"
+      - "sát thương của bạn lên &e1% {$s}khi bạn ở trong"
+      - "vùng đất vương quốc của mình."
+      - ""
+      - <<: *pwrup-conds
+      - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Chi phí{$colon} {$p}%cost%"
+    posx: 3
+    posy: 4
+  arrow-boost:
+    name: "{$sep}Tăng sát thương cung"
+    material: BOW
+    lore:
+      - "{$s}Mỗi lần nâng cấp tăng"
+      - "sát thương cung của bạn lên &e1% {$s}khi bạn ở trong"
+      - "vùng đất vương quốc của mình."
+      - ""
+      - <<: *pwrup-conds
+      - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Chi phí{$colon} {$p}%cost%"
+    posx: 4
+    posy: 4
+  regeneration-boost:
+    name: "&dTăng hồi phục"
+    material: GOLDEN_APPLE
+    lore:
+      - "{$s}Mỗi lần nâng cấp tăng"
+      - "hồi phục máu của bạn lên &e1% {$s}trong vùng đất của bạn."
+      - "Nâng cấp này không tự hồi phục mà"
+      - "chỉ tăng cường khả năng"
+      - "hồi phục máu tự nhiên của bạn."
+      - ""
+      - <<: *pwrup-conds
+      - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
+      - "{$s}Chi phí{$colon} {$p}%cost%"
+    posx: 6
+    posy: 4
+  ranks:
+    name: "&5Cấp bậc & Quyền hạn"
+    material: BOOKSHELF
+    lore:
+      - "{$s}Sửa đổi cấp bậc và quyền hạn cho"
+      - "vương quốc của bạn."
+    posx: 6
+    posy: 5
+  champion-upgrades:
+    name: "{$p}Nâng cấp Nhà vô địch"
+    material: ZOMBIE_HEAD
+    lore:
+      - "{$s}Nâng cấp nhà vô địch của bạn để phòng thủ"
+      - "mạnh mẽ hơn trước kẻ xâm lược."
+    posx: 5
+    posy: 5
+  mailbox:
+    name: "{$p}Hộp thư"
+    material: PLAYER_HEAD
+    # https://minecraft-heads.com/custom-heads/decoration/18054-mailbox-green
+    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
+    lore: |
+      {$sep}Gửi & nhận thư từ
+      các vương quốc khác.
+      {$p}Tổng số thư{$colon} {$s}%kingdoms_mails_total%
+    posx: 5
+    posy: 4
+
+  red-glass:
+    name: ""
+    material: RED_STAINED_GLASS_PANE
+    slots: [ 1, 4, 7, 9, 10, 16, 17, 36, 37, 43, 44, 46, 49, 52 ]
+  black-glass:
+    name: ""
+    material: BLACK_STAINED_GLASS_PANE
+    slots: [ 0, 2, 3, 5, 6, 8, 18, 26, 27, 35, 45, 47, 48, 50, 51, 53 ]
