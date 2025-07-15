@@ -3,10 +3,7 @@ package org.kingdoms.utils.internal.reflection;
 import org.kingdoms.utils.internal.arrays.ArrayUtils;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringJoiner;
+import java.util.*;
 
 /**
  * A class for reflecting on your behavior and morals of committing API evasion and using the dreaded NMS.
@@ -98,5 +95,21 @@ public final class Reflect {
         }
 
         return string.append(joiner).append('}').toString();
+    }
+
+    public static void validateAllFieldsNotNull(Object obj, boolean direct) {
+        Class<?> clazz = obj.getClass();
+        List<Field> fields = direct ? Arrays.asList(clazz.getDeclaredFields()) : getFields(clazz);
+
+        for (Field field : fields) {
+            field.setAccessible(true);
+            Object value;
+            try {
+                value = field.get(obj);
+            } catch (IllegalAccessException e) {
+                throw new IllegalStateException(e);
+            }
+            Objects.requireNonNull(value, () -> "'" + field + "' in " + obj + " is null");
+        }
     }
 }

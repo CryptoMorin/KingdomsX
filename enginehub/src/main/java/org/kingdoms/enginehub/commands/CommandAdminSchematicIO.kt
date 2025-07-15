@@ -102,6 +102,11 @@ class CommandAdminSchematicList(parent: KingdomsParentCommand) : KingdomsCommand
         val entryMap: MutableMap<Int, ContextualMessenger> = hashMapOf()
         val entryInc = AtomicInteger(0)
 
+        if (SchematicManager.getSchematics().isEmpty()) {
+            context.sendError(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_LIST_EMPTY)
+            return CommandResult.SUCCESS
+        }
+
         val pathBuilder = StringPathBuilder(SchematicManager.getSchematics().values.map {
             val clipboard = it.clipboard
             val blocksSnapshotIter = ClipboardBlockIterator(

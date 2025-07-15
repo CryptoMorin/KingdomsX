@@ -17,6 +17,8 @@ import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.EngineHubConfig
 import org.kingdoms.enginehub.WorldEditAdapter.adapt
 import org.kingdoms.enginehub.schematic.blocks.ClipboardTransformBaker
+import org.kingdoms.enginehub.worldedit.XClipboardFormat
+import org.kingdoms.enginehub.worldedit.XClipboardFormatFactory
 import org.kingdoms.main.KLogger
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.utils.debugging.DebugNS
@@ -25,7 +27,10 @@ import org.kingdoms.utils.internal.reflection.Reflect
 import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.StandardOpenOption
-import kotlin.io.path.*
+import kotlin.io.path.absolutePathString
+import kotlin.io.path.inputStream
+import kotlin.io.path.nameWithoutExtension
+import kotlin.io.path.outputStream
 
 /**
  * https://worldedit.enginehub.org/en/latest/api/
@@ -51,22 +56,30 @@ object WorldEditSchematicHandler {
     @JvmStatic
     fun isUsingFAWE(): Boolean = Reflect.classExists("com.fastasyncworldedit.bukkit.FaweBukkit")
 
-    class UsedExtension(val extension: String, val reason: Reason, val clipboardFormat: ClipboardFormat?) {
+    class UsedExtension(val extension: String, val reason: Reason, val clipboardFormat: XClipboardFormat?) {
         enum class Reason { FORCED, USING_FAWE, PREFERRED_FORMAT_EXTENSION, DEFAULT }
     }
 
     @JvmStatic
-    fun getUsedFileExtension(clipboardFormat: ClipboardFormat?): UsedExtension {
+    fun getUsedFileExtension(clipboardFormat: XClipboardFormat?): UsedExtension {
         val forced = EngineHubConfig.WORLDEDIT_SCHEMATICS_FORCE_EXTENSION.manager.string
-        if (forced !== null && forced.isNotBlank()) return UsedExtension(forced, UsedExtension.Reason.FORCED, clipboardFormat)
+        if (forced !== null && forced.isNotBlank()) return UsedExtension(
+            forced,
+            UsedExtension.Reason.FORCED,
+            clipboardFormat
+        )
 
-        if (clipboardFormat !== null) UsedExtension(clipboardFormat.primaryFileExtension, UsedExtension.Reason.PREFERRED_FORMAT_EXTENSION, clipboardFormat)
+        if (clipboardFormat !== null) UsedExtension(
+            clipboardFormat.primaryFileExtension,
+            UsedExtension.Reason.PREFERRED_FORMAT_EXTENSION,
+            clipboardFormat
+        )
         return if (isUsingFAWE()) UsedExtension(".schem", UsedExtension.Reason.USING_FAWE, clipboardFormat)
         else UsedExtension(".schematic", UsedExtension.Reason.DEFAULT, clipboardFormat)
     }
 
     @JvmStatic
-    fun getClipboardFormat(format: ClipboardFormat? = null): ClipboardFormat {
+    fun getClipboardFormat(format: XClipboardFormat? = null): XClipboardFormat {
         if (format !== null) return format
 
         val defaultFormat = EngineHubConfig.WORLDEDIT_SCHEMATICS_DEFAULT_SAVE_FORMAT.manager.string
@@ -81,8 +94,8 @@ object WorldEditSchematicHandler {
         return findHardcodedFormat()
     }
 
-    private fun findHardcodedFormat(): ClipboardFormat {
-        return if (ClipboardFormat::class.java.isEnum) {
+    private fun findHardcodedFormat(): XClipboardFormat {
+        val clipboardFormat = if (ClipboardFormat::class.java.isEnum) {
             XReflection.of(ClipboardFormat::class.java).enums().named("SCHEMATIC").enumConstant as ClipboardFormat
         } else {
             Enums.findOneOf(
@@ -91,9 +104,10 @@ object WorldEditSchematicHandler {
                 "SPONGE_SCHEMATIC"
             )
         }
+        return XClipboardFormatFactory.of(clipboardFormat)
     }
 
-    private fun findClipboardFormat(formatName: String, optionDetails: String): ClipboardFormat? {
+    private fun findClipboardFormat(formatName: String, optionDetails: String): XClipboardFormat? {
         var findByAlias = ClipboardFormats.findByAlias(formatName)
         if (findByAlias === null) {
             findByAlias = ClipboardFormats.getAll().find {
@@ -112,7 +126,7 @@ object WorldEditSchematicHandler {
             KLogger.warn("The $optionDetails '$formatName' doesn't exist, available formats: $availableFormats")
             return null
         } else {
-            return findByAlias
+            return XClipboardFormatFactory.of(findByAlias)
         }
     }
 
@@ -121,10 +135,8 @@ object WorldEditSchematicHandler {
         val path = schematic.storedFile
 
         KLogger.debug(Debugger) { "Saving schematic '$path' using format '${schematic.clipboardFormat.name}'" }
-        schematic.clipboardFormat.getWriter(path.outputStream(*openOptions)).use { writer ->
-            writer.write(schematic.clipboard)
-            return WorldEditSchematic(schematic.name, path, schematic.clipboard, schematic.clipboardFormat)
-        }
+        schematic.clipboardFormat.write(path.outputStream(*openOptions), schematic.clipboard)
+        return WorldEditSchematic(schematic.name, path, schematic.clipboard, schematic.clipboardFormat)
     }
 
     @JvmStatic
@@ -204,7 +216,12 @@ object WorldEditSchematicHandler {
     }
 
     @JvmStatic
-    fun savePlayerClipboard(player: Player, schematicFile: Path, schematicName: String, clipboardFormat: ClipboardFormat): WorldEditSchematic {
+    fun savePlayerClipboard(
+        player: Player,
+        schematicFile: Path,
+        schematicName: String,
+        clipboardFormat: XClipboardFormat
+    ): WorldEditSchematic {
         val clipboard = getCurrentClipboard(player) ?: throw IllegalStateException("Player has no clipboard")
         val schematic = WorldEditSchematic(schematicName, schematicFile, clipboard, clipboardFormat)
 
@@ -221,7 +238,7 @@ object WorldEditSchematicHandler {
         }
 
         // FAWE formats: https://github.com/IntellectualSites/FastAsyncWorldEdit/blob/main/worldedit-core/src/main/java/com/sk89q/worldedit/extent/clipboard/io/BuiltInClipboardFormat.java#L525
-        var format: ClipboardFormat? = null
+        var format: XClipboardFormat? = null
         val forcedFormatName = EngineHubConfig.WORLDEDIT_SCHEMATICS_LOADING_MECHANISM_FORCED_FORMAT.manager.string
         if (forcedFormatName !== null && forcedFormatName.isNotBlank()) {
             val foundFormat = findClipboardFormat(
@@ -242,13 +259,11 @@ object WorldEditSchematicHandler {
             )
 
         KLogger.debug(Debugger) { "Loading schematic '$path' using format '${format.name}'" }
-        format.getReader(path.inputStream(StandardOpenOption.READ)).use { reader ->
-            val cb = reader.read()
-            return WorldEditSchematic(withName ?: path.nameWithoutExtension, path, cb, format)
-        }
+        val clipbaord = format.read(path.inputStream(StandardOpenOption.READ))
+        return WorldEditSchematic(withName ?: path.nameWithoutExtension, path, clipbaord, format)
     }
 
-    @JvmStatic fun tryGetStdClipboardFormat(path: Path): ClipboardFormat? {
+    @JvmStatic fun tryGetStdClipboardFormat(path: Path): XClipboardFormat? {
         if (isUsingFAWE() && EngineHubConfig.WORLDEDIT_SCHEMATICS_LOADING_MECHANISM_BYPASS_FAWE_EXTENSION_CHECK.manager.boolean) {
             val handle = FAWE_ISFORMAT_INPUTSTREAM!!
             val inputStream = path.inputStream(StandardOpenOption.READ)
@@ -256,7 +271,7 @@ object WorldEditSchematicHandler {
                 val format = ClipboardFormats.getAll().find { allFormats ->
                     handle.invokeExact(allFormats, inputStream) as Boolean
                 }
-                if (format !== null) return format
+                if (format !== null) return XClipboardFormatFactory.of(format)
             } catch (ex: Throwable) {
                 EngineHubAddon.INSTANCE.logger.severe("Error while attempting to bypass FAWE's schematic extension check:")
                 ex.printStackTrace()
@@ -264,11 +279,13 @@ object WorldEditSchematicHandler {
         }
 
         return try {
-            ClipboardFormats.findByFile(path.toFile())
-                ?: throw UnknownClipboardFormatException(
-                    path,
-                    "Unknown clipboard format for file: ${path.absolutePathString()}"
-                )
+            XClipboardFormatFactory.of(
+                ClipboardFormats.findByFile(path.toFile())
+                    ?: throw UnknownClipboardFormatException(
+                        path,
+                        "Unknown clipboard format for file: ${path.absolutePathString()}"
+                    )
+            )
         } catch (ex: NoClassDefFoundError) {
             findHardcodedFormat()
         }

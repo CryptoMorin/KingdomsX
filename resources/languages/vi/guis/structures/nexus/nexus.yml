@@ -1,4 +1,4 @@
-title: "{$p}&lNexus của %kingdoms_kingdom_name% {$s}&lNexus"
+title: "{$p}Nexus của {$s}%kingdoms_kingdom_name%"
 rows: 6
 sound: BLOCK_BEACON_ACTIVATE, 0.3
 
@@ -45,7 +45,7 @@ options:
     name: "{$sep}Cài đặt"
     material: NETHER_STAR
     lore: |
-      {$s}Thay đổi cài đặt vương quốc của bạn.
+      {$s}Thay đổi cài đặt kingdom của bạn.
     posx: 5
     posy: 2
   members:
@@ -53,36 +53,38 @@ options:
     material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzRiODlhZDA2ZDMxOGYwYWUxZWVhZjY2MGZlYTc4YzM0ZWI1NWQwNWYwMWUxY2Y5OTlmMzMxZmIzMmQzODk0MiJ9fX0='
     lore: |
-      {$s}Quản lý thành viên vương quốc của bạn.
+      {$s}Quản lý thành viên kingdom của bạn.
       {$s}Thăng chức hoặc giáng chức họ.
     posx: 5
     posy: 3
   masswar:
     running:
       condition: kingdoms_masswar_is_running
-      name: "&4Masswar"
+      name: "&4Chiến tranh thế giới"
       material: CLOCK
       lore: |
-        {$s}Trong thời gian MassWar, các cuộc xâm lược là miễn phí.
-        Masswar hiện đang {$p}diễn ra.
+        {$s}Trong thời gian chiến tranh thế giới xảy ra,
+        các cuộc xâm lược không tiêu hao tài nguyên.
+        Chiến tranh thế giới hiện {$p}đang diễn ra.
 
-        {$p}Mass War kết thúc trong{$colon} {$s}%time@kingdoms_masswar_time%
+        {$p}Mass War kết thúc trong{$colon} {$s}%kingdoms_time_masswar_time%
     else:
-      name: "&4Masswar"
+      name: "&4Chiến tranh thế giới"
       material: RED_WOOL
       lore: |
-        {$s}Trong thời gian MassWar, các cuộc xâm lược là miễn phí.
-        Masswar hiện &c không diễn ra.
+        {$s}Trong thời gian chiến tranh thế giới xảy ra,
+        các cuộc xâm lược không tiêu hao tài nguyên.
+        Chiến tranh thế giới vẫn &cchưa diễn ra.
 
-        {$p}Mass War tiếp theo trong{$colon} {$s}%time@kingdoms_masswar_time%
+        {$p}Lần chiến tranh thế giới sắp tới{$colon} {$s}%kingdoms_time_masswar_time%
     posx: 6
     posy: 3
   nexus-chest:
     name: "&eRương Nexus"
     material: CHEST
     lore: |
-      {$s}Đặt vật phẩm vào rương vương quốc của bạn
-      {$s}để mọi người sử dụng.
+      {$s}Đặt vật phẩm của bạn vào rương
+      {$s}này để mọi người cùng sử dụng.
     posx: 7
     posy: 3
   turrets:
@@ -90,8 +92,8 @@ options:
     material: SPECTRAL_ARROW
     lore: |
       {$s}Bạn có thể mua tháp pháo bằng
-      điểm tài nguyên để đặt chúng
-      trên đất của bạn. Nó bảo vệ chống lại
+      điểm tài nguyên để đặt chúng trên
+      đất của bạn. Nó giúp bạn chống lại
       quái vật và kẻ xâm lược.
     posx: 3
     posy: 3
@@ -100,32 +102,32 @@ options:
     material: REDSTONE_LAMP
     lore: |
       {$s}Cấu trúc có thể làm nhiều điều khác nhau.
-      Bạn chỉ có thể có một cấu trúc trên mỗi vùng đất.
+      Bạn chỉ có thể đặt một cấu trúc trên mỗi vùng đất.
       Lưu ý rằng nexus tự nó là một cấu trúc.
       Bạn có thể mua cấu trúc bằng điểm tài nguyên.
     posx: 4
     posy: 3
   misc-upgrades:
-    name: "&bNâng cấp linh tinh"
+    name: "&bNâng cấp đa năng"
     material: ENCHANTING_TABLE
     lore: |
-      {$s}Các nâng cấp linh tinh bổ sung
-      để cải thiện vương quốc của bạn
-      ở các khía cạnh khác nhau.
+      {$s}Các nâng cấp bổ sung các chức năng
+      khác nhau giúp cải thiện kingdom của bạn
+      ở nhiều khía cạnh.
     posx: 2
     posy: 3
   logs:
     name: "&aNhật ký kiểm toán"
     material: KNOWLEDGE_BOOK
     lore: |
-      {$s}Xem nhật ký vương quốc bao gồm
-      các cuộc xâm lược, yêu cầu, hủy yêu cầu,
-      và các hoạt động thành viên khác.
+      {$s}Xem lịch sử của kingdom bao gồm sở hữu,
+      xâm lược, thao tác, hủy thao tác và các 
+      hoạt động của thành viên khác.
 
-      {$sep}Hầu hết các nhật ký này tồn tại trong
+      {$sep}Hầu hết các nhật ký được lưu khoảng
       30 ngày sau khi chúng được tạo.
-      Một số có thể tồn tại trong thời gian ngắn hơn
-      nếu chúng ít quan trọng hơn.
+      Một số sẽ lưu trong thời gian ngắn hơn
+      nếu chúng ít quan trọng.
     posx: 8
     posy: 3
   resource-points:
@@ -134,7 +136,7 @@ options:
     lore: |
       {$s}Chuyển đổi vật phẩm của bạn thành
       điểm tài nguyên.
-      Vương quốc của bạn có &e%fancy@kingdoms_resource_points% {$s}điểm tài nguyên.
+      Tài nguyên đang có &e%fancy@kingdoms_resource_points% {$s}điểm.
     posx: 4
     posy: 5
   damage-reduction:
@@ -149,9 +151,9 @@ options:
       - '{? level >= 50 && kingdoms_kingdom_level < 5 ? "{$kingdom-lvl-V}"}'
 
     lore:
-      - "{$s}Mỗi lần nâng cấp giảm sát thương"
-      - "nhận vào &e1% {$s}khi bạn ở trong"
-      - "vùng đất vương quốc của mình."
+      - "{$s}Giảm sát thương nhận vào "
+      - "khi đứng trong kingdom, giảm"
+      - "&e1% {$s}ứng với mỗi cấp độ"
       - ""
       - <<: *pwrup-conds
       - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
@@ -163,9 +165,9 @@ options:
     material: DIAMOND_SWORD
     flags: [ ALL ]
     lore:
-      - "{$s}Mỗi lần nâng cấp tăng"
-      - "sát thương của bạn lên &e1% {$s}khi bạn ở trong"
-      - "vùng đất vương quốc của mình."
+      - "{$s}Tăng sát thương lên địch "
+      - "khi đứng trong kingdom, giảm"
+      - "&e1% {$s}ứng với mỗi cấp độ"
       - ""
       - <<: *pwrup-conds
       - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
@@ -176,9 +178,9 @@ options:
     name: "{$sep}Tăng sát thương cung"
     material: BOW
     lore:
-      - "{$s}Mỗi lần nâng cấp tăng"
-      - "sát thương cung của bạn lên &e1% {$s}khi bạn ở trong"
-      - "vùng đất vương quốc của mình."
+      - "{$s}Tăng sát thương tên bắn "
+      - "khi đứng trong kingdom, giảm"
+      - "&e1% {$s}ứng với mỗi cấp độ"
       - ""
       - <<: *pwrup-conds
       - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
@@ -189,11 +191,10 @@ options:
     name: "&dTăng hồi phục"
     material: GOLDEN_APPLE
     lore:
-      - "{$s}Mỗi lần nâng cấp tăng"
-      - "hồi phục máu của bạn lên &e1% {$s}trong vùng đất của bạn."
-      - "Nâng cấp này không tự hồi phục mà"
-      - "chỉ tăng cường khả năng"
-      - "hồi phục máu tự nhiên của bạn."
+      - "{$s}Tăng khả năng hồi phục "
+      - "khi đứng trong kingdom, giảm"
+      - "&e1% {$s}ứng với mỗi cấp độ"
+      - "(Không thể tự hồi phục)"
       - ""
       - <<: *pwrup-conds
       - "{$s}Cấp độ{$colon} {$p}%level%{$sep}/{$p}%max_level%"
@@ -204,15 +205,15 @@ options:
     name: "&5Cấp bậc & Quyền hạn"
     material: BOOKSHELF
     lore:
-      - "{$s}Sửa đổi cấp bậc và quyền hạn cho"
-      - "vương quốc của bạn."
+      - "{$s}Sửa đổi cấp bậc và quyền hạn"
+      - "cho kingdom của bạn."
     posx: 6
     posy: 5
   champion-upgrades:
-    name: "{$p}Nâng cấp Nhà vô địch"
+    name: "{$p}Nâng cấp Tướng thủ thành"
     material: ZOMBIE_HEAD
     lore:
-      - "{$s}Nâng cấp nhà vô địch của bạn để phòng thủ"
+      - "{$s}Nâng cấp tướng thủ thành để phòng thủ"
       - "mạnh mẽ hơn trước kẻ xâm lược."
     posx: 5
     posy: 5
@@ -223,7 +224,7 @@ options:
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
     lore: |
       {$sep}Gửi & nhận thư từ
-      các vương quốc khác.
+      các kingdom khác.
       {$p}Tổng số thư{$colon} {$s}%kingdoms_mails_total%
     posx: 5
     posy: 4

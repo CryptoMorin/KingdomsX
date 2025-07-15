@@ -12,6 +12,7 @@ worldedit:
     #
     # - Possible Available Formats:
     #  * MCEDIT_SCHEMATIC    (mcedit, mce, schematic)
+    #  * SPONGE_SCHEMATIC    [old name for SPONGE_V1_SCHEMATIC]
     #  * SPONGE_V1_SCHEMATIC (sponge.1)
     #  * SPONGE_V2_SCHEMATIC (sponge.2, slow.2, safe.2)
     #  * SPONGE_V3_SCHEMATIC (sponge.3, slow,   safe)
@@ -83,3 +84,11 @@ worldguard:
   # Should WorldGuard regions be shown on /k map?
   # * Requires a restart to change.
   map-markers: true
+
+  # When the player is in a WorldGuard region with the given flag,
+  # they'll be able to keep their flight even if they leave their land.
+  # The default flag used here is not available in WorldGuard plugin itself,
+  # but it's provided in WorldGuardExtraFlags plugin.
+  # Set to ~ to disable this feature.
+  # * Requires a restart to apply changes.
+  keep-kingdoms-flight-with-flag: 'flag'

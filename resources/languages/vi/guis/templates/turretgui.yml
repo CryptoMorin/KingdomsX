@@ -13,13 +13,13 @@ options:
     name: "{$sp}Đạn{$colon} {$p}%ammo%"
     material: ARROW
     ammo: 100
-    cost: 10
+    cost: 1000
     # Đặt thành 0 để vô hiệu hóa.
-    fill-cost: 'neededAmmo / 8'
+    fill-cost: 'neededAmmo / 0.1'
     lore: |
-      {$p}Mua {$s}%ammo-buy-amount% {$p}đạn với giá {$s}%cost% {$p}điểm tài nguyên.
-      {? {fill-cost} > 0 ? "{$p}Bấm Shift để đổ đầy đạn
-      {$p}với giá {$s}%fill-cost% {$p}điểm tài nguyên." }
+      {$p}Nạp {$s}%ammo-buy-amount% {$p}đạn với {$s}%cost% {$p}điểm tài nguyên.
+      {? {fill-cost} > 0 ? "{$p}Giữ Shift để nạp đầy đạn {$p}với {$s}%fill-cost%
+      {$p}điểm tài nguyên." }
     posx: 2
     posy: 2
   upgrade:
@@ -58,9 +58,8 @@ options:
       material: LEVER
       lore: |
         {$sep}Chế độ thủ công cho phép bạn
-        vô hiệu hóa tháp pháo khỏi
-        tự động kích hoạt và
-        bạn có thể điều khiển chúng.
+        điều khiển tháp pháo, và tháp sẽ
+        tự động kích hoạt nữa.
 
         {$p}Nhấp chuột trái để chuyển sang
         {$sp}chế độ tự động
@@ -85,25 +84,23 @@ options:
     upgrade:
       condition: "building_durability <= 0"
       lore: |
-        {$desc}Tháp pháo hiện tại của bạn đã bị
-        phá hủy hoàn toàn và cần được sửa chữa hoàn chỉnh
-        để khắc phục.
+        {$desc}Tháp pháo đã bị phá hủy hoàn toàn
+        nhanh chóng sửa chữa.
 
         {$p}Chi phí{$colon}
         {? repair_cost_rp != 0 ? " {$dot} {$p}Điểm tài nguyên{$colon} {$s}%fancy@repair_cost_rp%" }
         {? repair_cost_money != 0 ? " {$dot} {$p}Tiền{$colon} {$s}$%fancy@repair_cost_money%" }
     else:
       lore: |
-        {$desc}Bạn có thể sửa chữa tòa nhà của mình bằng cách
-        ném các vật phẩm sau vào nó{$colon}
+        {$desc}Bạn có thể sửa chữa tháp pháo của mình 
+        bằng cách ném các vật phẩm sau vào nó{$colon}
 
           {$dot} {$p}Sắt{$colon} {$s}10
           {$dot} {$p}Vàng{$colon} {$s}15
           {$dot} {$p}Kim cương{$colon} {$s}50
 
-        {$info-sign} &9Nếu độ bền tòa nhà của bạn đạt {$e}0&9,
-        bạn sẽ phải sửa chữa hoàn chỉnh bằng
-        nút này.
+        {$info-sign} &9Nếu độ bền tháp pháo của bạn đạt {$e}0&9,
+        bạn sẽ phải sửa bằng cách bấm vào đây.
     posx: 6
     posy: 2
   break:

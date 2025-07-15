@@ -60,7 +60,7 @@ public final class BukkitNBTAdapter {
                 .inPackage(MinecraftPackage.NMS, "nbt")
                 .map(MinecraftMapping.MOJANG, typeName + "Tag")
                 .map(MinecraftMapping.SPIGOT, "NBTTag" + typeName)
-                .unreflect();
+                .reflectOrNull(); // null for newer NBT types in older servers
     }
 
     private static final class BukkitNBTCompound implements NBTConverter<NBTTagCompound, Object> {

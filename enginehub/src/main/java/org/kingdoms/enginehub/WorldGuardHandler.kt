@@ -6,12 +6,15 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.constants.player.KingdomPlayer
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuardClaimProcessorTask
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuardKingdomsMapHandler
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuardLandVisualizerPreparation
 import org.kingdoms.enginehub.worldguard.handlers.WorldGuradPvPHandler
+import org.kingdoms.events.lands.LandChangeEvent
+import org.kingdoms.managers.FlyManager
 import org.kingdoms.managers.entity.KingdomEntityRegistry
 import org.kingdoms.managers.entity.types.KingdomChampionEntity
 import org.kingdoms.managers.land.LandChangeWatcher
@@ -46,6 +49,26 @@ class WorldGuardHandler(private val addon: EngineHubAddon) : Listener {
 
         if (EngineHubConfig.WORLDGUARD_REGISTER_FLAGS.manager.boolean) {
             addon.server.pluginManager.registerEvents(this, addon)
+        }
+
+        // https://github.com/aromaa/WorldGuardExtraFlags/blob/master/WG/src/main/java/net/goldtreeservers/worldguardextraflags/flags/Flags.java#L49
+        val flyFlag = EngineHubConfig.WORLDGUARD_KEEP_KINGDOMS_FLIGHT_WITH_FLAG.manager.string
+        if (flyFlag !== null && flyFlag.isNotBlank()) {
+            FlyManager.addLandCheckup(LandCheckup(wg, flyFlag))
+        }
+    }
+
+    private class LandCheckup(private val worldguard: ServiceWorldGuard, private val flagName: String) :
+        FlyManager.LandCheckup {
+        companion object {
+            private val NS = Namespace("EngineHub", "WORLD_GUARD")
+        }
+
+        override fun getNamespace(): Namespace = NS
+
+        override fun canFly(event: LandChangeEvent): Boolean? {
+            if (worldguard.hasFlag(event.player, event.to, flagName)) return true
+            return null
         }
     }
 

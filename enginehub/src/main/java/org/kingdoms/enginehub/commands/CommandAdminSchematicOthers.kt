@@ -12,10 +12,10 @@ import org.bukkit.inventory.EquipmentSlot
 import org.kingdoms.commands.*
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.enginehub.EngineHubLang
-import org.kingdoms.enginehub.schematic.SchematicFolderRegistry
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.WorldEditSchematic
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
+import org.kingdoms.enginehub.worldedit.XClipboardFormatFactory
 import org.kingdoms.managers.backup.FolderZipper
 import org.kingdoms.managers.backup.KingdomsBackup
 import org.kingdoms.platform.bukkit.adapters.BukkitAdapter
@@ -173,9 +173,9 @@ class CommandAdminSchematicConvertAll(parent: KingdomsParentCommand) : KingdomsC
 
         val formatName = context.arg(0)
         context.`var`("format", formatName)
-        val format = ClipboardFormats.getAll().find { it.name == formatName }
+        val format = XClipboardFormatFactory.ofNullable(ClipboardFormats.getAll().find { it.name == formatName })
 
-        if (format == null) {
+        if (format === null) {
             return context.fail(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_CONVERTALL_UNKNOWN_FORMAT)
         }
 

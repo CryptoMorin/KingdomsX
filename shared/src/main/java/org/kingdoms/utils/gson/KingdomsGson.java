@@ -1,5 +1,6 @@
 package org.kingdoms.utils.gson;
 
+import com.cryptomorin.xseries.reflection.XReflection;
 import com.google.gson.*;
 import com.google.gson.internal.GsonBuildConfig;
 import com.google.gson.internal.Streams;
@@ -15,9 +16,8 @@ import java.lang.reflect.Type;
 import java.util.Objects;
 
 public final class KingdomsGson {
-    private static JsonReader newJsonReader(Reader reader) {
-        return new JsonReader(reader);
-    }
+    private static final boolean SUPPORTS_JsonObject_size = XReflection.of(JsonObject.class)
+            .method("public int size()").exists();
 
     public static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting().disableHtmlEscaping().enableComplexMapKeySerialization()
@@ -42,6 +42,15 @@ public final class KingdomsGson {
     }
 
     private static final GsonContextImpl CONTEXT = new GsonContextImpl();
+
+    public static int size(JsonObject object) {
+        if (SUPPORTS_JsonObject_size) return object.size();
+        return object.entrySet().size(); // entrySet initialize extra objects so it's not preferred.
+    }
+
+    private static JsonReader newJsonReader(Reader reader) {
+        return new JsonReader(reader);
+    }
 
     public static JsonElement fromString(String json) {
         // JsonParser.parseString(json) doesn't exist for older versions of GSON.

@@ -13,7 +13,6 @@ import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSeven
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSix
 import org.kingdoms.locale.LanguageManager
-import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.services.managers.SoftService
 import java.io.File

@@ -114,6 +114,14 @@ public final class Fn {
         return new ChainedCallable<>(supplier);
     }
 
+    /**
+     * Mimick Kotlin's apply() method.
+     */
+    public static <T> T configure(T object, Consumer<T> consumer) {
+        consumer.accept(object);
+        return object;
+    }
+
     public static final class ChainedCallable<R> {
         private Callable<R> handle;
         private boolean hasResult;

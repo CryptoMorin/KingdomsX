@@ -11,16 +11,16 @@ options:
     sound: BLOCK_REDSTONE_TORCH_BURNOUT
     flags: [ ALL ]
     lore: |
-      {$s}Vùng đất được bao quanh bởi một powercell không thể
-      bị xâm lược cho đến khi vùng đất powercell
-      bị xâm lược trước.
-      Bán kính bảo vệ là {$p}3x3 {$s}cho cấp 1
-      và {$p}5x5 {$s}cho cấp 2.
+      {$s}Vùng đất đặt powercell sẽ bảo vệ các vùng đất
+      xung quanh không bị xâm lược trước khi vùng đất
+      đó bị xâm lược.
+      Bán kính bảo vệ {$p}3x3 {$s}cho cấp 1 và {$p}5x5 {$s}cho cấp 2.
+      
 
       {$chk-kingdom-lvl-II}
       {$p}Chi phí{$colon} {$s}%fancy@cost%
-      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Vương quốc của bạn là vương quốc hòa bình
-      {$desc}và cấu trúc này sẽ không có tác dụng gì cho vương quốc của bạn."}
+      {? kingdoms_kingdom_is_pacifist ? "{$note} {$desc}Kingdom của bạn là kingdom hòa bình
+      {$desc}và cấu trúc này sẽ không có tác dụng gì cho kingdom của bạn."}
     posx: 3
     posy: 2
   extractor:
@@ -43,26 +43,21 @@ options:
     sound: ENTITY_EXPERIENCE_ORB_PICKUP, 1.5
     flags: [ ALL ]
     lore: |
-      {$s}Thị trường chứng khoán toàn cầu
-      của các vương quốc. Mua và bán
-      các mặt hàng khác nhau ảnh hưởng
-      giá của các mặt hàng này trên toàn cầu
-      trên tất cả các tiền đồn.
-      Cấu trúc này cũng cung cấp cho bạn khả năng
-      mở nexus của bạn từ xa.
+      {$s}Thị trường bán buôn của các kingdom.
+      Có thể mở nexus từ xa bằng cấu trúc này.
 
       {$chk-kingdom-lvl-II}
       {$p}Chi phí{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   warppad:
-    name: "&cBệ Dịch Chuyển"
+    name: "&cTruyền tống trận"
     material: MUSIC_DISC_BLOCKS
     sound: ENTITY_ENDERMAN_TELEPORT
     flags: [ ALL ]
     lore: |
-      {$s}Bệ dịch chuyển có thể được sử dụng để dịch chuyển
-      từ một cấu trúc này sang cấu trúc khác.
+      {$s}Truyền tống trận dùng để dịch chuyển
+      từ cấu trúc này sang cấu trúc khác.
 
       {$chk-kingdom-lvl-IV}
       {$p}Chi phí{$colon} {$s}%fancy@cost%
@@ -74,10 +69,10 @@ options:
     sound: ENTITY_VILLAGER_AMBIENT
     flags: [ ALL ]
     lore: |
-      {$s}Quản lý các thuộc tính của người chơi như xây dựng,
-      đình chiến tháp pháo, v.v.
-      Kiểm soát việc sinh sản của mob/động vật,
-      tháp pháo (chẳng hạn như tự động nạp đạn) và vụ nổ.
+      {$s}Quản lý các thuộc tính của người chơi như xây
+      dựng, đình chiến tháp pháo, v.v.
+      Kiểm soát việc sinh sản của sinh vật, tháp pháo
+      (ví dụ như nạp tự động) và vụ nổ.
 
       {$chk-kingdom-lvl-IV}
       {$p}Chi phí{$colon} {$s}%fancy@cost%
@@ -90,7 +85,7 @@ options:
     flags: [ ALL ]
     lore: |
       {$s}Pháo được sử dụng để phá vỡ
-      lá chắn của một vương quốc.
+      lá chắn của một kingdom.
 
       {$chk-kingdom-lvl-III}
       {$p}Chi phí{$colon} {$s}%fancy@cost%

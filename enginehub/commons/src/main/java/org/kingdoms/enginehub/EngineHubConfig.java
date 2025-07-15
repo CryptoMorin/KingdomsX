@@ -23,6 +23,7 @@ public enum EngineHubConfig implements EnumConfig {
     WORLDGUARD_PROTECTED_REGION_RADIUS(1),
     WORLDGUARD_INDICATOR_IGNORE_REGIONS(1),
     WORLDGUARD_MAP_MARKERS(1),
+    WORLDGUARD_KEEP_KINGDOMS_FLIGHT_WITH_FLAG(1),
     ;
 
     private static final String FILE_NAME = "enginehub";

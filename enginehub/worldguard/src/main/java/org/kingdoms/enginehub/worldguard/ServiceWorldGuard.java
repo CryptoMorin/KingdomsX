@@ -111,6 +111,11 @@ public abstract class ServiceWorldGuard implements Service {
 
     public abstract boolean hasFlag(Player player, Location location, Flag<?> flag);
 
+    public boolean hasFlag(Player player, Location location, String flag) {
+        Flag<?> flagObj = getFlag(flag);
+        return flagObj != null && hasFlag(player, location, flagObj);
+    }
+
     public final boolean hasFriendlyFireFlag(Player player) {
         return hasFlag(player, KINGDOMS_FRIENDLY_FIRE);
     }
@@ -124,12 +129,6 @@ public abstract class ServiceWorldGuard implements Service {
     }
 
     public abstract boolean isLocationInRegion(Location location, String regionName);
-
-    public boolean canFly(Player player, Location location) {
-        // https://github.com/aromaa/WorldGuardExtraFlags/blob/master/WG/src/main/java/net/goldtreeservers/worldguardextraflags/flags/Flags.java#L49
-        Flag<?> flyFlag = getFlag("fly");
-        return flyFlag != null && hasFlag(player, location, flyFlag);
-    }
 
     public abstract ProtectedRegion isLocationInRegion(World world, CuboidRegionProperties properties);
 }

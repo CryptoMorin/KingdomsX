@@ -131,6 +131,10 @@ class WorldEditBuildingConstruction(
     private lateinit var timeBetweenBlocks: Duration
     private val _region: WorldEditRegion
     var blockIndex: Int = -1
+
+    // TODO For demolition, this will not work properly because if a block has ladders on it, breaking
+    //      the block will cause ladders to drop as items. Unless we might be able to fix this by simply
+    //      cancelling BlockPhysicsEvent for all the building's blocks?
     private val sortingStrategy = if (this.getType() == BuildingConstructionType.DEMOLISHING)
         SortingStrategy.TOP_TO_BOTTOM else SortingStrategy.BOTTOM_TO_TOP
 
@@ -388,7 +392,7 @@ class WorldEditBuildingConstruction(
                 while (!task.isCancelled()) task.run()
             }
         } catch (ex: Throwable) {
-            throw RuntimeException("Error while pasting schematic: ${schematic.name} at ${getOrigin()}", ex)
+            throw IllegalStateException("Error while pasting schematic: ${schematic.name} at ${getOrigin()}", ex)
         }
     }
 }

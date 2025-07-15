@@ -37,8 +37,8 @@ class CommandAdminSchematicSetup(parent: KingdomsParentCommand) : KingdomsComman
                 //     anchors: [ &fnPoints fnPoints, &holograms holograms ]
                 //                ^^^^^^^^^^^^^^^^^^
                 val importedAnchors = it.config.findNode(arrayOf("(import)", "building", "anchors")) as SequenceNode
-                importedAnchors.value.removeFirst()
-                (importedAnchors.parsed as? MutableList<*>)?.removeFirst()
+                importedAnchors.value.removeAt(0)
+                (importedAnchors.parsed as? MutableList<*>)?.removeAt(0)
 
                 setupBuilding(it, "0, 1, 0", null)
             }
@@ -147,7 +147,8 @@ class CommandAdminSchematicSetup(parent: KingdomsParentCommand) : KingdomsComman
                 )
 
             for (key in buildingSec.keys.toTypedArray()) { // For each level
-                val levelSection = buildingSec.getSection(key) ?: error("Unexpected building $key -> ${buildingSec.getNode(key)}")
+                val levelSection =
+                    buildingSec.getSection(key) ?: error("Unexpected building $key -> ${buildingSec.getNode(key)}")
 
                 run { // Set schematic paths
                     levelSection.addNode("schematic: '<type>/<name>/$key'")

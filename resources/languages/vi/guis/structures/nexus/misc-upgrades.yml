@@ -1,4 +1,4 @@
-title: "{$sep}-=( &3Nâng cấp linh tinh {$sep})=-"
+title: "{$sep}-=( &3Nâng cấp đa năng {$sep})=-"
 rows: 3
 sound: BLOCK_ENCHANTMENT_TABLE_USE
 
@@ -13,7 +13,7 @@ sound: BLOCK_ENCHANTMENT_TABLE_USE
       lore:
         - <lore>
         - ""
-        - "&cVương quốc của bạn hòa bình"
+        - "&cKingdom của bạn hòa bình"
         - "và không thể sử dụng nâng cấp này."
     disabled:
       condition: '!enabled'
@@ -66,12 +66,12 @@ options:
       <name>: '&3Vinh quang'
       <disallowPacifists>: false
       <lore>: |
-        {$p}Cấp 1{$colon} {$desc}Giết mob không phải người chơi trên đất của bạn
-                      mang lại {$p}5 {$desc}kinh nghiệm hơn cho mỗi cấp.
-        {$p}Cấp 2{$colon} {$desc}Giết zombie và bộ xương trên đất của bạn
-                      mang lại {$p}x2 {$desc}kinh nghiệm.
-        {$p}Cấp 3{$colon} {$desc}Giết người chơi kẻ thù trên đất của bạn
-                      mang lại {$p}x1.5 {$desc}kinh nghiệm.
+        {$p}Cấp 1{$colon} {$desc}Giết sinh vật trong kingdom 
+                      được {$p}+5 {$desc}kinh nghiệm cho mỗi cấp.
+        {$p}Cấp 2{$colon} {$desc}Giết thây ma và bộ xương trong kingdom
+                      được {$p}x2 {$desc}kinh nghiệm.
+        {$p}Cấp 3{$colon} {$desc}Giết người chơi kẻ thù trong kingdom
+                      được {$p}x1.5 {$desc}kinh nghiệm.
 
         {$chk-kingdom-lvl-IV}
   anti-trample:
@@ -80,21 +80,20 @@ options:
     posy: 1
     <<:
       '[fn]': *fn-misc
-      <name>: '&aChống giẫm đạp'
+      <name>: '&aChống va đập'
       <disallowPacifists>: false
       <lore>: |
-        {$p}Cấp 1{$colon} {$desc}Đất đã cày của bạn không thể bị
-        giẫm đạp bởi người chơi.
+        {$p}Cấp 1{$colon} {$desc}Đất ruộng trong kingdom giẫm thoải mái
+        mà không làm hỏng đất.
 
-        {$p}Cấp 2{$colon} {$desc}Piston đặt bên ngoài đất của bạn
-        để đẩy khối vào/ra khỏi vương quốc sẽ không hoạt động.
-        Điều này cũng ngăn endermen đánh cắp khối trong
-        lãnh thổ của bạn.
+        {$p}Cấp 2{$colon} {$desc}Piston đặt bên ngoài kingdom sẽ không
+        hoạt động khi đẩy vào đất thuộc kingdom được.
+        Ngăn chặn Enderman trộm khối trong kingdom.
 
-        {$p}Cấp 3{$colon} {$desc}Bảo vệ một số động vật khỏi
-        bị sát thương trong vùng đất của bạn.
-        Cũng ngăn người chơi kẻ thù sử dụng
-        ender pearl để dịch chuyển vào vùng đất của bạn.
+        {$p}Cấp 3{$colon} {$desc}Một số động vật sẽ không nhận sát 
+        thương từ bên ngoài kingdom.
+        Ngăn kẻ địch sử dụng ngọc Ender dịch chuyển  
+        vào kingdom.
   nexus-guards:
     material: DIAMOND_AXE
     posx: 5
@@ -105,8 +104,8 @@ options:
       <disallowPacifists>: false
       <lore>: |
         {$s}Triệu hồi lính canh mạnh hơn
-        lính canh bình thường của bạn khi ai đó
-        vào vùng đất nexus của bạn.
+        lính canh bình thường khi ai đó
+        lạc vào vùng đất đặt nexus.
 
         {$chk-kingdom-lvl-IV}
   guards:
@@ -119,8 +118,8 @@ options:
       <disallowPacifists>: true
       <lore>: |
         {$s}Lính canh sẽ ngẫu nhiên xuất hiện
-        để bảo vệ vương quốc khi
-        một người không liên minh vào vùng đất của bạn.
+        để bảo vệ kingdom khi người chơi
+        lạ vào vùng đất thuộc kingdom.
 
         {$chk-kingdom-lvl-III}
   insanity:
@@ -129,12 +128,12 @@ options:
     posy: 1
     <<:
       '[fn]': *fn-misc
-      <name>: '&cĐiên loạn'
+      <name>: '&cCuồng bạo'
       <disallowPacifists>: true
       <lore>: |
-        {$desc}Lính canh bình thường, lính canh nexus và
-        lực lượng tăng viện được triệu hồi bởi nhà vô địch
-        trên vùng đất powercell sẽ có{$colon}
+        {$desc}Lính canh, lính canh nexus và lực lượng tăng
+        viện được triệu hồi bởi Tướng thủ thành trên 
+        vùng đất đặt powercell sẽ tăng sức mạnh{$colon}
 
         {$p}Cấp 1{$colon} {$s}Sức mạnh I trong 10 giây.
         {$p}Cấp 2{$colon} {$s}Sức mạnh II trong 10 giây.
@@ -147,7 +146,7 @@ options:
     posy: 2
     <<:
       '[fn]': *fn-misc
-      <name>: '&3Dịch chuyển khi xâm lược'
+      <name>: '&3Dịch chuyển khi bị xâm lược'
       <disallowPacifists>: true
       <lore>: |
         {$desc}Giảm độ trễ dịch chuyển của bạn
@@ -163,7 +162,7 @@ options:
       <name>: '&3Xâm lược'
       <disallowPacifists>: true
       <lore>: |
-        {$desc}Vương quốc của bạn có thể xâm lược {$s}%invasion-limit% {$desc}lần.
+        {$desc}Kingdom của bạn có thể xâm lược nhanh {$s}%invasion-limit% {$desc}lần.
         {$p}Số lần xâm lược đã sử dụng{$colon} {$s}%invasions%
         {$p}Thời gian hồi chiêu làm mới{$colon} {$s}%invasion-refresh-cooldown%
   anti-explosion:
@@ -175,32 +174,33 @@ options:
       <name>: '&5Chống nổ'
       <disallowPacifists>: false
       <lore>: |
-        {$p}Cấp 1{$colon} {$desc}Ngăn cản creeper
-        phá hủy khối trong vùng đất của bạn.
+        {$p}Cấp 1{$colon} {$desc}Ngăn cản creeper phá hủy khối trong 
+        vùng đất thuộc kingdom.
 
-        {$p}Cấp 2{$colon} {$desc}Ngăn cản TNT
-        phá hủy khối trong vùng đất của bạn.
+        {$p}Cấp 2{$colon} {$desc}Ngăn cản TNT phá hủy khối trong vùng 
+        đất thuộc kingdom.
 
-        {$p}Cấp 3{$colon} {$desc}Bảo vệ thành viên vương quốc,
-        động vật và tất cả các động vật khác (nhưng không phải mob thù địch)
-        trong vùng đất của bạn khỏi các vụ nổ.
+        {$p}Cấp 3{$colon} {$desc}Thành viên kingdom, đồng minh 
+        và tất cả các động vật (trừ mob thù địch)
+        không nhận sát thương từ vụ nổ.
+        
 
-        {$note} Vụ nổ vẫn sẽ phá hủy các
-        khối nhưng chúng sẽ tự tái tạo ngay sau đó.
+        {$note} Vụ nổ vẫn sẽ phá hủy các khối
+        nhưng chúng sẽ tự tái tạo ngay sau đó.
 
         {$chk-kingdom-lvl-IV}
   max-claims:
-    name: "&3Số lượng yêu cầu tối đa"
+    name: "&3Số lượng Claim đất tối đa"
     material: MAP
     posx: 8
     posy: 2
     <<:
       '[fn]': *fn-misc-basic
       <lore>: |
-        {$desc}Tăng số lượng yêu cầu tối đa của bạn
+        {$desc}Tăng số lượng Claim đất tối đa
         thêm {$p}2 {$desc}mỗi lần nâng cấp.
 
-        {$p}Tổng số vùng đất tối đa hiện tại{$colon} {$s}%kingdoms_max_claims%
+        {$p}Tổng Claim đất tối đa hiện tại{$colon} {$s}%kingdoms_max_claims%
   max-turrets:
     name: "&3Số tháp pháo tối đa"
     material: ARROW
@@ -212,8 +212,8 @@ options:
         {$desc}Tăng số lượng tháp pháo tối đa
         trên mỗi vùng đất thêm {$p}1 {$desc}mỗi lần nâng cấp.
 
-        {$p}Số tháp pháo tối đa hiện tại mỗi vùng đất{$colon} {$s}%max_turrets_per_land%
-        {$p}Tổng số tháp pháo tối đa (giới hạn cố định){$colon} {$s}%max_turrets_total%
+        {$p}Số tháp pháo tối đa{$colon} {$s}%max_turrets_per_land%
+        {$p}Tổng tháp pháo tối đa (cố định){$colon} {$s}%max_turrets_total%
   max-members:
     name: "&3Số người chơi tối đa"
     material: PLAYER_HEAD
@@ -223,7 +223,7 @@ options:
       '[fn]': *fn-misc-basic
       <lore>: |
         {$desc}Mỗi lần nâng cấp cho phép bạn
-        có thêm {$p}3 {$desc}thành viên.
+        mời thêm {$p}3 {$desc}thành viên.
 
   chest-size:
     name: "&3Kích thước Rương Nexus"
@@ -256,8 +256,8 @@ options:
       <name>: '&3Giữ kho đồ'
       <disallowPacifists>: false
       <lore>: |
-        {$desc}Cho phép bạn giữ vật phẩm trong
-        kho đồ sau khi chết trong vương quốc của mình.
+        {$desc}Khi chết trong kingdom sẽ không
+        bị rơi vật phẩm, trang bị.
 
         {$p}Cấp 1 {$sep}({$kingdom-lvl-II}{$sep}):
           {$desc}Chỉ giữ giáp và vật phẩm tay phụ/tay chính.

@@ -35,6 +35,7 @@ public enum EngineHubLang implements DefinedMessenger {
             "{$p}You can hover:{{$s}click here;&7Click to override;/k admin schematic save %schematic_name%} {$p}to override the saved file once you're done.", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_LIST_DESCRIPTION("{$s}Lists all the available schematics.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_LIST_EMPTY("{$e}No schematics to show :( Check your console, there might be errors!", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_LIST_ENTRY("hover:{%schematic_name%;&7Click to load\n\n" +
             "{$p}Format{$colon} {$s}%schematic_format%\n" +
             "{$p}File Size{$colon} {$s}%schematic_size%\n" +

@@ -1,11 +1,11 @@
 package org.kingdoms.enginehub.schematic
 
 import com.sk89q.worldedit.extent.clipboard.Clipboard
-import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
 import com.sk89q.worldedit.math.transform.AffineTransform
 import org.kingdoms.enginehub.schematic.blocks.ClipboardBlockIterator
 import org.kingdoms.enginehub.schematic.blocks.ClipboardTransformBaker
 import org.kingdoms.enginehub.schematic.blocks.WorldEditExtentBlock
+import org.kingdoms.enginehub.worldedit.XClipboardFormat
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
 import org.kingdoms.utils.internal.nonnull.NonNullMap
@@ -17,7 +17,7 @@ class WorldEditSchematic(
     val name: String,
     val storedFile: Path,
     internal val clipboard: Clipboard,
-    val clipboardFormat: ClipboardFormat
+    val clipboardFormat: XClipboardFormat
 ) {
     override fun toString() = "${this.javaClass.simpleName}(name='$name', storedFile=$storedFile)"
     override fun hashCode() = this.name.hashCode()
