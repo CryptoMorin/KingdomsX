@@ -1,0 +1,309 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                              Web Map                              |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# When the file is saved, the config will reload and do a full render for Dynmap using the new settings.
+# However, some options still require a restart to change.
+# You can also do various actions using /k admin dynmap command.
+# https://github.com/CryptoMorin/KingdomsX/wiki/Commands#k-admin-dynmap-fullrenderremove
+
+# WARNING: It's not recommneded to use this option as it might not remove some outdated markers in the future.
+# If the marker data should be persistent. If enabled, all the land markers and icons will stay even after
+# server restarts. This is useful when your server has a lot of claimed lands, or you want to avoid lag without
+# using the auto update interval option. The data will be internally stored in Dynmap.
+# Needs a restart to update.
+# Note that if you change it from true to false, the old data will still stay.
+# It's not recommended to use this, as it may no longer work with future updates.
+# This currently only works with Dynmap.
+persistent-data: false
+
+# The name shown on markers tab of map plugins on the web.
+# Unfortunately none of the maps provide any translation capabilities.
+label: "Kingdoms"
+
+# Priority of the marker visibility in the map.
+# (See z-index for more info)
+# Needs a restart to update.
+priority: 1
+
+# The distinction between z-index and layer priority isn't exactly defined for
+# all map plugins, but for some of them layer priority will completely hide overlapping
+# layers with lower priority, but it'll move the layer behind the other layer with higher z-index.
+# BlueMap doesn't have support for priority or z-index, but has support for "sorting" below.
+z-index: 1
+
+# Used by some maps like BlueMap to control the position of the marker
+# in the "Markers" menu list. This doesn't affect how the marker itself is shown.
+# A lower value makes the marker sorted first , a higher value makes it sorted later.
+# If multiple markers have the same sorting-value, their order will be arbitrary.
+# Other maps might not have a separate option for this and use the "priority" option instead.
+sorting: 0
+
+# For Dynmap this option will boost marker resolutions.
+# For BlueMap, this option controls "depth-test"
+#   If the depth-test is disabled, you can see the marker fully through all objects on the map.
+#   If it is enabled, you'll only see the marker when it is not behind anything.
+# This needs a restart to update.
+special-flag: false
+
+# If the kingdoms marker should be disabled by default.
+# Needs a restart to update.
+hide-by-default: false
+
+# Show kingdoms marker toggle buttons.
+show-controls: true
+
+# The zoom level range which the markers are visible at.
+# set to -1 for no max/min limit.
+# It starts from 0% to 100%
+# All these values are normalized correctly according to the specific map system that your server is using.
+# Only Dynmap and BlueMap support this feature. And even then, BlueMaps motion system in general is extremely
+# unstable unlike Dynmap, certain values might act weird or lose change opacity depending on how you're
+# looking at the map. Because it has a gradual opacity fading effect unlike Dynmap that immediatelly
+# hides or shows the markers.
+# * LiveAtlas is known to break zoom levels for Dynamp. Either adjust the value manually or diasble it.
+zoom:
+  # The minimum zooming required to see the borders. If someone zooms out "too much" from the map they won't be able to see the borders.
+  # This is really useful because land borders can be really annoying when you want to have a general view of a big portion of the map.
+  # E.g., 75% min required zoom means that you need to be at least zoomed in 75% (from the total zoom range) to see the markers.
+  # (Config values are without the percent signs)
+  min: -1
+
+  # The maximum zooming possible. So this value prevents players from seeing the borders when they zoom in "too much"
+  max: -1
+
+# Default Maker settings.
+# If the kingdom already chose a color, it'll use that
+# for both fill and line colors. Other settings will stay the same.
+
+# For the color setting in your nexus, refer to config.yml instead.
+
+# The land chunk square fill options.
+# Hex code follows RGBA format.
+fill:
+  # The opacity is used for both this color and the custom
+  # color that kingdoms set from their nexus.
+  # 0 - 255
+  opacity: 100
+
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '01ce00'
+
+# The land chunk square stroke options.
+line:
+  # The size of the stroke.
+  weight: 5
+  # Hex code. https://www.w3schools.com/colors/colors_rgb.asp
+  color: '017800'
+
+# The settings for the marker when a land is under attack.
+invasion:
+  fill:
+    opacity: 200
+    color: '7a0305'
+
+  line:
+    weight: 6
+    opacity: 1
+    color: '7a0305'
+
+'[style]': &fn-style
+  args: [ "{content}" ]
+  return: |
+    <style>
+    {? flag_height > flag_width ? "
+    .kingdoms-description {
+      display: flex;
+      align-items: center;
+      align-content: center;
+    }
+
+    .kingdoms-description-text {
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+    " : ""}
+
+    .kingdoms-description-text {
+      white-space: nowrap;
+    }
+
+    .kingdoms-popup {
+      z-index: 1000;
+      padding: 1em;
+      animation-name: kingdoms-popup-animation;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+    }
+
+    %popup_container_selector% {
+      max-width: none !important;
+      width: fit-content !important;
+      background-color: rgb(20 20 20);
+      border-radius: 5px;
+    }
+
+    @keyframes kingdoms-popup-animation {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        transform: translatey(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+        transform: translatey(-30px);
+      }
+        100% {
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        transform: translatey(0px);
+      }
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      .kingdoms-popup { animation: none !important; }
+    }
+
+    .kingdoms-flex-item {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .leaflet-popup-content-wrapper:has(.kingdoms-popup) ~ .leaflet-popup-tip-container .leaflet-popup-tip {
+      background-color: rgb(20 20 20) !important;
+    }
+
+    .kingdoms-popup > div, .leaflet-popup-content-wrapper:has(.kingdoms-popup) .leaflet-popup-content {
+      width: auto !important;
+      margin: 13px 20px 13px 20px;
+    }
+
+    .kingdoms-popup h1,h2,h3,h4 {
+      text-align: center
+    }
+
+    .kingdoms-popup h1:after {
+      content: ' ';
+      display: block;
+      border: 0.07em solid rgb(50 50 50);
+      width: 80%;
+      margin-left: 10%;
+    }
+    </style>
+
+    <div class="kingdoms-popup">
+      <h1><span style="color:#%kingdoms_kingdom_color%">%html_kingdoms_kingdom_name%</span></h1>
+      <div class="kingdoms-description">
+        %flag%
+        <div class="kingdoms-description-text kingdoms-flex-item">
+          {content}
+        </div>
+      </div>
+    </div>
+
+# Description shown when hovering over the chunks.
+# All the descriptions are based on HTML markup.
+# https://www.w3schools.com/html/html_intro.asp
+descriptions:
+  # Used in the description below if the kingdom has a flag set, otherwise nothing.
+  flag: '<img class="kingdoms-banner kingdoms-flex-item" src="%src%" alt="%kingdoms_kingdom_name% flag" style="border:5px solid black;margin-bottom: 10px; {? flag_height > flag_width ? "min-width: 100px;max-width: 100px;" : "min-width: 200px;max-width: 500px;width: 20vw;"}">'
+
+  # In order to change the default kingdom name color, refer to default placeholders in config.
+  click:
+    '[fn]': *fn-style
+    '{content}': |
+      {? kingdoms_lore == '' ? "" : "<h3><span style=\"color:gray\">%html_kingdoms_lore%</span></h3><br>" }
+      <span style="color:green">Nation</span><span style="color:gray">:</span> <span style="color:orange">%none@html_kingdoms_nation_name%</span><br>
+      <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_might%</span><br>
+      <span style="color:green">King</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_king%</span><br>
+      <span style="color:green">Bank</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_bank%</span><br>
+      <span style="color:green">Resource Points</span> <span style="color:orange">%fancy@kingdoms_resource_points%</span><br>
+      <span style="color:green">Since</span> %html_kingdoms_date_since%<br>
+      <span style="color:green">Lands</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_claims%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_claims%</span><br>
+      <span style="color:green">Members</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_members%</span><span style="color:grey">/</span><span style="color:orange">%kingdoms_max_members%</span><br>
+      <div style="max-width:300px;white-space:wrap;">%members%</div><br>
+      {? has_allies ? "
+      <br>
+      <span style=\"color:green\">Allies</span><span style=\"color:gray\">:</span><br>
+      %allies%
+      "}
+      {? has_truces ? "
+      <br>
+      <span style=\"color:yellow\">Truces</span><span style=\"color:gray\">:</span><br>
+      %truces%
+      "}
+      {? has_enemies ? "
+      <br>
+      <span style=\"color:red\">Enemies</span><span style=\"color:gray\">:</span><br>
+      %enemies%
+      <br>
+      "}
+
+  members: '<span style="font-style:italic;color:%htmlStyle_kingdoms_rank_color%">%kingdoms_rank_symbol%</span> <span style="font-style:italic;color:green">%player%</span> '
+  members-etc: '<span style="color:gray">... [</span><span style="color:green">and </span><span style="color:orange">%remaining% </span><span style="color:green">more</span><span style="color:gray">]</span>'
+
+  allies: '<span style="font-style:italic;color:darkgreen">%kingdoms_kingdom_name%</span> '
+  truces: '<span style="font-style:italic;color:yellow">%kingdoms_kingdom_name%</span> '
+  enemies: '<span style="font-style:italic;color:red">%kingdoms_kingdom_name%</span> '
+
+  # Only Plx3Map and squaremap support hover descriptions.
+  hover: |
+    <h1><span style="color:%kingdoms_kingdom_color%">%kingdoms_kingdom_name%</span></h1>
+
+
+# All the following settings have the same options and follow the same rules
+# as all the options shown above.
+'[fn-top]': &fn-top
+  args: [ '{label}', '{type}' ]
+  return:
+    label: "Top Kingdom - {label}"
+    top: 5 # Only show the top 5 kingdoms
+    z-index: 2
+    sorting: 2
+    hide-by-default: true
+    descriptions:
+      click:
+        '[fn]': *fn-style
+        '{content}': |
+          <h2 style="color:red;text-wrap:nowrap;">✦ Top Kingdoms ✦</h2>
+          <h3 style="color:orange;text-wrap:nowrap;">{label}</h3>
+          <br>
+          <span style="color:green">Top</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_kingdom_top:position type={type}%</span><br>
+          <span style="color:green">Score</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_kingdom_top:value type={type}%</span><br>
+
+top-kingdoms:
+  default:
+    '[fn]': *fn-top
+    '{label}': Might
+    '{type}': default
+  resource-points:
+    '[fn]': *fn-top
+    '{label}': Resource Points
+    '{type}': resource-points
+  lands:
+    '[fn]': *fn-top
+    '{label}': Lands
+    '{type}': lands
+  members:
+    '[fn]': *fn-top
+    '{label}': Members
+    '{type}': members
+
+powercell:
+  label: 'Powercells'
+  z-index: 2
+  sorting: 1
+  hide-by-default: true
+  line:
+    weight: 7
+    color: 'FF0000'
+    force: true
+  fill:
+    opacity: 100
+    color: 'FF0000'
+    force: true
+
+  descriptions:
+    click:
+      '[fn]': *fn-style
+      '{content}': '<h2 style="text-wrap:nowrap;"><span style="color:green">Powercell</span><span style="color:gray">:</span> <span style="color:orange">%roman@level%</h2>'

@@ -1,0 +1,142 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                              Nations                              |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# For a description of what each option does, check kingdoms.yml
+
+label: "Nations"
+priority: 2
+z-index: 2
+special-flag: false
+hide-by-default: false
+show-controls: true
+
+zoom:
+  min: -1
+  max: -1
+
+fill:
+  opacity: 50
+  color: '01ce00'
+
+line:
+  weight: 5
+  color: '017800'
+
+
+'[style]': &fn-style
+  args: [ "{content}" ]
+  return: |
+    <style>
+    {? flag_height > flag_width ? "
+    .kingdoms-description {
+      display: flex;
+      align-items: center;
+      align-content: center;
+    }
+
+    .kingdoms-description-text {
+      margin-left: 10px;
+      flex-shrink: 0;
+    }
+    " : ""}
+
+    .kingdoms-description-text {
+      white-space: nowrap;
+    }
+
+    .kingdoms-popup {
+      z-index: 1000;
+      padding: 1em;
+      animation-name: kingdoms-popup-animation;
+      animation-duration: 1s;
+      animation-timing-function: ease;
+    }
+
+    %popup_container_selector% {
+      max-width: none !important;
+      width: fit-content !important;
+      background-color: rgb(20 20 20);
+      border-radius: 5px;
+    }
+
+    @keyframes kingdoms-popup-animation {
+      0% {
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        transform: translatey(0px);
+      }
+      50% {
+        box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+        transform: translatey(-30px);
+      }
+        100% {
+        box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+        transform: translatey(0px);
+      }
+    }
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      .kingdoms-popup { animation: none !important; }
+    }
+
+    .kingdoms-flex-item {
+      min-width: 0;
+      min-height: 0;
+    }
+
+    .leaflet-popup-content-wrapper:has(.kingdoms-popup) ~ .leaflet-popup-tip-container .leaflet-popup-tip {
+      background-color: rgb(20 20 20) !important;
+    }
+
+    .kingdoms-popup > div, .leaflet-popup-content-wrapper:has(.kingdoms-popup) .leaflet-popup-content {
+      width: auto !important;
+      margin: 13px 20px 13px 20px;
+    }
+
+    .kingdoms-popup h1,h2,h3,h4 {
+      text-align: center
+    }
+
+    .kingdoms-popup h1:after {
+      content: ' ';
+      display: block;
+      border: 0.07em solid rgb(50 50 50);
+      width: 80%;
+      margin-left: 10%;
+    }
+    </style>
+
+    <div class="kingdoms-popup">
+      <h1><span style="color:#%kingdoms_nation_color%">%html_kingdoms_nation_name%</span></h1>
+      <div class="kingdoms-description">
+        %flag%
+        <div class="kingdoms-description-text kingdoms-flex-item">
+          {content}
+        </div>
+      </div>
+    </div>
+
+
+descriptions:
+  flag: '<img class="kingdoms-banner kingdoms-flex-item" src="%src%" alt="%kingdoms_nation_name% flag" style="border:5px solid black;margin-bottom: 10px; {? flag_height > flag_width ? "min-width: 100px;max-width: 100px;" : "min-width: 200px;max-width: 500px;width: 20vw;"}">'
+
+  click:
+    '[fn]': *fn-style
+    '{content}': |
+      <span style="color:green">Might</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_nation_might%</span><br>
+      <span style="color:green">Capital</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation:capital get=name%</span><br>
+      <span style="color:green">Bank</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_nation_bank%</span><br>
+      <span style="color:green">Resource Points</span><span style="color:gray">:</span> <span style="color:orange">%fancy@kingdoms_nation_resource_points%</span><br>
+      <span style="color:green">Lands</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation:sum of=lands%</span><br>
+      <span style="color:green">Kingdoms</span><span style="color:gray">:</span> <span style="color:orange">%kingdoms_nation:sum of=members%</span><span style="color:grey"><br>
+      %members%
+      <br>
+
+  members: '<span style="font-weight:italic;color:%kingdoms_kingdom_color%">%kingdoms_kingdom_name%</span> '
+  allies: '<span style="font-weight:italic;color:darkgreen">%kingdoms_nation_name%</span> '
+  truces: '<span style="font-weight:italic;color:yellow">%kingdoms_nation_name%</span> '
+  enemies: '<span style="font-weight:italic;codlor:red">%kingdoms_nation_name%</span> '
+  hover: |
+    <h1><span style="color:%kingdoms_nation_color%">%kingdoms_nation_name%</span></h1>

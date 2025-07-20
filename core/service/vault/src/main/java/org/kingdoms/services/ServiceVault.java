@@ -52,6 +52,10 @@ public final class ServiceVault implements Service {
         return getEconomy() != null && getEconomy().has(player, amount);
     }
 
+    public static boolean hasPermission(OfflinePlayer player, String world, String permission) {
+        return getPermission().playerHas(world, player, permission);
+    }
+
     public static void addPermission(OfflinePlayer player, String permission) {
         getPermission().playerAddTransient(player, permission);
     }

@@ -1,0 +1,78 @@
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|                              Web Map                              |#
+#|++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++|#
+#|-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-|#
+
+# Updates all the lands. Set to 0 to disable.
+# This performs a full async render for all the claimed lands.
+# This is not necessary most of the time, since the plugin already keeps track
+# of most changes such as land claiming, unclaiming, structure placing, breaking, etc.
+update-interval: 1hr
+
+# Settings for kingdom/nation banners (alternative to flags)
+banners:
+  # This scales both width and height.
+  # The correct aspect retio is calculated.
+  # This simply controls the original file size, you
+  # should use CSS properties to adjust other things when necessary.
+  scaling: 3
+
+# If you changed an icon image, you have to restart the server.
+# Turrets do not use an icon as there are too many of them.
+# The folder names in your "maps/icons" need to match the entry names here.
+# Each file is named after the level of the structure.
+# The size of the image doesn't really matter, and will be resized when needed.
+icons:
+  # To disable a certain icon, add "disabled: true" option under it.
+  enabled: true
+
+  home:
+    disabled: false
+
+    # The label shown when clicking the icon.
+    name: 'Home'
+
+    # Should the kingdom/nation banner be used as the icon?
+    # There are two types of "banners" for kingdoms and nations:
+    #   * banner: The Minecraft banner item created in-game.
+    #   * flag: Can be any image. (Usually a URL to the image)
+    use-banner: banner
+
+    # See the explanation in maps/kingdoms.yml on the zoom option.
+    zoom: &zoom
+      min: 60
+      max: -1
+
+  national-spawn:
+    disabled: false
+    name: 'National Spawn'
+    zoom: *zoom
+  national-nexus:
+    name: 'National Nexus %roman@level%'
+    zoom: *zoom
+  nexus:
+    name: 'Nexus %roman@level%'
+    zoom: *zoom
+
+  powercell:
+    name: 'Powercell %roman@level%'
+    zoom: *zoom
+  extractor:
+    name: 'Extractor %roman@level%'
+    zoom: *zoom
+  outpost:
+    name: 'Outpost'
+    zoom: *zoom
+  warppad:
+    name: 'Warp Pad'
+    zoom: *zoom
+  regulator:
+    name: 'Regulator'
+    zoom: *zoom
+  siege-cannon:
+    name: 'Siege Cannon %roman@level%'
+    zoom: *zoom
+  invasion:
+    name: 'Invasion'
+    zoom: *zoom

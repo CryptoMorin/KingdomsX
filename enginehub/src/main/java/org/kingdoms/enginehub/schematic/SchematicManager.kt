@@ -6,6 +6,7 @@ import org.bukkit.entity.Player
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler.getClipboardFormat
+import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler.isUsingFAWE
 import org.kingdoms.locale.MessageHandler
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
@@ -25,15 +26,32 @@ object SchematicManager {
     // Also, this option can influence this:
     // WorldEditPlugin.getInstance().getLocalConfiguration().unsupportedVersionEditing
     var IS_SUPPORTED_VERSION = true
+    var UNSUPPORTED_FAWE = false
     private val UnsupportedVersionEditException_exists =
         Reflect.classExists("com.sk89q.worldedit.bukkit.adapter.UnsupportedVersionEditException")
 
     val folder: Path = Kingdoms.getPath("schematics")
     internal val loaded: MutableMap<String, WorldEditSchematic> = java.util.concurrent.ConcurrentHashMap()
 
+    fun isUnsupportedFAWEError(exception: Throwable): Boolean {
+        return exception is NullPointerException
+                && exception.message == "Cannot invoke \"org.enginehub.linbus.tree.LinTag.value()\" because \"rotTag\" is null"
+                && isUsingFAWE()
+    }
+
     fun isUnsupportedVersionError(exception: Throwable): Boolean {
         return UnsupportedVersionEditException_exists &&
                 StackTraces.findCause(exception) { it is UnsupportedVersionEditException } !== null
+    }
+
+    fun warnUnsupportedFawe(exception: Throwable) {
+        UNSUPPORTED_FAWE = true
+        val logger = EngineHubAddon.INSTANCE.logger
+        logger.severe("-------------------------------------------------------------------")
+        logger.severe("FastAsyncWorldEdit is not supported.")
+        logger.severe("FastAsyncWorldEdit: " + exception.message)
+        logger.severe("-------------------------------------------------------------------")
+        if (KLogger.isDebugging()) exception.printStackTrace()
     }
 
     fun warnUnsupported(exception: Throwable) {
@@ -58,20 +76,30 @@ object SchematicManager {
         val globals = KingdomsGlobalsCenter.get()
         val enginehub = globals.createSection("enginehub")
         val setupVersion = enginehub.getInt("setup-version")
+        val skipSetups = enginehub.getBoolean("skip-setups")
+
+        fun setupMsg(msg: String): String {
+            return if (skipSetups) "However setups are skipped in globals.yml, ignoring..." else msg
+        }
 
         if (setupVersion == 0) {
-            setupLatest(enginehub, "No setup version detected. Setting up and changing the building configs...")
+            val msg = "No setup version detected. " + setupMsg("Setting up and changing the building configs...")
+            EngineHubAddon.INSTANCE.logger.info(msg)
+
+            if (!skipSetups) setupLatest(enginehub)
         } else {
             if (setupVersion < 2) {
-                setupLatest(enginehub, "Outdated setup version $setupVersion, updating your building configs...")
+                val msg = "Outdated setup version $setupVersion. " + setupMsg("Updating your building configs...")
+                EngineHubAddon.INSTANCE.logger.info(msg)
+
+                if (!skipSetups) setupLatest(enginehub)
             } else {
-                EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion")
+                EngineHubAddon.INSTANCE.logger.info("Setup version: $setupVersion" + (if (skipSetups) " (Setups are skipped)" else ""))
             }
         }
     }
 
-    private fun setupLatest(enginehub: ConfigSection, msg: String) {
-        EngineHubAddon.INSTANCE.logger.info(msg)
+    private fun setupLatest(enginehub: ConfigSection) {
         CommandAdminSchematicSetup.setup()
         enginehub.set("setup-version", 2)
         KingdomsGlobalsCenter.adapter().saveConfig()

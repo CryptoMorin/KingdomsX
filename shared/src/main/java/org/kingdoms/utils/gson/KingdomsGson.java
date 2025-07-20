@@ -52,6 +52,11 @@ public final class KingdomsGson {
         return new JsonReader(reader);
     }
 
+    public static JsonElement fromObject(Object object) {
+        if (object instanceof JsonElement) return (JsonElement) object;
+        return CONTEXT.serialize(object);
+    }
+
     public static JsonElement fromString(String json) {
         // JsonParser.parseString(json) doesn't exist for older versions of GSON.
         try {

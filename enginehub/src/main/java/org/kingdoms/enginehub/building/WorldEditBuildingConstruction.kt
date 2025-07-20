@@ -37,9 +37,12 @@ import org.kingdoms.utils.internal.iterator.RangedIterator
 import org.kingdoms.utils.string.ConfigPrinter
 import java.time.Duration
 
-private val BuildingSettings.schematic: String
+private val BuildingSettings.schematic: String?
+    get() = this.settings.getString("schematic")
+
+private val BuildingSettings.checkedSchematic: String
     get() {
-        val schem = this.settings.getString("schematic")
+        val schem = this.schematic
         if (schem !== null) return schem
 
         ConfigPrinter.printConfig(this.settings)
@@ -65,7 +68,7 @@ class WorldEditBuildingConstruction(
     object Arch : BuildingConstructionArchitect {
         @JvmField val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_CONSTRUCTION")
         override fun newBuilding(info: BuildingSchematic): WorldEditBuildingConstruction {
-            val schemName = info.settings.schematic
+            val schemName = info.settings.checkedSchematic
             val schematic = SchematicManager.getSchematic(schemName)
                 ?: error("Cannot find schematic named '$schemName' while constructing a new building")
 
@@ -81,7 +84,9 @@ class WorldEditBuildingConstruction(
         }
 
         override fun isSupported(info: BuildingSchematic): Boolean {
-            return SchematicManager.getSchematic(info.settings.schematic) !== null
+            val schematic = info.settings.schematic
+            if (schematic === null) return false
+            return SchematicManager.getSchematic(schematic) !== null
         }
 
         override fun getNamespace(): Namespace = NAMESPACE
@@ -248,16 +253,26 @@ class WorldEditBuildingConstruction(
 
     private abstract inner class BlockTask : Runnable {
         var done = false
+        var failed = false
 
         fun done() {
             this@WorldEditBuildingConstruction.finishedBuilding = true
             this@WorldEditBuildingConstruction.finish()
             this.done = true
         }
+
+        fun fail(ex: Throwable) {
+            done()
+            this.failed = true
+            this@WorldEditBuildingConstruction.listeners.keys.forEach { it.onError(ex) }
+        }
     }
 
     private inner class BlockPlaceTask : BlockTask() {
-        var failed = !SchematicManager.IS_SUPPORTED_VERSION
+        init {
+            failed = !SchematicManager.IS_SUPPORTED_VERSION || SchematicManager.UNSUPPORTED_FAWE
+        }
+
         val indexedBlocks: Iterator<FunctionalWorldEditExtentBlock> = RangedIterator.skipped(
             ClipboardBlockCopyIterator(transformedClipboard, getOrigin(), sortingStrategy, true, true),
             Math.max(0, blockIndex)
@@ -265,14 +280,21 @@ class WorldEditBuildingConstruction(
 
         override fun run() {
             if (done) return
+            if (failed) {
+                // This is reached when it wasn't supported in the first place.
+                val msg = if (!SchematicManager.IS_SUPPORTED_VERSION) "Unsupported server version for WorldEdit"
+                else if (SchematicManager.UNSUPPORTED_FAWE) "FAWE is not supported"
+                else "Unknown error"
+
+                fail(WorldEditBuildingConstructionException(msg, null))
+                return
+            }
 
             // Just here to prevent unexpected errors.
             if (!indexedBlocks.hasNext()) {
                 done()
                 return
             }
-
-            if (failed) return
 
             this@WorldEditBuildingConstruction.blockIndex++
             val next = indexedBlocks.next()
@@ -281,12 +303,14 @@ class WorldEditBuildingConstruction(
             } catch (ex: Throwable) {
                 if (SchematicManager.isUnsupportedVersionError(ex)) {
                     SchematicManager.warnUnsupported(ex)
+                } else if (SchematicManager.isUnsupportedFAWEError(ex)) {
+                    SchematicManager.warnUnsupportedFawe(ex)
                 } else {
                     EngineHubAddon.INSTANCE.logger.severe("Failed to place building for: ${getType()}->${getState()} at origin ${getOrigin()}")
                     ex.printStackTrace()
                 }
 
-                failed = true
+                fail(ex)
                 return
             }
 
@@ -322,7 +346,6 @@ class WorldEditBuildingConstruction(
     }
 
     private inner class BlockBreakTask : BlockTask() {
-        var failed = false
         val indexedBlocks: Iterator<Map.Entry<BlockVector3, WorldEditExtentBlock>> = RangedIterator.skipped(
             blocks.iterator(),
             Math.max(0, blockIndex)
@@ -336,6 +359,7 @@ class WorldEditBuildingConstruction(
                 done()
                 return
             }
+
             if (failed) return
 
             this@WorldEditBuildingConstruction.blockIndex++
@@ -347,8 +371,6 @@ class WorldEditBuildingConstruction(
                 } catch (ex: Throwable) {
                     EngineHubAddon.INSTANCE.logger.severe("An error occurred while calling onBlockChange for $it -> ${this@WorldEditBuildingConstruction}")
                     ex.printStackTrace()
-                    failed = true
-                    return
                 }
             }
             bukkitBlock.type = Material.AIR

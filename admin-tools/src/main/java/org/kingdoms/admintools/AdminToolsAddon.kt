@@ -3,7 +3,9 @@ package org.kingdoms.admintools
 import org.bukkit.plugin.java.JavaPlugin
 import org.kingdoms.addons.Addon
 import org.kingdoms.commands.admin.debugging.CommandAdminDebugHitPoints
+import org.kingdoms.commands.admin.item.CommandAdminItemEditor
 import org.kingdoms.commands.admin.sql.CommandAdminSQL
+import org.kingdoms.gui.GUIConfig
 import org.kingdoms.locale.LanguageManager
 import java.io.File
 
@@ -22,6 +24,8 @@ class AdminToolsAddon : JavaPlugin(), Addon {
 
     override fun onEnable() {
         if (!isKingdomsEnabled) return
+
+        GUIConfig.loadInternalGUIs(this);
         reloadAddon()
         registerAddon()
     }
@@ -30,6 +34,7 @@ class AdminToolsAddon : JavaPlugin(), Addon {
         if (!isKingdomsEnabled) return
         CommandAdminDebugHitPoints()
         CommandAdminSQL()
+        CommandAdminItemEditor()
     }
 
     override fun onDisable() {

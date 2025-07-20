@@ -279,11 +279,12 @@ damaging-factors:
     hypnotize: 10s
   ARROW:
     # The following are the potion effect of the arrows.
-    # The "effect_lvl" (starting from 1) placeholder can be used as well.
-    # The "force" variable (from 0 to 3.0) is used for how hard the player
+    # * The "effect_lvl" (starting from 1) placeholder can be used if it's a tipped arrow.
+    # * The "force" variable (from 0 to 3.0) is used for how hard the player
     # charged the bow before releasing it.
+    # * The "weapon_<info>" can be used to get information about the bow.
     normal:
-      damage: 0.1 * force
+      damage: (0.1 * force) * max(1, weapon_enchant_power * 3)
     POISON:
       paralyze: '[10s] * effect_level'
     INSTANT_DAMAGE:

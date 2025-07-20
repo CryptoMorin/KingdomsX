@@ -4,7 +4,6 @@ import org.kingdoms.commands.CommandContext
 import org.kingdoms.commands.CommandResult
 import org.kingdoms.commands.KingdomsCommand
 import org.kingdoms.commands.KingdomsParentCommand
-import org.kingdoms.constants.land.abstraction.KingdomBuilding
 import org.kingdoms.constants.land.structures.StructureRegistry
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.EngineHubLang
@@ -14,6 +13,7 @@ import org.kingdoms.utils.config.adapters.YamlResource
 import org.kingdoms.utils.config.importer.YamlModuleLoader
 import org.snakeyaml.nodes.AliasNode
 import org.snakeyaml.nodes.MappingNode
+import org.snakeyaml.nodes.ScalarNode
 import org.snakeyaml.nodes.SequenceNode
 import java.util.function.Consumer
 
@@ -37,8 +37,13 @@ class CommandAdminSchematicSetup(parent: KingdomsParentCommand) : KingdomsComman
                 //     anchors: [ &fnPoints fnPoints, &holograms holograms ]
                 //                ^^^^^^^^^^^^^^^^^^
                 val importedAnchors = it.config.findNode(arrayOf("(import)", "building", "anchors")) as SequenceNode
-                importedAnchors.value.removeAt(0)
-                (importedAnchors.parsed as? MutableList<*>)?.removeAt(0)
+
+                val indexToRemove =
+                    importedAnchors.value.indexOfFirst { anchor -> anchor is ScalarNode && anchor.value == "fnPoints" }
+                if (indexToRemove > -1) {
+                    importedAnchors.value.removeAt(indexToRemove)
+                    (importedAnchors.parsed as? MutableList<*>)?.removeAt(indexToRemove)
+                }
 
                 setupBuilding(it, "0, 1, 0", null)
             }
@@ -54,25 +59,22 @@ class CommandAdminSchematicSetup(parent: KingdomsParentCommand) : KingdomsComman
 
         private fun updateKingdomBuildings() {
             for (land in plugin.dataCenter.landManager.loadedData) {
-                for (block in land.kingdomBlocks) {
-                    if (block is KingdomBuilding<*>) {
-                        block.update()
-                    }
-                }
+                land.structures.values.forEach { it.update() }
+                land.turrets.values.forEach { it.update() }
             }
         }
 
-        fun modifyDeclaration(declName: String, operation: Consumer<YamlContainer>) {
+        private fun modifyDeclaration(declName: String, operation: Consumer<YamlContainer>) {
             val decl = YamlModuleLoader.get(declName)
             modifyConfig(decl?.adapter, "'$decl' declaration", operation)
         }
 
-        fun modifyStructure(styleName: String, operation: Consumer<YamlContainer>) {
+        private fun modifyStructure(styleName: String, operation: Consumer<YamlContainer>) {
             val style = StructureRegistry.get().getStyle(styleName)
             modifyConfig(style?.config, "'$style' structure style", operation)
         }
 
-        fun modifyConfig(adapter: YamlContainer?, errorDisplay: String, operation: Consumer<YamlContainer>) {
+        private fun modifyConfig(adapter: YamlContainer?, errorDisplay: String, operation: Consumer<YamlContainer>) {
             if (adapter !== null) {
                 val yaml = YamlResource(adapter.file!!).setResolveAliases(false).load()
 
