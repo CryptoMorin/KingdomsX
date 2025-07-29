@@ -16,7 +16,7 @@ version = "0.2.0"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
 kingdomsAddon {
-    addonName.set("AdminTools")
+    addonName.set("Admin-Tools")
 }
 
 dependencies {
