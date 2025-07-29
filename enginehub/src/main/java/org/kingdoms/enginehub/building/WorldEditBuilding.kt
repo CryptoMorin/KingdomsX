@@ -44,7 +44,7 @@ class WorldEditBuilding(
                 val schematicName = getString("schematic")
                     ?: throw IllegalStateException("Missing schematic name")
                 val schematic: WorldEditSchematic = SchematicManager.getSchematic(schematicName)
-                    ?: throw IllegalStateException("Missing schematic file named '$schematicName'")
+                    ?: throw IllegalStateException("Missing schematic named '$schematicName' (" + SchematicManager.getSchematics().keys + ")")
 
                 WorldEditBuilding(schematic, origin, facing, context.settings)
             }

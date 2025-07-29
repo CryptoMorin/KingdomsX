@@ -36,6 +36,10 @@ public class NamespacedMap<V> implements Map<Namespace, V> {
         return map.isEmpty();
     }
 
+    public boolean contains(Namespaced object) {
+        return containsKey(object.getNamespace());
+    }
+
     @Override
     public boolean containsKey(Object key) {
         return map.containsKey(key);

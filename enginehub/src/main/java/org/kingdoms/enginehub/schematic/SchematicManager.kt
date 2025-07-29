@@ -4,6 +4,7 @@ import com.sk89q.worldedit.bukkit.adapter.UnsupportedVersionEditException
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.bukkit.entity.Player
 import org.kingdoms.enginehub.EngineHubAddon
+import org.kingdoms.enginehub.EngineHubConfig
 import org.kingdoms.enginehub.commands.CommandAdminSchematicSetup
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler.getClipboardFormat
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler.isUsingFAWE
@@ -66,6 +67,8 @@ object SchematicManager {
 
     @JvmStatic
     fun loadAll() {
+        if (!EngineHubConfig.WORLDEDIT_SCHEMATICS_ENABLED.manager.boolean) return
+
         loaded.clear()
         SchematicFolderRegistry("Schematic", folder.name).useDefaults(true).copyDefaults(true).register()
         MessageHandler.sendConsolePluginMessage("&2Loaded a total of &6${loaded.size} &2schematics. from ${folder.name}");

@@ -9,7 +9,7 @@ import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
 
-class ClipboardFormatv6(override val worldeditObject: ClipboardFormat) : XClipboardFormat {
+private class ClipboardFormatv6(override val worldeditObject: ClipboardFormat) : XClipboardFormat {
     override val name: String get() = worldeditObject.name
     override val aliases: Set<String> get() = worldeditObject.aliases
     override val primaryFileExtension: String get() = worldeditObject.aliases.first()
@@ -29,7 +29,9 @@ class ClipboardFormatv6(override val worldeditObject: ClipboardFormat) : XClipbo
 
     override fun write(outputStream: OutputStream, clipboard: Clipboard) {
         try {
-            getWriter(outputStream).write(clipboard, LegacyWorldData.getInstance())
+            getWriter(outputStream).use { writer ->
+                writer.write(clipboard, LegacyWorldData.getInstance())
+            }
         } catch (ex: Throwable) {
             throw IllegalStateException("Failed to read schematic using $worldeditObject format", ex)
         }

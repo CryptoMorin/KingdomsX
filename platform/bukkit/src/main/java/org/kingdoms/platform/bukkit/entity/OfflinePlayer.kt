@@ -25,8 +25,10 @@ class OfflinePlayer(private val id: UUID, private val name: String) : OfflinePla
 
     override fun getName(): String = name
     override fun getUniqueId(): UUID = id
+
     override fun hasPlayedBefore(): Boolean = true
     override fun isOnline(): Boolean = player != null
+
     override fun getPlayer(): Player? = Bukkit.getPlayer(id)
 
     override fun isOp(): Boolean = unsupported()
@@ -44,10 +46,8 @@ class OfflinePlayer(private val id: UUID, private val name: String) : OfflinePla
     override fun getFirstPlayed(): Long = unsupported()
     override fun getLastPlayed(): Long = unsupported()
     override fun getBedSpawnLocation(): Location = unsupported()
+
     override fun getRespawnLocation(): Location? = unsupported()
-    // Paper
-    //    override fun getLastLogin(): Long = unsupported()
-    //    override fun getLastSeen(): Long = unsupported()
 
     override fun incrementStatistic(statistic: Statistic) = unsupported()
     override fun incrementStatistic(statistic: Statistic, amount: Int) = unsupported()
@@ -69,4 +69,23 @@ class OfflinePlayer(private val id: UUID, private val name: String) : OfflinePla
     override fun getStatistic(statistic: Statistic, entityType: EntityType): Int = unsupported()
     override fun getLastDeathLocation(): Location = unsupported()
     override fun getLocation(): Location? = unsupported()
+
+    /////////// Paper ///////////
+    // override fun getPlayerProfile(): com.destroystokyo.paper.profile.PlayerProfile = unsupported()
+    // override fun getPersistentDataContainer(): PersistentDataContainerView = unsupported()
+    // override fun getLastLogin(): Long = unsupported()
+    // override fun getRespawnLocation(p0: Boolean): Location? = unsupported()
+    // override fun getLastSeen(): Long = unsupported()
+    // override fun isConnected(): Boolean = unsupported()
+    // override fun <E : BanEntry<in com.destroystokyo.paper.profile.PlayerProfile>> ban(
+    //     p0: String?, p1: Date?, p2: String?
+    // ): E? = unsupported()
+    //
+    // override fun <E : BanEntry<in com.destroystokyo.paper.profile.PlayerProfile>> ban(
+    //     p0: String?, p1: Instant?, p2: String?
+    // ): E? = unsupported()
+    //
+    // override fun <E : BanEntry<in com.destroystokyo.paper.profile.PlayerProfile>> ban(
+    //     p0: String?, p1: Duration?, p2: String?
+    // ): E? = unsupported()
 }

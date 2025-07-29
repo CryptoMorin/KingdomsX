@@ -1,6 +1,5 @@
 package org.kingdoms.peacetreaties.managers
 
-import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
@@ -13,7 +12,7 @@ import org.kingdoms.events.general.KingdomDisbandEvent
 import org.kingdoms.events.members.KingdomLeaveEvent
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder
-import org.kingdoms.peacetreaties.PeaceTreatiesAddon
+import org.kingdoms.main.Kingdoms
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getContractWith
@@ -24,6 +23,7 @@ import org.kingdoms.peacetreaties.data.WarPoint.Companion.getWarPoints
 import org.kingdoms.peacetreaties.terms.types.AnnulTreatiesTerm
 import org.kingdoms.utils.KingdomsBukkitExtensions.asKingdom
 import org.kingdoms.utils.KingdomsBukkitExtensions.getKingdom
+import java.time.Duration
 
 class RelationshipListener : Listener {
     companion object {
@@ -40,7 +40,7 @@ class RelationshipListener : Listener {
         val player = event.player
         val kingdom = player.getKingdom() ?: return
 
-        Bukkit.getScheduler().runTaskLater(PeaceTreatiesAddon.get(), { ->
+        Kingdoms.taskScheduler().async().delayed(Duration.ofSeconds(1)) { ->
             kingdom.getReceivedPeaceTreaties().values
                 .filter { x -> !x.isAccepted }
                 .forEach { x ->
@@ -49,7 +49,7 @@ class RelationshipListener : Listener {
                         x.getPlaceholderContextProvider(MessagePlaceholderProvider()) as MessagePlaceholderProvider
                     )
                 }
-        }, 20L)
+        }
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)

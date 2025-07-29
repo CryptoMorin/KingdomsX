@@ -55,6 +55,10 @@ public interface StringMatcher {
             return exact.equals(string);
         }
 
+        public String getExact() {
+            return exact;
+        }
+
         @Override
         public String asString() {
             return exact;
@@ -69,6 +73,10 @@ public interface StringMatcher {
         @Override
         public boolean matches(String string) {
             return exact.equalsIgnoreCase(string);
+        }
+
+        public String getExact() {
+            return exact;
         }
 
         @Override

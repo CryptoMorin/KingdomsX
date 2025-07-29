@@ -12,7 +12,7 @@
   args: [ "<cost>", "<material>" ]
   return:
     buy: 'percentOf(10, <cost> * (initial / stock)) + (<cost> * (initial / stock))'
-    sell: '<cost> * (initial / stock)'
+    sell: 'min(buy, <cost> * (initial / stock))'
     stock:
       initial: 10000
       max: 100000
@@ -48,7 +48,8 @@ stocks:
 
     # The amount of resource points used for selling this item to the structure.
     # Supports "stock" placeholder just like the buy option.
-    sell: '50 * (initial / stock)'
+    # The selling price is always lower or equal to the buying price to avoid arbitrage transcations and exploits.
+    sell: 'min(buy, 50 * (initial / stock))'
 
     # Settings for the "stock" variable used for buy/sell options
     # This is a server-wide variable shared between all outpost structures.

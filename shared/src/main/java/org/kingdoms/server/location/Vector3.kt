@@ -247,6 +247,7 @@ class BlockVector3(override val x: Int, override val y: Int, override val z: Int
     fun subtract(other: BlockPoint3D) = subtract(other.x, other.y, other.z)
     fun subtract(x: Number, y: Number, z: Number) = of(this.x - x.toInt(), this.y - y.toInt(), this.z - z.toInt())
     fun divide(by: Number) = Vector3.of(this.x / by.toInt(), this.y / by.toInt(), this.z / by.toInt())
+    fun multiply(by: Number) = Vector3.of(this.x * by.toInt(), this.y * by.toInt(), this.z * by.toInt())
 
     fun length(): Double = sqrt(lengthSq())
 

@@ -1,8 +1,5 @@
 package org.kingdoms.utils.internal;
 
-import org.kingdoms.ide.Bookmark;
-import org.kingdoms.ide.BookmarkType;
-
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Arrays;

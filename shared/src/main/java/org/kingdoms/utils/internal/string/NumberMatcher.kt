@@ -1,7 +1,6 @@
 package org.kingdoms.utils.internal.string
 
 import org.kingdoms.utils.internal.numbers.AnyNumber
-import java.util.*
 
 interface NumberMatcher {
     fun matches(number: AnyNumber): Boolean
@@ -33,8 +32,10 @@ interface NumberMatcher {
         override val asString: String get() = "<=${greaterThan.value}"
     }
 
-    class Range(private val originalString: String,
-                private val first: NumberMatcher, private val second: NumberMatcher) : NumberMatcher {
+    class Range(
+        private val originalString: String,
+        private val first: NumberMatcher, private val second: NumberMatcher
+    ) : NumberMatcher {
         override fun matches(number: AnyNumber): Boolean = first.matches(number) && second.matches(number)
         override val asString: String get() = originalString
         override fun toString(): String = "NumberMatcher::Range($first && $second)"
@@ -70,7 +71,8 @@ interface NumberMatcher {
             val number = checkNumber()
             if (number !== null) {
                 if (chars[i] == ',') {
-                    return Multiple(value.split(',').stream()
+                    return Multiple(
+                        value.split(',').stream()
                         .map { AnyNumber.of(it)!! }
                         .toArray { len -> arrayOfNulls(len) })
                 } else {

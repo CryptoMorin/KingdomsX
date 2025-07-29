@@ -11,6 +11,7 @@ import org.kingdoms.data.database.dataprovider.SectionCreatableDataSetter
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig
+import org.kingdoms.peacetreaties.data.WarPoint.Companion.setWarPoints
 import org.kingdoms.utils.MathUtils
 import java.util.*
 

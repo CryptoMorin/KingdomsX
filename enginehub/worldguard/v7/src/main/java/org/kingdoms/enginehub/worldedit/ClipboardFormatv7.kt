@@ -8,7 +8,7 @@ import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
 
-class ClipboardFormatv7(override val worldeditObject: ClipboardFormat) : XClipboardFormat {
+private class ClipboardFormatv7(override val worldeditObject: ClipboardFormat) : XClipboardFormat {
     override val name: String get() = worldeditObject.name
     override val aliases: Set<String> get() = worldeditObject.aliases
     override val primaryFileExtension: String get() = worldeditObject.primaryFileExtension

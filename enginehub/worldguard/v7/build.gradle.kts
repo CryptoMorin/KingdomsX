@@ -19,8 +19,9 @@ repositories {
 }
 
 dependencies {
-    compileOnly(project(":core:service"))
-    compileOnly(project(":enginehub:worldguard"))
+    compileOnly(project(":shared")) { isTransitive = false }
+    compileOnly(project(":core:service")) { isTransitive = false }
+    compileOnly(project(":enginehub:worldguard")) { isTransitive = false }
     compileOnly("org.checkerframework:checker-qual:3.21.0")
 
     // https://maven.enginehub.org/repo/com/sk89q/worldedit/

@@ -56,11 +56,10 @@ internal class _Float(override val value: Float) : AbstractFloatingPointNumber()
     override val isNegative: Boolean get() = value < 0f
     override val isPositive: Boolean get() = value > 0f
     override val isZero: Boolean get() = value == 0f
-
-    init {
-        requireFinite(!value.isNaN()) { "Value is not finite, but NaN: $value" }
-        requireFinite(!value.isInfinite()) { "Value is not finite, but Infinity: $value" }
-    }
+    override val isNaN: Boolean = value.isNaN()
+    override val isInfinite: Boolean get() = value.isInfinite()
+    override val isPositiveInfinity: Boolean get() = value == Float.POSITIVE_INFINITY
+    override val isNegativeInfinity: Boolean get() = value == Float.NEGATIVE_INFINITY
 
     private inline val AnyNumber.convert: Float get() = this.value.toFloat()
     override fun constructNew(value: Number): AnyNumber = _Float(value.toFloat())
@@ -85,11 +84,10 @@ internal class _Double(override val value: Double) : AbstractFloatingPointNumber
     override val isNegative: Boolean get() = value < 0.0
     override val isPositive: Boolean get() = value > 0.0
     override val isZero: Boolean get() = value == 0.0
-
-    init {
-        requireFinite(!value.isNaN()) { "Value is not finite, but NaN: $value" }
-        requireFinite(!value.isInfinite()) { "Value is not finite, but Infinity: $value" }
-    }
+    override val isNaN: Boolean get() = value.isNaN()
+    override val isInfinite: Boolean get() = value.isInfinite()
+    override val isPositiveInfinity: Boolean get() = value == Double.POSITIVE_INFINITY
+    override val isNegativeInfinity: Boolean get() = value == Double.NEGATIVE_INFINITY
 
     private inline val AnyNumber.convert: Double get() = this.value.toDouble()
     override fun constructNew(value: Number): AnyNumber = _Double(value.toDouble())

@@ -7,17 +7,19 @@ import org.kingdoms.constants.DataStringRepresentation
  * If any of the operations causes the number to become NaN or -/+Infinity,
  * a [IllegalStateException] is thrown.
  */
+@Suppress("INAPPLICABLE_JVM_NAME")
 interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
     val value: Number
     val type: NumberType
 
     fun constructNew(value: Number): AnyNumber
 
-    val isNegative: Boolean
-    val isPositive: Boolean
-    val isZero: Boolean
-    val isEven: Boolean get() = rem(TWO) == ZERO
-    val isOdd: Boolean get() = !isEven
+    @get:JvmName("isNegative") val isNegative: Boolean
+    @get:JvmName("isPositive") val isPositive: Boolean
+    @get:JvmName("isZero") val isZero: Boolean
+    @get:JvmName("isEven") val isEven: Boolean get() = rem(TWO) == ZERO
+    @get:JvmName("isOdd") val isOdd: Boolean get() = !isEven
+    @get:JvmName("hasDecimals") val hasDecimals: Boolean get() = this is FloatingPointNumber
 
     fun abs(): AnyNumber = if (this < ZERO) unaryMinus() else this
     operator fun unaryMinus(): AnyNumber
@@ -64,7 +66,12 @@ interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
     }
 }
 
-interface FloatingPointNumber : AnyNumber
+interface FloatingPointNumber : AnyNumber {
+    val isNaN: Boolean
+    val isPositiveInfinity: Boolean
+    val isNegativeInfinity: Boolean
+    val isInfinite: Boolean
+}
 
 internal abstract class AbstractAnyNumber : AnyNumber {
     override fun equals(other: Any?): Boolean {

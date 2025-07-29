@@ -2,6 +2,7 @@ package org.kingdoms.admintools
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.kingdoms.addons.Addon
+import org.kingdoms.commands.admin.*
 import org.kingdoms.commands.admin.debugging.CommandAdminDebugHitPoints
 import org.kingdoms.commands.admin.item.CommandAdminItemEditor
 import org.kingdoms.commands.admin.sql.CommandAdminSQL
@@ -35,6 +36,15 @@ class AdminToolsAddon : JavaPlugin(), Addon {
         CommandAdminDebugHitPoints()
         CommandAdminSQL()
         CommandAdminItemEditor()
+        CommandAdminResetKingdom()
+        CommandAdminExecuteBook()
+        CommandAdminCondition()
+        CommandAdminCommands()
+        CommandAdminForeach()
+        CommandAdminFiles()
+        CommandAdminMissingGUIs()
+        CommandAdminEntity()
+        CommandAdminGUI()
     }
 
     override fun onDisable() {

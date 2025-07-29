@@ -79,7 +79,7 @@ public final class OutpostArenaMob implements CascadingMessageContextProvider {
     public void addMessageContextEdits(@NotNull MessagePlaceholderProvider context) {
         context.addChild("arenamob", new MessagePlaceholderProvider()
                 .parse("label", this.label == null ? KingdomsLang.UNKNOWN : label)
-                .raw("spawn_interval", spawnInterval == null ? KingdomsLang.NONE : spawnInterval)
+                .raw("spawn_interval", spawnInterval)
                 .raw("max_spawn_count", maxSpawnCount)
                 .raw("spawn_location", spawnLocation)
                 .raw("damage_bonus", damageBonus == null ? KingdomsLang.NONE : damageBonus.getOriginalString())

@@ -4,12 +4,13 @@ import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.kingdoms.constants.land.building.Region
 import org.kingdoms.enginehub.WorldEditAdapter.getAbsolutePosition
 import org.kingdoms.enginehub.schematic.CalculatedBlocks
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory
 import org.kingdoms.server.location.BlockVector2
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Vector3
 
 class WorldEditRegion(origin: BlockVector3, private val blocks: CalculatedBlocks, clipboard: Clipboard) : Region {
-    private val weRegion = clipboard.region
+    private val weRegion = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard.region)
 
     private val _center = weRegion.center.let { Vector3.of(it.x, it.y, it.z).add(origin) }
     private val _min = weRegion.minimumPoint.getAbsolutePosition(origin, clipboard)

@@ -4,11 +4,14 @@ import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 import org.kingdoms.addons.Addon
 import org.kingdoms.commands.admin.CommandAdmin
+import org.kingdoms.constants.namespace.Namespace
+import org.kingdoms.data.centers.KingdomsStartup
 import org.kingdoms.enginehub.building.WorldEditBuilding
 import org.kingdoms.enginehub.building.WorldEditBuildingConstruction
 import org.kingdoms.enginehub.commands.CommandAdminSchematic
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuard
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSeven
 import org.kingdoms.enginehub.worldguard.ServiceWorldGuardSix
@@ -31,6 +34,11 @@ class EngineHubAddon : JavaPlugin(), Addon {
 
     var worldGuard: ServiceWorldGuard? = null
 
+    /**
+     * Required for schematics to load for buildings to use them.
+     */
+    private lateinit var dataLock: KingdomsStartup.DataLock
+
     fun hasWorldGuard(): Boolean = worldGuard != null
 
     private fun tryLoad(seven: Boolean, errors: MutableList<Throwable>): ServiceWorldGuard? {
@@ -46,6 +54,9 @@ class EngineHubAddon : JavaPlugin(), Addon {
     }
 
     override fun onLoad() {
+        logger.info("Adding kingdom data lock...")
+        dataLock = KingdomsStartup.addDataLock(Namespace("EngineHub", "SCHEMATICS"))
+
         LanguageManager.registerMessenger(EngineHubLang::class.java)
         EngineHubConfig.register(this)
         EngineHubConfig.ENGINE_HUB.reloadHandle { SchematicManager.loadAll() }
@@ -103,7 +114,15 @@ class EngineHubAddon : JavaPlugin(), Addon {
             )
         }
 
+        if (XWorldEditBukkitAdapterFactory.v6()) {
+            logger.warning(
+                "It seems like you're using WorldEdit v6, " +
+                        "unfortunately schematic buildings are unsupported for v6 and only limited support is provided for your WorldEdit." +
+                        " If you see a bunch of errors in your console. That probably means that the bundled schematics do not work for your WorldEdit version."
+            )
+        }
         reloadAddon()
+        KingdomsStartup.removeDataLock(dataLock)
 
         if (hasWorldGuard()) WorldGuardHandler(this)
         registerAddon()

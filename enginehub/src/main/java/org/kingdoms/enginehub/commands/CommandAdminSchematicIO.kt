@@ -1,5 +1,6 @@
 package org.kingdoms.enginehub.commands
 
+import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.kingdoms.commands.*
 import org.kingdoms.data.Pair
 import org.kingdoms.enginehub.EngineHubLang
@@ -7,6 +8,7 @@ import org.kingdoms.enginehub.building.WorldEditBuildingConstruction
 import org.kingdoms.enginehub.schematic.SchematicManager
 import org.kingdoms.enginehub.schematic.WorldEditSchematicHandler
 import org.kingdoms.enginehub.schematic.blocks.ClipboardBlockIterator
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory
 import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.locale.compiler.MessageCompiler
 import org.kingdoms.locale.messenger.ContextualMessenger
@@ -108,14 +110,18 @@ class CommandAdminSchematicList(parent: KingdomsParentCommand) : KingdomsCommand
         }
 
         val pathBuilder = StringPathBuilder(SchematicManager.getSchematics().values.map {
-            val clipboard = it.clipboard
-            val blocksSnapshotIter = ClipboardBlockIterator(
-                BlockVector3.of(0, 0, 0),
-                clipboard,
-                WorldEditBuildingConstruction.SortingStrategy.BOTTOM_TO_TOP
-            )
-            val blocksSnapshot: Int =
-                blocksSnapshotIter.asSequence().filter { b -> !b.block.blockType.material.isAir }.count()
+            val clipboard: Clipboard = it.clipboard
+
+            val blocksSnapshot: String = if (!XWorldEditBukkitAdapterFactory.v6()) {
+                val blocksSnapshotIter = ClipboardBlockIterator(
+                    BlockVector3.of(0, 0, 0),
+                    clipboard,
+                    WorldEditBuildingConstruction.SortingStrategy.BOTTOM_TO_TOP
+                )
+                blocksSnapshotIter.asSequence().filter { b -> !b.block.blockType.material.isAir }.count().toString()
+            } else {
+                "Not supported in WorldEdit v6"
+            }
 
             return@map Pair(
                 it.name,
@@ -137,10 +143,10 @@ class CommandAdminSchematicList(parent: KingdomsParentCommand) : KingdomsCommand
                                 "format",
                                 WorldEditSchematicHandler.tryGetStdClipboardFormat(it.storedFile)?.name
                                     ?: KingdomsLang.UNKNOWN,
-                                "dimensions", clipboard.dimensions,
+                                "dimensions", XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard).dimensions,
                                 "blocks", blocksSnapshot,
                                 "entities", clipboard.entities.size,
-                                "has_biomes", clipboard.hasBiomes(),
+                                "has_biomes", if (XWorldEditBukkitAdapterFactory.v6()) false else clipboard.hasBiomes(),
                             )
                         )
                     )

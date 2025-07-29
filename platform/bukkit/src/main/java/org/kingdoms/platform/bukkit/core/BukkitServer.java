@@ -5,6 +5,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.kingdoms.platform.bukkit.adapters.BukkitNBTAdapter;
 import org.kingdoms.platform.bukkit.events.BukkitEventHandler;
 import org.kingdoms.platform.bukkit.location.BukkitWorldRegistry;
+import org.kingdoms.platform.folia.FoliaSchedulerFactory;
+import org.kingdoms.platform.folia.FoliaTickTracker;
+import org.kingdoms.platform.folia.FoliaUtil;
+import org.kingdoms.platform.folia.PluginTickTracker;
 import org.kingdoms.server.core.Server;
 import org.kingdoms.server.events.EventHandler;
 import org.kingdoms.server.location.WorldRegistry;
@@ -13,14 +17,14 @@ public class BukkitServer implements Server {
     private final EventHandler eventHandler;
     private final WorldRegistry worldRegistry;
     private final JavaPlugin plugin;
-    private final TickTracker tickTracker;
+    private final PluginTickTracker tickTracker;
     private boolean isReady;
 
     @SuppressWarnings("this-escape")
     public BukkitServer(JavaPlugin plugin) {
         this.plugin = plugin;
         this.worldRegistry = new BukkitWorldRegistry();
-        this.tickTracker = new TickTracker();
+        this.tickTracker = FoliaUtil.isFoliaSupported() ? new FoliaTickTracker() : new BukkitTickTracker();
         this.eventHandler = new BukkitEventHandler(this);
     }
 
@@ -43,7 +47,11 @@ public class BukkitServer implements Server {
         tickTracker.start(plugin);
         this.eventHandler.onLoad();
 
-        Bukkit.getScheduler().runTask(plugin, this::onReady);
+        if (FoliaUtil.isFoliaSupported()) {
+            FoliaSchedulerFactory.runGlobalUntraced(plugin, this::onReady);
+        } else {
+            Bukkit.getScheduler().runTask(plugin, this::onReady);
+        }
     }
 
     @Override

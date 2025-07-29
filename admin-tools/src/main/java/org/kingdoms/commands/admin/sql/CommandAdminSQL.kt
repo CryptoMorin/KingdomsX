@@ -11,7 +11,7 @@ import org.kingdoms.commands.annotations.CmdPerm
 @Cmd("sql")
 @CmdParent(CommandAdmin::class)
 @CmdPerm(PermissionDefault.OP)
-class CommandAdminSQL : KingdomsParentCommand(), Listener {
+class CommandAdminSQL : KingdomsParentCommand() {
     init {
         if (!isDisabled) {
             CommandAdminSQLStatement()

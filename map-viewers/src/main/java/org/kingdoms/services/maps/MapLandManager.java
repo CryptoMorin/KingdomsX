@@ -18,6 +18,7 @@ import org.kingdoms.services.maps.abstraction.outliner.*;
 import org.kingdoms.utils.internal.uuid.FastUUID;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 public final class MapLandManager {
@@ -25,7 +26,7 @@ public final class MapLandManager {
     private static final int CHUNK_BLOCK_SIZE = 16;
 
     // Map<Group, Map<World, List<LandMarker>>>
-    private final Map<UUID, Map<UUID, List<LandMarker>>> areas = new HashMap<>();
+    private final Map<UUID, Map<UUID, List<LandMarker>>> areas = new ConcurrentHashMap<>();
     private final Map<Invasion, List<LandMarker>> invasionAreas = new IdentityHashMap<>();
 
     private final MarkerType markerType;
@@ -117,13 +118,15 @@ public final class MapLandManager {
         for (ConnectedChunkCluster cluster : clusters) {
             // Check if the cluster has negative space
             Collection<WorldlessChunk> negativeSpace = NegativeSpaceOutliner.findNegativeSpace(cluster);
-            List<List<Vector2>> negSpacePolys = Collections.emptyList();
+            List<List<Vector2>> negSpacePolys;
 
             // If the cluster does have negative space, get the outlines of the negative space polygons
             if (!negativeSpace.isEmpty()) {
                 negSpacePolys = ConnectedChunkCluster.findClusters(negativeSpace).stream()
                         .map(subCluster -> PolygonOutliner.findPointsOf(subCluster, CHUNK_BLOCK_SIZE))
                         .collect(Collectors.toList());
+            } else {
+                negSpacePolys = Collections.emptyList();
             }
 
             // Form the main polygon

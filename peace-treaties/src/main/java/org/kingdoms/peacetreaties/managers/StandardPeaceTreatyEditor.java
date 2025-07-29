@@ -3,7 +3,6 @@ package org.kingdoms.peacetreaties.managers;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
-import org.bukkit.scheduler.BukkitTask;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.constants.player.KingdomPlayer;
@@ -14,8 +13,8 @@ import org.kingdoms.gui.OptionHandler;
 import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.main.KLogger;
+import org.kingdoms.main.Kingdoms;
 import org.kingdoms.managers.chat.ChatInputManager;
-import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyGUI;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
@@ -25,9 +24,10 @@ import org.kingdoms.peacetreaties.terms.TermGrouping;
 import org.kingdoms.peacetreaties.terms.TermGroupingOptions;
 import org.kingdoms.peacetreaties.terms.TermProvider;
 import org.kingdoms.peacetreaties.terms.TermRegistry;
+import org.kingdoms.scheduler.ScheduledTask;
 import org.kingdoms.utils.MathUtils;
-import org.kingdoms.utils.time.TimeUtils;
 
+import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
@@ -36,7 +36,7 @@ public class StandardPeaceTreatyEditor {
     private static final Map<UUID, PendingContract> PENDING_CONTRACTS = new HashMap<>();
 
     private static final class PendingContract {
-        private final BukkitTask reminderTask;
+        private final ScheduledTask reminderTask;
         private final PeaceTreaty contract;
 
         private void cancelReminder() {
@@ -49,12 +49,12 @@ public class StandardPeaceTreatyEditor {
             if (!remind) {
                 this.reminderTask = null;
             } else {
-                long every = TimeUtils.millisToTicks(PeaceTreatyConfig.UNFINISHED_CONTRACT_REMINDER.getManager().getTimeMillis());
-                this.reminderTask = Bukkit.getScheduler().runTaskTimerAsynchronously(PeaceTreatiesAddon.get(), () -> {
+                Duration every = PeaceTreatyConfig.UNFINISHED_CONTRACT_REMINDER.getManager().getTime();
+                this.reminderTask = Kingdoms.taskScheduler().async().repeating(every, every, () -> {
                     Player player = contract.getPlayer().getPlayer();
                     if (player == null) return;
                     PeaceTreatyLang.EDITOR_UNFINISHED.sendMessage(player);
-                }, every, every);
+                });
             }
         }
     }

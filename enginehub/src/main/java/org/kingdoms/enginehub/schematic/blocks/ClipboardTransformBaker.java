@@ -27,13 +27,16 @@ import com.sk89q.worldedit.extent.transform.BlockTransformExtent;
 import com.sk89q.worldedit.function.operation.ForwardExtentCopy;
 import com.sk89q.worldedit.function.operation.Operation;
 import com.sk89q.worldedit.function.operation.Operations;
-import com.sk89q.worldedit.math.Vector3;
 import com.sk89q.worldedit.math.transform.AffineTransform;
 import com.sk89q.worldedit.math.transform.CombinedTransform;
 import com.sk89q.worldedit.math.transform.Transform;
-import com.sk89q.worldedit.regions.CuboidRegion;
 import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.session.ClipboardHolder;
+import org.kingdoms.enginehub.worldedit.XRegion;
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapter;
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory;
+import org.kingdoms.server.location.BlockVector3;
+import org.kingdoms.server.location.Vector3;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -66,17 +69,20 @@ public class ClipboardTransformBaker {
      * @return the transformed region
      */
     private Region getTransformedRegion() {
-        Region region = original.getRegion();
-        Vector3 minimum = region.getMinimumPoint().toVector3();
-        Vector3 maximum = region.getMaximumPoint().toVector3();
+        BlockVector3 origin = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(original).getOrigin();
+        XRegion region = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(original.getRegion());
+
+        Vector3 minimum = region.getMinimumPoint().toVector();
+        Vector3 maximum = region.getMaximumPoint().toVector();
+        Vector3 negative = origin.multiply(-1);
 
         Transform transformAround =
                 new CombinedTransform(
-                        new AffineTransform().translate(original.getOrigin().multiply(-1)),
+                        new AffineTransform().translate(negative.getX(), negative.getY(), negative.getZ()),
                         transform,
-                        new AffineTransform().translate(original.getOrigin()));
+                        new AffineTransform().translate(origin.getX(), origin.getY(), origin.getZ()));
 
-        Vector3[] corners = new Vector3[]{
+        Vector3[] corners = {
                 minimum,
                 maximum,
                 minimum.withX(maximum.getX()),
@@ -88,7 +94,7 @@ public class ClipboardTransformBaker {
         };
 
         for (int i = 0; i < corners.length; i++) {
-            corners[i] = transformAround.apply(corners[i]);
+            corners[i] = XWorldEditBukkitAdapterFactory.INSTANCE.applyTransformation(transformAround, corners[i]);
         }
 
         Vector3 newMinimum = corners[0];
@@ -104,7 +110,8 @@ public class ClipboardTransformBaker {
         newMinimum = newMinimum.floor();
         newMaximum = newMaximum.ceil();
 
-        return new CuboidRegion(newMinimum.toBlockPoint(), newMaximum.toBlockPoint());
+        return XWorldEditBukkitAdapterFactory.INSTANCE
+                .createCuboidRegion(newMinimum.toBlockVector(), newMaximum.toBlockVector());
     }
 
     /**
@@ -114,12 +121,19 @@ public class ClipboardTransformBaker {
      * @return the operation
      */
     private Operation copyTo(Extent target) {
-        BlockTransformExtent extent = new BlockTransformExtent(original, transform);
-        ForwardExtentCopy copy = new ForwardExtentCopy(extent, original.getRegion(), original.getOrigin(), target, original.getOrigin());
+        XWorldEditBukkitAdapter adapter = XWorldEditBukkitAdapterFactory.INSTANCE;
+        BlockTransformExtent extent = adapter.createBlockTransformExtent(original, transform);
+        BlockVector3 origin = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(original).getOrigin();
+
+        ForwardExtentCopy copy = adapter.createForwardExtentCopy(extent, original.getRegion(), origin, target, origin);
         copy.setTransform(transform);
-        if (original.hasBiomes()) {
-            copy.setCopyingBiomes(true);
+
+        if (!XWorldEditBukkitAdapterFactory.v6()) {
+            if (original.hasBiomes()) {
+                copy.setCopyingBiomes(true);
+            }
         }
+
         return copy;
     }
 
@@ -135,9 +149,11 @@ public class ClipboardTransformBaker {
         if (transform.isIdentity()) {
             return original;
         }
+
         ClipboardTransformBaker baker = new ClipboardTransformBaker(original, transform);
         Clipboard target = new BlockArrayClipboard(baker.getTransformedRegion());
-        target.setOrigin(original.getOrigin());
+        XWorldEditBukkitAdapterFactory.INSTANCE.adapt(target).setOrigin(
+                XWorldEditBukkitAdapterFactory.INSTANCE.adapt(original).getOrigin());
         Operations.complete(baker.copyTo(target));
 
         return target;

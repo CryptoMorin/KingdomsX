@@ -1,6 +1,5 @@
 package org.kingdoms.services.maps;
 
-import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
@@ -45,16 +44,16 @@ public final class CommandAdminDynmap extends KingdomsCommand {
             return CommandResult.SUCCESS;
         }
 
-        Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+        Kingdoms.taskScheduler().async().execute(() -> {
             if (option.equals("fullrender")) {
-                Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                Kingdoms.taskScheduler().async().execute(() -> {
                     MapViewersLang.COMMAND_ADMIN_DYNMAP_RENDERING.sendMessage(sender);
                     int total = ServiceMap.fullRender();
                     ServiceMap.update();
                     MapViewersLang.COMMAND_ADMIN_DYNMAP_RENDERED.sendMessage(sender, "lands", total);
                 });
             } else if (option.equals("remove") || option.equals("delete")) {
-                Bukkit.getScheduler().runTaskAsynchronously(plugin, () -> {
+                Kingdoms.taskScheduler().async().execute(() -> {
                     MapViewersLang.COMMAND_ADMIN_DYNMAP_RENDERING.sendMessage(sender);
                     Collection<Land> lands = Kingdoms.get().getDataCenter().getLandManager().getLoadedData();
                     ServiceMap.removeEverything();

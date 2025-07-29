@@ -34,7 +34,8 @@ class TrackedMap<K, V>(
     }
 
     override val entries: MutableSet<MutableMap.MutableEntry<K, V>>
-        get() = TrackedSet(original.entries,
+        get() = TrackedSet(
+            original.entries,
             onAdd = Function<MutableMap.MutableEntry<K, V>, Boolean> { entry ->
                 this.onAdd.accept(entry.key, entry.value)
                 return@Function true
@@ -46,14 +47,16 @@ class TrackedMap<K, V>(
         )
 
     override val keys: MutableSet<K>
-        get() = TrackedSet(original.keys,
+        get() = TrackedSet(
+            original.keys,
             onAdd = { throw UnsupportedOperationException("Cannot add to tracked map without knowing the value") },
             onRemove = { key -> this.remove(key) !== null }
         )
 
     // TODO maybe convert this into an entry collection?
     override val values: MutableCollection<V>
-        get() = TrackedCollection(original.values,
+        get() = TrackedCollection(
+            original.values,
             onAdd = { value ->
                 if (valueToKey === null) throw UnsupportedOperationException("Cannot add to tracked map without knowing the key for value")
                 else this.put(valueToKey!!.apply(value), value) === null

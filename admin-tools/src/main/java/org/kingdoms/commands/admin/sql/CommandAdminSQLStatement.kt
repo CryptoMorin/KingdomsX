@@ -23,7 +23,7 @@ import java.sql.Statement
 @Cmd("statement")
 @CmdParent(CommandAdminSQL::class)
 @CmdPerm(PermissionDefault.OP)
-class CommandAdminSQLStatement : KingdomsCommand(), Listener {
+class CommandAdminSQLStatement : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         if (context.isPlayer()) {
             return context.fail(KingdomsLang.COMMANDS_CONSOLE_ONLY)

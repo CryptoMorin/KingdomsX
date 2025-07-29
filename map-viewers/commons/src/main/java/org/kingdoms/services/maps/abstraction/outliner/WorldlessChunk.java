@@ -11,33 +11,28 @@ public final class WorldlessChunk {
         this.z = z;
     }
 
-    private int getLLX(int chunkSize) {
-        return x * chunkSize;
-    }
-
-    private int getLLZ(int chunkSize) {
-        return z * chunkSize;
-    }
-
     @NotNull
     public Vector2 getLowerLeft(int chunkSize) {
-        return new Vector2(getLLX(chunkSize), getLLZ(chunkSize));
+        return getPoint(chunkSize, 0, 0);
     }
 
     @NotNull
     public Vector2 getLowerRight(int chunkSize) {
-        return new Vector2(getLLX(chunkSize) + (chunkSize - 1), getLLZ(chunkSize));
+        return getPoint(chunkSize, chunkSize, 0);
     }
 
     @NotNull
     public Vector2 getUpperLeft(int chunkSize) {
-        return new Vector2(getLLX(chunkSize), getLLZ(chunkSize) + (chunkSize - 1));
+        return getPoint(chunkSize, 0, chunkSize);
     }
 
     @NotNull
     public Vector2 getUpperRight(int chunkSize) {
-        final int offset = chunkSize - 1;
-        return new Vector2(getLLX(chunkSize) + offset, getLLZ(chunkSize) + offset);
+        return getPoint(chunkSize, chunkSize, chunkSize);
+    }
+
+    private Vector2 getPoint(int chunkSize, int offsetX, int offsetZ) {
+        return Vector2.of((x * chunkSize) + offsetX, (z * chunkSize) + offsetZ);
     }
 
     @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
@@ -64,7 +59,7 @@ public final class WorldlessChunk {
         return offset(direction.x, direction.z);
     }
 
-    protected WorldlessChunk offset(int xOffset, int zOffset) {
+    private WorldlessChunk offset(int xOffset, int zOffset) {
         return new WorldlessChunk(this.x + xOffset, this.z + zOffset);
     }
 }

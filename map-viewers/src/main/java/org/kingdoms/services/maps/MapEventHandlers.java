@@ -1,6 +1,5 @@
 package org.kingdoms.services.maps;
 
-import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -28,11 +27,13 @@ import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.events.members.KingdomJoinEvent;
 import org.kingdoms.events.members.KingdomLeaveEvent;
+import org.kingdoms.main.Kingdoms;
 import org.kingdoms.platform.bukkit.adapters.BukkitAdapter;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerListenerType;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerType;
 import org.kingdoms.utils.internal.functional.Fn;
 
+import java.time.Duration;
 import java.util.function.Consumer;
 
 public final class MapEventHandlers implements Listener {
@@ -69,7 +70,7 @@ public final class MapEventHandlers implements Listener {
 
     static void updateKingdomLands(KingdomOperator kingdom) {
         // We delay it a second so the event can change the data.
-        Bukkit.getScheduler().runTaskLater(MapViewerAddon.get(), () -> ServiceMap.updateLands(kingdom.getKingdom()), 20L);
+        Kingdoms.taskScheduler().async().delayed(Duration.ofSeconds(1), () -> ServiceMap.updateLands(kingdom.getKingdom()));
     }
 
     static void updateNationLands(NationOperator nationOperator) {
@@ -78,7 +79,7 @@ public final class MapEventHandlers implements Listener {
         Nation nation = nationOperator.getNation();
         if (nation == null) return;
 
-        Bukkit.getScheduler().runTaskLater(MapViewerAddon.get(), () -> ServiceMap.updateLands(nation), 20L);
+        Kingdoms.taskScheduler().async().delayed(Duration.ofSeconds(1), () -> ServiceMap.updateLands(nation));
     }
 
     static void updateGroup(GroupOperator groupOperator) {

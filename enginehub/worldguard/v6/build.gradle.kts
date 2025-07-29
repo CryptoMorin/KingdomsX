@@ -1,3 +1,5 @@
+@file:Suppress("VulnerableLibrariesLocal")
+
 plugins {
     commons
     spigotapi
@@ -14,9 +16,11 @@ repositories {
 }
 
 dependencies {
-    compileOnly(project(":core:service"))
-    compileOnly(project(":enginehub:worldguard"))
+    compileOnly(project(":shared")) { isTransitive = false }
+    compileOnly(project(":core:service")) { isTransitive = false }
+    compileOnly(project(":enginehub:worldguard")) { isTransitive = false }
     compileOnly("org.checkerframework:checker-qual:3.21.0")
     compileOnly("com.sk89q.worldedit:worldedit-core:6.1.4-SNAPSHOT")
+    compileOnly("com.sk89q.worldedit:worldedit-bukkit:6.1.5")
     compileOnly("com.sk89q.worldguard:worldguard-legacy:6.2")
 }

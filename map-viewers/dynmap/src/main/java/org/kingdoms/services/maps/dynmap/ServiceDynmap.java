@@ -119,8 +119,8 @@ public final class ServiceDynmap implements MapAPI {
         // The first is 0 which is the most zoomed out level
         // and 7 which is the most zoomed in level.
         return MarkerZoom.of(
-                MarkerZoom.valueFromPercent(dynMin, dynMax, 100 - min),
-                MarkerZoom.valueFromPercent(dynMin, dynMax, max)
+                min == -1 ? -1 : MarkerZoom.valueFromPercent(dynMin, dynMax, 100 - min),
+                max == -1 ? -1 : MarkerZoom.valueFromPercent(dynMin, dynMax, max)
         );
     }
 

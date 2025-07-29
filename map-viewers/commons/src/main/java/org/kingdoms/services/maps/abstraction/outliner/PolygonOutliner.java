@@ -1,7 +1,6 @@
 package org.kingdoms.services.maps.abstraction.outliner;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.kingdoms.server.location.Vector2;
 
 import java.util.*;
@@ -25,11 +24,11 @@ public final class PolygonOutliner {
     private WorldlessChunk offsetChunk;
     private boolean isOriginPoint = true;
 
-    public PolygonOutliner(ConnectedChunkCluster cluster, int chunkBlockSize) {
+    private PolygonOutliner(ConnectedChunkCluster cluster, int chunkBlockSize) {
         this.cluster = cluster;
         this.chunkBlockSize = chunkBlockSize;
 
-        WorldlessChunk rightMostBlock = Objects.requireNonNull(findUpperRightMost());
+        WorldlessChunk rightMostBlock = findUpperRightMost();
         this.originPoint = rightMostBlock.getUpperLeft(chunkBlockSize);
         chunksToVisit.add(rightMostBlock);
     }
@@ -134,7 +133,7 @@ public final class PolygonOutliner {
     /**
      * Finds the upper right-most chunk, prioritizing right-most over upper location.
      */
-    @Nullable
+    @NotNull
     private WorldlessChunk findUpperRightMost() {
         WorldlessChunk rightMostBlock = cluster.findAny();
 
@@ -154,6 +153,8 @@ public final class PolygonOutliner {
      */
     @NotNull
     public static List<Vector2> findPointsOf(ConnectedChunkCluster cluster, int chunkBlockSize) {
+        if (cluster.getChunks().isEmpty()) return Collections.emptyList();
+
         PolygonOutliner finder = new PolygonOutliner(cluster, chunkBlockSize);
         finder.findPoints();
         return new ArrayList<>(finder.poly); // Points must be ordered, we already use a LinkedHashSet

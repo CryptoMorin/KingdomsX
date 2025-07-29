@@ -56,16 +56,17 @@ public final class ConnectedChunkCluster {
      */
     @NotNull
     public static List<ConnectedChunkCluster> findClusters(@NotNull Collection<WorldlessChunk> chunks) {
-        Objects.requireNonNull(chunks);
+        Objects.requireNonNull(chunks, "Chunk clusters are null");
         if (chunks.isEmpty()) return Collections.emptyList();
 
         Set<WorldlessChunk> remainingChunks = new HashSet<>(chunks);
         List<ConnectedChunkCluster> clusters = new ArrayList<>();
-        Deque<WorldlessChunk> pendingVisits = new ArrayDeque<>(); // Can be reused for all clusters
+        Deque<WorldlessChunk> pendingVisits = new ArrayDeque<>(); // Can be reused for all clusters. Don't use Stack, they're synchronized.
 
         while (!remainingChunks.isEmpty()) {
             ConnectedChunkCluster cluster = new ConnectedChunkCluster();
 
+            // Push the first claim for the next cluster.
             pendingVisits.push(remainingChunks.iterator().next());
             do {
                 WorldlessChunk next = pendingVisits.pop();

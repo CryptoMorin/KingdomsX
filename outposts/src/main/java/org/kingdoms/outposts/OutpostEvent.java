@@ -10,8 +10,6 @@ import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.kingdoms.OutpostKingdomEntity;
@@ -28,14 +26,19 @@ import org.kingdoms.managers.entity.KingdomEntityBuilder;
 import org.kingdoms.outposts.settings.OutpostArenaMob;
 import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.settings.OutpostRewards;
+import org.kingdoms.platform.folia.FoliaUtil;
+import org.kingdoms.scheduler.DelayedRepeatingTask;
+import org.kingdoms.scheduler.ScheduledTask;
 import org.kingdoms.scheduler.TaskThreadType;
 import org.kingdoms.utils.bossbars.BossBarSession;
 import org.kingdoms.utils.display.scoreboard.XScoreboard;
 import org.kingdoms.utils.time.TimeFormatter;
+import org.kingdoms.utils.time.TimeUtils;
 
 import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 public class OutpostEvent {
@@ -49,7 +52,7 @@ public class OutpostEvent {
     private final @NonNull Map<UUID, OutpostParticipant> participants = new HashMap<>();
     private final @Nullable BossBarSession bossBar;
     private long started;
-    private @Nullable BukkitTask task;
+    private @Nullable ScheduledTask task;
     private final List<ArenaMob> arenaMobs;
     private final Map<Entity, ArenaMob> arenaMobEntities = new IdentityHashMap<>();
 
@@ -157,33 +160,30 @@ public class OutpostEvent {
     }
 
     public void start(long startTime) {
-        task = Bukkit.getScheduler().runTaskLater(Kingdoms.get(), () -> {
+        task = Kingdoms.taskScheduler().async().delayed(TimeUtils.fromTicks(startTime), () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
                 OutpostsLang.COMMAND_OUTPOST_START_STARTED.sendMessage(player, "outpost", outpost.getName());
             }
             started = System.currentTimeMillis();
 
-            task = new BukkitRunnable() {
-                @Override
-                public void run() {
-                    long passed = System.currentTimeMillis() - started;
-                    if (passed >= time) {
-                        stop(true);
-                        return;
-                    }
-
-                    if (bossBar != null) {
-                        double left = (double) passed / time;
-                        bossBar.updateTitle(new MessagePlaceholderProvider().raw("left", TimeFormatter.of(passed - time)));
-                        bossBar.setProgress(left);
-                    }
-
-                    tickArenaMob();
-                    tickParticipants();
+            task = Kingdoms.taskScheduler().async().repeating(Duration.ZERO, TimeUtils.fromTicks(1), () -> {
+                long passed = System.currentTimeMillis() - started;
+                if (passed >= time) {
+                    stop(true);
+                    return;
                 }
-            }.runTaskTimerAsynchronously(Kingdoms.get(), 0, 1);
+
+                if (bossBar != null) {
+                    double left = (double) passed / time;
+                    bossBar.updateTitle(new MessagePlaceholderProvider().raw("left", TimeFormatter.of(passed - time)));
+                    bossBar.setProgress(left);
+                }
+
+                tickArenaMob();
+                tickParticipants();
+            });
             bossBar.setVisible(true);
-        }, startTime);
+        });
     }
 
     private void tickParticipants() {
@@ -251,8 +251,8 @@ public class OutpostEvent {
                 if (lost) {
                     OutpostsLang.COMMAND_OUTPOST_JOIN_LOST.sendMessage(player, "outpost", outpost.getName());
                     if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(player.getLocation(), outpost.getRegion())) {
-                        Bukkit.getScheduler().runTask(Kingdoms.get(),
-                                () -> player.teleport(outpost.getSpawn()));
+                        Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC).of(player).execute(
+                                () -> FoliaUtil.teleport(player, outpost.getSpawn()));
                     }
                 } else
                     OutpostsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),
@@ -262,14 +262,14 @@ public class OutpostEvent {
         }
 
         // Reward animation with fireworks
-        new BukkitRunnable() {
+        Kingdoms.taskScheduler().sync().repeating(TimeUtils.fromTicks(1), TimeUtils.fromTicks(10), new Consumer<DelayedRepeatingTask>() {
             final ThreadLocalRandom random = ThreadLocalRandom.current();
             final int times = random.nextInt(10, 20);
             final FireworkEffect.Type[] types = FireworkEffect.Type.values();
             int i = 0;
 
             @Override
-            public void run() {
+            public void accept(DelayedRepeatingTask o) {
                 Location loc = outpost.getCenter().clone().add(random.nextDouble(-5, 5), random.nextDouble(-1, 3), random.nextDouble(-5, 5));
                 Firework firework = (Firework) loc.getWorld().spawnEntity(loc, XEntityType.FIREWORK_ROCKET.get());
                 FireworkMeta meta = firework.getFireworkMeta();
@@ -307,9 +307,9 @@ public class OutpostEvent {
 
                 meta.addEffects(effects);
                 firework.setFireworkMeta(meta);
-                if (i++ == times) cancel();
+                if (i++ == times) task.cancel();
             }
-        }.runTaskTimer(Kingdoms.get(), 1, 10);
+        });
 
         // Giving the actual rewards to the winner
         Kingdom kingdom = Kingdom.getKingdom(winner.getKey());
@@ -322,16 +322,16 @@ public class OutpostEvent {
 
             if (items != null && !items.isEmpty()) {
                 ThreadLocalRandom random = ThreadLocalRandom.current();
-                new BukkitRunnable() {
+                Kingdoms.taskScheduler().sync().repeating(TimeUtils.fromTicks(1), TimeUtils.fromTicks(10), new Consumer<DelayedRepeatingTask>() {
                     int i = 0;
 
                     @Override
-                    public void run() {
+                    public void accept(DelayedRepeatingTask task) {
                         Location loc = outpost.getCenter().clone().add(random.nextDouble(-5, 5), random.nextDouble(-1, 3), random.nextDouble(-5, 5));
                         loc.getWorld().dropItemNaturally(loc, items.get(i));
-                        if (++i == items.size()) cancel();
+                        if (++i == items.size()) task.cancel();
                     }
-                }.runTaskTimer(Kingdoms.get(), 1, 10);
+                });
             }
         }
 

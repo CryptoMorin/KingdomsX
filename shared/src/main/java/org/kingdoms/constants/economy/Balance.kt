@@ -5,6 +5,7 @@ import org.kingdoms.constants.DataStringRepresentation
 import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.constants.namespace.Namespaced
 import org.kingdoms.constants.namespace.NamespacedRegistry
+import org.kingdoms.utils.internal.numbers.NonFiniteNumberException
 
 object EconomyRegistry : NamespacedRegistry<Economy>()
 
@@ -68,9 +69,24 @@ interface Balance : Comparable<Number>, DataStringRepresentation {
 }
 
 class AbstractBalance(private var economy: Economy, private var value: AtomicDouble) : Balance {
+    companion object {
+        private fun ensureStandard(value: Double) {
+            if (value.isNaN() || value.isInfinite()) {
+                throw NonFiniteNumberException("Balance set to a non-standard value: $value")
+            }
+        }
+    }
+
+    init {
+        ensureStandard(value.get())
+    }
+
     override fun get(): Double = value.get()
     override fun set(value: Number): Double {
-        this.value.set(value.toDouble())
+        val newValue = value.toDouble()
+        ensureStandard(newValue)
+
+        this.value.set(newValue)
         return this.value.get()
     }
 

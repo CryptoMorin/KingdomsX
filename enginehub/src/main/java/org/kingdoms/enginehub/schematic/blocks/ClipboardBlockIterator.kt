@@ -3,6 +3,7 @@ package org.kingdoms.enginehub.schematic.blocks
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import org.kingdoms.enginehub.WorldEditAdapter.adapt
 import org.kingdoms.enginehub.WorldEditAdapter.getAbsolutePosition
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory
 import org.kingdoms.server.location.BlockVector3
 
 class ClipboardBlockIterator(
@@ -10,14 +11,15 @@ class ClipboardBlockIterator(
     private val clipboard: Clipboard,
     sortingStrategy: Comparator<BlockVector3>
 ) : Iterator<WorldEditExtentBlock> {
-    private val minimumPoint: com.sk89q.worldedit.math.BlockVector3 = clipboard.minimumPoint
-    private val maximumPoint: com.sk89q.worldedit.math.BlockVector3 = clipboard.maximumPoint
-    private val minX = minimumPoint.blockX
-    private val maxX = maximumPoint.blockX
-    private val minY = minimumPoint.blockY
-    private val maxY = maximumPoint.blockY
-    private val minZ = minimumPoint.blockZ
-    private val maxZ = maximumPoint.blockZ
+    private val minimumPoint: BlockVector3 = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard).minimumPoint
+    private val maximumPoint: BlockVector3 = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard).maximumPoint
+
+    private val minX = minimumPoint.x
+    private val maxX = maximumPoint.x
+    private val minY = minimumPoint.y
+    private val maxY = maximumPoint.y
+    private val minZ = minimumPoint.z
+    private val maxZ = maximumPoint.z
 
     // true because we don't want to proceed the coords on the first iteration.
     private var cachedHasNext: Boolean? = true
@@ -46,11 +48,10 @@ class ClipboardBlockIterator(
     override fun next(): WorldEditExtentBlock {
         if (!hasNext()) throw NoSuchElementException("No more blocks to load: $clipboard")
 
-        val next = locationIterator.next()
-        val relativePos = com.sk89q.worldedit.math.BlockVector3.at(next.x, next.y, next.z)
+        val relativePos: BlockVector3 = locationIterator.next()
         val absolutePos: BlockVector3 = relativePos.getAbsolutePosition(origin, clipboard)
 
         cachedHasNext = null
-        return WorldEditExtentBlock(clipboard, relativePos.adapt, absolutePos)
+        return WorldEditExtentBlock(clipboard, relativePos, absolutePos)
     }
 }

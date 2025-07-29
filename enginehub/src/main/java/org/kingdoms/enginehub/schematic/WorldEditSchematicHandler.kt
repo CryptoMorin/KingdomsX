@@ -5,20 +5,18 @@ import com.sk89q.worldedit.EmptyClipboardException
 import com.sk89q.worldedit.IncompleteRegionException
 import com.sk89q.worldedit.LocalSession
 import com.sk89q.worldedit.WorldEdit
-import com.sk89q.worldedit.bukkit.BukkitAdapter
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.extent.clipboard.io.BuiltInClipboardFormat
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat
 import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormats
 import com.sk89q.worldedit.regions.Region
-import com.sk89q.worldedit.session.ClipboardHolder
 import org.bukkit.entity.Player
 import org.kingdoms.enginehub.EngineHubAddon
 import org.kingdoms.enginehub.EngineHubConfig
-import org.kingdoms.enginehub.WorldEditAdapter.adapt
 import org.kingdoms.enginehub.schematic.blocks.ClipboardTransformBaker
 import org.kingdoms.enginehub.worldedit.XClipboardFormat
 import org.kingdoms.enginehub.worldedit.XClipboardFormatFactory
+import org.kingdoms.enginehub.worldedit.XWorldEditBukkitAdapterFactory
 import org.kingdoms.main.KLogger
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.utils.debugging.DebugNS
@@ -142,7 +140,7 @@ object WorldEditSchematicHandler {
     @JvmStatic
     private fun getLocalSession(player: Player): LocalSession {
         // https://worldedit.enginehub.org/en/latest/api/examples/local-sessions/
-        val actor = BukkitAdapter.adapt(player)
+        val actor = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(player)
         val manager = WorldEdit.getInstance().sessionManager
         return manager.get(actor)
     }
@@ -183,7 +181,7 @@ object WorldEditSchematicHandler {
     @JvmStatic
     fun loadSchematicIntoClipboard(player: Player, clipboard: WorldEditSchematic) {
         val localSession = getLocalSession(player)
-        localSession.clipboard = ClipboardHolder(clipboard.clipboard)
+        XWorldEditBukkitAdapterFactory.INSTANCE.setClipboard(localSession, clipboard.clipboard)
     }
 
     @JvmStatic
@@ -197,22 +195,17 @@ object WorldEditSchematicHandler {
     }
 
     @JvmStatic
-    fun getClipboardOrigin(player: Player): BlockVector3 {
-        val localSession = getLocalSession(player)
-        return localSession.clipboard.clipboard.origin.adapt
-    }
-
-    @JvmStatic
     fun getOriginOfClipboard(player: Player): BlockVector3 {
-        return getLocalSession(player).clipboard.clipboard.origin.adapt
+        return XWorldEditBukkitAdapterFactory.INSTANCE.adapt(getLocalSession(player).clipboard.clipboard).origin
     }
 
     @JvmStatic
     fun changeClipboardOrigin(player: Player, absolute: Boolean, offset: BlockVector3): BlockVector3 {
         val localSession = getLocalSession(player)
-        val clipboard = localSession.clipboard.clipboard
-        clipboard.origin = if (absolute) offset.adapt else clipboard.origin.add(offset.adapt)
-        return clipboard.origin.adapt
+        val clipboard = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(localSession.clipboard.clipboard)
+
+        clipboard.origin = if (absolute) offset else clipboard.origin.add(offset)
+        return clipboard.origin
     }
 
     @JvmStatic

@@ -42,18 +42,17 @@ public final class CrossPlatformManager {
     }
 
     public static boolean isRunningFolia() {
+        // https://docs.papermc.io/paper/dev/folia-support/#checking-for-folia
         // https://github.com/PaperMC/Folia/blob/master/patches/api/0004-Add-RegionizedServerInitEvent.patch
-        if (Reflect.classExists("io.papermc.paper.threadedregions.RegionizedServerInitEvent")) {
-            try {
-                // https://github.com/PaperMC/Folia/blob/master/patches/api/0003-Require-plugins-to-be-explicitly-marked-as-Folia-sup.patch
-                Class.forName("org.bukkit.plugin.PluginDescriptionFile").getDeclaredMethod("isFoliaSupported");
-                return true;
-            } catch (Throwable ex) {
-                return false;
-            }
+        try {
+            Class.forName("io.papermc.paper.threadedregions.RegionizedServer");
+            return true;
+        } catch (ClassNotFoundException e) {
+            return false;
         }
 
-        return false;
+        // https://github.com/PaperMC/Folia/blob/master/patches/api/0003-Require-plugins-to-be-explicitly-marked-as-Folia-sup.patch
+        // Class.forName("org.bukkit.plugin.PluginDescriptionFile").getDeclaredMethod("isFoliaSupported");
     }
 
     public static boolean isRunningSpigot() {
@@ -69,7 +68,7 @@ public final class CrossPlatformManager {
             warnings.add("Your server is running on a platform that supports Bedrock Edition. The plugin may not function properly.");
         }
         if (Platform.FOLIA.isAvailable()) {
-            warnings.add("Your server is running on Folia. The plugin has not added support for this software, and the plugin will most likely not work.");
+            warnings.add("Your server is running on Folia. Folia support is currently experimental, and some of the plugin's features might not work properly.");
         }
 
         return warnings;

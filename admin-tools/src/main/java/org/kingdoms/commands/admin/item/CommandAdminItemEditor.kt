@@ -730,7 +730,8 @@ class ItemEditor(
         }
 
         gui.option("remove-all").onNormalClicks { ->
-            meta.removeItemFlags(*XItemFlag.getValues().stream()
+            meta.removeItemFlags(
+                *XItemFlag.getValues().stream()
                 .filter { it.isSupported }.map { it.get() }
                 .collect(Collectors.toList()).toTypedArray())
             item.itemMeta = meta

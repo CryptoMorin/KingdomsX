@@ -5,7 +5,6 @@ import com.cryptomorin.xseries.reflection.minecraft.MinecraftClassHandle;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftPackage;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.kingdoms.nbt.NBTConverter;
 import org.kingdoms.nbt.NBTTagConverterRegistry;
 import org.kingdoms.nbt.NBTTagId;

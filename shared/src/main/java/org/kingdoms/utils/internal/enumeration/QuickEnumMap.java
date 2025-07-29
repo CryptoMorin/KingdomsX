@@ -109,7 +109,7 @@ public class QuickEnumMap<K extends Enum<K>, V> implements Map<K, V> {
 
     /**
      * {@inheritDoc}
-     *
+     * <p>
      * This implementation returns {@code size() == 0}.
      */
     @Override
@@ -222,7 +222,9 @@ public class QuickEnumMap<K extends Enum<K>, V> implements Map<K, V> {
      */
     @Override
     public void putAll(Map<? extends K, ? extends V> m) {
-        throw new UnsupportedOperationException();
+        for (Entry<? extends K, ? extends V> entry : m.entrySet()) {
+            vals[entry.getKey().ordinal()] = entry.getValue();
+        }
     }
 
     @Override

@@ -101,7 +101,9 @@ class Vector3Location(
     fun subtract(other: BlockPoint3D) = subtract(other.x, other.y, other.z)
     fun subtract(x: Number, y: Number, z: Number) = simpleAdd(-x.toDouble(), -y.toDouble(), -z.toDouble())
 
-    fun toBlockLocation() = BlockLocation3.of(world, LocationUtils.toBlock(x), LocationUtils.toBlock(y), LocationUtils.toBlock(z))
+    fun toBlockLocation() =
+        BlockLocation3.of(world, LocationUtils.toBlock(x), LocationUtils.toBlock(y), LocationUtils.toBlock(z))
+
     fun toBlockVector() = BlockVector3.of(LocationUtils.toBlock(x), LocationUtils.toBlock(y), LocationUtils.toBlock(z))
     fun toVector() = Vector3.of(x, y, z)
 

@@ -131,7 +131,7 @@ class TaskAnnotationProcessor<C : TaskContext> @JvmOverloads constructor(
 
             if (lastOutput !== null) {
                 // if (context is OutputTaskContext<*>) {
-                    (context as OutputTaskContext<Any>).output = lastOutput
+                (context as OutputTaskContext<Any>).output = lastOutput
                 // }
             }
         }

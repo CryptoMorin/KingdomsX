@@ -26,22 +26,42 @@
     <name>: str
     <build-duration-factor>: str
     <durability-factor>: int
-    <skull-1>: str
-    <skull-2>: str
-    <skull-3>: str
+    <skull-1>: SkinTexture
+    <skull-2>: SkinTexture
+    <skull-3>: SkinTexture
 
+# Schema is a block pattern describing the blocks and their positions that must be placed
+# around where you want to place your building.
+# in order to actually place it. Not having the correct blocks or position will prevent
+# you from placing down buildings.
+# It's an interactive way to allow your players to build parts of the buildings themselves.
 schema:
   1:
+    # Where is the xz center of the pattern?
+    # You determine this based on the pattern you put in "blocks"
     origin: [ 1, 1 ]
+
+    # The block pattern. "x" represents any.
+    # Other symbols must be manually mapped under "mappings" option.
+    # * The "-1" here refers to the y position of the pattern.
+    #   The reason why it's -1 here is that when you want to place
+    #   your turrets, you right-click on top of a fence, and you want to
+    #   look at the layer under the turret itself, which is where the fence is.
+    # * The pattern itself is the xz of the blocks.
     blocks:
       -1: |
         xxx
         xFx
         xxx
+
+    # Mapping symbols to blocks.
     mappings:
       F:
+        # Message showed for errors.
         displayname: Fence
         mismatch-message: '{$$building.schema.mismatch.fence}'
+
+        # List of blocks that this symbol represents.
         accepted-materials:
           - "REGEX:\\w+_FENCE$"
           - "REGEX:(POLISHED_(BLACKSTONE|DEEPSLATE|BLACKSTONE_BRICK)|ANDESITE|BLACKSTONE|MUD_BRICK|BRICK|COBBLESTONE|MOSSY_COBBLESTONE|MOSSY_STONE_BRICK|COBBLED_DEEPSLATE|PRISMARINE|DEEPSLATE_TILE|END_STONE_BRICK|DIORITE|NETHER_BRICK|RED_NETHER_BRICK|GRANITE|SANDSTONE|RED_SANDSTONE|STONE_BRICK)_WALL"

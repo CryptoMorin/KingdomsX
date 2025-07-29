@@ -17,10 +17,12 @@ repositories {
 
 dependencies {
     compileOnly(project(":platform"))
+    compileOnly(project(":shared"))
 
+    // https://repo.papermc.io/service/rest/repository/browse/maven-public/dev/folia/folia-api/
     // https://github.com/PaperMC/Folia/blob/master/README.md#the-new-rules
     // https://github.com/PaperMC/Folia
-    compileOnly("dev.folia:folia-api:1.20.1-R0.1-SNAPSHOT")
+    compileOnly("dev.folia:folia-api:1.21.6-R0.1-SNAPSHOT")
 }
 
 tasks.shadowJar {

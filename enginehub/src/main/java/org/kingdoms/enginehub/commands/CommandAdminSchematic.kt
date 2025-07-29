@@ -27,7 +27,7 @@ class CommandAdminSchematic(parent: KingdomsParentCommand) : KingdomsParentComma
         fun showTip(context: CommandContext) {
             val player = context.senderAsPlayer()
             if (RECEIVED_TIPS.add(player.uniqueId)) {
-                Kingdoms.taskScheduler().sync().delayed(Duration.ofSeconds(15)) {
+                Kingdoms.taskScheduler().sync().delayed(Duration.ofSeconds(15)) { ->
                     context.sendMessage(EngineHubLang.COMMAND_ADMIN_SCHEMATIC_TIPS_SIDE_EFFECTS)
                 }
             }

@@ -49,10 +49,10 @@ build-in-claimed-only:
   whitelist:
     place:
       (type): set
-      (elements): MaterialMatcher
+      (elements): StringMatcher<Material>
     break:
       (type): set
-      (elements): MaterialMatcher
+      (elements): StringMatcher<Material>
 
   unclaimed-build-radius: int
 
@@ -108,7 +108,7 @@ restoration:
   enabled: bool
   ignored-blocks:
     (type): set
-    (elements): MaterialMatcher
+    (elements): StringMatcher<Material>
   max-active-restoring-chunks:
     (type): int
     (min): 1

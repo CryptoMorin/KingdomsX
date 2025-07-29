@@ -33,7 +33,7 @@ public final class NegativeSpaceOutliner {
         if (cluster.size() < 8) return Collections.emptyList();
 
         NegativeSpaceOutliner negativeSpaceFinder = new NegativeSpaceOutliner(cluster);
-        Deque<WorldlessChunk> potentialNSpace = negativeSpaceFinder.sortClusterIntoSpaces();
+        List<WorldlessChunk> potentialNSpace = negativeSpaceFinder.sortClusterIntoSpaces();
         return negativeSpaceFinder.propagateFreeSpaces(potentialNSpace);
     }
 
@@ -41,11 +41,11 @@ public final class NegativeSpaceOutliner {
      * Sort the chunk cluster into free space and potential negative space.
      * It is potential negative space because some negative spaces may be connected to free spaces.
      */
-    private Deque<WorldlessChunk> sortClusterIntoSpaces() {
-        Deque<WorldlessChunk> potentialNSpace = new ArrayDeque<>();
+    private List<WorldlessChunk> sortClusterIntoSpaces() {
+        List<WorldlessChunk> potentialNSpace = new ArrayList<>();
 
         // Find the edge corners of the cluster (corners don't need to be in cluster)
-        ChunkClusterExtent edges = cluster.getChunks().stream().collect(ChunkClusterExtent.collect());
+        ChunkClusterExtent edges = ChunkClusterExtent.getExtent(cluster.getChunks());
         final int minX = edges.minX, maxX = edges.maxX;
         final int minZ = edges.minZ, maxZ = edges.maxZ;
 
@@ -93,7 +93,6 @@ public final class NegativeSpaceOutliner {
                                     || hasFreeSpace(chunk))
                                 freeSpaces.add(chunk);
                             else {
-                                // Mark it as a possible negative space
                                 potentialNSpace.add(chunk);
                             }
                         }
@@ -120,20 +119,21 @@ public final class NegativeSpaceOutliner {
      * @return list of actual negative space.
      */
     @Contract(mutates = "param1")
-    private Collection<WorldlessChunk> propagateFreeSpaces(Deque<WorldlessChunk> possibleNegativeSpaces) {
+    private Collection<WorldlessChunk> propagateFreeSpaces(List<WorldlessChunk> possibleNegativeSpaces) {
         if (possibleNegativeSpaces.isEmpty())
             return Collections.emptyList();
 
         // Potential Negative Spaces are ordered from min X min Z to max X max Z.
         Set<WorldlessChunk> negativeSpace = new HashSet<>(possibleNegativeSpaces.size());
-        Deque<WorldlessChunk> newFreeSpaces = new ArrayDeque<>();
+        Deque<WorldlessChunk> newFreeSpaces = new ArrayDeque<>(freeSpaces.size());
 
         // First-pass, check if any potential negative space is adjacent to a free space.
         // If it is, convert it to a free space, and add it to the list to be propagated
         // in the second-pass.
-        while (!possibleNegativeSpaces.isEmpty()) {
-            // Pop the negative space with min X min Z (going from -z -> z, -x -> x)
-            WorldlessChunk chunk = possibleNegativeSpaces.pollLast();
+        for (int i = possibleNegativeSpaces.size() - 1; i >= 0; i--) {
+            // Reversed because we sorted the cluster going from:
+            //      max Z -> min Z     |     max X -> min X
+            WorldlessChunk chunk = possibleNegativeSpaces.get(i);
 
             // Check if the potential negative space is adjacent to a free space
             // or is above an empty space (hits the min Z border)
@@ -147,23 +147,18 @@ public final class NegativeSpaceOutliner {
 
         // Perform second-pass only if there are new free spaces.
         if (!newFreeSpaces.isEmpty()) {
-            // Checks if a location is a negative space and convert it to a free space.
 
             // Second-pass
             // Propagate all the converted new free spaces to adjacent potential negative spaces.
+            // Checks if a location is a negative space and convert it to a free space.
             while (!newFreeSpaces.isEmpty()) {
                 WorldlessChunk free = newFreeSpaces.pop();
 
                 // Do a surrounding check on the specificed chunk
-                for (int xOffset = -1; xOffset <= 1; ++xOffset) {
-                    for (int zOffset = -1; zOffset <= 1; ++zOffset) {
-                        if (xOffset == 0 && zOffset == 0) continue;
-
-                        WorldlessChunk up = free.offset(xOffset, zOffset);
-                        if (negativeSpace.contains(up)) {
-                            negativeSpace.remove(up);
-                            newFreeSpaces.push(up);
-                        }
+                for (ChunkDirection direction : ChunkDirection.DIRECTIONS) {
+                    WorldlessChunk up = free.offset(direction);
+                    if (negativeSpace.remove(up)) {
+                        newFreeSpaces.push(up);
                     }
                 }
             }
@@ -181,13 +176,9 @@ public final class NegativeSpaceOutliner {
     private boolean hasFreeSpace(WorldlessChunk chunk) {
         if (freeSpaces.isEmpty()) return false;
 
-        for (int xOffset = -1; xOffset <= 1; ++xOffset) {
-            for (int zOffset = -1; zOffset <= 1; ++zOffset) {
-                if (xOffset == 0 && zOffset == 0) continue;
-
-                WorldlessChunk offSetHash = chunk.offset(xOffset, zOffset);
-                if (freeSpaces.contains(offSetHash)) return true;
-            }
+        for (ChunkDirection direction : ChunkDirection.DIRECTIONS) {
+            WorldlessChunk offSetHash = chunk.offset(direction);
+            if (freeSpaces.contains(offSetHash)) return true;
         }
 
         return false;
@@ -200,7 +191,7 @@ public final class NegativeSpaceOutliner {
      * - Is not a potential negative space.
      */
     private boolean isEmptyBelow(Collection<WorldlessChunk> negSpace, WorldlessChunk chunk) {
-        WorldlessChunk belowHash = chunk.offset(0, -1);
+        WorldlessChunk belowHash = chunk.offset(ChunkDirection.DOWN);
         return !negSpace.contains(belowHash) && !cluster.has(belowHash);
     }
 

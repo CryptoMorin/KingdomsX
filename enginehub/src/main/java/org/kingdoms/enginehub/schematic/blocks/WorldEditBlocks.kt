@@ -11,7 +11,8 @@ open class WorldEditExtentBlock(
     val relativePosition: BlockVector3,
     val absolutePosition: BlockVector3
 ) {
-    val block: BaseBlock get() = extent.getFullBlock(relativePosition.adapt)
+    val block: BaseBlock
+        get() = extent.getFullBlock(relativePosition.adapt)
 }
 
 open class FunctionalWorldEditExtentBlock(

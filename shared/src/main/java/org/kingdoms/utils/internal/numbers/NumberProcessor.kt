@@ -85,7 +85,9 @@ class NumberProcessor(val string: String) {
             fail(NumberFailReason.INTEGER_ONLY)
         }
 
-        if (_number <= _number.type.minValue.abstractNumber || _number >= _number.type.maxValue.abstractNumber) fail(NumberFailReason.OUT_OF_BOUNDS)
+        if (_number <= _number.type.minValue.abstractNumber || _number >= _number.type.maxValue.abstractNumber) fail(
+            NumberFailReason.OUT_OF_BOUNDS
+        )
         if (constraints.contains(NumberConstraint.POSITIVE) && _number <= of(0)) fail(NumberFailReason.POSITIVE)
         if (constraints.contains(NumberConstraint.ZERO_OR_POSITIVE) && _number < of(0)) fail(NumberFailReason.ZERO_OR_POSITIVE)
     }

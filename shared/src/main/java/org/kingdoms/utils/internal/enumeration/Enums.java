@@ -39,4 +39,12 @@ public final class Enums {
         }
         return optional.orNull();
     }
+
+    public static <T extends Enum<T>> T optional(Class<T> enumClass, String value) {
+        try {
+            return Enum.valueOf(enumClass, value);
+        } catch (IllegalArgumentException ex) {
+            return null;
+        }
+    }
 }

@@ -132,7 +132,7 @@ public class QuickEnumSet<E extends Enum<E>> extends AbstractSet<E> {
         @SuppressWarnings("unchecked") Collection<E> ce = (Collection<E>) c;
         for (E e : ce) {
             boolean contained = elements[e.ordinal()];
-            if (!contained) {
+            if (contained) {
                 changed = true;
                 elements[e.ordinal()] = false;
                 size--;
