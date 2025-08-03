@@ -45,6 +45,9 @@ class AdminToolsAddon : JavaPlugin(), Addon {
         CommandAdminMissingGUIs()
         CommandAdminEntity()
         CommandAdminGUI()
+        CommandAdminSearchConfig()
+        CommandAdminResetConfigs()
+        CommandAdminTurret()
     }
 
     override fun onDisable() {

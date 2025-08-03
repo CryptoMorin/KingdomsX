@@ -74,6 +74,28 @@ public enum AdminToolsLang implements DefinedMessenger {
     COMMAND_ADMIN_GUI_DISABLED("{$p}GUI mode is now {$e}disabled{$p}."),
     COMMAND_ADMIN_GUI_DONE("{$p}Done. Saved the config to the plugin's folder in a file named {$s}hover:{%file%;&7Click to open;/k admin openfile %file%}"),
 
+    COMMAND_ADMIN_RESETCONFIGS_DESCRIPTION("{$s}Deletes all configuration related files. Including GUIs, downloaded language packs and the main configs."),
+    COMMAND_ADMIN_RESETCONFIGS_CONFIRM("{$e}Do the command again within 5 seconds to confirm that you want to reset all configs.\n" +
+            "This will delete downloaded language packs, all GUIs, all configuration files and all time related caches such as daily checks.\n" +
+            "This will not delete your data, logs or backups.\n" +
+            "This command will restart your server automatically and once you start the server back, it'll reset your configs."),
+    COMMAND_ADMIN_RESETCONFIGS_ALREADY("{$e}Plugin is already in the process of resetting configs..."),
+    COMMAND_ADMIN_RESETCONFIGS_CONSOLE_ONLY("&4This command can only be performed from console."),
+    COMMAND_ADMIN_RESETCONFIGS_REQUESTED("{$p}The plugin will reset all configs after the restart. Stopping the server in 10 seconds..."),
+    COMMAND_ADMIN_RESETCONFIGS_RESETTING("{$e}Resetting all kingdoms configs... Please do not do anything including running commands or shutting down the server."),
+
+    COMMAND_ADMIN_SEARCHCONFIG_DESCRIPTION("{$s}Searches all the main configs excluding GUI files and the language file for a certain option. " +
+            "The given parameter supports RegEx patterns."),
+    COMMAND_ADMIN_SEARCHCONFIG_USAGE("&4Usage{$colon} {$e}/k admin searchConfig {$p}<regex> {$s}[file regex]"),
+    COMMAND_ADMIN_SEARCHCONFIG_NO_RESULTS("{$e}No results found for the given pattern{$colon} {$es}%pattern%"),
+    COMMAND_ADMIN_SEARCHCONFIG_FOUND("{$p}The following were found for the given pattern{$colon} {$es}%pattern%"),
+    COMMAND_ADMIN_SEARCHCONFIG_ENTRY("{$p}In file {$s}%path%{$colon}"),
+
+    COMMAND_ADMIN_TURRET_DESCRIPTION("{$s}Remove or change/update certain turrets.", 1, 2, 3),
+    COMMAND_ADMIN_TURRET_USAGE("{$usage}admin turret {$p}<change | remove> <style> &9[replacement style]", 1, 2, 3),
+    COMMAND_ADMIN_TURRET_UNKNOWN_STYLE("{$e}Unknown turret style{$colon} {$es}%style%\n{$e}Look in your {$es}Turrets {$e}folder to see all the turret style names.", 1, 2, 3),
+    COMMAND_ADMIN_TURRET_SUCCESS("{$p}A total of {$s}%amount% {$p}turrets have been processed.", 1, 2, 3),
+
     ITEM_EDITOR_NAME_ENTER("{$p}Enter the item's name {$cancel}", 2, 3),
     ITEM_EDITOR_LORE_ENTER("{$p}Enter the item's lore separated by newlines {$cancel}", 2, 3),
     ITEM_EDITOR_MATERIAL_ENTER("{$p}Enter the item's material {$cancel}", 2, 3),

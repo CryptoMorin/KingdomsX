@@ -7,6 +7,10 @@ public class UnconsumedRunnable<T> implements Consumer<T> {
 
     public UnconsumedRunnable(Runnable runnable) {this.runnable = runnable;}
 
+    public Runnable getRunnable() {
+        return runnable;
+    }
+
     @Override
     public void accept(T t) {
         runnable.run();

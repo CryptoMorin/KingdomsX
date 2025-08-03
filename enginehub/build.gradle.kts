@@ -4,7 +4,7 @@ import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons
-    spigotapi
+    spigot
     addon
     sublibs
     shadowed

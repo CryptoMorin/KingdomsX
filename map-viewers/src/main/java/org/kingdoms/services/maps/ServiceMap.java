@@ -379,7 +379,7 @@ public final class ServiceMap {
         for (MapServiceProvider api : APIS) api.removeIcon(type, hashed, location);
     }
 
-    public static void removeHomeIcon(MarkerType type, @NotNull Location location) {
+    public static void removeHomeIcon(MarkerType type, @NotNull org.kingdoms.server.location.Location location) {
         Objects.requireNonNull(location, "Cannot remove icon from null location");
         removeIcon(type, SimpleLocation.of(location));
     }
@@ -401,7 +401,7 @@ public final class ServiceMap {
         }
     }
 
-    public static void updateHomeIcon(MarkerType markerType, @NotNull Location home, boolean national) {
+    public static void updateHomeIcon(MarkerType markerType, @NotNull org.kingdoms.server.location.Location home, boolean national) {
         updateIcon(markerType, SimpleLocation.of(home), national ? "national-spawn" : "home", null);
     }
 

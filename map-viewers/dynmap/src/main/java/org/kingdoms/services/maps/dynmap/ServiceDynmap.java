@@ -5,6 +5,7 @@ import org.bukkit.entity.Player;
 import org.dynmap.DynmapCommonAPI;
 import org.dynmap.DynmapCommonAPIListener;
 import org.dynmap.markers.*;
+import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.server.location.Vector2;
 import org.kingdoms.server.location.Vector3Location;

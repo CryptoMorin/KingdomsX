@@ -43,8 +43,8 @@ interface AnyNumber : Comparable<AnyNumber>, DataStringRepresentation {
 
         @JvmStatic fun of(number: Number): AnyNumber = when (number) {
             is Int -> _Int(number)
-            is Float -> _Float(number)
             is Double -> _Double(number)
+            is Float -> _Float(number)
             is Long -> _Long(number)
             else -> throw UnsupportedOperationException("Unsupported number format: $number (${number.javaClass})")
         }

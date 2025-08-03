@@ -10,6 +10,7 @@ import org.kingdoms.constants.group.Group;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.group.Nation;
 import org.kingdoms.constants.land.abstraction.KingdomBuildingType;
+import org.kingdoms.constants.land.location.SimpleLocation;
 import org.kingdoms.constants.land.structures.Structure;
 import org.kingdoms.constants.land.structures.StructureType;
 import org.kingdoms.constants.land.structures.type.StructureTypePowercell;
@@ -27,6 +28,7 @@ import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.events.members.KingdomJoinEvent;
 import org.kingdoms.events.members.KingdomLeaveEvent;
+import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.platform.bukkit.adapters.BukkitAdapter;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerListenerType;
@@ -137,12 +139,12 @@ public final class MapEventHandlers implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onClaim(KingdomSetHomeEvent event) {
+    public void onHomeChange(KingdomSetHomeEvent event) {
         changeHome(event, event.getKingdom());
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onClaim(NationSetSpawnEvent event) {
+    public void onHomeChange(NationSetSpawnEvent event) {
         changeHome(event, event.getNation());
     }
 
@@ -165,9 +167,9 @@ public final class MapEventHandlers implements Listener {
     private static void changeHome(LocationChangeEvent event, Group group) {
         MarkerListenerType markerListenerType = event instanceof KingdomSetHomeEvent ? MarkerListenerType.KINGDOMS : MarkerListenerType.NATIONS;
         if (event.getOldLocation() != null)
-            iconEvent(markerListenerType, group, markerType -> ServiceMap.removeHomeIcon(markerType, BukkitAdapter.adapt(event.getOldLocation())));
+            iconEvent(markerListenerType, group, markerType -> ServiceMap.removeHomeIcon(markerType, event.getOldLocation()));
         if (event.getNewLocation() != null)
-            iconEvent(markerListenerType, group, markerType -> ServiceMap.updateHomeIcon(markerType, BukkitAdapter.adapt(event.getNewLocation()), false));
+            iconEvent(markerListenerType, group, markerType -> ServiceMap.updateHomeIcon(markerType, event.getNewLocation(), false));
 
         ServiceMap.update();
     }
@@ -258,7 +260,7 @@ public final class MapEventHandlers implements Listener {
         if (kingdom.getHome() != null) {
             // Structures are removed by silent unclaim
             iconEvent(MarkerListenerType.KINGDOMS, kingdom, markerType ->
-                    ServiceMap.removeHomeIcon(markerType, BukkitAdapter.adapt(kingdom.getHome())));
+                    ServiceMap.removeHomeIcon(markerType, kingdom.getHome()));
         }
 
         powercell(pc -> ServiceMap.clearLands(pc, kingdom));
@@ -273,7 +275,7 @@ public final class MapEventHandlers implements Listener {
             iconEvent(MarkerListenerType.NATIONS, nation, markerType -> ServiceMap.removeIcon(markerType, nation.getNexus()));
         }
         if (nation.getHome() != null) {
-            iconEvent(MarkerListenerType.NATIONS, nation, markerType -> ServiceMap.removeHomeIcon(markerType, BukkitAdapter.adapt(nation.getHome())));
+            iconEvent(MarkerListenerType.NATIONS, nation, markerType -> ServiceMap.removeHomeIcon(markerType, nation.getHome()));
         }
         ServiceMap.update();
     }

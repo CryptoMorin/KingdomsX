@@ -18,6 +18,7 @@ import org.kingdoms.constants.land.structures.Structure;
 import org.kingdoms.constants.namespace.Namespace;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
+import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.managers.invasions.Invasion;
 import org.kingdoms.platform.bukkit.adapters.BukkitAdapter;
@@ -109,7 +110,7 @@ public final class MapServiceProvider {
         api.update();
     }
 
-    private static Vector3Location center(SimpleLocation location) {
+    public static Vector3Location center(SimpleLocation location) {
         return Vector3Location.of(
                 Kingdoms.getServerX().getWorldRegistry().getWorld(location.getWorld()),
                 location.getX() + 0.5, location.getY() + 0.5, location.getZ() + 0.5
@@ -122,8 +123,9 @@ public final class MapServiceProvider {
         if (kingdom == null) return;
 
         for (Structure structure : land.getStructures().values()) updateStructure(markerType, structure);
-        if (kingdom.getHome() != null && SimpleChunkLocation.of(kingdom.getHome()).equals(land.getLocation()))
+        if (kingdom.getHome() != null && SimpleChunkLocation.of(kingdom.getHome()).equals(land.getLocation())) {
             updateHomeIcon(markerType, SimpleLocation.of(kingdom.getHome()), false);
+        }
 
         Nation nation = kingdom.getNation();
         if (nation != null && nation.getHome() != null && SimpleChunkLocation.of(nation.getHome()).equals(land.getLocation()))

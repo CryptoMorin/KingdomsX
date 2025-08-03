@@ -4,7 +4,8 @@ import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
 
 plugins {
     commons
-    spigotapi
+    // For ItemEditor's GameProfile authlib
+    spigot
     addon
     sublibs
     shadowed
@@ -12,7 +13,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "0.2.0"
+version = "1.0.0"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
 kingdomsAddon {
@@ -25,7 +26,6 @@ dependencies {
     compileOnly(project(":shared"))
     compileOnly(project(":platform:bukkit"))
     compileOnly(KingdomsGradleCommons.XSERIES)
-    compileOnly(KingdomsGradleCommons.Spigot.LATEST) // For ItemEditor's GameProfile authlib
 }
 
 tasks.shadowJar {
