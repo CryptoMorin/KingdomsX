@@ -47,7 +47,7 @@ class GitHubCloningMethod(Enum):
     BUILT_IN = ('built-in', "Uses built-in script to download files. May get rate-limited easily.")
     DL_DIR_GH_IO = ('download-directory.github.io', "An external website that also downloads files individually, may get rate-limited easier but has a faster download speed, specially if your internet is slow.")
 
-KINGDOMS_REAMPPER_URL = f'https://github.com/CryptoMorin/KingdomsX/raw/refs/heads/master/kingdoms-remapper/{KINGDOMS_REMAPPER_FILE}'
+KINGDOMS_REAMPPER_URL = f'https://github.com/CryptoMorin/KingdomsX/raw/b3289b43114cb28c273b74aa696c753ee8b61f2d/kingdoms-remapper/{KINGDOMS_REMAPPER_FILE}'
 KINGDOMS_MAVEN_BASE_URL = 'https://repo1.maven.org/maven2/com/github/cryptomorin/kingdoms/'
 XSERIES_MAVEN_BASE_URL = 'https://repo1.maven.org/maven2/com/github/cryptomorin/XSeries/'
 
@@ -196,6 +196,7 @@ def download_kingdoms_remapper() -> None:
     try:
         with open(KINGDOMS_REMAPPER_FILE, 'wb') as writer:
             shutil.copyfileobj(urlopen(KINGDOMS_REAMPPER_URL), writer)
+        logger.info(f"Successfully downloaded {Colors.SECONDARY}{KINGDOMS_REMAPPER_FILE}")
     except Exception as e:
         raise GradleProcessingError(f"Couldn't download kingdoms remapper from {KINGDOMS_REAMPPER_URL}") from e
 

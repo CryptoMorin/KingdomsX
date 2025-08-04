@@ -55,7 +55,7 @@ and send Pull Requests in a proper way.
 3. Lastly you need to download [Python (at least v3.6.0 or above)](https://www.python.org/downloads/)
    and run
    [KingdomsX Source Tool.py](https://github.com/CryptoMorin/KingdomsX/raw/refs/heads/master/KingdomsX%20Source%20Tool.py)
-   which handles transforming the build files into usable local projects.
+   (Download it by Ctrl+S when on the page) which handles transforming the build files into usable local projects.
    You need internet access during the duration of the source tool's generation process to download the necessary files.
 
 > [!WARNING]
