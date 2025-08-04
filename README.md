@@ -36,31 +36,33 @@ However, the configs, GUIs, language files and addons are open source and any co
 
 #### Contributing to add-ons
 
-Kingdoms uses a wide network of Gradle built systems. Everything from building the project to publishing it to platforms
-and sharing data between addons and how addons are downloaded from is configured by the Gradle build itself, but however
-unfortunately because the plugin itself is not open source, contributing to addons will be challenging as the build
-files themselves reference certain settings and plugins that are not open source.
+Kingdoms relies on a complex network of systems built with Gradle. This includes everything from building and publishing
+the project to various platforms to managing data sharing between add-ons and configuring how add-ons are downloaded.
+However, since the core plugin is not open source, contributing to add-ons can be challenging because the build files
+reference settings and plugins that are not publicly available.
 
-This guide helps to configure the `build.gradle` of the specific add-on in a way so you can build the project
-successfully
-and send Pull Requests in a proper way.
+This guide explains how to configure the `build.gradle.kts` file for add-ons, enabling you to build the project
+without issues and submit pull requests effectively.
 
-1. First you need to familiarize yourself with both [Gradle](https://gradle.org/) and [Kotlin](https://kotlinlang.org/)
+1. Familiarize yourself with both [Gradle](https://gradle.org/) and [Kotlin](https://kotlinlang.org/)
    since the project doesn't only use Kotlin for Gradle,
-   but it also uses Kotlin heavily in the add-on code as well.
-2. You need to clone that specific add-on you want using a 3rd party website such
-   as [download-directory.github.io](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FCryptoMorin%2FKingdomsX%2Ftree%2Fmaster%2Fenginehub)
-   or [downgit.github.io](https://downgit.github.io/#/home?url=https:%2F%2Fgithub.com%2FCryptoMorin%2FKingdomsX%2Ftree%2Fmaster%2Fenginehub).
-   Because GitHub doesn't provide a way to download a specific folder only.
-3. Lastly you need to download [Python (at least v3.6.0 or above)](https://www.python.org/downloads/)
-   and run
+   but it also uses Kotlin extensively in the add-on code.
+2. Download [Python (at least v3.6.0 or above)](https://www.python.org/downloads/)
+3. Download and place
    [KingdomsX Source Tool.py](https://github.com/CryptoMorin/KingdomsX/raw/refs/heads/master/KingdomsX%20Source%20Tool.py)
-   (Download it by Ctrl+S when on the page) which handles transforming the build files into usable local projects.
+   in a separate folder, this will be the add-ons root folder.
+   (Download it using **Ctrl+S** when on the page) which handles transforming the build files into usable local
+   projects.
    You need internet access during the duration of the source tool's generation process to download the necessary files.
+4. Open the folder your favourite IDE (IntelliJ is preferred)
 
 > [!WARNING]
 > There are very rare cases where the Kotlin compiled code can have broken metadata
 > which causes named parameters, default method members or static methods to stop
 > working.
+>
 > Also, addons that require other add-ons like **Outposts** which requires **EngineHub** need to
 > have their projects built separatedly first.
+>
+> To submit pull requests, you may need to add additional rules to your `.gitignore` since the other
+> add-ons are most likely not preset in your root folder.
