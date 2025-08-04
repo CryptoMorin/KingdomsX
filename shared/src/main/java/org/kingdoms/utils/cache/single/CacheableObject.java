@@ -22,7 +22,7 @@ public interface CacheableObject<T> extends Supplier<T> {
      * If the object is not cached, it will be.
      * <p>
      * Equivalent to:
-     * <p><blockquote><pre>
+     * <blockquote><pre>
      *     Objects.equals(get(), other);
      * </pre></blockquote>
      */
@@ -32,7 +32,7 @@ public interface CacheableObject<T> extends Supplier<T> {
 
     /**
      * Equivalent to:
-     * <p><blockquote><pre>
+     * <blockquote><pre>
      *     get() == null
      * </pre></blockquote>
      *
@@ -44,7 +44,7 @@ public interface CacheableObject<T> extends Supplier<T> {
 
     /**
      * Equivalent to:
-     * <p><blockquote><pre>
+     * <blockquote><pre>
      *     get() != null
      * </pre></blockquote>
      *
