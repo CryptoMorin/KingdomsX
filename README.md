@@ -54,15 +54,16 @@ without issues and submit pull requests effectively.
    (Download it using **Ctrl+S** when on the page) which handles transforming the build files into usable local
    projects.
    You need internet access during the duration of the source tool's generation process to download the necessary files.
-4. Open the folder your favourite IDE (IntelliJ is preferred)
+   This tool will handle everything, from downloading the project to remapping kingdom libraries.
+4. Open the folder with your favourite IDE (IntelliJ is preferred.)
 
 > [!WARNING]
-> There are very rare cases where the Kotlin compiled code can have broken metadata
-> which causes named parameters, default method members or static methods to stop
-> working.
+> * There are very rare cases where the Kotlin compiled code can have broken metadata
+>   which causes named parameters, default method members or static methods to stop
+>   working.
 >
-> Also, addons that require other add-ons like **Outposts** which requires **EngineHub** need to
-> have their projects built separatedly first.
+> * Add-ons that require other add-ons like **Outposts** which requires **EngineHub** need to
+>   have their projects built separatedly first.
 >
-> To submit pull requests, you may need to add additional rules to your `.gitignore` since the other
-> add-ons are most likely not preset in your root folder.
+> * To submit pull requests, you may need to add additional rules to your `.gitignore` since the other
+>   add-ons are most likely not preset in your root folder.
