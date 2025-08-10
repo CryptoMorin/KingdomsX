@@ -182,7 +182,8 @@ public class CommandAdminGUI extends KingdomsCommand implements Listener {
             if (com.google.common.base.Strings.isNullOrEmpty(section.getString("name"))) section.set("name", "");
             else {
                 String optionName = section.getString("name");
-                MessageCompiler compiled = new MessageCompiler(optionName, new MessageCompilerSettings(false, false, true, false, false, null));
+                MessageCompiler compiled = new MessageCompiler(optionName,
+                        MessageCompilerSettings.none().validate().colorize().hovers());
                 boolean containsFormatting = compiled.compileObject().hasPiece(x -> x instanceof MessagePiece.Color || x instanceof MessagePiece.Hover);
                 section.set("name", (containsFormatting ? "" : "{$p}") + optionName);
             }

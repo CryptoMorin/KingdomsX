@@ -48,6 +48,7 @@ class AdminToolsAddon : JavaPlugin(), Addon {
         CommandAdminSearchConfig()
         CommandAdminResetConfigs()
         CommandAdminTurret()
+        CommandAdminPurge()
     }
 
     override fun onDisable() {

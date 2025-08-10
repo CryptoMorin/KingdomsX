@@ -64,8 +64,3 @@ dependencies {
         compileOnly("com.sk89q.worldedit:worldedit-bukkit:6.1.5")
     }
 }
-
-tasks.shadowJar {
-    excludeKotlin()
-    relocateLibs()
-}

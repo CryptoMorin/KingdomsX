@@ -10,7 +10,7 @@ import org.kingdoms.constants.land.structures.Structure
 import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.general.GroupRelationshipChangeEvent
 import org.kingdoms.events.general.upgrade.GroupUpgradeToggleEvent
-import org.kingdoms.events.items.KingdomItemPlaceEvent
+import org.kingdoms.events.items.KingdomBuildingPlaceEvent
 import org.kingdoms.events.lands.ClaimLandEvent
 import org.kingdoms.events.members.NationJoinEvent
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang
@@ -65,7 +65,7 @@ class TermManager : Listener {
     }
 
     @EventHandler(ignoreCancelled = true)
-    fun onKingdomItemPlace(event: KingdomItemPlaceEvent<*>) {
+    fun onKingdomItemPlace(event: KingdomBuildingPlaceEvent<*>) {
         val kingdom = event.getKingdomBlock().land?.kingdom ?: return
         val contract = kingdom.getAcceptedPeaceTreaty() ?: return
 

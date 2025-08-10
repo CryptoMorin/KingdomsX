@@ -10,7 +10,6 @@ import org.kingdoms.constants.group.Group;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.group.Nation;
 import org.kingdoms.constants.land.abstraction.KingdomBuildingType;
-import org.kingdoms.constants.land.location.SimpleLocation;
 import org.kingdoms.constants.land.structures.Structure;
 import org.kingdoms.constants.land.structures.StructureType;
 import org.kingdoms.constants.land.structures.type.StructureTypePowercell;
@@ -21,16 +20,14 @@ import org.kingdoms.events.general.nation.NationDisbandEvent;
 import org.kingdoms.events.general.nation.NationSetSpawnEvent;
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent;
 import org.kingdoms.events.invasion.KingdomInvadeEvent;
+import org.kingdoms.events.items.KingdomBuildingBreakEvent;
+import org.kingdoms.events.items.KingdomBuildingPlaceEvent;
 import org.kingdoms.events.items.KingdomBuildingUpgradeEvent;
-import org.kingdoms.events.items.KingdomItemBreakEvent;
-import org.kingdoms.events.items.KingdomItemPlaceEvent;
 import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.events.members.KingdomJoinEvent;
 import org.kingdoms.events.members.KingdomLeaveEvent;
-import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
-import org.kingdoms.platform.bukkit.adapters.BukkitAdapter;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerListenerType;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerType;
 import org.kingdoms.utils.internal.functional.Fn;
@@ -177,25 +174,25 @@ public final class MapEventHandlers implements Listener {
 
     @SuppressWarnings("ConstantConditions")
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onStructurePlace(KingdomItemPlaceEvent<Structure> event) {
+    public void onStructurePlace(KingdomBuildingPlaceEvent<?> event) {
         if (!(event.getKingdomBlock() instanceof Structure)) return;
-        iconEvent(MarkerListenerType.KINGDOMS, event.getKingdomBlock().getLand().getKingdom(), markerType -> ServiceMap.updateStructure(markerType, event.getKingdomBlock()));
+        Structure structure = (Structure) event.getKingdomBlock();
+        iconEvent(MarkerListenerType.KINGDOMS, structure.getLand().getKingdom(), markerType -> ServiceMap.updateStructure(markerType, structure));
 
-        if (event.getKingdomBlock().getStyle().getType() instanceof StructureTypePowercell) {
+        if (structure.getStyle().getType() instanceof StructureTypePowercell) {
             powercell(pc -> {
-                ServiceMap.updatePowercellMarkers(event.getKingdomBlock(), event.getKingdomBlock().getLevel());
-                ServiceMap.updateStructure(pc, event.getKingdomBlock());
+                ServiceMap.updatePowercellMarkers(structure, structure.getLevel());
+                ServiceMap.updateStructure(pc, structure);
             });
         }
 
         ServiceMap.update();
     }
 
-    @SuppressWarnings("ConstantConditions")
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onStructureBreak(KingdomItemBreakEvent<Structure> event) {
+    public void onStructureBreak(KingdomBuildingBreakEvent<?> event) {
         if (!(event.getKingdomBlock() instanceof Structure)) return;
-        Structure structure = event.getKingdomBlock();
+        Structure structure = (Structure) event.getKingdomBlock();
         iconEvent(
                 structure.getStyle().getType().isNationalNexus() ? MarkerListenerType.NATIONS : MarkerListenerType.KINGDOMS,
                 structure.getLand().getKingdom(),
@@ -210,7 +207,7 @@ public final class MapEventHandlers implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onStructureUpgrade(KingdomBuildingUpgradeEvent event) {
+    public void onStructureUpgrade(KingdomBuildingUpgradeEvent<?> event) {
         KingdomBuildingType<?, ?, ?> type = event.getBuilding().getStyle().getType();
         if (!(type instanceof StructureType)) return;
         Structure structure = (Structure) event.getBuilding();

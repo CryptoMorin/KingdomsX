@@ -50,7 +50,11 @@ interface VersionPart : VersionBase<VersionPart> {
 
     enum class PreReleaseType(val unstable: Boolean, vararg aliases: String) : Comparable<PreReleaseType> {
         // Unstable/Development releases
-        ALPHA(true, "a", "unstable"), BETA(true, "b", "dev", "prerelease", "snapshot"), RELEASE_CANDIDATE(true, "rc"),
+        ALPHA(true, "a", "unstable"),
+
+        BETA(true, "b", "dev", "prerelease", "snapshot"),
+
+        RELEASE_CANDIDATE(true, "rc"),
 
         // Stable releases
         RELEASE(false, "distribution", "dist", "stable");

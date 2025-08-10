@@ -8,7 +8,7 @@ open class AbstractVersion(private val originalString: String, private val parts
     override fun getParts(): List<VersionPart> = this.parts
     override fun compareTo(other: Version): Int {
         val otherParts = other.getParts()
-        val size = Math.min(parts.size, otherParts.size)
+        val size = parts.size.coerceAtMost(otherParts.size)
         for (i in 0..<size) {
             val part = parts[i]
             val otherPart = otherParts[i]
@@ -18,22 +18,25 @@ open class AbstractVersion(private val originalString: String, private val parts
 
         if (parts.size == otherParts.size) return 0
 
-        // Handles cases like:
-        // 1.0.0.0.0.0 = 1.0.0
-        // 1.0.0.1 > 1.0
-        // 1.0.0.0.1-ALPHA > 1.0.0
+        // All components from the left are equal, so now decide what to do with excessive ones.
+        val isThis = parts.size > otherParts.size
+        val biggerVersion = if (isThis) parts else otherParts
 
-        if (otherParts.size > parts.size) {
-            val lastOfFirst = parts.last()
-            val restOfSecond = otherParts.subList(parts.size - 1, otherParts.size /* exclusive */)
-            restOfSecond.map { lastOfFirst.compareTo(it) }.find { it != 0 }?.let { return it }
-            return 0
-        } else {
-            val lastOfSecond = otherParts.last()
-            val restOfFirst = parts.subList(otherParts.size - 1, parts.size /* exclusive */)
-            restOfFirst.map { it.compareTo(lastOfSecond) }.find { it != 0 }?.let { return it }
-            return 0
-        }
+        val lastNonZeroComponent = biggerVersion.drop(size).find { it !is VersionPart.Numeric || it.number != 0 }
+
+        // 1.0.0.0.0.0 = 1.0.0
+        if (lastNonZeroComponent === null) return 0
+
+        // 1.0.1 > 1.0
+        if (lastNonZeroComponent is VersionPart.Numeric) return if (isThis) +1 else -1
+
+        // 1.0.0.0.1-ALPHA > 1.0.0
+        // 1.0.0-ALPHA < 1.0.0
+        if (lastNonZeroComponent is VersionPart.Stage && lastNonZeroComponent.type !== VersionPart.PreReleaseType.RELEASE)
+            return if (isThis) -1 else +1
+
+        // Unknown component
+        return if (isThis) +1 else -1
     }
 
     override fun canBeComparedTo(other: Version): Boolean = true

@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "1.0.0"
+version = "1.1.0"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
 kingdomsAddon {
@@ -26,9 +26,4 @@ dependencies {
     compileOnly(project(":shared"))
     compileOnly(project(":platform:bukkit"))
     compileOnly(KingdomsGradleCommons.XSERIES)
-}
-
-tasks.shadowJar {
-    excludeKotlin()
-    relocateLibs()
 }

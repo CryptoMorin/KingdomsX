@@ -96,6 +96,50 @@ public enum AdminToolsLang implements DefinedMessenger {
     COMMAND_ADMIN_TURRET_UNKNOWN_STYLE("{$e}Unknown turret style{$colon} {$es}%style%\n{$e}Look in your {$es}Turrets {$e}folder to see all the turret style names.", 1, 2, 3),
     COMMAND_ADMIN_TURRET_SUCCESS("{$p}A total of {$s}%amount% {$p}turrets have been processed.", 1, 2, 3),
 
+    COMMAND_ADMIN_PURGE_DESCRIPTION("{$s}Purges all kingdoms data and removes everything reliably."),
+    COMMAND_ADMIN_PURGE_CONFIRM("{$e}Do the command again within 5 seconds to confirm that you want to purge all kingdoms data. " +
+            "&4This will delete all kingdoms data including all nations, kingdoms, lands, players (not their inventory) data." +
+            " This action cannot be undone, your only solution would be to use the backups folder." +
+            " This also will kick all players forcefully and whitelists the server and will automatically stop the server once it's done."),
+    COMMAND_ADMIN_PURGE_ALREADY("{$e}Plugin is already in the process of purging data..."),
+    COMMAND_ADMIN_PURGE_NOT_LOADED("{$e}Please wait for the plugin to be fully loaded before using this command."),
+    COMMAND_ADMIN_PURGE_STOP("{$e}You cannot stop the server while kingdoms purging is in process."),
+    COMMAND_ADMIN_PURGE_COMMAND("{$e}You cannot run commands during kingdoms purging process. Do {$es}/stop {$e}if you wish to restart the server."),
+    COMMAND_ADMIN_PURGE_PURGING("{$e}Purging all kingdoms data... Please do not do anything including running commands or shutting down the server."),
+    COMMAND_ADMIN_PURGE_DONE("{$p}Purging is done."),
+    COMMAND_ADMIN_PURGE_DONE_WITH_ERRORS("{$e}Purging is done with errors. Your data may or may not be purged correctly. If not, please report the error in the console."),
+
+    COMMAND_ADMIN_INFO_DESCRIPTION("{$s}See advanced information about kingdoms data."),
+    COMMAND_ADMIN_INFO_PLAYER_DESCRIPTION("{$s}Display a player's information.", 1, 2, 3, 4),
+    COMMAND_ADMIN_INFO_PLAYER_USAGE("{$usage}admin player {$p}<player>", 1, 2, 3, 4),
+    COMMAND_ADMIN_PLAYER_INFO("&7| {$p}Name{$colon} {$s}%player% {$sep}(hover:{&5%id%;{$p}Copy;|%id%}{$sep})\n" +
+            "&7| {$p}Admin{$colon} %admin% &7| {$p}Spy{$colon} %spy%\n" +
+            "&7| {$p}Kingdom{$colon} {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})\n" +
+            "&7| {$p}Rank{$colon} %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%\n" +
+            "&7| {$p}National Rank{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%" +
+            "&7| {$p}Chat Channel{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%\n" +
+            "&7| {$p}Using Markers{$colon} %visualizer%\n" +
+            "&7| {$p}Invites{$colon} {$s}%invites%\n" +
+            "&7| {$p}Joined Kingdom At{$colon} {$s}%date@kingdoms_joined%\n" +
+            "&7| {$p}Auto Claim{$colon} %auto_claim% &7| {$p}Auto Map{$colon} %auto_map%\n" +
+            "&7| {$p}Map Size{$colon} {$s}%map_width% {$sep}- {$s}%map_height%\n" +
+            "&7| {$p}Total Donations{$colon} {$s}%kingdoms_total_donations% &7| {$p}Last Donation{$colon} {$s}%date@kingdoms_last_donation_time%\n" +
+            "&7| {$p}Claims &7({$s}%kingdoms_player_claims%&7){$colon} %claims%\n" +
+            "&7| {$p}Compressed Data{$colon} {$s}%compressed%", 1, 2, 3),
+
+    COMMAND_ADMIN_INFO_KINGDOM_DESCRIPTION("{$s}Display a kingdom's information.", 1, 2, 3, 4),
+    COMMAND_ADMIN_INFO_KINGDOM_USAGE("{$usage}admin kingdom {$p}<kingdom>", 1, 2, 3, 4),
+    COMMAND_ADMIN_INFO_KINGDOM_MESSAGE("{$sep}| {$p}ID{$colon} {$s}%id%\n" +
+            "{$sep}| {$p}Name{$colon} {$s}%kingdoms_kingdom_name%\n" +
+            "{$sep}| {$p}Tag{$colon} {$s}%kingdoms_kingdom_tag%\n" +
+            "{$sep}| {$p}Pacifist{$colon} {$s}%kingdoms_kingdom_is_pacifist%\n" +
+            "{$sep}| {$p}Ranks{$colon} {$s}%ranks%", 1, 2, 3),
+
+    COMMAND_ADMIN_SOUND_DESCRIPTION("{$s}Test a sound string that you're going to use in config.", 1, 2, 3),
+    COMMAND_ADMIN_SOUND_ERROR("{$e}Error{$colon} {$es}%error%", 1, 2, 3),
+    COMMAND_ADMIN_SOUND_USAGE("{$usage}admin testsound {$p}<sound> &9[volume] [pitch]", 1, 2, 3),
+    COMMAND_ADMIN_SOUND_PLAYING("{$p}Playing now{$colon} {$s}%sound%", 1, 2, 3),
+
     ITEM_EDITOR_NAME_ENTER("{$p}Enter the item's name {$cancel}", 2, 3),
     ITEM_EDITOR_LORE_ENTER("{$p}Enter the item's lore separated by newlines {$cancel}", 2, 3),
     ITEM_EDITOR_MATERIAL_ENTER("{$p}Enter the item's material {$cancel}", 2, 3),

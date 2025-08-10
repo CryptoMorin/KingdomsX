@@ -1,6 +1,7 @@
 package org.kingdoms.constants.namespace;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.Nullable;
 import org.jetbrains.annotations.Unmodifiable;
 import org.kingdoms.utils.internal.nonnull.NonNullMap;
 
@@ -53,10 +54,12 @@ public class NamespacedRegistry<V extends Namespaced> {
         register(value, true);
     }
 
+    @Nullable
     public V getRegistered(@NonNull Namespace namespace) {
         return registry.get(namespace);
     }
 
+    @Nullable
     public V getRegistered(@NonNull V namespaced) {
         return registry.get(namespaced.getNamespace());
     }

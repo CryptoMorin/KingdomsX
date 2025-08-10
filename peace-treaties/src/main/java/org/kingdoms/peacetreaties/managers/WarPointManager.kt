@@ -10,7 +10,7 @@ import org.kingdoms.constants.group.model.relationships.StandardRelationAttribut
 import org.kingdoms.constants.land.structures.objects.SiegeCannon
 import org.kingdoms.constants.land.turrets.Turret
 import org.kingdoms.events.invasion.KingdomInvadeEndEvent
-import org.kingdoms.events.items.KingdomItemBreakEvent
+import org.kingdoms.events.items.KingdomBuildingBreakEvent
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.main.KLogger
 import org.kingdoms.managers.pvp.PvPManager
@@ -94,7 +94,7 @@ class WarPointManager : Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    fun onKingdomItemBreak(event: KingdomItemBreakEvent<*>) {
+    fun onKingdomItemBreak(event: KingdomBuildingBreakEvent<*>) {
         event.getMetadata<SiegeCannon>(SiegeCannon.NS) ?: return
         val item = event.getKingdomBlock()!!
 

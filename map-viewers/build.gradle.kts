@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "org.kingdoms.services.maps"
-version = "3.1.0.1"
+version = "3.1.0.2"
 description = "Adds support to online map viewer plugins"
 
 kingdomsAddon {
@@ -22,9 +22,4 @@ dependencies {
     arrayOf("commons", "dynmap", "squaremap", "pl3xmap", "bluemap")
         .forEach { implementation(project(":map-viewers:$it")) }
     // api("com.googlecode.owasp-java-html-sanitizer:owasp-java-html-sanitizer:20240325.1")
-}
-
-tasks.shadowJar {
-    excludeKotlin()
-    relocateLibs()
 }
