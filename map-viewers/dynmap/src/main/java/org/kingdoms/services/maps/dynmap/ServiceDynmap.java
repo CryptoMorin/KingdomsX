@@ -46,7 +46,7 @@ public final class ServiceDynmap implements MapAPI {
         DynmapCommonAPIListener.register(new DynmapCommonAPIListener() {
             @Override
             public void apiEnabled(DynmapCommonAPI dynmapCommonAPI) {
-                logger.info("Dynamp API is now enabled.");
+                logger.info("Dynmap API is now enabled.");
 
                 api = dynmapCommonAPI;
                 for (MarkerType markerType : MarkerType.getMarkerTypes()) {

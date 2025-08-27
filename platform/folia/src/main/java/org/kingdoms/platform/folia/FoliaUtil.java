@@ -19,18 +19,10 @@ public final class FoliaUtil {
     }
 
     public static CompletableFuture<Boolean> teleport(Entity entity, Entity location) {
-        if (isFoliaSupported()) {
-            return entity.teleportAsync(location.getLocation());
-        } else {
-            return CompletableFuture.completedFuture(entity.teleport(location));
-        }
+        return entity.teleportAsync(location.getLocation());
     }
 
     public static CompletableFuture<Boolean> teleport(Entity entity, Location location) {
-        if (isFoliaSupported()) {
-            return entity.teleportAsync(location);
-        } else {
-            return CompletableFuture.completedFuture(entity.teleport(location));
-        }
+        return entity.teleportAsync(location);
     }
 }

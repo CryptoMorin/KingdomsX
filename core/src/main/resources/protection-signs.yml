@@ -26,21 +26,25 @@ protections:
   explosion: true
   piston: true
 
-  # All the options listed under this entry are cached for performance reasons.
-  # Meaning that a server restart is required for changes to take effect.
+  # This option prevents item transfers between containers, e.g. chest -> hopper or vice versa.
+  # * All the options listed under this entry are cached for performance reasons.
+  #   Meaning that a server restart is required for changes to take effect.
   container-transfers:
+    # Should this protection be enabled at all?
+    enabled: true
+
     # You might want to disable this option completely if your server has a lot
     # of hoppers. This will significantly help.
     # By disabling this option no item transfers will be accepted even if
     # the container transferring the items belongs to the owner.
-    # This option only works if "enabled" is true.
     disallow-all: false
 
-    # Disallow members of a protected container who can access it transfer its items using
-    # other containers (such as hoppers) that they own and is also protected.
-    # If set to true, only the container owner can do this.
-    # Fore more info visit the wiki.
-    # This option only works if "disallow-all" is false and "enabled" is true.
+    # * If set to false, when both containers are protected and the owners of
+    #   both containers gave permission to each other to access their containers,
+    #   then items will be transferred normally.
+    #
+    # * If set to true, only when the two containers are owned by the same player
+    #   items will be transferred normally.
     disallow-cross-origin-container-transfers: true
 
 # Sound played when someone tries to break/access the chest or sign.

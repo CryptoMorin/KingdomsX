@@ -13,9 +13,9 @@ import org.kingdoms.locale.messenger.Messenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.outposts.settings.OutpostArenaMob;
 import org.kingdoms.outposts.settings.OutpostEventSettings;
-import org.kingdoms.platform.folia.FoliaUtil;
 import org.kingdoms.utils.LocationUtils;
 import org.kingdoms.utils.ProcessToMessage;
+import org.kingdoms.utils.TeleportUtil;
 import org.kingdoms.utils.bossbars.BossBarEditor;
 import org.kingdoms.utils.compilers.MathCompiler;
 import org.kingdoms.utils.compilers.expressions.MathExpression;
@@ -102,7 +102,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_SPAWN_SET);
             outpost.setSpawn(player.getLocation());
         }).on(ClickType.RIGHT, ctx -> {
-            FoliaUtil.teleport(player, outpost.getSpawn());
+            TeleportUtil.teleport(player, outpost.getSpawn());
             ctx.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_SPAWN_TELEPORTED);
         }).done();
 
@@ -110,7 +110,7 @@ public final class OutpostEditor {
             context.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_CENTER_SET);
             outpost.setCenter(player.getLocation());
         }).on(ClickType.RIGHT, ctx -> {
-            FoliaUtil.teleport(player, outpost.getSpawn());
+            TeleportUtil.teleport(player, outpost.getSpawn());
             ctx.sendMessage(OutpostsLang.COMMAND_OUTPOST_EDIT_SPAWN_TELEPORTED);
         }).done();
 

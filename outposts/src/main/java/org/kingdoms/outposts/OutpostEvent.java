@@ -26,10 +26,10 @@ import org.kingdoms.managers.entity.KingdomEntityBuilder;
 import org.kingdoms.outposts.settings.OutpostArenaMob;
 import org.kingdoms.outposts.settings.OutpostEventSettings;
 import org.kingdoms.outposts.settings.OutpostRewards;
-import org.kingdoms.platform.folia.FoliaUtil;
 import org.kingdoms.scheduler.DelayedRepeatingTask;
 import org.kingdoms.scheduler.ScheduledTask;
 import org.kingdoms.scheduler.TaskThreadType;
+import org.kingdoms.utils.TeleportUtil;
 import org.kingdoms.utils.bossbars.BossBarSession;
 import org.kingdoms.utils.display.scoreboard.XScoreboard;
 import org.kingdoms.utils.time.TimeFormatter;
@@ -252,7 +252,7 @@ public class OutpostEvent {
                     OutpostsLang.COMMAND_OUTPOST_JOIN_LOST.sendMessage(player, "outpost", outpost.getName());
                     if (EngineHubAddon.INSTANCE.getWorldGuard().isLocationInRegion(player.getLocation(), outpost.getRegion())) {
                         Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC).of(player).execute(
-                                () -> FoliaUtil.teleport(player, outpost.getSpawn()));
+                                () -> TeleportUtil.teleport(player, outpost.getSpawn()));
                     }
                 } else
                     OutpostsLang.COMMAND_OUTPOST_JOIN_WIN.sendMessage(player, "outpost", outpost.getName(), "resource-points", outpost.getRewards().getResourcePoints(1),

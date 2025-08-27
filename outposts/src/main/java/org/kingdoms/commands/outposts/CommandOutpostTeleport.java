@@ -12,9 +12,9 @@ import org.kingdoms.main.Kingdoms;
 import org.kingdoms.outposts.OutpostEvent;
 import org.kingdoms.outposts.OutpostsLang;
 import org.kingdoms.outposts.settings.OutpostEventSettings;
-import org.kingdoms.platform.folia.FoliaUtil;
 import org.kingdoms.scheduler.TaskThreadType;
 import org.kingdoms.utils.PaperUtils;
+import org.kingdoms.utils.TeleportUtil;
 
 import java.util.List;
 
@@ -42,7 +42,7 @@ public class CommandOutpostTeleport extends KingdomsCommand {
 
             location.setYaw(playerDir.getYaw());
             location.setPitch(playerDir.getPitch());
-            Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC).of(player).execute(() -> FoliaUtil.teleport(player, outpost.getSpawn()));
+            Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC).of(player).execute(() -> TeleportUtil.teleport(player, outpost.getSpawn()));
 
             LocationLocale.of(location).withBuilder(context.getMessageContext()).build();
             LocationLocale.of(chunk).withBuilder(context.getMessageContext()).withPrefix("chunk_").build();
