@@ -73,7 +73,7 @@ options:
       - 43
     installing:
       condition: installing
-      name: '{$sep}[&3Installing...{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&3Instalando...{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -81,7 +81,7 @@ options:
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
-      name: '{$sep}[&5Pending Restart{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&5Reinício Pendente{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
@@ -90,45 +90,45 @@ options:
       material: PURPLE_WOOL
     failed-to-load:
       condition: 'installed && failed_to_load'
-      name: '{$sep}[&4Failed to load{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&4Falha ao carregar{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &cThis addon failed to load. Check your
-        console for errors.
+        &cEsse addon falhou ao carregar. Verifique o seu
+        console para ver erros.
 
-        &4Installed Version{$colon} {$sp}%installed-version%
-        {$p}Latest Version{$colon} {$sp}%latest-version%
-        {$p}Left-click to update
-        &4Right-click to uninstall
+        Versão Instalada{$colon} {$sp}%installed-version%
+        {$p}Última Versão{$colon} {$sp}%latest-version%
+        {$p}Clique esquerdo para atualizar
+        &4Direito-clique para desinstalar
       material: RED_WOOL
     outdated-and-outdated-core-version:
       condition: 'installed && max_outdated_core_version'
-      name: '{$sep}[&eOutdated Core Version{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&eVersão Core Desatualizada{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
-        &4Installed Version{$colon} {$sp}%installed-version%
-        {$p}Latest Version{$colon} {$sp}%max_version%
+        &4Versão Instalada&8: &9%installed-version%
+        &2Última Versão&8: &9%latest-version%
 
-        {$warning} {$desc}This update requires
-        kingdoms {$p}v%max_supported-core-version% {$desc}to work.
-        Current version{$colon} {$e}%current-core-version%
+        {$sep}[{$e}!{$sep}] {$es}Essa versão requer
+        kingdoms {$p}v%supported-core-version% {$es}para funcionar.
+        Versão{$sep}atual: {$e}%current-core-version%
 
-        {$p}Left-click to update
-        &4Right-click to uninstall
+        &2Clique esquerdo para atualizar
+        &4Clique direito para desinstalar
       material: YELLOW_WOOL
     up-to-date:
       condition: 'installed && !outdated'
-      name: '{$sep}[{$p}Up to date{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[{$p}Atualizado{$sep}] {$sp}%addon-name%'
       lore: |
-        %description%
-        {$p}Version{$colon} {$sp}%installed-version%
-        &4Right-click to uninstall
+        %description% 
+        {$p}Versão{$colon} {$sp}%installed-version% 
+        &4Clique direito para desinstalar
       material: GREEN_WOOL
     outdated:
       condition: 'installed && outdated'
-      name: '{$sep}[&6Outdated{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&6Desatualizado{$sep}] {$sp}%addon-name%'
       lore: |
         %description% 
         &4Versão Instalado{$colon} {$sp}%installed-version% 
@@ -138,18 +138,18 @@ options:
       material: ORANGE_WOOL
     not-installed-outdated-core-version:
       condition: '!installed && outdated_core_version'
-      name: '{$sep}[&4Outdated Core{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&4Core desatualizado{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
 
-        {$p}Version{$colon} {$sp}%min_version%
+        {$p}Versão{$colon} {$sp}%min_version%
 
-        {$warning} {$desc}This addon requires at least
-        kingdoms {$p}v%min_supported-core-version% {$desc}to work.
-        Current version{$colon} {$e}%current-core-version%
+        {$warning} {$desc}Este addon requer pelo menos a versão
+        kingdoms {$p}v%min_supported-core-version% {$desc}para funcionar.
+        Versão atual{$colon} {$e}%current-core-version%
       material: GRAY_WOOL
     not-installed:
-      name: '{$sep}[&7Not installed{$sep}] {$sp}%addon-name%'
+      name: '{$sep}[&7Não instalado{$sep}] {$sp}%addon-name%'
       lore: |
         %description% 
         {$p}Versão{$colon} {$sp}%latest-version% 
