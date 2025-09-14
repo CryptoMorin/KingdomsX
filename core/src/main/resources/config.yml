@@ -46,16 +46,16 @@ prefix: false
 # Requires a restart to apply.
 debug: false
 
-# Some parts of the plugin create something somewhere that have to be
-# used in many different places or to be used for future tasks, and if
-# an error occurs because of something that's related to these objects,
-# it's hard to pinpoint where they even originated from.
+# Some parts of the plugin create "objects" that have to be
+# used in many different places or to be used later for future tasks.
+# If an error occurs for any reason that's related/belongs to these objects,
+# it will be hard to pinpoint where they originated from.
 # So the plugin attaches the origin's information which helps identify
-# the source of an object. However, these sources can be expensive for
+# the source of the object. However, these sources can be expensive for
 # both the CPU to create and the RAM to keep. If your server is relatively
 # big, you might benefit from disabling debug traces.
 # However, beaware that you might not receive support for an error you
-# receive if this debug traces are disabled.
+# receive if debug traces are disabled.
 #
 # So only disable it after consulting with your developers and knowing
 # that your server is struggling specifically because of debug traces.

@@ -6,6 +6,20 @@ import org.kingdoms.locale.LanguageEntry;
 import org.kingdoms.locale.messenger.DefinedMessenger;
 
 public enum AdminToolsLang implements DefinedMessenger {
+    COMMAND_ADMIN_CLAIMSCHEMATIC_DESCRIPTION("{$s}Store and reuse claim patterns as schematic files."),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_UNKNOWN_SCHEMATIC("{$e}Unknown schematic{$colon} {$es}%schematic%"),
+
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_DESCRIPTION("{$s}Loads a claim pattern schematic from the stored files and claims the lands for the specified kingdom.", 1, 2, 3, 4),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_USAGE("{$usage}admin claimschematic load {$p}<schematic> {$p}<kingdom>", 1, 2, 3, 4),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_FAILED("{$e}The schematic was loaded correctly, but claiming failed.", 1, 2, 3),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_NOTHING_CLAIMED("{$e}Nothing was claimed because the targeted lands were already claimed by a kingdom.", 1, 2, 3),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_SKIPPED_CHUNKS_WARNING("{$es}Some lands were skipped because they were already claimed by a kingdom.", 1, 2, 3),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_LOAD_SUCCESS("{$p}Successfuly applied {$s}%schematic% {$p}to {$s}%kingdom% {$p}kingdom.", 1, 2, 3),
+
+    COMMAND_ADMIN_CLAIMSCHEMATIC_SAVE_DESCRIPTION("{$s}Save a claim pattern schematic from the specified kingdom to a file.", 1, 2, 3, 4),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_SAVE_USAGE("{$usage}admin claimschematic save {$p}<schematic> {$p}<kingdom>", 1, 2, 3, 4),
+    COMMAND_ADMIN_CLAIMSCHEMATIC_SAVE_SUCCESS("{$p}Successfuly saved a claim schematic for {$s}%kingdom% {$p}kingdom in {$s}%file% {$p}file.", 1, 2, 3),
+
     COMMAND_ADMIN_DEBUGGING_HITPOINTS_DESCRIPTION("{$s}A command to show damage indicators when you deal damage to an entity.", 1, 2, 3, 4),
     COMMAND_ADMIN_DEBUGGING_HITPOINTS_ENABLED("{$p}Hit Points{$colon} &2Enabled", 1, 2, 3, 4),
     COMMAND_ADMIN_DEBUGGING_HITPOINTS_DISABLED("{$p}Hit Points{$colon} &cDisabled", 1, 2, 3, 4),

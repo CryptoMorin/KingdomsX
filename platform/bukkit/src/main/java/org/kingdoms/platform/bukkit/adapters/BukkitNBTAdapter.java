@@ -5,6 +5,7 @@ import com.cryptomorin.xseries.reflection.minecraft.MinecraftClassHandle;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftPackage;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.kingdoms.nbt.NBTConverter;
 import org.kingdoms.nbt.NBTTagConverterRegistry;
 import org.kingdoms.nbt.NBTTagId;
@@ -36,6 +37,7 @@ public final class BukkitNBTAdapter {
         }
     }
 
+    @SuppressWarnings("UnstableApiUsage") // XReflection.SUPPORTED_MAPPINGS
     private static Class<?> getNBTBaseClass() {
         MinecraftClassHandle base = XReflection.ofMinecraft()
                 .inPackage(MinecraftPackage.NMS, "nbt")
@@ -48,7 +50,7 @@ public final class BukkitNBTAdapter {
         return base.unreflect();
     }
 
-    @NotNull
+    @Nullable
     private static Class<?> getNBTClass(NBTTagId type) {
         // Capitalize
         String typeName = Arrays.stream(type.name().split("_"))

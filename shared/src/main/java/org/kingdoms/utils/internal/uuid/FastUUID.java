@@ -23,9 +23,11 @@
  */
 package org.kingdoms.utils.internal.uuid;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.UUID;
+import java.util.function.Predicate;
 
 /**
  * A utility class for quickly and efficiently parsing {@link java.util.UUID} instances from strings and writing UUID
@@ -95,6 +97,22 @@ public final class FastUUID {
     }
 
     private FastUUID() {
+    }
+
+    public static UUID uniqueRandomUUID(String name, Predicate<UUID> exists) {
+        UUID uuid;
+
+        // This might cause issues if someone reuses a name after the associated data was deleted.
+        // if (name != null) {
+        //     uuid = UUID.nameUUIDFromBytes(name.getBytes(StandardCharsets.UTF_8));
+        //     if (!exists.test(uuid)) return uuid;
+        // }
+
+        do {
+            uuid = UUID.randomUUID();
+        } while (exists.test(uuid));
+
+        return uuid;
     }
 
     /**

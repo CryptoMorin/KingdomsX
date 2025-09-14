@@ -43,8 +43,6 @@ class SchematicFolderRegistry(displayName: String, private val folderName: Strin
         return Pair.of(folderName, uri)
     }
 
-    override fun filter(path: Path): Boolean = true
-
     override fun handle(entry: Entry) {
         var schematicFile = entry.path
         val schematicName = entry.name

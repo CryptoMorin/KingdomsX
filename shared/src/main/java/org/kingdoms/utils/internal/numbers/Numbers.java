@@ -2,15 +2,16 @@ package org.kingdoms.utils.internal.numbers;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
 
 public final class Numbers {
     private static final DecimalFormat
-            CURRENCY_FORMAT = new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ENGLISH)),
-            CURRENCY_DEC_3_FORMAT = new DecimalFormat("0.###", new DecimalFormatSymbols(Locale.ENGLISH)),
-            CURRENCY_DEC_4_FORMAT = new DecimalFormat("0.####", new DecimalFormatSymbols(Locale.ENGLISH)),
+            // CURRENCY_FORMAT = new DecimalFormat("#,###.##", new DecimalFormatSymbols(Locale.ENGLISH)),
+            // CURRENCY_DEC_3_FORMAT = new DecimalFormat("0.###", new DecimalFormatSymbols(Locale.ENGLISH)),
+            // CURRENCY_DEC_4_FORMAT = new DecimalFormat("0.####", new DecimalFormatSymbols(Locale.ENGLISH)),
             SCIENTIFIC_FORMAT = new DecimalFormat("00E0", new DecimalFormatSymbols(Locale.ENGLISH));
 
     private Numbers() {}
@@ -97,19 +98,19 @@ public final class Numbers {
     public static String toFancyNumber(double number) {
         if (number == 0.0) return "0";
 
-        DecimalFormat format;
+        int decimalsToKeep;
         boolean positive = number >= 0;
 
         if (positive ? number >= 0.01 : number <= -0.01) {
-            format = CURRENCY_FORMAT;
+            decimalsToKeep = 2;
         } else if (positive ? number >= 0.001 : number <= -0.001) {
-            format = CURRENCY_DEC_3_FORMAT;
+            decimalsToKeep = 3;
         } else if (positive ? number >= 0.0001 : number <= -0.0001) {
-            format = CURRENCY_DEC_4_FORMAT;
+            decimalsToKeep = 4;
         } else {
-            format = SCIENTIFIC_FORMAT;
+            return SCIENTIFIC_FORMAT.format(number);
         }
 
-        return format.format(number);
+        return FancyNumberFactory.format(number, decimalsToKeep);
     }
 }
