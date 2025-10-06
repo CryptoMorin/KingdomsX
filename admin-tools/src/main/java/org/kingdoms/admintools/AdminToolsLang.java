@@ -74,6 +74,9 @@ public enum AdminToolsLang implements DefinedMessenger {
             "/k admin openfile %sanitized_output%}"),
 
     COMMAND_ADMIN_ENTITY_DESCRIPTION("{$s}Finds all the entities around the player.", 1, 2, 3),
+    COMMAND_ADMIN_ENTITY_NEGATIVE_RADIUS("{$e}Negative radius{$colon} {$es}%radius%", 1, 2, 3),
+    COMMAND_ADMIN_ENTITY_NEGATIVE_STAY("{$e}Negative stay time{$colon} {$es}%stay%", 1, 2, 3),
+    COMMAND_ADMIN_ENTITY_FOUND("{$p}Found a total of {$s}%total% {$p}entities within {$s}%radius% {$p}block radius.", 1, 2, 3),
 
     COMMAND_ADMIN_COMMANDS_DESCRIPTION("{$s}Writes a list of commands with their permission in a file."),
     COMMAND_ADMIN_COMMANDS_DONE("{$p}Wrote command information in {$s}%output%. {$p}Check Kingdomss plugin folder."),

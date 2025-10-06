@@ -38,11 +38,11 @@ public final class UnsafeArrayList<E> extends AbstractCollection<E> implements L
 
     @Override
     public String toString() {
-        if (isEmpty()) return "UnsafeArrayList:[]";
+        if (isEmpty()) return "UnsafeArrayList[]";
         int iMax = size - 1;
 
         StringBuilder builder = new StringBuilder(20 + (size * 5));
-        builder.append("UnsafeArrayList:[");
+        builder.append("UnsafeArrayList[");
         for (int i = 0; ; i++) {
             builder.append(array[i]);
             if (i == iMax) return builder.append(']').toString();

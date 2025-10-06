@@ -12,12 +12,12 @@ class PrettyStringContext(val string: StringBuilder, val nestLevel: Int) {
     val line: Int get() = string.toString().split('\n').count()
     val column: Int get() = string.toString().substringAfterLast('\n').length
 
-    fun delegate(obj: Any?) {
+    fun delegate(obj: Any?, direct: Boolean) {
         if (obj == null) {
             string.append("null")
             return
         }
-        val specialized = ObjectPrettyStringFactory.findSpecialized(obj::class.java)
+        val specialized = ObjectPrettyStringFactory.findSpecialized(obj::class.java, direct)
         if (specialized != null) {
             val newContext = PrettyStringContext(string, nestLevel + 1)
             specialized.toPrettyString(Fn.cast(obj), newContext)
@@ -31,10 +31,13 @@ class PrettyStringContext(val string: StringBuilder, val nestLevel: Int) {
 object ObjectPrettyStringFactory {
     @JvmStatic val REGISTRY: MutableMap<Class<*>, PrettyString<*>> = IdentityHashMap()
 
-    @JvmStatic fun findSpecialized(clazz: Class<*>?): PrettyString<*>? {
+    @JvmStatic fun findSpecialized(clazz: Class<*>?, direct: Boolean): PrettyString<*>? {
         if (clazz == null || clazz == Object::class.java) return null
-        return REGISTRY[clazz] ?: findSpecialized(clazz.superclass)
-        ?: clazz.interfaces.firstNotNullOfOrNull { findSpecialized(it) }
+        val directType = REGISTRY[clazz]
+        if (direct) return directType
+
+        return directType ?: findSpecialized(clazz.superclass, true)
+        ?: clazz.interfaces.firstNotNullOfOrNull { findSpecialized(it, true) }
     }
 
     init {
@@ -58,9 +61,9 @@ object ObjectPrettyStringFactory {
             builder.append('\n')
             builder.append(" ".repeat((nestLevel * 2)))
             builder.append('(').append(nestLevel).append(')')
-            context.delegate(key)
+            context.delegate(key, true)
             builder.append(" => ")
-            context.delegate(value)
+            context.delegate(value, true)
             builder.append('\n')
         }
 
@@ -73,6 +76,6 @@ object ObjectPrettyStringFactory {
 
 fun Any?.toPrettyString(): String {
     val context = PrettyStringContext(StringBuilder(), 0)
-    context.delegate(this)
+    context.delegate(this, false)
     return context.string.toString()
 }

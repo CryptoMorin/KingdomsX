@@ -10,13 +10,20 @@
 
 name: "&0Inferno"
 type: inferno
-cost: 300
-sell: 150
+cost: 500
+sell: 250
 max-level: 3
 
 conditions:
   purchase:
     'kingdoms_kingdom_level < 5': '{$$kingdom-levels.V}'
+
+limits:
+  # Total amount of turrets a kingdom can place.
+  total: 10
+
+  # Total amount of turrets that can be placed in a single chunk.
+  per-land: 1
 
 sounds:
   1:
@@ -35,12 +42,11 @@ sounds:
       stopped: *stop-sound
 
 range: 7 + lvl
-cooldown: 15 - lvl
+cooldown: 20 - lvl
 max-targets: 1
-max-ammo: lvl * 2000
-upgrade-cost: lvl * 80
+max-ammo: lvl * 500
+upgrade-cost: lvl * 200
 fire: 10000
-speed: 1 + (lvl * 0.5)
 
 # The initial turret's damage.
 damage: lvl * 3

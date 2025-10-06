@@ -68,7 +68,7 @@ public final class PolygonOutliner {
 
         // We approach the origin from the right so verify we are not back at the origin.
         if (!isOriginPoint && upperLeft.equals(originPoint)) return;
-        else if (isOriginPoint) isOriginPoint = false;
+        if (isOriginPoint) isOriginPoint = false;
 
         // Might only happen if we are going towards the origin, not away from it.
         if (hasChunk(ChunkDirection.UP)) {

@@ -11,6 +11,13 @@ public final class WorldlessChunk {
         this.z = z;
     }
 
+    /**
+     * We need this to prevent borders from connecting diagonally, otherwise when all points of our
+     * polygon are plotted, sharp turns will be visible because the renderer thinks that it should
+     * "fill" the polygon differently.
+     */
+    private static final double BOUNDING_LESS = 0.1;
+
     @NotNull
     public Vector2 getLowerLeft(int chunkSize) {
         return getPoint(chunkSize, 0, 0);
@@ -18,20 +25,20 @@ public final class WorldlessChunk {
 
     @NotNull
     public Vector2 getLowerRight(int chunkSize) {
-        return getPoint(chunkSize, chunkSize, 0);
+        return getPoint(chunkSize, chunkSize - BOUNDING_LESS, 0);
     }
 
     @NotNull
     public Vector2 getUpperLeft(int chunkSize) {
-        return getPoint(chunkSize, 0, chunkSize);
+        return getPoint(chunkSize, 0, chunkSize - BOUNDING_LESS);
     }
 
     @NotNull
     public Vector2 getUpperRight(int chunkSize) {
-        return getPoint(chunkSize, chunkSize, chunkSize);
+        return getPoint(chunkSize, chunkSize - BOUNDING_LESS, chunkSize - BOUNDING_LESS);
     }
 
-    private Vector2 getPoint(int chunkSize, int offsetX, int offsetZ) {
+    private Vector2 getPoint(double chunkSize, double offsetX, double offsetZ) {
         return Vector2.of((x * chunkSize) + offsetX, (z * chunkSize) + offsetZ);
     }
 
@@ -59,7 +66,7 @@ public final class WorldlessChunk {
         return offset(direction.x, direction.z);
     }
 
-    private WorldlessChunk offset(int xOffset, int zOffset) {
+    protected WorldlessChunk offset(int xOffset, int zOffset) {
         return new WorldlessChunk(this.x + xOffset, this.z + zOffset);
     }
 }

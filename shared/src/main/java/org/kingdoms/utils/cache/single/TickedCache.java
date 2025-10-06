@@ -2,6 +2,8 @@ package org.kingdoms.utils.cache.single;
 
 import org.kingdoms.server.core.Server;
 
+import java.util.Optional;
+
 /**
  * A very simple wrapper class that contains a cached object that is cached based on the
  * server ticks. Similar to Caffeine's {@link com.github.benmanes.caffeine.cache.Cache}.
@@ -20,7 +22,11 @@ public class TickedCache<T> implements CacheableObject<T> {
     }
 
     public boolean hasExpired() {
-        return this.value == null || ((Server.get().getTicks() - lastUpdateTicks) >= expirationTicks);
+        return this.value == null || (getPassedTicks() >= expirationTicks);
+    }
+
+    public long getPassedTicks() {
+        return Server.get().getTicks() - lastUpdateTicks;
     }
 
     @Override
@@ -41,6 +47,11 @@ public class TickedCache<T> implements CacheableObject<T> {
     public T get() {
         if (hasExpired()) throw new IllegalStateException("Cannot access expired value: " + value);
         return value;
+    }
+
+    public Optional<T> getIfNotExpired() {
+        if (hasExpired()) return Optional.empty();
+        return Optional.of(value);
     }
 
     @Override

@@ -10,11 +10,11 @@ import org.bukkit.entity.TextDisplay
 import org.bukkit.entity.Zombie
 import org.bukkit.permissions.PermissionDefault
 import org.bukkit.scheduler.BukkitRunnable
+import org.kingdoms.admintools.AdminToolsLang
 import org.kingdoms.commands.CommandContext
 import org.kingdoms.commands.CommandResult
 import org.kingdoms.commands.CommandTabContext
 import org.kingdoms.commands.KingdomsCommand
-import org.kingdoms.commands.KingdomsParentCommand
 import org.kingdoms.commands.annotations.Cmd
 import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
@@ -34,14 +34,16 @@ class CommandAdminEntity : KingdomsCommand() {
         val radius: Double = if (context.hasArgs(1)) context.getDouble(0) else 10.0
         val stay = if (context.hasArgs(2)) context.getInt(1) else 1
         val showDetails = context.hasArgs(3) && context.arg(2).equals("true", ignoreCase = true)
+        context.`var`("radius", radius)
+        context.`var`("stay", stay)
+
         if (radius <= 1) {
-            MessageHandler.sendPluginMessage(context.getMessageReceiver(), "&cNegative radius&8: &e$radius")
-            CommandResult.FAILED
+            return context.fail(AdminToolsLang.COMMAND_ADMIN_ENTITY_NEGATIVE_RADIUS)
         }
         if (stay <= 0) {
-            MessageHandler.sendPluginMessage(context.getMessageReceiver(), "&cNegative stay number&8: &e$stay")
-            CommandResult.FAILED
+            return context.fail(AdminToolsLang.COMMAND_ADMIN_ENTITY_NEGATIVE_STAY)
         }
+
         val total = AtomicInteger()
         val player = context.senderAsPlayer()
         object : BukkitRunnable() {
@@ -76,10 +78,8 @@ class CommandAdminEntity : KingdomsCommand() {
                 }
                 if (!looping) {
                     looping = true
-                    MessageHandler.sendPluginMessage(
-                        player,
-                        "&2Found a total of &6$total &2entities within &6$radius &2block radius."
-                    )
+                    context.`var`("total", total)
+                    context.sendMessage(AdminToolsLang.COMMAND_ADMIN_ENTITY_FOUND)
                 }
                 if (--times <= 0) cancel()
             }

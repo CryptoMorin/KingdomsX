@@ -22,8 +22,15 @@ import java.util.*;
  * https://github.com/TechnicJelle/BMUtils/blob/main/src/main/java/com/technicjelle/BMUtils/Cheese.java
  */
 public final class NegativeSpaceOutliner {
+    private static final int[][] ALL_DIRECTIONS = {
+            {-1, 0}, {1, 0}, {0, -1}, {0, 1},   // Orthogonal (N/S/E/W)
+            {-1, -1}, {-1, 1}, {1, -1}, {1, 1}  // Diagonals (NW/NE/SW/SE)
+    };
+    private static final int[][] BELOW_OFFSET = {{0, -1}, {-1, -1}, {1, -1}};
+
     private final ConnectedChunkCluster cluster;
     private final Set<WorldlessChunk> freeSpaces = new HashSet<>();
+    private final Set<WorldlessChunk> allGaps = new HashSet<>();
 
     public NegativeSpaceOutliner(ConnectedChunkCluster cluster) {this.cluster = cluster;}
 
@@ -64,8 +71,8 @@ public final class NegativeSpaceOutliner {
             int endNegativeSpace = minX;
 
             for (int posX = minX; posX <= maxX; posX++) {
-                WorldlessChunk hash = new WorldlessChunk(posX, posZ);
-                boolean chunkInCluster = cluster.has(hash);
+                WorldlessChunk offsetChunk = new WorldlessChunk(posX, posZ);
+                boolean chunkInCluster = cluster.has(offsetChunk);
 
                 // These are just unclaimed chunks on the outline of the polygon
                 if (!encounteredChunk && !chunkInCluster)
@@ -79,14 +86,16 @@ public final class NegativeSpaceOutliner {
                     }
 
                     if (startNegativeSpace != endNegativeSpace) {
+                        // Pre-add all gaps in span to allGaps
+                        for (int negSpaceX = startNegativeSpace + 1; negSpaceX <= endNegativeSpace; negSpaceX++) {
+                            WorldlessChunk chunk = new WorldlessChunk(negSpaceX, posZ);
+                            allGaps.add(chunk);
+                        }
+
+                        // Classify each (existing loop, unchanged except calls updated hasFreeSpace)
                         for (int negSpaceX = startNegativeSpace + 1; negSpaceX <= endNegativeSpace; negSpaceX++) {
                             WorldlessChunk chunk = new WorldlessChunk(negSpaceX, posZ);
 
-                            // Check if the potential space matches one of the following conditions to be a free space:
-                            //  - On the Z-border
-                            //  - Above an unclaimed wild-space
-                            //  - Diagonally touching an unclaimed space on the Z-border
-                            //  - Surrounded by a free space.
                             if (posZ == maxZ || posZ == minZ
                                     || negSpaceX < firstLastEncounteredChunkX || negSpaceX > lastLastEncounteredChunkX
                                     || touchingDiagonalBorders(negSpaceX, posZ, maxZ, minZ)
@@ -155,10 +164,11 @@ public final class NegativeSpaceOutliner {
                 WorldlessChunk free = newFreeSpaces.pop();
 
                 // Do a surrounding check on the specificed chunk
-                for (ChunkDirection direction : ChunkDirection.DIRECTIONS) {
-                    WorldlessChunk up = free.offset(direction);
+                for (int[] offset : ALL_DIRECTIONS) {
+                    WorldlessChunk up = free.offset(offset[0], offset[1]);
                     if (negativeSpace.remove(up)) {
                         newFreeSpaces.push(up);
+                        freeSpaces.add(up); // Mark free immediately
                     }
                 }
             }
@@ -174,13 +184,13 @@ public final class NegativeSpaceOutliner {
      * +++
      */
     private boolean hasFreeSpace(WorldlessChunk chunk) {
-        if (freeSpaces.isEmpty()) return false;
-
-        for (ChunkDirection direction : ChunkDirection.DIRECTIONS) {
-            WorldlessChunk offSetHash = chunk.offset(direction);
-            if (freeSpaces.contains(offSetHash)) return true;
+        for (int[] offset : ALL_DIRECTIONS) {
+            WorldlessChunk offsetChunk = chunk.offset(offset[0], offset[1]);
+            if (freeSpaces.contains(offsetChunk)) return true;
+            int dz = offset[1];
+            if (dz < 0) continue; // Skip lowers; handle via prop/isEmptyBelow
+            if (!cluster.has(offsetChunk) && !allGaps.contains(offsetChunk)) return true; // Outside leak
         }
-
         return false;
     }
 
@@ -191,8 +201,16 @@ public final class NegativeSpaceOutliner {
      * - Is not a potential negative space.
      */
     private boolean isEmptyBelow(Collection<WorldlessChunk> negSpace, WorldlessChunk chunk) {
-        WorldlessChunk belowHash = chunk.offset(ChunkDirection.DOWN);
-        return !negSpace.contains(belowHash) && !cluster.has(belowHash);
+        // WorldlessChunk belowChunk = chunk.offset(ChunkDirection.DOWN);
+        // return !negSpace.contains(belowChunk) && !cluster.has(belowChunk);
+
+        for (int[] offset : BELOW_OFFSET) {
+            WorldlessChunk belowHash = chunk.offset(offset[0], offset[1]);
+            if (!negSpace.contains(belowHash) && !cluster.has(belowHash)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

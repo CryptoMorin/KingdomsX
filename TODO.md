@@ -52,9 +52,6 @@
 # Bugs
 - **[EngineHub]** Make building demolition for schematics support blocks like ladders (if the support block is broken the ladder will drop due to block physics update)
 - **[EngineHub]** Find a way to support FAWE. More information can be found [here](https://github.com/CryptoMorin/KingdomsX/wiki/EngineHub-Addon#worldedit-schematic-building-support).
-- **[Map Viewers]** Currently the [NegativeSpaceOutliner](https://github.com/CryptoMorin/KingdomsX/blob/c4b0475b0dc10c573690d230ab9899691d02062b/map-viewers/commons/src/main/java/org/kingdoms/services/maps/abstraction/outliner/NegativeSpaceOutliner.java)
-  will break in more complex land layouts. The bug can be seen in [this image](https://github.com/CryptoMorin/KingdomsX/blob/c4b0475b0dc10c573690d230ab9899691d02062b/map-viewers/Negative%20space%20bug%20with%20specific%20L%20shape%20layout.png) that contains a minimal reproduction claim layout
-  (Happens to all map plugins).
 
 # Others
 - **[EngineHub]** Rebuild all structure schematics using MC_EDIT format of v1.9 WorldEdit. All turrets except the arrow and flame already use this format.

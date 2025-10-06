@@ -364,6 +364,13 @@ database:
     # MongoDB's BSON can only be encoded with UTF8, so this setting doesn't affect MongoDB.
     characterEncoding: UTF-8
 
+  # This setting is mainly for H2. Turning this on is safer, but it
+  # can sometime fail when /restart scripts are used. For example,
+  # when this is enabled, restarting the server using the restart button
+  # on Pterodactyl panel causes the plugin to fail saving data.
+  # * Same as H2 "DB_CLOSE_ON_EXIT" URL setting.
+  close-at-vm-shutdown: false
+
 # Worlds that this plugin is disabled in.
 # This is more about performance. Most components of the plugin
 # will stay active such as chat, commands and permissions.

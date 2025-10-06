@@ -74,7 +74,11 @@ public final class BukkitNBTAdapter {
             MethodHandle handler = null, getMap = null, setMap = null;
 
             try {
-                Field field = getDeclaredField(nbtCompound, "x", "map");
+                Field field = XReflection.of(nbtCompound)
+                        .field("private final Map<String, Tag> tags") // Map<String, Tag>
+                        .map(MinecraftMapping.MOJANG, XReflection.v(21, 9, "tags").orElse("map"))
+                        .map(MinecraftMapping.OBFUSCATED, "x")
+                        .reflectJvm();
                 field.setAccessible(true);
                 getMap = lookup.unreflectGetter(field);
 
@@ -86,7 +90,7 @@ public final class BukkitNBTAdapter {
                     handler = lookup.findConstructor(nbtCompound, MethodType.methodType(void.class));
                     setMap = lookup.unreflectSetter(field);
                 }
-            } catch (NoSuchMethodException | IllegalAccessException | NoSuchFieldException e) {
+            } catch (ReflectiveOperationException e) {
                 e.printStackTrace();
             }
 
@@ -157,10 +161,14 @@ public final class BukkitNBTAdapter {
             Object instance = null;
 
             if (clazz != null) {
-                MethodHandles.Lookup lookup = MethodHandles.lookup();
                 try {
-                    // public static final NBTTagEnd b = new NBTTagEnd();
-                    instance = lookup.findStaticGetter(clazz, "b", clazz).invoke();
+                    // public static final NBTTagEnd INSTANCE = new NBTTagEnd();
+                    instance = XReflection.of(clazz)
+                            .field().asStatic().getter()
+                            .map(MinecraftMapping.MOJANG, "INSTANCE")
+                            .map(MinecraftMapping.OBFUSCATED, "b")
+                            .returns(clazz)
+                            .get(null);
                 } catch (Throwable e) {
                     if (XReflection.supports(13)) e.printStackTrace();
                 }

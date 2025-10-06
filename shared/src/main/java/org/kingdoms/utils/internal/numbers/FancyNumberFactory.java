@@ -54,8 +54,8 @@ class FancyNumberFactory {
         }
 
         // compute digit counts
-        int intDigits = digitCount(integerPart);
-        int commas = (intDigits - 1) / 3;
+        final int intDigits = digitCount(integerPart);
+        final int commas = intDigits / 3; // same as Math.floorDiv
 
         int fracChars = 0;
         long fracWrite = 0L;
@@ -175,7 +175,7 @@ class FancyNumberFactory {
      * divide-and-conquer method from <a href="https://stackoverflow.com/a/1308407">an StackOverflow answer</a>.
      */
     private static int digitCount(long v) {
-        if (v < 0) v = -v; // handle negatives
+        if (v < 0) v = -v;
 
         if (v < 100000000L) {
             if (v < 10000L) {
@@ -193,11 +193,11 @@ class FancyNumberFactory {
             }
         } else {
             if (v < 10_000_000_000_000L) {
-                if (v < 1_000_000_000L) {
-                    return 9;
-                } else {
-                    return v < 100_000_000_000L ? 11 : 12;
-                }
+                if (v < 1_000_000_000L) return 9;
+                if (v < 10_000_000_000L) return 10;
+                if (v < 100_000_000_000L) return 11;
+                if (v < 1_000_000_000_000L) return 12;
+                return 13;
             } else {
                 if (v < 100_000_000_000_000L) return 14;
                 if (v < 1_000_000_000_000_000L) return 15;

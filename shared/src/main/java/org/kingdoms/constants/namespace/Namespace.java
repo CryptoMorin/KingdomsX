@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  * <p>
  * Extending this class is usually not a good idea. The {@link Namespaced} should be used instead.
  */
-@SuppressWarnings("PatternValidation")
 public final class Namespace implements DataStringRepresentation {
     private final @NonNull String namespace, key;
     private final int hashCode;

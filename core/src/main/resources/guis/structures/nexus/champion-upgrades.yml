@@ -7,49 +7,49 @@ options:
     name: "&bSettings"
     material: DIAMOND_SWORD
     flags: [ ALL ]
-    lore:
-      - "{$desc}Change your champion's settings"
-      - "such as upgrading its equipment or"
-      - "changing your champion type."
+    lore: |
+      {$desc}Change your champion's settings
+      such as upgrading its equipment or
+      changing your champion type.
     posx: 3
     posy: 2
   health:
     name: "&bChampion Health"
     material: MELON_SLICE
-    lore:
-      - "{$desc}Increases the champion's health"
-      - "by {$p}50 {$desc}every level."
-      - "{$desc}Current champion's health{$colon} {$p}%scaling%"
-      - ""
-      - '{? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}'
-      - '{? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}'
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Increases the champion's health
+      by {$p}50 {$desc}every level.
+      {$desc}Current champion's health{$colon} {$p}%scaling%
+
+      {? level >= 10 && kingdoms_kingdom_level < 2 ? "{$kingdom-lvl-II}"}
+      {? level >= 30 && kingdoms_kingdom_level < 3 ? "{$kingdom-lvl-III}"}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 2
   reinforcements:
     name: "&bReinforcements"
     material: ZOMBIE_HEAD
-    lore:
-      - "{$desc}Spawns nexus guardians every {$p}3 {$desc}minutes."
-      - "Each upgrade will reduce the spawn cooldown by {$p}15 seconds{$desc}."
-      - "These guards have the same stats as your nexus guards."
-      - ""
-      - "{$chk-kingdom-lvl-IV}"
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Spawns nexus guardians every {$p}3 {$desc}minutes.
+      Each upgrade will reduce the spawn cooldown by {$p}15 seconds{$desc}.
+      These guards have the same stats as your nexus guards.
+
+      {$chk-kingdom-lvl-IV}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 2
   resistance:
     name: "&bResistance"
     material: BRICK
-    lore:
-      - "{$desc}Each upgrade adds {$p}10% {$desc}chance that the"
-      - "champion won't take knockback."
-      - ""
-      - "{$p}Resistance{$colon} {$s}%scaling%"
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Each upgrade adds {$p}10% {$desc}chance that the
+      champion won't take knockback.
+
+      {$p}Resistance{$colon} {$s}%scaling%
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 2
   speed:
@@ -59,102 +59,105 @@ options:
       {$desc}Increases the champion's speed when
       its health is lower than {$p}20%
 
-      {$p}Level{$colon} {$s}%level%
-      {$p}Cost{$colon} {$s}%cost%
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 2
   focus:
     name: "&bFocus"
     material: ENDER_EYE
-    lore:
-      - "{$desc}Players hit by the champion will"
-      - "have {$p}%scaling% {$desc}second removed from all"
-      - "their active potion effects."
-      - "Each upgrade increases the time removed by 1 second. "
-      - ""
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Players hit by the champion will
+      have {$p}%scaling% {$desc}second removed from all
+      their active potion effects.
+      Each upgrade increases the time removed by 1 second.
+
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 3
     posy: 3
   strength:
     name: "&bStrength"
     material: ANVIL
-    lore:
-      - "{$desc}Applies strength to the champion."
-      - "Potency is scaled according to this upgrade's level."
-      - ""
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Applies strength to the champion.
+      Potency is scaled according to this upgrade's level.
+
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 3
   throw:
     name: "&bThrow"
     material: COOKED_PORKCHOP
-    lore:
-      - "{$desc}Every attack, there will be a chance"
-      - "{$desc}to knock the player into the sky."
-      - "{$desc}Each upgrade increases this chance by {$p}10%{$desc}."
-      - ""
-      - "{$chk-kingdom-lvl-II}"
-      - "{$p}Level{$colon} {$s}%level%"
-      - "{$p}Cost{$colon} {$s}%cost%"
+    lore: |
+      {$desc}Every attack, there will be a chance
+      {$desc}to knock the player into the sky.
+      {$desc}Each upgrade increases this chance by {$p}10%{$desc}.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 3
   death-duel:
     name: "&bDeath Duel"
     material: GOLDEN_SWORD
     flags: [ ALL ]
-    lore:
-      - "&7All players except the invader will deal"
-      - "&250% &7less damage to the champion. The"
-      - "champion will also deal double damage"
-      - "to all players except the invader."
-      - ""
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}All players except the invader will deal
+      50% less damage to the champion. The
+      champion will also deal 50% more damage
+      to all players except the invader.
+
+      {$note} &9In this case the &2invader &9refers
+      to the player who initially used &2/k invade
+
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 3
   drag:
     name: "&bDrag"
     material: FISHING_ROD
-    lore:
-      - "&7If the invading player is more than"
-      - "&2%scaling% &7blocks away from the champion, the"
-      - "player will be dragged to the champion."
-      - ""
-      - "{$chk-kingdom-lvl-III}"
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}If the invading player is more than
+      &2%scaling% {$desc}blocks away from the champion, the
+      player will be dragged to the champion.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 3
   thor:
     name: "&bThor"
     material: DIAMOND_AXE
     flags: [ ALL ]
-    lore:
-      - "{$desc}Every {$p}%cooldown%{$desc}, lightning"
-      - "strikes the invading player and all"
-      - "nearby non-allied players. Deals"
-      - "damage, and knocks the players back also."
-      - "Each upgrade decreases the cooldown by 1 second."
-      - ""
-      - "{$chk-kingdom-lvl-III}"
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}Every {$p}%cooldown%{$desc}, lightning
+      strikes the invading player and all
+      nearby non-allied players. Deals
+      damage, and knocks the players back also.
+      Each upgrade decreases the cooldown by 1 second.
+
+      {$chk-kingdom-lvl-III}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 3
     posy: 4
   damage-cap:
     name: "&bDamage Cap"
     material: DIAMOND_CHESTPLATE
     flags: [ ALL ]
-    lore:
-      - "&7Your champion can only receive up to"
-      - "&2%scaling% &7damage on any attack."
-      - "Each upgrade decreases the damage cap by 1."
-      - ""
-      - "{$chk-kingdom-lvl-II}"
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}Your champion can only receive up to
+      &2%scaling% {$desc}damage on any attack.
+      Each upgrade decreases the damage cap by 1.
+
+      {$chk-kingdom-lvl-II}
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 4
     posy: 4
   burst:
@@ -173,40 +176,40 @@ options:
       {$p}Knockback{$colon} {$s}%fancy@upgrade_knockback%
 
       {$chk-kingdom-lvl-V}
-      {$p}Level{$colon} {$s}%level%
-      {$p}Cost{$colon} {$s}%cost%
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 5
     posy: 4
   plow:
     name: "&bPlow"
     material: COBWEB
-    lore:
-      - "&7Your champion will try to clear"
-      - "lava and webs every {$p}%cooldown%"
-      - ""
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}Your champion will try to clear
+      lava and webs every {$p}%cooldown%
+
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 6
     posy: 4
   fangs:
     name: "&bFangs"
     material: EVOKER_SPAWN_EGG
-    lore:
-      - "&7Spawn fangs for the enemy"
-      - "players around the champion"
-      - "every {$p}%cooldown%{$desc}."
-      - "Each upgrade increases the damage"
-      - "and radius of the attack by {$p}1{$desc}."
-      - ""
-      - "&2Level&8: &6%level%"
-      - "&2Cost&8: &6%cost%"
+    lore: |
+      {$desc}Spawn fangs for the enemy
+      players around the champion
+      every {$p}%cooldown%{$desc}.
+      Each upgrade increases the damage
+      and radius of the attack by {$p}1{$desc}.
+
+      {$p}Level{$colon} {$s}%roman@level%
+      {$p}Cost{$colon} {$s}%fancy@cost%
     posx: 7
     posy: 4
 
   back:
     name: "{$p}Back"
     material: BARRIER
-    lore:
+    lore: ""
     posx: 5
     posy: 6
   purple-glass:
