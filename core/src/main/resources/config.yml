@@ -522,10 +522,13 @@ help:
 # for usernames (like Bedrock usernames being forced a dot in front of their name) and
 # this can cause issues.
 # - Values:
-#   * "true": Standard Minecraft username protocol which is "[A-Za-z0-9_]{1,16}" (automatically supports Geyser when present too)
+#   * "true": Standard Minecraft username protocol which is "[A-Za-z0-9_]{1,16}"
+#             (Automatically supports Geyser's dot-prefixed usernames when present too)
 #   * "false": Performs no validation.
 #   * Any other text: A RegEx pattern defining the allowed username.
 # - Requires a restart to change.
+# - Note: If you use the standalone version of Geyser, the plugin will not be able to detect it, and you'll have to
+#         change this option to false or rewrite the RegEx yourself.
 username-validation: true
 
 # /k fly
@@ -905,6 +908,8 @@ flag:
     contains: [ 'jar://', 'ftp://', 'file://', 'porn', 'sex', '.onion', 'logger' ]
     # Only use if you know how RegEx works. You can use this site: https://regexr.com/
     # If the URL contains any RegEx below then it'll not be allowed.
+    # Note: If you're a big server it's better to host your own website with approved
+    #       images as it's practically impossible to block all inappropriate links.
     regex: [ ]
 
 # Settings for /k create and /k rename
@@ -970,7 +975,7 @@ kingdom-name:
     fuck, anus, anal, cock, dick, suck, twat, shit,
     labbe, vagina, clit, cunt, bitch, whore, slut,
     faggot, retard, porn, rape, rapist, molest, wanker,
-    cracker
+    cracker, dildo, dyke, 'cumm?ing', pimp, fart
   ]
 
 # Settings for /k tag

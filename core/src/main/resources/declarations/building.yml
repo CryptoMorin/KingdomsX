@@ -3,7 +3,7 @@
   description: 'Base settings for <type>.'
   parameters:
     <type>: str
-    <name>: str
+    <name>: str # Used for EngineHub addon
     <build-duration-factor>: str
     <durability-factor>: int
     <extra-holograms>: list
@@ -272,7 +272,15 @@ markers:
 #               for these effects.
 #   * weakness: Makes the turret damage less. The number specified will be subtracted from the final damage.
 #               The "damage" placeholder can be used for these effects which is the current damage.
+# All options support "distance" which is the distance between the source of the damage and the building's
+# origin point (which is usually the center of the building)
 damaging-factors:
+  TNT:
+    # Yield is explosion readius.
+    #   * TNT: 4
+    #   * Creeper: 3
+    damage: yield * 2
+    paralyze: '[10s] * yield'
   SNOWBALL:
     paralyze: 2s
   SPECTRAL_ARROW:

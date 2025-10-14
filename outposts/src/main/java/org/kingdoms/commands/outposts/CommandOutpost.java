@@ -1,6 +1,8 @@
 package org.kingdoms.commands.outposts;
 
 import org.bukkit.command.CommandSender;
+import org.bukkit.permissions.PermissionDefault;
+import org.bukkit.util.permissions.DefaultPermissions;
 import org.kingdoms.commands.CommandContext;
 import org.kingdoms.commands.KingdomsParentCommand;
 import org.kingdoms.locale.messenger.StaticMessenger;
@@ -27,7 +29,7 @@ public class CommandOutpost extends KingdomsParentCommand {
 
     @SuppressWarnings("this-escape")
     public CommandOutpost() {
-        super("outpost");
+        super("outpost", PermissionDefault.OP);
         if (isDisabled()) return;
 
         new CommandOutpostCreate(this);

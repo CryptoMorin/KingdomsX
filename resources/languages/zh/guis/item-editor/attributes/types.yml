@@ -1,25 +1,21 @@
 title: "{$sep}-=( {$p}属性种类{$sep} )=-"
 rows: 4
 
-
-
 options:
   back:
     posx: 1
     posy: 1
-    material: PLAYER_HEAD
-    skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzQxMzNmNmFjM2JlMmUyNDk5YTc4NGVmYWRjZmZmZWI5YWNlMDI1YzM2NDZhZGE2N2YzNDE0ZTVlZjMzOTQifX19"
+    skull: "{$gui-back}"
     name: '{$p}返回'
   orange-stained-glass-pane:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+    slots: [1, 2, 3, 4, 5, 6, 7, 8, 9, 17, 18, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35]
     material: ORANGE_STAINED_GLASS_PANE
     name: ''
-  generic-max-health:
+  max-health:
     posx: 2
     posy: 2
-    material: PLAYER_HEAD
     skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMjg2OWJkZDlhOGY3N2VlZmY3NWQ4ZjY3ZWQwMzIyYmQ5YzE2ZGQ0OTQ5NzIzMTRlZDcwN2RkMTBhMzEzOWE1OCJ9fX0='
-    name: 通用最大生命值
+    name: 最大生命值
     lore: |
       {$p}生物的最大生命值
       (2生命值=1心); 会决定生物可以
@@ -27,31 +23,31 @@ options:
       若玩家想召唤高生命值生物, 
       可以使用如这个和生命值标签{Health:200.0f}的方法。
       (1.17禁用)
-  generic-follow-range:
+  follow-range:
     posx: 3
     posy: 2
     material: COMPASS
-    name: 通用生物最大跟随距离
+    name: 生物最大跟随距离
     lore: |
       {$p}生物追踪玩家的距离 
       超过此距离后生物会停止跟随玩家。
       大多数生物距离为{$p}16{$p}, 
       但僵尸为{$p}40{$p}。
-  generic-knockback-resistance:
+  knockback-resistance:
     posx: 4
     posy: 2
     material: ANVIL
-    name: 通用击退抗性
+    name: 击退抗性
     lore: |
       {$p}攻击和弹射物水平击退的减免。
       竖直击退不受影响。
       爆炸击退不受影响。1.0指100% 免疫击退。
       0.4指仅有60% {$p}的击退。
-  generic-movement-speed:
+  movement-speed:
     posx: 5
     posy: 2
     material: DIAMOND_BOOTS
-    name: 通用移动速度
+    name: 移动速度
     lore: |
       {$p}实体的移动速度。
       生物的最高移动速度略高于{$p}43 
@@ -125,3 +121,10 @@ options:
     name: 僵尸生成支援
     lore: |
       {$p}僵尸被攻击时生成另一个僵尸的几率。
+  entity-interaction-range:
+    posx: 8
+    posy: 3
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzBmNGIxNmIwYTRkNTc2ODc4OTI2MzRiNjYxNDNkNmM0NTk0YzZmYTU0ZGFhNjM4NTQ1ZmExYzUwYjI3ZjE0YyJ9fX0='
+    name: 实体交互范围
+    lore: |
+      {$desc}工具可以与实体交互的最大距离。

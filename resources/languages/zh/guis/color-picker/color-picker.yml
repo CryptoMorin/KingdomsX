@@ -3,10 +3,10 @@ sound: ITEM_BOOK_PAGE_TURN
 rows: 6
 
 '[color]': &color
-  allowed:
-    condition: 'color_allowed'
   disallowed:
-    lore: "{$warning} &e此颜色无法选择。"
+    condition: '!color_allowed'
+    lore: "{$warning} &e你不能选择此颜色。"
+    sound: BLOCK_NOTE_BLOCK_BASS
 
 # https://minecraft.fandom.com/wiki/Formatting_codes
 options:
@@ -22,12 +22,11 @@ options:
       {$s}%color_description%
 
       {$p}当前颜色{$colon} &r%color_value%%color_value_name%
-
   # Only options starting with "color" will be interpreted as predefined colors.
   # You can add your own colors, just don't forget the "color" option AND the GUI option entry name itself
   # must begin with the word "color"
   separator:
-    slots: [ 0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
+    slots: [0, 1, 2, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
     material: GRAY_STAINED_GLASS_PANE
   back:
     posx: 4
@@ -43,17 +42,14 @@ options:
     posx: 2
     posy: 3
     material: REDSTONE_BLOCK
-    sound: BLOCK_NOTE_BLOCK_BASS
     name: '&4深红 #FF5555'
-    color: '#FF5555'
+    color: '#AA0000'
     <<: *color
   color-red:
     posx: 2
     posy: 4
     material: RED_WOOL
     name: '&cRed #FF5555'
-    lore: "&8[&c!&8] &e此颜色无法选择。"
-    sound: BLOCK_NOTE_BLOCK_BASS
     color: '#FF5555'
     <<: *color
   color-dark-blue:
@@ -63,7 +59,6 @@ options:
     name: '&1深蓝#0000AA'
     <<: *color
     color: '#0000AA'
-    <<: *color
   color-light-blue:
     posx: 3
     posy: 4
@@ -71,7 +66,6 @@ options:
     name: '{$sp}浅蓝#5555FF'
     <<: *color
     color: '#5555FF'
-    <<: *color
   color-black:
     posx: 5
     posy: 4

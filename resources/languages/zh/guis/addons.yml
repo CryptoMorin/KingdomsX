@@ -26,11 +26,11 @@ options:
     slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
     installing:
       condition: installing
-      name: '&8[&3Installing...&8] {$sp}%addon-name%'
+      name: '&8[&3正在安装...&8] {$sp}%addon-name%'
       lore: |
         %description%
 
-        {$p}Version{$colon} {$sp}%latest-version%
+        {$p}版本{$colon} {$sp}%latest-version%
       material: CYAN_WOOL
     pending-restart:
       condition: waiting_to_restart
@@ -42,16 +42,22 @@ options:
         &5此附属已下载完毕。
         正在等待服务器重启以启用此附属。
       material: PURPLE_WOOL
-    updated:
-      condition: 'installed && !outdated'
-      name: '{$sep}[{$p}已是最新版{$sep}]{$sp}%addon-name%'
+    failed-to-load:
+      condition: 'installed && failed_to_load'
+      name: '{$sep}[&4下载失败{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
-        {$p}版本{$colon} {$sp}%installed-version%
-        &4右键以删除。
-      material: GREEN_WOOL
+
+        &c此附属下载失败。
+        检查你的控制台查看报错。
+
+        &4已安装版本{$colon} {$sp}%installed-version%
+        {$p}最新版本{$colon} {$sp}%latest-version%
+        {$p}左键以更新
+        &4右键以卸载
+      material: RED_WOOL
     outdated-and-outdated-core-version:
-      condition: 'installed && outdated && outdated_core_version'
+      condition: 'installed && max_outdated_core_version'
       name: '&8[&4已过期&8]{$sp}%addon-name%'
       lore: |
         %description%
@@ -65,19 +71,15 @@ options:
 
         {$p}左键以更新
         &4右键以卸载
-      material: RED_WOOL
-    not=installed-outdated-core-version:
-      condition: '!installed && outdated_core_version'
-      name: '&8[&4核心已过期&8]{$sp}%addon-name%'
+      material: YELLOW_WOOL
+    up-to-date:
+      condition: 'installed && !outdated'
+      name: '{$sep}[{$p}最新版本{$sep}] {$sp}%addon-name%'
       lore: |
         %description%
-
-        {$p}版本{$colon} {$sp}%latest-version%
-
-        {$warning}{$es}此版本需要KingdomsX
-        {$p}v%supported-core-version%{$es}版本运作。
-        当前版本{$sep}: {$e}%current-core-version%
-      material: RED_WOOL
+        {$p}版本{$colon} {$sp}%installed-version%
+        &4右键以卸载
+      material: GREEN_WOOL
     outdated:
       condition: 'installed && outdated'
       name: '{$sep}[&4已过期{$sep}]{$sp}%addon-name%'
@@ -87,7 +89,19 @@ options:
         {$p}最新版{$colon} {$sp}%latest-version%
         {$p}左键以安装。
         &4右键以删除。
-      material: RED_WOOL
+      material: ORANGE_WOOL
+    not-installed-outdated-core-version:
+      condition: '!installed && outdated_core_version'
+      name: '{$sep}[&4过期的核心{$sep}] {$sp}%addon-name%'
+      lore: |
+        %description%
+
+        {$p}版本{$colon} {$sp}%min_version%
+
+        {$warning} {$desc}此插件需要至少{$p}v%min_supported-core-version% 
+        {$desc} 版本的KingdomsX插件以正常运行。
+        当前版本{$colon} {$e}%current-core-version%
+      material: GRAY_WOOL
     not-installed:
       name: '{$sep}[{$s}未安装{$sep}]{$sp}%addon-name%'
       lore: |
@@ -95,4 +109,4 @@ options:
         {$p}版本{$colon} {$sp}%latest-version%
         {$p}左键以安装。
       condition: '!installed'
-      material: BLUE_WOOL
+      material: GRAY_WOOL

@@ -34,7 +34,6 @@ public final class ItemNBT {
         boolean supportsComponents = false;
 
         MethodHandles.Lookup lookup = MethodHandles.lookup();
-        ReflectiveNamespace ns = XReflection.namespaced();
         Class<?> crafItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.CB, "inventory").named("CraftItemStack").unreflect();
         Class<?> nmsItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.NMS, "world.item").named("ItemStack").unreflect();
         Class<?> CompoundTagClass = ofMinecraft()
@@ -42,7 +41,6 @@ public final class ItemNBT {
                 .map(MinecraftMapping.MOJANG, "CompoundTag")
                 .map(MinecraftMapping.SPIGOT, "NBTTagCompound")
                 .unreflect();
-        // Why does this show up as "CompoundTag" in stacktraces???!?!??
 
         try {
             asNmsCopy = lookup.findStatic(crafItemStack, "asNMSCopy", MethodType.methodType(nmsItemStack, ItemStack.class));
@@ -91,7 +89,7 @@ public final class ItemNBT {
              */
             copyTag = XReflection.of(CustomDataClass).method()
                     .map(MinecraftMapping.MOJANG, "copyTag")
-                    .map(MinecraftMapping.OBFUSCATED, XReflection.v(21, 4, "d").orElse("c"))
+                    .map(MinecraftMapping.OBFUSCATED, XReflection.v(21, 9, "b").v(21, 4, "d").orElse("c"))
                     .returns(CompoundTagClass)
                     .reflect();
 

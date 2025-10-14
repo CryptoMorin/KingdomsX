@@ -5,10 +5,10 @@ rows: 6
 (import):
   pagination: {}
 
-# Don't remove "[NoSync]" from below.
-# [NoSync]
+# Don't remove "-NOSYNC" from below.
+# -NOSYNC
 '[fn-std-perm]': &fn-std-perm
-  args: [ "<x>" ]
+  args: ["<x>"]
   return:
     enabled:
       condition: enabled
@@ -18,9 +18,9 @@ rows: 6
       name: "{$disabled} <x>"
       material: RED_WOOL
 
-# [NoSync]
+# -NOSYNC
 '[fn-perm]': &fn-perm
-  args: [ "<x>", "<material>" ]
+  args: ["<x>", "<material>"]
   return:
     material: <material>
     enabled:
@@ -30,7 +30,7 @@ rows: 6
     else:
       name: "{$disabled} <x>"
 
-# [NoSync]
+# -NOSYNC
 '[permission]':
   alliance:
     <<: *fn-std-perm [ "结盟" ]
