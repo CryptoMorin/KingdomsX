@@ -11,6 +11,8 @@ chat-input:
   # The reason this doesn't support multiple words is that it'll minimize the amount of
   # inputs players can choose for all the chat inputs.
   cancel: megszakít
+  error: '{$e}Hiba történt a csevegés kezelése közben. Ha játékos vagy, jelentsd ezt az adminisztrátornak, ha adminisztrátor vagy, nézd meg a konzolnaplókat.'
+
 
 # Usually the %world% placeholder shows the raw name for internal purposes (such as hover messages)
 # But this is used for %translated-world% placeholder and places where messages cannot be directly translated.
@@ -27,8 +29,8 @@ enabled: '{$p}✔'
 disabled: '{$e}✗'
 
 # Used for command input that require a yes/no.
-True: true
-False: false
+true: true
+false: false
 
 # Used in places were the data is no longer available.
 # For example, a kingdom that sent a mail was disbanded.
@@ -63,7 +65,7 @@ time-formatter:
 # Used for date-based placeholders.
 # The default time related placeholders like %kingdoms_since% are shown as
 # random numbers if you use it just like that, you'd have to use the date modifier:
-# %date@kingdoms_since%
+# %kingdoms_date_since%
 
 # It uses Java's default date formatter syntax which can be found here:
 # https://docs.oracle.com/javase/8/docs/api/java/time/format/DateTimeFormatter.html#patterns
@@ -82,14 +84,14 @@ cardinal-directions:
 
 # Used for {$name} variables inside other messages.
 variables:
-  cancel: '&cvagy használd a hover:{&ecancel;&eKlikk a megszakításhoz;/cancel} &cparancsot a megszakításához.'
+  cancel: '&cvagy használd a hover:{&emegszakít;&eKlikk a megszakításhoz;/cancel} &cparancsot a megszakításához.'
   usage: '&4Használata{$colon} {$es}/k '
   enabled: '&8[&aEngedélyezve&8]&2'
   disabled: '&8[&cLetiltva&8]&4'
   currency-symbol: $
   ok: hover:{&8[&9Ok&8];&7Klikk;/k session %command_namespace% %command_session_id% OK}
-  'True': hover:{&8[&2Yes&8];&7Klikk;/k session %command_namespace% %command_session_id% IGEN}
-  'False': hover:{&8[&cNo&8];&7Klikk;/k session %command_namespace% %command_session_id% NEM}
+  no: hover:{&8[&2Igen&8];&7Klikk;/k session %command_namespace% %command_session_id% YES}
+  yes: hover:{&8[&cNem&8];&7Klikk;/k session %command_namespace% %command_session_id% NO}
   kingdom-lvl-II: '&cSzükséges Királysági szint{$colon} &eII'
   kingdom-lvl-III: '&cSzükséges Királysági szint{$colon} &eIII'
   kingdom-lvl-IV: '&cSzükséges Királysági szint{$colon} &eIV'
@@ -302,7 +304,7 @@ turrets:
   cant-place-in-biome: '{$e}Ez a torony nem helyezhető el ebben a biomban.'
   disabled-world: '{$e}Letiltott világokba nem lehet tornyokat elhelyezni.'
   not-manual: '{$e}Ez a torony nincs kézi módban. Aktiválja először.'
-  manual-operating: '{$p}   Kézi mód{$colon} {$p}Mutass az ellenség irányába bármilyen tárgyat tartva és &9bal-klikk.'
+  manual-operating: '{$p}Kézi mód{$colon} {$p}Mutass az ellenség irányába bármilyen tárgyat tartva és &9bal-klikk.'
   holograms:
     ammo: '{? ammo == 0 ? "{$e}Kifogyott" : "{$p}Lőszer{$colon} {$s}%fancy@ammo%"}'
   confirm-remove: '{$e}Királysági torony van itt elhelyezve, szeretnéd eltávolítani? hover:{{$yes};&7Épület eltávolítása;/k building remove}'
@@ -317,7 +319,17 @@ turrets:
     paralysis: '&3Bénulás{$colon} {$es}%time@duration%'
     hypnosis: '&6Hipnózis{$colon} {$es}%time@duration%'
     weakness: '&5Gyengeség{$colon} {$es}%damage_reduction% {$sep}| {$es}%time@duration%'
-    slowness: '&9Lassúság{$colon} {$es}%delay% {$sep}| {$es}%time@duration%'
+    slowness: '&9Lassúság{$colon} {$es}%delay% {$sep}| {$es}%time@duration%'    
+  manual:
+    pacifist:
+      target: '{$e}A játékos egy békés királyságban van.'
+      owner: '{$e}A torony egy békés királysághoz tartozik.'
+      you: '{$e}Királyságod békés, nem használhatod ezt a tornyot.'
+    event-cancelled: '{$e}A torony nincs aktiválva.'
+    friendly:
+      fire: '{$e}Baráti játékosra vagy mob-ra sebeztél. Barát megsebzése nem megengedett!'
+    requires-target: '{$e}Nincs célpontja a lövésnek.'
+    operating: '{$p}Kézi mód{$colon} {$p}Mutass az ellenség irányába bármilyen tárgyat tartva és &9bal-klikk.'
 building:
   holograms:
     durability: '{$p}Élettartam{$colon} {$s}%fancy@durability%'
@@ -348,12 +360,16 @@ building:
     started: '{$p}Az épület javítása elkezdődött...'
     fill: '{$p}Építési élettartam{$colon} {$s}%old-durability% &7+ {$s}%added-durability% &7= {$s}%building_durability%'
     maxxed: '{$p}Építési élettartam{$colon} {$s}%old-durability% &7+ {$s}%added-durability% &7= {$s}%building_durability% {$sep}({$s}Teljesen megjavítva{$sep})'
+  already-placed-construction: '{$e}Egy királyság épületének egy blokkja kerül ide.'
+  support-block: '{$e}A blokk, amit megpróbálsz kiütni a {$es}%building% {$e}nevű épület része. Először az épületet távolítsd el, ha ki akarod ütni ezt a blokkot.'
+  errors-upgrade: '{$e}Ez az épületet nem tudod itt fejleszteni{$colon}'
 locations:
   normal: '{$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
   chunk: '{$s}%translated-world%{$sep}, {$s}%x%{$sep}, {$s}%z%'
   normal-worldless: '{$s}%x%{$sep}, {$s}%y%{$sep}, {$s}%z%'
 placeholders:
   top-not-found: '{$e}Nincs királyság a felső pozicióba{$colon} {$es}%position%'
+  top-not-available: '{$e}Nincsenek adatok ehhez a helyőrzőhöz      '
 bossbar:
   editor:
     title:
@@ -406,7 +422,7 @@ lands:
         title: '&9%other*kingdoms_kingdom_name%'
         subtitle: '%other*hex@kingdoms_kingdom_color%%other*kingdoms_lore%'
     nation-zone:
-      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nation Zone{$colon} %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
+      actionbar: '{$sep}&l-=( %kingdoms_nation_zone:info name=relation_color%Nemzeti zóna{$colon} %hex@kingdoms_nation_zone:info name=nation_color%%kingdoms_nation_zone:info name=nation_name% {$sep}&l)=-'
     ally:
       titles:
         title: '&6%other*kingdoms_kingdom_name%'
@@ -443,14 +459,18 @@ other-kingdoms:
     place: '{$e}Nem helyezhetsz el tornyot más királyság területén.'
     interact: '{$e}Nem nyithatsz meg tornyot más királyság területén.'
     break: '{$e}Nem üthetsz ki tornyot más királyság területén.'
+  teleport-portal-creation: '{$e}Nm tudsz teleportálni ebből a portálból, mert ez egy új portált nyit egy másik királyság területén belülre.'
+  teleport-entity: '{$e}Az általad elhelyezett {$es}%entity% {$e}nem teleportálódott át a portálon, mert az egy másik királyság területére vezet.'
 guis:
   creative: '{$e}Nem nyithatod ki ezt a GUI felületet kreatív módban.'
-  open-inventory-during-input: '{$e}Nem nyithatsz eszköztárat felhasználói bevitel közben. Használd a hover:{{$es}cancel;{$es}Megszakítás;/cancel} {$e}parancsot a művelet megszakításához.'
-  command-during-input: '{$e}Nem hajthatsz végre parancsokat felhasználói bevitel közben. Használd a hover:{{$es}cancel;{$es}Mégsem;/cancel} {$e}parancsot a művelet megszakításához.'
+  open-inventory-during-input: '{$e}Nem nyithatsz eszköztárat felhasználói bevitel közben. Használd a hover:{{$es}megszakít;{$es}Klikk a megszakításhoz;/cancel} {$e}parancsot a művelet megszakításához.'
+  command-during-input: '{$e}Nem hajthatsz végre parancsokat felhasználói bevitel közben. Használd a hover:{{$es}megzsakít;{$es}Klikk a megszakításhoz;/cancel} {$e}parancsot a művelet megszakításához.'
   cant-open-during-invasion: '{$e}Nem nyithatod meg ezt a GUI felületet amíg ostrom alatt áll a királyságod.'
   pages:
     next-page-not-available: '{$e}Nincs több oldal. Max oldal{$colon} {$es}%pages%'
     previous-page-not-available: '{$e}Nincs több előző oldal.'
+    error: '{$e}Hiba történt az opció kezelése során. Ha játékos vagy, értesítsd a szerver adminisztrátorát, ha aminisztrátor vagy, ellenőrizd a konzol naplóit.'
+    open-error: '{$e}Hiba történt a GUI felület megnyitásakor. Ha játékos vagy, értesítsd a szerver adminisztrátorát, ha adminisztrátor vagy, ellenőrizd a konzol naplóit.  '
 protected-signs:
   cant-modify: '{$e}Nem tudod módosítani ennek a védett blokknak a beállításait.'
   already-protected: '{$s}Ez a blokk már védett.'
@@ -475,7 +495,7 @@ protected-signs:
     in-cooldown: |
       {$e}Jelszó szükséges a tárolóhoz való hozzáféréshez, viszont túl sok sikertelen próbálkozás volt.
       Ennyi idő múlva próbáld újra{$colon} {$es}%cooldown%
-    required: '{$e}Jelszó szükséges a tároló megnyitásához. Írd be a jelszót vagy használd a hover:{{$es}cancel;{$es}Mégsem;/cancel} {$e}parancsot a művelet megszakításához.'
+    required: '{$e}Jelszó szükséges a tároló megnyitásához. Írd be a jelszót vagy használd a hover:{{$es}megszakít;{$es}Klikk a megszakításhoz;/cancel} {$e}parancsot a művelet megszakításához.'
     required-no-password: '{$e}Ennek a tárolónak a megnyitásához jelszóra van szükség, ami azonban nincs beállítva.'
     ask: '{$s}Írd be a jelszót {$cancel} és a hover:{{$e}remove;{$e}Eltávolít;remove} {$s}parancsot a jelszó eltávolításához.'
     container-only: '{$e}Csak konténerekre lehet jelszót beállítani mint például a {$es}láda, tölcsér, kemence, stb.'
@@ -694,7 +714,7 @@ nexus:
   turret-inventory-full: '{$e}Az eszköztárad tele van!'
   structure-purchased: '{$p}Megvetted a(z) {$s}%structure% {$p}nevű struktúrát {$s}{? rp > 0 ? "%fancy@rp% Nexus pontért"}{? rp > 0 && money > 0 ? " {$e}és{$es} "}{? money > 0 ? "$%fancy@money% pénzért"}{$p}.'
   structure-cost: '{$e}Szükséged van {$es}{? rp > 0 ? "%fancy@rp% Nexus pontra"}{? rp > 0 && money > 0 ? " {$e}és{$es} "}{? money > 0 ? "$%fancy@money% pénzre"} {$e}, hogy meg tud venni ezt a struktúrát.'
-  turret-cost: '{$e}Szükséged van {$es}{? rp > 0 ? "%fancy@rp% Nexus pontra"}{? rp > 0 && money > 0 ? " {$e}és{$es} "}{? money > 0 ? "$%fancy@money% pénzre"} {$e}, hogy meg tud venni ezt a tornyot.              {$e}You need {$es}{? rp > 0 ? "%fancy@rp% resource points"}{? rp > 0 && money > 0 ? " {$e}&{$es} "}{? money > 0 ? "$%fancy@money%"} {$e}to buy this turret.'
+  turret-cost: '{$e}Szükséged van {$es}{? rp > 0 ? "%fancy@rp% Nexus pontra"}{? rp > 0 && money > 0 ? " {$e}és{$es} "}{? money > 0 ? "$%fancy@money% pénzre"} {$e}, hogy meg tud venni ezt a tornyot.'
   turret-purchased: '{$p}Megvetted a(z) {$s}%turret% {$p}nevű tornyot {$s}{? rp > 0 ? "%fancy@rp% Nexus pontért"}{? rp > 0 && money > 0 ? " {$p}és{$s} "}{? money > 0 ? "$%fancy@money% pénzért"}{$p}.'
   resource-points: '{$s}Összesen {$es}%amount% {$s}Nexus pont került hozzáadásra.'
   rank-editor:
@@ -750,6 +770,9 @@ nexus:
       invalid: |
         {$e}Az adóegyenlet ({$es}%tax%{$e}) nem tesztelhető rajtad{$colon} {$es}%reason%
         {$e}Kérlek írj be egy helyes egyenletet.
+      public-home:
+        prompt: '{$p}Írd be a csevegésbe a publikus otthonod adóját {$cancel}'
+
     shield:
       not-enough-resource-points: '{$e}Nincs elég Nexus pontod.'
       refunded: '{$p}Visszakaptál {$s}%fancy@rp% {$p}Nexus pontot a pajzsodból.'
@@ -760,6 +783,8 @@ nexus:
           attacked: '{$e}Várnod kell {$es}%time% {$e}időt mielőtt ismét pajzsot vásárolnál, mert {$es}%last% {$e}idővel ezelőtt a királyságod ostromolt.'
           defended: '{$e}Várnod kell {$es}%time% {$e}időt mielőtt ismét pajzsot vásárolnál, mert {$es}%last% {$e}idővel ezelőtt a királyságodat megostromolták.'
     shield-activated: '{$p}Pajzs aktiválva {$s}%time@shield_time_left% {$p}ideig.'
+    upgrade:
+      not-placed: '{$e}A frissítéshez le kell helyezned a nexus-t!'
 nexus-resource-points-enter-value: '{$s}Kérlek írd be a Nexus pontok mennyiségét {$cancel}'
 group-banner:
   url:
@@ -820,14 +845,17 @@ outpost:
   sold: '{$p}Eladtál {$s}%fancy@cost% {$p}Nexus pontért {$s}%amount% {$p}darabot ebből{$colon} {$s}%name%'
   mismatched-item: '{$p}A tárgy amit megpróbálsz eladni nem pontosan olyan mint amit az előőrsből venni lehet.'
 turret:
-  ammo:
+  ammo: 
     not-enough-resource-points: '{$e}Nincs elég Nexus pontod.'
     purchased: '{$p}Lőszert vásároltál a toronyhoz.'
     max-ammo: '{$e}Elérted a maximum lőszer számát.'
+    empty: '{$e}A toronyban nincs lőszer.'
   upgrade:
     max-level: '{$e}Ez a torony már a max szintre van fejlesztve.'
   upgrade-not-enough-resource-points: '{$e}Nincs elég Nexus pontod a fejlesztéshez.'
   upgrade-upgrading: '{$s}%building_displayname% {$p}fejlesztése{$colon} {$s}%roman@building_level% {$arrow} {$s}%roman@building_next_level%'
+  manual:
+    cannot-function: '{$e}A torony nem működik.'
 disabled-world: '{$e}A királyságok ebben a világban le van tiltva{$colon} {$s}%translated-world%'
 not-found:
   nation-kingdom-player: '{$e}Nem található nemzet, királyság vagy játékos ezen a néven{$colon} {$es}%arg%'
@@ -946,6 +974,7 @@ commands:
   unknown-command: '{$e}Ismeretlen parancs!'
   tabs:
     error: '{$e}Hiba történt a konzolparancs végrahajtása közben. Hajátékos vagy, értesítsd a szerver adminjait. Ha admin vagy, ellenőrizd a konzol naplóit.'
+  console-only: '{$e}Ez a parancs csak a konzolon hajtható végre.'
 kingdom:
   name-blacklisted: '{$e}A királyságod neve tiltott szót tartalmaz.'
   tag-blacklisted: '{$e}A királyságod címkéje tiltott szót tartalmaz.'
@@ -985,13 +1014,13 @@ mails:
     separator: '&7, '
     removed: '{$e}Másolat címének eltávolítása{$colon}: {$es}%recipient%'
     max: '{$e}Legfeljebb %limit% másolati címre tudsz üzenetet küldeni.'
-    enter: '{$p}Írd be a királyság nevét akinek másolatot szeretnél küldeni vagy használd a hover:{{$e}cancel;{$es}Mégsem;/cancel} {$p}parancsot a megszakításhoz.'
-  to-enter: '{$p}Írd be a királyság nevét akinek küldeni szeretnél vagy használd a hover:{{$e}cancel;{$es}Mégsem;/cancel} {$p}parancsot a megszakításhoz.'
+    enter: '{$p}Írd be a királyság nevét akinek másolatot szeretnél küldeni vagy használd a hover:{{$e}megszakít;{$es}Klikk a megszakításhoz;/cancel} {$p}parancsot a megszakításhoz.'
+  to-enter: '{$p}Írd be a királyság nevét akinek küldeni szeretnél vagy használd a hover:{{$e}megszakít;{$es}Klikk a megszakításhoz;/cancel} {$p}parancsot a megszakításhoz.'
   to-yourself: '{$e}Nem tudsz levelet küldeni a saját királyságodnak.'
   already-recipient: '{$e}A megadott királyság már a címzettek között van.'
   subject:
     empty: '{$e}Semmi'
-    enter: '{$p}Írd be a leveled tágyát vagy használd a hover:{{$e}cancel;{$es}Mégsem;/cancel} {$p}parancsot a megszakításhoz.'
+    enter: '{$p}Írd be a leveled tágyát vagy használd a hover:{{$e}megszakít;{$es}Klikk a megszakításhoz;/cancel} {$p}parancsot a megszakításhoz.'
     limit: '{$e}A levél tárgya legfeljebb {$es}%limit% {$e}karakter hosszú lehet.'
     changed: '{$p}A levél tárgya megváltozott{$colon} {$s}%subject%'
   content:
@@ -1007,6 +1036,7 @@ mails:
     missing-content: '{$e}Leveled tartalma üres.'
     total-cooldown: '{$e}Királyságod ennyi idő múlva küldhet ismét levelet{$colon} {$es}%cooldown%'
     per-group-cooldown: '{$e}Királyságod a(z) {$es}%kingdom% {$e}királyságnak ennyi idő múlva küldhet ismét levelet{$colon} {$es}%cooldown%'
+    missing-from-group: '{$e}A levél feladócsoportja már nem létezik. Kérjük, hozzon létre egy új vázlatot.'
   not:
     an-envelope: '{$e}A tárgy nem boríték.'
 kingdom-item:
@@ -1118,6 +1148,9 @@ command:
           nexus-unclaimed: '{$dot} {$e}Nexus struktúra található egy nem elfoglalt területen{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$colon} {$s}%block%'
           national-nexus-in-nationless: '{$dot} {$e}Nemzeti nexus található egy olyan területen amin nincs nemzet{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Blokk{$colon} {$s}%block%'
           protection-sign: '{$dot} {$e}Nincs blokk vagy hiányzó tábla a védelmi táblánál{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} {$sep}| {$p}Blokk{$colon} {$s}%block% {$sep}| {$p}Tábla{$colon} {$s}%sign% '
+          nexus-level-mismatch: '{$dot} {$e}A megtalált nexus struktúra szintjei nem egyeznek{$colon} {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%{$sep} | {$p}Csoport szint{$colon} {$s}%group_level% {$sep}| {$p}nexus szint{$colon} {$s}%nexus_level%'
+          invalid-building-state: '{$dot} {$e}Váratlan épületállapot{$colon} {$es}%type% {$sep}- {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%y%{$sep}, {$es}%z%'
+
         kingdom:
           unknown-claim: '{$dot} {$e}Ismeretlen foglalása a királyságnak{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$es}%kingdom_id%{$sep}) - {$es}%world%{$sep}, {$es}%x%{$sep}, {$es}%z%'
           unknown-player: '{$dot} {$e}Ismeretlen játékos a királyságban{$colon} {$e}Kingdom{$colon} {$es}%kingdoms_kingdom_name% {$sep}(%kingdom_id%{$sep}) - {$e}Player{$colon} {$es}%player_id%'
@@ -1135,6 +1168,8 @@ command:
           wrong-king: '{$dot} {$e}A királyság királya sérült, ezért lecserélésre került egy véletlenszerű másik tagra{$colon} {$es}%kingdoms_kingdom_name%{$sep}, {$es}%kingdom_id% {$sep}| {$e}Régi király{$colon} {$es}%old_king_id% {$sep}-> {$e}Új király{$colon} {$es}%player% {$sep}({$es}%new_king_id%{$sep})'
           pacifism: '{$dot} {$e}Találtunk egy békés királyságot, miközben a békés mód le van tiltva{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
           nation: '{$dot} {$e}Ismeretlen nemzet a királyság számára{$colon} {$e}Nemzet{$colon} {$es}%nation_id% {$sep}- {$e}Királyság{$colon} {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep})'
+          nonfinite-resource-points: '{$dot} {$e}A királyság nexus pontjainak száma érvénytelen{$colon} {$es}%value% {$sep}| {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep}) {$es}A Nexus pontok száma 0-ra lett állítva!'
+          nonfinite-bank: '{$dot} {$e}A királyság bankjának száma érvénytelen{$colon} {$es}%value% {$sep}| {$es}%kingdoms_kingdom_name% {$sep}({$s}%kingdom_id%{$sep}) {$es}A bank 0-ra lett állítva!'
         ranks:
           node-mismatch: '{$dot} {$e}Rang csomópont eltérés{$colon} {$e}Csoport{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$colon} {$es}%node% {$sep}| {$e}Kódolt csomópont {$es}%encoded_node%'
           priority-mistmatch: '{$dot} {$e}A rang prioritása különbözik{$colon} {$e}Csoport{$colon} {$es}%name% {$sep}(%id%{$sep}) - {$e}Rang{$colon} {$es}%node% {$sep}| {$e}Kódolt prioritás {$es}%encoded_priority% {$sep}| {$e}Példa prioritás {$es}%priority%'
@@ -1310,6 +1345,8 @@ command:
       aliases: addon plugin plugins add-on add-ons
       already:
         installed: '{$es}%addon_name% {$e}nevű kiegészítő már telepítve van.'
+      up-to-date: '{$p}Ez a kiegészítő már a legfrisebb verzióval van feltelepítve.'
+      not-installed: '{$es}%addon_name% {$e}nevű kiegészítő nincs telepítve.'
     gui:
       description: |
         {$s}Nyisson meg egy konténert, hogy automatikusan elemezze tartalmat a GUI konfiguráción belül.
@@ -1336,6 +1373,12 @@ command:
         description: '{$s}Kihagyott választás folytatása.'
         already-resumed: '{$e}A következő választások már folytatódnak.'
         resumed: '{$p}A következő választásokat újrakezdték.'
+      info: |
+        {$p}Következő ciklus{$colon} {$s}%next%
+        {$p}Futási idő{$colon} {$s}%fixed_start_time%
+        {$p}Aktuális idő{$colon} {$s}%time%
+        {$p}Legutóbbi végrehajtás{$colon} {$s}%last_perform%
+        {$p}Állapot{$colon} %state%
     relationship:
       description: '{$s}Két királyság közötti kapcsolat megváltoztatására.'
       usage: '{$usage}relationship &2<elsőKirályság> <másodikKirályság> &9[újKapcsolat]'
@@ -1479,8 +1522,8 @@ command:
       name: nexus
     toggle:
       description: '{$s}Admin mód bekapcsolása.'
-      'True': '{$s}Admin mód mostantól{$colon} {$p}BEKAPCSOLVA'
-      'False': '{$s}Admin mód mostantól{$colon} {$e}KIKAPCSOLVA'
+      on: '{$s}Admin mód mostantól{$colon} {$p}BEKAPCSOLVA'
+      off: '{$s}Admin mód mostantól{$colon} {$e}KIKAPCSOLVA'    
       name: toggle
       aliases: admin bypass god godmode
     toggles:
@@ -1489,9 +1532,9 @@ command:
       entry: '{$sep}- {$s}%displayname%'
     spy:
       description: '{$s}Kémkedés a királyságok csevegésében.'
-      'True': '{$s}Csevegő kémmód{$colon} {$p}BEKAPCSOLVA'
-      'False': '{$s}Csevegő kémmód{$colon} {$e}KIKAPCSOLVA'
-      name: spy
+      on: '{$s}Csevegő kémmód{$colon} {$p}BEKAPCSOLVA'
+      off: '{$s}Csevegő kémmód{$colon} {$e}KIKAPCSOLVA'
+            
     masswar:
       description: '{$s}Háború kézi indítása/leállítása.'
       usage: '&4Usage{$colon} {$e}/k admin masswar <start/end>'
@@ -1604,8 +1647,8 @@ command:
     permanent:
       description: '{$e}Megmaradó mód engedélyezése egy királysághoz.'
       usage: '{$e}Használata{$colon} {$es}/k admin permanent {$p}<királyság>'
-      'True': '{$p}Megmaradó mód {$s}bekapcsolva.'
-      'False': '{$p}Megmaradó mód {$e}kikapcsolva.'
+      on: '{$p}Megmaradó mód {$s}BEKAPCSOLVA.'
+      off: '{$p}Megmaradó mód {$e}KIKAPCSOLVA.'
     rename:
       description: '{$s}Királyság átnevezése.'
       usage: '{$e}Használat{$colon} {$es}/k admin rename <királyság> <név>'
@@ -1657,10 +1700,10 @@ command:
         &7| {$p}Nemzeti rang{$colon} %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%&7| {$p}Csevegőcsatorna{$colon} %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         &7| {$p}Jelzők használata{$colon} %visualizer%
         &7| {$p}Meghívások{$colon} {$s}%invites%
-        &7| {$p}Királysághoz való csatlakozás{$colon} {$s}%date@kingdoms_joined%
+        &7| {$p}Királysághoz való csatlakozás{$colon} {$s}%kingdoms_date_joined%
         &7| {$p}Automatikus foglalás{$colon} %auto_claim% &7| {$p}Automatikus térkép{$colon} %auto_map%
         &7| {$p}Térképméret{$colon} {$s}%map_width% {$sep}- {$s}%map_height%
-        &7| {$p}Összes támogatás{$colon} {$s}%kingdoms_total_donations% &7| {$p}Utolsó támogatás{$colon} {$s}%date@kingdoms_last_donation_time%
+        &7| {$p}Összes támogatás{$colon} {$s}%kingdoms_total_donations% &7| {$p}Utolsó támogatás{$colon} {$s}%kingdoms_date_last_donation_time%
         &7| {$p}Foglalások &7({$s}%kingdoms_player_claims%&7){$colon} %claims%
         &7| {$p}Tömörített adatok{$colon} {$s}%compressed%
       name: player
@@ -1795,6 +1838,9 @@ command:
       description: '{$s}Egy épület építésének azonnali befejezése.'
       not-under-construction: '{$e}Ez az épület nincs építés alatt.'
       finished: '{$p}Az építés most azonnal befejeződött.'
+    upgrade:
+      description: '{$s}Célépület fejlesztése.'
+      nexus: '{$e}A nexus-t nem lehet fejleszteni ezzel a paranccsal.'
   tag:
     description: '{$s}Királyság címkéjének megváltoztatása.'
     name-length: '{$e}A címke hossza nem lehet több mint {$es}%max% {$e} vagy rövidebb mint {$es}%min% {$e}karakter.'
@@ -1875,7 +1921,7 @@ command:
         &7| {$p}Főnemzet{$colon} {$s}%kingdoms_nation:capital get=name%
         &7| {$p}Teremtőhely{$colon} {$s}%none@kingdoms_nation_spawn%
         &7| {$p}Nexus{$colon} {$s}%none@kingdoms_nation_nexus%
-        &7| {$p}Létrehozás{$colon} {$s}%date@kingdoms_nation_since%
+        &7| {$p}Létrehozás{$colon} {$s}%kingdoms_date_nation_since%
         &7| {$p}Hatalom{$colon} {$s}%fancy@kingdoms_nation_might%
         &7| {$p}Pajzs{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Bank{$colon} {$s}$%fancy@kingdoms_nation_bank% {$sep}| {$p}Adó{$colon} {$s}$%fancy@kingdoms_nation_tax% {$sep}- {$s}$%fancy@kingdoms_server_nation_tax%
@@ -1888,7 +1934,7 @@ command:
 
         &7| {$p}Király{$colon} {$s}%king_status%
         &7| {$p}Nemzet{$colon} {$s}%kingdoms_nation_name%
-        &7| {$p}Létrehozás{$colon} {$s}%date@kingdoms_nation_since%
+        &7| {$p}Létrehozás{$colon} {$s}%kingdoms_date_nation_since%
         &7| {$p}Hatalom{$colon} {$s}%fancy@kingdoms_might%
         &7| {$p}PAjzs{$colon} {$s}%time@kingdoms_nation_shield_time_left%
         &7| {$p}Bank{$colon} {$s}%fancy@kingdoms_nation_bank%
@@ -2087,6 +2133,7 @@ command:
       statement:
         description: '{$s}Állítsd be a nyilatkozatodat mint választási jelölt.'
         not-registered: '{$e}Nem vagy regisztrált jelölt. Regisztrálj ezzel{$colon} {$es}hover:{/k nation election register;&7Klikk;|/k nation election register}'
+        usage: '{$usage}nation election statement {$p}<nyilatkozat>'
       register:
         description: '{$s}Nyilatkozz a jelölésedről az aktuális királyi választásokon.'
         usage: '{$usage}nation election register {$p}<nyilatkozat>'
@@ -2194,10 +2241,10 @@ command:
   pvp:
     description: '{$s}Királyságon belüli harc (pvp) kezelése.'
     others-permission: '{$e}Nincs jogosultságod mások pvp módjának beállításához.'
-    'True': '{$s}PvP mód{$colon} {$p}BEKAPCSOLVA'
-    'False': '{$s}PvP mód{$colon} {$e}KIKAPCSOLVA'
+    on: '{$s}PvP mód{$colon} {$p}BEKAPCSOLVA'
+    off: '{$s}PvP mód{$colon} {$e}KIKAPCSOLVA'
     name: pvp
-    aliases: friendlyfire
+    aliases: friendlyf      ire
   language:
     description: '{$s}A plugin nyelvének beállítása.'
     name: language
@@ -2357,7 +2404,7 @@ command:
       &7| {$p}Területek{$colon} {$s}%fancy@kingdoms_claims%{$sep}/{$s}%fancy@kingdoms_max_claims%
       &7| {$p}Nexus pontok{$colon} {$s}%fancy@kingdoms_resource_points%
       &7| {$p}Pajzs{$colon} {$s}%time@kingdoms_shield_time_left%
-      &7| {$p}Alapítva{$colon} {$s}%date@kingdoms_since%
+      &7| {$p}Alapítva{$colon} {$s}%kingdoms_date_since%
       &7| {$p}Tagok{$colon} {$s}%kingdoms_members%&7/{$s}%kingdoms_max_members%
       %members%
     message: |
@@ -2366,7 +2413,7 @@ command:
       &7| {$p}Király{$colon} {$s}%king_status%
       &7| {$p}Nemzet{$colon} {$s}%kingdoms_nation_name%
       &7| {$p}Hatalom{$colon} {$s}%kingdoms_might%
-      &7| {$p}Alapítva{$colon} {$s}%date@kingdoms_since%
+      &7| {$p}Alapítva{$colon} {$s}%kingdoms_date_since%
       &7| {$p}Pajzs{$colon} {$s}%time@kingdoms_shield_time_left%
       &7| {$p}Területek{$colon} {$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
       &7| {$p}Bank{$colon} {$s}$%fancy@kingdoms_bank%
@@ -2385,18 +2432,18 @@ command:
       {$es}%enemies%
     no-king: '&4Nincs'
     members-etc: '{$sep}... hover:{[{$p}és {$s}%remaining% {$p}több{$sep}];Klikk a GUI megjelenítéséhez;/k gui structures/nexus/members kingdom=%kingdoms_kingdom_name%}'
-    online-prefix: hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Csatlakozott{$colon} {$s}%date@kingdoms_joined%
+    online-prefix: hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] &a%player%;{$p}Csatlakozott{$colon} {$s}%kingdoms_date_joined%
 
       {$p}Adoményok{$colon} {$s}%kingdoms_total_donations%
 
-      {$p}Utolsó adomány{$colon} {$s}%date@kingdoms_last_donation_time%
+      {$p}Utolsó adomány{$colon} {$s}%kingdoms_date_last_donation_time%
 
       {$p}Rang{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
-    offline-prefix: hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Csatlakozott{$colon} {$s}%date@kingdoms_joined%
+    offline-prefix: hover:{{$sep}[%kingdoms_rank_color%%kingdoms_rank_symbol%{$sep}] {$e}%player%;{$p}Csatlakozott{$colon} {$s}%kingdoms_date_joined%
 
       {$p}Adomány{$colon} {$s}%kingdoms_total_donations%
 
-      {$p}Utolsó adomány{$colon} {$s}%date@kingdoms_last_donation_time%
+      {$p}Utolsó adomány{$colon} {$s}%kingdoms_date_last_donation_time%
 
       {$p}Rang{$colon} {$s}%kingdoms_rank_name%;/k gui structures/nexus/member %player%}
     relation: '{$sep}◆ %kingdoms_relation_color%%kingdoms_kingdom_name%'
@@ -2447,7 +2494,7 @@ command:
     exceeded-max: '{$e}Nem foglalhatsz  el több mint {$es}%max% {$e}területet!'
     already-owned: '{$e}Már a királyságodé ez a terület!'
     occupied-land: '{$e}Másik királyság szállta meg ezt a területet! Ostromold meg a {$es}/k invade {$e}paranccsal!'
-    occupied-friendly-land: '{$e}This land is occupied by another friendly kingdom.'
+    occupied-friendly-land: '{$e}Ezt a területet egy másik barátságos királyság szállta meg.'
     cant-overclaim: '{$e}Nem tudod túlkövetelni ezt a királyságot.'
     max-claims-player: '{$e}A rangod csak {$es}%limit% terület elfoglalását engedélyezi.'
     no-claims-player: '{$e}Rangod nem engedélyezi a területfoglalást.'
@@ -2463,8 +2510,8 @@ command:
       description: '{$p}Automatikus területfoglalás sétálással.'
       usage: '{$usage}claim auto &9[játékos]'
       permission: '{$e}Nincs engedélyed beállítani mások automatikus területfoglalását.'
-      'True': '{$s}Automatikus területfoglalás mostantól &aBEKAPCSOLVA{$s}. Sétálás közben lesznek a területek elfoglalva.'
-      'False': '{$s}Automatikus területfoglalás mostantól {$e}KIKAPCSOLVA{$s}.'
+      on: '{$s}Automatikus területfoglalás mostantól &aBEKAPCSOLVA{$s}. Sétálás közben lesznek a területek elfoglalva.'
+      off: '{$s}Automatikus területfoglalás mostantól {$e}KIKAPCSOLVA{$s}.'
     need-rp: '{$e}You need {$es}%fancy@rp% {$e}resource points to claim land!'
     confirmation: |
       {$e}Királyságodnak ki kell fizetnie {$es}%fancy@rp% {$e}Nexus pontot és {$es}%fancy@money% {$e}pénzt.
@@ -2513,8 +2560,8 @@ command:
     auto:
       description: '{$p}Automatikus területfelszabadítás sétálással.'
       usage: '{$usage}unclaim auto &9[játékos]'
-      'True': '{$s}Automatikus területfelszabadítás mostantól &aBE{$s}. Sétálás közben lesznek a területek felszabadítva.'
-      'False': '{$s}Automatikus területfelszabadítás mostantól {$e}KI{$s}.'
+      on: '{$s}Automatikus területfelszabadítás mostantól &aBEKAPCSOLVA{$s}. Sétálás közben lesznek a területek felszabadítva.'
+      off: '{$s}Automatikus területfelszabadítás mostantól {$e}KIKAPCSOLVA{$s}.'
     line:
       description: '{$p}Felszabadítás egy egyenes vonal irányába. Ha nincs megadva irány, akkor az lesz az irány, amerre a játékos néz.'
       usage: '{$usage}unclaim line {$s}[távolság]'
@@ -2572,6 +2619,7 @@ command:
     reply:
       description: '{$s}Válasz egy e-mailre. Ezt a parancsot nem arra szánták, hogy a játékosok közvetlenül használják.'
       usage: '{$usage}mail reply {$p}<id>'
+      preview: '{$e}Nem tudsz válaszolni egy előnézetben levő levélre.'
     open:
       description: '{$s}Levél távoli megnyitása. Ezt a parancsot nem arra szánták, hogy a játékosok közvetlenül használják.'
       usage: '{$usage}mail open {$p}<id>'
@@ -2646,6 +2694,7 @@ command:
       Használd újra a {$es}/k disband &4parancsot a megerősítéshez.
     announce: '{$es}%player% {$s}feloszlatta a(z) {$es}%kingdoms_kingdom_name% {$s}királyságot.'
     aliases: delete dissolve
+    king-changed: '{$e}A királyság királya megváltozott!'
   about:
     description: '{$s}A Kingdoms plugin névjegye.'
     aliases: version ver -v --version
@@ -2679,7 +2728,7 @@ command:
       usage: '{$usage}book edit {$p}<fejezet>'
       already-editing: '{$e}Már szerkesztés alatt van a {$es}%chapter% {$e}fejezet.'
       changed: '{$p}Megváltozott'
-      create: '{$p}A fejezet nem létezik. Új fejezetet létrehozása... Használd a hover:{{$s}/k book discard;/k book discard;/k book discard} {$p}parancsot a megszakításhoz.'
+      create: '{$p}A fejezet nem létezik. Új fejezetet létrehozása... Használd a hover:{{$s}/k book cancel;/k book cancel;/k book cancel} {$p}parancsot a megszakításhoz.'
       create-limit: '{$e}Királyságodnak nem lehet több mint {$es}%limit% {$e}fejezete.'
       create-max-length: '{$e}A fejezet neve legfeljebb {$es}%max% {$e}karakter lehet.'
       modify: |
@@ -2888,6 +2937,9 @@ command:
     powercell: '{$e}Közelben egy erőtér van amit meg kell ostromolni ennek a területnek at ostroma előtt.'
     name: invade
     aliases: invasion
+    after-not-claimed: |
+      {$e}A megostromolt területet nem lehet lefoglalni{$colon}
+      {$es}%error%
   challenge:
     description: '{$s}Egy jövőbeli invázió terve.'
     usage: '{$usage}challenge {$p}<királyság>'
@@ -3349,3 +3401,8 @@ elections:
   nations:
     join-notify: '{$p}Folyamatban van egy nemzeti választás. Szavazz a kedvenc jelöltedre a {$s}hover:{/k nation election vote;{$p}Klikk a szavazáshoz;/k nation election vote} {$p}paranccsal.'
   not-enough-data: '{$e}Nem lett új király megválasztva, mert a királyságodból kevesebb mint {$es}50%-ék {$e}szavazott.'
+
+# Used as a generic title for GUI errors when clicking on items.
+error: '&4Error'
+nation-upgrade:
+  upgraded: '{$p}&lNemzet fejlesztése{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%'

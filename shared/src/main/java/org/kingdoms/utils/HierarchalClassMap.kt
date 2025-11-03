@@ -72,7 +72,7 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
     private fun linkRecursively(parent: DataContainer, child: Class<out C>): DataContainer {
         var childData = original[child]
         if (childData !== null)
-            throw IllegalStateException("Child is not null $parent -> $child")
+            throw IllegalStateException("Child is not null $parent -> $child ($childData)")
 
         childData = DataContainer(parent.data, parent, null)
         original.put(child, childData)
@@ -86,24 +86,26 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
         if (found === null) {
             val hierarchalData = ClassHierarchyWalker.walk(key, hierarchyWalker)
             if (hierarchalData !== null) {
-                val iter = hierarchalData.walkedPath.iterator()
-                var lastParent: DataContainer = original[iter.next()]!!
+                synchronized(original) {
+                    val iter = hierarchalData.walkedPath.iterator()
+                    var lastParent: DataContainer = original[iter.next()]!!
 
-                while (iter.hasNext()) {
-                    val child: Class<*> = iter.next()
-                    @Suppress("UNCHECKED_CAST")
-                    lastParent = linkRecursively(lastParent, child as Class<out C>)
+                    while (iter.hasNext()) {
+                        val child: Class<*> = iter.next()
+                        @Suppress("UNCHECKED_CAST")
+                        lastParent = linkRecursively(lastParent, child as Class<out C>)
+                    }
+
+                    found = lastParent
+                    original[key] = found
                 }
-
-                found = lastParent
-                original[key] = found
             } else {
                 // If this class and even its parents aren't in this map, don't do anything
                 return null
             }
         }
 
-        return found.data
+        return found!!.data
     }
 
     override fun containsKey(key: Class<out C>): Boolean = get(key) !== null
@@ -172,19 +174,21 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
     }
 
     override fun put(key: Class<out C>, value: V): V? {
-        val old = original[key]
-        if (old !== null) {
-            val oldData = old.data
+        synchronized(original) {
+            val old = original[key]
+            if (old !== null) {
+                val oldData = old.data
 
-            // Don't inherit the "derivedFrom" as we're independent now.
-            old.derivedFrom?.removeChild(old)
-            updateChildrenRecursively(old, value)
+                // Don't inherit the "derivedFrom" as we're independent now.
+                old.derivedFrom?.removeChild(old)
+                updateChildrenRecursively(old, value)
 
-            return oldData
-        } else {
-            val new = DataContainer(value, null, null)
-            original.put(key, new)
-            return value
+                return oldData
+            } else {
+                val new = DataContainer(value, null, null)
+                original.put(key, new)
+                return value
+            }
         }
     }
 

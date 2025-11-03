@@ -1,7 +1,11 @@
 package org.kingdoms.enginehub.schematic
 
+import com.cryptomorin.xseries.XMaterial
+import com.cryptomorin.xseries.XTag
+import com.sk89q.worldedit.bukkit.BukkitAdapter
 import com.sk89q.worldedit.extent.clipboard.Clipboard
 import com.sk89q.worldedit.math.transform.AffineTransform
+import org.bukkit.Material
 import org.kingdoms.enginehub.schematic.blocks.ClipboardBlockIterator
 import org.kingdoms.enginehub.schematic.blocks.ClipboardTransformBaker
 import org.kingdoms.enginehub.schematic.blocks.WorldEditExtentBlock
@@ -48,7 +52,17 @@ class WorldEditSchematic(
 
         val iterator = ClipboardBlockIterator(origin, transformedClipboard, sortingStrategy)
         for (weBlock in iterator) {
-            if (ignoreAir && weBlock.block.blockType.material.isAir) continue
+            if (ignoreAir) {
+                // We used: weBlock.block.blockType.material.isAir
+                // But BlockType#getMaterial() causes ConcurrentModificationException in newer versions for some reason.
+                // This only happens since the MC 1.21.9 and 1.21.10 updates.
+                // https://github.com/EngineHub/WorldEdit/blob/46e1923e7d83a022a2d33101dbcd95faef48de88/worldedit-bukkit/src/main/java/com/sk89q/worldedit/bukkit/BukkitBlockRegistry.java#L48-L62
+                val adapted: Material? = BukkitAdapter.adapt(weBlock.block.blockType)
+                if (adapted !== null) {
+                    val xMaterial = XMaterial.matchXMaterial(adapted)
+                    if (XTag.AIR.isTagged(xMaterial)) continue
+                }
+            }
             blocks[weBlock.absolutePosition] = weBlock
         }
 

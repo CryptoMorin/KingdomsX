@@ -62,11 +62,12 @@ class EngineHubAddon : JavaPlugin(), Addon {
         EngineHubConfig.ENGINE_HUB.reloadHandle { SchematicManager.loadAll() }
 
         initWorldGuard()
-        SoftService.WORLD_GUARD.hook(true)
     }
 
     private fun initWorldGuard() {
         if (Bukkit.getPluginManager().getPlugin("WorldGuard") != null) {
+            SoftService.WORLD_GUARD.hook(true)
+
             val errors: MutableList<Throwable> = mutableListOf()
             var wg = tryLoad(true, errors)
             if (wg == null) wg = tryLoad(false, errors)

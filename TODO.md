@@ -44,6 +44,7 @@
 - Make name/tag/lore regex case-insensitive by default. We should make a class similar to StringMatcher that supports multiple conditions for name restrictions in general.
 - Make the `org.kingdoms.tasks.TaskRegistry` class support execution with an ignored list of tasks (useful for /k invade checks)
 - Move shield prices to `invasions.yml` from the GUI configs.
+- Ability to use `fancy@` modifier inside the `type` parameter of `%kingdoms_nation_top%` and `%kingdoms_kingdom_top%`
 - **[EngineHub]** Add support for WorldEdit v6 building pasting mechanism.
 - **[Map Viewers]** Add icon overlays for repairing/upgrading/destroyed turrets/structures.
 - **[Map Viewers]** Break relationships into multiple lines when there are too many ([Discord Suggestion Post](https://discord.com/channels/429132410748141579/1375544493805146233))
