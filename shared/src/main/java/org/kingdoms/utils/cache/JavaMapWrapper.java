@@ -4,10 +4,9 @@ import com.github.benmanes.caffeine.cache.CacheLoader;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Function;
 
 public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
     private final ConcurrentHashMap<K, V> cache;
@@ -102,5 +101,26 @@ public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
     @Override
     public V getIfPresent(K key) {
         return cache.get(key);
+    }
+
+    @Override
+    public Map<K, V> loadAll(Iterable<? extends K> keys, Function<Iterable<? extends K>, Map<K, V>> mappingFunction) {
+        Map<K, V> finalProduct = new HashMap<>();
+        Set<K> uncachedKeys = new HashSet<>();
+
+        for (K key : keys) {
+            V cached = get(key);
+            if (cached != null) {
+                finalProduct.put(key, cached);
+            } else {
+                uncachedKeys.add(key);
+            }
+        }
+
+        if (!uncachedKeys.isEmpty()) {
+            finalProduct.putAll(mappingFunction.apply(uncachedKeys));
+        }
+
+        return finalProduct;
     }
 }

@@ -10,6 +10,7 @@ import org.kingdoms.commands.annotations.CmdPerm;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.locale.Language;
 import org.kingdoms.managers.TempKingdomsFolder;
+import org.kingdoms.server.permission.PermissionDefaultValue;
 import org.kingdoms.utils.string.Strings;
 
 import java.io.BufferedWriter;
@@ -21,7 +22,7 @@ import java.util.List;
 
 @Cmd("commands")
 @CmdParent(CommandAdmin.class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 public class CommandAdminCommands extends KingdomsCommand {
     @Override
     public CommandResult execute(CommandContext context) {

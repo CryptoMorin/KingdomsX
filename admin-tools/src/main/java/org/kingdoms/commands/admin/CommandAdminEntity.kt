@@ -20,6 +20,7 @@ import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
 import org.kingdoms.data.Pair
 import org.kingdoms.locale.MessageHandler
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.LocationUtils
 import org.kingdoms.utils.internal.reflection.Reflect
 import org.kingdoms.utils.time.TimeFormatter
@@ -27,7 +28,7 @@ import java.util.concurrent.atomic.AtomicInteger
 
 @Cmd("entity")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminEntity : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         context.assertPlayer()

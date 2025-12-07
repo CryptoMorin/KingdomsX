@@ -36,6 +36,11 @@ public enum AdminToolsLang implements DefinedMessenger {
 
     COMMAND_ADMIN_SQL_DESCRIPTION("{$p}SQL related commands when you're running a SQL database.", 1, 2, 3),
     COMMAND_ADMIN_SQL_NOT_USING_SQL("{$e}The database you're using is not a SQL database{$colon} {$es}%database%", 1, 2, 3),
+    COMMAND_ADMIN_SQL_REQUIRES_PASSWORD("{$e}Please enter the password for the database with the following format{$colon} {$es}/k admin sql password <password>", 1, 2, 3),
+
+    COMMAND_ADMIN_SQL_PASSWORD_DESCRIPTION("{$p}SQL related commands when you're running a SQL database.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SQL_PASSWORD_INVALID_PASSWORD("{$e}Invalid password.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SQL_PASSWORD_ACCESS_GRANTED("{$p}Access granted, you can now do all SQL operations for 5 minutes.", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SQL_EXECUTE_DESCRIPTION("{$p}Execute a direct SQL statement and get the results.", 1, 2, 3, 4),
     COMMAND_ADMIN_SQL_EXECUTE_EXECUTED("{$p}Result{$colon} {$s}%result%", 1, 2, 3, 4),
@@ -64,6 +69,8 @@ public enum AdminToolsLang implements DefinedMessenger {
     COMMAND_ADMIN_FOREACH_DESCRIPTION("{$s}Executes a command based on a condition for all elements of a certain thing. This could be players in a kingdom, kingdoms in a nation, etc."),
     COMMAND_ADMIN_FOREACH_USAGE("{$usage}admin forEach &econtextType&5=&2<\"playersInKingdom\" | \"kingdomsInNation\"> &econtext&5=&2<kingdom | nation> &9[&econdition&5=&9[condition]&9] &ecommand&5=&2<command>"),
     COMMAND_ADMIN_FOREACH_UNKNOWN_CONTEXT_TYPE("{$usage}admin forEach &econtextType&5=&2<\"playersInKingdom\" | \"kingdomsInNation\"> &econtext&5=&2<kingdom | nation> &9[&econdition&5=&9[condition]&9] &ecommand&5=&2<command>"),
+    COMMAND_ADMIN_FOREACH_EXECUTOR_ACCESS_LEVEL_CONSOLE("{$e}You're not allowed to run commands with {$es}CONSOLE {$e}access level. Please run this command from the console instead."),
+    COMMAND_ADMIN_FOREACH_EXECUTOR_ACCESS_LEVEL_OP("{$e}You're not allowed to run commands with {$es}OP {$e}access level. Please run this command as an opped player or from the console instead."),
 
     COMMAND_ADMIN_FILES_DESCRIPTION("{$s}For debugging purposes. Writes a list of all the files inside Kingdoms folder to a file."),
     COMMAND_ADMIN_FILES_DONE("{$p}The file tree has been written to {$s}hover:{%output%;&7Click to open;/k admin openfile %sanitized_output%}"),

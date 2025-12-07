@@ -14,13 +14,14 @@ import org.kingdoms.commands.annotations.CmdPerm
 import org.kingdoms.constants.group.Kingdom
 import org.kingdoms.events.lands.UnclaimLandEvent
 import org.kingdoms.events.members.LeaveReason
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.internal.enumeration.EnumsKt
 import org.kingdoms.utils.internal.enumeration.QuickEnumSet
 import java.util.*
 
 @Cmd("resetKingdom")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminResetKingdom : KingdomsCommand() {
     /**
      * Using reflection will make this cleaner, however the ProGuard rules

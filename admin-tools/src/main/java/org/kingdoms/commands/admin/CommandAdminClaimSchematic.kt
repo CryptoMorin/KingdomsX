@@ -10,11 +10,12 @@ import org.kingdoms.commands.annotations.CmdPerm
 import org.kingdoms.constants.land.location.SimpleChunkLocation
 import org.kingdoms.events.lands.ClaimLandEvent
 import org.kingdoms.server.location.BlockVector2
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.internal.functional.SecondarySupplier
 
 @Cmd("claimschematic")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminClaimSchematic : KingdomsParentCommand() {
     init {
         CommandAdminClaimSchematicLoad()

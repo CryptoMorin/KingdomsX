@@ -24,8 +24,6 @@ public final class Namespace implements DataStringRepresentation {
     // We shouldn't allow dashes because of possible math equations and config option name translations.
     private static final String ACCEPTED_KEYS = "[A-Z0-9_]{3,100}";
     private static final String ACCEPTED_NAMESPACES = "[A-Za-z]{3,20}";
-    private static final Pattern ACCEPTED_KEYS_PATTERN = Pattern.compile(ACCEPTED_KEYS);
-    private static final Pattern ACCEPTED_NAMESPACES_PATTERN = Pattern.compile(ACCEPTED_NAMESPACES);
 
     public static final String KINGDOMS = "Kingdoms";
     public static final String MINECRAFT = "minecraft";
@@ -49,12 +47,31 @@ public final class Namespace implements DataStringRepresentation {
 
     @Pure
     public static boolean isValidGroup(@org.intellij.lang.annotations.Pattern(ACCEPTED_NAMESPACES) @NotNull String namespace) {
-        return ACCEPTED_NAMESPACES_PATTERN.matcher(namespace).matches();
+        int length = namespace.length();
+        if (length < 3 || length > 20) return false;
+
+        for (int i = 0; i < length; i++) {
+            char c = namespace.charAt(i);
+            if (!((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     @Pure
     public static boolean isValidKey(@org.intellij.lang.annotations.Pattern(ACCEPTED_KEYS) @NotNull String key) {
-        return ACCEPTED_KEYS_PATTERN.matcher(key).matches();
+        int length = key.length();
+        if (length < 3 || length > 100) return false;
+
+        for (int i = 0; i < length; i++) {
+            char c = key.charAt(i);
+            if (!((c >= 'A' && c <= 'Z') || (c >= '0' && c <= '9') || c == '_')) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

@@ -19,12 +19,13 @@ import org.kingdoms.commands.annotations.Cmd
 import org.kingdoms.commands.annotations.CmdAssertPlayer
 import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.hash.EntityHashSet
 
 @Cmd("hitpoints")
 @CmdParent(CommandAdminDebug::class)
 @CmdAssertPlayer
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminDebugHitPoints : KingdomsCommand(), Listener {
     companion object {
         private val HITPOINTS: MutableSet<Player> = EntityHashSet

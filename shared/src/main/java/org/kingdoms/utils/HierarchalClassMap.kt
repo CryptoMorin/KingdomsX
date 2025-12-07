@@ -42,10 +42,14 @@ import kotlin.collections.get
 class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
     private val original: MutableMap<Class<out C>, DataContainer> = NonNullMap.of(IdentityHashMap())
     private val hierarchyWalker = HierarchyWalker()
+    private val emptyContainer = DataContainer(null, null, null)
 
     private inner class HierarchyWalker : Function<Class<*>, DataContainer?> {
         override fun apply(clazz: Class<*>): DataContainer? = original[clazz]
     }
+
+    private fun isNull(container: DataContainer?): Boolean =
+        container === null || container === emptyContainer
 
     private inner class DataContainer(
         @JvmField var data: V?,
@@ -71,7 +75,7 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
 
     private fun linkRecursively(parent: DataContainer, child: Class<out C>): DataContainer {
         var childData = original[child]
-        if (childData !== null)
+        if (!isNull(childData))
             throw IllegalStateException("Child is not null $parent -> $child ($childData)")
 
         childData = DataContainer(parent.data, parent, null)
@@ -81,12 +85,18 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
     }
 
     override fun get(key: Class<out C>): V? {
+        // We need to synchronize the entire thing because the values might be being computed.
+        // But we will still try and get it without a lock because in most cases once the server
+        // has passed the first iterations of adding the hierarchy, this hashmap will rarely change again.
         var found: DataContainer? = original[key]
+        if (found !== null) return found.data
 
-        if (found === null) {
-            val hierarchalData = ClassHierarchyWalker.walk(key, hierarchyWalker)
-            if (hierarchalData !== null) {
-                synchronized(original) {
+        synchronized(original) {
+            found = original[key]
+
+            if (found === null) {
+                val hierarchalData = ClassHierarchyWalker.walk(key, hierarchyWalker)
+                if (hierarchalData !== null) {
                     val iter = hierarchalData.walkedPath.iterator()
                     var lastParent: DataContainer = original[iter.next()]!!
 
@@ -98,14 +108,15 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
 
                     found = lastParent
                     original[key] = found
+                } else {
+                    // If this class and even its parents aren't in this map, cache null results
+                    original[key] = emptyContainer
+                    return null
                 }
-            } else {
-                // If this class and even its parents aren't in this map, don't do anything
-                return null
             }
-        }
 
-        return found!!.data
+            return found.data
+        }
     }
 
     override fun containsKey(key: Class<out C>): Boolean = get(key) !== null
@@ -144,6 +155,7 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
 
     override fun remove(key: Class<out C>): V? {
         val data = original[key] ?: return null
+        if (isNull(data)) return null
 
         // If it's not an independent class, then nothing will change.
         if (data.derivedFrom === null) {
@@ -176,7 +188,7 @@ class HierarchalClassMap<C, V : Any> : MutableMap<Class<out C>, V> {
     override fun put(key: Class<out C>, value: V): V? {
         synchronized(original) {
             val old = original[key]
-            if (old !== null) {
+            if (old !== null && old !== emptyContainer) {
                 val oldData = old.data
 
                 // Don't inherit the "derivedFrom" as we're independent now.

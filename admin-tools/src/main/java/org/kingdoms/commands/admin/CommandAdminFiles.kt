@@ -11,6 +11,7 @@ import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
 import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.main.Kingdoms
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.internal.numbers.Numbers
 import org.kingdoms.utils.string.tree.StringPathBuilder
 import org.kingdoms.utils.string.tree.StringTree
@@ -21,7 +22,7 @@ import kotlin.io.path.fileSize
 
 @Cmd("files")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminFiles : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         val output = Kingdoms.getFolder().resolve("files.txt")

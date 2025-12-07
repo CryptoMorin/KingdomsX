@@ -16,13 +16,14 @@ import org.kingdoms.constants.land.turrets.TurretRegistry;
 import org.kingdoms.constants.land.turrets.TurretStyle;
 import org.kingdoms.locale.KingdomsLang;
 import org.kingdoms.main.Kingdoms;
+import org.kingdoms.server.permission.PermissionDefaultValue;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Cmd("turret")
 @CmdParent(CommandAdmin.class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 public class CommandAdminTurret extends KingdomsCommand {
     @Override
     public CommandResult execute(CommandContext context) {

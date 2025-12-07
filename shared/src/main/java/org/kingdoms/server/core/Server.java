@@ -21,6 +21,8 @@ public interface Server {
      */
     int getTicks();
 
+    long startTime();
+
     boolean isMainThread();
 
     WorldRegistry getWorldRegistry();
@@ -28,6 +30,8 @@ public interface Server {
     boolean isReady();
 
     default void onStartup() {}
+
+    default void onReady(Runnable action) {}
 
     default void onReady() {}
 

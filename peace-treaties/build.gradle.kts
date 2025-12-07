@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "org.kingdoms.peacetreaties"
-version = "1.2.8.1"
+version = "1.2.8.2"
 description = "A contract management for neutral relationships."
 
 kingdomsAddon {

@@ -101,16 +101,24 @@ projectiles:
 
 # "others" is the blacklist of all other ordinary block types. You can also set this option
 # to "*" to disable all normal block damages.
+# Note that turret and structure types are case-sensitive. You can also set them to just "true" for all types.
 allow-damaging:
   1:
-    others: [ BEDROCK, BARRIER, COMMAND_BLOCK, END_PORTAL_FRAME, STRUCTURE_BLOCK, STRUCTURE_VOID, OBSIDIAN ]
+    others: '*'
+    turrets: false
+    structures: false
+    protected-chests: false
   2:
-    # Note that turret and structure types are case-sensitive.
+    others: '*'
+    turrets: false
+    # Don't allow powercells
     structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
-    others: [ BEDROCK, BARRIER, COMMAND_BLOCK, END_PORTAL_FRAME, STRUCTURE_BLOCK, STRUCTURE_VOID ]
+    protected-chests: false
   3:
-    # "structures" and "turrets" accept both lists and 'true' for all types
+    # others: [ BEDROCK, BARRIER, COMMAND_BLOCK, END_PORTAL_FRAME, STRUCTURE_BLOCK, STRUCTURE_VOID, OBSIDIAN ]
+    others: '*'
     turrets: true
+    structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
     protected-blocks: false
 
 particles:

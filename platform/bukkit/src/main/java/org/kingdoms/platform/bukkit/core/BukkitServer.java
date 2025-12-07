@@ -13,12 +13,17 @@ import org.kingdoms.server.core.Server;
 import org.kingdoms.server.events.EventHandler;
 import org.kingdoms.server.location.WorldRegistry;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BukkitServer implements Server {
     private final EventHandler eventHandler;
     private final WorldRegistry worldRegistry;
     private final JavaPlugin plugin;
     private final PluginTickTracker tickTracker;
     private boolean isReady;
+    private final long startTime = System.currentTimeMillis();
+    private final List<Runnable> onReadyRunnables = new ArrayList<>();
 
     @SuppressWarnings("this-escape")
     public BukkitServer(JavaPlugin plugin) {
@@ -50,7 +55,16 @@ public class BukkitServer implements Server {
         if (FoliaUtil.isFoliaSupported()) {
             FoliaSchedulerFactory.runGlobalUntraced(plugin, this::onReady);
         } else {
-            Bukkit.getScheduler().runTask(plugin, this::onReady);
+            Bukkit.getScheduler().runTask(plugin, () -> onReady());
+        }
+    }
+
+    @Override
+    public void onReady(Runnable action) {
+        if (isReady) {
+            action.run();
+        } else {
+            onReadyRunnables.add(action);
         }
     }
 
@@ -58,6 +72,8 @@ public class BukkitServer implements Server {
     public void onReady() {
         if (isReady) throw new IllegalStateException("Server was already ready");
         this.isReady = true;
+        onReadyRunnables.forEach(Runnable::run);
+        onReadyRunnables.clear();
     }
 
     @Override
@@ -68,6 +84,11 @@ public class BukkitServer implements Server {
     @Override
     public int getTicks() {
         return tickTracker.getTicks();
+    }
+
+    @Override
+    public long startTime() {
+        return startTime;
     }
 
     @Override

@@ -10,19 +10,25 @@ import org.kingdoms.commands.KingdomsCommand
 import org.kingdoms.commands.annotations.Cmd
 import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
+import org.kingdoms.config.KingdomsConfig
+import org.kingdoms.data.database.sql.DatabaseProperties
 import org.kingdoms.data.database.sql.DatabaseType
 import org.kingdoms.data.database.sql.base.SQLDatabase.Companion.stringifyResultSet
 import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.locale.messenger.StaticMessenger
 import org.kingdoms.main.Kingdoms
+import org.kingdoms.server.permission.PermissionDefaultValue
+import org.kingdoms.utils.cache.single.CachedObject
+import org.kingdoms.utils.cache.single.ExpirableObject
 import org.kingdoms.utils.internal.functional.SecondarySupplier
 import org.kingdoms.utils.internal.string.StringPadder
 import java.sql.ResultSet
 import java.sql.Statement
+import java.time.Duration
 
 @Cmd("statement")
 @CmdParent(CommandAdminSQL::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.NO_ONE) // Console only
 class CommandAdminSQLStatement : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         if (context.isPlayer()) {
@@ -44,6 +50,9 @@ class CommandAdminSQLStatement : KingdomsCommand() {
         }
 
         context.requireArgs(1)
+
+        if (CommandAdminSQLPassword.requiresPassword(context))
+            return CommandResult.FAILED
 
         val hasQuery = context.hasArgs(2)
         val javaClass = Statement::class.java

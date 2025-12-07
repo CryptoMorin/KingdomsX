@@ -21,6 +21,7 @@ import org.kingdoms.data.Pair;
 import org.kingdoms.enginehub.EngineHubAddon;
 import org.kingdoms.locale.messenger.StaticMessenger;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
+import org.kingdoms.main.KLogger;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.managers.entity.KingdomEntityBuilder;
 import org.kingdoms.outposts.settings.OutpostArenaMob;
@@ -269,7 +270,7 @@ public class OutpostEvent {
             int i = 0;
 
             @Override
-            public void accept(DelayedRepeatingTask o) {
+            public void accept(DelayedRepeatingTask task) {
                 Location loc = outpost.getCenter().clone().add(random.nextDouble(-5, 5), random.nextDouble(-1, 3), random.nextDouble(-5, 5));
                 Firework firework = (Firework) loc.getWorld().spawnEntity(loc, XEntityType.FIREWORK_ROCKET.get());
                 FireworkMeta meta = firework.getFireworkMeta();
@@ -307,7 +308,7 @@ public class OutpostEvent {
 
                 meta.addEffects(effects);
                 firework.setFireworkMeta(meta);
-                if (i++ == times) task.cancel();
+                if (i++ >= times) task.cancel();
             }
         });
 

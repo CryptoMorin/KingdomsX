@@ -26,15 +26,14 @@ public class CommandOutpostTeleport extends KingdomsCommand {
     @Override
     public CommandResult execute(CommandContext context) {
         context.assertPlayer();
-        context.requireArgs(1);
         if (context.assertHasKingdom()) return CommandResult.FAILED;
 
-        OutpostEventSettings outpost = CommandOutpost.getOutpost(context, 0);
-        if (outpost == null) return CommandResult.FAILED;
-        context.var("outpost", outpost.getName()).var("min", outpost.getMinOnlineMembers());
+        OutpostEvent event = OutpostEvent.getJoinedEvent(context.getKingdom());
+        if (event == null) return context.fail(OutpostsLang.COMMAND_OUTPOST_TELEPORT_NOT_JOINED);
+        context.var("outpost", event.getOutpost().getName()).var("min", event.getOutpost().getMinOnlineMembers());
 
         context.sendMessage(KingdomsLang.COMMAND_ADMIN_LAND_PREPARING);
-        SimpleChunkLocation chunk = SimpleChunkLocation.of(outpost.getSpawn());
+        SimpleChunkLocation chunk = SimpleChunkLocation.of(event.getOutpost().getSpawn());
         PaperUtils.prepareChunks(chunk).thenRun(() -> {
             Player player = context.senderAsPlayer();
             Location playerDir = player.getLocation();
@@ -42,7 +41,9 @@ public class CommandOutpostTeleport extends KingdomsCommand {
 
             location.setYaw(playerDir.getYaw());
             location.setPitch(playerDir.getPitch());
-            Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC).of(player).execute(() -> TeleportUtil.teleport(player, outpost.getSpawn()));
+            Kingdoms.minecraftTaskScheduler(TaskThreadType.SYNC)
+                    .of(player)
+                    .execute(() -> TeleportUtil.teleport(player, event.getOutpost().getSpawn()));
 
             LocationLocale.of(location).withBuilder(context.getMessageContext()).build();
             LocationLocale.of(chunk).withBuilder(context.getMessageContext()).withPrefix("chunk_").build();

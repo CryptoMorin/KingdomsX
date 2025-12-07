@@ -22,12 +22,13 @@ import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
 import org.kingdoms.main.KingdomsGlobalsCenter
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.fs.FSUtil
 import java.time.Duration
 
 @Cmd("resetConfigs")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminResetConfigs : KingdomsCommand(), Listener {
     companion object {
         private var ACCEPT_COOLDOWN = 0L

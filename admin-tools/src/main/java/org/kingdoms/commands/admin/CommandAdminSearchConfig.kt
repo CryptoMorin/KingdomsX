@@ -18,6 +18,7 @@ import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.locale.provider.MessageProvider
 import org.kingdoms.main.KLogger
 import org.kingdoms.main.Kingdoms
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.config.CustomConfigValidators
 import org.kingdoms.utils.config.adapters.YamlContainer
 import org.kingdoms.utils.debugging.KingdomsDebug
@@ -31,7 +32,7 @@ import kotlin.collections.iterator
 
 @Cmd("searchConfig")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminSearchConfig : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         context.requireArgs(1)

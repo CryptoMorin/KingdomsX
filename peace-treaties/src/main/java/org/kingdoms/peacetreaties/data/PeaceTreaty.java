@@ -12,12 +12,14 @@ import org.kingdoms.constants.player.KingdomPlayer;
 import org.kingdoms.events.general.GroupRelationshipChangeEvent;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.locale.placeholders.context.PlaceholderContextBuilder;
+import org.kingdoms.main.KLogger;
 import org.kingdoms.peacetreaties.PeaceTreatiesAddon;
 import org.kingdoms.peacetreaties.config.PeaceTreatyConfig;
 import org.kingdoms.peacetreaties.config.PeaceTreatyLang;
 import org.kingdoms.peacetreaties.managers.RelationshipListener;
 import org.kingdoms.peacetreaties.terms.*;
 import org.kingdoms.utils.MathUtils;
+import org.kingdoms.utils.compilers.expressions.ConditionalExpression;
 import org.kingdoms.utils.conditions.ConditionProcessor;
 import org.kingdoms.utils.config.NodeInterpreter;
 import org.kingdoms.utils.internal.functional.Fn;
@@ -55,9 +57,9 @@ public class PeaceTreaty implements PlayerOperator {
                 .raw("peacetreaty_requested_time", sentTime)
                 .raw("peacetreaty_requester_player", Bukkit.getOfflinePlayer(requesterPlayer).getName())
                 .raw("peacetreaty_count_terms", terms.size())
-                .raw("peacetreaty_can_enforce_acceptance", Fn.supply(this::canEnforceAcceptance))
+                .raw("peacetreaty_can_enforce_acceptance", this::canEnforceAcceptance)
                 .raw("peacetreaty_accepted", isAccepted())
-                .raw("peacetreaty_war_points", Fn.supply(this::getTotalRequiredWarPoints));
+                .raw("peacetreaty_war_points", this::getTotalRequiredWarPoints);
 
         settings.raw("peacetreaty_force_acceptance_war_points",
                 MathUtils.eval(PeaceTreatyConfig.FORCE_ACCEPT_WAR_POINTS.getManager().getMathExpression(), settings));

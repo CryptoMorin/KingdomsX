@@ -1,6 +1,5 @@
 package org.kingdoms.services.maps;
 
-import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
@@ -68,6 +67,12 @@ public final class ServiceMap {
     private static DelayedRepeatingTask reloadingTask;
     public static boolean hasLoaded = false;
 
+    private static void startDelayedInit(Runnable runnable) {
+        // Just in case we were doing something that was blocking the main thread,
+        // we'll know what it is because the watchdog isn't running when the server isn't ready.
+        Kingdoms.getServerX().onReady(() -> Kingdoms.taskScheduler().async().execute(runnable));
+    }
+
     static {
         loadMarkersSettings();
         Logger logger = MapViewerAddon.get().getLogger();
@@ -78,9 +83,11 @@ public final class ServiceMap {
         if (SoftService.PL3XMAP.isAvailable()) apis.add(new MapServiceProvider(new ServicePl3xMap(logger)));
         if (SoftService.BLUEMAP.isAvailable()) {
             ServiceBlueMap.createWhenAvailable(logger, () -> {
-                MapServiceProvider provider = new MapServiceProvider(new ServiceBlueMap(logger));
-                apis.add(provider);
-                if (hasLoaded) provider.load(MapViewerAddon.get());
+                startDelayedInit(() -> {
+                    MapServiceProvider provider = new MapServiceProvider(new ServiceBlueMap(logger));
+                    apis.add(provider);
+                    if (hasLoaded) provider.load(MapViewerAddon.get());
+                });
             });
         }
 
@@ -131,22 +138,25 @@ public final class ServiceMap {
                 .disabledWorlds(world -> !isEnabledInWorld(world));
     }
 
+    @SuppressWarnings("CodeBlock2Expr")
     public static void load(Plugin plugin) {
         KingdomsStartup.whenReady(pl -> {
-            hasLoaded = true;
-            KLogger.debug(DEBUG_NS, "Startup finished, loading map data...");
+            startDelayedInit(() -> {
+                hasLoaded = true;
+                KLogger.debug(DEBUG_NS, "Startup finished, loading map data...");
 
-            // We use toArray() here because there's a slight possibility of ConcurrentModificationException
-            for (MapServiceProvider api : APIS.toArray(new MapServiceProvider[0])) api.load(plugin);
+                // We use toArray() here because there's a slight possibility of ConcurrentModificationException
+                for (MapServiceProvider api : APIS.toArray(new MapServiceProvider[0])) api.load(plugin);
 
-            Duration interval = MapsConfig.UPDATE_INTERVAL.getManager().getTime();
-            if (interval == null || interval.toMillis() > 0) return;
+                Duration interval = MapsConfig.UPDATE_INTERVAL.getManager().getTime();
+                if (interval == null || interval.toMillis() <= 0) return;
 
-            if (reloadingTask != null) reloadingTask.cancel();
-            reloadingTask = Kingdoms.taskScheduler().async().repeating(interval, interval, () -> {
-                MapViewerAddon.get().getLogger().info("Performing a full render...");
-                fullRender();
-                update();
+                if (reloadingTask != null) reloadingTask.cancel();
+                reloadingTask = Kingdoms.taskScheduler().async().repeating(interval, interval, () -> {
+                    MapViewerAddon.get().getLogger().info("Performing a full render...");
+                    fullRender();
+                    update();
+                });
             });
         });
     }

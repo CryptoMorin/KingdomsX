@@ -13,6 +13,7 @@ import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.locale.Language
 import org.kingdoms.locale.SupportedLanguage
 import org.kingdoms.managers.TempKingdomsFolder
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.string.tree.StringPathBuilder
 import org.kingdoms.utils.string.tree.StringTree
 import org.kingdoms.utils.string.tree.TreeStyle
@@ -22,7 +23,7 @@ import java.util.Locale
 
 @Cmd("missingGUIs")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminMissingGUIs : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         val output = TempKingdomsFolder.getOrCreateFolder("GUIS").resolve("Missing GUIs.txt")

@@ -25,6 +25,7 @@ import org.kingdoms.locale.compiler.placeholders.PlaceholderParser;
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider;
 import org.kingdoms.managers.network.socket.SocketHandler;
 import org.kingdoms.managers.network.socket.SocketManager;
+import org.kingdoms.server.permission.PermissionDefaultValue;
 import org.kingdoms.utils.MathUtils;
 import org.kingdoms.utils.compilers.ConditionalCompiler;
 import org.kingdoms.utils.compilers.MathCompiler;
@@ -39,7 +40,7 @@ import java.util.stream.Collectors;
 
 @Cmd("condition")
 @CmdParent(CommandAdmin.class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 public class CommandAdminCondition extends KingdomsCommand {
     private static final String[] NAMES;
 

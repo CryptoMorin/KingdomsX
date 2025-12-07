@@ -32,6 +32,7 @@ import org.kingdoms.locale.compiler.MessageCompilerSettings;
 import org.kingdoms.locale.compiler.pieces.MessagePiece;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.managers.TempKingdomsFolder;
+import org.kingdoms.server.permission.PermissionDefaultValue;
 import org.kingdoms.utils.config.ConfigSection;
 import org.kingdoms.utils.config.adapters.YamlFile;
 import org.kingdoms.utils.fs.FSUtil;
@@ -45,7 +46,7 @@ import java.util.*;
 
 @Cmd("gui")
 @CmdParent(CommandAdmin.class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 public class CommandAdminGUI extends KingdomsCommand implements Listener {
     private static final Map<UUID, String> VIEWING = new HashMap<>();
 

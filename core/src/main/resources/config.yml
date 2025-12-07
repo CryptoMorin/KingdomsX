@@ -381,17 +381,44 @@ disabled-worlds: [ ]
 # This option is for security purposes.
 keep-admin-mode: false
 
-holograms:
-  # The rate which the plugin updates holograms. These include turrets and structures.
-  # The update is in ticks and is done asynchrously. This is useful for displaying turret
-  # ammo, structure fuel, etc. i.e. information that are constantly updating.
-  # You should consider keeping this value above one second.
-  # A reasonable value would be 200 which means every 10 seconds.
-  # Consider applying "dont-update-holograms: true" to turrets/structures that have no variable
-  # in their holograms that needs updating to optimize this feature.
-  # Set to 0 to disable.
-  # Requires a restart to be applied.
-  update: 1 sec
+# Settings relating to structures and turrets.
+building-visuals:
+  # Should the entire hologram system for buildings be disabled?
+  # This includes all systems, including the particles too.
+  # * Requires a restart to apply changes.
+  disabled: false
+
+  holograms:
+    update:
+      # How should holograms for buildings be updated?
+      # Requires a restart to apply changes.
+      #
+      #  * MANUAL: The plugin and add-ons will have to manually signal what building
+      #            should be updated when their data gets updated. However, sometimes
+      #            this isn't done correctly which results in holograms showing outdated info.
+      #            But it is the most performant method.
+      #
+      #  * AUTOMATIC: The plugin will update the hologram every x seconds (configured in
+      #               "interval" option below) regardless of whether the data changed
+      #               or not. This can result in high CPU usages in bigger servers.
+      method: MANUAL
+
+      # method: AUTOMATIC =>
+      #     The rate which the plugin updates holograms. These include turrets and structures.
+      #     The update is in ticks and is done asynchrously. This is useful for displaying turret
+      #     ammo, structure fuel, etc. i.e. information that are constantly updating.
+      #     You should consider keeping this value above one second.
+      #     Consider applying "dont-update-holograms: true" to turrets/structures that have no variable
+      #     in their holograms that needs updating to optimize this feature.
+      #
+      # method: MANUAL =>
+      #     This option will have a "bulk" effect on the update requests.
+      #     Meaning it will delay updates for x seconds configured here, and will ignore any
+      #     subsequent update requests when the cooldown is still active and updates the building
+      #     after the timer is finished.
+      #
+      # * Requires a restart to be applied.
+      interval: 1 sec
 
 # Disables integration service for one of the following plugins.
 # Requires a restart to take effect.

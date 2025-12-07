@@ -104,10 +104,13 @@ direct-prefix: '@'
 # A way for players to show the item they're holding to other
 # players in the chat with a simple hover message.
 show-item:
+  # Text shown when the player has no item in the target slot.
+  empty: "{$sep}[{$$no-item}{$sep}]"
+
   # Currently only the main hand is supported.
   main-hand:
     replace:
-      '[i]': &show-item '{$sep}[%item_displayname%{? item_amount == 1 ? "" : " {$sp}x%item_amount%"}{$sep}]'
+      '[i]': &show-item '{$sep}[%item_rarity_color%%item_displayname%{? item_amount == 1 ? "" : " {$sp}x%item_amount%"}{$sep}]'
       '[item]': *show-item
       '[show]': *show-item
 

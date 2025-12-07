@@ -1,11 +1,9 @@
 package org.kingdoms.commands.admin
 
-import org.bukkit.permissions.PermissionDefault
 import org.kingdoms.admintools.AdminToolsLang
 import org.kingdoms.commands.CommandContext
 import org.kingdoms.commands.CommandResult
 import org.kingdoms.commands.KingdomsCommand
-import org.kingdoms.commands.KingdomsParentCommand
 import org.kingdoms.commands.annotations.Cmd
 import org.kingdoms.commands.annotations.CmdParent
 import org.kingdoms.commands.annotations.CmdPerm
@@ -14,13 +12,14 @@ import org.kingdoms.constants.group.Nation
 import org.kingdoms.locale.KingdomsLang
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.main.Kingdoms
+import org.kingdoms.server.permission.PermissionDefaultValue
 import org.kingdoms.utils.commands.ConfigCommand
 import org.kingdoms.utils.compilers.ConditionalCompiler
 import org.kingdoms.utils.conditions.ConditionProcessor
 
 @Cmd("forEach")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 class CommandAdminForeach : KingdomsCommand() {
     override fun execute(context: CommandContext): CommandResult {
         context.requireArgs(3)
@@ -34,14 +33,23 @@ class CommandAdminForeach : KingdomsCommand() {
                 if (conditionStr.isNullOrEmpty()) null
                 else ConditionalCompiler.compile(conditionStr).evaluate()
 
-            val command = ConfigCommand.parse(arrayListOf(commandStr))
+            val command = ConfigCommand.parse(commandStr)
+            val commandAsList = arrayListOf(command)
+
+            // Don't allow users with lower permission to run commands with elevated access.
+            if (command.executorType === ConfigCommand.ExecutorType.CONSOLE && !context.isPlayer()) {
+                return context.fail(AdminToolsLang.COMMAND_ADMIN_FOREACH_EXECUTOR_ACCESS_LEVEL_CONSOLE)
+            }
+            if (command.executorType === ConfigCommand.ExecutorType.OP && !context.getMessageReceiver().isOp) {
+                return context.fail(AdminToolsLang.COMMAND_ADMIN_FOREACH_EXECUTOR_ACCESS_LEVEL_OP)
+            }
 
             when (contextType) {
                 "allKingdoms" -> {
                     Kingdoms.get().dataCenter.kingdomManager.peekAllData().forEach { kingdom ->
                         val settings = MessagePlaceholderProvider().withContext(kingdom)
                         if (condition == null || ConditionProcessor.process(condition, settings)) {
-                            ConfigCommand.execute(null, command, settings, false)
+                            ConfigCommand.execute(null, commandAsList, settings, false)
                         }
                     }
                 }
@@ -50,7 +58,7 @@ class CommandAdminForeach : KingdomsCommand() {
                     Kingdoms.get().dataCenter.nationManager.peekAllData().forEach { nation ->
                         val settings = MessagePlaceholderProvider().withContext(nation)
                         if (condition == null || ConditionProcessor.process(condition, settings)) {
-                            ConfigCommand.execute(null, command, settings, false)
+                            ConfigCommand.execute(null, commandAsList, settings, false)
                         }
                     }
                 }
@@ -64,7 +72,7 @@ class CommandAdminForeach : KingdomsCommand() {
                     for (kingdom in nation.kingdoms) {
                         val settings = MessagePlaceholderProvider().withContext(kingdom)
                         if (condition == null || ConditionProcessor.process(condition, settings)) {
-                            ConfigCommand.execute(null, command, settings, false)
+                            ConfigCommand.execute(null, commandAsList, settings, false)
                         }
                     }
                 }
@@ -78,7 +86,7 @@ class CommandAdminForeach : KingdomsCommand() {
                     for (member in kingdom.playerMembers) {
                         val settings = MessagePlaceholderProvider().withContext(member)
                         if (condition == null || ConditionProcessor.process(condition, settings)) {
-                            ConfigCommand.execute(member.player, command, settings, true)
+                            ConfigCommand.execute(member.player, commandAsList, settings, true)
                         }
                     }
                 }

@@ -25,10 +25,11 @@ import org.kingdoms.locale.SimpleContextualMessageSender
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
 import org.kingdoms.nbt.tag.NBTTagInt
 import org.kingdoms.server.inventory.InventorySlot
+import org.kingdoms.server.permission.PermissionDefaultValue
 
 @Cmd("executeBook")
 @CmdParent(CommandAdmin::class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 @CmdAssertPlayer
 class CommandAdminExecuteBook : KingdomsCommand(), Listener {
     companion object {

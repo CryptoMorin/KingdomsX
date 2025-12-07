@@ -10,6 +10,7 @@ import org.kingdoms.commands.annotations.Cmd;
 import org.kingdoms.commands.annotations.CmdParent;
 import org.kingdoms.commands.annotations.CmdPerm;
 import org.kingdoms.locale.KingdomsLang;
+import org.kingdoms.server.permission.PermissionDefaultValue;
 import org.kingdoms.utils.string.Strings;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Cmd("sound")
 @CmdParent(CommandAdmin.class)
-@CmdPerm(PermissionDefault.OP)
+@CmdPerm(PermissionDefaultValue.OP)
 public class CommandAdminSound extends KingdomsCommand {
     @Override
     public CommandResult execute(CommandContext context) {
