@@ -100,6 +100,9 @@ class CommandAdminEntity : KingdomsCommand() {
             val details: MutableList<Pair<String, Any>> = ArrayList()
             val flags: MutableList<String> = ArrayList()
 
+            details.add(Pair.of("ID", entity.entityId))
+            details.add(Pair.of("UUID", entity.uniqueId))
+
             if (entity.isFrozen) flags.add("Frozen")
             if (entity.isInvulnerable) flags.add("Invulnerable")
             if (entity.isSilent) flags.add("Silent")

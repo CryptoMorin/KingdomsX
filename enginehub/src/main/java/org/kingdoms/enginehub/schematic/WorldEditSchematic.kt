@@ -29,6 +29,29 @@ class WorldEditSchematic(
         return other is WorldEditSchematic && this.name == other.name
     }
 
+    companion object {
+        @JvmStatic
+        fun isOriginPartOfSchematic(clipboard: Clipboard): Boolean {
+            val blocks = HashSet<BlockVector3>()
+            val kOrigin: BlockVector3 = clipboard.origin.run { BlockVector3.of(x, y, z) }
+
+            val clipboardBlocks = ClipboardBlockIterator(
+                kOrigin, clipboard, null
+            )
+
+            for (weBlock in clipboardBlocks) {
+                val adapted: Material? = BukkitAdapter.adapt(weBlock.block.blockType)
+                if (adapted !== null) {
+                    val xMaterial = XMaterial.matchXMaterial(adapted)
+                    if (XTag.AIR.isTagged(xMaterial)) continue
+                }
+                blocks.add(weBlock.relativePosition)
+            }
+
+            return blocks.contains(kOrigin)
+        }
+    }
+
     fun populate(
         origin: BlockVector3,
         facing: Direction?,

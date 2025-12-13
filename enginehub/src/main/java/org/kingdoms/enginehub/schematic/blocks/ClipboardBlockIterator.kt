@@ -9,7 +9,7 @@ import org.kingdoms.server.location.BlockVector3
 class ClipboardBlockIterator(
     private val origin: BlockVector3,
     private val clipboard: Clipboard,
-    sortingStrategy: Comparator<BlockVector3>
+    sortingStrategy: Comparator<BlockVector3>?
 ) : Iterator<WorldEditExtentBlock> {
     private val minimumPoint: BlockVector3 = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard).minimumPoint
     private val maximumPoint: BlockVector3 = XWorldEditBukkitAdapterFactory.INSTANCE.adapt(clipboard).maximumPoint
@@ -23,9 +23,14 @@ class ClipboardBlockIterator(
 
     // true because we don't want to proceed the coords on the first iteration.
     private var cachedHasNext: Boolean? = true
-    private val locationIterator: Iterator<BlockVector3> = populateCoordinates().sortedWith(sortingStrategy).iterator()
+    private val locationIterator: Iterator<BlockVector3>
 
-    private fun populateCoordinates(): List<BlockVector3> {
+    init {
+        locationIterator = if (sortingStrategy === null) populateCoordinates().iterator()
+        else populateCoordinates().sortedWith(sortingStrategy).iterator()
+    }
+
+    fun populateCoordinates(): List<BlockVector3> {
         val blocks: MutableList<BlockVector3> = mutableListOf()
         for (x in minX..maxX) {
             for (y in minY..maxY) {

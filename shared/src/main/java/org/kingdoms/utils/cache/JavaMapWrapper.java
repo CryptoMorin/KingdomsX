@@ -1,18 +1,19 @@
 package org.kingdoms.utils.cache;
 
 import com.github.benmanes.caffeine.cache.CacheLoader;
+import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Function;
+import java.util.function.BiFunction;
 
-public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
+public final class JavaMapWrapper<K, V> implements CachingMap<K, V> {
     private final ConcurrentHashMap<K, V> cache;
-    private final CacheLoader<K, V> loader;
+    private final AllKnowingCacheLoader<K, V> loader;
 
-    public JavaMapWrapper(ConcurrentHashMap<K, V> cache, CacheLoader<K, V> loader) {
+    public JavaMapWrapper(ConcurrentHashMap<K, V> cache, AllKnowingCacheLoader<K, V> loader) {
         this.cache = cache;
         this.loader = loader;
     }
@@ -40,16 +41,13 @@ public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
     @SuppressWarnings("unchecked")
     @Override
     public V get(Object key) {
-        V data = cache.get(key);
-        if (data != null) return data;
-
-        try {
-            data = loader.load((K) key);
-            if (data != null) put((K) key, data);
-            return data;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return cache.computeIfAbsent((K) key, k -> {
+            try {
+                return loader.load(k);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     @Nullable
@@ -94,17 +92,12 @@ public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
     }
 
     @Override
-    public V peek(K key) {
-        return cache.get(key);
-    }
-
-    @Override
     public V getIfPresent(K key) {
         return cache.get(key);
     }
 
     @Override
-    public Map<K, V> loadAll(Iterable<? extends K> keys, Function<Iterable<? extends K>, Map<K, V>> mappingFunction) {
+    public Map<K, V> getAll(Iterable<? extends K> keys) {
         Map<K, V> finalProduct = new HashMap<>();
         Set<K> uncachedKeys = new HashSet<>();
 
@@ -112,15 +105,37 @@ public final class JavaMapWrapper<K, V> implements PeekableMap<K, V> {
             V cached = get(key);
             if (cached != null) {
                 finalProduct.put(key, cached);
-            } else {
+            } else if (!loader.shouldCacheExistence() || loader.doesntExistCache().getIfPresent(key) == null) {
                 uncachedKeys.add(key);
             }
         }
 
         if (!uncachedKeys.isEmpty()) {
-            finalProduct.putAll(mappingFunction.apply(uncachedKeys));
+            try {
+                // TODO values that don't exist aren't loaded into doesntExistCache()
+                Map<@NonNull K, @NonNull V> loaded = loader.loadAll(uncachedKeys);
+                finalProduct.putAll(loaded);
+                cache.putAll(loaded);
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
 
         return finalProduct;
+    }
+
+    @Override
+    public void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean replace(K key, V oldValue, V newValue) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public @Nullable V replace(K key, V value) {
+        throw new UnsupportedOperationException();
     }
 }

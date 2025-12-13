@@ -14,6 +14,7 @@ class CommandAdminSchematic(parent: KingdomsParentCommand) : KingdomsParentComma
         CommandAdminSchematicLoad(this)
         CommandAdminSchematicSave(this)
         CommandAdminSchematicList(this)
+        CommandAdminSchematicCopy()
 
         CommandAdminSchematicOrigin(this)
         CommandAdminSchematicConvertAll(this)

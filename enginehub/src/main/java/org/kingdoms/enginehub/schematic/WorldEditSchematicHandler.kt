@@ -164,7 +164,7 @@ object WorldEditSchematicHandler {
      * Checks whatever the player has in "//copy" commmand.
      */
     @JvmStatic
-    private fun getCurrentClipboard(player: Player): Clipboard? {
+    fun getCurrentClipboard(player: Player): Clipboard? {
         try {
             val clipboard = getLocalSession(player).clipboard
             // Bake in the transformation before getting the clipboard

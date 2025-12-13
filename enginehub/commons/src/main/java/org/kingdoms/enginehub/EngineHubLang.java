@@ -18,15 +18,22 @@ public enum EngineHubLang implements DefinedMessenger {
 
     WORLDEDIT_EXCLUDED("{$e}A total of {$es}%blocks% {$e}were excluded from WorldEdit since they weren't in your kingdoms land.", 1),
 
+    COMMAND_ADMIN_SCHEMATIC_COPY_DESCRIPTION("{$s}Copies the selection from the current player's WorldEdit selection region and saves it as a clipboard with normalization rotations applied.", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_COPY_NO_SELECTION("{$e}You don't have any selection. Select with &5hover:{//wand;&8Click to run;//wand}", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_COPY_LIMIT("{$e}You've reached the max block limit{$colon} {$s}%max_block_limit% {$sep}< {$s}%block_size%", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_COPY_DONE("{$p}Copied {$s}%blocks% {$p}blocks. It's recommended that you reposition the building's origin using {$s}hover:{/k admin schematic origin;&8Click to run;/k admin schematic origin}", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_COPY_NOT_CARDINAL_FACING("{$e}You need to be facing a cardinal direction, otherwise the building won't be copied properly. You need to face where you want your building to face as well. You should be facing NORTH, SOUTH, EAST or WEST. You're currently facing {$es}%current_direction%", 1, 2, 3, 4),
+
     COMMAND_ADMIN_SCHEMATIC_SAVE_DESCRIPTION("{$s}Saves a schematic from the current player's WorldEdit selection clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_USAGE("{$usage}admin schematic save &2<schematic name>", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_EMPTY_SELECTION("{$e}You need to make a selection first using {$es}hover:{WorldEdit;&7Click here to get\nthe selection tool;//wand} {$e}and copying it using the {$es}hover:{//copy;&7Click to run;//copy} {$e}command.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_EMPTY_CLIPBOARD("{$e}You need to copy your selection with the {$es}hover:{//copy;&7Click to run;//copy} {$e}command.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_ALREADY_EXISTS("{$e}A schematic with that name already exists. If you're sure that you want to override it, hover:{&7click here;&4Click to override;/k admin schematic save %schematic_name%}.\n" +
-            "{$sep}[&c!{$sep}] &cWARNING {$point} &4This will cause issues if there is already a building with this schematic is placed in the world" +
+            "{$sep}[&c!{$sep}] &cWARNING {$point} &4This will cause issues if there is already a building with this schematic is placed in the world " +
             "from kingdoms. Please make sure to either remove all of them before overriding this file, or choose another name and change the settings to reflect the new name in the config.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_SAVE_SAVED("{$p}Successfully saved this schematic to{$colon} {$s}%schematic_file%", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_EXTENSION("{$e}You must not provide a file extension for the schematic file{$colon} {$es}%schematic_file%", 1, 2, 3, 4),
+    COMMAND_ADMIN_SCHEMATIC_ORIGIN_MISMATCH("{$e}The origin of your building at {$es}%origin% (relative to center) {$e}is not one of the building's blocks.", 1, 2, 3, 4),
 
     COMMAND_ADMIN_SCHEMATIC_LOAD_DESCRIPTION("{$s}Loads a schematic from Kingdom's schematics folder into player's WorldEdit clipboard.", 1, 2, 3, 4),
     COMMAND_ADMIN_SCHEMATIC_LOAD_USAGE("{$usage}admin schematic load &2<schematic name>", 1, 2, 3, 4),

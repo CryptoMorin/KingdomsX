@@ -382,16 +382,36 @@ disabled-worlds: [ ]
 keep-admin-mode: false
 
 # Settings relating to structures and turrets.
+# "visuals" refers to holograms, particles, fake blocks (for previews) and even sounds.
+# * NOTE: All options here require a restart to apply changes.
 building-visuals:
   # Should the entire hologram system for buildings be disabled?
   # This includes all systems, including the particles too.
-  # * Requires a restart to apply changes.
   disabled: false
+
+  # The trigger distance is the distance of the player from the building in blocks.
+  # If the player is within this range, the building's visuals will be shown to them.
+  trigger-distance: 50
+
+  # Usually it's not a good idea to only have a single point/border for activation.
+  # Because if the circumstances were such that the player was going back and forth
+  # near the edge of the trigger distance border, the plugin would have to constantly
+  # add the visuals back and remove them again.
+  # What this option does is that it prevents visuals from being removed if the player
+  # is no longer in the range of "trigger-distance".
+  #
+  # In simpler terms, if "trigger-distance" is set to 70 and this option is set to 30,
+  # holograms will be shown if the player gets at least 70 blocks closer to the building,
+  # however it'll not be removed until they go 100 blocks (70 + 30) away from the building.
+  #
+  # The only downside of this option is obviously that it may keep more RAM and
+  # the fact that hologram updates will be still be processed even if the player
+  # will not be able to see that information due to occlusion culling.
+  trigger-distance-tolerance: 30
 
   holograms:
     update:
       # How should holograms for buildings be updated?
-      # Requires a restart to apply changes.
       #
       #  * MANUAL: The plugin and add-ons will have to manually signal what building
       #            should be updated when their data gets updated. However, sometimes
@@ -416,8 +436,6 @@ building-visuals:
       #     Meaning it will delay updates for x seconds configured here, and will ignore any
       #     subsequent update requests when the cooldown is still active and updates the building
       #     after the timer is finished.
-      #
-      # * Requires a restart to be applied.
       interval: 1 sec
 
 # Disables integration service for one of the following plugins.

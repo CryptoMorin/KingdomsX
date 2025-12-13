@@ -5,7 +5,7 @@ sound: BLOCK_ANVIL_USE
 options:
   collect:
     outOfFuel:
-      condition: 'fuel <= 0'
+      condition: 'needs_fuel && fuel <= 0'
       name: "{$e}Out of fuel {$sp}%extractor-last-collected-time-passed% {$sep}- {$sp}%fancy@extractor_collected_resource_points%"
       material: RED_WOOL
     nothing-to-collect:

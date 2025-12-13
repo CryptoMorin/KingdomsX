@@ -1,24 +1,18 @@
 package org.kingdoms.utils.internal.jdk;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.core.BlockPosition;
-import net.minecraft.network.PacketDataSerializer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.ClientboundCustomPayloadPacket;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.common.custom.DiscardedPayload;
 import net.minecraft.network.protocol.game.ClientboundDebugEventPacket;
 import net.minecraft.resources.MinecraftKey;
 import net.minecraft.util.debug.DebugStructureInfo;
 import net.minecraft.util.debug.DebugSubscription;
 import net.minecraft.util.debug.DebugSubscriptions;
 import net.minecraft.world.level.levelgen.structure.StructureBoundingBox;
-import org.bukkit.craftbukkit.v1_21_R6.entity.CraftPlayer;
-import org.bukkit.entity.Player;
 
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.List;
 

@@ -10,10 +10,12 @@ import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.permissions.PermissionDefault;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.kingdoms.admintools.AdminToolsLang;
-import org.kingdoms.commands.*;
+import org.kingdoms.commands.CommandContext;
+import org.kingdoms.commands.CommandResult;
+import org.kingdoms.commands.CommandTabContext;
+import org.kingdoms.commands.KingdomsCommand;
 import org.kingdoms.commands.annotations.Cmd;
 import org.kingdoms.commands.annotations.CmdParent;
 import org.kingdoms.commands.annotations.CmdPerm;
@@ -177,7 +179,10 @@ public class CommandAdminGUI extends KingdomsCommand implements Listener {
             } else {
                 section.set("slots", slots);
             }
-            XItemStack.serialize(item, section.toBukkitConfigurationSection());
+            new XItemStack.Serializer()
+                    .withItem(item)
+                    .withConfig(section.toBukkitConfigurationSection())
+                    .write();
 
             section.set("flags", null); // All flags are automatically included on all GUI options.
             if (com.google.common.base.Strings.isNullOrEmpty(section.getString("name"))) section.set("name", "");

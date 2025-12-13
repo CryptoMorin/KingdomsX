@@ -59,7 +59,7 @@ public class CommandAdminTurret extends KingdomsCommand {
                 if (change) {
                     Turret newTurret = changeToTurret.getType().build(new KingdomItemBuilder<>(changeToTurret, location));
                     newTurret.setLevel(1);
-                    land.unsafeGetTurrets().put(location.toBlockVector(), newTurret);
+                    newTurret.modifyData(land, true);
                 }
 
                 amount++;

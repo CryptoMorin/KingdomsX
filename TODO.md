@@ -53,9 +53,11 @@
 - **[Admin Tools]** Add `/k admin resetNation` similar to `/k admin resetKingdom` 
 
 # Bugs
+- There is a chance that a race condition might happen between Visualizer's start() and onPlayerAdd() which is called by StatefulVisiblityStrategy.
 - **[EngineHub]** Make building demolition for schematics support blocks like ladders (if the support block is broken the ladder will drop due to block physics update)
 - **[EngineHub]** Find a way to support FAWE. More information can be found [here](https://github.com/CryptoMorin/KingdomsX/wiki/EngineHub-Addon#worldedit-schematic-building-support).
 
 # Others
+- Add a `MessageObject#compile(MessageContextProvider)` that compiles a MessageObject for more efficient usage. It should convert `MessagePiece.Variable/Macro` to a custom variable messagepiece that contains a Supplier without fetching that variable from the placeholders list again. Additionally it should cache its Plain/Complex message pieces that are constant (Perhaps do the same for Minecraft's `Component` in the future?)
 - **[EngineHub]** Rebuild all structure schematics using MC_EDIT format of v1.9 WorldEdit. All turrets except the arrow and flame already use this format.
 - **[All]** Edit commands to use the new annotation API to be more concise.

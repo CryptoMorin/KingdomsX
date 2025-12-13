@@ -1,17 +1,15 @@
 package org.kingdoms.utils.cache.caffeine;
 
 import com.github.benmanes.caffeine.cache.LoadingCache;
-import org.checkerframework.checker.nullness.qual.NonNull;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.kingdoms.utils.cache.PeekableMap;
+import org.kingdoms.utils.cache.CachingMap;
 
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-import java.util.function.Function;
 
-public final class CaffeineWrapper<K, V> implements PeekableMap<K, V> {
+public final class CaffeineWrapper<K, V> implements CachingMap<K, V> {
     private final LoadingCache<K, V> cache;
 
     public CaffeineWrapper(LoadingCache<K, V> cache) {
@@ -29,10 +27,9 @@ public final class CaffeineWrapper<K, V> implements PeekableMap<K, V> {
         return size() != 0;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public boolean containsKey(Object key) {
-        return cache.getIfPresent((K) key) != null;
+        return cache.getIfPresent(key) != null;
     }
 
     @Override
@@ -47,8 +44,8 @@ public final class CaffeineWrapper<K, V> implements PeekableMap<K, V> {
     }
 
     @Override
-    public Map<K, V> loadAll(Iterable<? extends K> keys, Function<Iterable<? extends K>, Map<K, V>> mappingFunction) {
-        return cache.getAll(keys, mappingFunction);
+    public Map<K, V> getAll(Iterable<? extends K> keys) {
+        return cache.getAll(keys);
     }
 
     @Nullable
@@ -58,10 +55,9 @@ public final class CaffeineWrapper<K, V> implements PeekableMap<K, V> {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public V remove(Object key) {
-        cache.invalidate((K) key);
+        cache.invalidate(key);
         return null;
     }
 
@@ -91,11 +87,6 @@ public final class CaffeineWrapper<K, V> implements PeekableMap<K, V> {
     @Override
     public Set<Entry<K, V>> entrySet() {
         return cache.asMap().entrySet();
-    }
-
-    @Override
-    public V peek(K key) {
-        return cache.getIfPresent(key);
     }
 
     @Override

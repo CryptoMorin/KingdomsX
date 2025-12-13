@@ -5,7 +5,7 @@
       <build-duration-factor>: '-45 seconds'
       <extra-holograms>:
         - "{$p}{$$words.resource-points}{$colon} {$s}%fancy@extractor_collected_resource_points%"
-        - "{$p}{$$words.fuel}{$colon} {$s}%fancy@fuel%{$sep}/{$s}%fancy@max_fuel%"
+        - '{? needs_fuel ? "{$p}{$$words.fuel}{$colon} {$s}%fancy@fuel%{$sep}/{$s}%fancy@max_fuel%"}'
       <durability-factor>: 100
       <material-1>: GOLD_BLOCK
       <material-2>: DIAMOND_BLOCK
