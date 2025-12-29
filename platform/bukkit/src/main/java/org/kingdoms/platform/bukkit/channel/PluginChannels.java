@@ -22,11 +22,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * https://wiki.vg/Plugin_channels
- *
+ * <p>
  * minecraft:debug/game_test_add_marker -> Used to set different debug markers in the world.
  *                                         Never sent by the Notchian server.
  *                                         This interestingly renders without problems since 1.16.5.
  */
+@SuppressWarnings({"JavadocLinkAsPlainText", "unused", "CallToSimpleGetterFromWithinClass"})
 public final class PluginChannels {
     private static final Color INVISIBLE_MARKER = new Color(0, 0, 0, 0);
     private static final Duration REMOVE_MARKER_DURATION = Duration.ofSeconds(1);
@@ -230,6 +231,7 @@ public final class PluginChannels {
         MinecraftConnection.sendPacket(player, packets.toArray());
     }
 
+    @SuppressWarnings({"RedundantCast", "unused"})
     private static Object sendDebugMarker(int x, int y, int z, int argb, String title, Duration duration) {
         // BlockPos pos = new BlockPos(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
         // long packedPos = BlockPos.asLong(pos.getX(), pos.getY(), pos.getZ());
@@ -324,6 +326,7 @@ public final class PluginChannels {
         packet.writeBytes(byteArray);
     }
 
+    @SuppressWarnings("DataFlowIssue")
     private static void sendPayload(@NotNull final Player receiver, Object resourceLocation, ByteBuf bytes) {
         Objects.requireNonNull(receiver, "receiver");
         Objects.requireNonNull(resourceLocation, "resourceLocation");

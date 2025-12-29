@@ -121,6 +121,24 @@ allow-damaging:
     structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
     protected-blocks: false
 
+# [Final]
+damaging-factors:
+  TNT:
+    damage: yield * 2
+  ARROW:
+    normal:
+      damage: (0.1 * force) * max(1, weapon_enchant_power * 3)
+    INSTANT_DAMAGE:
+      damage: 7 * effect_lvl
+  POTION:
+    INSTANT_DAMAGE:
+      allowed-range: [ 5, 4, 5 ]
+      damage: 10 * effect_lvl
+  WIND_CHARGE:
+    damage: 20
+  TRIDENT:
+    damage: 1
+
 particles:
   1:
     shoot:

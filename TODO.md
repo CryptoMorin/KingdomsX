@@ -46,6 +46,7 @@
 - Move shield prices to `invasions.yml` from the GUI configs.
 - Ability to use `fancy@` modifier inside the `type` parameter of `%kingdoms_nation_top%` and `%kingdoms_kingdom_top%`
 - Switch from **BCrypt** to **SCrypt**. Challenges include converting protection-sign passwords and defined CPU/RAM cost of SCrypt.
+- Make building effects (mostly turret effects) persistent between restarts. We can add speed up effects for buildings this way as well.
 - **[EngineHub]** Add support for WorldEdit v6 building pasting mechanism.
 - **[Map Viewers]** Add icon overlays for repairing/upgrading/destroyed turrets/structures.
 - **[Map Viewers]** Break relationships into multiple lines when there are too many ([Discord Suggestion Post](https://discord.com/channels/429132410748141579/1375544493805146233))

@@ -117,7 +117,7 @@ class TermManager : Listener {
 
         val player = event.getPlayer()
         if (player != null) {
-            if (contract.proposerKingdom.isMember(player)) return
+            if (contract.proposerKingdom!!.isMember(player)) return
             player.player?.let { PeaceTreatyLang.TERMS_MISC_UPGRADES_RESTRICTIED.sendMessage(it); }
         }
         event.isCancelled = true
@@ -136,7 +136,8 @@ class TermManager : Listener {
     fun syncRelation(kingdom: Kingdom, otherKingdom: Kingdom, relation: KingdomRelation) {
         val accepted = kingdom.getProposedPeaceTreaties().values.filter { x -> x.isAccepted }
         for (contract in accepted) {
-            val victim = contract.victimKingdom
+            val victim = contract.victimKingdom!!
+
             victim.relations[otherKingdom.key] = relation
             victim.onlineMembers.forEach { PeaceTreatyLang.TERMS_MAX_STRUCTURES_SYNCHRONIZED.sendMessage(it); }
         }

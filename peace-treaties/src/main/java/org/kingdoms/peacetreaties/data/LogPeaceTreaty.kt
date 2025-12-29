@@ -11,12 +11,28 @@ import org.kingdoms.constants.namespace.Namespace
 import org.kingdoms.data.database.dataprovider.SectionableDataGetter
 import org.kingdoms.data.database.dataprovider.SectionableDataSetter
 import org.kingdoms.locale.placeholders.context.MessagePlaceholderProvider
+import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getProposedPeaceTreaties
 import org.kingdoms.peacetreaties.data.PeaceTreaties.Companion.getReceivedPeaceTreaties
 import java.time.Duration
 
 abstract class LogPeaceTreaty() : AuditLog() {
     var peaceTreaty: PeaceTreaty? = null
-        get() = field?.let { it.victimKingdom.getReceivedPeaceTreaties()[it.proposerKingdomId] ?: field }
+        get() = field?.let {
+            // If we have the live data, we should use that instead of the cached log one.
+            val victimKingdom = it.victimKingdom
+            if (victimKingdom !== null) {
+                val treaty = victimKingdom.getReceivedPeaceTreaties()[it.proposerKingdomId]
+                if (treaty !== null) return treaty
+            }
+
+            val proposerKingdom = it.proposerKingdom
+            if (proposerKingdom !== null) {
+                val treaty = proposerKingdom.getProposedPeaceTreaties()[it.victimKingdomId]
+                if (treaty !== null) return treaty
+            }
+
+            return field
+        }
 
     constructor(peaceTreaty: PeaceTreaty) : this() {
         this.peaceTreaty = peaceTreaty

@@ -41,8 +41,8 @@ class CommandPeaceTreatyAccept(parent: KingdomsParentCommand) : KingdomsCommand(
         return if (errors.isEmpty()) {
             if (contract.accept().isCancelled) return CommandResult.FAILED
 
-            val victim = contract.victimKingdom
-            val proposer = contract.proposerKingdom
+            val victim = contract.victimKingdom!!
+            val proposer = contract.proposerKingdom!!
 
             victim.onlineMembers.forEach { x ->
                 context.sendMessage(

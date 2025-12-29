@@ -29,8 +29,8 @@ class CommandPeaceTreatyReject(parent: KingdomsParentCommand) : KingdomsCommand(
 
         contract.getPlaceholderContextProvider(context.messageContext)
         contract.removeContract()
-        val victim = contract.victimKingdom
-        val proposer = contract.proposerKingdom
+        val victim = contract.victimKingdom!!
+        val proposer = contract.proposerKingdom!!
 
         victim.onlineMembers.forEach { x ->
             context.sendMessage(

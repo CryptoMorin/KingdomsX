@@ -3,6 +3,7 @@ package org.kingdoms.peacetreaties.data;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.checkerframework.checker.nullness.qual.NonNull;
+import org.jetbrains.annotations.Nullable;
 import org.kingdoms.abstraction.PlayerOperator;
 import org.kingdoms.constants.group.Kingdom;
 import org.kingdoms.constants.group.model.relationships.KingdomRelation;
@@ -210,10 +211,12 @@ public class PeaceTreaty implements PlayerOperator {
         return started;
     }
 
+    @Nullable
     public Kingdom getVictimKingdom() {
         return Kingdom.getKingdom(victimKingdom);
     }
 
+    @Nullable
     public Kingdom getProposerKingdom() {
         return Kingdom.getKingdom(proposerKingdom);
     }

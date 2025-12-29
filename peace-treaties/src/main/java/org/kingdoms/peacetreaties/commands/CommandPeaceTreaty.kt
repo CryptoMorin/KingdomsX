@@ -18,7 +18,7 @@ class CommandPeaceTreaty : KingdomsParentCommand("peacetreaty", true) {
         fun tabCompleteKingdomsWithContract(context: CommandTabContext): List<String> {
             if (context.isPlayer() && context.isAtArg(0)) {
                 val kingdom = context.kingdom ?: return emptyList()
-                return context.suggest(0, kingdom.getProposedPeaceTreaties().values.map { x -> x.victimKingdom.name })
+                return context.suggest(0, kingdom.getProposedPeaceTreaties().values.map { x -> x.victimKingdom!!.name })
             }
 
             return emptyList()
