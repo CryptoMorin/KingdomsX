@@ -40,6 +40,11 @@ public final class ServiceMythicMobFive implements ServiceMythicMobs {
         }
     }
 
+    @Override
+    public int version() {
+        return 5;
+    }
+
     static AbstractLocation toLumineLocation(Location loc) {
         @SuppressWarnings("resource") AbstractWorld world = MythicBukkit.inst().getBootstrap().getWorld(loc.getWorld().getUID());
         return new AbstractLocation(world, loc.getX(), loc.getY(), loc.getZ(), loc.getYaw(), loc.getPitch());

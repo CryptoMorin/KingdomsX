@@ -83,6 +83,7 @@ class CommandAdminExecuteBook : KingdomsCommand(), Listener {
         return true
     }
 
+    @Suppress("DEPRECATION")
     override fun execute(context: CommandContext): CommandResult {
         val player = context.senderAsPlayer()
         val inventory = player.inventory

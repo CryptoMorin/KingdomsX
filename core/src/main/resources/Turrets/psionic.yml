@@ -73,16 +73,17 @@ item:
     name: "&aPsionic Turret"
     material: TRIPWIRE_HOOK
     flags: [ ALL ]
-    lore:
-      - "{$s}Affects the enemies nearby."
-      - "Higher levels add more effects."
-      - "Never deals killing damage."
-      - ""
-      - "{$sp}Attributes{$colon}"
-      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
-      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
-      - "{$dot} {$p}Range{$colon} {$s}%range%"
-      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
-      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
-      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
-      - "{$dot} {$p}Knockback{$colon} {$s}%knockback%"
+    lore: |
+      {$desc}Affects the enemies nearby.
+      Higher levels add more effects.
+      Never deals killing damage.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Level{$colon} {$s}%roman@level%
+      {$dot} {$p}Ammo{$colon} {$s}%ammo%
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Range{$colon} {$s}%range%
+      {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
+      {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+      {$dot} {$p}Knockback{$colon} {$s}%knockback%

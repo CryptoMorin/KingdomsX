@@ -11,11 +11,11 @@ public final class Enums {
         return createMapping(values, Enum::name);
     }
 
-    public static <K, T extends Enum<T>> Map<K, T> createMapping(T[] values, Function<T, K> of) {
+    public static <K, T> Map<K, T> createMapping(T[] values, Function<T, K> of) {
         return createMapping(values, of, new NonNullMap<>(values.length));
     }
 
-    public static <K, T extends Enum<T>> Map<K, T> createMapping(T[] values, Function<T, K> of, Map<K, T> mappings) {
+    public static <K, T> Map<K, T> createMapping(T[] values, Function<T, K> of, Map<K, T> mappings) {
         for (T value : values) {
             mappings.put(of.apply(value), value);
         }

@@ -33,15 +33,18 @@ sounds:
       started: *stop-sound
       finished: *stop-sound
       stopped: *stop-sound
+
+
 item:
   1:
     name: "&8Chemical Mine"
     material: LIGHT_WEIGHTED_PRESSURE_PLATE
-    lore:
-      - "{$s}Gives some debuffs to the player"
-      - "who stepped on the plate."
-      - ""
-      - "{$dot} {$p}Durability{$colon} {$s}%building_durability%"
-      - "{$dot} {$p}Effects{$colon}"
-      - "    &8- {$s}Blindness lvl 1 for 30 seconds"
-      - "    &8- {$s}Nausea lvl 1 for 30 seconds"
+    lore: |
+      {$desc}Gives some debuffs to the player
+      who stepped on the plate.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Effects{$colon}
+          &8- {$s}Blindness lvl 1 for 30 seconds
+          &8- {$s}Nausea lvl 1 for 30 seconds

@@ -33,213 +33,272 @@ rows: 6
 # -NOSYNC
 '[permission]':
   alliance:
-    <<: *fn-std-perm [ "结盟" ]
+    <<: *fn-std-perm ["结盟"]
     lore: |
-      {$s}/k ally {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k ally{$desc}.
   broadcast:
-    <<: *fn-std-perm [ "广播" ]
+    <<: *fn-std-perm ["广播"]
     lore: |
-      {$s}/k broadcast {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k broadcast{$desc}.
   build:
-    <<: *fn-perm [ '建造', DIAMOND_PICKAXE ]
+    <<: *fn-perm ['建造', DIAMOND_PICKAXE]
     lore: |
-      {$sep}王国任意领土建造权限。
+      {$desc}Permission to build anywhere
+      in the kingdom.
 
-      与{$p}自占领土建造{$sep}权限的区别
-      详见{$p}自占领土建造{$sep}权限
+      For the difference between this
+      and the {$p}BUILD_OWNED {$desc}permission,
+      refer to the other permission.
   build-owned:
-    <<: *fn-perm [ "自占领土建造", GOLD_PICKAXE ]
+    <<: *fn-perm ["自占领土建造", GOLD_PICKAXE]
     lore: |
-      {$p}建造{$sep}与{$p}自占领土建造
-      {$sep}权限的区别是{$p}建造
-      {$sep}允许在任意领土上放置方块。
-      (核心领土除外, 介时需要{$p}核心领土建造{$sep}权限。)
+      {$desc}The difference between {$p}BUILD {$desc}and
+      {$p}BUILD_OWNED {$desc}is that, {$p}BUILD {$desc}allows
+      you to build anywhere in your kingdom
+      (except the nexus land which needs
+      {$p}NEXUS_BUILD{$desc}.)
 
-      {$p}自占领土建造{$sep}仅允许在自己占领的领土上放置方块。
-      拥有{$p}自占领土建造{$sep}权限的其他成员
-      无法在你/k claim 占领的领土上放置方块, 
-      但你和拥有{$p}建造{$sep}权限的成员可以。
+      {$p}BUILD_OWNED {$desc}only allows you to build
+      in the lands that you claimed yourself.
+      For example, if you {$s}/k claim {$desc}somewhere,
+      other people with {$p}BUILD_OWNED {$desc}can't
+      build there, but you or people who have
+      the {$p}BUILD {$desc}permission can.
   edit-ranks:
-    <<: *fn-std-perm [ "编辑权限组" ]
+    <<: *fn-std-perm ["编辑权限组"]
     lore: |
-      &7创建, 删除, 和更改权限组, 包括
-      更改其符号, 名称, 与权限的权限。
+      {$desc}Permission for creating, deleting
+      and modifying ranks including their
+      symbols, names and permissions.
 
-      此权限不允许成员更改自身或更高权限组。
+      They will not be able to modify
+      their own rank or a rank of
+      someone with higher priority.
 
-      此权限不包括晋升/降职成员权限。
+      This does not give them permission
+      to demote or promote other players.
   enemy:
-    <<: *fn-std-perm [ "宣战" ]
+    <<: *fn-std-perm ["宣战"]
     lore: |
-      {$s}/k enemy {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k enemy{$desc}.
   home:
-    <<: *fn-std-perm [ "家" ]
+    <<: *fn-std-perm ["家"]
     lore: |
-      {$s}/k home {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k home{$desc}.
   invade:
-    <<: *fn-std-perm [ "入侵" ]
+    <<: *fn-std-perm ["入侵"]
     lore: |
-      {$s}/k invade {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k invade{$desc}.
   invite:
-    <<: *fn-std-perm [ "邀请" ]
+    <<: *fn-std-perm ["邀请"]
     lore: |
-      {$s}/k invite {$sep}指令权限。
-      {$s}/k invitecodes {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k invite {$desc}command and
+      for making invite codes from
+      {$s}/k invitecodes
   kick:
-    <<: *fn-std-perm [ "踢出" ]
+    <<: *fn-std-perm ["踢出"]
     lore: |
-      {$s}/k kick {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k kick{$desc}.
 
-      {$sep}此权限不允许成员踢出自身或更高权限组成员。
+      {$desc}Players with this
+      permission will not be
+      able to kick players with
+      the same or higher ranks.
   lore:
-    <<: *fn-std-perm [ "介绍" ]
+    <<: *fn-std-perm ["介绍"]
     lore: |
-      {$s}/k lore {$sep}指令权限。
-      {$s}/k rename {$sep}指令权限。
-      {$s}/k book edit {$sep}指令权限。
-      {$s}/k tag {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k lore{$desc}, {$s}/k rename{$desc},
+      {$s}/k book edit {$desc}and {$s}/k tag{$desc}.
   nexus:
-    <<: *fn-perm [ "核心", BEACON ]
+    <<: *fn-perm ["核心", BEACON]
     lore: |
-      {$s}/k nexus {$sep}指令权限。
+      {$desc}Permission for moving the
+      kingdom nexus using
+      {$s}/k nexus{$desc}.
   nexus-build:
-    <<: *fn-perm [ "核心领土建造", BEACON ]
+    <<: *fn-perm ["核心领土建造", BEACON]
     lore: |
-      {$sep}王国核心领土建造权限。
+      {$desc}Permission for building
+      in the nexus land
   nexus-chest:
-    <<: *fn-perm [ "核心宝库", CHEST ]
+    <<: *fn-perm ["核心宝库", CHEST]
     lore: |
-      {$sep}访问核心宝库权限。
+      {$desc}Permission for modifying
+      the kingdom's nexus chest.
   outpost:
-    <<: *fn-perm [ "前哨", HAY_BLOCK ]
+    <<: *fn-perm ["前哨", HAY_BLOCK]
     lore: |
-      {$sep}从前哨中购买物品权限。
+      {$desc}Permission for buying
+      items from outpost structures.
   protection-signs:
-    <<: *fn-perm [ "绕过方块锁", OAK_SIGN ]
+    <<: *fn-perm ["绕过方块锁", OAK_SIGN]
     lore: |
-      {$sep}绕过方块锁访问方块权限。
+      {$desc}Permission for bypassing
+      sign protected blocks inside
+      kingdom lands.
   set-home:
-    <<: *fn-std-perm [ "设置家" ]
+    <<: *fn-std-perm ["设置家"]
     lore: |
-      {$s}/k sethome {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k sethome{$desc}.
   invsee:
-    <<: *fn-std-perm [ "查看物品栏" ]
+    <<: *fn-std-perm ["查看物品栏"]
     lore: |
-      {$s}/k invsee {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k invsee{$desc}.
   structures:
-    <<: *fn-perm [ "结构 ", REDSTONE_LAMP ]
+    <<: *fn-perm ["结构 ", REDSTONE_LAMP]
     lore: |
-      {$sep}购买, 放置/破坏, 访问结构权限。
+      {$desc}Permission for buying, placing
+      breaking and modifying structures.
   use:
-    <<: *fn-perm [ "使用", FURNACE ]
+    <<: *fn-perm ["使用", FURNACE]
     lore: |
-      {$sep}使用特定方块权限。
+      {$desc}Permission for using certain
+      blocks inside the kingdom.
   interact:
-    <<: *fn-perm [ "交互", OAK_DOOR ]
+    <<: *fn-perm ["交互", OAK_DOOR]
     lore: |
-      {$sep}与特定方块交互权限。
-      
-      &7例如门, 按钮等。
+      {$desc}Permission for interacting
+      with certain blocks such as
+      doors and buttons inside
+      kingdom lands.
   upgrade:
-    <<: *fn-std-perm [ "升级" ]
+    <<: *fn-std-perm ["升级"]
     lore: |
-      {$sep}使用王国升级选项权限。
-      
-      &7包括杂项升级, 斗士升级, 属性升级, 
-      炮塔升级, 结构升级。
+      {$desc}Permission for upgrading
+      anything that can be upgraded
+      inside the kingdom such as
+      misc-upgrades, champion upgrades,
+      powerups, turrets and structures.
   truce:
-    <<: *fn-std-perm [ "停战" ]
+    <<: *fn-std-perm ["停战"]
     lore: |
-      {$s}/k truce {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k truce{$desc}.
   turrets:
-    <<: *fn-perm [ "炮塔", ARROW ]
+    <<: *fn-perm ["炮塔", ARROW]
     lore: |
-      {$sep}购买, 放置/破坏, 访问炮塔权限。
+      {$desc}Permission for buying, placing
+      breaking and modifying turrets.
   unclaim:
-    <<: *fn-std-perm [ "放弃" ]
+    <<: *fn-std-perm ["放弃"]
     lore: |
-      {$s}/k unclaim {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k unclaim{$desc}.
   manage-ranks:
-    <<: *fn-std-perm [ "管理权限组" ]
+    <<: *fn-std-perm ["管理权限组"]
     lore: |
-      {$sep}晋升/降职成员权限。
-      
-      {$sep}此权限不允许成员将他人晋升至
-      高于自身的权限组或降职高于自身权限组的成员。
+      {$desc}Permission for promoting
+      and demoting members with
+      lower rank than the player.
 
-      {$sep}此权限不允许成员编辑权限组。
+      This does not give them
+      permission to modify rank
+      settings.
   withdraw:
-    <<: *fn-std-perm [ "取款" ]
+    <<: *fn-std-perm ["取款"]
     lore: |
-      {$s}/k rp withdraw {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k rp withdraw {$desc}and {$s}/k bank withdraw
+      {$desc}and withdrawing resource points
+      in exchange for money by other
+      means, such as the option in
+      resource points converter inside
+      the nexus GUI.
   fly:
-    <<: *fn-perm [ "飞行", ELYTRA ]
+    <<: *fn-perm ["飞行", ELYTRA]
     lore: |
-      {$s}/k fly {$sep}指令权限。
+      {$desc}Permission for using
+      {$s}/k fly{$desc}.
   nation:
-    <<: *fn-perm [ "邦联", BLUE_WOOL ]
+    <<: *fn-perm ["邦联", BLUE_WOOL]
     lore: |
-      {$sep}加入/退出邦联权限。
+      {$desc}Permission for joining
+      or leaving nations.
   exclude-tax:
-    <<: *fn-std-perm [ "免税" ]
+    <<: *fn-std-perm ["免税"]
     lore: |
-      {$sep}拥有此权限的成员无需缴税。
+      {$desc}Kingdom members with this
+      permission are not required
+      to pay taxes to the kingdom.
   relation-attributes:
-    <<: *fn-std-perm [ "外交政策" ]
+    <<: *fn-std-perm ["外交政策"]
     lore: |
-      {$sep}编辑外交政策权限。
+      {$desc}Permission for editing
+      relationship attributes.
   settings:
-    <<: *fn-std-perm [ "设置" ]
+    <<: *fn-std-perm ["设置"]
     lore: |
-      {$sep}更改核心设置权限。
+      {$desc}Permission for editing general
+      kingdom settings located inside
+      the nexus GUI.
   claim:
-    <<: *fn-std-perm [ "占领" ]
+    <<: *fn-std-perm ["占领"]
     lore: |
-      {$s}/k claim {$sep}指令权限
+      {$desc}Permission for using
+      {$s}/k claim{$desc}.
   unclaim-owned:
-    <<: *fn-std-perm [ "放弃自占领土" ]
+    <<: *fn-std-perm ["放弃自占领土"]
     lore: |
-      {$sep}仅允许成员放弃自己占领的领土。
+      {$desc}Allows you to only unclaim
+      the lands that you claimed yourself.
   instant-teleport:
-    <<: *fn-std-perm [ "强制传送" ]
+    <<: *fn-std-perm ["强制传送"]
     lore: |
-      {$sep}使用{$p}/k tpa {$sep}指令时无需等待的权限。
-      无此权限则需要对方同意传送。
+      {$desc}Instantly teleport to your
+      members when using the {$p}/k tpa
+      {$desc}. Otherwise you'll have
+      to wait for them to accept the request.
 
-      此权限不允许成员跳过传送倒计时。
+      You will still have the teleport
+      countdown before teleporting.
   view-logs:
-    <<: *fn-perm [ "查看编年史", KNOWLEDGE_BOOK ]
+    <<: *fn-perm ["查看编年史", KNOWLEDGE_BOOK]
     lore: |
-      {$sep}通过核心查看王国编年史权限。
+      {$desc}View your kingdom audit logs
+      which can be accessed from
+      your nexus.
   read-mails:
-    <<: *fn-perm [ "查看邮件", PLAYER_HEAD ]
+    <<: *fn-perm ["查看邮件", PLAYER_HEAD]
     lore: |
-      {$sep}通过核心查看王国邮件权限。
+      {$desc}Permission for reading
+      kingdom mail located inside
+      nexus GUI.
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
   manage-mails:
-    <<: *fn-perm [ "管理邮件", PLAYER_HEAD ]
+    <<: *fn-perm ["管理邮件", PLAYER_HEAD]
     lore: |
-      {$sep}发送/回复邮件权限。
+      {$desc}Send new mails and reply.
     skull: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOTVmYmJjNjI1ZmE0ZWI2NDk2YmU4ZGJiZjBhYTJiMjhmMTAyOTdjZmZiY2Y1ZTBhYWY2Y2IxMWU4ZjI2MTZlZCJ9fX0="
   'outposts:join':
-    <<: *fn-std-perm [ "加入前哨锦标赛" ]
+    <<: *fn-std-perm ["加入前哨锦标赛"]
     lore: |
-      {$s}/k outposts join {$sep}指令权限。
+      {$desc}Permission to use
+      {$s}/k outposts join{$desc}.
   "[else]":
-    name: "&4未知的权限: %permission%"
+    name: "&4Unknown: %permission%"
     material: BARRIER
 
 options:
   decoration:
-    slots: [ 1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53 ]
+    slots: [1, 2, 3, 4, 5, 6, 7, 9, 17, 18, 26, 27, 35, 36, 44, 45, 46, 47, 48, 50, 51, 52, 53]
     material: BLACK_STAINED_GLASS_PANE
     name: ''
-
+  
   permissions:
-    slots: [ 10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43 ]
+    slots: [10, 11, 12, 13, 14, 15, 16, 19, 20, 21, 22, 23, 24, 25, 28, 29, 30, 31, 32, 33, 34, 37, 38, 39, 40, 41, 42, 43]
     # This is a special feature
     '[switch]': permission
-
+  
   back:
     posx: 5
     posy: 6

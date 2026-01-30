@@ -13,7 +13,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "1.2.3"
+version = "1.2.3.1"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
 kingdomsAddon {

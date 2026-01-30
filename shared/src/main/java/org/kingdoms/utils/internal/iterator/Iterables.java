@@ -38,6 +38,19 @@ public final class Iterables {
         }
     }
 
+    public static <T, C extends Collection<T>> C collectAny(int elements, Collection<T> collectFrom, C collectTo) {
+        if (elements < 0) throw new IllegalArgumentException("Cannot collect negative elements: " + elements);
+        if (elements == 0) return collectTo;
+
+        Iterator<T> iter = collectFrom.iterator();
+
+        while (elements-- > 0 && iter.hasNext()) {
+            collectTo.add(iter.next());
+        }
+
+        return collectTo;
+    }
+
     public static <T, C extends Collection<T>> C removeAndCollect(int elements, Collection<T> removeFrom, C collectTo) {
         if (elements < 0) throw new IllegalArgumentException("Cannot collect negative elements: " + elements);
         if (elements == 0) return collectTo;

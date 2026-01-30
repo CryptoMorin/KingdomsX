@@ -61,17 +61,18 @@ item:
     name: "{$sp}Heatbeam Turret"
     material: MAGMA_CREAM
     flags: [ ALL ]
-    lore:
-      - "{$s}A turret that can target enemies"
-      - "through walls with a high delay. It can also"
-      - "give them negative effects depending on the level."
-      - ""
-      - "{$sp}Attributes{$colon}"
-      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
-      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
-      - "{$dot} {$p}Range{$colon} {$s}%range%"
-      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
-      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
-      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
-      - "{$dot} {$p}Speed{$colon} {$s}%fancy@speed%"
-      - "{$dot} {$p}Damage{$colon} {$s}%damage%"
+    lore: |
+      {$desc}A turret that can target enemies
+      through walls with a high delay. It can also
+      give them negative effects depending on the level.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Level{$colon} {$s}%roman@level%
+      {$dot} {$p}Ammo{$colon} {$s}%ammo%
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Range{$colon} {$s}%range%
+      {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
+      {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+      {$dot} {$p}Speed{$colon} {$s}%fancy@speed%
+      {$dot} {$p}Damage{$colon} {$s}%damage%

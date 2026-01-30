@@ -154,4 +154,9 @@ public final class ServiceWorldGuardSeven extends ServiceWorldGuard {
         ApplicableRegionSet regions = manager.getApplicableRegions(BukkitAdapter.asBlockVector(location));
         return regions.queryValue(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
     }
+
+    @Override
+    public int version() {
+        return 7;
+    }
 }

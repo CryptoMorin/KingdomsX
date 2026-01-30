@@ -7,20 +7,23 @@ rows: 6
   return:
     not-supported:
       condition: "!supported"
-      name: "{$sep}[{$e}不支持{$sep}] {$es}<x>"
+      name: "{$sep}[{$e}Not Supported{$sep}] {$es}<x>"
+      sound: BLOCK_NOTE_BLOCK_BASS
       lore: |
-        {$e}此附魔在当前服务器版本不支持。
+        {$e}This enchantment is not
+        supported in your current server
+        version.
     enabled:
       condition: enabled
       name: "{$enabled} <x>{$colon} {$s}%roman@level% {$sep}({$s}%level%{$sep})"
       glow: true
       lore: |
-        {$sep}左键设置附魔等级
-        {$sep}右键移除附魔
+        {$sep}Left-click to change level
+        {$sep}Right-click to remove
     else:
       name: "{$disabled} <x>"
       lore: |
-        {$sep}左键添加附魔
+        {$sep}Left-click to add enchant
 options:
   enchant-water-worker:
     posx: 1

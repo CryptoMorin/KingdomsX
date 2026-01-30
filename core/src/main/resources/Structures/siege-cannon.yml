@@ -4,6 +4,7 @@
       <name>: siege-cannon
       <build-duration-factor>: '+2 minutes'
       <durability-factor>: 100
+      <extra-holograms>: [ '{$$siege-cannon.holograms.ammo}' ]
       <material-1>: DISPENSER
       <material-2>: DISPENSER
       <material-3>: DISPENSER
@@ -11,9 +12,11 @@
 name: "&5Siege Cannon"
 type: siege-cannon
 default-name: 'Cannon'
-
-upgrade-cost: lvl * 4000
+durability: '100 * level'
 max-level: 3
+cost: 5000
+sell: 4000
+upgrade-cost: lvl * 4000
 
 # The texture of the skulls that make the cannon's tube.
 tube-textures:
@@ -70,6 +73,7 @@ conditions:
 # The "item" sections follow this format: https://github.com/CryptoMorin/KingdomsX/wiki/Config#item-matchers
 projectiles:
   low-tier-god:
+    name: "&a{$$words.tier} I"
     shield-damage: 2min
     explosion-radius: 1
     damage: 1
@@ -79,6 +83,7 @@ projectiles:
     item:
       material: IRON_BLOCK
   mid-tier:
+    name: "&3{$$words.tier} II"
     shield-damage: 3min
     explosion-radius: 1
     damage: 2
@@ -89,6 +94,7 @@ projectiles:
     item:
       material: GOLD_BLOCK
   high-tier:
+    name: "&c{$$words.tier} III"
     shield-damage: 5min
     explosion-radius: 2
     damage: 3
@@ -120,24 +126,6 @@ allow-damaging:
     turrets: true
     structures: [ 'siege-cannon', 'extractor', 'outpost', 'warppad', 'regulator' ]
     protected-blocks: false
-
-# [Final]
-damaging-factors:
-  TNT:
-    damage: yield * 2
-  ARROW:
-    normal:
-      damage: (0.1 * force) * max(1, weapon_enchant_power * 3)
-    INSTANT_DAMAGE:
-      damage: 7 * effect_lvl
-  POTION:
-    INSTANT_DAMAGE:
-      allowed-range: [ 5, 4, 5 ]
-      damage: 10 * effect_lvl
-  WIND_CHARGE:
-    damage: 20
-  TRIDENT:
-    damage: 1
 
 particles:
   1:
@@ -172,10 +160,10 @@ hologram:
     lines:
       - "{$sep}-=( &5Siege Cannon {$s}%roman@level% {$sep})=-"
     height: 1
+
 block:
   1: DISPENSER
-cost: 5000
-sell: 4000
+
 item:
   1:
     name: "&5Siege Cannon"

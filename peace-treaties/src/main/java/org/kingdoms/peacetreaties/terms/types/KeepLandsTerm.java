@@ -45,7 +45,7 @@ public class KeepLandsTerm extends Term {
                 .filter(x -> x instanceof LogKingdomInvader)
                 .map(x -> (LogKingdomInvader) x)
                 .filter(x -> x.getResult().isSuccessful())
-                .filter(x -> x.correspondingKingdom.equals(victimKingdomId))
+                .filter(x -> x.invaderKingdom.equals(victimKingdomId))
                 .collect(Collectors.toList());
     }
 

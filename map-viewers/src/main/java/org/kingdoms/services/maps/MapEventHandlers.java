@@ -27,6 +27,8 @@ import org.kingdoms.events.lands.ClaimLandEvent;
 import org.kingdoms.events.lands.UnclaimLandEvent;
 import org.kingdoms.events.members.KingdomJoinEvent;
 import org.kingdoms.events.members.KingdomLeaveEvent;
+import org.kingdoms.events.members.NationJoinEvent;
+import org.kingdoms.events.members.NationLeaveEvent;
 import org.kingdoms.main.Kingdoms;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerListenerType;
 import org.kingdoms.services.maps.abstraction.markersets.MarkerType;
@@ -49,12 +51,6 @@ public final class MapEventHandlers implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onInvadeEnd(KingdomInvadeEndEvent event) {
         ServiceMap.clearInvasionAreas(event.getInvasion());
-    }
-
-    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
-    public void onClaim(ClaimLandEvent event) {
-        updateKingdomLands(event);
-        updateNationLands(event.getKingdom());
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
@@ -94,6 +90,12 @@ public final class MapEventHandlers implements Listener {
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    public void onClaim(ClaimLandEvent event) {
+        updateKingdomLands(event);
+        updateNationLands(event.getKingdom());
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onRename(GroupRenameEvent event) {
         updateGroup(event);
     }
@@ -116,6 +118,16 @@ public final class MapEventHandlers implements Listener {
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
     public void onLeaveEvent(KingdomLeaveEvent event) {
         updateGroup(event);
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    public void onNationJoin(NationJoinEvent event) {
+        updateNationLands(event);
+    }
+
+    @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)
+    public void onNationLeave(NationLeaveEvent event) {
+        updateNationLands(event);
     }
 
     @EventHandler(ignoreCancelled = true, priority = EventPriority.MONITOR)

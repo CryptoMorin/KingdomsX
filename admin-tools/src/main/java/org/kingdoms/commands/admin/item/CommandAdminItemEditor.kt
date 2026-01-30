@@ -348,6 +348,7 @@ class ItemEditor(
                 "custom model data", ctx
             ) ?: return@setConversation
 
+            @Suppress("DEPRECATION")
             meta.setCustomModelData(amount.value.toInt())
             item.itemMeta = meta
             ctx.endConversation()
@@ -504,7 +505,7 @@ class ItemEditor(
                 // We can't use xskull directly, we'd get this error:
                 //  Profile doesn't have a value: ProfileInstruction
                 val xskull = XSkull.of(otherMeta)
-                val skin = xskull.profile
+                @Suppress("UnstableApiUsage") val skin = xskull.profile
                 if (skin !== null) {
                     XSkull.of((meta as SkullMeta)).profile(Profileable.of(skin, true)).apply()
                 }
@@ -587,7 +588,7 @@ class ItemEditor(
             val id: UUID
             try {
                 id = UUID.fromString(input)
-            } catch (ex: IllegalArgumentException) {
+            } catch (_: IllegalArgumentException) {
                 ctx.sendError(KingdomsLang.INVALID_UUID)
                 return@setConversation
             }

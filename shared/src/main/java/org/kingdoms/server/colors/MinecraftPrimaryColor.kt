@@ -1,12 +1,13 @@
 package org.kingdoms.server.colors
 
 import org.kingdoms.utils.internal.enumeration.Enums
+import java.awt.Color
 
 interface MinecraftChatCode {
     fun getCode(): Char
 }
 
-enum class MinecraftPrimaryColor(val RGB: Int, private val code: Char) : MinecraftChatCode {
+enum class MinecraftPrimaryColor(val rgb: Int, private val code: Char) : MinecraftChatCode {
     BLACK(0x00_00_00, '0'),
     WHITE(0xFF_FF_FF, 'f'),
 
@@ -28,10 +29,43 @@ enum class MinecraftPrimaryColor(val RGB: Int, private val code: Char) : Minecra
 
     override fun getCode(): Char = code
 
+    val asJavaColor get() = Color(rgb)
+
     companion object {
-        @JvmField val VALUES = MinecraftPrimaryColor.values()
-        @JvmField val RGB: MutableMap<Int, MinecraftPrimaryColor> = Enums.createMapping(VALUES) { it.RGB }
+        @JvmField val VALUES = values()
+        @JvmField val RGB: MutableMap<Int, MinecraftPrimaryColor> = Enums.createMapping(VALUES) { it.rgb }
         @JvmField val COLOR_CODE: MutableMap<Char, MinecraftPrimaryColor> = Enums.createMapping(VALUES) { it.code }
+
+        /**
+         * Finds the closest MinecraftPrimaryColor to the given java.awt.Color
+         * using Euclidean distance in RGB space.
+         */
+        @JvmStatic
+        fun closestTo(color: Color): MinecraftPrimaryColor {
+            var closest = BLACK
+            var minDistance = Double.MAX_VALUE
+
+            val r = color.red
+            val g = color.green
+            val b = color.blue
+
+            for (mcColor in VALUES) {
+                val rgb = mcColor.rgb
+                val dr = r - (rgb shr 16 and 0xFF)
+                val dg = g - (rgb shr 8 and 0xFF)
+                val db = b - (rgb and 0xFF)
+
+                // Make it Double right away
+                val distanceSq = dr * dr + dg * dg + db * db.toDouble()
+
+                if (distanceSq < minDistance) {
+                    minDistance = distanceSq
+                    closest = mcColor
+                }
+            }
+
+            return closest
+        }
     }
 }
 

@@ -7,6 +7,7 @@ import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftPackage;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import net.minecraft.network.protocol.game.ClientboundGameTestHighlightPosPacket;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.kingdoms.server.location.BlockVector3;
@@ -112,8 +113,34 @@ public final class PluginChannels {
     }
 
     private static final MethodHandle SEND_CUSTOM_PAYLOAD = null;
-    private static final boolean SUPPORTED =
-            ResourceLocation_fromNamespaceAndPath != null && (GameTestAddMarkerDebugPayload$ctor != null || ClientboundGameTestHighlightPosPacket != null);
+    private static final SupportLevel SUPPORT_LEVEL = initSupportLevel();
+
+    private static SupportLevel initSupportLevel() {
+        if (ResourceLocation_fromNamespaceAndPath == null) return SupportLevel.NONE;
+        if (GameTestAddMarkerDebugPayload$ctor != null) return SupportLevel.FULL;
+        if (ClientboundGameTestHighlightPosPacket != null) return SupportLevel.PARTIAL;
+        return SupportLevel.NONE;
+    }
+
+    public enum SupportLevel {
+        /**
+         * This version doesn't support block markers at all.
+         */
+        NONE,
+
+        /**
+         * This version has full control over the color, text and duration of block markers.
+         */
+        FULL,
+
+        /**
+         * This version can only control certain properties of the block marker.
+         * Right now since 1.21.9+ the color is a constant green with a constant duration
+         * and constant coordinate-based text.
+         */
+        PARTIAL;
+    }
+
     // private static final MethodHandle SEND_CUSTOM_PAYLOAD = XReflection.namespaced()
     //         .imports("MinecraftKey", MinecraftKey.class)
     //         .ofMinecraft("package cb.entity; public class CraftPlayer {}")
@@ -122,7 +149,11 @@ public final class PluginChannels {
 
 
     public static boolean isSupported() {
-        return SUPPORTED;
+        return SUPPORT_LEVEL != SupportLevel.NONE;
+    }
+
+    public static SupportLevel getSupportLevel() {
+        return SUPPORT_LEVEL;
     }
 
     private static void ensureSupported() {
@@ -231,12 +262,12 @@ public final class PluginChannels {
         MinecraftConnection.sendPacket(player, packets.toArray());
     }
 
-    @SuppressWarnings({"RedundantCast", "unused"})
+    @SuppressWarnings("unused")
     private static Object sendDebugMarker(int x, int y, int z, int argb, String title, Duration duration) {
         // BlockPos pos = new BlockPos(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
         // long packedPos = BlockPos.asLong(pos.getX(), pos.getY(), pos.getZ());
-        long packedPos = ((long) (x & 0x3FFFFFFL) << 38) |
-                ((long) (z & 0x3FFFFFFL) << 12) |
+        long packedPos = ((x & 0x3FFFFFFL) << 38) |
+                ((z & 0x3FFFFFFL) << 12) |
                 ((long) y & 0xFFF);
 
         try {
@@ -283,7 +314,7 @@ public final class PluginChannels {
 
             return ClientboundCustomPayloadPacket$ctor.invoke(payload);
         } catch (Throwable e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to send debug markers at " + x + ", " + y + ", " + z + " with color " + argb + " title: '" + title + "' and duration " + duration, e);
         }
     }
 
@@ -291,7 +322,7 @@ public final class PluginChannels {
         // return sendDebugMarker(x, y, z, argb, title, duration);
 
         try {
-            if (ClientboundGameTestHighlightPosPacket != null) {
+            if (GameTestAddMarkerDebugPayload$ctor == null) {
                 // We can't use colors :(
                 return ClientboundGameTestHighlightPosPacket
                         .invoke(BlockPos$ctor.invoke(x, y, z), BlockPos$ctor.invoke(0, 0, 0));
@@ -300,8 +331,8 @@ public final class PluginChannels {
                 Object markerPayload = GameTestAddMarkerDebugPayload$ctor.invoke(blockPos, argb, title, (int) duration.toMillis());
                 return ClientboundCustomPayloadPacket$ctor.invoke(markerPayload);
             }
-        } catch (Throwable ex) {
-            throw new RuntimeException(ex);
+        } catch (Throwable e) {
+            throw new RuntimeException("Failed to send debug markers at " + x + ", " + y + ", " + z + " with color " + argb + " title: '" + title + "' and duration " + duration, e);
         }
     }
 

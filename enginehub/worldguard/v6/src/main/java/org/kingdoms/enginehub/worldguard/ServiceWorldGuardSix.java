@@ -87,4 +87,9 @@ public final class ServiceWorldGuardSix extends ServiceWorldGuard {
         return manager.getApplicableRegions(location)
                 .queryValue(WorldGuardPlugin.inst().wrapPlayer(player), flag) == StateFlag.State.ALLOW;
     }
+
+    @Override
+    public int version() {
+        return 6;
+    }
 }

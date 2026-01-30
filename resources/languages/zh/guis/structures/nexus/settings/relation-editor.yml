@@ -3,21 +3,22 @@ rows: 5
 sound: ITEM_BOOK_PAGE_TURN
 
 options:
+  green-stained-glass-pane:
+    slots: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 15, 16, 17, 18, 19, 20, 24, 25, 26, 27, 28, 29, 33, 34, 35, 36, 37, 38, 39, 41, 42, 43, 44]
+    material: GREEN_STAINED_GLASS_PANE
+    name: ''
   fly:
     enabled:
       condition: enabled
       name: "{$p}飞行{$sep}: {$p}已启用"
       material: ELYTRA
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许在王国领土中飞行。"
+      glow: true
     else:
       name: "{$p}飞行{$sep}: {$e}已禁用"
       material: ELYTRA
-      lore:
-        - "{$p}允许在王国领土中飞行。"
+    lore:
+      - "{$sep}Allow kingdom flight in"
+      - "your land."
     posx: 4
     posy: 2
   build:
@@ -25,16 +26,12 @@ options:
       condition: enabled
       name: "{$p}建造{$sep}: {$p}已启用"
       material: DIAMOND_PICKAXE
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许在领土上建造。"
+      glow: true
     else:
       name: "{$p}建造{$sep}: {$e}已禁用"
       material: DIAMOND_PICKAXE
-      lore:
-        - "{$p}允许在领土上建造。"
+    lore:
+      - "{$sep}Allow building in your land."
     posx: 5
     posy: 2
   ceasefire:
@@ -42,16 +39,12 @@ options:
       condition: enabled
       name: "{$p}停火{$sep}: {$p}已启用"
       material: DIAMOND_SWORD
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}禁用向友方开火。"
+      glow: true
     else:
       name: "{$p}停火{$sep}: {$e}已禁用"
       material: DIAMOND_SWORD
-      lore:
-        - "{$p}禁用向友方开火。"
+    lore:
+      - "{$sep}Disable friendly fire."
     posx: 6
     posy: 2
   interact:
@@ -59,16 +52,13 @@ options:
       condition: enabled
       name: "{$p}交互{$sep}: {$p}已启用"
       material: CAULDRON
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许与容器交互。"
+      glow: true
     else:
       name: "{$p}交互{$sep}: {$e}已禁用"
       material: CAULDRON
-      lore:
-        - "{$p}允许与容器交互。"
+    lore:
+      - "{$sep}Allow block interaction"
+      - "for opening containers."
     posx: 4
     posy: 3
   use:
@@ -76,18 +66,13 @@ options:
       condition: enabled
       name: "{$p}使用{$sep}: {$p}已启用"
       material: LEVER
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许使用方块, "
-        - "如门, 拉杆, 和按钮。"
+      glow: true
     else:
       name: "{$p}使用{$sep}: {$e}已禁用"
       material: LEVER
-      lore:
-        - "{$p}允许使用方块, "
-        - "如门, 拉杆, 和按钮。"
+    lore:
+      - "{$sep}Allow using blocks."
+      - "Such as doors, levels and buttons."
     posx: 5
     posy: 3
   turret-ceasefire:
@@ -95,52 +80,43 @@ options:
       condition: enabled
       name: "{$p}炮塔停火{$sep}: {$p}已启用"
       material: SPECTRAL_ARROW
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
+      glow: true
       lore:
         - "{$p}禁用炮塔向友方开火。"
     else:
       name: "{$p}炮塔停火{$sep}: {$e}已禁用"
       material: SPECTRAL_ARROW
-      lore:
-        - "{$p}禁用炮塔向友方开火。"
+    lore:
+      - "{$sep}Disable friendly fire for turrets."
     posx: 6
-    posy: 1
+    posy: 3
   manage-turrets:
     enabled:
       condition: enabled
       name: "{$p}管理炮塔{$sep}: {$p}已启用"
       material: ARROW
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许破坏, 放置炮塔及与炮塔交互。"
+      glow: true
     else:
       name: "{$p}管理炮塔{$sep}: {$e}已禁用"
       material: ARROW
-      lore:
-        - "{$p}允许破坏, 放置炮塔及与炮塔交互。"
-    posx: 7
-    posy: 1
+    lore:
+      - "{$sep}Allow breaking, placing and"
+      - "interacting with turrets."
+    posx: 4
+    posy: 4
   manage-structures:
     enabled:
       condition: enabled
       name: "{$p}管理结构{$sep}: {$p}已启用"
       material: REDSTONE_LAMP
-      flags: [HIDE_ENCHANTS]
-      enchants:
-        DURABILITY: 1
-      lore:
-        - "{$p}允许破坏, 放置结构及与结构交互。"
+      glow: true
     else:
       name: "{$p}管理结构{$sep}: {$e}已禁用"
       material: REDSTONE_LAMP
-      lore:
-        - "{$p}允许破坏, 放置结构及与结构交互。"
-    posx: 8
-    posy: 1
+    lore:
+      - "{$sep}Allow breaking, placing and interacting with structures."
+    posx: 5
+    posy: 4
   show-holograms:
     enabled:
       condition: enabled

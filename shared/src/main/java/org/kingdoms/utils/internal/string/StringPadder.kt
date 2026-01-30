@@ -77,6 +77,7 @@ class StringPadder {
 
     fun getPaddedString(separator: String): String = getPadded().joinToString(separator)
 
+    @Suppress("POTENTIALLY_NON_REPORTED_ANNOTATION")
     @Deprecated(
         message = "Use getPadded() instead",
         replaceWith = ReplaceWith("getPadded()"),

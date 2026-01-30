@@ -389,6 +389,21 @@ building-visuals:
   # This includes all systems, including the particles too.
   disabled: false
 
+  # Settings related to the small hammer going from block to block while a building is being built.
+  # This entire thing only works if your server supports block displays (i.e. v1.19.4+)
+  hammer-animation:
+    disable: false
+
+    # The particle that displays every time the hammer hits the surface.
+    # Set to ~ to disable.
+    # * AUTO - This will automatically make the particle look like the block dust that's being hit.
+    # No other options are currently available.
+    particle: AUTO
+
+    # Sound that plays every time the hammer hits the surface.
+    # Set to ~ to disable.
+    sound: 'block.anvil.land, 0.1, 2.0'
+
   # The trigger distance is the distance of the player from the building in blocks.
   # If the player is within this range, the building's visuals will be shown to them.
   trigger-distance: 50

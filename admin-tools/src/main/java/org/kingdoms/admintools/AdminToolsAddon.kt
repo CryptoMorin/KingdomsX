@@ -5,6 +5,7 @@ import org.kingdoms.addons.Addon
 import org.kingdoms.admintools.claimschematic.ClaimSchematicRegistry
 import org.kingdoms.commands.admin.*
 import org.kingdoms.commands.admin.debugging.CommandAdminDebugHitPoints
+import org.kingdoms.commands.admin.debugging.CommandAdminSound
 import org.kingdoms.commands.admin.item.CommandAdminItemEditor
 import org.kingdoms.commands.admin.sql.CommandAdminSQL
 import org.kingdoms.gui.GUIConfig
@@ -50,6 +51,7 @@ class AdminToolsAddon : JavaPlugin(), Addon {
         CommandAdminExecuteBook()
         CommandAdminCondition()
         CommandAdminCommands()
+        CommandAdminSound()
         CommandAdminForeach()
         CommandAdminFiles()
         CommandAdminMissingGUIs()

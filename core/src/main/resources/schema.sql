@@ -1,8 +1,9 @@
--- Stupid SQL Syntax Notes:
+-- SQL Syntax Notes:
 ---- Composite primary keys must always appear as the last column definition
 ---- Trailing commas are not supported.
 ---- Constraints are always non-null and cannot be explicitly defined.
 ---- Strict tables are only supported from 3.36+
+---- Most formats you see here will be post-processed by kingdoms. E.g. {{ name }}, [[name]], the type names and identifiers.
 
 {{ Singular
     `id` BOOL NOT NULL,

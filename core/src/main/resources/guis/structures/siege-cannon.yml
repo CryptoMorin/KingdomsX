@@ -1,62 +1,125 @@
 title: "&3Siege Cannon"
-type: HOPPER
-sound: BLOCK_ANVIL_USE
-interactable: [ 2 ] # The ammo slot
+sound: ITEM_ARMOR_EQUIP_DIAMOND
+rows: 3
 
 options:
   sit:
     name: "{$p}Sit"
-    lore:
-      - "{$sep}Sit on the cannon"
-      - "to start shooting."
+    lore: |
+      {$desc}Sit on the cannon
+      to start shooting.
     material: BRICK_STAIRS
-    slot: 0
-  ammo:
-    name: "&4-------->"
-    material: RED_STAINED_GLASS_PANE
-    lore:
-      - "{$p}Put a fire charge in this"
-      - "slot to load the cannon."
-      - ""
-      - "&8[&4&l!&8] {$sep}Loaded projectiles will disappear"
-      - "once the server is restarted."
-      - ""
-      - "{$p}Iron Blocks{$colon} {$sp}Tier I"
-      - "{$p}Gold Blocks{$colon} {$sp}Tier II"
-      - "{$p}Fire Charges{$colon} {$sp}Tier III"
-    slot: 1
-  upgrade:
-    slot: 3
+    posx: 2
+    posy: 2
+  ammo-info:
+    name: "&4Ammo Slot"
+    # https://minecraft-heads.com/custom-heads/head/94680-forest-green-arrow-down
+    skull: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzM1YzFlZjEyN2Y1YzUyY2IzODlhOGFjNmRmM2Y2ZmM2NmNkMzdmMjYwOTRiM2UxZTc2ZDAxNzcxMTViYjA4ZiJ9fX0='
+    lore: |
+      {$p}Put an ammo in this
+      slot to load the cannon.
+
+      {$sep}[&4&l!{$sep}] {$desc}Loaded projectiles will disappear
+      once the server is restarted.
+
+      {$desc}Higher tiers do more damage.
+        {$dot} {$p}Iron Blocks{$colon} {$sp}Tier I
+        {$dot} {$p}Gold Blocks{$colon} {$sp}Tier II
+        {$dot} {$p}Fire Charges{$colon} {$sp}Tier III
+    posx: 8
+    posy: 1
+  ammo-slot:
+    interaction: PUT_ONLY
+    material: AIR
+    name: "%ammo_name%"
+    lore: |
+      {$dot} {$p}Shield Damage {$arrow} {$s}%time@ammo_shield_damage%
+      {$dot} {$p}Explosion Radius {$arrow} {$s}%ammo_explosion_radius%
+      {$dot} {$p}Damage {$arrow} {$s}%ammo_damage%
+      {$dot} {$p}Knockback {$arrow} {$s}%ammo_knockback%
+      {$dot} {$p}Building Effects {$arrow} {$s}%ammo_building_effects_damage_amount%
+    posx: 8
+    posy: 2
+  repair:
+    material: ANVIL
+    name: "{$sp}Repair"
+    posx: 3
+    posy: 2
     upgrade:
-      condition: "level < max_level"
-      name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
-      material: NETHER_STAR
-      lore:
-        - "{$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%"
-        - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%"
-        - "{$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%"
-        - "{$dot} {$p}Knockback{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%"
-        - "{$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%"
-        - ""
-        - "&8[&4&l!&8] {$sep}The values shown here might"
-        - "differ based on the projectile that you"
-        - "used to load the cannon."
-        - ""
-        - "{$dot} {$p}Max Level{$colon} {$s}%roman@next_level%"
-        - "{$dot} {$p}Cost{$colon} {$s}%upgrade_cost%"
-    maxxed:
-      name: "{$sp}Level{$colon} {$s}%roman@level%"
-      material: NETHER_STAR
-      lore:
-        - "{$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage%"
-        - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
-        - "{$dot} {$p}Damage{$colon} {$s}%damage%"
-        - "{$dot} {$p}Knockback{$colon} {$s}%knockback%"
-        - "{$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius%"
-  break:
-    name: "&4Break"
-    material: REDSTONE_BLOCK
-    sound: ENTITY_ITEM_BREAK
-    lore:
-      - "{$s}Breaks the structure."
-    slot: 4
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}This building is completely
+        destroyed and needs a full repair
+        to fix it.
+
+        {$p}Cost{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Resource Points{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Money{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}You can repair this building by
+        throwing the following items at it{$colon}
+
+          {$dot} {$p}Iron{$colon} {$s}10
+          {$dot} {$p}Gold{$colon} {$s}15
+          {$dot} {$p}Diamonds{$colon} {$s}50
+
+        {$info-sign} &9If your building's durability hits {$e}0&9,
+        you'll have to do a full repair using
+        this button.
+upgrade:
+  posx: 4
+  posy: 2
+  upgrade:
+    condition: "level < max_level"
+    name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
+    material: NETHER_STAR
+    lore: |
+      {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%
+      {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%
+      {$dot} {$p}Knockback{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%
+      {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%
+
+      &8[&4&l!&8] {$desc}The values shown here might
+      differ based on the projectile that you
+      used to load the cannon.
+
+      {$dot} {$p}Max Level{$colon} {$s}%roman@next_level%
+      {$dot} {$p}Cost{$colon} {$s}%upgrade_cost%
+  maxxed:
+    name: "{$sp}Level{$colon} {$s}%roman@level%"
+    material: NETHER_STAR
+    lore: |
+      {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+      {$dot} {$p}Damage{$colon} {$s}%damage%
+      {$dot} {$p}Knockback{$colon} {$s}%knockback%
+      {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius%
+
+break:
+  name: "&4Break"
+  material: REDSTONE_BLOCK
+  sound: ENTITY_ITEM_BREAK
+  lore: |
+    {$s}Breaks the structure.
+  posx: 5
+  posy: 2
+
+
+  close:
+    name: "&cClose"
+    material: BARRIER
+    lore: |
+      {$s}Close the GUI
+    posx: 6
+    posy: 2
+
+  decorate-even:
+    slots: [ 0, 2, 4, 6, 8, 18, 20, 22, 24, 26 ]
+    material: RED_STAINED_GLASS_PANE
+    name: ''
+  decorate-odd:
+    slots: [ 1, 3, 5, 9, 15, 17, 19, 21, 23, 25 ]
+    material: ORANGE_STAINED_GLASS_PANE
+    name: ''

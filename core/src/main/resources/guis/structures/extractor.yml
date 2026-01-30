@@ -39,6 +39,32 @@ options:
       {$p}Coal{$colon} {$sp}5
       {$p}Charcoal{$colon} {$sp}3
       {$p}Blaze Rods{$colon} {$sp}100
+  repair:
+    material: ANVIL
+    name: "{$sp}Repair"
+    slot: 2
+    upgrade:
+      condition: "building_durability <= 0"
+      lore: |
+        {$desc}This building is completely
+        destroyed and needs a full repair
+        to fix it.
+
+        {$p}Cost{$colon}
+        {? repair_cost_rp != 0 ? " {$dot} {$p}Resource Points{$colon} {$s}%fancy@repair_cost_rp%" }
+        {? repair_cost_money != 0 ? " {$dot} {$p}Money{$colon} {$s}$%fancy@repair_cost_money%" }
+    else:
+      lore: |
+        {$desc}You can repair this building by
+        throwing the following items at it{$colon}
+
+          {$dot} {$p}Iron{$colon} {$s}10
+          {$dot} {$p}Gold{$colon} {$s}15
+          {$dot} {$p}Diamonds{$colon} {$s}50
+
+        {$info-sign} &9If your building's durability hits {$e}0&9,
+        you'll have to do a full repair using
+        this button.
   upgrade:
     slot: 3
     upgrade:

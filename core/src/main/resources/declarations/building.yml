@@ -110,7 +110,7 @@ building:
           lines:
             - '{$$building.holograms.main}'
             - '<extra-holograms>'
-            - '{? building_durability <= 0 ? "{$sep}[{$es}!{$sep}] {$e}{$$building.holograms.progress.broken} {$sep}[{$es}!{$sep}]" ; building_durability != building_max_durability ? "{$p}{$$building.holograms.progress.durability}{$colon} {$s}%fancy@building_durability%{$sep}/{$s}%fancy@building_max_durability%"}'
+            - '{? building_max_durability > 0 && building_durability < 0 ? "{$sep}[{$es}!{$sep}] {$e}{$$building.holograms.progress.broken} {$sep}[{$es}!{$sep}]" ; building_max_durability > 0 && building_durability != building_max_durability ? "{$p}{$$building.holograms.progress.durability}{$colon} {$s}%fancy@building_durability%{$sep}/{$s}%fancy@building_max_durability%"}'
 
           # The initial height for holograms is their distance from the building's origin.
           # Offset does the same thing as height, but it also supports xyz axis.

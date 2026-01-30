@@ -10,4 +10,9 @@ public interface Service {
     default void enable() {}
 
     default void disable() {}
+
+    /**
+     * Used when multiple versions of a service is available.
+     */
+    default int version() { return 0; }
 }

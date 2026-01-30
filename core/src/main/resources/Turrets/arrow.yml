@@ -73,16 +73,17 @@ item:
     name: "&aArrow Turret"
     material: ARROW
     flags: [ ALL ]
-    lore:
-      - "{$s}A simple turret that shoots"
-      - "arrows at mobs and enemies."
-      - ""
-      - "{$sp}Attributes{$colon}"
-      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
-      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
-      - "{$dot} {$p}Range{$colon} {$s}%range%"
-      - "{$dot} {$p}Max Targets{$colon} {$s}%max_targets%"
-      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
-      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
-      - "{$dot} {$p}Speed{$colon} {$s}%fancy@speed%"
-      - "{$dot} {$p}Damage{$colon} {$s}%damage%"
+    lore: |
+      {$desc}A simple turret that shoots
+      arrows at mobs and enemies.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Level{$colon} {$s}%roman@level%
+      {$dot} {$p}Ammo{$colon} {$s}%ammo%
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Range{$colon} {$s}%range%
+      {$dot} {$p}Max Targets{$colon} {$s}%max_targets%
+      {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+      {$dot} {$p}Speed{$colon} {$s}%fancy@speed%
+      {$dot} {$p}Damage{$colon} {$s}%damage%

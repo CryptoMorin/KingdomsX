@@ -1,5 +1,6 @@
 package org.kingdoms.platform.bukkit.adapters
 
+import org.bukkit.Color
 import org.bukkit.Location
 import org.bukkit.World
 import org.bukkit.block.Block
@@ -8,6 +9,7 @@ import org.kingdoms.nbt.NBTTagConverterRegistry
 import org.kingdoms.nbt.tag.NBTTag
 import org.kingdoms.nbt.tag.NBTTagType
 import org.kingdoms.platform.bukkit.location.BukkitWorld
+import org.kingdoms.server.colors.MinecraftPrimaryColor
 import org.kingdoms.server.location.BlockLocation3
 import org.kingdoms.server.location.BlockVector3
 import org.kingdoms.server.location.Direction
@@ -72,4 +74,6 @@ object BukkitAdapter {
         location.y.toDouble(),
         location.z.toDouble()
     )
+
+    @JvmStatic fun adapt(color: MinecraftPrimaryColor): Color? = Color.fromRGB(color.rgb)
 }

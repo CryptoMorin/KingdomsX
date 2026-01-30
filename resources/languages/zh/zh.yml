@@ -90,7 +90,7 @@ in-claim-only:
   structures-block-occupied: '{$e}这里不能放置结构。一个&e%material%{$e}方块被放置在这里。'
   turrets-block-occupied: '{$e}不能在这里放置炮塔。一个&e%material%{$e}方块被放置在这里。'
 siege-cannon:
-  ready-fire: '{$p}攻城炮准备好开火了! 。'
+  ready-fire: '{$p}攻城炮准备好开火了! '
   sit: '{$p}你现在坐在炮上。你可以选择自己装弹或让别人装弹以发射。'
   occupied: '{$p}已经有人坐在炮上了。'
   already-loaded: '{$e}攻城炮已装载完毕了。'
@@ -135,7 +135,7 @@ other-kingdoms:
     break: '{$e}你不能在其他王国的领土上破坏炮塔。'
   teleport-portal-creation: '{$e}你不能使用此传送门。这样会在其他王国的领土上生成新传送门。'
   teleport-entity: '{$e}你放入的{$es}%entity%{$e}不能通过此传送门。这样会使目标实体到达其他王国的领土。'
-  hit: '{$e}You can''t hit {$es}%entity% {$e}in other kingdom land.'
+  hit: '{$e}你不能攻击{$es}%entity%{$e}, 因为其位于其他王国的领土上。'
 nation:
   zone-place: '{$e}你不能在&e%nation%{$e}的领土内放置方块。'
   zone-break: '{$e}你不能在&e%nation%{$e}的领土内破坏方块。'
@@ -228,7 +228,7 @@ protected-signs:
   kingdoms:
     cleared: '{$p}已移除所有王国。'
     removed: '{$p}把{$s}%name%{$p}王国移出组。'
-    disbanded: '{$e}带有UUID&e%id%{$e}的王国既已消失, 它从告示牌中被移除。'
+    disbanded: '{$e}带有UUID&e%id%{$e}的王国已解散, 它从告示牌中被移除。'
     limit: '{$e}你最多把&e%limit%{$e}个王国移入组。'
     include:
       included: '{$p}把{$s}%name%{$p}王国移入组。'
@@ -367,10 +367,10 @@ fly:
   warnings:
     unfriendly-nearby:
       safe: '{$p}你附近暂没有非友方玩家。'
-      warn: '{$e}你的飞行将在&e%counter%{$e}秒后因为附近有敌方玩家而被禁用! 立即撤退! 。'
+      warn: '{$e}你的飞行将在&e%counter%{$e}秒后因为附近有敌方玩家而被禁用! 立即撤退! '
     out-of-land:
       safe: '{$p}你在这片领土上是安全的。'
-      warn: '{$e}你的飞行将在&e%counter%{$e}秒后因为你处于一片禁止飞行的领土! 立即撤退! 。'
+      warn: '{$e}你的飞行将在&e%counter%{$e}秒后因为你处于一片禁止飞行的领土! 立即撤退! '
     charges: '{$e}你的飞行将在&e%counter%{$e}秒后因为你无法支付飞行所需的金钱而禁用。'
   charges-cant-afford: '{$e}你需要每&e%interval%{$e}秒支付&e$%money%{$e}金钱以飞行。'
   charges:
@@ -402,7 +402,7 @@ nexus:
   home:
     public: '{$s}王国的家已被设为{$p}公共{$s}。'
     not-public: '{$s}王国的家已被设为{$e}私有{$s}。'
-  cant-be-removed: 你不能移除你王国的核心。
+  cant-be-removed: '你不能移除你王国的核心。'
   shield:
     enable: '{$p}已启用王国护盾。'
     disable: '{$e}已禁用王国护盾。'
@@ -432,7 +432,7 @@ nexus:
       symbol: '{$e}符号长度不能大于&e%limit%。'
     node:
       already-exists: '{$e}已存在有此节点的权限组。'
-    unknown-material: '{$e}无此材料{$sep}: &e%material%{$e}。'
+    unknown-material: '{$e}未知材质类型{$sep}&e%material%{$e}。'
     invalid:
       material: '{$e}你不能使用这种物质&e%material%。'
       max-claims: '{$e}最大领土占领数量必须为数字且大于&e0。'
@@ -442,7 +442,7 @@ nexus:
     color:
       has-none-colors: '{$e}文本必须只含有颜色代码, 空格也不允许。'
   chest:
-    others: '{$e}你不能打开其他王国的核心箱子。'
+    others: '{$e}你不能打开其他王国的国库。'
   misc-upgrades:
     others: '{$e}你不能改变其他王国的杂项升级。'
   members:
@@ -500,7 +500,7 @@ nexus:
         {$p}缴税算法已设为{$sep}:{$s}%tax%
         {$p}在你身上测验的算法结果{$sep}: {$s}%test%
       public-home:
-        prompt: '{$p}Please enter the tax for public homes in chat {$cancel}'
+        prompt: '{$p}请在聊天中输入使用公共家的税收{$cancel}'
     banner:
       set: '{$p}已改变本王国旗帜。'
       removed: '{$p}已移除本王国旗帜。'
@@ -584,13 +584,13 @@ invalid:
   amount: '{$e}无效的数量{$sep}: &e%amount%。'
   number: '{$es}%arg%{$e}不是数字。'
   uuid: '{$es}%arg%{$e}无效&nhover:{UUID;{$p}点击打开维基词典;@https://en.wikipedia.org/wiki/Universally_unique_identifier#Format}'
-  number-negative: '{$e}'
+  number-negative: '{$e}数量不能为负。'
   material: '{$e}未知的材料{$sep}: {$es}%material%'
   time: '{$e}无效的时间{$sep}: {$es}%time% {$sep}({$e}正确格式{$sep}: {$es}<数量><时间后缀> {$e}如{$sep}: {$es}1s{$sep}, {$es}50days{$sep})'
   boolean: '{$es}%arg%{$e}不是一个有效选项。请选择''{$p}true{$e}''或''&4false{$e}'''
   number-too-large: '{$es}%arg% {$e}这个数字过大。'
   number-integer-only: '{$es}%arg% {$e}必须为整数。'
-  path: '{$es}%arg%{$e}不是一个有效路径。'''
+  path: '{$es}%arg%{$e}不是一个有效路径。'
   username: '{$e}无效的用户名{$colon} {$es}%name%'
 commands:
   insufficient-permission: '{$e}你没有使用该命令的权限。'
@@ -611,6 +611,8 @@ commands:
   mapped-arguments-missing: '{$e}变量{$es}%argument_name%{$e}缺失。'
   error: '{$e}执行该指令时发生了错误。如果你是玩家, 请告知管理。如果你是管理, 请查看服务端日志。'
   console-only: '{$e}该指令只能由控制台执行。'
+  default-description: '{$e}没有描述。'
+  default-usage: '{$e}无效的用法。'
 kingdom:
   name-blacklisted: '{$e}你的王国名称中含有违禁词。'
   tag-blacklisted: '{$e}你的王国标签中含有违禁词。'
@@ -1225,7 +1227,7 @@ command:
     transfer-nation-description: '{$s}把你王国的资源点转到你的邦联。'
     aliases: rp resourcepoint
     tab-completion:
-      resource-points: <resource points>
+      resource-points: <资源点>
   bank:
     description: '{$s}存入或支出王国银行里的资源点。'
     usage: '{$usage}bank {$p}<deposit/withdraw> <数目>'
@@ -1243,7 +1245,7 @@ command:
         {$p}王国银行账户{$sep}: {$s}%fancy@kingdoms_bank%
       disabled: '{$e}你不能存入钱。'
       min: '{$e}你至少要存入&e$%min%。'
-      usage: '{$usage}bank deposit {$p}<amount>'
+      usage: '{$usage}bank deposit {$p}<数量>'
       description: '{$s}向你的王国银行中存钱。'
     withdraw:
       min: '{$e}你至少要取出&e$%min%。'
@@ -1253,7 +1255,7 @@ command:
         你的新账户为{$sep}: {$s}%balance%
         {$p}王国银行账户{$sep}: {$s}%fancy@kingdoms_bank%
       description: '{$s}从你的王国银行中取钱。'
-      usage: '{$usage}bank withdraw {$p}<amount>'
+      usage: '{$usage}bank withdraw {$p}<数量>'
     aliases: money $
   show:
     description: '{$s}展示一个王国的信息。'
@@ -1296,7 +1298,7 @@ command:
       {$p}| {$p}核心{$sep}: {$s}%kingdoms_nexus%
       {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
       {$p}| {$p}势力{$sep}: {$s}%kingdoms_fancy_might%
-      {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
+      {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}赋税{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       {$p}| {$p}领土{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
       {$p}| {$p}资源点{$sep}: {$s}%fancy@kingdoms_resource_points%
       {$p}| {$p}护盾{$sep}: {$s}%kingdoms_shield_time_left%
@@ -1474,6 +1476,8 @@ command:
     occupied-friendly-land: '{$e}此领土已被友方王国占领。'
     chunk:
       permission: '{$e}你没有权限通过输入区块坐标放弃领土。'
+    no:
+      lands-to-unclaim: '{$e}你的王国没有可以放弃的领土。'
   unclaimall:
     description: '{$s}放弃你王国的全部领土。'
     success: '{$p}总共放弃了{$s}%lands%{$p}块领土! '
@@ -1579,7 +1583,7 @@ command:
       renamed: '{$p}成功把章节名从{$s}%old_chapter%{$p}改为{$s}%new_chapter%。'
     open:
       description: '{$s}阅读你王国的手册。'
-      usage: '{$usage}book open {$sp}[chapter]'
+      usage: '{$usage}book open {$sp}[章节]'
     preview:
       description: '{$s}预览你在编辑的这一章。'
       nothing-to-preview: '{$e}你没有可预览的, 正在编辑的章节。'
@@ -1934,15 +1938,15 @@ command:
       info: |
         {$p}| {$p}名字{$sep}: {$s}%player% {$sep}(hover:{&5%id%;{$p}点击复制;|%id%}{$sep})
         {$p}| {$p}管理{$sep}: %admin% {$p}| {$p}间谍{$sep}: %spy%
-        {$p}| {$p}王国{$sep}: {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}Copy;|%kingdom_id%}{$sep})
+        {$p}| {$p}王国{$sep}: {$s}%kingdoms_kingdom_name% {$sep}(hover:{&5%kingdom_id%;{$p}点我复制;|%kingdom_id%}{$sep})
         {$p}| {$p}权限组{$sep}: %kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_node%
-        {$p}| {$p}邦联权限组{$sep}: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%{$p}| {$p}Chat Channel{$sep}: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
+        {$p}| {$p}邦联权限组{$sep}: %kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol% %kingdoms_nation_rank_node%{$p}| {$p}聊天频道{$sep}: %kingdoms_chat_channel_color%%kingdoms_chat_channel%
         {$p}| {$p}使用的标记{$sep}: %visualizer%
         {$p}| {$p}邀请{$sep}: {$s}%invites%
         {$p}| {$p}加入王国时间{$sep}: {$s}%kingdoms_joined%
         {$p}| {$p}自动占领{$sep}: %auto_claim% {$p}| {$p}自动地图{$sep}: %auto_map%
         {$p}| {$p}地图大小{$sep}: {$s}%map_width% {$sep}- {$s}%map_height%
-        {$p}| {$p}总捐献{$sep}: {$s}%kingdoms_total_donations% {$p}| {$p}Last Donation{$sep}: {$s}%kingdoms_last_donation_time%
+        {$p}| {$p}总捐献{$sep}: {$s}%kingdoms_total_donations% {$p}| {$p}上次捐献{$sep}: {$s}%kingdoms_last_donation_time%
         {$p}| {$p}占领领土数{$p}({$s}%kingdoms_claims%{$p}){$sep}: %claims%
         {$p}| {$p}压缩数据{$sep}: {$s}%compressed%
       found: '{$p}玩家{$s}%name% {$sep}({$p}%uuid%{$sep}) {$p}在以下王国中{$sep}: '
@@ -1967,6 +1971,9 @@ command:
       aliases: holograms holo
     entity:
       description: '{$s}找到玩家附近全部实体。'
+      negative-stay: '{$e}负数存在时间{$colon} {$es}%stay%'
+      found: '{$p}总共发现了{$s}%total%{$p}个实体，扫描半径为{$s}%radius%{$p}格。'
+      negative-radius: '{$e}Negative radius{$colon} {$es}%radius%'
     unclaim:
       description: '{$s}放弃任意领土。'
       success: '{$p}放弃了位于{$s}%x%{$p}, {$s}%z%{$p}的领土, 该领土原属于{$s}%kingdom%{$p}王国。'
@@ -1985,7 +1992,7 @@ command:
       aliases: mlm
     shield:
       description: '{$s}改变一个王国的护盾剩余时间。'
-      usage: '{$usage}admin shield {$p}<王国> {$sp}[set | add | remove] {$p}<time>'
+      usage: '{$usage}admin shield {$p}<王国> {$sp}[set | add | remove] {$p}<时间>'
       success: '{$p}成功地把{$s}%kingdom%{$p}王国的护盾时长设为了{$sep}: {$s}%amount%。'
       invalid-action: '{$e}无效的行为&e%action%{$e}! 可用的行为{$sep}: &eadd/remove/set'
       invalid-kingdom: '{$e}找不到王国&e%kingdom%。'
@@ -2264,6 +2271,8 @@ command:
       unknown-context-type: '{$usage}admin forEach &econtextType&5={$p}<"playersInKingdom" | "kingdomsInNation"> &econtext&5={$p}<王国 | 邦联> {$sp}[&econdition&5={$sp}[条件]{$sp}] &ecommand&5={$p}<指令>'
       usage: '{$usage}admin forEach &econtextType&5={$p}<"playersInKingdom" | "kingdomsInNation"> &econtext&5={$p}<王国 | 邦联> {$sp}[&econdition&5={$sp}[条件]{$sp}] &ecommand&5={$p}<指令>'
       description: '{$s}满足条件后对一个集合的所有元素执行一个指令。这可以是一个王国的所有成员, 或一个邦联的所有成员国等。'
+      executor-access-level-console: '{$e}你没有权限运行该指令。该指令需要{$es}控制台{$e}级别访问权限。请从控制台运行该指令。'
+      executor-access-level-op: '{$e}你没有权限运行该指令。该指令需要{$es}OP{$e}级别访问权限。请以OP权限运行，或从控制台运行该指令。'
     elections:
       skip:
         skipped: '{$p}下一次竞选已被跳过。'
@@ -2289,7 +2298,7 @@ command:
         {$p}当前状态{$colon} %state%
     schematic:
       save:
-        usage: '{$usage}admin schematic save {$p}<schematic name>'
+        usage: '{$usage}admin schematic save {$p}<蓝图名称>'
         saved: '{$p}成功将此蓝图保存至{$sep}:{$s}%schematic_file%'
         already-exists: |
           {$e}存在同名蓝图。如果你确定要覆盖原有蓝图, hover:{{$sep}点击这里;&4点我覆盖;/k admin schematic save %schematic_name%}.
@@ -2314,6 +2323,7 @@ command:
         usage: '{$usage}admin schematic origin {$p}<x> <y> <z>'
         description: '{$s}更改当前WorldEdit剪贴板的复制来源。'
         same: '{$e}基准点并未改变。'
+        mismatch: '{$e}你的建筑基准点是{$es}%origin%(相对中心而言){$e}, 但它并不是建筑的一部分。'
       list:
         description: '{$s}列举所有可用的蓝图。'
         entry: hover:{%schematic_name%;&7点击加载
@@ -2349,6 +2359,12 @@ command:
       tips:
         side-effects: '{$sep}[{$sp}!{$sep}]{$sp}注意{$point}{$sep}你可以输入{$p}hover:{/k admin schematic origin;{$sep}点我复制;|/k admin schematic origin} {$sep}更改粘贴基准点以实现精准放置。'
       extension: '{$e}你不能为这份蓝图文件添加文件附属{$colon} {$es}%schematic_file%'
+      copy:
+        not-cardinal-facing: '{$e}你需要面向一个正方向，否则建筑将无法正确复制。你需要面向你期望的建筑朝向。你应该面向北方、南方、东方或西方。你当前面向的是{$es}%current_direction%{$e}。'
+        done: '{$p}已复制{$s}%blocks%{$p}个方块。建议你使用{$s}hover:{/k admin schematic origin;&8点我运行;/k admin schematic origin}{$p}重新定位建筑的基准点。'
+        description: '{$s}从当前玩家的WorldEdit选择区域复制选区，并将其保存为带有标准化旋转的剪贴板。'
+        no-selection: '{$e}你没有选择任何区域。请使用&5hover:{//wand;&8点我运行;//wand}{$e}。'
+        limit: '{$e}你已达到最大方块限制{$colon} {$s}%max_block_limit% {$sep}< {$s}%block_size%{$e}。'
     backup:
       take:
         description: '{$s}手动将一份备份改名并移至备份文件夹。'
@@ -2383,7 +2399,7 @@ command:
       description: '{$s}基于base64编码获取Minecraft玩家头颅, Minecraft材质URL或玩家名。'
       usage: '{$usage}admin skull {$p}<值>'
     silent:
-      usage: '{$usage}admin backup take {$s}<logging level> <command...>'
+      usage: '{$usage}admin backup take {$s}<日志层级> <指令>'
       unknown-logging-level: '{$e}未知的日志层级{$colon} {$es}%logging_level%'
       description: |
         {$s}静默运行KingdomsX指令。适用于使用其他插件运行KingdomsX指令。
@@ -2422,9 +2438,9 @@ command:
               {$dot} {$p}来源{$colon} {$s}%entity%
               {$dot} {$p}工具{$colon} {$s}%tool%
               {$dot} {$p}方式{$colon} {$s}%cause%
-        disabled: '{$p}生命值{$colon} &c已禁用'
+        disabled: '{$p}生命值{$colon} &c已禁用{$p}。'
         description: '{$s}一个可作为伤害指示器的指令。'
-        enabled: '{$p}生命值{$colon} &2已启用'
+        enabled: '{$p}生命值{$colon} &2已启用{$p}。'
     executebook:
       book-empty: '{$e}你手持的书内容为空。'
       given: '{$p}你可以把指令写入这本书。完成后，你可以手持这本书执行指令。'
@@ -2440,7 +2456,7 @@ command:
       save:
         description: '{$s}将一个王国的领土占领样式存储至文件。'
         usage: '{$usage}admin claimschematic save {$p}<蓝图> {$p}<王国>'
-      unknown-schematic: '{$e}未知的蓝图{$colon} {$es}%schematic%'
+      unknown-schematic: '{$e}未知的蓝图{$colon} {$es}%schematic%{$e}。'
       load-failed: '{$e}蓝图成功载入，但是占领失败。'
       load-success: '{$p}成功为{$s}%kingdom%{$p}王国加载{$s}%schematic%{$p}占领样式。'
       load-skipped-chunks-warning: '{$es}部分领土为其他王国所有，已跳过。'
@@ -2448,11 +2464,16 @@ command:
       description: '{$p}你在运行SQL数据库时会用到的SQL相关指令。'
       execute:
         description: '{$p}执行一个直接SQL语句并得到结果。'
-        executed: '{$p}结果{$colon} {$s}%result%'
-      not-using-sql: '{$e}你使用的数据库并非SQL数据库{$colon} {$es}%database%'
+        executed: '{$p}结果{$colon} {$s}%result%{$e}。'
+      not-using-sql: '{$e}你使用的数据库并非SQL数据库{$colon} {$es}%database%{$e}。'
+      requires-password: '{$e}请以以下格式输入数据库的密码{$colon} {$es}/k admin sql password <密码>{$e}。'
+      password:
+        access-granted: '{$p}允许访问。在接下来的5分钟里，你可以执行所有SQL操作。'
+        description: '{$p}在你运行SQL数据库的时候的SQL相关指令。'
+        invalid-password: '{$e}无效的密码。'
     condition:
       description: '{$s}给一个带有占位符和数学函数的表达式求值。'
-      usage: '{$e}用法{$colon} {$es}/k admin evaluate <expression>'
+      usage: '{$e}用法{$colon} {$es}/k admin evaluate <表达式>'
       failed: |
         {$e}求值结果{$colon} {$s}%translated%
         {$e}报错{$colon} {$es}%result%
@@ -2464,6 +2485,9 @@ command:
         您可以查看所有错误，例如运算符优先级和子表达式分组方式相关的错误。
         部分操作可能因已被优化消除而无法看到。}
         {$p}求值结果{$colon} {$s}%result%
+    updatetop:
+      updated: '{$p}成功更新了王国/邦联排名。'
+      description: '{$s}立即更新王国/邦联排名。'
   sneak:
     description: '{$s}你与其他王国的关系不会使飞行失效。'
     others-permission: '{$e}你缺少以下权限: 把他人设为潜行模式。'
@@ -2822,7 +2846,7 @@ command:
     reply:
       description: '{$s}回复一封邮件。玩家不应该直接使用这个指令。'
       usage: '{$usage}mail reply {$p}<id>'
-      preview: '{$e}You can''t reply on a preview mail.'
+      preview: '{$e}你不能回复预览邮件。'
     open:
       description: '{$s}远程打开一封邮件。玩家不应该直接使用这个指令。'
       usage: '{$es}/k mail open {$p}<id>'
@@ -3033,7 +3057,7 @@ command:
       permission: '{$e}只有拥有&e取出资源点{$e}权限的人才能加入前哨锦标赛。'
       not-enough-resource-points: '{$e}你的王国需要&e%cost%{$e}资源点才能加入此锦标赛。'
       not-enough-money: '{$e}你的王国需要&e$%amount%{$e}金钱才能加入此锦标赛。'
-      joined: '{$p}你的王国加入了{$s}%outpost%{$p}的前哨锦标赛。输入hover:{{$s}/k outpost teleport;{$p}Teleport;/k outpost teleport 传送至竞技场。}'
+      joined: '{$p}你的王国加入了{$s}%outpost%{$p}的前哨锦标赛。输入hover:{{$s}/k outpost teleport;{$p}点我传送;/k outpost teleport 传送至竞技场。}'
       announcement: '{$s}%kingdom%{$p}王国加入了锦标赛! '
       already: '{$e}你的王国已经加入锦标赛了'
       win: |
@@ -3043,7 +3067,7 @@ command:
       lost: '{$e}你的王国输掉了锦标赛! '
     start:
       description: '{$s}用已存在的前哨举办一场前哨锦标赛。'
-      usage: '{$usage}outpost start <前哨> <time> <startIn>'
+      usage: '{$usage}outpost start <前哨> <时间> <启动倒计时>'
       outpost-not-found: '{$e}找不到前哨&e%outpost%{$e}。'
       already-started: '&e%outpost%{$e}的前哨锦标赛已经开始了。'
       invalid-start-time: '{$e}无效的开始时间{$sep}: &e%time%。'
@@ -3069,7 +3093,8 @@ command:
       description: '{$s}传送到前哨区域。'
       not-in-event: '{$e}你的王国没有加入任何前哨锦标赛。'
       teleported: '{$p}传送至前哨区域。'
-      usage: '{$usage}outpost teleport {$p}<outpost>'
+      usage: '{$usage}outpost teleport {$p}<前哨>'
+      not-joined: '{$e}你的王国没有加入任何前哨锦标赛。'
     not:
       found: '{$e}找不到 &e%outpost% {$e}前哨。'
     edit-description: '{$s}编辑前哨设置。'
@@ -3218,7 +3243,7 @@ command:
       hex: '#<16进制颜色代码>'
       rgb: red green blue
     tab-completion:
-      hex: '#<hex color code>'
+      hex: '#<16进制颜色代码>'
       rgb: red green blue
   challenge:
     description: '{$s}为未来策划一场入侵。'
@@ -3310,6 +3335,7 @@ command:
     denied-player: '{$e}玩家{$es}%player%{$e}拒绝了你加入{$es}%kingdoms_kingdom_name%{$e}王国的请求。'
     accepted-self: '{$p}你接受了玩家{$s}%player%{$p}加入王国{$s}%kingdoms_kingdom_name%{$p}的请求。'
     accepted-player: '{$s}%player%{$p}接受了你加入王国的请求。'
+    expired: '{$e}此请求已经过期。'
   merge:
     description: |
       {$s}申请一个王国与你的王国合并。合并包括全部资源点, 银行账户, 成员。领土转移至另一王国。任何升级均会变为两国中较高的等级。原王国的全部成员将会被降职至成员权限组。炮塔, 结构等则会保留在领土上。
@@ -3370,7 +3396,7 @@ command:
 
 
       &5&l已选择。}
-    header: "            {$sep}------=====( %top_displayname%&5排行榜 {$sep})=====------\n{$note} 此处显示的数据并非100%准确。数据大概每30分钟更新一次。\n \n "
+    header: "            {$sep}------=====( %top_displayname%&5排行榜 {$sep})=====------\n{$note} 此处显示的数据并非100%准确。数据大概每30分钟更新一次。\n\\\n "
     entry: |
       {$sep}♦ {$sep}%rank%. hover:{{$p}%kingdoms_kingdom_name%;{$sep}♦{$p}成员{$sep}:{$s}%kingdoms_members%
       {$sep}♦{$p}领土{$sep}:{$s}%kingdoms_claims%{$sep}/{$s}%kingdoms_max_claims%
@@ -3604,7 +3630,7 @@ mails:
     join: '{$p}你有{$s}%mails%{$p}封新邮件。打开邮箱以查看。'
     receivers: |
       {$sp}%kingdoms_kingdom_name% {$p}王国的 {$sp}%player% {$p}给你发送了一封邮件{$sep}: 
-    hover:{&f%subject%;{$sp}点击阅读;/k mail open %id%}:
+    hover:{&f%subject%;{$sp}点我阅读;/k mail open %id%}:
   primary-none: '{$e}无'
   cc:
     each: '{$p}%cc%'
@@ -3927,6 +3953,8 @@ building:
     conflict: '{$e}有方块与建筑冲突{$sep}{$es}%locations%'
     not-owned: '{$e}将此建筑放置在这里会将其变为你无法使用的领土{$sep}{$es}%locations%'
     out-of-chunk: '{$e}将建筑放在这里会使其同时处于多块领土中, 当前不支持此功能{$sep}{$es}%locations%'
+    conflict-other-building: '  {$dot} {$e}另一个建筑将会占据这里{$sep} {$es}%locations%'
+    wrong-schema: '  {$dot} {$e}建筑蓝图不匹配{$sep} {$es}%locations%'
   schema:
     mismatch:
       fence: '{$sep}[{$s}%location%{$sep}]{$e}需要{$es}%schema_displayname%{$e}方块, 但是只有{$es}%block%{$e}方块。'
@@ -3941,6 +3969,7 @@ building:
   already-placed-corrupted: '{$e}另一个建筑已经被放置在这里，但此方块为空。请将此报告给管理员，之后你可以再次放置以清除先前建筑。'
   errors-upgrade: '{$e}你不能在这里升级该建筑。{$colon}'
   already-placed-construction: '{$e}一个王国建筑的方块将被放置在这里。'
+  support-block: '{$e}你正在尝试破坏的方块是{$es}%building%{$e}的支持方块。若要破坏，请先移除该建筑。'
 services:
   worldedit: '&c执行此操作需要WorldEdit插件。'
 kingdom-upgrade:
@@ -3964,8 +3993,8 @@ setters:
 
 # Used for words when they're configured outside of language files.
 words:
-  resource-points: Resource Points
-  fuel: Fuel
+  resource-points: 资源点
+  fuel: 燃料
 kingdom-levels:
   III: '{$e}你需要将王国升至{$es}III级{$e}以解锁此功能。'
   II: '{$e}你需要将王国升至{$es}II级{$e}以解锁此功能。'
@@ -4038,3 +4067,6 @@ worldedit:
 error: '&4错误'
 nation-upgrade:
   upgraded: '{$p}&l升级的邦联{$colon} {$s}%roman@level% {$arrow} {$s}%roman@next_level%'
+
+# Used when the [item] feature is used in chat without having any item in you target slot.
+no-item: hover:{&4没有物品;&c当前没有物品}

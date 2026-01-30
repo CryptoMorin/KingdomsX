@@ -32,6 +32,10 @@ public class LandMarkerDynmap implements LandMarker {
 
     @Override
     public void setSettings(LandMarkerSettings settings) {
+        // I have no clue how and when this happens, but since all methods used here depend on the
+        // marker set to be used, it'll throw the NullPointerException from Dynmap.
+        Objects.requireNonNull(marker.getMarkerSet(), () -> "Dynmap marker set is unavailable for land marker " + marker + " this is an issue with Dynmap");
+
         // https://github.com/webbukkit/dynmap/blob/v3.0/DynmapCoreAPI/src/main/java/org/dynmap/markers/EnterExitMarker.java
         // WorldGuard style titles. We don't need this, it's implemented into Kingdoms plugin itself.
         // marker.setFarewellText("Title", "Subtitle");
@@ -46,12 +50,13 @@ public class LandMarkerDynmap implements LandMarker {
         // https://github.com/webbukkit/dynmap/pull/3338
         // https://github.com/webbukkit/dynmap/issues/3987
         // https://github.com/webbukkit/dynmap/blob/003cad5dc280b68eb675dc7683a87b0ee7b48b58/DynmapCore/src/main/java/org/dynmap/markers/impl/AreaMarkerImpl.java#L296-L305
-        // No other map software (BlueMap, Squaremap and Pl3xMap) have this restriction.
+        // No other map software (BlueMap, Squaremap and Pl3xMap) has this restriction.
         // We already escape the whole value that comes from placeholders inside our HTML text processor.
         String clickDescription = MapAPI.replaceSelector(settings.getClickDescription(), ServiceDynmap.LEAFLET_POPUP_PANES);
 
         if (AreaMarker_setDescription != null) {
             try {
+                // Can't invokeExact because we don't have access to AreaMarkerImpl
                 AreaMarker_setDescription.invoke(marker, clickDescription);
             } catch (Throwable e) {
                 if (KLogger.isDebugging()) e.printStackTrace();

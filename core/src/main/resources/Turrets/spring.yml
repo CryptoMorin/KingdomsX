@@ -35,6 +35,8 @@ item:
     name: "{$sep}Spring"
     material: OAK_PRESSURE_PLATE
     lore: |
-      {$s}Throws the player high up
+      {$desc}Throws the player high up
       into the air.
-      {$dot} {$p}Durability{$colon} {$s}%building_durability%
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }

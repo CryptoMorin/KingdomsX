@@ -88,16 +88,17 @@ item:
     name: "&5Soldier Turret"
     material: ZOMBIE_HEAD
     flags: [ ALL ]
-    lore:
-      - "{$sep}Spawns different mobs depending on"
-      - "the turret's level when enemies get close to it."
-      - "It only attacks that player."
-      - "They're despawn once the player is killed or"
-      - "they were unable to kill the player after {$p}a minute{$sep}."
-      - ""
-      - "{$sp}Attributes{$colon}"
-      - "{$dot} {$p}Level{$colon} {$s}%roman@level%"
-      - "{$dot} {$p}Ammo{$colon} {$s}%ammo%"
-      - "{$dot} {$p}Range{$colon} {$s}%range%"
-      - "{$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%"
-      - "{$dot} {$p}Cooldown{$colon} {$s}%cooldown%"
+    lore: |
+      {$desc}Spawns different mobs depending on
+      the turret's level when enemies get close to it.
+      It only attacks that player.
+      They're despawn once the player is killed or
+      they were unable to kill the player after {$p}a minute{$sep}.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Level{$colon} {$s}%roman@level%
+      {$dot} {$p}Ammo{$colon} {$s}%ammo%
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Range{$colon} {$s}%range%
+      {$dot} {$p}Max Ammo{$colon} {$s}%max_ammo%
+      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%

@@ -28,4 +28,9 @@ public final class ServiceMythicMobFour implements ServiceMythicMobs {
             return ex;
         }
     }
+
+    @Override
+    public int version() {
+        return 4;
+    }
 }

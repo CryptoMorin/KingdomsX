@@ -171,6 +171,7 @@ public final class ServiceDynmap implements MapAPI {
 
             areaMarker = markerSet.createAreaMarker(key, label, false, world.getName(), x, z, markerType.getMarkerSettings().persistent);
             Objects.requireNonNull(areaMarker, () -> "Dynmap didn't create area marker for " + markerType + " with id " + key);
+            Objects.requireNonNull(areaMarker.getMarkerSet(), () -> "Dynmap didn't assign any marker set for " + markerType + " with id " + key + ", which was expected to be: " + markerSet); // Read LandMarkerDynmap.setSettings() for more info
             markers.add(new LandMarkerDynmap(areaMarker));
         }
 

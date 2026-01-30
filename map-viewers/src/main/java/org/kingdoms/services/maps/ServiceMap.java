@@ -355,7 +355,7 @@ public final class ServiceMap {
     }
 
     static int updateLands(MarkerType marker, Nation nation, boolean update, Collection<MapServiceProvider> apis) {
-        Map<String, ? extends Collection<SimpleChunkLocation>> lands = nation.getLands(true);
+        Map<String, ? extends Collection<SimpleChunkLocation>> lands = nation.getLands(false, true);
         LandMarkerSettings settings = getLandMarkerSettings(marker, false, nation, null);
 
         for (MapServiceProvider api : apis) {

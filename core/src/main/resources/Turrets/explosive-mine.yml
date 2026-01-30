@@ -46,9 +46,10 @@ item:
   1:
     name: "{$sep}Explosive Mine"
     material: HEAVY_WEIGHTED_PRESSURE_PLATE
-    lore:
-      - "{$s}Explodes when an enemy steps"
-      - "on the plate."
-      - ""
-      - "{$dot} {$p}Durability{$colon} {$s}%building_durability%"
-      - "{$dot} {$p}Damage{$colon} {$s}TNT"
+    lore: |
+      {$desc}Explodes when an enemy steps
+      on the plate.
+
+      {$sp}Attributes{$colon}
+      {$dot} {$p}Durability{$colon} {? building_max_durability > 0 && building_durability <= 0 ? "&4Broken" : "{$s}%building_durability%{$sep}/{$s}%building_max_durability%" }
+      {$dot} {$p}Damage{$colon} {$s}TNT

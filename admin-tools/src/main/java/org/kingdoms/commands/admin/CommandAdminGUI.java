@@ -135,7 +135,8 @@ public class CommandAdminGUI extends KingdomsCommand implements Listener {
 
         ConfigSection items = config.createSection("options");
         ItemStack[] content = inventory.getContents();
-        @SuppressWarnings("unchecked") Pair<ItemStack, List<Integer>>[] added = new Pair[content.length];
+        @SuppressWarnings("unchecked")
+        Pair<ItemStack, List<Integer>>[] added = new Pair[content.length];
 
         for (int i = 0; i < content.length; i++) {
             ItemStack item = content[i];

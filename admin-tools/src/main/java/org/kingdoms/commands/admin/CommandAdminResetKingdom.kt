@@ -78,7 +78,7 @@ class CommandAdminResetKingdom : KingdomsCommand() {
         UNCLAIM_LANDS({ if (landLocations.isNotEmpty()) unclaimIf(null, UnclaimLandEvent.Reason.ADMIN) { l -> true } }),
         LANDS(UNCLAIM_LANDS, TURRETS, STRUCTURES),
 
-        LOGS({ logs.clear() }),
+        LOGS({ getLogs().clear() }),
         STATISTICS({ statistics.clear() }),
         META_DATA({ metadata.clear() }),
 
