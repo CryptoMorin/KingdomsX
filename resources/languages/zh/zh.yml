@@ -792,7 +792,7 @@ command:
       usage: '{$usage}show {$sp}[ player | nation | #PLAYER | #NATION] {$p}<玩家|邦联>'
       others-permission: '{$e}你缺少以下权限: 查看他人的信息。'
       message-admin: |
-        {$sep}&m---------------=({$e}&l %kingdoms_nation% {$sep}&m)=---------------
+        {$sep}&m---------------=({$e}&l %kingdoms_nation_name% {$sep}&m)=---------------
 
         {$p}| {$p}中心{$sep}: {$s}%kingdoms_nation:capital get=name%
         {$p}| {$p}出生点{$sep}: {$s}%kingdoms_nation_spawn%
@@ -809,7 +809,7 @@ command:
         {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
         {$p}| {$p}国王{$sep}: {$s}%king_status%
-        {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
+        {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation_name%
         {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_nation_since%
         {$p}| {$p}势力{$sep}: {$s}%kingdoms_might%
         {$p}| {$p}护盾{$sep}: {$s}%kingdoms_nation_shield_time_left%
@@ -898,7 +898,7 @@ command:
         所有成员国都会被移除。
         你确定要继续吗?
         再次输入{$usage}nation disband &4来确认.
-      announce: '&e%player%{$s}解散了他们的邦联&e%kingdoms_nation%! '
+      announce: '&e%player%{$s}解散了他们的邦联&e%kingdoms_nation_name%! '
       name: disband
       aliases: delete
     invite:
@@ -960,7 +960,7 @@ command:
       no-more-pages: '{$e}没有更多页了。'
       negative: '{$e}没有负数页。'
       entry: |
-        {$sep}♦ {$p}%rank%.hover:{{$p}%kingdoms_nation%;{$p}♦ {$p}成员{$sep}: {$s}%kingdoms_nation_kingdoms%
+        {$sep}♦ {$p}%rank%.hover:{{$p}%kingdoms_nation_name%;{$p}♦ {$p}成员{$sep}: {$s}%kingdoms_nation_kingdoms%
         {$p}♦ {$p}资源点{$sep}: {$s}%fancy@kingdoms_nation_resource_points%
         {$p}♦ {$p}银行{$sep}: {$s}$%fancy@kingdoms_nation_bank%} {$p}- {$s}%kingdoms_fancy_nation_might%
       name: top
@@ -1063,7 +1063,7 @@ command:
     description: '{$s}展示可用的邦联指令。'
     broadcast-format: |
 
-      {$sep}[{$s}%kingdoms_nation%{$p}-{$s}%kingdoms_kingdom_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%{$p}-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
+      {$sep}[{$s}%kingdoms_nation_name%{$p}-{$s}%kingdoms_kingdom_name% &l广播{$sep}]{$p}|{$sep}[%kingdoms_nation_rank_color%%kingdoms_nation_rank_symbol%{$p}-%kingdoms_rank_color%%kingdoms_rank_symbol% %kingdoms_rank_name% {$e}%player%{$sep}] {$s}%message%
     spawn-not-set-others: '&e%nation% {$e}未设置他们的家。'
     spawn-permission: '{$e}你缺少以下权限: 传送至其他邦联的家。'
     spawn-not-public: '&e%nation% {$e}邦联的家不是公共的。'
@@ -1267,7 +1267,7 @@ command:
       {$p}| {$p}国王{$sep}: {$s}%king_status%
       {$p}| {$p}家{$sep}: {$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}: {$s}%kingdoms_nexus%
-      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
+      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation_name%
       {$p}| {$p}势力{$sep}: {$s}%kingdoms_fancy_might%
       {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}Tax{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       {$p}| {$p}领土{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
@@ -1280,7 +1280,7 @@ command:
       {$sep}&m---------------=({$e}&l %kingdoms_kingdom_name% {$sep}&m)=---------------
 
       {$p}| {$p}国王{$sep}: {$s}%king_status%
-      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
+      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation_name%
       {$p}| {$p}势力{$sep}: {$s}%kingdoms_might%
       {$p}| {$p}创建日期{$sep}: {$s}%kingdoms_since%
       {$p}| {$p}护盾{$sep}: {$s}%kingdoms_shield_time_left%
@@ -1296,7 +1296,7 @@ command:
       {$p}| {$p}国王{$sep}: {$s}%king_status%
       {$p}| {$p}家{$sep}: {$s}%kingdoms_kingdom_home%
       {$p}| {$p}核心{$sep}: {$s}%kingdoms_nexus%
-      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation%
+      {$p}| {$p}邦联{$sep}: {$s}%kingdoms_nation_name%
       {$p}| {$p}势力{$sep}: {$s}%kingdoms_fancy_might%
       {$p}| {$p}银行{$sep}: {$s}$%fancy@kingdoms_bank% {$sep}| {$p}赋税{$sep}: {$s}$%kingdoms_fancy_tax% {$sep}- {$s}$%kingdoms_fancy_server_kingdom_tax%
       {$p}| {$p}领土{$sep}: {$s}%kingdoms_lands%{$sep}/{$s}%kingdoms_max_lands%
