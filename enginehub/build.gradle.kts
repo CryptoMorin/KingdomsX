@@ -1,6 +1,4 @@
-import org.kingdoms.gradle.KingdomsGradleCommons
-import org.kingdoms.gradle.KingdomsGradleCommons.excludeKotlin
-import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -39,7 +37,7 @@ dependencies {
     compileOnly(project(":core:service"))
     compileOnly(project(":shared"))
     compileOnly(project(":platform:bukkit"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 
     api(project(":enginehub:commons"))
     if (!examineWorldGuardSix) {

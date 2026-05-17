@@ -38,8 +38,8 @@ open class RelativePriority(val type: Type, val targetTaskNS: Namespace) : Prior
         return if (task.namespace == targetTaskNS) "Circular task priority" else null
     }
 
-    override fun compareTo(second: Task<*>, registry: TaskRegistry<*, *>): Int {
-        return if (second.namespace == targetTaskNS) {
+    override fun compareTo(other: Task<*>, registry: TaskRegistry<*, *>): Int {
+        return if (other.namespace == targetTaskNS) {
             when (this.type) {
                 Type.BEFORE -> -1
                 Type.REPLACE -> 0
@@ -50,7 +50,7 @@ open class RelativePriority(val type: Type, val targetTaskNS: Namespace) : Prior
             if (registeredTask != null) {
                 // A after B -> C after B -> B
                 // A comparedTo C => B comparedTo C => 1
-                val compared = registeredTask.compareTo(second, registry)
+                val compared = registeredTask.compareTo(other, registry)
                 if (compared == UNSUPPORTED_COMPARABLE) {
                     // p = "S"
                     UNSUPPORTED_COMPARABLE

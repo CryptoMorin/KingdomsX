@@ -24,8 +24,15 @@ give: 1
 # false: Blacklists the item, any item with    this property will not be accepted.
 # ~: Accepts the item regardless.
 general-filters:
-  with-lore: ~
-  enchanted: ~
+  # E.g. if any of an item's lore matches the one specified in this list, it'll not be used:
+  # with-lore: [ "Hello hi", "I'm a simple lore line!" ]
+  lore: ~
+
+  # E.g. If an item has any of the following enchants, it'll not be used
+  # enchanted: [ UNBREAKING, SHARPNESS, ... ]
+  enchants: false
+
+  # This option's format is different.
   material:
     # "custom" takes priority over this.
     blacklist: true
@@ -76,10 +83,10 @@ advanced:
     # The dot indicates a NBT compound. Kinda like config entries in yml.
     #  "Kingdoms.ResourcePoints": ""
     # Bukkit's format for the normal API...
-    #  "pluginname:nbtname": "golden"
+    #  "PluginName:NBTName": "golden"
 
 # Custom items that can be obtained using the command: /k item give <name> [amount] [player]
-# Similarily, you can hold an item and do "/k item inject <rp>" to put rp into an item.
+# Similarly, you can hold an item and do "/k item inject <rp>" to put rp into an item.
 custom-items:
   # E.g. /k item rp give crystal 10 Hex_27
   # Which gives the player Hex_27 10 crystal items.

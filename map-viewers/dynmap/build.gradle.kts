@@ -1,4 +1,5 @@
 import org.kingdoms.gradle.KingdomsGradleCommons
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -19,7 +20,7 @@ dependencies {
     compileOnly(project(":core"))
     compileOnly(project(":platform:bukkit"))
     compileOnly(project(":map-viewers:commons"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 
     // https://github.com/webbukkit/dynmap/wiki/Dynmap-API
     // https://github.com/webbukkit/dynmap/tree/v3.0/DynmapCoreAPI/src/main/java/org/dynmap/markers

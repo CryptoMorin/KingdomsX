@@ -1,4 +1,5 @@
 import org.kingdoms.gradle.KingdomsGradleCommons
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -21,5 +22,5 @@ dependencies {
     compileOnly(project(":nbt"))
     compileOnly(project(":platform:bukkit:common"))
     compileOnly(KingdomsGradleCommons.Spigot.v1_12)
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 }

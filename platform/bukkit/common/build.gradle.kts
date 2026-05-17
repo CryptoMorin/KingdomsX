@@ -10,5 +10,4 @@ version = "unspecified"
 
 dependencies {
     compileOnly(project(":shared"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
 }

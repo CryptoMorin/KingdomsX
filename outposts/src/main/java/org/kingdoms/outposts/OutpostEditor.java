@@ -370,8 +370,7 @@ public final class OutpostEditor {
         InventoryInteractiveGUI gui = new GUIBuilder(OutpostGUI.REWARDS_ITEMS)
                 .forPlayer(player)
                 .withSettings(getEdits())
-                .inventoryGUIOnly()
-                .build();
+                .buildInventoryGUI();
 
         ReusableOptionHandler itemsOption = gui.getReusableOption("items");
         Collection<ItemStack> items = outpost.getRewards().getItems();

@@ -57,10 +57,10 @@ public final class OutpostDataHandler {
                 int i = 0;
                 for (ItemStack item : rewards.getItems()) {
                     ConfigSection itemEntry = items.createSection(Integer.toString(i));
-                    new XItemStack.Serializer()
-                            .withItem(item)
-                            .withConfig(itemEntry.toBukkitConfigurationSection())
-                            .write();
+                    XItemStack.serializer()
+                            .fromItem(item)
+                            .toConfig(itemEntry.toBukkitConfigurationSection())
+                            .serialize();
                     i++;
                 }
             }

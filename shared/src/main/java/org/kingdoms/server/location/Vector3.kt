@@ -108,7 +108,7 @@ class Vector3(override val x: Double, override val y: Double, override val z: Do
         val x = x
         val y = y
         val z = z
-        return (x * x + y * y + z * z).toDouble()
+        return (x * x + y * y + z * z)
     }
 
     fun getMinimum(v2: Vector3): Vector3 {

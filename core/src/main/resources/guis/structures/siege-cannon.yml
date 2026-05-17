@@ -67,45 +67,44 @@ options:
         {$info-sign} &9If your building's durability hits {$e}0&9,
         you'll have to do a full repair using
         this button.
-upgrade:
-  posx: 4
-  posy: 2
   upgrade:
-    condition: "level < max_level"
-    name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
-    material: NETHER_STAR
+    posx: 4
+    posy: 2
+    upgrade:
+      condition: "level < max_level"
+      name: "{$sp}Upgrade{$colon} {$s}%roman@level% {$sep}➛ {$s}%roman@next_level%"
+      material: NETHER_STAR
+      lore: |
+        {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%
+        {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%
+        {$dot} {$p}Knockback{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%
+        {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%
+  
+        &8[&4&l!&8] {$desc}The values shown here might
+        differ based on the projectile that you
+        used to load the cannon.
+  
+        {$dot} {$p}Max Level{$colon} {$s}%roman@next_level%
+        {$dot} {$p}Cost{$colon} {$s}%upgrade_cost%
+    maxxed:
+      name: "{$sp}Level{$colon} {$s}%roman@level%"
+      material: NETHER_STAR
+      lore: |
+        {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage%
+        {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
+        {$dot} {$p}Damage{$colon} {$s}%damage%
+        {$dot} {$p}Knockback{$colon} {$s}%knockback%
+        {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius%
+
+  break:
+    name: "&4Break"
+    material: REDSTONE_BLOCK
+    sound: ENTITY_ITEM_BREAK
     lore: |
-      {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage% {$sep}➔ {$s}%next-shield-damage%
-      {$dot} {$p}Cooldown{$colon} {$s}%cooldown% {$sep}➔ {$s}%next-cooldown%
-      {$dot} {$p}Damage{$colon} {$s}%damage% {$sep}➔ {$s}%next-damage%
-      {$dot} {$p}Knockback{$colon} {$s}%knockback% {$sep}➔ {$s}%next-knockback%
-      {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius% {$sep}➔ {$s}%next-explosion-radius%
-
-      &8[&4&l!&8] {$desc}The values shown here might
-      differ based on the projectile that you
-      used to load the cannon.
-
-      {$dot} {$p}Max Level{$colon} {$s}%roman@next_level%
-      {$dot} {$p}Cost{$colon} {$s}%upgrade_cost%
-  maxxed:
-    name: "{$sp}Level{$colon} {$s}%roman@level%"
-    material: NETHER_STAR
-    lore: |
-      {$dot} {$p}Shield Dmg{$colon} {$s}%shield-damage%
-      {$dot} {$p}Cooldown{$colon} {$s}%cooldown%
-      {$dot} {$p}Damage{$colon} {$s}%damage%
-      {$dot} {$p}Knockback{$colon} {$s}%knockback%
-      {$dot} {$p}Explosion Radius{$colon} {$s}%explosion-radius%
-
-break:
-  name: "&4Break"
-  material: REDSTONE_BLOCK
-  sound: ENTITY_ITEM_BREAK
-  lore: |
-    {$s}Breaks the structure.
-  posx: 5
-  posy: 2
-
+      {$s}Breaks the structure.
+    posx: 5
+    posy: 2
 
   close:
     name: "&cClose"

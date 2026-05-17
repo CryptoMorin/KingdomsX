@@ -7,7 +7,6 @@ import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftPackage;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
-import net.minecraft.network.protocol.game.ClientboundGameTestHighlightPosPacket;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.kingdoms.server.location.BlockVector3;
@@ -25,8 +24,8 @@ import java.util.concurrent.ConcurrentHashMap;
  * https://wiki.vg/Plugin_channels
  * <p>
  * minecraft:debug/game_test_add_marker -> Used to set different debug markers in the world.
- *                                         Never sent by the Notchian server.
- *                                         This interestingly renders without problems since 1.16.5.
+ * Never sent by the Notchian server.
+ * This interestingly renders without problems since 1.16.5.
  */
 @SuppressWarnings({"JavadocLinkAsPlainText", "unused", "CallToSimpleGetterFromWithinClass"})
 public final class PluginChannels {

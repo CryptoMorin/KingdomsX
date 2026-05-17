@@ -35,7 +35,7 @@ import java.util.logging.Logger;
 public final class ServiceDynmap implements MapAPI {
     protected static final String LEAFLET_POPUP_PANES = ".leaflet-popup-content-wrapper";
     protected DynmapCommonAPI api;
-    private static final Map<MarkerType, WeakReference<MarkerSet>> MARKERS = new IdentityHashMap<>();
+    private static final Map<MarkerType, MarkerSet> MARKERS = new IdentityHashMap<>();
     private final Logger logger;
 
 
@@ -64,13 +64,9 @@ public final class ServiceDynmap implements MapAPI {
 
     MarkerSet getMarkerSet(MarkerType markerType) {
         // When MARKER is null it means the server just started.
-        WeakReference<MarkerSet> marker = MARKERS.get(markerType);
-        if (marker != null && marker.get() != null) return marker.get();
+        MarkerSet marker = MARKERS.get(markerType);
+        if (marker != null) return marker;
 
-        if (marker != null) {
-            logger.info("Previous Dynmap " + markerType + " marker is no longer available. Creating a new one...");
-            MARKERS.remove(markerType);
-        }
         MarkerAPI markerAPI;
         try {
             markerAPI = api.getMarkerAPI();
@@ -92,7 +88,7 @@ public final class ServiceDynmap implements MapAPI {
         // set.setLabelShow(true); ???
         set.setLayerPriority(markerType.getMarkerSettings().priority);
         set.setHideByDefault(markerType.getMarkerSettings().hideByDefault);
-        MARKERS.put(markerType, new WeakReference<>(set));
+        MARKERS.put(markerType,set);
         return set;
     }
 
@@ -245,10 +241,8 @@ public final class ServiceDynmap implements MapAPI {
 
     @Override
     public void removeEverything() {
-        for (WeakReference<MarkerSet> marker : MARKERS.values()) {
-            MarkerSet set = marker.get();
-            if (set == null) return;
-            set.deleteMarkerSet();
+        for (MarkerSet marker : MARKERS.values()) {
+            marker.deleteMarkerSet();
         }
         MARKERS.clear();
     }

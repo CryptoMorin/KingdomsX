@@ -73,9 +73,10 @@ class TaskRegistry<C : TaskContext, T : Task<C>>(private val parentTask: ParentT
         return Collections.unmodifiableList(this.usableList)
     }
 
-    fun <I, O> executeTasks(input: I, onOutput: Consumer<O>): TaskContext {
+    fun <I, O> executeTasks(input: I, handler: Consumer<IOTaskContext<I, O>>?, onOutput: Consumer<O>): TaskContext {
         val session: TaskSession = AbstractTaskSession()
         val context: IOTaskContext<I, O> = AbstractIOTaskContext(input, session)
+        handler?.accept(context)
         executeDefinedTasks(context, onOutput)
         return context
     }
@@ -84,7 +85,9 @@ class TaskRegistry<C : TaskContext, T : Task<C>>(private val parentTask: ParentT
     @Internal
     fun <I, O> executeDefinedTasks(context: IOTaskContext<I, O>, onOutput: Consumer<O>) {
         for (task in getUsableList()) {
+            val task = context.processTask(task) as T
             val subContext = context.createNew() as IOTaskContext<I, O>
+
             try {
                 task.run(subContext as C)
             } catch (ex: Throwable) {

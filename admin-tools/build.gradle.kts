@@ -1,6 +1,4 @@
-import org.kingdoms.gradle.KingdomsGradleCommons
-import org.kingdoms.gradle.KingdomsGradleCommons.excludeKotlin
-import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -13,7 +11,7 @@ plugins {
 }
 
 group = "org.kingdoms"
-version = "1.2.3.1"
+version = "1.2.3.2"
 description = "Adds support for EngineHub plugins (WorldEdit & WorldGuard) selections & schematic buildings."
 
 kingdomsAddon {
@@ -25,5 +23,5 @@ dependencies {
     compileOnly(project(":core:service"))
     compileOnly(project(":shared"))
     compileOnly(project(":platform:bukkit"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 }

@@ -1,4 +1,5 @@
 import org.kingdoms.gradle.KingdomsGradleCommons
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -28,7 +29,7 @@ dependencies {
     compileOnly(project(":core"))
     compileOnly(project(":platform:bukkit"))
     compileOnly(project(":map-viewers:commons"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 
     // The version number is automatically uploaded by Modrinth https://modrinth.com/plugin/pl3xmap
     // https://billygalbreath.github.io/Pl3xMap/net/pl3x/map/core/markers/package-summary.html

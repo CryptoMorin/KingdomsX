@@ -14,5 +14,5 @@ dependencies {
 
     // https://github.com/jpenilla/squaremap
     // https://repo1.maven.org/maven2/xyz/jpenilla/squaremap-api/
-    compileOnly("xyz.jpenilla", "squaremap-api", "1.2.5") { isTransitive = false }
+    compileOnly("xyz.jpenilla:squaremap-api:1.2.5") { isTransitive = false }
 }

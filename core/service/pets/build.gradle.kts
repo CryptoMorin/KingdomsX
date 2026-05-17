@@ -36,12 +36,20 @@ dependencies {
     compileOnly(localDependency("CombatPets-2.3.2.jar"))
     // https://nightexpressdev.com/nightcore/developer-api/
     // https://repo.nightexpressdev.com/#/releases/su/nightexpress/nightcore/nightcore
-    compileOnly("su.nightexpress.nightcore:nightcore:2.7.4")
+    // Note: Older versions get deleted so you'd have to update this.
+
+    @Suppress("SpellCheckingInspection")
+    arrayOf("nightcore", "main", "bridge", "intergration-placeholderapi", "spigot", "utils").forEach { component ->
+        compileOnly("su.nightexpress.nightcore:$component:2.15.3")
+    }
 
     compileOnly(localDependency("NexEngine-2.2.12-R2-Final.jar"))
 
     // https://github.com/brainsynder-Dev/SimplePets
     // https://www.spigotmc.org/resources/100106/
-    // https://repo.bsdevelopment.org/#/releases/simplepets/brainsynder/API
-    compileOnly("simplepets.brainsynder:API:5.0-BUILD-272") { isTransitive = false }
+    // https://repo.bsdevelopment.org/#/releases/org/bsdevelopment/simplepets/api
+    // Note: Older versions get deleted so you'd have to update this.
+    compileOnly("org.bsdevelopment.simplepets:api:R5-B299") { isTransitive = false }
+    // Old path: compileOnly("simplepets.brainsynder:API:5.0-BUILD-272") { isTransitive = false }
+
 }

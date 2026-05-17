@@ -270,8 +270,8 @@ tasks.shadowJar {
         False
     ),
     (
-        'compileOnly(KingdomsGradleCommons.XSERIES)',
-        lambda: f'compileOnly("com.github.cryptomorin:XSeries:{fetch_xseries_version()}")',
+        'compileOnlyXSeries()',
+        lambda: f'compileOnly("com.github.cryptomorin:XSeries:{fetch_xseries_version()}") {{ isTransitive = false }}',
         False
     ),
     (

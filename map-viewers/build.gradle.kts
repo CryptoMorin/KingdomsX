@@ -1,6 +1,3 @@
-import org.kingdoms.gradle.KingdomsGradleCommons.excludeKotlin
-import org.kingdoms.gradle.KingdomsGradleCommons.relocateLibs
-
 plugins {
     commons
     spigotapi
@@ -11,7 +8,7 @@ plugins {
 }
 
 group = "org.kingdoms.services.maps"
-version = "3.2.1.1"
+version = "3.2.1.2"
 description = "Adds support to online map viewer plugins"
 
 kingdomsAddon {

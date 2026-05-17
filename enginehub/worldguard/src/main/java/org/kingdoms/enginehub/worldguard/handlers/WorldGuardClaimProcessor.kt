@@ -22,7 +22,7 @@ class WorldGuardClaimProcessorTask(private val worldGuard: ServiceWorldGuard) : 
         // if (!SoftService.WORLD_GUARD.isAvailable()) return null;
         if (isAdminMode) return null
         if (KingdomsDefaultPluginPermission.`WORLDGUARD_BYPASS_CLAIM$PROTECTION`.hasPermission(
-                kingdomPlayer.player!!,
+                kingdomPlayer.player ?: error("Player $kingdomPlayer is offline."),
                 false
             )
         ) return null

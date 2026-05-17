@@ -11,7 +11,7 @@ import org.kingdoms.utils.KingdomsBukkitExtensions.asOfflinePlayer
 class CommandAdminInfoKingdom(parent: KingdomsParentCommand) : KingdomsCommand("kingdom", parent) {
     override fun execute(context: CommandContext): CommandResult {
         context.requireArgs(1)
-        val kingdom = context.getKingdom(0) ?: return CommandResult.FAILED
+        val kingdom = context.getKingdom(0)
 
         context.messageContext.withContext(kingdom).apply {
             raw("id", kingdom.id)

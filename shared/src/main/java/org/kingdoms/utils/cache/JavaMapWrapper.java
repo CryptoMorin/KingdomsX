@@ -125,6 +125,18 @@ public final class JavaMapWrapper<K, V> implements CachingMap<K, V> {
     }
 
     @Override
+    public Map<K, V> getAllPresent(Iterable<? extends K> keys) {
+        Map<K, V> finalProduct = new HashMap<>();
+
+        for (K key : keys) {
+            V cached = get(key);
+            if (cached != null) finalProduct.put(key, cached);
+        }
+
+        return finalProduct;
+    }
+
+    @Override
     public void replaceAll(BiFunction<? super K, ? super V, ? extends V> function) {
         throw new UnsupportedOperationException();
     }

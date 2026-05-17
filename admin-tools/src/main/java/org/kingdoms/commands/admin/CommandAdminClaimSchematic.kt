@@ -37,7 +37,7 @@ class CommandAdminClaimSchematicLoad : KingdomsCommand() {
             return context.fail(AdminToolsLang.COMMAND_ADMIN_CLAIMSCHEMATIC_UNKNOWN_SCHEMATIC)
         }
 
-        val kingdom = context.getKingdom(1) ?: return CommandResult.FAILED
+        val kingdom = context.getKingdom(1)
         context.`var`("kingdom", kingdom.name)
 
         val player = context.senderAsPlayer()
@@ -78,7 +78,7 @@ class CommandAdminClaimSchematicSave : KingdomsCommand() {
         val schematicName = context.nextString()
         context.`var`("schematic", schematicName)
 
-        val kingdom = context.getKingdom(1) ?: return CommandResult.FAILED
+        val kingdom = context.getKingdom(1)
         context.`var`("kingdom", kingdom.name)
 
         val player = context.senderAsPlayer()

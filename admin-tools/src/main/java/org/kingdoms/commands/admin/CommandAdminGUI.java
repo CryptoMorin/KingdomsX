@@ -67,7 +67,7 @@ public class CommandAdminGUI extends KingdomsCommand implements Listener {
             VIEWING.put(id, guiName);
 
             Player player = context.senderAsPlayer();
-            InventoryInteractiveGUI gui = new GUIBuilder(guiName).forPlayer(player).inventoryGUIOnly().build();
+            InventoryInteractiveGUI gui = new GUIBuilder(guiName).forPlayer(player).buildInventoryGUI();
             Inventory inv = gui.getInventory();
             for (Map.Entry<String, GUIOptionBuilder> left : gui.getRemainingOptions().entrySet()) {
                 GUIOptionBuilder optionBuilder = left.getValue();
@@ -180,10 +180,10 @@ public class CommandAdminGUI extends KingdomsCommand implements Listener {
             } else {
                 section.set("slots", slots);
             }
-            new XItemStack.Serializer()
-                    .withItem(item)
-                    .withConfig(section.toBukkitConfigurationSection())
-                    .write();
+            XItemStack.serializer()
+                    .fromItem(item)
+                    .toConfig(section.toBukkitConfigurationSection())
+                    .serialize();
 
             section.set("flags", null); // All flags are automatically included on all GUI options.
             if (com.google.common.base.Strings.isNullOrEmpty(section.getString("name"))) section.set("name", "");

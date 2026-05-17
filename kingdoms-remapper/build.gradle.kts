@@ -13,8 +13,8 @@ repositories {
 
 dependencies {
     implementation(project(":libmanager"))
-    implementation("org.ow2.asm:asm:9.7")
-    implementation("org.ow2.asm:asm-commons:9.7")
+    implementation("org.ow2.asm:asm:9.10")
+    implementation("org.ow2.asm:asm-commons:9.10")
 
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")

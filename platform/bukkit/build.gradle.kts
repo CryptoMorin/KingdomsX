@@ -1,4 +1,5 @@
 import org.kingdoms.gradle.KingdomsGradleCommons
+import org.kingdoms.gradle.KingdomsGradleCommons.compileOnlyXSeries
 
 plugins {
     commons
@@ -16,5 +17,5 @@ dependencies {
     api(project(":platform:bukkit:old-bukkit"))
     api(project(":platform:bukkit:common"))
     api(project(":platform:folia"))
-    compileOnly(KingdomsGradleCommons.XSERIES)
+    compileOnlyXSeries()
 }

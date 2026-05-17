@@ -79,7 +79,7 @@ class NumberProcessor(val string: String) {
         }
 
         if (mod === null) this._number = _number
-        else this._number = _number.times(mod!!.abstractNumber)
+        else this._number = _number.times(mod.abstractNumber)
 
         if (_number.type != NumberType.INT && constraints.contains(NumberConstraint.INTEGER_ONLY)) {
             fail(NumberFailReason.INTEGER_ONLY)

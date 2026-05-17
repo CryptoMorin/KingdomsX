@@ -508,12 +508,14 @@ commands:
   # cooldown: The cooldown of the command whether the result was successful or not. Refer to the wiki to see time value formats.
   #           Sometimes there are cooldowns for certain commands that are more suitable based on certain situations in other configs.
   #           Note that these cooldowns do not persist between server restarts.
-  # diasbled-worlds: A list of world names that this command is disabled in.
+  # disabled-worlds: A list of world names that this command is disabled in.
+  # show-in-help-page: Whether this command show appear in "/k help" or its relevant help page.
 
   # If any of these properties are not defined, the defaults will be used which are:
   # disabled: false
   # cooldown: 0
   # disabled-worlds: []
+  # show-in-help-page: true
 
   # The default permission to assign to this command. Some commands have default permission that
   # allows everyone to uses them, and removing the permission can be difficult at times using a
@@ -533,7 +535,13 @@ commands:
 
   # You need to /k reload for the following settings to take effect.
 
-  # Examples:
+  ### Examples:
+
+  # This is system command to allow players to quickly answer by clicking
+  # on predefined buttons in some messages.
+  session:
+    show-in-help-page: false
+
   help:
     disabled: false
     cooldown: 0

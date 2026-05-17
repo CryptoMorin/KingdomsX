@@ -6,4 +6,6 @@ public interface CachingMap<K, V> extends Map<K, V> {
     V getIfPresent(K key);
 
     Map<K, V> getAll(Iterable<? extends K> keys);
+
+    Map<K, V> getAllPresent(Iterable<? extends K> keys);
 }

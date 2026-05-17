@@ -48,6 +48,11 @@ public final class CaffeineWrapper<K, V> implements CachingMap<K, V> {
         return cache.getAll(keys);
     }
 
+    @Override
+    public Map<K, V> getAllPresent(Iterable<? extends K> keys) {
+        return cache.getAllPresent(keys);
+    }
+
     @Nullable
     @Override
     public V put(K key, V value) {

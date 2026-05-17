@@ -264,8 +264,7 @@ class ItemEditor(
         val gui: InventoryInteractiveGUI = GUIBuilder(KingdomsGUI.`ITEM$EDITOR_MAIN`)
             .forPlayer(player)
             .withSettings(getEditsForItem())
-            .inventoryGUIOnly()
-            .build()!!
+            .buildInventoryGUI()!!
         val meta = item.itemMeta!!
 
         gui.option("item").editItem { item }.done()
@@ -490,7 +489,7 @@ class ItemEditor(
         val obj = opt.constructGUIOptionObject()
         if (obj === null) return XMaterial.STONE.parseItem()!!
 
-        obj.defineVariables(opt.messageContext)
+        obj.defineVariables(fakeGUI,opt.messageContext)
         return obj.item
     }
 

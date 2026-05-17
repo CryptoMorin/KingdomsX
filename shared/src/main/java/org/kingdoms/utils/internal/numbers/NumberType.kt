@@ -16,7 +16,7 @@ enum class NumberType(
         override fun parseStringRaw(string: String): AnyNumber = AnyNumber.of(java.lang.Short.parseShort(string))
     },
     INT(Int::class.java, -Int.MAX_VALUE, Int.MAX_VALUE, Int.SIZE_BYTES) {
-        override fun parseStringRaw(string: String): AnyNumber = AnyNumber.of(java.lang.Integer.parseInt(string))
+        override fun parseStringRaw(string: String): AnyNumber = AnyNumber.of(Integer.parseInt(string))
     },
     LONG(Long::class.java, -Long.MAX_VALUE, Long.MAX_VALUE, Long.SIZE_BYTES) {
         override fun parseStringRaw(string: String): AnyNumber = AnyNumber.of(java.lang.Long.parseLong(string))
@@ -33,6 +33,13 @@ enum class NumberType(
 
     protected abstract fun parseStringRaw(string: String): AnyNumber
 
+    fun canSupport(otherType: NumberType): Boolean {
+        // This is technically wrong for LONG vs FLOAT,DOUBLE
+        // But a long cant hold decimals so practically a double
+        // should be used.
+        return this.ordinal >= otherType.ordinal
+    }
+
     fun parseString(string: String): AnyNumber? = try {
         parseStringRaw(string)
     } catch (ignored: NumberFormatException) {
@@ -40,4 +47,19 @@ enum class NumberType(
     }
 
     val isFloatingPoint: Boolean get() = this == FLOAT || this == DOUBLE
+
+    companion object {
+        @Suppress("PLATFORM_CLASS_MAPPED_TO_KOTLIN")
+        @JvmStatic fun of(clazz: Class<*>): NumberType? {
+            return when (clazz) {
+                Byte::class.java, Byte::class.javaPrimitiveType -> BYTE
+                Short::class.java, Short::class.javaPrimitiveType -> SHORT
+                Integer::class.java, Int::class.java, Int::class.javaPrimitiveType -> INT
+                Long::class.java, Long::class.javaPrimitiveType -> LONG
+                Float::class.java, Float::class.javaPrimitiveType -> FLOAT
+                Double::class.java, Double::class.javaPrimitiveType -> DOUBLE
+                else -> null
+            }
+        }
+    }
 }
