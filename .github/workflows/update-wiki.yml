@@ -1,0 +1,18 @@
+name: Update wiki content
+
+on:
+  gollum:
+
+permissions: {}
+
+jobs:
+  trigger-deployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger wiki content update
+        env:
+          GH_TOKEN: ${{ secrets.WIKI_DEPLOY_TOKEN }}
+        run: >-
+          gh workflow run docusaurus.yml
+          --repo CryptoMorin/KingdomsX-Wiki
+          --ref main
