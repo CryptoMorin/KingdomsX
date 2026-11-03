@@ -18,6 +18,7 @@ dependencies {
     // https://mvnrepository.com/artifact/org.antlr/antlr4
     api(project(":nbt"))
     compileOnly(project(":java-higher-api:java9"))
+    api(project(":kingdoms-annotations"))
     // antlr("org.antlr:antlr4:4.13.1")
     // compileOnly("it.unimi.dsi:fastutil-core:8.5.13")
 

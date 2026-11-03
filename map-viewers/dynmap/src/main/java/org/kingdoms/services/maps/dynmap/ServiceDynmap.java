@@ -77,18 +77,18 @@ public final class ServiceDynmap implements MapAPI {
         }
 
         String id = markerType.getId();
-        MarkerSet set = markerAPI.getMarkerSet(id);
-        if (set == null) {
+        marker = markerAPI.getMarkerSet(id);
+        if (marker == null) {
             // id is limited to "alphanumerics, periods, underscores"
-            set = markerAPI.createMarkerSet(markerType.getId(), markerType.getMarkerSettings().label, null, markerType.getMarkerSettings().persistent);
-            Objects.requireNonNull(set, () -> "Dynmap didn't properly create a MarkerSet for " + markerType);
+            marker = markerAPI.createMarkerSet(markerType.getId(), markerType.getMarkerSettings().label, null, markerType.getMarkerSettings().persistent);
+            Objects.requireNonNull(marker, () -> "Dynmap didn't properly create a MarkerSet for " + markerType);
         }
 
         // set.setLabelShow(true); ???
-        set.setLayerPriority(markerType.getMarkerSettings().priority);
-        set.setHideByDefault(markerType.getMarkerSettings().hideByDefault);
-        MARKERS.put(markerType, set);
-        return set;
+        marker.setLayerPriority(markerType.getMarkerSettings().priority);
+        marker.setHideByDefault(markerType.getMarkerSettings().hideByDefault);
+        MARKERS.put(markerType, marker);
+        return marker;
     }
 
     @Override
@@ -97,7 +97,7 @@ public final class ServiceDynmap implements MapAPI {
         if (markerSet == null) return Optional.empty();
         AreaMarker marker = markerSet.findAreaMarker(id);
         if (marker == null) return Optional.empty();
-        return Optional.of(new LandMarkerDynmap(marker));
+        return Optional.of(new LandMarkerDynmap(marker, markerSet));
     }
 
     @Override
@@ -170,8 +170,9 @@ public final class ServiceDynmap implements MapAPI {
 
             areaMarker = markerSet.createAreaMarker(key, label, false, world.getName(), x, z, markerType.getMarkerSettings().persistent);
             Objects.requireNonNull(areaMarker, () -> "Dynmap didn't create area marker for " + markerType + " with id " + key);
-            Objects.requireNonNull(areaMarker.getMarkerSet(), () -> "Dynmap didn't assign any marker set for " + markerType + " with id " + key + ", which was expected to be: " + markerSet); // Read LandMarkerDynmap.setSettings() for more info
-            markers.add(new LandMarkerDynmap(areaMarker));
+            MarkerSet realMarkerSet = areaMarker.getMarkerSet();
+            Objects.requireNonNull(realMarkerSet, () -> "Dynmap didn't assign any marker set for " + markerType + " with id " + key + ", which was expected to be: " + markerSet); // Read LandMarkerDynmap.setSettings() for more info
+            markers.add(new LandMarkerDynmap(areaMarker, realMarkerSet));
         }
 
         return markers;

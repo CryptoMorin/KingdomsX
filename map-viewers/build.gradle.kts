@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "org.kingdoms.services.maps"
-version = "3.2.2"
+version = "3.2.2.1"
 description = "Adds support to online map viewer plugins"
 
 kingdomsAddon {

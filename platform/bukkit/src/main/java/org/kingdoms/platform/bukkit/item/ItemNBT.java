@@ -1,7 +1,8 @@
 package org.kingdoms.platform.bukkit.item;
 
-import com.cryptomorin.xseries.reflection.ReflectiveNamespace;
 import com.cryptomorin.xseries.reflection.XReflection;
+import com.cryptomorin.xseries.reflection.jvm.MethodMemberHandle;
+import com.cryptomorin.xseries.reflection.minecraft.MinecraftClassHandle;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftMapping;
 import com.cryptomorin.xseries.reflection.minecraft.MinecraftPackage;
 import org.bukkit.inventory.ItemStack;
@@ -26,15 +27,15 @@ public final class ItemNBT {
     public static final Object CUSTOM_DATA_TYPE;
 
     static {
-        MethodHandle asNmsCopy = null;
-        MethodHandle asBukkitCopy = null;
+        MethodHandle asNmsCopy;
+        MethodHandle asBukkitCopy;
         MethodHandle setTag, customDataCtor = null;
         MethodHandle getTag, copyTag = null;
         Object customDataType = null;
         boolean supportsComponents = false;
 
         MethodHandles.Lookup lookup = MethodHandles.lookup();
-        Class<?> crafItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.CB, "inventory").named("CraftItemStack").unreflect();
+        MinecraftClassHandle CraftItemStack = ofMinecraft().inPackage(MinecraftPackage.CB, "inventory").named("CraftItemStack");
         Class<?> nmsItemStack = XReflection.ofMinecraft().inPackage(MinecraftPackage.NMS, "world.item").named("ItemStack").unreflect();
         Class<?> CompoundTagClass = ofMinecraft()
                 .inPackage(MinecraftPackage.NMS, "nbt")
@@ -42,12 +43,30 @@ public final class ItemNBT {
                 .map(MinecraftMapping.SPIGOT, "NBTTagCompound")
                 .unreflect();
 
-        try {
-            asNmsCopy = lookup.findStatic(crafItemStack, "asNMSCopy", MethodType.methodType(nmsItemStack, ItemStack.class));
-            asBukkitCopy = lookup.findStatic(crafItemStack, "asBukkitCopy", MethodType.methodType(ItemStack.class, nmsItemStack));
-        } catch (NoSuchMethodException | IllegalAccessException e) {
-            throw new RuntimeException(e);
+        asNmsCopy = CraftItemStack.method().asStatic().named("asNMSCopy").returns(nmsItemStack).parameters(ItemStack.class).unreflect();
+
+        // asBukkitCopy is a weird method since v26.3, because of the addition of ItemStackTemplate
+        // We will just default back to asBukkitMirror() for v26.3
+        //     public static ItemStack asBukkitCopy(ItemInstance original) {
+        //         Objects.requireNonNull(original);
+        //         switch ((int) SwitchBootstraps.typeSwitch(MethodHandles.lookup(), "typeSwitch", MethodType.methodType(Integer.TYPE, ItemInstance.class, Integer.TYPE), ItemStackTemplate.class, net.minecraft.world.item.ItemStack.class).dynamicInvoker().invoke(original, 0) /* invoke-custom */) {
+        //             case 0:
+        //                 ItemStackTemplate template = (ItemStackTemplate) original;
+        //                 return asBukkitMirror(template.create());
+        //             case 1:
+        //                 net.minecraft.world.item.ItemStack item = (net.minecraft.world.item.ItemStack) original;
+        //                 return asBukkitMirror(item.copy());
+        //             default:
+        //                 throw new AssertionError();
+        //         }
+        //     }
+        MethodMemberHandle asBukkitCopyDiv = CraftItemStack.method().asStatic();
+        if (XReflection.supports(26, 3, 0)) {
+            asBukkitCopyDiv = asBukkitCopyDiv.named("asBukkitMirror");
+        } else {
+            asBukkitCopyDiv = asBukkitCopyDiv.named("asBukkitCopy");
         }
+        asBukkitCopy = asBukkitCopyDiv.returns(ItemStack.class).parameters(nmsItemStack).unreflect();
 
         try {
             // 1.20.5 "components"
@@ -247,31 +266,31 @@ public final class ItemNBT {
     //     tag.set("CanPlaceOn", canPlaceOnNBT);
     // }
 
-//    protected static ItemStack setAttributes(ItemStack item, boolean unbreakable) {
-//        if (XReflection.supports(1, 9)) {
-//            ItemMeta meta = item.getItemMeta();
-//            meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("34", 343, AttributeModifier.Operation.ADD_NUMBER));
-//            item.setItemMeta(meta);
-//            return item;
-//        }
-//
-//        NBTTagCompound tag = getTag(item);
-//        NBTWrappers.NBTTagList<NBTTagCompound> modifiers = new NBTWrappers.NBTTagList<>();
-//        NBTTagCompound attribute = new NBTTagCompound();
-//
-//        // https://minecraft.gamepedia.com/Attribute
-//        UUID id = UUID.randomUUID();
-//        attribute.set("AttributeName", NBTTagType.STRING, "generic.attackSpeed");
-//        attribute.set("Name", NBTTagType.STRING, "generic.attackSpeed");
-//        attribute.set("Amount", NBTTagType.INT, 34);
-//        attribute.set("Operation", NBTTagType.INT, 3);
-//        attribute.set("UUIDLeast", NBTTagType.INT, (int) id.getLeastSignificantBits());
-//        attribute.set("UUIDMost", NBTTagType.INT, (int) id.getMostSignificantBits());
-//        attribute.set("Slot", NBTTagType.STRING, EquipmentSlot.OFF_HAND.name().toLowerCase().replace("_", ""));
-//        // "mainhand" "offhand"
-//
-//        modifiers.add(attribute);
-//        tag.set("AttributeModifiers", modifiers);
-//        return setTag(item, tag);
-//    }
+    //    protected static ItemStack setAttributes(ItemStack item, boolean unbreakable) {
+    //        if (XReflection.supports(1, 9)) {
+    //            ItemMeta meta = item.getItemMeta();
+    //            meta.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier("34", 343, AttributeModifier.Operation.ADD_NUMBER));
+    //            item.setItemMeta(meta);
+    //            return item;
+    //        }
+    //
+    //        NBTTagCompound tag = getTag(item);
+    //        NBTWrappers.NBTTagList<NBTTagCompound> modifiers = new NBTWrappers.NBTTagList<>();
+    //        NBTTagCompound attribute = new NBTTagCompound();
+    //
+    //        // https://minecraft.gamepedia.com/Attribute
+    //        UUID id = UUID.randomUUID();
+    //        attribute.set("AttributeName", NBTTagType.STRING, "generic.attackSpeed");
+    //        attribute.set("Name", NBTTagType.STRING, "generic.attackSpeed");
+    //        attribute.set("Amount", NBTTagType.INT, 34);
+    //        attribute.set("Operation", NBTTagType.INT, 3);
+    //        attribute.set("UUIDLeast", NBTTagType.INT, (int) id.getLeastSignificantBits());
+    //        attribute.set("UUIDMost", NBTTagType.INT, (int) id.getMostSignificantBits());
+    //        attribute.set("Slot", NBTTagType.STRING, EquipmentSlot.OFF_HAND.name().toLowerCase().replace("_", ""));
+    //        // "mainhand" "offhand"
+    //
+    //        modifiers.add(attribute);
+    //        tag.set("AttributeModifiers", modifiers);
+    //        return setTag(item, tag);
+    //    }
 }

@@ -8,4 +8,6 @@ import java.lang.annotation.*;
 @Target({ElementType.TYPE, ElementType.FIELD, ElementType.METHOD})
 @Retention(RetentionPolicy.CLASS)
 @Documented
-public @interface DontObfuscate {}
+public @interface DontObfuscate {
+    String value() default "";
+}

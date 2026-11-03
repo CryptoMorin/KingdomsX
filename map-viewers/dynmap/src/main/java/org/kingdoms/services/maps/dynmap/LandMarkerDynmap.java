@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.reflection.ReflectiveNamespace;
 import com.cryptomorin.xseries.reflection.XReflection;
 import com.cryptomorin.xseries.reflection.jvm.classes.DynamicClassHandle;
 import org.dynmap.markers.AreaMarker;
+import org.dynmap.markers.MarkerSet;
 import org.jetbrains.annotations.NotNull;
 import org.kingdoms.main.KLogger;
 import org.kingdoms.services.maps.abstraction.MapAPI;
@@ -18,12 +19,14 @@ import java.util.Map;
 import java.util.Objects;
 
 public class LandMarkerDynmap implements LandMarker {
-    private final AreaMarker marker;
     private static final MethodHandle
             AreaMarker_setDescription,
             MarkerAPIImpl_areaMarkerUpdated,
             MarkerAPIImpl_saveMarkers;
     private static final Object MarkerAPIImpl$MarkerUpdate_UPDATED;
+
+    private final AreaMarker marker;
+    private final MarkerSet markerSet;
 
     static {
         ReflectiveNamespace ns = XReflection.namespaced();
@@ -65,8 +68,9 @@ public class LandMarkerDynmap implements LandMarker {
         }
     }
 
-    public LandMarkerDynmap(AreaMarker marker) {
+    public LandMarkerDynmap(AreaMarker marker, MarkerSet markerSet) {
         this.marker = Objects.requireNonNull(marker);
+        this.markerSet = markerSet;
     }
 
     @Override
@@ -78,7 +82,8 @@ public class LandMarkerDynmap implements LandMarker {
     public void setSettings(LandMarkerSettings settings) {
         // I have no clue how and when this happens, but since all methods used here depend on the
         // marker set to be used, it'll throw the NullPointerException from Dynmap.
-        Objects.requireNonNull(marker.getMarkerSet(), () -> "Dynmap marker set is unavailable for land marker " + marker + " this is an issue with Dynmap");
+        if (marker.getMarkerSet() == null) marker.setMarkerSet(markerSet);
+        Objects.requireNonNull(marker.getMarkerSet(), () -> "Dynmap marker set is unavailable for land marker " + marker + " with supposed MarkerSet is " + markerSet + " this is an issue with Dynmap");
 
         // https://github.com/webbukkit/dynmap/blob/v3.0/DynmapCoreAPI/src/main/java/org/dynmap/markers/EnterExitMarker.java
         // WorldGuard style titles. We don't need this, it's implemented into Kingdoms plugin itself.

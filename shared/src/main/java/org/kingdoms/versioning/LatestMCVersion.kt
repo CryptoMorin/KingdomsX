@@ -26,8 +26,9 @@ enum class LatestMCVersion(private val paperBuildNumber: Int,
     v1_20(151, "4b011f5adb5f6c72007686a223174fce82f31aeb4b34faf4652abc840b47e640"),
     v1_21(132, "5ffef465eeeb5f2a3c23a24419d97c51afd7dbb4923ff42df9a3f58bba1ccfba"),
 
-    v26_1(72, "0555a0b0468a5198d8fb1a16e1f9e95c81a917a2dc8f2e09867b4044742f6401"),
-    v26_2(34, "ebbce8dcd115170c234af6d132771282ad89b7df410f03ada503d8c32c8fd5ad"),
+    v26_1(74, "1d70b1dab9cf4a6de615209a536f3a45a2186240253c428213ce2188ab95e5f7"),
+    v26_2(135, "ef3dbc68b013deafdbbee3bebf1ba351671ebcda94a8f136809b7532d5ba2fe1"),
+    v26_3(231, "a836a016be7ac52352eb3a1efb6857bb42ee73a6c78d46e292f7e87742edb0e6"),
     ;
 
     val version: SemVer
@@ -36,7 +37,7 @@ enum class LatestMCVersion(private val paperBuildNumber: Int,
         val split = this.name.split("_")
         val majorVersion = split[0].substring(1).toInt()
         val minorVersion = split[1].toInt()
-        val patchNumber = XReflection.getLatestPatchNumberOf(minorVersion)!!
+        val patchNumber = XReflection.getLatestPatchNumberOf(majorVersion, minorVersion)!!
 
         version = SemVer.of(majorVersion, minorVersion, patchNumber)
     }
@@ -54,10 +55,10 @@ enum class LatestMCVersion(private val paperBuildNumber: Int,
     }
 
     fun ensureLatestPatch(logger: Logger): RuntimeException? {
-        if (true) return null
-        // TODO - Remove me when XSeries patch number is fixed!
+        val currentPatch = XReflection.PATCH_NUMBER
+        val latestPatch = version.patchVersion
 
-        if (XReflection.PATCH_NUMBER < version.majorVersion &&
+        if (currentPatch < latestPatch &&
             !ALLOWED_OUTDATED_VERSIONS.contains(CURRENT_VERSION)
         ) {
             logger.severe(

@@ -66,7 +66,8 @@ class WorldEditBuildingConstruction(
     }
 
     object Arch : BuildingConstructionArchitect {
-        @JvmField val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_CONSTRUCTION")
+        @JvmField
+        val NAMESPACE = Namespace.kingdoms("WORLD_EDIT_CONSTRUCTION")
         override fun newBuilding(info: BuildingSchematic): WorldEditBuildingConstruction {
             val schemName = info.settings.checkedSchematic
             val schematic = SchematicManager.getSchematic(schemName)
@@ -403,11 +404,14 @@ class WorldEditBuildingConstruction(
     fun startTask() {
         require(this.blockChangeTask == null) { "Block change task already started" }
         try {
-            val instant = this.isInstant()
-            val scheduler = if (instant) InstantTaskScheduler.INSTANCE else Kingdoms.taskScheduler().sync()
             val blockBuildTask =
                 if (this.getType() == BuildingConstructionType.DEMOLISHING) BlockBreakTask() else BlockPlaceTask()
-            this.blockChangeTask = scheduler.repeating(timeBetweenBlocks, timeBetweenBlocks, blockBuildTask)
+
+            val instant = this.isInstant()
+            val scheduler = if (instant) InstantTaskScheduler.INSTANCE else Kingdoms.taskScheduler().sync()
+            this.blockChangeTask =
+                if (instant) scheduler.repeating(Duration.ZERO, Duration.ZERO, blockBuildTask)
+                else scheduler.repeating(timeBetweenBlocks, timeBetweenBlocks, blockBuildTask)
 
             if (instant) {
                 val task = this.blockChangeTask!!

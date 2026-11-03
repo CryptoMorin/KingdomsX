@@ -831,11 +831,16 @@ placeholders:
     gui-add: 'eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNWZmMzE0MzFkNjQ1ODdmZjZlZjk4YzA2NzU4MTA2ODFmOGMxM2JmOTZmNTFkOWNiMDdlZDc4NTJiMmZmZDEifX19'
 
     ### Conditional Variables ###
+
+    # You use this group by defining entries with the format "perm_<permission>": '<color>'
+    # So for example "perm_color_admin" means that if a player has "color.admin" permission
+    # (yes the _ is treated as a .) they'll receive that color for their chat messages.
+    # This only works for global channel.
     groupColor:
       perm_color_admin: '&6'
       else: '&r'
 
-    # Please just be care not to use recursive variables or your servers console will blow up.
+    # Please just be careful not to use recursive variables or your server's console will blow up with errors.
     channel: '&8[{$sp}%kingdoms_chat_channel_color%%kingdoms_chat_channel_short%&8]'
     kingdomPrefix:
       kingdoms_has_kingdom: '&8[%kingdoms_rank_color%%kingdoms_rank_symbol% %hex@kingdoms_kingdom_color%%kingdoms_kingdom_name%&8]&r '

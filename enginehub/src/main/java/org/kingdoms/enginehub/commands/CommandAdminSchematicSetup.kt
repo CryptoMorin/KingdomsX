@@ -167,9 +167,9 @@ class CommandAdminSchematicSetup(parent: KingdomsParentCommand) : KingdomsComman
                     val holograms = levelSection.getSection("holograms")
                     if (holograms !== null) {
                         for (hologramType in holograms.keys) {
-                            val hologramTypes = holograms.getSection(hologramType)
+                            val hologramTypes = holograms.getSection(hologramType)!!
                             for (hologramGroup in hologramTypes.keys) {
-                                val hologram = hologramTypes.getSection(hologramGroup)
+                                val hologram = hologramTypes.getSection(hologramGroup)!!
                                 if (hologram.getNode("height") is AliasNode) continue
 
                                 @Suppress("YAMLUnusedAnchor")
